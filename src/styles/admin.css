@@ -1,0 +1,94 @@
+/* Admin Panel Layout */
+.admin-panel {
+  @apply space-y-8;
+}
+
+/* KPI Cards */
+.kpi-grid {
+  @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4;
+}
+
+.kpi-card {
+  @apply relative p-6 rounded-2xl border border-gray-700/30 bg-gray-900/40;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-out;
+}
+
+.kpi-card:hover {
+  @apply border-gray-500/50 transform -translate-y-1;
+}
+
+.kpi-card .kpi-icon {
+  @apply absolute top-4 right-4 h-8 w-8 opacity-10;
+}
+
+.kpi-card .kpi-title {
+  @apply text-sm font-medium text-gray-400;
+}
+
+.kpi-card .kpi-value {
+  @apply text-4xl font-bold text-white;
+}
+
+/* Card-specific glows */
+.kpi-card.glow-cyan:hover {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.15);
+}
+.kpi-card.glow-violet:hover {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+}
+.kpi-card.glow-amber:hover {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+}
+.kpi-card.glow-emerald:hover {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+}
+
+
+/* Activity Timeline */
+.activity-timeline-container {
+  @apply relative p-6 rounded-2xl border border-gray-700/30 bg-gray-900/40;
+  backdrop-filter: blur(10px);
+}
+
+.activity-timeline {
+  @apply relative pl-8 border-l-2 border-gray-700/50 space-y-6;
+}
+
+.timeline-item {
+  @apply relative pl-4 transition-all duration-200;
+}
+
+.timeline-item:hover {
+  @apply bg-gray-800/30 rounded-r-lg;
+}
+
+.timeline-icon {
+  @apply absolute -left-[35px] top-1/2 -translate-y-1/2 h-8 w-8 p-1.5 rounded-full flex items-center justify-center border-2 border-gray-700 bg-gray-900;
+}
+
+.timeline-item-content {
+  @apply flex flex-col sm:flex-row justify-between items-start sm:items-center;
+}
+
+.timeline-label {
+  @apply text-gray-200;
+}
+
+.timeline-timestamp {
+  @apply text-xs text-gray-500 mt-1 sm:mt-0;
+}
+
+/* Item-specific glow borders */
+.timeline-item.type-user .timeline-icon {
+  @apply border-cyan-500/50 text-cyan-400;
+}
+.timeline-item.type-journal .timeline-icon {
+  @apply border-amber-500/50 text-amber-400;
+}
+.timeline-item.type-strategy .timeline-icon {
+  @apply border-violet-500/50 text-violet-400;
+}
+.timeline-item.type-reflection .timeline-icon {
+  @apply border-emerald-500/50 text-emerald-400;
+} 

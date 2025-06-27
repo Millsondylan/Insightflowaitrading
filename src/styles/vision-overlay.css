@@ -1,0 +1,135 @@
+/* Chart Overlay Container */
+.chart-overlay-container {
+  @apply relative w-full overflow-hidden;
+}
+
+.chart-overlay-container img {
+  @apply w-full h-auto rounded-lg;
+}
+
+/* Pattern Zone Styles */
+.pattern-zone {
+  @apply absolute border-2 border-dashed rounded-md transition-all duration-300;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.pattern-zone:hover {
+  @apply z-10;
+}
+
+/* Zone types */
+.pattern-zone.bullish {
+  @apply border-green-400;
+}
+
+.pattern-zone.bullish:hover {
+  @apply border-green-400 border-opacity-100;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+}
+
+.pattern-zone.bearish {
+  @apply border-red-400;
+}
+
+.pattern-zone.bearish:hover {
+  @apply border-red-400 border-opacity-100;
+  box-shadow: 0 0 15px rgba(248, 113, 113, 0.5);
+}
+
+.pattern-zone.neutral {
+  @apply border-yellow-400;
+}
+
+.pattern-zone.neutral:hover {
+  @apply border-yellow-400 border-opacity-100;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+}
+
+/* Pattern Tooltip */
+.pattern-tooltip {
+  @apply absolute bg-black/80 backdrop-blur-md text-white p-3 rounded-lg shadow-lg z-20 border border-white/10 transition-all duration-200;
+  width: 220px;
+  pointer-events: none;
+  transform: translateY(-100%) translateY(-10px);
+}
+
+.pattern-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid rgba(0, 0, 0, 0.8);
+}
+
+.pattern-tooltip.bullish {
+  @apply border-green-400/30;
+}
+
+.pattern-tooltip.bearish {
+  @apply border-red-400/30;
+}
+
+.pattern-tooltip.neutral {
+  @apply border-yellow-400/30;
+}
+
+.pattern-tooltip .pattern-name {
+  @apply font-bold text-lg mb-1;
+}
+
+.pattern-tooltip.bullish .pattern-name {
+  @apply text-green-400;
+}
+
+.pattern-tooltip.bearish .pattern-name {
+  @apply text-red-400;
+}
+
+.pattern-tooltip.neutral .pattern-name {
+  @apply text-yellow-400;
+}
+
+.pattern-tooltip .pattern-description {
+  @apply text-gray-300 text-sm;
+}
+
+.pattern-tooltip .pattern-confidence {
+  @apply text-xs text-gray-400 mt-2;
+}
+
+/* Animation for zone appearance */
+@keyframes fadeInZone {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pattern-zone {
+  animation: fadeInZone 0.5s ease-out forwards;
+}
+
+.pattern-zone:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.pattern-zone:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.pattern-zone:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.pattern-zone:nth-child(5) {
+  animation-delay: 0.8s;
+} 

@@ -1,0 +1,144 @@
+/* Wallet Panel Styles */
+.wallet-panel {
+  @apply relative p-8 rounded-2xl border border-gray-700/50 bg-gradient-to-br from-gray-900/50 to-gray-800/30;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.wallet-connect-cta {
+  @apply text-center p-12 border-2 border-dashed border-gray-600/50 rounded-xl;
+}
+
+.connect-wallet-btn {
+  @apply mt-6 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  animation: button-glow 2s ease-in-out infinite;
+}
+
+.connect-wallet-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 25px rgba(59, 130, 246, 0.4),
+    0 0 20px rgba(147, 51, 234, 0.3);
+}
+
+/* Token Balance Card Styles */
+.token-balance-card {
+  @apply relative p-6 rounded-2xl border border-gray-700/30 bg-gray-900/20 transition-all duration-300 ease-out overflow-hidden;
+  backdrop-filter: blur(8px);
+}
+
+.token-balance-card:hover {
+  @apply border-gray-500/50;
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.token-balance-card.theme-violet {
+  @apply border-violet-500/20;
+}
+.token-balance-card.theme-violet:hover {
+  @apply shadow-violet-500/20;
+}
+
+.token-balance-card.theme-orange {
+  @apply border-orange-500/20;
+}
+.token-balance-card.theme-orange:hover {
+  @apply shadow-orange-500/20;
+}
+
+.token-balance-card.theme-green {
+  @apply border-green-500/20;
+}
+.token-balance-card.theme-green:hover {
+  @apply shadow-green-500/20;
+}
+
+/* Background Glow Effect */
+.card-glow {
+  @apply absolute -inset-2 rounded-2xl opacity-0 transition-opacity duration-500;
+  filter: blur(20px);
+}
+.token-balance-card:hover .card-glow {
+  @apply opacity-20;
+}
+
+.card-glow.glow-violet {
+  @apply bg-violet-500;
+}
+.card-glow.glow-orange {
+  @apply bg-orange-500;
+}
+.card-glow.glow-green {
+  @apply bg-green-500;
+}
+
+/* Status Indicator */
+.status-indicator {
+  @apply absolute top-4 right-4 h-3 w-3 rounded-full border-2 border-gray-900;
+}
+
+.status-indicator-sufficient {
+  @apply bg-green-400;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+  animation: pulse-glow 2s infinite;
+}
+
+.status-indicator-insufficient {
+  @apply bg-gray-500;
+}
+
+/* Shimmer Effect on Hover */
+.shimmer-overlay {
+  @apply absolute top-0 left-[-150%] w-[100%] h-full;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.token-balance-card:hover .shimmer-overlay {
+  transform: translateX(250%);
+}
+
+/* QR Code Modal */
+.qr-code-modal {
+  @apply fixed inset-0 flex items-center justify-center z-50 bg-black/80 backdrop-blur-sm;
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+.qr-code-content {
+  @apply p-8 bg-gray-900 border border-gray-700 rounded-2xl text-center;
+  animation: modal-bounce-in 0.4s ease-out;
+}
+
+/* Keyframe Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(74, 222, 128, 1);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes button-glow {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(59, 130, 246, 0.5), 0 0 15px rgba(147, 51, 234, 0.2);
+  }
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-bounce-in {
+  0% { transform: scale(0.7); opacity: 0; }
+  80% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+} 

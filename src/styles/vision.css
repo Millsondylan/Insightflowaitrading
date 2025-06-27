@@ -1,0 +1,36 @@
+/* Chart Uploader */
+.chart-uploader {
+  @apply border-2 border-dashed border-gray-600 rounded-lg p-8 text-center transition-all duration-300 relative overflow-hidden;
+}
+.chart-uploader.active {
+  @apply border-cyan-400 bg-cyan-500/10 shadow-[0_0_15px_rgba(34,211,238,0.3)];
+}
+.chart-uploader-content {
+  @apply relative z-10;
+}
+
+/* Analyzing Loader: Shimmer effect */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.shimmer-overlay {
+  @apply absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-cyan-500/10 to-transparent;
+  animation: shimmer 2s infinite;
+}
+
+/* Pattern Tag */
+.pattern-tag {
+  @apply inline-block bg-gray-800/60 text-cyan-300 text-sm font-medium mr-2 mb-2 px-4 py-2 rounded-full transition-all duration-200 border border-transparent;
+}
+.pattern-tag:hover {
+  @apply bg-cyan-500/20 text-white shadow-[0_0_10px_rgba(34,211,238,0.4)] border-cyan-400/50;
+}
+
+/* Confidence Meter */
+.confidence-meter-bg {
+  @apply w-full bg-gray-700/50 rounded-full h-4;
+}
+.confidence-meter-bar {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full h-4 transition-all duration-1000 ease-out;
+} 

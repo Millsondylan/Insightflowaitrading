@@ -1,0 +1,132 @@
+/* KPI Card Styles */
+.kpi-card {
+  @apply bg-black/40 backdrop-blur border border-white/10 rounded-lg p-6 transition-all duration-300;
+}
+
+.kpi-card:hover {
+  @apply transform -translate-y-1;
+}
+
+.kpi-card.positive {
+  @apply border-green-500/30;
+}
+
+.kpi-card.positive:hover {
+  @apply shadow-[0_0_15px_rgba(34,197,94,0.3)];
+}
+
+.kpi-card.negative {
+  @apply border-red-500/30;
+}
+
+.kpi-card.negative:hover {
+  @apply shadow-[0_0_15px_rgba(239,68,68,0.3)];
+}
+
+.kpi-card.neutral {
+  @apply border-blue-500/30;
+}
+
+.kpi-card.neutral:hover {
+  @apply shadow-[0_0_15px_rgba(59,130,246,0.3)];
+}
+
+.kpi-value {
+  @apply text-3xl font-bold;
+}
+
+.kpi-value.positive {
+  @apply text-green-400;
+}
+
+.kpi-value.negative {
+  @apply text-red-400;
+}
+
+.kpi-value.neutral {
+  @apply text-blue-400;
+}
+
+.kpi-label {
+  @apply text-gray-400 text-sm uppercase tracking-wider;
+}
+
+/* Chart Styles */
+.chart-container {
+  @apply bg-black/40 backdrop-blur border border-white/10 rounded-lg p-4 h-[400px] md:h-[500px];
+}
+
+.chart-container .recharts-wrapper {
+  @apply mx-auto;
+}
+
+.chart-container .recharts-cartesian-grid-horizontal line,
+.chart-container .recharts-cartesian-grid-vertical line {
+  @apply stroke-gray-700/30;
+}
+
+.chart-container .recharts-cartesian-axis-line {
+  @apply stroke-gray-600;
+}
+
+.chart-container .recharts-tooltip-wrapper {
+  @apply bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg;
+}
+
+/* Trade Marker Styles */
+.trade-marker-entry {
+  @apply text-green-400 font-bold;
+}
+
+.trade-marker-exit {
+  @apply text-red-400 font-bold;
+}
+
+/* Trade Explorer Styles */
+.trade-table {
+  @apply bg-black/40 backdrop-blur border border-white/10 rounded-lg overflow-hidden;
+}
+
+.trade-table-header {
+  @apply bg-black/60 text-gray-300 text-sm uppercase tracking-wider;
+}
+
+.trade-row {
+  @apply border-b border-white/5 transition-all duration-200;
+}
+
+.trade-row:hover {
+  @apply bg-white/5;
+}
+
+.trade-row.win {
+  @apply hover:bg-green-500/10;
+}
+
+.trade-row.loss {
+  @apply hover:bg-red-500/10;
+}
+
+.trade-pnl.positive {
+  @apply text-green-400;
+}
+
+.trade-pnl.negative {
+  @apply text-red-400;
+}
+
+/* Animation Utilities */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count-up {
+  animation: countUp 1s ease-out forwards;
+} 

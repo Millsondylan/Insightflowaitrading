@@ -1,0 +1,226 @@
+/* Journal Form Styles */
+.journal-form-card {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.file-upload-zone {
+  transition: all 0.3s ease;
+}
+
+.file-upload-zone:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.file-upload-zone:active {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Journal Timeline Styles */
+.journal-timeline {
+  padding: 1rem 0;
+  position: relative;
+}
+
+.journal-entry-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.journal-entry-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Animation for timeline entries */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+/* AI Reflection Styles */
+.ai-reflection-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.ai-reflection-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+}
+
+/* Behavior Tag Animations */
+@keyframes tagSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-tag-slide-in {
+  animation: tagSlideIn 0.4s ease forwards;
+}
+
+/* AI Reflection Tags Container */
+.ai-reflection-tags {
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Behavior Tag Hover Effects */
+.behavior-tag:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* AI Analysis Loading Animation */
+@keyframes aiPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.ai-loading-dot {
+  animation: aiPulse 1.4s infinite ease-in-out;
+}
+
+.ai-loading-dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.ai-loading-dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+/* Sentiment Toggle Styles */
+button[variant="default"].bg-green-600 {
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
+
+button[variant="default"].bg-red-600 {
+  box-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
+}
+
+/* Submit Button Glow Effect */
+.bg-green-600:not(:disabled) {
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+}
+
+.bg-red-600:not(:disabled) {
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.4);
+}
+
+/* Collapsible AI Section Transition */
+[data-state="open"] .ai-reflection-content {
+  animation: slideDown 0.3s ease-out;
+}
+
+[data-state="closed"] .ai-reflection-content {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Gradient text effects for AI sections */
+.ai-gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Confidence indicator styles */
+.confidence-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.confidence-indicator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Brain icon animation for AI analysis */
+.brain-thinking {
+  animation: brainPulse 2s infinite ease-in-out;
+}
+
+@keyframes brainPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+} 

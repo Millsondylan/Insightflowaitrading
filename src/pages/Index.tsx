@@ -1,14 +1,18 @@
 // Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import Hero from '@/components/ui/Hero';
+import FeatureCards from '@/components/ui/FeatureCards';
+import CTASection from '@/components/ui/CTASection';
+import '@/styles/landing.css';
+
+const IndexPage = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="bg-black">
+      <Hero />
+      <FeatureCards />
+      <CTASection />
     </div>
   );
 };
 
-export default Index;
+export default IndexPage;

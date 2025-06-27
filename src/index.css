@@ -101,3 +101,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Import custom styles */
+@import url('./styles/quiz.css');
+@import url('./styles/wallet.css');
+@import url('./styles/admin.css');

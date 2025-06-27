@@ -1,0 +1,7 @@
+/* Glass section base */
+.glass-section {
+  @apply bg-black/40 backdrop-blur border border-white/10 rounded-lg p-6;
+}
+.section-heading {
+  @apply text-2xl font-semibold mb-4 text-cyan-400;
+} 
