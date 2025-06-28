@@ -1,5 +1,6 @@
+
 import BlockReveal from './BlockReveal';
-import '../styles/strategy.css';
+import '../../styles/strategy.css';
 
 interface StrategyRevealProps {
   result: {
@@ -83,4 +84,4 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
   );
 };
 
-export default StrategyReveal; 
+export default StrategyReveal;

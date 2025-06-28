@@ -1,6 +1,12 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Import custom styles */
+@import url('./styles/quiz.css');
+@import url('./styles/wallet.css');
+@import url('./styles/admin.css');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
@@ -101,8 +107,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-/* Import custom styles */
-@import url('./styles/quiz.css');
-@import url('./styles/wallet.css');
-@import url('./styles/admin.css');
