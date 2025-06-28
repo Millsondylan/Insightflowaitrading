@@ -95,7 +95,7 @@ export async function reflectOnEntry(
 }
 
 /**
- * Retrieves stored AI reflection from Supabase
+ * Retrieves stored AI reflection from Supabase using correct column names
  * @param journalEntryId ID of the journal entry
  * @returns Stored AI reflection or null if not found
  */
@@ -104,8 +104,8 @@ async function getStoredReflection(journalEntryId: string): Promise<StoredAIRefl
     const { data, error } = await supabase
       .from('ai_reflections')
       .select('*')
-      .eq('journalEntryId', journalEntryId)
-      .order('createdAt', { ascending: false })
+      .eq('journalentryid', journalEntryId)
+      .order('createdat', { ascending: false })
       .limit(1)
       .single();
 
@@ -117,7 +117,18 @@ async function getStoredReflection(journalEntryId: string): Promise<StoredAIRefl
       throw error;
     }
 
-    return data as StoredAIReflection;
+    // Map database column names to expected format
+    return {
+      id: data.id,
+      journalEntryId: data.journalentryid,
+      userId: data.userid,
+      summary: data.summary,
+      tags: data.tags,
+      suggestion: data.suggestion,
+      confidence: data.confidence,
+      provider: data.provider,
+      createdAt: data.createdat
+    } as StoredAIReflection;
   } catch (error) {
     console.error('Error fetching stored reflection:', error);
     return null;
@@ -125,7 +136,7 @@ async function getStoredReflection(journalEntryId: string): Promise<StoredAIRefl
 }
 
 /**
- * Saves AI reflection to Supabase for future reference
+ * Saves AI reflection to Supabase for future reference using correct column names
  * @param reflection AI reflection to save
  * @param journalEntryId ID of the journal entry
  * @param userId User ID
@@ -137,14 +148,14 @@ async function saveReflectionToDatabase(
   userId: string
 ): Promise<StoredAIReflection> {
   const reflectionData = {
-    journalEntryId,
-    userId,
+    journalentryid: journalEntryId,
+    userid: userId,
     summary: reflection.summary,
     tags: reflection.tags,
     suggestion: reflection.suggestion,
     confidence: reflection.confidence,
     provider: 'auto', // Could be enhanced to track which provider was used
-    createdAt: new Date().toISOString()
+    createdat: new Date().toISOString()
   };
 
   const { data, error } = await supabase
@@ -157,7 +168,18 @@ async function saveReflectionToDatabase(
     throw new Error(`Failed to save reflection: ${error.message}`);
   }
 
-  return data as StoredAIReflection;
+  // Map response back to expected format
+  return {
+    id: data.id,
+    journalEntryId: data.journalentryid,
+    userId: data.userid,
+    summary: data.summary,
+    tags: data.tags,
+    suggestion: data.suggestion,
+    confidence: data.confidence,
+    provider: data.provider,
+    createdAt: data.createdat
+  } as StoredAIReflection;
 }
 
 /**
@@ -240,12 +262,12 @@ export async function getReflectionStats(userId: string): Promise<{
   try {
     const { data, error } = await supabase
       .from('ai_reflections')
-      .select('confidence, tags, createdAt')
-      .eq('userId', userId);
+      .select('confidence, tags, createdat')
+      .eq('userid', userId);
 
     if (error) throw error;
 
-    const reflections = data as StoredAIReflection[];
+    const reflections = data || [];
     const totalReflections = reflections.length;
     
     if (totalReflections === 0) {
@@ -263,7 +285,7 @@ export async function getReflectionStats(userId: string): Promise<{
     // Count tag frequencies
     const tagCounts = new Map<string, number>();
     reflections.forEach(r => {
-      r.tags.forEach(tag => {
+      r.tags.forEach((tag: string) => {
         tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
       });
     });
@@ -277,7 +299,7 @@ export async function getReflectionStats(userId: string): Promise<{
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
     const recentReflections = reflections.filter(r => 
-      new Date(r.createdAt) > thirtyDaysAgo
+      new Date(r.createdat) > thirtyDaysAgo
     ).length;
 
     return {
@@ -295,4 +317,4 @@ export async function getReflectionStats(userId: string): Promise<{
       recentReflections: 0
     };
   }
-} 
+}

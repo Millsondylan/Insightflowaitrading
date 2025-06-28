@@ -1,3 +1,4 @@
+
 import { supabase } from '@/integrations/supabase/client';
 
 export interface DashboardStats {
@@ -27,18 +28,18 @@ export const fetchDashboardStats = async (): Promise<DashboardStats> => {
       
     if (strategiesError) throw strategiesError;
 
-    // Fetch total journal entries
+    // Fetch total journal entries using correct column name
     const { count: journalsSaved, error: journalsError } = await supabase
       .from('journal_entries')
       .select('*', { count: 'exact', head: true });
 
     if (journalsError) throw journalsError;
 
-    // Fetch total charts uploaded (count journal entries with a chartUrl)
+    // Fetch total charts uploaded (count journal entries with a chartUrl) using correct column name
     const { count: chartsUploaded, error: chartsError } = await supabase
       .from('journal_entries')
       .select('id', { count: 'exact' })
-      .not('chartUrl', 'is', null);
+      .not('charturl', 'is', null);
 
     if (chartsError) throw chartsError;
 
@@ -58,4 +59,4 @@ export const fetchDashboardStats = async (): Promise<DashboardStats> => {
       chartsUploaded: 0,
     };
   }
-}; 
+};

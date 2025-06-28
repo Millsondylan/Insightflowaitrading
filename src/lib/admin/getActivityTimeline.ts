@@ -1,3 +1,4 @@
+
 import { supabase } from '@/integrations/supabase/client';
 
 export type ActivityType = 'journal' | 'strategy' | 'reflection' | 'user';
@@ -19,11 +20,11 @@ export interface ActivityEvent {
  */
 export const getActivityTimeline = async (limit = 20): Promise<ActivityEvent[]> => {
   try {
-    // Fetch recent journal entries
+    // Fetch recent journal entries using correct column names
     const { data: journals, error: journalsError } = await supabase
       .from('journal_entries')
-      .select('id, title, createdAt, userId')
-      .order('createdAt', { ascending: false })
+      .select('id, title, createdat, userid')
+      .order('createdat', { ascending: false })
       .limit(limit);
 
     if (journalsError) throw journalsError;
@@ -46,18 +47,18 @@ export const getActivityTimeline = async (limit = 20): Promise<ActivityEvent[]> 
       
     if (usersError) throw usersError;
 
-    // Map journals to the common activity event format
-    const journalEvents: ActivityEvent[] = journals.map(j => ({
+    // Map journals to the common activity event format using correct column names
+    const journalEvents: ActivityEvent[] = (journals || []).map(j => ({
       id: `journal-${j.id}`,
       type: 'journal',
       label: `Saved new journal entry: "${j.title}"`,
-      timestamp: j.createdAt,
-      userId: j.userId,
+      timestamp: j.createdat,
+      userId: j.userid,
       path: `/journal/${j.id}`,
     }));
 
     // Map strategies to the common activity event format
-    const strategyEvents: ActivityEvent[] = strategies.map(s => ({
+    const strategyEvents: ActivityEvent[] = (strategies || []).map(s => ({
       id: `strategy-${s.id}`,
       type: 'strategy',
       label: `Built a new strategy: "${s.name}"`,
@@ -67,7 +68,7 @@ export const getActivityTimeline = async (limit = 20): Promise<ActivityEvent[]> 
     }));
     
     // Map new users to the common activity event format
-    const userEvents: ActivityEvent[] = users.map(u => ({
+    const userEvents: ActivityEvent[] = (users || []).map(u => ({
         id: `user-${u.id}`,
         type: 'user',
         label: `New user signed up: ${u.email}`,
@@ -85,4 +86,4 @@ export const getActivityTimeline = async (limit = 20): Promise<ActivityEvent[]> 
     console.error('Error fetching activity timeline:', error);
     return [];
   }
-}; 
+};

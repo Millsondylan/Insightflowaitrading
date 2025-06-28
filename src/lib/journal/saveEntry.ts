@@ -1,3 +1,4 @@
+
 import { v4 as uuidv4 } from 'uuid';
 import { supabase } from '@/integrations/supabase/client';
 import { JournalEntry, JournalFormData } from './schema';
@@ -36,7 +37,7 @@ async function uploadChartImage(file: File, userId: string): Promise<string | nu
 }
 
 /**
- * Saves a journal entry to Supabase
+ * Saves a journal entry to Supabase using correct column names
  * @param formData Journal entry form data
  * @param userId Current user ID
  * @returns The saved journal entry or null on error
@@ -58,21 +59,21 @@ export async function saveEntry(
       .map(tag => tag.trim())
       .filter(tag => tag !== '');
 
-    // Create the journal entry with current timestamp
+    // Create the journal entry with current timestamp using correct column names
     const now = new Date().toISOString();
     
     const entryData = {
       title: formData.title,
       pair: formData.pair,
       timeframe: formData.timeframe,
-      entryPrice: Number(formData.entryPrice),
-      exitPrice: Number(formData.exitPrice),
-      chartUrl: chartUrl || null,
+      entryprice: Number(formData.entryPrice),
+      exitprice: Number(formData.exitPrice),
+      charturl: chartUrl || null,
       reason: formData.reason,
       sentiment: formData.sentiment,
       tags,
-      userId,
-      createdAt: now
+      userid: userId,
+      createdat: now
     };
 
     // Insert into Supabase
@@ -87,9 +88,23 @@ export async function saveEntry(
       return null;
     }
 
-    return data as JournalEntry;
+    // Map database response back to expected format
+    return {
+      id: data.id,
+      title: data.title,
+      pair: data.pair,
+      timeframe: data.timeframe,
+      entryPrice: data.entryprice,
+      exitPrice: data.exitprice,
+      chartUrl: data.charturl,
+      reason: data.reason,
+      sentiment: data.sentiment,
+      tags: data.tags,
+      createdAt: data.createdat,
+      userId: data.userid
+    } as JournalEntry;
   } catch (error) {
     console.error('Error in saveEntry:', error);
     return null;
   }
-} 
+}

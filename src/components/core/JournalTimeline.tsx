@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { JournalEntry } from "@/lib/journal/schema";
@@ -32,19 +33,35 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
       setError(null);
 
       try {
-        // Fetch journal entries from Supabase
+        // Fetch journal entries from Supabase using correct column names
         const { data, error } = await supabase
           .from('journal_entries')
           .select('*')
-          .eq('userId', DUMMY_USER_ID)
-          .order('createdAt', { ascending: false })
+          .eq('userid', DUMMY_USER_ID)
+          .order('createdat', { ascending: false })
           .limit(limit);
 
         if (error) {
           throw new Error(error.message);
         }
 
-        setEntries(data as JournalEntry[]);
+        // Map database column names to the expected format
+        const mappedEntries = data?.map(entry => ({
+          id: entry.id,
+          title: entry.title,
+          pair: entry.pair,
+          timeframe: entry.timeframe,
+          entryPrice: entry.entryprice,
+          exitPrice: entry.exitprice,
+          chartUrl: entry.charturl,
+          reason: entry.reason,
+          sentiment: entry.sentiment as "Bullish" | "Bearish",
+          tags: entry.tags || [],
+          createdAt: entry.createdat,
+          userId: entry.userid
+        })) || [];
+
+        setEntries(mappedEntries as JournalEntry[]);
       } catch (err: any) {
         console.error('Error fetching journal entries:', err);
         setError(err.message || 'Failed to load journal entries');
@@ -68,7 +85,6 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
     }).format(date);
   };
 
-  // Calculate profit/loss percentage
   const calculateProfitLoss = (entry: JournalEntry): number => {
     const { entryPrice, exitPrice, sentiment } = entry;
     
@@ -79,7 +95,6 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
     }
   };
 
-  // Toggle AI reflection visibility
   const toggleReflection = (entryId: string) => {
     setExpandedReflections(prev => {
       const newSet = new Set(prev);
@@ -175,7 +190,6 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
                     {isProfitable ? "+" : ""}{profitLoss.toFixed(2)}%
                   </Badge>
                   
-                  {/* AI Reflection Toggle */}
                   <Button
                     variant="ghost"
                     size="sm"
@@ -237,7 +251,6 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
                   </div>
                 )}
 
-                {/* AI Reflection Section */}
                 <Collapsible open={isReflectionExpanded} onOpenChange={() => toggleReflection(entry.id)}>
                   <CollapsibleTrigger asChild>
                     <Button
@@ -272,4 +285,4 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
   );
 };
 
-export default JournalTimeline; 
+export default JournalTimeline;

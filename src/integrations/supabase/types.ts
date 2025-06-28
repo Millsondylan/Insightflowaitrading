@@ -36,6 +36,57 @@ export type Database = {
         }
         Relationships: []
       }
+      ai_reflections: {
+        Row: {
+          confidence: number
+          createdat: string
+          id: string
+          journalentryid: string
+          provider: string
+          suggestion: string
+          summary: string
+          tags: string[]
+          userid: string
+        }
+        Insert: {
+          confidence: number
+          createdat?: string
+          id?: string
+          journalentryid: string
+          provider?: string
+          suggestion: string
+          summary: string
+          tags?: string[]
+          userid: string
+        }
+        Update: {
+          confidence?: number
+          createdat?: string
+          id?: string
+          journalentryid?: string
+          provider?: string
+          suggestion?: string
+          summary?: string
+          tags?: string[]
+          userid?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_reflections_journalentryid_fkey"
+            columns: ["journalentryid"]
+            isOneToOne: false
+            referencedRelation: "journal_entries"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ai_reflections_userid_fkey"
+            columns: ["userid"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       backtest_results: {
         Row: {
           created_at: string | null
@@ -355,6 +406,59 @@ export type Database = {
             columns: ["demo_account_id"]
             isOneToOne: false
             referencedRelation: "demo_accounts"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      journal_entries: {
+        Row: {
+          charturl: string | null
+          createdat: string
+          entryprice: number
+          exitprice: number
+          id: string
+          pair: string
+          reason: string
+          sentiment: string
+          tags: string[] | null
+          timeframe: string
+          title: string
+          userid: string | null
+        }
+        Insert: {
+          charturl?: string | null
+          createdat?: string
+          entryprice: number
+          exitprice: number
+          id?: string
+          pair: string
+          reason: string
+          sentiment: string
+          tags?: string[] | null
+          timeframe: string
+          title: string
+          userid?: string | null
+        }
+        Update: {
+          charturl?: string | null
+          createdat?: string
+          entryprice?: number
+          exitprice?: number
+          id?: string
+          pair?: string
+          reason?: string
+          sentiment?: string
+          tags?: string[] | null
+          timeframe?: string
+          title?: string
+          userid?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "journal_entries_userid_fkey"
+            columns: ["userid"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
