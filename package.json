@@ -73,7 +73,10 @@
     "timeago-react": "^3.0.7",
     "uuid": "^11.1.0",
     "vaul": "^0.9.3",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@tensorflow/tfjs": "^4.17.0",
+    "openai": "^4.28.0",
+    "axios": "^1.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
