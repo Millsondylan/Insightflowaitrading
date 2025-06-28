@@ -54,3 +54,9 @@ const BadgeDisplay = ({ badgeName, description, icon, onClaim }: Props) => {
 };
 
 export default BadgeDisplay; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

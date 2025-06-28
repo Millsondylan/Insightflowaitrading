@@ -264,3 +264,9 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
 };
 
 export default StrategyForm; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

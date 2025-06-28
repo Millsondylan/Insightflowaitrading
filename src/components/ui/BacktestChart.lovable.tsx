@@ -150,3 +150,9 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
 };
 
 export default BacktestChart; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

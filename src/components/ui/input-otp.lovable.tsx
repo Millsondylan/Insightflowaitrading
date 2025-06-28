@@ -66,3 +66,10 @@ const InputOTPSeparator = React.forwardRef<
 InputOTPSeparator.displayName = "InputOTPSeparator"
 
 export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

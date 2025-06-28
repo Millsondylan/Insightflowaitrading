@@ -284,3 +284,9 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 };
 
 export default StrategyGenerator; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -208,3 +208,11 @@ export const SentimentDisplay: React.FC<SentimentDisplayProps> = ({
     </div>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default sentiment-analyzer;

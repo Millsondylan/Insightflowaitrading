@@ -19,3 +19,11 @@ if (container) {
     </React.StrictMode>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default index;

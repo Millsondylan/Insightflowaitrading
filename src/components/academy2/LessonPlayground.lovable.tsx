@@ -37,3 +37,9 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

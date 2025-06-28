@@ -16,3 +16,9 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
     return <>{children}</>;
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

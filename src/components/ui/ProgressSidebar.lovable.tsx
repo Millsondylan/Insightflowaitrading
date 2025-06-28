@@ -74,3 +74,9 @@ const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
 };
 
 export default ProgressSidebar; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

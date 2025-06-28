@@ -310,3 +310,9 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

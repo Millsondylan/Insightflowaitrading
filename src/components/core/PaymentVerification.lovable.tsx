@@ -120,3 +120,9 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
 };
 
 export default PaymentVerification; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

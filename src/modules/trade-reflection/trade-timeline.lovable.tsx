@@ -98,3 +98,11 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
     </Card>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

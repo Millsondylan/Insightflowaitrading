@@ -97,3 +97,11 @@ export const AICoachV2: React.FC<AICoachV2Props> = ({ userId }) => {
     </Card>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

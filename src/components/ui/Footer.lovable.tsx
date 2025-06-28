@@ -18,3 +18,9 @@ const Footer = () => {
 };
 
 export default Footer; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

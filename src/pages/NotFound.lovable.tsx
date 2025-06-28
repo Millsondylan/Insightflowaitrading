@@ -25,3 +25,12 @@ const NotFound = () => {
 };
 
 export default NotFound;
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

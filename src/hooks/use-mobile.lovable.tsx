@@ -17,3 +17,12 @@ export function useIsMobile() {
 
   return !!isMobile
 }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default use-mobile;

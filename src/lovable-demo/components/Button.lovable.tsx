@@ -121,3 +121,11 @@ export const Button = ({
     </button>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default Button;

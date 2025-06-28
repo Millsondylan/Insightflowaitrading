@@ -88,3 +88,9 @@ const CommunityGPT = ({ post }: Props) => {
 };
 
 export default CommunityGPT; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -237,3 +237,9 @@ const AIReflection: React.FC<AIReflectionProps> = ({
 };
 
 export default AIReflection; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

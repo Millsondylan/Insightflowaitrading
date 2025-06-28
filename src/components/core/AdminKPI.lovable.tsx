@@ -44,3 +44,9 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
 };
 
 export default AdminKPI; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

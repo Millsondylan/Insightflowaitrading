@@ -63,3 +63,12 @@ const FAQPage: React.FC = () => {
 };
 
 export default FAQPage;
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

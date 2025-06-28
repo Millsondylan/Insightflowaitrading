@@ -31,3 +31,9 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel }) => {
 
   return <Outlet />;
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

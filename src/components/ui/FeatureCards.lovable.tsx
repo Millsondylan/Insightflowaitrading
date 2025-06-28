@@ -86,3 +86,9 @@ const FeatureCards = () => {
 };
 
 export default FeatureCards; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

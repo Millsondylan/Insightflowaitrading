@@ -28,3 +28,9 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
 };
 
 export default StrategyResult; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

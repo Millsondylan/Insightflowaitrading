@@ -160,3 +160,11 @@ export const LovableDemo = () => {
     </div>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default LovableDemo;

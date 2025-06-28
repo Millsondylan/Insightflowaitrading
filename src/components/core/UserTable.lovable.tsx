@@ -332,3 +332,9 @@ const UserTable: React.FC = () => {
 };
 
 export default UserTable; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

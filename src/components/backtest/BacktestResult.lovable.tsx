@@ -131,3 +131,9 @@ const BacktestResultDisplay = ({ result }: Props) => {
 };
 
 export default BacktestResultDisplay; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

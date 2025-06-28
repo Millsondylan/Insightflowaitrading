@@ -80,3 +80,11 @@ export const BroadcastMode: React.FC = () => {
     </Card>
   )
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

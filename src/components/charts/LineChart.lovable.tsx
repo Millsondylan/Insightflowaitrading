@@ -58,3 +58,9 @@ export const LineChart: React.FC<LineChartProps> = ({
     </ResponsiveContainer>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -52,3 +52,9 @@ export default function ReplayPlayer({ candles, entryTime, exitTime }: Props) {
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

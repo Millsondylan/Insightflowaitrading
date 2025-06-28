@@ -425,3 +425,11 @@ const fetchUserAchievements = async (userId: string): Promise<span style={{fontS
 };
 
 export default AchievementsComponent; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

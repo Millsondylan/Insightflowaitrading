@@ -20,3 +20,9 @@ export default function JournalCompanion({ entry, reflection }: Props) {
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

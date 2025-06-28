@@ -29,3 +29,9 @@ const PatternTooltip = ({
 };
 
 export default PatternTooltip; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

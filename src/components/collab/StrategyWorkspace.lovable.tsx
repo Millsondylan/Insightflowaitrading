@@ -53,3 +53,9 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

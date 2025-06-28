@@ -41,3 +41,9 @@ const BlockReveal = ({ children, variant = 'slide-up', delay = 0.1, className }:
 };
 
 export default BlockReveal; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

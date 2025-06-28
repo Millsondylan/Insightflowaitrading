@@ -138,3 +138,9 @@ const StrategyBuilderV2 = () => {
 };
 
 export default StrategyBuilderV2; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

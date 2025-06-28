@@ -79,3 +79,9 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
 };
 
 export default RoleBadge; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

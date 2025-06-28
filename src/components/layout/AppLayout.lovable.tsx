@@ -26,3 +26,10 @@ export default function AppLayout({ children, rightColumn }: AppLayoutProps) {
     </div>
   );
 }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

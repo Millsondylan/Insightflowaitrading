@@ -49,3 +49,9 @@ const StrategySummaryAI = ({ summary, emotion, suggestions }: Props) => {
 };
 
 export default StrategySummaryAI; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

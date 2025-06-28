@@ -49,3 +49,9 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
 };
 
 export default ChartUploader; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

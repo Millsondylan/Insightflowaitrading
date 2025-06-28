@@ -73,3 +73,9 @@ const StrategyHeatmap = ({ data }: Props) => {
 };
 
 export default StrategyHeatmap; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

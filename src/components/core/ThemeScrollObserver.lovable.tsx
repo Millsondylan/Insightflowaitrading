@@ -55,3 +55,9 @@ const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) =
 };
 
 export default ThemeScrollObserver; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

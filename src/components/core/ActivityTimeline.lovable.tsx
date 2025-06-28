@@ -88,3 +88,9 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
 };
 
 export default ActivityTimeline; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -69,3 +69,9 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
 };
 
 export default ChartCanvasOverlay; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

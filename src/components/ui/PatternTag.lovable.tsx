@@ -17,3 +17,9 @@ const PatternTag = ({ label }: PatternTagProps) => {
 };
 
 export default PatternTag; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

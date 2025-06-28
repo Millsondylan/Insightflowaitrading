@@ -164,3 +164,9 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
 };
 
 export default AccessStatus; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

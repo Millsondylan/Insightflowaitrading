@@ -64,3 +64,9 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
 };
 
 export default BacktestResultDisplay; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -113,3 +113,10 @@ export {
   PaginationNext,
   PaginationPrevious,
 }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

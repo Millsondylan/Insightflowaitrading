@@ -231,3 +231,9 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
 };
 
 export default UserRow; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

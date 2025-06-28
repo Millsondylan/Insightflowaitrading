@@ -56,3 +56,9 @@ const StrategyCTA = ({ strategyName }: StrategyCTAProps) => (
 );
 
 export default StrategyCTA; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

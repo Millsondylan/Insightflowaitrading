@@ -136,3 +136,9 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
         </div>
     );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

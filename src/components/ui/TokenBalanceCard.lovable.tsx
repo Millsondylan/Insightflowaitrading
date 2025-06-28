@@ -99,3 +99,9 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
 };
 
 export default TokenBalanceCard; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

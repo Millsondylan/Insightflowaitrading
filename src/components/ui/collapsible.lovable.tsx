@@ -7,3 +7,10 @@ const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
 const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
 
 export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -42,3 +42,9 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
 };
 
 export default LessonBadge; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

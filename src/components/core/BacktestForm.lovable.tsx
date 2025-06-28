@@ -109,3 +109,9 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
 };
 
 export default BacktestForm; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

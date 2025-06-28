@@ -403,3 +403,9 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
 };
 
 export default QuizBlock; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

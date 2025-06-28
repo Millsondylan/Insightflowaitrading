@@ -23,3 +23,10 @@ export function Toaster() {
     </ToastProvider>
   )
 }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

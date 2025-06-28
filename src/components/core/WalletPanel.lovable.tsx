@@ -119,3 +119,9 @@ const WalletPanel: React.FC = () => {
 };
 
 export default WalletPanel; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

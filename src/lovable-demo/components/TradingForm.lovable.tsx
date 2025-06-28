@@ -241,3 +241,11 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
     </div>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default TradingForm;

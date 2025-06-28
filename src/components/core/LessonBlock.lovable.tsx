@@ -54,3 +54,9 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
 };
 
 export default LessonBlock; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

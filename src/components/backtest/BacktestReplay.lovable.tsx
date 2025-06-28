@@ -126,3 +126,9 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
 };
 
 export default BacktestReplay; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -251,3 +251,11 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
     </div>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default ml-optimizer;

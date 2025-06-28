@@ -28,3 +28,9 @@ export default function AICoachV2({ trades }: Props) {
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

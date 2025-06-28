@@ -137,3 +137,9 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
 };
 
 export default LessonEngine; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

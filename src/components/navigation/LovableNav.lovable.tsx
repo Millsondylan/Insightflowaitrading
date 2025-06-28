@@ -110,3 +110,9 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
 };
 
 export default LovableNav; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

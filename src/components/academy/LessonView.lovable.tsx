@@ -132,3 +132,9 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
 };
 
 export default LessonView; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

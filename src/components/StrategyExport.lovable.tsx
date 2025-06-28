@@ -83,3 +83,9 @@ const StrategyExport = ({ result }: Props) => {
 };
 
 export default StrategyExport; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

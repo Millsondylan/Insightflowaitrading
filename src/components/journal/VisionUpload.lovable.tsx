@@ -71,3 +71,9 @@ const VisionUpload = ({ onUpload, defaultImage }: Props) => {
 };
 
 export default VisionUpload; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

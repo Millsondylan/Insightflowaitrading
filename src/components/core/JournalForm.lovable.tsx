@@ -345,3 +345,9 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
 };
 
 export default JournalForm; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

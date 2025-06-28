@@ -46,3 +46,9 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
     </div>
   );
 } 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

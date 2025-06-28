@@ -281,3 +281,10 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
 };
 
 export default JournalTimeline;
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

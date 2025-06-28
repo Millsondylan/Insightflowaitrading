@@ -263,3 +263,11 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
     </div>
   );
 }; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default payments;

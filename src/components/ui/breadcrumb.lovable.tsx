@@ -112,3 +112,10 @@ export {
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
 }
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};

@@ -143,3 +143,9 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
 };
 
 export default QuizFeedback; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
