@@ -1,13 +1,13 @@
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Import custom styles */
+/* Import custom styles first */
 @import url('./styles/quiz.css');
 @import url('./styles/wallet.css');
 @import url('./styles/admin.css');
 @import url('./styles/themes.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
