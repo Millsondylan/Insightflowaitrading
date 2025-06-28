@@ -1,174 +1,197 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useToast } from '@/components/ui/use-toast';
-import { generateReflection } from './generateReflection';
-import { Trade, TradeReflection } from './types';
+
+interface Trade {
+  id: string;
+  symbol: string;
+  type: 'buy' | 'sell';
+  entryPrice: number;
+  exitPrice: number;
+  quantity: number;
+  entryTime: string;
+  exitTime: string;
+  stopLoss: number;
+  takeProfit: number;
+  strategy: string;
+  tags: string[];
+}
 
 interface ReflectionGeneratorProps {
   trade: Trade;
-  onReflectionGenerated: (reflection: TradeReflection) => void;
+  onReflectionGenerated: (reflection: string) => void;
 }
 
 export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
   trade,
   onReflectionGenerated
 }) => {
-  const { toast } = useToast();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [reflection, setReflection] = useState<string>('');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [notes, setNotes] = useState<string>('');
-  const [reflection, setReflection] = useState<TradeReflection | null>(null);
 
-  const handleGenerateReflection = async () => {
+  const generateReflection = async () => {
     setLoading(true);
     setError(null);
+
     try {
-      const result = await generateReflection(trade, notes);
-      setReflection(result);
-      onReflectionGenerated(result);
-      toast({
-        title: 'Reflection Generated',
-        description: 'Your trade reflection has been generated successfully.',
-        variant: 'default'
-      });
+      // Simulate AI analysis
+      await new Promise(resolve => setTimeout(resolve, 3000));
+
+      const pnl = (trade.exitPrice - trade.entryPrice) * trade.quantity * (trade.type === 'buy' ? 1 : -1);
+      const pnlPercentage = ((trade.exitPrice - trade.entryPrice) / trade.entryPrice * 100) * (trade.type === 'buy' ? 1 : -1);
+      const duration = Math.round((new Date(trade.exitTime).getTime() - new Date(trade.entryTime).getTime()) / (1000 * 60));
+
+      const reflectionText = `
+Trade Analysis for ${trade.symbol} ${trade.type.toUpperCase()}
+
+Performance:
+${pnl > 0 ? '✅' : '❌'} P&L: ${pnl.toFixed(2)} (${pnlPercentage.toFixed(2)}%)
+⏱️ Duration: ${duration} minutes
+
+Key Observations:
+${pnl > 0 ? 
+  `- Strong execution of ${trade.strategy} strategy
+- Good risk management with clear stop loss at ${trade.stopLoss}
+- Profit target at ${trade.takeProfit} was well-defined` :
+  `- Review entry criteria for ${trade.strategy} strategy
+- Consider adjusting stop loss placement (current: ${trade.stopLoss})
+- Evaluate if profit target (${trade.takeProfit}) was realistic`
+}
+
+Market Context:
+- Trade aligned with ${trade.tags.join(', ')} conditions
+- ${trade.type === 'buy' ? 'Bullish' : 'Bearish'} bias was ${pnl > 0 ? 'correct' : 'incorrect'}
+- Position sizing was ${trade.quantity} units
+
+Psychological Factors:
+- ${pnl > 0 ? 'Maintained discipline and followed the plan' : 'Review emotional state during trade execution'}
+- ${pnl > 0 ? 'Good patience in waiting for setup' : 'Evaluate if FOMO influenced entry'}
+- ${duration > 120 ? 'Showed good holding strength' : 'Consider if trade was closed too early'}
+
+Areas for Improvement:
+1. ${pnl > 0 ? 'Document successful patterns for future reference' : 'Review entry criteria validation'}
+2. ${duration > 120 ? 'Consider scaling out strategy' : 'Work on holding winners longer'}
+3. Continue monitoring ${trade.tags.join(' & ')} setups
+
+Next Steps:
+- Update trading journal with these insights
+- Review similar setups in historical data
+- Adjust risk parameters if needed
+`;
+
+      setReflection(reflectionText);
+      onReflectionGenerated(reflectionText);
     } catch (err) {
-      setError(err.message);
-      toast({
-        title: 'Generation Failed',
-        description: err.message,
-        variant: 'destructive'
-      });
+      setError('Failed to generate reflection. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Card className="p-6 space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Trade Reflection</h2>
-        <p className="text-sm text-muted-foreground">
-          Analyze your trade and generate insights to improve your trading strategy.
-        </p>
+    <div style={{ padding: '20px' }}>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: 0 }}>
+          Trade Reflection
+        </h2>
+        <button
+          onClick={generateReflection}
+          disabled={loading}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: loading ? '#9ca3af' : '#2563eb',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: loading ? 'not-allowed' : 'pointer'
+          }}
+        >
+          {loading ? 'Analyzing...' : 'Generate Reflection'}
+        </button>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <Label htmlFor="notes">Additional Notes</Label>
-          <Textarea
-            id="notes"
-            placeholder="Add any additional context or thoughts about this trade..."
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            className="mt-1"
-          />
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '20px',
+        marginBottom: '20px'
+      }}>
+        <div style={{
+          padding: '20px',
+          backgroundColor: '#f3f4f6',
+          borderRadius: '12px'
+        }}>
+          <div style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>
+            Symbol
+          </div>
+          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
+            {trade.symbol}
+          </div>
         </div>
 
-        <Button
-          onClick={handleGenerateReflection}
-          disabled={loading}
-          className="w-full"
-        >
-          {loading ? (
-            <div className="flex items-center space-x-2">
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
-              <span>Generating Reflection...</span>
-            </div>
-          ) : (
-            'Generate Reflection'
-          )}
-        </Button>
+        <div style={{
+          padding: '20px',
+          backgroundColor: '#f3f4f6',
+          borderRadius: '12px'
+        }}>
+          <div style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>
+            Type
+          </div>
+          <div style={{ fontSize: '24px', fontWeight: 'bold', textTransform: 'uppercase' }}>
+            {trade.type}
+          </div>
+        </div>
+
+        <div style={{
+          padding: '20px',
+          backgroundColor: '#f3f4f6',
+          borderRadius: '12px'
+        }}>
+          <div style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>
+            Strategy
+          </div>
+          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
+            {trade.strategy}
+          </div>
+        </div>
       </div>
+
+      {loading && (
+        <div style={{ textAlign: 'center', padding: '40px' }}>
+          <div style={{ fontSize: '16px', color: '#6b7280' }}>
+            Analyzing trade data and generating insights...
+          </div>
+        </div>
+      )}
+
+      {reflection && !loading && (
+        <div style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: '#f3f4f6',
+          borderRadius: '12px',
+          whiteSpace: 'pre-wrap',
+          fontFamily: 'monospace'
+        }}>
+          {reflection}
+        </div>
+      )}
 
       {error && (
-        <div className="p-4 bg-destructive/10 text-destructive rounded-md">
-          <p className="text-sm">{error}</p>
+        <div style={{
+          padding: '20px',
+          backgroundColor: '#fee2e2',
+          color: '#991b1b',
+          borderRadius: '8px',
+          marginTop: '20px'
+        }}>
+          {error}
         </div>
       )}
-
-      {reflection && (
-        <Tabs defaultValue="summary" className="w-full">
-          <TabsList>
-            <TabsTrigger value="summary">Summary</TabsTrigger>
-            <TabsTrigger value="psychology">Psychology</TabsTrigger>
-            <TabsTrigger value="improvements">Improvements</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="summary" className="space-y-4">
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Trade Summary</h3>
-              <p className="text-sm">{reflection.analysis.summary}</p>
-            </Card>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Card className="p-4">
-                <h3 className="text-sm font-medium text-muted-foreground">Execution Score</h3>
-                <p className="text-2xl font-bold mt-1">{reflection.analysis.metrics.executionScore}/10</p>
-              </Card>
-
-              <Card className="p-4">
-                <h3 className="text-sm font-medium text-muted-foreground">Risk Management</h3>
-                <p className="text-2xl font-bold mt-1">{reflection.analysis.metrics.riskManagementScore}/10</p>
-              </Card>
-
-              <Card className="p-4">
-                <h3 className="text-sm font-medium text-muted-foreground">Strategy Adherence</h3>
-                <p className="text-2xl font-bold mt-1">{reflection.analysis.metrics.strategyAdherenceScore}/10</p>
-              </Card>
-            </div>
-          </TabsContent>
-
-          <TabsContent value="psychology" className="space-y-4">
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Psychological Analysis</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-sm font-medium">Emotional State</h4>
-                  <p className="text-sm mt-1">{reflection.analysis.psychology.emotionalState}</p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium">Behavioral Patterns</h4>
-                  <p className="text-sm mt-1">{reflection.analysis.psychology.behavioralPatterns}</p>
-                </div>
-                <div>
-                  <h4 className="text-sm font-medium">Decision Making</h4>
-                  <p className="text-sm mt-1">{reflection.analysis.psychology.decisionMaking}</p>
-                </div>
-              </div>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="improvements" className="space-y-4">
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Areas for Improvement</h3>
-              <ul className="space-y-2">
-                {reflection.analysis.improvements.map((improvement, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <span className="text-primary">•</span>
-                    <span className="text-sm">{improvement}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Action Items</h3>
-              <ul className="space-y-2">
-                {reflection.analysis.actionItems.map((item, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <span className="text-primary">•</span>
-                    <span className="text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      )}
-    </Card>
+    </div>
   );
 }; 

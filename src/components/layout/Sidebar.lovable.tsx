@@ -1,134 +1,101 @@
-
-import { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
 
 const navItems = [
-  { path: '/strategy', icon: Brain, label: 'Strategy', accessLevel: 'pro' },
-  { path: '/journal', icon: BookOpen, label: 'Journal', accessLevel: 'pro' },
-  { path: '/academy', icon: Book, label: 'Academy', accessLevel: null },
-  { path: '/wallet', icon: Wallet, label: 'Wallet', accessLevel: null },
-  { path: '/admin', icon: Shield, label: 'Admin', accessLevel: 'admin' },
+  { path: '/vault', icon: GitCommit, label: 'Vault' },
+  { path: '/builder', icon: Bot, label: 'Builder' },
+  { path: '/journal', icon: ScrollText, label: 'Journal' },
+  { path: '/community', icon: MessageSquare, label: 'Community' },
+  { path: '/academy', icon: BookOpen, label: 'Academy' },
+  { path: '/broadcast', icon: Radio, label: 'Broadcast' },
+];
+
+const bottomNavItems = [
+  { path: '/settings', icon: Settings, label: 'Settings' },
+  { path: '/help', icon: LifeBuoy, label: 'Help' },
 ];
 
 export default function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(false);
   const location = useLocation();
-  const { isAdmin, hasProAccess } = useAuth();
+  const { profile } = useAuth();
 
-  const hasAccess = (accessLevel: string | null) => {
-    if (!accessLevel) return true;
-    if (accessLevel === 'admin') return isAdmin;
-    if (accessLevel === 'pro') return hasProAccess;
-    return false;
+  const isActive = (path: string) => location.pathname.startsWith(path);
+
+  const NavLink = ({ item }: { item: { path: string, icon: React.ElementType, label: string } }) => {
+    const Icon = item.icon;
+    const active = isActive(item.path);
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              to={item.path}
+              className={`flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-200 ${
+                active
+                  ? 'bg-blue-600/20 text-blue-400'
+                  : 'text-gray-500 hover:text-white hover:bg-gray-800'
+              }`}
+            >
+              <Icon size={24} />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>{item.label}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
   };
 
-  const isActive = (path: string) => location.pathname === path;
-
   return (
-    <>
-      {/* Mobile backdrop */}
-      {isExpanded && (
-        <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
-          onClick={() => setIsExpanded(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <div className={`
-        fixed left-0 top-0 h-full z-50 transition-all duration-300
-        ${isExpanded ? 'w-64' : 'w-16'}
-        md:w-64 md:relative
-        bg-black/20 backdrop-blur-md border-r border-white/10
-      `}>
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10">
-          <Link 
-            to="/" 
-            className={`text-xl font-bold text-cyan-400 transition-opacity ${
-              isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'
-            }`}
-          >
-            Insight Flow
-          </Link>
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2 rounded-lg hover:bg-white/10 transition-colors md:hidden"
-          >
-            {isExpanded ? <span style={{fontSize: '16px'}}>❌</span> : <span style={{fontSize: '16px'}}>☰</span>}
-          </button>
-        </div>
-
-        {/* Navigation */}
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const active = isActive(item.path);
-              const canAccess = hasAccess(item.accessLevel);
-              
-              return (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    className={`
-                      group flex items-center gap-3 px-3 py-2 rounded-lg transition-all
-                      ${active 
-                        ? 'bg-cyan-500/20 text-cyan-400 shadow-lg shadow-cyan-500/20' 
-                        : canAccess
-                        ? 'text-gray-300 hover:bg-white/10 hover:text-white'
-                        : 'text-gray-500 cursor-not-allowed opacity-50'
-                      }
-                    `}
-                    onClick={(e) => {
-                      if (!canAccess) e.preventDefault();
-                      if (window.innerWidth < 768) setIsExpanded(false);
-                    }}
-                  >
-                    <Icon size={20} className="flex-shrink-0" />
-                    <span className={`
-                      transition-opacity font-medium
-                      ${isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'}
-                    `}>
-                      {item.label}
-                    </span>
-                    
-                    {/* Tooltip for collapsed state */}
-                    <div className={`
-                      absolute left-16 px-2 py-1 bg-black/80 text-white text-sm rounded
-                      opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none
-                      ${isExpanded ? 'md:hidden' : 'hidden md:block'}
-                    `}>
-                      {item.label}
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
+    <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
+      <div className="flex flex-col items-center gap-10">
+        <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <span style={{fontSize: '16px'}}>📈</span>
+        </Link>
+        <nav>
+          <ul className="space-y-4">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <NavLink item={item} />
+              </li>
+            ))}
           </ul>
         </nav>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-white/10">
-          <div className={`
-            text-xs text-gray-400 transition-opacity
-            ${isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'}
-          `}>
-            © 2024 Insight Flow
-          </div>
-        </div>
       </div>
 
-      {/* Mobile toggle button when collapsed */}
-      {!isExpanded && (
-        <button
-          onClick={() => setIsExpanded(true)}
-          className="fixed top-4 left-4 z-30 p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 text-white md:hidden"
-        >
-          <span style={{fontSize: '16px'}}>☰</span>
-        </button>
-      )}
-    </>
+      <div className="flex flex-col items-center gap-4">
+        <nav>
+          <ul className="space-y-2">
+            {bottomNavItems.map((item) => (
+              <li key={item.path}>
+                <NavLink item={item} />
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="border-t border-gray-800 w-full my-2"></div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link to="/profile">
+                <Avatar>
+                  <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
+                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+                </Avatar>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>{profile?.full_name || 'Profile'}</p>
+              <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+    </div>
   );
 }

@@ -1,308 +1,392 @@
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Progress } from '@/components/ui/progress';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { 
+  BookOpen, 
+  Percent, 
+  Brain, 
+  BarChart2, 
+  Radio, 
+  MessageSquare, 
+  PlayCircle,
+  Shield,
+  Bitcoin,
+  Bot,
+  TrendingUp,
+  DollarSign,
+  Globe,
+  Calculator,
+  Building,
+  Users,
+  Clock,
+  Star,
+  ChevronRight,
+  Award,
+  Target,
+  Zap
+} from 'lucide-react';
+import { comprehensiveCourses } from '@/lib/academy/comprehensiveLessonData';
 
-import React, { useState, useEffect } from "react";
-import { ScrollSection } from '../hooks/use-scroll-reveal';
+// Map icon names to components for Lovable compatibility
+const iconMap: { [key: string]: any } = {
+  BarChart2,
+  Shield,
+  Bitcoin,
+  Bot,
+  TrendingUp,
+  DollarSign,
+  Brain,
+  Globe,
+  Calculator,
+  Building,
+};
 
-const AcademyPage: React.FC = () => {
-  const [activeSection, setActiveSection] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-  const lessons = [
-    {
-      id: 1,
-      topic: "Technical Analysis",
-      title: "Understanding Price Action",
-      content: "Price action forms the foundation of technical analysis, representing the raw movement of security prices over time. By studying these patterns, traders can identify potential future movements and make informed decisions.",
-      keyTakeaways: [
-        "Price action reflects all available market information",
-        "Support and resistance levels are fundamental concepts",
-        "Volume confirmation strengthens price signals",
-        "Clean setups provide optimal risk-reward ratios"
-      ],
-      completed: true
-    },
-    {
-      id: 2,
-      topic: "Technical Analysis", 
-      title: "Support and Resistance Mastery",
-      content: "Support and resistance represent psychological levels where buying and selling pressures converge. These zones become more significant with each test, creating reliable reference points for entry and exit decisions.",
-      keyTakeaways: [
-        "Support acts as a price floor, resistance as a ceiling",
-        "Broken resistance often becomes new support",
-        "Volume increases level significance",
-        "Round numbers often act as psychological barriers"
-      ],
-      completed: true
-    },
-    {
-      id: 3,
-      topic: "Risk Management",
-      title: "Position Sizing Excellence", 
-      content: "Position sizing determines your survival and success in trading. Proper sizing ensures no single trade can devastate your account while allowing meaningful profits when you're correct.",
-      keyTakeaways: [
-        "Never risk more than 1-2% per trade",
-        "Size based on stop loss distance",
-        "Larger positions require tighter stops",
-        "Consistency leads to predictable outcomes"
-      ],
-      completed: false
-    },
-    {
-      id: 4,
-      topic: "Risk Management",
-      title: "Stop Loss Strategies",
-      content: "Stop losses serve as your insurance against catastrophic losses. Effective placement requires balancing protection with giving trades adequate room to develop naturally.",
-      keyTakeaways: [
-        "Define stops before entering positions",
-        "Base stops on technical levels, not dollars",
-        "Trailing stops can lock in profits",
-        "Mental stops require strict discipline"
-      ],
-      completed: false
-    },
-    {
-      id: 5,
-      topic: "Trading Psychology",
-      title: "Emotional Mastery",
-      content: "Psychology often determines trading success more than technical skill. Fear and greed create predictable patterns that can derail even the best strategies without proper awareness and control.",
-      keyTakeaways: [
-        "FOMO leads to poor timing",
-        "Revenge trading compounds losses", 
-        "Journaling reveals emotional patterns",
-        "Stress management improves performance"
-      ],
-      completed: false
-    }
-  ];
-
-  const topics = [
-    { name: "Technical Analysis", count: 2, color: "text-blue-400" },
-    { name: "Risk Management", count: 2, color: "text-emerald-400" },
-    { name: "Trading Psychology", count: 1, color: "text-violet-400" }
-  ];
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      const scrollProgress = (scrollPosition / (documentHeight - windowHeight)) * 100;
-      setProgress(Math.min(100, Math.max(0, scrollProgress)));
-      
-      const sections = lessons.map((_, index) => 
-        document.getElementById(`lesson-${index}`)
-      );
-      
-      const currentSection = sections.findIndex((section) => {
-        if (!section) return false;
-        const rect = section.getBoundingClientRect();
-        return rect.top <= windowHeight * 0.4 && rect.bottom >= windowHeight * 0.4;
-      });
-      
-      if (currentSection !== -1) {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
+  const Icon = iconMap[course.icon] || BookOpen;
+  const navigate = useNavigate();
+  
+  const categoryColors = {
+    beginner: 'bg-green-500/20 text-green-400 border-green-500/30',
+    intermediate: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+    advanced: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+    expert: 'bg-red-500/20 text-red-400 border-red-500/30',
+  };
+  
   return (
-    <div className="theme-academy scroll-container">
-      {/* Progress Sidebar */}
-      <div className="progress-sidebar hidden lg:block">
-        <div className="glass-card p-4">
-          <div className="space-y-4">
-            {lessons.map((_, index) => (
-              <div 
-                key={index}
-                className={`progress-dot ${activeSection === index ? 'active' : 'inactive'}`}
-                title={`Lesson ${index + 1}`}
-              ></div>
-            ))}
+    <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group">
+      <CardHeader>
+        <div className="flex justify-between items-start">
+          <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 transition-colors">
+            <Icon className="w-6 h-6 text-blue-400" />
           </div>
+          <Badge className={categoryColors[course.category]}>
+            {course.category}
+          </Badge>
         </div>
-      </div>
-
-      {/* Header */}
-      <ScrollSection className="px-6 py-20" delay={0}>
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold text-glow-blue mb-6">
-            Learn, Test, Evolve
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed font-light max-w-4xl mx-auto">
-            Master the art and science of trading through structured lessons, practical exercises, and continuous evolution
-          </p>
-          <div className="mt-8">
-            <div className="threadline-glow w-40 mx-auto"></div>
+        <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors">
+          {course.title}
+        </CardTitle>
+        <CardDescription className="text-gray-400">
+          {course.description}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-400">Duration</span>
+            <span className="text-white font-medium">{course.duration}</span>
           </div>
-        </div>
-      </ScrollSection>
-
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-12">
-          
-          {/* Progress Overview */}
-          <div className="hidden lg:block lg:col-span-3">
-            <div className="sticky top-24">
-              <ScrollSection delay={200} animation="slide-right">
-                <div className="glass-section">
-                  <h3 className="text-lg font-semibold text-glow-emerald mb-6">
-                    Progress Overview
-                  </h3>
-                  
-                  {/* Progress Bar */}
-                  <div className="mb-8">
-                    <div className="flex justify-between text-sm text-gray-400 mb-3">
-                      <span>Completion</span>
-                      <span>{Math.round(progress)}%</span>
-                    </div>
-                    <div className="w-full h-3 bg-gray-700/50 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-500 rounded-full"
-                        style={{ width: `${progress}%` }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Topics List */}
-                  <div className="space-y-6">
-                    {topics.map((topic, index) => (
-                      <div key={topic.name} className="border-l-2 border-gray-600 pl-4">
-                        <h4 className={`font-medium text-sm ${topic.color}`}>
-                          {topic.name}
-                        </h4>
-                        <p className="text-gray-500 text-xs mt-1">
-                          {topic.count} lessons
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Active Lesson Indicator */}
-                  <div className="mt-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-lg">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                      <span className="text-sm text-blue-400">
-                        Lesson {activeSection + 1} Active
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </ScrollSection>
-            </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-400">Lessons</span>
+            <span className="text-white font-medium">{course.lessons.length} lessons</span>
           </div>
-
-          {/* Lesson Content */}
-          <main className="lg:col-span-9">
-            <div className="space-y-20">
-              {lessons.map((lesson, index) => (
-                <ScrollSection 
-                  key={lesson.id} 
-                  delay={index * 100}
-                  className="scroll-section"
-                >
-                  <div 
-                    id={`lesson-${index}`}
-                    className="glass-section motion-shadow"
-                  >
-                    {/* Lesson Status & Topic */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="inline-block px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-full text-blue-400 text-sm font-medium">
-                        {lesson.topic}
-                      </div>
-                      <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                        lesson.completed 
-                          ? 'bg-emerald-500/20 border border-emerald-400/30 text-emerald-300' 
-                          : 'bg-gray-500/20 border border-gray-400/30 text-gray-400'
-                      }`}>
-                        {lesson.completed ? '✓ Complete' : 'In Progress'}
-                      </div>
-                    </div>
-                    
-                    {/* Lesson Title */}
-                    <h2 className="text-3xl md:text-4xl font-bold text-glow-blue mb-8">
-                      {lesson.title}
-                    </h2>
-                    
-                    {/* Lesson Content */}
-                    <div className="mb-10">
-                      <p className="text-gray-300 text-lg leading-relaxed">
-                        {lesson.content}
-                      </p>
-                    </div>
-                    
-                    {/* Key Takeaways */}
-                    <div>
-                      <h4 className="text-xl font-semibold text-emerald-400 mb-6">
-                        Key Takeaways
-                      </h4>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        {lesson.keyTakeaways.map((takeaway, takeawayIndex) => (
-                          <div
-                            key={takeawayIndex}
-                            className="flex items-start space-x-3 p-4 glass-card hover:bg-black/30 transition-all duration-300"
-                          >
-                            <div className="w-2 h-2 bg-emerald-400 rounded-full mt-3 flex-shrink-0" />
-                            <span className="text-gray-300 leading-relaxed">
-                              {takeaway}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Quiz Block Placeholder */}
-                    <div className="mt-8 pt-8 border-t border-white/10">
-                      <h4 className="text-lg font-semibold text-blue-400 mb-4">Quick Knowledge Check</h4>
-                      <div className="space-y-3">
-                        <div className="flex items-center space-x-3 p-3 glass-card hover:bg-black/30 cursor-pointer transition-all duration-300">
-                          <input type="radio" name={`quiz-${lesson.id}`} className="text-blue-400" />
-                          <span className="text-gray-300">Sample quiz option A</span>
-                        </div>
-                        <div className="flex items-center space-x-3 p-3 glass-card hover:bg-black/30 cursor-pointer transition-all duration-300">
-                          <input type="radio" name={`quiz-${lesson.id}`} className="text-blue-400" />
-                          <span className="text-gray-300">Sample quiz option B</span>
-                        </div>
-                        <div className="flex items-center space-x-3 p-3 glass-card hover:bg-black/30 cursor-pointer transition-all duration-300">
-                          <input type="radio" name={`quiz-${lesson.id}`} className="text-blue-400" />
-                          <span className="text-gray-300">Sample quiz option C</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ScrollSection>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-400">Students</span>
+            <span className="text-white font-medium">{course.enrolled.toLocaleString()}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className={`w-4 h-4 ${
+                    i < Math.floor(course.rating)
+                      ? 'text-yellow-400 fill-yellow-400'
+                      : 'text-gray-600'
+                  }`}
+                />
               ))}
-
-              {/* Completion Badge */}
-              <ScrollSection delay={600} className="text-center py-20">
-                <div className="glass-section max-w-md mx-auto motion-shadow">
-                  <div className="text-6xl mb-6">🏆</div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-glow-emerald mb-4">
-                    Mastered: Trading Foundations
-                  </h3>
-                  <p className="text-gray-400 mb-6">
-                    Outstanding progress! You've completed the fundamentals.
-                  </p>
-                  <div className="space-y-4">
-                    <button className="glow-button glow-blue w-full">
-                      Continue to Advanced Topics
-                    </button>
-                    <button className="glow-button glow-emerald w-full">
-                      Review & Practice
-                    </button>
-                  </div>
-                </div>
-              </ScrollSection>
             </div>
-          </main>
+            <span className="text-sm text-gray-400">({course.rating})</span>
+          </div>
+          <Button 
+            className="w-full bg-blue-600 hover:bg-blue-700 group-hover:bg-blue-700"
+            onClick={() => navigate(`/academy/${course.id}`)}
+          >
+            Start Learning
+            <ChevronRight className="w-4 h-4 ml-2" />
+          </Button>
         </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+const FeaturedSection = () => {
+  return (
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+        <Zap className="w-6 h-6 text-yellow-400" />
+        Featured Courses
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-white/20">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <Target className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-white">Quick Start Trading</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Get trading in 7 days
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-300 mb-4">
+              Intensive bootcamp covering all essentials to start trading confidently within a week.
+            </p>
+            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
+              Enroll Now
+            </Button>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 border-white/20">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <Award className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-white">Pro Certification</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Industry recognized cert
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-300 mb-4">
+              Complete comprehensive program and earn your professional trading certification.
+            </p>
+            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
+              Learn More
+            </Button>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-gradient-to-br from-orange-600/20 to-red-600/20 border-white/20">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <Users className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <CardTitle className="text-white">Live Mentorship</CardTitle>
+                <CardDescription className="text-gray-300">
+                  1-on-1 with experts
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-gray-300 mb-4">
+              Get personalized guidance from professional traders in live sessions.
+            </p>
+            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
+              Book Session
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
 };
 
-export default AcademyPage;
+export default function AcademyPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  
+  const filteredCourses = selectedCategory === 'all' 
+    ? comprehensiveCourses 
+    : comprehensiveCourses.filter(course => course.category === selectedCategory);
+  
+  const categories = ['all', 'beginner', 'intermediate', 'advanced', 'expert'];
+  
+  return (
+    <div className="space-y-8">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
+            <BookOpen className="w-8 h-8 text-white" />
+          </span>
+          Trading Academy
+        </h1>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          Master the markets with comprehensive courses designed by professional traders. 
+          From basics to advanced strategies, we've got you covered.
+        </p>
+      </div>
+      
+      {/* Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-white mb-1">
+              {comprehensiveCourses.length}+
+            </div>
+            <div className="text-sm text-gray-400">Courses</div>
+          </CardContent>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-white mb-1">
+              {comprehensiveCourses.reduce((acc, course) => acc + course.enrolled, 0).toLocaleString()}+
+            </div>
+            <div className="text-sm text-gray-400">Students</div>
+          </CardContent>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-white mb-1">
+              {comprehensiveCourses.reduce((acc, course) => acc + course.lessons.length, 0)}+
+            </div>
+            <div className="text-sm text-gray-400">Lessons</div>
+          </CardContent>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-white mb-1">
+              4.8
+            </div>
+            <div className="text-sm text-gray-400">Avg Rating</div>
+          </CardContent>
+        </Card>
+      </div>
+      
+      {/* Featured Section */}
+      <FeaturedSection />
+      
+      {/* Category Filter */}
+      <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory}>
+        <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto mb-8">
+          {categories.map((category) => (
+            <TabsTrigger 
+              key={category} 
+              value={category}
+              className="capitalize"
+            >
+              {category}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        
+        <TabsContent value={selectedCategory} className="mt-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredCourses.map(course => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        </TabsContent>
+      </Tabs>
+      
+      {/* Live Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
+        <Card className="lg:col-span-2 bg-white/5 border-white/10">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center gap-2">
+              <Radio className="w-5 h-5 text-red-500" />
+              Live Trading Sessions
+            </CardTitle>
+            <CardDescription className="text-gray-400">
+              Join professional traders in real-time market analysis
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-white">Forex London Session</h4>
+                  <p className="text-sm text-gray-400">With TraderPro • Starting in 2h</p>
+                </div>
+                <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                  Join Live
+                </Button>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-white">Crypto Market Review</h4>
+                  <p className="text-sm text-gray-400">With CryptoKing • Tomorrow 9 AM</p>
+                </div>
+                <Button size="sm" variant="outline">
+                  Set Reminder
+                </Button>
+              </div>
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                <div>
+                  <h4 className="font-medium text-white">Options Strategy Workshop</h4>
+                  <p className="text-sm text-gray-400">With ThetaGang • Friday 2 PM</p>
+                </div>
+                <Button size="sm" variant="outline">
+                  Set Reminder
+                </Button>
+              </div>
+            </div>
+            <Link to="/broadcast" className="block mt-4">
+              <Button variant="ghost" className="w-full">
+                View All Sessions
+                <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-white/5 border-white/10">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center gap-2">
+              <MessageSquare className="w-5 h-5" />
+              Community
+            </CardTitle>
+            <CardDescription className="text-gray-400">
+              Connect with fellow traders
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-600/20 rounded-full flex items-center justify-center">
+                  <Users className="w-4 h-4 text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-white">Active Discussions</p>
+                  <p className="text-xs text-gray-400">234 topics today</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-600/20 rounded-full flex items-center justify-center">
+                  <Award className="w-4 h-4 text-green-400" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-white">Study Groups</p>
+                  <p className="text-xs text-gray-400">45 active groups</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-purple-600/20 rounded-full flex items-center justify-center">
+                  <Target className="w-4 h-4 text-purple-400" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-white">Trading Challenges</p>
+                  <p className="text-xs text-gray-400">New challenge weekly</p>
+                </div>
+              </div>
+            </div>
+            <Link to="/community">
+              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                Join Community
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}

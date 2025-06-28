@@ -1,92 +1,5 @@
 import React, { useState, useMemo } from 'react';
-
-export type Strategy = {
-  id: string;
-  title: string;
-  tags: string[];
-  summary: string;
-  winRate: number;
-  totalPnL: number;
-};
-
-type StrategyCardProps = {
-  strategy: Strategy;
-};
-
-const StrategyCard = ({ strategy }: StrategyCardProps) => {
-  return (
-    <div style={{
-      backgroundColor: 'rgba(0, 0, 0, 0.3)',
-      padding: '24px',
-      borderRadius: '12px',
-      border: '1px solid rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(8px)',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '16px'
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <h3 style={{ fontSize: '20px', fontWeight: '600', color: 'white', margin: 0 }}>{strategy.title}</h3>
-        <button style={{
-          fontSize: '14px',
-          color: 'rgba(255, 255, 255, 0.7)',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          transition: 'color 0.2s ease'
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.color = 'white'}
-        onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
-        >
-          View
-        </button>
-      </div>
-      <p style={{
-        fontSize: '14px',
-        color: 'rgba(255, 255, 255, 0.7)',
-        height: '40px',
-        margin: 0,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis'
-      }}>{strategy.summary}</p>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-        {strategy.tags.map((tag) => (
-          <div key={tag} style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            padding: '4px 8px',
-            borderRadius: '20px',
-            fontSize: '12px',
-            color: 'rgba(255, 255, 255, 0.7)'
-          }}>
-            {tag}
-          </div>
-        ))}
-      </div>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingTop: '16px',
-        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-        marginTop: '16px'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '16px' }}>🎯</span>
-          <span style={{ fontSize: '14px', fontWeight: '500', color: 'white' }}>
-            {(strategy.winRate * 100).toFixed(0)}% Win Rate
-          </span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ fontSize: '16px' }}>📈</span>
-          <span style={{ fontSize: '14px', fontWeight: '500', color: 'white' }}>
-            ${strategy.totalPnL.toLocaleString()} PnL
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { StrategyCard, Strategy } from './StrategyCard';
 
 type Props = {
   strategies: Strategy[];
@@ -136,117 +49,46 @@ export const StrategyVault = ({ strategies }: Props) => {
   }, [strategies, searchTerm, selectedTags, sortBy]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div style={{ 
-        display: 'flex', 
-        flexDirection: 'column', 
-        gap: '16px'
-      }}>
-        <div style={{ position: 'relative', flex: 1 }}>
-          <span style={{
-            position: 'absolute',
-            left: '12px',
-            top: '50%',
-            transform: 'translateY(-50%)',
-            fontSize: '20px',
-            pointerEvents: 'none'
-          }}>🔍</span>
-          <input 
-            type="text"
+    <div className="space-y-6">
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="relative flex-1">
+          <span style={{fontSize: '16px'}}>🔍</span>
+          <Input 
             placeholder="Search by title or tag..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              width: '100%',
-              padding: '12px 12px 12px 40px',
-              backgroundColor: 'rgba(0, 0, 0, 0.3)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '8px',
-              color: 'white',
-              fontSize: '14px',
-              boxSizing: 'border-box',
-              outline: 'none'
-            }}
-            onFocus={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)'}
-            onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
+            className="pl-10 bg-black/30 border-white/10"
           />
         </div>
-        <select 
-          value={sortBy} 
-          onChange={(e) => setSortBy(e.target.value)}
-          style={{
-            padding: '12px',
-            backgroundColor: 'rgba(0, 0, 0, 0.3)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            borderRadius: '8px',
-            color: 'white',
-            fontSize: '14px',
-            minWidth: '180px',
-            outline: 'none',
-            cursor: 'pointer'
-          }}
-          onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)'}
-          onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
-        >
-          <option value="totalPnL" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sort by PnL</option>
-          <option value="winRate" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sort by Win Rate</option>
-        </select>
+        <Select value={sortBy} onValueChange={setSortBy}>
+          <SelectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="totalPnL">Sort by PnL</SelectItem>
+            <SelectItem value="winRate">Sort by Win Rate</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+      <div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <button 
+          <Button 
             key={tag}
+            variant={selectedTags.includes(tag) ? 'secondary' : 'outline'}
             onClick={() => handleTagClick(tag)}
-            style={{
-              padding: '8px 16px',
-              backgroundColor: selectedTags.includes(tag) 
-                ? 'rgba(255, 255, 255, 0.2)' 
-                : 'transparent',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '20px',
-              color: 'white',
-              fontSize: '14px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-              outline: 'none'
-            }}
-            onMouseEnter={(e) => {
-              if (!selectedTags.includes(tag)) {
-                e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = selectedTags.includes(tag) 
-                ? 'rgba(255, 255, 255, 0.2)' 
-                : 'transparent';
-            }}
+            className="rounded-full"
           >
             {tag}
-          </button>
+          </Button>
         ))}
       </div>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '24px' 
-      }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredStrategies.map(strategy => (
           <StrategyCard key={strategy.id} strategy={strategy} />
         ))}
       </div>
-
-      {filteredStrategies.length === 0 && (
-        <div style={{
-          textAlign: 'center',
-          padding: '48px',
-          color: 'rgba(255, 255, 255, 0.5)',
-          fontSize: '16px'
-        }}>
-          No strategies found matching your criteria
-        </div>
-      )}
     </div>
   );
 }; 

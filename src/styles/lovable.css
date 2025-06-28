@@ -1,0 +1,94 @@
+/* Lovable Animations */
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+  }
+}
+
+/* Utility classes for animations */
+.lovable-spin {
+  animation: spin 1s linear infinite;
+}
+
+.lovable-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.lovable-pulse {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.lovable-slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.lovable-glow {
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Helper for staggered animations */
+.lovable-stagger > * {
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.lovable-stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.lovable-stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.lovable-stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.lovable-stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.lovable-stagger > *:nth-child(5) { animation-delay: 0.5s; }
+.lovable-stagger > *:nth-child(6) { animation-delay: 0.6s; }
+.lovable-stagger > *:nth-child(7) { animation-delay: 0.7s; }
+.lovable-stagger > *:nth-child(8) { animation-delay: 0.8s; }
+.lovable-stagger > *:nth-child(9) { animation-delay: 0.9s; }
+.lovable-stagger > *:nth-child(10) { animation-delay: 1.0s; } 

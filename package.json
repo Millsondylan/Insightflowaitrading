@@ -9,7 +9,10 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "convert-to-lovable": "node scripts/convert-to-lovable.js"
+    "convert-to-lovable": "node scripts/convert-to-lovable.js",
+    "lovable": "npx lovable-tagger serve src/lovable-demo/LovableDemo.tsx",
+    "lovable:dev": "vite --config vite.lovable.config.ts",
+    "lovable:build": "vite build --config vite.lovable.config.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -42,8 +45,10 @@
     "@radix-ui/react-tooltip": "^1.1.4",
     "@supabase/supabase-js": "^2.50.2",
     "@tanstack/react-query": "^5.81.5",
+    "@tensorflow/tfjs": "^4.17.0",
     "@types/canvas-confetti": "^1.9.0",
     "@types/uuid": "^10.0.0",
+    "axios": "^1.6.7",
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -54,6 +59,7 @@
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
+    "openai": "^4.28.0",
     "qrcode.react": "^4.2.0",
     "react": "^18.3.1",
     "react-countup": "^6.5.3",
@@ -73,10 +79,7 @@
     "timeago-react": "^3.0.7",
     "uuid": "^11.1.0",
     "vaul": "^0.9.3",
-    "zod": "^3.23.8",
-    "@tensorflow/tfjs": "^4.17.0",
-    "openai": "^4.28.0",
-    "axios": "^1.6.7"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -90,7 +93,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
-    "lovable-tagger": "^1.1.7",
+    "lovable-tagger": "^1.1.8",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.11",
     "typescript": "^5.5.3",

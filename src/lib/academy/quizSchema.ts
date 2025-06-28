@@ -1,10 +1,62 @@
+// Question type definitions
+export type QuestionType = 'multiple-choice' | 'true-false' | 'matching';
+
+export interface FeedbackMap {
+  [option: string]: string;
+}
+
+// Base question interface
+export interface BaseQuestion {
+  id: string;
+  type: QuestionType;
+  question: string;
+  explanation: string;
+}
+
+// Multiple choice question
+export interface MultipleChoiceQuestion extends BaseQuestion {
+  type: 'multiple-choice';
+  options: string[];
+  correctAnswer: string;
+  feedback?: FeedbackMap;
+}
+
+// True/False question
+export interface TrueFalseQuestion extends BaseQuestion {
+  type: 'true-false';
+  correctAnswer: boolean;
+}
+
+// Matching question
+export interface MatchingPair {
+  item: string;
+  match: string;
+}
+
+export interface MatchingQuestion extends BaseQuestion {
+  type: 'matching';
+  pairs: MatchingPair[];
+}
+
+// Union type for all question types
+export type Question = MultipleChoiceQuestion | TrueFalseQuestion | MatchingQuestion;
+
+// Quiz definition
+export interface Quiz {
+  title: string;
+  description: string;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  questions: Question[];
+}
+
+// Legacy interfaces for backward compatibility
 export interface QuizOption {
   id: string;
   label: string;
   correct: boolean;
 }
 
-export interface QuizQuestion {
+export interface LegacyQuizQuestion {
   id: string;
   question: string;
   options: QuizOption[];
@@ -12,11 +64,11 @@ export interface QuizQuestion {
   difficulty?: 'easy' | 'medium' | 'hard';
 }
 
-export interface Quiz {
+export interface LegacyQuiz {
   id: string;
   lessonTopic: string;
   title: string;
-  questions: QuizQuestion[];
+  questions: LegacyQuizQuestion[];
   passingScore: number; // percentage needed to pass
 }
 
@@ -38,24 +90,16 @@ export interface QuizResult {
   timeSpent: number; // in seconds
 }
 
-export interface QuizFeedback {
-  isCorrect: boolean;
-  explanation: string;
-  hint?: string;
-  encouragement: string;
-  confidence: number; // 0-1 scale
-}
-
 /**
  * Calculate quiz score from answers
  */
 export function calculateQuizScore(quiz: Quiz, answers: QuizAnswer[]): QuizResult {
   const correctAnswers = answers.filter(answer => answer.isCorrect).length;
   const score = (correctAnswers / quiz.questions.length) * 100;
-  const passed = score >= quiz.passingScore;
+  const passed = score >= 70; // Default passing score is 70%
 
   return {
-    quizId: quiz.id,
+    quizId: quiz.title.toLowerCase().replace(/\s+/g, '-'),
     answers,
     score,
     totalQuestions: quiz.questions.length,
@@ -67,14 +111,52 @@ export function calculateQuizScore(quiz: Quiz, answers: QuizAnswer[]): QuizResul
 }
 
 /**
- * Get the correct answer for a question
+ * Convert legacy quiz format to new format
  */
-export function getCorrectAnswer(question: QuizQuestion): QuizOption {
-  const correctOption = question.options.find(option => option.correct);
-  if (!correctOption) {
-    throw new Error(`No correct answer found for question: ${question.id}`);
+export function convertLegacyQuiz(legacyQuiz: LegacyQuiz): Quiz {
+  return {
+    title: legacyQuiz.title,
+    description: `Quiz about ${legacyQuiz.lessonTopic}`,
+    difficulty: 'intermediate',
+    questions: legacyQuiz.questions.map(q => {
+      const correctOption = q.options.find(o => o.correct);
+      
+      return {
+        id: q.id,
+        type: 'multiple-choice' as const,
+        question: q.question,
+        options: q.options.map(o => o.label),
+        correctAnswer: correctOption ? correctOption.label : '',
+        explanation: q.explanation
+      };
+    })
+  };
+}
+
+/**
+ * Check if a given answer is correct for a question
+ */
+export function isAnswerCorrect(question: Question, answer: any): boolean {
+  switch(question.type) {
+    case 'multiple-choice':
+      return question.correctAnswer === answer;
+    
+    case 'true-false':
+      return question.correctAnswer === answer;
+    
+    case 'matching':
+      if (!Array.isArray(answer) || answer.length !== question.pairs.length) {
+        return false;
+      }
+      // Check if all pairs match correctly
+      return answer.every((match, index) => 
+        match.item === question.pairs[index].item && 
+        match.match === question.pairs[index].match
+      );
+      
+    default:
+      return false;
   }
-  return correctOption;
 }
 
 /**
@@ -83,22 +165,30 @@ export function getCorrectAnswer(question: QuizQuestion): QuizOption {
 export function validateQuiz(quiz: Quiz): string[] {
   const errors: string[] = [];
   
-  if (!quiz.id) errors.push('Quiz must have an id');
   if (!quiz.title) errors.push('Quiz must have a title');
+  if (!quiz.description) errors.push('Quiz must have a description');
   if (!quiz.questions || quiz.questions.length === 0) {
     errors.push('Quiz must have at least one question');
   }
   
   quiz.questions.forEach((question, index) => {
     if (!question.id) errors.push(`Question ${index + 1} must have an id`);
-    if (!question.question) errors.push(`Question ${index + 1} must have a question text`);
-    if (!question.options || question.options.length < 2) {
-      errors.push(`Question ${index + 1} must have at least 2 options`);
-    }
+    if (!question.question) errors.push(`Question ${index + 1} must have question text`);
     
-    const correctOptions = question.options.filter(opt => opt.correct);
-    if (correctOptions.length !== 1) {
-      errors.push(`Question ${index + 1} must have exactly one correct answer`);
+    if (question.type === 'multiple-choice') {
+      if (!question.options || question.options.length < 2) {
+        errors.push(`Question ${index + 1} must have at least 2 options`);
+      }
+      if (!question.correctAnswer) {
+        errors.push(`Question ${index + 1} must have a correct answer`);
+      }
+      if (!question.options.includes(question.correctAnswer)) {
+        errors.push(`Question ${index + 1} correct answer must be in options`);
+      }
+    } else if (question.type === 'matching') {
+      if (!question.pairs || question.pairs.length < 2) {
+        errors.push(`Question ${index + 1} must have at least 2 matching pairs`);
+      }
     }
   });
   

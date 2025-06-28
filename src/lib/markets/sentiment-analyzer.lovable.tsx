@@ -17,169 +17,194 @@ interface SentimentDisplayProps {
   apiKey: string;
 }
 
+interface SentimentData {
+  score: number;
+  volume: number;
+  trend: 'bullish' | 'bearish' | 'neutral';
+  sources: {
+    twitter: number;
+    reddit: number;
+    news: number;
+  };
+}
+
 export const SentimentDisplay: React.FC<SentimentDisplayProps> = ({
   symbol,
   apiKey
 }) => {
   const { toast } = useToast();
-  const [analyzer] = useState<MarketSentimentAnalyzer>(() => new MarketSentimentAnalyzer(apiKey));
-  const [analysis, setAnalysis] = useState<SentimentAnalysis | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [sentiment, setSentiment] = useState<SentimentData | null>(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [historicalData, setHistoricalData] = useState<SentimentAnalysis[]>([]);
 
   useEffect(() => {
+    // Simulate API call for demo
+    const fetchSentiment = async () => {
+      try {
+        setLoading(true);
+        // In a real implementation, this would be an API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        setSentiment({
+          score: 0.75,
+          volume: 15000,
+          trend: 'bullish',
+          sources: {
+            twitter: 0.8,
+            reddit: 0.7,
+            news: 0.75
+          }
+        });
+        setError(null);
+      } catch (err) {
+        setError('Failed to fetch sentiment data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchSentiment();
-    const interval = setInterval(fetchSentiment, 5 * 60 * 1000); // Update every 5 minutes
-    return () => clearInterval(interval);
-  }, [symbol]);
+  }, [symbol, apiKey]);
 
-  const fetchSentiment = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const result = await analyzer.analyzeSentiment(symbol);
-      setAnalysis(result);
-      setHistoricalData(prev => [...prev, result].slice(-48)); // Keep last 48 data points
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const getSentimentColor = (score: number) => {
-    if (score > 0.5) return 'bg-green-500';
-    if (score > 0) return 'bg-green-300';
-    if (score < -0.5) return 'bg-red-500';
-    if (score < 0) return 'bg-red-300';
-    return 'bg-yellow-300';
-  };
-
-  const getSentimentLabel = (score: number) => {
-    if (score > 0.5) return 'Very Bullish';
-    if (score > 0) return 'Bullish';
-    if (score < -0.5) return 'Very Bearish';
-    if (score < 0) return 'Bearish';
-    return 'Neutral';
-  };
-
-  if (!analysis) {
+  if (loading) {
     return (
-      <Card className="p-6">
-        <div className="flex items-center justify-center h-40">
-          {loading ? (
-            <div className="space-y-2 text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto" />
-              <p className="text-sm text-muted-foreground">Analyzing market sentiment...</p>
-            </div>
-          ) : error ? (
-            <div className="text-center text-destructive">
-              <p>{error}</p>
-            </div>
-          ) : null}
-        </div>
-      </Card>
+      <div style={{ textAlign: 'center', padding: '20px' }}>
+        Loading sentiment data...
+      </div>
     );
   }
 
+  if (error) {
+    return (
+      <div style={{ 
+        padding: '20px',
+        backgroundColor: '#fee2e2',
+        color: '#991b1b',
+        borderRadius: '8px'
+      }}>
+        {error}
+      </div>
+    );
+  }
+
+  if (!sentiment) {
+    return null;
+  }
+
+  const getTrendColor = (trend: string) => {
+    switch (trend) {
+      case 'bullish':
+        return '#22c55e';
+      case 'bearish':
+        return '#ef4444';
+      default:
+        return '#6b7280';
+    }
+  };
+
+  const getSourceIcon = (source: string) => {
+    switch (source) {
+      case 'twitter':
+        return '🐦';
+      case 'reddit':
+        return '🤖';
+      case 'news':
+        return '📰';
+      default:
+        return '📊';
+    }
+  };
+
   return (
-    <Card className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">{symbol} Sentiment Analysis</h2>
-        <Badge variant="outline" className={getSentimentColor(analysis.overall)}>
-          {getSentimentLabel(analysis.overall)}
-        </Badge>
+    <div style={{ padding: '20px' }}>
+      <div style={{ 
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '20px'
+      }}>
+        <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: 0 }}>
+          {symbol} Market Sentiment
+        </h2>
+        <div style={{
+          padding: '8px 16px',
+          backgroundColor: getTrendColor(sentiment.trend),
+          color: 'white',
+          borderRadius: '20px',
+          fontSize: '14px',
+          fontWeight: 'bold'
+        }}>
+          {sentiment.trend.toUpperCase()}
+        </div>
       </div>
 
-      <Tabs defaultValue="overview" className="w-full">
-        <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="components">Components</TabsTrigger>
-          <TabsTrigger value="trends">Trends</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="overview" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground">Overall Sentiment</h3>
-              <Progress 
-                value={(analysis.overall + 1) * 50} 
-                className="mt-2"
-              />
-              <p className="mt-1 text-2xl font-bold">
-                {(analysis.overall * 100).toFixed(1)}%
-              </p>
-            </Card>
-
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground">Confidence</h3>
-              <div className="mt-2 text-2xl font-bold">
-                High
-              </div>
-            </Card>
-
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground">Last Updated</h3>
-              <div className="mt-2 text-2xl font-bold">
-                {new Date(analysis.timestamp).toLocaleTimeString()}
-              </div>
-            </Card>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '20px',
+        marginBottom: '20px'
+      }}>
+        <div style={{
+          padding: '20px',
+          backgroundColor: '#f3f4f6',
+          borderRadius: '12px'
+        }}>
+          <div style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>
+            Sentiment Score
           </div>
-        </TabsContent>
-
-        <TabsContent value="components" className="space-y-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground">News Sentiment</h3>
-              <Progress 
-                value={(analysis.components.news + 1) * 50} 
-                className="mt-2"
-              />
-              <p className="mt-1 text-2xl font-bold">
-                {(analysis.components.news * 100).toFixed(1)}%
-              </p>
-            </Card>
-
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground">Social Media Sentiment</h3>
-              <Progress 
-                value={(analysis.components.socialMedia + 1) * 50} 
-                className="mt-2"
-              />
-              <p className="mt-1 text-2xl font-bold">
-                {(analysis.components.socialMedia * 100).toFixed(1)}%
-              </p>
-            </Card>
-
-            <Card className="p-4">
-              <h3 className="text-sm font-medium text-muted-foreground">Technical Sentiment</h3>
-              <Progress 
-                value={(analysis.components.technical + 1) * 50} 
-                className="mt-2"
-              />
-              <p className="mt-1 text-2xl font-bold">
-                {(analysis.components.technical * 100).toFixed(1)}%
-              </p>
-            </Card>
+          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
+            {(sentiment.score * 100).toFixed(1)}%
           </div>
-        </TabsContent>
+        </div>
 
-        <TabsContent value="trends" className="space-y-4">
-          <Card className="p-4">
-            <h3 className="text-sm font-medium text-muted-foreground mb-4">Sentiment Trend</h3>
-            <LineChart
-              data={historicalData.map(d => ({
-                timestamp: new Date(d.timestamp).toLocaleTimeString(),
-                value: d.overall
-              }))}
-              xField="timestamp"
-              yField="value"
-              height={300}
-            />
-          </Card>
-        </TabsContent>
-      </Tabs>
-    </Card>
+        <div style={{
+          padding: '20px',
+          backgroundColor: '#f3f4f6',
+          borderRadius: '12px'
+        }}>
+          <div style={{ fontSize: '14px', color: '#6b7280', marginBottom: '8px' }}>
+            24h Volume
+          </div>
+          <div style={{ fontSize: '24px', fontWeight: 'bold' }}>
+            {sentiment.volume.toLocaleString()}
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: '32px' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '16px' }}>
+          Source Analysis
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {Object.entries(sentiment.sources).map(([source, score]) => (
+            <div key={source} style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              padding: '12px',
+              backgroundColor: '#f3f4f6',
+              borderRadius: '8px'
+            }}>
+              <div style={{ fontSize: '24px' }}>{getSourceIcon(source)}</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '14px', fontWeight: 'bold', textTransform: 'capitalize' }}>
+                  {source}
+                </div>
+                <div style={{ 
+                  width: `${score * 100}%`,
+                  height: '4px',
+                  backgroundColor: getTrendColor(sentiment.trend),
+                  borderRadius: '2px',
+                  marginTop: '8px'
+                }} />
+              </div>
+              <div style={{ fontSize: '14px', fontWeight: 'bold' }}>
+                {(score * 100).toFixed(1)}%
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }; 

@@ -1,96 +1,100 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import React from 'react';
+const mockPosts = [
+    {
+        id: '1',
+        author: { name: 'CryptoWhale', avatar: '/avatars/01.png' },
+        content: 'Big moves in BTC today. Looks like we are heading for a new ATH. Who is riding the wave?',
+        likes: 125,
+        comments: 23,
+    },
+    {
+        id: '2',
+        author: { name: 'StockSensei', avatar: '/avatars/02.png' },
+        content: 'My analysis on TSLA suggests a short-term pullback before the next leg up. Waiting for confirmation.',
+        likes: 88,
+        comments: 12,
+    },
+];
 
-const CommunityPage: React.FC = () => {
-  return (
-    <section className="theme-community min-h-screen px-6 py-16 space-y-12">
-      {/* Hero Section */}
-      <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-magenta mb-8">
-          Trading Community
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 font-light">
-          Connect, share, and learn together
-        </p>
-      </div>
+const mockTrending = ['#BTC', '#ETH', '#Earnings', '#FedMeeting'];
+const mockLeaderboard = [
+    { name: 'CryptoWhale', score: 12500 },
+    { name: 'StockSensei', score: 11200 },
+    { name: 'TradingPro', score: 9800 },
+];
 
-      {/* Community Feed */}
-      <div className="space-y-6 animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <div className="glass-section motion-shadow hover-glow">
-          <div className="flex items-start space-x-4">
-            <div className="w-12 h-12 bg-rose-500/20 rounded-full flex items-center justify-center">
-              <span className="text-rose-400">👤</span>
+export default function CommunityPage() {
+    const [newPost, setNewPost] = useState('');
+
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            {/* Main Feed */}
+            <div className="lg:col-span-2 space-y-6">
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                            <span className="bg-white/10 p-2 rounded-lg"><MessageSquare className="text-blue-400" /></span>
+                            Community Feed
+                        </h1>
+                        <p className="text-gray-400 mt-1">Connect with other traders and share insights.</p>
+                    </div>
+                </div>
+
+                {/* Create Post */}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
+                    <Textarea
+                        value={newPost}
+                        onChange={(e) => setNewPost(e.target.value)}
+                        placeholder="Share your thoughts, charts, or trade ideas..."
+                        className="bg-black/20 border-none"
+                    />
+                    <div className="flex justify-end mt-3">
+                        <Button className="bg-blue-600 hover:bg-blue-700">
+                            <Send size={16} className="mr-2" /> Post
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Posts */}
+                {mockPosts.map(post => (
+                    <div key={post.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
+                        <div className="flex items-start gap-4">
+                            <Avatar><AvatarImage src={post.author.avatar} /><AvatarFallback>{post.author.name[0]}</AvatarFallback></Avatar>
+                            <div className="flex-1">
+                                <p className="font-semibold text-white">{post.author.name}</p>
+                                <p className="text-gray-300 mt-1">{post.content}</p>
+                                <div className="flex items-center gap-6 mt-4 text-sm text-gray-400">
+                                    <button className="flex items-center gap-1 hover:text-white"><ThumbsUp size={16} /> {post.likes}</button>
+                                    <button className="flex items-center gap-1 hover:text-white"><MessageSquare size={16} /> {post.comments}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div className="flex-1">
-              <div className="flex items-center space-x-2 mb-2">
-                <span className="font-semibold text-white">TraderPro</span>
-                <span className="text-gray-400 text-sm">2h ago</span>
-              </div>
-              <p className="text-gray-300 mb-4">
-                Just closed my TSLA position for a +15% gain. The momentum strategy is working well in this market!
-              </p>
-              <div className="flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-rose-400 hover:text-rose-300">
-                  <span>❤️</span>
-                  <span>24</span>
-                </button>
-                <button className="flex items-center space-x-1 text-blue-400 hover:text-blue-300">
-                  <span>💬</span>
-                  <span>8</span>
-                </button>
-                <button className="flex items-center space-x-1 text-emerald-400 hover:text-emerald-300">
-                  <span>🔄</span>
-                  <span>12</span>
-                </button>
-              </div>
+
+            {/* Right Sidebar */}
+            <div className="lg:col-span-1 space-y-6">
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 className="font-semibold text-white mb-4">Trending Topics</h3>
+                    <div className="flex flex-wrap gap-2">
+                        {mockTrending.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                    </div>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><span style={{fontSize: '16px'}}>📈</span> Leaderboard</h3>
+                    <ul className="space-y-3">
+                        {mockLeaderboard.map((user, index) => (
+                            <li key={user.name} className="flex justify-between items-center text-sm">
+                                <span className="text-gray-300">{index + 1}. {user.name}</span>
+                                <span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div className="glass-section motion-shadow hover-glow">
-          <div className="flex items-start space-x-4">
-            <div className="w-12 h-12 bg-violet-500/20 rounded-full flex items-center justify-center">
-              <span className="text-violet-400">👤</span>
-            </div>
-            <div className="flex-1">
-              <div className="flex items-center space-x-2 mb-2">
-                <span className="font-semibold text-white">CryptoQueen</span>
-                <span className="text-gray-400 text-sm">4h ago</span>
-              </div>
-              <p className="text-gray-300 mb-4">
-                Market looking volatile today. Anyone else seeing the unusual volume patterns in tech stocks?
-              </p>
-              <div className="flex items-center space-x-4">
-                <button className="flex items-center space-x-1 text-rose-400 hover:text-rose-300">
-                  <span>❤️</span>
-                  <span>18</span>
-                </button>
-                <button className="flex items-center space-x-1 text-blue-400 hover:text-blue-300">
-                  <span>💬</span>
-                  <span>15</span>
-                </button>
-                <button className="flex items-center space-x-1 text-emerald-400 hover:text-emerald-300">
-                  <span>🔄</span>
-                  <span>7</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Trending Topics */}
-      <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-6">🔥 Trending</h2>
-        <div className="flex flex-wrap gap-3">
-          <span className="px-4 py-2 bg-rose-500/20 border border-rose-400/30 rounded-full text-rose-300 text-sm">#TechStocks</span>
-          <span className="px-4 py-2 bg-violet-500/20 border border-violet-400/30 rounded-full text-violet-300 text-sm">#CryptoTrading</span>
-          <span className="px-4 py-2 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-sm">#OptionsFlow</span>
-          <span className="px-4 py-2 bg-emerald-500/20 border border-emerald-400/30 rounded-full text-emerald-300 text-sm">#MarketAnalysis</span>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default CommunityPage;
+    );
+}
