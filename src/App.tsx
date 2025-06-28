@@ -18,6 +18,13 @@ import StrategyBuilder from './pages/StrategyBuilder';
 import JournalBuilder from './pages/JournalBuilder';
 import AcademyBuilder from './pages/AcademyBuilder';
 
+// New themed pages
+import Markets from './pages/Markets';
+import Portfolio from './pages/Portfolio';
+import Community from './pages/Community';
+import Digest from './pages/Digest';
+import Chat from './pages/Chat';
+
 import { ProtectedRoute } from './components/core/ProtectedRoute';
 
 const queryClient = new QueryClient();
@@ -35,6 +42,13 @@ export function App() {
             <Route path="/strategy-builder" element={<StrategyBuilder />} />
             <Route path="/journal-builder" element={<JournalBuilder />} />
             <Route path="/academy-builder" element={<AcademyBuilder />} />
+
+            {/* New Themed Pages */}
+            <Route path="/markets" element={<Markets />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/digest" element={<Digest />} />
+            <Route path="/chat" element={<Chat />} />
 
             {/* Protected Routes */}
             <Route element={<ProtectedRoute accessLevel="admin" />}>

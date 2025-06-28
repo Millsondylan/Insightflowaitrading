@@ -1,96 +1,123 @@
 
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Brain, BookOpen, Book, Wallet, Shield, ArrowRight } from 'lucide-react';
 
-const features = [
-  {
-    icon: Brain,
-    title: 'AI Strategy',
-    description: 'Generate personalized trading strategies using advanced AI analysis',
-    path: '/strategy',
-    gradient: 'from-cyan-500 to-blue-600'
-  },
-  {
-    icon: BookOpen,
-    title: 'Smart Journal',
-    description: 'Track your trades with AI-powered insights and reflections',
-    path: '/journal',
-    gradient: 'from-purple-500 to-pink-600'
-  },
-  {
-    icon: Book,
-    title: 'Academy',
-    description: 'Learn trading fundamentals with interactive lessons and quizzes',
-    path: '/academy',
-    gradient: 'from-green-500 to-emerald-600'
-  },
-  {
-    icon: Wallet,
-    title: 'Wallet Hub',
-    description: 'Monitor your crypto portfolio across multiple chains',
-    path: '/wallet',
-    gradient: 'from-orange-500 to-red-600'
-  }
-];
-
-export default function Index() {
+const IndexPage: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-white">
+    <section className="theme-landing min-h-screen px-6 py-16 space-y-16">
       {/* Hero Section */}
-      <div className="text-center space-y-6 mb-16">
-        <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-          Insight Flow
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-          AI-powered trading platform for the modern crypto investor
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-          <Link
-            to="/strategy"
-            className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 flex items-center gap-2"
-          >
-            Get Started <ArrowRight size={20} />
-          </Link>
-          <Link
-            to="/academy"
-            className="px-8 py-3 border border-white/20 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300"
-          >
-            Learn More
-          </Link>
-        </div>
-      </div>
-
-      {/* Features Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-        {features.map((feature) => {
-          const Icon = feature.icon;
-          return (
-            <Link
-              key={feature.path}
-              to={feature.path}
-              className="group p-6 bg-black/20 backdrop-blur-md border border-white/10 rounded-xl hover:border-white/20 transition-all duration-300 hover:scale-105"
-            >
-              <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4 group-hover:shadow-lg transition-all duration-300`}>
-                <Icon size={24} className="text-white" />
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-6xl mx-auto animate-in fade-in slide-up">
+          <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight">
+            <span className="text-glow-cyan">Insight</span>{' '}
+            <span className="text-glow-violet">Flow</span>
+          </h1>
+          <p className="text-2xl md:text-4xl text-gray-300 leading-relaxed font-light mb-16">
+            Your Trading Mind, Amplified
+          </p>
+          
+          {/* CTA Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <Link to="/strategy" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-cyan-400">🧠</div>
+                <h3 className="text-lg font-semibold text-white">Strategy</h3>
               </div>
-              <h3 className="text-lg font-semibold mb-2 text-white">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                {feature.description}
-              </p>
             </Link>
-          );
-        })}
-      </div>
-
-      {/* Status Indicator */}
-      <div className="mt-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-400">
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          System Online
+            
+            <Link to="/backtest" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-emerald-400">🧪</div>
+                <h3 className="text-lg font-semibold text-white">Backtest</h3>
+              </div>
+            </Link>
+            
+            <Link to="/journal" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-violet-400">📓</div>
+                <h3 className="text-lg font-semibold text-white">Journal</h3>
+              </div>
+            </Link>
+            
+            <Link to="/academy" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-blue-400">🎓</div>
+                <h3 className="text-lg font-semibold text-white">Academy</h3>
+              </div>
+            </Link>
+            
+            <Link to="/wallet" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-yellow-400">🪙</div>
+                <h3 className="text-lg font-semibold text-white">Wallet</h3>
+              </div>
+            </Link>
+            
+            <Link to="/admin" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-red-400">🛡️</div>
+                <h3 className="text-lg font-semibold text-white">Admin</h3>
+              </div>
+            </Link>
+            
+            <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+              <div className="text-3xl mb-3 text-teal-400">📈</div>
+              <h3 className="text-lg font-semibold text-white">Markets</h3>
+            </div>
+            
+            <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+              <div className="text-3xl mb-3 text-pink-400">💬</div>
+              <h3 className="text-lg font-semibold text-white">Community</h3>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Feature Preview Sections */}
+      <div className="space-y-16 max-w-7xl mx-auto">
+        {/* Strategy Preview */}
+        <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
+          <div className="flex items-center mb-6">
+            <span className="text-4xl mr-4">🧠</span>
+            <h2 className="text-3xl font-bold text-glow-cyan">AI Strategy Generation</h2>
+          </div>
+          <p className="text-gray-300 text-lg">Transform your trading ideas into structured, backtestable strategies with AI-powered insights.</p>
+        </div>
+
+        {/* Backtest Preview */}
+        <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
+          <div className="flex items-center mb-6">
+            <span className="text-4xl mr-4">🧪</span>
+            <h2 className="text-3xl font-bold text-glow-emerald">Advanced Backtesting</h2>
+          </div>
+          <p className="text-gray-300 text-lg">Test your strategies against historical data with comprehensive analytics and risk metrics.</p>
+        </div>
+
+        {/* Journal Preview */}
+        <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '300ms' }}>
+          <div className="flex items-center mb-6">
+            <span className="text-4xl mr-4">📓</span>
+            <h2 className="text-3xl font-bold text-glow-magenta">Psychology Tracking</h2>
+          </div>
+          <p className="text-gray-300 text-lg">Capture and analyze your trading psychology to identify patterns and improve decision-making.</p>
+        </div>
+
+        {/* Academy Preview */}
+        <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '400ms' }}>
+          <div className="flex items-center mb-6">
+            <span className="text-4xl mr-4">🎓</span>
+            <h2 className="text-3xl font-bold text-glow-blue">Adaptive Learning</h2>
+          </div>
+          <p className="text-gray-300 text-lg">Personalized education that evolves with your trading journey and skill level.</p>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="flex justify-center animate-bounce">
+        <div className="text-2xl text-gray-400">↓</div>
+      </div>
+    </section>
   );
-}
+};
+
+export default IndexPage;
