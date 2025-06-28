@@ -2,6 +2,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
+import { ThemeProvider } from './contexts/ThemeContext';
 import Index from './pages/Index';
 import Strategy from './pages/Strategy';
 import StrategyCopilot from './pages/StrategyCopilot';
@@ -42,8 +43,9 @@ const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Router>
+    <ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <Router>
         <AppLayout>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -107,5 +109,6 @@ export function App() {
         </AppLayout>
       </Router>
     </QueryClientProvider>
+    </ThemeProvider>
   );
 }
