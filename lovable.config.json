@@ -1,82 +1,46 @@
 {
-  "name": "InsightFlow AI Trading",
-  "description": "Comprehensive AI-powered trading platform with educational content, strategy vault, and market analysis",
-  "version": "2.0.0",
-  "framework": "react",
-  "ui": "shadcn",
-  "features": {
-    "typescript": true,
-    "tailwind": true,
-    "darkMode": true,
-    "authentication": true,
-    "database": "supabase",
-    "ai": true
+  "project": {
+    "name": "Insight Flow AI Trading",
+    "description": "AI-powered trading strategy builder and portfolio management platform",
+    "version": "2.0.0"
+  },
+  "visualEditing": {
+    "enabled": true,
+    "supportsTailwind": true,
+    "componentExtension": ".lovable.tsx",
+    "stableIdStrategy": "attribute-based"
   },
   "components": {
-    "theme": "futuristic",
-    "animations": true,
-    "icons": "lucide-react",
-    "charts": "recharts"
+    "sourcePath": "src/components",
+    "modules": "src/modules",
+    "pages": "src/pages"
   },
-  "pages": [
-    {
-      "path": "/",
-      "name": "Landing",
-      "description": "Main landing page"
+  "integration": {
+    "supabase": {
+      "enabled": true
     },
-    {
-      "path": "/academy",
-      "name": "Academy",
-      "description": "Trading education with comprehensive courses and quizzes"
+    "github": {
+      "enabled": true,
+      "autoCommit": false
     },
-    {
-      "path": "/vault",
-      "name": "Strategy Vault",
-      "description": "Discover and analyze 20+ professional trading strategies"
-    },
-    {
-      "path": "/markets",
-      "name": "Markets",
-      "description": "Real-time market data across crypto, forex, stocks, and commodities"
-    },
-    {
-      "path": "/portfolio",
-      "name": "Portfolio",
-      "description": "Track and analyze your trading performance"
-    },
-    {
-      "path": "/journal",
-      "name": "Trading Journal",
-      "description": "AI-powered trading journal with insights"
-    },
-    {
-      "path": "/planner",
-      "name": "Trade Planner",
-      "description": "Plan and strategize your trades"
-    },
-    {
-      "path": "/community",
-      "name": "Community",
-      "description": "Connect with fellow traders"
+    "nextjs": {
+      "enabled": false,
+      "migrationAvailable": true
     }
-  ],
-  "integrations": [
-    "supabase",
-    "openai",
-    "stripe",
-    "resend"
-  ],
-  "deployment": {
-    "provider": "vercel",
-    "environment": "production"
   },
-  "lovable": {
-    "version": "2.0",
-    "compatibility": true,
+  "paths": {
+    "assets": "public",
+    "styles": "src/styles",
+    "config": "src/lib/config.ts"
+  },
+  "features": {
+    "componentLibrary": true,
     "visualEditing": true,
-    "livePreview": true,
-    "aiAssisted": true,
-    "componentLibrary": "extensive",
-    "customStyles": true
+    "aiGeneration": true,
+    "themeSupport": true,
+    "responsivePreview": true,
+    "componentSearch": true,
+    "propEditing": true,
+    "exportToCode": true
   }
-} 
+}

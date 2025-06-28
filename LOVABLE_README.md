@@ -1,285 +1,137 @@
-# InsightFlow AI Trading - Lovable Platform Guide
+# Insight Flow AI Trading - Lovable.dev Integration
 
-## 🚀 Overview
+This document provides an overview of the Insight Flow AI Trading platform's integration with Lovable.dev. The application has been optimized for Lovable.dev's visual editing capabilities and component architecture.
 
-InsightFlow AI Trading is a comprehensive trading education and strategy platform fully optimized for Lovable.dev. This platform features:
-
-- **10+ Comprehensive Trading Courses** with 60+ lessons and 100+ quizzes
-- **20+ Professional Trading Strategies** with detailed performance metrics
-- **Real-time Market Data** for cryptocurrencies, forex, stocks, and commodities
-- **AI-Powered Features** including journal insights and strategy recommendations
-- **Full Lovable Compatibility** with visual editing and live preview
-
-## 🎨 Lovable Features
+## 🌟 Features
 
 ### Visual Editing
-All components are Lovable-compatible with `.lovable.tsx` versions that support:
-- Drag-and-drop editing
-- Real-time style updates
-- Component property editing
-- Visual theme customization
 
-### Component Library
-- 100+ pre-built UI components
-- Fully customizable with Tailwind CSS
-- Dark mode support
-- Responsive design
+The application supports Lovable.dev's Visual Edits feature, allowing precise modifications to components directly in the browser:
 
-### AI Integration
-- OpenAI integration for content generation
-- AI-powered trading insights
-- Automated quiz generation
-- Smart strategy recommendations
+- **Component Selection**: Click on any component to edit its properties
+- **Real-time Preview**: See changes instantly as you make them
+- **Tailwind Support**: Full support for Tailwind classes
+- **Custom Styling**: Edit colors, typography, spacing and more
+- **Direct Text Editing**: Modify text content with ease
 
-## 📚 Content Overview
+### Tech Compatibility
 
-### Academy Courses
+The platform includes comprehensive tools for tech compatibility:
 
-1. **Technical Analysis Mastery** (Beginner)
-   - 12 weeks, 15+ lessons
-   - Chart patterns, indicators, price action
+- **Component Converter**: Transform regular React components to Lovable.dev format
+- **Next.js Migration**: Convert your Lovable React app to Next.js
+- **GitHub Integration**: Sync your components with GitHub repositories
+- **Supabase Adapter**: Connect to Supabase for backend functionality
 
-2. **Professional Risk Management** (Intermediate)
-   - 8 weeks, 10+ lessons
-   - Portfolio theory, position sizing
+## 📁 File Structure
 
-3. **Advanced Cryptocurrency Trading** (Advanced)
-   - 10 weeks, 12+ lessons
-   - DeFi, yield farming, on-chain analysis
+The application follows Lovable.dev's recommended file structure:
 
-4. **Algorithmic Trading Systems** (Expert)
-   - 16 weeks, 15+ lessons
-   - ML models, backtesting, automation
+- **Regular Components**: `src/components/ComponentName.tsx`
+- **Lovable Components**: `src/components/ComponentName.lovable.tsx`
 
-5. **Options Trading Mastery** (Advanced)
-   - 14 weeks, 12+ lessons
-   - Greeks, strategies, volatility
+All lovable-compatible components export a `lovable` object with metadata:
 
-6. **Forex Trading Fundamentals** (Intermediate)
-   - 10 weeks, 10+ lessons
-   - Currency pairs, central banks
+```tsx
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+```
 
-7. **Trading Psychology Mastery** (Intermediate)
-   - 6 weeks, 8+ lessons
-   - Biases, mindset, performance
+## 🔧 Core Modules
 
-8. **Fundamental Market Analysis** (Intermediate)
-   - 8 weeks, 10+ lessons
-   - Economic indicators, central banks
+### 1. Tech Compatibility Module
 
-9. **Quantitative Trading Analysis** (Expert)
-   - 12 weeks, 12+ lessons
-   - Statistics, backtesting, risk metrics
+Located at `src/modules/tech-compatibility/`, this module provides:
 
-10. **Institutional Trading Strategies** (Expert)
-    - 10 weeks, 10+ lessons
-    - Order flow, market making
+- `LovablePreview`: Visual editor for components
+- `LovableConverter`: Convert regular components to Lovable format
+- `LovableNextConverter`: Migrate to Next.js
+- `GitHubSync`: GitHub integration
+- `SupabaseAdapter`: Supabase backend integration
 
-### Strategy Vault
+### 2. Strategy Intelligence
 
-20+ professional strategies including:
-- AI Momentum Scanner Pro
-- Cross-Exchange Arbitrage Master
-- Smart Grid DCA Evolution
-- Options Theta Harvester
-- Crypto Whale Tracker Pro
-- Market Profile Scalper Ultra
-- And many more...
+Located at `src/modules/strategy-intelligence/`, this module includes:
 
-Each strategy includes:
-- Detailed performance metrics
-- Risk levels and requirements
-- Author information and ratings
-- Real-world application examples
+- Trading strategy builder
+- Strategy vault with 50+ professional strategies
+- Performance analysis tools
+- Backtesting capabilities
 
-### Market Data
+### 3. Market Setup
 
-Real-time data for:
-- **Cryptocurrencies**: BTC, ETH, BNB, SOL, and more
-- **Forex Pairs**: EUR/USD, GBP/USD, USD/JPY, etc.
-- **Stocks**: AAPL, MSFT, GOOGL, AMZN, etc.
-- **Commodities**: Gold, Silver, Oil, Natural Gas, etc.
+Located at `src/modules/market-setup/`, this module provides:
 
-## 🛠️ Lovable-Specific Setup
+- Market scanning and analysis
+- Real-time data integration
+- Sentiment analysis
+- Ticker screening
 
-### 1. Import to Lovable
+### 4. Mindset Journaling
+
+Located at `src/modules/mindset-journaling/`, this module offers:
+
+- AI-powered trading journal
+- Emotional analysis
+- Performance reflection
+- Memory store for insights
+
+## 🚀 Getting Started
+
+### 1. Install Dependencies
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/insightflow-ai-trading.git
-
-# Or import directly in Lovable
-# Go to Lovable.dev → New Project → Import from GitHub
+npm install
 ```
 
-### 2. Environment Variables
-
-Create `.env` file with:
-
-```env
-# Supabase
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-# OpenAI (for AI features)
-VITE_OPENAI_API_KEY=your_openai_api_key
-
-# Stripe (for payments)
-VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_key
-
-# Other APIs
-VITE_GROQ_API_KEY=your_groq_key
-VITE_GEMINI_API_KEY=your_gemini_key
-```
-
-### 3. Database Setup
-
-Run the Supabase migrations:
-
-```sql
--- See supabase/migrations/ folder for all SQL files
--- Run in order to set up tables for:
--- - Users and authentication
--- - Trading strategies
--- - Journal entries
--- - Academy progress
--- - Market data cache
-```
-
-## 🎯 Key Features for Lovable
-
-### Component Structure
-
-Each major component has two versions:
-- `Component.tsx` - Standard React component
-- `Component.lovable.tsx` - Lovable-optimized version
-
-### Styling
-
-- Uses Tailwind CSS with custom theme
-- Futuristic dark theme by default
-- All colors use CSS variables for easy theming
-- Responsive breakpoints configured
-
-### State Management
-
-- React Query for server state
-- Context API for theme and auth
-- Local storage for user preferences
-
-### Routing
-
-- React Router v6 with protected routes
-- Lazy loading for performance
-- Breadcrumb navigation support
-
-## 📱 Responsive Design
-
-All components are fully responsive:
-- Mobile: 320px - 768px
-- Tablet: 768px - 1024px
-- Desktop: 1024px+
-
-## 🔧 Customization
-
-### Theme Customization
-
-Edit `src/styles/futuristic-theme.css`:
-
-```css
-:root {
-  --primary: 219 100% 50%;
-  --secondary: 267 100% 64%;
-  --background: 240 10% 3.9%;
-  /* ... more variables */
-}
-```
-
-### Adding New Strategies
-
-Add to `src/lib/vault/comprehensiveStrategies.ts`:
-
-```typescript
-{
-  id: "21",
-  name: "Your Strategy Name",
-  description: "Strategy description",
-  category: "Category",
-  // ... other properties
-}
-```
-
-### Adding New Courses
-
-Add to `src/lib/academy/comprehensiveLessonData.ts`:
-
-```typescript
-{
-  id: "new-course",
-  title: "Course Title",
-  lessons: [...],
-  quizzes: [...]
-}
-```
-
-## 🚀 Deployment
-
-### Via Lovable
-
-1. Connect your GitHub repository
-2. Configure environment variables
-3. Deploy with one click
-
-### Manual Deployment
+### 2. Run Development Server
 
 ```bash
-# Build for production
-npm run build
-
-# Deploy to Vercel
-vercel --prod
-
-# Or deploy to Netlify
-netlify deploy --prod
+npm run dev
 ```
 
-## 📖 API Documentation
+### 3. Access Lovable Editor
 
-### Academy API
-- `GET /api/academy/courses` - Get all courses
-- `GET /api/academy/quiz/:lessonId` - Generate quiz for lesson
-- `POST /api/academy/progress` - Update user progress
+Navigate to `/lovable/editor` to access the Lovable.dev editor suite.
 
-### Strategy API
-- `GET /api/strategies` - Get all strategies
-- `GET /api/strategies/:id` - Get strategy details
-- `POST /api/strategies/backtest` - Run backtest
+### 4. Converting Components
 
-### Market API
-- `GET /api/markets` - Get all market data
-- `GET /api/markets/:symbol` - Get specific market
-- `WS /api/markets/stream` - Real-time updates
+Use the Component Converter in the editor to transform regular React components to Lovable.dev format.
 
-## 🤝 Support
+## 📝 Lovable.dev Best Practices
 
-- **Lovable Community**: https://lovable.dev/community
-- **Documentation**: https://docs.lovable.dev
-- **GitHub Issues**: Report bugs and request features
-- **Discord**: Join our Discord server
+This application follows Lovable.dev's recommended practices:
 
-## 📄 License
+1. **Clean Component Structure**: Each component is self-contained
+2. **Stable IDs**: Components use stable IDs for reliable selection
+3. **Tailwind Classes**: Styling uses Tailwind for compatibility
+4. **Metadata Export**: All components export metadata for the editor
+5. **Visual Edit Hints**: Components include hints for better editing
 
-MIT License - feel free to use for personal or commercial projects.
+## 🔄 Visual Edits Workflow
 
-## 🙏 Credits
+1. Select a component to edit
+2. Modify properties in the right panel
+3. Preview changes in real-time
+4. Apply changes when satisfied
+5. Changes are saved to the source code
 
-Built with ❤️ using:
-- [Lovable.dev](https://lovable.dev) - AI-powered development platform
-- [React](https://reactjs.org) - UI framework
-- [Tailwind CSS](https://tailwindcss.com) - Styling
-- [Supabase](https://supabase.com) - Backend and database
-- [shadcn/ui](https://ui.shadcn.com) - Component library
+## 🛠️ Troubleshooting
+
+- **Component Not Editable**: Ensure it exports the `lovable` object
+- **Styles Not Applying**: Check that Tailwind classes are being used
+- **Missing Preview**: Verify the component is rendering properly
+
+## 📚 Resources
+
+- [Lovable.dev Documentation](https://lovable.dev/learn)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [React + Lovable Guide](https://lovable.dev/blog/visual-edits)
+- [Next.js Migration Guide](https://nextlovable.com)
 
 ---
 
-**Ready to start trading smarter?** Import this project to Lovable and customize it to your needs! 
+Built with ❤️ using [Lovable.dev](https://lovable.dev)

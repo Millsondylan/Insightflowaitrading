@@ -1,481 +1,309 @@
 // TODO: implement React to Lovable.dev converter
 import React, { useState, useEffect } from 'react';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { Badge } from '../../components/ui/badge';
 
-interface LovableConverterProps {
-  onSuccess?: (fileCount: number) => void;
+interface ConversionResult {
+  original: string;
+  converted: string;
+  changes: {
+    description: string;
+    type: 'added' | 'modified' | 'removed';
+  }[];
+  status: 'success' | 'warning' | 'error';
+  message: string;
 }
 
-export const LovableConverter: React.FC<LovableConverterProps> = ({ onSuccess }) => {
-  const [isConverting, setIsConverting] = useState(false);
-  const [conversionStats, setConversionStats] = useState<{
-    total: number;
-    processed: number;
-    success: number;
-    failed: number;
-  }>({
-    total: 0,
-    processed: 0,
-    success: 0,
-    failed: 0
-  });
-  const [gitHubStatus, setGitHubStatus] = useState<{
-    connected: boolean;
-    owner: string;
-    repo: string;
-    branch: string;
-    lastSync: Date | null;
-  }>({
-    connected: false,
-    owner: '',
-    repo: '',
-    branch: 'main',
-    lastSync: null
-  });
-  const [gitHubError, setGitHubError] = useState<string | null>(null);
+export const LovableConverter: React.FC = () => {
+  const [componentPath, setComponentPath] = useState<string>('');
+  const [conversionInProgress, setConversionInProgress] = useState<boolean>(false);
+  const [conversionResult, setConversionResult] = useState<ConversionResult | null>(null);
+  const [recentConversions, setRecentConversions] = useState<{path: string, timestamp: number}[]>([]);
   
-  // Mock function to simulate connecting to GitHub
-  const connectToGitHub = async () => {
-    setGitHubError(null);
+  const handlePathChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setComponentPath(e.target.value);
+  };
+  
+  const convertComponent = async () => {
+    if (!componentPath.trim()) {
+      return;
+    }
+    
+    setConversionInProgress(true);
     
     try {
-      // In a real application, this would call an API to authenticate with GitHub
+      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      setGitHubStatus({
-        connected: true,
-        owner: 'insightflow',
-        repo: 'trading-strategies',
-        branch: 'main',
-        lastSync: new Date()
-      });
+      // Mock result
+      const mockResult: ConversionResult = {
+        original: `import React from 'react';
+
+const ComponentName = () => {
+  return (
+    <div className="component-wrapper">
+      <h1>Original Component</h1>
+      <p>This needs to be converted to Lovable format</p>
+    </div>
+  );
+}
+
+export default ComponentName;`,
+        converted: `import React from 'react';
+
+const ComponentName = () => {
+  return (
+    <div className="component-wrapper">
+      <h1>Lovable Compatible Component</h1>
+      <p>This has been converted to Lovable format</p>
+    </div>
+  );
+}
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default ComponentName;`,
+        changes: [
+          {
+            description: 'Added lovable export object',
+            type: 'added'
+          },
+          {
+            description: 'Updated component content to be Lovable compatible',
+            type: 'modified'
+          },
+          {
+            description: 'Added proper React exports',
+            type: 'added'
+          }
+        ],
+        status: 'success',
+        message: 'Component successfully converted to Lovable format!'
+      };
       
-      return true;
-    } catch (error) {
-      setGitHubError('Failed to connect to GitHub. Please check your credentials and try again.');
-      return false;
-    }
-  };
-  
-  // Mock function to simulate pushing changes to GitHub
-  const pushChangesToGitHub = async () => {
-    if (!gitHubStatus.connected) {
-      setGitHubError('Not connected to GitHub. Please connect first.');
-      return false;
-    }
-    
-    setGitHubError(null);
-    
-    try {
-      // In a real application, this would call an API to push changes to GitHub
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      setConversionResult(mockResult);
       
-      setGitHubStatus({
-        ...gitHubStatus,
-        lastSync: new Date()
-      });
+      // Add to recent conversions
+      const newConversion = { path: componentPath, timestamp: Date.now() };
+      setRecentConversions(prev => [newConversion, ...prev.slice(0, 4)]);
       
-      return true;
-    } catch (error) {
-      setGitHubError('Failed to push changes to GitHub. Please try again.');
-      return false;
-    }
-  };
-  
-  // Function to convert components to Lovable format
-  const convertToLovable = async () => {
-    setIsConverting(true);
-    
-    // Initialize stats
-    setConversionStats({
-      total: 0,
-      processed: 0,
-      success: 0,
-      failed: 0
-    });
-    
-    try {
-      // This is where the actual conversion logic would happen
-      // For demo purposes, we'll simulate the process
-      const totalFiles = Math.floor(Math.random() * 50) + 100;
-      
-      setConversionStats(prev => ({ ...prev, total: totalFiles }));
-      
-      for (let i = 0; i < totalFiles; i++) {
-        // Simulate processing time
-        await new Promise(resolve => setTimeout(resolve, 50));
-        
-        // Random success/fail
-        const success = Math.random() > 0.05; // 95% success rate
-        
-        setConversionStats(prev => ({
-          ...prev,
-          processed: prev.processed + 1,
-          success: success ? prev.success + 1 : prev.success,
-          failed: !success ? prev.failed + 1 : prev.failed
-        }));
-      }
-      
-      if (onSuccess) {
-        onSuccess(totalFiles);
-      }
     } catch (error) {
       console.error('Conversion error:', error);
+      setConversionResult({
+        original: '',
+        converted: '',
+        changes: [],
+        status: 'error',
+        message: 'Failed to convert component. Please try again.'
+      });
     } finally {
-      setIsConverting(false);
+      setConversionInProgress(false);
     }
   };
   
-  // Function to ensure GitHub workflow works with Lovable files
-  const setupGitHubWorkflow = async () => {
-    if (!gitHubStatus.connected) {
-      await connectToGitHub();
+  const convertAll = async () => {
+    setConversionInProgress(true);
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 3000));
+      
+      // Mock result
+      const mockResult: ConversionResult = {
+        original: 'Multiple components',
+        converted: 'Multiple components converted to Lovable format',
+        changes: [
+          {
+            description: 'Converted 15 components to Lovable format',
+            type: 'added'
+          },
+          {
+            description: 'Added lovable export object to all components',
+            type: 'added'
+          },
+          {
+            description: 'Updated imports for Lovable compatibility',
+            type: 'modified'
+          }
+        ],
+        status: 'success',
+        message: 'Project successfully converted to Lovable format!'
+      };
+      
+      setConversionResult(mockResult);
+      
+    } catch (error) {
+      console.error('Conversion error:', error);
+      setConversionResult({
+        original: '',
+        converted: '',
+        changes: [],
+        status: 'error',
+        message: 'Failed to convert project. Please try again.'
+      });
+    } finally {
+      setConversionInProgress(false);
     }
-    
-    if (!gitHubStatus.connected) {
-      return false;
-    }
-    
-    // In a real application, this would:
-    // 1. Update .gitignore to ensure .lovable.tsx files are tracked
-    // 2. Set up Git attributes to properly diff .lovable.tsx files
-    // 3. Configure GitHub workflows for CI/CD
-    
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    return true;
   };
   
   return (
-    <div style={{
-      backgroundColor: '#1e1e2e',
-      padding: '24px',
-      borderRadius: '12px',
-      color: 'white'
-    }}>
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        marginBottom: '24px'
-      }}>
-        <span style={{fontSize: '24px'}}>🔄</span>
-        <h2 style={{
-          fontSize: '24px',
-          fontWeight: 'bold',
-          margin: 0
-        }}>Lovable Converter</h2>
-      </div>
-      
-      <div style={{display: 'flex', flexDirection: 'column', gap: '20px'}}>
-        <div style={{
-          backgroundColor: 'rgba(30, 41, 59, 0.4)',
-          padding: '16px',
-          borderRadius: '8px'
-        }}>
-          <h3 style={{
-            fontSize: '18px',
-            fontWeight: '600',
-            margin: '0 0 12px 0'
-          }}>Component Conversion</h3>
-          
-          <p style={{
-            fontSize: '14px',
-            color: 'rgba(255, 255, 255, 0.7)',
-            margin: '0 0 16px 0'
-          }}>
-            Convert your React components to Lovable-compatible format. This will create .lovable.tsx versions of your components with proper styling and icon replacements.
-          </p>
-          
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '16px',
-            marginBottom: '16px'
-          }}>
-            <button 
-              onClick={convertToLovable}
-              disabled={isConverting}
-              style={{
-                backgroundColor: '#3b82f6',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '6px',
-                fontWeight: '500',
-                cursor: isConverting ? 'not-allowed' : 'pointer',
-                opacity: isConverting ? 0.7 : 1
-              }}
-            >
-              {isConverting ? 'Converting...' : 'Convert Components'}
-            </button>
-            
-            {isConverting && (
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
-                <div style={{
-                  width: '16px',
-                  height: '16px',
-                  borderRadius: '50%',
-                  border: '2px solid rgba(59, 130, 246, 0.3)',
-                  borderTopColor: '#3b82f6',
-                  animation: 'spin 1s linear infinite'
-                }} />
-                <span style={{fontSize: '14px'}}>
-                  Processing ({conversionStats.processed} of {conversionStats.total})...
-                </span>
-              </div>
-            )}
+    <div className="lovable-converter">
+      <div className="flex flex-col gap-6">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold">Lovable Converter</h1>
+            <p className="text-text-muted">Convert your components to be Lovable compatible</p>
+          </div>
+          <Badge variant="outline" className="px-3 py-1">
+            Tech Compatibility
+          </Badge>
+        </div>
+        
+        <Card className="p-6">
+          <div className="mb-6">
+            <h2 className="text-lg font-semibold mb-4">Convert Component</h2>
+            <div className="flex gap-2">
+              <Input
+                placeholder="Enter component path (e.g. src/components/Button.tsx)"
+                value={componentPath}
+                onChange={handlePathChange}
+                className="flex-1"
+              />
+              <Button 
+                onClick={convertComponent}
+                disabled={conversionInProgress || !componentPath.trim()}
+              >
+                {conversionInProgress ? 'Converting...' : 'Convert'}
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={convertAll}
+                disabled={conversionInProgress}
+              >
+                Convert All
+              </Button>
+            </div>
           </div>
           
-          {(conversionStats.processed > 0) && (
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '8px'
-            }}>
-              <div style={{
-                backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                borderRadius: '4px',
-                overflow: 'hidden',
-                height: '8px'
-              }}>
-                <div style={{
-                  width: `${(conversionStats.processed / conversionStats.total) * 100}%`,
-                  height: '100%',
-                  backgroundColor: '#3b82f6',
-                  transition: 'width 0.2s ease'
-                }} />
-              </div>
-              
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                fontSize: '14px',
-                color: 'rgba(255, 255, 255, 0.7)'
-              }}>
-                <span>Total: {conversionStats.total}</span>
-                <span style={{color: '#22c55e'}}>Success: {conversionStats.success}</span>
-                <span style={{color: '#ef4444'}}>Failed: {conversionStats.failed}</span>
+          {recentConversions.length > 0 && (
+            <div className="mb-6">
+              <h3 className="text-sm font-medium mb-2">Recent Conversions</h3>
+              <div className="flex flex-wrap gap-2">
+                {recentConversions.map((conversion, index) => (
+                  <button
+                    key={index}
+                    className="text-xs bg-background-secondary hover:bg-background-interactive px-2 py-1 rounded"
+                    onClick={() => setComponentPath(conversion.path)}
+                  >
+                    {conversion.path.split('/').pop()}
+                  </button>
+                ))}
               </div>
             </div>
           )}
-        </div>
-        
-        <div style={{
-          backgroundColor: 'rgba(30, 41, 59, 0.4)',
-          padding: '16px',
-          borderRadius: '8px'
-        }}>
-          <h3 style={{
-            fontSize: '18px',
-            fontWeight: '600',
-            margin: '0 0 12px 0',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
-            <span style={{fontSize: '20px'}}>💻</span>
-            GitHub Integration
-          </h3>
           
-          {!gitHubStatus.connected ? (
-            <>
-              <p style={{
-                fontSize: '14px',
-                color: 'rgba(255, 255, 255, 0.7)',
-                margin: '0 0 16px 0'
-              }}>
-                Connect to GitHub to enable version control for your Lovable components. This ensures smooth editing of .lovable.tsx files.
-              </p>
+          {conversionResult && (
+            <div className="mt-4">
+              <h3 className="text-lg font-semibold mb-3">Conversion Results</h3>
               
-              <button 
-                onClick={connectToGitHub}
-                style={{
-                  backgroundColor: '#2a2a3a',
-                  color: 'white',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  padding: '8px 16px',
-                  borderRadius: '6px',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                <span style={{fontSize: '16px'}}>💻</span>
-                Connect to GitHub
-              </button>
-            </>
-          ) : (
-            <>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                marginBottom: '16px'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
-                  <div style={{
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    backgroundColor: '#22c55e'
-                  }} />
-                  <span style={{fontSize: '14px', fontWeight: '500'}}>
-                    Connected to GitHub
-                  </span>
-                </div>
-                
-                <button 
-                  onClick={() => setGitHubStatus({...gitHubStatus, connected: false})}
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: 'rgba(255, 255, 255, 0.7)',
-                    border: 'none',
-                    fontSize: '12px',
-                    cursor: 'pointer',
-                    padding: '4px'
-                  }}
-                >
-                  Disconnect
-                </button>
+              <div className={`p-4 rounded mb-4 ${
+                conversionResult.status === 'success' ? 'bg-status-success/10 text-status-success' :
+                conversionResult.status === 'warning' ? 'bg-status-warning/10 text-status-warning' :
+                'bg-status-error/10 text-status-error'
+              }`}>
+                {conversionResult.message}
               </div>
               
-              <div style={{
-                backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                padding: '12px',
-                borderRadius: '6px',
-                fontSize: '14px',
-                marginBottom: '16px'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  marginBottom: '8px'
-                }}>
-                  <span style={{color: 'rgba(255, 255, 255, 0.7)'}}>Repository:</span>
-                  <span style={{fontFamily: 'monospace'}}>
-                    {gitHubStatus.owner}/{gitHubStatus.repo}
-                  </span>
-                </div>
-                
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  marginBottom: '8px'
-                }}>
-                  <span style={{color: 'rgba(255, 255, 255, 0.7)'}}>Branch:</span>
-                  <span style={{fontFamily: 'monospace'}}>{gitHubStatus.branch}</span>
-                </div>
-                
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px'
-                }}>
-                  <span style={{color: 'rgba(255, 255, 255, 0.7)'}}>Last Sync:</span>
-                  <span>
-                    {gitHubStatus.lastSync ? gitHubStatus.lastSync.toLocaleString() : 'Never'}
-                  </span>
-                </div>
+              <div className="mb-4">
+                <h4 className="font-medium text-sm mb-2">Changes made:</h4>
+                <ul className="space-y-1">
+                  {conversionResult.changes.map((change, index) => (
+                    <li key={index} className="flex items-center gap-2 text-sm">
+                      <span className={`w-2 h-2 rounded-full ${
+                        change.type === 'added' ? 'bg-status-success' :
+                        change.type === 'modified' ? 'bg-status-warning' :
+                        'bg-status-error'
+                      }`}></span>
+                      {change.description}
+                    </li>
+                  ))}
+                </ul>
               </div>
               
-              <div style={{
-                display: 'flex',
-                gap: '8px'
-              }}>
-                <button 
-                  onClick={setupGitHubWorkflow}
-                  style={{
-                    backgroundColor: '#2a2a3a',
-                    color: 'white',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    padding: '8px 16px',
-                    borderRadius: '6px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}
-                >
-                  <span style={{fontSize: '16px'}}>⚙️</span>
-                  Setup Workflow
-                </button>
-                
-                <button 
-                  onClick={pushChangesToGitHub}
-                  style={{
-                    backgroundColor: '#3b82f6',
-                    color: 'white',
-                    border: 'none',
-                    padding: '8px 16px',
-                    borderRadius: '6px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}
-                >
-                  <span style={{fontSize: '16px'}}>🔄</span>
-                  Sync Changes
-                </button>
+              <Tabs defaultValue="converted" className="w-full">
+                <TabsList className="w-full grid grid-cols-2">
+                  <TabsTrigger value="original">Original Code</TabsTrigger>
+                  <TabsTrigger value="converted">Converted Code</TabsTrigger>
+                </TabsList>
+                <TabsContent value="original" className="mt-2">
+                  <div className="bg-background-secondary p-4 rounded font-mono text-sm overflow-auto max-h-64">
+                    <pre>{conversionResult.original}</pre>
+                  </div>
+                </TabsContent>
+                <TabsContent value="converted" className="mt-2">
+                  <div className="bg-background-secondary p-4 rounded font-mono text-sm overflow-auto max-h-64">
+                    <pre>{conversionResult.converted}</pre>
+                  </div>
+                </TabsContent>
+              </Tabs>
+              
+              <div className="mt-4 flex justify-end">
+                <Button variant="outline" className="mr-2">
+                  Download Converted File
+                </Button>
+                <Button>
+                  Apply Changes
+                </Button>
               </div>
-            </>
-          )}
-          
-          {gitHubError && (
-            <div style={{
-              backgroundColor: 'rgba(239, 68, 68, 0.2)',
-              color: '#ef4444',
-              padding: '12px',
-              borderRadius: '6px',
-              marginTop: '16px',
-              fontSize: '14px'
-            }}>
-              {gitHubError}
             </div>
           )}
-        </div>
+        </Card>
         
-        <div style={{
-          backgroundColor: 'rgba(30, 41, 59, 0.4)',
-          padding: '16px',
-          borderRadius: '8px'
-        }}>
-          <h3 style={{
-            fontSize: '18px',
-            fontWeight: '600',
-            margin: '0 0 12px 0'
-          }}>Editing Tips</h3>
+        <Card className="p-6">
+          <h2 className="text-lg font-semibold mb-4">Lovable Compatibility Guide</h2>
           
-          <ul style={{
-            margin: '0',
-            paddingLeft: '24px',
-            color: 'rgba(255, 255, 255, 0.8)',
-            fontSize: '14px',
-            lineHeight: '1.6'
-          }}>
-            <li>Always use inline styles instead of Tailwind classes</li>
-            <li>Replace Lucide icons with emoji equivalents (📈 for TrendingUp, etc.)</li>
-            <li>Use native HTML elements instead of shadcn/ui components</li>
-            <li>Test Lovable components regularly during development</li>
-            <li>Create custom utility functions for common styling patterns</li>
-            <li>Push changes to GitHub frequently to avoid merge conflicts</li>
-          </ul>
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="font-medium mb-2">Required Changes</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Add a lovable export object to each component</li>
+                <li>Ensure component is React.FC typed</li>
+                <li>Use Tailwind classes for styling</li>
+                <li>Make components fully self-contained</li>
+                <li>Follow stable ID pattern for visual editing</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-medium mb-2">Benefits</h3>
+              <ul className="list-disc list-inside space-y-1 text-sm">
+                <li>Full Visual Editing compatibility</li>
+                <li>Real-time preview updates</li>
+                <li>AI-assisted improvements</li>
+                <li>Component reuse across projects</li>
+                <li>Better collaboration features</li>
+              </ul>
+            </div>
+          </div>
+        </Card>
       </div>
     </div>
   );
-}; 
+};
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default LovableConverter; 

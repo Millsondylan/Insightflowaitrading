@@ -1,147 +1,170 @@
 import React, { useState } from 'react';
-import { LovablePreview } from '../modules/tech-compatibility/lovable-preview.lovable';
-import { GitHubSync } from '../modules/tech-compatibility/github-sync.lovable';
+import { Card } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { 
+  LovableConverter,
+  LovablePreview,
+  LovableNextConverter,
+  GitHubSync,
+  SupabaseAdapter
+} from '../modules/tech-compatibility';
 
-const LovableEditorPage = () => {
-  const [activeComponent, setActiveComponent] = useState<string>('src/lovable-demo/LovableDemo-SelfContained.lovable.tsx');
-  const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const [notification, setNotification] = useState<{
-    message: string;
-    type: 'success' | 'error' | 'info';
-  } | null>(null);
-  
-  // Handle component save
-  const handleSave = (content: string) => {
-    // In a real app, this would save to the file system
-    console.log('Saving component:', activeComponent);
-    console.log('Content:', content);
-    
-    setLastSaved(new Date());
-    showNotification('Component saved successfully!', 'success');
-  };
-  
-  // Show notification
-  const showNotification = (message: string, type: 'success' | 'error' | 'info') => {
-    setNotification({ message, type });
-    
-    // Auto-dismiss after 3 seconds
-    setTimeout(() => {
-      setNotification(null);
-    }, 3000);
-  };
-  
-  // Handle GitHub sync
-  const handleSync = () => {
-    showNotification('Changes synced to GitHub!', 'success');
-  };
-  
+const LovableEditorPage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>('visual-editor');
+
   return (
-    <div style={{
-      minHeight: '100vh',
-      backgroundColor: '#0f0f1a',
-      color: 'white',
-      padding: '32px',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
-    }}>
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto'
-      }}>
-        {/* Header */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          marginBottom: '32px'
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-            <span style={{fontSize: '32px'}}>🚀</span>
-            <h1 style={{
-              fontSize: '28px',
-              fontWeight: '700',
-              margin: 0,
-              background: 'linear-gradient(45deg, #60A5FA, #A78BFA)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>
-              InsightFlow Lovable Editor
-            </h1>
-          </div>
+    <div className="container mx-auto py-6">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">Lovable.dev Editor Suite</h1>
+        <p className="text-text-muted">Powerful visual editing and tech integration tools for Lovable.dev</p>
+      </div>
+      
+      <Tabs defaultValue="visual-editor" className="w-full" onValueChange={setActiveTab}>
+        <div className="flex justify-between items-center mb-4">
+          <TabsList>
+            <TabsTrigger value="visual-editor">Visual Editor</TabsTrigger>
+            <TabsTrigger value="converter">Convert Components</TabsTrigger>
+            <TabsTrigger value="next-converter">Next.js Migration</TabsTrigger>
+            <TabsTrigger value="github">GitHub Integration</TabsTrigger>
+            <TabsTrigger value="supabase">Supabase</TabsTrigger>
+          </TabsList>
           
-          {lastSaved && (
-            <div style={{
-              fontSize: '14px',
-              color: 'rgba(255, 255, 255, 0.6)'
-            }}>
-              Last saved: {lastSaved.toLocaleTimeString()}
+          <Button size="sm" variant="outline">
+            Documentation
+          </Button>
+        </div>
+        
+        <Card className="mb-6">
+          <TabsContent value="visual-editor" className="p-0 m-0">
+            <div className="p-6">
+              <LovablePreview 
+                sourceCode={`<div className="sample-component">
+  <h2>Sample Component</h2>
+  <p>Edit this component using the visual editor</p>
+</div>`}
+                onEdit={(id, changes) => {
+                  console.log('Edit component', id, changes);
+                }}
+              />
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="converter" className="p-0 m-0">
+            <div className="p-6">
+              <LovableConverter />
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="next-converter" className="p-0 m-0">
+            <div className="p-6">
+              <LovableNextConverter />
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="github" className="p-0 m-0">
+            <div className="p-6">
+              <GitHubSync />
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="supabase" className="p-0 m-0">
+            <div className="p-6">
+              <SupabaseAdapter />
+            </div>
+          </TabsContent>
+        </Card>
+        
+        <Card className="p-6">
+          <h2 className="text-xl font-bold mb-4">About {activeTab === 'visual-editor' ? 'Visual Editor' : 
+            activeTab === 'converter' ? 'Component Converter' : 
+            activeTab === 'next-converter' ? 'Next.js Migration' :
+            activeTab === 'github' ? 'GitHub Integration' : 
+            'Supabase Integration'}
+          </h2>
+          
+          {activeTab === 'visual-editor' && (
+            <div className="text-text-muted space-y-4">
+              <p>The Visual Editor allows you to make precise modifications to your components directly in the browser, 
+              without having to modify code manually. This feature is powered by Lovable.dev's Visual Edits system.</p>
+              
+              <p>You can edit text content, styling properties, and component structure with intuitive controls. 
+              All changes are instantly previewed and can be saved as clean, production-ready code.</p>
+              
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">Learn More</Button>
+                <Button size="sm">Try Visual Editing</Button>
+              </div>
             </div>
           )}
-        </div>
-        
-        {/* Notification */}
-        {notification && (
-          <div style={{
-            position: 'fixed',
-            top: '24px',
-            right: '24px',
-            padding: '12px 16px',
-            borderRadius: '8px',
-            backgroundColor: notification.type === 'success' ? 'rgba(34, 197, 94, 0.2)' : 
-                            notification.type === 'error' ? 'rgba(239, 68, 68, 0.2)' : 
-                            'rgba(59, 130, 246, 0.2)',
-            color: notification.type === 'success' ? '#22c55e' : 
-                   notification.type === 'error' ? '#ef4444' : 
-                   '#3b82f6',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            zIndex: 100,
-            animation: 'fadeIn 0.3s ease'
-          }}>
-            <span style={{fontSize: '18px'}}>
-              {notification.type === 'success' ? '✅' : 
-               notification.type === 'error' ? '❌' : 
-               'ℹ️'}
-            </span>
-            {notification.message}
-          </div>
-        )}
-        
-        {/* Main content */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: '24px'
-        }}>
-          {/* Lovable Preview */}
-          <LovablePreview 
-            componentPath={activeComponent}
-            onSave={handleSave}
-          />
           
-          {/* GitHub Sync */}
-          <GitHubSync onSync={handleSync} />
-        </div>
-        
-        {/* Footer */}
-        <div style={{
-          marginTop: '48px',
-          textAlign: 'center',
-          color: 'rgba(255, 255, 255, 0.5)',
-          fontSize: '14px'
-        }}>
-          <p>
-            InsightFlow AI Trading Platform - Lovable Integration
-          </p>
-        </div>
-      </div>
+          {activeTab === 'converter' && (
+            <div className="text-text-muted space-y-4">
+              <p>The Component Converter transforms your regular React components into Lovable.dev compatible components.
+              This tool automatically adds the necessary metadata and structure for visual editing capabilities.</p>
+              
+              <p>You can convert individual components or entire directories at once, making it easy to migrate
+              existing projects to the Lovable ecosystem.</p>
+              
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">View Docs</Button>
+                <Button size="sm">Convert Components</Button>
+              </div>
+            </div>
+          )}
+          
+          {activeTab === 'next-converter' && (
+            <div className="text-text-muted space-y-4">
+              <p>The Next.js Migration tool allows you to transform your Lovable React app into a fully-featured Next.js application.
+              This unlocks benefits like server-side rendering, improved SEO, and enhanced performance.</p>
+              
+              <p>The migration process preserves your component structure while adding Next.js specific features like App Router.</p>
+              
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">Migration Guide</Button>
+                <Button size="sm">Start Migration</Button>
+              </div>
+            </div>
+          )}
+          
+          {activeTab === 'github' && (
+            <div className="text-text-muted space-y-4">
+              <p>The GitHub Integration enables seamless version control for your Lovable projects. You can sync your components
+              with GitHub repositories, track changes, and collaborate with team members.</p>
+              
+              <p>This integration supports GitHub workflows, pull requests, and branch management, making it perfect for team collaboration.</p>
+              
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">GitHub Setup Guide</Button>
+                <Button size="sm">Connect Repository</Button>
+              </div>
+            </div>
+          )}
+          
+          {activeTab === 'supabase' && (
+            <div className="text-text-muted space-y-4">
+              <p>The Supabase Integration provides a complete backend solution for your Lovable applications. Connect your project
+              to Supabase for database, authentication, and serverless functions.</p>
+              
+              <p>This integration automatically sets up the necessary tables, functions, and authentication providers for your application.</p>
+              
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm">Supabase Guide</Button>
+                <Button size="sm">Connect Database</Button>
+              </div>
+            </div>
+          )}
+        </Card>
+      </Tabs>
     </div>
   );
 };
 
-export default LovableEditorPage; 
+// Add Lovable.dev compatibility
+export const lovable = {
+  editableComponents: true,
+  visualEditing: true,
+  supportsTailwind: true
+};
+
+export default LovableEditorPage;
