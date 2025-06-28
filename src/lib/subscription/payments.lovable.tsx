@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useToast } from '@/components/ui/use-toast';
 import { processPayment } from './payments';
-import { PaymentMethod, SubscriptionTier } from './types';
+import { PaymentMethod, SubscriptionTier, PaymentRequest } from './types';
 
 interface PaymentFormProps {
   selectedTier: SubscriptionTier;
@@ -18,7 +18,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
   onPaymentComplete
 }) => {
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('card');
   const [formData, setFormData] = useState({
@@ -40,12 +40,13 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
     setError(null);
 
     try {
-      const result = await processPayment({
+      const paymentRequest: PaymentRequest = {
         method: paymentMethod,
         details: formData,
         tier: selectedTier
-      });
+      };
 
+      const result = await processPayment(paymentRequest);
       onPaymentComplete(result.transactionId);
       toast({
         title: 'Payment Successful',

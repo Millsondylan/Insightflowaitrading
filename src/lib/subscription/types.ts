@@ -28,6 +28,7 @@ export interface SubscriptionTier {
 }
 
 export interface PaymentRequest {
+  userId?: string;
   method: PaymentMethod;
   details: {
     cardNumber?: string;
@@ -37,6 +38,9 @@ export interface PaymentRequest {
     email: string;
   };
   tier: SubscriptionTier;
+  amount?: number;
+  currency?: string;
+  description?: string;
 }
 
 export interface Payment {

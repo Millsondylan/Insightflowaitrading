@@ -6,7 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/components/ui/use-toast';
 import { MarketSentimentAnalyzer } from './sentiment-analyzer';
 import { SentimentAnalysis } from './types';
-import { LineChart } from '@/components/charts/LineChart';
+import dynamic from 'next/dynamic';
+
+const LineChart = dynamic(() => import('@/components/charts/LineChart').then(mod => mod.LineChart), {
+  ssr: false
+});
 
 interface SentimentDisplayProps {
   symbol: string;
@@ -18,9 +22,9 @@ export const SentimentDisplay: React.FC<SentimentDisplayProps> = ({
   apiKey
 }) => {
   const { toast } = useToast();
-  const [analyzer] = useState(() => new MarketSentimentAnalyzer(apiKey));
+  const [analyzer] = useState<MarketSentimentAnalyzer>(() => new MarketSentimentAnalyzer(apiKey));
   const [analysis, setAnalysis] = useState<SentimentAnalysis | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [historicalData, setHistoricalData] = useState<SentimentAnalysis[]>([]);
 

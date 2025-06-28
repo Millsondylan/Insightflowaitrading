@@ -18,9 +18,9 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
   onReflectionGenerated
 }) => {
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [notes, setNotes] = useState('');
+  const [notes, setNotes] = useState<string>('');
   const [reflection, setReflection] = useState<TradeReflection | null>(null);
 
   const handleGenerateReflection = async () => {
@@ -101,23 +101,23 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
           <TabsContent value="summary" className="space-y-4">
             <Card className="p-4">
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Trade Summary</h3>
-              <p className="text-sm">{reflection.summary}</p>
+              <p className="text-sm">{reflection.analysis.summary}</p>
             </Card>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Card className="p-4">
                 <h3 className="text-sm font-medium text-muted-foreground">Execution Score</h3>
-                <p className="text-2xl font-bold mt-1">{reflection.metrics.executionScore}/10</p>
+                <p className="text-2xl font-bold mt-1">{reflection.analysis.metrics.executionScore}/10</p>
               </Card>
 
               <Card className="p-4">
                 <h3 className="text-sm font-medium text-muted-foreground">Risk Management</h3>
-                <p className="text-2xl font-bold mt-1">{reflection.metrics.riskManagementScore}/10</p>
+                <p className="text-2xl font-bold mt-1">{reflection.analysis.metrics.riskManagementScore}/10</p>
               </Card>
 
               <Card className="p-4">
                 <h3 className="text-sm font-medium text-muted-foreground">Strategy Adherence</h3>
-                <p className="text-2xl font-bold mt-1">{reflection.metrics.strategyAdherenceScore}/10</p>
+                <p className="text-2xl font-bold mt-1">{reflection.analysis.metrics.strategyAdherenceScore}/10</p>
               </Card>
             </div>
           </TabsContent>
@@ -128,15 +128,15 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium">Emotional State</h4>
-                  <p className="text-sm mt-1">{reflection.psychology.emotionalState}</p>
+                  <p className="text-sm mt-1">{reflection.analysis.psychology.emotionalState}</p>
                 </div>
                 <div>
                   <h4 className="text-sm font-medium">Behavioral Patterns</h4>
-                  <p className="text-sm mt-1">{reflection.psychology.behavioralPatterns}</p>
+                  <p className="text-sm mt-1">{reflection.analysis.psychology.behavioralPatterns}</p>
                 </div>
                 <div>
                   <h4 className="text-sm font-medium">Decision Making</h4>
-                  <p className="text-sm mt-1">{reflection.psychology.decisionMaking}</p>
+                  <p className="text-sm mt-1">{reflection.analysis.psychology.decisionMaking}</p>
                 </div>
               </div>
             </Card>
@@ -146,7 +146,7 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
             <Card className="p-4">
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Areas for Improvement</h3>
               <ul className="space-y-2">
-                {reflection.improvements.map((improvement, index) => (
+                {reflection.analysis.improvements.map((improvement, index) => (
                   <li key={index} className="flex items-start space-x-2">
                     <span className="text-primary">•</span>
                     <span className="text-sm">{improvement}</span>
@@ -158,7 +158,7 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
             <Card className="p-4">
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Action Items</h3>
               <ul className="space-y-2">
-                {reflection.actionItems.map((item, index) => (
+                {reflection.analysis.actionItems.map((item, index) => (
                   <li key={index} className="flex items-start space-x-2">
                     <span className="text-primary">•</span>
                     <span className="text-sm">{item}</span>
