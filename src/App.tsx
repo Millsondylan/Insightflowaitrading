@@ -1,8 +1,7 @@
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/ui/Navbar';
-import Footer from './components/ui/Footer';
-import { Toaster } from './components/ui/sonner';
+import AppLayout from './components/layout/AppLayout';
 import Index from './pages/Index';
 import Strategy from './pages/Strategy';
 import Vision from './pages/Vision';
@@ -16,20 +15,11 @@ import { ProtectedRoute } from './components/core/ProtectedRoute';
 
 const queryClient = new QueryClient();
 
-const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="flex flex-col min-h-screen">
-    <Navbar />
-    <main className="flex-grow">{children}</main>
-    <Toaster />
-    <Footer />
-  </div>
-);
-
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
-        <Layout>
+        <AppLayout>
           <Routes>
             <Route path="/" element={<Index />} />
 
@@ -54,7 +44,7 @@ export function App() {
             <Route path="/support" element={<div className="container mx-auto p-4"><h2>Support Page (Stub)</h2></div>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </Layout>
+        </AppLayout>
       </Router>
     </QueryClientProvider>
   );
