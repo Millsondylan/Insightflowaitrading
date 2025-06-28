@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { toast } from '@/components/ui/toast';
+import { useToast } from '@/components/ui/use-toast';
 import { generateReflection } from './generateReflection';
 import { Trade, TradeReflection } from './types';
 
@@ -17,6 +17,7 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
   trade,
   onReflectionGenerated
 }) => {
+  const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notes, setNotes] = useState('');
@@ -32,7 +33,7 @@ export const ReflectionGenerator: React.FC<ReflectionGeneratorProps> = ({
       toast({
         title: 'Reflection Generated',
         description: 'Your trade reflection has been generated successfully.',
-        variant: 'success'
+        variant: 'default'
       });
     } catch (err) {
       setError(err.message);

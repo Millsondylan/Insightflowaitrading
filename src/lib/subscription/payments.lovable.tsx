@@ -41,16 +41,16 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
 
     try {
       const result = await processPayment({
-        tier: selectedTier,
         method: paymentMethod,
-        details: formData
+        details: formData,
+        tier: selectedTier
       });
 
       onPaymentComplete(result.transactionId);
       toast({
         title: 'Payment Successful',
         description: `Your subscription to ${selectedTier.name} has been activated.`,
-        variant: 'success'
+        variant: 'default'
       });
     } catch (err) {
       setError(err.message);

@@ -14,28 +14,39 @@ export interface SubscriptionPlan {
   };
 }
 
-export interface PaymentMethod {
+export type PaymentMethod = 'card' | 'crypto' | 'paypal';
+
+export interface SubscriptionTier {
   id: string;
-  type: 'card' | 'crypto' | 'paypal';
+  name: string;
+  price: number;
+  cryptoPrice?: number;
+  cryptoCurrency?: string;
+  cryptoAddress?: string;
+  features: string[];
+  interval: 'monthly' | 'yearly';
+}
+
+export interface PaymentRequest {
+  method: PaymentMethod;
   details: {
-    last4?: string;
-    brand?: string;
-    walletAddress?: string;
-    email?: string;
+    cardNumber?: string;
+    expiryDate?: string;
+    cvv?: string;
+    name?: string;
+    email: string;
   };
-  isDefault: boolean;
+  tier: SubscriptionTier;
 }
 
 export interface Payment {
   id: string;
-  userId: string;
+  transactionId: string;
+  status: 'pending' | 'completed' | 'failed';
   amount: number;
   currency: string;
-  status: 'pending' | 'completed' | 'failed' | 'refunded';
-  paymentMethod: PaymentMethod;
-  description: string;
-  timestamp: number;
-  metadata?: Record<string, any>;
+  createdAt: string;
+  method: PaymentMethod;
 }
 
 export type SubscriptionStatus = 

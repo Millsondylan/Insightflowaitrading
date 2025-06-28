@@ -1,14 +1,15 @@
-import { Strategy, OptimizationResult, OptimizationParams } from './types';
-import { toast } from '@/components/ui/toast';
-import { Progress } from '@/components/ui/progress';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import React, { useState, useEffect } from 'react';
+import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/components/ui/use-toast';
+import { Strategy, OptimizationResult, OptimizationParams } from './types';
 
 export const MLStrategyOptimizerUI: React.FC<{
   strategy: Strategy;
   onOptimizationComplete: (result: OptimizationResult) => void;
 }> = ({ strategy, onOptimizationComplete }) => {
+  const { toast } = useToast();
   const [optimizer] = useState(() => new MLStrategyOptimizer(strategy));
   const [optimizing, setOptimizing] = useState(false);
   const [progress, setProgress] = useState(0);

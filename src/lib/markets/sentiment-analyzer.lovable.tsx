@@ -3,9 +3,10 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useToast } from '@/components/ui/use-toast';
 import { MarketSentimentAnalyzer } from './sentiment-analyzer';
 import { SentimentAnalysis } from './types';
-import { LineChart } from '@/components/ui/charts';
+import { LineChart } from '@/components/charts/LineChart';
 
 interface SentimentDisplayProps {
   symbol: string;
@@ -16,6 +17,7 @@ export const SentimentDisplay: React.FC<SentimentDisplayProps> = ({
   symbol,
   apiKey
 }) => {
+  const { toast } = useToast();
   const [analyzer] = useState(() => new MarketSentimentAnalyzer(apiKey));
   const [analysis, setAnalysis] = useState<SentimentAnalysis | null>(null);
   const [loading, setLoading] = useState(false);

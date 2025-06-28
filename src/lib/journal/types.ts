@@ -2,17 +2,46 @@ export interface Trade {
   id: string;
   symbol: string;
   type: 'buy' | 'sell';
-  entry: {
-    price: number;
-    timestamp: number;
+  entryPrice: number;
+  exitPrice: number;
+  quantity: number;
+  entryTime: string;
+  exitTime: string;
+  stopLoss?: number;
+  takeProfit?: number;
+  strategy?: string;
+  tags?: string[];
+}
+
+export interface TradeMetrics {
+  executionScore: number;
+  riskManagementScore: number;
+  strategyAdherenceScore: number;
+  profitLoss: number;
+  riskRewardRatio: number;
+}
+
+export interface TradePsychology {
+  emotionalState: string;
+  behavioralPatterns: string;
+  decisionMaking: string;
+  biases: string[];
+  stressLevel: number;
+}
+
+export interface TradeReflection {
+  id: string;
+  tradeId: string;
+  journalEntryId: string;
+  analysis: {
+    summary: string;
+    metrics: TradeMetrics;
+    psychology: TradePsychology;
+    improvements: string[];
+    actionItems: string[];
   };
-  exit?: {
-    price: number;
-    timestamp: number;
-  };
-  size: number;
-  pnl?: number;
-  status: 'open' | 'closed';
+  timestamp: string;
+  version: number;
 }
 
 export interface JournalEntry {
@@ -45,16 +74,4 @@ export interface PsychologicalAnalysis {
   behavioralPatterns: BehavioralPattern[];
   cognitiveBiases: string[];
   recommendations: string[];
-}
-
-export interface TradeReflection {
-  tradeId: string;
-  journalEntryId: string;
-  analysis: {
-    emotionalState: EmotionalState;
-    decisionQuality: number;
-    lessonsLearned: string[];
-    improvementAreas: string[];
-  };
-  timestamp: number;
 } 

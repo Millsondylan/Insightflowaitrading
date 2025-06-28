@@ -22,14 +22,24 @@ export interface TechnicalIndicator {
   signal: number;  // -1 to 1 indicating bearish to bullish
 }
 
+export interface SentimentComponents {
+  news: number;
+  socialMedia: number;
+  technical: number;
+}
+
 export interface SentimentAnalysis {
-  overall: number;  // -1 to 1 indicating negative to positive sentiment
-  components: {
+  symbol: string;
+  overall: number;
+  components: SentimentComponents;
+  timestamp: string;
+  confidence: number;
+  sources: {
     news: number;
-    socialMedia: number;
-    technical: number;
+    twitter: number;
+    reddit: number;
+    technicalIndicators: number;
   };
-  timestamp: number;
 }
 
 export interface MarketData {

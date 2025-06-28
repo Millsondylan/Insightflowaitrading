@@ -1,9 +1,17 @@
 export interface Strategy {
   id: string;
   name: string;
-  parameters: Record<string, number>;
-  rules: StrategyRule[];
-  version: string;
+  parameters: {
+    entryThreshold: number;
+    exitThreshold: number;
+    stopLoss: number;
+    takeProfit: number;
+    positionSize: number;
+    [key: string]: number;
+  };
+  rules: string[];
+  timeframe: string;
+  symbols: string[];
 }
 
 export interface StrategyRule {
@@ -19,20 +27,34 @@ export interface OptimizationParams {
   convergenceThreshold: number;
   maxIterations: number;
   initialPoints: number;
-  parameterBounds: Record<string, [number, number]>;
+  parameterBounds: {
+    entryThreshold: [number, number];
+    exitThreshold: [number, number];
+    stopLoss: [number, number];
+    takeProfit: [number, number];
+    positionSize: [number, number];
+    [key: string]: [number, number];
+  };
 }
 
 export interface OptimizationResult {
   optimizedStrategy: Strategy;
   metrics: PerformanceMetrics;
+  convergenceHistory: number[];
+  generationStats?: {
+    bestFitness: number[];
+    avgFitness: number[];
+    worstFitness: number[];
+  };
 }
 
 export interface PerformanceMetrics {
+  profitFactor: number;
   sharpeRatio: number;
   maxDrawdown: number;
   winRate: number;
-  profitFactor: number;
-  recoveryFactor: number;
+  expectancy: number;
+  trades: number;
 }
 
 export interface Trade {
