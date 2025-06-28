@@ -11,6 +11,13 @@ import Wallet from './pages/Wallet';
 import Backtest from './pages/Backtest';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
+
+// New themed builder pages
+import LandingBuilder from './pages/LandingBuilder';
+import StrategyBuilder from './pages/StrategyBuilder';
+import JournalBuilder from './pages/JournalBuilder';
+import AcademyBuilder from './pages/AcademyBuilder';
+
 import { ProtectedRoute } from './components/core/ProtectedRoute';
 
 const queryClient = new QueryClient();
@@ -22,6 +29,12 @@ export function App() {
         <AppLayout>
           <Routes>
             <Route path="/" element={<Index />} />
+
+            {/* New Themed Builder Routes */}
+            <Route path="/landing" element={<LandingBuilder />} />
+            <Route path="/strategy-builder" element={<StrategyBuilder />} />
+            <Route path="/journal-builder" element={<JournalBuilder />} />
+            <Route path="/academy-builder" element={<AcademyBuilder />} />
 
             {/* Protected Routes */}
             <Route element={<ProtectedRoute accessLevel="admin" />}>
