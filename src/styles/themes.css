@@ -1,4 +1,3 @@
-
 /* Global Theme Styles for Insight Flow */
 
 /* Base animations and utilities */
@@ -24,98 +23,112 @@
   animation: slide-up 0.6s ease-out;
 }
 
-/* Glass morphism components */
+/* Glass morphism components, now using theme variables */
 .glass-section {
-  @apply rounded-xl border border-white/10 backdrop-blur-md bg-black/30 shadow-lg p-6 space-y-4 transition-all duration-300;
+  @apply rounded-xl border p-6 space-y-4 transition-all duration-300;
+  background-color: var(--background-glass);
+  border-color: var(--border-interactive);
+  box-shadow: var(--shadow-lg);
 }
 
 .glass-card {
-  @apply rounded-lg border border-white/5 backdrop-blur-sm bg-white/5 p-4 transition-all duration-300;
+  @apply rounded-lg border p-4 transition-all duration-300;
+  background-color: var(--background-interactive);
+  border-color: var(--border-interactive);
 }
 
 .motion-shadow {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* Kept for specific visual effect */
 }
 
 .hover-glow:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Kept for specific visual effect */
 }
 
-/* Text glow effects */
+/* Text glow effects, now using theme variables */
 .text-glow-cyan {
-  @apply text-cyan-400;
-  text-shadow: 0 0 20px rgb(34 211 238 / 50%);
+  color: var(--brand-accent);
+  text-shadow: 0 0 20px var(--brand-accent);
 }
 
 .text-glow-violet {
-  @apply text-violet-400;
-  text-shadow: 0 0 20px rgb(167 139 250 / 50%);
+  color: var(--brand-secondary);
+  text-shadow: 0 0 20px var(--brand-secondary);
 }
 
 .text-glow-emerald {
-  @apply text-emerald-400;
-  text-shadow: 0 0 20px rgb(52 211 153 / 50%);
+  color: var(--status-success);
+  text-shadow: 0 0 20px var(--status-success);
 }
 
 .text-glow-blue {
-  @apply text-blue-400;
-  text-shadow: 0 0 20px rgb(96 165 250 / 50%);
+  color: var(--brand-primary);
+  text-shadow: 0 0 20px var(--brand-primary);
 }
 
 .text-glow-magenta {
-  @apply text-pink-400;
-  text-shadow: 0 0 20px rgb(244 114 182 / 50%);
+  color: #ec4899; /* Direct value for neon theme */
+  text-shadow: 0 0 20px #ec4899;
 }
 
 .text-glow-gold {
-  @apply text-amber-400;
-  text-shadow: 0 0 20px rgb(251 191 36 / 50%);
+  color: var(--status-warning);
+  text-shadow: 0 0 20px var(--status-warning);
 }
 
 .text-glow-orange {
-  @apply text-orange-400;
-  text-shadow: 0 0 20px rgb(251 146 60 / 50%);
+  color: #fb923c; /* orange-400 */
+  text-shadow: 0 0 20px #fb923c;
 }
 
 .text-glow-rainbow {
   @apply text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 bg-clip-text;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5); /* Keep for specific visual effect */
 }
 
 .text-glow-indigo {
-  @apply text-indigo-400;
-  text-shadow: 0 0 20px rgb(129 140 248 / 50%);
+  color: #818cf8; /* indigo-400 */
+  text-shadow: 0 0 20px #818cf8;
 }
 
 .text-glow-slate {
-  @apply text-slate-400;
-  text-shadow: 0 0 20px rgb(148 163 184 / 50%);
+  color: var(--text-muted);
+  text-shadow: 0 0 20px var(--text-muted);
 }
 
-/* Glow buttons */
+/* Glow buttons, now using theme variables */
 .glow-button {
   @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 border;
+  border-color: var(--border-interactive);
 }
 
 .glow-cyan {
-  @apply bg-cyan-500/20 border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30;
-  box-shadow: 0 0 20px rgb(34 211 238 / 30%);
+  background-color: hsla(var(--brand-accent-hsl), 0.2);
+  border-color: hsla(var(--brand-accent-hsl), 0.5);
+  color: var(--brand-accent);
+  box-shadow: 0 0 20px hsla(var(--brand-accent-hsl), 0.3);
 }
 
 .glow-violet {
-  @apply bg-violet-500/20 border-violet-400/50 text-violet-300 hover:bg-violet-500/30;
-  box-shadow: 0 0 20px rgb(167 139 250 / 30%);
+  background-color: hsla(var(--brand-secondary-hsl), 0.2);
+  border-color: hsla(var(--brand-secondary-hsl), 0.5);
+  color: var(--brand-secondary);
+  box-shadow: 0 0 20px hsla(var(--brand-secondary-hsl), 0.3);
 }
 
 .glow-emerald {
-  @apply bg-emerald-500/20 border-emerald-400/50 text-emerald-300 hover:bg-emerald-500/30;
-  box-shadow: 0 0 20px rgb(52 211 153 / 30%);
+  background-color: hsla(var(--status-success-hsl), 0.2);
+  border-color: hsla(var(--status-success-hsl), 0.5);
+  color: var(--status-success);
+  box-shadow: 0 0 20px hsla(var(--status-success-hsl), 0.3);
 }
 
 .glow-blue {
-  @apply bg-blue-500/20 border-blue-400/50 text-blue-300 hover:bg-blue-500/30;
-  box-shadow: 0 0 20px rgb(96 165 250 / 30%);
+  background-color: hsla(var(--brand-primary-hsl), 0.2);
+  border-color: hsla(var(--brand-primary-hsl), 0.5);
+  color: var(--brand-primary);
+  box-shadow: 0 0 20px hsla(var(--brand-primary-hsl), 0.3);
 }
 
 .glow-magenta {
@@ -148,121 +161,6 @@
   box-shadow: 0 0 20px rgb(20 184 166 / 30%);
 }
 
-/* Theme-specific page backgrounds */
-.theme-landing {
-  background: radial-gradient(ellipse at top, rgb(59 130 246 / 15%) 0%, transparent 70%),
-              radial-gradient(ellipse at bottom, rgb(139 92 246 / 15%) 0%, transparent 70%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
-  min-height: 100vh;
-}
-
-.theme-strategy {
-  background: radial-gradient(ellipse at top left, rgb(34 211 238 / 15%) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom right, rgb(59 130 246 / 15%) 0%, transparent 50%),
-              linear-gradient(135deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
-  min-height: 100vh;
-}
-
-.theme-backtest {
-  background: radial-gradient(ellipse at center, rgb(52 211 153 / 15%) 0%, transparent 70%),
-              linear-gradient(45deg, rgb(0 0 0) 0%, rgb(6 20 20) 100%);
-  min-height: 100vh;
-}
-
-.theme-journal {
-  background: radial-gradient(ellipse at top, rgb(244 114 182 / 15%) 0%, transparent 60%),
-              radial-gradient(ellipse at bottom, rgb(139 92 246 / 15%) 0%, transparent 60%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(24 5 24) 100%);
-  min-height: 100vh;
-}
-
-.theme-academy {
-  background: radial-gradient(ellipse at top right, rgb(96 165 250 / 15%) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom left, rgb(34 197 94 / 15%) 0%, transparent 50%),
-              linear-gradient(225deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
-  min-height: 100vh;
-}
-
-.theme-wallet {
-  background: radial-gradient(ellipse at center, rgb(251 191 36 / 15%) 0%, transparent 70%),
-              linear-gradient(90deg, rgb(0 0 0) 0%, rgb(20 16 8) 100%);
-  min-height: 100vh;
-}
-
-.theme-admin {
-  background: radial-gradient(ellipse at top, rgb(239 68 68 / 15%) 0%, transparent 60%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(20 8 8) 100%);
-  min-height: 100vh;
-}
-
-.theme-markets {
-  background: radial-gradient(ellipse at top left, rgb(20 184 166 / 15%) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom right, rgb(52 211 153 / 15%) 0%, transparent 50%),
-              linear-gradient(135deg, rgb(0 0 0) 0%, rgb(6 20 20) 100%);
-  min-height: 100vh;
-}
-
-.theme-portfolio {
-  background: radial-gradient(ellipse at center, rgb(129 140 248 / 15%) 0%, transparent 70%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 15 23) 100%);
-  min-height: 100vh;
-}
-
-.theme-community {
-  background: radial-gradient(ellipse at top, rgb(244 114 182 / 15%) 0%, transparent 60%),
-              radial-gradient(ellipse at bottom, rgb(217 70 239 / 15%) 0%, transparent 60%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(24 5 20) 100%);
-  min-height: 100vh;
-}
-
-.theme-digest {
-  background: radial-gradient(ellipse at center, rgb(251 191 36 / 15%) 0%, transparent 70%),
-              radial-gradient(ellipse at top right, rgb(251 146 60 / 10%) 0%, transparent 50%),
-              linear-gradient(45deg, rgb(0 0 0) 0%, rgb(20 16 8) 100%);
-  min-height: 100vh;
-}
-
-.theme-chat {
-  background: radial-gradient(ellipse at top, rgb(244 114 182 / 15%) 0%, transparent 60%),
-              radial-gradient(ellipse at center, rgb(139 92 246 / 10%) 0%, transparent 70%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(24 5 24) 100%);
-  min-height: 100vh;
-}
-
-.theme-vault {
-  background: radial-gradient(ellipse at center, rgb(251 191 36 / 15%) 0%, transparent 70%),
-              radial-gradient(ellipse at bottom, rgb(217 119 6 / 10%) 0%, transparent 50%),
-              linear-gradient(135deg, rgb(0 0 0) 0%, rgb(20 16 8) 100%);
-  min-height: 100vh;
-}
-
-.theme-demo {
-  background: radial-gradient(ellipse at top left, rgb(34 211 238 / 15%) 0%, transparent 30%),
-              radial-gradient(ellipse at top right, rgb(244 114 182 / 15%) 0%, transparent 30%),
-              radial-gradient(ellipse at bottom, rgb(139 92 246 / 15%) 0%, transparent 30%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
-  min-height: 100vh;
-}
-
-.theme-notify {
-  background: radial-gradient(ellipse at center, rgb(251 146 60 / 15%) 0%, transparent 70%),
-              linear-gradient(90deg, rgb(0 0 0) 0%, rgb(20 12 8) 100%);
-  min-height: 100vh;
-}
-
-.theme-help {
-  background: radial-gradient(ellipse at top, rgb(129 140 248 / 15%) 0%, transparent 60%),
-              radial-gradient(ellipse at bottom, rgb(167 139 250 / 15%) 0%, transparent 60%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 15 23) 100%);
-  min-height: 100vh;
-}
-
-.theme-docs {
-  background: radial-gradient(ellipse at center, rgb(148 163 184 / 15%) 0%, transparent 70%),
-              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
-  min-height: 100vh;
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .glass-section {
@@ -282,3 +180,6 @@
     text-shadow: 0 0 10px currentColor;
   }
 }
+
+/* Redundant theme background definitions are now removed. */
+/* The body's background is now controlled by variables in theme-variables.css */

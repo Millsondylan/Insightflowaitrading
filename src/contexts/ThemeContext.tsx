@@ -10,6 +10,7 @@ export const themes = {
   markets: 'theme-markets',
   wallet: 'theme-wallet',
   admin: 'theme-admin',
+  insightflow: 'theme-insightflow',
 } as const;
 
 type ThemeContextType = {
@@ -32,7 +33,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState<keyof typeof themes>('landing');
+  const [currentTheme, setCurrentTheme] = useState<keyof typeof themes>('insightflow');
 
   const setTheme = (theme: keyof typeof themes) => {
     setCurrentTheme(theme);

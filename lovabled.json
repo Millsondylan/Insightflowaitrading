@@ -1,0 +1,241 @@
+{
+  "tables": {
+    "strategyIntelligence": [
+      "strategies",
+      "strategyVersions",
+      "strategyRules",
+      "strategyTags",
+      "strategyPerformance",
+      "strategyPublishing"
+    ],
+    "marketSetup": [
+      "marketData",
+      "tickers",
+      "insights",
+      "broadcasts",
+      "tradePlans",
+      "marketSignals"
+    ],
+    "tradeReflection": [
+      "portfolios",
+      "trades",
+      "tradeTimeline",
+      "tradeReplays",
+      "coachingFeedback",
+      "tradeReflections"
+    ],
+    "mindsetJournaling": [
+      "journalEntries",
+      "memoryStore",
+      "mindsetData",
+      "emotionTags",
+      "journalPrompts"
+    ],
+    "communityMultiplayer": [
+      "communityPosts",
+      "communityReplies",
+      "userPresence",
+      "collaborationSessions",
+      "events",
+      "eventParticipants",
+      "eventMessages"
+    ],
+    "proUnlock": [
+      "subscriptions",
+      "accessLevels",
+      "payments",
+      "referrals",
+      "subscriptionPlans"
+    ],
+    "learningEngine": [
+      "lessons",
+      "lessonProgress",
+      "memoryRecords",
+      "quizResults"
+    ],
+    "copilotAI": [
+      "copilotSessions",
+      "copilotFeedback"
+    ],
+    "techCompatibility": [
+      "systemSettings",
+      "syncStatus"
+    ],
+    "extraFeatures": [
+      "annotations",
+      "versionDiffs",
+      "publicStrategies"
+    ]
+  },
+  
+  "aiBlocks": {
+    "strategyIntelligence": [
+      "strategyBuilder",
+      "strategyAnalysis",
+      "strategyOptimizer"
+    ],
+    "marketSetup": [
+      "insightGenerator",
+      "broadcastNarrator",
+      "tickerScanner",
+      "plannerAssistant",
+      "marketAnalysis"
+    ],
+    "tradeReflection": [
+      "tradeReviewer",
+      "performanceAnalyzer",
+      "aiCoach",
+      "tradeAnalysis",
+      "reflectionGenerator"
+    ],
+    "mindsetJournaling": [
+      "journalCompanion",
+      "memoryAnalyzer",
+      "mindsetAdvisor",
+      "journalAnalysis",
+      "patternRecognition"
+    ],
+    "communityMultiplayer": [
+      "communityGPT",
+      "collaborationAssistant",
+      "eventAnalysis",
+      "chatModeration"
+    ],
+    "proUnlock": [
+      "subscriptionAdvisor",
+      "paymentProcessor",
+      "subscriptionManager"
+    ],
+    "learningEngine": [
+      "lessonNarrator",
+      "conceptExplainer",
+      "adaptiveLearning"
+    ],
+    "copilotAI": [
+      "tradingCopilot",
+      "strategyDesigner"
+    ],
+    "techCompatibility": [
+      "codeConverter",
+      "dataTransformer"
+    ],
+    "extraFeatures": [
+      "emotionAnalyzer",
+      "annotationSuggester",
+      "diffExplainer"
+    ]
+  },
+  
+  "functions": {
+    "strategyIntelligence": [
+      "generateStrategy",
+      "optimizeStrategy",
+      "saveStrategy",
+      "getStrategies",
+      "getStrategyVersions",
+      "publishStrategy",
+      "generateHeatmap",
+      "filterStrategies"
+    ],
+    "marketSetup": [
+      "fetchMarketData",
+      "scanTickers",
+      "generateInsights",
+      "createBroadcast",
+      "generateTradePlan",
+      "scanMarkets",
+      "getMarketSignals"
+    ],
+    "tradeReflection": [
+      "analyzeTrade",
+      "generatePnLCurve",
+      "replayTrade",
+      "getCoachingFeedback",
+      "calculateStats",
+      "saveReflection",
+      "generateTradeInsights"
+    ],
+    "mindsetJournaling": [
+      "createJournalEntry",
+      "analyzeJournal",
+      "storeMemory",
+      "retrieveMemory",
+      "analyzeJournalEntry",
+      "saveJournalEntry",
+      "getJournalInsights"
+    ],
+    "communityMultiplayer": [
+      "createPost",
+      "generateReply",
+      "trackUserPresence",
+      "syncCollaboration",
+      "joinEvent",
+      "leaveEvent",
+      "sendMessage",
+      "getEventDetails"
+    ],
+    "proUnlock": [
+      "checkAccess",
+      "processPayment",
+      "applyReferral",
+      "subscribe",
+      "cancelSubscription",
+      "updateSubscription",
+      "getSubscriptionDetails"
+    ],
+    "learningEngine": [
+      "trackLessonProgress",
+      "generateNarration",
+      "updateMemoryStrength",
+      "calculateNextReview"
+    ],
+    "copilotAI": [
+      "generateCopilotSuggestion",
+      "processCopilotFeedback"
+    ],
+    "techCompatibility": [
+      "convertToLovable",
+      "syncWithGitHub"
+    ],
+    "extraFeatures": [
+      "tagEmotion",
+      "createAnnotation",
+      "compareVersions"
+    ]
+  },
+  
+  "components": {
+    "strategyIntelligence": [
+      "VaultHeatmap",
+      "VaultGrid",
+      "AIStrategyBuilderV2"
+    ],
+    "marketSetup": [
+      "MarketScanner"
+    ],
+    "tradeReflection": [
+      "TradeAnalyzer"
+    ],
+    "mindsetJournaling": [
+      "JournalCompanion"
+    ],
+    "communityMultiplayer": [
+      "LiveEventRoom"
+    ],
+    "proUnlock": [
+      "SubscriptionManager"
+    ],
+    "learningEngine": [
+      "NarratorInjection"
+    ],
+    "copilotAI": [
+      "BuilderCopilot"
+    ],
+    "techCompatibility": [
+      "SystemStatus"
+    ],
+    "extraFeatures": [
+      "FeatureShowcase"
+    ]
+  }
+} 

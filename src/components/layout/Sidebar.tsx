@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Brain, BookOpen, Book, Wallet, Shield, Menu, X } from 'lucide-react';
@@ -24,14 +23,14 @@ export default function Sidebar() {
     return false;
   };
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname.startsWith(path);
 
   return (
     <>
       {/* Mobile backdrop */}
       {isExpanded && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          className="fixed inset-0 bg-background-overlay backdrop-blur-sm z-40 md:hidden"
           onClick={() => setIsExpanded(false)}
         />
       )}
@@ -41,21 +40,21 @@ export default function Sidebar() {
         fixed left-0 top-0 h-full z-50 transition-all duration-300
         ${isExpanded ? 'w-64' : 'w-16'}
         md:w-64 md:relative
-        bg-black/20 backdrop-blur-md border-r border-white/10
+        bg-background-glass border-r border-border-primary
       `}>
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10">
+        <div className="flex items-center justify-between p-4 border-b border-border-primary">
           <Link 
             to="/" 
-            className={`text-xl font-bold text-cyan-400 transition-opacity ${
+            className={`text-xl font-bold text-text-accent transition-opacity ${
               isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'
             }`}
           >
-            Insight Flow
+            InsightFlow
           </Link>
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2 rounded-lg hover:bg-white/10 transition-colors md:hidden"
+            className="p-2 rounded-lg hover:bg-background-interactive text-text-secondary hover:text-text-primary transition-colors md:hidden"
           >
             {isExpanded ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -65,9 +64,10 @@ export default function Sidebar() {
         <nav className="flex-1 p-4">
           <ul className="space-y-2">
             {navItems.map((item) => {
+              if (!hasAccess(item.accessLevel)) return null;
+
               const Icon = item.icon;
               const active = isActive(item.path);
-              const canAccess = hasAccess(item.accessLevel);
               
               return (
                 <li key={item.path}>
@@ -76,14 +76,11 @@ export default function Sidebar() {
                     className={`
                       group flex items-center gap-3 px-3 py-2 rounded-lg transition-all
                       ${active 
-                        ? 'bg-cyan-500/20 text-cyan-400 shadow-lg shadow-cyan-500/20' 
-                        : canAccess
-                        ? 'text-gray-300 hover:bg-white/10 hover:text-white'
-                        : 'text-gray-500 cursor-not-allowed opacity-50'
+                        ? 'bg-brand-accent/20 text-text-accent shadow-lg shadow-brand-accent/20' 
+                        : 'text-text-secondary hover:bg-background-interactive hover:text-text-primary'
                       }
                     `}
-                    onClick={(e) => {
-                      if (!canAccess) e.preventDefault();
+                    onClick={() => {
                       if (window.innerWidth < 768) setIsExpanded(false);
                     }}
                   >
@@ -97,7 +94,7 @@ export default function Sidebar() {
                     
                     {/* Tooltip for collapsed state */}
                     <div className={`
-                      absolute left-16 px-2 py-1 bg-black/80 text-white text-sm rounded
+                      absolute left-16 px-2 py-1 bg-background-secondary text-text-primary text-sm rounded
                       opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none
                       ${isExpanded ? 'md:hidden' : 'hidden md:block'}
                     `}>
@@ -111,12 +108,12 @@ export default function Sidebar() {
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-white/10">
+        <div className="p-4 border-t border-border-primary">
           <div className={`
-            text-xs text-gray-400 transition-opacity
+            text-xs text-text-muted transition-opacity
             ${isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'}
           `}>
-            © 2024 Insight Flow
+            © 2024 InsightFlow
           </div>
         </div>
       </div>
@@ -125,7 +122,7 @@ export default function Sidebar() {
       {!isExpanded && (
         <button
           onClick={() => setIsExpanded(true)}
-          className="fixed top-4 left-4 z-30 p-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 text-white md:hidden"
+          className="fixed top-4 left-4 z-30 p-2 bg-background-glass backdrop-blur-md rounded-lg border border-border-interactive text-text-primary md:hidden"
         >
           <Menu size={20} />
         </button>

@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import Sidebar from './Sidebar';
 import { Toaster } from '@/components/ui/sonner';
@@ -9,7 +8,7 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+    <div className="bg-background-primary text-text-primary">
       <div className="flex min-h-screen">
         <Sidebar />
         

@@ -1,9 +1,9 @@
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Index from './pages/Index';
+import LandingPage from './pages/LandingPage';
 import Strategy from './pages/Strategy';
 import StrategyCopilot from './pages/StrategyCopilot';
 import StrategyExport from './pages/StrategyExport';
@@ -48,7 +48,7 @@ export function App() {
         <Router>
         <AppLayout>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<LandingPage />} />
 
             {/* Strategy Routes */}
             <Route path="/strategy/copilot" element={<StrategyCopilot />} />

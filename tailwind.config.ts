@@ -52,21 +52,29 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				'brand-primary': 'var(--brand-primary)',
+				'brand-secondary': 'var(--brand-secondary)',
+				'brand-accent': 'var(--brand-accent)',
+				'background-primary': 'var(--background-primary)',
+				'background-secondary': 'var(--background-secondary)',
+				'background-tertiary': 'var(--background-tertiary)',
+				'background-interactive': 'var(--background-interactive)',
+				'background-interactive-hover': 'var(--background-interactive-hover)',
+				'text-primary': 'var(--text-primary)',
+				'text-secondary': 'var(--text-secondary)',
+				'text-muted': 'var(--text-muted)',
+				'text-accent': 'var(--text-accent)',
+				'border-primary': 'var(--border-primary)',
+				'border-secondary': 'var(--border-secondary)',
+				'status-success': 'var(--status-success)',
+				'status-warning': 'var(--status-warning)',
+				'status-error': 'var(--status-error)',
+				'status-info': 'var(--status-info)',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: 'var(--radius-lg)',
+				md: 'var(--radius-md)',
+				sm: 'var(--radius-sm)'
 			},
 			keyframes: {
 				'accordion-down': {

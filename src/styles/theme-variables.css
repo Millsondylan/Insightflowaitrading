@@ -1,0 +1,233 @@
+/*
+  STYLE GUIDE: THEME VARIABLES
+  This file centralizes all design tokens for the application's themes using CSS variables.
+  Each theme is defined by a class (e.g., .theme-landing) which sets the values for a global set of variables.
+
+  - The :root selector defines the default theme (dark mode).
+  - Components should use the variable names (e.g., var(--background)) instead of hardcoded colors.
+  - To add a new theme, create a new class and define all the variables within it.
+*/
+
+:root,
+.theme-insightflow,
+.theme-dark { /* Default Dark Theme: InsightFlow AI */
+  /* Brand Colors from Landing Page */
+  --brand-primary: #3b82f6; /* blue-500 */
+  --brand-primary-hsl: 222 89% 60%;
+  --brand-secondary: #a855f7; /* purple-500 */
+  --brand-secondary-hsl: 262 89% 60%;
+  --brand-accent: #06b6d4; /* cyan-500 */
+  --brand-accent-hsl: 188 95% 42%;
+  --brand-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+
+  /* Background Colors */
+  --background-primary: #030712; /* gray-950 */
+  --background-secondary: #111827; /* gray-900 */
+  --background-tertiary: #1f2937; /* gray-800 */
+  --background-interactive: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+  --background-interactive-hover: rgba(51, 65, 85, 0.7); /* slate-700/70 */
+  --background-glass: rgba(3, 7, 18, 0.6);
+  --background-overlay: rgba(0, 0, 0, 0.7);
+
+  /* Text Colors */
+  --text-primary: #f9fafb; /* gray-50 */
+  --text-secondary: #d1d5db; /* gray-300 */
+  --text-muted: #9ca3af; /* gray-400 */
+  --text-accent: var(--brand-accent);
+  --text-on-brand: #ffffff;
+  
+  /* Border & Separator Colors */
+  --border-primary: #374151; /* gray-700 */
+  --border-secondary: #4b5563; /* gray-600 */
+  --border-interactive: rgba(59, 130, 246, 0.3); /* blue-500/30 */
+
+  /* Status Colors */
+  --status-success: #22c55e; /* green-500 */
+  --status-success-hsl: 145 63% 49%;
+  --status-warning: #f59e0b; /* amber-500 */
+  --status-warning-hsl: 38 92% 50%;
+  --status-error: #ef4444; /* red-500 */
+  --status-error-hsl: 0 84% 60%;
+  --status-info: #3b82f6; /* blue-500 */
+  --status-info-hsl: 222 89% 60%;
+  
+  /* Chart Colors */
+  --chart-up: var(--status-success);
+  --chart-down: var(--status-error);
+  --chart-line: var(--brand-primary);
+
+  /* Spacing & Radii */
+  --spacing-unit: 4px;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+  
+  /* Box Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-glow-primary: 0 0 20px 0 var(--brand-primary);
+  --shadow-glow-accent: 0 0 20px 0 var(--brand-accent);
+}
+
+.theme-light {
+  /* Brand Colors */
+  --brand-primary: #2563eb; /* blue-600 */
+  --brand-primary-hsl: 222 83% 58%;
+  --brand-secondary: #7c3aed; /* violet-600 */
+  --brand-secondary-hsl: 262 83% 58%;
+  --brand-accent: #0891b2; /* cyan-600 */
+  --brand-accent-hsl: 190 91% 39%;
+  --brand-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+
+  /* Background Colors */
+  --background-primary: #ffffff; /* white */
+  --background-secondary: #f1f5f9; /* slate-100 */
+  --background-tertiary: #e2e8f0; /* slate-200 */
+  --background-interactive: rgba(0, 0, 0, 0.05);
+  --background-interactive-hover: rgba(0, 0, 0, 0.1);
+  --background-glass: rgba(255, 255, 255, 0.6);
+  --background-overlay: rgba(0, 0, 0, 0.4);
+  
+  /* Text Colors */
+  --text-primary: #0f172a; /* slate-900 */
+  --text-secondary: #475569; /* slate-600 */
+  --text-muted: #64748b; /* slate-500 */
+  --text-accent: var(--brand-accent);
+  --text-on-brand: #ffffff;
+
+  /* Border & Separator Colors */
+  --border-primary: #e2e8f0; /* slate-200 */
+  --border-secondary: #cbd5e1; /* slate-300 */
+  --border-interactive: rgba(0, 0, 0, 0.2);
+
+  /* Status Colors */
+  --status-success: #16a34a; /* green-600 */
+  --status-success-hsl: 145 74% 36%;
+  --status-warning: #d97706; /* amber-600 */
+  --status-warning-hsl: 34 95% 44%;
+  --status-error: #dc2626; /* red-600 */
+  --status-error-hsl: 0 72% 51%;
+  --status-info: #2563eb; /* blue-600 */
+  --status-info-hsl: 222 83% 58%;
+  
+  /* Chart Colors */
+  --chart-up: var(--status-success);
+  --chart-down: var(--status-error);
+  --chart-line: var(--brand-primary);
+}
+
+.theme-neonwave,
+.theme-community {
+  --brand-primary: #ec4899; /* pink-500 */
+  --brand-primary-hsl: 330 81% 60%;
+  --brand-secondary: #d946ef; /* fuchsia-500 */
+  --brand-secondary-hsl: 291 85% 60%;
+  --brand-accent: #06b6d4; /* cyan-500 */
+  --brand-accent-hsl: 188 95% 42%;
+  --brand-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+
+  --background-primary: #111827; /* gray-900 */
+  --background-secondary: #1f2937; /* gray-800 */
+  --background-tertiary: #374151; /* gray-700 */
+
+  --text-primary: #f9fafb; /* gray-50 */
+  --text-secondary: #d1d5db; /* gray-300 */
+  --text-muted: #9ca3af; /* gray-400 */
+  
+  --status-success: #10b981; /* emerald-500 */
+  --status-success-hsl: 160 84% 39%;
+  --shadow-glow-primary: 0 0 25px 0 var(--brand-primary);
+}
+
+.theme-academy {
+  --brand-primary: #16a34a; /* green-600 */
+  --brand-primary-hsl: 145 74% 36%;
+  --brand-secondary: #059669; /* emerald-600 */
+  --brand-secondary-hsl: 164 92% 31%;
+  --brand-accent: #0284c7; /* lightBlue-600 */
+  --brand-accent-hsl: 200 98% 39%;
+  --brand-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+  --background-primary: #061e14;
+  --background-secondary: #0c2a1e;
+  --shadow-glow-primary: 0 0 20px 0 var(--brand-primary);
+}
+
+.theme-portfolio {
+  --brand-primary: #4f46e5; /* indigo-600 */
+  --brand-primary-hsl: 243 75% 58%;
+  --brand-secondary: #7c3aed; /* violet-600 */
+  --brand-secondary-hsl: 262 83% 58%;
+  --brand-accent: #2563eb; /* blue-600 */
+  --brand-accent-hsl: 222 83% 58%;
+  --brand-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
+  --background-primary: #1e1b4b;
+  --background-secondary: #28256e;
+  --shadow-glow-primary: 0 0 20px 0 var(--brand-primary);
+}
+
+/* Page-specific background gradient overrides */
+body {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+body.theme-insightflow,
+body.theme-dark {
+  background: linear-gradient(to bottom right, #030712, #111827);
+}
+
+.theme-landing {
+  background: linear-gradient(to bottom right, #0f172a, #1e1b4b);
+}
+
+.theme-strategy {
+  background: radial-gradient(ellipse at top left, hsl(188, 90%, 50%, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, hsl(222, 89%, 60%, 0.15) 0%, transparent 50%),
+              linear-gradient(135deg, #000000 0%, var(--background-primary) 100%);
+}
+
+.theme-backtest {
+  background: radial-gradient(ellipse at center, hsl(145, 63%, 49%, 0.15) 0%, transparent 70%),
+              linear-gradient(45deg, #000000 0%, #061414 100%);
+}
+
+.theme-journal {
+  background: radial-gradient(ellipse at top, hsl(330, 80%, 65%, 0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at bottom, hsl(262, 80%, 65%, 0.15) 0%, transparent 60%),
+              linear-gradient(180deg, #000000 0%, #180518 100%);
+}
+
+.theme-academy {
+  background: radial-gradient(ellipse at top right, hsl(210, 89%, 60%, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, hsl(145, 63%, 42%, 0.15) 0%, transparent 50%),
+              linear-gradient(225deg, #000000 0%, var(--background-primary) 100%);
+}
+
+.theme-wallet {
+  background: radial-gradient(ellipse at center, hsl(45, 93%, 57%, 0.15) 0%, transparent 70%),
+              linear-gradient(90deg, #000000 0%, #141008 100%);
+}
+
+.theme-admin {
+  background: radial-gradient(ellipse at top, hsl(0, 84%, 60%, 0.15) 0%, transparent 60%),
+              linear-gradient(180deg, #000000 0%, #140808 100%);
+}
+
+.theme-markets {
+  background: radial-gradient(ellipse at top left, hsl(175, 80%, 45%, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, hsl(145, 63%, 49%, 0.15) 0%, transparent 50%),
+              linear-gradient(135deg, #000000 0%, #061414 100%);
+}
+
+.theme-portfolio {
+  background: radial-gradient(ellipse at center, hsl(243, 67%, 62%, 0.15) 0%, transparent 70%),
+              linear-gradient(180deg, #000000 0%, #0f0f17 100%);
+}
+
+.theme-community {
+  background: radial-gradient(ellipse at top, hsl(330, 80%, 65%, 0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at bottom, hsl(291, 85%, 60%, 0.15) 0%, transparent 60%),
+              linear-gradient(180deg, #000000 0%, #180514 100%);
+} 
