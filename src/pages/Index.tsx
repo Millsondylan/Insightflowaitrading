@@ -16,8 +16,8 @@ const IndexPage: React.FC = () => {
             Your Trading Mind, Amplified
           </p>
           
-          {/* CTA Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          {/* Main CTA Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
             <Link to="/strategy" className="group">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="text-3xl mb-3 text-cyan-400">🧠</div>
@@ -53,22 +53,130 @@ const IndexPage: React.FC = () => {
               </div>
             </Link>
             
-            <Link to="/admin" className="group">
+            <Link to="/markets" className="group">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <div className="text-3xl mb-3 text-red-400">🛡️</div>
-                <h3 className="text-lg font-semibold text-white">Admin</h3>
+                <div className="text-3xl mb-3 text-teal-400">📈</div>
+                <h3 className="text-lg font-semibold text-white">Markets</h3>
               </div>
             </Link>
             
-            <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-              <div className="text-3xl mb-3 text-teal-400">📈</div>
-              <h3 className="text-lg font-semibold text-white">Markets</h3>
-            </div>
+            <Link to="/portfolio" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-green-400">💼</div>
+                <h3 className="text-lg font-semibold text-white">Portfolio</h3>
+              </div>
+            </Link>
             
-            <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-              <div className="text-3xl mb-3 text-pink-400">💬</div>
-              <h3 className="text-lg font-semibold text-white">Community</h3>
-            </div>
+            <Link to="/community" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-3xl mb-3 text-pink-400">💬</div>
+                <h3 className="text-lg font-semibold text-white">Community</h3>
+              </div>
+            </Link>
+          </div>
+
+          {/* Secondary Navigation Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-16">
+            <Link to="/strategy/copilot" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-cyan-300">🤖</div>
+                <h4 className="text-sm font-medium text-white">Strategy Copilot</h4>
+              </div>
+            </Link>
+            
+            <Link to="/strategy/export" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-cyan-300">📤</div>
+                <h4 className="text-sm font-medium text-white">Export</h4>
+              </div>
+            </Link>
+            
+            <Link to="/backtest/replay" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-emerald-300">⏯️</div>
+                <h4 className="text-sm font-medium text-white">Replay</h4>
+              </div>
+            </Link>
+            
+            <Link to="/profile/risk-map" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-red-300">🎯</div>
+                <h4 className="text-sm font-medium text-white">Risk Map</h4>
+              </div>
+            </Link>
+            
+            <Link to="/vault/heatmap" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-orange-300">🔥</div>
+                <h4 className="text-sm font-medium text-white">Vault Heatmap</h4>
+              </div>
+            </Link>
+            
+            <Link to="/digest" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-indigo-300">📰</div>
+                <h4 className="text-sm font-medium text-white">Digest</h4>
+              </div>
+            </Link>
+            
+            <Link to="/demo" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-purple-300">🎮</div>
+                <h4 className="text-sm font-medium text-white">Demo</h4>
+              </div>
+            </Link>
+            
+            <Link to="/chat" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-4">
+                <div className="text-2xl mb-2 text-blue-300">💭</div>
+                <h4 className="text-sm font-medium text-white">Chat</h4>
+              </div>
+            </Link>
+          </div>
+
+          {/* Utility Navigation */}
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
+            <Link to="/notifications" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-3">
+                <div className="text-xl mb-1 text-yellow-300">🔔</div>
+                <h5 className="text-xs font-medium text-white">Alerts</h5>
+              </div>
+            </Link>
+            
+            <Link to="/settings/notifications" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-3">
+                <div className="text-xl mb-1 text-gray-300">⚙️</div>
+                <h5 className="text-xs font-medium text-white">Settings</h5>
+              </div>
+            </Link>
+            
+            <Link to="/help" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-3">
+                <div className="text-xl mb-1 text-blue-300">❓</div>
+                <h5 className="text-xs font-medium text-white">Help</h5>
+              </div>
+            </Link>
+            
+            <Link to="/faq" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-3">
+                <div className="text-xl mb-1 text-green-300">💡</div>
+                <h5 className="text-xs font-medium text-white">FAQ</h5>
+              </div>
+            </Link>
+            
+            <Link to="/docs" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-3">
+                <div className="text-xl mb-1 text-teal-300">📚</div>
+                <h5 className="text-xs font-medium text-white">Docs</h5>
+              </div>
+            </Link>
+            
+            <Link to="/admin" className="group">
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer py-3">
+                <div className="text-xl mb-1 text-red-400">🛡️</div>
+                <h5 className="text-xs font-medium text-white">Admin</h5>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
