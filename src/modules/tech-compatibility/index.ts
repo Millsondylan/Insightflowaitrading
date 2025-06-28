@@ -2,12 +2,12 @@
 // Provides compatibility with Lovable.dev and other platforms
 
 import { LovableConverter } from './lovable-converter';
-import { AIBlocksIntegration } from './ai-blocks-integration';
+import { SupabaseAdapter } from './supabase-adapter';
 import { GitHubSync } from './github-sync';
 
 export {
   LovableConverter,
-  AIBlocksIntegration,
+  SupabaseAdapter,
   GitHubSync
 };
 

@@ -12,34 +12,34 @@
 .theme-insightflow,
 .theme-dark { /* Default Dark Theme: InsightFlow AI */
   /* Brand Colors from Landing Page */
-  --brand-primary: #3b82f6; /* blue-500 */
-  --brand-primary-hsl: 222 89% 60%;
-  --brand-secondary: #a855f7; /* purple-500 */
-  --brand-secondary-hsl: 262 89% 60%;
+  --brand-primary: #2563EB; /* blue-600 */
+  --brand-primary-hsl: 221 83% 58%;
+  --brand-secondary: #9333EA; /* purple-600 */
+  --brand-secondary-hsl: 273 82% 56%;
   --brand-accent: #06b6d4; /* cyan-500 */
   --brand-accent-hsl: 188 95% 42%;
   --brand-gradient: linear-gradient(to right, var(--brand-primary), var(--brand-secondary));
 
   /* Background Colors */
-  --background-primary: #030712; /* gray-950 */
-  --background-secondary: #111827; /* gray-900 */
-  --background-tertiary: #1f2937; /* gray-800 */
+  --background-primary: #0D1117;
+  --background-secondary: #161B22;
+  --background-tertiary: #1F2937; /* gray-800 */
   --background-interactive: rgba(30, 41, 59, 0.5); /* slate-800/50 */
   --background-interactive-hover: rgba(51, 65, 85, 0.7); /* slate-700/70 */
-  --background-glass: rgba(3, 7, 18, 0.6);
+  --background-glass: rgba(13, 17, 23, 0.6);
   --background-overlay: rgba(0, 0, 0, 0.7);
 
   /* Text Colors */
-  --text-primary: #f9fafb; /* gray-50 */
-  --text-secondary: #d1d5db; /* gray-300 */
-  --text-muted: #9ca3af; /* gray-400 */
+  --text-primary: #F3F4F6; /* gray-100 */
+  --text-secondary: #9CA3AF; /* gray-400 */
+  --text-muted: #6B7280; /* gray-500 */
   --text-accent: var(--brand-accent);
   --text-on-brand: #ffffff;
   
   /* Border & Separator Colors */
-  --border-primary: #374151; /* gray-700 */
-  --border-secondary: #4b5563; /* gray-600 */
-  --border-interactive: rgba(59, 130, 246, 0.3); /* blue-500/30 */
+  --border-primary: #1F2937; /* gray-800 */
+  --border-secondary: #374151; /* gray-700 */
+  --border-interactive: rgba(37, 99, 235, 0.3); /* blue-600/30 */
 
   /* Status Colors */
   --status-success: #22c55e; /* green-500 */
@@ -175,7 +175,7 @@ body {
 
 body.theme-insightflow,
 body.theme-dark {
-  background: linear-gradient(to bottom right, #030712, #111827);
+  background: var(--background-primary);
 }
 
 .theme-landing {

@@ -1,18 +1,26 @@
 // Strategy Intelligence Engine - Type Definitions
 
+export type RiskLevel = 'Low' | 'Medium' | 'High';
+
 export interface Strategy {
   id: string;
   name: string;
-  description: string;
-  author: string;
-  createdAt: string;
-  updatedAt: string;
-  version: string;
-  isPublished: boolean;
-  rules: StrategyRule[];
-  tags: string[];
-  performance?: StrategyPerformance;
+  description?: string;
+  risk: RiskLevel;
+  performance: StrategyPerformance;
+  tags?: string[];
+  isPublished?: boolean;
+
+  // Additional strategy metadata
+  author?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  version?: string;
+  rules?: StrategyRule[];
   metadata?: Record<string, any>;
+  marketConditions?: string[];
+  timeframe?: string;
+  assets?: string[];
 }
 
 export interface StrategyRule {
@@ -28,22 +36,21 @@ export interface StrategyRule {
 export interface StrategyPerformance {
   winRate: number;
   profitFactor: number;
+  totalReturn: string;
+  
+  // Additional performance metrics
   maxDrawdown: number;
   sharpeRatio: number;
   totalTrades: number;
   profitableTrades: number;
-  averageWin: number;
-  averageLoss: number;
+  averageTradeProfit: number;
+  averageTradeDuration: number;
   expectancy: number;
-  timeframe: string;
-  period: {
-    start: string;
-    end: string;
-  };
+  riskRewardRatio: number;
 }
 
 export interface VaultGridOptions {
-  sortBy: 'name' | 'performance.winRate' | 'performance.profitFactor' | 'updatedAt';
+  sortBy: 'name' | 'performance.winRate' | 'performance.profitFactor' | 'updatedAt' | keyof Strategy;
   sortDirection: 'asc' | 'desc';
   filter: {
     tags?: string[];
@@ -51,10 +58,13 @@ export interface VaultGridOptions {
     minWinRate?: number;
     minProfitFactor?: number;
     isPublished?: boolean;
+  } | {
+    risk?: RiskLevel[];
   };
   view: 'grid' | 'list' | 'compact';
   pageSize: number;
   page: number;
+  searchTerm?: string;
 }
 
 export interface HeatmapData {

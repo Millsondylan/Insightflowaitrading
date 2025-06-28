@@ -6,7 +6,10 @@
       "strategyRules",
       "strategyTags",
       "strategyPerformance",
-      "strategyPublishing"
+      "strategyPublishing",
+      "strategyDetails",
+      "strategyDiffs",
+      "vault_strategies"
     ],
     "marketSetup": [
       "marketData",
@@ -14,7 +17,11 @@
       "insights",
       "broadcasts",
       "tradePlans",
-      "marketSignals"
+      "marketSignals",
+      "broadcastScripts",
+      "tickerScans",
+      "dailyPlans",
+      "market_insights"
     ],
     "tradeReflection": [
       "portfolios",
@@ -22,14 +29,19 @@
       "tradeTimeline",
       "tradeReplays",
       "coachingFeedback",
-      "tradeReflections"
+      "tradeReflections",
+      "pnlData",
+      "replayAnnotations",
+      "trade_logs"
     ],
     "mindsetJournaling": [
       "journalEntries",
       "memoryStore",
       "mindsetData",
       "emotionTags",
-      "journalPrompts"
+      "journalPrompts",
+      "mindsetFeed",
+      "journal_entries"
     ],
     "communityMultiplayer": [
       "communityPosts",
@@ -38,33 +50,48 @@
       "collaborationSessions",
       "events",
       "eventParticipants",
-      "eventMessages"
+      "eventMessages",
+      "multiplayerSessions",
+      "forum_posts"
     ],
     "proUnlock": [
       "subscriptions",
       "accessLevels",
       "payments",
       "referrals",
-      "subscriptionPlans"
+      "subscriptionPlans",
+      "accessChecks",
+      "user_subscriptions"
     ],
     "learningEngine": [
       "lessons",
       "lessonProgress",
       "memoryRecords",
-      "quizResults"
+      "quizResults",
+      "lessonPlayground",
+      "narratorSessions",
+      "lesson_progress"
     ],
     "copilotAI": [
       "copilotSessions",
-      "copilotFeedback"
+      "copilotFeedback",
+      "copilotSuggestions",
+      "inlineAssistance"
     ],
     "techCompatibility": [
       "systemSettings",
-      "syncStatus"
+      "syncStatus",
+      "conversionLogs",
+      "githubSync"
     ],
     "extraFeatures": [
       "annotations",
       "versionDiffs",
-      "publicStrategies"
+      "publicStrategies",
+      "emotionAnalysis",
+      "localPrototypes",
+      "emotion_tags",
+      "replay_annotations"
     ]
   },
   
@@ -72,57 +99,80 @@
     "strategyIntelligence": [
       "strategyBuilder",
       "strategyAnalysis",
-      "strategyOptimizer"
+      "strategyOptimizer",
+      "vaultAnalyzer",
+      "versionComparator",
+      "strategy-parser-v2"
     ],
     "marketSetup": [
       "insightGenerator",
       "broadcastNarrator",
       "tickerScanner",
       "plannerAssistant",
-      "marketAnalysis"
+      "marketAnalysis",
+      "feedGenerator",
+      "insight-generator"
     ],
     "tradeReflection": [
       "tradeReviewer",
       "performanceAnalyzer",
       "aiCoach",
       "tradeAnalysis",
-      "reflectionGenerator"
+      "reflectionGenerator",
+      "replayAnalyzer",
+      "behavior-tagger-v2"
     ],
     "mindsetJournaling": [
       "journalCompanion",
       "memoryAnalyzer",
       "mindsetAdvisor",
       "journalAnalysis",
-      "patternRecognition"
+      "patternRecognition",
+      "feedCurator",
+      "journal-summarizer"
     ],
     "communityMultiplayer": [
       "communityGPT",
       "collaborationAssistant",
       "eventAnalysis",
-      "chatModeration"
+      "chatModeration",
+      "presenceTracker",
+      "community-gpt"
     ],
     "proUnlock": [
       "subscriptionAdvisor",
       "paymentProcessor",
-      "subscriptionManager"
+      "subscriptionManager",
+      "accessValidator"
     ],
     "learningEngine": [
       "lessonNarrator",
       "conceptExplainer",
-      "adaptiveLearning"
+      "adaptiveLearning",
+      "memoryTracker",
+      "playgroundAssistant",
+      "narrator-injection"
     ],
     "copilotAI": [
       "tradingCopilot",
-      "strategyDesigner"
+      "strategyDesigner",
+      "inlineAssistant",
+      "contextAnalyzer",
+      "inline-insights"
     ],
     "techCompatibility": [
       "codeConverter",
-      "dataTransformer"
+      "dataTransformer",
+      "syncManager",
+      "lovableAdapter",
+      "supabase-adapter"
     ],
     "extraFeatures": [
       "emotionAnalyzer",
       "annotationSuggester",
-      "diffExplainer"
+      "diffExplainer",
+      "publishingAssistant",
+      "prototypeManager"
     ]
   },
   
@@ -135,7 +185,10 @@
       "getStrategyVersions",
       "publishStrategy",
       "generateHeatmap",
-      "filterStrategies"
+      "filterStrategies",
+      "getStrategyDetails",
+      "compareVersions",
+      "detect-missing-logic"
     ],
     "marketSetup": [
       "fetchMarketData",
@@ -144,7 +197,10 @@
       "createBroadcast",
       "generateTradePlan",
       "scanMarkets",
-      "getMarketSignals"
+      "getMarketSignals",
+      "generateFeed",
+      "generateBroadcastScript",
+      "scan-ticker-breakouts"
     ],
     "tradeReflection": [
       "analyzeTrade",
@@ -153,7 +209,10 @@
       "getCoachingFeedback",
       "calculateStats",
       "saveReflection",
-      "generateTradeInsights"
+      "generateTradeInsights",
+      "getPortfolioData",
+      "generateTimeline",
+      "replay-engine"
     ],
     "mindsetJournaling": [
       "createJournalEntry",
@@ -162,7 +221,9 @@
       "retrieveMemory",
       "analyzeJournalEntry",
       "saveJournalEntry",
-      "getJournalInsights"
+      "getJournalInsights",
+      "generateMindsetFeed",
+      "emotion-patterns"
     ],
     "communityMultiplayer": [
       "createPost",
@@ -172,7 +233,9 @@
       "joinEvent",
       "leaveEvent",
       "sendMessage",
-      "getEventDetails"
+      "getEventDetails",
+      "startMultiplayerSession",
+      "live-edit-sync"
     ],
     "proUnlock": [
       "checkAccess",
@@ -181,26 +244,40 @@
       "subscribe",
       "cancelSubscription",
       "updateSubscription",
-      "getSubscriptionDetails"
+      "getSubscriptionDetails",
+      "validateProAccess",
+      "verify-promo-wallet"
     ],
     "learningEngine": [
       "trackLessonProgress",
       "generateNarration",
       "updateMemoryStrength",
-      "calculateNextReview"
+      "calculateNextReview",
+      "startPlayground",
+      "trackMemory",
+      "track-lesson-response"
     ],
     "copilotAI": [
       "generateCopilotSuggestion",
-      "processCopilotFeedback"
+      "processCopilotFeedback",
+      "getInlineAssistance",
+      "analyzeContext"
     ],
     "techCompatibility": [
       "convertToLovable",
-      "syncWithGitHub"
+      "syncWithGitHub",
+      "adaptToSupabase",
+      "transformData",
+      "github-sync"
     ],
     "extraFeatures": [
       "tagEmotion",
       "createAnnotation",
-      "compareVersions"
+      "compareVersions",
+      "publishStrategy",
+      "createPrototype",
+      "public-publisher",
+      "version-diff"
     ]
   },
   
@@ -208,34 +285,62 @@
     "strategyIntelligence": [
       "VaultHeatmap",
       "VaultGrid",
-      "AIStrategyBuilderV2"
+      "AIStrategyBuilderV2",
+      "VaultDetail",
+      "VaultVersioning",
+      "VaultPublisher"
     ],
     "marketSetup": [
-      "MarketScanner"
+      "MarketScanner",
+      "InsightFeed",
+      "BroadcastMode",
+      "TickerScanningEngine",
+      "DailyPlanner"
     ],
     "tradeReflection": [
-      "TradeAnalyzer"
+      "TradeAnalyzer",
+      "PortfolioDashboard",
+      "PnLCurve",
+      "TradeTimeline",
+      "ReplayEngineV2",
+      "AICoachV2"
     ],
     "mindsetJournaling": [
-      "JournalCompanion"
+      "JournalCompanion",
+      "MemoryStore",
+      "MindsetFeed"
     ],
     "communityMultiplayer": [
-      "LiveEventRoom"
+      "LiveEventRoom",
+      "CommunityGPT",
+      "MultiplayerEditor",
+      "UserPresenceTagging"
     ],
     "proUnlock": [
-      "SubscriptionManager"
+      "SubscriptionManager",
+      "ProUnlocker",
+      "AccessCheckers"
     ],
     "learningEngine": [
-      "NarratorInjection"
+      "NarratorInjection",
+      "LessonPlayground",
+      "LessonMemoryTracker"
     ],
     "copilotAI": [
-      "BuilderCopilot"
+      "BuilderCopilot",
+      "CopilotAI"
     ],
     "techCompatibility": [
-      "SystemStatus"
+      "LovableConverter",
+      "SupabaseAdapter",
+      "GitHubSync"
     ],
     "extraFeatures": [
-      "FeatureShowcase"
+      "EmotionTagging",
+      "ReplayAnnotations",
+      "PublicStrategyPublisher",
+      "VersionDiff",
+      "LocalFirstPrototype"
     ]
   }
 } 

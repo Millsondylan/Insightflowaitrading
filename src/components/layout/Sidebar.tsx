@@ -1,132 +1,117 @@
-import { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Brain, BookOpen, Book, Wallet, Shield, Menu, X } from 'lucide-react';
+import {
+  GitCommit,
+  Bot,
+  ScrollText,
+  MessageSquare,
+  BookOpen,
+  Radio,
+  BarChart2,
+  Settings,
+  LogOut,
+  TrendingUp,
+  LifeBuoy
+} from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Button } from '@/components/ui/button';
 
 const navItems = [
-  { path: '/strategy', icon: Brain, label: 'Strategy', accessLevel: 'pro' },
-  { path: '/journal', icon: BookOpen, label: 'Journal', accessLevel: 'pro' },
-  { path: '/academy', icon: Book, label: 'Academy', accessLevel: null },
-  { path: '/wallet', icon: Wallet, label: 'Wallet', accessLevel: null },
-  { path: '/admin', icon: Shield, label: 'Admin', accessLevel: 'admin' },
+  { path: '/vault', icon: GitCommit, label: 'Vault' },
+  { path: '/builder', icon: Bot, label: 'Builder' },
+  { path: '/journal', icon: ScrollText, label: 'Journal' },
+  { path: '/community', icon: MessageSquare, label: 'Community' },
+  { path: '/academy', icon: BookOpen, label: 'Academy' },
+  { path: '/broadcast', icon: Radio, label: 'Broadcast' },
+];
+
+const bottomNavItems = [
+  { path: '/settings', icon: Settings, label: 'Settings' },
+  { path: '/help', icon: LifeBuoy, label: 'Help' },
 ];
 
 export default function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(false);
   const location = useLocation();
-  const { isAdmin, hasProAccess } = useAuth();
-
-  const hasAccess = (accessLevel: string | null) => {
-    if (!accessLevel) return true;
-    if (accessLevel === 'admin') return isAdmin;
-    if (accessLevel === 'pro') return hasProAccess;
-    return false;
-  };
+  const { profile } = useAuth();
 
   const isActive = (path: string) => location.pathname.startsWith(path);
 
+  const NavLink = ({ item }: { item: { path: string, icon: React.ElementType, label: string } }) => {
+    const Icon = item.icon;
+    const active = isActive(item.path);
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              to={item.path}
+              className={`flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-200 ${
+                active
+                  ? 'bg-blue-600/20 text-blue-400'
+                  : 'text-gray-500 hover:text-white hover:bg-gray-800'
+              }`}
+            >
+              <Icon size={24} />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>{item.label}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
+  };
+
   return (
-    <>
-      {/* Mobile backdrop */}
-      {isExpanded && (
-        <div 
-          className="fixed inset-0 bg-background-overlay backdrop-blur-sm z-40 md:hidden"
-          onClick={() => setIsExpanded(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <div className={`
-        fixed left-0 top-0 h-full z-50 transition-all duration-300
-        ${isExpanded ? 'w-64' : 'w-16'}
-        md:w-64 md:relative
-        bg-background-glass border-r border-border-primary
-      `}>
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border-primary">
-          <Link 
-            to="/" 
-            className={`text-xl font-bold text-text-accent transition-opacity ${
-              isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'
-            }`}
-          >
-            InsightFlow
-          </Link>
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2 rounded-lg hover:bg-background-interactive text-text-secondary hover:text-text-primary transition-colors md:hidden"
-          >
-            {isExpanded ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-
-        {/* Navigation */}
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
-            {navItems.map((item) => {
-              if (!hasAccess(item.accessLevel)) return null;
-
-              const Icon = item.icon;
-              const active = isActive(item.path);
-              
-              return (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    className={`
-                      group flex items-center gap-3 px-3 py-2 rounded-lg transition-all
-                      ${active 
-                        ? 'bg-brand-accent/20 text-text-accent shadow-lg shadow-brand-accent/20' 
-                        : 'text-text-secondary hover:bg-background-interactive hover:text-text-primary'
-                      }
-                    `}
-                    onClick={() => {
-                      if (window.innerWidth < 768) setIsExpanded(false);
-                    }}
-                  >
-                    <Icon size={20} className="flex-shrink-0" />
-                    <span className={`
-                      transition-opacity font-medium
-                      ${isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'}
-                    `}>
-                      {item.label}
-                    </span>
-                    
-                    {/* Tooltip for collapsed state */}
-                    <div className={`
-                      absolute left-16 px-2 py-1 bg-background-secondary text-text-primary text-sm rounded
-                      opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none
-                      ${isExpanded ? 'md:hidden' : 'hidden md:block'}
-                    `}>
-                      {item.label}
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
+    <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
+      <div className="flex flex-col items-center gap-10">
+        <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+          <TrendingUp className="w-6 h-6 text-white" />
+        </Link>
+        <nav>
+          <ul className="space-y-4">
+            {navItems.map((item) => (
+              <li key={item.path}>
+                <NavLink item={item} />
+              </li>
+            ))}
           </ul>
         </nav>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-border-primary">
-          <div className={`
-            text-xs text-text-muted transition-opacity
-            ${isExpanded ? 'opacity-100' : 'opacity-0 md:opacity-100'}
-          `}>
-            © 2024 InsightFlow
-          </div>
-        </div>
       </div>
 
-      {/* Mobile toggle button when collapsed */}
-      {!isExpanded && (
-        <button
-          onClick={() => setIsExpanded(true)}
-          className="fixed top-4 left-4 z-30 p-2 bg-background-glass backdrop-blur-md rounded-lg border border-border-interactive text-text-primary md:hidden"
-        >
-          <Menu size={20} />
-        </button>
-      )}
-    </>
+      <div className="flex flex-col items-center gap-4">
+        <nav>
+          <ul className="space-y-2">
+            {bottomNavItems.map((item) => (
+              <li key={item.path}>
+                <NavLink item={item} />
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className="border-t border-gray-800 w-full my-2"></div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link to="/profile">
+                <Avatar>
+                  <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
+                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+                </Avatar>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>{profile?.full_name || 'Profile'}</p>
+              <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
+              </Button>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+    </div>
   );
 }

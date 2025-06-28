@@ -3,16 +3,16 @@
 
 import { EmotionTagging } from './emotion-tagging';
 import { ReplayAnnotations } from './replay-annotations';
-import { PublicStrategies } from './public-strategies';
+import { PublicStrategyPublisher } from './public-strategy-publisher';
 import { VersionDiff } from './version-diff';
-import { LocalPrototyping } from './local-prototyping';
+import { LocalFirstPrototype } from './local-first-prototype';
 
 export {
   EmotionTagging,
   ReplayAnnotations,
-  PublicStrategies,
+  PublicStrategyPublisher,
   VersionDiff,
-  LocalPrototyping
+  LocalFirstPrototype
 };
 
 // Types

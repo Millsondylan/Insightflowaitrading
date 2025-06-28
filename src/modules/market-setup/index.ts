@@ -1,17 +1,20 @@
-// Market + Setup Engine Module
-// Provides market data, insights, broadcasting, and trade planning
+// Market Setup Module
+// Provides market insights, scanning, and daily planning tools
 
-import { InsightFeed } from './insight-feed';
-import { BroadcastMode } from './broadcast-mode';
-import { TickerScanner } from './ticker-scanner';
-import { DailyPlanner } from './daily-planner';
+import { InsightFeed } from './insight-feed'
+import { BroadcastMode } from './broadcast-mode'
+import { TickerScanningEngine } from './ticker-scanning-engine'
+import { DailyPlanner } from './daily-planner'
 
 export {
   InsightFeed,
   BroadcastMode,
-  TickerScanner,
+  TickerScanningEngine,
   DailyPlanner
-};
+}
 
 // Types
-export * from './types'; 
+export * from './types'
+
+// Utility functions and helpers
+export * from './utils'; 

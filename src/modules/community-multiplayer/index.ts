@@ -1,11 +1,13 @@
 // Community + Multiplayer Tools Module
 // Provides community interaction and collaborative editing
 
+import { LiveEventRoom } from './live-event-room';
 import { CommunityGPT } from './community-gpt';
 import { MultiplayerEditor } from './multiplayer-editor';
 import { UserPresenceTagging } from './user-presence-tagging';
 
 export {
+  LiveEventRoom,
   CommunityGPT,
   MultiplayerEditor,
   UserPresenceTagging

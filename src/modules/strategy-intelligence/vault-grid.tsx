@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Strategy, VaultGridOptions } from './types';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Badge } from '@/components/ui/badge';
 
 interface VaultGridProps {
   initialOptions?: Partial<VaultGridOptions>;
@@ -123,73 +127,34 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
   
   const renderGridView = () => {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {strategies.map(strategy => (
-          <div
-            key={strategy.id}
-            className="p-4 bg-background-secondary rounded-lg border border-border-primary hover:border-brand-primary cursor-pointer transition-all"
-            onClick={() => onStrategySelect(strategy)}
-          >
-            <div className="flex justify-between items-start mb-2">
-              <h3 className="text-lg font-semibold">{strategy.name}</h3>
-              {strategy.isPublished && (
-                <span className="px-2 py-1 bg-status-success/20 text-status-success text-xs rounded">
-                  Published
-                </span>
-              )}
-            </div>
-            
-            <p className="text-sm text-text-muted mb-3 line-clamp-2">
-              {strategy.description}
-            </p>
-            
-            {strategy.performance && (
-              <div className="grid grid-cols-2 gap-2 mb-3">
-                <div className="text-center p-1 bg-background-tertiary rounded">
-                  <div className="text-xs text-text-muted">Win Rate</div>
-                  <div className={`font-semibold ${
-                    strategy.performance.winRate > 0.5 ? 'text-status-success' : 
-                    strategy.performance.winRate > 0.4 ? 'text-status-warning' : 'text-status-error'
-                  }`}>
-                    {(strategy.performance.winRate * 100).toFixed(1)}%
-                  </div>
-                </div>
-                <div className="text-center p-1 bg-background-tertiary rounded">
-                  <div className="text-xs text-text-muted">Profit Factor</div>
-                  <div className={`font-semibold ${
-                    strategy.performance.profitFactor > 2 ? 'text-status-success' : 
-                    strategy.performance.profitFactor > 1.5 ? 'text-status-warning' : 'text-text-primary'
-                  }`}>
-                    {strategy.performance.profitFactor.toFixed(2)}
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            <div className="flex flex-wrap gap-1">
-              {strategy.tags.map((tag, i) => (
-                <span key={i} className="px-2 py-1 text-xs bg-background-interactive rounded-full">
-                  {tag}
-                </span>
+      <Card className="w-full h-[600px] bg-black/80 border-zinc-800">
+        <CardHeader>
+          <CardTitle className="text-white">Strategy Vault Grid</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ScrollArea className="h-[500px] w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {strategies.map((strategy) => (
+                <Card key={strategy.id} className="bg-zinc-900 border-zinc-700 text-white">
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-bold">{strategy.name}</h3>
+                      <Badge variant="secondary">{strategy.risk}</Badge>
+                    </div>
+                    <div className="mt-2 text-green-400 font-semibold">
+                      Performance: {strategy.performance}
+                    </div>
+                    <div className="mt-4 flex space-x-2">
+                      <Button variant="outline" size="sm" className="text-white" onClick={() => onStrategySelect(strategy)}>View</Button>
+                      <Button variant="destructive" size="sm">Delete</Button>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
-          </div>
-        ))}
-        
-        {/* Create New Strategy Card */}
-        <div
-          className="p-4 bg-background-tertiary rounded-lg border border-dashed border-border-secondary flex flex-col items-center justify-center cursor-pointer hover:bg-background-interactive transition-all"
-          onClick={onCreateStrategy}
-        >
-          <div className="w-12 h-12 rounded-full bg-brand-primary/20 flex items-center justify-center mb-2">
-            <span className="text-2xl font-bold text-brand-primary">+</span>
-          </div>
-          <h3 className="text-lg font-semibold">Create New Strategy</h3>
-          <p className="text-sm text-text-muted text-center mt-1">
-            Build a strategy from scratch or using AI
-          </p>
-        </div>
-      </div>
+          </ScrollArea>
+        </CardContent>
+      </Card>
     );
   };
   

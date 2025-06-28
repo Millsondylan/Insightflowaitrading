@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HeatmapData, HeatmapCell, Strategy } from './types';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 interface VaultHeatmapProps {
   strategyId: string;
@@ -145,112 +146,111 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
     return <div className="p-4">No heatmap data available for this strategy.</div>;
   }
 
+  // Mock strategies for heatmap visualization
+  const strategies: Strategy[] = [
+    {
+      id: '1', 
+      name: 'Momentum Trend', 
+      description: 'Trend following strategy targeting strong momentum stocks',
+      risk: 'Low', 
+      performance: {
+        winRate: 0.65,
+        profitFactor: 2.3,
+        totalReturn: '+24.5%',
+        maxDrawdown: 0.15,
+        sharpeRatio: 1.8,
+        totalTrades: 120,
+        profitableTrades: 78,
+        averageTradeProfit: 0.5,
+        averageTradeDuration: 5,
+        expectancy: 0.4,
+        riskRewardRatio: 2.5
+      },
+      tags: ['Trend Following', 'Long-Term'],
+      author: 'AI Strategist',
+      createdAt: new Date('2024-01-15'),
+      updatedAt: new Date('2024-02-20'),
+      version: '1.2.0',
+      marketConditions: ['Bull Market', 'Stable Volatility'],
+      timeframe: 'Daily',
+      assets: ['NASDAQ', 'S&P 500']
+    },
+    {
+      id: '2', 
+      name: 'Volatility Breakout', 
+      description: 'Short-term strategy capitalizing on market volatility',
+      risk: 'Medium', 
+      performance: {
+        winRate: 0.55,
+        profitFactor: 1.8,
+        totalReturn: '+18.3%',
+        maxDrawdown: 0.25,
+        sharpeRatio: 1.2,
+        totalTrades: 200,
+        profitableTrades: 110,
+        averageTradeProfit: 0.3,
+        averageTradeDuration: 3,
+        expectancy: 0.25,
+        riskRewardRatio: 1.8
+      },
+      tags: ['Volatility', 'Short-Term'],
+      author: 'Quant Team',
+      createdAt: new Date('2024-02-01'),
+      updatedAt: new Date('2024-03-10'),
+      version: '1.1.0',
+      marketConditions: ['High Volatility', 'Trending Market'],
+      timeframe: 'Hourly',
+      assets: ['Crypto', 'Forex']
+    }
+  ]
+
+  const getHeatmapColor = (performance: number): string => {
+    if (performance > 0.7) return 'bg-green-600'
+    if (performance > 0.5) return 'bg-yellow-600'
+    return 'bg-red-600'
+  }
+
   return (
-    <div className="vault-heatmap">
-      <div className="flex flex-col">
-        {/* Render X-axis labels if showLabels is true */}
-        {showLabels && (
-          <div className="flex ml-10">
-            {xLabels.map((label, idx) => (
-              <div 
-                key={`x-${idx}`} 
-                className="text-xs text-center" 
-                style={{ width: '40px' }}
-              >
-                {label}
+    <Card className="w-full h-[600px] bg-black/80 border-zinc-800">
+      <CardHeader>
+        <CardTitle className="text-white">Strategy Performance Heatmap</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {strategies.map((strategy) => (
+            <div 
+              key={strategy.id} 
+              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
+            >
+              <h3 className="text-lg font-bold">{strategy.name}</h3>
+              <div className="text-xs text-gray-300 mb-2">{strategy.description}</div>
+              <div className="mt-2">
+                <div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</div>
+                <div>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</div>
+                <div>Total Return: {strategy.performance.totalReturn}</div>
+                <div>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</div>
+                <div>Sharpe Ratio: {strategy.performance.sharpeRatio.toFixed(2)}</div>
               </div>
-            ))}
-          </div>
-        )}
-        
-        {/* Render heatmap grid */}
-        <div className="flex">
-          {/* Render Y-axis labels if showLabels is true */}
-          {showLabels && (
-            <div className="flex flex-col justify-around pr-2 w-10">
-              {yLabels.map((label, idx) => (
-                <div 
-                  key={`y-${idx}`} 
-                  className="text-xs text-right" 
-                  style={{ height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}
-                >
-                  {label}
-                </div>
-              ))}
-            </div>
-          )}
-          
-          {/* Render cells */}
-          <div className="flex flex-col">
-            {heatmapData.data.map((row, rowIdx) => (
-              <div key={`row-${rowIdx}`} className="flex">
-                {row.map((cell, cellIdx) => (
-                  <div
-                    key={`cell-${rowIdx}-${cellIdx}`}
-                    className="cursor-pointer transition-all duration-200 hover:transform hover:scale-105"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      backgroundColor: getColor(cell.value),
-                      margin: '1px',
-                      borderRadius: '2px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                    onClick={() => onCellClick && onCellClick(cell)}
-                    onMouseEnter={() => setHoveredCell(cell)}
-                    onMouseLeave={() => setHoveredCell(null)}
+              <div className="mt-2 flex space-x-2">
+                {strategy.tags?.map((tag) => (
+                  <span 
+                    key={tag} 
+                    className="px-2 py-1 bg-black/30 rounded-full text-xs"
                   >
-                    {cell.trades > 0 && (
-                      <span className="text-xs font-bold text-white">
-                        {cell.trades}
-                      </span>
-                    )}
-                  </div>
+                    {tag}
+                  </span>
                 ))}
               </div>
-            ))}
-          </div>
+              <div className="mt-2 text-xs text-gray-400">
+                <div>Author: {strategy.author}</div>
+                <div>Version: {strategy.version}</div>
+                <div>Created: {strategy.createdAt?.toLocaleDateString()}</div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-      
-      {/* Tooltip for hovered cell */}
-      {hoveredCell && (
-        <div className="absolute bg-gray-800 text-white p-2 rounded shadow-lg text-xs">
-          <div>Value: {(hoveredCell.value * 100).toFixed(1)}%</div>
-          <div>Trades: {hoveredCell.trades}</div>
-          <div>
-            {timeframe === 'hourly' 
-              ? `${xLabels[hoveredCell.x]} at ${yLabels[hoveredCell.y]}`
-              : timeframe === 'daily'
-                ? `${xLabels[hoveredCell.x]} of ${yLabels[hoveredCell.y]}`
-                : `${xLabels[hoveredCell.x]} ${yLabels[hoveredCell.y]}`
-            }
-          </div>
-        </div>
-      )}
-      
-      {/* Legend */}
-      <div className="flex justify-center mt-4">
-        <div className="flex items-center">
-          <span className="text-xs mr-1">Poor</span>
-          <div className="flex">
-            {[0.1, 0.3, 0.5, 0.7, 0.9].map((value, idx) => (
-              <div
-                key={`legend-${idx}`}
-                style={{
-                  width: '20px',
-                  height: '10px',
-                  backgroundColor: getColor(value),
-                }}
-              />
-            ))}
-          </div>
-          <span className="text-xs ml-1">Excellent</span>
-        </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 

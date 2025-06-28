@@ -1,10 +1,12 @@
 // Pro Unlock & Monetization Module
 // Provides subscription management and access control
 
+import { SubscriptionManager } from './subscription-manager';
 import { ProUnlocker } from './pro-unlocker';
 import { AccessCheckers } from './access-checkers';
 
 export {
+  SubscriptionManager,
   ProUnlocker,
   AccessCheckers
 };

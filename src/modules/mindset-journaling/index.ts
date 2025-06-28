@@ -1,4 +1,4 @@
-// Mindset + Journaling System Module
+// Mindset Journaling Module
 // Provides journaling tools, memory storage, and mindset analysis
 
 import { JournalCompanion } from './journal-companion';

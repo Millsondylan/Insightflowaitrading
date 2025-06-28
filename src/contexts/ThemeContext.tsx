@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export const themes = {
+  dark: 'theme-dark',
   landing: 'theme-landing',
   academy: 'theme-academy',
   portfolio: 'theme-portfolio',
@@ -33,7 +34,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState<keyof typeof themes>('insightflow');
+  const [currentTheme, setCurrentTheme] = useState<keyof typeof themes>('dark');
 
   const setTheme = (theme: keyof typeof themes) => {
     setCurrentTheme(theme);
