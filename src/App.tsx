@@ -10,7 +10,7 @@ import Vision from './pages/Vision';
 import Journal from './pages/Journal';
 import Academy from './pages/Academy';
 import Wallet from './pages/Wallet';
-import Backtest from './pages/Backtest';
+// import Backtest from './pages/Backtest';
 import BacktestReplay from './pages/BacktestReplay';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
@@ -93,7 +93,7 @@ export function App() {
             </Route>
             <Route element={<ProtectedRoute accessLevel="subscribed" />}>
               <Route path="/vision" element={<Vision />} />
-              <Route path="/backtest" element={<Backtest />} />
+              {/* <Route path="/backtest" element={<Backtest />} /> */}
             </Route>
 
             {/* Public Routes */}
