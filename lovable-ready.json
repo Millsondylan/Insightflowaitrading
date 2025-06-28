@@ -1,0 +1,187 @@
+{
+  "lovable_compatibility_audit": {
+    "status": "❌ ADJUSTMENTS NEEDED",
+    "overall_score": "65%",
+    "summary": "Core logic is Lovable-ready, but UI components need significant refactoring",
+    
+    "required_adjustments": {
+      "critical": [
+        {
+          "issue": "External UI Library Dependencies",
+          "description": "Heavy reliance on shadcn/ui components (@/components/ui/*)",
+          "affected_files": 80,
+          "solution": "Replace with native HTML elements + inline styles or CSS modules"
+        },
+        {
+          "issue": "Lucide React Icons",
+          "description": "50+ components use lucide-react icons",
+          "affected_files": 50,
+          "solution": "Replace with emoji or native SVG icons"
+        },
+        {
+          "issue": "Recharts Library",
+          "description": "Chart components depend on recharts library",
+          "affected_files": 3,
+          "solution": "Replace with Canvas API or CSS-based charts"
+        },
+        {
+          "issue": "Tailwind CSS Classes",
+          "description": "All components use Tailwind utility classes",
+          "affected_files": 100,
+          "solution": "Convert to inline styles or scoped CSS modules"
+        }
+      ],
+      
+      "moderate": [
+        {
+          "issue": "Web Crypto API Usage",
+          "description": "crypto.subtle in unlockWithReferral.ts",
+          "affected_files": 1,
+          "solution": "Ensure browser compatibility or provide fallback"
+        },
+        {
+          "issue": "Complex State Management",
+          "description": "Some components have nested state logic",
+          "affected_files": 15,
+          "solution": "Simplify to basic useState/useEffect patterns"
+        }
+      ]
+    },
+
+    "lovable_ready_modules": {
+      "utilities": {
+        "status": "✅ READY",
+        "score": "95%",
+        "modules": [
+          {
+            "path": "src/lib/vault/filterStrategies.ts",
+            "description": "Pure function for strategy filtering",
+            "exports": ["filterStrategies"],
+            "dependencies": "none"
+          },
+          {
+            "path": "src/lib/portfolio/calculateStats.ts", 
+            "description": "Portfolio statistics calculator",
+            "exports": ["calculateStats"],
+            "dependencies": "none"
+          },
+          {
+            "path": "src/lib/community/generateReply.ts",
+            "description": "AI reply generation logic",
+            "exports": ["generateReply"],
+            "dependencies": "none"
+          },
+          {
+            "path": "src/lib/builder/parseStrategyPrompt.ts",
+            "description": "Natural language strategy parser",
+            "exports": ["parseStrategyPrompt"],
+            "dependencies": "none"
+          },
+          {
+            "path": "src/lib/coach/reviewTrade.ts",
+            "description": "AI trade review and psychology analysis",
+            "exports": ["reviewTrade"],
+            "dependencies": "none"
+          },
+          {
+            "path": "src/lib/vault/generateHeatmapData.ts",
+            "description": "Strategy heatmap data aggregation",
+            "exports": ["generateHeatmapData"],
+            "dependencies": "none"
+          }
+        ]
+      },
+
+      "components_needing_refactor": {
+        "status": "❌ NEEDS WORK",
+        "score": "30%",
+        "high_priority": [
+          {
+            "path": "src/components/vault/StrategyVault.tsx",
+            "issues": ["shadcn/ui dependencies", "lucide-react icons", "tailwind classes"],
+            "refactor_effort": "high"
+          },
+          {
+            "path": "src/components/builder/StrategyBuilderV2.tsx", 
+            "issues": ["shadcn/ui Button/Textarea", "tailwind classes"],
+            "refactor_effort": "medium"
+          },
+          {
+            "path": "src/components/portfolio/PnLCurve.tsx",
+            "issues": ["recharts dependency", "tailwind classes"],
+            "refactor_effort": "high"
+          }
+        ]
+      }
+    },
+
+    "conversion_roadmap": {
+      "phase_1_utilities": {
+        "status": "✅ COMPLETE",
+        "description": "All /lib utilities are pure functions, browser-compatible"
+      },
+      
+      "phase_2_ui_replacement": {
+        "status": "❌ REQUIRED",
+        "tasks": [
+          "Replace all @/components/ui/* imports with native elements",
+          "Convert lucide-react icons to emoji/SVG",
+          "Replace recharts with Canvas/CSS charts",
+          "Convert Tailwind classes to inline styles"
+        ]
+      },
+      
+      "phase_3_database_abstraction": {
+        "status": "✅ READY", 
+        "description": "Functions ready for Supabase/Airtable integration",
+        "data_functions": [
+          "fetchVault() - strategy retrieval",
+          "savePlan() - trading plan storage", 
+          "saveEntry() - journal entry storage",
+          "fetchTickers() - market data retrieval"
+        ]
+      }
+    },
+
+    "lovable_specific_recommendations": {
+      "ui_replacements": {
+        "Button": "Replace with <button> + inline styles",
+        "Input": "Replace with <input> + CSS classes",
+        "Select": "Replace with <select> + custom styling",
+        "Card": "Replace with <div> + border/shadow styles",
+        "Tooltip": "Replace with CSS :hover pseudo-elements"
+      },
+      
+      "icon_replacements": {
+        "Search": "🔍",
+        "ArrowUp": "⬆️", 
+        "ArrowDown": "⬇️",
+        "Target": "🎯",
+        "Brain": "🧠",
+        "Chart": "📊"
+      },
+      
+      "chart_alternatives": {
+        "PnLCurve": "CSS-based line chart with flexbox",
+        "BacktestChart": "Canvas API for custom charts",
+        "Heatmap": "CSS Grid with color-coded cells"
+      }
+    },
+
+    "estimated_conversion_effort": {
+      "utilities": "0 hours (already compatible)",
+      "ui_components": "40-60 hours",
+      "chart_components": "20-30 hours", 
+      "styling_conversion": "30-40 hours",
+      "total": "90-130 hours"
+    },
+
+    "next_steps": [
+      "1. Start with utility functions (already Lovable-ready)",
+      "2. Create basic UI components without external dependencies",
+      "3. Replace icons with emoji/SVG alternatives", 
+      "4. Convert charts to Canvas/CSS implementations",
+      "5. Test all components in Lovable environment"
+    ]
+  }
+} 
