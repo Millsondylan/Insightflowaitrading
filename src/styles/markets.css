@@ -1,0 +1,104 @@
+/* Markets Theme Styles */
+.theme-markets {
+  @apply text-white;
+}
+
+/* Header Styles */
+.theme-markets h1 {
+  @apply text-gradient bg-gradient-to-r from-emerald-400 to-cyan-400;
+}
+
+/* Market Glow Effect */
+.market-glow {
+  background: radial-gradient(circle at 50% 0%, rgba(76, 175, 80, 0.3), rgba(0, 128, 128, 0.1), rgba(0, 0, 0, 0));
+  filter: blur(30px);
+}
+
+/* Price Movement Colors */
+.price-up {
+  @apply text-green-400;
+}
+
+.price-down {
+  @apply text-red-400;
+}
+
+.price-neutral {
+  @apply text-gray-400;
+}
+
+/* Volatility Badge Colors */
+.volatility-low {
+  @apply bg-blue-900/30 text-blue-400 border-blue-400/30;
+}
+
+.volatility-medium {
+  @apply bg-green-900/30 text-green-400 border-green-400/30; 
+}
+
+.volatility-high {
+  @apply bg-yellow-900/30 text-yellow-400 border-yellow-400/30;
+}
+
+.volatility-extreme {
+  @apply bg-red-900/30 text-red-400 border-red-400/30;
+}
+
+/* Table Styles */
+.theme-markets .market-table th {
+  @apply text-white/70 font-medium;
+}
+
+.theme-markets .market-table tr {
+  @apply hover:bg-white/5 border-white/10;
+}
+
+.theme-markets .market-table tr.favorite {
+  @apply bg-cyan-950/20;
+}
+
+/* Detail Page Styles */
+.theme-markets .detail-card {
+  @apply bg-black/30 rounded-lg p-4 border border-white/10;
+}
+
+.theme-markets .ohlc-grid {
+  @apply grid grid-cols-2 md:grid-cols-4 gap-4;
+}
+
+/* Chart Placeholder */
+.theme-markets .chart-placeholder {
+  @apply bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden;
+}
+
+/* Animation for price changes */
+@keyframes pulse-green {
+  0%, 100% {
+    @apply text-green-400;
+  }
+  50% {
+    @apply text-green-300;
+  }
+}
+
+@keyframes pulse-red {
+  0%, 100% {
+    @apply text-red-400;
+  }
+  50% {
+    @apply text-red-300;
+  }
+}
+
+.price-change-animation-up {
+  animation: pulse-green 1s ease-in-out;
+}
+
+.price-change-animation-down {
+  animation: pulse-red 1s ease-in-out;
+}
+
+/* Text Gradient */
+.text-gradient {
+  @apply text-transparent bg-clip-text;
+} 

@@ -91,4 +91,80 @@
 }
 .timeline-item.type-reflection .timeline-icon {
   @apply border-emerald-500/50 text-emerald-400;
+}
+
+/* Admin Theme Styles */
+.theme-admin {
+  @apply text-white;
+}
+
+.theme-admin h1 {
+  @apply text-gradient bg-gradient-to-r from-cyan-400 to-blue-600;
+}
+
+/* Table Styles */
+.theme-admin th {
+  @apply text-white/70 font-medium;
+}
+
+.theme-admin tr {
+  @apply hover:bg-white/5 border-white/10;
+}
+
+/* Card Styles */
+.theme-admin .admin-card {
+  @apply bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md;
+}
+
+/* Badge Styles */
+.theme-admin .admin-badge-user {
+  @apply bg-gray-900/30 text-gray-400 border-gray-400/30;
+}
+
+.theme-admin .admin-badge-mod {
+  @apply bg-blue-900/30 text-blue-400 border-blue-400/30;
+}
+
+.theme-admin .admin-badge-admin {
+  @apply bg-green-900/30 text-green-400 border-green-400/30;
+}
+
+/* Button Styles */
+.theme-admin .primary-button {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700;
+}
+
+.theme-admin .secondary-button {
+  @apply bg-black/50 border-white/10 text-white hover:bg-black/70;
+}
+
+.theme-admin .danger-button {
+  @apply text-red-400 hover:text-white hover:bg-red-900/50;
+}
+
+/* Input Styles */
+.theme-admin .admin-input {
+  @apply bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500;
+}
+
+/* Scrollbar Styles */
+.theme-admin .scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.theme-admin .scrollbar-thin::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.theme-admin .scrollbar-thin::-webkit-scrollbar-thumb {
+  @apply bg-gray-700 rounded-full;
+}
+
+.theme-admin .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-600;
+}
+
+/* Text Gradient */
+.text-gradient {
+  @apply text-transparent bg-clip-text;
 } 

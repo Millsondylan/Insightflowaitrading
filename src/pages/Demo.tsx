@@ -1,61 +1,68 @@
+import { useState } from 'react';
+import StrategyGenerator from '../components/StrategyGenerator';
 
-import React from 'react';
+const DemoPage = () => {
+  const [generatedStrategy, setGeneratedStrategy] = useState<any>(null);
 
-const DemoPage: React.FC = () => {
+  const handleStrategyComplete = (data: any) => {
+    console.log('Strategy generated:', data);
+    setGeneratedStrategy(data);
+  };
+
   return (
-    <section className="theme-demo min-h-screen px-6 py-16 space-y-12">
-      {/* Hero Section */}
-      <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-rainbow mb-8">
-          Live Demo
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 font-light">
-          Experience Insight Flow in action
-        </p>
-      </div>
-
-      {/* Demo Features */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <div className="glass-section motion-shadow hover-glow">
-          <div className="text-center">
-            <div className="text-4xl mb-4">📊</div>
-            <h3 className="text-xl font-semibold text-cyan-400 mb-2">Live Charts</h3>
-            <p className="text-gray-300 text-sm">Real-time market data visualization</p>
-          </div>
+    <div className="theme-strategy min-h-screen px-6 py-20">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold text-glow-cyan mb-4">
+            Strategy Generator + Copilot Demo
+          </h1>
+          <p className="text-xl text-gray-400">
+            Generate strategies with AI-powered suggestions
+          </p>
         </div>
 
-        <div className="glass-section motion-shadow hover-glow">
-          <div className="text-center">
-            <div className="text-4xl mb-4">🤖</div>
-            <h3 className="text-xl font-semibold text-violet-400 mb-2">AI Analysis</h3>
-            <p className="text-gray-300 text-sm">Intelligent market insights and predictions</p>
-          </div>
-        </div>
-
-        <div className="glass-section motion-shadow hover-glow">
-          <div className="text-center">
-            <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-xl font-semibold text-yellow-400 mb-2">Fast Execution</h3>
-            <p className="text-gray-300 text-sm">Lightning-speed trade analysis</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Interactive Demo */}
-      <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8 text-center">🎮 Try It Yourself</h2>
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="h-64 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 border border-white/10 rounded-xl flex items-center justify-center">
-              <div className="text-gray-400">Interactive Demo Area</div>
+        <div className="mb-8 glass-section p-4">
+          <h2 className="text-2xl font-semibold text-cyan-300 mb-4">🧪 Try these examples:</h2>
+          <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+            <div className="space-y-2">
+              <h3 className="text-white font-medium">Breakout Strategy:</h3>
+              <p className="text-sm">Type "breakout" to see momentum strategy with volume suggestions</p>
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-white font-medium">RSI Strategy:</h3>
+              <p className="text-sm">Type "RSI divergence" for oscillator-based strategy</p>
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-white font-medium">EMA Strategy:</h3>
+              <p className="text-sm">Type anything else for moving average pullback strategy</p>
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-white font-medium">Risk Warnings:</h3>
+              <p className="text-sm">Add "news" or "volatile" to see risk warnings</p>
             </div>
           </div>
-          <button className="glow-button glow-rainbow px-8 py-4 text-lg">
-            Start Demo
-          </button>
         </div>
+
+        <StrategyGenerator onComplete={handleStrategyComplete} />
+
+        {generatedStrategy && (
+          <div className="mt-12 glass-section p-6 animate-in fade-in slide-up">
+            <h3 className="text-xl font-semibold text-white mb-4">📊 Generated Strategy Summary</h3>
+            <div className="space-y-2 text-gray-300">
+              <p><strong>Title:</strong> {generatedStrategy.title}</p>
+              <p><strong>Rules:</strong> {generatedStrategy.rules.length}</p>
+              <p><strong>Checklist Items:</strong> {generatedStrategy.checklist.length}</p>
+              {generatedStrategy.warning && (
+                <p className="text-yellow-400"><strong>Warning:</strong> Yes</p>
+              )}
+            </div>
+            <div className="mt-4 text-sm text-gray-400">
+              The Strategy Copilot above provides AI-powered suggestions to improve your strategy!
+            </div>
+          </div>
+        )}
       </div>
-    </section>
+    </div>
   );
 };
 

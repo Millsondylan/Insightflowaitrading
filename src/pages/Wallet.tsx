@@ -1,52 +1,61 @@
-import React, { useState } from 'react';
-import WalletPanel from '@/components/core/WalletPanel';
-import SubscriptionChecker from '@/components/core/SubscriptionChecker';
-import { Wallet as WalletIcon, CreditCard } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import * as React from "react";
+import { useToast } from "@/components/ui/use-toast";
+import WalletConnect from "@/components/wallet/WalletConnect";
 
-const WalletPage: React.FC = () => {
+export default function Wallet() {
+  const { toast } = useToast();
+
+  const handleVerified = (address: string) => {
+    toast({
+      title: "Wallet Verified",
+      description: `Successfully verified wallet: ${address.slice(0, 6)}...${address.slice(-4)}`,
+    });
+    
+    // In a real app, you might:
+    // - Update user profile with verified address
+    // - Unlock premium content
+    // - Redirect to subscription page
+  };
+
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold mb-3">Wallet & Subscription</h1>
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Connect your crypto wallet to verify premium access or use the subscription checker to verify your payment and unlock premium features.
-        </p>
-        <div className="flex justify-center space-x-2 mt-4">
-          <Badge variant="outline" className="border-violet-500/50 text-violet-400">ETH</Badge>
-          <Badge variant="outline" className="border-orange-500/50 text-orange-400">BTC</Badge>
-          <Badge variant="outline" className="border-green-500/50 text-green-400">USDT (TRON)</Badge>
+    <div className="container mx-auto py-12 px-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Wallet Verification</h1>
+          <p className="text-white/70">
+            Connect your crypto wallet to verify ownership and unlock premium features.
+          </p>
         </div>
-      </div>
-      
-      <Tabs defaultValue="verify" className="w-full">
-        <TabsList className="mb-8 grid w-full grid-cols-2">
-          <TabsTrigger value="verify" className="flex items-center space-x-2">
-            <CreditCard className="h-4 w-4" />
-            <span>Verify Subscription</span>
-          </TabsTrigger>
-          <TabsTrigger value="wallet" className="flex items-center space-x-2">
-            <WalletIcon className="h-4 w-4" />
-            <span>Wallet Connection</span>
-          </TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="verify">
-          <SubscriptionChecker />
-        </TabsContent>
-        
-        <TabsContent value="wallet">
-          <WalletPanel />
-        </TabsContent>
-      </Tabs>
-      
-      <div className="mt-8 text-center text-sm text-gray-500">
-        <p>Your wallet information is stored locally and never sent to our servers.</p>
-        <p>This panel is for payment verification only.</p>
+
+        <WalletConnect onVerified={handleVerified} />
+
+        <div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</h2>
+          
+          <div className="space-y-4 text-white/80">
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔒</div>
+              <p>
+                <span className="font-medium text-white">Secure Verification:</span> We use non-custodial wallet signing to verify ownership without storing your private keys.
+              </p>
+            </div>
+            
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">⚡</div>
+              <p>
+                <span className="font-medium text-white">Unlock Premium Features:</span> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
+              </p>
+            </div>
+            
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔄</div>
+              <p>
+                <span className="font-medium text-white">Seamless Experience:</span> Your wallet connects directly to our service without any intermediaries.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
-};
-
-export default WalletPage; 
+} 
