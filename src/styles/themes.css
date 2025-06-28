@@ -1,374 +1,284 @@
 
-/* Insight Flow - Complete Glassmorphic Theme Framework */
+/* Global Theme Styles for Insight Flow */
 
-/* Base Glass Styling */
-.glass-section {
-  @apply bg-black/30 backdrop-blur-md border border-white/10 rounded-xl shadow-lg p-6;
-}
-
-.glass-card {
-  @apply bg-black/20 backdrop-blur-sm border border-white/5 rounded-lg p-4;
-}
-
-.glass-form {
-  @apply bg-black/40 backdrop-blur-md border border-white/10 rounded-xl p-8;
-}
-
-/* Animation Classes */
-.animate-in {
-  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.fade-in {
-  @apply opacity-0 animate-[fade-in_0.6s_ease-out_forwards];
-}
-
-.slide-up {
-  @apply translate-y-4 animate-[slide-up_0.6s_ease-out_forwards];
-}
-
+/* Base animations and utilities */
 @keyframes fade-in {
+  from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes slide-up {
-  to { transform: translateY(0); }
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.animate-in {
+  animation: fade-in 0.6s ease-out;
 }
 
-/* Landing Theme */
-.theme-landing {
-  background: 
-    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+.fade-in {
+  animation: fade-in 0.6s ease-out;
 }
 
-/* Strategy Theme - Cyan Grid Overlay */
-.theme-strategy {
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+.slide-up {
+  animation: slide-up 0.6s ease-out;
 }
 
-.theme-strategy::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  z-index: -1;
-  animation: grid-float 20s ease-in-out infinite;
+/* Glass morphism components */
+.glass-section {
+  @apply rounded-xl border border-white/10 backdrop-blur-md bg-black/30 shadow-lg p-6 space-y-4 transition-all duration-300;
 }
 
-/* Backtest Theme - Green/Emerald */
-.theme-backtest {
-  background: 
-    radial-gradient(circle at 40% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 60% 80%, rgba(5, 150, 105, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(6, 78, 59, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+.glass-card {
+  @apply rounded-lg border border-white/5 backdrop-blur-sm bg-white/5 p-4 transition-all duration-300;
 }
 
-/* Journal Theme - Magenta/Purple */
-.theme-journal {
-  background: 
-    radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(30, 27, 75, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+.motion-shadow {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Academy Theme - Deep Navy with Blue */
-.theme-academy {
-  background: 
-    radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(30, 41, 59, 0.95) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
+.hover-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* Wallet Theme - Gold/Yellow */
-.theme-wallet {
-  background: 
-    radial-gradient(circle at 70% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 30% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(120, 53, 15, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Admin Theme - Red/Orange */
-.theme-admin {
-  background: 
-    radial-gradient(circle at 80% 40%, rgba(239, 68, 68, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 20% 60%, rgba(249, 115, 22, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(87, 13, 248, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Markets Theme - Teal */
-.theme-markets {
-  background: 
-    radial-gradient(circle at 60% 30%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 70%, rgba(13, 148, 136, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(19, 78, 74, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Portfolio Theme - Indigo */
-.theme-portfolio {
-  background: 
-    radial-gradient(circle at 25% 75%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 25%, rgba(79, 70, 229, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(30, 27, 75, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Community Theme - Rose */
-.theme-community {
-  background: 
-    radial-gradient(circle at 50% 50%, rgba(244, 63, 94, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 0% 0%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(76, 29, 149, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Vault Theme - Slate */
-.theme-vault {
-  background: 
-    radial-gradient(circle at 30% 30%, rgba(100, 116, 139, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 70% 70%, rgba(71, 85, 105, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Digest Theme - Amber */
-.theme-digest {
-  background: 
-    radial-gradient(circle at 40% 60%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(217, 119, 6, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(120, 53, 15, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Demo Theme - Lime */
-.theme-demo {
-  background: 
-    radial-gradient(circle at 60% 40%, rgba(132, 204, 22, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 20% 80%, rgba(101, 163, 13, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(54, 83, 20, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Notification Theme - Violet */
-.theme-notify {
-  background: 
-    radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 30% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(46, 16, 101, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Help Theme - Sky */
-.theme-help {
-  background: 
-    radial-gradient(circle at 70% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 30% 50%, rgba(2, 132, 199, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(12, 74, 110, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Docs Theme - Emerald */
-.theme-docs {
-  background: 
-    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 60%, rgba(5, 150, 105, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(6, 78, 59, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Chat Theme - Pink */
-.theme-chat {
-  background: 
-    radial-gradient(circle at 60% 60%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 20% 20%, rgba(219, 39, 119, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(76, 29, 149, 0.9) 100%);
-  background-attachment: fixed;
-  min-height: 100vh;
-}
-
-/* Text Glow Effects */
+/* Text glow effects */
 .text-glow-cyan {
   @apply text-cyan-400;
-  text-shadow: 0 0 20px rgba(6, 182, 212, 0.6), 0 0 40px rgba(6, 182, 212, 0.3);
+  text-shadow: 0 0 20px rgb(34 211 238 / 50%);
 }
 
 .text-glow-violet {
   @apply text-violet-400;
-  text-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.3);
-}
-
-.text-glow-magenta {
-  @apply text-pink-400;
-  text-shadow: 0 0 20px rgba(236, 72, 153, 0.6), 0 0 40px rgba(236, 72, 153, 0.3);
-}
-
-.text-glow-blue {
-  @apply text-blue-400;
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 40px rgba(59, 130, 246, 0.3);
+  text-shadow: 0 0 20px rgb(167 139 250 / 50%);
 }
 
 .text-glow-emerald {
   @apply text-emerald-400;
-  text-shadow: 0 0 20px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.3);
+  text-shadow: 0 0 20px rgb(52 211 153 / 50%);
+}
+
+.text-glow-blue {
+  @apply text-blue-400;
+  text-shadow: 0 0 20px rgb(96 165 250 / 50%);
+}
+
+.text-glow-magenta {
+  @apply text-pink-400;
+  text-shadow: 0 0 20px rgb(244 114 182 / 50%);
 }
 
 .text-glow-gold {
-  @apply text-yellow-400;
-  text-shadow: 0 0 20px rgba(251, 191, 36, 0.6), 0 0 40px rgba(251, 191, 36, 0.3);
+  @apply text-amber-400;
+  text-shadow: 0 0 20px rgb(251 191 36 / 50%);
 }
 
-/* Motion Shadows */
-.motion-shadow {
-  box-shadow: 
-    0 4px 15px rgba(59, 130, 246, 0.2),
-    0 0 30px rgba(59, 130, 246, 0.1);
-  transition: all 0.3s ease;
+.text-glow-orange {
+  @apply text-orange-400;
+  text-shadow: 0 0 20px rgb(251 146 60 / 50%);
 }
 
-.motion-shadow:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 8px 25px rgba(59, 130, 246, 0.3),
-    0 0 40px rgba(59, 130, 246, 0.2);
+.text-glow-rainbow {
+  @apply text-transparent bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 bg-clip-text;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
 }
 
-/* Interactive Buttons */
+.text-glow-indigo {
+  @apply text-indigo-400;
+  text-shadow: 0 0 20px rgb(129 140 248 / 50%);
+}
+
+.text-glow-slate {
+  @apply text-slate-400;
+  text-shadow: 0 0 20px rgb(148 163 184 / 50%);
+}
+
+/* Glow buttons */
 .glow-button {
-  @apply px-6 py-3 rounded-full border transition-all duration-300 font-medium;
-  backdrop-filter: blur(10px);
-}
-
-.glow-button:hover {
-  transform: translateY(-2px);
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 border;
 }
 
 .glow-cyan {
-  @apply border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/10;
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  @apply bg-cyan-500/20 border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30;
+  box-shadow: 0 0 20px rgb(34 211 238 / 30%);
 }
 
 .glow-violet {
-  @apply border-violet-400/50 text-violet-300 hover:bg-violet-500/10;
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-}
-
-.glow-blue {
-  @apply border-blue-400/50 text-blue-300 hover:bg-blue-500/10;
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  @apply bg-violet-500/20 border-violet-400/50 text-violet-300 hover:bg-violet-500/30;
+  box-shadow: 0 0 20px rgb(167 139 250 / 30%);
 }
 
 .glow-emerald {
-  @apply border-emerald-400/50 text-emerald-300 hover:bg-emerald-500/10;
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  @apply bg-emerald-500/20 border-emerald-400/50 text-emerald-300 hover:bg-emerald-500/30;
+  box-shadow: 0 0 20px rgb(52 211 153 / 30%);
+}
+
+.glow-blue {
+  @apply bg-blue-500/20 border-blue-400/50 text-blue-300 hover:bg-blue-500/30;
+  box-shadow: 0 0 20px rgb(96 165 250 / 30%);
+}
+
+.glow-magenta {
+  @apply bg-pink-500/20 border-pink-400/50 text-pink-300 hover:bg-pink-500/30;
+  box-shadow: 0 0 20px rgb(244 114 182 / 30%);
 }
 
 .glow-gold {
-  @apply border-yellow-400/50 text-yellow-300 hover:bg-yellow-500/10;
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+  @apply bg-amber-500/20 border-amber-400/50 text-amber-300 hover:bg-amber-500/30;
+  box-shadow: 0 0 20px rgb(251 191 36 / 30%);
 }
 
-/* Grid Float Animation */
-@keyframes grid-float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(2px, -2px); }
+.glow-orange {
+  @apply bg-orange-500/20 border-orange-400/50 text-orange-300 hover:bg-orange-500/30;
+  box-shadow: 0 0 20px rgb(251 146 60 / 30%);
 }
 
-/* Thread Glow */
-.threadline-glow {
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(139, 92, 246, 0.4) 20%, 
-    rgba(236, 72, 153, 0.4) 80%, 
-    transparent 100%
-  );
-  height: 2px;
-  animation: thread-pulse 3s ease-in-out infinite;
+.glow-rainbow {
+  @apply bg-gradient-to-r from-cyan-500/20 via-violet-500/20 to-pink-500/20 border-transparent text-white hover:from-cyan-500/30 hover:via-violet-500/30 hover:to-pink-500/30;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
-@keyframes thread-pulse {
-  0%, 100% { opacity: 0.6; transform: scaleX(1); }
-  50% { opacity: 1; transform: scaleX(1.02); }
+.glow-indigo {
+  @apply bg-indigo-500/20 border-indigo-400/50 text-indigo-300 hover:bg-indigo-500/30;
+  box-shadow: 0 0 20px rgb(129 140 248 / 30%);
 }
 
-/* Sentiment Badges */
-.sentiment-bullish {
-  @apply bg-green-500/20 border border-green-400/40 text-green-300 px-3 py-1 rounded-full text-sm font-medium;
-  box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+.glow-teal {
+  @apply bg-teal-500/20 border-teal-400/50 text-teal-300 hover:bg-teal-500/30;
+  box-shadow: 0 0 20px rgb(20 184 166 / 30%);
 }
 
-.sentiment-bearish {
-  @apply bg-red-500/20 border border-red-400/40 text-red-300 px-3 py-1 rounded-full text-sm font-medium;
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+/* Theme-specific page backgrounds */
+.theme-landing {
+  background: radial-gradient(ellipse at top, rgb(59 130 246 / 15%) 0%, transparent 70%),
+              radial-gradient(ellipse at bottom, rgb(139 92 246 / 15%) 0%, transparent 70%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
+  min-height: 100vh;
 }
 
-/* Hover Effects */
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
-  transform: scale(1.02);
+.theme-strategy {
+  background: radial-gradient(ellipse at top left, rgb(34 211 238 / 15%) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, rgb(59 130 246 / 15%) 0%, transparent 50%),
+              linear-gradient(135deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
+  min-height: 100vh;
 }
 
-/* Scroll Animations */
-.scroll-fade-in {
-  @apply opacity-0 transform translate-y-8 transition-all duration-700 ease-out;
+.theme-backtest {
+  background: radial-gradient(ellipse at center, rgb(52 211 153 / 15%) 0%, transparent 70%),
+              linear-gradient(45deg, rgb(0 0 0) 0%, rgb(6 20 20) 100%);
+  min-height: 100vh;
 }
 
-.scroll-fade-in.visible {
-  @apply opacity-100 translate-y-0;
+.theme-journal {
+  background: radial-gradient(ellipse at top, rgb(244 114 182 / 15%) 0%, transparent 60%),
+              radial-gradient(ellipse at bottom, rgb(139 92 246 / 15%) 0%, transparent 60%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(24 5 24) 100%);
+  min-height: 100vh;
 }
 
-/* Responsive */
+.theme-academy {
+  background: radial-gradient(ellipse at top right, rgb(96 165 250 / 15%) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, rgb(34 197 94 / 15%) 0%, transparent 50%),
+              linear-gradient(225deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
+  min-height: 100vh;
+}
+
+.theme-wallet {
+  background: radial-gradient(ellipse at center, rgb(251 191 36 / 15%) 0%, transparent 70%),
+              linear-gradient(90deg, rgb(0 0 0) 0%, rgb(20 16 8) 100%);
+  min-height: 100vh;
+}
+
+.theme-admin {
+  background: radial-gradient(ellipse at top, rgb(239 68 68 / 15%) 0%, transparent 60%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(20 8 8) 100%);
+  min-height: 100vh;
+}
+
+.theme-markets {
+  background: radial-gradient(ellipse at top left, rgb(20 184 166 / 15%) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom right, rgb(52 211 153 / 15%) 0%, transparent 50%),
+              linear-gradient(135deg, rgb(0 0 0) 0%, rgb(6 20 20) 100%);
+  min-height: 100vh;
+}
+
+.theme-portfolio {
+  background: radial-gradient(ellipse at center, rgb(129 140 248 / 15%) 0%, transparent 70%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 15 23) 100%);
+  min-height: 100vh;
+}
+
+.theme-community {
+  background: radial-gradient(ellipse at top, rgb(244 114 182 / 15%) 0%, transparent 60%),
+              radial-gradient(ellipse at bottom, rgb(217 70 239 / 15%) 0%, transparent 60%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(24 5 20) 100%);
+  min-height: 100vh;
+}
+
+.theme-digest {
+  background: radial-gradient(ellipse at center, rgb(251 191 36 / 15%) 0%, transparent 70%),
+              radial-gradient(ellipse at top right, rgb(251 146 60 / 10%) 0%, transparent 50%),
+              linear-gradient(45deg, rgb(0 0 0) 0%, rgb(20 16 8) 100%);
+  min-height: 100vh;
+}
+
+.theme-chat {
+  background: radial-gradient(ellipse at top, rgb(244 114 182 / 15%) 0%, transparent 60%),
+              radial-gradient(ellipse at center, rgb(139 92 246 / 10%) 0%, transparent 70%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(24 5 24) 100%);
+  min-height: 100vh;
+}
+
+.theme-vault {
+  background: radial-gradient(ellipse at center, rgb(251 191 36 / 15%) 0%, transparent 70%),
+              radial-gradient(ellipse at bottom, rgb(217 119 6 / 10%) 0%, transparent 50%),
+              linear-gradient(135deg, rgb(0 0 0) 0%, rgb(20 16 8) 100%);
+  min-height: 100vh;
+}
+
+.theme-demo {
+  background: radial-gradient(ellipse at top left, rgb(34 211 238 / 15%) 0%, transparent 30%),
+              radial-gradient(ellipse at top right, rgb(244 114 182 / 15%) 0%, transparent 30%),
+              radial-gradient(ellipse at bottom, rgb(139 92 246 / 15%) 0%, transparent 30%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
+  min-height: 100vh;
+}
+
+.theme-notify {
+  background: radial-gradient(ellipse at center, rgb(251 146 60 / 15%) 0%, transparent 70%),
+              linear-gradient(90deg, rgb(0 0 0) 0%, rgb(20 12 8) 100%);
+  min-height: 100vh;
+}
+
+.theme-help {
+  background: radial-gradient(ellipse at top, rgb(129 140 248 / 15%) 0%, transparent 60%),
+              radial-gradient(ellipse at bottom, rgb(167 139 250 / 15%) 0%, transparent 60%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 15 23) 100%);
+  min-height: 100vh;
+}
+
+.theme-docs {
+  background: radial-gradient(ellipse at center, rgb(148 163 184 / 15%) 0%, transparent 70%),
+              linear-gradient(180deg, rgb(0 0 0) 0%, rgb(15 23 42) 100%);
+  min-height: 100vh;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .glass-section {
     @apply p-4;
   }
   
-  .glass-form {
-    @apply p-6;
+  .text-glow-cyan,
+  .text-glow-violet,
+  .text-glow-emerald,
+  .text-glow-blue,
+  .text-glow-magenta,
+  .text-glow-gold,
+  .text-glow-orange,
+  .text-glow-rainbow,
+  .text-glow-indigo,
+  .text-glow-slate {
+    text-shadow: 0 0 10px currentColor;
   }
 }
