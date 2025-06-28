@@ -1,3 +1,4 @@
+
 /* Quiz Container */
 .quiz-container {
   @apply relative overflow-hidden;
@@ -28,7 +29,7 @@
 }
 
 .quiz-option {
-  @apply relative cursor-pointer group;
+  @apply relative cursor-pointer;
 }
 
 .quiz-option-input {
@@ -290,4 +291,4 @@
   .badge-content {
     @apply p-6 mx-4;
   }
-} 
+}
