@@ -9,7 +9,8 @@ import { Quiz, QuizQuestion, QuizAnswer, QuizResult, QuizFeedback as QuizFeedbac
 import { requestQuiz } from "@/api/academy/quiz";
 import { LessonBlock } from "@/lib/academy/lessonSchema";
 import { cn } from "@/lib/utils";
-import { Brain, Trophy, ChevronDown } from "lucide-react";
+import { Brain, Trophy, ChevronDown, Lock } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 import "@/styles/quiz.css";
 
 interface QuizBlockProps {
@@ -24,6 +25,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   onQuizComplete 
 }) => {
   const { toast } = useToast();
+  const { hasProAccess, loading: authLoading } = useAuth();
   const [quiz, setQuiz] = useState<Quiz | null>(null);
   const [loading, setLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -39,10 +41,20 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   const isQuizComplete = quiz && currentQuestionIndex === quiz.questions.length - 1 && isQuestionAnswered;
 
   useEffect(() => {
-    generateQuiz();
-  }, [lessonBlocks]);
+    if (!authLoading && hasProAccess) {
+      generateQuiz();
+    }
+  }, [lessonBlocks, hasProAccess, authLoading]);
 
   const generateQuiz = async () => {
+    if (!hasProAccess) {
+      toast({
+        variant: "destructive",
+        title: "Pro Feature Locked",
+        description: "You need a Pro subscription to generate AI quizzes.",
+      });
+      return;
+    }
     if (lessonBlocks.length === 0) return;
     
     setLoading(true);
@@ -156,6 +168,37 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
     return (answeredQuestions / quiz.questions.length) * 100;
   };
 
+  if (authLoading) {
+    return <div className="text-center p-8">Checking access...</div>;
+  }
+
+  if (!hasProAccess) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        className={cn("quiz-container", className)}
+      >
+        <Card className="quiz-block">
+          <CardContent className="p-8 text-center space-y-6">
+            <Lock className="h-12 w-12 text-yellow-400 mx-auto" />
+            <div>
+              <h3 className="text-xl font-semibold text-gray-200 mb-2">
+                Unlock AI-Powered Quizzes
+              </h3>
+              <p className="text-gray-400">
+                Upgrade to a Pro plan to test your knowledge with quizzes tailored to each lesson.
+              </p>
+            </div>
+            <Button onClick={generateQuiz} className="mt-4">
+              Upgrade to Pro
+            </Button>
+          </CardContent>
+        </Card>
+      </motion.div>
+    );
+  }
+
   if (loading) {
     return (
       <motion.div
@@ -189,7 +232,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
     return (
       <Card className="quiz-block">
         <CardContent className="p-8 text-center">
-          <p className="text-gray-400">No quiz available for this lesson.</p>
+          <p className="text-gray-400">Ready to test your knowledge?</p>
           <Button onClick={generateQuiz} className="mt-4">
             Generate Quiz
           </Button>

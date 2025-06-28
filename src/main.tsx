@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { checkCriticalEnvVars, checkAIProviders } from './lib/env-check'
+import { AuthProvider } from './hooks/use-auth'
 
 // Check if critical environment variables are set
 if (!checkCriticalEnvVars()) {
@@ -17,4 +18,8 @@ console.info('Available AI providers:',
     .join(', ') || 'None'
 )
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <AuthProvider>
+    <App />
+  </AuthProvider>
+);
