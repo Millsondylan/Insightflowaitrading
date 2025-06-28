@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 interface ScrollRevealOptions {
   threshold?: number;
   rootMargin?: string;
+  triggerOnce?: boolean;
 }
 
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
@@ -18,19 +19,50 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(element); // Only animate once
+          if (options.triggerOnce !== false) {
+            observer.unobserve(element);
+          }
+        } else if (options.triggerOnce === false) {
+          setIsVisible(false);
         }
       },
       {
         threshold: options.threshold || 0.1,
-        rootMargin: options.rootMargin || '0px 0px -50px 0px',
+        rootMargin: options.rootMargin || '0px 0px -100px 0px',
       }
     );
 
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, [options.threshold, options.rootMargin]);
+  }, [options.threshold, options.rootMargin, options.triggerOnce]);
 
   return { elementRef, isVisible };
+};
+
+// Scroll section wrapper component
+export const ScrollSection = ({ 
+  children, 
+  className = "", 
+  delay = 0,
+  animation = "fade-in"
+}: { 
+  children: React.ReactNode; 
+  className?: string; 
+  delay?: number;
+  animation?: "fade-in" | "slide-right" | "scale-in";
+}) => {
+  const { elementRef, isVisible } = useScrollReveal();
+  
+  const animationClass = `scroll-${animation}`;
+  
+  return (
+    <section 
+      ref={elementRef}
+      className={`${animationClass} scroll-section ${isVisible ? 'visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </section>
+  );
 };
