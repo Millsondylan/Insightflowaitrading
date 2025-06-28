@@ -103,3 +103,10 @@
     font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04';
   }
 }
+
+/* Ensure themes are working */
+.theme-strategy,
+.theme-journal,
+.theme-academy {
+  min-height: 100vh;
+}

@@ -44,7 +44,7 @@ const StrategyPage = () => {
   };
 
   return (
-    <div className="theme-strategy scroll-container">
+    <div className="theme-strategy scroll-container min-h-screen">
       {/* Hero Section */}
       <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
         <div className="text-center max-w-5xl mx-auto">
