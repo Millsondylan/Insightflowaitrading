@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import StrategyForm from '../components/core/StrategyForm';
-import StrategyResult from '../components/core/StrategyResult';
+
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { StrategyFormData, buildStrategyPrompt } from '../lib/strategy/promptBuilder';
+import { useScrollReveal } from '../hooks/use-scroll-reveal';
 
 export interface StrategyResponse {
   strategyName: string;
@@ -13,108 +12,176 @@ export interface StrategyResponse {
   backtestTips: string[];
 }
 
+const ScrollSection = ({ children, className = "", delay = 0 }: { 
+  children: React.ReactNode; 
+  className?: string; 
+  delay?: number;
+}) => {
+  const { elementRef, isVisible } = useScrollReveal();
+  
+  return (
+    <section 
+      ref={elementRef}
+      className={`scroll-fade-in scroll-snap-section ${isVisible ? 'visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </section>
+  );
+};
+
 const StrategyPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [strategyResult, setStrategyResult] = useState<StrategyResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleStrategyGeneration = async (formData: StrategyFormData) => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      // Build the prompt (in a real app, this would be sent to an API)
-      const prompt = buildStrategyPrompt(formData);
-      console.log('Generated prompt:', prompt);
-      
-      // Mock API delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Mock response
-      const result = getMockStrategyResponse(formData);
-      setStrategyResult(result);
-      
-      // Scroll to result
-      setTimeout(() => {
-        document.getElementById('strategy-result')?.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }, 100);
-      
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An unknown error occurred');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Mock response generator for development
-  function getMockStrategyResponse(formData: StrategyFormData): StrategyResponse {
-    const strategyName = formData.strategyName || `${formData.tradeStyle} ${formData.instruments} Strategy`;
-    
-    return {
-      strategyName: strategyName,
-      description: `A ${formData.tradeStyle} strategy for ${formData.instruments} on the ${formData.timeframe} timeframe. This approach combines technical analysis with risk management to identify optimal entry and exit points.`,
-      rules: [
-        "Rule 1: Only enter trades in the direction of the overall trend as determined by the higher timeframe.",
-        "Rule 2: Wait for price to reach key support/resistance levels before considering entry.",
-        "Rule 3: Confirm entry signals with volume analysis and indicator confluence.",
-        "Rule 4: Maintain a risk-to-reward ratio of at least 1:2 for all trades.",
-        "Rule 5: Avoid trading during major news events or periods of low liquidity."
-      ],
-      entryChecklist: [
-        `Entry signal confirmed on ${formData.timeframe} chart: ${formData.entryConditions}`,
-        "Price action shows rejection at support/resistance level",
-        "Volume confirms the potential move",
-        "No immediate news events that could impact price",
-        "Position size calculated according to risk management rules"
-      ],
-      warnings: [
-        "Warning: This strategy may underperform in ranging or choppy market conditions.",
-        "Warning: Extended periods of low volatility may reduce the frequency of valid signals.",
-        "Warning: Always verify signals across multiple indicators to reduce false positives.",
-        "Warning: Backtest thoroughly before trading with real capital."
-      ],
-      backtestTips: [
-        "Test across different market conditions (trending, ranging, volatile).",
-        "Include transaction costs and slippage in your backtest calculations.",
-        "Compare performance against a simple buy-and-hold strategy as baseline.",
-        "Test various stop-loss and take-profit levels to optimize performance.",
-        "Document all results systematically for future reference and strategy refinement."
-      ]
-    };
-  }
+  const [mockStrategy] = useState<StrategyResponse>({
+    strategyName: "Momentum Breakout Alpha",
+    description: "A high-frequency momentum strategy designed to capture explosive price movements during market volatility. Combines technical analysis with algorithmic precision for optimal entry timing.",
+    rules: [
+      "Only enter trades in the direction of the overall trend as determined by the higher timeframe",
+      "Wait for price to reach key support/resistance levels before considering entry",
+      "Confirm entry signals with volume analysis and indicator confluence",
+      "Maintain a risk-to-reward ratio of at least 1:2 for all trades",
+      "Avoid trading during major news events or periods of low liquidity"
+    ],
+    entryChecklist: [
+      "Price action shows rejection at support/resistance level",
+      "Volume confirms the potential move direction",
+      "No immediate news events that could impact price",
+      "Position size calculated according to risk management rules",
+      "Stop loss and take profit levels clearly defined"
+    ],
+    warnings: [
+      "This strategy may underperform in ranging or choppy market conditions",
+      "Extended periods of low volatility may reduce the frequency of valid signals",
+      "Always verify signals across multiple indicators to reduce false positives",
+      "Backtest thoroughly before trading with real capital"
+    ],
+    backtestTips: [
+      "Test across different market conditions (trending, ranging, volatile)",
+      "Include transaction costs and slippage in your backtest calculations",
+      "Compare performance against a simple buy-and-hold strategy as baseline",
+      "Test various stop-loss and take-profit levels to optimize performance",
+      "Document all results systematically for future reference and strategy refinement"
+    ]
+  });
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8"
-      >
-        <h1 className="text-4xl font-bold mb-2 text-glow-cyan">Strategy Builder</h1>
-        <p className="text-gray-400">
-          Design your trading strategy with AI-powered insights. Fill in the form below to generate a comprehensive strategy.
-        </p>
-      </motion.div>
+    <div className="theme-strategy min-h-screen">
+      {/* Hero Section */}
+      <ScrollSection className="min-h-screen flex items-center justify-center px-6">
+        <div className="text-center max-w-4xl mx-auto">
+          <motion.h1 
+            className="text-6xl md:text-8xl font-bold text-glow-cyan mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Visualize Your Edge
+          </motion.h1>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            AI-crafted setups, ready to simulate
+          </motion.p>
+        </div>
+      </ScrollSection>
 
-      <StrategyForm onSubmit={handleStrategyGeneration} isLoading={isLoading} />
-      
-      {error && (
-        <div className="mt-8 p-4 bg-red-500/20 border border-red-500 rounded-lg text-white">
-          {error}
+      {/* Strategy Name */}
+      <ScrollSection className="px-6 py-16" delay={100}>
+        <div className="max-w-4xl mx-auto glass-section p-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-glow-cyan text-center mb-6">
+            {mockStrategy.strategyName}
+          </h2>
         </div>
-      )}
-      
-      {(strategyResult || isLoading) && (
-        <div id="strategy-result" className="mt-16">
-          <StrategyResult result={strategyResult} isLoading={isLoading} />
+      </ScrollSection>
+
+      {/* Description */}
+      <ScrollSection className="px-6 py-16" delay={200}>
+        <div className="max-w-4xl mx-auto glass-section p-12">
+          <p className="text-gray-300 text-lg leading-relaxed text-center">
+            {mockStrategy.description}
+          </p>
         </div>
-      )}
+      </ScrollSection>
+
+      {/* Rules */}
+      <ScrollSection className="px-6 py-16" delay={300}>
+        <div className="max-w-4xl mx-auto glass-section p-12">
+          <h3 className="text-3xl font-semibold text-cyan-400 mb-8">Rules</h3>
+          <ol className="space-y-4 list-decimal list-inside">
+            {mockStrategy.rules.map((rule, index) => (
+              <li key={index} className="text-gray-300 text-lg leading-relaxed">
+                {rule}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </ScrollSection>
+
+      {/* Entry Checklist */}
+      <ScrollSection className="px-6 py-16" delay={400}>
+        <div className="max-w-4xl mx-auto glass-section p-12">
+          <h3 className="text-3xl font-semibold text-cyan-400 mb-8">Entry Checklist ✅</h3>
+          <ul className="space-y-4 list-disc list-inside">
+            {mockStrategy.entryChecklist.map((item, index) => (
+              <li key={index} className="text-gray-300 text-lg leading-relaxed">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ScrollSection>
+
+      {/* Warning Panel */}
+      <ScrollSection className="px-6 py-16" delay={500}>
+        <div className="max-w-4xl mx-auto glass-section p-12 border-l-4 border-yellow-400">
+          <h3 className="text-3xl font-semibold text-yellow-400 mb-8">⚠️ Warnings</h3>
+          <ul className="space-y-4 list-disc list-inside">
+            {mockStrategy.warnings.map((warning, index) => (
+              <li key={index} className="text-gray-300 text-lg leading-relaxed">
+                {warning}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ScrollSection>
+
+      {/* Backtest Tips */}
+      <ScrollSection className="px-6 py-16" delay={600}>
+        <div className="max-w-4xl mx-auto glass-section p-12 italic">
+          <h3 className="text-3xl font-semibold text-cyan-400 mb-8">Backtest Tips 💡</h3>
+          <ul className="space-y-4 list-disc list-inside">
+            {mockStrategy.backtestTips.map((tip, index) => (
+              <li key={index} className="text-gray-300 text-lg leading-relaxed">
+                {tip}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </ScrollSection>
+
+      {/* CTA Footer */}
+      <ScrollSection className="px-6 py-24" delay={700}>
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="flex flex-wrap justify-center gap-6">
+            <button className="glow-button glow-cyan">
+              🔁 Backtest Strategy
+            </button>
+            <button className="glow-button glow-cyan">
+              📓 Save to Journal
+            </button>
+            <button className="glow-button glow-cyan">
+              📘 Learn in Academy
+            </button>
+            <button className="glow-button glow-cyan">
+              💬 Share Strategy
+            </button>
+          </div>
+        </div>
+      </ScrollSection>
     </div>
   );
 };
 
-export default StrategyPage; 
+export default StrategyPage;

@@ -1,0 +1,170 @@
+
+/* Insight Flow - Theme Framework */
+
+/* Base Glass Styling */
+.glass-section {
+  @apply bg-black/40 backdrop-blur-md border border-white/10 rounded-xl shadow-lg;
+}
+
+.glass-card {
+  @apply bg-black/30 backdrop-blur-sm border border-white/5 rounded-lg;
+}
+
+/* Strategy Theme - Cyan Grid Overlay */
+.theme-strategy {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(15, 23, 42, 0.8) 100%);
+  background-attachment: fixed;
+}
+
+.theme-strategy::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.text-glow-cyan {
+  @apply text-cyan-400;
+  text-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.2);
+}
+
+/* Journal Theme - Violet/Magenta Accents */
+.theme-journal {
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(30, 27, 75, 0.8) 100%);
+  background-attachment: fixed;
+}
+
+.text-glow-violet {
+  @apply text-violet-400;
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.2);
+}
+
+.text-glow-magenta {
+  @apply text-pink-400;
+  text-shadow: 0 0 20px rgba(236, 72, 153, 0.5), 0 0 40px rgba(236, 72, 153, 0.2);
+}
+
+/* Academy Theme - Deep Navy with Tint Gradients */
+.theme-academy {
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+  background-attachment: fixed;
+}
+
+.text-glow-blue {
+  @apply text-blue-400;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+.text-glow-emerald {
+  @apply text-emerald-400;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(16, 185, 129, 0.2);
+}
+
+/* Scroll-Reactive Animations */
+.scroll-fade-in {
+  @apply opacity-0 transform translate-y-8 transition-all duration-700 ease-out;
+}
+
+.scroll-fade-in.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+.scroll-scale-in {
+  @apply opacity-0 transform scale-95 transition-all duration-500 ease-out;
+}
+
+.scroll-scale-in.visible {
+  @apply opacity-100 scale-100;
+}
+
+/* Glow Buttons */
+.glow-button {
+  @apply px-6 py-3 rounded-full border transition-all duration-300;
+  backdrop-filter: blur(10px);
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.glow-cyan {
+  @apply border-cyan-500 text-cyan-400 hover:bg-cyan-500/10;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.glow-violet {
+  @apply border-violet-500 text-violet-400 hover:bg-violet-500/10;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.glow-blue {
+  @apply border-blue-500 text-blue-400 hover:bg-blue-500/10;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Progress Indicators */
+.progress-line {
+  @apply absolute left-6 top-0 bottom-0 w-0.5 bg-gray-700;
+}
+
+.progress-fill {
+  @apply absolute left-6 top-0 w-0.5 bg-blue-500 transition-all duration-300;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Sentiment Badges */
+.sentiment-bullish {
+  @apply bg-green-500/20 border border-green-500/30 text-green-400;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);
+}
+
+.sentiment-bearish {
+  @apply bg-red-500/20 border border-red-500/30 text-red-400;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+}
+
+/* Memory Thread Effect */
+.memory-thread {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(139, 92, 246, 0.3) 20%, 
+    rgba(236, 72, 153, 0.3) 80%, 
+    transparent 100%
+  );
+  height: 2px;
+  animation: pulse-thread 3s ease-in-out infinite;
+}
+
+@keyframes pulse-thread {
+  0%, 100% { opacity: 0.5; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.02); }
+}
+
+/* Scroll Snap */
+.scroll-snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
