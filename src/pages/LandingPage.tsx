@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,163 +9,205 @@ import {
   BarChart3,
   ArrowRight,
   CheckCircle,
+  BrainCircuit,
+  Users,
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ThemeScrollObserver from '@/components/core/ThemeScrollObserver';
+import { ThemeName } from '@/contexts/ThemeContext';
+
+const SectionWrapper = React.forwardRef<HTMLDivElement, { children: React.ReactNode; className?: string, id: string }>(
+  ({ children, className, id }, ref) => (
+    <section ref={ref} id={id} className={`w-full px-6 py-24 sm:py-32 ${className}`}>
+      {children}
+    </section>
+  )
+);
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
+  // Refs for each section
+  const heroRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const portfolioRef = useRef<HTMLDivElement>(null);
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+
+  const sections = [
+    { ref: heroRef, theme: 'landing' as ThemeName },
+    { ref: featuresRef, theme: 'academy' as ThemeName },
+    { ref: portfolioRef, theme: 'portfolio' as ThemeName },
+    { ref: testimonialsRef, theme: 'NeonWave' as ThemeName },
+  ];
+
   const features = [
     {
-      icon: TrendingUp,
-      title: "AI-Powered Insights",
-      description: "Leverage advanced AI to analyze market trends and identify trading opportunities.",
-      gradient: "from-blue-500 to-cyan-600"
+      icon: BrainCircuit,
+      title: "AI Strategy Builder",
+      description: "Design and validate strategies with our AI-powered visual builder.",
     },
     {
       icon: BarChart3,
-      title: "Intuitive Interface",
-      description: "A clean, user-friendly interface designed for both novice and experienced traders.",
-      gradient: "from-green-500 to-emerald-600"
+      title: "Advanced Charting",
+      description: "A professional-grade interface with advanced tools and indicators.",
     },
     {
       icon: Shield,
-      title: "Bank-Grade Security",
-      description: "Your funds and data are protected with multi-layered, industry-leading security.",
-      gradient: "from-purple-500 to-pink-600"
+      title: "Risk Management",
+      description: "Protect your capital with our integrated risk analysis and alerts.",
     },
     {
-      icon: Zap,
-      title: "Rapid Execution",
-      description: "Execute trades in milliseconds with our high-performance trading engine.",
-      gradient: "from-orange-500 to-red-600"
+      icon: Users,
+      title: "Community Insights",
+      description: "Collaborate and learn from a community of thousands of traders.",
     }
   ];
 
+  const testimonials = [
+    {
+      quote: "InsightFlow has revolutionized my trading. The AI insights are a game-changer.",
+      author: "Alex W.",
+      handle: "@alex_trades"
+    },
+    {
+      quote: "The best trading platform I've ever used. Intuitive, powerful, and beautiful.",
+      author: "Samantha G.",
+      handle: "@sammie_charts"
+    },
+     {
+      quote: "Finally, a platform that feels like it's from the future. The UI is just incredible.",
+      author: "Kenji T.",
+      handle: "@kenji_flow"
+    }
+  ]
+
   return (
-    <div className="min-h-screen bg-[#0D1117] text-gray-100">
-      {/* Navigation Header */}
-      <nav className="w-full p-6 flex justify-between items-center fixed top-0 z-50 bg-[#0D1117]/80 backdrop-blur-sm">
+    <div className="min-h-screen text-gray-100 transition-colors duration-500">
+      <ThemeScrollObserver sections={sections} />
+      
+      {/* Navigation Header - Stays consistent */}
+      <nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
             <TrendingUp className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white">
-            InsightFlow AI
-          </h1>
+          <h1 className="text-2xl font-bold text-white">InsightFlow AI</h1>
         </div>
-        <div className="flex space-x-4">
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/auth')}
-            className="text-white hover:bg-gray-800"
-          >
+        <div className="flex space-x-2 md:space-x-4">
+          <Button variant="ghost" onClick={() => navigate('/auth')} className="text-white hover:bg-white/10">
             Sign In
           </Button>
-          <Button
-            onClick={() => navigate('/auth')}
-            className="bg-blue-600 hover:bg-blue-700 text-white"
-          >
+          <Button onClick={() => navigate('/auth')} className="quantum-button text-white">
             Start Free Trial
           </Button>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <motion.div
-        id="hero"
-        className="w-full px-6 pt-40 pb-32 text-center"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
-      >
-        <div className="space-y-6">
-          <Badge className="bg-gray-800 text-blue-400 border-blue-400/30 px-4 py-2 text-sm">
-            <span>🚀</span> Over 10,000 traders trust InsightFlow AI
-          </Badge>
+      {/* Hero Section (Landing Theme) */}
+      <SectionWrapper ref={heroRef} id="hero" className="pt-40 pb-32 text-center flex flex-col items-center">
+         <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+         >
+            <Badge className="mb-6 px-4 py-2 text-sm border bg-black/20 border-white/20">
+              <span className="mr-2">🚀</span> Over 10,000 traders trust InsightFlow AI
+            </Badge>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-            <span className="text-white">
-              The Ultimate AI-Powered
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-              Trading Copilot
-            </span>
-          </h1>
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight hologram-text">
+                The Future of Trading is Here.
+            </h1>
 
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-            Make smarter, faster, and more confident trading decisions with real-time insights, advanced analytics, and a powerful, intuitive interface.
-          </p>
+            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mt-6">
+              Make smarter, faster, and more confident trading decisions with real-time insights, advanced analytics, and a powerful, intuitive interface.
+            </p>
 
-          <div className="flex justify-center space-x-4 pt-6">
-            <Button
-              size="lg"
-              onClick={() => navigate('/auth')}
-              className="bg-blue-600 hover:bg-blue-700 text-white text-lg px-8 py-4"
-            >
-              Start Free Trial
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => navigate('/trading')}
-              className="text-white border-gray-700 hover:bg-gray-800 hover:text-white text-lg px-8 py-4"
-            >
-              View Demo
-            </Button>
-          </div>
-
-          <div className="flex justify-center items-center space-x-8 pt-8 text-gray-500">
-            <div className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
-              <span>Free 14-day trial</span>
+            <div className="flex justify-center space-x-4 pt-8">
+              <Button size="lg" onClick={() => navigate('/auth')} className="quantum-button text-lg px-8 py-4">
+                Get Started <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
             </div>
-            <div className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-green-500" />
-              <span>No credit card required</span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </SectionWrapper>
 
-      {/* Features Section */}
-      <motion.div
-        id="features"
-        className="container mx-auto px-6 py-24"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-      >
+      {/* Features Section (Academy Theme) */}
+      <SectionWrapper ref={featuresRef} id="features" className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            A New Standard for Trading Intelligence
-          </h2>
+          <h2 className="text-4xl font-bold text-white mb-4">A New Standard for Trading Intelligence</h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             InsightFlow AI provides everything you need to navigate the markets with confidence.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-[#161B22] border border-gray-800 hover:border-blue-500/50 transition-all duration-300 rounded-lg">
-              <CardHeader className="text-center">
-                <div className={`w-16 h-16 mx-auto rounded-lg bg-gray-800 flex items-center justify-center mb-4 border border-gray-700`}>
-                  <feature.icon className="w-8 h-8 text-blue-400" />
-                </div>
-                <CardTitle className="text-white">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-400 text-center">{feature.description}</p>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="glass-card h-full gradient-border">
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 mx-auto rounded-lg bg-black/30 flex items-center justify-center mb-4 border border-white/10">
+                    <feature.icon className="w-8 h-8 text-cyan-300" />
+                  </div>
+                  <CardTitle className="text-white text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-400 text-center">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
+      </SectionWrapper>
+      
+      {/* Placeholder for Portfolio Section */}
+      <SectionWrapper ref={portfolioRef} id="portfolio-demo" className="container mx-auto">
+        <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">Your Portfolio, Supercharged</h2>
+            <p className="text-xl text-gray-400">Track your performance with stunning visuals.</p>
+        </div>
+        <div className="glass-card p-8">
+            <h3 className="text-2xl font-bold mb-4 text-white">Performance Overview</h3>
+            <div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
+              <p className="text-gray-500">-- PnL Curve Chart Placeholder --</p>
+            </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Testimonials Section (NeonWave Theme) */}
+      <SectionWrapper ref={testimonialsRef} id="testimonials" className="container mx-auto">
+         <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-4">Loved by Modern Traders</h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Don't just take our word for it. Here's what our users are saying.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+             <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="glass-card h-full">
+                <CardContent className="pt-6">
+                  <p className="text-lg text-white mb-4">"{testimonial.quote}"</p>
+                  <div className="flex items-center">
+                    <p className="font-bold text-white">{testimonial.author}</p>
+                    <p className="ml-2 text-gray-400">{testimonial.handle}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </SectionWrapper>
     </div>
   );
 };

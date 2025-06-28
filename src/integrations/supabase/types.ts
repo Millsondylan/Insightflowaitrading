@@ -969,6 +969,535 @@ export type Database = {
         }
         Relationships: []
       }
+      daily_plans: {
+        Row: {
+          id: string;
+          user_id: string;
+          date: string;
+          focus_note: string;
+          selected_strategies: string[];
+          market_condition: string | null;
+          risk_level: string | null;
+          trading_goals: string[] | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          date: string;
+          focus_note: string;
+          selected_strategies?: string[];
+          market_condition?: string | null;
+          risk_level?: string | null;
+          trading_goals?: string[] | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          date?: string;
+          focus_note?: string;
+          selected_strategies?: string[];
+          market_condition?: string | null;
+          risk_level?: string | null;
+          trading_goals?: string[] | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "daily_plans_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      }
+      replay_data: {
+        Row: {
+          id: string;
+          user_id: string;
+          trade_id: string;
+          symbol: string;
+          timeframe: string;
+          start_time: string;
+          end_time: string;
+          candles: {
+            timestamp: string;
+            open: number;
+            high: number;
+            low: number;
+            close: number;
+            volume: number;
+          }[];
+          tags: string[] | null;
+          annotations: {
+            timestamp: string;
+            type: string;
+            text: string;
+          }[] | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          trade_id: string;
+          symbol: string;
+          timeframe: string;
+          start_time: string;
+          end_time: string;
+          candles: {
+            timestamp: string;
+            open: number;
+            high: number;
+            low: number;
+            close: number;
+            volume: number;
+          }[];
+          tags?: string[] | null;
+          annotations?: {
+            timestamp: string;
+            type: string;
+            text: string;
+          }[] | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          trade_id?: string;
+          symbol?: string;
+          timeframe?: string;
+          start_time?: string;
+          end_time?: string;
+          candles?: {
+            timestamp: string;
+            open: number;
+            high: number;
+            low: number;
+            close: number;
+            volume: number;
+          }[];
+          tags?: string[] | null;
+          annotations?: {
+            timestamp: string;
+            type: string;
+            text: string;
+          }[] | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "replay_data_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "replay_data_trade_id_fkey";
+            columns: ["trade_id"];
+            isOneToOne: false;
+            referencedRelation: "trades";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      strategy_backtests: {
+        Row: {
+          id: string;
+          user_id: string;
+          strategy_id: string;
+          symbol: string;
+          timeframe: string;
+          start_date: string;
+          end_date: string;
+          initial_balance: number;
+          final_balance: number;
+          total_trades: number;
+          winning_trades: number;
+          losing_trades: number;
+          profit_factor: number | null;
+          sharpe_ratio: number | null;
+          max_drawdown: number | null;
+          win_rate: number | null;
+          results_data: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          strategy_id: string;
+          symbol: string;
+          timeframe: string;
+          start_date: string;
+          end_date: string;
+          initial_balance?: number;
+          final_balance: number;
+          total_trades: number;
+          winning_trades: number;
+          losing_trades: number;
+          profit_factor?: number | null;
+          sharpe_ratio?: number | null;
+          max_drawdown?: number | null;
+          win_rate?: number | null;
+          results_data?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          strategy_id?: string;
+          symbol?: string;
+          timeframe?: string;
+          start_date?: string;
+          end_date?: string;
+          initial_balance?: number;
+          final_balance?: number;
+          total_trades?: number;
+          winning_trades?: number;
+          losing_trades?: number;
+          profit_factor?: number | null;
+          sharpe_ratio?: number | null;
+          max_drawdown?: number | null;
+          win_rate?: number | null;
+          results_data?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "strategy_backtests_strategy_id_fkey";
+            columns: ["strategy_id"];
+            isOneToOne: false;
+            referencedRelation: "trading_strategies";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "strategy_backtests_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      strategy_versions: {
+        Row: {
+          id: string;
+          strategy_id: string;
+          user_id: string;
+          version: string;
+          code: string;
+          description: string | null;
+          changes_summary: string | null;
+          performance_data: Json;
+          is_live: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          strategy_id: string;
+          user_id: string;
+          version: string;
+          code: string;
+          description?: string | null;
+          changes_summary?: string | null;
+          performance_data?: Json;
+          is_live?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          strategy_id?: string;
+          user_id?: string;
+          version?: string;
+          code?: string;
+          description?: string | null;
+          changes_summary?: string | null;
+          performance_data?: Json;
+          is_live?: boolean;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "strategy_versions_strategy_id_fkey";
+            columns: ["strategy_id"];
+            isOneToOne: false;
+            referencedRelation: "trading_strategies";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "strategy_versions_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      market_analysis: {
+        Row: {
+          id: string;
+          user_id: string;
+          symbol: string;
+          timeframe: string;
+          analysis_type: string;
+          analysis_data: Json;
+          sentiment: string | null;
+          key_levels: number[] | null;
+          indicators: Json;
+          created_at: string;
+          expires_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          symbol: string;
+          timeframe: string;
+          analysis_type: string;
+          analysis_data: Json;
+          sentiment?: string | null;
+          key_levels?: number[] | null;
+          indicators?: Json;
+          created_at?: string;
+          expires_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          symbol?: string;
+          timeframe?: string;
+          analysis_type?: string;
+          analysis_data?: Json;
+          sentiment?: string | null;
+          key_levels?: number[] | null;
+          indicators?: Json;
+          created_at?: string;
+          expires_at?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "market_analysis_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      trading_goals: {
+        Row: {
+          id: string;
+          user_id: string;
+          title: string;
+          description: string | null;
+          target_value: number | null;
+          current_value: number;
+          goal_type: string;
+          start_date: string;
+          target_date: string | null;
+          status: string;
+          progress_data: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          title: string;
+          description?: string | null;
+          target_value?: number | null;
+          current_value?: number;
+          goal_type: string;
+          start_date: string;
+          target_date?: string | null;
+          status?: string;
+          progress_data?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          title?: string;
+          description?: string | null;
+          target_value?: number | null;
+          current_value?: number;
+          goal_type?: string;
+          start_date?: string;
+          target_date?: string | null;
+          status?: string;
+          progress_data?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trading_goals_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      risk_settings: {
+        Row: {
+          id: string;
+          user_id: string;
+          max_position_size: number;
+          max_daily_drawdown: number;
+          default_stop_loss_percent: number;
+          default_take_profit_percent: number;
+          max_trades_per_day: number | null;
+          allowed_symbols: string[];
+          risk_per_trade_percent: number;
+          compounding_enabled: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          max_position_size: number;
+          max_daily_drawdown: number;
+          default_stop_loss_percent: number;
+          default_take_profit_percent: number;
+          max_trades_per_day?: number | null;
+          allowed_symbols?: string[];
+          risk_per_trade_percent: number;
+          compounding_enabled?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          max_position_size?: number;
+          max_daily_drawdown?: number;
+          default_stop_loss_percent?: number;
+          default_take_profit_percent?: number;
+          max_trades_per_day?: number | null;
+          allowed_symbols?: string[];
+          risk_per_trade_percent?: number;
+          compounding_enabled?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "risk_settings_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      trading_sessions: {
+        Row: {
+          id: string;
+          user_id: string;
+          start_time: string;
+          end_time: string | null;
+          initial_balance: number;
+          final_balance: number | null;
+          pnl: number | null;
+          total_trades: number;
+          winning_trades: number;
+          losing_trades: number;
+          emotional_state: string | null;
+          focus_level: number | null;
+          notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          start_time: string;
+          end_time?: string | null;
+          initial_balance: number;
+          final_balance?: number | null;
+          pnl?: number | null;
+          total_trades?: number;
+          winning_trades?: number;
+          losing_trades?: number;
+          emotional_state?: string | null;
+          focus_level?: number | null;
+          notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          start_time?: string;
+          end_time?: string | null;
+          initial_balance?: number;
+          final_balance?: number | null;
+          pnl?: number | null;
+          total_trades?: number;
+          winning_trades?: number;
+          losing_trades?: number;
+          emotional_state?: string | null;
+          focus_level?: number | null;
+          notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "trading_sessions_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      market_correlations: {
+        Row: {
+          id: string;
+          symbol_pair: string[];
+          timeframe: string;
+          correlation_value: number;
+          start_date: string;
+          end_date: string;
+          data_points: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          symbol_pair: string[];
+          timeframe: string;
+          correlation_value: number;
+          start_date: string;
+          end_date: string;
+          data_points: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          symbol_pair?: string[];
+          timeframe?: string;
+          correlation_value?: number;
+          start_date?: string;
+          end_date?: string;
+          data_points?: number;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
     }
     Views: {
       [_ in never]: never

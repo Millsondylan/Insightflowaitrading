@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import { ThemeProvider } from './contexts/ThemeContext';
+import './styles/futuristic-theme.css';
 import Index from './pages/Index';
 import LandingPage from './pages/LandingPage';
 import Strategy from './pages/Strategy';

@@ -1,0 +1,192 @@
+/* Insightflow Futuristic Theme CSS */
+
+/* --- 1. Root Variables & Font Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+:root {
+  /* Futuristic Color Palette */
+  --electric-blue: #00d4ff;
+  --plasma-purple: #9c27b0;
+  --cyber-green: #00ff41;
+  --quantum-gold: #ffd700;
+  --neon-pink: #ff006e;
+
+  /* Base theme variables (will be overridden by context) */
+  --theme-background: #0a0a0f;
+  --theme-accent: linear-gradient(45deg, #00f0ff, #ff00ea);
+  --theme-text: #e0e0e0;
+  --theme-glow: 0 0 15px #00f0ff, 0 0 25px #ff00ea;
+  --theme-font: 'Orbitron', sans-serif;
+
+  /* Smooth Transitions */
+  --theme-transition-duration: 0.6s;
+  --theme-transition-timing: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+body {
+  background-color: var(--theme-background);
+  color: var(--theme-text);
+  font-family: var(--theme-font);
+  transition:
+    background-color var(--theme-transition-duration) var(--theme-transition-timing),
+    color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+/* --- 2. Advanced Visual Effects --- */
+
+/* Glass Morphism Card Effect */
+.glass-card {
+  background: rgba(16, 16, 30, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), var(--theme-glow);
+  transition: box-shadow var(--theme-transition-duration) ease-in-out;
+}
+
+/* Animated Gradient Border */
+.gradient-border {
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background: var(--theme-accent);
+  animation: hologram-shift 4s linear infinite;
+}
+
+/* Holographic Text Effect */
+.hologram-text {
+  background: linear-gradient(45deg,
+    var(--electric-blue),
+    var(--plasma-purple),
+    var(--cyber-green));
+  background-size: 400% 400%;
+  animation: hologram-shift 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Quantum Button Effect */
+.quantum-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  background: var(--theme-accent);
+  background-size: 200% auto;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 10px var(--theme-glow);
+  transform: perspective(1000px);
+}
+
+.quantum-button:hover {
+  background-position: right center;
+  box-shadow: 0 0 25px var(--theme-glow);
+  transform: translateY(-3px) translateZ(20px);
+}
+
+/* Matrix Background Effect */
+.matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-bg::before,
+.matrix-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(transparent, var(--cyber-green), transparent);
+  animation: data-stream 3s linear infinite;
+}
+
+.matrix-bg::after {
+  left: 75%;
+  animation-delay: -1.5s;
+  animation-duration: 4s;
+}
+
+/* --- 3. Animation System --- */
+
+@keyframes hologram-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes profit-loss-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px var(--cyber-green);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--cyber-green);
+  }
+}
+.profit-pulse { animation: profit-loss-pulse 2s ease-in-out infinite; }
+.loss-pulse { animation: profit-loss-pulse 2s ease-in-out infinite; box-shadow: 0 0 5px var(--neon-pink) !important; }
+.loss-pulse:hover { box-shadow: 0 0 20px var(--neon-pink) !important; }
+
+
+@keyframes data-stream {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+@keyframes neural-pulse {
+  0% { box-shadow: 0 0 5px var(--electric-blue); }
+  50% { box-shadow: 0 0 30px var(--plasma-purple); }
+  100% { box-shadow: 0 0 5px var(--electric-blue); }
+}
+.neural-pulse { animation: neural-pulse 4s ease-in-out infinite; }
+
+/* --- 4. Performance & Accessibility --- */
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity, box-shadow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- 5. Responsive Design --- */
+
+@media (max-width: 768px) {
+  .glass-card {
+    border-radius: 12px;
+    margin: 8px;
+  }
+  .hologram-text {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .quantum-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+} 
