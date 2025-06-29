@@ -60,13 +60,13 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Replay Annotations</h2>
+    <Card style={{ padding: "24px" }}>
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Replay Annotations</h2>
 
-      <div className="space-y-6">
+      <div >
         <div>
-          <h3 className="font-semibold mb-3">Add Annotation</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+          <h3 >Add Annotation</h3>
+          <div style={{ marginBottom: "16px" }}>
             {annotationTypes.map((type) => {
               const Icon = type.icon;
               return (
@@ -74,51 +74,51 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
                   key={type.id}
                   variant={selectedType === type.id ? 'default' : 'outline'}
                   size="sm"
-                  className="flex items-center gap-2"
+                  style={{ display: "flex", alignItems: "center" }}
                   onClick={() => setSelectedType(type.id)}
                 >
                   <Icon className={`h-4 w-4 ${type.color}`} />
-                  <span className="text-xs">{type.label}</span>
+                  <span >{type.label}</span>
                 </Button>
               );
             })}
           </div>
           
-          <div className="flex gap-2">
+          <div style={{ display: "flex" }}>
             <Input
               placeholder="Add a note about this moment..."
               value={customNote}
               onChange={(e) => setCustomNote(e.target.value)}
             />
             <Button onClick={addAnnotation} disabled={!selectedType}>
-              <Tag className="h-4 w-4 mr-2" />
+              <Tag  />
               Add
             </Button>
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold mb-3">Annotations Timeline</h3>
-          <div className="space-y-3">
+          <h3 >Annotations Timeline</h3>
+          <div >
             {annotations.map((annotation) => {
               const type = annotationTypes.find(t => t.id === annotation.type);
               const Icon = type?.icon || Tag;
 
               return (
-                <div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
+                <div key={annotation.id} style={{ display: "flex", border: "1px solid #374151" }}>
                   <div className={`mt-1 ${type?.color}`}>
-                    <Icon className="h-5 w-5" />
+                    <Icon  />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
+                  <div >
+                    <div style={{ display: "flex", alignItems: "center" }}>
                       <Badge variant="outline">{type?.label}</Badge>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div style={{ display: "flex", alignItems: "center" }}>
                         <span>{annotation.timestamp}</span>
                         <span>•</span>
                         <span>${annotation.price}</span>
                       </div>
                     </div>
-                    <p className="text-sm">{annotation.note}</p>
+                    <p >{annotation.note}</p>
                   </div>
                 </div>
               );
@@ -126,19 +126,19 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
           </div>
         </div>
 
-        <div className="p-4 bg-secondary/20 rounded-lg">
-          <h4 className="font-medium mb-2">Pattern Recognition</h4>
-          <p className="text-sm text-muted-foreground mb-3">
+        <div style={{ padding: "16px" }}>
+          <h4 >Pattern Recognition</h4>
+          <p >
             Based on your annotations, we've identified recurring patterns:
           </p>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="text-center p-2 bg-background rounded">
-              <p className="text-lg font-bold text-red-500">3</p>
-              <p className="text-xs text-muted-foreground">Volatility Traps/Week</p>
+          <div >
+            <div >
+              <p style={{ fontWeight: "700" }}>3</p>
+              <p >Volatility Traps/Week</p>
             </div>
-            <div className="text-center p-2 bg-background rounded">
-              <p className="text-lg font-bold text-green-500">78%</p>
-              <p className="text-xs text-muted-foreground">Exit Signal Accuracy</p>
+            <div >
+              <p style={{ fontWeight: "700" }}>78%</p>
+              <p >Exit Signal Accuracy</p>
             </div>
           </div>
         </div>
@@ -146,11 +146,3 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

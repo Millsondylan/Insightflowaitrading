@@ -47,67 +47,67 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="glass-container p-6 rounded-lg max-w-2xl mx-auto"
+      style={{ padding: "24px", marginLeft: "auto", marginRight: "auto" }}
     >
-      <h2 className="text-2xl font-bold mb-4 text-center">Payment Verification</h2>
-      <p className="text-gray-400 mb-6 text-center">
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Payment Verification</h2>
+      <p style={{ color: "#9CA3AF" }}>
         Send your payment to one of the addresses below to activate your account.
       </p>
 
       <Tabs 
         value={activeTab} 
         onValueChange={setActiveTab}
-        className="w-full"
+        style={{ width: "100%" }}
       >
-        <TabsList className="grid grid-cols-3 mb-6 bg-black/30">
+        <TabsList >
           <TabsTrigger 
             value="eth" 
-            className="data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-400"
+            
           >
             ETH
           </TabsTrigger>
           <TabsTrigger 
             value="usdt" 
-            className="data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400"
+            
           >
             USDT
           </TabsTrigger>
           <TabsTrigger 
             value="btc" 
-            className="data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400"
+            
           >
             BTC
           </TabsTrigger>
         </TabsList>
 
         {Object.entries(wallets).map(([key, wallet]) => (
-          <TabsContent key={key} value={key} className="space-y-4">
+          <TabsContent key={key} value={key} >
             <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
               <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
-              <div className="flex items-center">
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <Input 
                   value={wallet.address} 
                   readOnly 
-                  className="bg-black/30 border-gray-700 flex-grow"
+                  
                 />
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="ml-2"
+                  
                   onClick={() => handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <span style={{fontSize: '16px'}}>✅</span> : <Copy className="h-4 w-4" />}
+                  {copied === key ? <span style={{fontSize: '16px'}}>✅</span> : <Copy  />}
                 </Button>
               </div>
             </div>
             
-            <div className="text-center mt-6">
-              <p className="text-sm text-gray-400 mb-4">
+            <div >
+              <p style={{ color: "#9CA3AF", marginBottom: "16px" }}>
                 After sending payment, click the button below to continue.
               </p>
               <Button 
                 onClick={onVerificationComplete}
-                className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30"
+                style={{ border: "1px solid #374151", color: "white" }}
               >
                 I've Sent the Payment
               </Button>
@@ -120,9 +120,3 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
 };
 
 export default PaymentVerification; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

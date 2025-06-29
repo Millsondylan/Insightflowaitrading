@@ -10,9 +10,9 @@ interface StrategyResultProps {
 const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   if (isLoading) {
     return (
-      <div className="glass-container p-8 rounded-lg flex flex-col items-center justify-center min-h-[300px]">
-        <Loader2 className="h-12 w-12 animate-spin text-cyan-400 mb-4" />
-        <p className="text-lg text-gray-300">Generating your trading strategy...</p>
+      <div style={{ padding: "32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <Loader2 style={{ marginBottom: "16px" }} />
+        <p >Generating your trading strategy...</p>
       </div>
     );
   }
@@ -28,9 +28,3 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
 };
 
 export default StrategyResult; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

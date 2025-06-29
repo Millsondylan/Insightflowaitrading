@@ -3,59 +3,59 @@ import React from 'react';
 
 const ChatPage: React.FC = () => {
   return (
-    <section className="theme-chat min-h-screen px-6 py-16">
+    <section style={{ minHeight: "100vh" }}>
       {/* Hero Section */}
-      <div className="text-center space-y-4 mb-12 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-magenta mb-8">
+      <div >
+        <h1 style={{ fontWeight: "700", marginBottom: "32px" }}>
           AI Trading Chat
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 font-light">
+        <p >
           Your intelligent trading companion
         </p>
       </div>
 
       {/* Chat Container */}
-      <div className="max-w-4xl mx-auto animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <div className="glass-section motion-shadow min-h-[60vh] flex flex-col">
+      <div style={{ marginLeft: "auto", marginRight: "auto" }} style={{ animationDelay: '100ms' }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           {/* Chat Messages */}
-          <div className="flex-1 space-y-4 mb-6">
-            <div className="flex justify-start">
-              <div className="max-w-xs lg:max-w-md">
-                <div className="bg-pink-500/20 border border-pink-400/30 rounded-2xl rounded-bl-sm px-4 py-3">
-                  <p className="text-white">Hello! I'm your AI trading assistant. How can I help you analyze the markets today?</p>
+          <div >
+            <div style={{ display: "flex" }}>
+              <div >
+                <div style={{ border: "1px solid #374151", paddingLeft: "16px", paddingRight: "16px" }}>
+                  <p style={{ color: "white" }}>Hello! I'm your AI trading assistant. How can I help you analyze the markets today?</p>
                 </div>
-                <div className="text-xs text-gray-400 mt-1 ml-2">AI Assistant</div>
+                <div style={{ color: "#9CA3AF" }}>AI Assistant</div>
               </div>
             </div>
 
-            <div className="flex justify-end">
-              <div className="max-w-xs lg:max-w-md">
-                <div className="bg-blue-500/20 border border-blue-400/30 rounded-2xl rounded-br-sm px-4 py-3">
-                  <p className="text-white">What's your take on TSLA's recent price action?</p>
+            <div style={{ display: "flex" }}>
+              <div >
+                <div style={{ border: "1px solid #374151", paddingLeft: "16px", paddingRight: "16px" }}>
+                  <p style={{ color: "white" }}>What's your take on TSLA's recent price action?</p>
                 </div>
-                <div className="text-xs text-gray-400 mt-1 mr-2 text-right">You</div>
+                <div style={{ color: "#9CA3AF" }}>You</div>
               </div>
             </div>
 
-            <div className="flex justify-start">
-              <div className="max-w-xs lg:max-w-md">
-                <div className="bg-pink-500/20 border border-pink-400/30 rounded-2xl rounded-bl-sm px-4 py-3">
-                  <p className="text-white">TSLA is showing strong momentum with a breakout above the 200-day moving average. Volume is supporting the move, but watch for resistance around $250.</p>
+            <div style={{ display: "flex" }}>
+              <div >
+                <div style={{ border: "1px solid #374151", paddingLeft: "16px", paddingRight: "16px" }}>
+                  <p style={{ color: "white" }}>TSLA is showing strong momentum with a breakout above the 200-day moving average. Volume is supporting the move, but watch for resistance around $250.</p>
                 </div>
-                <div className="text-xs text-gray-400 mt-1 ml-2">AI Assistant</div>
+                <div style={{ color: "#9CA3AF" }}>AI Assistant</div>
               </div>
             </div>
           </div>
 
           {/* Chat Input */}
-          <div className="border-t border-white/10 pt-6">
-            <div className="flex space-x-4">
-              <div className="flex-1">
-                <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3">
-                  <div className="text-gray-400">Type your message...</div>
+          <div >
+            <div style={{ display: "flex" }}>
+              <div >
+                <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", paddingLeft: "16px", paddingRight: "16px" }}>
+                  <div style={{ color: "#9CA3AF" }}>Type your message...</div>
                 </div>
               </div>
-              <button className="glow-button glow-violet px-6 py-3">
+              <button >
                 Send
               </button>
             </div>
@@ -63,21 +63,21 @@ const ChatPage: React.FC = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="mt-8 animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-          <div className="glass-section motion-shadow">
-            <h3 className="text-lg font-semibold text-white mb-4">💡 Quick Questions</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Analyze my portfolio risk</div>
+        <div  style={{ animationDelay: '200ms' }}>
+          <div >
+            <h3 style={{ color: "white", marginBottom: "16px" }}>💡 Quick Questions</h3>
+            <div >
+              <button >
+                <div >Analyze my portfolio risk</div>
               </button>
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Market sentiment today</div>
+              <button >
+                <div >Market sentiment today</div>
               </button>
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Best sectors to watch</div>
+              <button >
+                <div >Best sectors to watch</div>
               </button>
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Options flow analysis</div>
+              <button >
+                <div >Options flow analysis</div>
               </button>
             </div>
           </div>
@@ -88,12 +88,3 @@ const ChatPage: React.FC = () => {
 };
 
 export default ChatPage;
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

@@ -168,45 +168,45 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   }
 
   return (
-    <div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
-      <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+    <div style={{ borderRadius: "0.75rem", border: "1px solid #374151", padding: "16px" }}>
+      <h3 style={{ color: "white", marginBottom: "16px", display: "flex", alignItems: "center" }}>
         <span>🤖</span> Strategy Copilot
       </h3>
 
       {loading && (
-        <div className="space-y-3">
+        <div >
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="animate-pulse">
-              <div className="bg-white/10 h-20 rounded-lg"></div>
+            <div key={i} >
+              <div ></div>
             </div>
           ))}
         </div>
       )}
 
       {error && (
-        <div className="text-red-400 text-sm">
+        <div >
           {error}
         </div>
       )}
 
       {!loading && suggestions.length > 0 && (
-        <div className="space-y-4">
+        <div >
           {suggestions.map((suggestion, index) => (
             <div
               key={suggestion.id}
-              className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
+              style={{ border: "1px solid #374151", padding: "16px" }}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">{suggestion.icon}</span>
-                <div className="flex-1">
-                  <p className="text-sm text-white/70 leading-relaxed">
+              <div style={{ display: "flex" }}>
+                <span >{suggestion.icon}</span>
+                <div >
+                  <p >
                     {suggestion.message}
                   </p>
                   {onSuggestionApply && suggestion.ruleToAdd && (
                     <button
                       onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
-                      className="bg-cyan-600 hover:bg-cyan-700 rounded px-4 py-1 mt-2 text-sm text-white transition-colors"
+                      style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
                     >
                       Apply Suggestion
                     </button>
@@ -219,7 +219,7 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
       )}
 
       {!loading && suggestions.length === 0 && !error && (
-        <p className="text-white/50 text-sm">
+        <p >
           Analyzing your strategy...
         </p>
       )}
@@ -228,9 +228,3 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
 };
 
 export default StrategyCopilot; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

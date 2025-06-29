@@ -10,31 +10,31 @@ export default function Topbar() {
   });
 
   return (
-    <header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
-      <div className="flex items-center gap-4">
-        <div className="relative">
+    <header style={{ display: "flex", alignItems: "center", padding: "16px" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div >
           <span style={{fontSize: '16px'}}>🔍</span>
           <input
             type="text"
             placeholder="Search..."
-            className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
+            style={{ border: "1px solid #374151" }}
           />
         </div>
       </div>
-      <div className="flex items-center gap-6">
-        <span className="text-sm text-text-muted">{today}</span>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <span >{today}</span>
         <Button variant="ghost" size="icon">
-          <Bell className="w-5 h-5" />
+          <Bell  />
         </Button>
-        <div className="flex items-center gap-3">
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Avatar>
             <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
             <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
           </Avatar>
           <div>
-            <p className="font-semibold">{profile?.full_name || 'Guest'}</p>
+            <p >{profile?.full_name || 'Guest'}</p>
             {hasProAccess && (
-              <Badge variant="outline" className="border-brand-primary text-brand-primary">
+              <Badge variant="outline" >
                 PRO
               </Badge>
             )}
@@ -44,9 +44,3 @@ export default function Topbar() {
     </header>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

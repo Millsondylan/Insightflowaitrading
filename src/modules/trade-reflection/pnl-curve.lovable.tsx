@@ -23,10 +23,10 @@ export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
   const timeframes = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
 
   return (
-    <Card className="theme-card p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold">P&L Curve</h2>
-        <div className="flex gap-1">
+    <Card style={{ padding: "24px" }}>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
+        <h2 style={{ fontWeight: "700" }}>P&L Curve</h2>
+        <div style={{ display: "flex" }}>
           {timeframes.map((tf) => (
             <Button
               key={tf}
@@ -40,7 +40,7 @@ export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
         </div>
       </div>
       
-      <div className="h-[400px] w-full">
+      <div style={{ width: "100%" }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -71,28 +71,20 @@ export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
         </ResponsiveContainer>
       </div>
       
-      <div className="grid grid-cols-3 gap-4 mt-4">
+      <div >
         <div>
-          <p className="text-sm text-muted-foreground">Total Return</p>
-          <p className="text-lg font-bold text-green-500">+12.0%</p>
+          <p >Total Return</p>
+          <p style={{ fontWeight: "700" }}>+12.0%</p>
         </div>
         <div>
-          <p className="text-sm text-muted-foreground">Max Drawdown</p>
-          <p className="text-lg font-bold text-red-500">-2.1%</p>
+          <p >Max Drawdown</p>
+          <p style={{ fontWeight: "700" }}>-2.1%</p>
         </div>
         <div>
-          <p className="text-sm text-muted-foreground">Sharpe Ratio</p>
-          <p className="text-lg font-bold">1.42</p>
+          <p >Sharpe Ratio</p>
+          <p style={{ fontWeight: "700" }}>1.42</p>
         </div>
       </div>
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

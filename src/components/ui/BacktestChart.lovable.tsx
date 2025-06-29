@@ -24,11 +24,11 @@ const PriceTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-        <p className="text-gray-300 text-xs">
+      <div style={{ border: "1px solid #374151", color: "white" }}>
+        <p >
           {new Date(data.time * 1000).toLocaleString()}
         </p>
-        <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
+        <p style={{ fontWeight: "700" }}>{`Price: ${data.price.toFixed(2)}`}</p>
       </div>
     );
   }
@@ -41,8 +41,8 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
   const formattedTime = new Date(trade.time * 1000).toLocaleString();
   
   return (
-    <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-      <p className="font-bold">
+    <div style={{ border: "1px solid #374151", color: "white" }}>
+      <p style={{ fontWeight: "700" }}>
         {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
       </p>
       <p>{formattedTime}</p>
@@ -76,9 +76,9 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
 
   return (
     <BlockReveal>
-      <div className="chart-container">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-white">
+      <div >
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
+          <h3 style={{ fontWeight: "700", color: "white" }}>
             {ticker} ({timeframe})
           </h3>
         </div>
@@ -140,7 +140,7 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
-          <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+          <div >
             <TradeTooltip trade={hoveredTrade} />
           </div>
         )}
@@ -150,9 +150,3 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
 };
 
 export default BacktestChart; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

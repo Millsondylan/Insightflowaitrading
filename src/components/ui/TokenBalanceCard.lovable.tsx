@@ -37,14 +37,14 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
           `theme-${chain.theme.primaryColor}`
         )}
       >
-        <div className="relative z-10">
+        <div >
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center space-x-3">
-              <img src={chain.logo} alt={`${chain.name} logo`} className="h-10 w-10" />
+          <div style={{ display: "flex", marginBottom: "16px" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img src={chain.logo} alt={`${chain.name} logo`}  />
               <div>
-                <h3 className="text-xl font-bold text-white">{chain.name}</h3>
-                <p className="text-sm text-gray-400">{chain.ticker}</p>
+                <h3 style={{ fontWeight: "700", color: "white" }}>{chain.name}</h3>
+                <p style={{ color: "#9CA3AF" }}>{chain.ticker}</p>
               </div>
             </div>
             <div
@@ -56,27 +56,27 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
           </div>
 
           {/* Balance */}
-          <div className="my-6 text-center">
-            <p className="text-4xl font-bold tracking-tight text-white">{balance.toLocaleString()}</p>
-            <p className="text-gray-400 text-lg">${balanceUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+          <div >
+            <p style={{ fontWeight: "700", color: "white" }}>{balance.toLocaleString()}</p>
+            <p style={{ color: "#9CA3AF" }}>${balanceUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
           </div>
 
           {/* Address and Actions */}
-          <div className="flex items-center justify-between p-3 rounded-lg bg-black/30">
-            <span className="font-mono text-sm text-gray-300">{shortAddress}</span>
-            <div className="flex items-center space-x-2">
-              <button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
-                {copied ? <span style={{fontSize: '16px'}}>✅</span> : <Copy className="h-4 w-4" />}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span >{shortAddress}</span>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <button onClick={handleCopy} style={{ color: "#9CA3AF" }}>
+                {copied ? <span style={{fontSize: '16px'}}>✅</span> : <Copy  />}
               </button>
-              <button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
-                <QrCode className="h-4 w-4" />
+              <button onClick={() => setShowQr(true)} style={{ color: "#9CA3AF" }}>
+                <QrCode  />
               </button>
             </div>
           </div>
         </div>
 
         {/* Shimmer Effect */}
-        <div className="shimmer-overlay" />
+        <div  />
         
         {/* Glow Effect */}
         <div className={cn("card-glow", `glow-${chain.theme.primaryColor}`)} />
@@ -84,13 +84,13 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
 
       {/* QR Code Modal */}
       {showQr && (
-        <div className="qr-code-modal" onClick={() => setShowQr(false)}>
-          <div className="qr-code-content" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-bold mb-4">Scan to Deposit {chain.ticker}</h3>
-            <div className="p-4 bg-white rounded-lg inline-block">
+        <div  onClick={() => setShowQr(false)}>
+          <div  onClick={(e) => e.stopPropagation()}>
+            <h3 style={{ fontWeight: "700", marginBottom: "16px" }}>Scan to Deposit {chain.ticker}</h3>
+            <div style={{ padding: "16px" }}>
               <QRCodeSVG value={address} size={200} />
             </div>
-            <p className="font-mono text-sm text-gray-400 mt-4 break-all">{address}</p>
+            <p style={{ color: "#9CA3AF" }}>{address}</p>
           </div>
         </div>
       )}
@@ -99,9 +99,3 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
 };
 
 export default TokenBalanceCard; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

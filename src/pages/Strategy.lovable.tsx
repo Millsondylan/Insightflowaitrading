@@ -12,33 +12,33 @@ export interface StrategyResponse {
 
 const StrategyPage = () => {
   return (
-    <div className="theme-strategy scroll-container min-h-screen">
+    <div style={{ minHeight: "100vh" }}>
       {/* Hero Section */}
-      <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
-        <div className="text-center max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-glow-cyan mb-8 leading-tight">
+      <ScrollSection style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }} delay={0}>
+        <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+          <h1 style={{ fontWeight: "700", marginBottom: "32px" }}>
             Visualize Your Edge
           </h1>
-          <p className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">
+          <p >
             AI-crafted strategies from your own intuition
           </p>
-          <div className="mt-12">
-            <div className="threadline-glow w-32 mx-auto"></div>
+          <div >
+            <div style={{ marginLeft: "auto", marginRight: "auto" }}></div>
           </div>
         </div>
       </ScrollSection>
 
       {/* Strategy Generator Section */}
-      <ScrollSection className="px-6 py-20" delay={100}>
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-8">
-            <div className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 rounded-full text-cyan-300 text-sm font-medium mb-6">
+      <ScrollSection  delay={100}>
+        <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+          <div style={{ marginBottom: "32px" }}>
+            <div style={{ paddingLeft: "16px", paddingRight: "16px", border: "1px solid #374151" }}>
               ✏️ Strategy Generator
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-glow-cyan mb-4">
+            <h2 style={{ fontSize: "1.875rem", fontWeight: "700", marginBottom: "16px" }}>
               Describe Your Trading Idea
             </h2>
-            <p className="text-gray-400 text-lg">
+            <p style={{ color: "#9CA3AF" }}>
               Enter your trading setup and let AI transform it into a complete strategy
             </p>
           </div>
@@ -48,23 +48,23 @@ const StrategyPage = () => {
       </ScrollSection>
 
       {/* CTA Footer */}
-      <ScrollSection className="px-6 py-32" delay={200}>
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-12">
-            <h4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4">Ready to Execute?</h4>
-            <p className="text-gray-400 text-lg">Take your strategy to the next level</p>
+      <ScrollSection  delay={200}>
+        <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+          <div >
+            <h4 style={{ marginBottom: "16px" }}>Ready to Execute?</h4>
+            <p style={{ color: "#9CA3AF" }}>Take your strategy to the next level</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button >
               🔁 Backtest Strategy
             </button>
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
+            <button >
               📓 Save to Journal
             </button>
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
+            <button >
               📘 Learn in Academy
             </button>
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
+            <button >
               💬 Share Strategy
             </button>
           </div>
@@ -75,12 +75,3 @@ const StrategyPage = () => {
 };
 
 export default StrategyPage;
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

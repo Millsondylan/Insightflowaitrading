@@ -77,12 +77,12 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
   };
 
   return (
-    <div className="space-y-8">
+    <div style={{ marginTop: "32px" }}>
       {/* Lesson Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <div>
-          <h1 className="text-3xl font-bold text-white">{lesson.title}</h1>
-          <p className="text-white/70 mt-2">{lesson.description}</p>
+          <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>{lesson.title}</h1>
+          <p >{lesson.description}</p>
         </div>
         
         <LessonBookmark
@@ -105,12 +105,12 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
       
       {/* Quiz Section */}
       {showQuiz && activeQuizId && (
-        <div id="lesson-quiz" className="mt-10">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
+        <div id="lesson-quiz" >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <h2 style={{ fontWeight: "700", color: "white" }}>Quiz: Test Your Knowledge</h2>
             <button 
               onClick={handleBackToContent}
-              className="text-white/70 hover:text-cyan-400 text-sm"
+              
             >
               ← Back to lesson content
             </button>
@@ -132,9 +132,3 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
 };
 
 export default LessonView; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -46,15 +46,15 @@ export const UserPresenceTagging: React.FC<span style={{fontSize: '16px'}}>👤<
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Active Traders</h2>
+    <Card style={{ padding: "24px" }}>
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Active Traders</h2>
       
-      <div className="space-y-4">
+      <div >
         {users.map((user) => (
-          <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-            <div className="flex items-start gap-3">
-              <div className="relative">
-                <Avatar className="h-10 w-10">
+          <div key={user.id} style={{ padding: "16px", border: "1px solid #374151" }}>
+            <div style={{ display: "flex" }}>
+              <div >
+                <Avatar >
                   <AvatarFallback>
                     {user.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
@@ -64,43 +64,43 @@ export const UserPresenceTagging: React.FC<span style={{fontSize: '16px'}}>👤<
                 />
               </div>
               
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">{user.name}</h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div >
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <h3 >{user.name}</h3>
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <span style={{fontSize: '16px'}}>⏰</span>
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
                   </div>
                 </div>
                 
-                <p className="text-sm text-muted-foreground mt-1">{user.activity}</p>
+                <p >{user.activity}</p>
                 
-                <div className="flex items-center gap-4 mt-2">
-                  <div className="flex gap-1">
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div style={{ display: "flex" }}>
                     {user.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <Badge key={tag} variant="secondary" >
                         {tag}
                       </Badge>
                     ))}
                   </div>
                   
-                  <div className="flex items-center gap-1 text-sm">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <span style={{fontSize: '16px'}}>📈</span>
-                    <span className="font-medium">{user.winRate}%</span>
+                    <span >{user.winRate}%</span>
                   </div>
                 </div>
               </div>
               
               <Button variant="ghost" size="sm">
-                <MessageSquare className="h-4 w-4" />
+                <MessageSquare  />
               </Button>
             </div>
           </div>
         ))}
       </div>
       
-      <div className="mt-4 pt-4 border-t">
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
+      <div >
+        <div style={{ display: "flex", alignItems: "center" }}>
           <span>{users.filter(u => u.status === 'online').length} traders online</span>
           <span>{channelId || 'Global'} channel</span>
         </div>
@@ -108,11 +108,3 @@ export const UserPresenceTagging: React.FC<span style={{fontSize: '16px'}}>👤<
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

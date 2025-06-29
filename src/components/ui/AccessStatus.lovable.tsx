@@ -84,13 +84,13 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
           className
         )}
       >
-        <div className="flex flex-col items-center space-y-4">
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           {/* Status Icon */}
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="relative"
+            
           >
             {status === 'pending' && (
               <span style={{fontSize: '16px'}}>⏰</span>
@@ -98,7 +98,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
             {status === 'success' && (
               <>
                 <motion.div
-                  className="absolute inset-0 rounded-full bg-green-500/20"
+                  
                   animate={{
                     scale: [1, 1.5, 1],
                     opacity: [1, 0, 0],
@@ -122,7 +122,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="space-y-2"
+            
           >
             <h3 className={cn(
               "text-xl font-bold",
@@ -136,7 +136,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
             </h3>
             
             {message && (
-              <p className="text-gray-300">{message}</p>
+              <p >{message}</p>
             )}
             
             {status === 'success' && plan && (
@@ -144,13 +144,13 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="mt-4 space-y-2"
+                
               >
-                <p className="font-medium text-green-300">
+                <p >
                   {plan.charAt(0).toUpperCase() + plan.slice(1)} Plan Activated
                 </p>
                 {formattedExpiry && (
-                  <p className="text-sm text-gray-400">
+                  <p style={{ color: "#9CA3AF" }}>
                     Expires: {formattedExpiry}
                   </p>
                 )}
@@ -164,9 +164,3 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
 };
 
 export default AccessStatus; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

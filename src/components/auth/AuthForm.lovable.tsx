@@ -44,20 +44,20 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
     };
 
     return (
-        <div className="w-full max-w-md mx-auto">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-bold text-white mb-6">
+        <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
+            <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "32px" }}>
+                <h2 style={{ fontWeight: "700", color: "white" }}>
                     {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
                 </h2>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} >
                     <div>
                         <Input
                             type="email"
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="bg-black/20 border-white/10"
+                            
                             required
                         />
                     </div>
@@ -68,26 +68,26 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="bg-black/20 border-white/10"
+                            
                             required
                             minLength={8}
                         />
                     </div>
 
                     {error && (
-                        <div className="text-red-400 text-sm">{error}</div>
+                        <div >{error}</div>
                     )}
 
                     <Button
                         type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700"
+                        style={{ width: "100%" }}
                         disabled={loading}
                     >
                         {loading ? (
-                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
+                            <div  />
                         ) : mode === 'signin' ? (
                             <>
-                                <LogIn className="w-4 h-4 mr-2" />
+                                <LogIn  />
                                 Sign In
                             </>
                         ) : (
@@ -98,31 +98,31 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                         )}
                     </Button>
 
-                    <div className="relative my-6">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-white/10"></div>
+                    <div >
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                            <div style={{ width: "100%" }}></div>
                         </div>
-                        <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-background-primary px-2 text-gray-500">Or continue with</span>
+                        <div style={{ display: "flex", justifyContent: "center" }}>
+                            <span >Or continue with</span>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" className="w-full">
-                            <Github className="w-4 h-4 mr-2" />
+                    <div >
+                        <Button variant="outline" style={{ width: "100%" }}>
+                            <Github  />
                             GitHub
                         </Button>
-                        <Button variant="outline" className="w-full">
+                        <Button variant="outline" style={{ width: "100%" }}>
                             <span style={{fontSize: '16px'}}>📧</span>
                             Google
                         </Button>
                     </div>
 
-                    <div className="text-center mt-6">
+                    <div >
                         <button
                             type="button"
                             onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
-                            className="text-sm text-gray-400 hover:text-white transition-colors"
+                            style={{ color: "#9CA3AF" }}
                         >
                             {mode === 'signin' ? (
                                 "Don't have an account? Sign up"
@@ -136,9 +136,3 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
         </div>
     );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

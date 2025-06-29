@@ -23,22 +23,22 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-cyan-400 text-glow-cyan">
+      <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
+        <Link to="/" style={{ fontWeight: "700" }}>
           Insight Flow
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
+        <div >
           {ROUTES.map((route) => (
-            <Link key={route.href} to={route.href} className="nav-link font-medium">
+            <Link key={route.href} to={route.href} >
               {route.label}
             </Link>
           ))}
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
+        <button style={{ color: "white" }} onClick={toggleMobileMenu}>
           {isMobileMenuOpen ? <span style={{fontSize: '16px'}}>❌</span> : <span style={{fontSize: '16px'}}>☰</span>}
         </button>
       </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
           <Link
             key={route.href}
             to={route.href}
-            className="mobile-nav-link"
+            
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {route.label}
@@ -61,9 +61,3 @@ const Navbar = () => {
 };
 
 export default Navbar; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

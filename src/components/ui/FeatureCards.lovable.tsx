@@ -10,21 +10,21 @@ const features = [
     borderColor: 'hover:border-cyan-400',
   },
   {
-    icon: <BarChart className="h-10 w-10 text-violet-400" />,
+    icon: <BarChart  />,
     title: 'Chart Vision',
     description: 'Upload chart images and get AI-driven technical analysis.',
     link: '/vision',
     borderColor: 'hover:border-violet-400',
   },
   {
-    icon: <PenSquare className="h-10 w-10 text-blue-400" />,
+    icon: <PenSquare  />,
     title: 'Trade Journal',
     description: 'Log and analyze your trades to discover patterns and improve.',
     link: '/journal',
     borderColor: 'hover:border-blue-400',
   },
   {
-    icon: <BookOpen className="h-10 w-10 text-gray-400" />,
+    icon: <BookOpen style={{ color: "#9CA3AF" }} />,
     title: 'Academy',
     description: 'Learn from a curated knowledge base of trading concepts and strategies.',
     link: '/academy',
@@ -57,10 +57,10 @@ const FeatureCards = () => {
   };
 
   return (
-    <section className="py-20 bg-black text-white">
-      <div className="container mx-auto px-4">
+    <section style={{ backgroundColor: "black", color: "white" }}>
+      <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingLeft: "16px", paddingRight: "16px" }}>
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -72,9 +72,9 @@ const FeatureCards = () => {
                 <div
                   className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}
                 >
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                  <div style={{ marginBottom: "16px" }}>{feature.icon}</div>
+                  <h3 style={{ fontWeight: "700" }}>{feature.title}</h3>
+                  <p style={{ color: "#9CA3AF" }}>{feature.description}</p>
                 </div>
               </Link>
             </motion.div>
@@ -86,9 +86,3 @@ const FeatureCards = () => {
 };
 
 export default FeatureCards; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

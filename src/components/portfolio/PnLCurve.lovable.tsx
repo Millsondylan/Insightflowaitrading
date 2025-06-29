@@ -29,7 +29,7 @@ export const PnLCurve = ({ trades }: Props) => {
   }, [] as { name: string; pnl: number; cumulativePnl: number }[]);
 
   return (
-    <div className="h-64 w-full bg-white/5 rounded-lg p-4">
+    <div style={{ width: "100%", padding: "16px" }}>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           data={data}
@@ -65,9 +65,3 @@ export const PnLCurve = ({ trades }: Props) => {
     </div>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

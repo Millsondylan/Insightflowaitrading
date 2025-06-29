@@ -144,20 +144,20 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
   };
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
+    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
       {/* Quiz Header */}
-      <div className="flex justify-between items-center">
-        <h2 className="text-white text-xl font-bold">
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <h2 style={{ color: "white", fontWeight: "700" }}>
           {lessonTitle || "Quiz"} 
-          <span className="text-gray-400 ml-2 text-sm">
+          <span style={{ color: "#9CA3AF" }}>
             ({currentQuestionIndex + 1} of {mockQuestions.length})
           </span>
         </h2>
         
         {/* Progress bar */}
-        <div className="w-1/3 h-2 bg-white/10 rounded-full overflow-hidden">
+        <div >
           <motion.div 
-            className="h-full bg-cyan-600"
+            
             initial={{ width: 0 }}
             animate={{ 
               width: `${((currentQuestionIndex + (isAnswered ? 1 : 0)) / mockQuestions.length) * 100}%` 
@@ -176,15 +176,15 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             animate="visible"
             exit="exit"
             variants={cardVariants}
-            className="space-y-6"
+            
           >
             {/* Question */}
-            <h3 className="text-white text-lg font-semibold">
+            <h3 style={{ color: "white" }}>
               {currentQuestion.question}
             </h3>
 
             {/* Options */}
-            <div className="space-y-3">
+            <div >
               {currentQuestion.options.map((option, index) => (
                 <button
                   key={index}
@@ -222,7 +222,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                     : "bg-red-500/20 border-l-4 border-red-500"
                 }`}
               >
-                <p className="text-white">
+                <p style={{ color: "white" }}>
                   {selectedOption === currentQuestion.correctIndex ? "✅ " : "❌ "}
                   {currentQuestion.explanation}
                 </p>
@@ -230,26 +230,26 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             )}
 
             {/* Action Buttons */}
-            <div className="flex justify-end space-x-3">
+            <div style={{ display: "flex" }}>
               {!isAnswered ? (
                 <Button
                   onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
-                  className="bg-white/10 hover:bg-cyan-600 text-white px-6"
+                  style={{ color: "white" }}
                 >
                   Submit Answer
                 </Button>
               ) : (
                 <Button
                   onClick={handleNextQuestion}
-                  className="bg-white/10 hover:bg-white/20 text-white px-6"
+                  style={{ color: "white" }}
                 >
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
-                        <ChevronRight className="ml-2 h-4 w-4" />
+                        <ChevronRight  />
                       </>
                     )
                   }
@@ -263,7 +263,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center space-y-6"
+          
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -274,17 +274,17 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {calculatePercentage()}%
           </motion.div>
 
-          <p className="text-xl text-white">
-            You got <span className="font-bold">{score}</span> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
+          <p style={{ color: "white" }}>
+            You got <span style={{ fontWeight: "700" }}>{score}</span> out of <span style={{ fontWeight: "700" }}>{mockQuestions.length}</span> questions correct
           </p>
           
           {isPassed() ? (
-            <div className="py-4">
+            <div >
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-green-400 text-lg font-medium"
+                
               >
                 Congratulations! You've passed the quiz. 🎉
               </motion.div>
@@ -292,23 +292,23 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                 initial={{ scale: 0 }}
                 animate={{ scale: 1, rotate: 720 }}
                 transition={{ delay: 0.8, duration: 1 }}
-                className="text-4xl my-4"
+                
               >
                 🏆
               </motion.div>
             </div>
           ) : (
-            <p className="text-red-400">
+            <p >
               You need at least 70% to pass. Try again!
             </p>
           )}
 
-          <div className="pt-4">
+          <div >
             <Button
               onClick={resetQuiz}
-              className="bg-white/10 hover:bg-white/20 text-white px-6"
+              style={{ color: "white" }}
             >
-              <RefreshCw className="mr-2 h-4 w-4" />
+              <RefreshCw  />
               Retry Quiz
             </Button>
           </div>
@@ -319,9 +319,3 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
 };
 
 export default QuizEngine; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

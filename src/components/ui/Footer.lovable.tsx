@@ -4,11 +4,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black/60 backdrop-blur py-6 text-gray-400 text-center border-t border-gray-700/30">
-      <div className="container mx-auto px-4">
+    <footer style={{ color: "#9CA3AF" }}>
+      <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingLeft: "16px", paddingRight: "16px" }}>
         <p>© {currentYear} Insight Flow</p>
-        <div className="mt-2">
-          <Link to="/support" className="text-gray-400 hover:text-cyan-400 transition-colors">
+        <div >
+          <Link to="/support" style={{ color: "#9CA3AF" }}>
             Support
           </Link>
         </div>
@@ -18,9 +18,3 @@ const Footer = () => {
 };
 
 export default Footer; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

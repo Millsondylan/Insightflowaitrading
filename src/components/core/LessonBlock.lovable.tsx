@@ -14,24 +14,24 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-full mb-12"
+      style={{ width: "100%" }}
     >
-      <Card className="border-l-4 border-blue-500 bg-gray-900/30 overflow-hidden">
+      <Card >
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-gray-100">
+          <CardTitle style={{ fontSize: "1.875rem", fontWeight: "700" }}>
             {block.title}
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-8">
-          <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
+        <CardContent style={{ marginTop: "32px" }}>
+          <p >
             {block.content}
           </p>
 
           <div>
-            <h4 className="font-semibold text-xl mb-4 text-gray-200">
+            <h4 style={{ marginBottom: "16px" }}>
               Key Takeaways
             </h4>
-            <ul className="space-y-3">
+            <ul >
               {block.keyTakeaways.map((takeaway, index) => (
                 <motion.li
                   key={index}
@@ -39,10 +39,10 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.8 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start"
+                  style={{ display: "flex" }}
                 >
                   <span style={{fontSize: '16px'}}>✅</span>
-                  <span className="text-gray-300 text-base">{takeaway}</span>
+                  <span >{takeaway}</span>
                 </motion.li>
               ))}
             </ul>
@@ -54,9 +54,3 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
 };
 
 export default LessonBlock; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

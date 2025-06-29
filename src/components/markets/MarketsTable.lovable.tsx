@@ -118,74 +118,74 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
   };
 
   return (
-    <div className="space-y-4">
+    <div >
       {/* Search Bar */}
-      <div className="relative">
+      <div >
         <span style={{fontSize: '16px'}}>🔍</span>
         <Input
           placeholder="Search by symbol..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="pl-10 bg-black/30 border-white/10 text-white"
+          style={{ color: "white" }}
         />
       </div>
       
       {/* Tickers Table */}
-      <div className="rounded-xl border border-white/10 overflow-hidden">
-        <div className="overflow-x-auto">
+      <div style={{ borderRadius: "0.75rem", border: "1px solid #374151" }}>
+        <div >
           <Table>
             <TableHeader>
-              <TableRow className="hover:bg-white/5 bg-black/40">
-                <TableHead className="w-10"></TableHead>
+              <TableRow >
+                <TableHead ></TableHead>
                 <TableHead 
                   onClick={() => handleSort("symbol")} 
-                  className="cursor-pointer hover:text-cyan-400"
+                  
                 >
-                  <div className="flex items-center gap-2">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     Symbol
                     {sortField === "symbol" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp  /> :
+                      <ChevronDown  />
                     )}
                   </div>
                 </TableHead>
                 <TableHead 
                   onClick={() => handleSort("price")}
-                  className="cursor-pointer hover:text-cyan-400 text-right"
+                  
                 >
-                  <div className="flex items-center justify-end gap-2">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     Price
                     {sortField === "price" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp  /> :
+                      <ChevronDown  />
                     )}
                   </div>
                 </TableHead>
                 <TableHead 
                   onClick={() => handleSort("change")}
-                  className="cursor-pointer hover:text-cyan-400 text-right"
+                  
                 >
-                  <div className="flex items-center justify-end gap-2">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     Change 24h
                     {sortField === "change" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp  /> :
+                      <ChevronDown  />
                     )}
                   </div>
                 </TableHead>
                 <TableHead 
                   onClick={() => handleSort("volume")}
-                  className="cursor-pointer hover:text-cyan-400 text-right"
+                  
                 >
-                  <div className="flex items-center justify-end gap-2">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     Volume
                     {sortField === "volume" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp  /> :
+                      <ChevronDown  />
                     )}
                   </div>
                 </TableHead>
@@ -200,29 +200,29 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                     favorites.has(ticker.symbol) ? "bg-cyan-950/20" : ""
                   }`}
                 >
-                  <TableCell className="w-10">
+                  <TableCell >
                     <button 
                       onClick={(e) => toggleFavorite(ticker.symbol, e)}
-                      className="focus:outline-none"
+                      
                     >
                       <span style={{fontSize: '16px'}}>⭐</span>
                     </button>
                   </TableCell>
-                  <TableCell className="font-medium">{ticker.symbol}</TableCell>
-                  <TableCell className="text-right">${formatPrice(ticker.price)}</TableCell>
+                  <TableCell >{ticker.symbol}</TableCell>
+                  <TableCell >${formatPrice(ticker.price)}</TableCell>
                   <TableCell className={`text-right ${
                     ticker.change > 0 ? "text-green-400" : 
                     ticker.change < 0 ? "text-red-400" : "text-gray-400"
                   }`}>
                     {formatPercent(ticker.change)}
                   </TableCell>
-                  <TableCell className="text-right">{formatVolume(ticker.volume)}</TableCell>
+                  <TableCell >{formatVolume(ticker.volume)}</TableCell>
                 </TableRow>
               ))}
               
               {filteredTickers.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center py-8 text-gray-500">
+                  <TableCell colSpan={5} style={{ paddingTop: "32px", paddingBottom: "32px" }}>
                     No markets found matching "{search}"
                   </TableCell>
                 </TableRow>
@@ -232,16 +232,10 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
         </div>
       </div>
       
-      <div className="text-xs text-gray-500 flex justify-between">
+      <div style={{ display: "flex" }}>
         <span>Showing {filteredTickers.length} of {tickers.length} markets</span>
         <span>{favorites.size} favorites</span>
       </div>
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

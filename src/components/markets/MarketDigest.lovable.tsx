@@ -61,17 +61,17 @@ export default function MarketDigest({ digest }: Props) {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div >
       {digest.map((item) => (
         <div
           key={item.symbol}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
+          style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}
         >
           {/* Card Header */}
-          <div className="flex justify-between items-start">
+          <div style={{ display: "flex" }}>
             <div>
-              <h3 className="text-xl font-bold text-white">{item.symbol}</h3>
-              <p className="text-lg font-semibold text-white/90">
+              <h3 style={{ fontWeight: "700", color: "white" }}>{item.symbol}</h3>
+              <p >
                 ${formatPrice(item.price)}
               </p>
             </div>
@@ -90,19 +90,19 @@ export default function MarketDigest({ digest }: Props) {
           </div>
 
           {/* AI Summary */}
-          <p className="text-white/70 text-sm italic border-l-2 border-cyan-400/50 pl-4">
+          <p >
             "{item.summary}"
           </p>
 
           {/* Card Footer with Stats */}
-          <div className="flex justify-between items-center pt-2">
+          <div style={{ display: "flex", alignItems: "center" }}>
             <div>
-              <span className="text-xs text-white/50">24h Volume:</span>
-              <p className="font-semibold text-white">
+              <span >24h Volume:</span>
+              <p style={{ color: "white" }}>
                 {formatVolume(item.volume)}
               </p>
             </div>
-            <div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
+            <div style={{ color: "white", display: "flex", alignItems: "center" }}>
               <span style={{fontSize: '16px'}}>📈</span>
               <span>
                 {item.matchedStrategies}{" "}
@@ -115,9 +115,3 @@ export default function MarketDigest({ digest }: Props) {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

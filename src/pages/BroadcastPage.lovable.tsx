@@ -9,37 +9,37 @@ const mockChat = [
 export default function BroadcastPage() {
   return (
     <div>
-        <Link to="/academy" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+        <Link to="/academy" style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
             <ArrowLeft size={16} />
             Back to Academy
         </Link>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div >
             {/* Main Video Player */}
-            <div className="lg:col-span-2 space-y-4">
-                <div className="bg-black border border-white/10 rounded-xl aspect-video flex items-center justify-center">
-                    <p className="text-gray-500">Live video stream would be here.</p>
+            <div >
+                <div style={{ backgroundColor: "black", border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <p >Live video stream would be here.</p>
                 </div>
                 <div>
-                    <h1 className="text-2xl font-bold text-white">Live Market Analysis with TraderPro</h1>
-                    <p className="text-gray-400">Discussing Q3 earnings and macro trends.</p>
+                    <h1 style={{ fontWeight: "700", color: "white" }}>Live Market Analysis with TraderPro</h1>
+                    <p style={{ color: "#9CA3AF" }}>Discussing Q3 earnings and macro trends.</p>
                 </div>
             </div>
 
             {/* Chat Sidebar */}
-            <div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm h-full flex flex-col">
-                <div className="p-4 border-b border-white/10">
-                    <h3 className="font-semibold text-white flex items-center gap-2"><Radio size={18} /> Live Chat</h3>
+            <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", flexDirection: "column" }}>
+                <div style={{ padding: "16px" }}>
+                    <h3 style={{ color: "white", display: "flex", alignItems: "center" }}><Radio size={18} /> Live Chat</h3>
                 </div>
-                <div className="flex-grow p-4 space-y-4 overflow-y-auto">
+                <div style={{ padding: "16px" }}>
                     {mockChat.map((chat, index) => (
-                        <div key={index} className="text-sm">
-                            <span className="font-semibold text-blue-400">{chat.user}: </span>
-                            <span className="text-gray-300">{chat.message}</span>
+                        <div key={index} >
+                            <span >{chat.user}: </span>
+                            <span >{chat.message}</span>
                         </div>
                     ))}
                 </div>
-                <div className="p-4 border-t border-white/10 flex gap-2">
-                    <Textarea placeholder="Say something..." className="bg-black/20 border-none text-sm" rows={1}/>
+                <div style={{ padding: "16px", display: "flex" }}>
+                    <Textarea placeholder="Say something..."  rows={1}/>
                     <Button><Send size={16} /></Button>
                 </div>
             </div>
@@ -47,11 +47,3 @@ export default function BroadcastPage() {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

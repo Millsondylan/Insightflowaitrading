@@ -269,9 +269,9 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
   
   if (loading) {
     return (
-      <div className="p-12 text-center">
-        <div className="text-xl font-semibold mb-2">Loading subscription data...</div>
-        <div className="text-text-muted">Please wait</div>
+      <div >
+        <div >Loading subscription data...</div>
+        <div >Please wait</div>
       </div>
     );
   }
@@ -279,28 +279,28 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
   const activePlan = getActivePlan();
   
   return (
-    <div className="subscription-manager p-4 bg-background-secondary rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">InsightFlow Pro</h2>
+    <div style={{ padding: "16px" }}>
+      <h2 style={{ fontWeight: "700" }}>InsightFlow Pro</h2>
       
       {error && (
-        <div className="mb-6 p-3 bg-status-error/20 text-status-error rounded-lg">
+        <div >
           {error}
         </div>
       )}
       
       {/* Current Subscription */}
       {userSubscription && (
-        <div className="mb-8 p-4 bg-background-tertiary rounded-lg">
-          <h3 className="text-xl font-semibold mb-3">Your Subscription</h3>
+        <div style={{ marginBottom: "32px", padding: "16px" }}>
+          <h3 >Your Subscription</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div style={{ marginBottom: "16px" }}>
             <div>
-              <div className="text-sm text-text-muted">Plan</div>
-              <div className="font-medium">{activePlan?.name}</div>
+              <div >Plan</div>
+              <div >{activePlan?.name}</div>
             </div>
             
             <div>
-              <div className="text-sm text-text-muted">Status</div>
+              <div >Status</div>
               <div className={`font-medium ${
                 userSubscription.status === 'active' ? 'text-status-success' :
                 userSubscription.status === 'canceled' ? 'text-status-error' :
@@ -311,27 +311,27 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
             </div>
             
             <div>
-              <div className="text-sm text-text-muted">Start Date</div>
+              <div >Start Date</div>
               <div>{formatDate(userSubscription.startDate)}</div>
             </div>
             
             {userSubscription.status === 'active' && userSubscription.renewalDate && (
               <div>
-                <div className="text-sm text-text-muted">Next Renewal</div>
+                <div >Next Renewal</div>
                 <div>{formatDate(userSubscription.renewalDate)}</div>
               </div>
             )}
             
             {userSubscription.status === 'canceled' && (
               <div>
-                <div className="text-sm text-text-muted">Access Until</div>
+                <div >Access Until</div>
                 <div>{formatDate(userSubscription.endDate)}</div>
               </div>
             )}
             
             {userSubscription.paymentMethod && (
               <div>
-                <div className="text-sm text-text-muted">Payment Method</div>
+                <div >Payment Method</div>
                 <div>
                   {userSubscription.paymentMethod.type === 'credit_card' && 'Credit Card'}
                   {userSubscription.paymentMethod.type === 'paypal' && 'PayPal'}
@@ -344,7 +344,7 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
           
           {userSubscription.status === 'active' && (
             <button
-              className="px-4 py-2 bg-status-error/20 text-status-error rounded-md hover:bg-status-error/30"
+              style={{ paddingLeft: "16px", paddingRight: "16px" }}
               onClick={() => setShowCancelModal(true)}
             >
               Cancel Subscription
@@ -352,15 +352,15 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
           )}
           
           {userSubscription.status === 'canceled' && (
-            <div className="flex space-x-4">
+            <div style={{ display: "flex" }}>
               <button
-                className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80"
+                style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
                 onClick={() => setSelectedPlanId(userSubscription.planId)}
               >
                 Renew Subscription
               </button>
               <button
-                className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
+                style={{ paddingLeft: "16px", paddingRight: "16px", border: "1px solid #374151" }}
                 onClick={() => setSelectedPlanId('')}
               >
                 Change Plan
@@ -372,12 +372,12 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
       
       {/* Plan Selection */}
       {(!userSubscription || userSubscription.status === 'canceled' || selectedPlanId) && (
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">
+        <div style={{ marginBottom: "32px" }}>
+          <h3 style={{ marginBottom: "16px" }}>
             {!userSubscription ? 'Choose a Plan' : 'Change Your Plan'}
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div >
             {plans.map(plan => (
               <div
                 key={plan.id}
@@ -388,32 +388,32 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
                 } ${plan.popular ? 'relative' : ''}`}
               >
                 {plan.popular && (
-                  <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 bg-brand-secondary text-white text-xs px-2 py-1 rounded-full">
+                  <div style={{ color: "white" }}>
                     Most Popular
                   </div>
                 )}
                 
-                <h4 className="text-lg font-semibold mb-1">{plan.name}</h4>
-                <p className="text-sm text-text-muted mb-3">{plan.description}</p>
+                <h4 >{plan.name}</h4>
+                <p >{plan.description}</p>
                 
-                <div className="mb-4">
-                  <span className="text-2xl font-bold">{formatPrice(plan.price, plan.currency)}</span>
-                  <span className="text-text-muted">
+                <div style={{ marginBottom: "16px" }}>
+                  <span style={{ fontWeight: "700" }}>{formatPrice(plan.price, plan.currency)}</span>
+                  <span >
                     /{plan.interval === 'monthly' ? 'month' : plan.interval === 'quarterly' ? 'quarter' : 'year'}
                   </span>
                   
                   {plan.discountPercentage && (
-                    <div className="text-status-success text-sm mt-1">
+                    <div >
                       Save {plan.discountPercentage}%
                     </div>
                   )}
                 </div>
                 
-                <ul className="mb-4 space-y-2">
+                <ul style={{ marginBottom: "16px" }}>
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-status-success mr-2">✓</span>
-                      <span className="text-sm">{feature}</span>
+                    <li key={i} style={{ display: "flex" }}>
+                      <span >✓</span>
+                      <span >{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -433,9 +433,9 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
           </div>
           
           {selectedPlanId && (
-            <div className="mt-6 flex justify-center">
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <button
-                className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+                style={{ color: "white" }}
                 onClick={handleSubscribe}
                 disabled={processing}
               >
@@ -448,24 +448,24 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
       
       {/* Cancellation Modal */}
       {showCancelModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-background-primary rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-semibold mb-4">Cancel Subscription</h3>
+        <div style={{ backgroundColor: "black", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+          <div style={{ padding: "24px", width: "100%" }}>
+            <h3 style={{ marginBottom: "16px" }}>Cancel Subscription</h3>
             
-            <p className="mb-4">
+            <p style={{ marginBottom: "16px" }}>
               Are you sure you want to cancel your subscription? You'll continue to have access until {userSubscription ? formatDate(userSubscription.endDate) : 'the end of your billing period'}.
             </p>
             
-            <div className="flex justify-end space-x-3">
+            <div style={{ display: "flex" }}>
               <button
-                className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
+                style={{ paddingLeft: "16px", paddingRight: "16px", border: "1px solid #374151" }}
                 onClick={() => setShowCancelModal(false)}
                 disabled={processing}
               >
                 Keep Subscription
               </button>
               <button
-                className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
+                style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
                 onClick={handleCancelSubscription}
                 disabled={processing}
               >

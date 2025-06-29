@@ -40,18 +40,18 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
   };
   
   return (
-    <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form onSubmit={handleSubmit} style={{ padding: "24px" }}>
+      <div >
         <div>
           <Label htmlFor="ticker">Ticker</Label>
           <Select
             value={formState.ticker}
             onValueChange={(value) => handleSelectChange('ticker', value)}
           >
-            <SelectTrigger className="bg-black/30 border-gray-700">
+            <SelectTrigger >
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-black/90 border-gray-700 text-white">
+            <SelectContent style={{ color: "white" }}>
               {Object.keys(sampleData).map(ticker => (
                 <SelectItem key={ticker} value={ticker}>{ticker}</SelectItem>
               ))}
@@ -64,10 +64,10 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
             value={formState.timeframe}
             onValueChange={(value) => handleSelectChange('timeframe', value)}
           >
-            <SelectTrigger className="bg-black/30 border-gray-700">
+            <SelectTrigger >
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-black/90 border-gray-700 text-white">
+            <SelectContent style={{ color: "white" }}>
               <SelectItem value="1H">1 Hour</SelectItem>
             </SelectContent>
           </Select>
@@ -80,7 +80,7 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           name="entryLogic"
           value={formState.entryLogic}
           onChange={handleTextAreaChange}
-          className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
+          
           placeholder="e.g., close > sma(50)"
         />
       </div>
@@ -91,17 +91,17 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           name="exitLogic"
           value={formState.exitLogic}
           onChange={handleTextAreaChange}
-          className="bg-black/30 border-gray-700 min-h-[80px] font-mono"
+          
           placeholder="e.g., close < sma(50)"
         />
       </div>
-      <div className="flex justify-center">
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <Button
           type="submit"
-          className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
+          style={{ border: "1px solid #374151", color: "white", width: "100%" }}
           disabled={isLoading}
         >
-          {isLoading ? <Loader2 className="animate-spin" /> : 'Run Backtest'}
+          {isLoading ? <Loader2  /> : 'Run Backtest'}
         </Button>
       </div>
     </form>
@@ -109,9 +109,3 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
 };
 
 export default BacktestForm; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

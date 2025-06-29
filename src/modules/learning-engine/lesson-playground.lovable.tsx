@@ -58,41 +58,41 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
   const progress = ((currentStep + 1) / lesson.steps.length) * 100;
 
   return (
-    <Card className="theme-card p-6">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
-        <div className="flex items-center gap-4">
-          <Progress value={progress} className="flex-1" />
-          <span className="text-sm text-muted-foreground">
+    <Card style={{ padding: "24px" }}>
+      <div >
+        <h2 style={{ fontWeight: "700" }}>{lesson.title}</h2>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Progress value={progress}  />
+          <span >
             Step {currentStep + 1} of {lesson.steps.length}
           </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div >
         <div>
-          <h3 className="font-semibold mb-3 flex items-center gap-2">
+          <h3 style={{ display: "flex", alignItems: "center" }}>
             <span style={{fontSize: '16px'}}>❓</span>
             {lesson.steps[currentStep].instruction}
           </h3>
           
-          <div className="space-y-4">
+          <div >
             <div>
-              <label className="text-sm text-muted-foreground">Your Code:</label>
+              <label >Your Code:</label>
               <textarea
-                className="w-full h-32 p-3 mt-1 bg-secondary/20 rounded-lg font-mono text-sm"
+                style={{ width: "100%" }}
                 value={userCode || lesson.steps[currentStep].starter}
                 onChange={(e) => setUserCode(e.target.value)}
               />
             </div>
 
-            <div className="flex gap-2">
-              <Button onClick={runTests} disabled={isRunning} className="flex-1">
-                <Play className="h-4 w-4 mr-2" />
+            <div style={{ display: "flex" }}>
+              <Button onClick={runTests} disabled={isRunning} >
+                <Play  />
                 {isRunning ? 'Running...' : 'Run Tests'}
               </Button>
               <Button variant="outline" onClick={() => setUserCode('')}>
-                <RotateCcw className="h-4 w-4 mr-2" />
+                <RotateCcw  />
                 Reset
               </Button>
             </div>
@@ -100,10 +100,10 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
         </div>
 
         <div>
-          <h3 className="font-semibold mb-3">Test Results</h3>
+          <h3 >Test Results</h3>
           
           {testResults.length > 0 ? (
-            <div className="space-y-2">
+            <div >
               {testResults.map((result, i) => (
                 <div
                   key={i}
@@ -118,25 +118,25 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
                   ) : (
                     <span style={{fontSize: '16px'}}>❌</span>
                   )}
-                  <span className="text-sm">{result.name}</span>
+                  <span >{result.name}</span>
                 </div>
               ))}
               
               {testResults.every(r => r.passed) && (
-                <Button onClick={nextStep} className="w-full mt-4">
+                <Button onClick={nextStep} style={{ width: "100%" }}>
                   Continue to Next Step
                 </Button>
               )}
             </div>
           ) : (
-            <div className="p-8 text-center text-muted-foreground">
+            <div style={{ padding: "32px" }}>
               <p>Run your code to see test results</p>
             </div>
           )}
 
-          <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2">Hint</h4>
-            <p className="text-sm text-muted-foreground">
+          <div style={{ padding: "16px" }}>
+            <h4 >Hint</h4>
+            <p >
               Think about how to detect when price moves from below to above the moving average...
             </p>
           </div>
@@ -145,11 +145,3 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

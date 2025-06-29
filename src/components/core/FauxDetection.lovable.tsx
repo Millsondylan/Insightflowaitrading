@@ -31,18 +31,18 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   }, [result.confidence]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <div >
       <BlockReveal>
-        <div className="glass-container p-4 rounded-lg">
+        <div style={{ padding: "16px" }}>
           {showOverlays ? (
             <span style={{fontSize: '16px'}}>📊</span>
           ) : (
-            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
+            <img src={imagePreview} alt="Chart preview" style={{ width: "100%" }} />
           )}
-          <div className="mt-2 flex justify-end">
+          <div style={{ display: "flex" }}>
             <button 
               onClick={() => setShowOverlays(!showOverlays)} 
-              className="text-sm text-cyan-400 hover:underline"
+              
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
             </button>
@@ -50,10 +50,10 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
         </div>
       </BlockReveal>
       
-      <div className="space-y-6">
+      <div >
         <BlockReveal delay={0.1}>
-          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
-          <div className="flex flex-wrap mt-2">
+          <h3 style={{ fontWeight: "700" }}>Detected Patterns</h3>
+          <div style={{ display: "flex" }}>
             {result.patterns.map(pattern => (
               <PatternTag key={pattern} label={pattern} />
             ))}
@@ -61,32 +61,32 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
         </BlockReveal>
 
         <BlockReveal delay={0.2}>
-          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
-          <p className="text-gray-300 mt-2">{result.summary}</p>
+          <h3 style={{ fontWeight: "700" }}>AI Summary</h3>
+          <p >{result.summary}</p>
         </BlockReveal>
         
         <BlockReveal delay={0.3}>
-          <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
-          <div className="flex items-center gap-4 mt-2">
-            <div className="confidence-meter-bg flex-grow">
+          <h3 style={{ fontWeight: "700" }}>Confidence</h3>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div >
               <div
-                className="confidence-meter-bar"
+                
                 style={{ width: `${confidence}%` }}
               />
             </div>
-            <span className="text-xl font-bold text-white">{confidence}%</span>
+            <span style={{ fontWeight: "700", color: "white" }}>{confidence}%</span>
           </div>
         </BlockReveal>
         
         <BlockReveal delay={0.4}>
-          <div className="flex flex-wrap gap-4 mt-4">
-            <Button asChild className="glow-button bg-violet-500/20 border-violet-500 hover:bg-violet-500/30">
+          <div style={{ display: "flex" }}>
+            <Button asChild >
               <Link to="/journal?from=vision">📓 Save to Journal</Link>
             </Button>
-            <Button asChild className="glow-button bg-blue-500/20 border-blue-500 hover:bg-blue-500/30">
+            <Button asChild >
               <Link to="/academy?topic=patterns">📘 Learn Pattern</Link>
             </Button>
-            <Button asChild className="glow-button bg-green-500/20 border-green-500 hover:bg-green-500/30">
+            <Button asChild >
               <Link to="/strategy?from=vision">💡 Find Strategy</Link>
             </Button>
           </div>
@@ -97,9 +97,3 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 };
 
 export default FauxDetection; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

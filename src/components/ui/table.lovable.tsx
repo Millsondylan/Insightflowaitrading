@@ -6,7 +6,7 @@ const Table = React.forwardRef<
   HTMLTableElement,
   React.HTMLAttributes<HTMLTableElement>
 >(({ className, ...props }, ref) => (
-  <div className="relative w-full overflow-auto">
+  <div style={{ width: "100%" }}>
     <table
       ref={ref}
       className={cn("w-full caption-bottom text-sm", className)}
@@ -115,10 +115,3 @@ export {
   TableCell,
   TableCaption,
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

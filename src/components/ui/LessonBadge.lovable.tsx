@@ -22,7 +22,7 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
         className
       )}
     >
-      <div className="relative inline-block">
+      <div >
         <Award
           className={cn(
             "h-24 w-24 transition-colors duration-500",
@@ -30,21 +30,15 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
           )}
         />
         {unlocked && (
-          <div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
-            <Award className="h-24 w-24 text-yellow-400 opacity-75" />
+          <div style={{ width: "100%" }}>
+            <Award  />
           </div>
         )}
       </div>
-      <p className="mt-2 text-lg font-semibold">{lessonName}</p>
-      <p className="text-sm text-gray-400">Lesson Complete!</p>
+      <p >{lessonName}</p>
+      <p style={{ color: "#9CA3AF" }}>Lesson Complete!</p>
     </div>
   );
 };
 
 export default LessonBadge; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

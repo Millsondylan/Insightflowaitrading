@@ -17,29 +17,23 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
   const [completed, setCompleted] = useState<string[]>([]);
 
   return (
-    <div className="space-y-6 theme-academy">
+    <div >
       {chunks.map((chunk) => (
         <div
           key={chunk.id}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
+          style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}
         >
           {chunk.type === "markdown" && (
             <ReactMarkdown>{chunk.content}</ReactMarkdown>
           )}
           {chunk.type === "prompt" && (
-            <textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />
+            <textarea placeholder="What's your takeaway?" style={{ width: "100%" }} />
           )}
           {chunk.aiCommentary && (
-            <p className="italic text-white/70">🧠 {chunk.aiCommentary}</p>
+            <p >🧠 {chunk.aiCommentary}</p>
           )}
         </div>
       ))}
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

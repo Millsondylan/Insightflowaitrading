@@ -129,9 +129,9 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
   };
 
   return (
-    <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
-      <td className="px-4 py-3">
-        <div className="flex items-center">
+    <tr >
+      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <span 
             className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
@@ -146,32 +146,32 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
         </div>
       </td>
 
-      <td className="px-4 py-3 text-sm text-gray-400">
+      <td style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
         {formatDate(user.created_at)}
       </td>
 
-      <td className="px-4 py-3">
-        <span className="text-sm">
+      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+        <span >
           {user.subscription_tier || '-'}
         </span>
       </td>
 
-      <td className="px-4 py-3">
+      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
         <RoleBadge role={user.role as UserRole} />
       </td>
 
-      <td className="px-4 py-3">
+      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
         <DropdownMenu>
           <DropdownMenuTrigger asChild disabled={isLoading}>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="h-8 w-8 rounded-full p-0"
+              
             >
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal  />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48 bg-gray-900 border border-gray-800">
+          <DropdownMenuContent align="end" style={{ border: "1px solid #374151" }}>
             <DropdownMenuLabel>User Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             
@@ -181,22 +181,22 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
                 <span>Change Role</span>
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
-                <DropdownMenuSubContent className="bg-gray-900 border border-gray-800">
+                <DropdownMenuSubContent style={{ border: "1px solid #374151" }}>
                   <DropdownMenuItem 
                     onClick={() => handleRoleChange('Admin')}
-                    className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
+                    
                   >
                     Admin
                   </DropdownMenuItem>
                   <DropdownMenuItem 
                     onClick={() => handleRoleChange('User')}
-                    className="cursor-pointer text-green-300 hover:bg-green-900/30"
+                    
                   >
                     User
                   </DropdownMenuItem>
                   <DropdownMenuItem 
                     onClick={() => handleRoleChange('Trial')}
-                    className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
+                    
                   >
                     Trial
                   </DropdownMenuItem>
@@ -204,12 +204,12 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
               </DropdownMenuPortal>
             </DropdownMenuSub>
             
-            <DropdownMenuItem onClick={handleCopyAddress} className="cursor-pointer">
-              <Copy className="mr-2 h-4 w-4" />
+            <DropdownMenuItem onClick={handleCopyAddress} >
+              <Copy  />
               <span>Copy Address</span>
             </DropdownMenuItem>
             
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuItem >
               <span style={{fontSize: '16px'}}>👁️</span>
               <span>View Details</span>
             </DropdownMenuItem>
@@ -218,7 +218,7 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
             
             <DropdownMenuItem 
               onClick={handleRevokeAccess}
-              className="cursor-pointer text-red-400 hover:bg-red-900/30"
+              
             >
               <span style={{fontSize: '16px'}}>❌</span>
               <span>Revoke Access</span>
@@ -231,9 +231,3 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
 };
 
 export default UserRow; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -47,21 +47,21 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
       <Button
         variant="outline"
         size="sm"
-        className="fixed bottom-4 right-4"
+        
         onClick={() => setIsVisible(true)}
       >
-        <Sparkles className="h-4 w-4 mr-2" />
+        <Sparkles  />
         Show Copilot
       </Button>
     );
   }
 
   return (
-    <Card className="fixed bottom-4 right-4 w-96 max-h-[600px] overflow-hidden flex flex-col theme-card">
-      <div className="p-4 border-b flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-primary" />
-          <h3 className="font-semibold">AI Copilot</h3>
+    <Card style={{ display: "flex", flexDirection: "column" }}>
+      <div style={{ padding: "16px", display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Sparkles  />
+          <h3 >AI Copilot</h3>
         </div>
         <Button
           variant="ghost"
@@ -72,42 +72,42 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
         </Button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div style={{ padding: "16px" }}>
         {suggestions.map((suggestion) => (
           <div
             key={suggestion.id}
-            className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
+            style={{ border: "1px solid #374151" }}
           >
-            <div className="flex items-start justify-between mb-2">
-              <h4 className="font-medium">{suggestion.title}</h4>
-              <Badge variant="outline" className="text-xs">
+            <div style={{ display: "flex" }}>
+              <h4 >{suggestion.title}</h4>
+              <Badge variant="outline" >
                 {suggestion.type}
               </Badge>
             </div>
             
-            <p className="text-sm text-muted-foreground mb-2">
+            <p >
               {suggestion.content}
             </p>
             
             {suggestion.code && (
-              <pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
+              <pre >
                 <code>{suggestion.code}</code>
               </pre>
             )}
             
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-green-500">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span >
                 {suggestion.impact}
               </span>
               
-              <div className="flex items-center gap-2">
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={() => handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <ThumbsUp className="h-3 w-3" />
+                  <ThumbsUp  />
                 </Button>
                 <Button
                   variant="ghost"
@@ -115,7 +115,7 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
                   onClick={() => handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <ThumbsDown className="h-3 w-3" />
+                  <ThumbsDown  />
                 </Button>
                 <Button
                   size="sm"
@@ -129,19 +129,11 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
         ))}
       </div>
 
-      <div className="p-4 border-t bg-secondary/20">
-        <p className="text-xs text-muted-foreground text-center">
+      <div style={{ padding: "16px" }}>
+        <p >
           Copilot analyzes your strategy in real-time
         </p>
       </div>
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

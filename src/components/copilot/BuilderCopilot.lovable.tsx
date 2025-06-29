@@ -5,25 +5,19 @@ type Props = {
 
 export default function BuilderCopilot({ input, insights }: Props) {
   return (
-    <div className="theme-copilot space-y-4">
+    <div >
       {insights.map((i, idx) => (
         <div
           key={idx}
-          className="bg-black/30 p-4 rounded-xl border border-white/10 text-white backdrop-blur-md"
+          style={{ padding: "16px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}
         >
-          <p className="text-white/70 italic">🧠 {i.summary}</p>
-          {i.alert && <p className="text-red-400 text-sm">⚠️ {i.alert}</p>}
+          <p >🧠 {i.summary}</p>
+          {i.alert && <p >⚠️ {i.alert}</p>}
           {i.suggestion && (
-            <p className="text-cyan-400 text-sm">💡 Suggestion: {i.suggestion}</p>
+            <p >💡 Suggestion: {i.suggestion}</p>
           )}
         </div>
       ))}
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -65,32 +65,32 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
   };
 
   return (
-    <Card className="theme-card p-6">
-      <div className="flex items-center gap-2 mb-6">
+    <Card style={{ padding: "24px" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <span style={{fontSize: '16px'}}>🧠</span>
-        <h2 className="text-2xl font-bold">Memory Tracker</h2>
+        <h2 style={{ fontWeight: "700" }}>Memory Tracker</h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">{memories.length}</p>
-          <p className="text-sm text-muted-foreground">Concepts Learned</p>
+      <div >
+        <div style={{ padding: "16px" }}>
+          <p style={{ fontSize: "1.875rem", fontWeight: "700" }}>{memories.length}</p>
+          <p >Concepts Learned</p>
         </div>
-        <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">
+        <div style={{ padding: "16px" }}>
+          <p style={{ fontSize: "1.875rem", fontWeight: "700" }}>
             {memories.filter(m => getDaysUntilReview(m.nextReview) <= 0).length}
           </p>
-          <p className="text-sm text-muted-foreground">Due for Review</p>
+          <p >Due for Review</p>
         </div>
-        <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">
+        <div style={{ padding: "16px" }}>
+          <p style={{ fontSize: "1.875rem", fontWeight: "700" }}>
             {Math.round(memories.reduce((acc, m) => acc + m.strength, 0) / memories.length * 100)}%
           </p>
-          <p className="text-sm text-muted-foreground">Average Retention</p>
+          <p >Average Retention</p>
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div >
         {memories.map((memory) => {
           const daysUntil = getDaysUntilReview(memory.nextReview);
           const isDue = daysUntil <= 0;
@@ -103,23 +103,23 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
               }`}
               onClick={() => reviewConcept(memory)}
             >
-              <div className="flex items-center justify-between mb-2">
+              <div style={{ display: "flex", alignItems: "center" }}>
                 <div>
-                  <h3 className="font-semibold">{memory.concept}</h3>
-                  <p className="text-sm text-muted-foreground">{memory.category}</p>
+                  <h3 >{memory.concept}</h3>
+                  <p >{memory.category}</p>
                 </div>
-                <div className="text-right">
-                  <div className="flex items-center gap-2 mb-1">
+                <div >
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <span style={{fontSize: '16px'}}>⏰</span>
-                    <span className="text-sm">
+                    <span >
                       {isDue ? (
-                        <span className="text-yellow-500">Review now</span>
+                        <span >Review now</span>
                       ) : (
                         `Review in ${daysUntil} days`
                       )}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <span style={{fontSize: '16px'}}>📈</span>
                     <span className={`text-sm font-medium ${getStrengthColor(memory.strength)}`}>
                       {Math.round(memory.strength * 100)}% strength
@@ -128,16 +128,16 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
                 </div>
               </div>
               
-              <div className="mt-3">
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
+              <div >
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <span>Memory Strength</span>
                   <span>{memory.reviews} reviews</span>
                 </div>
-                <Progress value={memory.strength * 100} className="h-2" />
+                <Progress value={memory.strength * 100}  />
               </div>
 
               {isDue && (
-                <Button size="sm" className="w-full mt-3">
+                <Button size="sm" style={{ width: "100%" }}>
                   Start Review
                 </Button>
               )}
@@ -146,19 +146,11 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
         })}
       </div>
 
-      <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <p className="text-sm text-muted-foreground">
+      <div style={{ padding: "16px" }}>
+        <p >
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
         </p>
       </div>
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

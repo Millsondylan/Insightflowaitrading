@@ -1,27 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  GitCommit, 
-  Star, 
-  TrendingUp, 
-  Filter, 
-  ChevronDown,
-  Users,
-  Clock,
-  DollarSign,
-  BarChart3,
-  Shield,
-  Search,
-  SortAsc,
-  SortDesc
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
   comprehensiveStrategies, 
   strategyCategories,
   riskLevels,
@@ -45,87 +24,87 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
   };
 
   return (
-    <Link to={`/vault/${strategy.id}`} className="block">
-      <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 backdrop-blur-sm group h-full">
+    <Link to={`/vault/${strategy.id}`} >
+      <Card >
         <CardHeader>
-          <div className="flex justify-between items-start mb-2">
-            <div className="flex-1">
-              <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors">
+          <div style={{ display: "flex" }}>
+            <div >
+              <CardTitle style={{ color: "white" }}>
                 {strategy.name}
               </CardTitle>
-              <CardDescription className="text-gray-400 line-clamp-2 mt-1">
+              <CardDescription style={{ color: "#9CA3AF" }}>
                 {strategy.description}
               </CardDescription>
             </div>
           </div>
-          <div className="flex items-center gap-2 flex-wrap">
+          <div style={{ display: "flex", alignItems: "center" }}>
             <Badge variant="secondary">{strategy.category}</Badge>
             <Badge className={getRiskColor(strategy.riskLevel)}>
               {strategy.riskLevel}
             </Badge>
             {strategy.author.verified && (
-              <Badge variant="outline" className="border-blue-500/50 text-blue-400">
-                <Shield className="w-3 h-3 mr-1" />
+              <Badge variant="outline" >
+                <span style={{fontSize: '16px'}}>🛡️</span>
                 Verified
               </Badge>
             )}
           </div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div style={{ marginBottom: "16px" }}>
             <div>
-              <p className="text-xs text-gray-400">Total Return</p>
-              <p className="text-xl font-bold text-green-400">
+              <p style={{ color: "#9CA3AF" }}>Total Return</p>
+              <p style={{ fontWeight: "700" }}>
                 +{strategy.performance.totalReturn}%
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-400">Win Rate</p>
-              <p className="text-xl font-bold text-white">
+              <p style={{ color: "#9CA3AF" }}>Win Rate</p>
+              <p style={{ fontWeight: "700", color: "white" }}>
                 {strategy.performance.winRate}%
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-400">Sharpe Ratio</p>
-              <p className="text-lg font-semibold text-white">
+              <p style={{ color: "#9CA3AF" }}>Sharpe Ratio</p>
+              <p style={{ color: "white" }}>
                 {strategy.performance.sharpeRatio}
               </p>
             </div>
             <div>
-              <p className="text-xs text-gray-400">Max Drawdown</p>
-              <p className="text-lg font-semibold text-red-400">
+              <p style={{ color: "#9CA3AF" }}>Max Drawdown</p>
+              <p >
                 -{strategy.performance.maxDrawdown}%
               </p>
             </div>
           </div>
           
-          <div className="flex items-center justify-between text-sm text-gray-400">
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1">
-                <Star className="w-4 h-4 text-yellow-400" />
+          <div style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span style={{ display: "flex", alignItems: "center" }}>
+                <span style={{fontSize: '16px'}}>⭐</span>
                 {(strategy.stars / 1000).toFixed(1)}k
               </span>
-              <span className="flex items-center gap-1">
-                <Users className="w-4 h-4" />
+              <span style={{ display: "flex", alignItems: "center" }}>
+                <span style={{fontSize: '16px'}}>👤</span>
                 {strategy.users}
               </span>
             </div>
-            <span className="flex items-center gap-1">
-              <Clock className="w-4 h-4" />
+            <span style={{ display: "flex", alignItems: "center" }}>
+              <span style={{fontSize: '16px'}}>⏰</span>
               {strategy.timeframe}
             </span>
           </div>
           
-          <div className="mt-3 pt-3 border-t border-white/10">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold text-white">
+          <div >
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", fontWeight: "700", color: "white" }}>
                   {strategy.author.name.charAt(0)}
                 </div>
-                <span className="text-sm text-gray-400">{strategy.author.name}</span>
+                <span style={{ color: "#9CA3AF" }}>{strategy.author.name}</span>
               </div>
-              <Badge variant="outline" className="text-xs">
-                <DollarSign className="w-3 h-3 mr-1" />
+              <Badge variant="outline" >
+                <span style={{fontSize: '16px'}}>💰</span>
                 {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
             </div>
@@ -182,93 +161,93 @@ export default function VaultPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "32px" }}>
         <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-              <GitCommit className="text-white" />
+          <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
+            <span >
+              <GitCommit style={{ color: "white" }} />
             </span>
             Strategy Vault
           </h1>
-          <p className="text-gray-400 mt-1">
+          <p style={{ color: "#9CA3AF" }}>
             Discover and analyze {comprehensiveStrategies.length}+ professional trading strategies
           </p>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+      <div style={{ marginBottom: "32px" }}>
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div>
-                <p className="text-sm text-gray-400">Avg Return</p>
-                <p className="text-2xl font-bold text-green-400">
+                <p style={{ color: "#9CA3AF" }}>Avg Return</p>
+                <p style={{ fontWeight: "700" }}>
                   +{stats.avgReturn.toFixed(1)}%
                 </p>
               </div>
-              <TrendingUp className="w-8 h-8 text-green-400/20" />
+              <span style={{fontSize: '16px'}}>📈</span>
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div>
-                <p className="text-sm text-gray-400">Avg Sharpe</p>
-                <p className="text-2xl font-bold text-blue-400">
+                <p style={{ color: "#9CA3AF" }}>Avg Sharpe</p>
+                <p style={{ fontWeight: "700" }}>
                   {stats.avgSharpe.toFixed(2)}
                 </p>
               </div>
-              <BarChart3 className="w-8 h-8 text-blue-400/20" />
+              <BarChart3  />
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div>
-                <p className="text-sm text-gray-400">Total Users</p>
-                <p className="text-2xl font-bold text-purple-400">
+                <p style={{ color: "#9CA3AF" }}>Total Users</p>
+                <p style={{ fontWeight: "700" }}>
                   {(stats.totalUsers / 1000).toFixed(1)}k
                 </p>
               </div>
-              <Users className="w-8 h-8 text-purple-400/20" />
+              <span style={{fontSize: '16px'}}>👤</span>
             </div>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               <div>
-                <p className="text-sm text-gray-400">Avg Win Rate</p>
-                <p className="text-2xl font-bold text-yellow-400">
+                <p style={{ color: "#9CA3AF" }}>Avg Win Rate</p>
+                <p style={{ fontWeight: "700" }}>
                   {stats.avgWinRate.toFixed(1)}%
                 </p>
               </div>
-              <Star className="w-8 h-8 text-yellow-400/20" />
+              <span style={{fontSize: '16px'}}>⭐</span>
             </div>
           </CardContent>
         </Card>
       </div>
 
       {/* Filters and Search */}
-      <div className="space-y-4 mb-8">
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+      <div style={{ marginBottom: "32px" }}>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div >
+            <div >
+              <span style={{fontSize: '16px'}}>🔍</span>
               <Input
                 placeholder="Search strategies, tags, or descriptions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 bg-white/5 border-white/10 text-white"
+                style={{ color: "white" }}
               />
             </div>
           </div>
-          <div className="flex gap-2">
+          <div style={{ display: "flex" }}>
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+              <SelectTrigger style={{ color: "white" }}>
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
@@ -280,7 +259,7 @@ export default function VaultPage() {
             </Select>
             
             <Select value={selectedRisk} onValueChange={setSelectedRisk}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+              <SelectTrigger style={{ color: "white" }}>
                 <SelectValue placeholder="Risk Level" />
               </SelectTrigger>
               <SelectContent>
@@ -292,7 +271,7 @@ export default function VaultPage() {
             </Select>
             
             <Select value={selectedMarket} onValueChange={setSelectedMarket}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+              <SelectTrigger style={{ color: "white" }}>
                 <SelectValue placeholder="Market" />
               </SelectTrigger>
               <SelectContent>
@@ -304,7 +283,7 @@ export default function VaultPage() {
             </Select>
             
             <Select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+              <SelectTrigger style={{ color: "white" }}>
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
@@ -321,15 +300,15 @@ export default function VaultPage() {
               variant="outline"
               size="icon"
               onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-              className="border-white/10"
+              
             >
-              {sortOrder === 'asc' ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
+              {sortOrder === 'asc' ? <SortAsc  /> : <SortDesc  />}
             </Button>
           </div>
         </div>
         
-        <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-400">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <p style={{ color: "#9CA3AF" }}>
             Showing {filteredStrategies.length} of {comprehensiveStrategies.length} strategies
           </p>
           <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as 'grid' | 'list')}>
@@ -352,8 +331,8 @@ export default function VaultPage() {
       </div>
       
       {filteredStrategies.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-400">No strategies found matching your criteria.</p>
+        <div >
+          <p style={{ color: "#9CA3AF" }}>No strategies found matching your criteria.</p>
           <Button 
             variant="ghost" 
             onClick={() => {
@@ -362,7 +341,7 @@ export default function VaultPage() {
               setSelectedRisk('all');
               setSelectedMarket('all');
             }}
-            className="mt-4"
+            
           >
             Reset Filters
           </Button>
@@ -371,12 +350,3 @@ export default function VaultPage() {
     </div>
   );
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

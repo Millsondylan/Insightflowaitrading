@@ -14,29 +14,29 @@ export const AIStrategyBuilderV2: React.FC = () => {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+    <Card style={{ width: "100%", color: "white" }}>
       <CardHeader>
         <CardTitle>AI Strategy Builder V2</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div >
           <div>
-            <label className="block text-sm mb-2">Strategy Name</label>
+            <label >Strategy Name</label>
             <Input 
               value={strategyName}
               onChange={(e) => setStrategyName(e.target.value)}
               placeholder="Enter strategy name"
-              className="bg-zinc-900 border-zinc-700 text-white"
+              style={{ color: "white" }}
             />
           </div>
 
           <div>
-            <label className="block text-sm mb-2">Market</label>
+            <label >Market</label>
             <Select 
               value={selectedMarket} 
               onValueChange={setSelectedMarket}
             >
-              <SelectTrigger className="bg-zinc-900 border-zinc-700 text-white">
+              <SelectTrigger style={{ color: "white" }}>
                 <SelectValue placeholder="Select Market" />
               </SelectTrigger>
               <SelectContent>
@@ -48,12 +48,12 @@ export const AIStrategyBuilderV2: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm mb-2">Risk Level</label>
+            <label >Risk Level</label>
             <Select 
               value={riskLevel} 
               onValueChange={setRiskLevel}
             >
-              <SelectTrigger className="bg-zinc-900 border-zinc-700 text-white">
+              <SelectTrigger style={{ color: "white" }}>
                 <SelectValue placeholder="Select Risk Level" />
               </SelectTrigger>
               <SelectContent>
@@ -66,7 +66,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
 
           <Button 
             onClick={handleGenerateStrategy}
-            className="w-full bg-blue-600 hover:bg-blue-700"
+            style={{ width: "100%" }}
           >
             Generate AI Strategy
           </Button>

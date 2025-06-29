@@ -24,30 +24,30 @@ const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
   let currentTopic = blocks.find((b) => b.id === activeBlock)?.topic;
 
   return (
-    <aside className="sticky top-24 h-full">
-      <div className="relative pl-8">
+    <aside >
+      <div >
         {/* Progress Bar */}
-        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700" />
+        <div  />
         <div
-          className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
+          
           style={{ height: `calc(${progress}% - 1rem)` }}
         />
 
-        <nav className="flex flex-col items-start">
+        <nav style={{ display: "flex", flexDirection: "column" }}>
           {blocks.map((block) => {
             const isTopicHeader = block.id === topics.find(t => t.topic === block.topic)?.id;
             const isActive = block.id === activeBlock;
 
             return (
-              <div key={block.id} className="w-full">
+              <div key={block.id} style={{ width: "100%" }}>
                 {isTopicHeader && (
-                  <h3 className="text-lg font-bold mt-6 mb-3 text-blue-400">
+                  <h3 style={{ fontWeight: "700" }}>
                     {block.topic}
                   </h3>
                 )}
                 <button
                   onClick={() => onBlockClick(block.id)}
-                  className="flex items-center w-full text-left py-1.5 group"
+                  style={{ display: "flex", alignItems: "center", width: "100%" }}
                 >
                   <div
                     className={cn(
@@ -74,9 +74,3 @@ const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
 };
 
 export default ProgressSidebar; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

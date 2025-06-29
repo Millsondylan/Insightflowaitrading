@@ -10,23 +10,23 @@ const mockInsights = [
 export default function FeedPage() {
   return (
     <div>
-      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+      <Link to="/journal" style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
         <ArrowLeft size={16} />
         Back to Journal
       </Link>
       
-      <div className="space-y-6">
+      <div >
         <header>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                <span className="bg-white/10 p-2 rounded-lg"><Rss className="text-blue-400" /></span>
+            <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
+                <span ><Rss  /></span>
                 Your Insight Feed
             </h1>
-            <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>
+            <p style={{ color: "#9CA3AF" }}>Personalized insights generated from your trading activity.</p>
         </header>
 
         {mockInsights.map(insight => (
-            <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
-                <p className="text-gray-200">{insight.text}</p>
+            <div key={insight.id} style={{ border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", alignItems: "center" }}>
+                <p >{insight.text}</p>
                 <Button variant="ghost" size="icon">
                     <span style={{fontSize: '16px'}}>👁️</span>
                 </Button>
@@ -36,11 +36,3 @@ export default function FeedPage() {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

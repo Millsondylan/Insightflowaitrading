@@ -77,18 +77,10 @@ const sampleLesson: LessonData = {
 
 const LessonDemo = () => {
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingTop: "32px", paddingBottom: "32px", paddingLeft: "16px", paddingRight: "16px" }}>
       <LessonView lesson={sampleLesson} />
     </div>
   );
 };
 
 export default LessonDemo; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

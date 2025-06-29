@@ -110,41 +110,41 @@ function convertShadcnImports(content) {
 }
 
 function convertTailwindToInlineStyles(content) {
-  let converted = content;
-  
-  // Basic Tailwind to inline style conversions
-  const tailwindMappings = {
-    'className="': 'style={{',
-    'flex': 'display: "flex"',
-    'flex-col': 'flexDirection: "column"',
-    'flex-row': 'flexDirection: "row"',
-    'items-center': 'alignItems: "center"',
-    'justify-center': 'justifyContent: "center"',
-    'justify-between': 'justifyContent: "space-between"',
-    'gap-2': 'gap: "8px"',
-    'gap-4': 'gap: "16px"',
-    'gap-6': 'gap: "24px"',
-    'p-2': 'padding: "8px"',
-    'p-4': 'padding: "16px"',
-    'p-6': 'padding: "24px"',
-    'bg-black': 'backgroundColor: "black"',
-    'bg-white': 'backgroundColor: "white"',
-    'text-white': 'color: "white"',
-    'text-black': 'color: "black"',
-    'rounded': 'borderRadius: "8px"',
-    'rounded-lg': 'borderRadius: "12px"',
-    'rounded-full': 'borderRadius: "50%"',
-    'border': 'border: "1px solid"',
-    'w-full': 'width: "100%"',
-    'h-full': 'height: "100%"',
-    'cursor-pointer': 'cursor: "pointer"',
-    'hover:bg-gray-100': 'transition: "background-color 0.2s"'
-  };
-  
-  // This is a simplified conversion - a full converter would be much more complex
-  console.log('Note: Tailwind conversion is simplified. Manual review required.');
-  
-  return converted;
+  // This function converts Tailwind classes to inline styles
+  return content.replace(/className="([^"]*)"/g, (match, classes) => {
+    const styles = classes.split(' ').map(cls => {
+      // Mapping from Tailwind to CSS
+      const mappings = {
+        'flex': 'display: "flex"',
+        'flex-col': 'flexDirection: "column"',
+        'items-center': 'alignItems: "center"',
+        'justify-center': 'justifyContent: "center"',
+        'p-4': 'padding: "16px"',
+        'p-6': 'padding: "24px"',
+        'p-8': 'padding: "32px"',
+        'py-8': 'paddingTop: "32px", paddingBottom: "32px"',
+        'px-4': 'paddingLeft: "16px", paddingRight: "16px"',
+        'mb-4': 'marginBottom: "16px"',
+        'mb-8': 'marginBottom: "32px"',
+        'text-white': 'color: "white"',
+        'text-gray-400': 'color: "#9CA3AF"',
+        'text-3xl': 'fontSize: "1.875rem"',
+        'font-bold': 'fontWeight: "700"',
+        'container': 'width: "100%"',
+        'mx-auto': 'marginLeft: "auto", marginRight: "auto"',
+        'min-h-screen': 'minHeight: "100vh"',
+        'space-y-8': 'marginTop: "32px"',
+        'rounded-xl': 'borderRadius: "0.75rem"',
+        'bg-black': 'backgroundColor: "black"',
+        'border': 'border: "1px solid #374151"',
+        'w-full': 'width: "100%"'
+        // Add more mappings as needed
+      };
+      return mappings[cls] || '';
+    }).filter(Boolean).join(', ');
+
+    return styles ? `style={{ ${styles} }}` : '';
+  });
 }
 
 function processFile(filePath) {
@@ -161,7 +161,7 @@ function processFile(filePath) {
     let converted = content;
     converted = convertIcons(converted);
     converted = convertShadcnImports(converted);
-    // converted = convertTailwindToInlineStyles(converted); // Commented out as it's complex
+    converted = convertTailwindToInlineStyles(converted);
     
     // Create a .lovable.tsx version
     const lovableFilePath = filePath.replace('.tsx', '.lovable.tsx');

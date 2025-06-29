@@ -31,7 +31,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight  />
   </ContextMenuPrimitive.SubTrigger>
 ))
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
@@ -99,7 +99,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       <ContextMenuPrimitive.ItemIndicator>
         <span style={{fontSize: '16px'}}>✅</span>
       </ContextMenuPrimitive.ItemIndicator>
@@ -122,9 +122,9 @@ const ContextMenuRadioItem = React.forwardRef<
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       <ContextMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current" />
+        <Circle  />
       </ContextMenuPrimitive.ItemIndicator>
     </span>
     {children}
@@ -195,10 +195,3 @@ export {
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -49,13 +49,13 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
-      <div className="flex flex-col items-center gap-10">
-        <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "16px" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Link to="/" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <span style={{fontSize: '16px'}}>📈</span>
         </Link>
         <nav>
-          <ul className="space-y-4">
+          <ul >
             {navItems.map((item) => (
               <li key={item.path}>
                 <NavLink item={item} />
@@ -65,9 +65,9 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      <div className="flex flex-col items-center gap-4">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
         <nav>
-          <ul className="space-y-2">
+          <ul >
             {bottomNavItems.map((item) => (
               <li key={item.path}>
                 <NavLink item={item} />
@@ -75,7 +75,7 @@ export default function Sidebar() {
             ))}
           </ul>
         </nav>
-        <div className="border-t border-gray-800 w-full my-2"></div>
+        <div style={{ width: "100%" }}></div>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
@@ -88,8 +88,8 @@ export default function Sidebar() {
             </TooltipTrigger>
             <TooltipContent side="right">
               <p>{profile?.full_name || 'Profile'}</p>
-              <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start">
-                <LogOut className="w-4 h-4 mr-2" />
+              <Button variant="ghost" size="sm" style={{ width: "100%" }}>
+                <LogOut  />
                 Logout
               </Button>
             </TooltipContent>
@@ -99,10 +99,3 @@ export default function Sidebar() {
     </div>
   );
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

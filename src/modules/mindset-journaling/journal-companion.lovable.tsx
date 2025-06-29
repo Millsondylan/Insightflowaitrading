@@ -318,16 +318,16 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
   };
   
   return (
-    <div className="journal-companion p-4 bg-background-secondary rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Trading Journal</h2>
+    <div style={{ padding: "16px" }}>
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Trading Journal</h2>
       
       {/* Journal Entry Form */}
-      <div className="mb-8">
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <label className="font-medium">Today's Journal Entry</label>
+      <div style={{ marginBottom: "32px" }}>
+        <div style={{ marginBottom: "16px" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label >Today's Journal Entry</label>
             <button
-              className="text-sm text-brand-primary hover:text-brand-primary/80"
+              
               onClick={getRandomPrompt}
             >
               Get Random Prompt
@@ -335,23 +335,23 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
           </div>
           
           {selectedPrompt && (
-            <div className="p-3 mb-3 bg-brand-primary/10 border-l-4 border-brand-primary rounded">
-              <p className="text-sm italic">{selectedPrompt.text}</p>
+            <div >
+              <p >{selectedPrompt.text}</p>
             </div>
           )}
           
           <textarea
-            className="w-full p-3 bg-background-primary border border-border-primary rounded-md min-h-[200px]"
+            style={{ width: "100%", border: "1px solid #374151" }}
             value={currentEntry.content}
             onChange={handleContentChange}
             placeholder="Write your trading journal entry here..."
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div style={{ marginBottom: "16px" }}>
           <div>
-            <label className="block mb-1 font-medium">How are you feeling?</label>
-            <div className="flex space-x-2">
+            <label >How are you feeling?</label>
+            <div style={{ display: "flex" }}>
               <button
                 className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'positive' 
@@ -386,10 +386,10 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
           </div>
           
           <div>
-            <label className="block mb-1 font-medium">Tags (comma-separated)</label>
+            <label >Tags (comma-separated)</label>
             <input
               type="text"
-              className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
+              style={{ width: "100%", border: "1px solid #374151" }}
               value={currentEntry.tags?.join(', ')}
               onChange={handleTagsChange}
               placeholder="mindset, discipline, strategy, etc."
@@ -398,14 +398,14 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
         </div>
         
         {error && (
-          <div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
+          <div style={{ marginBottom: "16px" }}>
             {error}
           </div>
         )}
         
-        <div className="flex justify-between">
+        <div style={{ display: "flex" }}>
           <button
-            className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
+            style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
             onClick={analyzeEntry}
             disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}
           >
@@ -413,7 +413,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
           </button>
           
           <button
-            className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+            style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
             onClick={saveEntry}
             disabled={saving || !currentEntry.content || currentEntry.content.trim().length < 10}
           >
@@ -424,38 +424,38 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
       
       {/* AI Analysis Section */}
       {currentEntry.aiAnalysis && (
-        <div className="mb-8 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
-          <h3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</h3>
+        <div style={{ marginBottom: "32px", padding: "16px", border: "1px solid #374151" }}>
+          <h3 >AI Analysis</h3>
           
-          <div className="space-y-4">
+          <div >
             <div>
-              <h4 className="font-medium mb-1">Summary</h4>
-              <p className="text-sm">{currentEntry.aiAnalysis.summary}</p>
+              <h4 >Summary</h4>
+              <p >{currentEntry.aiAnalysis.summary}</p>
             </div>
             
             <div>
-              <h4 className="font-medium mb-1">Insights</h4>
-              <ul className="list-disc pl-5 space-y-1">
+              <h4 >Insights</h4>
+              <ul >
                 {currentEntry.aiAnalysis.insights.map((insight, i) => (
-                  <li key={i} className="text-sm">{insight}</li>
+                  <li key={i} >{insight}</li>
                 ))}
               </ul>
             </div>
             
             <div>
-              <h4 className="font-medium mb-1">Patterns</h4>
-              <ul className="list-disc pl-5 space-y-1">
+              <h4 >Patterns</h4>
+              <ul >
                 {currentEntry.aiAnalysis.patterns.map((pattern, i) => (
-                  <li key={i} className="text-sm">{pattern}</li>
+                  <li key={i} >{pattern}</li>
                 ))}
               </ul>
             </div>
             
             <div>
-              <h4 className="font-medium mb-1">Suggestions</h4>
-              <ul className="list-disc pl-5 space-y-1">
+              <h4 >Suggestions</h4>
+              <ul >
                 {currentEntry.aiAnalysis.suggestions.map((suggestion, i) => (
-                  <li key={i} className="text-sm">{suggestion}</li>
+                  <li key={i} >{suggestion}</li>
                 ))}
               </ul>
             </div>
@@ -465,44 +465,44 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
       
       {/* Previous Entries */}
       <div>
-        <h3 className="text-lg font-semibold mb-3">Previous Entries</h3>
+        <h3 >Previous Entries</h3>
         
         {loading ? (
-          <div className="p-8 text-center">
-            <div className="text-text-muted">Loading entries...</div>
+          <div style={{ padding: "32px" }}>
+            <div >Loading entries...</div>
           </div>
         ) : entries.length === 0 ? (
-          <div className="p-8 text-center">
-            <div className="text-text-muted">No journal entries yet. Start writing your first entry above!</div>
+          <div style={{ padding: "32px" }}>
+            <div >No journal entries yet. Start writing your first entry above!</div>
           </div>
         ) : (
-          <div className="space-y-4">
+          <div >
             {entries.map(entry => (
-              <div key={entry.id} className="p-4 bg-background-tertiary rounded-lg">
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex items-center">
+              <div key={entry.id} style={{ padding: "16px" }}>
+                <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <span className={`w-3 h-3 rounded-full mr-2 ${
                       entry.mood === 'positive' ? 'bg-status-success' :
                       entry.mood === 'negative' ? 'bg-status-error' : 'bg-status-warning'
                     }`} />
-                    <span className="text-sm text-text-muted">
+                    <span >
                       {new Date(entry.createdAt).toLocaleDateString()}
                     </span>
                   </div>
                   
                   <button
-                    className="text-sm text-brand-primary hover:text-brand-primary/80"
+                    
                     onClick={() => editEntry(entry)}
                   >
                     Edit
                   </button>
                 </div>
                 
-                <p className="mb-3 line-clamp-3">{entry.content}</p>
+                <p >{entry.content}</p>
                 
-                <div className="flex flex-wrap gap-1">
+                <div style={{ display: "flex" }}>
                   {entry.tags.map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
+                    <span key={i} >
                       {tag}
                     </span>
                   ))}

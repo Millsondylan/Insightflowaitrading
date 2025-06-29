@@ -97,7 +97,7 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <Pagination className="mt-4">
+      <Pagination >
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious 
@@ -164,57 +164,57 @@ const UserTable: React.FC = () => {
   const renderSkeleton = () => (
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
-        <tr key={i} className="border-b border-gray-800/30">
-          <td className="px-4 py-3"><Skeleton className="h-6 w-24" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-20" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-16" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" /></td>
+        <tr key={i} >
+          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
+          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
+          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
+          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
+          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
         </tr>
       ))}
     </>
   );
   
   return (
-    <div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
+    <div style={{ borderRadius: "0.75rem", border: "1px solid #374151" }}>
       {/* Filter and tools bar */}
-      <div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
-        <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
+      <div style={{ padding: "16px", display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           {/* Search input */}
-          <div className="relative">
+          <div >
             <span style={{fontSize: '16px'}}>🔍</span>
             <Input 
               type="text"
               placeholder="Search wallet address..." 
-              className="pl-9 w-full min-w-[200px] bg-gray-900/80"
+              style={{ width: "100%" }}
               onChange={handleSearchChange}
             />
           </div>
           
           {/* Role filter */}
           <Select onValueChange={handleRoleFilterChange}>
-            <SelectTrigger className="w-[140px] bg-gray-900/80">
+            <SelectTrigger >
               <SelectValue placeholder="All roles" />
             </SelectTrigger>
-            <SelectContent className="bg-gray-900">
+            <SelectContent >
               <SelectItem value="">All roles</SelectItem>
               <SelectItem value="Admin">
-                <div className="flex items-center gap-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <RoleBadge role="Admin" showTooltip={false} /> Admin
                 </div>
               </SelectItem>
               <SelectItem value="User">
-                <div className="flex items-center gap-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <RoleBadge role="User" showTooltip={false} /> User
                 </div>
               </SelectItem>
               <SelectItem value="Trial">
-                <div className="flex items-center gap-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <RoleBadge role="Trial" showTooltip={false} /> Trial
                 </div>
               </SelectItem>
               <SelectItem value="Expired">
-                <div className="flex items-center gap-2">
+                <div style={{ display: "flex", alignItems: "center" }}>
                   <RoleBadge role="Expired" showTooltip={false} /> Expired
                 </div>
               </SelectItem>
@@ -224,36 +224,36 @@ const UserTable: React.FC = () => {
           {/* Sort options */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="bg-gray-900/80">
-                <Filter className="h-3.5 w-3.5 mr-2" />
+              <Button variant="outline" size="sm" >
+                <Filter  />
                 Sort
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-gray-900 border border-gray-800">
-              <DropdownMenuItem onClick={() => handleSortChange('created_at-desc')} className="cursor-pointer">
+            <DropdownMenuContent style={{ border: "1px solid #374151" }}>
+              <DropdownMenuItem onClick={() => handleSortChange('created_at-desc')} >
                 Newest First
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('created_at-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('created_at-asc')} >
                 Oldest First
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-desc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-desc')} >
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-asc')} >
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('role-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('role-asc')} >
                 By Role
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
         
-        <div className="flex items-center gap-2">
+        <div style={{ display: "flex", alignItems: "center" }}>
           {/* Export button */}
           <Button 
             variant="outline" 
-            className="bg-gray-900/80 flex items-center gap-2" 
+            style={{ display: "flex", alignItems: "center" }} 
             onClick={handleExport}
             disabled={users.length === 0 || loading}
           >
@@ -263,7 +263,7 @@ const UserTable: React.FC = () => {
           
           {/* Grant admin button */}
           <Button 
-            className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
+            style={{ display: "flex", alignItems: "center" }} 
             onClick={handleGrantAdmin}
           >
             <span style={{fontSize: '16px'}}>➕</span>
@@ -273,23 +273,23 @@ const UserTable: React.FC = () => {
       </div>
       
       {/* User table */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-900/50">
+      <div >
+        <table style={{ width: "100%" }}>
+          <thead >
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
                 Wallet Address
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
                 Joined Date
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
                 Subscription Plan
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
                 Role
               </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
                 Actions
               </th>
             </tr>
@@ -303,10 +303,10 @@ const UserTable: React.FC = () => {
               ))
             ) : (
               <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
+                <td colSpan={5} style={{ paddingLeft: "16px", paddingRight: "16px", paddingTop: "32px", paddingBottom: "32px", color: "#9CA3AF" }}>
                   <span style={{fontSize: '16px'}}>👤</span>
                   <p>No users found</p>
-                  <p className="text-sm">Try adjusting your search or filters</p>
+                  <p >Try adjusting your search or filters</p>
                 </td>
               </tr>
             )}
@@ -318,7 +318,7 @@ const UserTable: React.FC = () => {
       {!loading && pageCount > 1 && renderPagination()}
       
       {/* Summary stats */}
-      <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
+      <div style={{ padding: "16px", color: "#9CA3AF" }}>
         {!loading && (
           <p>
             Showing {users.length} of {totalCount} users
@@ -332,9 +332,3 @@ const UserTable: React.FC = () => {
 };
 
 export default UserTable; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

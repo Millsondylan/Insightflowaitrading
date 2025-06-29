@@ -8,17 +8,17 @@ export default function AICoachV2({ trades }: Props) {
   const reviews = trades.map(reviewTrade);
 
   return (
-    <div className="space-y-6 theme-coach">
+    <div >
       {reviews.map((r, i) => (
         <div
           key={i}
-          className="bg-black/30 rounded-xl p-6 border border-white/10 backdrop-blur-md text-white space-y-2 shadow"
+          style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151", color: "white" }}
         >
-          <p className="italic text-white/80">🧠 {r.summary}</p>
-          <span className="inline-block px-2 py-1 rounded-full text-xs bg-cyan-600 text-white">
+          <p >🧠 {r.summary}</p>
+          <span style={{ color: "white" }}>
             🎭 {r.emotion}
           </span>
-          <ul className="list-disc pl-6 text-white/70">
+          <ul >
             {r.suggestions.map((s, j) => (
               <li key={j}>✅ {s}</li>
             ))}
@@ -28,9 +28,3 @@ export default function AICoachV2({ trades }: Props) {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

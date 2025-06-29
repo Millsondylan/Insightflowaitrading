@@ -3,56 +3,56 @@ import React from 'react';
 
 const BacktestReplayPage: React.FC = () => {
   return (
-    <section className="theme-backtest min-h-screen px-6 py-16 space-y-12">
+    <section style={{ minHeight: "100vh" }}>
       {/* Hero Section */}
-      <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-emerald mb-8">
+      <div >
+        <h1 style={{ fontWeight: "700", marginBottom: "32px" }}>
           Backtest Replay
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 font-light">
+        <p >
           Relive your trading decisions
         </p>
       </div>
 
       {/* Timeline Container */}
-      <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8">⏱️ Trading Timeline</h2>
-        <div className="relative">
+      <div  style={{ animationDelay: '100ms' }}>
+        <h2 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", marginBottom: "32px" }}>⏱️ Trading Timeline</h2>
+        <div >
           {/* Timeline Line */}
-          <div className="absolute left-8 top-0 h-full w-0.5 bg-emerald-500/30"></div>
+          <div ></div>
           
           {/* Timeline Events */}
-          <div className="space-y-8">
-            <div className="flex items-start space-x-6">
-              <div className="w-4 h-4 bg-emerald-400 rounded-full border-4 border-gray-900 relative z-10"></div>
-              <div className="glass-card flex-1">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-emerald-400 font-semibold">Entry Signal</span>
-                  <span className="text-gray-400 text-sm">09:30 AM</span>
+          <div style={{ marginTop: "32px" }}>
+            <div style={{ display: "flex" }}>
+              <div ></div>
+              <div >
+                <div style={{ display: "flex" }}>
+                  <span >Entry Signal</span>
+                  <span style={{ color: "#9CA3AF" }}>09:30 AM</span>
                 </div>
-                <p className="text-gray-300 text-sm">Long TSLA @ $245.50 - RSI oversold + volume spike</p>
+                <p >Long TSLA @ $245.50 - RSI oversold + volume spike</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-6">
-              <div className="w-4 h-4 bg-yellow-400 rounded-full border-4 border-gray-900 relative z-10"></div>
-              <div className="glass-card flex-1">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-yellow-400 font-semibold">Price Movement</span>
-                  <span className="text-gray-400 text-sm">10:15 AM</span>
+            <div style={{ display: "flex" }}>
+              <div ></div>
+              <div >
+                <div style={{ display: "flex" }}>
+                  <span >Price Movement</span>
+                  <span style={{ color: "#9CA3AF" }}>10:15 AM</span>
                 </div>
-                <p className="text-gray-300 text-sm">+2.3% move to $251.15 - Following support trend</p>
+                <p >+2.3% move to $251.15 - Following support trend</p>
               </div>
             </div>
 
-            <div className="flex items-start space-x-6">
-              <div className="w-4 h-4 bg-red-400 rounded-full border-4 border-gray-900 relative z-10"></div>
-              <div className="glass-card flex-1">
-                <div className="flex justify-between items-start mb-2">
-                  <span className="text-red-400 font-semibold">Exit Signal</span>
-                  <span className="text-gray-400 text-sm">11:45 AM</span>
+            <div style={{ display: "flex" }}>
+              <div ></div>
+              <div >
+                <div style={{ display: "flex" }}>
+                  <span >Exit Signal</span>
+                  <span style={{ color: "#9CA3AF" }}>11:45 AM</span>
                 </div>
-                <p className="text-gray-300 text-sm">Closed @ $248.90 - Resistance hit, +1.4% gain</p>
+                <p >Closed @ $248.90 - Resistance hit, +1.4% gain</p>
               </div>
             </div>
           </div>
@@ -60,16 +60,16 @@ const BacktestReplayPage: React.FC = () => {
       </div>
 
       {/* Replay Controls */}
-      <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <div className="flex items-center justify-center space-x-6">
-          <button className="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
-            <span className="text-emerald-400">⏮️</span>
+      <div  style={{ animationDelay: '200ms' }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <button style={{ border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span >⏮️</span>
           </button>
-          <button className="w-16 h-16 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
-            <span className="text-emerald-400 text-xl">▶️</span>
+          <button style={{ border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span >▶️</span>
           </button>
-          <button className="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
-            <span className="text-emerald-400">⏭️</span>
+          <button style={{ border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span >⏭️</span>
           </button>
         </div>
       </div>
@@ -78,12 +78,3 @@ const BacktestReplayPage: React.FC = () => {
 };
 
 export default BacktestReplayPage;
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

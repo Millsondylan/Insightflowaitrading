@@ -45,14 +45,14 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
   };
 
   return (
-    <Card className="theme-card p-6 h-[600px] flex flex-col">
-      <div className="flex items-center gap-2 mb-4">
-        <Bot className="h-6 w-6" />
-        <h2 className="text-2xl font-bold">Community GPT</h2>
+    <Card style={{ padding: "24px", display: "flex", flexDirection: "column" }}>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
+        <Bot  />
+        <h2 style={{ fontWeight: "700" }}>Community GPT</h2>
       </div>
 
-      <ScrollArea className="flex-1 mb-4">
-        <div className="space-y-4">
+      <ScrollArea style={{ marginBottom: "16px" }}>
+        <div >
           {messages.map((message) => (
             <div
               key={message.id}
@@ -61,12 +61,12 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
               <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
-                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                       <span style={{fontSize: '16px'}}>👤</span>
                     </div>
                   ) : (
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                      <Bot className="h-4 w-4" />
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                      <Bot  />
                     </div>
                   )}
                 </div>
@@ -77,8 +77,8 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
                       : 'bg-secondary'
                   }`}
                 >
-                  <p className="text-sm">{message.content}</p>
-                  <p className="text-xs opacity-70 mt-1">
+                  <p >{message.content}</p>
+                  <p >
                     {message.timestamp.toLocaleTimeString()}
                   </p>
                 </div>
@@ -86,15 +86,15 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
             </div>
           ))}
           {isTyping && (
-            <div className="flex gap-3">
-              <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                <Bot className="h-4 w-4" />
+            <div style={{ display: "flex" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Bot  />
               </div>
-              <div className="bg-secondary p-3 rounded-lg">
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce" />
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-100" />
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-200" />
+              <div >
+                <div style={{ display: "flex" }}>
+                  <div  />
+                  <div  />
+                  <div  />
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
         </div>
       </ScrollArea>
 
-      <div className="flex gap-2">
+      <div style={{ display: "flex" }}>
         <Input
           placeholder="Ask about strategies, analysis, or community insights..."
           value={input}
@@ -110,17 +110,9 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
         <Button onClick={sendMessage} size="icon">
-          <Send className="h-4 w-4" />
+          <Send  />
         </Button>
       </div>
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

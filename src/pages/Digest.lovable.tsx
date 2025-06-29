@@ -73,24 +73,24 @@ export default function DigestPage() {
   }, []);
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="theme-markets">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-white mb-2">
+    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingTop: "32px", paddingBottom: "32px", paddingLeft: "16px", paddingRight: "16px" }}>
+      <div >
+        <header style={{ marginBottom: "32px" }}>
+          <h1 style={{ fontWeight: "700", color: "white" }}>
             AI Market Digest
           </h1>
-          <p className="text-lg text-white/70">
+          <p >
             A real-time feed of markets matching your active strategies, powered
             by AI.
           </p>
         </header>
 
-        <div className="flex justify-center gap-4 mb-8">
-          <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
+          <button style={{ color: "white", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
             <span style={{fontSize: '16px'}}>⚡</span>
             <span>Live Scan</span>
           </button>
-          <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
+          <button style={{ color: "white", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
             <span style={{fontSize: '16px'}}>📄</span>
             <span>View Reports</span>
           </button>
@@ -98,8 +98,8 @@ export default function DigestPage() {
 
         <MarketDigest digest={digestItems} />
         
-        <div className="mt-8 text-center">
-          <p className="text-white/50 text-sm">
+        <div >
+          <p >
             Summaries generated automatically based on price action, volume, and strategy matches
           </p>
         </div>
@@ -107,12 +107,3 @@ export default function DigestPage() {
     </div>
   );
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

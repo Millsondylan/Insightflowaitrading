@@ -50,27 +50,27 @@ exit_rules:
   };
 
   return (
-    <Card className="theme-card p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
-          <HardDrive className="h-6 w-6" />
-          <h2 className="text-2xl font-bold">Local Prototype</h2>
+    <Card style={{ padding: "24px" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <HardDrive  />
+          <h2 style={{ fontWeight: "700" }}>Local Prototype</h2>
         </div>
-        <div className="flex items-center gap-4">
+        <div style={{ display: "flex", alignItems: "center" }}>
           <Badge variant={syncStatus === 'synced' ? 'default' : syncStatus === 'pending' ? 'secondary' : 'destructive'}>
             {syncStatus === 'synced' ? (
               <>
-                <Cloud className="h-3 w-3 mr-1" />
+                <Cloud  />
                 Synced
               </>
             ) : syncStatus === 'pending' ? (
               <>
-                <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
+                <RefreshCw  />
                 {localChanges} pending
               </>
             ) : (
               <>
-                <HardDrive className="h-3 w-3 mr-1" />
+                <HardDrive  />
                 Offline
               </>
             )}
@@ -86,17 +86,17 @@ exit_rules:
         </div>
       </div>
 
-      <Tabs defaultValue="editor" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-3">
+      <Tabs defaultValue="editor" >
+        <TabsList style={{ width: "100%" }}>
           <TabsTrigger value="editor">Editor</TabsTrigger>
           <TabsTrigger value="results">Results</TabsTrigger>
           <TabsTrigger value="history">History</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="editor" className="space-y-4">
-          <div className="relative">
+        <TabsContent value="editor" >
+          <div >
             <textarea
-              className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm"
+              style={{ width: "100%", padding: "16px" }}
               value={prototypeCode}
               onChange={(e) => {
                 setPrototypeCode(e.target.value);
@@ -104,73 +104,73 @@ exit_rules:
                 setSyncStatus('pending');
               }}
             />
-            <div className="absolute top-2 right-2 flex items-center gap-2">
-              <Badge variant="outline" className="text-xs">
-                <HardDrive className="h-3 w-3 mr-1" />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Badge variant="outline" >
+                <HardDrive  />
                 Local Only
               </Badge>
             </div>
           </div>
           
-          <div className="flex gap-2">
-            <Button onClick={runLocalBacktest} className="flex-1">
-              <Play className="h-4 w-4 mr-2" />
+          <div style={{ display: "flex" }}>
+            <Button onClick={runLocalBacktest} >
+              <Play  />
               Run Local Test
             </Button>
             <Button variant="outline">
-              <Save className="h-4 w-4 mr-2" />
+              <Save  />
               Save Draft
             </Button>
           </div>
         </TabsContent>
 
-        <TabsContent value="results" className="space-y-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</p>
-              <p className="text-sm text-muted-foreground">Win Rate</p>
+        <TabsContent value="results" >
+          <div >
+            <div style={{ padding: "16px" }}>
+              <p style={{ fontWeight: "700" }}>{testResults.winRate}%</p>
+              <p >Win Rate</p>
             </div>
-            <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold">{testResults.profitFactor}</p>
-              <p className="text-sm text-muted-foreground">Profit Factor</p>
+            <div style={{ padding: "16px" }}>
+              <p style={{ fontWeight: "700" }}>{testResults.profitFactor}</p>
+              <p >Profit Factor</p>
             </div>
-            <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</p>
-              <p className="text-sm text-muted-foreground">Max Drawdown</p>
+            <div style={{ padding: "16px" }}>
+              <p style={{ fontWeight: "700" }}>{testResults.maxDrawdown}%</p>
+              <p >Max Drawdown</p>
             </div>
-            <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold">{testResults.trades}</p>
-              <p className="text-sm text-muted-foreground">Total Trades</p>
+            <div style={{ padding: "16px" }}>
+              <p style={{ fontWeight: "700" }}>{testResults.trades}</p>
+              <p >Total Trades</p>
             </div>
           </div>
 
-          <div className="p-4 bg-blue-500/10 rounded-lg">
-            <p className="text-sm text-blue-600">
+          <div style={{ padding: "16px" }}>
+            <p >
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
             </p>
           </div>
         </TabsContent>
 
-        <TabsContent value="history" className="space-y-4">
-          <div className="space-y-2">
-            <div className="p-3 border rounded-lg flex items-center justify-between">
+        <TabsContent value="history" >
+          <div >
+            <div style={{ border: "1px solid #374151", display: "flex", alignItems: "center" }}>
               <div>
-                <p className="font-medium">Current Draft</p>
-                <p className="text-sm text-muted-foreground">Modified 2 minutes ago</p>
+                <p >Current Draft</p>
+                <p >Modified 2 minutes ago</p>
               </div>
               <Badge variant="secondary">Unsaved</Badge>
             </div>
-            <div className="p-3 border rounded-lg flex items-center justify-between">
+            <div style={{ border: "1px solid #374151", display: "flex", alignItems: "center" }}>
               <div>
-                <p className="font-medium">v1.2 - Risk Update</p>
-                <p className="text-sm text-muted-foreground">Saved locally 1 hour ago</p>
+                <p >v1.2 - Risk Update</p>
+                <p >Saved locally 1 hour ago</p>
               </div>
               <Badge>Synced</Badge>
             </div>
-            <div className="p-3 border rounded-lg flex items-center justify-between">
+            <div style={{ border: "1px solid #374151", display: "flex", alignItems: "center" }}>
               <div>
-                <p className="font-medium">v1.1 - Initial Strategy</p>
-                <p className="text-sm text-muted-foreground">Created yesterday</p>
+                <p >v1.1 - Initial Strategy</p>
+                <p >Created yesterday</p>
               </div>
               <Badge>Synced</Badge>
             </div>
@@ -178,9 +178,9 @@ exit_rules:
         </TabsContent>
       </Tabs>
 
-      <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <h4 className="font-medium mb-2">Local-First Benefits</h4>
-        <ul className="space-y-1 text-sm text-muted-foreground">
+      <div style={{ padding: "16px" }}>
+        <h4 >Local-First Benefits</h4>
+        <ul >
           <li>• Work offline without interruption</li>
           <li>• Instant feedback on changes</li>
           <li>• Automatic conflict resolution</li>
@@ -190,11 +190,3 @@ exit_rules:
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

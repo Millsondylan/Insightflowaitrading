@@ -146,15 +146,15 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   const fileInputRef = React.createRef<HTMLInputElement>();
   
   return (
-    <Card className="w-full max-w-2xl mx-auto journal-form-card">
+    <Card style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
       <CardHeader>
-        <CardTitle className="text-xl font-bold">New Trade Journal Entry</CardTitle>
+        <CardTitle style={{ fontWeight: "700" }}>New Trade Journal Entry</CardTitle>
       </CardHeader>
       
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} >
           {/* Title */}
-          <div className="space-y-2">
+          <div >
             <Label htmlFor="title">Trade Title</Label>
             <Input
               id="title"
@@ -164,12 +164,12 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
               placeholder="E.g., ETH Breakout Trade"
               className={cn(errors.title && "border-red-500")}
             />
-            {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
+            {errors.title && <p >{errors.title}</p>}
           </div>
           
           {/* Pair and Timeframe - 2 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
+          <div >
+            <div >
               <Label htmlFor="pair">Instrument/Pair</Label>
               <Input
                 id="pair"
@@ -179,10 +179,10 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="E.g., ETH/USD"
                 className={cn(errors.pair && "border-red-500")}
               />
-              {errors.pair && <p className="text-sm text-red-500">{errors.pair}</p>}
+              {errors.pair && <p >{errors.pair}</p>}
             </div>
             
-            <div className="space-y-2">
+            <div >
               <Label htmlFor="timeframe">Timeframe</Label>
               <Input
                 id="timeframe"
@@ -192,13 +192,13 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="E.g., 4H"
                 className={cn(errors.timeframe && "border-red-500")}
               />
-              {errors.timeframe && <p className="text-sm text-red-500">{errors.timeframe}</p>}
+              {errors.timeframe && <p >{errors.timeframe}</p>}
             </div>
           </div>
           
           {/* Entry and Exit Prices - 2 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="space-y-2">
+          <div >
+            <div >
               <Label htmlFor="entryPrice">Entry Price</Label>
               <Input
                 id="entryPrice"
@@ -209,10 +209,10 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="0.00"
                 className={cn(errors.entryPrice && "border-red-500")}
               />
-              {errors.entryPrice && <p className="text-sm text-red-500">{errors.entryPrice}</p>}
+              {errors.entryPrice && <p >{errors.entryPrice}</p>}
             </div>
             
-            <div className="space-y-2">
+            <div >
               <Label htmlFor="exitPrice">Exit Price</Label>
               <Input
                 id="exitPrice"
@@ -223,12 +223,12 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="0.00"
                 className={cn(errors.exitPrice && "border-red-500")}
               />
-              {errors.exitPrice && <p className="text-sm text-red-500">{errors.exitPrice}</p>}
+              {errors.exitPrice && <p >{errors.exitPrice}</p>}
             </div>
           </div>
           
           {/* Reason/Notes */}
-          <div className="space-y-2">
+          <div >
             <Label htmlFor="reason">Reason for Trade</Label>
             <Textarea
               id="reason"
@@ -239,13 +239,13 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
               rows={4}
               className={cn(errors.reason && "border-red-500")}
             />
-            {errors.reason && <p className="text-sm text-red-500">{errors.reason}</p>}
+            {errors.reason && <p >{errors.reason}</p>}
           </div>
           
           {/* Sentiment Toggle */}
-          <div className="space-y-2">
+          <div >
             <Label>Trade Sentiment</Label>
-            <div className="flex items-center space-x-2">
+            <div style={{ display: "flex", alignItems: "center" }}>
               <Button
                 type="button"
                 variant={formData.sentiment === "Bullish" ? "default" : "outline"}
@@ -272,7 +272,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           </div>
           
           {/* Tags */}
-          <div className="space-y-2">
+          <div >
             <Label htmlFor="tags">Tags (comma-separated)</Label>
             <Input
               id="tags"
@@ -284,16 +284,16 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           </div>
           
           {/* Chart Upload */}
-          <div className="space-y-2">
+          <div >
             <Label>Attach Chart Image (Optional)</Label>
             <div 
-              className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors file-upload-zone"
+              style={{ padding: "24px" }}
               onClick={() => fileInputRef.current?.click()}
             >
               {formData.chartFile ? (
-                <div className="flex flex-col items-center">
-                  <p className="text-sm font-medium">{formData.chartFile.name}</p>
-                  <p className="text-xs text-gray-400">
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <p >{formData.chartFile.name}</p>
+                  <p style={{ color: "#9CA3AF" }}>
                     {(formData.chartFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                   <Button 
@@ -309,16 +309,16 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   </Button>
                 </div>
               ) : (
-                <div className="flex flex-col items-center">
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                   <p>Drag and drop your chart image here,</p>
                   <p>or click to select</p>
-                  <p className="text-xs text-gray-400 mt-2">PNG, JPG (max 5MB)</p>
+                  <p style={{ color: "#9CA3AF" }}>PNG, JPG (max 5MB)</p>
                 </div>
               )}
               <input
                 ref={fileInputRef}
                 type="file"
-                className="hidden"
+                
                 accept="image/png,image/jpeg"
                 onChange={handleFileChange}
               />
@@ -345,9 +345,3 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
 };
 
 export default JournalForm; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

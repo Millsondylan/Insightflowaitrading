@@ -62,32 +62,32 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
   }, [matchedSymbols, strategy, tickers]);
 
   return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-      <div className="flex items-center gap-3">
-        <Sparkles className="h-6 w-6 text-cyan-400" />
-        <h3 className="text-lg font-semibold text-white">
+    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Sparkles  />
+        <h3 style={{ color: "white" }}>
           Strategy Matches:{" "}
-          <span className="text-cyan-400">{strategy.title}</span>
+          <span >{strategy.title}</span>
         </h3>
       </div>
 
       {matchedTickersWithReason.length > 0 ? (
-        <div className="flex flex-wrap gap-3">
+        <div style={{ display: "flex" }}>
           {matchedTickersWithReason.map((ticker) => (
             <div
               key={ticker.symbol}
-              className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
+              style={{ paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}
             >
               <div>
-                <span className="font-semibold text-white">{ticker.symbol}</span>
-                <span className="ml-2 text-xs text-white/70">
+                <span style={{ color: "white" }}>{ticker.symbol}</span>
+                <span >
                   {ticker.reason}
                 </span>
               </div>
               <Button
                 size="sm"
                 variant="ghost"
-                className="h-auto px-3 py-1 text-xs bg-cyan-600/30 hover:bg-cyan-600 text-white rounded-full"
+                style={{ color: "white" }}
               >
                 <span style={{fontSize: '16px'}}>👁️</span>
                 View
@@ -96,8 +96,8 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
           ))}
         </div>
       ) : (
-        <div className="text-center py-4">
-          <p className="text-white/50">
+        <div >
+          <p >
             No tickers currently match this strategy.
           </p>
         </div>
@@ -105,9 +105,3 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

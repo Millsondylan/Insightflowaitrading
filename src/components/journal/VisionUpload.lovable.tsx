@@ -42,26 +42,26 @@ const VisionUpload = ({ onUpload, defaultImage }: Props) => {
   }, [previewUrl, defaultImage]);
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4">
-      <div className="flex flex-col items-center gap-4">
-        <label className="cursor-pointer bg-white/10 hover:bg-cyan-600/80 text-white font-semibold px-6 py-3 rounded-full transition-colors duration-300 flex items-center gap-2">
+    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <label style={{ color: "white", display: "flex", alignItems: "center" }}>
           <span>📷</span>
           <span>{previewUrl ? 'Change Screenshot' : 'Upload Screenshot'}</span>
           <input
             type="file"
             accept=".png, .jpg, .jpeg, .webp"
-            className="hidden"
+            
             onChange={handleFileChange}
           />
         </label>
         
         {previewUrl && (
-          <div className="w-full mt-4">
-            <p className="text-sm text-white/60 text-center mb-2">Chart Preview</p>
+          <div style={{ width: "100%" }}>
+            <p >Chart Preview</p>
             <img 
               src={previewUrl} 
               alt="Chart preview" 
-              className="rounded-lg border border-white/10 max-h-96 w-full object-contain" 
+              style={{ border: "1px solid #374151", width: "100%" }} 
             />
           </div>
         )}
@@ -71,9 +71,3 @@ const VisionUpload = ({ onUpload, defaultImage }: Props) => {
 };
 
 export default VisionUpload; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

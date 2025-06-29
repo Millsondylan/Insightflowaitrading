@@ -28,22 +28,22 @@ export const BroadcastMode: React.FC = () => {
   const sortedEvents = sortBroadcastEventsByImpact(events)
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
-      <CardHeader className="flex flex-row items-center justify-between">
+    <Card style={{ width: "100%", color: "white" }}>
+      <CardHeader style={{ display: "flex", alignItems: "center" }}>
         <CardTitle>Market Broadcast Mode</CardTitle>
         <Badge variant="default">
           {sortedEvents.length} Active Events
         </Badge>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div >
           {sortedEvents.map((event) => (
             <div 
               key={event.id} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
+              style={{ padding: "16px", border: "1px solid #374151" }}
             >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold">{event.title}</h3>
+              <div style={{ display: "flex" }}>
+                <h3 style={{ fontWeight: "700" }}>{event.title}</h3>
                 <Badge 
                   variant={
                     event.impact === 'High' ? 'destructive' : 
@@ -53,16 +53,16 @@ export const BroadcastMode: React.FC = () => {
                   {event.impact} Impact
                 </Badge>
               </div>
-              <p className="text-sm text-gray-300 mb-2">{event.description}</p>
-              <div className="flex justify-between items-center">
-                <div className="flex space-x-2">
+              <p >{event.description}</p>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex" }}>
                   {event.relatedAssets?.map((asset) => (
                     <Badge key={asset} variant="outline">
                       {asset}
                     </Badge>
                   ))}
                 </div>
-                <div className="text-xs text-gray-400 flex items-center space-x-2">
+                <div style={{ color: "#9CA3AF", display: "flex", alignItems: "center" }}>
                   <span>{event.source}</span>
                   <span>•</span>
                   <span>{event.timestamp.toLocaleString()}</span>
@@ -71,8 +71,8 @@ export const BroadcastMode: React.FC = () => {
             </div>
           ))}
         </div>
-        <div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button variant="outline" style={{ color: "white" }}>
             Subscribe to Updates
           </Button>
         </div>
@@ -80,11 +80,3 @@ export const BroadcastMode: React.FC = () => {
     </Card>
   )
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

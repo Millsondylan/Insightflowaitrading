@@ -92,7 +92,7 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
   
   const renderContent = () => {
       if (isLoading) {
-          return <div className="text-center text-white/50 animate-pulse">The AI coach is analyzing your entry...</div>;
+          return <div >The AI coach is analyzing your entry...</div>;
       }
 
       if (!feedback) {
@@ -100,15 +100,15 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
       }
       
       return (
-        <div className="animate-fade-in space-y-6">
+        <div >
             <div>
-                <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
+                <h3 style={{ color: "white", display: "flex", alignItems: "center" }}>
                     <span role="img" aria-label="brain">🧠</span> AI Summary
                 </h3>
-                <p className="text-white/80 text-sm">{feedback.summary}</p>
+                <p >{feedback.summary}</p>
             </div>
             <div>
-                <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
+                <h3 style={{ color: "white", display: "flex", alignItems: "center" }}>
                     <span role="img" aria-label="masks">🎭</span> Dominant Emotion
                 </h3>
                 <div className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getEmotionBadgeStyle(feedback.emotion)}`}>
@@ -116,13 +116,13 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
                 </div>
             </div>
             <div>
-                <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
+                <h3 style={{ color: "white", display: "flex", alignItems: "center" }}>
                     <span role="img" aria-label="light bulb">💡</span> Coaching Suggestions
                 </h3>
-                <ul className="space-y-2 text-sm text-white/80">
+                <ul >
                     {feedback.suggestions.map((suggestion, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                            <span className="text-green-400 mt-1">✅</span>
+                        <li key={index} style={{ display: "flex" }}>
+                            <span >✅</span>
                             <span>{suggestion}</span>
                         </li>
                     ))}
@@ -133,16 +133,10 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
   }
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg min-h-[200px] flex items-center justify-center">
+    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
         {renderContent()}
     </div>
   );
 };
 
 export default JournalCoach; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

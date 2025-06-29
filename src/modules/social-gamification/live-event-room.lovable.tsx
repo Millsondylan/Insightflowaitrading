@@ -150,9 +150,9 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
   if (loading) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <div className="flex items-center justify-center h-96">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
-          <span className="ml-2 text-white/60">Connecting to room...</span>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div ></div>
+          <span >Connecting to room...</span>
         </div>
       </div>
     );
@@ -161,7 +161,7 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
   if (!room) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Room not found or access denied</p>
+        <p >Room not found or access denied</p>
       </div>
     );
   }
@@ -171,27 +171,27 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
   return (
     <div className={`rounded-xl bg-black/30 border border-white/10 backdrop-blur-md overflow-hidden ${className}`}>
       {/* Room header */}
-      <div className="p-4 border-b border-white/10 bg-white/5">
-        <div className="flex items-center justify-between mb-2">
+      <div style={{ padding: "16px" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
           <div>
-            <h2 className="text-lg font-bold text-white">{room.name}</h2>
-            <p className="text-sm text-white/60">{room.description}</p>
+            <h2 style={{ fontWeight: "700", color: "white" }}>{room.name}</h2>
+            <p >{room.description}</p>
           </div>
-          <div className="flex items-center space-x-2">
+          <div style={{ display: "flex", alignItems: "center" }}>
             <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'}`}></div>
-            <span className="text-xs text-white/60">
+            <span >
               {isConnected ? 'Connected' : 'Disconnected'}
             </span>
           </div>
         </div>
         
-        <div className="flex items-center justify-between text-xs text-white/60">
-          <div className="flex items-center space-x-4">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <span>Host: {room.hostName}</span>
             <span>Symbol: {room.symbol}</span>
             <span>Type: {room.type.replace('_', ' ')}</span>
           </div>
-          <div className="flex items-center space-x-2">
+          <div style={{ display: "flex", alignItems: "center" }}>
             <span>{stats.total}/{room.maxParticipants} participants</span>
             <span className={`w-2 h-2 rounded-full ${room.status === 'live' ? 'bg-red-400' : 'bg-yellow-400'}`}></span>
             <span>{room.status.toUpperCase()}</span>
@@ -199,45 +199,45 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
         </div>
       </div>
 
-      <div className="flex h-96">
+      <div style={{ display: "flex" }}>
         {/* Chart area (placeholder) */}
-        <div className="flex-1 p-4 bg-black/20">
-          <div className="w-full h-full border border-white/10 rounded-lg flex items-center justify-center">
+        <div style={{ padding: "16px" }}>
+          <div style={{ width: "100%", border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
             {/* TODO: integrate with chart component */}
-            <div className="text-center">
-              <div className="text-4xl mb-2">📈</div>
-              <p className="text-white/60">Chart for {room.symbol}</p>
-              <p className="text-xs text-white/40 mt-2">Chart integration pending</p>
+            <div >
+              <div >📈</div>
+              <p >Chart for {room.symbol}</p>
+              <p >Chart integration pending</p>
             </div>
           </div>
         </div>
 
         {/* Chat sidebar */}
-        <div className="w-80 border-l border-white/10 bg-white/5 flex flex-col">
+        <div style={{ display: "flex", flexDirection: "column" }}>
           {/* Participants header */}
-          <div className="p-3 border-b border-white/10">
-            <h3 className="text-sm font-medium text-white mb-2">
+          <div >
+            <h3 style={{ color: "white" }}>
               Participants ({stats.total})
             </h3>
-            <div className="max-h-24 overflow-y-auto space-y-1">
+            <div >
               {room.participants.slice(0, 8).map((participant) => (
-                <div key={participant.userId} className="flex items-center space-x-2 text-xs">
+                <div key={participant.userId} style={{ display: "flex", alignItems: "center" }}>
                   <img 
                     src={participant.avatar} 
                     alt={participant.username}
-                    className="w-4 h-4 rounded-full"
+                    
                   />
                   <span className={getRoleColor(participant.role)}>
                     {participant.username}
                   </span>
                   {participant.role !== 'participant' && (
-                    <span className="text-white/40">({participant.role})</span>
+                    <span >({participant.role})</span>
                   )}
                   <div className={`w-1 h-1 rounded-full ${participant.isActive ? 'bg-green-400' : 'bg-gray-400'}`}></div>
                 </div>
               ))}
               {room.participants.length > 8 && (
-                <div className="text-xs text-white/40">
+                <div >
                   +{room.participants.length - 8} more...
                 </div>
               )}
@@ -245,37 +245,37 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-3 space-y-2">
+          <div >
             {messages.map((message) => (
-              <div key={message.id} className="group">
-                <div className="flex items-start space-x-2">
-                  <span className="text-xs text-white/60 mt-0.5">
+              <div key={message.id} >
+                <div style={{ display: "flex" }}>
+                  <span >
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </span>
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-1">
-                      <span className="text-xs font-medium text-blue-400">
+                  <div >
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <span >
                         {message.username}
                       </span>
                       {message.type === 'system' && (
-                        <span className="text-xs text-white/40">(system)</span>
+                        <span >(system)</span>
                       )}
                     </div>
-                    <p className="text-sm text-white/80 mt-0.5 break-words">
+                    <p >
                       {message.content}
                     </p>
                     
                     {/* Reactions */}
                     {message.reactions.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mt-1">
+                      <div style={{ display: "flex" }}>
                         {message.reactions.map((reaction, index) => (
                           <button
                             key={index}
                             onClick={() => addReaction(message.id, reaction.emoji)}
-                            className="flex items-center space-x-1 bg-white/10 hover:bg-white/20 rounded px-1 py-0.5 text-xs transition-colors"
+                            style={{ display: "flex", alignItems: "center" }}
                           >
                             <span>{reaction.emoji}</span>
-                            <span className="text-white/60">{reaction.count}</span>
+                            <span >{reaction.count}</span>
                           </button>
                         ))}
                       </div>
@@ -289,21 +289,21 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
 
           {/* Message input */}
           {room.settings.allowChat && (
-            <div className="p-3 border-t border-white/10">
-              <div className="flex space-x-2">
+            <div >
+              <div style={{ display: "flex" }}>
                 <input
                   type="text"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type a message..."
-                  className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-blue-400"
+                  style={{ border: "1px solid #374151", color: "white" }}
                   disabled={!isConnected}
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!newMessage.trim() || !isConnected}
-                  className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"
+                  style={{ color: "white" }}
                 >
                   Send
                 </button>
@@ -314,23 +314,23 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
       </div>
 
       {/* Room controls */}
-      <div className="p-3 border-t border-white/10 bg-white/5">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-xs text-white/60">
+      <div >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <span>🔴 LIVE</span>
             <span>•</span>
             <span>Started: {room.startTime.toLocaleTimeString()}</span>
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div style={{ display: "flex", alignItems: "center" }}>
             {/* TODO: Add room control buttons */}
-            <button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
+            <button >
               📋 Annotations
             </button>
-            <button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
+            <button >
               📊 Share Chart
             </button>
-            <button className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded text-xs transition-colors">
+            <button >
               🚪 Leave
             </button>
           </div>
@@ -446,11 +446,3 @@ const getCurrentUser = () => {
 };
 
 export default LiveEventRoomComponent; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

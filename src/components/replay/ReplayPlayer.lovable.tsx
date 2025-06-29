@@ -23,38 +23,32 @@ export default function ReplayPlayer({ candles, entryTime, exitTime }: Props) {
   const visibleCandles = candles.slice(0, step + 1);
 
   return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
+    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}>
       {/* Chart placeholder with a relative container for future annotations */}
-      <div className="relative">
-        <div className="h-64 w-full bg-white/5 rounded-lg flex items-center justify-center">
-          <p className="text-white/30">Chart for {visibleCandles.length} candle(s)</p>
+      <div >
+        <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <p >Chart for {visibleCandles.length} candle(s)</p>
         </div>
         {/* Future overlay for AI-generated annotations */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div style={{ width: "100%" }}>
           {/* Annotations will be rendered here */}
         </div>
       </div>
 
       {/* Slider and step counter */}
-      <div className="flex items-center gap-4">
+      <div style={{ display: "flex", alignItems: "center" }}>
         <input
           type="range"
           min={0}
           max={candles.length > 0 ? candles.length - 1 : 0}
           value={step}
           onChange={(e) => setStep(Number(e.target.value))}
-          className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+          style={{ width: "100%" }}
         />
-        <span className="text-sm font-mono text-white/60 w-28 text-right">
+        <span >
           {step + 1} / {candles.length}
         </span>
       </div>
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

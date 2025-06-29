@@ -49,19 +49,19 @@ export const StrategyVault = ({ strategies }: Props) => {
   }, [strategies, searchTerm, selectedTags, sortBy]);
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="relative flex-1">
+    <div >
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div >
           <span style={{fontSize: '16px'}}>🔍</span>
           <Input 
             placeholder="Search by title or tag..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 bg-black/30 border-white/10"
+            
           />
         </div>
         <Select value={sortBy} onValueChange={setSortBy}>
-          <SelectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
+          <SelectTrigger style={{ width: "100%" }}>
             <SelectValue placeholder="Sort by" />
           </SelectTrigger>
           <SelectContent>
@@ -71,20 +71,20 @@ export const StrategyVault = ({ strategies }: Props) => {
         </Select>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div style={{ display: "flex" }}>
         {allTags.map(tag => (
           <Button 
             key={tag}
             variant={selectedTags.includes(tag) ? 'secondary' : 'outline'}
             onClick={() => handleTagClick(tag)}
-            className="rounded-full"
+            
           >
             {tag}
           </Button>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div >
         {filteredStrategies.map(strategy => (
           <StrategyCard key={strategy.id} strategy={strategy} />
         ))}
@@ -92,9 +92,3 @@ export const StrategyVault = ({ strategies }: Props) => {
     </div>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

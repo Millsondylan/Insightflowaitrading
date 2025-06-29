@@ -17,27 +17,21 @@ export default function ProUnlocker({ onUnlock }: Props) {
   };
 
   return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
-      <p className="text-white/80">🔒 This feature is for Pro users only.</p>
+    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}>
+      <p >🔒 This feature is for Pro users only.</p>
       <input
         value={code}
         onChange={(e) => setCode(e.target.value)}
         placeholder="Enter access code or referral"
-        className="bg-white/10 px-4 py-2 rounded w-full"
+        style={{ paddingLeft: "16px", paddingRight: "16px", width: "100%" }}
       />
       <button
         onClick={handleUnlock}
-        className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-full"
+        style={{ color: "white", paddingLeft: "16px", paddingRight: "16px" }}
       >
         🚀 Unlock Pro
       </button>
-      {status === "invalid" && <p className="text-red-400">❌ Invalid code</p>}
+      {status === "invalid" && <p >❌ Invalid code</p>}
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

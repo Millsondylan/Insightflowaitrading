@@ -112,9 +112,9 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
   if (loading) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
-          <span className="ml-2 text-white/60">Loading correlation matrix...</span>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div ></div>
+          <span >Loading correlation matrix...</span>
         </div>
       </div>
     );
@@ -123,31 +123,31 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
   if (!matrix) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Failed to load correlation data</p>
+        <p >Failed to load correlation data</p>
       </div>
     );
   }
 
   return (
     <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-      <div className="mb-4">
-        <h3 className="text-lg font-semibold text-white mb-2">
+      <div style={{ marginBottom: "16px" }}>
+        <h3 style={{ color: "white" }}>
           Correlation Matrix ({timeframe})
         </h3>
-        <p className="text-sm text-white/60">
+        <p >
           Updated: {matrix.updatedAt.toLocaleTimeString()}
         </p>
       </div>
 
-      <div className="overflow-auto">
-        <div className="inline-block min-w-full">
+      <div >
+        <div >
           {/* Header row */}
-          <div className="flex">
-            <div className="w-16 h-8"></div> {/* Empty corner */}
+          <div style={{ display: "flex" }}>
+            <div ></div> {/* Empty corner */}
             {matrix.symbols.map((symbol, index) => (
               <div
                 key={symbol}
-                className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
+                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
               >
                 {symbol}
               </div>
@@ -156,9 +156,9 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
 
           {/* Matrix rows */}
           {matrix.correlations.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex">
+            <div key={rowIndex} style={{ display: "flex" }}>
               {/* Row header */}
-              <div className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-r border-white/10">
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                 {matrix.symbols[rowIndex]}
               </div>
               
@@ -188,33 +188,33 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
       </div>
 
       {/* Correlation legend */}
-      <div className="mt-4 flex items-center justify-center space-x-2 text-xs text-white/60">
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <span>-1.0</span>
-        <div className="flex space-x-1">
-          <div className="w-4 h-4 bg-red-700"></div>
-          <div className="w-4 h-4 bg-red-500"></div>
-          <div className="w-4 h-4 bg-red-300"></div>
-          <div className="w-4 h-4 bg-gray-400"></div>
-          <div className="w-4 h-4 bg-blue-300"></div>
-          <div className="w-4 h-4 bg-blue-500"></div>
-          <div className="w-4 h-4 bg-blue-700"></div>
-          <div className="w-4 h-4 bg-blue-900"></div>
+        <div style={{ display: "flex" }}>
+          <div ></div>
+          <div ></div>
+          <div ></div>
+          <div ></div>
+          <div ></div>
+          <div ></div>
+          <div ></div>
+          <div ></div>
         </div>
         <span>+1.0</span>
       </div>
 
       {/* Rolling correlation detail */}
       {selectedCell && rollingData && (
-        <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-          <h4 className="text-sm font-medium text-white mb-2">
+        <div style={{ padding: "16px", border: "1px solid #374151" }}>
+          <h4 style={{ color: "white" }}>
             Rolling Correlation: {matrix.symbols[selectedCell.row]} vs {matrix.symbols[selectedCell.col]}
           </h4>
-          <div className="h-32 flex items-end space-x-1">
+          <div style={{ display: "flex" }}>
             {/* TODO: implement mini chart for rolling correlation */}
             {rollingData.correlations.slice(-30).map((point, index) => (
               <div
                 key={index}
-                className="flex-1 bg-blue-500 opacity-70 hover:opacity-100 transition-opacity"
+                
                 style={{
                   height: `${Math.abs(point.correlation) * 100}%`,
                   backgroundColor: point.correlation >= 0 ? '#3b82f6' : '#ef4444',
@@ -227,22 +227,22 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
       )}
 
       {/* TODO: Add correlation statistics */}
-      <div className="mt-4 grid grid-cols-3 gap-4 text-center">
-        <div className="p-2 bg-white/5 rounded">
-          <div className="text-xs text-white/60">Avg Correlation</div>
-          <div className="text-sm font-medium text-white">
+      <div >
+        <div >
+          <div >Avg Correlation</div>
+          <div style={{ color: "white" }}>
             {calculateAverageCorrelation(matrix).toFixed(3)}
           </div>
         </div>
-        <div className="p-2 bg-white/5 rounded">
-          <div className="text-xs text-white/60">Max Correlation</div>
-          <div className="text-sm font-medium text-white">
+        <div >
+          <div >Max Correlation</div>
+          <div style={{ color: "white" }}>
             {findMaxCorrelation(matrix).toFixed(3)}
           </div>
         </div>
-        <div className="p-2 bg-white/5 rounded">
-          <div className="text-xs text-white/60">Min Correlation</div>
-          <div className="text-sm font-medium text-white">
+        <div >
+          <div >Min Correlation</div>
+          <div style={{ color: "white" }}>
             {findMinCorrelation(matrix).toFixed(3)}
           </div>
         </div>
@@ -328,11 +328,3 @@ const findMinCorrelation = (matrix: CorrelationMatrix): number => {
 };
 
 export default CorrelationMatrixComponent; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

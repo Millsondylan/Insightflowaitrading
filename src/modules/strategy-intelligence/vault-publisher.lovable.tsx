@@ -40,54 +40,54 @@ export const VaultPublisher: React.FC = () => {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+    <Card style={{ width: "100%", color: "white" }}>
       <CardHeader>
         <CardTitle>Strategy Publisher</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div >
           <div>
-            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <h3 style={{ fontWeight: "700" }}>Strategy Details</h3>
+            <div >
               <Input 
                 value={strategy.name}
                 onChange={(e) => setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
-                className="bg-zinc-900 border-zinc-700 text-white"
+                style={{ color: "white" }}
               />
               <Input 
                 value={strategy.version || ''}
                 onChange={(e) => setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
-                className="bg-zinc-900 border-zinc-700 text-white"
+                style={{ color: "white" }}
               />
             </div>
             <Textarea 
               value={strategy.description || ''}
               onChange={(e) => setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
-              className="mt-2 bg-zinc-900 border-zinc-700 text-white"
+              style={{ color: "white" }}
               rows={3}
             />
           </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
-            <div className="space-y-2">
+            <h3 style={{ fontWeight: "700" }}>Publish Settings</h3>
+            <div >
               <div>
-                <label className="block text-sm mb-1">Visibility</label>
-                <div className="flex space-x-2">
+                <label >Visibility</label>
+                <div style={{ display: "flex" }}>
                   <Button 
                     variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
-                    className="text-white"
+                    style={{ color: "white" }}
                   >
                     Private
                   </Button>
                   <Button 
                     variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
-                    className="text-white"
+                    style={{ color: "white" }}
                   >
                     Community
                   </Button>
@@ -98,21 +98,21 @@ export const VaultPublisher: React.FC = () => {
                 value={publishDetails.communityTags}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
-                className="bg-zinc-900 border-zinc-700 text-white"
+                style={{ color: "white" }}
               />
 
               <Input 
                 value={publishDetails.marketConditions}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
-                className="bg-zinc-900 border-zinc-700 text-white"
+                style={{ color: "white" }}
               />
 
               <Textarea 
                 value={publishDetails.disclaimer}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
-                className="bg-zinc-900 border-zinc-700 text-white"
+                style={{ color: "white" }}
                 rows={3}
               />
             </div>
@@ -120,7 +120,7 @@ export const VaultPublisher: React.FC = () => {
 
           <Button 
             onClick={handlePublish}
-            className="w-full bg-blue-600 hover:bg-blue-700"
+            style={{ width: "100%" }}
           >
             Publish Strategy
           </Button>
@@ -129,11 +129,3 @@ export const VaultPublisher: React.FC = () => {
     </Card>
   )
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

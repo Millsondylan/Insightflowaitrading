@@ -56,31 +56,31 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Mindset Feed</h2>
+    <Card style={{ padding: "24px" }}>
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Mindset Feed</h2>
       
-      <ScrollArea className="h-[500px]">
-        <div className="space-y-4">
+      <ScrollArea >
+        <div >
           {insights.map((insight) => {
             const Icon = insight.icon;
             return (
-              <div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-                <div className="flex items-start gap-3">
+              <div key={insight.id} style={{ padding: "16px", border: "1px solid #374151" }}>
+                <div style={{ display: "flex" }}>
                   <div className={`mt-1 ${getTypeColor(insight.type)}`}>
-                    <Icon className="h-5 w-5" />
+                    <Icon  />
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold">{insight.title}</h3>
-                      <span className="text-xs text-muted-foreground">
+                  <div >
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <h3 >{insight.title}</h3>
+                      <span >
                         {insight.timestamp.toLocaleTimeString()}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p >
                       {insight.content}
                     </p>
                     {insight.actionable && (
-                      <Badge variant="outline" className="text-xs">
+                      <Badge variant="outline" >
                         Actionable
                       </Badge>
                     )}
@@ -92,19 +92,11 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
         </div>
       </ScrollArea>
 
-      <div className="mt-4 pt-4 border-t">
-        <p className="text-sm text-muted-foreground text-center">
+      <div >
+        <p >
           Insights generated from your journal entries and trading patterns
         </p>
       </div>
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

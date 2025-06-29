@@ -67,7 +67,7 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
             {badge}
           </TooltipTrigger>
           <TooltipContent>
-            <p className="text-xs">{tooltipContent[safeRole as UserRole]}</p>
+            <p >{tooltipContent[safeRole as UserRole]}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -79,9 +79,3 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
 };
 
 export default RoleBadge; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -25,64 +25,58 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-section text-white">
+    <section style={{ color: "white" }}>
       <motion.div
-        className="container mx-auto text-center"
+        style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h1
-          className="text-6xl md:text-8xl font-bold text-glowing-cyan mb-4 text-glow-cyan"
+          style={{ fontWeight: "700", marginBottom: "16px" }}
           variants={itemVariants}
         >
           Insight Flow
         </motion.h1>
-        <motion.p className="text-xl md:text-2xl text-gray-300 mb-8" variants={itemVariants}>
+        <motion.p style={{ marginBottom: "32px" }} variants={itemVariants}>
           Where AI meets strategy, vision, and mastery
         </motion.p>
         <motion.div
-          className="flex flex-wrap justify-center gap-4"
+          style={{ display: "flex", justifyContent: "center" }}
           variants={itemVariants}
         >
-          <Button asChild className="glow-button bg-cyan-500/10 border border-cyan-500 text-white hover:bg-cyan-500/20">
+          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
             <Link to="/strategy">
               <span style={{fontSize: '16px'}}>🧠</span> Launch Builder
             </Link>
           </Button>
-          <Button asChild className="glow-button bg-violet-500/10 border border-violet-500 text-white hover:bg-violet-500/20">
+          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
             <Link to="/academy">
-              <BookOpen className="mr-2 h-4 w-4" /> Explore Academy
+              <BookOpen  /> Explore Academy
             </Link>
           </Button>
-          <Button asChild className="glow-button bg-blue-500/10 border border-blue-500 text-white hover:bg-blue-500/20">
+          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
             <Link to="/vision">
-              <BarChart className="mr-2 h-4 w-4" /> Upload Chart
+              <BarChart  /> Upload Chart
             </Link>
           </Button>
-          <Button asChild className="glow-button bg-gray-500/10 border border-gray-500 text-white hover:bg-gray-500/20">
+          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
             <Link to="/journal">
-              <PenSquare className="mr-2 h-4 w-4" /> Journal Trade
+              <PenSquare  /> Journal Trade
             </Link>
           </Button>
         </motion.div>
       </motion.div>
       <motion.div
-        className="absolute bottom-10 text-gray-400 scroll-invitation"
+        style={{ color: "#9CA3AF" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <ArrowRight className="h-6 w-6 -rotate-90" />
+        <ArrowRight  />
       </motion.div>
     </section>
   );
 };
 
 export default Hero; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

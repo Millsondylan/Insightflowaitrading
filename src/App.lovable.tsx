@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AppLayout from './components/layout/AppLayout';
 import { ThemeProvider } from './contexts/ThemeContext';
 import './styles/futuristic-theme.css';
+import './styles/lovable.css';
 import Index from './pages/Index';
 import LandingPage from './pages/LandingPage';
 import Strategy from './pages/Strategy';
@@ -46,6 +47,9 @@ import BroadcastPage from './pages/BroadcastPage';
 import AuthPage from './pages/AuthPage';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
+// Lovable pages
+import LovableEditorPage from './pages/LovableEditor.lovable';
+
 import { ProtectedRoute as OldProtectedRoute } from './components/core/ProtectedRoute';
 
 const queryClient = new QueryClient();
@@ -86,40 +90,32 @@ export function App() {
               <Route path="/journal-builder" element={<JournalBuilder />} />
               <Route path="/academy-builder" element={<AcademyBuilder />} />
 
-              {/* New Themed Pages */}
+              {/* Lovable Routes */}
+              <Route path="/lovable/editor" element={<LovableEditorPage />} />
+              <Route path="/lovable/demo" element={<Demo />} />
+
+              {/* Legacy Routes */}
+              <Route path="/legacy" element={<OldProtectedRoute accessLevel="subscribed"><Index /></OldProtectedRoute>} />
+              <Route path="/legacy/strategy" element={<OldProtectedRoute accessLevel="pro"><Strategy /></OldProtectedRoute>} />
+              <Route path="/legacy/vision" element={<OldProtectedRoute accessLevel="subscribed"><Vision /></OldProtectedRoute>} />
+              <Route path="/legacy/academy" element={<OldProtectedRoute accessLevel="subscribed"><Academy /></OldProtectedRoute>} />
+              <Route path="/legacy/wallet" element={<OldProtectedRoute accessLevel="subscribed"><Wallet /></OldProtectedRoute>} />
+              <Route path="/legacy/admin" element={<OldProtectedRoute accessLevel="admin"><Admin /></OldProtectedRoute>} />
+
+              {/* Public Routes */}
               <Route path="/markets" element={<Markets />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/community" element={<Community />} />
               <Route path="/digest" element={<Digest />} />
               <Route path="/demo" element={<Demo />} />
               <Route path="/notifications" element={<Notifications />} />
+              <Route path="/settings/notifications" element={<span style={{fontSize: '16px'}}>⚙️</span>} />
               <Route path="/help" element={<Help />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/docs" element={<Docs />} />
-              <Route path="/README.md" element={<Docs />} />
               <Route path="/chat" element={<Chat />} />
 
-              {/* Admin Routes */}
-              <Route element={<OldProtectedRoute accessLevel="admin" />}>
-                <Route path="/admin" element={<Admin />} />
-              </Route>
-
-              {/* Pro Routes */}
-              <Route element={<OldProtectedRoute accessLevel="pro" />}>
-                <Route path="/strategy" element={<Strategy />} />
-              </Route>
-
-              {/* Subscribed Routes */}
-              <Route element={<OldProtectedRoute accessLevel="subscribed" />}>
-                <Route path="/vision" element={<Vision />} />
-              </Route>
-
-              {/* Public Routes */}
-              <Route path="/wallet" element={<Wallet />} />
-              <Route path="/academy" element={<Academy />} />
-              
-              {/* Stubs and Catch-all */}
-              <Route path="/support" element={<div className="container mx-auto p-4"><h2>Support Page (Stub)</h2></div>} />
+              {/* 404 Route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AppLayout>
@@ -128,12 +124,3 @@ export function App() {
     </ThemeProvider>
   );
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default App;

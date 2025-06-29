@@ -29,21 +29,21 @@ export const VaultDetail: React.FC = () => {
   };
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+    <Card style={{ width: "100%", color: "white" }}>
       <CardHeader>
         <CardTitle>{strategy.name} - Strategy Details</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div >
           <div>
-            <h3 className="text-lg font-bold mb-2">Description</h3>
-            <p className="text-gray-300">{strategy.description}</p>
+            <h3 style={{ fontWeight: "700" }}>Description</h3>
+            <p >{strategy.description}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div >
             <div>
-              <h4 className="font-semibold">Performance Metrics</h4>
-              <ul className="space-y-1 text-sm">
+              <h4 >Performance Metrics</h4>
+              <ul >
                 <li>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</li>
                 <li>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</li>
                 <li>Total Return: {strategy.performance.totalReturn}</li>
@@ -52,8 +52,8 @@ export const VaultDetail: React.FC = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold">Strategy Metadata</h4>
-              <ul className="space-y-1 text-sm">
+              <h4 >Strategy Metadata</h4>
+              <ul >
                 <li>Author: {strategy.author}</li>
                 <li>Version: {strategy.version}</li>
                 <li>Created: {strategy.createdAt?.toLocaleDateString()}</li>
@@ -63,12 +63,12 @@ export const VaultDetail: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-2">Tags</h4>
-            <div className="flex space-x-2">
+            <h4 >Tags</h4>
+            <div style={{ display: "flex" }}>
               {strategy.tags?.map((tag) => (
                 <span 
                   key={tag} 
-                  className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
+                  
                 >
                   {tag}
                 </span>
@@ -76,8 +76,8 @@ export const VaultDetail: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex space-x-4">
-            <Button variant="outline" className="text-white">Edit Strategy</Button>
+          <div style={{ display: "flex" }}>
+            <Button variant="outline" style={{ color: "white" }}>Edit Strategy</Button>
             <Button variant="destructive">Delete Strategy</Button>
           </div>
         </div>
@@ -85,11 +85,3 @@ export const VaultDetail: React.FC = () => {
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

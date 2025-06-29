@@ -1,12 +1,13 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../../hooks/use-auth';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 interface ProtectedRouteProps {
   accessLevel: 'admin' | 'subscribed' | 'trial' | 'pro';
+  children?: ReactNode;
 }
 
-export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel }) => {
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel, children }) => {
   const { loading, isAdmin, isSubscribed, hasProAccess } = useAuth();
 
   if (loading) {
@@ -29,11 +30,10 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel }) => {
     return <Navigate to="/wallet?upgrade=true" replace />;
   }
 
-  return <Outlet />;
+  return (
+    <>
+      {children}
+      <Outlet />
+    </>
+  );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

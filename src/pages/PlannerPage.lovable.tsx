@@ -4,39 +4,31 @@ import { Link } from 'react-router-dom';
 export default function PlannerPage() {
   return (
     <div>
-      <Link to="/strategy-builder" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+      <Link to="/strategy-builder" style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
         <ArrowLeft size={16} />
         Back to Strategy Builder
       </Link>
       
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-        <header className="flex justify-between items-start mb-8">
+      <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "32px" }}>
+        <header style={{ display: "flex", marginBottom: "32px" }}>
             <div>
-                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><span style={{fontSize: '16px'}}>📅</span></span>
+                <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
+                    <span ><span style={{fontSize: '16px'}}>📅</span></span>
                     Trading Planner
                 </h1>
-                <p className="text-gray-400 mt-1">Outline your trading plan for the generated strategy.</p>
+                <p style={{ color: "#9CA3AF" }}>Outline your trading plan for the generated strategy.</p>
             </div>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button size="lg" style={{ color: "white" }}>
                 Save Plan
             </Button>
         </header>
 
-        <div className="space-y-6">
-            <div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500">Checklist and planning components will be here.</p>
+        <div >
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <p >Checklist and planning components will be here.</p>
             </div>
         </div>
       </div>
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

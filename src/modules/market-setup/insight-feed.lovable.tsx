@@ -30,8 +30,8 @@ export const InsightFeed: React.FC = () => {
   const marketSentiment = calculateMarketSentiment(insights)
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
-      <CardHeader className="flex flex-row items-center justify-between">
+    <Card style={{ width: "100%", color: "white" }}>
+      <CardHeader style={{ display: "flex", alignItems: "center" }}>
         <CardTitle>Market Insights Feed</CardTitle>
         <Badge 
           variant={
@@ -43,14 +43,14 @@ export const InsightFeed: React.FC = () => {
         </Badge>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div >
           {insights.map((insight) => (
             <div 
               key={insight.id} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
+              style={{ padding: "16px", border: "1px solid #374151" }}
             >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold">{insight.title}</h3>
+              <div style={{ display: "flex" }}>
+                <h3 style={{ fontWeight: "700" }}>{insight.title}</h3>
                 <Badge 
                   variant={
                     insight.sentiment === 'Bullish' ? 'default' : 
@@ -60,24 +60,24 @@ export const InsightFeed: React.FC = () => {
                   {insight.sentiment}
                 </Badge>
               </div>
-              <p className="text-sm text-gray-300 mb-2">{insight.content}</p>
-              <div className="flex justify-between items-center">
-                <div className="flex space-x-2">
+              <p >{insight.content}</p>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex" }}>
                   {insight.tags.map((tag) => (
                     <Badge key={tag} variant="outline">
                       {tag}
                     </Badge>
                   ))}
                 </div>
-                <div className="text-xs text-gray-400">
+                <div style={{ color: "#9CA3AF" }}>
                   {insight.timestamp.toLocaleString()}
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Button variant="outline" style={{ color: "white" }}>
             Load More Insights
           </Button>
         </div>
@@ -85,11 +85,3 @@ export const InsightFeed: React.FC = () => {
     </Card>
   )
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

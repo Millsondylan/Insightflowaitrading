@@ -43,37 +43,37 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
   };
 
   return (
-    <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
-      <div className="flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-white">User Management</h2>
+    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151", color: "white" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <h2 style={{ color: "white" }}>User Management</h2>
         
         {/* Search input */}
-        <div className="relative">
+        <div >
           <span style={{fontSize: '16px'}}>🔍</span>
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
-            className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
+            style={{ border: "1px solid #374151", color: "white" }}
           />
         </div>
       </div>
 
-      <div className="rounded-lg border border-white/10 overflow-hidden">
+      <div style={{ border: "1px solid #374151" }}>
         <Table>
           <TableHeader>
-            <TableRow className="hover:bg-white/5">
-              <TableHead className="text-white/70 font-medium">ID</TableHead>
-              <TableHead className="text-white/70 font-medium">Email</TableHead>
-              <TableHead className="text-white/70 font-medium">Current Role</TableHead>
-              <TableHead className="text-white/70 font-medium">Manage Role</TableHead>
+            <TableRow >
+              <TableHead >ID</TableHead>
+              <TableHead >Email</TableHead>
+              <TableHead >Current Role</TableHead>
+              <TableHead >Manage Role</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredUsers.map((user) => (
-              <TableRow key={user.id} className="hover:bg-white/5 border-white/10">
-                <TableCell className="font-mono text-xs text-white/50">
+              <TableRow key={user.id} >
+                <TableCell >
                   {user.id.substring(0, 8)}...
                 </TableCell>
                 <TableCell>{user.email}</TableCell>
@@ -90,17 +90,17 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
                     defaultValue={user.role}
                     onValueChange={(value) => onRoleChange(user.id, value as User["role"])}
                   >
-                    <SelectTrigger className="bg-black/50 border-white/10 text-white w-32">
+                    <SelectTrigger style={{ color: "white" }}>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-900 text-white border-white/10">
-                      <SelectItem value="user" className="text-gray-200 focus:bg-gray-800 focus:text-white">
+                    <SelectContent style={{ color: "white" }}>
+                      <SelectItem value="user" >
                         User
                       </SelectItem>
-                      <SelectItem value="mod" className="text-blue-400 focus:bg-gray-800 focus:text-white">
+                      <SelectItem value="mod" >
                         Moderator
                       </SelectItem>
-                      <SelectItem value="admin" className="text-green-400 focus:bg-gray-800 focus:text-white">
+                      <SelectItem value="admin" >
                         Admin
                       </SelectItem>
                     </SelectContent>
@@ -111,7 +111,7 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
             
             {filteredUsers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
+                <TableCell colSpan={4} style={{ paddingTop: "32px", paddingBottom: "32px" }}>
                   No users found matching your search.
                 </TableCell>
               </TableRow>
@@ -120,15 +120,9 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
         </Table>
       </div>
       
-      <div className="text-xs text-gray-500">
+      <div >
         Showing {filteredUsers.length} of {users.length} users
       </div>
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -107,41 +107,41 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
   const isFormValid = title.trim() !== "" && date.trim() !== "";
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-6">
-      <h2 className="text-xl font-bold text-white">New Journal Entry</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
+      <h2 style={{ fontWeight: "700", color: "white" }}>New Journal Entry</h2>
+      <form onSubmit={handleSubmit} >
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</label>
+          <label htmlFor="title" >Title</label>
           <input
             id="title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Breakout scalp on BTC"
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
             required
           />
         </div>
 
         <div>
-          <label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</label>
+          <label htmlFor="date" >Date</label>
           <input
             id="date"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition calendar-picker-indicator"
+            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
             required
           />
         </div>
         
         <div>
-          <label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</label>
-          <div className="flex flex-wrap gap-2 mb-2">
+          <label htmlFor="tags" >Tags (comma-separated)</label>
+          <div style={{ display: "flex" }}>
             {tags.map(tag => (
-              <span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+              <span key={tag} style={{ display: "flex", alignItems: "center" }}>
                 {tag}
-                <button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</button>
+                <button type="button" onClick={() => removeTag(tag)} >&times;</button>
               </span>
             ))}
           </div>
@@ -151,29 +151,29 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             value={tagInput}
             onChange={handleTagInputChange}
             placeholder="e.g. fomo, scalp, win"
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
           />
         </div>
 
         <div>
-          <label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</label>
+          <label htmlFor="notes" >Notes</label>
           <textarea
             id="notes"
             rows={6}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Detailed thoughts on the trade... Markdown supported."
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
           />
         </div>
 
         <div>
-          <label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</label>
+          <label htmlFor="strategy" >Link to Strategy (Optional)</label>
           <select
             id="strategy"
             value={strategyId || ""}
             onChange={(e) => setStrategyId(e.target.value || null)}
-            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
+            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
           >
             <option value="">No linked strategy</option>
             {mockStrategies.map(strat => (
@@ -183,26 +183,26 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
         </div>
 
         <div>
-          <label htmlFor="screenshot" className="block text-sm font-medium text-white/70 mb-1">Screenshot (Optional)</label>
+          <label htmlFor="screenshot" >Screenshot (Optional)</label>
           <input
             id="screenshot"
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            className="w-full text-sm text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600/80 file:text-white hover:file:bg-cyan-600"
+            style={{ width: "100%" }}
           />
           {screenshotPreview && (
-            <div className="mt-4">
-              <img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" />
+            <div >
+              <img src={screenshotPreview} alt="Screenshot preview" style={{ border: "1px solid #374151" }} />
             </div>
           )}
         </div>
         
-        <div className="pt-2">
+        <div >
             <button 
               type="submit" 
               disabled={!isFormValid || isSubmitting}
-              className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
+              style={{ width: "100%", paddingLeft: "16px", paddingRight: "16px", color: "white", fontWeight: "700" }}
             >
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
             </button>
@@ -213,9 +213,3 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
 };
 
 export default JournalEntryForm; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

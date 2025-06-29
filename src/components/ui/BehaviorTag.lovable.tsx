@@ -93,10 +93,10 @@ const BehaviorTag: React.FC<BehaviorTagProps> = ({
         <TooltipTrigger asChild>
           {tagElement}
         </TooltipTrigger>
-        <TooltipContent side="top" className="max-w-xs">
-          <div className="text-center">
-            <p className="font-medium text-sm">{tag}</p>
-            <p className="text-xs text-gray-300 mt-1">{definition.description}</p>
+        <TooltipContent side="top" >
+          <div >
+            <p >{tag}</p>
+            <p >{definition.description}</p>
           </div>
         </TooltipContent>
       </Tooltip>
@@ -137,7 +137,7 @@ export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({
         />
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30">
+        <Badge variant="outline" style={{ color: "#9CA3AF" }}>
           +{hiddenCount} more
         </Badge>
       )}
@@ -146,9 +146,3 @@ export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({
 };
 
 export default BehaviorTag; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

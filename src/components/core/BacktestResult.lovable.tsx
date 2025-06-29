@@ -19,8 +19,8 @@ const formatPercent = (n: number) => `${(n * 100).toFixed(2)}%`;
 const formatCurrency = (n: number) => n.toFixed(2);
 
 const StatCard = ({ label, value, color }: { label: string, value: string | number, color?: string }) => (
-  <div className="glass-section p-4 text-center">
-    <p className="text-gray-400 text-sm">{label}</p>
+  <div style={{ padding: "16px" }}>
+    <p style={{ color: "#9CA3AF" }}>{label}</p>
     <p className={`text-2xl font-bold ${color || ''}`}>{value}</p>
   </div>
 );
@@ -30,9 +30,9 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   const chartData = toChartSeries(candles, result.trades);
   
   return (
-    <div className="space-y-8 mt-12">
+    <div style={{ marginTop: "32px" }}>
       <BlockReveal>
-        <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
+        <h2 style={{ fontSize: "1.875rem", fontWeight: "700" }}>Backtest Results</h2>
       </BlockReveal>
       
       <BlockReveal>
@@ -40,12 +40,12 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
       </BlockReveal>
       
       <BlockReveal delay={0.2}>
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="w-full grid grid-cols-2 mb-6">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+        <Tabs value={activeTab} onValueChange={setActiveTab} style={{ width: "100%" }}>
+          <TabsList style={{ width: "100%" }}>
+            <TabsTrigger value="overview" >
               Chart View
             </TabsTrigger>
-            <TabsTrigger value="trades" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
+            <TabsTrigger value="trades" >
               Trade Explorer
             </TabsTrigger>
           </TabsList>
@@ -64,9 +64,3 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
 };
 
 export default BacktestResultDisplay; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

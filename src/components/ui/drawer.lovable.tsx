@@ -46,7 +46,7 @@ const DrawerContent = React.forwardRef<
       )}
       {...props}
     >
-      <div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
+      <div style={{ marginLeft: "auto", marginRight: "auto" }} />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
@@ -114,10 +114,3 @@ export {
   DrawerTitle,
   DrawerDescription,
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

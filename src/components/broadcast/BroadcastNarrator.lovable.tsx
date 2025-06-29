@@ -10,22 +10,16 @@ type Props = {
 
 export default function BroadcastNarrator({ segments }: Props) {
   return (
-    <div className="theme-broadcast space-y-6">
+    <div >
       {segments.map((s, i) => (
         <div
           key={i}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2 text-white shadow"
+          style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}
         >
-          <h3 className="text-lg font-bold">{s.title}</h3>
-          <p className="text-white/70 leading-relaxed italic">🎙️ {s.script}</p>
+          <h3 style={{ fontWeight: "700" }}>{s.title}</h3>
+          <p >🎙️ {s.script}</p>
         </div>
       ))}
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

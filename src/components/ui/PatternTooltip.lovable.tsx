@@ -17,10 +17,10 @@ const PatternTooltip = ({
 }: PatternTooltipProps) => {
   return (
     <div className={`pattern-tooltip ${type}`} style={style}>
-      <div className="pattern-name">{label}</div>
-      <div className="pattern-description">{description}</div>
+      <div >{label}</div>
+      <div >{description}</div>
       {confidence && (
-        <div className="pattern-confidence">
+        <div >
           Confidence: {confidence}%
         </div>
       )}
@@ -29,9 +29,3 @@ const PatternTooltip = ({
 };
 
 export default PatternTooltip; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

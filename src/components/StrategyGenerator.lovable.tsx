@@ -137,21 +137,21 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-xl p-6 border border-white/10 backdrop-blur-md bg-black/30 space-y-6 shadow-md">
+    <div >
+      <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
         {/* Input Section */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} >
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Describe your setup idea (e.g. breakout with EMA cross)"
-            className="bg-black/20 text-white w-full p-3 rounded-md outline-none resize-none h-32 placeholder:text-gray-500 focus:ring-2 focus:ring-cyan-500/30 transition-all"
+            style={{ color: "white", width: "100%" }}
             disabled={loading}
           />
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2"
+            style={{ paddingLeft: "16px", paddingRight: "16px", color: "white", display: "flex", alignItems: "center" }}
           >
             <span>🧠</span>
             <span>{loading ? "Generating..." : "Generate Strategy"}</span>
@@ -160,25 +160,25 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
         {/* Loading State */}
         {loading && (
-          <div className="space-y-4">
-            <div className="bg-white/10 h-8 rounded animate-pulse" />
-            <div className="space-y-2">
-              <div className="bg-white/10 h-4 rounded animate-pulse" />
-              <div className="bg-white/10 h-4 rounded animate-pulse w-5/6" />
-              <div className="bg-white/10 h-4 rounded animate-pulse w-4/6" />
+          <div >
+            <div  />
+            <div >
+              <div  />
+              <div  />
+              <div  />
             </div>
-            <div className="space-y-2">
-              <div className="bg-white/10 h-4 rounded animate-pulse w-4/6" />
-              <div className="bg-white/10 h-4 rounded animate-pulse w-3/6" />
+            <div >
+              <div  />
+              <div  />
             </div>
           </div>
         )}
 
         {/* Result Display */}
         {result && !loading && (
-          <div className="space-y-6 animate-in fade-in duration-500">
+          <div >
             {/* Title */}
-            <h2 className="text-cyan-300 text-xl font-bold">
+            <h2 style={{ fontWeight: "700" }}>
               {result.title}
             </h2>
 
@@ -186,38 +186,38 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             {parsedRules.length > 0 && (
               <button
                 onClick={() => setShowParsed(!showParsed)}
-                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
+                
               >
                 {showParsed ? '📝 Show Original' : '🔍 Show Parsed Analysis'}
               </button>
             )}
 
             {/* Rules Display */}
-            <div className="space-y-2">
-              <h3 className="text-white/80 font-semibold flex items-center gap-2">
+            <div >
+              <h3 style={{ display: "flex", alignItems: "center" }}>
                 <span>📌</span> Strategy Rules
               </h3>
               
               {showParsed ? (
                 // Parsed Rules View
-                <div className="space-y-3">
+                <div >
                   {parsedRules.map((rule, index) => (
-                    <div key={index} className="bg-black/20 p-3 rounded-lg space-y-2">
-                      <div className="flex items-start gap-2">
+                    <div key={index} >
+                      <div style={{ display: "flex" }}>
                         <span>{getRuleTypeIcon(rule.type)}</span>
-                        <div className="flex-1">
-                          <p className="text-white/90 text-sm">{rule.raw}</p>
-                          <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                        <div >
+                          <p >{rule.raw}</p>
+                          <div style={{ display: "flex" }}>
                             <span className={`${getRuleTypeColor(rule.type)} font-semibold`}>
                               {rule.type.toUpperCase()}
                             </span>
                             {rule.timeframe && (
-                              <span className="text-yellow-400">
+                              <span >
                                 ⏱ {rule.timeframe}
                               </span>
                             )}
                             {rule.indicators.length > 0 && (
-                              <span className="text-purple-400">
+                              <span >
                                 📊 {rule.indicators.join(', ')}
                               </span>
                             )}
@@ -229,9 +229,9 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
                 </div>
               ) : (
                 // Original Rules View
-                <ol className="list-decimal space-y-2 pl-5 text-white/90">
+                <ol >
                   {result.rules.map((rule, index) => (
-                    <li key={index} className="leading-relaxed">
+                    <li key={index} >
                       {rule}
                     </li>
                   ))}
@@ -240,11 +240,11 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             </div>
 
             {/* Checklist */}
-            <div className="space-y-2">
-              <h3 className="text-white/80 font-semibold flex items-center gap-2">
+            <div >
+              <h3 style={{ display: "flex", alignItems: "center" }}>
                 <span>✅</span> Entry Checklist
               </h3>
-              <ul className="list-disc pl-6 text-green-400 space-y-1">
+              <ul >
                 {result.checklist.map((item, index) => (
                   <li key={index}>
                     {item}
@@ -255,7 +255,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
             {/* Warning */}
             {result.warning && (
-              <div className="bg-yellow-800/40 border border-yellow-400/20 p-4 rounded text-yellow-200 mt-4">
+              <div style={{ border: "1px solid #374151", padding: "16px" }}>
                 {result.warning}
               </div>
             )}
@@ -265,7 +265,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
       {/* Strategy Copilot - Shows after strategy is generated */}
       {result && !loading && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div >
           <StrategyCopilot 
             strategy={result} 
             onSuggestionApply={handleSuggestionApply}
@@ -275,7 +275,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
       {/* Strategy Export - Shows after strategy is generated */}
       {result && !loading && (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
+        <div  style={{ animationDelay: '200ms' }}>
           <StrategyExport strategy={result} />
         </div>
       )}
@@ -284,9 +284,3 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 };
 
 export default StrategyGenerator; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

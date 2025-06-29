@@ -10,21 +10,21 @@ export const VaultVersioning: React.FC<VaultVersioningProps> = ({ strategyId }) 
   const [selectedVersion, setSelectedVersion] = React.useState<string>('');
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Version History</h2>
-      <div className="space-y-4">
-        <div className="flex gap-2">
+    <Card style={{ padding: "24px" }}>
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Version History</h2>
+      <div >
+        <div style={{ display: "flex" }}>
           <Button variant="outline" size="sm">Compare Versions</Button>
           <Button variant="outline" size="sm">Restore Version</Button>
         </div>
-        <div className="space-y-2">
+        <div >
           {versions.map((v, i) => (
-            <div key={i} className="p-3 border rounded hover:bg-accent cursor-pointer">
-              <div className="flex justify-between items-center">
-                <span className="font-medium">v{v.version}</span>
-                <span className="text-sm text-muted-foreground">{v.date}</span>
+            <div key={i} style={{ border: "1px solid #374151" }}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span >v{v.version}</span>
+                <span >{v.date}</span>
               </div>
-              <p className="text-sm text-muted-foreground mt-1">{v.changes}</p>
+              <p >{v.changes}</p>
             </div>
           ))}
         </div>
@@ -32,11 +32,3 @@ export const VaultVersioning: React.FC<VaultVersioningProps> = ({ strategyId }) 
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

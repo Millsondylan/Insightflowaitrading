@@ -9,10 +9,10 @@ const KEYWORDS = ['RSI', 'MACD', 'Moving Average', 'Support', 'Resistance', 'Bre
 const getIconForRule = (rule: string) => {
   const lowerRule = rule.toLowerCase();
   if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <span style={{fontSize: '16px'}}>📈</span>;
-  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat className="w-5 h-5 text-purple-400" />;
-  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <BarChart3 className="w-5 h-5 text-yellow-400" />;
-  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <Activity className="w-5 h-5 text-orange-400" />;
-  return <ChevronRight className="w-5 h-5 text-white/50" />;
+  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat  />;
+  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <BarChart3  />;
+  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <Activity  />;
+  return <ChevronRight  />;
 };
 
 const highlightKeywords = (rule: string) => {
@@ -22,7 +22,7 @@ const highlightKeywords = (rule: string) => {
     return parts.map((part, index) => {
         const isKeyword = KEYWORDS.some(kw => kw.toLowerCase() === part.toLowerCase());
         if (isKeyword) {
-            return <strong key={index} className="text-cyan-400 font-medium">{part}</strong>;
+            return <strong key={index} >{part}</strong>;
         }
         return part;
     });
@@ -30,15 +30,15 @@ const highlightKeywords = (rule: string) => {
 
 export const RuleParser = ({ rules }: Props) => {
   return (
-    <div className="space-y-3">
-      <h3 className="text-lg font-semibold text-white/90">Strategy Rules</h3>
-      <div className="space-y-2">
+    <div >
+      <h3 >Strategy Rules</h3>
+      <div >
         {rules.map((rule, index) => (
-          <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/10 flex items-center gap-4">
-            <div className="flex-shrink-0">
+          <div key={index} style={{ padding: "16px", border: "1px solid #374151", display: "flex", alignItems: "center" }}>
+            <div >
               {getIconForRule(rule)}
             </div>
-            <p className="text-white/80">
+            <p >
               {highlightKeywords(rule)}
             </p>
           </div>
@@ -47,9 +47,3 @@ export const RuleParser = ({ rules }: Props) => {
     </div>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

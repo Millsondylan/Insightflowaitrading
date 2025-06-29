@@ -18,7 +18,7 @@ const kpiItems = [
 
 const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
   return (
-    <div className="kpi-grid">
+    <div >
       {kpiItems.map((item, index) => {
         const Icon = item.icon;
         const value = stats[item.key as keyof DashboardStats];
@@ -32,8 +32,8 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
             className={cn('kpi-card', `glow-${item.color}`)}
           >
             <Icon className={cn('kpi-icon', `text-${item.color}-500`)} />
-            <div className="kpi-title">{item.title}</div>
-            <div className="kpi-value">
+            <div >{item.title}</div>
+            <div >
               <CountUp end={value} duration={2.5} separator="," />
             </div>
           </motion.div>
@@ -44,9 +44,3 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
 };
 
 export default AdminKPI; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

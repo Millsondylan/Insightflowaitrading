@@ -70,63 +70,63 @@ const LandingPage = () => {
   ]
 
   return (
-    <div className="min-h-screen text-gray-100 transition-colors duration-500">
+    <div style={{ minHeight: "100vh" }}>
       <ThemeScrollObserver sections={sections} />
       
       {/* Navigation Header - Stays consistent */}
-      <nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+      <nav style={{ width: "100%", padding: "16px", display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             <span style={{fontSize: '16px'}}>📈</span>
           </div>
-          <h1 className="text-2xl font-bold text-white">InsightFlow AI</h1>
+          <h1 style={{ fontWeight: "700", color: "white" }}>InsightFlow AI</h1>
         </div>
-        <div className="flex space-x-2 md:space-x-4">
-          <Button variant="ghost" onClick={() => navigate('/auth')} className="text-white hover:bg-white/10">
+        <div style={{ display: "flex" }}>
+          <Button variant="ghost" onClick={() => navigate('/auth')} style={{ color: "white" }}>
             Sign In
           </Button>
-          <Button onClick={() => navigate('/auth')} className="quantum-button text-white">
+          <Button onClick={() => navigate('/auth')} style={{ color: "white" }}>
             Start Free Trial
           </Button>
         </div>
       </nav>
 
       {/* Hero Section (Landing Theme) */}
-      <SectionWrapper ref={heroRef} id="hero" className="pt-40 pb-32 text-center flex flex-col items-center">
+      <SectionWrapper ref={heroRef} id="hero" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
          >
-            <Badge className="mb-6 px-4 py-2 text-sm border bg-black/20 border-white/20">
-              <span className="mr-2">🚀</span> Over 10,000 traders trust InsightFlow AI
+            <Badge style={{ paddingLeft: "16px", paddingRight: "16px", border: "1px solid #374151" }}>
+              <span >🚀</span> Over 10,000 traders trust InsightFlow AI
             </Badge>
 
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight hologram-text">
+            <h1 style={{ fontWeight: "700" }}>
                 The Future of Trading is Here.
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mt-6">
+            <p style={{ marginLeft: "auto", marginRight: "auto" }}>
               Make smarter, faster, and more confident trading decisions with real-time insights, advanced analytics, and a powerful, intuitive interface.
             </p>
 
-            <div className="flex justify-center space-x-4 pt-8">
-              <Button size="lg" onClick={() => navigate('/auth')} className="quantum-button text-lg px-8 py-4">
-                Get Started <ArrowRight className="ml-2 w-5 h-5" />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Button size="lg" onClick={() => navigate('/auth')} >
+                Get Started <ArrowRight  />
               </Button>
             </div>
         </motion.div>
       </SectionWrapper>
 
       {/* Features Section (Academy Theme) */}
-      <SectionWrapper ref={featuresRef} id="features" className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">A New Standard for Trading Intelligence</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+      <SectionWrapper ref={featuresRef} id="features" style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
+        <div >
+          <h2 style={{ fontWeight: "700", color: "white", marginBottom: "16px" }}>A New Standard for Trading Intelligence</h2>
+          <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
             InsightFlow AI provides everything you need to navigate the markets with confidence.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div >
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -135,15 +135,15 @@ const LandingPage = () => {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="glass-card h-full gradient-border">
-                <CardHeader className="text-center">
-                  <div className="w-16 h-16 mx-auto rounded-lg bg-black/30 flex items-center justify-center mb-4 border border-white/10">
-                    <feature.icon className="w-8 h-8 text-cyan-300" />
+              <Card >
+                <CardHeader >
+                  <div style={{ marginLeft: "auto", marginRight: "auto", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px", border: "1px solid #374151" }}>
+                    <feature.icon  />
                   </div>
-                  <CardTitle className="text-white text-xl">{feature.title}</CardTitle>
+                  <CardTitle style={{ color: "white" }}>{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-400 text-center">{feature.description}</p>
+                  <p style={{ color: "#9CA3AF" }}>{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -152,28 +152,28 @@ const LandingPage = () => {
       </SectionWrapper>
       
       {/* Placeholder for Portfolio Section */}
-      <SectionWrapper ref={portfolioRef} id="portfolio-demo" className="container mx-auto">
-        <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Your Portfolio, Supercharged</h2>
-            <p className="text-xl text-gray-400">Track your performance with stunning visuals.</p>
+      <SectionWrapper ref={portfolioRef} id="portfolio-demo" style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
+        <div >
+            <h2 style={{ fontWeight: "700", color: "white", marginBottom: "16px" }}>Your Portfolio, Supercharged</h2>
+            <p style={{ color: "#9CA3AF" }}>Track your performance with stunning visuals.</p>
         </div>
-        <div className="glass-card p-8">
-            <h3 className="text-2xl font-bold mb-4 text-white">Performance Overview</h3>
-            <div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
-              <p className="text-gray-500">-- PnL Curve Chart Placeholder --</p>
+        <div style={{ padding: "32px" }}>
+            <h3 style={{ fontWeight: "700", marginBottom: "16px", color: "white" }}>Performance Overview</h3>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <p >-- PnL Curve Chart Placeholder --</p>
             </div>
         </div>
       </SectionWrapper>
 
       {/* Testimonials Section (NeonWave Theme) */}
-      <SectionWrapper ref={testimonialsRef} id="testimonials" className="container mx-auto">
-         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Loved by Modern Traders</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+      <SectionWrapper ref={testimonialsRef} id="testimonials" style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
+         <div >
+          <h2 style={{ fontWeight: "700", color: "white", marginBottom: "16px" }}>Loved by Modern Traders</h2>
+          <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
             Don't just take our word for it. Here's what our users are saying.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div >
           {testimonials.map((testimonial, index) => (
              <motion.div
               key={index}
@@ -182,12 +182,12 @@ const LandingPage = () => {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="glass-card h-full">
-                <CardContent className="pt-6">
-                  <p className="text-lg text-white mb-4">"{testimonial.quote}"</p>
-                  <div className="flex items-center">
-                    <p className="font-bold text-white">{testimonial.author}</p>
-                    <p className="ml-2 text-gray-400">{testimonial.handle}</p>
+              <Card >
+                <CardContent >
+                  <p style={{ color: "white", marginBottom: "16px" }}>"{testimonial.quote}"</p>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <p style={{ fontWeight: "700", color: "white" }}>{testimonial.author}</p>
+                    <p style={{ color: "#9CA3AF" }}>{testimonial.handle}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -200,11 +200,3 @@ const LandingPage = () => {
 };
 
 export default LandingPage; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

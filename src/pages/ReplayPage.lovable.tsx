@@ -6,24 +6,24 @@ export default function ReplayPage() {
 
   return (
     <div>
-      <Link to={`/vault/${id}`} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+      <Link to={`/vault/${id}`} style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
         <ArrowLeft size={16} />
         Back to Strategy Details
       </Link>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
-        <header className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</h1>
+      <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "32px", display: "flex", flexDirection: "column" }}>
+        <header style={{ display: "flex", alignItems: "center" }}>
+            <h1 style={{ fontWeight: "700", color: "white" }}>Replay for Strategy #{id}</h1>
             <Button variant="ghost"><span style={{fontSize: '16px'}}>⚙️</span> </Button>
         </header>
         
-        <div className="flex-grow flex items-center justify-center">
-            <p className="text-gray-500 text-lg">Chart and replay visualization would be here.</p>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <p >Chart and replay visualization would be here.</p>
         </div>
 
-        <footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
-            <Button variant="ghost"><FastForward className="transform -scale-x-100" size={20} /></Button>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 rounded-full w-16 h-16">
+        <footer style={{ padding: "16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Button variant="ghost"><FastForward  size={20} /></Button>
+            <Button size="lg" >
                 <Play size={24} />
             </Button>
             <Button variant="ghost"><FastForward size={20} /></Button>
@@ -32,11 +32,3 @@ export default function ReplayPage() {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

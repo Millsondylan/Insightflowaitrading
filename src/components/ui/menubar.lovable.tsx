@@ -37,7 +37,7 @@ const MenubarSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <span style={{fontSize: '16px'}}>☰</span>
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight  />
   </MenubarPrimitive.SubTrigger>
 ))
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
@@ -80,7 +80,7 @@ const MenubarCheckboxItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
   <span style={{fontSize: '16px'}}>☰</span>
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       <span style={{fontSize: '16px'}}>☰</span>
         <span style={{fontSize: '16px'}}>✅</span>
       </MenubarPrimitive.ItemIndicator>
@@ -95,9 +95,9 @@ const MenubarRadioItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
   <span style={{fontSize: '16px'}}>☰</span>
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       <span style={{fontSize: '16px'}}>☰</span>
-        <Circle className="h-2 w-2 fill-current" />
+        <Circle  />
       </MenubarPrimitive.ItemIndicator>
     </span>
     {children}
@@ -157,10 +157,3 @@ export {
   MenubarSub,
   MenubarShortcut,
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -1,38 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { 
-  BookOpen, 
-  Percent, 
-  Brain, 
-  BarChart2, 
-  Radio, 
-  MessageSquare, 
-  PlayCircle,
-  Shield,
-  Bitcoin,
-  Bot,
-  TrendingUp,
-  DollarSign,
-  Globe,
-  Calculator,
-  Building,
-  Users,
-  Clock,
-  Star,
-  ChevronRight,
-  Award,
-  Target,
-  Zap
-} from 'lucide-react';
 import { comprehensiveCourses } from '@/lib/academy/comprehensiveLessonData';
 
-// Map icon names to components for Lovable compatibility
+// Map icon names to components
 const iconMap: { [key: string]: any } = {
   BarChart2,
   Shield,
@@ -58,58 +28,51 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
   };
   
   return (
-    <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group">
+    <Card >
       <CardHeader>
-        <div className="flex justify-between items-start">
-          <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 transition-colors">
-            <Icon className="w-6 h-6 text-blue-400" />
+        <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px" }}>
+            <Icon  />
           </div>
           <Badge className={categoryColors[course.category]}>
             {course.category}
           </Badge>
         </div>
-        <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors">
+        <CardTitle style={{ color: "white" }}>
           {course.title}
         </CardTitle>
-        <CardDescription className="text-gray-400">
+        <CardDescription style={{ color: "#9CA3AF" }}>
           {course.description}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Duration</span>
-            <span className="text-white font-medium">{course.duration}</span>
+        <div >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span style={{ color: "#9CA3AF" }}>Duration</span>
+            <span style={{ color: "white" }}>{course.duration}</span>
           </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Lessons</span>
-            <span className="text-white font-medium">{course.lessons.length} lessons</span>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span style={{ color: "#9CA3AF" }}>Lessons</span>
+            <span style={{ color: "white" }}>{course.lessons.length} lessons</span>
           </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Students</span>
-            <span className="text-white font-medium">{course.enrolled.toLocaleString()}</span>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span style={{ color: "#9CA3AF" }}>Students</span>
+            <span style={{ color: "white" }}>{course.enrolled.toLocaleString()}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center" }}>
               {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-4 h-4 ${
-                    i < Math.floor(course.rating)
-                      ? 'text-yellow-400 fill-yellow-400'
-                      : 'text-gray-600'
-                  }`}
-                />
+                <span style={{fontSize: '16px'}}>⭐</span>
               ))}
             </div>
-            <span className="text-sm text-gray-400">({course.rating})</span>
+            <span style={{ color: "#9CA3AF" }}>({course.rating})</span>
           </div>
           <Button 
-            className="w-full bg-blue-600 hover:bg-blue-700 group-hover:bg-blue-700"
+            style={{ width: "100%" }}
             onClick={() => navigate(`/academy/${course.id}`)}
           >
             Start Learning
-            <ChevronRight className="w-4 h-4 ml-2" />
+            <ChevronRight  />
           </Button>
         </div>
       </CardContent>
@@ -119,79 +82,79 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
 
 const FeaturedSection = () => {
   return (
-    <div className="mb-8">
-      <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-        <Zap className="w-6 h-6 text-yellow-400" />
+    <div style={{ marginBottom: "32px" }}>
+      <h2 style={{ fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
+        <span style={{fontSize: '16px'}}>⚡</span>
         Featured Courses
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-white/20">
+      <div >
+        <Card >
           <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <Target className="w-6 h-6 text-white" />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{fontSize: '16px'}}>🎯</span>
               </div>
               <div>
-                <CardTitle className="text-white">Quick Start Trading</CardTitle>
-                <CardDescription className="text-gray-300">
+                <CardTitle style={{ color: "white" }}>Quick Start Trading</CardTitle>
+                <CardDescription >
                   Get trading in 7 days
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-300 mb-4">
+            <p style={{ marginBottom: "16px" }}>
               Intensive bootcamp covering all essentials to start trading confidently within a week.
             </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
+            <Button style={{ width: "100%", color: "white" }}>
               Enroll Now
             </Button>
           </CardContent>
         </Card>
         
-        <Card className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 border-white/20">
+        <Card >
           <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <Award className="w-6 h-6 text-white" />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Award style={{ color: "white" }} />
               </div>
               <div>
-                <CardTitle className="text-white">Pro Certification</CardTitle>
-                <CardDescription className="text-gray-300">
+                <CardTitle style={{ color: "white" }}>Pro Certification</CardTitle>
+                <CardDescription >
                   Industry recognized cert
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-300 mb-4">
+            <p style={{ marginBottom: "16px" }}>
               Complete comprehensive program and earn your professional trading certification.
             </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
+            <Button style={{ width: "100%", color: "white" }}>
               Learn More
             </Button>
           </CardContent>
         </Card>
         
-        <Card className="bg-gradient-to-br from-orange-600/20 to-red-600/20 border-white/20">
+        <Card >
           <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{fontSize: '16px'}}>👤</span>
               </div>
               <div>
-                <CardTitle className="text-white">Live Mentorship</CardTitle>
-                <CardDescription className="text-gray-300">
+                <CardTitle style={{ color: "white" }}>Live Mentorship</CardTitle>
+                <CardDescription >
                   1-on-1 with experts
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-300 mb-4">
+            <p style={{ marginBottom: "16px" }}>
               Get personalized guidance from professional traders in live sessions.
             </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
+            <Button style={{ width: "100%", color: "white" }}>
               Book Session
             </Button>
           </CardContent>
@@ -211,53 +174,53 @@ export default function AcademyPage() {
   const categories = ['all', 'beginner', 'intermediate', 'advanced', 'expert'];
   
   return (
-    <div className="space-y-8">
+    <div style={{ marginTop: "32px" }}>
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
-            <BookOpen className="w-8 h-8 text-white" />
+      <div style={{ marginBottom: "32px" }}>
+        <h1 style={{ fontWeight: "700", color: "white", marginBottom: "16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <span style={{ borderRadius: "0.75rem" }}>
+            <BookOpen style={{ color: "white" }} />
           </span>
           Trading Academy
         </h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+        <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
           Master the markets with comprehensive courses designed by professional traders. 
           From basics to advanced strategies, we've got you covered.
         </p>
       </div>
       
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
+      <div style={{ marginBottom: "32px" }}>
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
               {comprehensiveCourses.length}+
             </div>
-            <div className="text-sm text-gray-400">Courses</div>
+            <div style={{ color: "#9CA3AF" }}>Courses</div>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
               {comprehensiveCourses.reduce((acc, course) => acc + course.enrolled, 0).toLocaleString()}+
             </div>
-            <div className="text-sm text-gray-400">Students</div>
+            <div style={{ color: "#9CA3AF" }}>Students</div>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
               {comprehensiveCourses.reduce((acc, course) => acc + course.lessons.length, 0)}+
             </div>
-            <div className="text-sm text-gray-400">Lessons</div>
+            <div style={{ color: "#9CA3AF" }}>Lessons</div>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
+        <Card >
+          <CardContent style={{ padding: "24px" }}>
+            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
               4.8
             </div>
-            <div className="text-sm text-gray-400">Avg Rating</div>
+            <div style={{ color: "#9CA3AF" }}>Avg Rating</div>
           </CardContent>
         </Card>
       </div>
@@ -267,20 +230,20 @@ export default function AcademyPage() {
       
       {/* Category Filter */}
       <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory}>
-        <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto mb-8">
+        <TabsList style={{ width: "100%", marginLeft: "auto", marginRight: "auto", marginBottom: "32px" }}>
           {categories.map((category) => (
             <TabsTrigger 
               key={category} 
               value={category}
-              className="capitalize"
+              
             >
               {category}
             </TabsTrigger>
           ))}
         </TabsList>
         
-        <TabsContent value={selectedCategory} className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <TabsContent value={selectedCategory} >
+          <div >
             {filteredCourses.map(course => (
               <CourseCard key={course.id} course={course} />
             ))}
@@ -289,98 +252,98 @@ export default function AcademyPage() {
       </Tabs>
       
       {/* Live Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
-        <Card className="lg:col-span-2 bg-white/5 border-white/10">
+      <div >
+        <Card >
           <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
-              <Radio className="w-5 h-5 text-red-500" />
+            <CardTitle style={{ color: "white", display: "flex", alignItems: "center" }}>
+              <Radio  />
               Live Trading Sessions
             </CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardDescription style={{ color: "#9CA3AF" }}>
               Join professional traders in real-time market analysis
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+            <div >
+              <div style={{ display: "flex", alignItems: "center", padding: "16px" }}>
                 <div>
-                  <h4 className="font-medium text-white">Forex London Session</h4>
-                  <p className="text-sm text-gray-400">With TraderPro • Starting in 2h</p>
+                  <h4 style={{ color: "white" }}>Forex London Session</h4>
+                  <p style={{ color: "#9CA3AF" }}>With TraderPro • Starting in 2h</p>
                 </div>
-                <Button size="sm" className="bg-red-600 hover:bg-red-700">
+                <Button size="sm" >
                   Join Live
                 </Button>
               </div>
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+              <div style={{ display: "flex", alignItems: "center", padding: "16px" }}>
                 <div>
-                  <h4 className="font-medium text-white">Crypto Market Review</h4>
-                  <p className="text-sm text-gray-400">With CryptoKing • Tomorrow 9 AM</p>
+                  <h4 style={{ color: "white" }}>Crypto Market Review</h4>
+                  <p style={{ color: "#9CA3AF" }}>With CryptoKing • Tomorrow 9 AM</p>
                 </div>
                 <Button size="sm" variant="outline">
                   Set Reminder
                 </Button>
               </div>
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+              <div style={{ display: "flex", alignItems: "center", padding: "16px" }}>
                 <div>
-                  <h4 className="font-medium text-white">Options Strategy Workshop</h4>
-                  <p className="text-sm text-gray-400">With ThetaGang • Friday 2 PM</p>
+                  <h4 style={{ color: "white" }}>Options Strategy Workshop</h4>
+                  <p style={{ color: "#9CA3AF" }}>With ThetaGang • Friday 2 PM</p>
                 </div>
                 <Button size="sm" variant="outline">
                   Set Reminder
                 </Button>
               </div>
             </div>
-            <Link to="/broadcast" className="block mt-4">
-              <Button variant="ghost" className="w-full">
+            <Link to="/broadcast" >
+              <Button variant="ghost" style={{ width: "100%" }}>
                 View All Sessions
-                <ChevronRight className="w-4 h-4 ml-2" />
+                <ChevronRight  />
               </Button>
             </Link>
           </CardContent>
         </Card>
         
-        <Card className="bg-white/5 border-white/10">
+        <Card >
           <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
-              <MessageSquare className="w-5 h-5" />
+            <CardTitle style={{ color: "white", display: "flex", alignItems: "center" }}>
+              <MessageSquare  />
               Community
             </CardTitle>
-            <CardDescription className="text-gray-400">
+            <CardDescription style={{ color: "#9CA3AF" }}>
               Connect with fellow traders
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-600/20 rounded-full flex items-center justify-center">
-                  <Users className="w-4 h-4 text-blue-400" />
+          <CardContent >
+            <div >
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{fontSize: '16px'}}>👤</span>
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm text-white">Active Discussions</p>
-                  <p className="text-xs text-gray-400">234 topics today</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-600/20 rounded-full flex items-center justify-center">
-                  <Award className="w-4 h-4 text-green-400" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm text-white">Study Groups</p>
-                  <p className="text-xs text-gray-400">45 active groups</p>
+                <div >
+                  <p style={{ color: "white" }}>Active Discussions</p>
+                  <p style={{ color: "#9CA3AF" }}>234 topics today</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-purple-600/20 rounded-full flex items-center justify-center">
-                  <Target className="w-4 h-4 text-purple-400" />
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <Award  />
                 </div>
-                <div className="flex-1">
-                  <p className="text-sm text-white">Trading Challenges</p>
-                  <p className="text-xs text-gray-400">New challenge weekly</p>
+                <div >
+                  <p style={{ color: "white" }}>Study Groups</p>
+                  <p style={{ color: "#9CA3AF" }}>45 active groups</p>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <span style={{fontSize: '16px'}}>🎯</span>
+                </div>
+                <div >
+                  <p style={{ color: "white" }}>Trading Challenges</p>
+                  <p style={{ color: "#9CA3AF" }}>New challenge weekly</p>
                 </div>
               </div>
             </div>
             <Link to="/community">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">
+              <Button style={{ width: "100%" }}>
                 Join Community
               </Button>
             </Link>
@@ -390,12 +353,3 @@ export default function AcademyPage() {
     </div>
   );
 }
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

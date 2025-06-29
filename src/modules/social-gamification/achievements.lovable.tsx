@@ -120,9 +120,9 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
   if (loading) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
-          <span className="ml-2 text-white/60">Loading achievements...</span>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div ></div>
+          <span >Loading achievements...</span>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
   if (!userProfile) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Failed to load user profile</p>
+        <p >Failed to load user profile</p>
       </div>
     );
   }
@@ -139,65 +139,65 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
   return (
     <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
       {/* Header with user stats */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
+      <div >
+        <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <img 
               src={userProfile.avatar} 
               alt={userProfile.displayName}
-              className="w-12 h-12 rounded-full border-2 border-white/20"
+              
             />
             <div>
-              <h2 className="text-xl font-bold text-white">{userProfile.displayName}</h2>
-              <p className="text-sm text-white/60">Level {userProfile.level}</p>
+              <h2 style={{ fontWeight: "700", color: "white" }}>{userProfile.displayName}</h2>
+              <p >Level {userProfile.level}</p>
             </div>
           </div>
-          <div className="text-right">
-            <div className="text-lg font-bold text-blue-400">{userProfile.experience} XP</div>
-            <div className="text-xs text-white/60">
+          <div >
+            <div style={{ fontWeight: "700" }}>{userProfile.experience} XP</div>
+            <div >
               {completionStats.completed}/{completionStats.total} achievements
             </div>
           </div>
         </div>
 
         {/* Progress bar */}
-        <div className="w-full bg-white/10 rounded-full h-2 mb-2">
+        <div style={{ width: "100%" }}>
           <div 
-            className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+            
             style={{ width: `${completionStats.percentage}%` }}
           ></div>
         </div>
-        <div className="text-xs text-white/60 text-center">
+        <div >
           {completionStats.percentage}% Complete
         </div>
       </div>
 
       {/* Streak indicators */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-orange-400">🔥</div>
-          <div className="text-sm text-white/80">{userProfile.streaks.currentTradingStreak}</div>
-          <div className="text-xs text-white/60">Trading Streak</div>
+      <div >
+        <div >
+          <div style={{ fontWeight: "700" }}>🔥</div>
+          <div >{userProfile.streaks.currentTradingStreak}</div>
+          <div >Trading Streak</div>
         </div>
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-blue-400">📚</div>
-          <div className="text-sm text-white/80">{userProfile.streaks.currentLearningStreak}</div>
-          <div className="text-xs text-white/60">Learning Streak</div>
+        <div >
+          <div style={{ fontWeight: "700" }}>📚</div>
+          <div >{userProfile.streaks.currentLearningStreak}</div>
+          <div >Learning Streak</div>
         </div>
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-green-400">🎯</div>
-          <div className="text-sm text-white/80">{userProfile.stats.totalTrades}</div>
-          <div className="text-xs text-white/60">Total Trades</div>
+        <div >
+          <div style={{ fontWeight: "700" }}>🎯</div>
+          <div >{userProfile.stats.totalTrades}</div>
+          <div >Total Trades</div>
         </div>
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-purple-400">💎</div>
-          <div className="text-sm text-white/80">{userProfile.badges.length}</div>
-          <div className="text-xs text-white/60">Badges Earned</div>
+        <div >
+          <div style={{ fontWeight: "700" }}>💎</div>
+          <div >{userProfile.badges.length}</div>
+          <div >Badges Earned</div>
         </div>
       </div>
 
       {/* Category filters */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <div style={{ display: "flex" }}>
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
           <button
             key={category}
@@ -217,17 +217,17 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
 
       {/* Recent badges */}
       {userProfile.badges.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold text-white mb-3">Recent Badges</h3>
-          <div className="flex flex-wrap gap-2">
+        <div >
+          <h3 style={{ color: "white" }}>Recent Badges</h3>
+          <div style={{ display: "flex" }}>
             {userProfile.badges.slice(0, 6).map((badge, index) => (
               <div
                 key={badge.id}
-                className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
+                style={{ display: "flex", alignItems: "center", border: "1px solid #374151" }}
                 title={badge.description}
               >
-                <span className="text-lg">{badge.icon}</span>
-                <span className="text-xs text-white/80">{badge.name}</span>
+                <span >{badge.icon}</span>
+                <span >{badge.name}</span>
               </div>
             ))}
           </div>
@@ -235,7 +235,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
       )}
 
       {/* Achievements grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div >
         {filteredAchievements.map((achievement) => {
           const isUnlocked = isAchievementUnlocked(achievement.id);
           const progress = getProgressPercentage(achievement.id);
@@ -251,11 +251,11 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
                 }
               `}
             >
-              <div className="flex items-start space-x-3">
+              <div style={{ display: "flex" }}>
                 <div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
                 </div>
-                <div className="flex-1">
+                <div >
                   <h4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}>
                     {achievement.name}
                   </h4>
@@ -265,19 +265,19 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
                   
                   {/* Progress bar for locked achievements */}
                   {!isUnlocked && progress > 0 && (
-                    <div className="mb-2">
-                      <div className="w-full bg-white/20 rounded-full h-1">
+                    <div >
+                      <div style={{ width: "100%" }}>
                         <div 
-                          className="bg-blue-400 h-1 rounded-full transition-all duration-500"
+                          
                           style={{ width: `${progress}%` }}
                         ></div>
                       </div>
-                      <div className="text-xs text-white/60 mt-1">{progress}% complete</div>
+                      <div >{progress}% complete</div>
                     </div>
                   )}
 
                   {/* Achievement rewards */}
-                  <div className="flex items-center justify-between text-xs">
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       {achievement.difficulty.toUpperCase()}
                     </span>
@@ -294,9 +294,9 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
 
       {/* Empty state */}
       {filteredAchievements.length === 0 && (
-        <div className="text-center py-8">
-          <div className="text-4xl mb-4">🎯</div>
-          <p className="text-white/60">No achievements found for this category</p>
+        <div style={{ paddingTop: "32px", paddingBottom: "32px" }}>
+          <div style={{ marginBottom: "16px" }}>🎯</div>
+          <p >No achievements found for this category</p>
         </div>
       )}
     </div>
@@ -425,11 +425,3 @@ const fetchUserAchievements = async (userId: string): Promise<span style={{fontS
 };
 
 export default AchievementsComponent; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

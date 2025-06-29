@@ -28,15 +28,15 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
 
   const renderIcon = (type: ActivityType) => {
     const Icon = iconMap[type] || BookOpen;
-    return <Icon className="h-4 w-4" />;
+    return <Icon  />;
   };
 
   return (
-    <div className="activity-timeline-container">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-semibold text-white">Activity Timeline</h3>
+    <div >
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <h3 style={{ color: "white" }}>Activity Timeline</h3>
         <Select value={filter} onValueChange={(value) => setFilter(value as ActivityType | 'all')}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger >
             <SelectValue placeholder="Filter by type" />
           </SelectTrigger>
           <SelectContent>
@@ -48,7 +48,7 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
         </Select>
       </div>
       
-      <div className="activity-timeline">
+      <div >
         <AnimatePresence>
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event, index) => (
@@ -61,12 +61,12 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={cn('timeline-item', `type-${event.type}`)}
               >
-                <div className="timeline-icon">
+                <div >
                   {renderIcon(event.type)}
                 </div>
-                <div className="timeline-item-content">
-                  <p className="timeline-label">{event.label}</p>
-                  <p className="timeline-timestamp">
+                <div >
+                  <p >{event.label}</p>
+                  <p >
                     <TimeAgo datetime={event.timestamp} />
                   </p>
                 </div>
@@ -76,7 +76,7 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-8 text-gray-500"
+              style={{ paddingTop: "32px", paddingBottom: "32px" }}
             >
               No activities found for the selected filter.
             </motion.div>
@@ -88,9 +88,3 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
 };
 
 export default ActivityTimeline; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

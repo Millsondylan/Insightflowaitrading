@@ -13,12 +13,12 @@ type Props = {
 
 export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) {
   return (
-    <div className="theme-vault space-y-6">
-      <div className="flex items-center gap-2">
+    <div >
+      <div style={{ display: "flex", alignItems: "center" }}>
         {users.map((u) => (
           <span
             key={u.id}
-            className="px-3 py-1 text-xs rounded-full text-white"
+            style={{ color: "white" }}
             style={{ backgroundColor: u.color }}
           >
             🧑‍💻 {u.name}
@@ -28,15 +28,15 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
       <input
         value={strategy.title}
         onChange={(e) => onUpdate({ ...strategy, title: e.target.value })}
-        className="bg-white/10 p-2 rounded w-full text-white text-lg font-bold"
+        style={{ width: "100%", color: "white", fontWeight: "700" }}
       />
       <textarea
         value={strategy.notes}
         onChange={(e) => onUpdate({ ...strategy, notes: e.target.value })}
         placeholder="Strategy notes..."
-        className="bg-white/5 p-4 rounded w-full text-white/80"
+        style={{ padding: "16px", width: "100%" }}
       />
-      <div className="space-y-2">
+      <div >
         {strategy.rules.map((rule, i) => (
           <input
             key={i}
@@ -46,16 +46,10 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
               newRules[i] = e.target.value;
               onUpdate({ ...strategy, rules: newRules });
             }}
-            className="bg-white/5 p-2 rounded w-full text-white"
+            style={{ width: "100%", color: "white" }}
           />
         ))}
       </div>
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

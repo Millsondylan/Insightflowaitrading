@@ -52,16 +52,16 @@ const CommunityGPT = ({ post }: Props) => {
   }, [post]);
 
   return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-      <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
+    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "white" }}>
                 🧠
             </div>
             <div>
-                <p className="font-bold text-white">Community AI</p>
+                <p style={{ fontWeight: "700", color: "white" }}>Community AI</p>
                 {reply && !isLoading && (
-                    <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
+                    <span style={{ color: "white" }}>
                         {reply.tone}
                     </span>
                 )}
@@ -73,13 +73,13 @@ const CommunityGPT = ({ post }: Props) => {
       </div>
 
       {isLoading && (
-        <div className="text-white/70 animate-pulse">
+        <div >
             Generating AI analysis...
         </div>
       )}
 
       {reply && !isLoading && (
-        <p className="text-white/80 text-sm leading-relaxed pt-2">
+        <p >
             {reply.text}
         </p>
       )}
@@ -88,9 +88,3 @@ const CommunityGPT = ({ post }: Props) => {
 };
 
 export default CommunityGPT; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

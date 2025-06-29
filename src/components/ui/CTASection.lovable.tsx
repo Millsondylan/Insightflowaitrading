@@ -5,15 +5,15 @@ import '@/styles/landing.css';
 const CTASection = () => {
   return (
     <motion.section
-      className="cta-section py-20 text-white"
+      style={{ color: "white" }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1 }}
     >
-      <div className="container mx-auto text-center">
+      <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
         <motion.h2
-          className="text-4xl md:text-5xl font-bold mb-6"
+          style={{ fontWeight: "700" }}
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -29,10 +29,10 @@ const CTASection = () => {
         >
           <Button
             asChild
-            className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 text-lg px-8 py-6"
+            style={{ border: "1px solid #374151", color: "white" }}
           >
             <Link to="/strategy">
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
+              Get Started <ArrowRight  />
             </Link>
           </Button>
         </motion.div>
@@ -42,9 +42,3 @@ const CTASection = () => {
 };
 
 export default CTASection; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

@@ -17,11 +17,4 @@ const LegacyRouteWrapper: React.FC<LegacyRouteWrapperProps> = ({
   );
 };
 
-export default LegacyRouteWrapper;
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-}; 
+export default LegacyRouteWrapper; 

@@ -43,60 +43,52 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <div className="flex items-center gap-2 mb-4">
+    <Card style={{ padding: "24px" }}>
+      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
         <span style={{fontSize: '16px'}}>🧠</span>
-        <h2 className="text-2xl font-bold">Memory Store</h2>
+        <h2 style={{ fontWeight: "700" }}>Memory Store</h2>
       </div>
 
-      <div className="space-y-4">
+      <div >
         {memories.map((memory) => (
-          <div key={memory.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-            <div className="flex items-start justify-between mb-2">
+          <div key={memory.id} style={{ padding: "16px", border: "1px solid #374151" }}>
+            <div style={{ display: "flex" }}>
               <Badge variant="default" className={getTypeColor(memory.type)}>
                 {memory.type}
               </Badge>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1">
-                  <Hash className="h-3 w-3" />
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <span style={{ display: "flex", alignItems: "center" }}>
+                  <Hash  />
                   {memory.occurrences}
                 </span>
-                <span className="flex items-center gap-1">
+                <span style={{ display: "flex", alignItems: "center" }}>
                   <span style={{fontSize: '16px'}}>📅</span>
                   {memory.lastSeen.toLocaleDateString()}
                 </span>
               </div>
             </div>
             
-            <p className="text-sm mb-2">{memory.content}</p>
+            <p >{memory.content}</p>
             
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">Strength:</span>
-              <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span >Strength:</span>
+              <div >
                 <div 
-                  className="h-full bg-primary transition-all duration-300"
+                  
                   style={{ width: `${memory.strength * 100}%` }}
                 />
               </div>
-              <span className="text-xs font-medium">{(memory.strength * 100).toFixed(0)}%</span>
+              <span >{(memory.strength * 100).toFixed(0)}%</span>
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t">
-        <p className="text-sm text-muted-foreground">
+      <div >
+        <p >
           Memories are extracted from your journal entries and strengthen with repetition
         </p>
       </div>
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

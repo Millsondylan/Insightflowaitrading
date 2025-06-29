@@ -39,46 +39,46 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
   ];
 
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+    if (type === 'alert') return <AlertCircle  />;
     if (pnl && pnl > 0) return <span style={{fontSize: '16px'}}>📈</span>;
     if (pnl && pnl < 0) return <span style={{fontSize: '16px'}}>📉</span>;
     return <span style={{fontSize: '16px'}}>⏰</span>;
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Trade Timeline</h2>
-      <ScrollArea className="h-[500px]">
-        <div className="space-y-4">
+    <Card style={{ padding: "24px" }}>
+      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Trade Timeline</h2>
+      <ScrollArea >
+        <div >
           {activities.map((activity) => (
-            <div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
-              <div className="absolute left-0 top-1">
+            <div key={activity.id} >
+              <div >
                 {getIcon(activity.type, activity.pnl)}
               </div>
-              <div className="border-l-2 border-gray-700 pl-6 -ml-2">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold">{activity.symbol}</span>
+              <div >
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <div style={{ display: "flex", alignItems: "center" }}>
+                    <span >{activity.symbol}</span>
                     {activity.action && (
                       <Badge variant={activity.action === 'BUY' ? 'default' : 'secondary'}>
                         {activity.action}
                       </Badge>
                     )}
                   </div>
-                  <span className="text-xs text-muted-foreground">
+                  <span >
                     {activity.timestamp.toLocaleTimeString()}
                   </span>
                 </div>
                 
                 {activity.type === 'trade_open' && (
-                  <p className="text-sm text-muted-foreground">
+                  <p >
                     Opened {activity.size} units at ${activity.price}
                   </p>
                 )}
                 
                 {activity.type === 'trade_close' && (
                   <div>
-                    <p className="text-sm text-muted-foreground">
+                    <p >
                       Closed {activity.size} units at ${activity.price}
                     </p>
                     <p className={`text-sm font-medium ${activity.pnl! > 0 ? 'text-green-500' : 'text-red-500'}`}>
@@ -88,7 +88,7 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
                 )}
                 
                 {activity.type === 'alert' && (
-                  <p className="text-sm text-muted-foreground">{activity.message}</p>
+                  <p >{activity.message}</p>
                 )}
               </div>
             </div>
@@ -98,11 +98,3 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
     </Card>
   );
 }; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');

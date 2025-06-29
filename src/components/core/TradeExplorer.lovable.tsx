@@ -36,11 +36,11 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
 
   return (
     <BlockReveal>
-      <div className="trade-table">
+      <div >
         <Table>
           <TableHeader>
-            <TableRow className="trade-table-header">
-              <TableHead className="w-12">#</TableHead>
+            <TableRow >
+              <TableHead >#</TableHead>
               <TableHead>Entry Time</TableHead>
               <TableHead>Exit Time</TableHead>
               <TableHead>Duration</TableHead>
@@ -57,7 +57,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
               
               return (
                 <TableRow key={index} className={`trade-row ${isWin ? 'win' : 'loss'}`}>
-                  <TableCell className="font-medium">{tradeIndex}</TableCell>
+                  <TableCell >{tradeIndex}</TableCell>
                   <TableCell>{formatTime(trade.entryTime)}</TableCell>
                   <TableCell>{formatTime(trade.exitTime)}</TableCell>
                   <TableCell>{formatDuration(trade.entryTime, trade.exitTime)}</TableCell>
@@ -76,7 +76,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
         </Table>
         
         {totalPages > 1 && (
-          <div className="py-4 flex justify-center">
+          <div style={{ display: "flex", justifyContent: "center" }}>
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
@@ -91,7 +91,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                     <PaginationLink
                       onClick={() => handlePageChange(page)}
                       isActive={page === currentPage}
-                      className="cursor-pointer"
+                      
                     >
                       {page}
                     </PaginationLink>
@@ -114,9 +114,3 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
 };
 
 export default TradeExplorer; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};

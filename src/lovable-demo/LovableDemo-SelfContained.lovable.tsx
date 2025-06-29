@@ -246,13 +246,13 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
   );
 };
 
-// Enhanced and expanded sample data
+// Sample data
 const sampleStrategies: Strategy[] = [
   {
     id: '1',
     title: 'Momentum Breakout',
     tags: ['Momentum', 'Breakout', 'High Frequency'],
-    summary: 'Identifies strong momentum breakouts above key resistance levels with volume confirmation. Uses 3-period RSI divergence for entry timing and adaptive trailing stops.',
+    summary: 'Identifies strong momentum breakouts above key resistance levels with volume confirmation.',
     winRate: 0.65,
     totalPnL: 15420
   },
@@ -260,7 +260,7 @@ const sampleStrategies: Strategy[] = [
     id: '2', 
     title: 'Mean Reversion Scalp',
     tags: ['Mean Reversion', 'Scalping', 'Short Term'],
-    summary: 'Quick scalping strategy targeting oversold/overbought conditions in trending markets. Uses Bollinger Band squeezes and momentum reversals with tight risk management.',
+    summary: 'Quick scalping strategy targeting oversold/overbought conditions in trending markets.',
     winRate: 0.58,
     totalPnL: 8950
   },
@@ -268,7 +268,7 @@ const sampleStrategies: Strategy[] = [
     id: '3',
     title: 'Trend Following',
     tags: ['Trend Following', 'Long Term', 'Risk Management'],
-    summary: 'Classic trend following approach with dynamic position sizing and trailing stops. Combines multiple timeframe analysis with volume spread to determine entry and exit points.',
+    summary: 'Classic trend following approach with dynamic position sizing and trailing stops.',
     winRate: 0.72,
     totalPnL: 23680
   },
@@ -276,7 +276,7 @@ const sampleStrategies: Strategy[] = [
     id: '4',
     title: 'Options Strangle',
     tags: ['Options', 'Volatility', 'Neutral'],
-    summary: 'Profits from high volatility by selling strangles on high IV stocks before earnings. Implements sophisticated IV rank filtering and gamma exposure management techniques.',
+    summary: 'Profits from high volatility by selling strangles on high IV stocks before earnings.',
     winRate: 0.61,
     totalPnL: 12300
   },
@@ -284,7 +284,7 @@ const sampleStrategies: Strategy[] = [
     id: '5',
     title: 'Crypto Arbitrage',
     tags: ['Crypto', 'Arbitrage', 'Low Risk'],
-    summary: 'Exploits price differences between cryptocurrency exchanges for risk-free profits. Includes latency optimization, fee calculation, and multi-exchange execution algorithms.',
+    summary: 'Exploits price differences between cryptocurrency exchanges for risk-free profits.',
     winRate: 0.89,
     totalPnL: 31250
   },
@@ -292,105 +292,9 @@ const sampleStrategies: Strategy[] = [
     id: '6',
     title: 'Pairs Trading',
     tags: ['Pairs Trading', 'Market Neutral', 'Statistical'],
-    summary: 'Market neutral strategy trading correlated stocks when their spread diverges. Uses cointegration analysis and z-score thresholds with dynamic position sizing for optimal results.',
+    summary: 'Market neutral strategy trading correlated stocks when their spread diverges.',
     winRate: 0.64,
     totalPnL: 9840
-  },
-  {
-    id: '7',
-    title: 'Harmonic Pattern Scanner',
-    tags: ['Pattern Recognition', 'Swing Trading', 'Fibonacci'],
-    summary: 'Automatically identifies and trades harmonic patterns like Gartley, Butterfly, and Bat formations. Combines Fibonacci ratios with price action confirmation for precise entries.',
-    winRate: 0.68,
-    totalPnL: 18765
-  },
-  {
-    id: '8',
-    title: 'News Sentiment Analyzer',
-    tags: ['Sentiment Analysis', 'Event Driven', 'NLP'],
-    summary: 'Analyzes financial news headlines and social media sentiment in real-time to predict short-term price movements. Uses advanced NLP algorithms with customizable sentiment thresholds.',
-    winRate: 0.57,
-    totalPnL: 14280
-  },
-  {
-    id: '9',
-    title: 'Supply Demand Zones',
-    tags: ['Price Action', 'Support/Resistance', 'Institutional'],
-    summary: 'Identifies institutional supply and demand zones where large orders are filled. Tracks order flow and price rejection patterns to find high-probability reversal points.',
-    winRate: 0.71,
-    totalPnL: 26350
-  },
-  {
-    id: '10',
-    title: 'VWAP Deviation',
-    tags: ['VWAP', 'Intraday', 'Mean Reversion'],
-    summary: 'Trades deviations from Volume Weighted Average Price (VWAP) using standard deviation bands. Incorporates cumulative delta volume for confirmation of reversals and continuations.',
-    winRate: 0.63,
-    totalPnL: 11420
-  },
-  {
-    id: '11',
-    title: 'Ichimoku Cloud System',
-    tags: ['Multi-Timeframe', 'Japanese', 'Trend Following'],
-    summary: 'Complete trading system based on the Ichimoku Cloud indicator with multiple confirmation signals. Uses Tenkan/Kijun crosses, cloud breakouts, and Chikou span for trade management.',
-    winRate: 0.66,
-    totalPnL: 17950
-  },
-  {
-    id: '12',
-    title: 'AI Market Regime Detection',
-    tags: ['Machine Learning', 'Adaptive', 'Long Term'],
-    summary: 'Uses machine learning to detect market regimes and adapt trading strategies accordingly. Combines traditional technical indicators with neural networks to predict regime changes.',
-    winRate: 0.74,
-    totalPnL: 29780
-  },
-  {
-    id: '13',
-    title: 'Fixed Income Carry',
-    tags: ['Bonds', 'Yield Curve', 'Income'],
-    summary: 'Generates income through bond yield differentials while managing duration risk. Implements dynamic allocation based on yield curve steepness and central bank policy predictions.',
-    winRate: 0.82,
-    totalPnL: 8360
-  },
-  {
-    id: '14',
-    title: 'Volume Profile Breakout',
-    tags: ['Volume Analysis', 'Breakout', 'Institutional'],
-    summary: 'Trades breakouts from key volume nodes identified through Volume Profile analysis. Focuses on high volume areas and low volume nodes for support/resistance identification.',
-    winRate: 0.62,
-    totalPnL: 13570
-  },
-  {
-    id: '15',
-    title: 'Options Iron Condor',
-    tags: ['Options', 'Income', 'Range Bound'],
-    summary: 'Generates consistent income by selling Iron Condors on range-bound securities. Uses implied volatility rank and historical price channels to identify optimal setups.',
-    winRate: 0.77,
-    totalPnL: 10450
-  },
-  {
-    id: '16',
-    title: 'ETF Sector Rotation',
-    tags: ['Sectors', 'Momentum', 'Macro'],
-    summary: 'Rotates capital between sector ETFs based on relative strength and macroeconomic factors. Implements adaptive allocation using economic cycle indicators and momentum overlays.',
-    winRate: 0.68,
-    totalPnL: 19850
-  },
-  {
-    id: '17',
-    title: 'Commodity Channel Trading',
-    tags: ['Commodities', 'Channels', 'Trend Following'],
-    summary: 'Trades commodity futures using dynamic price channels and seasonal patterns. Incorporates COT report data, seasonality analysis, and technical breakouts for optimal entries.',
-    winRate: 0.59,
-    totalPnL: 21430
-  },
-  {
-    id: '18',
-    title: 'Market Divergence Finder',
-    tags: ['Divergence', 'Reversal', 'Oscillators'],
-    summary: 'Identifies and trades regular and hidden divergences between price and multiple oscillators. Uses adaptive filtered confirmations to eliminate false signals in different market contexts.',
-    winRate: 0.64,
-    totalPnL: 16780
   }
 ];
 
@@ -549,11 +453,3 @@ export const LovableDemo = () => {
 };
 
 export default LovableDemo; 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default LovableDemo-SelfContained;

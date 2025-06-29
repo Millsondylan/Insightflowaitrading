@@ -139,27 +139,27 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="theme-admin">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</h1>
-          <p className="text-white/70">
+    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingTop: "32px", paddingBottom: "32px", paddingLeft: "16px", paddingRight: "16px" }}>
+      <div >
+        <header style={{ marginBottom: "32px" }}>
+          <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", marginBottom: "16px" }}>Admin Dashboard</h1>
+          <p >
             Manage users, promo codes, and view system usage logs.
           </p>
         </header>
 
         <Tabs defaultValue="users">
-          <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1">
-            <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+          <TabsList style={{ marginBottom: "32px", border: "1px solid #374151" }}>
+            <TabsTrigger value="users" style={{ display: "flex", alignItems: "center" }}>
               <span style={{fontSize: '16px'}}>🛡️</span>
               <span>Users</span>
             </TabsTrigger>
-            <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
-              <Ticket className="h-4 w-4" />
+            <TabsTrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
+              <Ticket  />
               <span>Promo Codes</span>
             </TabsTrigger>
-            <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
-              <Activity className="h-4 w-4" />
+            <TabsTrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
+              <Activity  />
               <span>Usage Logs</span>
             </TabsTrigger>
           </TabsList>
@@ -184,11 +184,3 @@ export default function AdminPage() {
     </div>
   );
 } 
-// Add Lovable.dev compatibility
-export const lovable = {
-  editableComponents: true,
-  visualEditing: true,
-  supportsTailwind: true
-};
-
-export default $(basename "${FILE%.*}" | sed 's/\.lovable//');
