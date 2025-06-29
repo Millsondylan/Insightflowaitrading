@@ -128,4 +128,10 @@ export const ProUnlocker: React.FC<prounlockerprops  > = ({ onUnlock }) => {
     </Card>
   );
 }; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

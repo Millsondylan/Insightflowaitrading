@@ -101,4 +101,10 @@ const TokenBalanceCard: React.FC<tokenbalancecardprops  > = ({ token, index }) =
 };
 
 export default TokenBalanceCard; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

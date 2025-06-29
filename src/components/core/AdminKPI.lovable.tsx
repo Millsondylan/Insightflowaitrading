@@ -45,4 +45,10 @@ const AdminKPI: React.FC<adminkpiprops  > = ({ stats }) => {
 };
 
 export default AdminKPI; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

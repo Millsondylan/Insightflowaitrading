@@ -340,4 +340,10 @@ const UserTable: React.FC = () => {
 };
 
 export default UserTable; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

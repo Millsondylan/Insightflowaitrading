@@ -16,4 +16,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
     return <>{children}</>;
 } 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -20,4 +20,10 @@ export default function JournalCompanion({ entry, reflection }: Props) {
     </div>
   );
 } 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

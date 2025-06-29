@@ -97,4 +97,10 @@ export const EmotionTagging: React.FC<emotiontaggingprops  > = ({ onTagSelect })
     </Card>
   );
 }; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -425,4 +425,10 @@ const fetchUserAchievements = async (userId: string): Promise<userachievement  >
 };
 
 export default AchievementsComponent; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -56,4 +56,10 @@ const LessonBlock: React.FC<lessonblockprops  > = ({ block }) => {
 };
 
 export default LessonBlock; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

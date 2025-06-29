@@ -104,4 +104,10 @@ export const MindsetFeed: React.FC<mindsetfeedprops  > = ({ userId }) => {
     </Card>
   );
 }; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

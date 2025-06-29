@@ -8,7 +8,7 @@ interface PnLCurveProps {
   timeframe?: '1D' | '1W' | '1M' | '3M' | '1Y' | 'ALL';
 }
 
-export const PnLCurve: React.FC<pnlcurveprops  > = ({ timeframe = '1M' }) => {
+export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
   const [selectedTimeframe, setSelectedTimeframe] = React.useState(timeframe);
   
   // Mock data - TODO: Connect to generatePnLCurve function
@@ -25,12 +25,16 @@ export const PnLCurve: React.FC<pnlcurveprops  > = ({ timeframe = '1M' }) => {
   const timeframes = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
 
   return (
-    <card  >
+    <Card>
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold">P&L Curve</h2>
         <div className="flex gap-1">
           {timeframes.map((tf) => (
-            <button size="sm" > setSelectedTimeframe(tf as any)}
+            <Button 
+              key={tf} 
+              size="sm" 
+              variant={selectedTimeframe === tf ? 'default' : 'outline'}
+              onClick={() => setSelectedTimeframe(tf as any)}
             >
               {tf}
             </Button>
@@ -39,15 +43,13 @@ export const PnLCurve: React.FC<pnlcurveprops  > = ({ timeframe = '1M' }) => {
       </div>
       
       <div className="h-[400px] w-full">
-        <responsivecontainer width="100%" height="100%" >
-          <linechart  >
-            <cartesiangrid strokeDasharray="3 3" stroke="#333" >
-            <xaxis dataKey="date" stroke="#666" >
-            <yaxis stroke="#666" > `$${(value / 1000).toFixed(0)}k`}
-            />
-            <tooltip  > [`$${value.toLocaleString()}`, 'Balance']}
-            />
-            <line type="monotone" dataKey="value" stroke="#00ff88" >
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+            <XAxis dataKey="date" stroke="#666" />
+            <YAxis stroke="#666" tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`} />
+            <Tooltip formatter={(value: any) => [`$${value.toLocaleString()}`, 'Balance']} />
+            <Line type="monotone" dataKey="value" stroke="#00ff88" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -69,4 +71,10 @@ export const PnLCurve: React.FC<pnlcurveprops  > = ({ timeframe = '1M' }) => {
     </Card>
   );
 }; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

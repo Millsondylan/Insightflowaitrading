@@ -121,4 +121,10 @@ export const BehaviorTagGroup: React.FC<behaviortaggroupprops  > = ({
 };
 
 export default BehaviorTag; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

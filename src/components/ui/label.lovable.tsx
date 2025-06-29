@@ -19,4 +19,10 @@ Label.displayName = LabelPrimitive.Root.displayName
 
 export { Label }
 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

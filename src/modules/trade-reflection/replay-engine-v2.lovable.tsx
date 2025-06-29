@@ -99,4 +99,10 @@ export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => 
     </Card>
   );
 }; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

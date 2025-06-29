@@ -85,4 +85,10 @@ export const RoleBadge: React.FC<rolebadgeprops  > = ({
 };
 
 export default RoleBadge; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

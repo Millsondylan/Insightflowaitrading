@@ -140,4 +140,10 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
 };
 
 export default JournalCoach; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

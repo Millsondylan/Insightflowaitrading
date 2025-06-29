@@ -261,4 +261,10 @@ const JournalTimeline: React.FC<journaltimelineprops  > = ({
 
 export default JournalTimeline;
 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

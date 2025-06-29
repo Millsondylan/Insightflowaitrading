@@ -311,4 +311,10 @@ const QuizEngine: React.FC<quizprops  > = ({ quizId, lessonId, lessonTitle, onCo
 };
 
 export default QuizEngine; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

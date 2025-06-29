@@ -177,4 +177,10 @@ export const VersionDiff: React.FC<versiondiffprops  > = ({ strategyId, versions
     </Card>
   );
 }; 
-export const lovable = { component: true };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
