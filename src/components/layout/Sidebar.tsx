@@ -11,7 +11,17 @@ import {
   Settings,
   LogOut,
   TrendingUp,
-  LifeBuoy
+  LifeBuoy,
+  LineChart,
+  BarChart3,
+  Building2,
+  MessagesSquare,
+  Users,
+  Wallet,
+  GanttChart,
+  Activity,
+  Layers,
+  FileCode
 } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -111,6 +121,25 @@ export default function Sidebar() {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
+      </div>
+
+      <div className="space-y-4">
+        <div className="px-3 py-2">
+          <h2 className="mb-2 px-4 text-lg font-semibold">
+            Tools
+          </h2>
+          <div className="space-y-1">
+            <Link
+              to="/pine-script-generator"
+              className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                location.pathname === '/pine-script-generator' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+              }`}
+            >
+              <FileCode size={16} />
+              <span>Pine Script Generator</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

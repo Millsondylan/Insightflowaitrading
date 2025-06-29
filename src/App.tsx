@@ -52,6 +52,9 @@ import LovableEditorPage from './pages/LovableEditor.lovable';
 
 import { ProtectedRoute as OldProtectedRoute } from './components/core/ProtectedRoute';
 
+// Import the Pine Script Generator page
+import PineScriptGenerator from './pages/PineScriptGenerator';
+
 const queryClient = new QueryClient();
 
 export function App() {
@@ -114,6 +117,9 @@ export function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/docs" element={<Docs />} />
               <Route path="/chat" element={<Chat />} />
+
+              {/* Pine Script Generator route */}
+              <Route path="/pine-script-generator" element={<PineScriptGenerator />} />
 
               {/* 404 Route */}
               <Route path="*" element={<NotFound />} />

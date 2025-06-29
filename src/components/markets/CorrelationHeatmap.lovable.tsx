@@ -1,0 +1,526 @@
+import React, { useState, useEffect } from 'react';
+import {
+  generateCorrelationMatrix,
+  getCorrelationColor,
+  getCorrelationColorPalette,
+  type ColorPaletteTheme,
+  type CorrelationMatrix,
+  type CorrelationTimePeriod
+} from '@/lib/markets/market-correlation';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Badge } from '@/components/ui/badge';
+import { Star, StarOff, AlertTriangle, Info, Settings, RefreshCw } from 'lucide-react';
+import { Toggle } from '@/components/ui/toggle';
+import { useMarketCorrelations } from '@/lib/realtime/useMarketCorrelations';
+
+const DEFAULT_ASSETS = ['BTC', 'ETH', 'XRP', 'SOL', 'SPY', 'QQQ', 'GOLD', 'SILVER', 'CRUDE'];
+
+interface CorrelationHeatmapProps {
+  assets?: string[];
+  defaultTimePeriod?: CorrelationTimePeriod;
+  defaultTheme?: ColorPaletteTheme;
+  onCorrelationChange?: (baseAsset: string, quoteAsset: string, correlation: number) => void;
+  onFavoriteToggle?: (baseAsset: string, quoteAsset: string, isFavorite: boolean) => void;
+  userId?: string;
+  showSettings?: boolean;
+  className?: string;
+}
+
+// LOVABLE:AI_BLOCK id="correlation_heatmap" type="react_component"
+const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
+  assets = DEFAULT_ASSETS,
+  defaultTimePeriod = '30d',
+  defaultTheme = 'blueRed',
+  onCorrelationChange,
+  onFavoriteToggle,
+  userId,
+  showSettings = true,
+  className = ''
+}) => {
+  // State
+  const [correlationMatrix, setCorrelationMatrix] = useState<CorrelationMatrix | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [colorTheme, setColorTheme] = useState<ColorPaletteTheme>(defaultTheme);
+  const [timePeriod, setTimePeriod] = useState<CorrelationTimePeriod>(defaultTimePeriod);
+  const [selectedCell, setSelectedCell] = useState<{ row: number; col: number } | null>(null);
+  const [favorites, setFavorites] = useState<Array<{ base: string; quote: string }>>([]); // Simplified version without DB interaction
+  const [showCorrelationValue, setShowCorrelationValue] = useState(true);
+  const [viewMode, setViewMode] = useState<'all' | 'favorites'>('all');
+
+  const { data: realtimeRows, refresh: refreshRealtime } = useMarketCorrelations({ timeframe: timePeriod, autoSubscribe: true });
+
+  // Generate color palette
+  const colorPalette = getCorrelationColorPalette(colorTheme);
+
+  // LOVABLE:FUNCTION id="fetchCorrelations" endpoint="/api/markets/correlations"
+  // Fetch correlation data (initial + on realtimeRows change)
+  useEffect(() => {
+    const fetchCorrelations = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Use assets filtered for view mode
+        const assetsToUse = viewMode === 'favorites' 
+          ? Array.from(new Set(favorites.flatMap(f => [f.base, f.quote])))
+          : assets;
+        
+        if (assetsToUse.length === 0) {
+          setCorrelationMatrix(null);
+          setLoading(false);
+          return;
+        }
+        
+        const matrix = await generateCorrelationMatrix(assetsToUse, timePeriod);
+        setCorrelationMatrix(matrix);
+      } catch (err) {
+        console.error('Error fetching correlation data:', err);
+        setError('Failed to load correlation data');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchCorrelations();
+    
+    // Refresh every 5 minutes
+    const interval = setInterval(fetchCorrelations, 5 * 60 * 1000);
+    
+    return () => clearInterval(interval);
+  }, [assets, timePeriod, viewMode, favorites, realtimeRows]);
+
+  // Handle cell click
+  const handleCellClick = (rowIndex: number, colIndex: number) => {
+    if (rowIndex === colIndex) return; // Skip diagonal
+    
+    const baseAsset = correlationMatrix?.assets[rowIndex];
+    const quoteAsset = correlationMatrix?.assets[colIndex];
+    const correlation = correlationMatrix?.matrix[rowIndex][colIndex];
+    
+    if (baseAsset && quoteAsset && correlation !== undefined) {
+      setSelectedCell({ row: rowIndex, col: colIndex });
+      
+      if (onCorrelationChange) {
+        onCorrelationChange(baseAsset, quoteAsset, correlation);
+      }
+    }
+  };
+
+  // LOVABLE:FUNCTION id="toggleFavoritePair" endpoint="/api/markets/favorite-pair"
+  // Handle favorite toggle
+  const handleToggleFavorite = (baseAsset: string, quoteAsset: string) => {
+    const isFavorite = favorites.some(
+      f => (f.base === baseAsset && f.quote === quoteAsset) || 
+           (f.base === quoteAsset && f.quote === baseAsset)
+    );
+    
+    if (isFavorite) {
+      // Remove from favorites
+      setFavorites(favorites.filter(
+        f => !((f.base === baseAsset && f.quote === quoteAsset) || 
+              (f.base === quoteAsset && f.quote === baseAsset))
+      ));
+    } else {
+      // Add to favorites
+      setFavorites([...favorites, { base: baseAsset, quote: quoteAsset }]);
+    }
+    
+    if (onFavoriteToggle) {
+      onFavoriteToggle(baseAsset, quoteAsset, !isFavorite);
+    }
+  };
+
+  // Format correlation value for display
+  const formatCorrelation = (value: number): string => {
+    return value.toFixed(2);
+  };
+
+  // Check if a pair is in favorites
+  const isFavoritePair = (baseAsset: string, quoteAsset: string): boolean => {
+    return favorites.some(
+      f => (f.base === baseAsset && f.quote === quoteAsset) || 
+           (f.base === quoteAsset && f.quote === baseAsset)
+    );
+  };
+
+  // Get CSS class for correlation value for text color
+  const getCorrelationTextClass = (value: number): string => {
+    if (value === 1) return 'text-white';
+    if (value > 0.7) return 'text-white';
+    if (value > 0.3) return 'text-white';
+    if (value < -0.3) return 'text-white';
+    if (value < -0.7) return 'text-white';
+    return 'text-gray-900';
+  };
+
+  // Render loading state
+  if (loading && !correlationMatrix) {
+    return (
+      <Card className={`${className}`}>
+        <CardHeader>
+          <CardTitle>Market Correlations</CardTitle>
+          <CardDescription>Loading correlation data...</CardDescription>
+        </CardHeader>
+        <CardContent className="pt-6">
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Render error state
+  if (error && !correlationMatrix) {
+    return (
+      <Card className={`${className}`}>
+        <CardHeader>
+          <CardTitle>Market Correlations</CardTitle>
+          <CardDescription>An error occurred</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col items-center justify-center h-64">
+            <AlertTriangle className="h-12 w-12 text-red-500 mb-4" />
+            <p>{error}</p>
+            <Button onClick={() => setLoading(true)} className="mt-4">
+              <RefreshCw className="mr-2 h-4 w-4" />
+              Retry
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  // Render no data state
+  if (!correlationMatrix || correlationMatrix.assets.length === 0) {
+    return (
+      <Card className={`${className}`}>
+        <CardHeader>
+          <CardTitle>Market Correlations</CardTitle>
+          <CardDescription>No correlation data available</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col items-center justify-center h-64">
+            <Info className="h-12 w-12 text-gray-400 mb-4" />
+            <p>No assets available for correlation analysis</p>
+            {viewMode === 'favorites' && favorites.length === 0 && (
+              <p className="text-sm text-gray-500 mt-2">Add some favorite pairs to view them here</p>
+            )}
+            {viewMode === 'favorites' && (
+              <Button 
+                variant="outline" 
+                onClick={() => setViewMode('all')} 
+                className="mt-4"
+              >
+                View All Assets
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  return (
+    <Card className={`${className} overflow-hidden`}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <div>
+          <CardTitle>Market Correlations</CardTitle>
+          <CardDescription>
+            Data from {correlationMatrix.metadata.lastUpdated ? new Date(correlationMatrix.metadata.lastUpdated).toLocaleString() : 'unknown'}
+          </CardDescription>
+        </div>
+        
+        {showSettings && (
+          <div className="flex items-center space-x-2">
+            <Select
+              value={timePeriod}
+              onValueChange={(value) => setTimePeriod(value as CorrelationTimePeriod)}
+            >
+              <SelectTrigger className="w-[100px] h-8">
+                <SelectValue placeholder="Time Period" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1d">1 Day</SelectItem>
+                <SelectItem value="7d">1 Week</SelectItem>
+                <SelectItem value="30d">1 Month</SelectItem>
+                <SelectItem value="90d">3 Months</SelectItem>
+                <SelectItem value="1y">1 Year</SelectItem>
+              </SelectContent>
+            </Select>
+            
+            <Select
+              value={colorTheme}
+              onValueChange={(value) => setColorTheme(value as ColorPaletteTheme)}
+            >
+              <SelectTrigger className="w-[120px] h-8">
+                <SelectValue placeholder="Color Theme" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="blueRed">Blue-Red</SelectItem>
+                <SelectItem value="greenRed">Green-Red</SelectItem>
+                <SelectItem value="purpleGreen">Purple-Green</SelectItem>
+                <SelectItem value="orangeBlue">Orange-Blue</SelectItem>
+                <SelectItem value="monochrome">Monochrome</SelectItem>
+                <SelectItem value="highContrast">High Contrast</SelectItem>
+                <SelectItem value="pastel">Pastel</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+      </CardHeader>
+      
+      <CardContent className="p-0">
+        <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as 'all' | 'favorites')}>
+          <div className="border-b px-4">
+            <TabsList className="bg-transparent border-b-0">
+              <TabsTrigger 
+                value="all"
+                className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
+              >
+                All Assets
+              </TabsTrigger>
+              <TabsTrigger 
+                value="favorites"
+                className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
+              >
+                Favorites
+              </TabsTrigger>
+            </TabsList>
+            <div className="flex justify-end items-center py-2 gap-2">
+              <Toggle
+                aria-label="Show values"
+                pressed={showCorrelationValue}
+                onPressedChange={setShowCorrelationValue}
+                size="sm"
+                className="text-xs h-7"
+              >
+                Show Values
+              </Toggle>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setLoading(true)}
+                className="h-7 w-7"
+                title="Refresh data"
+              >
+                <RefreshCw className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+          
+          <TabsContent value="all" className="m-0">
+            {renderHeatmap(correlationMatrix)}
+          </TabsContent>
+          
+          <TabsContent value="favorites" className="m-0">
+            {favorites.length === 0 ? (
+              <div className="flex flex-col items-center justify-center p-8 text-center">
+                <StarOff className="h-8 w-8 text-gray-400 mb-4" />
+                <p className="text-gray-500">No favorite correlations yet</p>
+                <p className="text-sm text-gray-400 mt-2">Click on any correlation cell and use the star icon to add favorites</p>
+              </div>
+            ) : (
+              renderHeatmap(correlationMatrix)
+            )}
+          </TabsContent>
+        </Tabs>
+        
+        {/* Legend */}
+        <div className="p-4 pt-0">
+          <div className="flex items-center justify-center mt-4 space-x-1 text-xs">
+            <span className="text-gray-500">-1</span>
+            <div className="flex h-4">
+              {colorPalette.map((color, i) => (
+                <Tooltip key={i}>
+                  <TooltipTrigger asChild>
+                    <div
+                      className="w-5 h-4 cursor-help"
+                      style={{ backgroundColor: color }}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    {-1 + (i * 0.25)}
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </div>
+            <span className="text-gray-500">+1</span>
+          </div>
+          
+          {selectedCell && (
+            <div className="mt-4 pt-4 border-t">
+              <div className="flex justify-between items-center">
+                <h4 className="text-sm font-medium">
+                  {correlationMatrix.assets[selectedCell.row]} / {correlationMatrix.assets[selectedCell.col]}
+                </h4>
+                
+                <Badge 
+                  variant={getCorrelationBadgeVariant(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
+                >
+                  {formatCorrelation(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
+                </Badge>
+                
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    const baseAsset = correlationMatrix.assets[selectedCell.row];
+                    const quoteAsset = correlationMatrix.assets[selectedCell.col];
+                    handleToggleFavorite(baseAsset, quoteAsset);
+                  }}
+                >
+                  {isFavoritePair(
+                    correlationMatrix.assets[selectedCell.row],
+                    correlationMatrix.assets[selectedCell.col]
+                  ) ? (
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ) : (
+                    <Star className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
+              
+              <p className="text-sm text-gray-500 mt-2">
+                {getCorrelationDescription(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
+              </p>
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  );
+
+  function renderHeatmap(matrix: CorrelationMatrix) {
+    const { assets } = matrix;
+    
+    // If viewing favorites, filter assets
+    const displayedAssets = viewMode === 'favorites'
+      ? assets.filter(asset => 
+          favorites.some(f => f.base === asset || f.quote === asset)
+        )
+      : assets;
+    
+    if (displayedAssets.length === 0) return null;
+    
+    return (
+      <div className="heatmap-container overflow-auto p-4">
+        {/* Column headers */}
+        <div className="flex ml-12">
+          {displayedAssets.map((asset, i) => (
+            <div 
+              key={`header-${i}`} 
+              className="w-12 h-12 flex items-center justify-center font-medium text-sm"
+              style={{
+                transform: 'rotate(-45deg)',
+              }}
+            >
+              {asset}
+            </div>
+          ))}
+        </div>
+        
+        {/* Correlation rows */}
+        {displayedAssets.map((rowAsset, rowIndex) => {
+          const originalRowIndex = assets.indexOf(rowAsset);
+          
+          return (
+            <div key={`row-${rowIndex}`} className="flex">
+              {/* Row header */}
+              <div className="w-12 h-12 flex items-center justify-center font-medium text-sm">
+                {rowAsset}
+              </div>
+              
+              {/* Correlation cells */}
+              {displayedAssets.map((colAsset, colIndex) => {
+                const originalColIndex = assets.indexOf(colAsset);
+                const correlation = matrix.matrix[originalRowIndex][originalColIndex];
+                const isSelected = 
+                  selectedCell &&
+                  assets[selectedCell.row] === rowAsset && 
+                  assets[selectedCell.col] === colAsset;
+                
+                return (
+                  <Tooltip key={`cell-${rowIndex}-${colIndex}`}>
+                    <TooltipTrigger asChild>
+                      <div
+                        className={`
+                          w-12 h-12 flex items-center justify-center text-xs font-medium
+                          cursor-pointer transition-all duration-200 hover:scale-105
+                          border border-white/5
+                          ${isSelected ? 'ring-2 ring-white' : ''}
+                          ${getCorrelationTextClass(correlation)}
+                        `}
+                        style={{ backgroundColor: getCorrelationColor(correlation, colorPalette) }}
+                        onClick={() => handleCellClick(originalRowIndex, originalColIndex)}
+                      >
+                        {showCorrelationValue && formatCorrelation(correlation)}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <div className="text-center">
+                        <div className="font-bold">{rowAsset} / {colAsset}</div>
+                        <div className="text-sm">{formatCorrelation(correlation)}</div>
+                        <div className="text-xs opacity-80">
+                          {getCorrelationTooltip(correlation)}
+                        </div>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+};
+
+// Helper functions
+function getCorrelationBadgeVariant(value: number): "default" | "destructive" | "outline" | "secondary" {
+  if (value > 0.7) return "default";
+  if (value < -0.7) return "destructive";
+  if (Math.abs(value) > 0.4) return "secondary";
+  return "outline";
+}
+
+function getCorrelationDescription(value: number): string {
+  const absValue = Math.abs(value);
+  const direction = value > 0 ? "positive" : "negative";
+  
+  if (absValue > 0.9) {
+    return `Very strong ${direction} correlation - these assets move ${value > 0 ? 'together' : 'in opposite directions'} almost perfectly.`;
+  } else if (absValue > 0.7) {
+    return `Strong ${direction} correlation - these assets tend to move ${value > 0 ? 'together' : 'in opposite directions'} most of the time.`;
+  } else if (absValue > 0.5) {
+    return `Moderate ${direction} correlation - these assets often move ${value > 0 ? 'together' : 'in opposite directions'}.`;
+  } else if (absValue > 0.3) {
+    return `Weak ${direction} correlation - these assets sometimes move ${value > 0 ? 'together' : 'in opposite directions'}.`;
+  } else {
+    return `Very weak or no correlation - these assets move independently of each other.`;
+  }
+}
+
+function getCorrelationTooltip(value: number): string {
+  const absValue = Math.abs(value);
+  if (absValue > 0.9) return "Very Strong";
+  if (absValue > 0.7) return "Strong";
+  if (absValue > 0.5) return "Moderate";
+  if (absValue > 0.3) return "Weak";
+  return "Very Weak / None";
+}
+
+export default CorrelationHeatmap; 

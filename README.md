@@ -1,73 +1,138 @@
-# Welcome to your Lovable project
+# Insight Flow AI Trading Platform
 
-## Project info
+A comprehensive AI-powered trading platform with real-time market analysis, strategy building, and Pine Script generation.
 
-**URL**: https://lovable.dev/projects/053ad58b-54d7-491d-8a21-4bc3e08a95ac
+## Features
 
-## How can I edit this code?
+- **AI-Powered Strategy Building**: Create trading strategies using natural language
+- **Pine Script Generator**: Generate TradingView Pine Script code from prompts
+- **Real-time Market Correlations**: Live correlation heatmaps with auto-refresh
+- **Trading Journal & Reflection**: AI-powered trade analysis and emotional coaching
+- **System Monitoring**: Developer-mode panels for audit trails and system health
+- **Academy & Learning**: Interactive lessons with progress tracking
+- **Pro Features**: Unlimited generations, advanced AI models, and priority support
 
-There are several ways of editing your application.
+## Environment Variables
 
-**Use Lovable**
+Create a `.env.local` file with the following variables:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/053ad58b-54d7-491d-8a21-4bc3e08a95ac) and start prompting.
+```bash
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-Changes made via Lovable will be committed automatically to this repo.
+# AI Providers
+OPENAI_API_KEY=your_openai_key
+ANTHROPIC_API_KEY=your_anthropic_key
+GROQ_API_KEY=your_groq_key
 
-**Use your preferred IDE**
+# Market Data APIs
+POLYGON_API_KEY=your_polygon_key
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key
+FINNHUB_API_KEY=your_finnhub_key
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Audit & Monitoring (Optional)
+AUDIT_WEBHOOK_URL=https://your-webhook-endpoint.com/audit
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# TradingView Integration (Optional)
+TRADINGVIEW_SCRIPT_DEEPLINK=https://www.tradingview.com/chart/
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Stripe (for subscriptions)
+STRIPE_SECRET_KEY=your_stripe_secret
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable
 ```
 
-**Edit a file directly in GitHub**
+## Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Install dependencies**:
+   ```bash
+   pnpm install
+   ```
 
-**Use GitHub Codespaces**
+2. **Set up Supabase**:
+   ```bash
+   npx supabase start
+   npx supabase db push
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Run development server**:
+   ```bash
+   pnpm dev
+   ```
 
-## What technologies are used for this project?
+4. **Run tests**:
+   ```bash
+   # Unit tests
+   pnpm test
+   
+   # E2E tests
+   pnpm cypress open
+   ```
 
-This project is built with:
+## Architecture
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Database
+- **Supabase PostgreSQL** with real-time subscriptions
+- **Audit trails** for all user actions and AI interactions
+- **JSON schema validation** for data integrity
 
-## How can I deploy this project?
+### AI Integration
+- **Multi-model routing** (GPT-4, Claude, Groq) based on task complexity
+- **Reasoning logs** stored for analysis and improvement
+- **Quota management** with subscription tiers
 
-Simply open [Lovable](https://lovable.dev/projects/053ad58b-54d7-491d-8a21-4bc3e08a95ac) and click on Share -> Publish.
+### Real-time Features
+- **Market correlation updates** via Supabase channels
+- **Live system monitoring** with developer mode
+- **Collaborative strategy building** with presence indicators
 
-## Can I connect a custom domain to my Lovable project?
+## Testing
 
-Yes, you can!
+### Unit Tests
+```bash
+pnpm test
+```
+Tests cover:
+- JSON validation utilities
+- React hooks (market correlations, auth)
+- Audit logging functions
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### E2E Tests
+```bash
+pnpm cypress open
+```
+Full user journey tests:
+- Authentication flow
+- Pine Script generation
+- Developer mode toggle
+- System status monitoring
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Deployment
+
+1. **Database migrations**:
+   ```bash
+   supabase db push
+   ```
+
+2. **Build and deploy**:
+   ```bash
+   pnpm build
+   pnpm start
+   ```
+
+## Lovable.dev Integration
+
+This project is fully compatible with Lovable.dev:
+
+- **Registered blocks**: SystemStatusPanel, CorrelationHeatmap, ReferralSystem, PineScriptGeneratorPage
+- **AI-friendly structure**: Dual file pattern (`.tsx` + `.lovable.tsx`)
+- **Function endpoints**: All API routes follow Lovable conventions
+
+To sync with Lovable:
+```bash
+npx lovable-tagger serve src/lovable-demo/LovableDemo.tsx
+```
+
+## License
+
+MIT License - see LICENSE file for details.

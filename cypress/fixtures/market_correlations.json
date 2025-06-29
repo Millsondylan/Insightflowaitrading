@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "base_asset": "BTC",
+    "quote_asset": "ETH",
+    "correlation": 0.85,
+    "timeframe": "30d",
+    "updated_at": "2024-01-01T12:00:00Z"
+  },
+  {
+    "id": 2,
+    "base_asset": "BTC",
+    "quote_asset": "SPY",
+    "correlation": 0.42,
+    "timeframe": "30d",
+    "updated_at": "2024-01-01T12:00:00Z"
+  },
+  {
+    "id": 3,
+    "base_asset": "ETH",
+    "quote_asset": "SPY",
+    "correlation": 0.38,
+    "timeframe": "30d",
+    "updated_at": "2024-01-01T12:00:00Z"
+  }
+] 

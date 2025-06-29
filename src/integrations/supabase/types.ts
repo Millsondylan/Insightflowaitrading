@@ -1507,6 +1507,34 @@ export type Database = {
         };
         Relationships: [];
       };
+      
+      market_correlations_cache: {
+        Row: {
+          id: string;
+          asset_set: string;
+          timeframe: string;
+          correlation_data: Json;
+          last_updated: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          asset_set: string;
+          timeframe: string;
+          correlation_data: Json;
+          last_updated?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          asset_set?: string;
+          timeframe?: string;
+          correlation_data?: Json;
+          last_updated?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       academy_categories: {
         Row: {
           id: string;
@@ -2428,6 +2456,235 @@ export type Database = {
           }
         ];
       };
+      pinescript_requests: {
+        Row: {
+          id: string
+          user_id: string
+          prompt: string
+          created_at: string | null
+          is_premium: boolean | null
+          script_type: string
+          status: string
+          processing_time_ms: number | null
+          metadata: Json | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          prompt: string
+          created_at?: string | null
+          is_premium?: boolean | null
+          script_type: string
+          status?: string
+          processing_time_ms?: number | null
+          metadata?: Json | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          prompt?: string
+          created_at?: string | null
+          is_premium?: boolean | null
+          script_type?: string
+          status?: string
+          processing_time_ms?: number | null
+          metadata?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pinescript_requests_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      pinescript_outputs: {
+        Row: {
+          id: string
+          request_id: string
+          user_id: string
+          code: string
+          version: number
+          syntax_valid: boolean | null
+          has_errors: boolean | null
+          error_details: Json | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          request_id: string
+          user_id: string
+          code: string
+          version?: number
+          syntax_valid?: boolean | null
+          has_errors?: boolean | null
+          error_details?: Json | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          request_id?: string
+          user_id?: string
+          code?: string
+          version?: number
+          syntax_valid?: boolean | null
+          has_errors?: boolean | null
+          error_details?: Json | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pinescript_outputs_request_id_fkey"
+            columns: ["request_id"]
+            isOneToOne: false
+            referencedRelation: "pinescript_requests"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pinescript_outputs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      user_limits: {
+        Row: {
+          id: string
+          user_id: string
+          resource_type: string
+          monthly_limit: number
+          used_count: number
+          reset_date: string | null
+          created_at: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          resource_type: string
+          monthly_limit: number
+          used_count?: number
+          reset_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          resource_type?: string
+          monthly_limit?: number
+          used_count?: number
+          reset_date?: string | null
+          created_at?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_limits_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      pinescript_feedback: {
+        Row: {
+          id: string
+          pinescript_id: string
+          user_id: string
+          rating: number | null
+          feedback_text: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          pinescript_id: string
+          user_id: string
+          rating?: number | null
+          feedback_text?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          pinescript_id?: string
+          user_id?: string
+          rating?: number | null
+          feedback_text?: string | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pinescript_feedback_pinescript_id_fkey"
+            columns: ["pinescript_id"]
+            isOneToOne: false
+            referencedRelation: "pinescript_outputs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pinescript_feedback_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      pinescript_shares: {
+        Row: {
+          id: string
+          pinescript_id: string
+          user_id: string
+          share_token: string
+          views_count: number | null
+          is_public: boolean | null
+          expires_at: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          pinescript_id: string
+          user_id: string
+          share_token: string
+          views_count?: number | null
+          is_public?: boolean | null
+          expires_at?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          pinescript_id?: string
+          user_id?: string
+          share_token?: string
+          views_count?: number | null
+          is_public?: boolean | null
+          expires_at?: string | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "pinescript_shares_pinescript_id_fkey"
+            columns: ["pinescript_id"]
+            isOneToOne: false
+            referencedRelation: "pinescript_outputs"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "pinescript_shares_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never

@@ -16,5 +16,11 @@
     "ui": "@/components/ui",
     "lib": "@/lib",
     "hooks": "@/hooks"
+  },
+  "lovableBlocks": {
+    "SystemStatusPanel": "@/components/core/SystemStatusPanel.tsx",
+    "CorrelationHeatmap": "@/components/markets/CorrelationHeatmap.tsx",
+    "ReferralSystem": "@/components/pro/ReferralSystem.tsx",
+    "PineScriptGeneratorPage": "@/pages/PineScriptGenerator.tsx"
   }
 }
