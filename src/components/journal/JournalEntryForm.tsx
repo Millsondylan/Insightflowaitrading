@@ -119,22 +119,20 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             placeholder="e.g. Breakout scalp on BTC"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
             required
-          />
-        </Input>
+          / />
 
         <Div>
-          <Label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</Div>
+          <Label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</Input>
           <Input id="date"
             type="date"
             value={date}
             onChange={(e) = /> setDate(e.target.value)}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition calendar-picker-indicator"
             required
-          />
-        </Input>
+          / />
         
         <Div>
-          <Label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</Div>
+          <Label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</Input>
           <Div className="flex flex-wrap gap-2 mb-2">
             {tags.map(tag => (
               <Span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
@@ -150,11 +148,10 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             onChange={handleTagInputChange}
             placeholder="e.g. fomo, scalp, win"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
-          />
-        </Input>
+          / />
 
         <Div>
-          <Label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</Div>
+          <Label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</Input>
           <Textarea
             id="notes"
             rows={6}
@@ -162,11 +159,10 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Detailed thoughts on the trade... Markdown supported."
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
-          />
-        </Textarea>
+          / />
 
         <Div>
-          <Label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</Div>
+          <Label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</Textarea>
           <Select
             id="strategy"
             value={strategyId || ""}
@@ -191,7 +187,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
           />
           {screenshotPreview && (
             <Div className="mt-4">
-              <Img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" /></Input></Input>
+              <Img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" / /></Input /></Input />
             </Input>
           )}
         </Div>
@@ -200,11 +196,10 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             <Button type="submit" 
               disabled={!isFormValid || isSubmitting}
               className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
-      ></Div></Div>
+  ></Div>
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
             </Div>
-        </Div>
-      </Form>
+        </div />
     </Div>
   );
 };

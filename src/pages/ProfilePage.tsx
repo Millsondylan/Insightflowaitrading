@@ -89,20 +89,18 @@ export default function ProfilePage() {
   if (profileLoading) {
     return (
       <Div className="flex items-center justify-center h-[60vh]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </OnboardingFormData>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" / />
     );
   }
   
   return (
     <>
       <Helmet>
-        <title>Trading Profile | InsightFlow AI</title>
-      </Helmet>
+        <title>Trading Profile | InsightFlow AI</title />
       
       <Div className="container mx-auto px-4 py-8">
         <Div className="max-w-4xl mx-auto">
-          <H1 className="text-3xl font-bold mb-6">Trading Profile</Div>
+          <H1 className="text-3xl font-bold mb-6">Trading Profile</OnboardingFormData>
           
           <FormProvider {...methods} />
             <Form onSubmit={methods.handleSubmit(onSubmit)}>
@@ -115,47 +113,37 @@ export default function ProfilePage() {
                     <TabsTrigger value="timeframes" />Timeframes</TabsTrigger>
                     <TabsTrigger value="indicators" />Indicators</TabsTrigger>
                     <TabsTrigger value="risk" />Risk Profile</TabsTrigger>
-                    <TabsTrigger value="ai" />AI Preferences</TabsTrigger>
-                  </TabsList>
-                </Div>
+                    <TabsTrigger value="ai" />AI Preferences</TabsTrigger />
+                </TabsTrigger>
                 
                 <Card>
                   <CardHeader>
                     <CardTitle>Trading Preferences</Card>
                     <CardDescription>
                       Customize your trading profile to get personalized recommendations
-                    </CardDescription>
-                  </CardHeader>
+                    </CardDescription />
                   <CardContent className="pt-6" />
                     <TabsContent value="experience" className="mt-0" />
-                      <ExperienceLevelStep />
-                    </CardContent>
+                      <ExperienceLevelStep / />
                     
                     <TabsContent value="style" className="mt-0" />
-                      <TradingStyleStep />
-                    </TabsContent>
+                      <TradingStyleStep / />
                     
                     <TabsContent value="markets" className="mt-0" />
-                      <MarketsStep />
-                    </TabsContent>
+                      <MarketsStep / />
                     
                     <TabsContent value="timeframes" className="mt-0" />
-                      <TimeframesStep />
-                    </TabsContent>
+                      <TimeframesStep / />
                     
                     <TabsContent value="indicators" className="mt-0" />
-                      <IndicatorsStep />
-                    </TabsContent>
+                      <IndicatorsStep / />
                     
                     <TabsContent value="risk" className="mt-0" />
-                      <RiskProfileStep />
-                    </TabsContent>
+                      <RiskProfileStep / />
                     
                     <TabsContent value="ai" className="mt-0" />
-                      <AIPreferencesStep />
-                    </TabsContent>
-                  </CardContent>
-                </Card>
+                      <AIPreferencesStep / />
+                  </CardContent />
                 
                 <Div className="mt-6 flex justify-end">
                   <Button type="submit" disabled={isSubmitting} className="min-w-[120px]" />
@@ -170,11 +158,9 @@ export default function ProfilePage() {
                         Save Profile
                       </>
                     )}
-                  </Div>
-                </Div>
-              </Tabs>
-            </Form>
-          </FormProvider>
+                  </CardDescription>
+                </div />
+            </Form />
         </Div>
       </Div>
     </>

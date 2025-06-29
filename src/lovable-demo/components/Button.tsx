@@ -117,13 +117,13 @@ export const lovable = {
   };
 
   return (
-    <Button style={baseStyles}
+    <button style={baseStyles}
       onClick={disabled ? undefined : onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       disabled={disabled}
   >
       {children}
-    </Button>
+    </button>
   );
 }; 

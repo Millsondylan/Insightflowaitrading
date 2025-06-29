@@ -86,32 +86,28 @@ export const lovable = {
           <Label className="text-sm text-muted-foreground mb-2 block">Compare</Div>
           <Select value={leftVersion} onValueChange={setLeftVersion}>
             <selectTrigger>
-              <selectValue />
-            </Select>
+              <selectValue / />
             <selectContent>
               {mockVersions.map((v) => (
                 <selectItem key={v.id} value={v.id}>
                   {v.label}
-                </SelectItem>
+                </Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </Div>
         
         <Div>
           <Label className="text-sm text-muted-foreground mb-2 block">With</Div>
           <Select value={rightVersion} onValueChange={setRightVersion}>
             <selectTrigger>
-              <selectValue />
-            </Select>
+              <selectValue / />
             <selectContent>
               {mockVersions.map((v) => (
                 <selectItem key={v.id} value={v.id}>
                   {v.label}
-                </SelectItem>
+                </Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </Div>
       </Div>
 
@@ -137,7 +133,7 @@ export const lovable = {
         {diffs.map((diff, i) => (
           <Div key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
-    >
+>
             <Div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <Div className="flex-1">
@@ -179,7 +175,6 @@ export const lovable = {
         <Button className="flex-1">
           Apply Changes
         </Button>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

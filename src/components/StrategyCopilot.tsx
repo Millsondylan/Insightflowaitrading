@@ -22,7 +22,7 @@ type StrategyCopilotProps = {
 }
 
 // Mock AI suggestion generator
-async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion[]></Suggestion> {
+async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion[] /> {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
@@ -137,7 +137,7 @@ async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion
 }
 
 const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) => {
-  const [suggestions, setSuggestions] = useState<Suggestion[]></Suggestion>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[] /></Suggestion>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -196,9 +196,9 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
             <Div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
               style={{ animationDelay: `${index * 100}ms` }}
-        >
+    >
               <Div className="flex items-start gap-3">
-                <Span className="text-2xl flex-shrink-0"></Div></Div>{suggestion.icon}</Div>
+                <Span className="text-2xl flex-shrink-0"></Div>{suggestion.icon}</Div>
                 <Div className="flex-1">
                   <P className="text-sm text-white/70 leading-relaxed">
                     {suggestion.message}

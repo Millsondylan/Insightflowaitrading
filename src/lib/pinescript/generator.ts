@@ -245,7 +245,7 @@ function createPineScriptUserPrompt(options: PineScriptGenerateOptions): string 
 /**
  * Basic validation for Pine Script syntax
  */
-function validatePineScriptSyntax(code: string): { isValid: boolean; errors: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[] } {
+function validatePineScriptSyntax(code: string): { isValid: boolean; errors: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[] } {
   // This is a simple validation - in a real implementation, you'd want a more
   // comprehensive parser or to use TradingView's API if available
   const errors = [];

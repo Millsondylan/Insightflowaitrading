@@ -277,7 +277,7 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
           </Button>
           <Button className="px-4 py-2 rounded bg-background-secondary"
             onClick={fetchScanResults}
-    >
+>
             Refresh
           </Button>
         </Div>
@@ -302,9 +302,8 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                 <Th className="text-left p-3 hidden md:table-cell">Volume</Th>
                 <Th className="text-left p-3 hidden lg:table-cell">Signals</Th>
                 <Th className="text-left p-3">Score</Th>
-                <Th className="text-left p-3">Action</Th>
-              </Tr>
-            </Thead>
+                <Th className="text-left p-3">Action</Th />
+            </Th>
             <Tbody>
               {filteredResults.map(result => (
                 <Tr 
@@ -316,16 +315,14 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                     <Div>
                       <Div className="font-semibold">{result.symbol}</Tbody>
                       <Div className="text-sm text-text-tertiary">{result.name}</Div>
-                    </Div>
-                  </Td>
+                    </div />
                   <Td className="p-3">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </Td>
                   <Td className="p-3">
                     <Span className={result.change24h />= 0 ? 'text-status-success' : 'text-status-error'}>
                       {result.change24h >= 0 ? '+' : ''}{result.change24h.toFixed(2)}%
-                    </Td>
-                  </Td>
+                    </Td />
                   <Td className="p-3 hidden md:table-cell">
                     ${formatLargeNumber(result.volume24h)}
                   </Td>
@@ -340,31 +337,27 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                                 ? 'bg-red-500/20 text-red-500' 
                                 : 'bg-gray-500/20 text-gray-500'
                             }`}
-                        /></Td>
+                        / />
                           {signal.indicator}
-                        </Div>
+                        </Td>
                       ))}
-                    </Div>
-                  </Td>
+                    </div />
                   <Td className="p-3">
                     <Div className={`font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
-                    </Td>
-                  </Td>
+                    </Td />
                   <Td className="p-3">
                     <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-opacity-90 transition-colors"
-                      onClick={(e) =></Td></Td> {
+                      onClick={(e) = /></Td /></Td /> {
                         e.stopPropagation();
                         onSelectMarket(result.symbol);
                       }}
                     >
                       View
-                    </Td>
-                  </Td>
-                </Tr>
+                    </Td />
+                </Td>
               ))}
-            </Tbody>
-          </Table>
+            </Tbody />
         </Div>
       )}
     </Div>

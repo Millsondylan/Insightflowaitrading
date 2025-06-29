@@ -77,8 +77,7 @@ export const lovable = {
               dot={false}
               activeDot={{ r: 6, fill: '#00ff88' }}
             />
-          </Div>
-        </ResponsiveContainer>
+          </div />
       </Div>
       
       <Div className="grid grid-cols-3 gap-4 mt-4">
@@ -94,7 +93,6 @@ export const lovable = {
           <P className="text-sm text-muted-foreground">Sharpe Ratio</Div>
           <P className="text-lg font-bold">1.42</P>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

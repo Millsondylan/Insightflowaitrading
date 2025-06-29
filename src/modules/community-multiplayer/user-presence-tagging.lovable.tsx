@@ -60,16 +60,15 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
             <Div className="flex items-start gap-3">
               <Div className="relative">
                 <Avatar >
-                  <Avatarfallback  /></Div></Div></Div>
+                  <Avatarfallback  /></Div></Div>
                     {user.name.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
+                  </AvatarFallback />
                 <circle >
               </Div>
               
               <Div className="flex-1">
                 <Div className="flex items-center justify-between">
-                  <H3 className="font-semibold"></Div></Div>{user.name}</Div>
+                  <H3 className="font-semibold"></Div>{user.name}</Div>
                   <Div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <clock >
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
@@ -81,7 +80,7 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
                 <Div className="flex items-center gap-4 mt-2">
                   <Div className="flex gap-1">
                     {user.tags.map((tag) => (
-                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></Div></Div>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></Div>
                         {tag}
                       </Div>
                     ))}
@@ -107,8 +106,7 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
           <Span>{users.filter(u => u.status === 'online').length} traders online</Div>
           <Span>{channelId || 'Global'} channel</Span>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

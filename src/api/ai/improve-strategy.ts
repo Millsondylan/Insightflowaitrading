@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
+import { Database } from '@/types/supabase';
 import { createStrategyVersion } from '../../lib/db/ai-coaching';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -21,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
     
-    const supabaseClient = createClient(
+    const supabaseClient = createClient<Database>(
       supabaseUrl,
       supabaseAnonKey,
       {

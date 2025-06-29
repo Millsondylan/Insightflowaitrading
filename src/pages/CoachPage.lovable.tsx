@@ -20,8 +20,7 @@ export default function CoachPage() {
                     AI Coach
                 </H1>
                 <P className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</P>
-            </Div>
-        </Header>
+            </div />
 
         <Div className="space-y-6">
             <Div className="bg-black/20 rounded-lg p-6 min-h-[200px] flex flex-col gap-4">
@@ -40,7 +39,7 @@ export default function CoachPage() {
             </Div>
             <Div className="flex gap-4">
                 <Textarea placeholder="Ask your coach anything...">
-                <Button /></Div></Div>Send</Div>
+                <Button /></Div>Send</Div>
             </Div>
         </Div>
       </Div>

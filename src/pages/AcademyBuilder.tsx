@@ -7,7 +7,7 @@ const AcademyBuilderPage: React.FC = () => {
       {/* Hero Section */}
       <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
         <Div className="text-center max-w-5xl mx-auto">
-          <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight"></Div></Div>
+          <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight"></Div>
             Learn, Test, Evolve
           </Div>
           <P className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">
@@ -16,8 +16,7 @@ const AcademyBuilderPage: React.FC = () => {
           <Div className="mt-12">
             <Div className="threadline-glow w-32 mx-auto"></Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Progress Overview */}
       <ScrollSection className="px-6 py-20" delay={100}>
@@ -45,8 +44,7 @@ const AcademyBuilderPage: React.FC = () => {
               Continue your journey to trading mastery with structured lessons and hands-on practice
             </P>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Lesson Blocks Grid */}
       <ScrollSection className="px-6 py-20" delay={200} animation="slide-right">
@@ -203,8 +201,7 @@ const AcademyBuilderPage: React.FC = () => {
               </Div>
             </Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Achievement Badge */}
       <ScrollSection className="px-6 py-32" delay={300} animation="scale-in">
@@ -229,8 +226,7 @@ const AcademyBuilderPage: React.FC = () => {
               </Button>
             </Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
     </Div>
   );
 };

@@ -35,7 +35,7 @@ export function SwipeableCard({
   const { isMobile } = useMobileDetector();
   const [isDragging, setIsDragging] = useState(false);
   
-  const cardRef = useRef<HTMLDivElement></HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement /></HTMLDivElement>(null);
   const x = useMotionValue(0);
   
   // Display threshold is lower than the action threshold
@@ -69,7 +69,7 @@ export function SwipeableCard({
         <Div className="absolute left-4 top-0 bottom-0 flex items-center justify-center z-0">
           <motion.div style={{ opacity: rightActionOpacity }} className="flex flex-col items-center">
             {leftAction.icon}
-            <Span className={`text-xs font-medium text-${leftAction.color}-500`}></Div></Div>
+            <Span className={`text-xs font-medium text-${leftAction.color}-500`}></Div>
               {leftAction.label}
             </Div>
           </motion.div>
@@ -81,7 +81,7 @@ export function SwipeableCard({
         <Div className="absolute right-4 top-0 bottom-0 flex items-center justify-center z-0">
           <motion.div style={{ opacity: leftActionOpacity }} className="flex flex-col items-center">
             {rightAction.icon}
-            <Span className={`text-xs font-medium text-${rightAction.color}-500`}></Div></Div>
+            <Span className={`text-xs font-medium text-${rightAction.color}-500`}></Div>
               {rightAction.label}
             </Div>
           </motion.div>

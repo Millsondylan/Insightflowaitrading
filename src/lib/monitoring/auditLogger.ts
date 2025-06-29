@@ -137,7 +137,7 @@ export function useAuditLog() {
   /**
    * Log a toggle interaction (switch, checkbox, etc)
    */
-  const logToggle = async (componentName: string, newValue: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, details?: Record<string, any>): Promise<void> => {
+  const logToggle = async (componentName: string, newValue: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, details?: Record<string, any>): Promise<void> => { // eslint-disable-line @typescript-eslint/no-explicit-any
     const logData = {
       ...createBaseLogEntry('toggle_change', componentName),
       action_details: { ...details, newValue },
@@ -295,7 +295,7 @@ export async function trackInteraction(
     if (!user) return;
 
     const mouseEvent = event as MouseEvent;
-    const interaction: Omit<interactionHeatmap, 'id' | 'created_at'> = {
+    const interaction: Omit<InteractionHeatmap, 'id' | 'created_at'> = {
       user_id: user.id,
       page_path: window.location.pathname,
       component_id: componentId,
@@ -637,7 +637,7 @@ class AuditLogger {
    */
   public async logToggle(
     componentName: string,
-    newValue: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    newValue: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, // eslint-disable-line @typescript-eslint/no-explicit-any
     details?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
   ): Promise<void> {
     const logData = {

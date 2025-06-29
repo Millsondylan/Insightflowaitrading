@@ -45,14 +45,12 @@ const ActivityTimeline: React.FC<activityTimelineProps> = ({ events }) => {
         <H3 className="text-xl font-semibold text-white">Activity Timeline</Icon>
         <Select value={filter} onValueChange={(value) => setFilter(value as ActivityType | 'all')}>
           <selectTrigger className="w-[180px]">
-            <selectValue placeholder="Filter by type" />
-          </Select>
+            <selectValue placeholder="Filter by type" / />
           <selectContent>
-            <selectItem value="all">All Activities</SelectItem>
+            <selectItem value="all">All Activities</Select>
             <selectItem value="user">New Users</SelectItem>
             <selectItem value="journal">Journals</SelectItem>
-            <selectItem value="strategy">Strategies</SelectItem>
-          </SelectContent>
+            <selectItem value="strategy">Strategies</SelectItem />
         </Select>
       </Div>
       

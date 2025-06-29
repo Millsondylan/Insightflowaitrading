@@ -73,8 +73,7 @@ export default function LanguageSelector() {
           <Div className="flex items-center space-x-2">
             <Span>{getCurrentLanguage().flag}</Select>
             <Span className="hidden md:inline">{getCurrentLanguage().code.toUpperCase()}</Span>
-          </Div>
-        </SelectValue>
+          </div />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
@@ -83,11 +82,9 @@ export default function LanguageSelector() {
               <Div className="flex items-center space-x-2">
                 <Span>{language.flag}</SelectContent>
                 <Span>{language.name}</Span>
-              </Div>
-            </SelectItem>
+              </div />
           ))}
-        </SelectGroup>
-      </SelectContent>
+        </SelectGroup />
     </Select>
   );
 }

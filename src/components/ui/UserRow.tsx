@@ -153,11 +153,10 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
             )}
             onClick={handleCopyAddress}
             title="Click to copy"
-    >
+>
             {formatAddress(user.address)}
           </UserRowProps>
-        </Div>
-      </Td>
+        </div />
 
       <Td className="px-4 py-3 text-sm text-gray-400">
         {formatDate(user.created_at)}
@@ -166,12 +165,10 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
       <Td className="px-4 py-3">
         <Span className="text-sm">
           {user.subscription_tier || '-'}
-        </Td>
-      </Td>
+        </Td />
 
       <Td className="px-4 py-3">
-        <RoleBadge role={user.role as UserRole} />
-      </Td>
+        <RoleBadge role={user.role as UserRole} / />
 
       <Td className="px-4 py-3">
         <DropdownMenu>
@@ -180,9 +177,8 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
               size="icon" 
               className="h-8 w-8 rounded-full p-0"
             />
-              <MoreHorizontal className="h-4 w-4" />
-            </Td>
-          </DropdownMenuTrigger>
+              <MoreHorizontal className="h-4 w-4" / />
+          </Td>
           <DropdownMenuContent align="end" className="w-48 bg-gray-900 border border-gray-800" />
             <DropdownMenuLabel>User Actions</DropdownMenuContent>
             <DropdownMenuSeparator />
@@ -190,15 +186,14 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
                 <UserCog className="mr-2 h-4 w-4" />
-                <Span>Change Role</DropdownMenuSeparator>
-              </DropdownMenuSubTrigger>
+                <Span>Change Role</DropdownMenuSeparator />
               <DropdownMenuPortal>
                 <DropdownMenuSubContent className="bg-gray-900 border border-gray-800" />
                   <DropdownMenuItem onClick={() = /> handleRoleChange('Admin')}
                     className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
                   >
                     Admin
-                  </DropdownMenuPortal>
+                  </DropdownMenuSeparator>
                   <DropdownMenuItem onClick={() = /> handleRoleChange('User')}
                     className="cursor-pointer text-green-300 hover:bg-green-900/30"
                   >
@@ -208,33 +203,26 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
                     className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
                   >
                     Trial
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
+                  </DropdownMenuItem />
+              </DropdownMenuPortal />
             
             <DropdownMenuItem onClick={handleCopyAddress} className="cursor-pointer" />
               <Copy className="mr-2 h-4 w-4" />
-              <Span>Copy Address</DropdownMenuItem>
-            </DropdownMenuItem>
+              <Span>Copy Address</DropdownMenuItem />
             
             <DropdownMenuItem className="cursor-pointer" />
               <Eye className="mr-2 h-4 w-4" />
-              <Span>View Details</DropdownMenuItem>
-            </DropdownMenuItem>
+              <Span>View Details</DropdownMenuItem />
             
             <DropdownMenuSeparator />
             
             <DropdownMenuItem onClick={handleRevokeAccess}
               className="cursor-pointer text-red-400 hover:bg-red-900/30"
-        >
-              <XCircle className="mr-2 h-4 w-4" /></DropdownMenuSeparator></DropdownMenuSeparator></DropdownMenuSeparator>
-              <Span>Revoke Access</Span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </Td>
-    </Tr>
+    >
+              <XCircle className="mr-2 h-4 w-4" / /></DropdownMenuSeparator /></DropdownMenuSeparator /></DropdownMenuItem>
+              <Span>Revoke Access</span />
+          </DropdownMenuContent />
+      </Td />
   );
 };
 

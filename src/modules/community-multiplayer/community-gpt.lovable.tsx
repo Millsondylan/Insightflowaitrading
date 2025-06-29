@@ -66,12 +66,11 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
                 <Div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
                     <Div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                      <user >
-                    </Scrollarea>
+                      <user  />
                   ) : (
                     <Div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
                       <bot >
-                    </Div>
+                    </Scrollarea>
                   )}
                 </Div>
                 <Div className={`p-3 rounded-lg ${
@@ -79,7 +78,7 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
                   }`}
-             >
+         >
                   <P className="text-sm">{message.content}</Div>
                   <P className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString()}
@@ -102,18 +101,16 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
               </Div>
             </Div>
           )}
-        </Div>
-      </ScrollArea>
+        </div />
 
       <Div className="flex gap-2">
         <Input placeholder="Ask about strategies, analysis, or community insights..."  /> setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
         <Button size="icon">
-          <Send /></Div></Div></Div>
+          <Send /></Div></Div>
         </Button>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

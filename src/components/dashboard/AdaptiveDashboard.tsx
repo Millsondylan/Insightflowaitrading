@@ -233,46 +233,39 @@ export default function AdaptiveDashboard() {
         <Card className="mb-6" />
           <CardHeader>
             <CardTitle>Add a Widget</Card>
-            <CardDescription>Select a widget to add to your dashboard</CardDescription>
-          </CardHeader>
+            <CardDescription>Select a widget to add to your dashboard</CardDescription />
           <CardContent>
             {availableWidgets.length === 0 ? (
-              <P className="text-muted-foreground">All widgets are already on your dashboard.</CardContent>
+              <P className="text-muted-foreground">All widgets are already on your dashboard.</CardDescription>
             ) : (
               <Div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {availableWidgets.map(widgetType => (
                   <Card key={widgetType} className="cursor-pointer hover:bg-muted/50" onClick={() = /> handleAddWidget(widgetType)}>
                     <CardHeader className="p-4" />
-                      <CardTitle className="text-md" />{WIDGET_METADATA[widgetType].title}</Div>
-                    </CardHeader>
+                      <CardTitle className="text-md" />{WIDGET_METADATA[widgetType].title}</div />
                     <CardContent className="p-4 pt-0" />
-                      <P className="text-sm text-muted-foreground">{WIDGET_METADATA[widgetType].description}</CardContent>
-                    </CardContent>
-                  </Card>
+                      <P className="text-sm text-muted-foreground">{WIDGET_METADATA[widgetType].description}</CardContent />
+                  </Div>
                 ))}
               </Div>
             )}
-          </CardContent>
-        </Card>
+          </CardContent />
       )}
       
       <Tabs value={activeTab} onValueChange={setActiveTab} />
         <TabsList>
           <TabsTrigger value="all" />All Widgets</Tabs>
-          <TabsTrigger value="pinned" />Pinned</TabsTrigger>
-        </TabsList>
+          <TabsTrigger value="pinned" />Pinned</TabsTrigger />
         
         <TabsContent value="all" className="mt-6" />
           {filteredWidgets.length === 0 ? (
             <Card>
               <CardHeader>
-                <CardTitle>No Widgets Added</TabsContent>
-                <CardDescription>Add widgets to customize your dashboard</CardDescription>
-              </CardHeader>
+                <CardTitle>No Widgets Added</TabsTrigger>
+                <CardDescription>Add widgets to customize your dashboard</CardDescription />
               <CardContent>
-                <Button onClick={() = /> setShowWidgetSelector(true)}>Add Your First Widget</CardContent>
-              </CardContent>
-            </Card>
+                <Button onClick={() = /> setShowWidgetSelector(true)}>Add Your First Widget</CardContent />
+            </CardDescription>
           ) : (
             <DragDropContext onDragEnd={handleDragEnd} />
               <Droppable droppableId="widgets" />
@@ -280,7 +273,7 @@ export default function AdaptiveDashboard() {
                   <Div {...provided.droppableProps}
                     ref={provided.innerRef}
                     className="grid grid-cols-1 md:grid-cols-2 gap-6"
-               >
+           >
                     {filteredWidgets.map((widget, index) => {
                       const WidgetComponent = WIDGET_REGISTRY[widget.widget_id];
                       
@@ -290,26 +283,23 @@ export default function AdaptiveDashboard() {
                             <Div ref={provided.innerRef}
                               {...provided.draggableProps}
                               className="relative"
-                         >
+                     >
                               <Card className="h-full" />
                                 <Div {...provided.dragHandleProps}
                                   className="absolute top-3 right-10 cursor-move p-1 rounded-md hover:bg-muted"
-                             >
-                                  <GripVertical className="h-4 w-4 text-muted-foreground" />
-                                </DragDropContext>
-                                <Button
-                                  onClick={() => handleDismissWidget(widget.id)}
+                         >
+                                  <GripVertical className="h-4 w-4 text-muted-foreground" / />
+                                <Button                                   onClick={() => handleDismissWidget(widget.id)}
                                   className="absolute top-3 right-3 p-1 rounded-md hover:bg-muted"
                                 >
                                   <X className="h-4 w-4 text-muted-foreground" />
-                                </Button>
+                                </DragDropContext>
                                 
                                 <WidgetComponent
                                   data={widget.settings}
                                   userId={user?.id}
-                                />
-                              </WidgetComponent>
-                            </Div>
+                                / />
+                            </WidgetComponent>
                           )}
                         </Draggable>
                       );
@@ -317,8 +307,7 @@ export default function AdaptiveDashboard() {
                     {provided.placeholder}
                   </Div>
                 )}
-              </Droppable>
-            </DragDropContext>
+              </Droppable />
           )}
         </TabsContent>
         
@@ -327,17 +316,15 @@ export default function AdaptiveDashboard() {
             <Card>
               <CardHeader>
                 <CardTitle>No Pinned Widgets</TabsContent>
-                <CardDescription>Pin widgets to see them here</CardDescription>
-              </CardHeader>
-            </Card>
+                <CardDescription>Pin widgets to see them here</CardDescription />
+            </CardDescription>
           ) : (
             <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredWidgets.map(widget => {
                 const WidgetComponent = WIDGET_REGISTRY[widget.widget_id];
                 return (
                   <Card key={widget.id} className="relative" />
-                    <Button
-                      onClick={() => handleDismissWidget(widget.id)}
+                    <Button                       onClick={() => handleDismissWidget(widget.id)}
                       className="absolute top-3 right-3 p-1 rounded-md hover:bg-muted"
                     >
                       <X className="h-4 w-4 text-muted-foreground" />
@@ -345,14 +332,13 @@ export default function AdaptiveDashboard() {
                     <WidgetComponent
                       data={widget.settings}
                       userId={user?.id}
-                    /></WidgetComponent>
-                  </Card>
+                    / />
+                  </WidgetComponent>
                 );
               })}
             </Div>
           )}
-        </TabsContent>
-      </Tabs>
+        </TabsContent />
     </Div>
   );
 }

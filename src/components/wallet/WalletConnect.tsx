@@ -132,7 +132,7 @@ export default function WalletConnect({ onVerified }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 hover:underline"
-         >
+     >
               Download MetaMask
             </Div>
           </Div>
@@ -181,7 +181,7 @@ export default function WalletConnect({ onVerified }: Props) {
           <Button onClick={connectWallet}
             disabled={status === "connecting" || !isMetaMaskInstalled}
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-      >
+  >
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Div>
         ) : status === "verified" ? (
@@ -194,7 +194,7 @@ export default function WalletConnect({ onVerified }: Props) {
           <Button onClick={verifyWallet}
             disabled={status === "verifying"}
             className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
-      >
+  >
             {status === "verifying" ? "Verifying..." : "🔑 Verify Ownership"}
           </Button>
         )}

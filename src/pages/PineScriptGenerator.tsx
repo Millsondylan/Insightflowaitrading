@@ -69,8 +69,7 @@ plot(slowMA, "Slow MA", color.red)`);
             <Div className="flex items-center gap-2">
               <Code2 className="h-5 w-5 text-blue-400" />
               <CardTitle>Strategy Description</Div>
-            </Div>
-          </CardHeader>
+            </div />
           <CardContent>
             <Textarea
               value={prompt}
@@ -81,11 +80,10 @@ plot(slowMA, "Slow MA", color.red)`);
             <Button onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
               className="w-full bg-blue-600 hover:bg-blue-700"
-        >
+    >
               {isGenerating ? 'Generating...' : 'Generate PineScript'}
-            </CardContent>
-          </CardContent>
-        </Card>
+            </CardContent />
+        </CardContent>
 
         <Card>
           <CardHeader>
@@ -99,36 +97,33 @@ plot(slowMA, "Slow MA", color.red)`);
                   size="icon"
                   onClick={handleCopy}
                   disabled={!generatedCode}
-            >
+        >
                   <Copy className="h-4 w-4" />
                 </Div>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-            >
+        >
                   <Share2 className="h-4 w-4" />
                 </Button>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-            >
-                  <Download className="h-4 w-4" /></Button></Button></Button>
+        >
+                  <Download className="h-4 w-4" /></Button></Button></Button></Button></Button></Button>
                 </Button>
               </Div>
-            </Div>
-          </CardHeader>
+            </div />
           <CardContent>
             {generatedCode ? (
               <Pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-                <Code className="text-sm text-gray-300"></CardContent></CardContent>{generatedCode}</CardContent>
-              </Pre>
+                <Code className="text-sm text-gray-300" /></CardContent /></CardContent />{generatedCode}</CardContent />
             ) : (
               <Div className="text-center py-16 text-gray-400">
                 Generated code will appear here
-              </Div>
+              </CardContent>
             )}
-          </CardContent>
-        </Card>
+          </CardContent />
       </Div>
     </Div>
   );

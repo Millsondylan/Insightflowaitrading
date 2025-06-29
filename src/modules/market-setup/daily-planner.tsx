@@ -69,27 +69,24 @@ export const lovable = {
         <Badge variant={
             dailyPlan.marketOutlook === 'Bullish' ? 'default' : 
             dailyPlan.marketOutlook === 'Bearish' ? 'destructive' : 'secondary'
-          }
-   >
+          }>
           {dailyPlan.marketOutlook} Outlook
-        </Badge>
-      </CardHeader>
+        </Badge />
       <CardContent>
         <Div className="grid grid-cols-3 gap-4">
           <Div>
-            <H3 className="text-lg font-bold mb-2">Calendar</CardContent>
+            <H3 className="text-lg font-bold mb-2">Calendar</Badge>
             <Calendar
               mode="single"
               selected={selectedDate}
               onSelect={setSelectedDate}
               className="rounded-md border border-zinc-700"
-            />
-          </Calendar>
+            / />
           
           <Div className="col-span-2">
             <Div className="space-y-4">
               <Div>
-                <H3 className="text-lg font-bold mb-2">Potential Trades</Div>
+                <H3 className="text-lg font-bold mb-2">Potential Trades</Calendar>
                 <Div className="space-y-2">
                   {dailyPlan.potentialTrades.map((trade) => (
                     <Div key={trade.symbol}
@@ -121,14 +118,14 @@ export const lovable = {
                   {dailyPlan.keyEvents.map((event) => (
                     <Div key={event.id}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
-                 >
+             >
                       <Div className="flex justify-between items-center mb-2">
                         <H4 className="font-bold">{event.title}</Div>
                         <Badge variant={
                             event.impact === 'High' ? 'destructive' : 
                             event.impact === 'Medium' ? 'default' : 'secondary'
                           }
-                     >
+                 >
                           {event.impact} Impact
                         </Badge>
                       </Div>
@@ -169,8 +166,7 @@ export const lovable = {
           <Button variant="default" />
             Start Trading Session
           </Button>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

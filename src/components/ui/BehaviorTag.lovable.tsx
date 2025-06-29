@@ -78,10 +78,8 @@ const BehaviorTag: React.FC<Behaviortagprops> = ({
           <Div className="text-center">
             <P className="font-medium text-sm">{tag}</Div>
             <P className="text-xs text-gray-300 mt-1">{definition.description}</P>
-          </Div>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+          </div />
+      </Tooltip />
   );
 };
 

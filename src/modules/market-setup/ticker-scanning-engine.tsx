@@ -55,26 +55,23 @@ export const lovable = {
         <CardTitle>Ticker Scanning Engine</Card>
         <Badge variant="default">
           {filteredTickers.length} Matching Tickers
-        </Badge>
-      </CardHeader>
+        </Badge />
       <CardContent>
         <Div className="space-y-4 mb-4">
           <Div className="grid grid-cols-3 gap-4">
             <Div>
-              <Label className="block text-sm mb-1">Market Type</CardContent>
+              <Label className="block text-sm mb-1">Market Type</Badge>
               <Select 
                 value={filter.marketType} 
                 onValueChange={(value: MarketType) => handleFilterChange('marketType', value)}
               >
                 <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
-                  <selectValue placeholder="Select Market" />
-                </Select>
+                  <selectValue placeholder="Select Market" / />
                 <selectContent>
                   {['Stocks', 'Crypto', 'Forex', 'Commodities'].map((type) => (
-                    <selectItem key={type} value={type}>{type}</SelectItem>
+                    <selectItem key={type} value={type}>{type}</Select>
                   ))}
-                </SelectContent>
-              </Select>
+                </SelectContent />
             </Div>
             <Div>
               <Label className="block text-sm mb-1">Min Price</Div>
@@ -83,24 +80,22 @@ export const lovable = {
                 onChange={(e) = /> handleFilterChange('minPrice', Number(e.target.value))}
                 placeholder="Minimum Price"
                 className="bg-zinc-900 border-zinc-700 text-white"
-              />
-            </Input>
+              / />
             <Div>
-              <Label className="block text-sm mb-1">Min Volume</Div>
+              <Label className="block text-sm mb-1">Min Volume</Input>
               <Input type="number"
                 value={filter.minVolume || ''}
                 onChange={(e) = /> handleFilterChange('minVolume', Number(e.target.value))}
                 placeholder="Minimum Volume"
                 className="bg-zinc-900 border-zinc-700 text-white"
-              />
-            </Input>
-          </Div>
+              / />
+          </Input>
         </Div>
         <Div className="space-y-4">
           {filteredTickers.map((ticker) => (
             <Div key={ticker.symbol} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center"
-      >
+  >
               <Div>
                 <Div className="flex items-center space-x-2">
                   <H3 className="text-lg font-bold">{ticker.symbol}</Div>
@@ -123,11 +118,10 @@ export const lovable = {
           ))}
         </Div>
         <Div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white" /></Div></Div>
+          <Button variant="outline" className="text-white" /></Div>
             Refresh Tickers
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

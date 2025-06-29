@@ -65,8 +65,7 @@ export const lovable = {
               />
               <line type="monotone" dataKey="close" stroke="#8884d8" dot={false} />
               <ReferenceLine y={trade.entryPrice} label="Entry" stroke="green" strokeDasharray="3 3" />
-              <ReferenceLine y={trade.exitPrice} label="Exit" stroke="red" strokeDasharray="3 3" /></Div></Div></Div>
-            </LineChart>
+              <ReferenceLine y={trade.exitPrice} label="Exit" stroke="red" strokeDasharray="3 3" /></Div></div />
           </ResponsiveContainer>
         </Div>
       )}

@@ -90,8 +90,7 @@ exit_rules:
         <Tabslist  style={{ display: "grid", width: "100%" }}>
           <Tabstrigger value="editor">Editor</Tabslist>
           <Tabstrigger value="results">Results</Tabstrigger>
-          <Tabstrigger value="history">History</Tabstrigger>
-        </TabsList>
+          <Tabstrigger value="history">History</Tabstrigger />
 
         <tabscontent value="editor">
           <Div className="relative">
@@ -108,7 +107,7 @@ exit_rules:
               <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
                 <harddrive >
                 Local Only
-              </Div>
+              </Tabstrigger>
             </Div>
           </Div>
           
@@ -121,8 +120,7 @@ exit_rules:
               <save >
               Save Draft
             </Button>
-          </Div>
-        </TabsContent>
+          </div />
 
         <tabscontent value="results">
           <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -148,8 +146,7 @@ exit_rules:
             <P className="text-sm text-blue-600">
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
             </Div>
-          </Div>
-        </TabsContent>
+          </div />
 
         <tabscontent value="history">
           <Div className="space-y-2">
@@ -174,20 +171,17 @@ exit_rules:
               </Div>
               <Badge >Synced</Badge>
             </Div>
-          </Div>
-        </TabsContent>
+          </div />
       </Tabs>
 
       <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <H4 className="font-medium mb-2"></Div></Div>Local-First Benefits</Div>
+        <H4 className="font-medium mb-2"></Div>Local-First Benefits</Div>
         <Ul className="space-y-1 text-sm text-muted-foreground">
           <Li>• Work offline without interruption</Ul>
           <Li>• Instant feedback on changes</Li>
           <Li>• Automatic conflict resolution</Li>
-          <Li>• Version history preserved locally</Li>
-        </Ul>
-      </Div>
-    </Card>
+          <Li>• Version history preserved locally</Li />
+      </div />
   );
 }; 
 

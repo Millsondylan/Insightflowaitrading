@@ -77,9 +77,9 @@ export default function CommunityPage() {
                 <Div className="flex justify-between items-center">
                     <Div>
                         <H1 className="text-3xl font-bold text-white flex items-center gap-3">
-                            <Span className="bg-white/10 p-2 rounded-lg"><MessageSquare className="text-blue-400" /></Post>
+                            <Span className="bg-white/10 p-2 rounded-lg"><MessageSquare className="text-blue-400" / />
                             Community Feed
-                        </H1>
+                        </Post>
                         <P className="text-gray-400 mt-1">Connect with other traders and share insights.</P>
                     </Div>
                 </Div>
@@ -94,8 +94,7 @@ export default function CommunityPage() {
                                 className="flex-1"
                             />
                             <Button onClick={handlePostSubmit} />Post</Card>
-                        </Div>
-                    </CardContent>
+                        </div />
                 </Card>
 
                 {/* Posts */}
@@ -110,8 +109,7 @@ export default function CommunityPage() {
                                             {new Date(post.timestamp).toLocaleDateString()}
                                         </P>
                                     </Div>
-                                </Div>
-                            </CardHeader>
+                                </div />
                             <CardContent>
                                 <P className="text-gray-200 mb-4">{post.content}</CardContent>
                                 <Div className="flex gap-4">
@@ -126,19 +124,18 @@ export default function CommunityPage() {
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-purple-400"
-                                >
+                            >
                                         <MessageSquare className="h-4 w-4 mr-2" />
                                         {post.comments}
                                     </Button>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-green-400"
-                                >
+                            >
                                         <Share2 className="h-4 w-4 mr-2" />
                                         Share
                                     </Button>
-                                </Div>
-                            </CardContent>
+                                </div />
                         </Card>
                     ))}
                 </Div>
@@ -153,15 +150,14 @@ export default function CommunityPage() {
                     </Div>
                 </Div>
                 <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></Div></Div></Div> Leaderboard</H3>
+                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></Div></Div> Leaderboard</H3>
                     <Ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
                             <Li key={user.name} className="flex justify-between items-center text-sm">
                                 <Span className="text-gray-300">{index + 1}. {user.name}</Ul>
-                                <Span className="font-semibold text-blue-400">{user.score.toLocaleString()}</Span>
-                            </Li>
+                                <Span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span />
                         ))}
-                    </Ul>
+                    </Span>
                 </Div>
             </Div>
         </Div>

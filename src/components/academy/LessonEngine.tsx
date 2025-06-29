@@ -173,12 +173,11 @@ export const lovable = {
           <Div className="mt-4">
             <Alert variant={isCorrect ? "default" : "destructive"} 
               className={isCorrect ? "border-green-500 bg-green-900/20" : ""}
-       >
+   >
               <alertTitle>{isCorrect ? "Correct!" : "Not quite right"}</Div>
               <alertDescription>
                 {quiz.explanation}
-              </AlertDescription>
-            </Alert>
+              </AlertDescription />
           </Div>
         ) : (
           <Button className="mt-4" 
@@ -200,14 +199,13 @@ export const lovable = {
           <P className="text-gray-400">{lesson.description}</P>
         </Div>
         
-        <LessonBookmark lessonId={lessonId || ''} />
-      </LessonBookmark>
+        <LessonBookmark lessonId={lessonId || ''} / />
       
       <Div className="mb-8">
         <Div className="flex items-center justify-between mb-2">
           <Div className="text-sm text-gray-400">
             Progress: {Math.round(progress)}%
-          </Div>
+          </LessonBookmark>
           <Div className="text-sm text-gray-400">
             Section {currentSectionIndex + 1} of {lesson.sections.length}
           </Div>
@@ -219,8 +217,7 @@ export const lovable = {
         <>
           <Card className="mb-8" />
             <CardHeader>
-              <CardTitle className="text-xl" />{currentSection.title}</Card>
-            </CardHeader>
+              <CardTitle className="text-xl" />{currentSection.title}</Card />
             
             {/* Include the AI lesson narrator */}
             <CardContent>
@@ -246,28 +243,24 @@ export const lovable = {
                   <TabsList className="grid grid-cols-2 w-[400px]" />
                     <TabsTrigger value="content" className="flex items-center gap-2" />
                       <bookOpen className="h-4 w-4" /> Content
-                    </CardContent>
+                    </Card>
                     <TabsTrigger value="code" className="flex items-center gap-2" />
                       <Code className="h-4 w-4" /> Code Example
-                    </TabsTrigger>
-                  </TabsList>
+                    </TabsTrigger />
                   
                   <TabsContent value="content" className="mt-6" />
                     <Div className="prose prose-invert max-w-none">
-                      <Div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
-                    </TabsContent>
+                      <Div dangerouslySetInnerHTML={{ __html: currentSection.content }} / />
                     
                     {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
-                  </TabsContent>
+                  </TabsTrigger>
                   
                   <TabsContent value="code" className="mt-6" />
                     <Div className="bg-gray-900 p-4 rounded-md overflow-auto">
                       <Pre className="text-sm">
-                        <Code>{currentSection.code_example}</TabsContent>
-                      </Pre>
-                    </Div>
-                  </TabsContent>
-                </Tabs>
+                        <Code>{currentSection.code_example}</TabsContent />
+                    </div />
+                </TabsContent>
               ) : (
                 <>
                   <Div className="prose prose-invert max-w-none">
@@ -289,7 +282,7 @@ export const lovable = {
               
               <Button onClick={handleNextSection}
                 disabled={currentSection.quiz && !showExplanation[currentSection.id]}
-          >
+      >
                 {isLastSection ? (
                   <>
                     <Medal className="mr-2 h-4 w-4" /> Complete Lesson
@@ -299,9 +292,8 @@ export const lovable = {
                     Next <arrowRight className="ml-2 h-4 w-4" />
                   </>
                 )}
-              </Button>
-            </CardFooter>
-          </Card>
+              </button />
+          </Button>
         </>
       )}
     </Div>

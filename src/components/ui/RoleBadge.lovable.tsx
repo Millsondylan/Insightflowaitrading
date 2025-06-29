@@ -72,10 +72,8 @@ export const RoleBadge: React.FC<Rolebadgeprops > = ({
             {badge}
           </Tooltipprovider>
           <tooltipcontent >
-            <P className="text-xs">{tooltipContent[safeRole as UserRole]}</P>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+            <P className="text-xs">{tooltipContent[safeRole as UserRole]}</p />
+        </Tooltip />
     );
   }
 

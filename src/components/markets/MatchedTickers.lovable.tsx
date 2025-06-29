@@ -79,14 +79,14 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
             <Div key={ticker.symbol}
               className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
             />
-              <Div>
-                <Span className="font-semibold text-white">{ticker.symbol}</Div>
+              <Div></Div>
+                <Span className="font-semibold text-white">{ticker.symbol}</Span>
                 <Span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
                 </Span>
               </Div>
               <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
-                <Eye ></Button></Button></Button>
+                <Eye ></Button></Button></Button></Button></Button></Button></Button>
                 View
               </Button>
             </Div>
@@ -94,7 +94,7 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
         </Div>
       ) : (
         <Div className="text-center py-4">
-          <P className="text-white/50"></Div></Div>
+          <P className="text-white/50"></Div>
             No tickers currently match this strategy.
           </Div>
         </Div>

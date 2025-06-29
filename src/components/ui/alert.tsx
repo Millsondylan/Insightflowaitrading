@@ -23,8 +23,7 @@ const Alert = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof alertVariants>
 >(({ className, variant, ...props }, ref) => (
-  <Div
-    ref={ref}
+  <Div     ref={ref}
     role="alert"
     className={cn(alertVariants({ variant }), className)}
     {...props}
@@ -48,11 +47,10 @@ const AlertDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-  <Div
-    ref={ref}
+  <Div     ref={ref}
     className={cn("text-sm [&_p]:leading-relaxed", className)}
     {...props}
-  /></HTMLDivElement></HTMLDivElement>
+  / /></HTMLDivElement /></HTMLDivElement />
 ))
 AlertDescription.displayName = "AlertDescription"
 

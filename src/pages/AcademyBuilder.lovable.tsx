@@ -17,8 +17,7 @@ const AcademyBuilderPage: React.FC = () => {
           <Div className="mt-12">
             <Div className="threadline-glow w-32 mx-auto"></Div>
           </Div>
-        </Div>
-      </Scrollsection>
+        </div />
 
       {/* Progress Overview */}
       <Scrollsection >
@@ -46,8 +45,7 @@ const AcademyBuilderPage: React.FC = () => {
               Continue your journey to trading mastery with structured lessons and hands-on practice
             </P>
           </Div>
-        </Div>
-      </Scrollsection>
+        </div />
 
       {/* Lesson Blocks Grid */}
       <Scrollsection animation="slide-right" />
@@ -204,8 +202,7 @@ const AcademyBuilderPage: React.FC = () => {
               </Div>
             </Div>
           </Div>
-        </Div>
-      </Scrollsection>
+        </div />
 
       {/* Achievement Badge */}
       <Scrollsection animation="scale-in">
@@ -230,8 +227,7 @@ const AcademyBuilderPage: React.FC = () => {
               </Button>
             </Div>
           </Div>
-        </Div>
-      </Scrollsection>
+        </div />
     </Div>
   );
 };

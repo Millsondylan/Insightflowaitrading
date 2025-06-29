@@ -382,7 +382,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
                     ? 'border-brand-primary bg-brand-primary/5'
                     : 'border-border-primary bg-background-tertiary hover:border-brand-primary/50'
                 } ${plan.popular ? 'relative' : ''}`}
-        >
+    >
                 {plan.popular && (
                   <Div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 bg-brand-secondary text-white text-xs px-2 py-1 rounded-full">
                     Most Popular
@@ -409,10 +409,9 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
                   {plan.features.map((feature, i) => (
                     <Li key={i} className="flex items-start">
                       <Span className="text-status-success mr-2">✓</Ul>
-                      <Span className="text-sm">{feature}</Span>
-                    </Li>
+                      <Span className="text-sm">{feature}</span />
                   ))}
-                </Ul>
+                </Span>
                 
                 <Button  className={`w-full py-2 rounded-md ${
                     selectedPlanId === plan.id

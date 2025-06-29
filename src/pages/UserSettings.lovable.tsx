@@ -85,8 +85,7 @@ const Switch = ({
     onClick={() => !disabled && onCheckedChange(!checked)}
     disabled={disabled}
   >
-    <Span
-      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
+    <Span       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
         checked ? 'translate-x-6' : 'translate-x-1'
       }`}
     />
@@ -345,26 +344,24 @@ export default function UserSettings() {
           {/* Audio Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>🔊 Audio Settings</Div>
-            </CardHeader>
+              <CardTitle>🔊 Audio Settings</div />
             <CardContent>
               <Div className="space-y-6">
                 {/* Enable Sounds */}
                 <Div className="flex items-center justify-between">
                   <Div>
-                    <H4 className="text-white font-medium">Enable Sounds</CardContent>
+                    <H4 className="text-white font-medium">Enable Sounds</Div>
                     <P className="text-sm text-gray-400">Turn on/off all sound effects</P>
                   </Div>
                   <Switch
                     checked={settings.audio_settings.sounds_enabled}
                     onCheckedChange={(checked) => updateAudioSetting('sounds_enabled', checked)}
-                  />
-                </Switch>
+                  / />
 
                 {/* Volume Control */}
                 <Div className="space-y-2">
                   <Div className="flex items-center justify-between">
-                    <H4 className="text-white font-medium">Volume</Div>
+                    <H4 className="text-white font-medium">Volume</Switch>
                     <Span className="text-blue-400 font-mono">
                       {settings.audio_settings.volume}%
                     </Span>
@@ -373,95 +370,84 @@ export default function UserSettings() {
                     value={settings.audio_settings.volume}
                     onValueChange={(value) => updateAudioSetting('volume', value)}
                     disabled={!settings.audio_settings.sounds_enabled}
-                  />
-                </Slider>
+                  / />
 
                 {/* Voice Narration */}
                 <Div className="flex items-center justify-between">
                   <Div>
-                    <H4 className="text-white font-medium">Voice Narration</Div>
+                    <H4 className="text-white font-medium">Voice Narration</Slider>
                     <P className="text-sm text-gray-400">AI voice for lessons and alerts</P>
                   </Div>
                   <Switch
                     checked={settings.audio_settings.voice_narration}
                     onCheckedChange={(checked) => updateAudioSetting('voice_narration', checked)}
                     disabled={!settings.audio_settings.sounds_enabled}
-                  />
-                </Switch>
+                  / />
 
                 {/* Notification Sounds */}
                 <Div className="flex items-center justify-between">
                   <Div>
-                    <H4 className="text-white font-medium">Notification Sounds</Div>
+                    <H4 className="text-white font-medium">Notification Sounds</Switch>
                     <P className="text-sm text-gray-400">Sound alerts for trades and updates</P>
                   </Div>
                   <Switch
                     checked={settings.audio_settings.notification_sounds}
                     onCheckedChange={(checked) => updateAudioSetting('notification_sounds', checked)}
                     disabled={!settings.audio_settings.sounds_enabled}
-                  />
-                </Switch>
-              </Div>
-            </CardContent>
-          </Card>
+                  / />
+              </div />
+          </Switch>
 
           {/* Notification Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>📢 Notification Channels</Card>
-            </CardHeader>
+              <CardTitle>📢 Notification Channels</Card />
             <CardContent>
               <Div className="space-y-6">
                 <Div className="flex items-center justify-between">
                   <Div>
-                    <H4 className="text-white font-medium">Email Notifications</CardContent>
+                    <H4 className="text-white font-medium">Email Notifications</Card>
                     <P className="text-sm text-gray-400">Receive updates via email</P>
                   </Div>
                   <Switch
                     checked={settings.notification_channels.email}
                     onCheckedChange={(checked) => updateNotificationSetting('email', checked)}
-                  />
-                </Switch>
+                  / />
 
                 <Div className="flex items-center justify-between">
                   <Div>
-                    <H4 className="text-white font-medium">Push Notifications</Div>
+                    <H4 className="text-white font-medium">Push Notifications</Switch>
                     <P className="text-sm text-gray-400">Browser push notifications</P>
                   </Div>
                   <Switch
                     checked={settings.notification_channels.push}
                     onCheckedChange={(checked) => updateNotificationSetting('push', checked)}
-                  />
-                </Switch>
+                  / />
 
                 <Div className="flex items-center justify-between">
                   <Div>
-                    <H4 className="text-white font-medium">In-App Notifications</Div>
+                    <H4 className="text-white font-medium">In-App Notifications</Switch>
                     <P className="text-sm text-gray-400">Show notifications within the app</P>
                   </Div>
                   <Switch
                     checked={settings.notification_channels.in_app}
                     onCheckedChange={(checked) => updateNotificationSetting('in_app', checked)}
-                  />
-                </Switch>
-              </Div>
-            </CardContent>
-          </Card>
+                  / />
+              </div />
+          </Switch>
 
           {/* Theme Preview */}
           <Card>
             <CardHeader>
-              <CardTitle>🎨 Theme Preview</Card>
-            </CardHeader>
+              <CardTitle>🎨 Theme Preview</Card />
             <CardContent>
               <Div className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
-                <P className="text-white mb-2">Current Theme: <Span className="text-blue-400">Dark Mode</CardContent></P>
+                <P className="text-white mb-2">Current Theme: <Span className="text-blue-400">Dark Mode</Card></P>
                 <Div className="flex items-center gap-2">
                   <Div className="w-4 h-4 rounded-full bg-blue-600"></Div>
                   <Span className="text-gray-300">Accent Color: Blue</Span>
                 </Div>
-              </Div>
-            </CardContent>
+              </div />
           </Card>
 
           {/* Action Buttons */}
@@ -475,7 +461,7 @@ export default function UserSettings() {
             <Button onClick={handleReset}
               variant="outline"
               className="flex-1"
-        >
+    >
               🔄 Reset to Defaults
             </Button>
           </Div>
@@ -483,7 +469,7 @@ export default function UserSettings() {
           {/* Status */}
           {hasChanges && (
             <Div className="text-center">
-              <P className="text-yellow-400 text-sm"></Div></Div>⚠️ You have unsaved changes</Div>
+              <P className="text-yellow-400 text-sm"></Div>⚠️ You have unsaved changes</Div>
             </Div>
           )}
         </Div>

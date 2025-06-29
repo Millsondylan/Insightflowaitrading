@@ -148,37 +148,30 @@ export default function AdminPage() {
           <H1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</Div>
           <P className="text-white/70">
             Manage users, promo codes, and view system usage logs.
-          </P>
-        </Header>
+          </p />
 
         <Tabs defaultValue="users">
           <Tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
             <Tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
               <Shieldcheck  />
-              <Span>Users</Tabs>
-            </Tabstrigger>
+              <Span>Users</Tabs />
             <Tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
               <Ticket >
-              <Span>Promo Codes</Tabstrigger>
-            </Tabstrigger>
+              <Span>Promo Codes</Tabstrigger />
             <Tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <Activity  /></Tabstrigger></Tabstrigger></Tabstrigger>
-              <Span>Usage Logs</Span>
-            </Tabstrigger>
-          </Tabslist>
+              <Activity  / /></Tabstrigger /></Tabstrigger /></P>
+              <Span>Usage Logs</span />
+          </Span>
 
           <Tabscontent value="users">
-            <userrolemanager >
-          </Tabscontent>
+            <userrolemanager  />
 
           <Tabscontent value="promo">
-            <promocodeeditor >
-          </Tabscontent>
+            <promocodeeditor  />
 
           <Tabscontent value="logs">
-            <usagelogviewer >
-          </Tabscontent>
-        </Tabs>
+            <usagelogviewer  />
+        </Tabscontent>
       </Div>
     </Div>
   );

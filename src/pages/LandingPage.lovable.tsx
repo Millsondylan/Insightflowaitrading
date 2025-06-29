@@ -90,9 +90,8 @@ const LandingPage = () => {
       <Nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
         <Div className="flex items-center space-x-3">
           <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <trendingup  style={{ color: "white" }}>
-          </HTMLDivElement>
-          <H1 className="text-2xl font-bold text-white">InsightFlow AI</H1>
+            <trendingup  style={{ color: "white" }} />
+          <H1 className="text-2xl font-bold text-white">InsightFlow AI</HTMLDivElement>
         </Div>
         <Div className="flex space-x-2 md:space-x-4">
           <Button variant="ghost" /> navigate('/auth')} className="text-white hover:bg-white/10">
@@ -101,8 +100,7 @@ const LandingPage = () => {
           <Button > navigate('/auth')} className="quantum-button text-white">
             Start Free Trial
           </Button>
-        </Div>
-      </Nav>
+        </div />
 
       {/* Hero Section (Landing Theme) */}
       <sectionwrapper id="hero" style={{ display: "flex", alignItems: "center" }}>
@@ -128,8 +126,7 @@ const LandingPage = () => {
                 Get Started <arrowright >
               </Div>
             </Div>
-        </motion.div>
-      </SectionWrapper>
+        </motion.div />
 
       {/* Features Section (Academy Theme) */}
       <sectionwrapper id="features">
@@ -153,35 +150,31 @@ const LandingPage = () => {
                   <Div className="w-16 h-16 mx-auto rounded-lg bg-black/30 flex items-center justify-center mb-4 border border-white/10">
                     <feature.icon className="w-8 h-8 text-cyan-300" />
                   </Div>
-                  <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</Cardtitle>
-                </CardHeader>
+                  <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</Cardtitle />
                 <Cardcontent >
-                  <P className="text-gray-400 text-center">{feature.description}</Cardcontent>
-                </CardContent>
-              </Card>
+                  <P className="text-gray-400 text-center">{feature.description}</Cardcontent />
+              </Cardtitle>
             </motion.div>
           ))}
-        </Div>
-      </SectionWrapper>
+        </div />
       
       {/* Placeholder for Portfolio Section */}
       <sectionwrapper id="portfolio-demo">
         <Div className="text-center mb-12">
-            <H2 className="text-4xl font-bold text-white mb-4"></Div></Div>Your Portfolio, Supercharged</Div>
+            <H2 className="text-4xl font-bold text-white mb-4"></Div>Your Portfolio, Supercharged</Div>
             <P className="text-xl text-gray-400">Track your performance with stunning visuals.</P>
         </Div>
         <Div className="glass-card p-8">
-            <H3 className="text-2xl font-bold mb-4 text-white"></Div></Div>Performance Overview</Div>
+            <H3 className="text-2xl font-bold mb-4 text-white"></Div>Performance Overview</Div>
             <Div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
               <P className="text-gray-500">-- PnL Curve Chart Placeholder --</Div>
             </Div>
-        </Div>
-      </SectionWrapper>
+        </div />
 
       {/* Testimonials Section (NeonWave Theme) */}
       <sectionwrapper id="testimonials">
          <Div className="text-center mb-16">
-          <H2 className="text-4xl font-bold text-white mb-4"></Div></Div>Loved by Modern Traders</Div>
+          <H2 className="text-4xl font-bold text-white mb-4"></Div>Loved by Modern Traders</Div>
           <P className="text-xl text-gray-400 max-w-3xl mx-auto">
             Don't just take our word for it. Here's what our users are saying.
           </P>
@@ -196,18 +189,16 @@ const LandingPage = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card  style={{ height: "100%" }}>
-                <Cardcontent ></Div></Div>
+                <Cardcontent ></Div>
                   <P className="text-lg text-white mb-4">"{testimonial.quote}"</P>
                   <Div className="flex items-center">
                     <P className="font-bold text-white">{testimonial.author}</Div>
                     <P className="ml-2 text-gray-400">{testimonial.handle}</P>
-                  </Div>
-                </CardContent>
+                  </div />
               </Card>
             </motion.div>
           ))}
-        </Div>
-      </SectionWrapper>
+        </div />
     </Div>
   );
 };

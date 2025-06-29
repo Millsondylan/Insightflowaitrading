@@ -88,8 +88,7 @@ export function MobileModal({
     <Div className="fixed inset-0 z-50 bg-black/50 flex p-4 overflow-y-auto backdrop-blur-sm"
       onClick={handleBackdropClick}
       role="dialog"
-      aria-modal="true"
- >
+      aria-modal="true">
       <Div ref={modalRef}
         className={cn(
           'relative w-full bg-background shadow-lg transition-all duration-200',
@@ -98,8 +97,7 @@ export function MobileModal({
           position === 'bottom' && isMobile ? 'rounded-b-none' : 'rounded-lg',
           positionClasses[position],
           className
-        )}
-   >
+        )}>
         {/* Header */}
         {(title || showCloseButton) && (
           <Div className="flex items-center justify-between p-4 border-b">
@@ -115,7 +113,7 @@ export function MobileModal({
                 className="rounded-full h-8 w-8"
                 onClick={onClose}
                 aria-label="Close"
-          >
+      >
                 <X className="h-4 w-4" />
               </Button>
             )}

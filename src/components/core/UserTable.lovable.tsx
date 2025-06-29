@@ -134,8 +134,7 @@ const UserTable: React.FC = () => {
                 }
               }}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
-            />
-          </User>
+            / />
           
           {[...Array(pageCount)].map((_, i) => {
             const page = i + 1;
@@ -154,8 +153,7 @@ const UserTable: React.FC = () => {
                     isActive={page === currentPage}
                   >
                     {page}
-                  </PaginationLink>
-                </PaginationItem>
+                  </PaginationLink />
               );
             } else if (
               page === currentPage - 2 || 
@@ -174,10 +172,8 @@ const UserTable: React.FC = () => {
                 }
               }}
               className={currentPage >= pageCount ? 'pointer-events-none opacity-50' : ''}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            / />
+        </PaginationContent />
     );
   };
   
@@ -186,12 +182,12 @@ const UserTable: React.FC = () => {
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
         <Tr key={i} className="border-b border-gray-800/30">
-          <Td className="px-4 py-3"><skeleton ></Tr>
-          <Td className="px-4 py-3"><skeleton ></Td>
-          <Td className="px-4 py-3"><skeleton ></Td>
-          <Td className="px-4 py-3"><skeleton ></Td>
-          <Td className="px-4 py-3"><skeleton ></Td>
-        </Tr>
+          <Td className="px-4 py-3"><skeleton  />
+          <Td className="px-4 py-3"><skeleton  />
+          <Td className="px-4 py-3"><skeleton  />
+          <Td className="px-4 py-3"><skeleton  />
+          <Td className="px-4 py-3"><skeleton  />
+        </User>
       ))}
     </>
   );
@@ -204,38 +200,32 @@ const UserTable: React.FC = () => {
           {/* Search input */}
           <Div className="relative">
             <search >
-            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} /></Div></Div>
+            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} /></Div>
           </Div>
           
           {/* Role filter */}
           <Select >
             <selecttrigger >
-              <selectvalue placeholder="All roles">
-            </Select>
+              <selectvalue placeholder="All roles" />
             <selectcontent >
-              <selectitem value="">All roles</SelectItem>
+              <selectitem value="">All roles</Select>
               <selectitem value="Admin">
                 <Div className="flex items-center gap-2">
                   <rolebadge role="Admin"> Admin
-                </Div>
-              </SelectItem>
+                </div />
               <selectitem value="User">
                 <Div className="flex items-center gap-2">
                   <rolebadge role="User"> User
-                </Div>
-              </SelectItem>
+                </div />
               <selectitem value="Trial">
                 <Div className="flex items-center gap-2">
                   <rolebadge role="Trial"> Trial
-                </Div>
-              </SelectItem>
+                </div />
               <selectitem value="Expired">
                 <Div className="flex items-center gap-2">
                   <rolebadge role="Expired"> Expired
-                </Div>
-              </SelectItem>
-            </SelectContent>
-          </Select>
+                </div />
+            </SelectContent />
           
           {/* Sort options */}
           <dropdownmenu >
@@ -243,12 +233,11 @@ const UserTable: React.FC = () => {
               <Button variant="outline" size="sm">
                 <filter >
                 Sort
-              </Button>
-            </DropdownMenuTrigger>
+              </button />
             <dropdownmenucontent  style={{ border: "1px solid #E5E7EB" }}>
               <dropdownmenuitem > handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </DropdownMenuItem>
+              </Div>
               <dropdownmenuitem > handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
@@ -260,8 +249,7 @@ const UserTable: React.FC = () => {
               </DropdownMenuItem>
               <dropdownmenuitem > handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
-              </DropdownMenuItem>
-            </DropdownMenuContent>
+              </DropdownMenuItem />
           </DropdownMenu>
         </Div>
         
@@ -299,27 +287,24 @@ const UserTable: React.FC = () => {
               </Th>
               <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
-              </Th>
-            </Tr>
-          </Thead>
+              </Th />
+          </Th>
           <Tbody>
             {loading ? (
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <Userrow ></Tbody></Tbody></Tbody>
+                <Userrow  /></Tbody /></Tbody /></Tbody>
               ))
             ) : (
               <Tr>
                 <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users ></Tr></Tr></Tr>
+                  <Users  /></Tr /></Tr /></Tr>
                   <P>No users found</P>
-                  <P className="text-sm">Try adjusting your search or filters</P>
-                </Td>
-              </Tr>
+                  <P className="text-sm">Try adjusting your search or filters</p />
+              </P>
             )}
-          </Tbody>
-        </Table>
+          </Tbody />
       </Div>
       
       {/* Pagination */}
@@ -328,7 +313,7 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div></Div>
+          <P></Div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}

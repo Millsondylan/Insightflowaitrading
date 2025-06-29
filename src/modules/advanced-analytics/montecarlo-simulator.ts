@@ -74,7 +74,7 @@ export class MonteCarloSimulator {
    * TODO: implement different stochastic processes
    * TODO: add jump diffusion models
    */
-  private async simulateScenario(params: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, scenarioId: number): Promise<ScenarioResult></ScenarioResult> {
+  private async simulateScenario(params: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, scenarioId: number): Promise<ScenarioResult></ScenarioResult> {
     const { initialValue, expectedReturn, volatility } = params;
     const path: number[] = [initialValue];
     let currentValue = initialValue;

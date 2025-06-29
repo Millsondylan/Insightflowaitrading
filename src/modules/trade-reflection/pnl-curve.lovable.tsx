@@ -49,8 +49,7 @@ export const PnLCurve: React.FC<pnLCurveProps> = ({ timeframe = '1M' }) => {
             <YAxis stroke="#666" tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`} />
             <Tooltip formatter={(value: unknown) => [`$${value.toLocaleString()}`, 'Balance']} />
             <line type="monotone" dataKey="value" stroke="#00ff88" strokeWidth={2} dot={false} />
-          </Div>
-        </ResponsiveContainer>
+          </div />
       </Div>
       
       <Div className="grid grid-cols-3 gap-4 mt-4">
@@ -66,8 +65,7 @@ export const PnLCurve: React.FC<pnLCurveProps> = ({ timeframe = '1M' }) => {
           <P className="text-sm text-muted-foreground">Sharpe Ratio</Div>
           <P className="text-lg font-bold">1.42</P>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

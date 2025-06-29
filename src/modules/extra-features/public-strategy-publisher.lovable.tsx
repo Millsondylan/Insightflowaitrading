@@ -55,24 +55,21 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
         <Div>
           <Label className="text-sm font-medium mb-2 block">Strategy Title</Div>
           <Input placeholder="e.g., RSI Momentum Strategy" /> setPublishSettings({ ...publishSettings, title: e.target.value })}
-          />
-        </Input>
+          / />
 
         <Div>
-          <Label className="text-sm font-medium mb-2 block">Description</Div>
+          <Label className="text-sm font-medium mb-2 block">Description</Input>
           <Textarea placeholder="Describe your strategy, its performance, and best use cases..." /> setPublishSettings({ ...publishSettings, description: e.target.value })}
             rows={4}
-          />
-        </Textarea>
+          / />
 
         <Div>
-          <Label className="text-sm font-medium mb-2 block">Tags</Div>
+          <Label className="text-sm font-medium mb-2 block">Tags</Textarea>
           <Input placeholder="momentum, RSI, scalping (comma separated)"  /> setPublishSettings({ ...publishSettings, tags: e.target.value })}
-          />
-        </Input>
+          / />
 
         <Div className="space-y-4">
-          <H3 className="font-semibold">Visibility Settings</Div>
+          <H3 className="font-semibold">Visibility Settings</Input>
           
           <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'private' })}
@@ -133,13 +130,12 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
               Price (optional, 0 for free)
             </Div>
             <Input type="number" placeholder="0"  /> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
-            />
-          </Input>
+            / />
         )}
 
         <Button  style={{ width: "100%" }}>
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
-        </Button>
+        </Input>
 
         {publishedUrl && (
           <Div className="p-4 bg-green-500/10 rounded-lg">
@@ -147,7 +143,7 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
               Strategy published successfully!
             </Div>
             <Div className="flex items-center gap-2">
-              <Input style={{ fontSize: "0.75rem" }} /></Div></Div>
+              <Input style={{ fontSize: "0.75rem" }} /></Div>
               <Button size="sm" variant="outline"></Button>
                 Copy Link
               </Div>
@@ -169,8 +165,7 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
             <P className="text-xs text-muted-foreground">Earned</P>
           </Div>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

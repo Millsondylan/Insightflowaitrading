@@ -46,8 +46,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
             </Div>
           </Div>
-        </Div>
-      </BlockReveal>
+        </div />
       
       <Div className="space-y-6">
         <BlockReveal delay={0.1} />
@@ -56,26 +55,22 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
             {result.patterns.map(pattern => (
               <patternTag key={pattern} label={pattern} />
             ))}
-          </Div>
-        </BlockReveal>
+          </div />
 
         <BlockReveal delay={0.2} />
-          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</BlockReveal>
-          <P className="text-gray-300 mt-2">{result.summary}</P>
-        </BlockReveal>
+          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</Div>
+          <P className="text-gray-300 mt-2">{result.summary}</p />
         
         <BlockReveal delay={0.3} />
-          <H3 className="text-2xl font-bold text-cyan-400">Confidence</BlockReveal>
+          <H3 className="text-2xl font-bold text-cyan-400">Confidence</P>
           <Div className="flex items-center gap-4 mt-2">
             <Div className="confidence-meter-bg flex-grow">
-              <Div
-                className="confidence-meter-bar"
+              <Div                 className="confidence-meter-bar"
                 style={{ width: `${confidence}%` }}
               />
             </Div>
             <Span className="text-xl font-bold text-white">{confidence}%</Span>
-          </Div>
-        </BlockReveal>
+          </div />
         
         <BlockReveal delay={0.4} />
           <Div className="flex flex-wrap gap-4 mt-4">
@@ -86,10 +81,9 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
               <Link to="/academy?topic=patterns" />📘 Learn Pattern</Button>
             </Button>
             <Button asChild className="glow-button bg-green-500/20 border-green-500 hover:bg-green-500/30" />
-              <Link to="/strategy?from=vision" /></Button></Button>💡 Find Strategy</Button>
+              <Link to="/strategy?from=vision" /></Button></Button></Button></Button></Button>💡 Find Strategy</Button>
             </Button>
-          </Div>
-        </BlockReveal>
+          </div />
       </Div>
     </Div>
   );

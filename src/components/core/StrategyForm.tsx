@@ -132,15 +132,13 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             onValueChange={(value) => handleSelectChange(value, 'tradeStyle')}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
-              <selectValue placeholder="Select a trade style" />
-            </Select>
+              <selectValue placeholder="Select a trade style" / />
             <selectContent className="bg-black/90 border-gray-700 text-white">
-              <selectItem value="Intraday">Intraday</SelectItem>
+              <selectItem value="Intraday">Intraday</Select>
               <selectItem value="Swing">Swing</SelectItem>
               <selectItem value="Scalping">Scalping</SelectItem>
               <selectItem value="Position">Position</SelectItem>
-              <selectItem value="Custom">Custom</SelectItem>
-            </SelectContent>
+              <selectItem value="Custom">Custom</SelectItem />
           </Select>
           {formErrors.tradeStyle && (
             <P className="text-red-500 text-sm">{formErrors.tradeStyle}</P>
@@ -169,18 +167,16 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             onValueChange={(value) => handleSelectChange(value, 'timeframe')}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
-              <selectValue placeholder="Select a timeframe" />
-            </Select>
+              <selectValue placeholder="Select a timeframe" / />
             <selectContent className="bg-black/90 border-gray-700 text-white">
-              <selectItem value="1m">1 minute</SelectItem>
+              <selectItem value="1m">1 minute</Select>
               <selectItem value="5m">5 minutes</SelectItem>
               <selectItem value="15m">15 minutes</SelectItem>
               <selectItem value="30m">30 minutes</SelectItem>
               <selectItem value="1h">1 hour</SelectItem>
               <selectItem value="4h">4 hours</SelectItem>
               <selectItem value="1d">Daily</SelectItem>
-              <selectItem value="1w">Weekly</SelectItem>
-            </SelectContent>
+              <selectItem value="1w">Weekly</SelectItem />
           </Select>
           {formErrors.timeframe && (
             <P className="text-red-500 text-sm">{formErrors.timeframe}</P>
@@ -248,7 +244,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Button type="submit"
             className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 hover:scale-105 transition-all duration-300 w-full md:w-auto px-8 py-6"
             disabled={isLoading}
-     >
+ >
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating Strategy...

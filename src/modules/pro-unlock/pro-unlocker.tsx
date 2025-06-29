@@ -76,7 +76,7 @@ export const lovable = {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-    >
+>
             {plan.recommended && (
               <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended
@@ -95,8 +95,7 @@ export const lovable = {
               {plan.features.map((feature, i) => (
                 <Li key={i} className="flex items-start gap-2">
                   <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                  <Span className="text-sm">{feature}</Ul>
-                </Li>
+                  <Span className="text-sm">{feature}</Ul />
               ))}
             </Ul>
 
@@ -127,13 +126,12 @@ export const lovable = {
           </P>
         </Div>
         <Div className="text-center p-4">
-          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500" /></Div></Div></Div>
+          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500" /></Div></Div>
           <H4 className="font-semibold">Cancel Anytime</H4>
           <P className="text-sm text-muted-foreground">
             No questions asked
           </P>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

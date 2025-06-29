@@ -107,8 +107,7 @@ export const lovable = {
           const isDue = daysUntil <= 0;
 
           return (
-            <Div
-              key={memory.id}
+            <Div               key={memory.id}
               className={`p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer ${
                 isDue ? 'border-yellow-500/50' : ''
               }`}
@@ -158,10 +157,9 @@ export const lovable = {
       </Div>
 
       <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <P className="text-sm text-muted-foreground"></Div></Div>
+        <P className="text-sm text-muted-foreground"></Div>
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

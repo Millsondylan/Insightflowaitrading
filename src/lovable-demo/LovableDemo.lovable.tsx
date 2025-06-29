@@ -73,7 +73,7 @@ export const LovableDemo = () => {
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <Button  onClick={() => setActiveTab('sentiment')}
+          <button  onClick={() => setActiveTab('sentiment')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'sentiment' ? '#2563eb' : '#e5e7eb',
@@ -84,8 +84,8 @@ export const LovableDemo = () => {
             }}
           >
             Market Sentiment
-          </Button>
-          <Button  onClick={() => setActiveTab('optimizer')}
+          </button>
+          <button  onClick={() => setActiveTab('optimizer')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'optimizer' ? '#2563eb' : '#e5e7eb',
@@ -96,8 +96,8 @@ export const LovableDemo = () => {
             }}
           >
             Strategy Optimizer
-          </Button>
-          <Button  onClick={() => setActiveTab('reflection')}
+          </button>
+          <button  onClick={() => setActiveTab('reflection')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'reflection' ? '#2563eb' : '#e5e7eb',
@@ -108,8 +108,8 @@ export const LovableDemo = () => {
             }}
           >
             Trade Reflection
-          </Button>
-          <Button  onClick={() => setActiveTab('subscription')}
+          </button>
+          <button  onClick={() => setActiveTab('subscription')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'subscription' ? '#2563eb' : '#e5e7eb',
@@ -120,7 +120,7 @@ export const LovableDemo = () => {
             }}
           >
             Subscription
-          </Button>
+          </button>
         </div>
       </div>
 

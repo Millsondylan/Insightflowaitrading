@@ -151,8 +151,8 @@ export const LiveEventRoomComponent: React.FC<liveEventRoomProps> = ({
     return (
       <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <Div className="flex items-center justify-center h-96">
-          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></RoomMessage>
-          <Span className="ml-2 text-white/60">Connecting to room...</Span>
+          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400" />
+          <Span className="ml-2 text-white/60">Connecting to room...</RoomMessage>
         </Div>
       </Div>
     );
@@ -301,7 +301,7 @@ export const LiveEventRoomComponent: React.FC<liveEventRoomProps> = ({
                 <Button onClick={sendMessage}
                   disabled={!newMessage.trim() || !isConnected}
                   className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"
-          >
+      >
                   Send
                 </Div>
               </Div>
@@ -314,9 +314,9 @@ export const LiveEventRoomComponent: React.FC<liveEventRoomProps> = ({
       <Div className="p-3 border-t border-white/10 bg-white/5">
         <Div className="flex items-center justify-between">
           <Div className="flex items-center space-x-2 text-xs text-white/60">
-            <Span>🔴 LIVE</Div>
-            <Span>•</Span>
-            <Span>Started: {room.startTime.toLocaleTimeString()}</Span>
+            <Span></Div>🔴 LIVE</Div>
+            <Span></Span>•</Span>
+            <Span></Span>Started: {room.startTime.toLocaleTimeString()}</Span>
           </Div>
           
           <Div className="flex items-center space-x-2">

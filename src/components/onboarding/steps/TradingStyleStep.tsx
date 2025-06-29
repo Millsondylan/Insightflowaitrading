@@ -66,7 +66,7 @@ export default function TradingStyleStep() {
                     return (
                       <FormItem key={style.id}
                         className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"
-                  >
+              >
                         <FormControl>
                           <Checkbox checked={field.value?.includes(style.id as TradingStyle)}
                             onCheckedChange={(checked) = /> {
@@ -78,10 +78,9 @@ export default function TradingStyleStep() {
                                     )
                                   );
                             }}
-                          />
-                        </FormField>
+                          / />
                         <Div className="flex items-center space-x-3">
-                          <Div className="flex-shrink-0">{style.icon}</Div>
+                          <Div className="flex-shrink-0">{style.icon}</FormField>
                           <Div className="space-y-1 leading-none">
                             <FormLabel className="font-medium" />
                               {style.label}
@@ -90,18 +89,16 @@ export default function TradingStyleStep() {
                               {style.description}
                             </P>
                           </Div>
-                        </Div>
-                      </FormItem>
+                        </div />
                     );
                   }}
                 />
               ))}
             </Div>
-            <FormMessage />
-          </FormMessage>
+            <FormMessage / />
         )}
       />
-    </Div>
+    </FormMessage>
   );
 }
 

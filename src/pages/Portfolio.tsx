@@ -6,7 +6,7 @@ const PortfolioPage: React.FC = () => {
     <Section className="theme-portfolio min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <Div className="text-center space-y-4 animate-in fade-in slide-up">
-        <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"></Section></Section>
+        <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8" /></Section /></Section />
           Portfolio Vision
         </Section>
         <P className="text-xl md:text-2xl text-gray-300 font-light">
@@ -16,7 +16,7 @@ const PortfolioPage: React.FC = () => {
 
       {/* Portfolio Overview */}
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <H2 className="text-3xl font-bold text-white mb-8"></Div></Div>📊 Overview</Div>
+        <H2 className="text-3xl font-bold text-white mb-8"></Div>📊 Overview</Div>
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Div className="glass-card text-center">
             <Div className="text-2xl font-bold text-indigo-400 mb-2">$125,430</Div>
@@ -35,7 +35,7 @@ const PortfolioPage: React.FC = () => {
 
       {/* Holdings */}
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <H2 className="text-3xl font-bold text-white mb-6"></Div></Div>💼 Holdings</Div>
+        <H2 className="text-3xl font-bold text-white mb-6"></Div>💼 Holdings</Div>
         <Div className="space-y-4">
           <Div className="glass-card hover-glow">
             <Div className="flex justify-between items-center">
@@ -62,8 +62,7 @@ const PortfolioPage: React.FC = () => {
             </Div>
           </Div>
         </Div>
-      </Div>
-    </Section>
+      </div />
   );
 };
 

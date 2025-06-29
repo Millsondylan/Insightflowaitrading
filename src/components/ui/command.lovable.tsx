@@ -22,8 +22,7 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
       <Dialogcontent >
         <Command  />
           {children}
-        </Commandprimitive>
-      </DialogContent>
+        </Commandprimitive />
     </dialog>
   )
 }
@@ -35,7 +34,7 @@ const CommandInput = React.forwardRef<
   <Div className="flex items-center border-b px-3" cmdk-input-wrapper="">
     <search >
     <Commandprimitive >
-  </Div>
+  </Commandprimitive>
 ))
 
 CommandInput.displayName = CommandPrimitive.Input.displayName
@@ -89,13 +88,12 @@ const CommandShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span
-      className={cn(
+    <Span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    /></Commandprimitive></Commandprimitive>
+    / /></Commandprimitive /></Commandprimitive />
   )
 }
 CommandShortcut.displayName = "CommandShortcut"

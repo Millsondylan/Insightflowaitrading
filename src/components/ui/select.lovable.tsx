@@ -31,7 +31,7 @@ const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
 >(({ className, ...props }, ref) => (
-  <Selectprimitive  /></Selectprimitive>
+  <Selectprimitive  / /></Selectprimitive>
     <chevronup >
   </SelectPrimitive.ScrollUpButton>
 ))

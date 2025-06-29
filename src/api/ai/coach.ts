@@ -1,6 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { createClient } from '@supabase/supabase-js';
+import { Database } from '@/types/supabase';
 import { updateCoachSessionTranscript } from '../../lib/db/ai-coaching';
+
+interface ChatMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+}
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -27,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
     
-    const supabaseClient = createClient(
+    const supabaseClient = createClient<Database>(
       supabaseUrl,
       supabaseAnonKey,
       {
@@ -86,7 +92,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       .eq('id', sessionId)
       .single();
     
-    const previousMessages = previousSession?.transcript || [];
+    const previousMessages: ChatMessage[] = previousSession?.transcript || [];
     
     // Build the system prompt
     const systemPrompt = `
@@ -121,7 +127,7 @@ Respond as a knowledgeable but conversational trading coach. Focus on helping th
     ];
     
     // Add previous conversation for context
-    previousMessages.forEach(msg => {
+    previousMessages.forEach((msg: ChatMessage) => {
       messages.push({
         role: msg.role,
         content: msg.content

@@ -153,8 +153,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
             }}
           />
             <Card >
-              <Div
-                className={cn(
+              <Div                 className={cn(
                   "border-t-4 -mt-0.5",
                   entry.sentiment === "Bullish"
                     ? "border-green-500"
@@ -178,8 +177,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
                   >
                     <brain >
                   </Button>
-                </Div>
-              </CardHeader>
+                </div />
               <Cardcontent >
                 <H3 className="text-xl font-medium mb-2">{entry.title}</Cardcontent>
                 
@@ -217,14 +215,14 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
                       src={entry.chartUrl} 
                       alt="Trade chart" 
                       className="h-full w-full object-cover"
-                    /></Div></Div>
+                    /></Div>
                   </Div>
                 )}
                 
                 {entry.tags && entry.tags.length > 0 && (
                   <Div className="mt-4 flex flex-wrap gap-2">
                     {entry.tags.map((tag) => (
-                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></Div></Div>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></Div>
                         {tag}
                       </Div>
                     ))}
@@ -236,20 +234,17 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
                     <Button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
                       <Div className="flex items-center space-x-2">
                         <brain >
-                        <Span className="text-blue-400"></Button></Button>AI Analysis</Button>
+                        <Span className="text-blue-400"></Button></Button></Button></Button></Button>AI Analysis</Button>
                       </Div>
                       {isReflectionExpanded ? (
                         <chevronup >
                       ) : (
                         <chevrondown >
                       )}
-                    </Button>
-                  </CollapsibleTrigger>
+                    </button />
                   <collapsiblecontent >
-                    <aireflection >
-                  </CollapsibleContent>
-                </Collapsible>
-              </CardContent>
+                    <aireflection  />
+                </Collapsible />
             </Card>
           </Div>
         );

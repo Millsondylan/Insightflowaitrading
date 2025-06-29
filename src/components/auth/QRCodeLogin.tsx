@@ -83,9 +83,8 @@ const QRCodeLogin = () => {
     return (
       <Card>
         <CardContent className="pt-6 flex justify-center items-center min-h-[200px]" />
-          <Div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></Card>
-        </CardContent>
-      </Card>
+          <Div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary" />
+        </CardContent />
     );
   }
   
@@ -94,8 +93,7 @@ const QRCodeLogin = () => {
       <Card>
         <CardContent className="pt-6 text-center text-red-500" />
           {error}
-        </Card>
-      </Card>
+        </Card />
     );
   }
 
@@ -103,19 +101,17 @@ const QRCodeLogin = () => {
     <Card>
       <CardHeader>
         <CardTitle>Mobile Login</Card>
-        <CardDescription>Scan to log in on your mobile device</CardDescription>
-      </CardHeader>
+        <CardDescription>Scan to log in on your mobile device</CardDescription />
       <CardContent className="flex flex-col items-center" />
         {/* This would be a QR code in production */}
-        <Div className="border-4 border-dashed border-gray-400 w-[200px] h-[200px] flex items-center justify-center p-4 text-center bg-white text-black"></CardContent></CardContent>
+        <Div className="border-4 border-dashed border-gray-400 w-[200px] h-[200px] flex items-center justify-center p-4 text-center bg-white text-black" /></CardContent /></CardContent />
           QR Code for: {qrCodeValue}
-        </CardContent>
+        </CardDescription>
         
         <P className="text-sm mt-4 text-center text-gray-400">
           Open the Insight Flow app on your mobile device and scan this code to log in automatically
-        </P>
-      </CardContent>
-    </Card>
+        </p />
+    </P>
   );
 };
 

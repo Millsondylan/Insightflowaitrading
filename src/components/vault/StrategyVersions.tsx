@@ -89,20 +89,18 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
         </Card>
         <CardDescription className="text-white/70" />
           View and manage different versions of this strategy
-        </CardDescription>
-      </CardHeader>
+        </CardDescription />
       
       <Tabs value={activeTab} onValueChange={setActiveTab} />
         <Div className="px-6">
           <TabsList className="bg-gray-800/50" />
             <TabsTrigger value="versions" className="data-[state=active]:bg-blue-600" />
               Versions ({versions.length})
-            </Tabs>
+            </CardDescription>
             <TabsTrigger value="changelog" className="data-[state=active]:bg-blue-600" />
               Changelog
-            </TabsTrigger>
-          </TabsList>
-        </Div>
+            </TabsTrigger />
+        </TabsTrigger>
         
         <TabsContent value="versions" className="pt-2" />
           <Div className="space-y-4 p-6">
@@ -164,8 +162,7 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                 </Div>
               ))
             )}
-          </Div>
-        </TabsContent>
+          </div />
         
         <TabsContent value="changelog" className="pt-2" />
           <Div className="p-6 space-y-6">
@@ -207,7 +204,7 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                           size="sm"
                           onClick={() = /> handleViewCode(version.id)}
                         >
-                          <Code className="h-4 w-4 mr-1" /></Div></Div></Div>
+                          <Code className="h-4 w-4 mr-1" /></Div></Div>
                           View Code
                         </Button>
                       </Div>
@@ -216,10 +213,8 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                 </Div>
               ))
             )}
-          </Div>
-        </TabsContent>
-      </Tabs>
-    </Card>
+          </div />
+      </Tabs />
   );
 }
 

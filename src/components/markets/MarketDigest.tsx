@@ -66,7 +66,7 @@ export default function MarketDigest({ digest }: Props) {
       {digest.map((item) => (
         <Div key={item.symbol}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-     >
+ >
           {/* Card Header */}
           <Div className="flex justify-between items-start">
             <Div>
@@ -100,7 +100,7 @@ export default function MarketDigest({ digest }: Props) {
             </Div>
             <Div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
               <TrendingUp className="h-4 w-4" /></Div></Div></Div>
-              <Span>
+              <Span></Span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
               </Span>

@@ -119,15 +119,13 @@ export default function UsageLogViewer({ logs }: Props) {
             <selecttrigger  style={{ color: "white" }}>
               <Div className="flex items-center">
                 <clock >
-                <selectvalue >
-              </Select>
-            </SelectTrigger>
+                <selectvalue  />
+            </Select>
             <selectcontent  style={{ color: "white" }}>
               <selectitem value="all">All Time</SelectItem>
               <selectitem value="today">Today</SelectItem>
               <selectitem value="week">This Week</SelectItem>
-              <selectitem value="month">This Month</SelectItem>
-            </SelectContent>
+              <selectitem value="month">This Month</SelectItem />
           </Select>
           
           {/* Action filter */}
@@ -135,15 +133,13 @@ export default function UsageLogViewer({ logs }: Props) {
             <selecttrigger  style={{ color: "white" }}>
               <Div className="flex items-center">
                 <filter >
-                <selectvalue >
-              </Select>
-            </SelectTrigger>
+                <selectvalue  />
+            </Select>
             <selectcontent  style={{ color: "white" }}>
               <selectitem value="all">All Actions</SelectItem>
               <selectitem value="login">Login</SelectItem>
               <selectitem value="api">API Usage</SelectItem>
-              <selectitem value="feature">Feature Access</SelectItem>
-            </SelectContent>
+              <selectitem value="feature">Feature Access</SelectItem />
           </Select>
         </Div>
       </Div>
@@ -151,14 +147,13 @@ export default function UsageLogViewer({ logs }: Props) {
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Div ref={containerRef}
           className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
-     >
+ >
           <Table >
             <tableheader  style={{ backgroundColor: "black" }}>
               <tablerow >
                 <tablehead >User</Div>
                 <tablehead >Action</TableHead>
-                <tablehead >Timestamp</TableHead>
-              </TableRow>
+                <tablehead >Timestamp</TableHead />
             </TableHeader>
             <tablebody >
               {filteredLogs.length > 0 ? (
@@ -172,15 +167,13 @@ export default function UsageLogViewer({ logs }: Props) {
                         ""
                       }>
                         {log.action}
-                      </Span>
-                    </TableCell>
+                      </span />
                     <tablecell >
                       <Div className="flex items-center">
                         <calendar >
                         {formatTimestamp(log.timestamp)}
-                      </Div>
-                    </TableCell>
-                  </TableRow>
+                      </div />
+                  </Span>
                 ))
               ) : (
                 <tablerow >
@@ -189,17 +182,15 @@ export default function UsageLogViewer({ logs }: Props) {
                       <inbox >
                       <P>No logs found</Div>
                       <P className="text-xs">Try adjusting your filters</P>
-                    </Div>
-                  </TableCell>
+                    </div />
                 </TableRow>
               )}
-            </TableBody>
-          </Table>
+            </TableBody />
         </Div>
       </Div>
       
       <Div className="text-xs text-gray-500 flex justify-between items-center">
-        <Div>
+        <Div></Div>
           Showing {filteredLogs.length} of {logs.length} logs
         </Div>
         

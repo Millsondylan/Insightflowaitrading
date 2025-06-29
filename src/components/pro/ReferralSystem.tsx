@@ -240,16 +240,14 @@ export const lovable = {
           <Span>Referral Program</Referral>
           <Badge variant="outline" className="text-sm font-normal">
             Earn 10% on Referred Payments
-          </Badge>
-        </CardTitle>
+          </Badge />
         <CardDescription>
           Invite friends and earn 10% of their subscription payments
-        </CardDescription>
-      </CardHeader>
+        </CardDescription />
       
       <CardContent className="space-y-6" />
         <Div className="space-y-3">
-          <Label htmlFor="referral-link">Your Referral Link</CardContent>
+          <Label htmlFor="referral-link">Your Referral Link</Badge>
           <Div className="flex gap-2">
             <Input 
               id="referral-link" 
@@ -273,23 +271,20 @@ export const lovable = {
           <Card className="bg-muted/50" />
             <CardContent className="pt-6" />
               <Div className="text-2xl font-bold">{referrals.length}</Div>
-              <P className="text-sm text-muted-foreground">Total Referrals</P>
-            </CardContent>
-          </Card>
+              <P className="text-sm text-muted-foreground">Total Referrals</p />
+          </P>
           
           <Card className="bg-muted/50" />
             <CardContent className="pt-6" />
               <Div className="text-2xl font-bold">${totalEarned.toFixed(2)}</Card>
-              <P className="text-sm text-muted-foreground">Total Earned</P>
-            </CardContent>
-          </Card>
+              <P className="text-sm text-muted-foreground">Total Earned</p />
+          </P>
           
           <Card className="bg-muted/50" />
             <CardContent className="pt-6" />
               <Div className="text-2xl font-bold">${pendingPayout.toFixed(2)}</Card>
-              <P className="text-sm text-muted-foreground">Pending Payout</P>
-            </CardContent>
-          </Card>
+              <P className="text-sm text-muted-foreground">Pending Payout</p />
+          </P>
         </Div>
         
         <Tabs defaultValue="referrals" value={activeTab} onValueChange={setActiveTab} />
@@ -299,8 +294,7 @@ export const lovable = {
             </Tabs>
             <TabsTrigger value="earnings" />
               <Wallet className="h-4 w-4 mr-2" /> Earnings
-            </TabsTrigger>
-          </TabsList>
+            </TabsTrigger />
           
           <TabsContent value="referrals" />
             {referrals.length > 0 ? (
@@ -308,7 +302,7 @@ export const lovable = {
                 {referrals.map((referral) => (
                   <Div key={referral.id} className="flex justify-between items-center p-3 border rounded-md">
                     <Div>
-                      <Div className="font-medium">{referral.referred_email}</TabsContent>
+                      <Div className="font-medium">{referral.referred_email}</TabsTrigger>
                       <Div className="text-sm text-muted-foreground">
                         Joined {new Date(referral.signup_date).toLocaleDateString()}
                       </Div>
@@ -320,9 +314,8 @@ export const lovable = {
                       }>
                         {referral.status.charAt(0).toUpperCase() + referral.status.slice(1)}
                       </Div>
-                      <ChevronRight className="h-4 w-4 ml-2" />
-                    </ChevronRight>
-                  </Div>
+                      <ChevronRight className="h-4 w-4 ml-2" / />
+                  </ChevronRight>
                 ))}
               </Div>
             ) : (
@@ -385,10 +378,8 @@ export const lovable = {
                   </P>
                 </Div>
               )}
-            </Div>
-          </TabsContent>
-        </Tabs>
-      </CardContent>
+            </div />
+        </Tabs />
       
       <CardFooter className="flex flex-col space-y-4" />
         <Div className="text-sm text-muted-foreground">
@@ -396,8 +387,7 @@ export const lovable = {
         </CardFooter>
         <Div className="text-sm text-muted-foreground">
           You also earn a free month for every 5 Pine Scripts you share publicly with the community.
-        </Div>
-      </CardFooter>
-    </Card>
+        </div />
+    </Div>
   );
 } 

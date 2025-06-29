@@ -47,13 +47,12 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <Div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {ROUTES.map((route) => (
-          <Link ></Div></Div> setIsMobileMenuOpen(false)}
+          <Link ></Div> setIsMobileMenuOpen(false)}
           >
             {route.label}
           </Div>
         ))}
-      </Div>
-    </Nav>
+      </div />
   );
 };
 

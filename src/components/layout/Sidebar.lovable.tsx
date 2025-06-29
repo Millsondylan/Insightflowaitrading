@@ -46,14 +46,11 @@ export default function Sidebar() {
         <Tooltip  />
           <Tooltiptrigger >
             <Link >
-              <Icon / / />
-            </Tooltipprovider>
-          </Tooltiptrigger>
+              <Icon / / / / / / />
+          </Tooltipprovider>
           <Tooltipcontent side="right">
-            <P></Tooltipcontent></Tooltipcontent>{item.label}</Tooltipcontent>
-          </Tooltipcontent>
-        </Tooltip>
-      </Tooltipprovider>
+            <P /></Tooltipcontent /></Tooltipcontent />{item.label}</Tooltipcontent />
+        </Tooltip />
     );
   };
 
@@ -62,28 +59,25 @@ export default function Sidebar() {
       <Div className="flex flex-col items-center gap-10">
         <Link to="/" style={{ borderRadius: "0.5rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <trendingup  style={{ color: "white" }}>
-        </Div>
+        </Tooltipcontent>
         <Nav>
           <Ul className="space-y-4">
             {navItems.map((item) => (
-              <Li key={item.path}></Nav></Nav>
-                <navlink >
-              </Nav>
+              <Li key={item.path} /></Nav /></Nav />
+                <navlink  />
             ))}
-          </Ul>
-        </Nav>
-      </Div>
+          </Ul />
+      </Nav>
 
       <Div className="flex flex-col items-center gap-4">
         <Nav>
           <Ul className="space-y-2">
             {bottomNavItems.map((item) => (
-              <Li key={item.path}></Div></Div>
+              <Li key={item.path}></Div>
                 <navlink >
               </Div>
             ))}
-          </Ul>
-        </Nav>
+          </Ul />
         <Div className="border-t border-gray-800 w-full my-2"></Div>
         <Tooltipprovider >
           <Tooltip >
@@ -91,20 +85,16 @@ export default function Sidebar() {
               <Link to="/profile">
                 <avatar >
                   <avatarimage >
-                  <Avatarfallback ></Tooltipprovider></Tooltipprovider>{profile?.full_name?.[0] || 'U'}</Tooltipprovider>
-                </Avatar>
-              </Link>
-            </Tooltiptrigger>
+                  <Avatarfallback  /></Tooltipprovider /></Tooltipprovider />{profile?.full_name?.[0] || 'U'}</Tooltipprovider />
+              </Link />
             <Tooltipcontent side="right">
-              <P></Tooltipcontent></Tooltipcontent>{profile?.full_name || 'Profile'}</Tooltipcontent>
+              <P /></Tooltipcontent /></Tooltipcontent />{profile?.full_name || 'Profile'}</Tooltipprovider>
               <Button variant="ghost" size="sm" style={{ width: "100%" }}>
                 <logout >
                 Logout
-              </Button>
-            </Tooltipcontent>
-          </Tooltip>
-        </Tooltipprovider>
-      </Div>
+              </button />
+          </Tooltip />
+      </Button>
     </Div>
   );
 }

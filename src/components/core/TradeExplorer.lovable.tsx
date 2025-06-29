@@ -63,8 +63,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
               <tablehead >Entry Price</TableHead>
               <tablehead >Exit Price</TableHead>
               <tablehead >PnL</TableHead>
-              <tablehead >PnL %</TableHead>
-            </TableRow>
+              <tablehead >PnL %</TableHead />
           </TableHeader>
           <tablebody >
             {currentTrades.map((trade, index) => {
@@ -84,12 +83,10 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                   </TableCell>
                   <tablecell >
                     {formatPercent(trade.pnlPercentage)}
-                  </TableCell>
-                </TableRow>
+                  </TableCell />
               );
             })}
-          </TableBody>
-        </Table>
+          </TableBody />
         
         {totalPages > 1 && (
           <Div className="py-4 flex justify-center">
@@ -108,21 +105,17 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                       className="cursor-pointer"
                     >
                       {page}
-                    </PaginationLink>
-                  </PaginationItem>
+                    </PaginationLink />
                 ))}
                 
                 <paginationitem >
                   <paginationnext > currentPage < totalPages && handlePageChange(currentPage + 1)}
                     className={currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-                  />
-                </PaginationItem>
-              </PaginationContent>
-            </Pagination>
+                  / />
+              </PaginationContent />
           </Div>
         )}
-      </Div>
-    </BlockReveal>
+      </div />
   );
 };
 

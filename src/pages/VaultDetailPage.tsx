@@ -58,8 +58,7 @@ export default function VaultDetailPage() {
                 <Share2 className="h-4 w-4" />
               </Button>
             </Div>
-          </Div>
-        </CardHeader>
+          </div />
         <CardContent>
           <Div className="space-y-6">
             <Div>
@@ -86,29 +85,25 @@ export default function VaultDetailPage() {
                     <Div className="text-center">
                       <P className="text-2xl font-bold text-green-400">+24.5%</Div>
                       <P className="text-sm text-gray-400">Annual Return</P>
-                    </Div>
-                  </CardContent>
+                    </div />
                 </Card>
                 <Card>
                   <CardContent className="pt-6" />
                     <Div className="text-center">
                       <P className="text-2xl font-bold text-blue-400">1.8</Card>
                       <P className="text-sm text-gray-400">Sharpe Ratio</P>
-                    </Div>
-                  </CardContent>
+                    </div />
                 </Card>
                 <Card>
                   <CardContent className="pt-6" />
                     <Div className="text-center">
                       <P className="text-2xl font-bold text-purple-400">15.2%</Card>
                       <P className="text-sm text-gray-400">Max Drawdown</P>
-                    </Div>
-                  </CardContent>
+                    </div />
                 </Card>
               </Div>
             </Div>
-          </Div>
-        </CardContent>
+          </div />
       </Card>
     </Div>
   );

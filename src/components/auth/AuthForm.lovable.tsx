@@ -58,8 +58,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                         <Input type="email" placeholder="Email" /> setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
-                        />
-                    </Form>
+                        / />
 
                     <Div>
                         <Input type="password" placeholder="Password" /> setPassword(e.target.value)}
@@ -67,7 +66,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             required
                             minLength={8}
                         />
-                    </Div>
+                    </Form>
 
                     {error && (
                         <Div className="text-red-400 text-sm">{error}</Div>
@@ -94,7 +93,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             <Div className="w-full border-t border-white/10"></Div>
                         </Div>
                         <Div className="relative flex justify-center text-xs uppercase">
-                            <Span className="bg-background-primary px-2 text-gray-500"></Div></Div>Or continue with</Div>
+                            <Span className="bg-background-primary px-2 text-gray-500"></Div>Or continue with</Div>
                         </Div>
                     </Div>
 
@@ -111,7 +110,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
 
                     <Div className="text-center mt-6">
                         <Button  type="button"
-                            onClick={() =></Div></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
+                            onClick={() =></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {mode === 'signin' ? (
@@ -120,8 +119,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                                 "Already have an account? Sign in"
                             )}
                         </Div>
-                    </Div>
-                </Form>
+                    </div />
             </Div>
         </Div>
     );

@@ -53,12 +53,11 @@ export const lovable = {
   return (
     <Card className="w-full bg-black/80 border-zinc-800 text-white" />
       <CardHeader>
-        <CardTitle>Strategy Publisher</Strategy>
-      </CardHeader>
+        <CardTitle>Strategy Publisher</Strategy />
       <CardContent>
         <Div className="space-y-4">
           <Div>
-            <H3 className="text-lg font-bold mb-2">Strategy Details</CardContent>
+            <H3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
             <Div className="grid grid-cols-2 gap-4">
               <Input value={strategy.name}
                 onChange={(e) = /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
@@ -77,11 +76,10 @@ export const lovable = {
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
-            />
-          </Textarea>
+            / />
 
           <Div>
-            <H3 className="text-lg font-bold mb-2">Publish Settings</Div>
+            <H3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
             <Div className="space-y-2">
               <Div>
                 <Label className="block text-sm mb-1">Visibility</Div>
@@ -119,17 +117,15 @@ export const lovable = {
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
-              />
-            </Input>
-          </Div>
+              / />
+          </Input>
 
           <Button onClick={handlePublish}
             className="w-full bg-blue-600 hover:bg-blue-700"
-     >
+ >
             Publish Strategy
           </Button>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

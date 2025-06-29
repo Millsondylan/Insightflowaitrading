@@ -125,8 +125,7 @@ const Carousel = React.forwardRef<
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
-          {...props}
-   >
+          {...props}>
           {children}
         </Carouselcontextprops>
       </CarouselContext.Provider>
@@ -143,16 +142,14 @@ const CarouselContent = React.forwardRef<
 
   return (
     <Div ref={carouselRef} className="overflow-hidden">
-      <Div
-        ref={ref}
+      <Div         ref={ref}
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
         {...props}
-      />
-    </HTMLDivElement>
+      / />
   )
 })
 CarouselContent.displayName = "CarouselContent"
@@ -164,8 +161,7 @@ const CarouselItem = React.forwardRef<
   const { orientation } = useCarousel()
 
   return (
-    <Div
-      ref={ref}
+    <Div       ref={ref}
       role="group"
       aria-roledescription="slide"
       className={cn(
@@ -187,7 +183,7 @@ const CarouselPrevious = React.forwardRef<
 
   return (
     <Button />
-      <Arrowleft /></HTMLDivElement></HTMLDivElement></HTMLDivElement>
+      <Arrowleft / /></HTMLDivElement /></HTMLDivElement /></HTMLDivElement>
       <Span className="sr-only">Previous slide</Span>
     </Button>
   )
@@ -203,7 +199,7 @@ const CarouselNext = React.forwardRef<
   return (
     <Button >
       <arrowright >
-      <Span className="sr-only"></Button></Button>Next slide</Button>
+      <Span className="sr-only"></Button></Button></Button></Button></Button>Next slide</Button>
     </Button>
   )
 })

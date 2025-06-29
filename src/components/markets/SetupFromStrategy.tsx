@@ -245,36 +245,33 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
       <Card>
         <CardHeader>
           <CardTitle>Strategy Setup Finder</UserStrategy>
-          <CardDescription>Define your trading strategy and scan markets for current setups</CardDescription>
-        </CardHeader>
+          <CardDescription>Define your trading strategy and scan markets for current setups</CardDescription />
         <CardContent className="space-y-4" />
           <Div>
             <Label htmlFor="title" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
               Strategy Name
-            </CardContent>
+            </CardDescription>
             <Input id="title"
               className="mt-1"
               placeholder="My Breakout Strategy" 
               value={title} 
               onChange={e = /> setTitle(e.target.value)}
               disabled={!!strategy || isSaving}
-            />
-          </Input>
+            / />
           <Div>
             <Label htmlFor="strategyText" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
               Define Your Strategy Rules
-            </Div>
+            </Input>
             <Textarea id="strategyText"
               className="mt-1 min-h-32"
               placeholder="Example: When RSI(14) is below 30 and there's a bullish engulfing candle on the 1H timeframe, go long with a stop loss at the recent low and take profit at 2x the stop distance."
               value={strategyText}
               onChange={e = /> setStrategyText(e.target.value)}
               disabled={!!strategy || isSaving}
-            />
-          </Textarea>
+            / />
           
           <Div>
-            <H3 className="text-sm font-medium mb-2">Markets to Scan</Div>
+            <H3 className="text-sm font-medium mb-2">Markets to Scan</Textarea>
             <Div className="flex flex-wrap gap-2 mb-4">
               <Tabs defaultValue="all" />
                 <TabsList>
@@ -282,8 +279,7 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                   <TabsTrigger value="crypto" />Crypto</TabsTrigger>
                   <TabsTrigger value="forex" />Forex</TabsTrigger>
                   <TabsTrigger value="stocks" />Stocks</TabsTrigger>
-                  <TabsTrigger value="commodities" />Commodities</TabsTrigger>
-                </TabsList>
+                  <TabsTrigger value="commodities" />Commodities</TabsTrigger />
                 <TabsContent value="all" className="mt-2" />
                   <Div className="flex flex-wrap gap-2">
                     {availableMarkets.map((market) => (
@@ -294,10 +290,9 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                       >
                         {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3" /> : null}
                         {market.symbol}
-                      </TabsContent>
+                      </TabsTrigger>
                     ))}
-                  </Div>
-                </TabsContent>
+                  </div />
                 <TabsContent value="crypto" className="mt-2" />
                   <Div className="flex flex-wrap gap-2">
                     {availableMarkets.filter(m => m.type === 'crypto').map((market) => (
@@ -310,8 +305,7 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                         {market.symbol}
                       </TabsContent>
                     ))}
-                  </Div>
-                </TabsContent>
+                  </div />
                 <TabsContent value="forex" className="mt-2" />
                   <Div className="flex flex-wrap gap-2">
                     {availableMarkets.filter(m => m.type === 'forex').map((market) => (
@@ -324,29 +318,26 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                         {market.symbol}
                       </TabsContent>
                     ))}
-                  </Div>
-                </TabsContent>
+                  </div />
                 {/* Similar TabsContent for other market types */}
               </Tabs>
             </Div>
-          </Div>
-        </CardContent>
+          </div />
         <CardFooter className="flex justify-between" />
           <Button variant="outline" 
             onClick={handleSaveStrategy}
             disabled={isSaving || isScanning || (!title && !strategyText) || !!strategy}
-      >
+  >
             {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
             Save Strategy
           </CardFooter>
           <Button onClick={handleScanMarkets}
             disabled={isScanning || (!strategy && !strategyText)}
-      >
+  >
             {isScanning ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Scan className="mr-2 h-4 w-4" />}
             Scan Markets
-          </Button>
-        </CardFooter>
-      </Card>
+          </button />
+      </Button>
 
       {isScanning ? (
         <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -359,12 +350,10 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
               <CardContent className="pt-4" />
                 <Div className="space-y-2">
                   <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-3/4" />
-                </Skeleton>
-              </CardContent>
-            </Card>
+                  <Skeleton className="h-4 w-3/4" / />
+              </CardContent />
           ))}
-        </Div>
+        </Skeleton>
       ) : matchingSetups.length > 0 ? (
         <Div>
           <H2 className="text-2xl font-bold mb-4">Matching Setups ({matchingSetups.length})</Div>
@@ -411,20 +400,18 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                         {setup.symbol}
                         <Badge variant={isLong ? 'default' : 'destructive'}
                           className="ml-2"
-                    >
+                >
                           {isLong ? (
                             <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</Div>
                           ) : (
                             <Span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3" /> SHORT</Span>
                           )}
-                        </Badge>
-                      </CardTitle>
+                        </Badge />
                       <Badge variant="outline" />{setup.timeframe}</Badge>
                     </Div>
                     <CardDescription className="flex items-center" />
-                      Confidence: <Span className="text-amber-500 ml-1">{setup.confidence}%</CardDescription>
-                    </CardDescription>
-                  </CardHeader>
+                      Confidence: <Span className="text-amber-500 ml-1">{setup.confidence}%</CardDescription />
+                  </CardDescription>
                   <Div className="h-[200px]">
                     <TradingViewChart
                       data={chartData}
@@ -463,10 +450,9 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                   </CardContent>
                   <CardFooter className="pt-0" />
                     <Button variant="outline" size="sm" className="w-full" />
-                      <Edit className="mr-2 h-3 w-3" /></CardFooter></CardFooter></CardFooter>
+                      <Edit className="mr-2 h-3 w-3" / /></CardFooter /></CardFooter /></CardFooter>
                       Create Trade
-                    </Button>
-                  </CardFooter>
+                    </button />
                 </Card>
               );
             })}

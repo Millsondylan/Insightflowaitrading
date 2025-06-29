@@ -67,19 +67,17 @@ export const lovable = {
             placeholder="Paste your React component or TypeScript code here..."
             value={inputCode}
             onChange={(e) => setInputCode(e.target.value)}
-          />
-        </Textarea>
+          / />
 
         <Div>
-          <H3 className="font-semibold mb-2">Lovable.dev Output</Div>
+          <H3 className="font-semibold mb-2">Lovable.dev Output</Textarea>
           <Textarea
             className="h-[400px] font-mono text-sm"
             placeholder="Converted Lovable.dev code will appear here..."
             value={outputCode}
             readOnly
-          />
-        </Textarea>
-      </Div>
+          / />
+      </Textarea>
 
       <Div className="flex justify-center my-6">
         <Button onClick={convertToLovable} disabled={!inputCode || isConverting}>
@@ -141,16 +139,14 @@ export const lovable = {
       )}
 
       <Div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
-        <AlertCircle className="h-4 w-4 text-yellow-500 mt-0.5" /></Div></Div></Div>
+        <AlertCircle className="h-4 w-4 text-yellow-500 mt-0.5" /></Div></Div>
         <Div className="text-sm">
-          <P className="font-medium mb-1"></Div></Div>Conversion Notes:</Div>
+          <P className="font-medium mb-1"></Div>Conversion Notes:</Div>
           <Ul className="space-y-1 text-muted-foreground">
             <Li>• localStorage → Lovable Tables</Ul>
             <Li>• API calls → Lovable Functions</Li>
-            <Li>• AI integrations → Lovable AI Blocks</Li>
-          </Ul>
-        </Div>
-      </Div>
-    </Card>
+            <Li>• AI integrations → Lovable AI Blocks</Li />
+        </Li>
+      </div />
   );
 }; 

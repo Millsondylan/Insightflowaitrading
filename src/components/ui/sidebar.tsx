@@ -143,10 +143,9 @@ const SidebarProvider = React.forwardRef<
             )}
             ref={ref}
             {...props}
-    >
+>
             {children}
-          </SidebarContext>
-        </TooltipProvider>
+          </SidebarContext />
       </SidebarContext.Provider>
     )
   }
@@ -184,7 +183,7 @@ const Sidebar = React.forwardRef<
           {...props}
         />
           {children}
-        </Div>
+        </SidebarContext>
       )
     }
 
@@ -201,8 +200,7 @@ const Sidebar = React.forwardRef<
             }
             side={side}
           >
-            <Div className="flex h-full w-full flex-col">{children}</Sheet>
-          </SheetContent>
+            <Div className="flex h-full w-full flex-col">{children}</Sheet />
         </Sheet>
       )
     }
@@ -216,8 +214,7 @@ const Sidebar = React.forwardRef<
         data-side={side}
       />
         {/* This is what handles the sidebar gap on desktop */}
-        <Div
-          className={cn(
+        <Div           className={cn(
             "duration-200 relative h-svh w-[--sidebar-width] bg-transparent transition-[width] ease-linear",
             "group-data-[collapsible=offcanvas]:w-0",
             "group-data-[side=right]:rotate-180",
@@ -238,10 +235,10 @@ const Sidebar = React.forwardRef<
             className
           )}
           {...props}
-     >
+ >
           <Div data-sidebar="sidebar"
             className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
-       >
+   >
             {children}
           </Div>
         </Div>
@@ -345,8 +342,7 @@ const SidebarHeader = React.forwardRef<
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
   return (
-    <Div
-      ref={ref}
+    <Div       ref={ref}
       data-sidebar="header"
       className={cn("flex flex-col gap-2 p-2", className)}
       {...props}
@@ -360,8 +356,7 @@ const SidebarFooter = React.forwardRef<
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
   return (
-    <Div
-      ref={ref}
+    <Div       ref={ref}
       data-sidebar="footer"
       className={cn("flex flex-col gap-2 p-2", className)}
       {...props}
@@ -390,8 +385,7 @@ const SidebarContent = React.forwardRef<
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
   return (
-    <Div
-      ref={ref}
+    <Div       ref={ref}
       data-sidebar="content"
       className={cn(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
@@ -408,8 +402,7 @@ const SidebarGroup = React.forwardRef<
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => {
   return (
-    <Div
-      ref={ref}
+    <Div       ref={ref}
       data-sidebar="group"
       className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
       {...props}
@@ -464,8 +457,7 @@ const SidebarGroupContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => (
-  <Div
-    ref={ref}
+  <Div     ref={ref}
     data-sidebar="group-content"
     className={cn("w-full text-sm", className)}
     {...props}
@@ -573,8 +565,7 @@ const SidebarMenuButton = React.forwardRef<
           align="center"
           hidden={state !== "collapsed" || isMobile}
           {...tooltip}
-        />
-      </TooltipContent>
+        / />
     )
   }
 )
@@ -614,8 +605,7 @@ const SidebarMenuBadge = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div">
 >(({ className, ...props }, ref) => (
-  <Div
-    ref={ref}
+  <Div     ref={ref}
     data-sidebar="menu-badge"
     className={cn(
       "absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground select-none pointer-events-none",
@@ -646,8 +636,7 @@ const SidebarMenuSkeleton = React.forwardRef<
     <Div ref={ref}
       data-sidebar="menu-skeleton"
       className={cn("rounded-md h-8 flex gap-2 px-2 items-center", className)}
-      {...props}
- >
+      {...props}>
       {showIcon && (
         <Skeleton
           className="size-4 rounded-md"
@@ -662,8 +651,7 @@ const SidebarMenuSkeleton = React.forwardRef<
             "--skeleton-width": width,
           } as React.CSSProperties
         }
-      />
-    </Comp>
+      / />
   )
 })
 SidebarMenuSkeleton.displayName = "SidebarMenuSkeleton"

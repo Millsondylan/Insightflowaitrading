@@ -76,8 +76,7 @@ const Hero = () => {
         transition={{ delay: 1.5, duration: 1 }}
       >
         <arrowRight className="h-6 w-6 -rotate-90" />
-      </motion.div>
-    </Section>
+      </motion.div />
   );
 };
 

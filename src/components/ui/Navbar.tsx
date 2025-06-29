@@ -69,9 +69,8 @@ export const Navbar = () => {
         <Div className="flex items-center">
           <Link to="/" className="flex items-center" />
             <Img src="/placeholder.svg" alt="Logo" className="h-8 w-8 mr-2" />
-            <Span className="text-lg font-bold">InsightFlow</Nav>
-          </Link>
-        </Div>
+            <Span className="text-lg font-bold">InsightFlow</Nav />
+        </Nav>
         
         {/* Desktop Navigation */}
         <Div className="hidden md:flex space-x-6 items-center">
@@ -116,7 +115,7 @@ export const Navbar = () => {
             to={route.href}
             className="mobile-nav-link"
             onClick={toggleMobileMenu}
-      >
+  >
             {route.label}
           </Div>
         ))}
@@ -136,8 +135,7 @@ export const Navbar = () => {
               <Link to="/profile" className="mobile-nav-link" onClick={toggleMobileMenu} />
                 Profile
               </Link>
-              <Button
-                className="btn-secondary w-full"
+              <Button                 className="btn-secondary w-full"
                 onClick={() => {
                   localStorage.removeItem('authToken');
                   setIsAuthenticated(false);
@@ -149,8 +147,7 @@ export const Navbar = () => {
             </>
           )}
         </Div>
-      </Div>
-    </Nav>
+      </div />
   );
 };
 

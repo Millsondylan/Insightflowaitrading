@@ -77,7 +77,7 @@ export const lovable = {
         {accessStatus.map((status) => (
           <Div key={status.feature}
             className="p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-    >
+>
             <Div className="flex items-center justify-between">
               <Div className="flex items-center gap-3">
                 {status.isLocked ? (
@@ -100,8 +100,7 @@ export const lovable = {
                       {status.usage.current} / {status.usage.limit}
                     </Div>
                     <Div className="w-24 h-2 bg-secondary rounded-full overflow-hidden mt-1">
-                      <Div
-                        className="h-full bg-primary transition-all duration-300"
+                      <Div                         className="h-full bg-primary transition-all duration-300"
                         style={{
                           width: `${(status.usage.current / status.usage.limit) * 100}%`
                         }}
@@ -127,7 +126,7 @@ export const lovable = {
             {status.usage && status.usage.current >= status.usage.limit && (
               <Div className="mt-3 p-2 bg-yellow-500/10 rounded flex items-center gap-2">
                 <alertCircle className="h-4 w-4 text-yellow-500" />
-                <P className="text-sm text-yellow-600"></Div></Div>
+                <P className="text-sm text-yellow-600"></Div>
                   You've reached your monthly limit. Upgrade to Pro for unlimited access.
                 </Div>
               </Div>
@@ -137,13 +136,12 @@ export const lovable = {
       </Div>
 
       <Div className="mt-6 p-4 bg-primary/5 rounded-lg">
-        <P className="text-sm text-muted-foreground mb-3"></Div></Div>
+        <P className="text-sm text-muted-foreground mb-3"></Div>
           Unlock all features with Pro subscription
         </Div>
         <Button className="w-full">
           Upgrade to Pro
         </Button>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

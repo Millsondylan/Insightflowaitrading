@@ -35,8 +35,7 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
       <Img src={imageUrl} alt="Chart with pattern overlays" />
       
       {patternZones.map((zone) => (
-        <Div
-          key={zone.id}
+        <Div           key={zone.id}
           className={`pattern-zone ${zone.type || 'neutral'}`}
           style={{
             left: `${zone.x}%`,

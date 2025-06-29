@@ -136,8 +136,7 @@ const UserTable: React.FC = () => {
                 }
               }}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
-            />
-          </User>
+            / />
           
           {[...Array(pageCount)].map((_, i) => {
             const page = i + 1;
@@ -158,8 +157,7 @@ const UserTable: React.FC = () => {
                     isActive={page === currentPage}
                   >
                     {page}
-                  </PaginationLink>
-                </PaginationItem>
+                  </PaginationLink />
               );
             } else if (
               page === currentPage - 2 || 
@@ -180,10 +178,8 @@ const UserTable: React.FC = () => {
                 }
               }}
               className={currentPage >= pageCount ? 'pointer-events-none opacity-50' : ''}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+            / />
+        </PaginationContent />
     );
   };
   
@@ -192,12 +188,12 @@ const UserTable: React.FC = () => {
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
         <Tr key={i} className="border-b border-gray-800/30">
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-24" /></Tr>
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-20" /></Td>
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-16" /></Td>
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" /></Td>
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" /></Td>
-        </Tr>
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-24" / />
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-20" / />
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-16" / />
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" / />
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" / />
+        </User>
       ))}
     </>
   );
@@ -221,32 +217,26 @@ const UserTable: React.FC = () => {
           {/* Role filter */}
           <Select onValueChange={handleRoleFilterChange}>
             <selectTrigger className="w-[140px] bg-gray-900/80">
-              <selectValue placeholder="All roles" />
-            </Select>
+              <selectValue placeholder="All roles" / />
             <selectContent className="bg-gray-900">
-              <selectItem value="">All roles</SelectItem>
+              <selectItem value="">All roles</Select>
               <selectItem value="Admin">
                 <Div className="flex items-center gap-2">
                   <RoleBadge role="Admin" showTooltip={false} /> Admin
-                </Div>
-              </SelectItem>
+                </div />
               <selectItem value="User">
                 <Div className="flex items-center gap-2">
                   <RoleBadge role="User" showTooltip={false} /> User
-                </Div>
-              </SelectItem>
+                </div />
               <selectItem value="Trial">
                 <Div className="flex items-center gap-2">
                   <RoleBadge role="Trial" showTooltip={false} /> Trial
-                </Div>
-              </SelectItem>
+                </div />
               <selectItem value="Expired">
                 <Div className="flex items-center gap-2">
                   <RoleBadge role="Expired" showTooltip={false} /> Expired
-                </Div>
-              </SelectItem>
-            </SelectContent>
-          </Select>
+                </div />
+            </SelectContent />
           
           {/* Sort options */}
           <DropdownMenu>
@@ -254,12 +244,11 @@ const UserTable: React.FC = () => {
               <Button variant="outline" size="sm" className="bg-gray-900/80" />
                 <Filter className="h-3.5 w-3.5 mr-2" />
                 Sort
-              </DropdownMenu>
-            </DropdownMenuTrigger>
+              </DropdownMenu />
             <DropdownMenuContent className="bg-gray-900 border border-gray-800" />
               <DropdownMenuItem onClick={() = /> handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </DropdownMenuContent>
+              </Div>
               <DropdownMenuItem onClick={() = /> handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
@@ -271,9 +260,8 @@ const UserTable: React.FC = () => {
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() = /> handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </DropdownMenuItem />
+          </DropdownMenuItem>
         </Div>
         
         <Div className="flex items-center gap-2">
@@ -282,7 +270,7 @@ const UserTable: React.FC = () => {
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
             disabled={users.length === 0 || loading}
-     >
+ >
             <Download className="h-4 w-4" />
             Export CSV
           </Div>
@@ -316,9 +304,8 @@ const UserTable: React.FC = () => {
               </Th>
               <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
-              </Th>
-            </Tr>
-          </Thead>
+              </Th />
+          </Th>
           <Tbody>
             {loading ? (
               renderSkeleton()
@@ -333,14 +320,12 @@ const UserTable: React.FC = () => {
             ) : (
               <Tr>
                 <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" /></Tbody></Tbody></Tbody>
+                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" / /></Tbody /></Tbody /></Tbody>
                   <P>No users found</P>
-                  <P className="text-sm">Try adjusting your search or filters</P>
-                </Td>
-              </Tr>
+                  <P className="text-sm">Try adjusting your search or filters</p />
+              </P>
             )}
-          </Tbody>
-        </Table>
+          </Tbody />
       </Div>
       
       {/* Pagination */}
@@ -349,7 +334,7 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div></Div>
+          <P></Div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}

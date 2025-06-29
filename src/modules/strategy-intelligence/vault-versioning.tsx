@@ -37,7 +37,6 @@ export const lovable = {
             </Div>
           ))}
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

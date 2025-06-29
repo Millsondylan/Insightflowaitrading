@@ -33,12 +33,11 @@ export const VaultDetail: React.FC = () => {
   return (
     <Card className="w-full bg-black/80 border-zinc-800 text-white" />
       <CardHeader>
-        <CardTitle>{strategy.name} - Strategy Details</Card>
-      </CardHeader>
+        <CardTitle>{strategy.name} - Strategy Details</Card />
       <CardContent>
         <Div className="space-y-4">
           <Div>
-            <H3 className="text-lg font-bold mb-2">Description</CardContent>
+            <H3 className="text-lg font-bold mb-2">Description</Card>
             <P className="text-gray-300">{strategy.description}</P>
           </Div>
 
@@ -49,9 +48,8 @@ export const VaultDetail: React.FC = () => {
                 <Li>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</Ul>
                 <Li>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</Li>
                 <Li>Total Return: {strategy.performance.totalReturn}</Li>
-                <Li>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</Li>
-              </Ul>
-            </Div>
+                <Li>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</Li />
+            </Li>
 
             <Div>
               <H4 className="font-semibold">Strategy Metadata</Div>
@@ -59,9 +57,8 @@ export const VaultDetail: React.FC = () => {
                 <Li>Author: {strategy.author}</Ul>
                 <Li>Version: {strategy.version}</Li>
                 <Li>Created: {strategy.createdAt?.toLocaleDateString()}</Li>
-                <Li>Risk Level: {strategy.risk}</Li>
-              </Ul>
-            </Div>
+                <Li>Risk Level: {strategy.risk}</Li />
+            </Li>
           </Div>
 
           <Div>
@@ -70,7 +67,7 @@ export const VaultDetail: React.FC = () => {
               {strategy.tags?.map((tag) => (
                 <Span key={tag} 
                   className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
-             >
+         >
                   {tag}
                 </Div>
               ))}
@@ -81,8 +78,7 @@ export const VaultDetail: React.FC = () => {
             <Button variant="outline" className="text-white" />Edit Strategy</Div>
             <Button variant="destructive" />Delete Strategy</Button>
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   );
 }; 

@@ -142,8 +142,7 @@ export const RealtimeIndicator = React.forwardRef<HTMLDivElement, RealtimeIndica
           !isActive && "opacity-60",
           className
         )}
-        {...props}
-   >
+        {...props}>
         {showIcon && displayIcon}
         <Span>
           {isActive 
@@ -167,7 +166,7 @@ export const AIIndicator = (props: Omit<RealtimeIndicatorProps, 'variant'>) => (
 );
 
 export const LoadingIndicator = (props: Omit<RealtimeIndicatorProps, 'variant'>) => (
-  <RealtimeIndicator variant="loading" activeText="Loading" {...props} /></RealtimeIndicatorProps></RealtimeIndicatorProps></RealtimeIndicatorProps>
+  <RealtimeIndicator variant="loading" activeText="Loading" {...props} / /></RealtimeIndicatorProps /></RealtimeIndicatorProps /></RealtimeIndicatorProps>
 );
 
 export const lovable = { 

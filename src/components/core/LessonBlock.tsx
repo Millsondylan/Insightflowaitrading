@@ -22,12 +22,11 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
         <CardHeader>
           <CardTitle className="text-3xl font-bold text-gray-100" />
             {block.title}
-          </LessonBlockProps>
-        </CardHeader>
+          </LessonBlockProps />
         <CardContent className="space-y-8" />
           <P className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
             {block.content}
-          </CardContent>
+          </LessonBlockProps>
 
           <Div>
             <H4 className="font-semibold text-xl mb-4 text-gray-200">
@@ -43,13 +42,12 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start"
                 >
-                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" /></Ul></Ul></Ul>
+                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" / /></Ul /></Ul /></Ul>
                   <Span className="text-gray-300 text-base">{takeaway}</Span>
                 </motion.li>
               ))}
             </Ul>
-          </Div>
-        </CardContent>
+          </div />
       </Card>
     </motion.div>
   );

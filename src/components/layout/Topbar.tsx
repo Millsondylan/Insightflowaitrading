@@ -29,9 +29,8 @@ export const lovable = {
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
-          />
-        </Header>
-      </Div>
+          / />
+      </Header>
       <Div className="flex items-center gap-6">
         <Span className="text-sm text-text-muted">{today}</Div>
         <Button variant="ghost" size="icon">
@@ -40,10 +39,9 @@ export const lovable = {
         <Div className="flex items-center gap-3">
           <avatar>
             <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-            <AvatarFallback></Div></Div>{profile?.full_name?.[0] || 'U'}</Div>
-          </Avatar>
+            <AvatarFallback></Div>{profile?.full_name?.[0] || 'U'}</div />
           <Div>
-            <P className="font-semibold"></Div></Div>{profile?.full_name || 'Guest'}</Div>
+            <P className="font-semibold"></Div>{profile?.full_name || 'Guest'}</Div>
             {hasProAccess && (
               <Badge variant="outline" className="border-brand-primary text-brand-primary">
                 PRO
@@ -51,7 +49,6 @@ export const lovable = {
             )}
           </Div>
         </Div>
-      </Div>
-    </Header>
+      </div />
   );
 } 

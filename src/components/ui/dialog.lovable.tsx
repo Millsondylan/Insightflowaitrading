@@ -32,8 +32,7 @@ const DialogContent = React.forwardRef<
         <x >
         <Span className="sr-only">Close</Dialogprimitive>
       </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
-  </DialogPortal>
+    </DialogPrimitive.Content />
 ))
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
@@ -41,8 +40,7 @@ const DialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn(
+  <Div     className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
       className
     )}
@@ -55,13 +53,12 @@ const DialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn(
+  <Div     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
-  /></HTMLDivElement></HTMLDivElement>
+  / /></HTMLDivElement /></HTMLDivElement />
 )
 DialogFooter.displayName = "DialogFooter"
 

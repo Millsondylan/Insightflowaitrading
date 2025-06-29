@@ -84,11 +84,10 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
           <Div key={section.id}
             data-section-id={section.id}
             className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}
-     >
+ >
             <H2 className="text-white text-2xl font-bold">{section.title}</Set>
             
-            <Div
-              className="prose prose-invert max-w-none text-white/80"
+            <Div               className="prose prose-invert max-w-none text-white/80"
               dangerouslySetInnerHTML={{ __html: section.content }}
             />
 
@@ -113,7 +112,7 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                   rel="noopener noreferrer"
                   download
                   className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
-             >
+         >
                   <Span></Div></Div>📄</Div> Download PDF
                 </A>
               )}
@@ -122,7 +121,7 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                 <Button  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
                   className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
-                  <Span></Button></Button>🧠</Button> Take Quiz
+                  <Span></Button></Button></Button></Button></Button></Button>🧠</Button> Take Quiz
                 </Button>
               )}
             </Div>

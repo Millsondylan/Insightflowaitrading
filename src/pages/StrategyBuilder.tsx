@@ -68,22 +68,18 @@ export default function StrategyBuilderPage() {
         
         <ConfigItem icon={Settings} title="Parameters" />
           {/* Placeholder for parameters */}
-          <P className="text-sm text-gray-500">Parameters will be extracted here.</ConfigItem>
-        </ConfigItem>
+          <P className="text-sm text-gray-500">Parameters will be extracted here.</ConfigItem />
 
-        <Div className="border-t border-white/10"></Div>
+        <Div className="border-t border-white/10"></ConfigItem>
         
         <ConfigItem icon={Book} title="Next Steps" />
             <Div className="flex flex-col gap-3">
                 <Link to="/planner" />
-                    <Button variant="outline" className="w-full" />Create Trading Plan</ConfigItem>
-                </Link>
+                    <Button variant="outline" className="w-full" />Create Trading Plan</ConfigItem />
                 <Link to="/vault" />
-                    <Button variant="outline" className="w-full" /></Link></Link>Save to Vault</Link>
-                </Link>
-            </Div>
-        </ConfigItem>
-      </Div>
+                    <Button variant="outline" className="w-full" / /></Link /></Link />Save to Vault</Link />
+            </div />
+      </ConfigItem>
     </Div>
   );
 }

@@ -55,12 +55,11 @@ export default function VaultDetailPage() {
                 <P className="text-gray-400 mt-2">by {strategy.author}</P>
             </Div>
             <Link  />
-                <Button size="lg" style={{ color: "white" }}></Link></Link>
+                <Button size="lg" style={{ color: "white" }} /></Link /></Link />
                     <playcircle >
                     Launch Replay
-                </Link>
-            </Link>
-        </Header>
+                </Link />
+        </Link>
 
         <P className="text-gray-300 max-w-3xl mb-6">{strategy.description}</P>
         

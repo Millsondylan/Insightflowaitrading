@@ -39,7 +39,7 @@ export default function TradePlanner({ tickers, strategies }: Props) {
         onChange={(e) => setNote(e.target.value)}
         className="w-full bg-white/10 rounded p-4 text-white/80"
       />
-      <Button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full"></Textarea></Textarea>
+      <Button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full" /></Textarea /></Textarea />
         🔒 Lock Plan
       </Textarea>
     </Div>

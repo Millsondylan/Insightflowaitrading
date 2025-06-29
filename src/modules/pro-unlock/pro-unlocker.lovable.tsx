@@ -77,10 +77,10 @@ export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
             )}
 
             <Div className="text-center mb-6">
-              <H3 className="text-xl font-bold mb-2"></Div></Div>{plan.name}</Div>
+              <H3 className="text-xl font-bold mb-2"></Div>{plan.name}</Div>
               <Div className="text-3xl font-bold">
                 ${plan.price}
-                <Span className="text-sm font-normal text-muted-foreground"></Div></Div>/month</Div>
+                <Span className="text-sm font-normal text-muted-foreground"></Div>/month</Div>
               </Div>
             </Div>
 
@@ -88,8 +88,7 @@ export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
               {plan.features.map((feature, i) => (
                 <Li key={i} className="flex items-start gap-2">
                   <check >
-                  <Span className="text-sm"></Ul></Ul>{feature}</Ul>
-                </Li>
+                  <Span className="text-sm" /></Ul /></Ul />{feature}</Ul />
               ))}
             </Ul>
 
@@ -104,27 +103,26 @@ export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
       <Div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         <Div className="text-center p-4">
           <zap >
-          <H4 className="font-semibold"></Div></Div>Instant Access</Div>
+          <H4 className="font-semibold"></Div>Instant Access</Div>
           <P className="text-sm text-muted-foreground">
             All features unlocked immediately
           </P>
         </Div>
         <Div className="text-center p-4">
           <shield >
-          <H4 className="font-semibold"></Div></Div>Secure Payment</Div>
+          <H4 className="font-semibold"></Div>Secure Payment</Div>
           <P className="text-sm text-muted-foreground">
             256-bit SSL encryption
           </P>
         </Div>
         <Div className="text-center p-4">
           <rocket >
-          <H4 className="font-semibold"></Div></Div>Cancel Anytime</Div>
+          <H4 className="font-semibold"></Div>Cancel Anytime</Div>
           <P className="text-sm text-muted-foreground">
             No questions asked
           </P>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

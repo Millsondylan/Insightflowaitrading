@@ -62,8 +62,8 @@ export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
             </Div>
           </Div>
 
-          <Div>
-            <H3 className="font-semibold mb-3 flex items-center gap-2"></Div></Div>
+          <Div></Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2"></H3>
               <alerttriangle >
               Areas to Improve
             </Div>
@@ -79,15 +79,15 @@ export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
             </Div>
           </Div>
 
-          <Div>
-            <H3 className="font-semibold mb-3 flex items-center gap-2"></Div></Div>
+          <Div></Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2"></H3>
               <target >
               Action Items
             </Div>
             <Div className="space-y-2">
               {analysis.suggestions.map((suggestion: string, i: number) => (
                 <Div key={i} className="p-3 bg-secondary/20 rounded-lg">
-                  <P className="text-sm"></Div></Div>{suggestion}</Div>
+                  <P className="text-sm"></Div>{suggestion}</Div>
                 </Div>
               ))}
             </Div>

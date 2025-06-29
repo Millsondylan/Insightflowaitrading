@@ -67,8 +67,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <Dropdownmenuprimitive >
         <Check >
-      </DropdownMenuPrimitive.ItemIndicator>
-    </Dropdownmenuprimitive>
+      </DropdownMenuPrimitive.ItemIndicator />
     {children}
   </DropdownMenuPrimitive.CheckboxItem>
 ))
@@ -83,8 +82,7 @@ const DropdownMenuRadioItem = React.forwardRef<
     <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <Dropdownmenuprimitive >
         <Circle  />
-      </DropdownMenuPrimitive.ItemIndicator>
-    </Dropdownmenuprimitive>
+      </DropdownMenuPrimitive.ItemIndicator />
     {children}
   </DropdownMenuPrimitive.RadioItem>
 ))
@@ -113,10 +111,9 @@ const DropdownMenuShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span
-      className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
+    <Span       className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
       {...props}
-    /></Dropdownmenuprimitive></Dropdownmenuprimitive>
+    / /></Dropdownmenuprimitive /></Dropdownmenuprimitive />
   )
 }
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut"

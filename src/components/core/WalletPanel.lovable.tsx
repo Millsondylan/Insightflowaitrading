@@ -109,7 +109,7 @@ const WalletPanel: React.FC = () => {
           <Input type="text" placeholder="Enter any wallet address to simulate..."  /> setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button ></Div></Div>Connect</Div>
+          <Button ></Div>Connect</Div>
         </Div>
       </Div>
     );

@@ -61,8 +61,7 @@ const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
 >(({ className, ...props }, ref) => (
-  <Span
-    ref={ref}
+  <Span     ref={ref}
     role="link"
     aria-disabled="true"
     aria-current="page"
@@ -96,7 +95,7 @@ const BreadcrumbEllipsis = ({
     aria-hidden="true"
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}>
-    <MoreHorizontal className="h-4 w-4" /></Span></Span></Span>
+    <MoreHorizontal className="h-4 w-4" /></Span></Span></Span></Span></Span></Span></Span>
     <Span className="sr-only">More</Span>
   </Span>
 )

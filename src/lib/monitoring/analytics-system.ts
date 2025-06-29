@@ -1373,7 +1373,7 @@ export class AnalyticsSystem {
     };
   }
 
-  private calculateDailyActiveTime(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
+  private calculateDailyActiveTime(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
     if (activityLog.length === 0) return 0;
 
     const today = new Date();
@@ -1388,7 +1388,7 @@ export class AnalyticsSystem {
     , 0);
   }
 
-  private calculateFeatureUsage(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<string, number> {
+  private calculateFeatureUsage(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<string, number> {
     const featureUsage: Record<string, number> = {};
     
     usage.forEach(u => {
@@ -1401,14 +1401,14 @@ export class AnalyticsSystem {
     return featureUsage;
   }
 
-  private calculateToolExploration(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
+  private calculateToolExploration(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
     const totalFeatures = Object.keys(usage).length;
     const usedFeatures = usage.filter(u => u.count > 0).length;
     
     return (usedFeatures / totalFeatures) * 100;
   }
 
-  private calculateStageProgress(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<string, number> {
+  private calculateStageProgress(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<string, number> {
     if (activityLog.length === 0) return {};
 
     const stages: Record<string, number> = {};
@@ -1432,7 +1432,7 @@ export class AnalyticsSystem {
     return progress;
   }
 
-  private calculateMilestones(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): string[] {
+  private calculateMilestones(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): string[] {
     if (activityLog.length === 0) return [];
 
     const milestones: string[] = [];
@@ -1446,7 +1446,7 @@ export class AnalyticsSystem {
     return [...new Set(milestones)];
   }
 
-  private calculateNextActions(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): string[] {
+  private calculateNextActions(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): string[] {
     if (activityLog.length === 0) return [];
 
     const nextActions: string[] = [];
@@ -1460,7 +1460,7 @@ export class AnalyticsSystem {
     return [...new Set(nextActions)];
   }
 
-  private calculateDiscoveryRate(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
+  private calculateDiscoveryRate(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
     if (usage.length === 0) return 0;
 
     const totalFeatures = Object.keys(usage).length;
@@ -1469,7 +1469,7 @@ export class AnalyticsSystem {
     return (usedFeatures / totalFeatures) * 100;
   }
 
-  private calculateUtilizationRate(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
+  private calculateUtilizationRate(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
     if (usage.length === 0) return 0;
 
     const totalFeatures = Object.keys(usage).length;
@@ -1478,7 +1478,7 @@ export class AnalyticsSystem {
     return (usedFeatures / totalFeatures) * 100;
   }
 
-  private calculateMasteryRate(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
+  private calculateMasteryRate(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): number {
     if (usage.length === 0) return 0;
 
     const totalFeatures = Object.keys(usage).length;
@@ -1487,7 +1487,7 @@ export class AnalyticsSystem {
     return (masteredFeatures / totalFeatures) * 100;
   }
 
-  private calculateNPS(socialStats: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): number {
+  private calculateNPS(socialStats: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): number {
     if (socialStats.feedbackCount === 0) return 0;
 
     const promoters = socialStats.feedback.filter(f => f.rating >= 9).length;
@@ -1497,7 +1497,7 @@ export class AnalyticsSystem {
     return nps;
   }
 
-  private calculateCSAT(socialStats: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): number {
+  private calculateCSAT(socialStats: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): number {
     if (socialStats.feedbackCount === 0) return 0;
 
     const satisfiedCount = socialStats.feedback.filter(f => f.rating >= 7).length;
@@ -1506,7 +1506,7 @@ export class AnalyticsSystem {
     return csat;
   }
 
-  private calculateFeatureSatisfaction(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<string, number> {
+  private calculateFeatureSatisfaction(usage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<string, number> {
     if (usage.length === 0) return {};
 
     const satisfactionScores: Record<string, number> = {};
@@ -1528,7 +1528,7 @@ export class AnalyticsSystem {
     return satisfaction;
   }
 
-  private calculateDayRetention(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<number, number> {
+  private calculateDayRetention(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<number, number> {
     if (activityLog.length === 0) return {};
 
     const retention: Record<number, number> = {};
@@ -1544,7 +1544,7 @@ export class AnalyticsSystem {
     return retention;
   }
 
-  private calculateWeekRetention(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<number, number> {
+  private calculateWeekRetention(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<number, number> {
     if (activityLog.length === 0) return {};
 
     const retention: Record<number, number> = {};
@@ -1560,7 +1560,7 @@ export class AnalyticsSystem {
     return retention;
   }
 
-  private calculateMonthRetention(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<number, number> {
+  private calculateMonthRetention(activityLog: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Record<number, number> {
     if (activityLog.length === 0) return {};
 
     const retention: Record<number, number> = {};

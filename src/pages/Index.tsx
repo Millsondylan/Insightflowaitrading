@@ -236,12 +236,12 @@ const LandingPage = () => {
         </Div>
         <Div className="flex space-x-4">
           <Button variant="outline" 
-            onClick={() = /> navigate('/auth')}
+            onClick={() => navigate('/auth')}
             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
           </Div>
-          <Button onClick={() = /> navigate('/auth')}
+          <Button onClick={() => navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
@@ -260,7 +260,7 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <Div className="text-center space-y-8 w-full">
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2" />
+          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
             🚀 Advanced Trading Platform - Now with AI Integration
           </Div>
           
@@ -281,19 +281,18 @@ const LandingPage = () => {
           
           <Div className="flex justify-center space-x-4 pt-8">
             <Button size="lg"
-              onClick={() = /> navigate('/auth')}
+              onClick={() => navigate('/auth')}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
             >
               Start Free Trial
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Div>
+              <ArrowRight className="ml-2 w-5 h-5" / />
             <Button size="lg" 
               variant="outline"
-              onClick={() = /> navigate('/trading')}
+              onClick={() => navigate('/trading')}
               className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
             >
               View Demo
-            </Button>
+            </Div>
           </Div>
           
           <Div className="flex justify-center items-center space-x-8 pt-12 text-gray-400">
@@ -321,61 +320,49 @@ const LandingPage = () => {
           <Div className="text-center text-red-400">{error}</Div>
         ) : (
           <Div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-            <Card className="bg-gray-800/50 border-blue-500/30" />
+            <Card className="bg-gray-800/50 border-blue-500/30">
               <CardHeader>
                 <Users className="w-8 h-8 mx-auto text-blue-400" />
-                <CardTitle className="text-white text-2xl" />{userCount.toLocaleString()}</Div>
-              </CardHeader>
+                <CardTitle className="text-white text-2xl">{userCount.toLocaleString()}</CardTitle />
               <CardContent>
-                <Span className="text-gray-400">Active Traders</CardContent>
-              </CardContent>
-            </Card>
-            <Card className="bg-gray-800/50 border-cyan-500/30" />
+                <Span className="text-gray-400">Active Traders</span />
+            </Div>
+            <Card className="bg-gray-800/50 border-cyan-500/30">
               <CardHeader>
                 <TrendingUp className="w-8 h-8 mx-auto text-cyan-400" />
-                <CardTitle className="text-white text-2xl" />
+                <CardTitle className="text-white text-2xl">
                   {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
-                </Card>
-              </CardHeader>
+                </CardTitle />
               <CardContent>
-                <Span className="text-gray-400">Successful Trades</CardContent>
-              </CardContent>
+                <Span className="text-gray-400">Successful Trades</span />
             </Card>
-            <Card className="bg-gray-800/50 border-green-500/30" />
+            <Card className="bg-gray-800/50 border-green-500/30">
               <CardHeader>
                 <CheckCircle className="w-8 h-8 mx-auto text-green-400" />
-                <CardTitle className="text-white text-2xl" />{platformUptime}</Card>
-              </CardHeader>
+                <CardTitle className="text-white text-2xl">{platformUptime}</CardTitle />
               <CardContent>
-                <Span className="text-gray-400">Platform Uptime</CardContent>
-              </CardContent>
+                <Span className="text-gray-400">Platform Uptime</span />
             </Card>
-            <Card className="bg-gray-800/50 border-purple-500/30" />
+            <Card className="bg-gray-800/50 border-purple-500/30">
               <CardHeader>
                 <BarChart3 className="w-8 h-8 mx-auto text-purple-400" />
-                <CardTitle className="text-white text-2xl" />{marketsCovered > 0 ? marketsCovered : 'N/A'}</Card>
-              </CardHeader>
+                <CardTitle className="text-white text-2xl">{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle />
               <CardContent>
-                <Span className="text-gray-400">Markets Covered</CardContent>
-              </CardContent>
+                <Span className="text-gray-400">Markets Covered</span />
             </Card>
-            <Card className="bg-gray-800/50 border-yellow-500/30" />
+            <Card className="bg-gray-800/50 border-yellow-500/30">
               <CardHeader>
                 <DollarSign className="w-8 h-8 mx-auto text-yellow-400" />
-                <CardTitle className="text-white text-2xl" />${demoVolume.toLocaleString()}</Card>
-              </CardHeader>
+                <CardTitle className="text-white text-2xl">${demoVolume.toLocaleString()}</CardTitle />
               <CardContent>
-                <Span className="text-gray-400">Total Volume</CardContent>
-              </CardContent>
+                <Span className="text-gray-400">Total Volume</span />
             </Card>
-            <Card className="bg-gray-800/50 border-blue-400/30" />
+            <Card className="bg-gray-800/50 border-blue-400/30">
               <CardHeader>
                 <Star className="w-8 h-8 mx-auto text-blue-400" />
-                <CardTitle className="text-white text-2xl" />{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</Card>
-              </CardHeader>
+                <CardTitle className="text-white text-2xl">{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</CardTitle />
               <CardContent>
-                <Span className="text-gray-400">User Rating</CardContent>
-              </CardContent>
+                <Span className="text-gray-400">User Rating</span />
             </Card>
           </Div>
         )}
@@ -402,17 +389,15 @@ const LandingPage = () => {
         
         <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300" />
-              <CardHeader className="text-center" />
+            <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300">
+              <CardHeader className="text-center">
                 <Div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
                   <feature.icon className="w-8 h-8 text-white" />
                 </Div>
-                <CardTitle className="text-white text-xl" />{feature.title}</CardTitle>
-              </CardHeader>
+                <CardTitle className="text-white text-xl">{feature.title}</CardTitle />
               <CardContent>
-                <P className="text-gray-400 text-center">{feature.description}</CardContent>
-              </CardContent>
-            </Card>
+                <P className="text-gray-400 text-center">{feature.description}</p />
+            </CardTitle>
           ))}
         </Div>
       </motion.div>
@@ -445,21 +430,19 @@ const LandingPage = () => {
               if (testimonial && typeof testimonial === 'object' && 'content' in testimonial && 'name' in testimonial && 'role' in testimonial) {
                 const t = testimonial as any;
                 return (
-                  <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" />
+                  <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
                     <CardHeader>
-                      <P className="text-gray-300 italic">"{t.content}"</Card>
-                    </CardHeader>
+                      <P className="text-gray-300 italic">"{t.content}"</p />
                     <CardContent>
                       <Div className="flex items-center space-x-3">
                         <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                           <Users className="w-5 h-5 text-white" />
-                        </CardContent>
+                        </Card>
                         <Div>
                           <P className="text-white font-semibold">{t.name}</Div>
                           <P className="text-gray-400 text-sm">{t.role}</P>
                         </Div>
-                      </Div>
-                    </CardContent>
+                      </div />
                   </Card>
                 );
               }
@@ -482,14 +465,13 @@ const LandingPage = () => {
         
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
-            <Card key={coin} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" />
-              <CardHeader className="text-center" />
+            <Card key={coin} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
+              <CardHeader className="text-center">
                 <Div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
                   <Bitcoin className="w-8 h-8 text-white" />
                 </Div>
-                <CardTitle className="text-white text-xl" />{coin}</CardTitle>
-              </CardHeader>
-            </Card>
+                <CardTitle className="text-white text-xl">{coin}</CardTitle />
+            </CardTitle>
           ))}
         </Div>
       </Div>

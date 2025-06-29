@@ -69,8 +69,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
                 Verified
               </Badge>
             )}
-          </Div>
-        </CardHeader>
+          </div />
         <CardContent>
           <Div className="grid grid-cols-2 gap-4 mb-4">
             <Div>
@@ -129,10 +128,8 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
                 {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
             </Div>
-          </Div>
-        </CardContent>
-      </Card>
-    </Link>
+          </div />
+      </Card />
   );
 };
 
@@ -208,23 +205,20 @@ export default function VaultPage() {
                   +{stats.avgReturn.toFixed(1)}%
                 </P>
               </Div>
-              <TrendingUp className="w-8 h-8 text-green-400/20" />
-            </TrendingUp>
-          </CardContent>
-        </Card>
+              <TrendingUp className="w-8 h-8 text-green-400/20" / />
+          </CardContent />
         <Card className="bg-white/5 border-white/10" />
           <CardContent className="p-6" />
             <Div className="flex items-center justify-between">
               <Div>
-                <P className="text-sm text-gray-400">Avg Sharpe</Card>
+                <P className="text-sm text-gray-400">Avg Sharpe</TrendingUp>
                 <P className="text-2xl font-bold text-blue-400">
                   {stats.avgSharpe.toFixed(2)}
                 </P>
               </Div>
               <BarChart3 className="w-8 h-8 text-blue-400/20" />
-            </BarChart3>
-          </CardContent>
-        </Card>
+            </BarChart3 />
+        </BarChart3>
         <Card className="bg-white/5 border-white/10" />
           <CardContent className="p-6" />
             <Div className="flex items-center justify-between">
@@ -234,24 +228,20 @@ export default function VaultPage() {
                   {(stats.totalUsers / 1000).toFixed(1)}k
                 </P>
               </Div>
-              <Users className="w-8 h-8 text-purple-400/20" />
-            </Users>
-          </CardContent>
-        </Card>
+              <Users className="w-8 h-8 text-purple-400/20" / />
+          </CardContent />
         <Card className="bg-white/5 border-white/10" />
           <CardContent className="p-6" />
             <Div className="flex items-center justify-between">
               <Div>
-                <P className="text-sm text-gray-400">Avg Win Rate</Card>
+                <P className="text-sm text-gray-400">Avg Win Rate</Users>
                 <P className="text-2xl font-bold text-yellow-400">
                   {stats.avgWinRate.toFixed(1)}%
                 </P>
               </Div>
-              <Star className="w-8 h-8 text-yellow-400/20" />
-            </Star>
-          </CardContent>
-        </Card>
-      </Div>
+              <Star className="w-8 h-8 text-yellow-400/20" / />
+          </CardContent />
+      </Star>
 
       {/* Filters and Search */}
       <Div className="space-y-4 mb-8">
@@ -276,46 +266,39 @@ export default function VaultPage() {
                 {strategyCategories.map(category => (
                   <SelectItem key={category} value={category} />{category}</SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
             
             <Select value={selectedRisk} onValueChange={setSelectedRisk} />
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
-                <SelectValue placeholder="Risk Level" />
-              </Select>
+                <SelectValue placeholder="Risk Level" / />
               <SelectContent>
-                <SelectItem value="all" />All Risk Levels</SelectContent>
+                <SelectItem value="all" />All Risk Levels</Select>
                 {riskLevels.map(risk => (
                   <SelectItem key={risk} value={risk} />{risk}</SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
             
             <Select value={selectedMarket} onValueChange={setSelectedMarket} />
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
-                <SelectValue placeholder="Market" />
-              </Select>
+                <SelectValue placeholder="Market" / />
               <SelectContent>
-                <SelectItem value="all" />All Markets</SelectContent>
+                <SelectItem value="all" />All Markets</Select>
                 {marketTypes.map(market => (
                   <SelectItem key={market} value={market} />{market}</SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
             
             <Select value={sortBy} onValueChange={(value) = /> setSortBy(value as typeof sortBy)}>
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
-                <SelectValue placeholder="Sort By" />
-              </Select>
+                <SelectValue placeholder="Sort By" / />
               <SelectContent>
-                <SelectItem value="returns" />Returns</SelectContent>
+                <SelectItem value="returns" />Returns</Select>
                 <SelectItem value="sharpe" />Sharpe Ratio</SelectItem>
                 <SelectItem value="drawdown" />Max Drawdown</SelectItem>
                 <SelectItem value="winRate" />Win Rate</SelectItem>
                 <SelectItem value="users" />Users</SelectItem>
-                <SelectItem value="stars" />Stars</SelectItem>
-              </SelectContent>
-            </Select>
+                <SelectItem value="stars" />Stars</SelectItem />
+            </SelectItem>
             
             <Button variant="outline"
               size="icon"
@@ -334,9 +317,8 @@ export default function VaultPage() {
           <Tabs value={viewMode} onValueChange={(v) = /> setViewMode(v as 'grid' | 'list')}>
             <TabsList>
               <TabsTrigger value="grid" />Grid</Tabs>
-              <TabsTrigger value="list" />List</TabsTrigger>
-            </TabsList>
-          </Tabs>
+              <TabsTrigger value="list" />List</TabsTrigger />
+          </TabsTrigger>
         </Div>
       </Div>
 

@@ -50,13 +50,12 @@ export default function VerifyEmailPage() {
     <Div className="container mx-auto px-4 py-12 flex justify-center items-center min-h-screen">
       <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white w-full max-w-md" />
         <CardHeader className="text-center" />
-          <CardTitle className="text-2xl font-bold" />Email Verification</Div>
-        </CardHeader>
+          <CardTitle className="text-2xl font-bold" />Email Verification</div />
         <CardContent className="flex flex-col items-center text-center" />
           {verificationStatus === 'loading' && (
             <>
               <Loader2 className="h-12 w-12 text-blue-400 animate-spin mb-4" />
-              <P className="text-gray-300">Verifying your email address...</CardContent>
+              <P className="text-gray-300">Verifying your email address...</Div>
             </>
           )}
           
@@ -90,13 +89,12 @@ export default function VerifyEmailPage() {
         {verificationStatus === 'success' && (
           <CardFooter className="flex justify-center" />
             <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
-              onClick={() = /></CardFooter></CardFooter> navigate('/auth')}
+              onClick={() = / /></CardFooter /></CardFooter /> navigate('/auth')}
             >
               Log In Now
-            </CardFooter>
-          </CardFooter>
+            </CardFooter />
         )}
-      </Card>
+      </CardFooter>
     </Div>
   );
 }

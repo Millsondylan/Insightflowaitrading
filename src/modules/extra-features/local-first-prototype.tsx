@@ -91,7 +91,7 @@ exit_rules:
             size="sm"
             onClick={syncToCloud}
             disabled={localChanges === 0 || syncStatus === 'offline'}
-     >
+ >
             Sync to Cloud
           </Button>
         </Div>
@@ -101,8 +101,7 @@ exit_rules:
         <TabsList className="grid w-full grid-cols-3" />
           <TabsTrigger value="editor" />Editor</Tabs>
           <TabsTrigger value="results" />Results</TabsTrigger>
-          <TabsTrigger value="history" />History</TabsTrigger>
-        </TabsList>
+          <TabsTrigger value="history" />History</TabsTrigger />
 
         <TabsContent value="editor" className="space-y-4" />
           <Div className="relative">
@@ -119,7 +118,7 @@ exit_rules:
               <Badge variant="outline" className="text-xs">
                 <HardDrive className="h-3 w-3 mr-1" />
                 Local Only
-              </TabsContent>
+              </TabsTrigger>
             </Div>
           </Div>
           
@@ -132,8 +131,7 @@ exit_rules:
               <Save className="h-4 w-4 mr-2" />
               Save Draft
             </Button>
-          </Div>
-        </TabsContent>
+          </div />
 
         <TabsContent value="results" className="space-y-4" />
           <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -159,8 +157,7 @@ exit_rules:
             <P className="text-sm text-blue-600">
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
             </Div>
-          </Div>
-        </TabsContent>
+          </div />
 
         <TabsContent value="history" className="space-y-4" />
           <Div className="space-y-2">
@@ -185,19 +182,16 @@ exit_rules:
               </Div>
               <Badge>Synced</Badge>
             </Div>
-          </Div>
-        </TabsContent>
+          </div />
       </Tabs>
 
       <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <H4 className="font-medium mb-2"></Div></Div>Local-First Benefits</Div>
+        <H4 className="font-medium mb-2"></Div>Local-First Benefits</Div>
         <Ul className="space-y-1 text-sm text-muted-foreground">
           <Li>• Work offline without interruption</Ul>
           <Li>• Instant feedback on changes</Li>
           <Li>• Automatic conflict resolution</Li>
-          <Li>• Version history preserved locally</Li>
-        </Ul>
-      </Div>
-    </Card>
+          <Li>• Version history preserved locally</Li />
+      </div />
   );
 }; 

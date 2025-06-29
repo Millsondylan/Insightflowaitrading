@@ -303,20 +303,18 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                 <Th className="px-4 py-3 text-right">24h Volume</Th>
                 <Th className="px-4 py-3 text-center">Signals</Th>
                 <Th className="px-4 py-3 text-center">Score</Th>
-                <Th className="px-4 py-3 text-center">Action</Th>
-              </Tr>
-            </Thead>
+                <Th className="px-4 py-3 text-center">Action</Th />
+            </Th>
             <Tbody>
               {filteredResults.map(result => (
                 <Tr key={result.symbol}
                   className="border-b border-border-primary hover:bg-background-interactive"
-          >
+      >
                   <Td className="px-4 py-3">
                     <Div className="flex flex-col">
                       <Span className="font-medium">{result.symbol}</Tbody>
                       <Span className="text-sm text-text-muted">{result.name}</Span>
-                    </Div>
-                  </Td>
+                    </div />
                   <Td className="px-4 py-3 text-right font-medium">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </Td>
@@ -337,28 +335,24 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                             signal.type === 'bearish' ? 'bg-status-error/20 text-status-error' :
                             'bg-status-warning/20 text-status-warning'
                           }`}
-                        /></Td>
+                        / />
                           {signal.indicator}: {signal.description}
-                        </Div>
+                        </Td>
                       ))}
-                    </Div>
-                  </Td>
+                    </div />
                   <Td className="px-4 py-3 text-center">
                     <Div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
-                    </Td>
-                  </Td>
+                    </Td />
                   <Td className="px-4 py-3 text-center">
                     <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
-                      onClick={() =></Td></Td> onSelectMarket(result.symbol)}
+                      onClick={() = /></Td /></Td /> onSelectMarket(result.symbol)}
                     >
                       Select
-                    </Td>
-                  </Td>
-                </Tr>
+                    </Td />
+                </Td>
               ))}
-            </Tbody>
-          </Table>
+            </Tbody />
         </Div>
       )}
     </Div>

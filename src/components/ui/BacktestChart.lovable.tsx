@@ -106,17 +106,15 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
-          </Responsivecontainer>
-        </ResponsiveContainer>
+          </Responsivecontainer />
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
           <Div className="absolute top-1/2 right-8 transform -translate-y-1/2">
             <tradetooltip >
-          </Div>
+          </Responsivecontainer>
         )}
-      </Div>
-    </BlockReveal>
+      </div />
   );
 };
 

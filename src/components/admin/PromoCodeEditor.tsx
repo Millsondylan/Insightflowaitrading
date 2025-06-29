@@ -70,7 +70,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
         
         <Button onClick={generateNewCode}
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-    >
+>
           <Plus className="h-4 w-4 mr-2" />
           Generate Code
         </Button>
@@ -83,16 +83,14 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
               <TableHead>Code</Div>
               <TableHead>Expires</TableHead>
               <TableHead>Uses Left</TableHead>
-              <TableHead className="text-right" />Actions</TableHead>
-            </TableRow>
-          </TableHeader>
+              <TableHead className="text-right" />Actions</TableHead />
+          </TableHead>
           <TableBody>
             {codes.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={4} className="text-center py-8 text-gray-500" />
                   No active promo codes. Generate a new code to get started.
-                </TableBody>
-              </TableRow>
+                </TableBody />
             ) : (
               codes.map((code) => {
                 const isExpired = new Date(code.expiresAt) < new Date();
@@ -107,9 +105,8 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                           isExpired ? "text-red-400" : isLowUses ? "text-yellow-400" : "text-green-400"
                         )}>
                           {code.code}
-                        </TableRow>
-                      </Div>
-                    </TableCell>
+                        </TableBody>
+                      </div />
                     <TableCell>
                       {new Date(code.expiresAt).toLocaleDateString()}
                     </TableCell>
@@ -121,15 +118,13 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
-                        <Trash2 className="h-4 w-4" /></TableCell></TableCell></TableCell>
-                      </Button>
-                    </TableCell>
+                        <Trash2 className="h-4 w-4" / /></TableCell /></TableCell /></TableCell>
+                      </button />
                   </TableRow>
                 );
               })
             )}
-          </TableBody>
-        </Table>
+          </TableBody />
       </Div>
       
       <Div className="text-xs text-gray-500">

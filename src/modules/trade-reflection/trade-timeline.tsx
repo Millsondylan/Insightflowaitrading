@@ -104,8 +104,7 @@ export const lovable = {
               </Div>
             </Div>
           ))}
-        </Div>
-      </ScrollArea>
+        </div />
     </Card>
   );
 }; 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface DivProps extends React.HTMLAttributes<HTMLDivElement></HTMLDivElement> {}
+export interface DivProps extends React.HTMLAttributes<HTMLDivElement /> {}
 
-export const Div = React.forwardRef<HTMLDivElement, DivProps></HTMLDivElement>(({ className, children, ...props }, ref) => {
+export const Div = React.forwardRef<HTMLDivElement, DivProps /></HTMLDivElement>(({ className, children, ...props }, ref) => {
   return (
     <Div ref={ref} className={cn(className)} {...props}>
       {children}

@@ -195,9 +195,8 @@ export const lovable = {
               stroke="#3B82F6" 
               strokeWidth={2}
               dot={false}
-            />
-          </CorrelationData>
-        </ResponsiveContainer>
+            / />
+        </CorrelationData>
       </Div>
     );
   };
@@ -206,8 +205,7 @@ export const lovable = {
     return (
       <Card>
         <CardContent className="flex items-center justify-center py-8" />
-          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-        </Card>
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" / />
       </Card>
     );
   }
@@ -218,33 +216,28 @@ export const lovable = {
         <CardHeader>
           <CardTitle className="flex items-center gap-2" />
             Market Correlations
-            <Badge variant="secondary">{correlations.length} pairs</Div>
-          </CardTitle>
+            <Badge variant="secondary">{correlations.length} pairs</div />
           <CardDescription>
             Track correlations between different trading pairs with real-time updates
-          </CardDescription>
-        </CardHeader>
+          </CardDescription />
         <CardContent className="space-y-4" />
           {/* Controls */}
           <Div className="flex flex-wrap gap-4">
             <Select value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
               <selectTrigger className="w-32">
-                <selectValue />
-              </CardContent>
+                <selectValue / />
               <selectContent>
                 {timeframes.map(tf => (
-                  <selectItem key={tf} value={tf}>{tf}</SelectItem>
+                  <selectItem key={tf} value={tf}>{tf}</Div>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
 
             <Tabs value={filterMode} onValueChange={(v) = /> setFilterMode(v as any)}>
               <TabsList>
                 <TabsTrigger value="all" />All</Tabs>
                 <TabsTrigger value="positive" />Positive</TabsTrigger>
-                <TabsTrigger value="negative" />Negative</TabsTrigger>
-              </TabsList>
-            </Tabs>
+                <TabsTrigger value="negative" />Negative</TabsTrigger />
+            </TabsTrigger>
 
             <Div className="flex items-center space-x-2">
               <Switch
@@ -263,8 +256,7 @@ export const lovable = {
                 <info className="h-4 w-4" />
                 <alertDescription>
                   No correlations found for the selected filters
-                </Div>
-              </Alert>
+                </div />
             ) : (
               filteredCorrelations.map(correlation => (
                 <Card key={correlation.id} 
@@ -280,7 +272,7 @@ export const lovable = {
                         <Div className="flex items-center gap-2">
                           <H3 className="font-semibold text-lg">
                             {correlation.symbol_pair.join(' / ')}
-                          </Card>
+                          </Div>
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger>
@@ -288,21 +280,18 @@ export const lovable = {
                                     backgroundColor: getCorrelationColor(correlation.correlation_value, correlation.color_palette),
                                     color: 'white'
                                   }}
-                           >
+                       >
                                   {getCorrelationEmoji(correlation.correlation_value)}
                                   {formatCorrelationValue(correlation.correlation_value)}
-                                </TooltipProvider>
-                              </TooltipTrigger>
+                                </TooltipProvider />
                               <TooltipContent>
-                                <P>Correlation coefficient</TooltipContent>
+                                <P>Correlation coefficient</TooltipProvider>
                                 <P className="text-xs text-gray-400">
                                   {correlation.data_points} data points
-                                </P>
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
+                                </p />
+                            </Tooltip />
                           {correlation.significance_level && correlation.significance_level > 0.95 && (
-                            <Badge variant="outline">95% significant</Badge>
+                            <Badge variant="outline">95% significant</P>
                           )}
                         </Div>
                         
@@ -336,8 +325,7 @@ export const lovable = {
                           </Div>
                         )}
                       </Div>
-                    </Div>
-                  </CardContent>
+                    </div />
                 </Card>
               ))
             )}
@@ -349,12 +337,11 @@ export const lovable = {
               <CardHeader>
                 <CardTitle className="text-lg" />
                   {selectedPair.symbol_pair.join(' / ')} Details
-                </Card>
-              </CardHeader>
+                </Card />
               <CardContent className="space-y-4" />
                 <Div className="grid grid-cols-2 gap-4 text-sm">
                   <Div>
-                    <P className="text-gray-500">Correlation</CardContent>
+                    <P className="text-gray-500">Correlation</Card>
                     <P className="font-semibold text-lg" style={{ color: getCorrelationColor(selectedPair.correlation_value) }}>
                       {formatCorrelationValue(selectedPair.correlation_value)}
                     </P>
@@ -381,13 +368,10 @@ export const lovable = {
                     {selectedPair.correlation_value > 0.7 && "These pairs move strongly in the same direction. Consider this when diversifying."}
                     {selectedPair.correlation_value < -0.7 && "These pairs move in opposite directions. One can hedge the other."}
                     {Math.abs(selectedPair.correlation_value) <= 0.7 && "These pairs have moderate to low correlation."}
-                  </AlertDescription>
-                </Alert>
-              </CardContent>
-            </Card>
+                  </AlertDescription />
+              </CardContent />
           )}
-        </CardContent>
-      </Card>
+        </CardContent />
     </Div>
   );
 } 

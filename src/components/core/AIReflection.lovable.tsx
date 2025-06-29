@@ -87,27 +87,24 @@ const AIReflection: React.FC<Aireflectionprops> = ({
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
             </Div>
-          </Div>
-        </CardHeader>
+          </div />
         <Cardcontent >
           <Div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
             <skeleton >
-            <skeleton >
-          </Cardcontent>
+            <skeleton  />
           <Div className="space-y-2">
             <skeleton >
             <Div className="flex gap-2">
               <skeleton >
               <skeleton >
-            </Div>
+            </Cardcontent>
           </Div>
           <Div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
             <skeleton >
-          </Div>
-        </CardContent>
-      </Card>
+          </div />
+      </Div>
     );
   }
 
@@ -119,17 +116,15 @@ const AIReflection: React.FC<Aireflectionprops> = ({
           <Div className="flex items-center space-x-2">
             <brain >
             <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
-          </Div>
-        </CardHeader>
+          </div />
         <Cardcontent >
           <Div className="text-red-400 text-sm">
             {error}
           </Cardcontent>
           <Button variant="outline" size="sm">
             Try Again
-          </Button>
-        </CardContent>
-      </Card>
+          </button />
+      </Button>
     );
   }
 
@@ -144,8 +139,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
               <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
             </Div>
             <sparkles >
-          </Div>
-        </CardHeader>
+          </div />
         <Cardcontent >
           <P className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
@@ -153,9 +147,8 @@ const AIReflection: React.FC<Aireflectionprops> = ({
           <Button  style={{ width: "100%" }}>
             <brain >
             Analyze Trade
-          </Button>
-        </CardContent>
-      </Card>
+          </button />
+      </Button>
     );
   }
 
@@ -174,8 +167,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
             </Div>
             <Div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
           </Div>
-        </Div>
-      </CardHeader>
+        </div />
       
       <Cardcontent >
         {/* Summary Section */}
@@ -194,7 +186,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
           <Div className="space-y-3">
             <Div className="flex items-center space-x-2">
               <Div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
-              <H4 className="text-sm font-medium text-purple-400"></Div></Div>Behavioral Patterns</Div>
+              <H4 className="text-sm font-medium text-purple-400"></Div>Behavioral Patterns</Div>
             </Div>
             <behaviortaggroup >
           </Div>
@@ -204,7 +196,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
         <Div className="space-y-2">
           <Div className="flex items-center space-x-2 mb-2">
             <lightbulb >
-            <H4 className="text-sm font-medium text-yellow-400"></Div></Div>Improvement Suggestion</Div>
+            <H4 className="text-sm font-medium text-yellow-400"></Div>Improvement Suggestion</Div>
           </Div>
           <P className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
             {reflection!.suggestion}
@@ -213,12 +205,11 @@ const AIReflection: React.FC<Aireflectionprops> = ({
 
         {/* Regenerate Button */}
         <Div className="pt-2 border-t border-gray-700/50">
-          <Button variant="ghost" size="sm"></Div></Div>
+          <Button variant="ghost" size="sm"></Div>
             <brain >
             Regenerate Analysis
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   );
 };

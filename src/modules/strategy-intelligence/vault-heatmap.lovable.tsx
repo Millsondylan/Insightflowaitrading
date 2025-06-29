@@ -212,16 +212,15 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
 
   return (
     <Card  style={{ width: "100%" }}>
-      <Cardheader  /></Card></Card></Card>
-        <Cardtitle  style={{ color: "white" }}>Strategy Performance Heatmap</Cardtitle>
-      </CardHeader>
+      <Cardheader  / /></Card /></Card /></Card>
+        <Cardtitle  style={{ color: "white" }}>Strategy Performance Heatmap</Cardtitle />
       <Cardcontent >
         <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {strategies.map((strategy) => (
             <Div key={strategy.id} 
               className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
-         >
-              <H3 className="text-lg font-bold"></Cardcontent></Cardcontent>{strategy.name}</Cardcontent>
+     >
+              <H3 className="text-lg font-bold" /></Cardcontent /></Cardcontent />{strategy.name}</Cardtitle>
               <Div className="text-xs text-gray-300 mb-2">{strategy.description}</Div>
               <Div className="mt-2">
                 <Div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</Div>
@@ -234,7 +233,7 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
                 {strategy.tags?.map((tag) => (
                   <Span key={tag} 
                     className="px-2 py-1 bg-black/30 rounded-full text-xs"
-               ></Div></Div>
+           ></Div>
                     {tag}
                   </Div>
                 ))}
@@ -246,8 +245,7 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
               </Div>
             </Div>
           ))}
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   );
 };

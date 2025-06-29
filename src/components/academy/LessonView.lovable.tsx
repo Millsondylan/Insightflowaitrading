@@ -88,8 +88,7 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
         
         <Lessonbookmark  /> markComplete(lesson.id)}
           onBookmark={handleToggleBookmark}
-        />
-      </Lessonbookmark>
+        / />
 
       {/* Lesson Content */}
       {!showQuiz && (
@@ -100,7 +99,7 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
       {showQuiz && activeQuizId && (
         <Div id="lesson-quiz" className="mt-10">
           <Div className="flex justify-between items-center mb-6">
-            <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</Lessonengine>
+            <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</Lessonbookmark>
             <Button onClick={handleBackToContent}
               className="text-white/70 hover:text-cyan-400 text-sm"
             />

@@ -295,9 +295,8 @@ export function BestSetupsPage({ onSetupSelect }: BestSetupsPageProps) {
               <TabsTrigger value="15m" />15m</TabsTrigger>
               <TabsTrigger value="1h" />1H</TabsTrigger>
               <TabsTrigger value="4h" />4H</TabsTrigger>
-              <TabsTrigger value="D1" />Daily</TabsTrigger>
-            </TabsList>
-          </Tabs>
+              <TabsTrigger value="D1" />Daily</TabsTrigger />
+          </TabsTrigger>
         </Div>
       </Div>
       
@@ -307,9 +306,8 @@ export function BestSetupsPage({ onSetupSelect }: BestSetupsPageProps) {
           <TabsTrigger value="long" />Long</TabsTrigger>
           <TabsTrigger value="short" />Short</TabsTrigger>
           <TabsTrigger value="breakout" />Breakout</TabsTrigger>
-          <TabsTrigger value="pullback" />Pullback</TabsTrigger>
-        </TabsList>
-      </Tabs>
+          <TabsTrigger value="pullback" />Pullback</TabsTrigger />
+      </TabsTrigger>
       
       <Div className="bg-card rounded-lg border overflow-hidden">
         <Div className="grid grid-cols-12 gap-4 p-4 font-medium text-sm border-b">
@@ -445,10 +443,8 @@ export function BestSetupsPage({ onSetupSelect }: BestSetupsPageProps) {
                 <CardContent className="pt-4" />
                   <Div className="space-y-2">
                     <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-4 w-3/4" />
-                  </Skeleton>
-                </CardContent>
-              </Card>
+                    <Skeleton className="h-4 w-3/4" / />
+                </CardContent />
             ))
           ) : (
             filteredSetups.slice(0, 3).map((setup) => {
@@ -494,32 +490,29 @@ export function BestSetupsPage({ onSetupSelect }: BestSetupsPageProps) {
                         {setup.symbol}
                         <Badge variant={isLong ? 'default' : 'destructive'}
                           className="ml-2"
-                    >
+                >
                           {isLong ? (
-                            <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</Card>
+                            <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</Skeleton>
                           ) : (
                             <Span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3" /> SHORT</Span>
                           )}
-                        </Badge>
-                      </CardTitle>
+                        </Badge />
                       <Badge variant="outline" />{setup.timeframe}</Badge>
                     </Div>
                     <CardDescription className="flex items-center justify-between" />
                       <Div className="flex items-center">
                         <Avatar className="h-6 w-6 mr-2" />
                           <AvatarImage src={setup.user?.avatarUrl} alt={setup.user?.displayName} />
-                          <AvatarFallback>{setup.user?.displayName?.[0] || '?'}</CardDescription>
-                        </Avatar>
+                          <AvatarFallback>{setup.user?.displayName?.[0] || '?'}</CardDescription />
                         {setup.user?.displayName}
-                      </Div>
+                      </CardDescription>
                       <Div className="flex items-center text-sm text-muted-foreground">
                         <Heart className={`mr-1 h-4 w-4 ${setup.likes /> 0 ? 'text-red-500 fill-red-500' : ''}`} />
                         {setup.likes}
                         <Eye className="ml-3 mr-1 h-4 w-4" />
                         {setup.views}
-                      </Div>
-                    </CardDescription>
-                  </CardHeader>
+                      </div />
+                  </Div>
                   <Div className="h-[200px]">
                     <TradingViewChart
                       data={chartData}
@@ -567,12 +560,11 @@ export function BestSetupsPage({ onSetupSelect }: BestSetupsPageProps) {
                   </CardContent>
                   <CardFooter className="pt-0 text-xs text-muted-foreground" />
                     {setup.stats?.patternDescription || "No pattern description available"}
-                  </CardFooter>
-                </Card>
+                  </CardFooter />
               );
             })
           )}
-        </Div>
+        </CardFooter>
       </Div>
     </Div>
   );

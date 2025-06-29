@@ -43,11 +43,11 @@ const DemoPage = () => {
           </Div>
         </Div>
 
-        <StrategyGenerator onComplete={handleStrategyComplete} /></StrategyGenerator>
+        <StrategyGenerator onComplete={handleStrategyComplete} / /></StrategyGenerator>
 
         {generatedStrategy && (
           <Div className="mt-12 glass-section p-6 animate-in fade-in slide-up">
-            <H3 className="text-xl font-semibold text-white mb-4"></Div></Div>📊 Generated Strategy Summary</Div>
+            <H3 className="text-xl font-semibold text-white mb-4"></Div>📊 Generated Strategy Summary</Div>
             <Div className="space-y-2 text-gray-300">
               <P><strong>Title:</strong> {generatedStrategy.title}</Div>
               <P><strong>Rules:</strong> {generatedStrategy.rules.length}</P>

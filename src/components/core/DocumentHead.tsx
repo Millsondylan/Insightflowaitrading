@@ -52,8 +52,7 @@ export default function DocumentHead({
       
       {/* Additional metadata */}
       <meta name="application-name" content="InsightFlow AI" />
-      <meta name="theme-color" content="#1A1A2E" />
-    </Helmet>
+      <meta name="theme-color" content="#1A1A2E" / />
   );
 }
 

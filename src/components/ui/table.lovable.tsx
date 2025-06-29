@@ -11,8 +11,7 @@ const Table = React.forwardRef<
       ref={ref}
       className={cn("w-full caption-bottom text-sm", className)}
       {...props}
-    />
-  </HTMLTableElement>
+    / />
 ))
 Table.displayName = "Table"
 

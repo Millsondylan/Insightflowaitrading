@@ -62,8 +62,8 @@ export const StrategyDetailPage = ({ strategy }: Props) => {
                 <H3 className="text-lg font-semibold text-white/90 mb-2">Performance</Div>
                 <Div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
                     <Kpicard label="Win Rate" suffix="%" /></Div>
-                    <Kpicard label="Total PnL" prefix="$"></Kpicard>
-                    <Kpicard label="Total Trades"></Kpicard>
+                    <Kpicard label="Total PnL" prefix="$" />
+                    <Kpicard label="Total Trades" /></Kpicard>
                 </Div>
             </Div>
 

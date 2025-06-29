@@ -61,27 +61,26 @@ export const DailyPlanner: React.FC = () => {
         <Cardtitle >Daily Market Planner</Date>
         <Badge  />
           {dailyPlan.marketOutlook} Outlook
-        </Badge>
-      </CardHeader>
+        </Badge />
       <Cardcontent >
         <Div className="grid grid-cols-3 gap-4">
           <Div>
-            <H3 className="text-lg font-bold mb-2"></Cardcontent></Cardcontent>Calendar</Cardcontent>
+            <H3 className="text-lg font-bold mb-2" /></Cardcontent /></Cardcontent />Calendar</Badge>
             <calendar mode="single" style={{ borderRadius: "0.375rem", border: "1px solid #E5E7EB" }}>
           </Div>
           
           <Div className="col-span-2">
             <Div className="space-y-4">
               <Div>
-                <H3 className="text-lg font-bold mb-2"></Div></Div>Potential Trades</Div>
+                <H3 className="text-lg font-bold mb-2"></Div>Potential Trades</Div>
                 <Div className="space-y-2">
                   {dailyPlan.potentialTrades.map((trade) => (
                     <Div key={trade.symbol}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
-                 >
+             >
                       <Div>
                         <Div className="flex items-center space-x-2">
-                          <H4 className="font-bold"></Div></Div>{trade.symbol}</Div>
+                          <H4 className="font-bold"></Div>{trade.symbol}</Div>
                           <Badge variant="outline">{trade.type}</Badge>
                         </Div>
                         <P className="text-sm text-gray-300">{trade.name}</P>
@@ -100,14 +99,14 @@ export const DailyPlanner: React.FC = () => {
               </Div>
 
               <Div>
-                <H3 className="text-lg font-bold mb-2"></Div></Div>Key Events</Div>
+                <H3 className="text-lg font-bold mb-2"></Div>Key Events</Div>
                 <Div className="space-y-2">
                   {dailyPlan.keyEvents.map((event) => (
                     <Div key={event.id}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
-                 >
+             >
                       <Div className="flex justify-between items-center mb-2">
-                        <H4 className="font-bold"></Div></Div>{event.title}</Div>
+                        <H4 className="font-bold"></Div>{event.title}</Div>
                         <Badge >
                           {event.impact} Impact
                         </Badge>
@@ -115,7 +114,7 @@ export const DailyPlanner: React.FC = () => {
                       <P className="text-sm text-gray-300 mb-2">{event.description}</P>
                       <Div className="flex space-x-2">
                         {event.relatedAssets?.map((asset) => (
-                          <Badge variant="outline"></Div></Div>{asset}</Div>
+                          <Badge variant="outline"></Div>{asset}</Div>
                         ))}
                       </Div>
                     </Div>
@@ -124,7 +123,7 @@ export const DailyPlanner: React.FC = () => {
               </Div>
 
               <Div>
-                <H3 className="text-lg font-bold mb-2"></Div></Div>Risk Management</Div>
+                <H3 className="text-lg font-bold mb-2"></Div>Risk Management</Div>
                 <Div className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
                   <Div className="grid grid-cols-2 gap-2">
                     <Div>
@@ -149,8 +148,7 @@ export const DailyPlanner: React.FC = () => {
           <Button variant="default">
             Start Trading Session
           </Button>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

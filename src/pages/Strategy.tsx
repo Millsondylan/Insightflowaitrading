@@ -25,8 +25,7 @@ const StrategyPage = () => {
           <Div className="mt-12">
             <Div className="threadline-glow w-32 mx-auto"></Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Strategy Generator Section */}
       <ScrollSection className="px-6 py-20" delay={100}>
@@ -43,15 +42,14 @@ const StrategyPage = () => {
             </P>
           </Div>
           
-          <StrategyGenerator /></StrategyGenerator>
-        </Div>
-      </ScrollSection>
+          <StrategyGenerator / />
+        </div />
 
       {/* CTA Footer */}
       <ScrollSection className="px-6 py-32" delay={200}>
         <Div className="max-w-5xl mx-auto text-center">
           <Div className="mb-12">
-            <H4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4"></ScrollSection>Ready to Execute?</ScrollSection>
+            <H4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4" /></ScrollSection /></StrategyGenerator>Ready to Execute?</ScrollSection>
             <P className="text-gray-400 text-lg">Take your strategy to the next level</P>
           </Div>
           <Div className="flex flex-wrap justify-center gap-6">
@@ -68,8 +66,7 @@ const StrategyPage = () => {
               💬 Share Strategy
             </Button>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
     </Div>
   );
 };

@@ -42,7 +42,7 @@ export interface GestureDetectorProps {
   };
 }
 
-export const GestureDetector: React.FC<GestureDetectorProps></GestureDetectorProps> = ({
+export const GestureDetector: React.FC<GestureDetectorProps /> = ({
   children,
   onTap,
   onDoubleTap,
@@ -61,11 +61,11 @@ export const GestureDetector: React.FC<GestureDetectorProps></GestureDetectorPro
     swipeVelocityThreshold = 0.3
   } = options;
 
-  const containerRef = useRef<HTMLDivElement></HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement />(null);
   const touchStartRef = useRef<{ x: number; y: number; time: number }>({ x: 0, y: 0, time: 0 });
-  const touchesRef = useRef<Touch[]></Touch>([]);
+  const touchesRef = useRef<Touch[] />([]);
   const lastTapTimeRef = useRef<number>(0);
-  const longPressTimeoutRef = useRef<NodeJS.Timeout | null></NodeJS>(null);
+  const longPressTimeoutRef = useRef<NodeJS.Timeout | null /></GestureDetectorProps>(null);
   const [isPanning, setIsPanning] = useState(false);
 
   const clearLongPressTimeout = () => {
@@ -346,8 +346,7 @@ export const GestureDetector: React.FC<GestureDetectorProps></GestureDetectorPro
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
-      style={{ touchAction: 'none' }}
- >
+      style={{ touchAction: 'none' }}>
       {children}
     </Div>
   );

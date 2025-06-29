@@ -56,11 +56,10 @@ export const PortfolioDashboard = ({ trades }: Props) => {
 
       <Div>
         <H2 className="text-xl font-semibold text-white/90 mb-4">PnL Curve</Div>
-        <Pnlcurve >
-      </Pnlcurve>
+        <Pnlcurve  />
 
       <Div>
-        <H2 className="text-xl font-semibold text-white/90 mb-4">Trade History</Div>
+        <H2 className="text-xl font-semibold text-white/90 mb-4">Trade History</Pnlcurve>
         <Div className="overflow-x-auto bg-white/5 rounded-lg">
             <Table className="w-full text-left">
                 <Thead className="bg-white/10 text-white/80 text-sm">
@@ -69,24 +68,21 @@ export const PortfolioDashboard = ({ trades }: Props) => {
                         <Th className="p-4">PnL</Th>
                         <Th className="p-4">R:R</Th>
                         <Th className="p-4 hidden md:table-cell">Strategy</Th>
-                        <Th className="p-4 hidden md:table-cell">Timestamp</Th>
-                    </Tr>
-                </Thead>
+                        <Th className="p-4 hidden md:table-cell">Timestamp</Th />
+                </Th>
                 <Tbody className="text-white/80 text-sm">
                     {trades.map(trade => (
                         <Tr key={trade.id} className="border-b border-white/10 hover:bg-white/10">
                             <Td className="p-4">{trade.symbol}</Tbody>
-                            <Td className={`p-4 ${trade.pnl /></Td> 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            <Td className={`p-4 ${trade.pnl / /> 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 ${trade.pnl.toFixed(2)}
                             </Td>
                             <Td className="p-4">{trade.rr.toFixed(2)}</Td>
                             <Td className="p-4 hidden md:table-cell">{trade.strategyId || 'N/A'}</Td>
-                            <Td className="p-4 hidden md:table-cell">{new Date(trade.exitTime).toLocaleString()}</Td>
-                        </Tr>
+                            <Td className="p-4 hidden md:table-cell">{new Date(trade.exitTime).toLocaleString()}</Td />
                     ))}
-                </Tbody>
-            </Table>
-        </Div>
+                </Tbody />
+        </Td>
       </Div>
     </Div>
   );

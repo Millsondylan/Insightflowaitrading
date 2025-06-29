@@ -173,8 +173,7 @@ export const lovable = {
         <Switch checked={enabled} onCheckedChange={(checked) = /> {
           setEnabled(checked);
           logClick('ToggleNarration', { enabled: checked });
-        }} />
-      </Switch>
+        }} / />
     );
   }
 
@@ -185,7 +184,7 @@ export const lovable = {
           <CardTitle className="flex items-center text-lg text-blue-400" />
             <bot className="mr-2 h-5 w-5" />
             AI Lesson Narrator
-          </Card>
+          </Switch>
           <Div className="flex items-center gap-2">
             {loading ? (
               <Div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></Div>
@@ -194,7 +193,7 @@ export const lovable = {
                 size="icon" 
                 className="h-8 w-8 text-blue-400"
                 onClick={handleRegenerateNarration}
-         >
+     >
                 <RefreshCw className="h-4 w-4" />
               </Button>
             )}
@@ -210,11 +209,10 @@ export const lovable = {
                   }}
                 >
                   <Settings className="h-4 w-4" />
-                </Button>
-              </PopoverTrigger>
+                </button />
               <popoverContent className="w-80 p-4">
                 <Div className="space-y-4">
-                  <H4 className="font-medium text-sm">Narrator Settings</Div>
+                  <H4 className="font-medium text-sm">Narrator Settings</Button>
                   
                   <Div className="space-y-2">
                     <H5 className="text-sm font-medium">Voice Style</Div>
@@ -237,8 +235,7 @@ export const lovable = {
                       <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="calm" id="calm" />
                         <Label htmlFor="calm">Calm</Div>
-                      </Div>
-                    </RadioGroup>
+                      </div />
                   </Div>
                   
                   <Separator />
@@ -259,8 +256,7 @@ export const lovable = {
                       <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="coaching" id="coaching" />
                         <Label htmlFor="coaching">Coaching</Div>
-                      </Div>
-                    </RadioGroup>
+                      </div />
                   </Div>
                   
                   <Separator />
@@ -282,15 +278,13 @@ export const lovable = {
                       <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="fast" id="fast" />
                         <Label htmlFor="fast">Fast</Div>
-                      </Div>
-                    </RadioGroup>
+                      </div />
                   </Div>
                   
                   <Button onClick={handleSettingsChange} className="w-full">
                     Apply Settings
                   </Button>
-                </Div>
-              </PopoverContent>
+                </div />
             </Popover>
             
             <Switch checked={enabled} 
@@ -298,28 +292,24 @@ export const lovable = {
                 setEnabled(checked);
                 logClick('ToggleNarration', { enabled: checked });
               }} 
-            />
-          </Switch>
-        </Div>
-      </CardHeader>
+            / />
+        </div />
       <CardContent>
         {loading ? (
           <Div className="space-y-2 py-2">
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-[90%]" />
             <Skeleton className="h-4 w-[95%]" />
-            <Skeleton className="h-4 w-[85%]" />
-          </CardContent>
+            <Skeleton className="h-4 w-[85%]" / />
         ) : error ? (
           <alert variant="destructive">
-            <alertDescription>{error}</AlertDescription>
-          </Alert>
+            <alertDescription>{error}</AlertDescription />
         ) : (
           <>
             <Div className="bg-blue-950/20 rounded-md p-3 mb-3 max-h-60 overflow-y-auto text-gray-200">
               <Div className="space-y-2 text-sm whitespace-pre-line">
                 {narration}
-              </Div>
+              </Switch>
             </Div>
             
             <Div className="flex items-center justify-between">
@@ -356,11 +346,10 @@ export const lovable = {
                       setVolume(value[0]);
                       logClick('AdjustNarratorVolume', { volume: value[0] });
                     }}
-                  />
-                </Slider>
+                  / />
                 
                 <Div className="flex items-center gap-2">
-                  <Span className="text-xs text-gray-400">Speed:</Div>
+                  <Span className="text-xs text-gray-400">Speed:</Slider>
                   <Select
                     className="bg-transparent text-xs border border-gray-700 rounded px-1 py-0.5"
                     value={playbackSpeed}
@@ -374,14 +363,12 @@ export const lovable = {
                     <Option value="1">1x</Option>
                     <Option value="1.25">1.25x</Option>
                     <Option value="1.5">1.5x</Option>
-                    <Option value="2">2x</Option>
-                  </Select>
-                </Div>
+                    <Option value="2">2x</Option />
+                </Option>
               </Div>
             </Div>
           </>
         )}
-      </CardContent>
-    </Card>
+      </CardContent />
   );
 } 

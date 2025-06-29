@@ -5,7 +5,7 @@ import { Input } from '../../components/ui/input';
 
 interface LovablePreviewProps {
   sourceCode?: string;
-  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
+  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
 }
 
 export const LovablePreview: React.FC<LovablePreviewProps> = ({
@@ -83,7 +83,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
           </Div>
           <Button onClick={applyChanges}
             disabled={!isEditing}
-     >
+ >
             Apply Changes
           </Button>
         </Div>
@@ -112,8 +112,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                   No preview available
                 </Div>
               )}
-            </Div>
-          </Card>
+            </div />
         </Div>
         
         <Div>
@@ -129,19 +128,17 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                       <Input value={editableProperties.textContent}
                         onChange={(e) => handlePropertyChange('textContent', e.target.value)}
                         className="w-full"
-                      />
-                    </Input>
+                      / />
                     
                     <Div>
-                      <Label className="block text-sm font-medium mb-1">CSS Classes</Div>
+                      <Label className="block text-sm font-medium mb-1">CSS Classes</Input>
                       <Input value={editableProperties.className}
                         onChange={(e) => handlePropertyChange('className', e.target.value)}
                         className="w-full"
-                      />
-                    </Input>
+                      / />
                     
                     <Div>
-                      <Label className="block text-sm font-medium mb-2">Text Color</Div>
+                      <Label className="block text-sm font-medium mb-2">Text Color</Input>
                       <Div className="flex items-center space-x-2">
                         <Input type="color"
                           value={editableProperties.style.color}
@@ -172,12 +169,11 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                           min={8}
                           max={72}
                           className="flex-1"
-                        />
-                      </Input>
-                    </Div>
+                        / />
+                    </Input>
                     
                     <Div>
-                      <Label className="block text-sm font-medium mb-1"></Div></Div>Font Weight</Div>
+                      <Label className="block text-sm font-medium mb-1"></Div>Font Weight</Div>
                       <Select
                         value={editableProperties.style.fontWeight}
                         onChange={(e) => handleStyleChange('fontWeight', e.target.value)}
@@ -185,23 +181,21 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                       >
                         <Option value="normal">Normal</Select>
                         <Option value="bold">Bold</Option>
-                        <Option value="lighter">Light</Option>
-                      </Select>
-                    </Div>
+                        <Option value="lighter">Light</Option />
+                    </Option>
                   </Div>
                 </Div>
               ) : (
                 <Div className="text-center text-text-muted h-full flex items-center justify-center">
                   <Div>
-                    <P className="mb-4"></Div></Div>Select a component to edit</Div>
+                    <P className="mb-4"></Div>Select a component to edit</Div>
                     <Button onClick={() =></Button> handleComponentSelect('sample-component-1')}>
                       Select Component
                     </Button>
                   </Div>
                 </Div>
               )}
-            </Div>
-          </Card>
+            </div />
         </Div>
       </Div>
     </Div>

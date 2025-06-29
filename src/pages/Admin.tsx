@@ -87,41 +87,34 @@ export default function AdminPage() {
           <H1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</Div>
           <P className="text-white/70">
             Manage users, promo codes, and view system usage logs.
-          </P>
-        </Header>
+          </p />
 
         <Tabs defaultValue="users" />
           <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1" />
             <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
               <ShieldCheck className="h-4 w-4" />
-              <Span>Users</Tabs>
-            </TabsTrigger>
+              <Span>Users</Tabs />
             <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
               <Ticket className="h-4 w-4" />
-              <Span>Promo Codes</TabsTrigger>
-            </TabsTrigger>
+              <Span>Promo Codes</TabsTrigger />
             <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
               <Activity className="h-4 w-4" />
-              <Span>Usage Logs</TabsTrigger>
-            </TabsTrigger>
-          </TabsList>
+              <Span>Usage Logs</TabsTrigger />
+          </P>
 
           <TabsContent value="users" />
-            <UserRoleManager users={users} onRoleChange={handleRoleChange} />
-          </TabsContent>
+            <UserRoleManager users={users} onRoleChange={handleRoleChange} / />
 
           <TabsContent value="promo" />
             <PromoCodeEditor 
               codes={promoCodes} 
               onGenerate={handleGeneratePromoCode} 
               onRevoke={handleRevokePromoCode} 
-            />
-          </TabsContent>
+            / />
 
           <TabsContent value="logs" />
-            <UsageLogViewer logs={logs} /></TabsContent></TabsContent></TabsContent>
-          </TabsContent>
-        </Tabs>
+            <UsageLogViewer logs={logs} / /></TabsContent /></TabsContent /></TabsContent />
+        </TabsContent>
       </Div>
     </Div>
   );

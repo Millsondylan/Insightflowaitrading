@@ -139,7 +139,7 @@ const TradingViewLightWeightChart = ({
     });
   }, [overlays]);
 
-  return <Div ref={chartContainerRef} /></HTMLDivElement></HTMLDivElement>;
+  return <Div ref={chartContainerRef} / /></HTMLDivElement /></HTMLDivElement />;
 };
 
 export default TradingViewLightWeightChart;

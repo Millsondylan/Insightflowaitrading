@@ -46,8 +46,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
             </Patternzone>
           </Div>
-        </Div>
-      </BlockReveal>
+        </div />
       
       <Div className="space-y-6">
         <Blockreveal  />
@@ -56,40 +55,35 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
             {result.patterns.map(pattern => (
               <patterntag >
             ))}
-          </Div>
-        </BlockReveal>
+          </div />
 
         <blockreveal >
-          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</H3>
-          <P className="text-gray-300 mt-2">{result.summary}</P>
-        </BlockReveal>
+          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</Div>
+          <P className="text-gray-300 mt-2">{result.summary}</p />
         
         <blockreveal >
-          <H3 className="text-2xl font-bold text-cyan-400">Confidence</H3>
+          <H3 className="text-2xl font-bold text-cyan-400">Confidence</P>
           <Div className="flex items-center gap-4 mt-2">
             <Div className="confidence-meter-bg flex-grow">
-              <Div
-                className="confidence-meter-bar"
+              <Div                 className="confidence-meter-bar"
                 style={{ width: `${confidence}%` }}
               />
             </Div>
             <Span className="text-xl font-bold text-white">{confidence}%</Span>
-          </Div>
-        </BlockReveal>
+          </div />
         
         <blockreveal >
           <Div className="flex flex-wrap gap-4 mt-4">
             <Button >
-              <Link to="/journal?from=vision"></Div></Div>📓 Save to Journal</Div>
+              <Link to="/journal?from=vision"></Div>📓 Save to Journal</Div>
             </Button>
             <Button >
-              <Link to="/academy?topic=patterns"></Button></Button>📘 Learn Pattern</Button>
+              <Link to="/academy?topic=patterns"></Button></Button></Button></Button></Button>📘 Learn Pattern</Button>
             </Button>
             <Button >
-              <Link to="/strategy?from=vision"></Button></Button>💡 Find Strategy</Button>
+              <Link to="/strategy?from=vision"></Button></Button></Button></Button></Button>💡 Find Strategy</Button>
             </Button>
-          </Div>
-        </BlockReveal>
+          </div />
       </Div>
     </Div>
   );

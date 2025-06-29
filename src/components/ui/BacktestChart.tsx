@@ -85,7 +85,7 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
         <ResponsiveContainer width="100%" height="90%">
           <LineChart data={animationComplete ? priceData : []}
             margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
-     >
+ >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="time"
@@ -136,17 +136,15 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
-          </ResponsiveContainer>
-        </ResponsiveContainer>
+          </ResponsiveContainer />
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
           <Div className="absolute top-1/2 right-8 transform -translate-y-1/2">
             <tradeTooltip trade={hoveredTrade} />
-          </Div>
+          </ResponsiveContainer>
         )}
-      </Div>
-    </BlockReveal>
+      </div />
   );
 };
 

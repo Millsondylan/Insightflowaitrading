@@ -33,34 +33,28 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   return (
     <Div className="space-y-8 mt-12">
       <blockReveal>
-        <H2 className="text-3xl font-bold text-center mb-6">Backtest Results</Div>
-      </BlockReveal>
+        <H2 className="text-3xl font-bold text-center mb-6">Backtest Results</div />
       
       <blockReveal>
-        <KPICards stats={result.stats} />
-      </KPICards>
+        <KPICards stats={result.stats} / />
       
       <blockReveal delay={0.2}>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" />
           <TabsList className="w-full grid grid-cols-2 mb-6" />
             <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400" />
               Chart View
-            </Tabs>
+            </Div>
             <TabsTrigger value="trades" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400" />
               Trade Explorer
-            </TabsTrigger>
-          </TabsList>
+            </TabsTrigger />
           
           <TabsContent value="overview" />
-            <backtestChart chartData={chartData} ticker={ticker} timeframe={timeframe} />
-          </TabsContent>
+            <backtestChart chartData={chartData} ticker={ticker} timeframe={timeframe} / />
           
           <TabsContent value="trades" />
-            <tradeExplorer trades={result.trades} />
-          </TabsContent>
-        </Tabs>
-      </BlockReveal>
-    </Div>
+            <tradeExplorer trades={result.trades} / />
+        </Tabs />
+    </TabsTrigger>
   );
 };
 

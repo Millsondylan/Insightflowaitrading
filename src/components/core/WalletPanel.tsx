@@ -112,7 +112,7 @@ const WalletPanel: React.FC = () => {
             onChange={(e) = /> setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button onClick={handleConnect} className="connect-wallet-btn shrink-0"></Div></Div>Connect</Div>
+          <Button onClick={handleConnect} className="connect-wallet-btn shrink-0"></Div>Connect</Div>
         </Div>
       </Div>
     );

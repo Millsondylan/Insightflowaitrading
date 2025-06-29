@@ -82,8 +82,7 @@ const ChatPage: React.FC = () => {
             </Div>
           </Div>
         </Div>
-      </Div>
-    </Section>
+      </div />
   );
 };
 

@@ -250,8 +250,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
                 </Button>
               )}
             </Div>
-          </motion.div>
-        </AnimatePresence>
+          </motion.div />
       ) : (
         // Quiz Summary
         <motion.div
@@ -298,7 +297,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
           )}
 
           <Div className="pt-4">
-            <Button  style={{ color: "white" }}></Div></Div>
+            <Button  style={{ color: "white" }}></Div>
               <refreshcw >
               Retry Quiz
             </Div>

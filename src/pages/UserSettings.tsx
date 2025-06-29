@@ -218,8 +218,8 @@ export default function UserSettingsPage() {
   if (loading) {
     return (
       <Div className="flex items-center justify-center h-screen">
-        <Div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></UserSettings>
-      </Div>
+        <Div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
+      </UserSettings>
     );
   }
 
@@ -234,12 +234,12 @@ export default function UserSettingsPage() {
           <Button variant="outline" 
             onClick={resetToDefaults}
             disabled={saving}
-     >
+ >
             Reset to Defaults
           </Div>
           <Button onClick={saveSettings} 
             disabled={!hasChanges() || saving}
-      >
+  >
             {saving ? (
               <>
                 <Div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></Button>
@@ -253,8 +253,7 @@ export default function UserSettingsPage() {
       <Tabs defaultValue={activeTab} 
         value={activeTab} 
         onValueChange={setActiveTab}
-        className="space-y-6"
-  >
+        className="space-y-6">
         <TabsList className="grid grid-cols-5 w-full max-w-3xl mx-auto" />
           <TabsTrigger value="notifications" />
             <Bell className="w-4 h-4 mr-2" /> Notifications
@@ -270,8 +269,7 @@ export default function UserSettingsPage() {
           </TabsTrigger>
           <TabsTrigger value="wallet" />
             <Smartphone className="w-4 h-4 mr-2" /> Wallet
-          </TabsTrigger>
-        </TabsList>
+          </TabsTrigger />
 
         <TabsContent value="notifications" className="space-y-6" />
           {/* Notification Channels */}
@@ -280,95 +278,81 @@ export default function UserSettingsPage() {
               <CardTitle className="flex items-center" />
                 <Bell className="w-5 h-5 mr-2 text-blue-400" />
                 Notification Channels
-              </TabsContent>
+              </TabsTrigger>
               <CardDescription>
                 Choose how you want to receive notifications
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="flex items-center justify-between">
                 <Div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-gray-400" />
-                  <Label>Email Notifications</CardContent>
+                  <Label>Email Notifications</CardDescription>
                 </Div>
                 <Switch checked={settings.notification_channels?.email}
                   onCheckedChange={(checked) = /> updateToggle('notification_channels', 'email', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
                 <Div className="flex items-center space-x-2">
                   <Smartphone className="w-4 h-4 text-gray-400" />
-                  <Label>Push Notifications</Div>
+                  <Label>Push Notifications</Switch>
                 </Div>
                 <Switch checked={settings.notification_channels?.push}
                   onCheckedChange={(checked) = /> updateToggle('notification_channels', 'push', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
                 <Div className="flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 text-gray-400" />
-                  <Label>In-App Alerts</Div>
+                  <Label>In-App Alerts</Switch>
                 </Div>
                 <Switch checked={settings.notification_channels?.in_app}
                   onCheckedChange={(checked) = /> updateToggle('notification_channels', 'in_app', checked)}
-                />
-              </Switch>
-            </CardContent>
-          </Card>
+                / />
+            </CardContent />
 
           {/* Notification Types */}
           <Card>
             <CardHeader>
-              <CardTitle>Notification Types</Card>
+              <CardTitle>Notification Types</Switch>
               <CardDescription>
                 Select which types of notifications you want to receive
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4" />
               <Div className="flex items-center justify-between">
-                <Label>Trade Alerts</CardContent>
+                <Label>Trade Alerts</CardDescription>
                 <Switch checked={settings.notification_types?.trade_alerts}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'trade_alerts', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
-                <Label>Market Updates</Div>
+                <Label>Market Updates</Switch>
                 <Switch checked={settings.notification_types?.market_updates}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'market_updates', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
-                <Label>Strategy Signals</Div>
+                <Label>Strategy Signals</Switch>
                 <Switch checked={settings.notification_types?.strategy_signals}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'strategy_signals', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
-                <Label>Journal Reminders</Div>
+                <Label>Journal Reminders</Switch>
                 <Switch checked={settings.notification_types?.journal_reminders}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'journal_reminders', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
-                <Label>Goal Progress</Div>
+                <Label>Goal Progress</Switch>
                 <Switch checked={settings.notification_types?.goal_progress}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'goal_progress', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
-                <Label>Course Updates</Div>
+                <Label>Course Updates</Switch>
                 <Switch checked={settings.notification_types?.course_updates}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'course_updates', checked)}
-                />
-              </Switch>
+                / />
               <Div className="flex items-center justify-between">
-                <Label>Community Mentions</Div>
+                <Label>Community Mentions</Switch>
                 <Switch checked={settings.notification_types?.community_mentions}
                   onCheckedChange={(checked) = /> updateToggle('notification_types', 'community_mentions', checked)}
-                />
-              </Switch>
-            </CardContent>
-          </Card>
+                / />
+            </CardContent />
 
           {/* Quiet Hours */}
           <Card>
@@ -376,53 +360,47 @@ export default function UserSettingsPage() {
               <CardTitle className="flex items-center" />
                 <Clock className="w-5 h-5 mr-2 text-blue-400" />
                 Quiet Hours
-              </Card>
+              </Switch>
               <CardDescription>
                 Set when you don't want to be disturbed
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="flex items-center justify-between">
-                <Label>Enable Quiet Hours</CardContent>
+                <Label>Enable Quiet Hours</CardDescription>
                 <Switch checked={settings.quiet_hours?.enabled}
                   onCheckedChange={(checked) = /> updateSetting('quiet_hours', 'enabled', checked)}
-                />
-              </Switch>
+                / />
               
               {settings.quiet_hours?.enabled && (
                 <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <Div className="space-y-2">
-                    <Label>Start Time</Div>
+                    <Label>Start Time</Switch>
                     <Input type="time"
                       value={settings.quiet_hours?.start}
                       onChange={(e) => updateSetting('quiet_hours', 'start', e.target.value)}
-                    />
-                  </Input>
+                    / />
                   <Div className="space-y-2">
-                    <Label>End Time</Div>
+                    <Label>End Time</Input>
                     <Input type="time"
                       value={settings.quiet_hours?.end}
                       onChange={(e) => updateSetting('quiet_hours', 'end', e.target.value)}
-                    />
-                  </Input>
+                    / />
                   <Div className="space-y-2 md:col-span-2">
-                    <Label>Timezone</Div>
+                    <Label>Timezone</Input>
                     <Select value={settings.quiet_hours?.timezone}
                       onValueChange={(value) = /> updateSetting('quiet_hours', 'timezone', value)}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select timezone" />
-                      </Select>
+                        <SelectValue placeholder="Select timezone" / />
                       <SelectContent>
-                        <SelectItem value="UTC" />UTC</SelectContent>
+                        <SelectItem value="UTC" />UTC</Select>
                         <SelectItem value="America/New_York" />Eastern Time (ET)</SelectItem>
                         <SelectItem value="America/Chicago" />Central Time (CT)</SelectItem>
                         <SelectItem value="America/Denver" />Mountain Time (MT)</SelectItem>
                         <SelectItem value="America/Los_Angeles" />Pacific Time (PT)</SelectItem>
                         <SelectItem value="Europe/London" />London (GMT)</SelectItem>
-                        <SelectItem value="Asia/Tokyo" />Tokyo</SelectItem>
-                      </SelectContent>
-                    </Select>
+                        <SelectItem value="Asia/Tokyo" />Tokyo</SelectItem />
+                    </SelectItem>
                   </Div>
                 </Div>
               )}
@@ -432,11 +410,9 @@ export default function UserSettingsPage() {
                 <AlertTitle>Important</Alert>
                 <AlertDescription>
                   During quiet hours, you'll still receive urgent notifications like major price alerts.
-                </AlertDescription>
-              </Alert>
-            </CardContent>
-          </Card>
-        </TabsContent>
+                </AlertDescription />
+            </CardContent />
+        </AlertDescription>
 
         <TabsContent value="appearance" className="space-y-6" />
           {/* Theme Settings */}
@@ -448,11 +424,10 @@ export default function UserSettingsPage() {
               </TabsContent>
               <CardDescription>
                 Customize the appearance of the platform
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-6" />
               <Div className="space-y-4">
-                <Label>Theme Mode</CardContent>
+                <Label>Theme Mode</CardDescription>
                 <RadioGroup value={settings.theme_preferences?.mode || "dark"}
                   onValueChange={(value) = /> updateSetting('theme_preferences', 'mode', value)}
                   className="flex items-center space-x-2"
@@ -474,8 +449,7 @@ export default function UserSettingsPage() {
                     <Label htmlFor="system" className="flex items-center">
                       <Globe className="w-4 h-4 mr-2" /> System
                     </Div>
-                  </Div>
-                </RadioGroup>
+                  </div />
               </Div>
 
               <Div className="space-y-4">
@@ -505,17 +479,14 @@ export default function UserSettingsPage() {
                   onValueChange={(value) = /> updateSetting('theme_preferences', 'chart_theme', value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select chart theme" />
-                  </Select>
+                    <SelectValue placeholder="Select chart theme" / />
                   <SelectContent>
-                    <SelectItem value="tradingview" />TradingView</SelectContent>
+                    <SelectItem value="tradingview" />TradingView</Select>
                     <SelectItem value="dark" />Dark</SelectItem>
                     <SelectItem value="light" />Light</SelectItem>
-                    <SelectItem value="custom" />Custom</SelectItem>
-                  </SelectContent>
-                </Select>
-              </Div>
-            </CardContent>
+                    <SelectItem value="custom" />Custom</SelectItem />
+                </SelectItem>
+              </div />
           </Card>
 
           {/* Layout Preferences */}
@@ -527,34 +498,29 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 Configure how the interface is organized
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="flex items-center justify-between">
-                <Label>Collapse Sidebar by Default</CardContent>
+                <Label>Collapse Sidebar by Default</CardDescription>
                 <Switch checked={settings.layout_preferences?.sidebar_collapsed}
                   onCheckedChange={(checked) = /> updateSetting('layout_preferences', 'sidebar_collapsed', checked)}
-                />
-              </Switch>
+                / />
 
               <Div className="space-y-2">
-                <Label>Default View</Div>
+                <Label>Default View</Switch>
                 <Select value={settings.layout_preferences?.default_view}
                   onValueChange={(value) = /> updateSetting('layout_preferences', 'default_view', value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select default view" />
-                  </Select>
+                    <SelectValue placeholder="Select default view" / />
                   <SelectContent>
-                    <SelectItem value="dashboard" />Dashboard</SelectContent>
+                    <SelectItem value="dashboard" />Dashboard</Select>
                     <SelectItem value="markets" />Markets</SelectItem>
                     <SelectItem value="journal" />Journal</SelectItem>
                     <SelectItem value="academy" />Academy</SelectItem>
-                    <SelectItem value="portfolio" />Portfolio</SelectItem>
-                  </SelectContent>
-                </Select>
-              </Div>
-            </CardContent>
+                    <SelectItem value="portfolio" />Portfolio</SelectItem />
+                </SelectItem>
+              </div />
           </Card>
 
           {/* Chart Settings */}
@@ -566,28 +532,25 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 Configure default chart display options
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Div className="space-y-2">
-                  <Label>Default Timeframe</CardContent>
+                  <Label>Default Timeframe</CardDescription>
                   <Select value={settings.chart_settings?.default_timeframe || "1h"}
                     onValueChange={(value) = /> updateSetting('chart_settings', 'default_timeframe', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select timeframe" />
-                    </Select>
+                      <SelectValue placeholder="Select timeframe" / />
                     <SelectContent>
-                      <SelectItem value="1m" />1 Minute</SelectContent>
+                      <SelectItem value="1m" />1 Minute</Select>
                       <SelectItem value="5m" />5 Minutes</SelectItem>
                       <SelectItem value="15m" />15 Minutes</SelectItem>
                       <SelectItem value="1h" />1 Hour</SelectItem>
                       <SelectItem value="4h" />4 Hours</SelectItem>
                       <SelectItem value="1d" />Daily</SelectItem>
-                      <SelectItem value="1w" />Weekly</SelectItem>
-                    </SelectContent>
-                  </Select>
+                      <SelectItem value="1w" />Weekly</SelectItem />
+                  </SelectItem>
                 </Div>
                 <Div className="space-y-2">
                   <Label>Chart Style</Div>
@@ -595,20 +558,16 @@ export default function UserSettingsPage() {
                     onValueChange={(value) = /> updateSetting('chart_settings', 'style', value)}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select chart style" />
-                    </Select>
+                      <SelectValue placeholder="Select chart style" / />
                     <SelectContent>
-                      <SelectItem value="candles" />Candlesticks</SelectContent>
+                      <SelectItem value="candles" />Candlesticks</Select>
                       <SelectItem value="bars" />Bars</SelectItem>
                       <SelectItem value="line" />Line</SelectItem>
-                      <SelectItem value="heikin-ashi" />Heikin Ashi</SelectItem>
-                    </SelectContent>
-                  </Select>
+                      <SelectItem value="heikin-ashi" />Heikin Ashi</SelectItem />
+                  </SelectItem>
                 </Div>
-              </Div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+              </div />
+          </Card />
 
         <TabsContent value="features" className="space-y-6" />
           {/* AI and Automation Features */}
@@ -620,82 +579,72 @@ export default function UserSettingsPage() {
               </TabsContent>
               <CardDescription>
                 Configure intelligent features that enhance your trading
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="flex items-center justify-between">
                 <Div>
-                  <Label>AI Copilot</CardContent>
+                  <Label>AI Copilot</CardDescription>
                   <P className="text-sm text-gray-400">Get intelligent suggestions as you trade</P>
                 </Div>
                 <Switch checked={settings.feature_toggles?.ai_copilot}
                   onCheckedChange={(checked) = /> updateToggle('feature_toggles', 'ai_copilot', checked)}
-                />
-              </Switch>
+                / />
               <Separator />
               <Div className="flex items-center justify-between">
                 <Div>
-                  <Label>Automated Journaling</Separator>
+                  <Label>Automated Journaling</Switch>
                   <P className="text-sm text-gray-400">Automatically generate trade journals</P>
                 </Div>
                 <Switch checked={settings.feature_toggles?.auto_journaling}
                   onCheckedChange={(checked) = /> updateToggle('feature_toggles', 'auto_journaling', checked)}
-                />
-              </Switch>
+                / />
               <Separator />
               <Div className="flex items-center justify-between">
                 <Div>
-                  <Label>Smart Notifications</Separator>
+                  <Label>Smart Notifications</Switch>
                   <P className="text-sm text-gray-400">AI-powered alerts based on your activity</P>
                 </Div>
                 <Switch checked={settings.feature_toggles?.smart_notifications}
                   onCheckedChange={(checked) = /> updateToggle('feature_toggles', 'smart_notifications', checked)}
-                />
-              </Switch>
+                / />
               <Separator />
               <Div className="flex items-center justify-between">
                 <Div>
-                  <Label>Voice Narration</Separator>
+                  <Label>Voice Narration</Switch>
                   <P className="text-sm text-gray-400">Listen to AI-generated commentary</P>
                 </Div>
                 <Switch checked={settings.feature_toggles?.voice_narration}
                   onCheckedChange={(checked) = /> updateToggle('feature_toggles', 'voice_narration', checked)}
-                />
-              </Switch>
-            </CardContent>
-          </Card>
+                / />
+            </CardContent />
 
           {/* Advanced Features */}
           <Card>
             <CardHeader>
-              <CardTitle>Advanced Features</Card>
+              <CardTitle>Advanced Features</Switch>
               <CardDescription>
                 Configure additional platform capabilities
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="flex items-center justify-between">
                 <Div>
-                  <Label>Keyboard Shortcuts</CardContent>
+                  <Label>Keyboard Shortcuts</CardDescription>
                   <P className="text-sm text-gray-400">Enable hotkeys for faster navigation</P>
                 </Div>
                 <Switch checked={settings.feature_toggles?.keyboard_shortcuts}
                   onCheckedChange={(checked) = /> updateToggle('feature_toggles', 'keyboard_shortcuts', checked)}
-                />
-              </Switch>
+                / />
               <Separator />
               <Div className="flex items-center justify-between">
                 <Div>
-                  <Label>Beta Features</Separator>
+                  <Label>Beta Features</Switch>
                   <P className="text-sm text-gray-400">Try experimental features before they're released</P>
                 </Div>
                 <Switch checked={settings.feature_toggles?.beta_features}
                   onCheckedChange={(checked) = /> updateToggle('feature_toggles', 'beta_features', checked)}
-                />
-              </Switch>
-            </CardContent>
-          </Card>
-        </TabsContent>
+                / />
+            </CardContent />
+        </Switch>
 
         <TabsContent value="preferences" className="space-y-6" />
           {/* AI Coaching */}
@@ -707,8 +656,7 @@ export default function UserSettingsPage() {
               </TabsContent>
               <CardDescription>
                 Choose how the AI coach interacts with you
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <RadioGroup value={settings.coaching_tone || "balanced"}
                 onValueChange={(value) = /> setSettings({ ...settings, coaching_tone: value as any })}
@@ -716,7 +664,7 @@ export default function UserSettingsPage() {
               >
                 <Div className="flex items-center space-x-3">
                   <RadioGroupItem value="supportive" id="supportive" />
-                  <Label htmlFor="supportive" className="font-medium">Supportive</CardContent>
+                  <Label htmlFor="supportive" className="font-medium">Supportive</CardDescription>
                   <P className="text-sm text-gray-400 ml-2">Focuses on encouragement and positive reinforcement</P>
                 </Div>
                 <Div className="flex items-center space-x-3">
@@ -733,10 +681,8 @@ export default function UserSettingsPage() {
                   <RadioGroupItem value="analytical" id="analytical" />
                   <Label htmlFor="analytical" className="font-medium">Analytical</Div>
                   <P className="text-sm text-gray-400 ml-2">Focuses on data, metrics, and objective analysis</P>
-                </Div>
-              </RadioGroup>
-            </CardContent>
-          </Card>
+                </div />
+            </CardContent />
 
           {/* Reminders */}
           <Card>
@@ -747,15 +693,14 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 How often would you like to receive coaching reminders
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <RadioGroup value={settings.reminder_frequency || "daily"}
                 onValueChange={(value) = /> setSettings({ ...settings, reminder_frequency: value as any })}
               >
                 <Div className="flex items-center space-x-3">
                   <RadioGroupItem value="hourly" id="hourly" />
-                  <Label htmlFor="hourly">Hourly</CardContent>
+                  <Label htmlFor="hourly">Hourly</CardDescription>
                 </Div>
                 <Div className="flex items-center space-x-3">
                   <RadioGroupItem value="daily" id="daily" />
@@ -768,10 +713,8 @@ export default function UserSettingsPage() {
                 <Div className="flex items-center space-x-3">
                   <RadioGroupItem value="custom" id="custom" />
                   <Label htmlFor="custom">Custom</Div>
-                </Div>
-              </RadioGroup>
-            </CardContent>
-          </Card>
+                </div />
+            </CardContent />
 
           {/* Language */}
           <Card>
@@ -782,11 +725,10 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 {t('settings.chooseLanguage')}
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="space-y-2">
-                <Label>{t('settings.language')}</CardContent>
+                <Label>{t('settings.language')}</CardDescription>
                 <Select value={settings.language || "en"}
                   onValueChange={(value) = /> {
                     setSettings({ ...settings, language: value });
@@ -794,20 +736,17 @@ export default function UserSettingsPage() {
                   }}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder={t('settings.selectLanguage')} />
-                  </Select>
+                    <SelectValue placeholder={t('settings.selectLanguage')} / />
                   <SelectContent>
-                    <SelectItem value="en" />🇬🇧 English</SelectContent>
+                    <SelectItem value="en" />🇬🇧 English</Select>
                     <SelectItem value="es" />🇪🇸 Español</SelectItem>
                     <SelectItem value="fr" />🇫🇷 Français</SelectItem>
                     <SelectItem value="de" />🇩🇪 Deutsch</SelectItem>
                     <SelectItem value="pt" />🇵🇹 Português</SelectItem>
                     <SelectItem value="zh" />🇨🇳 中文</SelectItem>
-                    <SelectItem value="ja" />🇯🇵 日本語</SelectItem>
-                  </SelectContent>
-                </Select>
-              </Div>
-            </CardContent>
+                    <SelectItem value="ja" />🇯🇵 日本語</SelectItem />
+                </SelectItem>
+              </div />
           </Card>
 
           {/* Audio Settings */}
@@ -819,12 +758,11 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 Configure sound effects and voice narration
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-6" />
               <Div className="space-y-2">
                 <Div className="flex items-center justify-between">
-                  <Label>Enable Sound Effects</CardContent>
+                  <Label>Enable Sound Effects</CardDescription>
                   <Switch checked={settings.audio_settings?.sounds_enabled || false}
                     onCheckedChange={(checked) = /> 
                       setSettings({
@@ -835,13 +773,12 @@ export default function UserSettingsPage() {
                         }
                       })
                     }
-                  />
-                </Switch>
+                  / />
                 {settings.audio_settings?.sounds_enabled && (
                   <Div className="space-y-4 pt-2">
                     <Div className="space-y-2">
                       <Div className="flex justify-between">
-                        <Label>Sound Volume</Div>
+                        <Label>Sound Volume</Switch>
                         <Span className="text-sm text-gray-400">
                           {settings.audio_settings?.volume || 80}%
                         </Span>
@@ -859,14 +796,11 @@ export default function UserSettingsPage() {
                             }
                           })
                         }
-                      />
-                    </Slider>
-                  </Div>
+                      / />
+                  </Slider>
                 )}
-              </Div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+              </div />
+          </Card />
         
         <TabsContent value="wallet" className="space-y-6" />
           {/* Wallet Connection */}
@@ -878,17 +812,15 @@ export default function UserSettingsPage() {
               </TabsContent>
               <CardDescription>
                 Connect your cryptocurrency wallet
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div className="bg-black/30 p-4 rounded-lg border border-white/10">
                 <Div className="flex items-center justify-between">
                   <Div className="flex items-center space-x-3">
                     <Div className="bg-blue-500/20 p-2 rounded-full">
-                      <Smartphone className="w-5 h-5 text-blue-400" />
-                    </CardContent>
+                      <Smartphone className="w-5 h-5 text-blue-400" / />
                     <Div>
-                      <Div className="font-medium">MetaMask</Div>
+                      <Div className="font-medium">MetaMask</CardDescription>
                       <Div className="text-sm text-gray-400">Connect your Ethereum wallet</Div>
                     </Div>
                   </Div>
@@ -933,8 +865,7 @@ export default function UserSettingsPage() {
                     Connect
                   </Button>
                 </Div>
-              </Div>
-            </CardContent>
+              </div />
           </Card>
           
           {/* Payment History */}
@@ -946,14 +877,13 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 View your previous crypto payments
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent>
               <Div className="space-y-4">
                 <Div className="bg-black/30 p-4 rounded-lg border border-green-500/20">
                   <Div className="flex items-center justify-between">
                     <Div>
-                      <Div className="font-medium">Pro Plan Subscription</CardContent>
+                      <Div className="font-medium">Pro Plan Subscription</CardDescription>
                       <Div className="text-sm text-gray-400">0.05 ETH • Confirmed</Div>
                       <Div className="text-xs text-gray-500 mt-1">Transaction: 0x71C7...976F</Div>
                     </Div>
@@ -989,8 +919,7 @@ export default function UserSettingsPage() {
                 >
                   View Full History
                 </Button>
-              </Div>
-            </CardContent>
+              </div />
           </Card>
           
           {/* Subscription */}
@@ -1002,13 +931,12 @@ export default function UserSettingsPage() {
               </Card>
               <CardDescription>
                 Manage your subscription plan
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent>
               <Div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-6 rounded-lg border border-blue-500/20">
                 <Div className="flex items-center justify-between mb-4">
                   <Div>
-                    <Div className="text-xl font-bold text-white">Premium Plan</CardContent>
+                    <Div className="text-xl font-bold text-white">Premium Plan</CardDescription>
                     <Div className="text-sm text-blue-300">Active until December 3, 2024</Div>
                   </Div>
                   <Div className="bg-green-500/20 px-3 py-1 rounded-full text-green-400 text-sm">
@@ -1059,10 +987,8 @@ export default function UserSettingsPage() {
                     Cancel
                   </Button>
                 </Div>
-              </Div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+              </div />
+          </Card />
       </Tabs>
 
       {hasChanges() && (

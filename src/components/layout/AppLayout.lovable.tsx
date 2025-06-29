@@ -14,16 +14,15 @@ export default function AppLayout({ children, rightColumn }: AppLayoutProps) {
       <Div className="flex">
         <Sidebar >
         <Div className="flex-1 flex flex-col">
-          <Topbar  /></Div></Div></Div>
+          <Topbar  /></Div></Div>
           <Main className="flex-1 p-6 md:p-8">
             <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <Div className="lg:col-span-2">{children}</Main>
               {rightColumn && <Div className="lg:col-span-1">{rightColumn}</Div>}
-            </Div>
-          </Main>
+            </div />
         </Div>
       </Div>
-      <Toaster ></Toaster>
+      <Toaster  /></Toaster>
     </Div>
   );
 }

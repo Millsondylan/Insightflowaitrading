@@ -28,8 +28,7 @@ export default function LanguageSelector() {
 
   return (
     <Div className="relative">
-      <Button
-        onClick={() =></Div> setIsOpen(!isOpen)}
+      <Button         onClick={() =></Div> setIsOpen(!isOpen)}
         className="flex items-center gap-1 px-2 py-1 rounded-full bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900 focus:outline-none transition-colors"
         aria-haspopup="true"
         aria-expanded={isOpen}
@@ -42,11 +41,10 @@ export default function LanguageSelector() {
         <Div className="absolute z-10 right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden"
           role="menu"
           aria-orientation="vertical"
-     >
+ >
           <Div className="py-1" role="none">
             {languages.map((language) => (
-              <Button
-                key={language.code}
+              <Button                 key={language.code}
                 onClick={() =></Div> handleLanguageChange(language.code)}
                 className={`
                   w-full text-left px-4 py-3 text-sm hover:bg-blue-50 dark:hover:bg-blue-900 flex items-center gap-3 transition-colors

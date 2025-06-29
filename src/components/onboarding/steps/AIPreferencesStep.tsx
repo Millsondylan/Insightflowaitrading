@@ -54,23 +54,21 @@ export default function AIPreferencesStep() {
                   <Switch
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                  />
-                </FormControl>
-              </FormItem>
+                  / />
+              </FormControl>
             )}
           />
         ))}
       </Div>
       
       <Div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-md">
-        <H4 className="font-medium text-indigo-700 dark:text-indigo-300"></Div></Div>AI Assistant Benefits</Div>
+        <H4 className="font-medium text-indigo-700 dark:text-indigo-300"></Div>AI Assistant Benefits</Div>
         <Ul className="mt-2 text-sm text-indigo-600 dark:text-indigo-300 space-y-1">
           <Li>• Personalized trade ideas based on your preferences</Ul>
           <Li>• Real-time market analysis and pattern recognition</Li>
           <Li>• Automated alerts for your favorite symbols</Li>
-          <Li>• Trading psychology coaching and feedback</Li>
-        </Ul>
-      </Div>
+          <Li>• Trading psychology coaching and feedback</Li />
+      </Li>
     </Div>
   );
 }

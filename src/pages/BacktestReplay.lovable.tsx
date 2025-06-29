@@ -6,7 +6,7 @@ const BacktestReplayPage: React.FC = () => {
     <Section className="theme-backtest min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <Div className="text-center space-y-4 animate-in fade-in slide-up">
-        <H1 className="text-6xl md:text-8xl font-bold text-glow-emerald mb-8"></Section></Section>
+        <H1 className="text-6xl md:text-8xl font-bold text-glow-emerald mb-8" /></Section /></Section />
           Backtest Replay
         </Section>
         <P className="text-xl md:text-2xl text-gray-300 font-light">
@@ -16,7 +16,7 @@ const BacktestReplayPage: React.FC = () => {
 
       {/* Timeline Container */}
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <H2 className="text-3xl font-bold text-white mb-8"></Div></Div>⏱️ Trading Timeline</Div>
+        <H2 className="text-3xl font-bold text-white mb-8"></Div>⏱️ Trading Timeline</Div>
         <Div className="relative">
           {/* Timeline Line */}
           <Div className="absolute left-8 top-0 h-full w-0.5 bg-emerald-500/30"></Div>
@@ -63,17 +63,16 @@ const BacktestReplayPage: React.FC = () => {
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
         <Div className="flex items-center justify-center space-x-6">
           <Button className="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
-            <Span className="text-emerald-400"></Div></Div>⏮️</Div>
+            <Span className="text-emerald-400"></Div>⏮️</Div>
           </Button>
           <Button className="w-16 h-16 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
-            <Span className="text-emerald-400 text-xl"></Button></Button>▶️</Button>
+            <Span className="text-emerald-400 text-xl"></Button></Button></Button></Button></Button>▶️</Button>
           </Button>
           <Button className="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
-            <Span className="text-emerald-400"></Button></Button>⏭️</Button>
+            <Span className="text-emerald-400"></Button></Button></Button></Button></Button>⏭️</Button>
           </Button>
         </Div>
-      </Div>
-    </Section>
+      </div />
   );
 };
 

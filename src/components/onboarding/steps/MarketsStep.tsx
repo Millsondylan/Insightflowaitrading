@@ -114,7 +114,7 @@ export default function MarketsStep() {
                     return (
                       <FormItem key={market.id}
                         className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"
-                  >
+              >
                         <FormControl>
                           <Checkbox checked={field.value?.includes(market.id as MarketType)}
                             onCheckedChange={(checked) = /> {
@@ -141,15 +141,13 @@ export default function MarketsStep() {
                               {market.description}
                             </P>
                           </Div>
-                        </Div>
-                      </FormItem>
+                        </div />
                     );
                   }}
                 />
               ))}
             </Div>
-            <FormMessage />
-          </FormMessage>
+            <FormMessage / />
         )}
       />
       
@@ -158,7 +156,7 @@ export default function MarketsStep() {
         name="favorite_symbols"
         render={({ field }) = /> (
           <FormItem>
-            <FormLabel>Favorite Symbols</FormField>
+            <FormLabel>Favorite Symbols</FormMessage>
             <Div className="flex gap-2">
               <FormControl>
                 <Input placeholder="Add symbol (e.g., BTC/USDT, AAPL)"
@@ -181,22 +179,19 @@ export default function MarketsStep() {
               {field.value?.map((symbol: string) => (
                 <Badge key={symbol} variant="secondary" className="flex items-center gap-1" />
                   {symbol}
-                  <Button
-                    type="button"
+                  <Button                     type="button"
                     onClick={() => removeSymbol(symbol)}
                     className="text-gray-500 hover:text-gray-700 focus:outline-none"
                   >
                     <X className="h-3 w-3" />
                     <Span className="sr-only">Remove</Div>
-                  </Button>
-                </Badge>
+                  </button />
               ))}
             </Div>
-            <FormMessage />
-          </FormMessage>
+            <FormMessage / />
         )}
       />
-    </Div>
+    </FormMessage>
   );
 }
 

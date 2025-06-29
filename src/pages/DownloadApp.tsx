@@ -82,17 +82,14 @@ export default function DownloadApp() {
         <Card>
           <CardHeader>
             <CardTitle className="text-2xl" />{t('download.title')}</Div>
-            <CardDescription>{t('download.alreadyInstalled')}</CardDescription>
-          </CardHeader>
+            <CardDescription>{t('download.alreadyInstalled')}</CardDescription />
           <CardContent>
-            <P className="text-center py-8 text-xl">{t('download.alreadyInstalled')}</CardContent>
-          </CardContent>
+            <P className="text-center py-8 text-xl">{t('download.alreadyInstalled')}</CardContent />
           <CardFooter className="flex justify-center" />
             <Button variant="outline" onClick={() = /> window.history.back()}>
               {t('ui.back')}
-            </CardFooter>
-          </CardFooter>
-        </Card>
+            </CardFooter />
+        </CardDescription>
       </Div>
     );
   }
@@ -106,8 +103,7 @@ export default function DownloadApp() {
         <TabsList className="grid grid-cols-3 mb-8" />
           <TabsTrigger value="android" />Android</Tabs>
           <TabsTrigger value="macos" />macOS</TabsTrigger>
-          <TabsTrigger value="pwa" />Web App</TabsTrigger>
-        </TabsList>
+          <TabsTrigger value="pwa" />Web App</TabsTrigger />
         
         {/* Android Tab */}
         <TabsContent value="android" />
@@ -115,12 +111,10 @@ export default function DownloadApp() {
             <CardHeader>
               <CardTitle>
                 <Div className="flex items-center">
-                  <Span className="text-2xl mr-2">📱</TabsContent> 
+                  <Span className="text-2xl mr-2">📱</TabsTrigger> 
                   {t('download.android')}
-                </Div>
-              </CardTitle>
-              <CardDescription>{t('download.androidDescription')}</CardDescription>
-            </CardHeader>
+                </div />
+              <CardDescription>{t('download.androidDescription')}</CardDescription />
             <CardContent className="space-y-4" />
               <Div className="flex justify-center">
                 {/* In a real app, you would use:
@@ -132,21 +126,18 @@ export default function DownloadApp() {
                 /> */}
                 <Div className="w-48 h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
                   QR Code Placeholder for {ANDROID_APK_URL}
-                </CardContent>
+                </CardDescription>
               </Div>
               
               <Div className="text-center mt-4">
                 <P>{t('download.scanQRCode')}</Div>
-              </Div>
-            </CardContent>
+              </div />
             <CardFooter className="flex justify-center gap-4" />
               <Button onClick={downloadAndroid} />{t('download.downloadAndroid')}</CardFooter>
               <Button variant="outline" onClick={() = /> handleCopyLink(ANDROID_APK_URL)}>
                 {t('download.copyLink')}
-              </Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
+              </button />
+          </Card />
         
         {/* macOS Tab */}
         <TabsContent value="macos" />
@@ -154,37 +145,31 @@ export default function DownloadApp() {
             <CardHeader>
               <CardTitle>
                 <Div className="flex items-center">
-                  <Span className="text-2xl mr-2">💻</TabsContent>
+                  <Span className="text-2xl mr-2">💻</Button>
                   {t('download.desktop')}
-                </Div>
-              </CardTitle>
-              <CardDescription>{t('download.desktopDescription')}</CardDescription>
-            </CardHeader>
+                </div />
+              <CardDescription>{t('download.desktopDescription')}</CardDescription />
             <CardContent>
               <Div className="space-y-4">
                 <Div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-                  <H3 className="font-semibold mb-2">{t('download.requirements')}</CardContent>
+                  <H3 className="font-semibold mb-2">{t('download.requirements')}</CardDescription>
                   <Ul className="list-disc list-inside space-y-1 text-sm">
                     <Li>macOS 10.13 High Sierra or later</Ul>
                     <Li>Apple Silicon or Intel Processor</Li>
                     <Li>4GB RAM minimum</Li>
-                    <Li>500MB disk space</Li>
-                  </Ul>
-                </Div>
+                    <Li>500MB disk space</Li />
+                </Li>
                 
                 <Div className="text-center py-4">
                   <P className="text-sm text-gray-500">{t('download.version')}: {APP_VERSION}</Div>
                 </Div>
-              </Div>
-            </CardContent>
+              </div />
             <CardFooter className="flex justify-center gap-4" />
               <Button onClick={downloadMacOS} />{t('download.downloadMacOS')}</CardFooter>
               <Button variant="outline" onClick={() = /> handleCopyLink(MACOS_APP_URL)}>
                 {t('download.copyLink')}
-              </Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
+              </button />
+          </Card />
         
         {/* PWA Tab */}
         <TabsContent value="pwa" />
@@ -192,12 +177,10 @@ export default function DownloadApp() {
             <CardHeader>
               <CardTitle>
                 <Div className="flex items-center">
-                  <Span className="text-2xl mr-2">🌐</TabsContent>
+                  <Span className="text-2xl mr-2">🌐</Button>
                   {t('download.pwa')}
-                </Div>
-              </CardTitle>
-              <CardDescription>{t('download.pwaDescription')}</CardDescription>
-            </CardHeader>
+                </div />
+              <CardDescription>{t('download.pwaDescription')}</CardDescription />
             <CardContent className="space-y-6" />
               <Div className="flex justify-center">
                 {/* In a real app, you would use:
@@ -209,7 +192,7 @@ export default function DownloadApp() {
                 /> */}
                 <Div className="w-48 h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
                   QR Code Placeholder for {WEB_APP_URL}
-                </CardContent>
+                </CardDescription>
               </Div>
               
               <Div className="text-center">
@@ -223,37 +206,30 @@ export default function DownloadApp() {
                 <Ul className="space-y-2">
                   <Li className="flex items-start">
                     <Span className="text-green-500 mr-2">✓</Ul>
-                    <Span>{t('download.feature1')}</Span>
-                  </Li>
+                    <Span>{t('download.feature1')}</span />
                   <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Li>
-                    <Span>{t('download.feature2')}</Span>
-                  </Li>
+                    <Span className="text-green-500 mr-2">✓</Span>
+                    <Span>{t('download.feature2')}</span />
                   <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Li>
-                    <Span>{t('download.feature3')}</Span>
-                  </Li>
+                    <Span className="text-green-500 mr-2">✓</Span>
+                    <Span>{t('download.feature3')}</span />
                   <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Li>
-                    <Span>{t('download.feature4')}</Span>
-                  </Li>
-                </Ul>
+                    <Span className="text-green-500 mr-2">✓</Span>
+                    <Span>{t('download.feature4')}</span />
+                </Span>
               </Div>
               
               <Div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
                 <H3 className="font-semibold mb-2">{t('download.pwaRequirements')}</Div>
                 <P className="text-sm">{t('download.offlineSupport')}</P>
-              </Div>
-            </CardContent>
+              </div />
             <CardFooter className="flex justify-center gap-4" />
               <Button onClick={handlePWAInstall} />{t('download.installPWA')}</CardFooter>
               <Button variant="outline" onClick={() = /> handleCopyLink(WEB_APP_URL)}>
                 {t('download.copyLink')}
-              </Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-      </Tabs>
+              </button />
+          </Card />
+      </Button>
     </Div>
   );
 }

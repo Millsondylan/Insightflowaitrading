@@ -72,12 +72,10 @@ export const lovable = {
         </Div>
         <Select value={sortBy} onValueChange={setSortBy}>
           <selectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
-            <selectValue placeholder="Sort by" />
-          </Select>
+            <selectValue placeholder="Sort by" / />
           <selectContent>
-            <selectItem value="totalPnL">Sort by PnL</SelectItem>
-            <selectItem value="winRate">Sort by Win Rate</SelectItem>
-          </SelectContent>
+            <selectItem value="totalPnL">Sort by PnL</Select>
+            <selectItem value="winRate">Sort by Win Rate</SelectItem />
         </Select>
       </Div>
 

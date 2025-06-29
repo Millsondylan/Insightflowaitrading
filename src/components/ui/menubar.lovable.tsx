@@ -84,8 +84,7 @@ const MenubarCheckboxItem = React.forwardRef<
     <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <menubarprimitive >
         <check >
-      </MenubarPrimitive.ItemIndicator>
-    </Menubarprimitive>
+      </MenubarPrimitive.ItemIndicator />
     {children}
   </MenubarPrimitive.CheckboxItem>
 ))
@@ -100,7 +99,7 @@ const MenubarRadioItem = React.forwardRef<
       <menubarprimitive >
         <circle >
       </MenubarPrimitive.ItemIndicator>
-    </Span>
+    </Menubarprimitive>
     {children}
   </MenubarPrimitive.RadioItem>
 ))
@@ -129,13 +128,12 @@ const MenubarShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span
-      className={cn(
+    <Span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    /></HTMLSpanElement></HTMLSpanElement>
+    / /></HTMLSpanElement /></HTMLSpanElement />
   )
 }
 MenubarShortcut.displayname = "MenubarShortcut"

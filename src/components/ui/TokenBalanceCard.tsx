@@ -49,8 +49,7 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
                 <P className="text-sm text-gray-400">{chain.ticker}</P>
               </Div>
             </Div>
-            <Div
-              className={cn(
+            <Div               className={cn(
                 "status-indicator",
                 hasSufficientBalance ? "status-indicator-sufficient" : "status-indicator-insufficient"
               )}

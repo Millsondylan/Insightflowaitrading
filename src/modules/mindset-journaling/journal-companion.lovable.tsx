@@ -328,7 +328,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
             <Label className="font-medium">Today's Journal Entry</Div>
             <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
               onClick={getRandomPrompt}
-        >
+    >
               Get Random Prompt
             </Button>
           </Div>
@@ -344,12 +344,11 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
             value={currentEntry.content}
             onChange={handleContentChange}
             placeholder="Write your trading journal entry here..."
-          />
-        </Textarea>
+          / />
         
         <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <Div>
-            <Label className="block mb-1 font-medium">How are you feeling?</Div>
+            <Label className="block mb-1 font-medium">How are you feeling?</Textarea>
             <Div className="flex space-x-2">
               <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'positive' 
@@ -389,9 +388,8 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
               value={currentEntry.tags?.join(', ')}
               onChange={handleTagsChange}
               placeholder="mindset, discipline, strategy, etc."
-            />
-          </Input>
-        </Div>
+            / />
+        </Input>
         
         {error && (
           <Div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
@@ -403,14 +401,14 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
           <Button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
             onClick={analyzeEntry}
             disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}
-      >
+  >
             {analyzing ? 'Analyzing...' : 'Analyze with AI'}
           </Div>
           
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={saveEntry}
             disabled={saving || !currentEntry.content || currentEntry.content.trim().length < 10}
-      >
+  >
             {saving ? 'Saving...' : 'Save Entry'}
           </Button>
         </Div>
@@ -495,7 +493,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                 
                 <Div className="flex flex-wrap gap-1">
                   {entry.tags.map((tag, i) => (
-                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div></Div>
+                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div>
                       {tag}
                     </Div>
                   ))}

@@ -23,11 +23,10 @@ export function Toaster() {
               )}
             </Div>
             {action}
-            <ToastClose />
-          </ToastClose>
+            <ToastClose / />
         )
       })}
-      <ToastViewport /></ToastViewport>
+      <ToastViewport / /></ToastClose>
     </ToastProvider>
   )
 }

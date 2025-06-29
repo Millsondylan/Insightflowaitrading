@@ -92,8 +92,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
           isCompleted={isLessonCompleted}
           onComplete={() => markComplete(lesson.id)}
           onBookmark={handleToggleBookmark}
-        />
-      </LessonBookmark>
+        / />
 
       {/* Lesson Content */}
       {!showQuiz && (
@@ -108,10 +107,10 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
       {showQuiz && activeQuizId && (
         <Div id="lesson-quiz" className="mt-10">
           <Div className="flex justify-between items-center mb-6">
-            <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</LessonEngine>
+            <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</LessonBookmark>
             <Button onClick={handleBackToContent}
               className="text-white/70 hover:text-cyan-400 text-sm"
-      >
+  >
               ← Back to lesson content
             </Button>
           </Div>
@@ -124,10 +123,9 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
               lesson.title
             }
             onComplete={handleQuizComplete}
-          />
-        </QuizEngine>
+          / />
       )}
-    </Div>
+    </QuizEngine>
   );
 };
 

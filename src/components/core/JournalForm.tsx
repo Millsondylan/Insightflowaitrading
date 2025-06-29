@@ -154,14 +154,13 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   return (
     <Card className="w-full max-w-2xl mx-auto journal-form-card" />
       <CardHeader>
-        <CardTitle className="text-xl font-bold" />New Trade Journal Entry</JournalFormProps>
-      </CardHeader>
+        <CardTitle className="text-xl font-bold" />New Trade Journal Entry</JournalFormProps />
       
       <CardContent>
         <Form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <Div className="space-y-2">
-            <Label htmlFor="title">Trade Title</CardContent>
+            <Label htmlFor="title">Trade Title</JournalFormProps>
             <Input
               id="title"
               name="title"
@@ -259,7 +258,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   "w-28",
                   formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
                 )}
-         >
+     >
                 🟢 Bullish
               </Div>
               <Button type="button"
@@ -284,12 +283,11 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
               value={formData.tags}
               onChange={handleChange}
               placeholder="E.g., breakout, trend-following, support"
-            />
-          </Input>
+            / />
           
           {/* Chart Upload */}
           <Div className="space-y-2">
-            <Label>Attach Chart Image (Optional)</Div>
+            <Label>Attach Chart Image (Optional)</Input>
             <Div 
               className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors file-upload-zone"
               onClick={() => fileInputRef.current?.click()}
@@ -324,11 +322,9 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 className="hidden"
                 accept="image/png,image/jpeg"
                 onChange={handleFileChange}
-              />
-            </Input>
-          </Div>
-        </Form>
-      </CardContent>
+              / />
+          </div />
+      </Input>
       
       <CardFooter>
         <Button type="button" 
@@ -338,11 +334,10 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
             "w-full font-medium text-lg py-6",
             formData.sentiment === "Bullish" ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
           )}
-    ></CardFooter></CardFooter>
+  /></CardFooter /></CardFooter />
           {isSubmitting ? "Saving..." : "Save Entry"}
-        </CardFooter>
-      </CardFooter>
-    </Card>
+        </CardFooter />
+    </CardFooter>
   );
 };
 

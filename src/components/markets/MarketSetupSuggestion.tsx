@@ -191,25 +191,20 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
       <Card className="w-full" />
         <CardHeader>
           <CardTitle>
-            <Skeleton className="h-8 w-48" />
-          </MarketSetup>
+            <Skeleton className="h-8 w-48" / />
           <CardDescription>
-            <Skeleton className="h-4 w-32" />
-          </CardDescription>
-        </CardHeader>
+            <Skeleton className="h-4 w-32" / />
+        </MarketSetup>
         <CardContent>
           <Div className="space-y-4">
             <Skeleton className="h-[300px] w-full" />
             <Div className="space-y-2">
               <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
-            </CardContent>
-          </Div>
-        </CardContent>
+              <Skeleton className="h-4 w-3/4" / />
+          </div />
         <CardFooter>
-          <Skeleton className="h-10 w-full" />
-        </CardFooter>
-      </Card>
+          <Skeleton className="h-10 w-full" / />
+      </CardContent>
     );
   }
 
@@ -218,20 +213,18 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
       <Card className="w-full" />
         <CardHeader>
           <CardTitle>Error Loading Setup</Card>
-          <CardDescription>There was a problem generating the market setup</CardDescription>
-        </CardHeader>
+          <CardDescription>There was a problem generating the market setup</CardDescription />
         <CardContent>
           <Div className="bg-destructive/10 p-4 rounded-md text-destructive">
             {error}
-          </CardContent>
+          </CardDescription>
           <Button variant="outline"
             className="mt-4"
             onClick={handleRefresh} />
             <LucideRefreshCw className="mr-2 h-4 w-4" />
             Try Again
-          </Button>
-        </CardContent>
-      </Card>
+          </button />
+      </Button>
     );
   }
 
@@ -272,14 +265,13 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
               {setup?.symbol || symbol}
               <Badge variant={setup?.tradeType === 'LONG' ? 'default' : 'destructive'}
                 className="ml-2"
-          >
+      >
                 {setup?.tradeType === 'LONG' ? (
                   <Span className="flex items-center"><LucideArrowUpRight className="mr-1 h-3 w-3" /> LONG</Card>
                 ) : (
                   <Span className="flex items-center"><LucideArrowDownRight className="mr-1 h-3 w-3" /> SHORT</Span>
                 )}
-              </Badge>
-            </CardTitle>
+              </Badge />
             <CardDescription>{timeframe} Timeframe</CardDescription>
           </Div>
           <Div className="flex items-center gap-2">
@@ -294,8 +286,7 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
               <LucideRefreshCw className="h-4 w-4" />
             </Button>
           </Div>
-        </Div>
-      </CardHeader>
+        </div />
       <CardContent>
         <Div className="h-[300px] mb-4">
           {chartData.length > 0 && (
@@ -352,11 +343,10 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
             Share Setup
           </Div>
           <Button onClick={handleSaveSetup} />
-            <LucideSave className="mr-2 h-4 w-4" /></Button></Button></Button>
+            <LucideSave className="mr-2 h-4 w-4" /></Button></Button></Button></Button></Button></Button>
             Save Setup
           </Button>
-        </Div>
-      </CardFooter>
+        </div />
     </Card>
   );
 }

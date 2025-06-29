@@ -73,8 +73,7 @@ export default function BottomTabNavigator() {
     <Div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
       <Nav className="flex justify-around items-center h-16 bg-gray-900/90 backdrop-blur-lg border-t border-gray-800 px-2">
         {tabs.map((tab) => (
-          <Button
-            key={tab.key}
+          <Button             key={tab.key}
             className={cn(
               'flex flex-col items-center justify-center flex-1 h-full transition-colors',
               isActive(tab.path) 

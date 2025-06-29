@@ -57,8 +57,7 @@ export default function CryptoPaymentPage() {
                 <Li className="flex items-center">
                   <Span className="text-green-400 mr-2">✓</Li>
                   Priority support
-                </Li>
-              </Ul>
+                </Li />
               
               <Div className="mt-4 pt-4 border-t border-white/10">
                 <Div className="text-2xl font-bold">$99 / year</Div>
@@ -88,8 +87,7 @@ export default function CryptoPaymentPage() {
                 <Li className="flex items-center">
                   <Span className="text-purple-400 mr-2">✓</Li>
                   1-on-1 strategy consultation
-                </Li>
-              </Ul>
+                </Li />
               
               <Div className="mt-4 pt-4 border-t border-white/10">
                 <Div className="text-2xl font-bold">$199 / year</Div>

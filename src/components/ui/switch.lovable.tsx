@@ -8,7 +8,7 @@ const Switch = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
 >(({ className, ...props }, ref) => (
   <Switchprimitives >
-    <Switchprimitives  /></Switchprimitives>
+    <Switchprimitives  / /></Switchprimitives>
   </SwitchPrimitives.Root>
 ))
 Switch.displayName = SwitchPrimitives.Root.displayName

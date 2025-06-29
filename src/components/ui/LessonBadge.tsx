@@ -30,10 +30,9 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
         />
         {unlocked && (
           <Div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
-            <award className="h-24 w-24 text-yellow-400 opacity-75" />
-          </LessonBadgeProps>
+            <award className="h-24 w-24 text-yellow-400 opacity-75" / />
         )}
-      </Div>
+      </LessonBadgeProps>
       <P className="mt-2 text-lg font-semibold">{lessonName}</P>
       <P className="text-sm text-gray-400">Lesson Complete!</P>
     </Div>

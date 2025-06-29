@@ -48,49 +48,44 @@ export const TickerScanningEngine: React.FC = () => {
         <Cardtitle >Ticker Scanning Engine</Marketticker>
         <Badge variant="default" />
           {filteredTickers.length} Matching Tickers
-        </Badge>
-      </CardHeader>
+        </Badge />
       <Cardcontent >
         <Div className="space-y-4 mb-4">
           <Div className="grid grid-cols-3 gap-4">
             <Div>
-              <Label className="block text-sm mb-1">Market Type</Cardcontent>
+              <Label className="block text-sm mb-1">Market Type</Badge>
               <Select > handleFilterChange('marketType', value)}
               >
                 <selecttrigger  style={{ color: "white" }}>
-                  <selectvalue placeholder="Select Market">
-                </Select>
+                  <selectvalue placeholder="Select Market" />
                 <selectcontent >
                   {['Stocks', 'Crypto', 'Forex', 'Commodities'].map((type) => (
-                    <selectitem >{type}</SelectItem>
+                    <selectitem >{type}</Select>
                   ))}
-                </SelectContent>
-              </Select>
+                </SelectContent />
             </Div>
             <Div>
               <Label className="block text-sm mb-1">Min Price</Div>
               <Input type="number"  /> handleFilterChange('minPrice', Number(e.target.value))}
                 placeholder="Minimum Price"
                 className="bg-zinc-900 border-zinc-700 text-white"
-              />
-            </Input>
+              / />
             <Div>
-              <Label className="block text-sm mb-1">Min Volume</Div>
+              <Label className="block text-sm mb-1">Min Volume</Input>
               <Input type="number"  /> handleFilterChange('minVolume', Number(e.target.value))}
                 placeholder="Minimum Volume"
                 className="bg-zinc-900 border-zinc-700 text-white"
-              />
-            </Input>
-          </Div>
+              / />
+          </Input>
         </Div>
         <Div className="space-y-4">
           {filteredTickers.map((ticker) => (
             <Div key={ticker.symbol} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center"
-         >
+     >
               <Div>
                 <Div className="flex items-center space-x-2">
-                  <H3 className="text-lg font-bold"></Div></Div>{ticker.symbol}</Div>
+                  <H3 className="text-lg font-bold"></Div>{ticker.symbol}</Div>
                   <Badge variant="outline">{ticker.type}</Badge>
                 </Div>
                 <P className="text-sm text-gray-300">{ticker.name}</P>
@@ -110,11 +105,10 @@ export const TickerScanningEngine: React.FC = () => {
           ))}
         </Div>
         <Div className="mt-4 flex justify-center">
-          <Button variant="outline" style={{ color: "white" }}></Div></Div>
+          <Button variant="outline" style={{ color: "white" }}></Div>
             Refresh Tickers
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

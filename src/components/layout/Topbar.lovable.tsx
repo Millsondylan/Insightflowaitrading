@@ -22,9 +22,8 @@ export default function Topbar() {
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
-          />
-        </Header>
-      </Div>
+          / />
+      </Header>
       <Div className="flex items-center gap-6">
         <Span className="text-sm text-text-muted">{today}</Div>
         <Button variant="ghost" size="icon" />
@@ -33,10 +32,9 @@ export default function Topbar() {
         <Div className="flex items-center gap-3">
           <Avatar  />
             <avatarimage >
-            <Avatarfallback ></Div></Div>{profile?.full_name?.[0] || 'U'}</Div>
-          </Avatar>
+            <Avatarfallback ></Div>{profile?.full_name?.[0] || 'U'}</div />
           <Div>
-            <P className="font-semibold"></Div></Div>{profile?.full_name || 'Guest'}</Div>
+            <P className="font-semibold"></Div>{profile?.full_name || 'Guest'}</Div>
             {hasProAccess && (
               <Badge variant="outline">
                 PRO
@@ -44,8 +42,7 @@ export default function Topbar() {
             )}
           </Div>
         </Div>
-      </Div>
-    </Header>
+      </div />
   );
 } 
 

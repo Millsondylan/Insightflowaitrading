@@ -28,8 +28,7 @@ const ProgressSidebar: React.FC<progressSidebarProps> = ({
       <Div className="relative pl-8">
         {/* Progress Bar */}
         <Div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700" />
-        <Div
-          className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
+        <Div           className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
           style={{ height: `calc(${progress}% - 1rem)` }}
         />
 
@@ -48,8 +47,7 @@ const ProgressSidebar: React.FC<progressSidebarProps> = ({
                 <Button  onClick={() => onBlockClick(block.id)}
                   className="flex items-center w-full text-left py-1.5 group"
                 >
-                  <Div
-                    className={cn(
+                  <Div                     className={cn(
                       "absolute left-[11px] h-3 w-3 rounded-full border-2 border-gray-600 bg-gray-900 transition-all duration-300",
                       { "bg-blue-500 border-blue-500 scale-125": isActive }
                     )}
@@ -58,7 +56,7 @@ const ProgressSidebar: React.FC<progressSidebarProps> = ({
                       "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
                       { "text-white": isActive }
                     )}
-            ></Button>
+        ></Button>
                     {block.title}
                   </Span>
                 </Button>
@@ -66,8 +64,7 @@ const ProgressSidebar: React.FC<progressSidebarProps> = ({
             );
           })}
         </Nav>
-      </Div>
-    </Aside>
+      </div />
   );
 };
 

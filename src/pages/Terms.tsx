@@ -9,35 +9,32 @@ export default function TermsPage() {
       <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8" />
         <CardContent className="pt-6 space-y-6" />
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Card></Card>1. Introduction</Card>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Card /></Card />1. Introduction</Card>
             <P className="text-gray-300">
               Welcome to InsightFlow AI Trading ("we," "our," or "us"). By accessing or using our website, 
               services, or applications (collectively, the "Services"), you agree to be bound by these Terms 
               of Service ("Terms"). If you do not agree to these Terms, you may not access or use the Services.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>2. Eligibility</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />2. Eligibility</P>
             <P className="text-gray-300">
               You must be at least 18 years old to access or use our Services. By accessing or using our 
               Services, you represent and warrant that you are at least 18 years old and have the legal 
               capacity to enter into these Terms.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>3. Account Registration</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />3. Account Registration</P>
             <P className="text-gray-300">
               To access certain features of the Services, you may be required to register for an account. 
               When you register for an account, you agree to provide accurate, current, and complete 
               information. You are responsible for maintaining the confidentiality of your account 
               credentials and for all activities that occur under your account.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>4. Subscription and Payment</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />4. Subscription and Payment</P>
             <P className="text-gray-300 mb-4">
               Some of our Services may require payment of fees. All fees are stated in U.S. dollars unless 
               otherwise specified. You agree to pay all applicable fees as described on our website.
@@ -50,11 +47,10 @@ export default function TermsPage() {
             <P className="text-gray-300">
               For cryptocurrency payments, transactions are final and non-refundable once confirmed on the 
               blockchain. The subscription will be activated upon confirmation of the payment on the blockchain.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>5. Risk Disclaimer</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />5. Risk Disclaimer</P>
             <P className="text-gray-300 mb-4">
               Trading in financial markets involves significant risk of loss and is not suitable for 
               everyone. The information provided through our Services is for educational and informational 
@@ -64,21 +60,19 @@ export default function TermsPage() {
               Past performance is not indicative of future results. You are solely responsible for your 
               trading decisions and should conduct your own research and due diligence before making any 
               investment decisions.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>6. Intellectual Property</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />6. Intellectual Property</P>
             <P className="text-gray-300">
               All content, features, and functionality of the Services, including but not limited to text, 
               graphics, logos, icons, and software, are owned by us or our licensors and are protected by 
               United States and international copyright, trademark, patent, trade secret, and other 
               intellectual property or proprietary rights laws.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>7. Prohibited Conduct</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />7. Prohibited Conduct</P>
             <P className="text-gray-300 mb-4">
               You agree not to:
             </P>
@@ -89,44 +83,38 @@ export default function TermsPage() {
               <Li>Share your account credentials with others</Li>
               <Li>Reverse engineer or decompile any aspect of the Services</Li>
               <Li>Use the Services to transmit any malware or harmful code</Li>
-              <Li>Scrape or collect data from the Services without our prior written consent</Li>
-            </Ul>
-          </Section>
+              <Li>Scrape or collect data from the Services without our prior written consent</Li />
+          </Li>
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>8. Limitation of Liability</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />8. Limitation of Liability</Section>
             <P className="text-gray-300">
               To the maximum extent permitted by law, in no event shall we be liable for any indirect, 
               incidental, special, consequential, or punitive damages, including but not limited to 
               loss of profits, data, or business opportunities, arising out of or in connection with 
               your use of the Services.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>9. Changes to Terms</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />9. Changes to Terms</P>
             <P className="text-gray-300">
               We may revise these Terms at any time. If we make changes, we will provide notice of such 
               changes by posting the revised Terms on our website. Your continued use of the Services 
               following the posting of revised Terms means that you accept and agree to the changes.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400"></Section></Section>10. Contact Information</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400" /></Section /></Section />10. Contact Information</P>
             <P className="text-gray-300">
               If you have any questions about these Terms, please contact us at support@insightflowai.com.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <P className="text-gray-400 text-sm"></Section></Section>
+            <P className="text-gray-400 text-sm" /></Section /></Section />
               Last updated: June 28, 2025
-            </Section>
-          </Section>
-        </CardContent>
-      </Card>
-    </Div>
+            </Section />
+        </CardContent />
+    </P>
   );
 }
 

@@ -94,14 +94,13 @@ export const lovable = {
                 className="w-full h-32 p-3 mt-1 bg-secondary/20 rounded-lg font-mono text-sm"
                 value={userCode || lesson.steps[currentStep].starter}
                 onChange={(e) => setUserCode(e.target.value)}
-              />
-            </Textarea>
+              / />
 
             <Div className="flex gap-2">
               <Button onClick={runTests} disabled={isRunning} className="flex-1">
                 <play className="h-4 w-4 mr-2" />
                 {isRunning ? 'Running...' : 'Run Tests'}
-              </Div>
+              </Textarea>
               <Button variant="outline" onClick={() = /> setUserCode('')}>
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Reset
@@ -122,11 +121,11 @@ export const lovable = {
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-          >
+      >
                   {result.passed ? (
                     <CheckCircle className="h-4 w-4" />
                   ) : (
-                    <XCircle className="h-4 w-4" /></Div></Div></Div>
+                    <XCircle className="h-4 w-4" /></Div></Div>
                   )}
                   <Span className="text-sm">{result.name}</Span>
                 </Div>
@@ -145,13 +144,12 @@ export const lovable = {
           )}
 
           <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2"></Div></Div>Hint</Div>
+            <H4 className="font-medium mb-2"></Div>Hint</Div>
             <P className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
             </P>
           </Div>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

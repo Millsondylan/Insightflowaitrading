@@ -87,27 +87,24 @@ const AIReflection: React.FC<aIReflectionProps> = ({
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
             </Div>
-          </Div>
-        </CardHeader>
+          </div />
         <CardContent className="space-y-4" />
           <Div className="space-y-2">
             <Skeleton className="h-4 w-full bg-gray-700/50" />
             <Skeleton className="h-4 w-4/5 bg-gray-700/50" />
-            <Skeleton className="h-4 w-3/4 bg-gray-700/50" />
-          </CardContent>
+            <Skeleton className="h-4 w-3/4 bg-gray-700/50" / />
           <Div className="space-y-2">
             <Skeleton className="h-6 w-20 bg-gray-700/50" />
             <Div className="flex gap-2">
               <Skeleton className="h-6 w-16 rounded-full bg-gray-700/50" />
               <Skeleton className="h-6 w-20 rounded-full bg-gray-700/50" />
-            </Div>
+            </CardContent>
           </Div>
           <Div className="space-y-2">
             <Skeleton className="h-4 w-full bg-gray-700/50" />
             <Skeleton className="h-4 w-5/6 bg-gray-700/50" />
-          </Div>
-        </CardContent>
-      </Card>
+          </div />
+      </Div>
     );
   }
 
@@ -119,8 +116,7 @@ const AIReflection: React.FC<aIReflectionProps> = ({
           <Div className="flex items-center space-x-2">
             <brain className="h-5 w-5 text-red-400" />
             <CardTitle className="text-lg" />AI Analysis</Card>
-          </Div>
-        </CardHeader>
+          </div />
         <CardContent className="space-y-4" />
           <Div className="text-red-400 text-sm">
             {error}
@@ -129,11 +125,10 @@ const AIReflection: React.FC<aIReflectionProps> = ({
             variant="outline"
             size="sm"
             className="border-red-500/30 hover:bg-red-500/10"
-     >
+ >
             Try Again
-          </Button>
-        </CardContent>
-      </Card>
+          </button />
+      </Button>
     );
   }
 
@@ -147,9 +142,8 @@ const AIReflection: React.FC<aIReflectionProps> = ({
               <brain className="h-5 w-5 text-gray-400" />
               <CardTitle className="text-lg" />AI Analysis</Card>
             </Div>
-            <Sparkles className="h-4 w-4 text-gray-400" />
-          </Sparkles>
-        </CardHeader>
+            <Sparkles className="h-4 w-4 text-gray-400" / />
+        </Sparkles>
         <CardContent className="space-y-4" />
           <P className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
@@ -160,9 +154,8 @@ const AIReflection: React.FC<aIReflectionProps> = ({
           />
             <brain className="h-4 w-4 mr-2" />
             Analyze Trade
-          </Button>
-        </CardContent>
-      </Card>
+          </button />
+      </Button>
     );
   }
 
@@ -181,8 +174,7 @@ const AIReflection: React.FC<aIReflectionProps> = ({
             </Div>
             <Div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
           </Div>
-        </Div>
-      </CardHeader>
+        </div />
       
       <CardContent className="space-y-6" />
         {/* Summary Section */}
@@ -229,12 +221,11 @@ const AIReflection: React.FC<aIReflectionProps> = ({
             size="sm"
             className="text-gray-400 hover:text-white"
             disabled={loading}
-      >
+  >
             <brain className="h-3 w-3 mr-2" />
             Regenerate Analysis
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   );
 };

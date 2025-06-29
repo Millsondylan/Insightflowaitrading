@@ -56,14 +56,12 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
         <Div>
           <H3 className="font-semibold mb-2">React/TypeScript Code</Div>
           <Textarea placeholder="Paste your React component or TypeScript code here..." style={{ fontSize: "0.875rem" }}> setInputCode(e.target.value)}
-          />
-        </Textarea>
+          / />
 
         <Div>
-          <H3 className="font-semibold mb-2">Lovable.dev Output</Div>
-          <Textarea placeholder="Converted Lovable.dev code will appear here..." style={{ fontSize: "0.875rem" }}>
-        </Textarea>
-      </Div>
+          <H3 className="font-semibold mb-2">Lovable.dev Output</Textarea>
+          <Textarea placeholder="Converted Lovable.dev code will appear here..." style={{ fontSize: "0.875rem" }} />
+      </Textarea>
 
       <Div className="flex justify-center my-6">
         <Button >
@@ -81,7 +79,7 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
       {conversionStatus && (
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
           <Div className="p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2 flex items-center gap-2"></Div></Div>
+            <H4 className="font-medium mb-2 flex items-center gap-2"></Div>
               <check >
               Tables Detected
             </Div>
@@ -95,7 +93,7 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
           </Div>
 
           <Div className="p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2 flex items-center gap-2"></Div></Div>
+            <H4 className="font-medium mb-2 flex items-center gap-2"></Div>
               <check >
               AI Blocks Created
             </Div>
@@ -109,7 +107,7 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
           </Div>
 
           <Div className="p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2 flex items-center gap-2"></Div></Div>
+            <H4 className="font-medium mb-2 flex items-center gap-2"></Div>
               <check >
               Functions Wrapped
             </Div>
@@ -127,15 +125,13 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
       <Div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
         <alertcircle >
         <Div className="text-sm">
-          <P className="font-medium mb-1"></Div></Div>Conversion Notes:</Div>
+          <P className="font-medium mb-1"></Div>Conversion Notes:</Div>
           <Ul className="space-y-1 text-muted-foreground">
             <Li>• localStorage → Lovable Tables</Ul>
             <Li>• API calls → Lovable Functions</Li>
-            <Li>• AI integrations → Lovable AI Blocks</Li>
-          </Ul>
-        </Div>
-      </Div>
-    </Card>
+            <Li>• AI integrations → Lovable AI Blocks</Li />
+        </Li>
+      </div />
   );
 }; 
 

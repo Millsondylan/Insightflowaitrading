@@ -216,8 +216,7 @@ export const lovable = {
             <alert variant="destructive" className="mb-4">
               <alertCircle className="h-4 w-4" />
               <alertTitle>Error</CardContent>
-              <alertDescription>{error}</AlertDescription>
-            </Alert>
+              <alertDescription>{error}</AlertDescription />
           )}
           
           {showUpgradePrompt && (
@@ -232,17 +231,15 @@ export const lovable = {
                 variant="default" 
                 size="sm"
                 onClick={handleUpgradeClick}
-          >
+      >
                 Upgrade Now
-              </Button>
-            </Alert>
+              </button />
           )}
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" />
             <TabsList className="grid w-full grid-cols-2" />
-              <TabsTrigger value="prompt" />Prompt</Tabs>
-              <TabsTrigger value="code" disabled={!generatedCode} />Generated Code</TabsTrigger>
-            </TabsList>
+              <TabsTrigger value="prompt" />Prompt</Button>
+              <TabsTrigger value="code" disabled={!generatedCode} />Generated Code</TabsTrigger />
             
             <TabsContent value="prompt" />
               <Form {...form}>
@@ -253,23 +250,20 @@ export const lovable = {
                       name="scriptType"
                       render={({ field }) => (
                         <formItem>
-                          <formLabel>Script Type</TabsContent>
+                          <formLabel>Script Type</TabsTrigger>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                       >
+                   >
                             <formControl>
                               <selectTrigger>
-                                <selectValue placeholder="Select script type" />
-                              </Select>
-                            </FormControl>
+                                <selectValue placeholder="Select script type" / />
+                            </Select>
                             <selectContent>
                               <selectItem value="indicator">Indicator</SelectItem>
                               <selectItem value="strategy">Trading Strategy</SelectItem>
-                              <selectItem value="library">Library</SelectItem>
-                            </SelectContent>
+                              <selectItem value="library">Library</SelectItem />
                           </Select>
-                          <formMessage />
-                        </FormItem>
+                          <formMessage / />
                       )}
                     />
                     
@@ -281,12 +275,11 @@ export const lovable = {
                           <formLabel>Default Timeframe</FormLabel>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                       >
+                   >
                             <formControl>
                               <selectTrigger>
-                                <selectValue placeholder="Select timeframe" />
-                              </Select>
-                            </FormControl>
+                                <selectValue placeholder="Select timeframe" / />
+                            </Select>
                             <selectContent>
                               <selectItem value="1m">1 Minute</SelectItem>
                               <selectItem value="5m">5 Minutes</SelectItem>
@@ -296,11 +289,9 @@ export const lovable = {
                               <selectItem value="4h">4 Hours</SelectItem>
                               <selectItem value="1D">1 Day</SelectItem>
                               <selectItem value="1W">1 Week</SelectItem>
-                              <selectItem value="1M">1 Month</SelectItem>
-                            </SelectContent>
+                              <selectItem value="1M">1 Month</SelectItem />
                           </Select>
-                          <formMessage />
-                        </FormItem>
+                          <formMessage / />
                       )}
                     />
                   </Div>
@@ -316,15 +307,14 @@ export const lovable = {
                             placeholder="E.g., Create an RSI indicator with overbought/oversold levels at 70/30 and signal line crossovers" 
                             className="h-32"
                             {...field} 
-                          />
-                        </Textarea>
+                          / />
                         <formMessage />
                         {hints.length > 0 && (
                           <Div className="mt-2 flex flex-wrap gap-2 text-xs">
                             {hints.map((h) => (
                               <Button key={h} variant="secondary" size="sm" type="button" onClick={() = /> form.setValue('prompt', field.value + ' ' + h)}>
                                 {h}
-                              </Div>
+                              </Textarea>
                             ))}
                           </Div>
                         )}
@@ -343,27 +333,23 @@ export const lovable = {
                             placeholder="Any additional details or specific requirements" 
                             className="h-24"
                             {...field} 
-                          />
-                        </Textarea>
-                        <formMessage />
-                      </FormItem>
+                          / />
+                        <formMessage / />
                     )}
                   />
 
                   <Button type="submit" 
                     className="w-full"
                     disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}
-              >
+          >
                     {isGenerating ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Generating...
                       </>
                     ) : "Generate Pine Script"}
-                  </Button>
-                </Form>
-              </Form>
-            </TabsContent>
+                  </button />
+              </Form />
             
             <TabsContent value="code" />
               {generatedCode && (
@@ -371,14 +357,14 @@ export const lovable = {
                   <Div className="flex justify-between items-center mb-2">
                     <Div className="flex items-center">
                       <Code className="h-4 w-4 mr-2" />
-                      <H3 className="font-medium">Generated Pine Script</TabsContent>
+                      <H3 className="font-medium">Generated Pine Script</Textarea>
                     </Div>
                     <Div className="flex space-x-2">
                       <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={handleCopy}
-                  >
+              >
                         {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                         <Span>{copied ? "Copied!" : "Copy"}</Div>
                       </Button>
@@ -412,14 +398,12 @@ export const lovable = {
                             )}
                           </Span>
                         )}
-                      </AlertDescription>
-                    </Alert>
+                      </AlertDescription />
                   )}
                   
                   <Div className="relative">
                     <Pre className="bg-muted p-4 rounded-md overflow-x-auto max-h-96 text-sm whitespace-pre">
-                      <Code>{generatedCode}</Div>
-                    </Pre>
+                      <Code>{generatedCode}</div />
                     
                     <Div className="absolute top-4 right-4">
                       {syntaxValid === true && (
@@ -434,13 +418,11 @@ export const lovable = {
                       <Li>Copy the code above</Ol>
                       <Li>Open TradingView and go to Pine Editor</Li>
                       <Li>Paste the code into the editor</Li>
-                      <Li>Click "Add to Chart" to use your script</Li>
-                    </Ol>
-                  </Div>
+                      <Li>Click "Add to Chart" to use your script</Li />
+                  </Li>
                 </>
               )}
-            </TabsContent>
-          </Tabs>
+            </TabsContent />
         </CardContent>
         
         <CardFooter className="flex flex-col space-y-2 items-start border-t pt-4" />
@@ -456,8 +438,7 @@ export const lovable = {
               <progress value={(quota.used / quota.limit) * 100} className="h-2" />
             </Div>
           )}
-        </CardFooter>
-      </Card>
+        </CardFooter />
     </Div>
   );
 } 

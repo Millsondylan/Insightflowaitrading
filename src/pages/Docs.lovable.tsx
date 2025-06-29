@@ -69,8 +69,7 @@ const DocsPage: React.FC = () => {
             <Span className="text-blue-400">print</Span>(<Span className="text-purple-400">results</Span>.summary())
           </Div>
         </Div>
-      </Div>
-    </Section>
+      </div />
   );
 };
 

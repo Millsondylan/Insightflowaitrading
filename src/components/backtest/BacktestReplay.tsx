@@ -85,7 +85,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
         {currentEvent && (
           <Div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
               ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}
-    >
+>
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
               <Span className="ml-2 font-mono">
@@ -117,9 +117,8 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
           <Button variant="outline" size="icon" onClick={handleNext} title="Next Candle">
             <FastForward className="h-4 w-4" />
           </Button>
-        </Div>
-        <Button variant="ghost" size="icon" onClick={toggleSpeed} title="Toggle Speed">
-          <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`} /></Button></Button></Button>
+      <Button variant="ghost" size="icon" onClick={toggleSpeed} title="Toggle Speed">
+          <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`} /></Button></Button></Button></Button></Button></Button></Button>
         </Button>
       </Div>
     </Div>

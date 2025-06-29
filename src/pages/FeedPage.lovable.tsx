@@ -23,14 +23,13 @@ export default function FeedPage() {
                 <Span className="bg-white/10 p-2 rounded-lg"><Rss  /></Div>
                 Your Insight Feed
             </H1>
-            <P className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</P>
-        </Header>
+            <P className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p />
 
         {mockInsights.map(insight => (
             <Div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
-                <P className="text-gray-200">{insight.text}</Div>
+                <P className="text-gray-200">{insight.text}</P>
                 <Button variant="ghost" size="icon">
-                    <Eye  /></Button></Button></Button>
+                    <Eye  /></Button></Button></Button></Button></Button></Button></Button>
                 </Button>
             </Div>
         ))}

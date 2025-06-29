@@ -43,16 +43,15 @@ export const lovable = {
         <CardTitle>Market Broadcast Mode</Card>
         <Badge variant="default">
           {sortedEvents.length} Active Events
-        </Badge>
-      </CardHeader>
+        </Badge />
       <CardContent>
         <Div className="space-y-4">
           {sortedEvents.map((event) => (
             <Div key={event.id} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
-      >
+  >
               <Div className="flex justify-between items-start mb-2">
-                <H3 className="text-lg font-bold">{event.title}</CardContent>
+                <H3 className="text-lg font-bold">{event.title}</Badge>
                 <Badge variant={
                     event.impact === 'High' ? 'destructive' : 
                     event.impact === 'Medium' ? 'default' : 'secondary'
@@ -80,11 +79,10 @@ export const lovable = {
           ))}
         </Div>
         <Div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white" /></Div></Div>
+          <Button variant="outline" className="text-white" /></Div>
             Subscribe to Updates
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

@@ -48,8 +48,7 @@ const DrawerContent = React.forwardRef<
     >
       <Div className="mx-auto mt-4 h-2 w-[100px] rounded-full bg-muted" />
       {children}
-    </DrawerPrimitive.Content>
-  </DrawerPrimitive>
+    </DrawerPrimitive.Content />
 ))
 DrawerContent.displayName = "DrawerContent"
 
@@ -57,8 +56,7 @@ const DrawerHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
+  <Div     className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
     {...props}
   />
 )
@@ -68,8 +66,7 @@ const DrawerFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+  <Div     className={cn("mt-auto flex flex-col gap-2 p-4", className)}
     {...props}
   />
 )
@@ -98,7 +95,7 @@ const DrawerDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
-  /></HTMLDivElement></HTMLDivElement></HTMLDivElement>
+  / /></HTMLDivElement /></HTMLDivElement /></DrawerPrimitive>
 ))
 DrawerDescription.displayName = DrawerPrimitive.Description.displayName
 

@@ -30,8 +30,7 @@ export const VaultVersioning: React.FC<Vaultversioningprops > = ({ strategyId })
             </Div>
           ))}
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

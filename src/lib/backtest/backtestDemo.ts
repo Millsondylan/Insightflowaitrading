@@ -187,7 +187,7 @@ export function formatBacktestResults(result: unknown, candles: Candle[]) {
       maxConsecutiveLosses: stats.maxConsecutiveLosses,
       avgTradeDuration: `${stats.avgTradeDuration.toFixed(1)} candles`
     },
-    trades: result.trades.map((trade: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => ({
+    trades: result.trades.map((trade: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => ({
       outcome: trade.outcome,
       entry: {
         price: trade.entryPrice,

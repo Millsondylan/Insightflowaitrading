@@ -59,11 +59,10 @@ export const lovable = {
               {stats.sharpeRatio}
             </P>
           </Div>
-        </Div>
-      </Card>
+        </div />
 
       <Card className="theme-card p-6" />
-        <H3 className="text-lg font-semibold mb-4"></Card></Card>Performance Metrics</Card>
+        <H3 className="text-lg font-semibold mb-4" /></Card /></Card />Performance Metrics</Card>
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Div>
             <P className="text-sm text-muted-foreground">Week Performance</Div>
@@ -81,8 +80,7 @@ export const lovable = {
             <P className="text-sm text-muted-foreground">Profit Factor</Div>
             <P className="font-bold">{stats.profitFactor}</P>
           </Div>
-        </Div>
-      </Card>
+        </div />
     </Div>
   );
 }; 

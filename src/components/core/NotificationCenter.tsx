@@ -145,8 +145,7 @@ export default function NotificationCenter() {
     
     return (
       <Div key={notification.id}
-        className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}
-  >
+        className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}>
         <Div className="flex items-start gap-3">
           <Div className="mt-0.5">
             {getNotificationIcon(notification.notification_type, notification.priority)}
@@ -198,16 +197,14 @@ export default function NotificationCenter() {
           {unreadCount > 0 && (
             <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
               variant="destructive"
-        >
+    >
               {unreadCount > 9 ? '9+' : unreadCount}
             </Popover>
           )}
-        </Button>
-      </PopoverTrigger>
+        </button />
       <PopoverContent className="w-80 md:w-96 p-0" 
         align="end" 
-        sideOffset={5}
-  >
+        sideOffset={5}>
         <Div className="flex items-center justify-between bg-gray-900 p-4 border-b border-gray-800">
           <H3 className="font-semibold text-lg text-white">Notifications</PopoverContent>
           <Div className="flex items-center gap-2">
@@ -216,7 +213,7 @@ export default function NotificationCenter() {
                 size="sm" 
                 className="text-xs"
                 onClick={handleReadAll}
-          >
+      >
                 Mark all as read
               </Div>
             )}
@@ -229,7 +226,7 @@ export default function NotificationCenter() {
         <Tabs defaultValue="all" 
           value={activeTab} 
           onValueChange={setActiveTab}
-    >
+>
           <Div className="px-4 pt-2">
             <TabsList className="grid grid-cols-3 w-full" />
               <TabsTrigger value="all" />All</Tabs>
@@ -241,16 +238,15 @@ export default function NotificationCenter() {
                   </TabsTrigger>
                 )}
               </TabsTrigger>
-              <TabsTrigger value="read" />Read</TabsTrigger>
-            </TabsList>
-          </Div>
+              <TabsTrigger value="read" />Read</TabsTrigger />
+          </TabsTrigger>
 
           <ScrollArea className="h-[400px] p-4" />
             <TabsContent value="all" className="m-0" />
               {loading ? (
                 <Div className="flex items-center justify-center h-32">
-                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></ScrollArea>
-                </Div>
+                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
+                </ScrollArea>
               ) : notifications.length > 0 ? (
                 notifications.map(renderNotification)
               ) : (
@@ -264,8 +260,8 @@ export default function NotificationCenter() {
             <TabsContent value="unread" className="m-0" />
               {loading ? (
                 <Div className="flex items-center justify-center h-32">
-                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></TabsContent>
-                </Div>
+                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
+                </TabsContent>
               ) : notifications.filter(n => !n.read_at).length > 0 ? (
                 notifications.filter(n => !n.read_at).map(renderNotification)
               ) : (
@@ -279,8 +275,8 @@ export default function NotificationCenter() {
             <TabsContent value="read" className="m-0" />
               {loading ? (
                 <Div className="flex items-center justify-center h-32">
-                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></TabsContent>
-                </Div>
+                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
+                </TabsContent>
               ) : notifications.filter(n => n.read_at).length > 0 ? (
                 notifications.filter(n => n.read_at).map(renderNotification)
               ) : (
@@ -289,15 +285,14 @@ export default function NotificationCenter() {
                   <P>No read notifications</Div>
                 </Div>
               )}
-            </TabsContent>
-          </ScrollArea>
+            </TabsContent />
         </Tabs>
         
         <Div className="p-2 border-t border-gray-800">
           <Button variant="ghost" 
             size="sm" 
             className="w-full text-xs text-gray-400"
-            onClick={() = /></Div></Div> {
+            onClick={() = /></Div> {
               logClick('ViewAllNotifications');
               setOpen(false);
               // Navigate to full notifications page
@@ -305,8 +300,7 @@ export default function NotificationCenter() {
           >
             View all notifications
           </Div>
-        </Div>
-      </PopoverContent>
+        </div />
     </Popover>
   );
 }

@@ -60,14 +60,12 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
             onValueChange={(value) => handleSelectChange('ticker', value)}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
-              <selectValue />
-            </Select>
+              <selectValue / />
             <selectContent className="bg-black/90 border-gray-700 text-white">
               {Object.keys(sampleData).map(ticker => (
-                <selectItem key={ticker} value={ticker}>{ticker}</SelectItem>
+                <selectItem key={ticker} value={ticker}>{ticker}</Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </Div>
         <Div>
           <Label htmlFor="timeframe">Timeframe</Div>
@@ -76,11 +74,9 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
             onValueChange={(value) => handleSelectChange('timeframe', value)}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
-              <selectValue />
-            </Select>
+              <selectValue / />
             <selectContent className="bg-black/90 border-gray-700 text-white">
-              <selectItem value="1H">1 Hour</SelectItem>
-            </SelectContent>
+              <selectItem value="1H">1 Hour</SelectItem />
           </Select>
         </Div>
       </Div>
@@ -92,10 +88,9 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
           placeholder="e.g., close> sma(50)"
-        />
-      </Textarea>
+        / />
       <Div>
-        <Label htmlFor="exitLogic">Exit Logic</Div>
+        <Label htmlFor="exitLogic">Exit Logic</Textarea>
         <Textarea
           id="exitLogic"
           name="exitLogic"
@@ -103,17 +98,15 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[80px] font-mono"
           placeholder="e.g., close < sma(50)"
-        />
-      </Textarea>
+        / />
       <Div className="flex justify-center">
         <Button type="submit"
           className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
           disabled={isLoading}
         />
-          {isLoading ? <Loader2 className="animate-spin" /></Div></Div></Div> : 'Run Backtest'}
+          {isLoading ? <Loader2 className="animate-spin" /></Textarea></Div> : 'Run Backtest'}
         </Button>
-      </Div>
-    </Form>
+      </div />
   );
 };
 

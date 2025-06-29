@@ -134,8 +134,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
         <Search  />
         <Input placeholder="Search by symbol..."  /> setSearch(e.target.value)}
           className="pl-10 bg-black/30 border-white/10 text-white"
-        />
-      </Sortfield>
+        / />
       
       {/* Tickers Table */}
       <Div className="rounded-xl border border-white/10 overflow-hidden">
@@ -143,7 +142,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
           <Table >
             <tableheader >
               <tablerow >
-                <tablehead ></Div>
+                <tablehead ></Sortfield>
                 <tablehead > handleSort("symbol")} 
                   className="cursor-pointer hover:text-cyan-400"
                 >
@@ -154,8 +153,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                       <chevronup > :
                       <chevrondown >
                     )}
-                  </Div>
-                </TableHead>
+                  </div />
                 <tablehead > handleSort("price")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
@@ -166,8 +164,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                       <chevronup > :
                       <chevrondown >
                     )}
-                  </Div>
-                </TableHead>
+                  </div />
                 <tablehead > handleSort("change")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
@@ -178,8 +175,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                       <chevronup > :
                       <chevrondown >
                     )}
-                  </Div>
-                </TableHead>
+                  </div />
                 <tablehead > handleSort("volume")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
@@ -190,10 +186,8 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                       <chevronup > :
                       <chevrondown >
                     )}
-                  </Div>
-                </TableHead>
-              </TableRow>
-            </TableHeader>
+                  </div />
+              </TableRow />
             <tablebody >
               {filteredTickers.map((ticker) => (
                 <tablerow > onSelect?.(ticker.symbol)}
@@ -206,34 +200,30 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                       className="focus:outline-none"
                     >
                       <star >
-                    </Button>
-                  </TableCell>
-                  <tablecell >{ticker.symbol}</TableCell>
+                    </button />
+                  <tablecell >{ticker.symbol}</Div>
                   <tablecell >${formatPrice(ticker.price)}</TableCell>
                   <tablecell > 0 ? "text-green-400" : 
                     ticker.change < 0 ? "text-red-400" : "text-gray-400"
                   }`}>
                     {formatPercent(ticker.change)}
                   </TableCell>
-                  <tablecell >{formatVolume(ticker.volume)}</TableCell>
-                </TableRow>
+                  <tablecell >{formatVolume(ticker.volume)}</TableCell />
               ))}
               
               {filteredTickers.length === 0 && (
                 <tablerow >
                   <tablecell >
                     No markets found matching "{search}"
-                  </TableCell>
-                </TableRow>
+                  </TableCell />
               )}
-            </TableBody>
-          </Table>
+            </TableBody />
         </Div>
       </Div>
       
       <Div className="text-xs text-gray-500 flex justify-between">
-        <Span>Showing {filteredTickers.length} of {tickers.length} markets</Div>
-        <Span>{favorites.size} favorites</Span>
+        <Span></Div>Showing {filteredTickers.length} of {tickers.length} markets</Div>
+        <Span></Span>{favorites.size} favorites</Span>
       </Div>
     </Div>
   );

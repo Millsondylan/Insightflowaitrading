@@ -29,8 +29,7 @@ export default function ReplayPage() {
                 <Button variant="outline" size="icon" />
                   <Settings className="h-4 w-4" />
                 </Button>
-              </Div>
-            </CardHeader>
+              </div />
             <CardContent>
               <Div className="aspect-video bg-black/30 rounded-lg flex items-center justify-center">
                 <P className="text-gray-400">Chart placeholder</CardContent>
@@ -45,20 +44,18 @@ export default function ReplayPage() {
                 <Button variant="outline" size="icon" />
                   <SkipForward className="h-4 w-4" />
                 </Button>
-              </Div>
-            </CardContent>
+              </div />
           </Card>
         </Div>
 
         <Div>
           <Card>
             <CardHeader>
-              <CardTitle>Trade Details</Div>
-            </CardHeader>
+              <CardTitle>Trade Details</div />
             <CardContent>
               <Div className="space-y-4">
                 <Div>
-                  <P className="text-sm text-gray-400">Entry Price</CardContent>
+                  <P className="text-sm text-gray-400">Entry Price</Div>
                   <P className="text-lg font-semibold">$42,150.00</P>
                 </Div>
                 <Div>
@@ -83,8 +80,7 @@ export default function ReplayPage() {
                     Completed
                   </Badge>
                 </Div>
-              </Div>
-            </CardContent>
+              </div />
           </Card>
         </Div>
       </Div>

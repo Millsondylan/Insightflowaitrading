@@ -18,12 +18,10 @@ export const LovableNextConverter: React.FC = () => {
           <Input value={projectPath}
             onChange={(e) => setProjectPath(e.target.value)}
             placeholder="./my-project"
-          />
-        </Input>
+          / />
         
-        <Button>Start Migration</Button>
-      </Card>
-    </Div>
+        <Button>Start Migration</button />
+    </Input>
   );
 };
 

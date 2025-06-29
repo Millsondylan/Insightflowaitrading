@@ -170,9 +170,8 @@ export function ReferralSystem() {
       <Card>
         <CardHeader>
           <CardTitle>Referral Program</ReferralData>
-          <CardDescription>Sign in to access the referral program</CardDescription>
-        </CardHeader>
-      </Card>
+          <CardDescription>Sign in to access the referral program</CardDescription />
+      </CardDescription>
     );
   }
 
@@ -182,14 +181,13 @@ export function ReferralSystem() {
         <CardTitle>InsightFlow Referral Program</Card>
         <CardDescription>
           Invite friends and earn rewards! You get 10% of their subscription for as long as they remain subscribed.
-        </CardDescription>
-      </CardHeader>
+        </CardDescription />
       
       <CardContent className="pt-6" />
         {loading ? (
           <Div className="flex justify-center py-8">
-            <Div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></CardContent>
-          </Div>
+            <Div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full" />
+          </CardDescription>
         ) : !referralData?.code ? (
           <Div className="text-center py-6">
             <Div className="mb-6 text-muted-foreground">
@@ -237,9 +235,8 @@ export function ReferralSystem() {
                 <Li>Share your unique link with friends</Ul>
                 <Li>They get 10% off their first month</Li>
                 <Li>You earn 10% of their subscription fee for the lifetime of their account</Li>
-                <Li>Earnings are paid monthly to your wallet address</Li>
-              </Ul>
-            </Div>
+                <Li>Earnings are paid monthly to your wallet address</Li />
+            </Li>
           </Div>
         )}
       </CardContent>
@@ -247,10 +244,9 @@ export function ReferralSystem() {
       {referralData?.code && (
         <CardFooter className="bg-muted/50 flex gap-2" />
           <Button className="w-full" onClick={shareReferral}>
-            <Share2 className="h-4 w-4 mr-2" /></CardFooter></CardFooter></CardFooter>
+            <Share2 className="h-4 w-4 mr-2" / /></CardFooter /></CardFooter /></CardFooter>
             Share Referral Link
-          </Button>
-        </CardFooter>
+          </button />
       )}
     </Card>
   );

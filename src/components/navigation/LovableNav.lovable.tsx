@@ -4,7 +4,7 @@ interface LovableNavProps {
   onNavigate?: (path: string) => void;
 }
 
-export const LovableNav: React.FC<LovableNavProps></LovableNavProps> = ({ onNavigate }) => {
+export const LovableNav: React.FC<LovableNavProps /></LovableNavProps> = ({ onNavigate }) => {
   const navItems = [
     { label: 'Editor', path: '/lovable/editor', icon: '✏️' },
     { label: 'Components', path: '/lovable/components', icon: '🧩' },

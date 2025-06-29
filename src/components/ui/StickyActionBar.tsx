@@ -31,8 +31,7 @@ export function StickyActionBar({
         !showOnDesktop && 'md:hidden',
         className
       )}
-      {...props}
- >
+      {...props}>
       <Div className="flex items-center justify-between gap-2 max-w-screen-xl mx-auto">
         {children}
       </HTMLDivElement>
@@ -42,8 +41,7 @@ export function StickyActionBar({
 
 export function ActionButton({ className, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <Button
-      className={cn(
+    <Button       className={cn(
         'inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-colors',
         'bg-primary text-primary-foreground shadow hover:bg-primary/90',
         'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
@@ -56,13 +54,12 @@ export function ActionButton({ className, ...props }: React.ButtonHTMLAttributes
 
 export function ActionGroup({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <Div
-      className={cn(
+    <Div       className={cn(
         'flex items-center gap-2',
         className
       )}
       {...props}
-    /></HTMLButtonElement></HTMLButtonElement>
+    / /></HTMLButtonElement /></HTMLButtonElement />
   );
 }
 

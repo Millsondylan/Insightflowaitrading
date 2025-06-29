@@ -25,33 +25,29 @@ const LandingBuilderPage: React.FC = () => {
                 <Div className="text-4xl mb-4 text-cyan-400">🧠</Div>
                 <H3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</H3>
                 <P className="text-gray-400">AI-powered strategy generation from your trading intuition</P>
-              </Div>
-            </Link>
+              </div />
             
             <Link to="/journal" />
               <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <Div className="text-4xl mb-4 text-violet-400">📓</Link>
                 <H3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</H3>
                 <P className="text-gray-400">Capture and reflect on your trading psychology</P>
-              </Div>
-            </Link>
+              </div />
             
             <Link to="/academy">
               <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <Div className="text-4xl mb-4 text-blue-400">📘</Link>
                 <H3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</H3>
                 <P className="text-gray-400">Structured learning for trading mastery</P>
-              </Div>
-            </Link>
+              </div />
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Features Preview */}
-      <Scrollsection animation="slide-right" /></Scrollsection>
+      <Scrollsection animation="slide-right" / />
         <Div className="max-w-7xl mx-auto">
           <Div className="text-center mb-16">
-            <H2 className="text-4xl md:text-6xl font-bold text-white mb-6"></Div></Div>
+            <H2 className="text-4xl md:text-6xl font-bold text-white mb-6"></Scrollsection>
               Built for Modern Traders
             </Div>
             <P className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -67,7 +63,7 @@ const LandingBuilderPage: React.FC = () => {
                     ✨
                   </Div>
                   <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2"></Div></Div>AI Strategy Generation</Div>
+                    <H4 className="text-lg font-semibold text-white mb-2"></Div>AI Strategy Generation</Div>
                     <P className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</P>
                   </Div>
                 </Div>
@@ -79,7 +75,7 @@ const LandingBuilderPage: React.FC = () => {
                     🧠
                   </Div>
                   <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2"></Div></Div>Psychology Tracking</Div>
+                    <H4 className="text-lg font-semibold text-white mb-2"></Div>Psychology Tracking</Div>
                     <P className="text-gray-400">Identify patterns in your decision-making and emotional responses</P>
                   </Div>
                 </Div>
@@ -91,7 +87,7 @@ const LandingBuilderPage: React.FC = () => {
                     📈
                   </Div>
                   <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2"></Div></Div>Adaptive Learning</Div>
+                    <H4 className="text-lg font-semibold text-white mb-2"></Div>Adaptive Learning</Div>
                     <P className="text-gray-400">Personalized education that evolves with your trading journey</P>
                   </Div>
                 </Div>
@@ -107,14 +103,13 @@ const LandingBuilderPage: React.FC = () => {
               </Div>
             </Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Call to Action */}
       <scrollsection animation="scale-in">
         <Div className="max-w-4xl mx-auto text-center">
           <Div className="glass-section motion-shadow">
-            <H3 className="text-3xl md:text-5xl font-bold text-white mb-6"></Div></Div>
+            <H3 className="text-3xl md:text-5xl font-bold text-white mb-6"></Div>
               Ready to Elevate Your Trading?
             </Div>
             <P className="text-xl text-gray-400 mb-12">
@@ -122,19 +117,16 @@ const LandingBuilderPage: React.FC = () => {
             </P>
             <Div className="flex flex-wrap justify-center gap-6">
               <Link to="/strategy">
-                <Button className="glow-button glow-cyan text-lg px-8 py-4"></Div></Div>
+                <Button className="glow-button glow-cyan text-lg px-8 py-4"></Div>
                   Start Building Strategies
-                </Div>
-              </Link>
+                </div />
               <Link to="/academy">
-                <Button className="glow-button glow-blue text-lg px-8 py-4"></Link></Link>
+                <Button className="glow-button glow-blue text-lg px-8 py-4" /></Link /></Link />
                   Begin Learning
-                </Link>
-              </Link>
-            </Div>
+                </Link />
+            </Link>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
     </Div>
   );
 };

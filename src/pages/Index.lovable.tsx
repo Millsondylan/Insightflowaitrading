@@ -172,11 +172,10 @@ const LandingPage = () => {
       <Nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
         <Div className="flex items-center space-x-3">
           <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <trendingup  style={{ color: "white" }}>
-          </HTMLDivElement>
+            <trendingup  style={{ color: "white" }} />
           <H1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
             InsightFlow AI
-          </H1>
+          </HTMLDivElement>
         </Div>
         <Div className="flex space-x-4">
           <Button variant="outline"> navigate('/auth')}
@@ -189,8 +188,7 @@ const LandingPage = () => {
           >
             Start Free Trial
           </Button>
-        </Div>
-      </Nav>
+        </div />
 
       {/* Hero Section */}
       <motion.div 
@@ -264,58 +262,46 @@ const LandingPage = () => {
             <Card >
               <Cardheader >
                 <users >
-                <Cardtitle  style={{ color: "white" }}>{userCount.toLocaleString()}</Div>
-              </CardHeader>
+                <Cardtitle  style={{ color: "white" }}>{userCount.toLocaleString()}</div />
               <Cardcontent >
-                <Span className="text-gray-400">Active Traders</Cardcontent>
-              </CardContent>
-            </Card>
+                <Span className="text-gray-400">Active Traders</Cardcontent />
+            </Div>
             <Card >
               <Cardheader >
                 <trendingup >
                 <Cardtitle  style={{ color: "white" }}>
                   {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
-                </Card>
-              </CardHeader>
+                </Card />
               <Cardcontent >
-                <Span className="text-gray-400">Successful Trades</Cardcontent>
-              </CardContent>
+                <Span className="text-gray-400">Successful Trades</Cardcontent />
             </Card>
             <Card >
               <Cardheader >
                 <checkcircle >
-                <Cardtitle  style={{ color: "white" }}>{platformUptime}</Card>
-              </CardHeader>
+                <Cardtitle  style={{ color: "white" }}>{platformUptime}</Card />
               <Cardcontent >
-                <Span className="text-gray-400">Platform Uptime</Cardcontent>
-              </CardContent>
+                <Span className="text-gray-400">Platform Uptime</Cardcontent />
             </Card>
             <Card >
               <Cardheader >
                 <barchart3 >
-                <Cardtitle  style={{ color: "white" }}>{marketsCovered > 0 ? marketsCovered : 'N/A'}</Card>
-              </CardHeader>
+                <Cardtitle  style={{ color: "white" }}>{marketsCovered > 0 ? marketsCovered : 'N/A'}</Card />
               <Cardcontent >
-                <Span className="text-gray-400">Markets Covered</Cardcontent>
-              </CardContent>
+                <Span className="text-gray-400">Markets Covered</Cardcontent />
             </Card>
             <Card >
               <Cardheader >
                 <dollarsign >
-                <Cardtitle  style={{ color: "white" }}>${demoVolume.toLocaleString()}</Card>
-              </CardHeader>
+                <Cardtitle  style={{ color: "white" }}>${demoVolume.toLocaleString()}</Card />
               <Cardcontent >
-                <Span className="text-gray-400">Total Volume</Cardcontent>
-              </CardContent>
+                <Span className="text-gray-400">Total Volume</Cardcontent />
             </Card>
             <Card >
               <Cardheader >
                 <star >
-                <Cardtitle  style={{ color: "white" }}>{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</Card>
-              </CardHeader>
+                <Cardtitle  style={{ color: "white" }}>{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</Card />
               <Cardcontent >
-                <Span className="text-gray-400">User Rating</Cardcontent>
-              </CardContent>
+                <Span className="text-gray-400">User Rating</Cardcontent />
             </Card>
           </Div>
         )}
@@ -347,12 +333,10 @@ const LandingPage = () => {
                 <Div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
                   <feature.icon className="w-8 h-8 text-white" />
                 </Div>
-                <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</Cardtitle>
-              </CardHeader>
+                <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</Cardtitle />
               <Cardcontent >
-                <P className="text-gray-400 text-center">{feature.description}</Cardcontent>
-              </CardContent>
-            </Card>
+                <P className="text-gray-400 text-center">{feature.description}</Cardcontent />
+            </Cardtitle>
           ))}
         </Div>
       </motion.div>
@@ -368,7 +352,7 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
       >
         <Div className="text-center mb-16 w-full">
-          <H2 className="text-4xl font-bold text-white mb-6"></Div></Div>
+          <H2 className="text-4xl font-bold text-white mb-6"></Div>
             Trusted by Traders Worldwide
           </Div>
           <P className="text-xl text-gray-400 w-full">
@@ -386,20 +370,17 @@ const LandingPage = () => {
                 const t = testimonial as any;
                 return (
                   <Card >
-                    <Cardheader ></Card></Card>
-                      <P className="text-gray-300 italic">"{t.content}"</P>
-                    </CardHeader>
+                    <Cardheader  /></Card /></Card />
+                      <P className="text-gray-300 italic">"{t.content}"</p />
                     <Cardcontent >
                       <Div className="flex items-center space-x-3">
                         <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                          <users  style={{ color: "white" }}>
-                        </Cardcontent>
+                          <users  style={{ color: "white" }} />
                         <Div>
-                          <P className="text-white font-semibold">{t.name}</Div>
+                          <P className="text-white font-semibold">{t.name}</Card>
                           <P className="text-gray-400 text-sm">{t.role}</P>
                         </Div>
-                      </Div>
-                    </CardContent>
+                      </div />
                   </Card>
                 );
               }
@@ -412,7 +393,7 @@ const LandingPage = () => {
       {/* Crypto Payment Section */}
       <Div className="w-full px-0 py-20" id="crypto-payment">
         <Div className="text-center mb-16 w-full">
-          <H2 className="text-4xl font-bold text-white mb-6"></Div></Div>
+          <H2 className="text-4xl font-bold text-white mb-6"></Div>
             Secure Crypto Payment Integration
           </Div>
           <P className="text-xl text-gray-400 w-full">
@@ -423,13 +404,12 @@ const LandingPage = () => {
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
             <Card >
-              <Cardheader ></Div></Div>
+              <Cardheader ></Div>
                 <Div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
                   <bitcoin  style={{ color: "white" }}>
                 </Div>
-                <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{coin}</Cardtitle>
-              </CardHeader>
-            </Card>
+                <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{coin}</Cardtitle />
+            </Cardtitle>
           ))}
         </Div>
       </Div>

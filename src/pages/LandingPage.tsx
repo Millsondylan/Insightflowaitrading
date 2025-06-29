@@ -90,9 +90,8 @@ const LandingPage = () => {
       <Nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
         <Div className="flex items-center space-x-3">
           <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white" />
-          </HTMLDivElement>
-          <H1 className="text-2xl font-bold text-white">InsightFlow AI</H1>
+            <TrendingUp className="w-6 h-6 text-white" / />
+          <H1 className="text-2xl font-bold text-white">InsightFlow AI</HTMLDivElement>
         </Div>
         <Div className="flex space-x-2 md:space-x-4">
           <Button variant="ghost" onClick={() = /> navigate('/auth')} className="text-white hover:bg-white/10">
@@ -101,8 +100,7 @@ const LandingPage = () => {
           <Button onClick={() = /> navigate('/auth')} className="quantum-button text-white">
             Start Free Trial
           </Button>
-        </Div>
-      </Nav>
+        </div />
 
       {/* Hero Section (Landing Theme) */}
       <SectionWrapper ref={heroRef} id="hero" className="pt-40 pb-32 text-center flex flex-col items-center" />
@@ -128,8 +126,7 @@ const LandingPage = () => {
                 Get Started <ArrowRight className="ml-2 w-5 h-5" />
               </Div>
             </Div>
-        </motion.div>
-      </SectionWrapper>
+        </motion.div />
 
       {/* Features Section (Academy Theme) */}
       <SectionWrapper ref={featuresRef} id="features" className="container mx-auto" />
@@ -153,16 +150,13 @@ const LandingPage = () => {
                   <Div className="w-16 h-16 mx-auto rounded-lg bg-black/30 flex items-center justify-center mb-4 border border-white/10">
                     <feature.icon className="w-8 h-8 text-cyan-300" />
                   </Div>
-                  <CardTitle className="text-white text-xl" />{feature.title}</CardTitle>
-                </CardHeader>
+                  <CardTitle className="text-white text-xl" />{feature.title}</CardTitle />
                 <CardContent>
-                  <P className="text-gray-400 text-center">{feature.description}</CardContent>
-                </CardContent>
-              </Card>
+                  <P className="text-gray-400 text-center">{feature.description}</CardContent />
+              </CardTitle>
             </motion.div>
           ))}
-        </Div>
-      </SectionWrapper>
+        </div />
       
       {/* Placeholder for Portfolio Section */}
       <SectionWrapper ref={portfolioRef} id="portfolio-demo" className="container mx-auto" />
@@ -175,8 +169,7 @@ const LandingPage = () => {
             <Div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
               <P className="text-gray-500">-- PnL Curve Chart Placeholder --</Div>
             </Div>
-        </Div>
-      </SectionWrapper>
+        </div />
 
       {/* Testimonials Section (NeonWave Theme) */}
       <SectionWrapper ref={testimonialsRef} id="testimonials" className="container mx-auto" />
@@ -201,13 +194,11 @@ const LandingPage = () => {
                   <Div className="flex items-center">
                     <P className="font-bold text-white">{testimonial.author}</Div>
                     <P className="ml-2 text-gray-400">{testimonial.handle}</P>
-                  </Div>
-                </CardContent>
+                  </div />
               </Card>
             </motion.div>
           ))}
-        </Div>
-      </SectionWrapper>
+        </div />
     </Div>
   );
 };

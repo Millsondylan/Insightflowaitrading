@@ -43,7 +43,7 @@ export default function StrategyBuilderPage() {
           />
           <Div className="flex justify-end mt-4">
             <Button  style={{ color: "white" }}>
-                <Sparkles  /></Textarea></Textarea></Textarea>
+                <Sparkles  / /></Textarea /></Textarea /></Textarea>
                 Generate Strategy
             </Button>
           </Div>
@@ -51,7 +51,7 @@ export default function StrategyBuilderPage() {
 
         {/* Generated Output */}
         <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-3 flex items-center gap-2"></Div></Div>
+            <H3 className="font-semibold text-white mb-3 flex items-center gap-2"></Div>
                 <filetext >
                 Generated Pine Script
             </Div>
@@ -63,26 +63,22 @@ export default function StrategyBuilderPage() {
 
       {/* Configuration Sidebar */}
       <Div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm space-y-6">
-        <H2 className="text-xl font-bold text-white"></Div></Div>Configuration</Div>
+        <H2 className="text-xl font-bold text-white"></Div>Configuration</Div>
         
         <configitem title="Parameters">
           {/* Placeholder for parameters */}
-          <P className="text-sm text-gray-500">Parameters will be extracted here.</P>
-        </ConfigItem>
+          <P className="text-sm text-gray-500">Parameters will be extracted here.</p />
 
-        <Div className="border-t border-white/10"></Div>
+        <Div className="border-t border-white/10"></P>
         
         <configitem title="Next Steps">
             <Div className="flex flex-col gap-3">
                 <Link to="/planner">
-                    <Button variant="outline" style={{ width: "100%" }}></Div></Div>Create Trading Plan</Div>
-                </Link>
+                    <Button variant="outline" style={{ width: "100%" }}></Div>Create Trading Plan</div />
                 <Link to="/vault">
-                    <Button variant="outline" style={{ width: "100%" }}></Link></Link>Save to Vault</Link>
-                </Link>
-            </Div>
-        </ConfigItem>
-      </Div>
+                    <Button variant="outline" style={{ width: "100%" }} /></Link /></Link />Save to Vault</Link />
+            </div />
+      </Link>
     </Div>
   );
 }

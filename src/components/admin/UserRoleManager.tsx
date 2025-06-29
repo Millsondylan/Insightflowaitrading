@@ -96,20 +96,18 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
             <TableRow>
               <TableHead>Email</Div>
               <TableHead>Role</TableHead>
-              <TableHead className="text-right" />Actions</TableHead>
-            </TableRow>
-          </TableHeader>
+              <TableHead className="text-right" />Actions</TableHead />
+          </TableHead>
           <TableBody>
             {users.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={3} className="text-center py-8 text-gray-500" />
                   No users found.
-                </TableBody>
-              </TableRow>
+                </TableBody />
             ) : (
               users.map((user) => (
                 <TableRow key={user.id} />
-                  <TableCell>{user.email}</TableRow>
+                  <TableCell>{user.email}</TableBody>
                   <TableCell>
                     <Select
                       value={user.role}
@@ -118,30 +116,25 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
                     >
                       <Option value="user">User</TableCell>
                       <Option value="mod">Moderator</Option>
-                      <Option value="admin">Admin</Option>
-                    </Select>
-                  </TableCell>
+                      <Option value="admin">Admin</Option />
+                  </Option>
                   <TableCell className="text-right" />
                     <Button variant="ghost"
                       className="h-8 w-8 p-0 text-gray-400 hover:text-white"
-                >
-                      <Settings className="h-4 w-4" />
-                    </TableCell>
-                  </TableCell>
-                </TableRow>
+            >
+                      <Settings className="h-4 w-4" / />
+                  </TableCell />
               ))
             )}
             
             {filteredUsers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-gray-500" /></TableRow></TableRow>
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500" / /></TableRow /></TableRow />
                   No users found matching your search.
-                </TableRow>
-              </TableRow>
+                </TableRow />
             )}
-          </TableBody>
-        </Table>
-      </Div>
+          </TableBody />
+      </TableCell>
       
       <Div className="text-xs text-gray-500">
         Showing {filteredUsers.length} of {users.length} users

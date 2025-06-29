@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useTheme, ThemeName } from '../../contexts/ThemeContext';
 
 interface Section {
-  ref: React.RefObject<HTMLElement></HTMLElement>;
+  ref: React.RefObject<HTMLElement /></HTMLElement>;
   theme: ThemeName;
 }
 

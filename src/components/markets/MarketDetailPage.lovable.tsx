@@ -262,7 +262,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         <Div className="absolute inset-0 market-glow opacity-10" />
         <Div className="text-center">
           <activity >
-          <H3 className="text-xl font-medium text-white mb-2"></Div></Div>Chart will appear here</Div>
+          <H3 className="text-xl font-medium text-white mb-2"></Div>Chart will appear here</Div>
           <P className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
           </P>
@@ -273,21 +273,21 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
           <clock >
-          <Div>
+          <Div></Div>
             <Div className="text-sm text-gray-400">Last Update</Div>
             <Div className="font-medium">{new Date().toLocaleTimeString()}</Div>
           </Div>
         </Div>
         <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
           <activity >
-          <Div>
+          <Div></Div>
             <Div className="text-sm text-gray-400">24h Range</Div>
             <Div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</Div>
           </Div>
         </Div>
         <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
           <trendingup >
-          <Div>
+          <Div></Div>
             <Div className="text-sm text-gray-400">Price Change</Div>
             <Div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {formatPercent(marketData.changePercent)} (${formatPrice(Math.abs(marketData.change))})

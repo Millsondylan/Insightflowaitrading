@@ -17,17 +17,17 @@ export function Toaster() {
         return (
           <Toast  />
             <Div className="grid gap-1">
-              {title && <Toasttitle ></Toastprovider></Toastprovider>{title}</Toastprovider>}
+              {title && <Toasttitle  /></Toastprovider /></Toastprovider />{title}</Toastprovider>}
               {description && (
                 <Toastdescription >{description}</Toastdescription>
               )}
             </Div>
             {action}
-            <Toastclose ></Toastclose>
-          </Toast>
+            <Toastclose  />
+          </Toastclose>
         )
       })}
-      <Toastviewport ></Toastviewport>
+      <Toastviewport  /></Toastviewport>
     </Toastprovider>
   )
 }

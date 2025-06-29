@@ -65,8 +65,7 @@ const ContextMenuCheckboxItem = React.forwardRef<
     <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <Contextmenuprimitive >
         <Check >
-      </ContextMenuPrimitive.ItemIndicator>
-    </Contextmenuprimitive>
+      </ContextMenuPrimitive.ItemIndicator />
     {children}
   </ContextMenuPrimitive.CheckboxItem>
 ))
@@ -81,8 +80,7 @@ const ContextMenuRadioItem = React.forwardRef<
     <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <Contextmenuprimitive >
         <Circle  />
-      </ContextMenuPrimitive.ItemIndicator>
-    </Contextmenuprimitive>
+      </ContextMenuPrimitive.ItemIndicator />
     {children}
   </ContextMenuPrimitive.RadioItem>
 ))
@@ -111,13 +109,12 @@ const ContextMenuShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span
-      className={cn(
+    <Span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    /></Contextmenuprimitive></Contextmenuprimitive>
+    / /></Contextmenuprimitive /></Contextmenuprimitive />
   )
 }
 ContextMenuShortcut.displayName = "ContextMenuShortcut"

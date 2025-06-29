@@ -46,12 +46,11 @@ export const VaultPublisher: React.FC = () => {
   return (
     <Card  style={{ width: "100%", color: "white" }}>
       <Cardheader  />
-        <Cardtitle >Strategy Publisher</Strategy>
-      </Cardheader>
+        <Cardtitle >Strategy Publisher</Strategy />
       <Cardcontent  />
         <Div className="space-y-4">
           <Div>
-            <H3 className="text-lg font-bold mb-2">Strategy Details</Cardcontent>
+            <H3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
             <Div className="grid grid-cols-2 gap-4">
               <Input   /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
@@ -66,11 +65,10 @@ export const VaultPublisher: React.FC = () => {
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
-            />
-          </Textarea>
+            / />
 
           <Div>
-            <H3 className="text-lg font-bold mb-2">Publish Settings</Div>
+            <H3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
             <Div className="space-y-2">
               <Div>
                 <Label className="block text-sm mb-1">Visibility</Div>
@@ -102,15 +100,13 @@ export const VaultPublisher: React.FC = () => {
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
-              />
-            </Input>
-          </Div>
+              / />
+          </Input>
 
           <Button  style={{ width: "100%" }}>
             Publish Strategy
           </Button>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

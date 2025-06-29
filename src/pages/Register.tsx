@@ -131,12 +131,11 @@ export default function RegisterPage() {
     <Div className="container mx-auto px-4 py-12 max-w-md">
       <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white" />
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center" />Create Your Account</HTMLInputElement>
-        </CardHeader>
+          <CardTitle className="text-2xl font-bold text-center" />Create Your Account</HTMLInputElement />
         <CardContent>
           <Form onSubmit={handleSubmit} className="space-y-6">
             <Div className="space-y-2">
-              <Label htmlFor="name" />Full Name</CardContent>
+              <Label htmlFor="name" />Full Name</HTMLInputElement>
               <Input
                 id="name"
                 name="name"
@@ -215,9 +214,8 @@ export default function RegisterPage() {
                   }
                 />
                 <Label htmlFor="acceptTerms" className="text-sm" />
-                  I agree to the <A href="/terms" className="text-blue-400 hover:underline">Terms of Service</Div> and <A href="/privacy" className="text-blue-400 hover:underline">Privacy Policy</A>
-                </Label>
-              </Div>
+                  I agree to the <A href="/terms" className="text-blue-400 hover:underline">Terms of Service</Div> and <A href="/privacy" className="text-blue-400 hover:underline">Privacy Policy</A />
+              </A>
               {errors.acceptTerms && <P className="text-xs text-red-400">{errors.acceptTerms}</P>}
               
               <Div className="flex items-center space-x-2">
@@ -237,7 +235,7 @@ export default function RegisterPage() {
             <Button type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
               disabled={isLoading}
-        >
+    >
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -249,15 +247,13 @@ export default function RegisterPage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </>
               )}
-            </Button>
-          </Form>
-        </CardContent>
+            </button />
+        </Button>
         <CardFooter className="flex justify-center border-t border-white/10 pt-6" />
           <P className="text-sm text-gray-400">
             Already have an account?{' '}
-            <A href="/auth" className="text-blue-400 hover:underline"></CardFooter></CardFooter>Sign In</CardFooter>
-          </P>
-        </CardFooter>
+            <A href="/auth" className="text-blue-400 hover:underline" /></CardFooter /></CardFooter />Sign In</CardFooter>
+          </p />
       </Card>
     </Div>
   );

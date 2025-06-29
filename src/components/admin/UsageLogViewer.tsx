@@ -119,47 +119,42 @@ export default function UsageLogViewer({ logs }: Props) {
             <SelectTrigger className="bg-black/50 border-white/10 text-white w-32" />
               <Div className="flex items-center">
                 <Clock className="h-4 w-4 mr-2 text-gray-400" />
-                <SelectValue />
-              </Select>
-            </SelectTrigger>
+                <SelectValue / />
+            </Select>
             <SelectContent className="bg-gray-900 text-white border-white/10" />
               <SelectItem value="all" />All Time</SelectContent>
               <SelectItem value="today" />Today</SelectItem>
               <SelectItem value="week" />This Week</SelectItem>
-              <SelectItem value="month" />This Month</SelectItem>
-            </SelectContent>
-          </Select>
+              <SelectItem value="month" />This Month</SelectItem />
+          </SelectItem>
           
           {/* Action filter */}
           <Select value={actionFilter} onValueChange={(value) = /> setActionFilter(value as ActionFilter)}>
             <SelectTrigger className="bg-black/50 border-white/10 text-white w-32" />
               <Div className="flex items-center">
                 <Filter className="h-4 w-4 mr-2 text-gray-400" />
-                <SelectValue />
-              </Select>
-            </SelectTrigger>
+                <SelectValue / />
+            </Select>
             <SelectContent className="bg-gray-900 text-white border-white/10" />
               <SelectItem value="all" />All Actions</SelectContent>
               <SelectItem value="login" />Login</SelectItem>
               <SelectItem value="api" />API Usage</SelectItem>
-              <SelectItem value="feature" />Feature Access</SelectItem>
-            </SelectContent>
-          </Select>
+              <SelectItem value="feature" />Feature Access</SelectItem />
+          </SelectItem>
         </Div>
       </Div>
 
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Div ref={containerRef}
           className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
-     >
+ >
           <Table>
             <TableHeader className="sticky top-0 bg-black z-10" />
               <TableRow className="hover:bg-transparent border-white/10" />
                 <TableHead className="text-white/70 font-medium w-1/3" />User</Div>
                 <TableHead className="text-white/70 font-medium w-1/3" />Action</TableHead>
-                <TableHead className="text-white/70 font-medium w-1/3" />Timestamp</TableHead>
-              </TableRow>
-            </TableHeader>
+                <TableHead className="text-white/70 font-medium w-1/3" />Timestamp</TableHead />
+            </TableHead>
             <TableBody>
               {filteredLogs.length > 0 ? (
                 filteredLogs.map((log) => (
@@ -172,34 +167,30 @@ export default function UsageLogViewer({ logs }: Props) {
                         ""
                       }>
                         {log.action}
-                      </TableCell>
-                    </TableCell>
+                      </TableCell />
                     <TableCell className="text-gray-400" />
                       <Div className="flex items-center">
                         <Calendar className="h-3 w-3 mr-2" />
                         {formatTimestamp(log.timestamp)}
-                      </TableCell>
-                    </TableCell>
-                  </TableRow>
+                      </TableCell />
+                  </TableCell>
                 ))
               ) : (
                 <TableRow>
                   <TableCell colSpan={3} className="text-center py-12" />
                     <Div className="flex flex-col items-center gap-2 text-gray-500">
-                      <Inbox className="h-10 w-10 text-gray-600/50" /></TableRow></TableRow></TableRow>
+                      <Inbox className="h-10 w-10 text-gray-600/50" / /></TableRow /></TableRow /></TableRow>
                       <P>No logs found</P>
                       <P className="text-xs">Try adjusting your filters</P>
-                    </Div>
-                  </TableCell>
+                    </div />
                 </TableRow>
               )}
-            </TableBody>
-          </Table>
+            </TableBody />
         </Div>
       </Div>
       
       <Div className="text-xs text-gray-500 flex justify-between items-center">
-        <Div>
+        <Div></Div>
           Showing {filteredLogs.length} of {logs.length} logs
         </Div>
         

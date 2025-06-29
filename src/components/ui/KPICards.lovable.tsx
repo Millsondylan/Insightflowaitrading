@@ -138,8 +138,7 @@ const KPICards = ({ stats }: KPICardsProps) => {
     <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
         <Blockreveal>
-          <Kpicard  /></Div></Div></Div>
-        </BlockReveal>
+          <Kpicard  /></Div></div />
       ))}
     </Div>
   );

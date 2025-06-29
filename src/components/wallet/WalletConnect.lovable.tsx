@@ -131,7 +131,7 @@ export default function WalletConnect({ onVerified }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 hover:underline"
-         >
+     >
               Download MetaMask
             </Div>
           </Div>
@@ -181,7 +181,7 @@ export default function WalletConnect({ onVerified }: Props) {
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Div>
         ) : status === "verified" ? (
-          <Button> window.location.reload()}
+          <Button></Button> window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect

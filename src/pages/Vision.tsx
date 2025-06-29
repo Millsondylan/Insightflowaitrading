@@ -61,9 +61,8 @@ const VisionPage = () => {
               <Div className="text-center p-8 glass-container rounded-lg">
                 <Div className="w-full h-64 relative overflow-hidden rounded-md mb-4">
                   <Img src={imagePreview} className="w-full h-full object-cover opacity-30" />
-                  <Div className="shimmer-overlay" />
-                </AnimatePresence>
-                <H2 className="text-2xl font-semibold text-white animate-pulse">Analyzing...</H2>
+                  <Div className="shimmer-overlay" / />
+                <H2 className="text-2xl font-semibold text-white animate-pulse">Analyzing...</AnimatePresence>
               </Div>
             )}
             

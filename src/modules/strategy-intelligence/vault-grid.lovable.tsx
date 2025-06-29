@@ -129,8 +129,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
     return (
       <Card  style={{ width: "100%" }}>
         <Cardheader  />
-          <Cardtitle  style={{ color: "white" }}>Strategy Vault Grid</Vaultgridoptions>
-        </CardHeader>
+          <Cardtitle  style={{ color: "white" }}>Strategy Vault Grid</Vaultgridoptions />
         <Cardcontent >
           <scrollarea  style={{ width: "100%" }}>
             <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -138,7 +137,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
                 <Card  style={{ color: "white" }}>
                   <Cardcontent  style={{ padding: "1rem" }}>
                     <Div className="flex justify-between items-center">
-                      <H3 className="text-lg font-bold">{strategy.name}</Cardcontent>
+                      <H3 className="text-lg font-bold">{strategy.name}</Vaultgridoptions>
                       <Badge variant="secondary">{strategy.risk}</Badge>
                     </Div>
                     <Div className="mt-2 text-green-400 font-semibold">
@@ -147,14 +146,11 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
                     <Div className="mt-4 flex space-x-2">
                       <Button variant="outline" size="sm" style={{ color: "white" }}> onStrategySelect(strategy)}>View</Div>
                       <Button variant="destructive" size="sm">Delete</Button>
-                    </Div>
-                  </CardContent>
+                    </div />
                 </Card>
               ))}
-            </Div>
-          </ScrollArea>
-        </CardContent>
-      </Card>
+            </div />
+        </CardContent />
     );
   };
   
@@ -169,9 +165,8 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
               <Th className="px-4 py-3 text-left">Win Rate</Th>
               <Th className="px-4 py-3 text-left">Profit Factor</Th>
               <Th className="px-4 py-3 text-left">Updated</Th>
-              <Th className="px-4 py-3 text-left">Tags</Th>
-            </Tr>
-          </Thead>
+              <Th className="px-4 py-3 text-left">Tags</Th />
+          </Th>
           <Tbody>
             {strategies.map(strategy => (
               <Tr
@@ -187,8 +182,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
                         Published
                       </Span>
                     )}
-                  </Div>
-                </Td>
+                  </div />
                 <Td className="px-4 py-3">{strategy.author}</Td>
                 <Td className="px-4 py-3">
                   {strategy.performance ? (
@@ -220,12 +214,10 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
                         {tag}
                       </Td>
                     ))}
-                  </Div>
-                </Td>
+                  </div />
               </Tr>
             ))}
-          </Tbody>
-        </Table>
+          </Tbody />
       </Div>
     );
   };
@@ -261,8 +253,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
             <Option value="name">Name</Div>
             <Option value="updatedAt">Last Updated</Option>
             <Option value="performance.winRate">Win Rate</Option>
-            <Option value="performance.profitFactor">Profit Factor</Option>
-          </Select>
+            <Option value="performance.profitFactor">Profit Factor</Option />
           
           <Button  className="p-2 bg-background-secondary border border-border-primary rounded"
             onClick={() => setOptions(prev => ({
@@ -271,7 +262,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
             }))}
           >
             {options.sortDirection === 'asc' ? '↑' : '↓'}
-          </Button>
+          </Option>
         </Div>
       </Div>
       
@@ -303,9 +294,8 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
               <Option value="0.4">40%+</Option>
               <Option value="0.5">50%+</Option>
               <Option value="0.6">60%+</Option>
-              <Option value="0.7">70%+</Option>
-            </Select>
-          </Div>
+              <Option value="0.7">70%+</Option />
+          </Option>
           
           <Div>
             <Label className="block text-sm mb-1">Published</Div>
@@ -316,9 +306,8 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
             >
               <Option value="">All</Select>
               <Option value="true">Published</Option>
-              <Option value="false">Drafts</Option>
-            </Select>
-          </Div>
+              <Option value="false">Drafts</Option />
+          </Option>
           
           <Button  className="self-end px-4 py-2 bg-background-tertiary rounded"
             onClick={() => setOptions(prev => ({ ...prev, filter: {} }))}
@@ -344,7 +333,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
           <Div className="text-text-muted mb-6">Create your first strategy to get started</Div>
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md"
             onClick={onCreateStrategy}
-      >
+  >
             Create Strategy
           </Button>
         </Div>

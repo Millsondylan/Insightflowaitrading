@@ -8,7 +8,7 @@ import { Tag, AlertTriangle, TrendingUp, TrendingDown, Zap } from 'lucide-react'
 
 interface ReplayAnnotationsProps {
   tradeId?: string;
-  onAnnotationAdd?: (annotation: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
+  onAnnotationAdd?: (annotation: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
 }
 
 export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, onAnnotationAdd }) => {
@@ -117,11 +117,11 @@ export const lovable = {
               return (
                 <Div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
                   <Div className={`mt-1 ${type?.color}`}>
-                    <Icon className="h-5 w-5" / / />
+                    <Icon className="h-5 w-5" / / / / / />
                   </Div>
                   <Div className="flex-1">
                     <Div className="flex items-center justify-between mb-1">
-                      <Badge variant="outline"></Div></Div>{type?.label}</Div>
+                      <Badge variant="outline"></Div>{type?.label}</Div>
                       <Div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <Span>{annotation.timestamp}</Div>
                         <Span>•</Span>
@@ -137,7 +137,7 @@ export const lovable = {
         </Div>
 
         <Div className="p-4 bg-secondary/20 rounded-lg">
-          <H4 className="font-medium mb-2"></Div></Div>Pattern Recognition</Div>
+          <H4 className="font-medium mb-2"></Div>Pattern Recognition</Div>
           <P className="text-sm text-muted-foreground mb-3">
             Based on your annotations, we've identified recurring patterns:
           </P>
@@ -152,7 +152,6 @@ export const lovable = {
             </Div>
           </Div>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

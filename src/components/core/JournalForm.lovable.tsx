@@ -154,14 +154,13 @@ const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
   return (
     <Card  style={{ width: "100%" }}>
       <Cardheader  />
-        <Cardtitle  style={{ fontSize: "1.25rem", fontWeight: "700" }}>New Trade Journal Entry</Journalformprops>
-      </CardHeader>
+        <Cardtitle  style={{ fontSize: "1.25rem", fontWeight: "700" }}>New Trade Journal Entry</Journalformprops />
       
       <Cardcontent >
         <Form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <Div className="space-y-2">
-            <Label htmlFor="title">Trade Title</Cardcontent>
+            <Label htmlFor="title">Trade Title</Journalformprops>
             <Input id="title" name="title" placeholder="E.g., ETH Breakout Trade"  />
             {errors.title && <P className="text-sm text-red-500">{errors.title}</Input>}
           </Div>
@@ -219,12 +218,11 @@ const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
           {/* Tags */}
           <Div className="space-y-2">
             <Label htmlFor="tags">Tags (comma-separated)</Div>
-            <Input id="tags" name="tags" placeholder="E.g., breakout, trend-following, support"  />
-          </Input>
+            <Input id="tags" name="tags" placeholder="E.g., breakout, trend-following, support"  / />
           
           {/* Chart Upload */}
           <Div className="space-y-2">
-            <Label >Attach Chart Image (Optional)</Div>
+            <Label >Attach Chart Image (Optional)</Input>
             <Div 
               className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors file-upload-zone"
               onClick={() => fileInputRef.current?.click()}
@@ -256,18 +254,15 @@ const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
                 className="hidden"
                 accept="image/png,image/jpeg"
                 onChange={handleFileChange}
-              />
-            </Input>
-          </Div>
-        </Form>
-      </CardContent>
+              / />
+          </div />
+      </Input>
       
       <cardfooter >
         <Button type="button">
           {isSubmitting ? "Saving..." : "Save Entry"}
-        </Button>
-      </CardFooter>
-    </Card>
+        </button />
+    </Button>
   );
 };
 

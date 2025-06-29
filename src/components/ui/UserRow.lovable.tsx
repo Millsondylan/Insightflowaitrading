@@ -156,8 +156,7 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
           />
             {formatAddress(user.address)}
           </Userrowprops>
-        </Div>
-      </Td>
+        </div />
 
       <Td className="px-4 py-3 text-sm text-gray-400">
         {formatDate(user.created_at)}
@@ -166,36 +165,32 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
       <Td className="px-4 py-3">
         <Span className="text-sm">
           {user.subscription_tier || '-'}
-        </Td>
-      </Td>
+        </Td />
 
       <Td className="px-4 py-3">
-        <Rolebadge >
-      </Td>
+        <Rolebadge  />
 
       <Td className="px-4 py-3">
-        <Dropdownmenu  /></Td></Td></Td>
+        <Dropdownmenu  / /></Td /></Td /></Td>
           <dropdownmenutrigger >
             <Button variant="ghost" size="icon">
               <morehorizontal >
-            </Button>
-          </DropdownMenuTrigger>
+            </button />
           <dropdownmenucontent align="end" style={{ border: "1px solid #E5E7EB" }}>
-            <dropdownmenulabel >User Actions</DropdownMenuLabel>
+            <dropdownmenulabel >User Actions</Button>
             <dropdownmenuseparator >
             
             <dropdownmenusub >
               <dropdownmenusubtrigger >
                 <usercog >
-                <Span>Change Role</Span>
-              </DropdownMenuSubTrigger>
+                <Span>Change Role</span />
               <dropdownmenuportal >
                 <dropdownmenusubcontent  style={{ border: "1px solid #E5E7EB" }}>
                   <dropdownmenuitem > handleRoleChange('Admin')}
                     className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
                   >
                     Admin
-                  </DropdownMenuItem>
+                  </Span>
                   <dropdownmenuitem > handleRoleChange('User')}
                     className="cursor-pointer text-green-300 hover:bg-green-900/30"
                   >
@@ -205,31 +200,24 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
                     className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
                   >
                     Trial
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
+                  </DropdownMenuItem />
+              </DropdownMenuPortal />
             
             <dropdownmenuitem >
               <copy >
-              <Span>Copy Address</Span>
-            </DropdownMenuItem>
+              <Span>Copy Address</span />
             
             <dropdownmenuitem >
               <eye >
-              <Span>View Details</Span>
-            </DropdownMenuItem>
+              <Span>View Details</span />
             
             <dropdownmenuseparator >
             
             <dropdownmenuitem >
               <xcircle >
-              <Span>Revoke Access</Span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </Td>
-    </Tr>
+              <Span>Revoke Access</span />
+          </DropdownMenuContent />
+      </Td />
   );
 };
 

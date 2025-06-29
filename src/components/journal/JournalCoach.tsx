@@ -123,10 +123,9 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
                     {feedback.suggestions.map((suggestion, index) => (
                         <Li key={index} className="flex items-start gap-3">
                             <Span className="text-green-400 mt-1">✅</Ul>
-                            <Span>{suggestion}</Span>
-                        </Li>
+                            <Span>{suggestion}</span />
                     ))}
-                </Ul>
+                </Span>
             </Div>
         </Div>
       );

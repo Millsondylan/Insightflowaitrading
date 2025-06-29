@@ -153,8 +153,7 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
         </Div>
         <CardDescription>
           AI-generated setup based on your trading profile
-        </CardDescription>
-      </CardHeader>
+        </CardDescription />
       
       <CardContent className="pb-2" />
         {loading || generating ? (
@@ -169,7 +168,7 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
               <Div>
                 <Badge variant={setup.direction === 'long' ? 'default' : 'destructive'} className="mb-1" />
                   {setup.direction.toUpperCase()}
-                </CardContent>
+                </CardDescription>
                 <H3 className="text-xl font-bold">{setup.symbol}</H3>
                 <P className="text-sm text-muted-foreground">{setup.timeframe} Timeframe</P>
               </Div>
@@ -226,7 +225,7 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
             size="sm" 
             onClick={saveSetup}
             disabled={saved}
-      >
+  >
             {saved ? (
               <>
                 <Bookmark className="mr-1 h-4 w-4 fill-primary" />
@@ -243,13 +242,11 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
           <Button variant="ghost" 
             size="sm"
             asChild
-      >
+  >
             <A href={`/trade-planner?symbol=${setup.symbol}&entry=${setup.entry_price}&sl=${setup.stop_loss}&tp=${setup.take_profit}&direction=${setup.direction}`}>
               Plan Trade
-              <ChevronRight className="ml-1 h-4 w-4" /></Button></Button></Button>
-            </A>
-          </Button>
-        </CardFooter>
+              <ChevronRight className="ml-1 h-4 w-4" /></Button></Button></Button></Button></Button></button />
+          </button />
       )}
     </Card>
   );

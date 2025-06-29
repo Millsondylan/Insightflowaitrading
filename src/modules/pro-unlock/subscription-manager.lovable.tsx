@@ -409,10 +409,9 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
                   {plan.features.map((feature, i) => (
                     <Li key={i} className="flex items-start">
                       <Span className="text-status-success mr-2">✓</Ul>
-                      <Span className="text-sm">{feature}</Span>
-                    </Li>
+                      <Span className="text-sm">{feature}</span />
                   ))}
-                </Ul>
+                </Span>
                 
                 <Button  className={`w-full py-2 rounded-md ${
                     selectedPlanId === plan.id
@@ -432,7 +431,7 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
               <Button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSubscribe}
                 disabled={processing}
-          >
+      >
                 {processing ? 'Processing...' : 'Subscribe Now'}
               </Div>
             </Div>
@@ -444,7 +443,7 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
       {showCancelModal && (
         <Div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <Div className="bg-background-primary rounded-lg p-6 max-w-md w-full">
-            <H3 className="text-xl font-semibold mb-4"></Div></Div>Cancel Subscription</Div>
+            <H3 className="text-xl font-semibold mb-4"></Div>Cancel Subscription</Div>
             
             <P className="mb-4">
               Are you sure you want to cancel your subscription? You'll continue to have access until {userSubscription ? formatDate(userSubscription.endDate) : 'the end of your billing period'}.
@@ -460,7 +459,7 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
               <Button className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
                 onClick={handleCancelSubscription}
                 disabled={processing}
-          >
+      >
                 {processing ? 'Processing...' : 'Confirm Cancellation'}
               </Button>
             </Div>

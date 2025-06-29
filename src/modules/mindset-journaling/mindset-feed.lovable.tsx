@@ -71,11 +71,10 @@ export const MindsetFeed: React.FC<Mindsetfeedprops > = ({ userId }) => {
               <Div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
                 <Div className="flex items-start gap-3">
                   <Div className={`mt-1 ${getTypeColor(insight.type)}`}>
-                    <Icon / / />
-                  </Scrollarea>
+                    <Icon / / / / / / />
                   <Div className="flex-1">
                     <Div className="flex items-center justify-between mb-1">
-                      <H3 className="font-semibold"></Div></Div>{insight.title}</Div>
+                      <H3 className="font-semibold"></Scrollarea>{insight.title}</Div>
                       <Span className="text-xs text-muted-foreground">
                         {insight.timestamp.toLocaleTimeString()}
                       </Span>
@@ -93,15 +92,13 @@ export const MindsetFeed: React.FC<Mindsetfeedprops > = ({ userId }) => {
               </Div>
             );
           })}
-        </Div>
-      </ScrollArea>
+        </div />
 
       <Div className="mt-4 pt-4 border-t">
-        <P className="text-sm text-muted-foreground text-center"></Div></Div>
+        <P className="text-sm text-muted-foreground text-center"></Div>
           Insights generated from your journal entries and trading patterns
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

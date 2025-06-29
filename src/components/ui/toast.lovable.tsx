@@ -37,7 +37,7 @@ const Toast = React.forwardRef<
     VariantProps<typeof toastVariants>
 >(({ className, variant, ...props }, ref) => {
   return (
-    <Toastprimitives  /></Toastprimitives>
+    <Toastprimitives  / />
   )
 })
 Toast.displayName = ToastPrimitives.Root.displayName
@@ -46,7 +46,7 @@ const ToastAction = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Action>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
 >(({ className, ...props }, ref) => (
-  <Toastprimitives ></Toastprimitives>
+  <Toastprimitives  />
 ))
 ToastAction.displayName = ToastPrimitives.Action.displayName
 
@@ -54,7 +54,7 @@ const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
 >(({ className, ...props }, ref) => (
-  <Toastprimitives close=""></Toastprimitives>
+  <Toastprimitives close="" />
     <x >
   </ToastPrimitives.Close>
 ))
@@ -64,7 +64,7 @@ const ToastTitle = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Title>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(({ className, ...props }, ref) => (
-  <Toastprimitives ></Toastprimitives>
+  <Toastprimitives  />
 ))
 ToastTitle.displayName = ToastPrimitives.Title.displayName
 
@@ -72,7 +72,7 @@ const ToastDescription = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Description>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
 >(({ className, ...props }, ref) => (
-  <Toastprimitives ></Toastprimitives>
+  <Toastprimitives  /></Toastprimitives>
 ))
 ToastDescription.displayName = ToastPrimitives.Description.displayName
 

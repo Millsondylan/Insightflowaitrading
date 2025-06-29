@@ -28,8 +28,7 @@ export default function HelpPage() {
             <Div className="flex items-center gap-2">
               <Book className="h-5 w-5 text-blue-400" />
               <CardTitle>Documentation</Div>
-            </Div>
-          </CardHeader>
+            </div />
           <CardContent>
             <P className="text-gray-400 mb-4">
               Comprehensive guides and tutorials to help you get started
@@ -37,17 +36,15 @@ export default function HelpPage() {
             <Button variant="outline" className="w-full" />
               Browse Docs
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </CardContent>
-        </Card>
+            </button />
+        </Button>
 
         <Card>
           <CardHeader>
             <Div className="flex items-center gap-2">
               <MessageSquare className="h-5 w-5 text-purple-400" />
               <CardTitle>Community</Card>
-            </Div>
-          </CardHeader>
+            </div />
           <CardContent>
             <P className="text-gray-400 mb-4">
               Join our community to discuss strategies and get help
@@ -55,17 +52,15 @@ export default function HelpPage() {
             <Button variant="outline" className="w-full" />
               Join Discussion
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </CardContent>
-        </Card>
+            </button />
+        </Button>
 
         <Card>
           <CardHeader>
             <Div className="flex items-center gap-2">
               <Lightbulb className="h-5 w-5 text-yellow-400" />
               <CardTitle>Tips & Tricks</Card>
-            </Div>
-          </CardHeader>
+            </div />
           <CardContent>
             <P className="text-gray-400 mb-4">
               Learn best practices and advanced techniques
@@ -73,23 +68,21 @@ export default function HelpPage() {
             <Button variant="outline" className="w-full" />
               View Tips
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </CardContent>
-        </Card>
+            </button />
+        </Button>
       </Div>
 
       <Card>
         <CardContent className="p-8" />
           <Div className="text-center">
-            <H2 className="text-2xl font-bold text-white mb-2"></Card></Card>Need More Help?</Card>
+            <H2 className="text-2xl font-bold text-white mb-2" /></Card /></Card />Need More Help?</Card>
             <P className="text-gray-400 mb-6">
               Our support team is available 24/7 to assist you with any questions
             </P>
             <Button className="bg-blue-600 hover:bg-blue-700"></Button>
               Contact Support
             </Button>
-          </Div>
-        </CardContent>
+          </div />
       </Card>
     </Div>
   );

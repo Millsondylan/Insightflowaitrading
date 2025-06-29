@@ -192,9 +192,8 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
             </Div>
             <Button onClick={generateQuiz} className="mt-4">
               Upgrade to Pro
-            </Button>
-          </CardContent>
-        </Card>
+            </button />
+        </Button>
       </motion.div>
     );
   }
@@ -221,9 +220,8 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
               <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </Div>
-          </CardContent>
-        </Card>
+            </div />
+        </Div>
       </motion.div>
     );
   }
@@ -235,9 +233,8 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
           <P className="text-gray-400">Ready to test your knowledge?</Card>
           <Button onClick={generateQuiz} className="mt-4">
             Generate Quiz
-          </Button>
-        </CardContent>
-      </Card>
+          </button />
+      </Button>
     );
   }
 
@@ -254,11 +251,10 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
           <Div className="flex items-center justify-between">
             <CardTitle className="flex items-center space-x-3" />
               <brain className="h-6 w-6 text-blue-400" />
-              <Span>{quiz.title}</Card>
-            </CardTitle>
+              <Span>{quiz.title}</Card />
             <Div className="text-sm text-gray-400">
               {currentQuestionIndex + 1} of {quiz.questions.length}
-            </Div>
+            </Card>
           </Div>
           
           {/* Progress Bar */}
@@ -267,8 +263,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               className="quiz-progress-fill"
               style={{ width: `${calculateProgress()}%` }}
             />
-          </Div>
-        </CardHeader>
+          </div />
 
         <CardContent className="space-y-6" />
           {currentQuestion && (
@@ -276,7 +271,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               {/* Question */}
               <Div className="quiz-question">
                 {currentQuestion.question}
-              </CardContent>
+              </Div>
 
               {/* Options */}
               <Div className="quiz-options">
@@ -313,10 +308,9 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
                         className={optionClassName}
-                >
+            >
                         <Div className="quiz-option-radio" />
-                        <Span className="text-gray-200">{option.label}</Div>
-                      </Label>
+                        <Span className="text-gray-200">{option.label}</div />
                     </motion.div>
                   );
                 })}
@@ -337,7 +331,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                     {canProceed && (
                       <Button onClick={handleNextQuestion}
                         className="quiz-submit-btn"
-                  >
+              >
                         Next Question
                         <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
                       </Div>
@@ -365,8 +359,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               )}
             </>
           )}
-        </QuizFeedback>
-      </Card>
+        </QuizFeedback />
 
       {/* Completion Badge */}
       {showCompletion && quizResult?.passed && (
@@ -379,7 +372,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
           <Div className="badge-content">
             <Div className="badge-icon">
               <trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
-            </Div>
+            </QuizFeedback>
             <H2 className="text-2xl font-bold text-yellow-400 mb-2">
               Quiz Complete!
             </H2>

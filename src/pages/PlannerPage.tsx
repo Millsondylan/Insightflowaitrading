@@ -22,12 +22,11 @@ export default function PlannerPage() {
             </Div>
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white" />
                 Save Plan
-            </Button>
-        </Header>
+            </button />
 
         <Div className="space-y-6">
             <Div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
-                <P className="text-gray-500"></Div></Div>Checklist and planning components will be here.</Div>
+                <P className="text-gray-500"></Button>Checklist and planning components will be here.</Div>
             </Div>
         </Div>
       </Div>

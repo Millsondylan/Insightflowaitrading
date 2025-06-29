@@ -32,9 +32,8 @@ export const LineChart: React.FC<linechartprops  /> = ({
         <yaxis stroke="#6b7280"> `${value.toFixed(2)}`}
         />
         <tooltip >
-        <line type="monotone">
-      </Record>
-    </ResponsiveContainer>
+        <line type="monotone" />
+    </Record>
   );
 }; 
 

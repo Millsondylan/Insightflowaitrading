@@ -81,28 +81,25 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
   
   return (
     <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
-      onClick={handleCourseClick}
->
+      onClick={handleCourseClick}>
       <CardHeader>
         <Div className="flex justify-between items-start mb-4">
           <Div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
-            <Icon className="w-6 h-6" />
-          </Card>
+            <Icon className="w-6 h-6" / />
           <Badge className={categoryColors[course.difficulty || 'beginner']} />
             {course.difficulty}
-          </Badge>
+          </Card>
         </Div>
         <CardTitle className="text-xl text-white" />{course.title}</CardTitle>
         <CardDescription className="text-gray-400" />
           {course.description}
-        </CardDescription>
-      </CardHeader>
+        </CardDescription />
       <CardContent>
         <Div className="space-y-4">
           {progress && (
             <Div className="space-y-2">
               <Div className="flex justify-between text-sm">
-                <Span className="text-gray-400">Progress</CardContent>
+                <Span className="text-gray-400">Progress</CardDescription>
                 <Span className="text-white font-semibold">{Math.round(progress.progress_percentage)}%</Span>
               </Div>
               <progress 
@@ -138,8 +135,7 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
               </Div>
             ))}
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   );
 };
@@ -155,8 +151,7 @@ const AchievementCard = ({ icon: Icon, title, value, color }: any) => (
         <Div className={`p-3 rounded-xl ${color}`}>
           <Icon className="w-6 h-6 text-white" />
         </Div>
-      </Div>
-    </CardContent>
+      </div />
   </Card>
 );
 
@@ -231,10 +226,9 @@ export default function AcademyPage() {
       <Div className="text-center mb-8">
         <H1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
           <Span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
-            <BookOpen className="w-8 h-8 text-white" />
-          </AcademyCategory>
+            <BookOpen className="w-8 h-8 text-white" / />
           Trading Academy
-        </H1>
+        </AcademyCategory>
         <P className="text-xl text-gray-400 max-w-2xl mx-auto">
           Master the markets with comprehensive courses designed by professional traders. 
           From basics to advanced strategies, we've got you covered.
@@ -276,12 +270,11 @@ export default function AcademyPage() {
             <TabsTrigger key={category} 
               value={category} 
               className="capitalize data-[state=active]:bg-blue-600 data-[state=active]:text-white"
-        >
+    >
               {category}
             </Tabs>
           ))}
-        </TabsList>
-      </Tabs>
+        </TabsList />
       
       {/* Course Grid */}
       {loading ? (
@@ -302,7 +295,7 @@ export default function AcademyPage() {
       
       {courses.length === 0 && !loading && (
         <Div className="text-center py-12">
-          <P className="text-gray-400 text-lg"></Div></Div>No courses found in this category.</Div>
+          <P className="text-gray-400 text-lg"></Div>No courses found in this category.</Div>
         </Div>
       )}
     </Div>

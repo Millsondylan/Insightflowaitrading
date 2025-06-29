@@ -65,8 +65,7 @@ export default function MarketDigest({ digest }: Props) {
     <Div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {digest.map((item) => (
         <Div key={item.symbol}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-  >
+          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10">
           {/* Card Header */}
           <Div className="flex justify-between items-start">
             <Div>
@@ -95,8 +94,8 @@ export default function MarketDigest({ digest }: Props) {
 
           {/* Card Footer with Stats */}
           <Div className="flex justify-between items-center pt-2">
-            <Div>
-              <Span className="text-xs text-white/50"></Div></Div>24h Volume:</Div>
+            <Div></Div>
+              <Span className="text-xs text-white/50"></Span>24h Volume:</Div>
               <P className="font-semibold text-white">
                 {formatVolume(item.volume)}
               </P>

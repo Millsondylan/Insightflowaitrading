@@ -84,13 +84,12 @@ export default function DigestPage() {
           <P className="text-lg text-white/70">
             A real-time feed of markets matching your active strategies, powered
             by AI.
-          </P>
-        </Header>
+          </p />
 
         <Div className="flex justify-center gap-4 mb-8">
           <Button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2" />
             <Zap className="h-4 w-4" />
-            <Span>Live Scan</Div>
+            <Span>Live Scan</P>
           </Button>
           <Button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2" />
             <FileText className="h-4 w-4" />
@@ -98,10 +97,10 @@ export default function DigestPage() {
           </Button>
         </Div>
 
-        <MarketDigest digest={digestItems} /></MarketDigest>
+        <MarketDigest digest={digestItems} / /></MarketDigest>
         
         <Div className="mt-8 text-center">
-          <P className="text-white/50 text-sm"></Div></Div>
+          <P className="text-white/50 text-sm"></Div>
             Summaries generated automatically based on price action, volume, and strategy matches
           </Div>
         </Div>

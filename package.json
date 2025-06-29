@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "build:verify": "npm run lint && npm run typecheck && npm run build",
     "build:dev": "vite build --mode development",
     "build:nocheck": "vite build --config vite.nocheck.config.ts",
     "build:minimal": "node skip-ts-build.js",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "convert-to-lovable": "node scripts/convert-to-lovable.js",
     "lovable": "npx lovable-tagger serve src/lovable-demo/LovableDemo.tsx",
@@ -38,6 +40,10 @@
     "build:android": "npm run cap:build && npx cap sync android",
     "build:ios": "npm run cap:build && npx cap sync ios",
     "build:electron": "npm run cap:build && npx cap sync @capacitor-community/electron"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -135,6 +141,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.1.2",
     "@types/jest": "^29.5.14",
+    "@types/next": "^14.0.0",
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.3.0",

@@ -56,8 +56,7 @@ const SheetContent = React.forwardRef<
         <x >
         <Span className="sr-only">Close</Sheetprimitive>
       </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </Sheetportal>
+    </SheetPrimitive.Content />
 ))
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
@@ -65,8 +64,7 @@ const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn(
+  <Div     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
       className
     )}
@@ -79,13 +77,12 @@ const SheetFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn(
+  <Div     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
-  /></HTMLDivElement></HTMLDivElement>
+  / /></HTMLDivElement /></HTMLDivElement />
 )
 SheetFooter.displayName = "SheetFooter"
 
@@ -93,7 +90,7 @@ const SheetTitle = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <Sheetprimitive ></Sheetprimitive>
+  <Sheetprimitive  />
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
@@ -101,7 +98,7 @@ const SheetDescription = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <Sheetprimitive ></Sheetprimitive>
+  <Sheetprimitive  /></HTMLDivElement>
 ))
 SheetDescription.displayName = SheetPrimitive.Description.displayName
 

@@ -5,11 +5,13 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { OnboardingProvider } from '@/contexts/OnboardingContext';
 import OnboardingModal from '@/components/onboarding/OnboardingModal';
 import { Toaster } from '@/components/ui/toaster';
+import { ErrorBoundary } from '@/components/core/ErrorBoundary';
 import { useAuthMiddleware } from './middleware';
 import MobileAppWrapper from './components/mobile/MobileAppWrapper';
 import AppLayout from './components/layout/AppLayout';
 import './App.css';
 import { initJobProcessor } from './lib/background/job-processor';
+import { env } from './env';
 
 // Import pages
 import Index from './pages/Index';
@@ -60,12 +62,13 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <OnboardingProvider>
-        <QueryClientProvider client={queryClient}>
-          <Router>
-            <MobileAppWrapper>
-              <Routes>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <OnboardingProvider>
+          <QueryClientProvider client={queryClient}>
+            <Router>
+              <MobileAppWrapper>
+                <Routes>
                 <Route path="/" element={<AppLayout />}>
                   {/* Public Landing Pages */}
                   <Route index element={<LandingPage />} />
@@ -99,13 +102,14 @@ function App() {
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>
-            </MobileAppWrapper>
-            <OnboardingModal />
-            <Toaster />
-          </Router>
-        </QueryClientProvider>
-      </OnboardingProvider>
-    </ThemeProvider>
+              <OnboardingModal />
+              <Toaster />
+              </MobileAppWrapper>
+            </Router>
+          </QueryClientProvider>
+        </OnboardingProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 

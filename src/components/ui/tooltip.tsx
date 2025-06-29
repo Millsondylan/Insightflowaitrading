@@ -21,7 +21,7 @@ const TooltipContent = React.forwardRef<
       className
     )}
     {...props}
-  /></TooltipPrimitive>
+  / /></TooltipPrimitive>
 ))
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 

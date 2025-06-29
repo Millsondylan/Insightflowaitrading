@@ -91,7 +91,7 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
           Payment Method
         </div>
         <div style={{ display: 'flex', gap: '12px' }}>
-          <Button  onClick={() => setPaymentMethod('card')}
+          <button  onClick={() => setPaymentMethod('card')}
             style={{
               padding: '12px 24px',
               backgroundColor: paymentMethod === 'card' ? '#2563eb' : '#f3f4f6',
@@ -104,8 +104,8 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
             }}
           >
             💳 Credit Card
-          </Button>
-          <Button  onClick={() => setPaymentMethod('crypto')}
+          </button>
+          <button  onClick={() => setPaymentMethod('crypto')}
             style={{
               padding: '12px 24px',
               backgroundColor: paymentMethod === 'crypto' ? '#2563eb' : '#f3f4f6',
@@ -118,7 +118,7 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
             }}
           >
             ₿ Crypto
-          </Button>
+          </button>
         </div>
       </div>
 
@@ -228,7 +228,7 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
         </div>
       )}
 
-      <Button onClick={handlePayment}
+      <button onClick={handlePayment}
         disabled={loading}
         style={{
           width: '100%',
@@ -243,7 +243,7 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
         }}
     >
         {loading ? 'Processing...' : `Pay ${paymentMethod === 'card' ? '$' + selectedTier.price : selectedTier.cryptoPrice + ' ' + selectedTier.cryptoCurrency}`}
-      </Button>
+      </button>
 
       {error && (
         <div style={{

@@ -16,20 +16,18 @@ export default function ReplayPage() {
       <Div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
         <Header className="flex justify-between items-center">
             <H1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</Div>
-            <Button variant="ghost" /><Settings > </Button>
-        </Header>
+            <Button variant="ghost" /><Settings > </button />
         
         <Div className="flex-grow flex items-center justify-center">
-            <P className="text-gray-500 text-lg">Chart and replay visualization would be here.</Div>
+            <P className="text-gray-500 text-lg">Chart and replay visualization would be here.</Button>
         </Div>
 
         <Footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
-            <Button variant="ghost" /><Fastforward /></Footer>
+            <Button variant="ghost" /><Fastforward / />
             <Button size="lg">
                 <play >
-            </Button>
-            <Button variant="ghost"><Fastforward /></Button></Button></Button></Button>
-        </Footer>
+            </Footer>
+            <Button variant="ghost"><Fastforward /></Button></Button></Button></Button></Button></Button></button />
       </Div>
     </Div>
   );

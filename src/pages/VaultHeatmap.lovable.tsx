@@ -69,8 +69,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
                 Verified
               </Badge>
             )}
-          </Div>
-        </Cardheader>
+          </div />
         <Cardcontent >
           <Div className="grid grid-cols-2 gap-4 mb-4">
             <Div>
@@ -129,10 +128,8 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
                 {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
             </Div>
-          </Div>
-        </CardContent>
-      </Card>
-    </Link>
+          </div />
+      </Card />
   );
 };
 
@@ -208,8 +205,7 @@ export default function VaultPage() {
                 </P>
               </Div>
               <trendingup >
-            </Div>
-          </CardContent>
+            </div />
         </Card>
         <Card >
           <Cardcontent >
@@ -221,8 +217,7 @@ export default function VaultPage() {
                 </P>
               </Div>
               <barchart3 >
-            </Div>
-          </CardContent>
+            </div />
         </Card>
         <Card >
           <Cardcontent >
@@ -234,8 +229,7 @@ export default function VaultPage() {
                 </P>
               </Div>
               <users >
-            </Div>
-          </CardContent>
+            </div />
         </Card>
         <Card >
           <Cardcontent >
@@ -247,8 +241,7 @@ export default function VaultPage() {
                 </P>
               </Div>
               <star >
-            </Div>
-          </CardContent>
+            </div />
         </Card>
       </Div>
 
@@ -273,45 +266,38 @@ export default function VaultPage() {
                 {strategyCategories.map(cat => (
                   <selectitem >{cat}</SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
             
             <Select >
               <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Risk Level">
-              </Select>
+                <selectvalue placeholder="Risk Level" />
               <selectcontent >
-                <selectitem value="all">All Risk Levels</SelectItem>
+                <selectitem value="all">All Risk Levels</Select>
                 {riskLevels.map(risk => (
                   <selectitem >{risk}</SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
             
             <Select >
               <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Market">
-              </Select>
+                <selectvalue placeholder="Market" />
               <selectcontent >
-                <selectitem value="all">All Markets</SelectItem>
+                <selectitem value="all">All Markets</Select>
                 {marketTypes.map(market => (
                   <selectitem >{market}</SelectItem>
                 ))}
-              </SelectContent>
-            </Select>
+              </SelectContent />
             
             <Select > setSortBy(v as any)}>
               <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Sort by">
-              </Select>
+                <selectvalue placeholder="Sort by" />
               <selectcontent >
-                <selectitem value="returns">Returns</SelectItem>
+                <selectitem value="returns">Returns</Select>
                 <selectitem value="sharpe">Sharpe Ratio</SelectItem>
                 <selectitem value="drawdown">Drawdown</SelectItem>
                 <selectitem value="winRate">Win Rate</SelectItem>
                 <selectitem value="users">Users</SelectItem>
-                <selectitem value="stars">Stars</SelectItem>
-              </SelectContent>
+                <selectitem value="stars">Stars</SelectItem />
             </Select>
             
             <Button variant="outline" size="icon"> setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
@@ -323,15 +309,14 @@ export default function VaultPage() {
         </Div>
         
         <Div className="flex items-center justify-between">
-          <P className="text-sm text-gray-400"></Div></Div>
+          <P className="text-sm text-gray-400"></Div>
             Showing {filteredStrategies.length} of {comprehensiveStrategies.length} strategies
           </Div>
           <tabs > setViewMode(v as 'grid' | 'list')}>
             <Tabslist >
               <Tabstrigger value="grid">Grid</Tabslist>
-              <Tabstrigger value="list">List</Tabstrigger>
-            </TabsList>
-          </Tabs>
+              <Tabstrigger value="list">List</Tabstrigger />
+          </Tabstrigger>
         </Div>
       </Div>
 
@@ -347,7 +332,7 @@ export default function VaultPage() {
       
       {filteredStrategies.length === 0 && (
         <Div className="text-center py-12">
-          <P className="text-gray-400"></Div></Div>No strategies found matching your criteria.</Div>
+          <P className="text-gray-400"></Div>No strategies found matching your criteria.</Div>
           <Button variant="ghost"> {
               setSearchTerm('');
               setSelectedCategory('all');

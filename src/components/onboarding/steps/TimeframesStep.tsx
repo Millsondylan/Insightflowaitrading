@@ -48,8 +48,7 @@ export default function TimeframesStep() {
             <FormControl>
               <Div className="grid grid-cols-3 gap-2">
                 {timeframes.map((timeframe) => (
-                  <Div
-                    key={timeframe.value}
+                  <Div                     key={timeframe.value}
                     className={`
                       flex flex-col items-center justify-center p-3 border rounded-md cursor-pointer
                       transition-colors
@@ -67,22 +66,19 @@ export default function TimeframesStep() {
                     </Span>
                   </Div>
                 ))}
-              </Div>
-            </FormControl>
-            <FormMessage />
-          </FormMessage>
+              </div />
+            <FormMessage / />
         )}
       />
       
       <Div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
-        <H4 className="font-medium text-blue-700 dark:text-blue-300"></Div></Div>Timeframe Tips</Div>
+        <H4 className="font-medium text-blue-700 dark:text-blue-300"></FormMessage>Timeframe Tips</Div>
         <Ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
           <Li>• Lower timeframes (M1-M15) are best for scalping</Ul>
           <Li>• H1-H4 are ideal for day trading and swing trading</Li>
           <Li>• D1 and above are better for position trading</Li>
-          <Li>• Consider using multiple timeframes for confirmation</Li>
-        </Ul>
-      </Div>
+          <Li>• Consider using multiple timeframes for confirmation</Li />
+      </Li>
     </Div>
   );
 }

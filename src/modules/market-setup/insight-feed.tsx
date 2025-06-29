@@ -46,11 +46,9 @@ export const lovable = {
         <Badge variant={
             marketSentiment === 'Bullish' ? 'default' : 
             marketSentiment === 'Bearish' ? 'destructive' : 'secondary'
-          }
-   >
+          }>
           {marketSentiment} Sentiment
-        </Badge>
-      </CardHeader>
+        </Badge />
       <CardContent>
         <Div className="space-y-4">
           {insights.map((insight) => (
@@ -58,12 +56,12 @@ export const lovable = {
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
            />
               <Div className="flex justify-between items-start mb-2">
-                <H3 className="text-lg font-bold">{insight.title}</CardContent>
+                <H3 className="text-lg font-bold">{insight.title}</Badge>
                 <Badge variant={
                     insight.sentiment === 'Bullish' ? 'default' : 
                     insight.sentiment === 'Bearish' ? 'destructive' : 'secondary'
                   }
-             >
+         >
                   {insight.sentiment}
                 </Badge>
               </Div>
@@ -84,11 +82,10 @@ export const lovable = {
           ))}
         </Div>
         <Div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white" /></Div></Div>
+          <Button variant="outline" className="text-white" /></Div>
             Load More Insights
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

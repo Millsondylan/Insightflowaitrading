@@ -56,8 +56,7 @@ export const TradeReplayCard = ({ trade }: Props) => {
               <line type="monotone" dataKey="close" stroke="#8884d8">
               <referenceline label="Entry" stroke="green" strokeDasharray="3 3">
               <referenceline label="Exit" stroke="red" strokeDasharray="3 3">
-            </Div>
-          </ResponsiveContainer>
+            </div />
         </Div>
       )}
     </Div>

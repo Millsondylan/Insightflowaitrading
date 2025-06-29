@@ -41,16 +41,16 @@ const StrategyHeatmap = ({ data }: Props) => {
               <Tooltiptrigger >
                 <Div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
                   style={tileStyle}
-           ></Tooltipprovider>
+         />
                   <Div>
                     <Span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
                       {item.dominantEmotion}
-                    </Div>
+                    </Tooltipprovider>
                   </Div>
                   
                   <H3 className="font-bold text-center text-white break-words" 
                     style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}
-               >
+           >
                     {item.tag}
                   </H3>
                   
@@ -58,16 +58,13 @@ const StrategyHeatmap = ({ data }: Props) => {
                     <Span>{item.count} Uses</Div>
                     <Span>{(item.avgWinRate * 100).toFixed(0)}% Win Rate</Span>
                   </Div>
-                </Div>
-              </Tooltiptrigger>
+                </div />
               <Tooltipcontent >
-                <P></Tooltipcontent></Tooltipcontent>{item.tag} - {item.dominantEmotion}</Tooltipcontent>
-              </Tooltipcontent>
-            </Tooltip>
+                <P /></Tooltipcontent /></Tooltipcontent />{item.tag} - {item.dominantEmotion}</Tooltipcontent />
+            </Tooltipcontent>
           );
         })}
-      </Div>
-    </Tooltipprovider>
+      </div />
   );
 };
 

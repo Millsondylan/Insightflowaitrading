@@ -67,8 +67,7 @@ const SheetContent = React.forwardRef<
         <X className="h-4 w-4" />
         <Span className="sr-only">Close</SheetPrimitive>
       </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </SheetPortal>
+    </SheetPrimitive.Content />
 ))
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
@@ -76,8 +75,7 @@ const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn(
+  <Div     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
       className
     )}
@@ -90,8 +88,7 @@ const SheetFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div
-    className={cn(
+  <Div     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
@@ -120,7 +117,7 @@ const SheetDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
-  /></HTMLDivElement></HTMLDivElement></HTMLDivElement>
+  / /></HTMLDivElement /></HTMLDivElement /></HTMLDivElement>
 ))
 SheetDescription.displayName = SheetPrimitive.Description.displayName
 

@@ -78,13 +78,12 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
 
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Table >
-          <Tableheader  /></Div></Div></Div>
+          <Tableheader  /></Div></Div>
             <tablerow >
               <tablehead >ID</TableHead>
               <tablehead >Email</TableHead>
               <tablehead >Current Role</TableHead>
-              <tablehead >Manage Role</TableHead>
-            </TableRow>
+              <tablehead >Manage Role</TableHead />
           </TableHeader>
           <tablebody >
             {filteredUsers.map((user) => (
@@ -96,27 +95,23 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
                 <tablecell >
                   <Badge variant="outline">
                     {user.role.toUpperCase()}
-                  </Badge>
-                </TableCell>
+                  </Badge />
                 <tablecell >
                   <Select > onRoleChange(user.id, value as User["role"])}
                   >
                     <selecttrigger  style={{ color: "white" }}>
-                      <selectvalue >
-                    </Select>
+                      <selectvalue  />
                     <selectcontent  style={{ color: "white" }}>
                       <selectitem value="user">
                         User
-                      </SelectItem>
+                      </Badge>
                       <selectitem value="mod">
                         Moderator
                       </SelectItem>
                       <selectitem value="admin">
                         Admin
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </TableCell>
+                      </SelectItem />
+                  </Select />
               </TableRow>
             ))}
             
@@ -124,11 +119,9 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
               <tablerow >
                 <tablecell >
                   No users found matching your search.
-                </TableCell>
-              </TableRow>
+                </TableCell />
             )}
-          </TableBody>
-        </Table>
+          </TableBody />
       </Div>
       
       <Div className="text-xs text-gray-500">

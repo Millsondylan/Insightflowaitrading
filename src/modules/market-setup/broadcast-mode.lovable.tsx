@@ -36,16 +36,15 @@ export const BroadcastMode: React.FC = () => {
         <Cardtitle  />Market Broadcast Mode</Broadcastevent>
         <Badge variant="default">
           {sortedEvents.length} Active Events
-        </Badge>
-      </CardHeader>
-      <Cardcontent  /></Cardcontent>
+        </Badge />
+      <Cardcontent  / />
         <Div className="space-y-4">
           {sortedEvents.map((event) => (
             <Div key={event.id} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
-         >
+     >
               <Div className="flex justify-between items-start mb-2">
-                <H3 className="text-lg font-bold"></Div></Div>{event.title}</Div>
+                <H3 className="text-lg font-bold"></Badge>{event.title}</Div>
                 <Badge >
                   {event.impact} Impact
                 </Badge>
@@ -54,7 +53,7 @@ export const BroadcastMode: React.FC = () => {
               <Div className="flex justify-between items-center">
                 <Div className="flex space-x-2">
                   {event.relatedAssets?.map((asset) => (
-                    <Badge variant="outline"></Div></Div>
+                    <Badge variant="outline"></Div>
                       {asset}
                     </Div>
                   ))}
@@ -69,11 +68,10 @@ export const BroadcastMode: React.FC = () => {
           ))}
         </Div>
         <Div className="mt-4 flex justify-center">
-          <Button variant="outline" style={{ color: "white" }}></Div></Div>
+          <Button variant="outline" style={{ color: "white" }}></Div>
             Subscribe to Updates
           </Div>
-        </Div>
-      </CardContent>
+        </div />
     </Card>
   )
 } 

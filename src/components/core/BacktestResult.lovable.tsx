@@ -33,34 +33,28 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   return (
     <Div className="space-y-8 mt-12">
       <Blockreveal>
-        <H2 className="text-3xl font-bold text-center mb-6">Backtest Results</Div>
-      </BlockReveal>
+        <H2 className="text-3xl font-bold text-center mb-6">Backtest Results</div />
       
       <blockreveal  />
-        <Kpicards >
-      </Kpicards>
+        <Kpicards  />
       
-      <Blockreveal  /></Blockreveal>
+      <Blockreveal  / />
         <tabs  style={{ width: "100%" }}>
           <Tabslist  style={{ width: "100%", display: "grid" }}>
             <Tabstrigger value="overview">
               Chart View
-            </Tabslist>
+            </Div>
             <Tabstrigger value="trades">
               Trade Explorer
-            </Tabstrigger>
-          </TabsList>
+            </Tabstrigger />
           
           <tabscontent value="overview">
-            <backtestchart >
-          </TabsContent>
+            <backtestchart  />
           
           <tabscontent value="trades">
-            <tradeexplorer >
-          </TabsContent>
-        </Tabs>
-      </BlockReveal>
-    </Div>
+            <tradeexplorer  />
+        </Tabs />
+    </Tabstrigger>
   );
 };
 

@@ -52,18 +52,16 @@ const VisionUpload = ({ onUpload, defaultImage }: Props) => {
             accept=".png, .jpg, .jpeg, .webp"
             className="hidden"
             onChange={handleFileChange}
-          />
-        </Input>
+          / />
         
         {previewUrl && (
           <Div className="w-full mt-4">
-            <P className="text-sm text-white/60 text-center mb-2">Chart Preview</Div>
+            <P className="text-sm text-white/60 text-center mb-2">Chart Preview</Input>
             <Img 
               src={previewUrl} 
               alt="Chart preview" 
               className="rounded-lg border border-white/10 max-h-96 w-full object-contain" 
-            />
-          </Img>
+            / /></Img>
         )}
       </Div>
     </Div>

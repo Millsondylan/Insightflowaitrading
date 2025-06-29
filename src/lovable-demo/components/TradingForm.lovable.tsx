@@ -213,7 +213,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
         )}
 
         <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-          <Button  type="submit"
+          <button  type="submit"
             style={{
               width: '100%',
               padding: '12px 24px',
@@ -231,7 +231,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
             onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
           >
             {formData.type === 'buy' ? '🟢 Buy' : '🔴 Sell'} {formData.symbol || 'Asset'}
-          </Button>
+          </button>
         </div>
       </form>
     </div>

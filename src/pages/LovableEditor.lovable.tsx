@@ -27,12 +27,11 @@ const LovableEditorPage: React.FC = () => {
             <TabsTrigger value="converter" />Convert Components</TabsTrigger>
             <TabsTrigger value="next-converter" />Next.js Migration</TabsTrigger>
             <TabsTrigger value="github" />GitHub Integration</TabsTrigger>
-            <TabsTrigger value="supabase" />Supabase</TabsTrigger>
-          </TabsList>
+            <TabsTrigger value="supabase" />Supabase</TabsTrigger />
           
           <Button size="sm" variant="outline" />
             Documentation
-          </Button>
+          </TabsTrigger>
         </Div>
         
         <Card className="mb-6" />
@@ -46,33 +45,27 @@ const LovableEditorPage: React.FC = () => {
                   console.log('Edit component', id, changes);
                 }}
               />
-            </Div>
-          </TabsContent>
+            </div />
           
           <TabsContent value="converter" className="p-0 m-0" />
             <Div className="p-6">
-              <LovableConverter />
-            </TabsContent>
+              <LovableConverter / />
           </TabsContent>
           
           <TabsContent value="next-converter" className="p-0 m-0" />
             <Div className="p-6">
-              <LovableNextConverter />
-            </TabsContent>
+              <LovableNextConverter / />
           </TabsContent>
           
           <TabsContent value="github" className="p-0 m-0" />
             <Div className="p-6">
-              <GitHubSync />
-            </TabsContent>
+              <GitHubSync / />
           </TabsContent>
           
           <TabsContent value="supabase" className="p-0 m-0" />
             <Div className="p-6">
-              <supabaseAdapter />
-            </TabsContent>
-          </TabsContent>
-        </Card>
+              <supabaseAdapter / />
+          </TabsContent />
         
         <Card className="p-6" />
           <H2 className="text-xl font-bold mb-4">About {activeTab === 'visual-editor' ? 'Visual Editor' : 
@@ -80,7 +73,7 @@ const LovableEditorPage: React.FC = () => {
             activeTab === 'next-converter' ? 'Next.js Migration' :
             activeTab === 'github' ? 'GitHub Integration' : 
             'Supabase Integration'}
-          </Card>
+          </TabsContent>
           
           {activeTab === 'visual-editor' && (
             <Div className="text-text-muted space-y-4">
@@ -153,8 +146,7 @@ const LovableEditorPage: React.FC = () => {
               </Div>
             </Div>
           )}
-        </Card>
-      </Tabs>
+        </Card />
     </Div>
   );
 };

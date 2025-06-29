@@ -175,16 +175,14 @@ export default function OnboardingModal() {
           <Div className="w-full flex justify-center mt-4">
             <Div className="flex space-x-2">
               {steps.map((step, index) => (
-                <Div
-                  key={step.id}
+                <Div                   key={step.id}
                   className={`h-2 w-8 rounded-full transition-colors ${
                     index <= currentStepIndex ? 'bg-blue-500' : 'bg-gray-300'
                   }`}
                 />
               ))}
             </Div>
-          </Div>
-        </DialogHeader>
+          </div />
         
         <FormProvider {...methods} />
           <Form className="space-y-6 py-4">
@@ -199,7 +197,7 @@ export default function OnboardingModal() {
                 variant="outline"
                 onClick={handlePrevious}
                 disabled={isFirstStep || isSubmitting}
-          >
+      >
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Back
               </Div>
@@ -208,7 +206,7 @@ export default function OnboardingModal() {
                 onClick={handleNext}
                 disabled={isSubmitting}
                 className={isCompletionStep ? 'bg-green-600 hover:bg-green-700' : ''}
-          >
+      >
                 {isSubmitting ? (
                   <Span className="flex items-center">
                     <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -225,14 +223,12 @@ export default function OnboardingModal() {
                 ) : (
                   <Span className="flex items-center">
                     Next
-                    <ChevronRight className="ml-2 h-4 w-4" /></Span></Span></Span>
+                    <ChevronRight className="ml-2 h-4 w-4" /></Span></Span></Span></Span></Span></Span>
                   </Span>
                 )}
               </Button>
-            </Div>
-          </Form>
-        </FormProvider>
-      </DialogContent>
+            </div />
+        </FormProvider />
     </Dialog>
   );
 }

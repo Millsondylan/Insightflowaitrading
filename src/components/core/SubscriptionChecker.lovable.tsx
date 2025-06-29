@@ -205,8 +205,7 @@ const SubscriptionChecker: React.FC = () => {
               <Button />Try Again</Plantype>
             </Div>
           )}
-        </Cardcontent>
-      </Card>
+        </Cardcontent />
     );
   }
 
@@ -214,8 +213,7 @@ const SubscriptionChecker: React.FC = () => {
     <Card  style={{ width: "100%" }}>
       <Cardheader >
         <Cardtitle >Select Your Subscription Plan</Card>
-        <carddescription >Choose a plan and payment method to unlock premium features</CardDescription>
-      </CardHeader>
+        <carddescription >Choose a plan and payment method to unlock premium features</CardDescription />
       
       <Cardcontent >
         <Div className="space-y-6">
@@ -238,10 +236,9 @@ const SubscriptionChecker: React.FC = () => {
                   )}
                   <Cardheader >
                     <Cardtitle >{plan.name}</Cardheader>
-                    <Div className="text-2xl font-bold text-white">${plan.priceUSD}</Div>
-                  </CardHeader>
+                    <Div className="text-2xl font-bold text-white">${plan.priceUSD}</div />
                   <Cardcontent  style={{ fontSize: "0.875rem" }}>
-                    <P className="mb-2">{plan.description}</Cardcontent>
+                    <P className="mb-2">{plan.description}</Div>
                     <Ul className="space-y-1">
                       {plan.features.map((feature, idx) => (
                         <Li key={idx} className="flex items-start">
@@ -249,8 +246,7 @@ const SubscriptionChecker: React.FC = () => {
                           {feature}
                         </Ul>
                       ))}
-                    </Ul>
-                  </Cardcontent>
+                    </Ul />
                 </Card>
               ))}
             </Div>
@@ -271,22 +267,18 @@ const SubscriptionChecker: React.FC = () => {
                       <Div className="flex items-center">
                         <circledollarsign >
                         <Span>Ethereum (ERC20)</Div>
-                      </Div>
-                    </SelectItem>
+                      </div />
                     <selectitem value="BTC">
                       <Div className="flex items-center">
                         <bitcoin >
                         <Span>Bitcoin</Div>
-                      </Div>
-                    </SelectItem>
+                      </div />
                     <selectitem value="TRX">
                       <Div className="flex items-center">
                         <dollarsign >
                         <Span>TRON (USDT)</Div>
-                      </Div>
-                    </SelectItem>
-                  </SelectGroup>
-                </SelectContent>
+                      </div />
+                  </SelectGroup />
               </Select>
 
               {/* Payment Instructions */}
@@ -315,7 +307,7 @@ const SubscriptionChecker: React.FC = () => {
                   <Div className="flex items-center space-x-2">
                     <Button onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
-                >
+            >
                       <copy >
                     </Div>
                     <Button  onClick={() => toast({
@@ -345,16 +337,14 @@ const SubscriptionChecker: React.FC = () => {
                 <Label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
                   After payment, paste the transaction hash (TX ID) below to verify
                 </Div>
-                <Input id="txHash"  />
-              </Input>
+                <Input id="txHash"  / />
               
               <Button  style={{ width: "100%" }}>
                 {loading ? 'Verifying...' : 'Verify Payment'}
-              </Button>
+              </Input>
             </Div>
           </Div>
-        </Div>
-      </Cardcontent>
+        </div />
     </Card>
   );
 };

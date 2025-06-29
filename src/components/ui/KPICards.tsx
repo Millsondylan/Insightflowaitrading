@@ -138,8 +138,7 @@ const KPICards = ({ stats }: KPICardsProps) => {
     <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
         <blockReveal key={card.label} delay={index * 0.1}>
-          <KPICard {...card} /></Div></Div></Div>
-        </BlockReveal>
+          <KPICard {...card} /></Div></div />
       ))}
     </Div>
   );

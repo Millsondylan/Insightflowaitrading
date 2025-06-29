@@ -71,8 +71,7 @@ export default function IndicatorsStep() {
             <FormControl>
               <Div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {commonIndicators.map((indicator) => (
-                  <Div
-                    key={indicator}
+                  <Div                     key={indicator}
                     className={`
                       flex items-center justify-center p-2 border rounded-md cursor-pointer
                       transition-colors text-center
@@ -87,15 +86,13 @@ export default function IndicatorsStep() {
                     {indicator}
                   </FormControl>
                 ))}
-              </Div>
-            </FormControl>
-            <FormMessage />
-          </FormMessage>
+              </div />
+            <FormMessage / />
         )}
       />
       
       <Div>
-        <FormLabel>Custom Indicators</Div>
+        <FormLabel>Custom Indicators</FormMessage>
         <Div className="flex gap-2 mt-2">
           <Input
             placeholder="Add custom indicator"
@@ -125,25 +122,22 @@ export default function IndicatorsStep() {
               {field.value?.map((indicator: string) => (
                 <Badge key={indicator} variant="secondary" className="flex items-center gap-1">
                   {indicator}
-                  <Button
-                    type="button"
+                  <Button                     type="button"
                     onClick={() => removeIndicator(indicator)}
                     className="text-gray-500 hover:text-gray-700 focus:outline-none"
                   >
                     <X className="h-3 w-3" />
                     <Span className="sr-only">Remove</Div>
-                  </Button>
-                </Badge>
+                  </button />
               ))}
               {(!field.value || field.value.length === 0) && (
                 <P className="text-sm text-gray-500 italic">No indicators selected</P>
               )}
             </Div>
-            <FormMessage />
-          </FormMessage>
+            <FormMessage / />
         )}
       />
-    </Div>
+    </FormMessage>
   );
 }
 

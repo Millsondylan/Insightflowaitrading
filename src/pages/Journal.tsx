@@ -72,9 +72,8 @@ export default function JournalPage() {
             </Div>
             <P className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</P>
             <Link to="/coach" />
-                <Button variant="outline" className="w-full" />Ask for a Review</Link>
-            </Link>
-        </Div>
+                <Button variant="outline" className="w-full" />Ask for a Review</Link />
+        </Link>
         
         <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
             <H3 className="font-semibold text-white mb-4 flex items-center gap-2">
@@ -83,9 +82,8 @@ export default function JournalPage() {
             </Div>
             <P className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</P>
             <Link to="/feed" />
-                <Button variant="outline" className="w-full" /></Link></Link>View Your Feed</Link>
-            </Link>
-        </Div>
+                <Button variant="outline" className="w-full" / /></Link /></Link />View Your Feed</Link />
+        </Link>
       </Div>
     </Div>
   );

@@ -65,15 +65,14 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
           </Tabstrigger>
           <Tabstrigger value="btc">
             BTC
-          </Tabstrigger>
-        </TabsList>
+          </Tabstrigger />
 
         {Object.entries(wallets).map(([key, wallet]) => (
           <Tabscontent >
             <Div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
-              <H3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</Tabscontent>
+              <H3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</Tabstrigger>
               <Div className="flex items-center">
-                <Input  /></Div></Div></Div>
+                <Input  /></Div></Div>
                 <Button variant="ghost" size="icon"> handleCopy(wallet.address, key)}
                 >
                   {copied === key ? <check > : <copy >}
@@ -82,14 +81,13 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
             </Div>
             
             <Div className="text-center mt-6">
-              <P className="text-sm text-gray-400 mb-4"></Div></Div>
+              <P className="text-sm text-gray-400 mb-4"></Div>
                 After sending payment, click the button below to continue.
               </Div>
               <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
                 I've Sent the Payment
               </Button>
-            </Div>
-          </TabsContent>
+            </div />
         ))}
       </Tabs>
     </motion.div>

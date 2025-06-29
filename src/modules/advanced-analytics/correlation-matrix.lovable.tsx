@@ -113,8 +113,8 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
     return (
       <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <Div className="flex items-center justify-center h-64">
-          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></Correlationmatrixprops>
-          <Span className="ml-2 text-white/60">Loading correlation matrix...</Span>
+          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400" />
+          <Span className="ml-2 text-white/60">Loading correlation matrix...</Correlationmatrixprops>
         </Div>
       </Div>
     );
@@ -163,8 +163,7 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
               
               {/* Correlation cells */}
               {row.map((correlation, colIndex) => (
-                <Div
-                  key={colIndex}
+                <Div                   key={colIndex}
                   className={`
                     w-16 h-8 flex items-center justify-center text-xs font-medium text-white
                     cursor-pointer transition-all duration-200 hover:scale-110 hover:z-10 relative
@@ -205,7 +204,7 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
       {/* Rolling correlation detail */}
       {selectedCell && rollingData && (
         <Div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-          <H4 className="text-sm font-medium text-white mb-2"></Div></Div>
+          <H4 className="text-sm font-medium text-white mb-2"></Div>
             Rolling Correlation: {matrix.symbols[selectedCell.row]} vs {matrix.symbols[selectedCell.col]}
           </Div>
           <Div className="h-32 flex items-end space-x-1">
@@ -253,7 +252,7 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
 const generateMockCorrelationMatrix = async (
   symbols: string[], 
   timeframe: string
-): Promise<Correlationmatrix ></Correlationmatrix> => {
+): Promise<Correlationmatrix  /></Correlationmatrix> => {
   // TODO: replace with real correlation calculation
   const correlations = symbols.map((_, i) =>
     symbols.map((_, j) => {

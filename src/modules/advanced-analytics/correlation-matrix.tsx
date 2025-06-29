@@ -113,8 +113,8 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
     return (
       <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <Div className="flex items-center justify-center h-64">
-          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></CorrelationMatrixProps>
-          <Span className="ml-2 text-white/60">Loading correlation matrix...</Span>
+          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400" />
+          <Span className="ml-2 text-white/60">Loading correlation matrix...</CorrelationMatrixProps>
         </Div>
       </Div>
     );
@@ -147,7 +147,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
             {matrix.symbols.map((symbol, index) => (
               <Div key={symbol}
                 className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-        >
+    >
                 {symbol}
               </Div>
             ))}
@@ -163,8 +163,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
               
               {/* Correlation cells */}
               {row.map((correlation, colIndex) => (
-                <Div
-                  key={colIndex}
+                <Div                   key={colIndex}
                   className={`
                     w-16 h-8 flex items-center justify-center text-xs font-medium text-white
                     cursor-pointer transition-all duration-200 hover:scale-110 hover:z-10 relative
@@ -253,7 +252,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
 const generateMockCorrelationMatrix = async (
   symbols: string[], 
   timeframe: string
-): Promise<CorrelationMatrix></CorrelationMatrix> => {
+): Promise<CorrelationMatrix /> => {
   // TODO: replace with real correlation calculation
   const correlations = symbols.map((_, i) =>
     symbols.map((_, j) => {
@@ -274,7 +273,7 @@ const fetchRollingCorrelation = async (
   symbol1: string, 
   symbol2: string, 
   window: number
-): Promise<RollingCorrelation></RollingCorrelation> => {
+): Promise<RollingCorrelation /></CorrelationMatrix> => {
   // TODO: implement real rolling correlation calculation
   return {
     symbol1,

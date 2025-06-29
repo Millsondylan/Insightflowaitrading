@@ -75,21 +75,18 @@ export default function MarketSetupPage() {
                   ))}
                 </SelectGroup>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
           
           <Select value={selectedTimeframe} onValueChange={setSelectedTimeframe} />
             <SelectTrigger className="w-[120px]" />
-              <SelectValue placeholder="Timeframe" />
-            </Select>
+              <SelectValue placeholder="Timeframe" / />
             <SelectContent>
               {timeframeOptions.map(timeframe => (
                 <SelectItem key={timeframe} value={timeframe} />
                   {timeframe}
-                </SelectContent>
+                </Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </Div>
       </Div>
       
@@ -97,8 +94,7 @@ export default function MarketSetupPage() {
         <TabsList>
           <TabsTrigger value="suggested" />Suggested Setup</Tabs>
           <TabsTrigger value="saved" />Saved Setups</TabsTrigger>
-          <TabsTrigger value="settings" />Preferences</TabsTrigger>
-        </TabsList>
+          <TabsTrigger value="settings" />Preferences</TabsTrigger />
         
         <TabsContent value="suggested" className="space-y-4" />
           <MarketSetupSuggestion 
@@ -109,14 +105,13 @@ export default function MarketSetupPage() {
           
           <Card>
             <CardHeader>
-              <CardTitle>About This Setup</TabsContent>
+              <CardTitle>About This Setup</TabsTrigger>
               <CardDescription>
                 How AI generates personalized trade setups for your selected market
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-4" />
               <Div>
-                <H3 className="font-medium">What goes into each setup?</CardContent>
+                <H3 className="font-medium">What goes into each setup?</CardDescription>
                 <P className="text-muted-foreground text-sm">
                   The AI analyzes the latest market data including price action, volume, volatility,
                   and key technical indicators to identify high-probability trading opportunities.
@@ -137,10 +132,8 @@ export default function MarketSetupPage() {
                   Setups are tailored to your trading preferences set in your profile, including favorite
                   indicators, trading style (swing/scalp), and risk-reward expectations.
                 </P>
-              </Div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+              </div />
+          </Card />
         
         <TabsContent value="saved" className="space-y-4" />
           {savedSetups.length === 0 ? (
@@ -149,19 +142,16 @@ export default function MarketSetupPage() {
                 <CardTitle>No Saved Setups</TabsContent>
                 <CardDescription>
                   You haven't saved any trade setups yet
-                </CardDescription>
-              </CardHeader>
+                </CardDescription />
               <CardContent>
                 <P className="text-muted-foreground">
                   When you find a setup you like, click the "Save Setup" button to store it here for future reference.
-                </CardContent>
-              </CardContent>
+                </CardContent />
               <CardFooter>
                 <Button variant="outline" onClick={() = /> setActiveTab("suggested")}>
                   Go to Suggested Setups
-                </CardFooter>
-              </CardFooter>
-            </Card>
+                </CardFooter />
+            </CardDescription>
           ) : (
             <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {savedSetups.map(setup => (
@@ -170,13 +160,12 @@ export default function MarketSetupPage() {
                     <CardTitle>{setup.symbol}</Div>
                     <CardDescription>
                       {setup.timeframe} • {setup.tradeType === 'LONG' ? 'Long' : 'Short'}
-                    </CardDescription>
-                  </CardHeader>
+                    </CardDescription />
                   <CardContent>
                     <Div className="space-y-2">
                       <Div className="grid grid-cols-3 gap-2">
                         <Div>
-                          <Div className="text-xs text-muted-foreground">Entry</CardContent>
+                          <Div className="text-xs text-muted-foreground">Entry</CardDescription>
                           <Div>{setup.entry.toFixed(5)}</Div>
                         </Div>
                         <Div>
@@ -195,17 +184,15 @@ export default function MarketSetupPage() {
                           <Div className="text-sm">{setup.patternDescription}</Div>
                         </Div>
                       )}
-                    </Div>
-                  </CardContent>
+                    </div />
                   <CardFooter className="flex justify-between" />
                     <Button variant="destructive" size="sm" onClick={() = /> {
                       setSavedSetups(setups => setups.filter(s => s.id !== setup.id));
                     }}>
                       Remove
                     </CardFooter>
-                    <Button variant="outline" size="sm" />View Details</Button>
-                  </CardFooter>
-                </Card>
+                    <Button variant="outline" size="sm" />View Details</button />
+                </Button>
               ))}
             </Div>
           )}
@@ -217,39 +204,34 @@ export default function MarketSetupPage() {
               <CardTitle>Setup Preferences</TabsContent>
               <CardDescription>
                 Customize how AI generates trade setups for you
-              </CardDescription>
-            </CardHeader>
+              </CardDescription />
             <CardContent className="space-y-6" />
               <Div className="space-y-4">
                 <Div>
-                  <H3 className="font-medium mb-2">Trading Style</CardContent>
+                  <H3 className="font-medium mb-2">Trading Style</CardDescription>
                   <Select defaultValue="swing" />
                     <SelectTrigger>
-                      <SelectValue placeholder="Select style" />
-                    </Select>
+                      <SelectValue placeholder="Select style" / />
                     <SelectContent>
-                      <SelectItem value="scalp" />Scalping (short-term)</SelectContent>
+                      <SelectItem value="scalp" />Scalping (short-term)</Select>
                       <SelectItem value="day" />Day Trading</SelectItem>
                       <SelectItem value="swing" />Swing Trading</SelectItem>
-                      <SelectItem value="position" />Position Trading (long-term)</SelectItem>
-                    </SelectContent>
-                  </Select>
+                      <SelectItem value="position" />Position Trading (long-term)</SelectItem />
+                  </SelectItem>
                 </Div>
                 
                 <Div>
                   <H3 className="font-medium mb-2">Risk-Reward Ratio</Div>
                   <Select defaultValue="2" />
                     <SelectTrigger>
-                      <SelectValue placeholder="Select ratio" />
-                    </Select>
+                      <SelectValue placeholder="Select ratio" / />
                     <SelectContent>
-                      <SelectItem value="1" />1:1</SelectContent>
+                      <SelectItem value="1" />1:1</Select>
                       <SelectItem value="1.5" />1:1.5</SelectItem>
                       <SelectItem value="2" />1:2</SelectItem>
                       <SelectItem value="3" />1:3</SelectItem>
-                      <SelectItem value="5" />1:5</SelectItem>
-                    </SelectContent>
-                  </Select>
+                      <SelectItem value="5" />1:5</SelectItem />
+                  </SelectItem>
                 </Div>
                 
                 <Div>
@@ -258,19 +240,16 @@ export default function MarketSetupPage() {
                     {['RSI', 'MACD', 'EMA', 'SMA', 'Bollinger Bands', 'Stochastic', 'Fibonacci', 'Volume Profile'].map(indicator => (
                       <Div className="flex items-center space-x-2" key={indicator}>
                         <Switch id={`indicator-${indicator}`} defaultChecked={['RSI', 'EMA', 'Bollinger Bands'].includes(indicator)} />
-                        <Label htmlFor={`indicator-${indicator}`} /></Div></Div>{indicator}</Div>
+                        <Label htmlFor={`indicator-${indicator}`} /></Div>{indicator}</Div>
                       </Div>
                     ))}
                   </Div>
                 </Div>
-              </Div>
-            </CardContent>
+              </div />
             <CardFooter>
-              <Button></CardFooter></CardFooter>Save Preferences</CardFooter>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-      </Tabs>
+              <Button /></CardFooter /></CardFooter />Save Preferences</CardFooter />
+          </Card />
+      </CardFooter>
     </Div>
   );
 }

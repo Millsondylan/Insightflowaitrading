@@ -59,9 +59,8 @@ export const LineChart: React.FC<lineChartProps> = ({
           strokeWidth={2}
           dot={false}
           activeDot={{ r: 4, strokeWidth: 0 }}
-        />
-      </Record>
-    </ResponsiveContainer>
+        / />
+    </Record>
   );
 
 export const lovable = { 

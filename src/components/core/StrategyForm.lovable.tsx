@@ -123,15 +123,13 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Select > handleSelectChange(value, 'tradeStyle')}
           >
             <selecttrigger >
-              <selectvalue placeholder="Select a trade style">
-            </Select>
+              <selectvalue placeholder="Select a trade style" />
             <selectcontent  style={{ color: "white" }}>
-              <selectitem value="Intraday">Intraday</SelectItem>
+              <selectitem value="Intraday">Intraday</Select>
               <selectitem value="Swing">Swing</SelectItem>
               <selectitem value="Scalping">Scalping</SelectItem>
               <selectitem value="Position">Position</SelectItem>
-              <selectitem value="Custom">Custom</SelectItem>
-            </SelectContent>
+              <selectitem value="Custom">Custom</SelectItem />
           </Select>
           {formErrors.tradeStyle && (
             <P className="text-red-500 text-sm">{formErrors.tradeStyle}</P>
@@ -151,18 +149,16 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Select > handleSelectChange(value, 'timeframe')}
           >
             <selecttrigger >
-              <selectvalue placeholder="Select a timeframe">
-            </Select>
+              <selectvalue placeholder="Select a timeframe" />
             <selectcontent  style={{ color: "white" }}>
-              <selectitem value="1m">1 minute</SelectItem>
+              <selectitem value="1m">1 minute</Select>
               <selectitem value="5m">5 minutes</SelectItem>
               <selectitem value="15m">15 minutes</SelectItem>
               <selectitem value="30m">30 minutes</SelectItem>
               <selectitem value="1h">1 hour</SelectItem>
               <selectitem value="4h">4 hours</SelectItem>
               <selectitem value="1d">Daily</SelectItem>
-              <selectitem value="1w">Weekly</SelectItem>
-            </SelectContent>
+              <selectitem value="1w">Weekly</SelectItem />
           </Select>
           {formErrors.timeframe && (
             <P className="text-red-500 text-sm">{formErrors.timeframe}</P>

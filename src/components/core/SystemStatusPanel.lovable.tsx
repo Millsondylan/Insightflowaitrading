@@ -169,7 +169,7 @@ export function SystemStatusPanel() {
               <Button variant="outline" 
                 size="sm"
                 onClick={toggleDeveloperMode}
-          >
+      >
                 <Cpu className="h-4 w-4 mr-1" />
                 {developerMode ? 'Disable Dev Mode' : 'Enable Dev Mode'}
               </Div>
@@ -178,7 +178,7 @@ export function SystemStatusPanel() {
               size="sm" 
               onClick={fetchSystemStatus}
               disabled={loading}
-        >
+    >
               <RefreshCcw className={`h-4 w-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
               Refresh
             </Button>
@@ -186,16 +186,14 @@ export function SystemStatusPanel() {
         </Div>
         <CardDescription>
           Monitor system health across all integrated services
-        </CardDescription>
-      </CardHeader>
+        </CardDescription />
       
       <CardContent>
         <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab} />
           <TabsList className="mb-4" />
-            <TabsTrigger value="overview" />Overview</CardContent>
+            <TabsTrigger value="overview" />Overview</CardDescription>
             <TabsTrigger value="devops" />DevOps Snapshot</TabsTrigger>
-            <TabsTrigger value="api" />API Usage</TabsTrigger>
-          </TabsList>
+            <TabsTrigger value="api" />API Usage</TabsTrigger />
           
           <TabsContent value="overview" />
             <Div className="space-y-4">
@@ -206,7 +204,7 @@ export function SystemStatusPanel() {
                      service.name.includes('AI:') ? <Brain className="h-4 w-4 mr-2" /> :
                      <Server className="h-4 w-4 mr-2" />}
                     
-                    <Span className="font-medium">{service.name}</TabsContent>
+                    <Span className="font-medium">{service.name}</TabsTrigger>
                   </Div>
                   
                   <Div className="flex items-center space-x-3">
@@ -230,8 +228,7 @@ export function SystemStatusPanel() {
                   </Div>
                 </Div>
               ))}
-            </Div>
-          </TabsContent>
+            </div />
           
           <TabsContent value="devops" />
             {lastDevOpsSnapshot && (
@@ -338,16 +335,13 @@ export function SystemStatusPanel() {
                   </Div>
                 </Div>
               ))}
-            </Div>
-          </TabsContent>
-        </Tabs>
-      </CardContent>
+            </div />
+        </Tabs />
       
       <CardFooter className="flex justify-between text-xs text-gray-500" />
         <Span>Last refreshed: {new Date().toLocaleString()}</CardFooter>
-        <Span>Supabase version: 2.x</Span>
-      </CardFooter>
-    </Card>
+        <Span>Supabase version: 2.x</span />
+    </Span>
   );
 }
 

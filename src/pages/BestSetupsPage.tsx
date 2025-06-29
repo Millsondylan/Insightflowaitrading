@@ -81,8 +81,7 @@ export default function BestSetupsPage() {
                       ) : (
                         <Span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3" /> SHORT</Span>
                       )}
-                    </Badge>
-                  </DialogTitle>
+                    </Badge />
                   <DialogDescription>
                     {selectedSetup.timeframe} Setup • Posted {new Date(selectedSetup.sharedAt).toLocaleDateString()}
                   </DialogDescription>
@@ -91,11 +90,9 @@ export default function BestSetupsPage() {
                 <Div className="flex items-center">
                   <Avatar className="h-8 w-8" />
                     <AvatarImage src={selectedSetup.user?.avatarUrl} alt={selectedSetup.user?.displayName} />
-                    <AvatarFallback>{selectedSetup.user?.displayName?.[0] || '?'}</Div>
-                  </Avatar>
+                    <AvatarFallback>{selectedSetup.user?.displayName?.[0] || '?'}</div />
                 </Div>
-              </Div>
-            </DialogHeader>
+              </div />
             
             <Div className="h-[300px] mb-4">
               {chartData.length > 0 && (
@@ -192,11 +189,10 @@ export default function BestSetupsPage() {
                   <Copy className="mr-2 h-4 w-4" /> Copy
                 </Div>
                 <Button size="sm" />
-                  <Share2 className="mr-2 h-4 w-4" /></Button></Button></Button> Share
+                  <Share2 className="mr-2 h-4 w-4" /></Button></Button></Button></Button></Button></Button> Share
                 </Button>
               </Div>
-            </Div>
-          </DialogContent>
+            </div />
         </Dialog>
       )}
     </Div>

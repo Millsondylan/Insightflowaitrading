@@ -24,27 +24,23 @@ const LandingBuilderPage: React.FC = () => {
                 <Div className="text-4xl mb-4 text-cyan-400">🧠</Div>
                 <H3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</H3>
                 <P className="text-gray-400">AI-powered strategy generation from your trading intuition</P>
-              </Div>
-            </Link>
+              </div />
             
             <Link to="/journal" className="group" />
               <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <Div className="text-4xl mb-4 text-violet-400">📓</Link>
                 <H3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</H3>
                 <P className="text-gray-400">Capture and reflect on your trading psychology</P>
-              </Div>
-            </Link>
+              </div />
             
             <Link to="/academy" className="group" />
               <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <Div className="text-4xl mb-4 text-blue-400">📘</Link>
                 <H3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</H3>
                 <P className="text-gray-400">Structured learning for trading mastery</P>
-              </Div>
-            </Link>
+              </div />
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Features Preview */}
       <ScrollSection className="px-6 py-32" delay={200} animation="slide-right" />
@@ -106,8 +102,7 @@ const LandingBuilderPage: React.FC = () => {
               </Div>
             </Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
 
       {/* Call to Action */}
       <ScrollSection className="px-6 py-32" delay={400} animation="scale-in" />
@@ -123,17 +118,14 @@ const LandingBuilderPage: React.FC = () => {
               <Link to="/strategy" />
                 <Button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </Div>
-              </Link>
+                </div />
               <Link to="/academy" />
-                <Button className="glow-button glow-blue text-lg px-8 py-4"></Link>
+                <Button className="glow-button glow-blue text-lg px-8 py-4" />
                   Begin Learning
-                </Button>
-              </Link>
+                </button />
             </Div>
           </Div>
-        </Div>
-      </ScrollSection>
+        </div />
     </Div>
   );
 };

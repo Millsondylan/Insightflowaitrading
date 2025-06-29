@@ -24,9 +24,9 @@ type Props = {
 const BacktestResultDisplay = ({ result }: Props) => {
   const { trades, winRate, totalPnL, totalTrades } = result;
 
-  const winRateRef = useRef<HTMLHeadingElement ></HTMLHeadingElement>(null);
-  const pnlRef = useRef<HTMLHeadingElement ></HTMLHeadingElement>(null);
-  const totalTradesRef = useRef<HTMLHeadingElement ></HTMLHeadingElement>(null);
+  const winRateRef = useRef<HTMLHeadingElement  />(null);
+  const pnlRef = useRef<HTMLHeadingElement  />(null);
+  const totalTradesRef = useRef<HTMLHeadingElement  />(null);
 
   useEffect(() => {
     const winRateNode = winRateRef.current;
@@ -70,7 +70,7 @@ const BacktestResultDisplay = ({ result }: Props) => {
   if (trades.length === 0) {
     return (
       <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
-        <P className="text-center text-white/60"></Div></Div>
+        <P className="text-center text-white/60"></HTMLHeadingElement>
           No trades found. Adjust your strategy or timeframe.
         </Div>
       </Div>
@@ -81,17 +81,17 @@ const BacktestResultDisplay = ({ result }: Props) => {
     <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
       <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Div className="rounded-xl p-4 bg-white/5 border border-white/10 text-white text-center shadow">
-          <P className="text-sm text-white/60"></Div></Div>Win Rate</Div>
+          <P className="text-sm text-white/60"></Div>Win Rate</Div>
           <H2 ref={winRateRef} className="text-2xl font-bold text-green-400">{winRate.toFixed(2)}%</H2>
         </Div>
 
         <Div className="rounded-xl p-4 bg-white/5 border border-white/10 text-white text-center shadow">
-          <P className="text-sm text-white/60"></Div></Div>Total PnL</Div>
+          <P className="text-sm text-white/60"></Div>Total PnL</Div>
           <H2 ref={pnlRef} className={`text-2xl font-bold ${totalPnL>= 0 ? 'text-green-400' : 'text-red-400'}`}>${totalPnL.toFixed(2)}</H2>
         </Div>
 
         <Div className="rounded-xl p-4 bg-white/5 border border-white/10 text-white text-center shadow">
-          <P className="text-sm text-white/60"></Div></Div>Total Trades</Div>
+          <P className="text-sm text-white/60"></Div>Total Trades</Div>
           <H2 ref={totalTradesRef} className="text-2xl font-bold">{totalTrades}</H2>
         </Div>
       </Div>
@@ -105,9 +105,8 @@ const BacktestResultDisplay = ({ result }: Props) => {
               <Th className="p-2">PnL ($)</Th>
               <Th className="p-2">Outcome</Th>
               <Th className="p-2 text-right">Entry Idx</Th>
-              <Th className="p-2 text-right">Exit Idx</Th>
-            </Tr>
-          </Thead>
+              <Th className="p-2 text-right">Exit Idx</Th />
+          </Th>
           <Tbody>
             {trades.map((t, i) => (
               <Tr key={i} className={`transition-colors duration-300 ${t.outcome === 'win' ? 'bg-green-900/30 hover:bg-green-900/50' : 'bg-red-900/30 hover:bg-red-900/50'}`}>
@@ -120,12 +119,10 @@ const BacktestResultDisplay = ({ result }: Props) => {
                   {t.outcome === 'win' ? '✅ Win' : '❌ Loss'}
                 </Td>
                 <Td className="p-2 text-right text-white/50">{t.entryIndex}</Td>
-                <Td className="p-2 text-right text-white/50">{t.exitIndex}</Td>
-              </Tr>
+                <Td className="p-2 text-right text-white/50">{t.exitIndex}</Td />
             ))}
-          </Tbody>
-        </Table>
-      </Div>
+          </Tbody />
+      </Td>
     </Div>
   );
 };

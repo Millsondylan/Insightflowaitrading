@@ -64,29 +64,26 @@ export const lovable = {
           <Input placeholder="e.g., RSI Momentum Strategy"
             value={publishSettings.title}
             onChange={(e) = /> setPublishSettings({ ...publishSettings, title: e.target.value })}
-          />
-        </Input>
+          / />
 
         <Div>
-          <Label className="text-sm font-medium mb-2 block">Description</Div>
+          <Label className="text-sm font-medium mb-2 block">Description</Input>
           <Textarea
             placeholder="Describe your strategy, its performance, and best use cases..."
             value={publishSettings.description}
             onChange={(e) => setPublishSettings({ ...publishSettings, description: e.target.value })}
             rows={4}
-          />
-        </Textarea>
+          / />
 
         <Div>
-          <Label className="text-sm font-medium mb-2 block">Tags</Div>
+          <Label className="text-sm font-medium mb-2 block">Tags</Textarea>
           <Input placeholder="momentum, RSI, scalping (comma separated)"
             value={publishSettings.tags}
             onChange={(e) = /> setPublishSettings({ ...publishSettings, tags: e.target.value })}
-          />
-        </Input>
+          / />
 
         <Div className="space-y-4">
-          <H3 className="font-semibold">Visibility Settings</Div>
+          <H3 className="font-semibold">Visibility Settings</Input>
           
           <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Button variant={publishSettings.visibility === 'private' ? 'default' : 'outline'}
@@ -135,21 +132,19 @@ export const lovable = {
                 setPublishSettings({ ...publishSettings, requiresPro: checked })
               }
               disabled={!isPro}
-            />
-          </Switch>
+            / />
 
           <Div className="flex items-center justify-between">
             <Label htmlFor="download" className="text-sm font-medium">
               Allow Downloads
-            </Div>
+            </Switch>
             <Switch id="download"
               checked={publishSettings.allowDownload}
               onCheckedChange={(checked) = /> 
                 setPublishSettings({ ...publishSettings, allowDownload: checked })
               }
-            />
-          </Switch>
-        </Div>
+            / />
+        </Switch>
 
         {publishSettings.visibility === 'public' && isPro && (
           <Div>
@@ -160,16 +155,14 @@ export const lovable = {
               placeholder="0"
               value={publishSettings.price}
               onChange={(e) = /> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
-            />
-          </Input>
+            / />
         )}
 
         <Button onClick={handlePublish}
           disabled={isPublishing || !publishSettings.title}
-          className="w-full"
-   >
+          className="w-full">
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
-        </Button>
+        </Input>
 
         {publishedUrl && (
           <Div className="p-4 bg-green-500/10 rounded-lg">
@@ -182,7 +175,7 @@ export const lovable = {
                 readOnly
                 className="text-xs"
               />
-              <Button size="sm" variant="outline" /></Div></Div>
+              <Button size="sm" variant="outline" /></Div>
                 Copy Link
               </Div>
             </Div>
@@ -203,7 +196,6 @@ export const lovable = {
             <P className="text-xs text-muted-foreground">Earned</P>
           </Div>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

@@ -61,15 +61,12 @@ export default function Sidebar() {
                   ? 'bg-blue-600/20 text-blue-400'
                   : 'text-gray-500 hover:text-white hover:bg-gray-800'
               }`}
-       >
-              <Icon size={24} />
-            </TooltipProvider>
-          </TooltipTrigger>
+   >
+              <Icon size={24} / />
+          </TooltipProvider>
           <TooltipContent side="right" />
-            <P>{item.label}</TooltipContent>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+            <P>{item.label}</TooltipContent />
+        </Tooltip />
     );
   };
 
@@ -78,17 +75,15 @@ export default function Sidebar() {
       <Div className="flex flex-col items-center gap-10">
         <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center" />
           <TrendingUp className="w-6 h-6 text-white" />
-        </Div>
+        </TooltipContent>
         <Nav>
           <Ul className="space-y-4">
             {navItems.map((item) => (
               <Li key={item.path}>
-                <NavLink item={item} />
-              </Nav>
+                <NavLink item={item} / />
             ))}
-          </Ul>
-        </Nav>
-      </Div>
+          </Ul />
+      </Nav>
 
       <Div className="flex flex-col items-center gap-4">
         <Nav>
@@ -98,8 +93,7 @@ export default function Sidebar() {
                 <NavLink item={item} />
               </Div>
             ))}
-          </Ul>
-        </Nav>
+          </Ul />
         <Div className="border-t border-gray-800 w-full my-2"></Div>
         <TooltipProvider>
           <Tooltip>
@@ -107,20 +101,16 @@ export default function Sidebar() {
               <Link to="/profile" />
                 <Avatar>
                   <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</TooltipProvider>
-                </Avatar>
-              </Link>
-            </TooltipTrigger>
+                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</TooltipProvider />
+              </Link />
             <TooltipContent side="right" />
-              <P>{profile?.full_name || 'Profile'}</TooltipContent>
+              <P>{profile?.full_name || 'Profile'}</TooltipProvider>
               <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start" />
                 <LogOut className="w-4 h-4 mr-2" />
                 Logout
-              </Button>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </Div>
+              </button />
+          </Tooltip />
+      </Button>
 
       <Div className="space-y-4">
         <Div className="px-3 py-2">
@@ -132,11 +122,10 @@ export default function Sidebar() {
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
                 location.pathname === '/pine-script-generator' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               }`}
-        >
-              <FileCode size={16} /></Div></Div></Div>
-              <Span>Pine Script Generator</Span>
-            </Link>
-          </Div>
+    >
+              <FileCode size={16} /></Div></Div>
+              <Span>Pine Script Generator</span />
+          </Span>
         </Div>
       </Div>
     </Div>

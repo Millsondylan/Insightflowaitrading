@@ -68,17 +68,16 @@ export const lovable = {
           {messages.map((message) => (
             <Div key={message.id}
               className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-      >
+  >
               <Div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <Div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
                     <Div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                      <User className="h-4 w-4" />
-                    </ScrollArea>
+                      <User className="h-4 w-4" / />
                   ) : (
                     <Div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
                       <bot className="h-4 w-4" />
-                    </Div>
+                    </ScrollArea>
                   )}
                 </Div>
                 <Div className={`p-3 rounded-lg ${
@@ -109,8 +108,7 @@ export const lovable = {
               </Div>
             </Div>
           )}
-        </Div>
-      </ScrollArea>
+        </div />
 
       <Div className="flex gap-2">
         <Input placeholder="Ask about strategies, analysis, or community insights..."
@@ -119,9 +117,8 @@ export const lovable = {
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
         <Button onClick={sendMessage} size="icon">
-          <Send className="h-4 w-4" /></Div></Div></Div>
+          <Send className="h-4 w-4" /></Div></Div>
         </Button>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

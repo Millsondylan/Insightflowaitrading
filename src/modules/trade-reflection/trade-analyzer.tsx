@@ -348,7 +348,7 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
               <H3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</Div>
               <Button className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
                 onClick={applySuggestions}
-         >
+     >
                 Apply All
               </Button>
             </Div>
@@ -390,42 +390,38 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
               value={reflection.strengths?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'strengths')}
               placeholder="What did you do well in this trade?"
-            />
-          </Textarea>
+            / />
           
           <Div>
-            <Label className="block mb-1 font-medium">Weaknesses</Div>
+            <Label className="block mb-1 font-medium">Weaknesses</Textarea>
             <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.weaknesses?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'weaknesses')}
               placeholder="What could you have done better?"
-            />
-          </Textarea>
+            / />
           
           <Div>
-            <Label className="block mb-1 font-medium">Opportunities</Div>
+            <Label className="block mb-1 font-medium">Opportunities</Textarea>
             <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.opportunities?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'opportunities')}
               placeholder="What opportunities did you see or miss?"
-            />
-          </Textarea>
+            / />
           
           <Div>
-            <Label className="block mb-1 font-medium">Threats</Div>
+            <Label className="block mb-1 font-medium">Threats</Textarea>
             <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.threats?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'threats')}
               placeholder="What external factors affected this trade?"
-            />
-          </Textarea>
-        </Div>
+            / />
+        </Textarea>
         
         {/* Emotional State */}
         <Div className="mb-6">
@@ -436,36 +432,33 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
             value={reflection.emotionalState}
             onChange={(e) => handleInputChange(e, 'emotionalState')}
             placeholder="How did you feel during this trade?"
-          />
-        </Textarea>
+          / />
         
         {/* Lesson Learned */}
         <Div className="mb-6">
-          <Label className="block mb-1 font-medium">Lesson Learned</Div>
+          <Label className="block mb-1 font-medium">Lesson Learned</Textarea>
           <Textarea
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={3}
             value={reflection.lessonLearned}
             onChange={(e) => handleInputChange(e, 'lessonLearned')}
             placeholder="What did you learn from this trade?"
-          />
-        </Textarea>
+          / />
         
         {/* Action Items */}
         <Div className="mb-6">
-          <Label className="block mb-1 font-medium">Action Items</Div>
+          <Label className="block mb-1 font-medium">Action Items</Textarea>
           <Textarea
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={3}
             value={reflection.actionItems?.join('\n')}
             onChange={(e) => handleArrayInputChange(e, 'actionItems')}
             placeholder="What specific actions will you take to improve?"
-          />
-        </Textarea>
+          / />
         
         {/* Trade Rating */}
         <Div className="mb-6">
-          <Label className="block mb-1 font-medium">Trade Execution Rating (1-5)</Div>
+          <Label className="block mb-1 font-medium">Trade Execution Rating (1-5)</Textarea>
           <Div className="flex space-x-2">
             {[1, 2, 3, 4, 5].map((rating) => (
               <Button key={rating}
@@ -485,7 +478,7 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={handleSaveReflection}
             disabled={isSaving}
-          /></Div></Div>
+          /></Div>
             {isSaving ? 'Saving...' : 'Save Reflection'}
           </Div>
         </Div>

@@ -71,7 +71,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
   return (
     <Card >
       <Div className="flex items-center gap-2 mb-6">
-        <Brain  /></Lessonmemorytrackerprops></Lessonmemorytrackerprops></Lessonmemorytrackerprops>
+        <Brain  / /></Lessonmemorytrackerprops /></Lessonmemorytrackerprops /></Lessonmemorytrackerprops>
         <H2 className="text-2xl font-bold">Memory Tracker</H2>
       </Div>
 
@@ -100,8 +100,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
           const isDue = daysUntil <= 0;
 
           return (
-            <Div
-              key={memory.id}
+            <Div               key={memory.id}
               className={`p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer ${
                 isDue ? 'border-yellow-500/50' : ''
               }`}
@@ -109,7 +108,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
             >
               <Div className="flex items-center justify-between mb-2">
                 <Div>
-                  <H3 className="font-semibold"></Div></Div>{memory.concept}</Div>
+                  <H3 className="font-semibold"></Div>{memory.concept}</Div>
                   <P className="text-sm text-muted-foreground">{memory.category}</P>
                 </Div>
                 <Div className="text-right">
@@ -151,11 +150,10 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
       </Div>
 
       <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <P className="text-sm text-muted-foreground"></Div></Div>
+        <P className="text-sm text-muted-foreground"></Div>
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

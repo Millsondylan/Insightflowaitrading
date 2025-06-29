@@ -14,11 +14,10 @@ export default function PrivacyPage() {
               At InsightFlow AI Trading ("we," "our," or "us"), we respect your privacy and are committed 
               to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, 
               and safeguard your information when you visit our website or use our services.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">2. Information We Collect</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">2. Information We Collect</P>
             <P className="text-gray-300 mb-4">
               We may collect several types of information from and about users of our services, including:
             </P>
@@ -37,9 +36,8 @@ export default function PrivacyPage() {
               </Li>
               <Li>
                 <strong>Device Information:</strong> IP address, browser type, operating system, and device identifiers.
-              </Li>
-            </Ul>
-          </Section>
+              </Li />
+          </Li>
           
           <Section>
             <H2 className="text-2xl font-bold mb-4 text-cyan-400">3. How We Use Your Information</Section>
@@ -53,9 +51,8 @@ export default function PrivacyPage() {
               <Li>Analyze usage patterns and optimize our platform</Li>
               <Li>Communicate with you about updates, security alerts, and support</Li>
               <Li>Detect, prevent, and address technical issues</Li>
-              <Li>Comply with legal obligations</Li>
-            </Ul>
-          </Section>
+              <Li>Comply with legal obligations</Li />
+          </Li>
           
           <Section>
             <H2 className="text-2xl font-bold mb-4 text-cyan-400">4. Data Security</Section>
@@ -64,31 +61,28 @@ export default function PrivacyPage() {
               data against unauthorized or unlawful processing, accidental loss, destruction, or damage. 
               These include encryption, access controls, and secure database implementations via Supabase 
               with row-level security policies for enhanced data protection.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">5. Cookies and Tracking Technologies</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">5. Cookies and Tracking Technologies</P>
             <P className="text-gray-300">
               We use cookies and similar tracking technologies to track activity on our platform and 
               hold certain information. You can instruct your browser to refuse all cookies or to 
               indicate when a cookie is being sent. However, if you do not accept cookies, you may 
               not be able to use some portions of our service.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">6. Third-Party Services</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">6. Third-Party Services</P>
             <P className="text-gray-300">
               Our services may include integrations with third-party services, such as market data 
               providers, payment processors, and AI models. These third parties may collect information 
               about you when you interact with their services. We encourage you to review the privacy 
               policies of these third parties.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">7. Your Privacy Rights</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">7. Your Privacy Rights</P>
             <P className="text-gray-300 mb-4">
               Depending on your location, you may have rights regarding your personal data, including:
             </P>
@@ -98,47 +92,40 @@ export default function PrivacyPage() {
               <Li>The right to delete your personal data</Li>
               <Li>The right to restrict processing of your personal data</Li>
               <Li>The right to data portability</Li>
-              <Li>The right to object to the processing of your personal data</Li>
-            </Ul>
+              <Li>The right to object to the processing of your personal data</Li />
             <P className="text-gray-300 mt-4">
               To exercise these rights, please contact us using the information provided below.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">8. Children's Privacy</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">8. Children's Privacy</Li>
             <P className="text-gray-300">
               Our services are not intended for individuals under the age of 18. We do not knowingly 
               collect personal information from children under 18. If you are a parent or guardian and 
               believe your child has provided us with personal information, please contact us.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">9. Changes to this Privacy Policy</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">9. Changes to this Privacy Policy</P>
             <P className="text-gray-300">
               We may update our Privacy Policy from time to time. We will notify you of any changes by 
               posting the new Privacy Policy on this page and updating the "Last Updated" date.
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <H2 className="text-2xl font-bold mb-4 text-cyan-400">10. Contact Us</Section>
+            <H2 className="text-2xl font-bold mb-4 text-cyan-400">10. Contact Us</P>
             <P className="text-gray-300">
               If you have any questions about this Privacy Policy, please contact us at:
               <br />
               Email: privacy@insightflowai.com
-            </P>
-          </Section>
+            </p />
           
           <Section>
-            <P className="text-gray-400 text-sm"></Section></Section>
+            <P className="text-gray-400 text-sm" /></Section /></Section />
               Last updated: June 28, 2025
-            </Section>
-          </Section>
-        </CardContent>
-      </Card>
-    </Div>
+            </Section />
+        </CardContent />
+    </P>
   );
 }
 

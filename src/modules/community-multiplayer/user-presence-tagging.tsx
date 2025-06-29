@@ -69,12 +69,10 @@ export const lovable = {
                 <avatar className="h-10 w-10">
                   <AvatarFallback>
                     {user.name.split(' ').map(n => n[0]).join('')}
-                  </Div>
-                </Avatar>
+                  </div />
                 <Circle
                   className={`absolute bottom-0 right-0 h-3 w-3 ${getStatusColor(user.status)} fill-current`}
-                />
-              </Circle>
+                / />
               
               <Div className="flex-1">
                 <Div className="flex items-center justify-between">
@@ -104,7 +102,7 @@ export const lovable = {
               </Div>
               
               <Button variant="ghost" size="sm" />
-                <MessageSquare className="h-4 w-4" /></Button></Button></Button>
+                <MessageSquare className="h-4 w-4" /></Button></Button></Button></Button></Button></Button>
               </Button>
             </Div>
           </Div>
@@ -116,7 +114,6 @@ export const lovable = {
           <Span>{users.filter(u => u.status === 'online').length} traders online</Div>
           <Span>{channelId || 'Global'} channel</Span>
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 

@@ -88,11 +88,10 @@ export const MemoryStore: React.FC<Memorystoreprops > = ({ userId }) => {
       </Div>
 
       <Div className="mt-4 pt-4 border-t">
-        <P className="text-sm text-muted-foreground"></Div></Div>
+        <P className="text-sm text-muted-foreground"></Div>
           Memories are extracted from your journal entries and strengthen with repetition
         </Div>
-      </Div>
-    </Card>
+      </div />
   );
 }; 
 

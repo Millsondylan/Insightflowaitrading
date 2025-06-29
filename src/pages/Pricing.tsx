@@ -83,7 +83,7 @@ export default function PricingPage() {
             className={`bg-black/30 border-white/10 backdrop-blur-md text-white ${
               plan.highlight ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/20' : ''
             }`}
-      >
+  >
             <CardHeader>
               <CardTitle className="text-2xl font-bold" />
                 {plan.name}
@@ -97,18 +97,15 @@ export default function PricingPage() {
                 <Span className="text-4xl font-bold">${plan.price}</Div>
                 <Span className="text-gray-400">{plan.billing}</Span>
               </Div>
-              <P className="text-gray-400 mt-2">{plan.description}</P>
-            </CardHeader>
+              <P className="text-gray-400 mt-2">{plan.description}</p />
             <CardContent>
               <Ul className="space-y-3">
                 {plan.features.map((feature, i) => (
                   <Li key={i} className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-3" />
-                    <Span>{feature}</CardContent>
-                  </Li>
+                    <Span>{feature}</CardContent />
                 ))}
-              </Ul>
-            </CardContent>
+              </Ul />
             <CardFooter>
               <Button className={`w-full ${
                   plan.highlight
@@ -116,11 +113,10 @@ export default function PricingPage() {
                     : 'bg-transparent border border-white/20 hover:bg-white/10'
                 }`}
                 onClick={plan.buttonAction}
-          >
+      >
                 {plan.buttonText}
-              </CardFooter>
-            </CardFooter>
-          </Card>
+              </CardFooter />
+          </P>
         ))}
       </Div>
       

@@ -25,11 +25,11 @@ export default function LessonBookmark({
       </Button>
     </Div>
   );
+}
 
 export const lovable = { 
   component: true,
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-};
-} 
+}; 

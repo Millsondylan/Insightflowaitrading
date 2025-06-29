@@ -61,8 +61,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             onChange={(e) => setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
-                        />
-                    </Form>
+                        / />
 
                     <Div>
                         <Input type="password"
@@ -73,7 +72,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             required
                             minLength={8}
                         />
-                    </Div>
+                    </Form>
 
                     {error && (
                         <Div className="text-red-400 text-sm">{error}</Div>
@@ -82,7 +81,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                     <Button type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-700"
                         disabled={loading}
-               >
+           >
                         {loading ? (
                             <Div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
                         ) : mode === 'signin' ? (
@@ -120,7 +119,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
 
                     <Div className="text-center mt-6">
                         <Button type="button"
-                            onClick={() = /></Div></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
+                            onClick={() = /></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {mode === 'signin' ? (
@@ -129,8 +128,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                                 "Already have an account? Sign in"
                             )}
                         </Div>
-                    </Div>
-                </Form>
+                    </div />
             </Div>
         </Div>
     );

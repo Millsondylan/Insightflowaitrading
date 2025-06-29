@@ -66,12 +66,11 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Table  />
           <Tableheader >
-            <Tablerow  /></Div></Div></Div>
+            <Tablerow  /></Div></Div>
               <tablehead >Code</TableHead>
               <tablehead >Expires</TableHead>
               <tablehead >Uses Left</TableHead>
-              <tablehead >Actions</TableHead>
-            </TableRow>
+              <tablehead >Actions</TableHead />
           </TableHeader>
           <tablebody >
             {codes.length > 0 ? (
@@ -90,8 +89,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                         >
                           <copy >
                         </Div>
-                      </Div>
-                    </TableCell>
+                      </div />
                     <tablecell >
                       <Div className="flex flex-col">
                         <Span className={isExpired ? "text-red-400" : isExpiringSoon ? "text-yellow-400" : ""}>
@@ -104,33 +102,28 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                             `${daysRemaining} ${daysRemaining === 1 ? "day" : "days"} left`
                           )}
                         </Span>
-                      </Div>
-                    </TableCell>
+                      </div />
                     <tablecell >
                       <Span className={code.usesLeft <= 3 ? "text-amber-400" : "text-white"}>
                         {code.usesLeft}
-                      </Span>
-                    </TableCell>
+                      </span />
                     <tablecell >
                       <Button > onRevoke(code.code)}
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
                         <trash2 >
-                      </Button>
-                    </TableCell>
-                  </TableRow>
+                      </button />
+                  </Span>
                 );
               })
             ) : (
               <tablerow >
                 <tablecell >
                   No active promo codes. Generate a new code to get started.
-                </TableCell>
-              </TableRow>
+                </TableCell />
             )}
-          </TableBody>
-        </Table>
+          </TableBody />
       </Div>
       
       <Div className="text-xs text-gray-500">

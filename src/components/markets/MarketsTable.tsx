@@ -143,8 +143,7 @@ export const lovable = {
           value={search}
           onChange={(e) = /> setSearch(e.target.value)}
           className="pl-10 bg-black/30 border-white/10 text-white"
-        />
-      </SortField>
+        / />
       
       {/* Tickers Table */}
       <Div className="rounded-xl border border-white/10 overflow-hidden">
@@ -152,7 +151,7 @@ export const lovable = {
           <Table>
             <tableHeader>
               <tableRow className="hover:bg-white/5 bg-black/40">
-                <tableHead className="w-10"></Div>
+                <tableHead className="w-10"></SortField>
                 <tableHead 
                   onClick={() => handleSort("symbol")} 
                   className="cursor-pointer hover:text-cyan-400"
@@ -164,8 +163,7 @@ export const lovable = {
                       <ChevronUp className="h-4 w-4" /> :
                       <ChevronDown className="h-4 w-4" />
                     )}
-                  </Div>
-                </TableHead>
+                  </div />
                 <tableHead 
                   onClick={() => handleSort("price")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
@@ -177,8 +175,7 @@ export const lovable = {
                       <ChevronUp className="h-4 w-4" /> :
                       <ChevronDown className="h-4 w-4" />
                     )}
-                  </Div>
-                </TableHead>
+                  </div />
                 <tableHead 
                   onClick={() => handleSort("change")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
@@ -190,8 +187,7 @@ export const lovable = {
                       <ChevronUp className="h-4 w-4" /> :
                       <ChevronDown className="h-4 w-4" />
                     )}
-                  </Div>
-                </TableHead>
+                  </div />
                 <tableHead 
                   onClick={() => handleSort("volume")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
@@ -203,10 +199,8 @@ export const lovable = {
                       <ChevronUp className="h-4 w-4" /> :
                       <ChevronDown className="h-4 w-4" />
                     )}
-                  </Div>
-                </TableHead>
-              </TableRow>
-            </TableHeader>
+                  </div />
+              </TableRow />
             <tableBody>
               {filteredTickers.map((ticker) => (
                 <tableRow
@@ -226,9 +220,8 @@ export const lovable = {
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-500"
                         }`}
-                      /></Button></Button></Button>
-                    </Button>
-                  </TableCell>
+                      /></Div></Button></Button></Button></Button></Button>
+                    </button />
                   <tableCell className="font-medium">{ticker.symbol}</TableCell>
                   <tableCell className="text-right">${formatPrice(ticker.price)}</TableCell>
                   <TableCell className={`text-right ${
@@ -237,25 +230,22 @@ export const lovable = {
                   }`}>
                     {formatPercent(ticker.change)}
                   </TableCell>
-                  <tableCell className="text-right">{formatVolume(ticker.volume)}</TableCell>
-                </TableRow>
+                  <tableCell className="text-right">{formatVolume(ticker.volume)}</TableCell />
               ))}
               
               {filteredTickers.length === 0 && (
                 <tableRow>
                   <tableCell colSpan={5} className="text-center py-8 text-gray-500">
                     No markets found matching "{search}"
-                  </TableCell>
-                </TableRow>
+                  </TableCell />
               )}
-            </TableBody>
-          </Table>
+            </TableBody />
         </Div>
       </Div>
       
       <Div className="text-xs text-gray-500 flex justify-between">
-        <Span>Showing {filteredTickers.length} of {tickers.length} markets</Div>
-        <Span>{favorites.size} favorites</Span>
+        <Span></Div>Showing {filteredTickers.length} of {tickers.length} markets</Div>
+        <Span></Span>{favorites.size} favorites</Span>
       </Div>
     </Div>
   );

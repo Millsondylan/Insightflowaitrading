@@ -121,8 +121,8 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
     return (
       <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <Div className="flex items-center justify-center h-64">
-          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></UserProfile>
-          <Span className="ml-2 text-white/60">Loading achievements...</Span>
+          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400" />
+          <Span className="ml-2 text-white/60">Loading achievements...</UserProfile>
         </Div>
       </Div>
     );
@@ -164,7 +164,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
         <Div className="w-full bg-white/10 rounded-full h-2 mb-2">
           <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
             style={{ width: `${completionStats.percentage}%` }}
-    ></Div>
+></Div>
         </Div>
         <Div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
@@ -252,7 +252,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
                   {getAchievementIcon(achievement)}
                 </Div>
                 <Div className="flex-1">
-                  <H4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></Div></Div>
+                  <H4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></Div>
                     {achievement.name}
                   </Div>
                   <P className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
@@ -265,7 +265,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
                       <Div className="w-full bg-white/20 rounded-full h-1">
                         <Div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-                     ></Div>
+                 ></Div>
                       </Div>
                       <Div className="text-xs text-white/60 mt-1">{progress}% complete</Div>
                     </Div>
@@ -299,7 +299,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
 };
 
 // Mock data functions (TODO: replace with real API calls)
-const fetchUserProfile = async (userId: string): Promise<UserProfile></UserProfile> => {
+const fetchUserProfile = async (userId: string): Promise<UserProfile /> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 500));
   
@@ -397,7 +397,7 @@ const fetchAllAchievements = async (): Promise<achievement[]> => {
   ];
 };
 
-const fetchUserAchievements = async (userId: string): Promise<UserAchievement[]></UserAchievement> => {
+const fetchUserAchievements = async (userId: string): Promise<UserAchievement[] /></UserProfile> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 200));
   

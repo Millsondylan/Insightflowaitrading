@@ -58,43 +58,36 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           <Select > handleSelectChange('ticker', value)}
           >
             <Selecttrigger  />
-              <selectvalue >
-            </Select>
+              <selectvalue  />
             <selectcontent  style={{ color: "white" }}>
               {Object.keys(sampleData).map(ticker => (
-                <selectitem >{ticker}</SelectItem>
+                <selectitem >{ticker}</Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </Div>
         <Div>
           <Label htmlFor="timeframe">Timeframe</Div>
           <Select > handleSelectChange('timeframe', value)}
           >
             <selecttrigger >
-              <selectvalue >
-            </Select>
+              <selectvalue  />
             <selectcontent  style={{ color: "white" }}>
-              <selectitem value="1H">1 Hour</SelectItem>
-            </SelectContent>
+              <selectitem value="1H">1 Hour</SelectItem />
           </Select>
         </Div>
       </Div>
       <Div>
         <Label htmlFor="entryLogic">Entry Logic</Div>
         <Textarea id="entryLogic" name="entryLogic"> sma(50)"
-        />
-      </Textarea>
+        / />
       <Div>
-        <Label htmlFor="exitLogic"></Div></Div>Exit Logic</Div>
-        <Textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)">
-      </Textarea>
+        <Label htmlFor="exitLogic"></Textarea>Exit Logic</Div>
+        <Textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)" />
       <Div className="flex justify-center">
-        <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></Div></Div>
+        <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></Textarea>
           {isLoading ? <loader2 > : 'Run Backtest'}
         </Div>
-      </Div>
-    </Form>
+      </div />
   );
 };
 
