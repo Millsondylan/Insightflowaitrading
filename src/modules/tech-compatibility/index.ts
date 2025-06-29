@@ -4,8 +4,8 @@
 import { LovableConverter } from './lovable-converter';
 import { SupabaseAdapter } from './supabase-adapter';
 import { GitHubSync } from './github-sync';
-import { LovablePreview } from './lovable-preview';
-import { LovableNextConverter } from './lovable-next-converter';
+import { LovablePreview } from './lovable-preview.lovable';
+import { LovableNextConverter } from './lovable-next-converter.lovable';
 
 export {
   LovableConverter,
