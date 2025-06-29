@@ -1,4 +1,6 @@
 import React from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 /**
@@ -39,7 +41,7 @@ interface BehaviorTagProps {
   animationDelay?: number;
 }
 
-const BehaviorTag: React.FC<BehaviorTagProps> = ({ 
+const BehaviorTag: React.FC<behaviortagprops  > = ({ 
   tag, 
   className, 
   animated = false, 
@@ -60,43 +62,22 @@ const BehaviorTag: React.FC<BehaviorTagProps> = ({
   };
   
   const tagElement = (
-    <Badge
-      variant="outline"
-      className={cn(
-        'cursor-default transition-all duration-200',
-        definition.color,
-        'hover:scale-105 hover:shadow-md',
-        // Glow effect based on category
-        definition.category === 'positive' && 'hover:shadow-green-500/20',
-        definition.category === 'warning' && 'hover:shadow-yellow-500/20',
-        definition.category === 'negative' && 'hover:shadow-red-500/20',
-        definition.category === 'neutral' && 'hover:shadow-gray-500/20',
-        // Animation classes
-        animated && 'opacity-0 translate-y-2 animate-tag-slide-in',
-        onClick && 'cursor-pointer hover:brightness-110',
-        className
-      )}
-      style={{
-        animationDelay: animated ? `${animationDelay}ms` : undefined,
-        animationFillMode: animated ? 'forwards' : undefined,
-      }}
-      onClick={handleClick}
-    >
+    <badge variant="outline" >
       {tag}
     </Badge>
   );
   
   // Wrap with tooltip if we have a description
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
+    <tooltipprovider  >
+      <tooltip  >
+        <tooltiptrigger  >
           {tagElement}
         </TooltipTrigger>
-        <TooltipContent side="top" >
-          <div >
-            <p >{tag}</p>
-            <p >{definition.description}</p>
+        <tooltipcontent side="top" >
+          <div className="text-center">
+            <p className="font-medium text-sm">{tag}</p>
+            <p className="text-xs text-gray-300 mt-1">{definition.description}</p>
           </div>
         </TooltipContent>
       </Tooltip>
@@ -115,7 +96,7 @@ interface BehaviorTagGroupProps {
   maxTags?: number;
 }
 
-export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({
+export const BehaviorTagGroup: React.FC<behaviortaggroupprops  > = ({
   tags,
   className,
   animated = false,
@@ -128,16 +109,10 @@ export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({
   return (
     <div className={cn('flex flex-wrap gap-2', className)}>
       {displayTags.map((tag, index) => (
-        <BehaviorTag
-          key={tag}
-          tag={tag}
-          animated={animated}
-          animationDelay={index * 100} // Stagger the animations
-          onClick={onTagClick}
-        />
+        <behaviortag  >
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline" style={{ color: "#9CA3AF" }}>
+        <badge variant="outline" >
           +{hiddenCount} more
         </Badge>
       )}
@@ -146,3 +121,4 @@ export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({
 };
 
 export default BehaviorTag; 
+export const lovable = { component: true };

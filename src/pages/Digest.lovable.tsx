@@ -2,6 +2,7 @@ import * as React from "react";
 import MarketDigest from "@/components/markets/MarketDigest";
 import { DigestItem } from "@/components/markets/MarketDigest";
 import { generateDigestSummary, DigestItemInput } from "@/lib/markets/generateDigestSummary";
+import { FileText, Zap } from "lucide-react";
 
 // Mock raw market data (without summaries)
 const mockMarketData: DigestItemInput[] = [
@@ -73,33 +74,33 @@ export default function DigestPage() {
   }, []);
 
   return (
-    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingTop: "32px", paddingBottom: "32px", paddingLeft: "16px", paddingRight: "16px" }}>
-      <div >
-        <header style={{ marginBottom: "32px" }}>
-          <h1 style={{ fontWeight: "700", color: "white" }}>
+    <div className="container mx-auto py-8 px-4">
+      <div className="theme-markets">
+        <header className="mb-8 text-center">
+          <h1 className="text-4xl font-bold text-white mb-2">
             AI Market Digest
           </h1>
-          <p >
+          <p className="text-lg text-white/70">
             A real-time feed of markets matching your active strategies, powered
             by AI.
           </p>
         </header>
 
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: "32px" }}>
-          <button style={{ color: "white", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
-            <span style={{fontSize: '16px'}}>⚡</span>
+        <div className="flex justify-center gap-4 mb-8">
+          <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
+            <zap  >
             <span>Live Scan</span>
           </button>
-          <button style={{ color: "white", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
-            <span style={{fontSize: '16px'}}>📄</span>
+          <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
+            <filetext  >
             <span>View Reports</span>
           </button>
         </div>
 
-        <MarketDigest digest={digestItems} />
+        <marketdigest  >
         
-        <div >
-          <p >
+        <div className="mt-8 text-center">
+          <p className="text-white/50 text-sm">
             Summaries generated automatically based on price action, volume, and strategy matches
           </p>
         </div>
@@ -107,3 +108,5 @@ export default function DigestPage() {
     </div>
   );
 }
+
+export const lovable = { component: true };

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const VisionPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [detectionResult, setDetectionResult] = useState<DetectionResult | null>(null);
+  const [detectionResult, setDetectionResult] = useState<detectionresult  >(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleFileUpload = (file: File, previewUrl: string) => {
@@ -29,19 +29,19 @@ const VisionPage = () => {
   };
 
   return (
-    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingLeft: "16px", paddingRight: "16px", paddingTop: "32px", paddingBottom: "32px" }}>
+    <div className="container mx-auto px-4 py-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        style={{ marginBottom: "32px" }}
+        className="text-center mb-8"
       >
-        <h1 style={{ fontWeight: "700" }}>Chart Vision AI</h1>
-        <p style={{ color: "#9CA3AF" }}>
+        <h1 className="text-4xl font-bold text-glow-cyan">Chart Vision AI</h1>
+        <p className="text-gray-400">
           Upload a chart image to get AI-powered technical analysis.
         </p>
       </motion.div>
 
-      <AnimatePresence mode="wait">
+      <animatepresence mode="wait" >
         {!detectionResult && !imagePreview ? (
           <motion.div
             key="uploader"
@@ -49,7 +49,7 @@ const VisionPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <span style={{fontSize: '16px'}}>📊</span>
+            <chartuploader  >
           </motion.div>
         ) : (
           <motion.div
@@ -58,20 +58,20 @@ const VisionPage = () => {
             animate={{ opacity: 1 }}
           >
             {isLoading && !detectionResult && imagePreview && (
-              <div style={{ padding: "32px" }}>
-                <div style={{ width: "100%", marginBottom: "16px" }}>
-                  <img src={imagePreview} style={{ width: "100%" }} />
-                  <div  />
+              <div className="text-center p-8 glass-container rounded-lg">
+                <div className="w-full h-64 relative overflow-hidden rounded-md mb-4">
+                  <img src={imagePreview} className="w-full h-full object-cover opacity-30" />
+                  <div className="shimmer-overlay" />
                 </div>
-                <h2 style={{ color: "white" }}>Analyzing...</h2>
+                <h2 className="text-2xl font-semibold text-white animate-pulse">Analyzing...</h2>
               </div>
             )}
             
             {detectionResult && imagePreview && (
               <>
-                <FauxDetection result={detectionResult} imagePreview={imagePreview} />
-                <div >
-                  <button onClick={handleReset} >
+                <fauxdetection  >
+                <div className="text-center mt-8">
+                  <button onClick={handleReset} className="text-cyan-400 hover:underline">
                     Analyze another chart
                   </button>
                 </div>
@@ -85,3 +85,4 @@ const VisionPage = () => {
 };
 
 export default VisionPage; 
+export const lovable = { component: true };

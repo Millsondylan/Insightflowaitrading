@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Button } from '@/components/ui/button';
+import { Play, Pause, Rewind, FastForward, Repeat, Zap } from 'lucide-react';
 
 // Assuming these types are available from your backtesting library
 // If not, define them here.
@@ -68,16 +70,16 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
   const progress = (candles.length > 0) ? ((currentIndex + 1) / candles.length) * 100 : 0;
 
   return (
-    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <h3 style={{ fontWeight: "700", color: "white" }}>{strategyName || 'Trade Replay'}</h3>
-        <span >
+    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-md space-y-6">
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg font-bold text-white">{strategyName || 'Trade Replay'}</h3>
+        <span className="text-sm font-mono text-white/50">
           {currentIndex + 1} / {candles.length}
         </span>
       </div>
 
-      <div >
-        <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div className="relative">
+        <div className="h-64 w-full bg-white/5 rounded-lg flex items-center justify-center text-white/40">
           Chart loading...
         </div>
         {currentEvent && (
@@ -87,7 +89,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
           >
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
-              <span >
+              <span className="ml-2 font-mono">
                 PnL: ${currentEvent.trade.pnl.toFixed(2)}
               </span>
             )}
@@ -95,30 +97,30 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
         )}
       </div>
       
-      <div style={{ width: "100%" }}>
+      <div className="w-full bg-white/10 rounded-full h-1.5">
           <div 
-              
+              className="bg-glow-cyan h-1.5 rounded-full transition-all duration-300 ease-linear"
               style={{ width: `${progress}%` }}
           />
       </div>
 
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Button variant="ghost" size="icon" onClick={handleReset} title="Reset">
-          <Repeat  />
+      <div className="flex justify-between items-center gap-4 mt-4">
+        <button variant="ghost" size="icon" title="Reset" >
+          <repeat  >
         </Button>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Button variant="outline" size="icon" onClick={handlePrev} title="Previous Candle">
-            <Rewind  />
+        <div className="flex items-center gap-2">
+          <button variant="outline" size="icon" title="Previous Candle" >
+            <rewind  >
           </Button>
-          <Button variant="outline" size="icon" onClick={handlePlayPause} >
-            {isPlaying ? <Pause  /> : <Play  />}
+          <button variant="outline" size="icon" >
+            {isPlaying ? <pause  > : <play  >}
           </Button>
-          <Button variant="outline" size="icon" onClick={handleNext} title="Next Candle">
-            <FastForward  />
+          <button variant="outline" size="icon" title="Next Candle" >
+            <fastforward  >
           </Button>
         </div>
-        <Button variant="ghost" size="icon" onClick={toggleSpeed} title="Toggle Speed">
-          <span style={{fontSize: '16px'}}>⚡</span>
+        <button variant="ghost" size="icon" title="Toggle Speed" >
+          <zap  >
         </Button>
       </div>
     </div>
@@ -126,3 +128,4 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
 };
 
 export default BacktestReplay; 
+export const lovable = { component: true };

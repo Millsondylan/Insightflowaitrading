@@ -1,5 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { ArrowUp, ArrowDown, ChevronLeft, TrendingUp, Activity, Clock, Loader2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { fetchTickerBySymbol } from "@/lib/markets/fetchTickers";
 
 type OHLCData = {
@@ -152,21 +155,16 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
   // Display loading state
   if (loading) {
     return (
-      <div >
+      <div className="theme-markets space-y-6">
         {onBack && (
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={onBack}
-            style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}
-          >
-            <ChevronLeft  />
+          <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+            <chevronleft  >
             Back to Markets
           </Button>
         )}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-          <Loader2 style={{ marginBottom: "16px" }} />
-          <p style={{ color: "#9CA3AF" }}>Loading market data for {symbol}...</p>
+        <div className="flex flex-col items-center justify-center min-h-[40vh]">
+          <loader2  >
+          <p className="text-gray-400">Loading market data for {symbol}...</p>
         </div>
       </div>
     );
@@ -175,58 +173,48 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
   // Display error state
   if (error) {
     return (
-      <div >
+      <div className="theme-markets space-y-6">
         {onBack && (
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={onBack}
-            style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}
-          >
-            <ChevronLeft  />
+          <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+            <chevronleft  >
             Back to Markets
           </Button>
         )}
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-          <p >Error</p>
-          <p style={{ color: "white" }}>{error}</p>
+        <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6 text-center">
+          <p className="text-red-400 mb-2">Error</p>
+          <p className="text-white">{error}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div >
+    <div className="theme-markets space-y-6">
       {/* Back button */}
       {onBack && (
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          onClick={onBack}
-          style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}
-        >
-          <ChevronLeft  />
+        <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+          <chevronleft  >
           Back to Markets
         </Button>
       )}
       
       {/* Header with symbol, price, and change */}
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>{symbol}</h1>
-            <Badge variant="outline" className={getVolatilityBadgeClass(marketData.volatility)}>
+      <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-white/10 pb-6">
+        <div className="space-y-1">
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white">{symbol}</h1>
+            <badge variant="outline" >
               {marketData.volatility.charAt(0).toUpperCase() + marketData.volatility.slice(1)} Volatility
             </Badge>
           </div>
           
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="flex items-center gap-2 text-2xl font-semibold">
             <span>${formatPrice(marketData.price)}</span>
             <span className={`flex items-center ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {marketData.changePercent > 0 ? (
-                <span style={{fontSize: '16px'}}>⬆️</span>
+                <arrowup  >
               ) : marketData.changePercent < 0 ? (
-                <span style={{fontSize: '16px'}}>⬇️</span>
+                <arrowdown  >
               ) : null}
               {formatPercent(marketData.changePercent)}
             </span>
@@ -235,13 +223,13 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         
         {/* Matching Strategies */}
         {marketData.matchingSetups > 0 && (
-          <div style={{ border: "1px solid #374151", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
-            <span style={{fontSize: '16px'}}>📈</span>
+          <div className="bg-green-900/20 border border-green-400/30 rounded-lg px-4 py-3 flex items-center gap-3">
+            <trendingup  >
             <div>
-              <div >
+              <div className="font-semibold text-green-400">
                 {marketData.matchingSetups} {marketData.matchingSetups === 1 ? 'setup matches' : 'setups match'} {symbol} conditions
               </div>
-              <div style={{ color: "#9CA3AF" }}>
+              <div className="text-sm text-gray-400">
                 View setups →
               </div>
             </div>
@@ -250,57 +238,57 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       </div>
       
       {/* OHLC Summary */}
-      <div >
-        <div style={{ padding: "16px", border: "1px solid #374151" }}>
-          <div style={{ color: "#9CA3AF" }}>Open</div>
-          <div >${formatPrice(marketData.ohlc.open)}</div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">Open</div>
+          <div className="text-lg font-medium">${formatPrice(marketData.ohlc.open)}</div>
         </div>
-        <div style={{ padding: "16px", border: "1px solid #374151" }}>
-          <div style={{ color: "#9CA3AF" }}>High</div>
-          <div >${formatPrice(marketData.ohlc.high)}</div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">High</div>
+          <div className="text-lg font-medium text-green-400">${formatPrice(marketData.ohlc.high)}</div>
         </div>
-        <div style={{ padding: "16px", border: "1px solid #374151" }}>
-          <div style={{ color: "#9CA3AF" }}>Low</div>
-          <div >${formatPrice(marketData.ohlc.low)}</div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">Low</div>
+          <div className="text-lg font-medium text-red-400">${formatPrice(marketData.ohlc.low)}</div>
         </div>
-        <div style={{ padding: "16px", border: "1px solid #374151" }}>
-          <div style={{ color: "#9CA3AF" }}>Volume (24h)</div>
-          <div >{formatLargeNumber(marketData.ohlc.volume)}</div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">Volume (24h)</div>
+          <div className="text-lg font-medium">{formatLargeNumber(marketData.ohlc.volume)}</div>
         </div>
       </div>
       
       {/* Chart Placeholder */}
-      <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <div  />
-        <div >
-          <Activity style={{ marginLeft: "auto", marginRight: "auto", marginBottom: "16px" }} />
-          <h3 style={{ color: "white" }}>Chart will appear here</h3>
-          <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
+      <div className="bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 market-glow opacity-10" />
+        <div className="text-center">
+          <activity  >
+          <h3 className="text-xl font-medium text-white mb-2">Chart will appear here</h3>
+          <p className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
           </p>
         </div>
       </div>
       
       {/* Market Stats */}
-      <div >
-        <div style={{ padding: "16px", border: "1px solid #374151", display: "flex", alignItems: "center" }}>
-          <span style={{fontSize: '16px'}}>⏰</span>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <clock  >
           <div>
-            <div style={{ color: "#9CA3AF" }}>Last Update</div>
-            <div >{new Date().toLocaleTimeString()}</div>
+            <div className="text-sm text-gray-400">Last Update</div>
+            <div className="font-medium">{new Date().toLocaleTimeString()}</div>
           </div>
         </div>
-        <div style={{ padding: "16px", border: "1px solid #374151", display: "flex", alignItems: "center" }}>
-          <Activity style={{ color: "#9CA3AF" }} />
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <activity  >
           <div>
-            <div style={{ color: "#9CA3AF" }}>24h Range</div>
-            <div >${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</div>
+            <div className="text-sm text-gray-400">24h Range</div>
+            <div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</div>
           </div>
         </div>
-        <div style={{ padding: "16px", border: "1px solid #374151", display: "flex", alignItems: "center" }}>
-          <span style={{fontSize: '16px'}}>📈</span>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <trendingup  >
           <div>
-            <div style={{ color: "#9CA3AF" }}>Price Change</div>
+            <div className="text-sm text-gray-400">Price Change</div>
             <div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {formatPercent(marketData.changePercent)} (${formatPrice(Math.abs(marketData.change))})
             </div>
@@ -310,3 +298,4 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     </div>
   );
 } 
+export const lovable = { component: true };

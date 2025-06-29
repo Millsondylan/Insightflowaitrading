@@ -6,15 +6,16 @@ interface LegacyRouteWrapperProps {
   children: React.ReactNode;
 }
 
-const LegacyRouteWrapper: React.FC<LegacyRouteWrapperProps> = ({ 
+const LegacyRouteWrapper: React.FC<legacyroutewrapperprops  > = ({ 
   accessLevel, 
   children 
 }) => {
   return (
-    <OldProtectedRoute accessLevel={accessLevel}>
+    <oldprotectedroute  >
       {children}
     </OldProtectedRoute>
   );
 };
 
 export default LegacyRouteWrapper; 
+export const lovable = { component: true };

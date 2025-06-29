@@ -20,13 +20,13 @@ type ChartContextProps = {
   config: ChartConfig
 }
 
-const ChartContext = React.createContext<span style={{fontSize: '16px'}}>📊</span>(null)
+const ChartContext = React.createContext<chartcontextprops  >(null)
 
 function useChart() {
   const context = React.useContext(ChartContext)
 
   if (!context) {
-    throw new Error("useChart must be used within a <span style={{fontSize: '16px'}}>📊</span>")
+    throw new Error("useChart must be used within a <chartcontainer  >")
   }
 
   return context
@@ -45,7 +45,7 @@ const ChartContainer = React.forwardRef<
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`
 
   return (
-    <span style={{fontSize: '16px'}}>📊</span>
+    <chartcontext  >
       <div
         data-chart={chartId}
         ref={ref}
@@ -55,8 +55,8 @@ const ChartContainer = React.forwardRef<
         )}
         {...props}
       >
-        <span style={{fontSize: '16px'}}>📊</span>
-        <RechartsPrimitive.ResponsiveContainer>
+        <chartstyle  >
+        <rechartsprimitive  >
           {children}
         </RechartsPrimitive.ResponsiveContainer>
       </div>
@@ -182,7 +182,7 @@ const ChartTooltipContent = React.forwardRef<
         )}
       >
         {!nestLabel ? tooltipLabel : null}
-        <div >
+        <div className="grid gap-1.5">
           {payload.map((item, index) => {
             const key = `${nameKey || item.name || item.dataKey || "value"}`
             const itemConfig = getPayloadConfigFromPayload(config, item, key)
@@ -230,14 +230,14 @@ const ChartTooltipContent = React.forwardRef<
                         nestLabel ? "items-end" : "items-center"
                       )}
                     >
-                      <div >
+                      <div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
-                        <span >
+                        <span className="text-muted-foreground">
                           {itemConfig?.label || item.name}
                         </span>
                       </div>
                       {item.value && (
-                        <span >
+                        <span className="font-mono font-medium tabular-nums text-foreground">
                           {item.value.toLocaleString()}
                         </span>
                       )}
@@ -259,7 +259,7 @@ const ChartLegend = RechartsPrimitive.Legend
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> &
-    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
+    Pick<rechartsprimitive  > & {
       hideIcon?: boolean
       nameKey?: string
     }
@@ -298,7 +298,7 @@ const ChartLegendContent = React.forwardRef<
                 <itemConfig.icon />
               ) : (
                 <div
-                  
+                  className="h-2 w-2 shrink-0 rounded-[2px]"
                   style={{
                     backgroundColor: item.color,
                   }}
@@ -361,3 +361,5 @@ export {
   ChartLegendContent,
   ChartStyle,
 }
+
+export const lovable = { component: true };

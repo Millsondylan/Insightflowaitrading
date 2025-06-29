@@ -16,7 +16,7 @@ interface AuthContextType {
   hasProAccess: boolean;
 }
 
-const AuthContext = createContext<AuthContextType>({
+const AuthContext = createContext<authcontexttype  >({
   session: null,
   user: null,
   profile: null,
@@ -28,8 +28,8 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState<span style={{fontSize: '16px'}}>👤</span>(null);
+  const [session, setSession] = useState<session  >(null);
+  const [profile, setProfile] = useState<userprofile  >(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -99,7 +99,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     hasProAccess,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return <authcontext  >{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {
@@ -109,3 +109,4 @@ export const useAuth = () => {
   }
   return context;
 }; 
+export const lovable = { component: true };

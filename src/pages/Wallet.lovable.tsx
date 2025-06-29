@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useToast } from "@/components/ui/use-toast";
 import WalletConnect from "@/components/wallet/WalletConnect";
 
 export default function Wallet() {
@@ -17,39 +18,39 @@ export default function Wallet() {
   };
 
   return (
-    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingLeft: "16px", paddingRight: "16px" }}>
-      <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-        <div style={{ marginBottom: "32px" }}>
-          <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", marginBottom: "16px" }}>Wallet Verification</h1>
-          <p >
+    <div className="container mx-auto py-12 px-4">
+      <div className="max-w-2xl mx-auto">
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Wallet Verification</h1>
+          <p className="text-white/70">
             Connect your crypto wallet to verify ownership and unlock premium features.
           </p>
         </div>
 
-        <WalletConnect onVerified={handleVerified} />
+        <walletconnect  >
 
-        <div style={{ padding: "24px" }}>
-          <h2 style={{ color: "white" }}>Why Connect Your Wallet?</h2>
+        <div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</h2>
           
-          <div >
-            <div style={{ display: "flex" }}>
-              <div >🔒</div>
+          <div className="space-y-4 text-white/80">
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔒</div>
               <p>
-                <span style={{ color: "white" }}>Secure Verification:</span> We use non-custodial wallet signing to verify ownership without storing your private keys.
+                <span className="font-medium text-white">Secure Verification:</span> We use non-custodial wallet signing to verify ownership without storing your private keys.
               </p>
             </div>
             
-            <div style={{ display: "flex" }}>
-              <div >⚡</div>
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">⚡</div>
               <p>
-                <span style={{ color: "white" }}>Unlock Premium Features:</span> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
+                <span className="font-medium text-white">Unlock Premium Features:</span> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
               </p>
             </div>
             
-            <div style={{ display: "flex" }}>
-              <div >🔄</div>
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔄</div>
               <p>
-                <span style={{ color: "white" }}>Seamless Experience:</span> Your wallet connects directly to our service without any intermediaries.
+                <span className="font-medium text-white">Seamless Experience:</span> Your wallet connects directly to our service without any intermediaries.
               </p>
             </div>
           </div>
@@ -58,3 +59,4 @@ export default function Wallet() {
     </div>
   );
 } 
+export const lovable = { component: true };

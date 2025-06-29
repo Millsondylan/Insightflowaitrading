@@ -1,12 +1,16 @@
 // TODO: implement inline AI copilot assistant
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Sparkles, X, ThumbsUp, ThumbsDown } from 'lucide-react';
 
 interface CopilotAIProps {
   context?: string;
   onSuggestionApply?: (suggestion: string) => void;
 }
 
-export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply }) => {
+export const CopilotAI: React.FC<copilotaiprops  > = ({ context, onSuggestionApply }) => {
   const [isVisible, setIsVisible] = React.useState(true);
   const [suggestions, setSuggestions] = React.useState([
     {
@@ -35,7 +39,7 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
     }
   ]);
 
-  const [feedback, setFeedback] = React.useState<Record<number, 'up' | 'down' | null>>({});
+  const [feedback, setFeedback] = React.useState<record  >>({});
 
   const handleFeedback = (suggestionId: number, type: 'up' | 'down') => {
     setFeedback({ ...feedback, [suggestionId]: type });
@@ -44,82 +48,67 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
 
   if (!isVisible) {
     return (
-      <Button
-        variant="outline"
-        size="sm"
-        
-        onClick={() => setIsVisible(true)}
+      <button variant="outline" size="sm" > setIsVisible(true)}
       >
-        <Sparkles  />
+        <sparkles  >
         Show Copilot
       </Button>
     );
   }
 
   return (
-    <Card style={{ display: "flex", flexDirection: "column" }}>
-      <div style={{ padding: "16px", display: "flex", alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Sparkles  />
-          <h3 >AI Copilot</h3>
+    <card  style={{ display: "flex" }}>
+      <div className="p-4 border-b flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <sparkles  >
+          <h3 className="font-semibold">AI Copilot</h3>
         </div>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsVisible(false)}
+        <button variant="ghost" size="sm" > setIsVisible(false)}
         >
-          <span style={{fontSize: '16px'}}>❌</span>
+          <x  >
         </Button>
       </div>
 
-      <div style={{ padding: "16px" }}>
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {suggestions.map((suggestion) => (
           <div
             key={suggestion.id}
-            style={{ border: "1px solid #374151" }}
+            className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
           >
-            <div style={{ display: "flex" }}>
-              <h4 >{suggestion.title}</h4>
-              <Badge variant="outline" >
+            <div className="flex items-start justify-between mb-2">
+              <h4 className="font-medium">{suggestion.title}</h4>
+              <badge variant="outline" style={{ fontSize: "0.75rem" }}>
                 {suggestion.type}
               </Badge>
             </div>
             
-            <p >
+            <p className="text-sm text-muted-foreground mb-2">
               {suggestion.content}
             </p>
             
             {suggestion.code && (
-              <pre >
+              <pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
                 <code>{suggestion.code}</code>
               </pre>
             )}
             
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span >
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-green-500">
                 {suggestion.impact}
               </span>
               
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleFeedback(suggestion.id, 'up')}
+              <div className="flex items-center gap-2">
+                <button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <ThumbsUp  />
+                  <thumbsup  >
                 </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleFeedback(suggestion.id, 'down')}
+                <button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <ThumbsDown  />
+                  <thumbsdown  >
                 </Button>
-                <Button
-                  size="sm"
-                  onClick={() => onSuggestionApply?.(suggestion.code)}
+                <button size="sm" > onSuggestionApply?.(suggestion.code)}
                 >
                   Apply
                 </Button>
@@ -129,11 +118,12 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
         ))}
       </div>
 
-      <div style={{ padding: "16px" }}>
-        <p >
+      <div className="p-4 border-t bg-secondary/20">
+        <p className="text-xs text-muted-foreground text-center">
           Copilot analyzes your strategy in real-time
         </p>
       </div>
     </Card>
   );
 }; 
+export const lovable = { component: true };

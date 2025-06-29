@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Rss, Eye } from 'lucide-react';
 
 const mockInsights = [
     { id: 1, text: "You tend to over-leverage on Tuesday mornings. Consider reducing your position size." },
@@ -10,25 +12,25 @@ const mockInsights = [
 export default function FeedPage() {
   return (
     <div>
-      <Link to="/journal" style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
-        <ArrowLeft size={16} />
+      <link to="/journal" style={{ display: "flex", alignItems: "center" }}>
+        <arrowleft  >
         Back to Journal
       </Link>
       
-      <div >
+      <div className="space-y-6">
         <header>
-            <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
-                <span ><Rss  /></span>
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                <span className="bg-white/10 p-2 rounded-lg"><rss  ></span>
                 Your Insight Feed
             </h1>
-            <p style={{ color: "#9CA3AF" }}>Personalized insights generated from your trading activity.</p>
+            <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>
         </header>
 
         {mockInsights.map(insight => (
-            <div key={insight.id} style={{ border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", alignItems: "center" }}>
-                <p >{insight.text}</p>
-                <Button variant="ghost" size="icon">
-                    <span style={{fontSize: '16px'}}>👁️</span>
+            <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
+                <p className="text-gray-200">{insight.text}</p>
+                <button variant="ghost" size="icon" >
+                    <eye  >
                 </Button>
             </div>
         ))}
@@ -36,3 +38,4 @@ export default function FeedPage() {
     </div>
   );
 } 
+export const lovable = { component: true };

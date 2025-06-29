@@ -1,4 +1,7 @@
 import * as React from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/components/ui/use-toast";
+import { ShieldCheck, Ticket, Activity } from "lucide-react";
 
 import UserRoleManager from "@/components/admin/UserRoleManager";
 import PromoCodeEditor from "@/components/admin/PromoCodeEditor";
@@ -139,48 +142,45 @@ export default function AdminPage() {
   };
 
   return (
-    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingTop: "32px", paddingBottom: "32px", paddingLeft: "16px", paddingRight: "16px" }}>
-      <div >
-        <header style={{ marginBottom: "32px" }}>
-          <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", marginBottom: "16px" }}>Admin Dashboard</h1>
-          <p >
+    <div className="container mx-auto py-8 px-4">
+      <div className="theme-admin">
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</h1>
+          <p className="text-white/70">
             Manage users, promo codes, and view system usage logs.
           </p>
         </header>
 
-        <Tabs defaultValue="users">
-          <TabsList style={{ marginBottom: "32px", border: "1px solid #374151" }}>
-            <TabsTrigger value="users" style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>🛡️</span>
+        <tabs defaultValue="users" >
+          <tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
+            <tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
+              <shieldcheck  >
               <span>Users</span>
             </TabsTrigger>
-            <TabsTrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
-              <Ticket  />
+            <tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
+              <ticket  >
               <span>Promo Codes</span>
             </TabsTrigger>
-            <TabsTrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <Activity  />
+            <tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
+              <activity  >
               <span>Usage Logs</span>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="users">
-            <span style={{fontSize: '16px'}}>👤</span>
+          <tabscontent value="users" >
+            <userrolemanager  >
           </TabsContent>
 
-          <TabsContent value="promo">
-            <PromoCodeEditor 
-              codes={promoCodes} 
-              onGenerate={handleGeneratePromoCode} 
-              onRevoke={handleRevokePromoCode} 
-            />
+          <tabscontent value="promo" >
+            <promocodeeditor  >
           </TabsContent>
 
-          <TabsContent value="logs">
-            <UsageLogViewer logs={logs} />
+          <tabscontent value="logs" >
+            <usagelogviewer  >
           </TabsContent>
         </Tabs>
       </div>
     </div>
   );
 } 
+export const lovable = { component: true };

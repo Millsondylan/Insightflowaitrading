@@ -1,9 +1,13 @@
 // TODO: implement strategy publishing with Pro gate
 import React, { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { Strategy } from './types'
 
 export const VaultPublisher: React.FC = () => {
-  const [strategy, setStrategy] = useState<Strategy>({
+  const [strategy, setStrategy] = useState<strategy  >({
     id: '1', 
     name: 'Momentum Trend', 
     description: 'Trend following strategy targeting strong momentum stocks',
@@ -40,88 +44,69 @@ export const VaultPublisher: React.FC = () => {
   }
 
   return (
-    <Card style={{ width: "100%", color: "white" }}>
-      <CardHeader>
-        <CardTitle>Strategy Publisher</CardTitle>
+    <card  style={{ width: "100%", color: "white" }}>
+      <cardheader  >
+        <cardtitle  >Strategy Publisher</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div >
+      <cardcontent  >
+        <div className="space-y-4">
           <div>
-            <h3 style={{ fontWeight: "700" }}>Strategy Details</h3>
-            <div >
-              <Input 
-                value={strategy.name}
-                onChange={(e) => setStrategy(prev => ({ ...prev, name: e.target.value }))}
+            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <input  > setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
-                style={{ color: "white" }}
+                className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <Input 
-                value={strategy.version || ''}
-                onChange={(e) => setStrategy(prev => ({ ...prev, version: e.target.value }))}
+              <input  > setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
-                style={{ color: "white" }}
+                className="bg-zinc-900 border-zinc-700 text-white"
               />
             </div>
-            <Textarea 
-              value={strategy.description || ''}
-              onChange={(e) => setStrategy(prev => ({ ...prev, description: e.target.value }))}
+            <textarea  > setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
-              style={{ color: "white" }}
+              className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
             />
           </div>
 
           <div>
-            <h3 style={{ fontWeight: "700" }}>Publish Settings</h3>
-            <div >
+            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
+            <div className="space-y-2">
               <div>
-                <label >Visibility</label>
-                <div style={{ display: "flex" }}>
-                  <Button 
-                    variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
-                    onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
-                    style={{ color: "white" }}
+                <label className="block text-sm mb-1">Visibility</label>
+                <div className="flex space-x-2">
+                  <button  > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
+                    className="text-white"
                   >
                     Private
                   </Button>
-                  <Button 
-                    variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
-                    onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
-                    style={{ color: "white" }}
+                  <button  > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
+                    className="text-white"
                   >
                     Community
                   </Button>
                 </div>
               </div>
 
-              <Input 
-                value={publishDetails.communityTags}
-                onChange={(e) => setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
+              <input  > setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
-                style={{ color: "white" }}
+                className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Input 
-                value={publishDetails.marketConditions}
-                onChange={(e) => setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
+              <input  > setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
-                style={{ color: "white" }}
+                className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Textarea 
-                value={publishDetails.disclaimer}
-                onChange={(e) => setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
+              <textarea  > setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
-                style={{ color: "white" }}
+                className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
               />
             </div>
           </div>
 
-          <Button 
-            onClick={handlePublish}
-            style={{ width: "100%" }}
-          >
+          <button  style={{ width: "100%" }}>
             Publish Strategy
           </Button>
         </div>
@@ -129,3 +114,4 @@ export const VaultPublisher: React.FC = () => {
     </Card>
   )
 } 
+export const lovable = { component: true };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { TrendingUp, Repeat, BarChart3, Activity, ChevronRight } from 'lucide-react';
 
 type Props = {
   rules: string[];
@@ -8,11 +9,11 @@ const KEYWORDS = ['RSI', 'MACD', 'Moving Average', 'Support', 'Resistance', 'Bre
 
 const getIconForRule = (rule: string) => {
   const lowerRule = rule.toLowerCase();
-  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <span style={{fontSize: '16px'}}>📈</span>;
-  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat  />;
-  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <BarChart3  />;
-  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <Activity  />;
-  return <ChevronRight  />;
+  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <trendingup  >;
+  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <repeat  >;
+  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <barchart3  >;
+  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <activity  >;
+  return <chevronright  >;
 };
 
 const highlightKeywords = (rule: string) => {
@@ -22,7 +23,7 @@ const highlightKeywords = (rule: string) => {
     return parts.map((part, index) => {
         const isKeyword = KEYWORDS.some(kw => kw.toLowerCase() === part.toLowerCase());
         if (isKeyword) {
-            return <strong key={index} >{part}</strong>;
+            return <strong key={index} className="text-cyan-400 font-medium">{part}</strong>;
         }
         return part;
     });
@@ -30,15 +31,15 @@ const highlightKeywords = (rule: string) => {
 
 export const RuleParser = ({ rules }: Props) => {
   return (
-    <div >
-      <h3 >Strategy Rules</h3>
-      <div >
+    <div className="space-y-3">
+      <h3 className="text-lg font-semibold text-white/90">Strategy Rules</h3>
+      <div className="space-y-2">
         {rules.map((rule, index) => (
-          <div key={index} style={{ padding: "16px", border: "1px solid #374151", display: "flex", alignItems: "center" }}>
-            <div >
+          <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/10 flex items-center gap-4">
+            <div className="flex-shrink-0">
               {getIconForRule(rule)}
             </div>
-            <p >
+            <p className="text-white/80">
               {highlightKeywords(rule)}
             </p>
           </div>
@@ -47,3 +48,4 @@ export const RuleParser = ({ rules }: Props) => {
     </div>
   );
 }; 
+export const lovable = { component: true };

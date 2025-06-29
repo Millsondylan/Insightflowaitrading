@@ -1,5 +1,9 @@
 import React, { useState, useMemo } from 'react';
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { StrategyCard, Strategy } from './StrategyCard';
+import { Search } from 'lucide-react';
 
 type Props = {
   strategies: Strategy[];
@@ -49,46 +53,41 @@ export const StrategyVault = ({ strategies }: Props) => {
   }, [strategies, searchTerm, selectedTags, sortBy]);
 
   return (
-    <div >
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <div >
-          <span style={{fontSize: '16px'}}>🔍</span>
-          <Input 
-            placeholder="Search by title or tag..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            
+    <div className="space-y-6">
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="relative flex-1">
+          <search  >
+          <input placeholder="Search by title or tag..." > setSearchTerm(e.target.value)}
+            className="pl-10 bg-black/30 border-white/10"
           />
         </div>
-        <Select value={sortBy} onValueChange={setSortBy}>
-          <SelectTrigger style={{ width: "100%" }}>
-            <SelectValue placeholder="Sort by" />
+        <select  >
+          <selecttrigger  style={{ width: "100%" }}>
+            <selectvalue placeholder="Sort by" >
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="totalPnL">Sort by PnL</SelectItem>
-            <SelectItem value="winRate">Sort by Win Rate</SelectItem>
+          <selectcontent  >
+            <selectitem value="totalPnL" >Sort by PnL</SelectItem>
+            <selectitem value="winRate" >Sort by Win Rate</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      <div style={{ display: "flex" }}>
+      <div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <Button 
-            key={tag}
-            variant={selectedTags.includes(tag) ? 'secondary' : 'outline'}
-            onClick={() => handleTagClick(tag)}
-            
+          <button  > handleTagClick(tag)}
+            className="rounded-full"
           >
             {tag}
           </Button>
         ))}
       </div>
 
-      <div >
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy} />
+          <strategycard  >
         ))}
       </div>
     </div>
   );
 }; 
+export const lovable = { component: true };

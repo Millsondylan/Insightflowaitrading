@@ -1,4 +1,15 @@
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Loader2 } from 'lucide-react';
 import { sampleData } from '@/lib/backtest/sampleData';
 
 export interface BacktestFormState {
@@ -18,7 +29,7 @@ rsi <(14, 60)`;
 const defaultExitLogic = 'close < sma(50)';
 
 const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<BacktestFormState>({
+  const [formState, setFormState] = useState<backtestformstate  >({
     ticker: 'BTC',
     timeframe: '1H',
     entryLogic: defaultEntryLogic,
@@ -34,74 +45,53 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextAreaChange = (e: React.ChangeEvent<htmltextareaelement  >) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
   };
   
   return (
-    <form onSubmit={handleSubmit} style={{ padding: "24px" }}>
-      <div >
+    <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="ticker">Ticker</Label>
-          <Select
-            value={formState.ticker}
-            onValueChange={(value) => handleSelectChange('ticker', value)}
+          <label htmlFor="ticker" >Ticker</Label>
+          <select  > handleSelectChange('ticker', value)}
           >
-            <SelectTrigger >
-              <SelectValue />
+            <selecttrigger  >
+              <selectvalue  >
             </SelectTrigger>
-            <SelectContent style={{ color: "white" }}>
+            <selectcontent  style={{ color: "white" }}>
               {Object.keys(sampleData).map(ticker => (
-                <SelectItem key={ticker} value={ticker}>{ticker}</SelectItem>
+                <selectitem  >{ticker}</SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
         <div>
-          <Label htmlFor="timeframe">Timeframe</Label>
-          <Select
-            value={formState.timeframe}
-            onValueChange={(value) => handleSelectChange('timeframe', value)}
+          <label htmlFor="timeframe" >Timeframe</Label>
+          <select  > handleSelectChange('timeframe', value)}
           >
-            <SelectTrigger >
-              <SelectValue />
+            <selecttrigger  >
+              <selectvalue  >
             </SelectTrigger>
-            <SelectContent style={{ color: "white" }}>
-              <SelectItem value="1H">1 Hour</SelectItem>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="1H" >1 Hour</SelectItem>
             </SelectContent>
           </Select>
         </div>
       </div>
       <div>
-        <Label htmlFor="entryLogic">Entry Logic</Label>
-        <Textarea
-          id="entryLogic"
-          name="entryLogic"
-          value={formState.entryLogic}
-          onChange={handleTextAreaChange}
-          
-          placeholder="e.g., close > sma(50)"
+        <label htmlFor="entryLogic" >Entry Logic</Label>
+        <textarea id="entryLogic" name="entryLogic" > sma(50)"
         />
       </div>
       <div>
-        <Label htmlFor="exitLogic">Exit Logic</Label>
-        <Textarea
-          id="exitLogic"
-          name="exitLogic"
-          value={formState.exitLogic}
-          onChange={handleTextAreaChange}
-          
-          placeholder="e.g., close < sma(50)"
-        />
+        <label htmlFor="exitLogic" >Exit Logic</Label>
+        <textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)" >
       </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button
-          type="submit"
-          style={{ border: "1px solid #374151", color: "white", width: "100%" }}
-          disabled={isLoading}
-        >
-          {isLoading ? <Loader2  /> : 'Run Backtest'}
+      <div className="flex justify-center">
+        <button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}>
+          {isLoading ? <loader2  > : 'Run Backtest'}
         </Button>
       </div>
     </form>
@@ -109,3 +99,4 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
 };
 
 export default BacktestForm; 
+export const lovable = { component: true };

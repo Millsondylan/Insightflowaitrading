@@ -13,10 +13,11 @@ export default function AuthPage() {
     };
 
     return (
-        <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
-            <div style={{ width: "100%" }}>
-                <AuthForm onSuccess={handleSuccess} />
+        <div className="min-h-screen flex items-center justify-center p-4">
+            <div className="w-full">
+                <authform  >
             </div>
         </div>
     );
 } 
+export const lovable = { component: true };

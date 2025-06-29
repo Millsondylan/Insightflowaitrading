@@ -26,12 +26,12 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
   const [notes, setNotes] = useState("");
-  const [screenshot, setScreenshot] = useState<span style={{fontSize: '16px'}}>📄</span>(null);
+  const [screenshot, setScreenshot] = useState<file  >(null);
   const [screenshotPreview, setScreenshotPreview] = useState<string | null>(null);
   const [strategyId, setStrategyId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleTagInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTagInputChange = (e: React.ChangeEvent<htmlinputelement  >) => {
     const value = e.target.value;
     setTagInput(value);
     if (value.includes(',')) {
@@ -49,7 +49,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
     setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: React.ChangeEvent<htmlinputelement  >) => {
     const file = e.target.files?.[0];
     if (file) {
       setScreenshot(file);
@@ -107,41 +107,41 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
   const isFormValid = title.trim() !== "" && date.trim() !== "";
 
   return (
-    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
-      <h2 style={{ fontWeight: "700", color: "white" }}>New Journal Entry</h2>
-      <form onSubmit={handleSubmit} >
+    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-6">
+      <h2 className="text-xl font-bold text-white">New Journal Entry</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="title" >Title</label>
+          <label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</label>
           <input
             id="title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Breakout scalp on BTC"
-            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="date" >Date</label>
+          <label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</label>
           <input
             id="date"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition calendar-picker-indicator"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="tags" >Tags (comma-separated)</label>
-          <div style={{ display: "flex" }}>
+          <label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</label>
+          <div className="flex flex-wrap gap-2 mb-2">
             {tags.map(tag => (
-              <span key={tag} style={{ display: "flex", alignItems: "center" }}>
+              <span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
                 {tag}
-                <button type="button" onClick={() => removeTag(tag)} >&times;</button>
+                <button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</button>
               </span>
             ))}
           </div>
@@ -151,29 +151,29 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             value={tagInput}
             onChange={handleTagInputChange}
             placeholder="e.g. fomo, scalp, win"
-            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           />
         </div>
 
         <div>
-          <label htmlFor="notes" >Notes</label>
+          <label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</label>
           <textarea
             id="notes"
             rows={6}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Detailed thoughts on the trade... Markdown supported."
-            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           />
         </div>
 
         <div>
-          <label htmlFor="strategy" >Link to Strategy (Optional)</label>
+          <label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</label>
           <select
             id="strategy"
             value={strategyId || ""}
             onChange={(e) => setStrategyId(e.target.value || null)}
-            style={{ width: "100%", border: "1px solid #374151", color: "white" }}
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           >
             <option value="">No linked strategy</option>
             {mockStrategies.map(strat => (
@@ -183,26 +183,26 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
         </div>
 
         <div>
-          <label htmlFor="screenshot" >Screenshot (Optional)</label>
+          <label htmlFor="screenshot" className="block text-sm font-medium text-white/70 mb-1">Screenshot (Optional)</label>
           <input
             id="screenshot"
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            style={{ width: "100%" }}
+            className="w-full text-sm text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600/80 file:text-white hover:file:bg-cyan-600"
           />
           {screenshotPreview && (
-            <div >
-              <img src={screenshotPreview} alt="Screenshot preview" style={{ border: "1px solid #374151" }} />
+            <div className="mt-4">
+              <img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" />
             </div>
           )}
         </div>
         
-        <div >
+        <div className="pt-2">
             <button 
               type="submit" 
               disabled={!isFormValid || isSubmitting}
-              style={{ width: "100%", paddingLeft: "16px", paddingRight: "16px", color: "white", fontWeight: "700" }}
+              className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
             </button>
@@ -213,3 +213,4 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
 };
 
 export default JournalEntryForm; 
+export const lovable = { component: true };

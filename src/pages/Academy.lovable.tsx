@@ -1,5 +1,35 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Progress } from '@/components/ui/progress';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { 
+  BookOpen, 
+  Percent, 
+  Brain, 
+  BarChart2, 
+  Radio, 
+  MessageSquare, 
+  PlayCircle,
+  Shield,
+  Bitcoin,
+  Bot,
+  TrendingUp,
+  DollarSign,
+  Globe,
+  Calculator,
+  Building,
+  Users,
+  Clock,
+  Star,
+  ChevronRight,
+  Award,
+  Target,
+  Zap
+} from 'lucide-react';
 import { comprehensiveCourses } from '@/lib/academy/comprehensiveLessonData';
 
 // Map icon names to components
@@ -28,51 +58,49 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
   };
   
   return (
-    <Card >
-      <CardHeader>
-        <div style={{ display: "flex" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "16px" }}>
-            <Icon  />
+    <card  >
+      <cardheader  >
+        <div className="flex justify-between items-start">
+          <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 transition-colors">
+            <icon  >
           </div>
-          <Badge className={categoryColors[course.category]}>
+          <badge  >
             {course.category}
           </Badge>
         </div>
-        <CardTitle style={{ color: "white" }}>
+        <cardtitle  style={{ fontSize: "1.125rem", color: "white" }}>
           {course.title}
         </CardTitle>
-        <CardDescription style={{ color: "#9CA3AF" }}>
+        <carddescription  >
           {course.description}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <div >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ color: "#9CA3AF" }}>Duration</span>
-            <span style={{ color: "white" }}>{course.duration}</span>
+      <cardcontent  >
+        <div className="space-y-4">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-400">Duration</span>
+            <span className="text-white font-medium">{course.duration}</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ color: "#9CA3AF" }}>Lessons</span>
-            <span style={{ color: "white" }}>{course.lessons.length} lessons</span>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-400">Lessons</span>
+            <span className="text-white font-medium">{course.lessons.length} lessons</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ color: "#9CA3AF" }}>Students</span>
-            <span style={{ color: "white" }}>{course.enrolled.toLocaleString()}</span>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-400">Students</span>
+            <span className="text-white font-medium">{course.enrolled.toLocaleString()}</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
-                <span style={{fontSize: '16px'}}>⭐</span>
+                <star  >
               ))}
             </div>
-            <span style={{ color: "#9CA3AF" }}>({course.rating})</span>
+            <span className="text-sm text-gray-400">({course.rating})</span>
           </div>
-          <Button 
-            style={{ width: "100%" }}
-            onClick={() => navigate(`/academy/${course.id}`)}
+          <button  style={{ width: "100%" }}> navigate(`/academy/${course.id}`)}
           >
             Start Learning
-            <ChevronRight  />
+            <chevronright  >
           </Button>
         </div>
       </CardContent>
@@ -82,79 +110,79 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
 
 const FeaturedSection = () => {
   return (
-    <div style={{ marginBottom: "32px" }}>
-      <h2 style={{ fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
-        <span style={{fontSize: '16px'}}>⚡</span>
+    <div className="mb-8">
+      <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+        <zap  >
         Featured Courses
       </h2>
-      <div >
-        <Card >
-          <CardHeader>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{fontSize: '16px'}}>🎯</span>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <card  >
+          <cardheader  >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <target  style={{ color: "white" }}>
               </div>
               <div>
-                <CardTitle style={{ color: "white" }}>Quick Start Trading</CardTitle>
-                <CardDescription >
+                <cardtitle  style={{ color: "white" }}>Quick Start Trading</CardTitle>
+                <carddescription  >
                   Get trading in 7 days
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <p style={{ marginBottom: "16px" }}>
+          <cardcontent  >
+            <p className="text-sm text-gray-300 mb-4">
               Intensive bootcamp covering all essentials to start trading confidently within a week.
             </p>
-            <Button style={{ width: "100%", color: "white" }}>
+            <button  style={{ width: "100%", color: "white" }}>
               Enroll Now
             </Button>
           </CardContent>
         </Card>
         
-        <Card >
-          <CardHeader>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Award style={{ color: "white" }} />
+        <card  >
+          <cardheader  >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <award  style={{ color: "white" }}>
               </div>
               <div>
-                <CardTitle style={{ color: "white" }}>Pro Certification</CardTitle>
-                <CardDescription >
+                <cardtitle  style={{ color: "white" }}>Pro Certification</CardTitle>
+                <carddescription  >
                   Industry recognized cert
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <p style={{ marginBottom: "16px" }}>
+          <cardcontent  >
+            <p className="text-sm text-gray-300 mb-4">
               Complete comprehensive program and earn your professional trading certification.
             </p>
-            <Button style={{ width: "100%", color: "white" }}>
+            <button  style={{ width: "100%", color: "white" }}>
               Learn More
             </Button>
           </CardContent>
         </Card>
         
-        <Card >
-          <CardHeader>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{fontSize: '16px'}}>👤</span>
+        <card  >
+          <cardheader  >
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                <users  style={{ color: "white" }}>
               </div>
               <div>
-                <CardTitle style={{ color: "white" }}>Live Mentorship</CardTitle>
-                <CardDescription >
+                <cardtitle  style={{ color: "white" }}>Live Mentorship</CardTitle>
+                <carddescription  >
                   1-on-1 with experts
                 </CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <p style={{ marginBottom: "16px" }}>
+          <cardcontent  >
+            <p className="text-sm text-gray-300 mb-4">
               Get personalized guidance from professional traders in live sessions.
             </p>
-            <Button style={{ width: "100%", color: "white" }}>
+            <button  style={{ width: "100%", color: "white" }}>
               Book Session
             </Button>
           </CardContent>
@@ -174,176 +202,172 @@ export default function AcademyPage() {
   const categories = ['all', 'beginner', 'intermediate', 'advanced', 'expert'];
   
   return (
-    <div style={{ marginTop: "32px" }}>
+    <div className="space-y-8">
       {/* Header */}
-      <div style={{ marginBottom: "32px" }}>
-        <h1 style={{ fontWeight: "700", color: "white", marginBottom: "16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ borderRadius: "0.75rem" }}>
-            <BookOpen style={{ color: "white" }} />
+      <div className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+          <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
+            <bookopen  style={{ color: "white" }}>
           </span>
           Trading Academy
         </h1>
-        <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
+        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
           Master the markets with comprehensive courses designed by professional traders. 
           From basics to advanced strategies, we've got you covered.
         </p>
       </div>
       
       {/* Stats */}
-      <div style={{ marginBottom: "32px" }}>
-        <Card >
-          <CardContent style={{ padding: "24px" }}>
-            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <card  >
+          <cardcontent  >
+            <div className="text-3xl font-bold text-white mb-1">
               {comprehensiveCourses.length}+
             </div>
-            <div style={{ color: "#9CA3AF" }}>Courses</div>
+            <div className="text-sm text-gray-400">Courses</div>
           </CardContent>
         </Card>
-        <Card >
-          <CardContent style={{ padding: "24px" }}>
-            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
+        <card  >
+          <cardcontent  >
+            <div className="text-3xl font-bold text-white mb-1">
               {comprehensiveCourses.reduce((acc, course) => acc + course.enrolled, 0).toLocaleString()}+
             </div>
-            <div style={{ color: "#9CA3AF" }}>Students</div>
+            <div className="text-sm text-gray-400">Students</div>
           </CardContent>
         </Card>
-        <Card >
-          <CardContent style={{ padding: "24px" }}>
-            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
+        <card  >
+          <cardcontent  >
+            <div className="text-3xl font-bold text-white mb-1">
               {comprehensiveCourses.reduce((acc, course) => acc + course.lessons.length, 0)}+
             </div>
-            <div style={{ color: "#9CA3AF" }}>Lessons</div>
+            <div className="text-sm text-gray-400">Lessons</div>
           </CardContent>
         </Card>
-        <Card >
-          <CardContent style={{ padding: "24px" }}>
-            <div style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
+        <card  >
+          <cardcontent  >
+            <div className="text-3xl font-bold text-white mb-1">
               4.8
             </div>
-            <div style={{ color: "#9CA3AF" }}>Avg Rating</div>
+            <div className="text-sm text-gray-400">Avg Rating</div>
           </CardContent>
         </Card>
       </div>
       
       {/* Featured Section */}
-      <FeaturedSection />
+      <featuredsection  >
       
       {/* Category Filter */}
-      <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory}>
-        <TabsList style={{ width: "100%", marginLeft: "auto", marginRight: "auto", marginBottom: "32px" }}>
+      <tabs defaultValue="all" >
+        <tabslist  style={{ display: "grid", width: "100%" }}>
           {categories.map((category) => (
-            <TabsTrigger 
-              key={category} 
-              value={category}
-              
-            >
+            <tabstrigger  >
               {category}
             </TabsTrigger>
           ))}
         </TabsList>
         
-        <TabsContent value={selectedCategory} >
-          <div >
+        <tabscontent  >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredCourses.map(course => (
-              <CourseCard key={course.id} course={course} />
+              <coursecard  >
             ))}
           </div>
         </TabsContent>
       </Tabs>
       
       {/* Live Section */}
-      <div >
-        <Card >
-          <CardHeader>
-            <CardTitle style={{ color: "white", display: "flex", alignItems: "center" }}>
-              <Radio  />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
+        <card  >
+          <cardheader  >
+            <cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}>
+              <radio  >
               Live Trading Sessions
             </CardTitle>
-            <CardDescription style={{ color: "#9CA3AF" }}>
+            <carddescription  >
               Join professional traders in real-time market analysis
             </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div >
-              <div style={{ display: "flex", alignItems: "center", padding: "16px" }}>
+          <cardcontent  >
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <div>
-                  <h4 style={{ color: "white" }}>Forex London Session</h4>
-                  <p style={{ color: "#9CA3AF" }}>With TraderPro • Starting in 2h</p>
+                  <h4 className="font-medium text-white">Forex London Session</h4>
+                  <p className="text-sm text-gray-400">With TraderPro • Starting in 2h</p>
                 </div>
-                <Button size="sm" >
+                <button size="sm" >
                   Join Live
                 </Button>
               </div>
-              <div style={{ display: "flex", alignItems: "center", padding: "16px" }}>
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <div>
-                  <h4 style={{ color: "white" }}>Crypto Market Review</h4>
-                  <p style={{ color: "#9CA3AF" }}>With CryptoKing • Tomorrow 9 AM</p>
+                  <h4 className="font-medium text-white">Crypto Market Review</h4>
+                  <p className="text-sm text-gray-400">With CryptoKing • Tomorrow 9 AM</p>
                 </div>
-                <Button size="sm" variant="outline">
+                <button size="sm" variant="outline" >
                   Set Reminder
                 </Button>
               </div>
-              <div style={{ display: "flex", alignItems: "center", padding: "16px" }}>
+              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <div>
-                  <h4 style={{ color: "white" }}>Options Strategy Workshop</h4>
-                  <p style={{ color: "#9CA3AF" }}>With ThetaGang • Friday 2 PM</p>
+                  <h4 className="font-medium text-white">Options Strategy Workshop</h4>
+                  <p className="text-sm text-gray-400">With ThetaGang • Friday 2 PM</p>
                 </div>
-                <Button size="sm" variant="outline">
+                <button size="sm" variant="outline" >
                   Set Reminder
                 </Button>
               </div>
             </div>
-            <Link to="/broadcast" >
-              <Button variant="ghost" style={{ width: "100%" }}>
+            <link to="/broadcast" style={{ display: "block" }}>
+              <button variant="ghost" style={{ width: "100%" }}>
                 View All Sessions
-                <ChevronRight  />
+                <chevronright  >
               </Button>
             </Link>
           </CardContent>
         </Card>
         
-        <Card >
-          <CardHeader>
-            <CardTitle style={{ color: "white", display: "flex", alignItems: "center" }}>
-              <MessageSquare  />
+        <card  >
+          <cardheader  >
+            <cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}>
+              <messagesquare  >
               Community
             </CardTitle>
-            <CardDescription style={{ color: "#9CA3AF" }}>
+            <carddescription  >
               Connect with fellow traders
             </CardDescription>
           </CardHeader>
-          <CardContent >
-            <div >
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{fontSize: '16px'}}>👤</span>
+          <cardcontent  >
+            <div className="space-y-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-blue-600/20 rounded-full flex items-center justify-center">
+                  <users  >
                 </div>
-                <div >
-                  <p style={{ color: "white" }}>Active Discussions</p>
-                  <p style={{ color: "#9CA3AF" }}>234 topics today</p>
-                </div>
-              </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <Award  />
-                </div>
-                <div >
-                  <p style={{ color: "white" }}>Study Groups</p>
-                  <p style={{ color: "#9CA3AF" }}>45 active groups</p>
+                <div className="flex-1">
+                  <p className="text-sm text-white">Active Discussions</p>
+                  <p className="text-xs text-gray-400">234 topics today</p>
                 </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <span style={{fontSize: '16px'}}>🎯</span>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-green-600/20 rounded-full flex items-center justify-center">
+                  <award  >
                 </div>
-                <div >
-                  <p style={{ color: "white" }}>Trading Challenges</p>
-                  <p style={{ color: "#9CA3AF" }}>New challenge weekly</p>
+                <div className="flex-1">
+                  <p className="text-sm text-white">Study Groups</p>
+                  <p className="text-xs text-gray-400">45 active groups</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-purple-600/20 rounded-full flex items-center justify-center">
+                  <target  >
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-white">Trading Challenges</p>
+                  <p className="text-xs text-gray-400">New challenge weekly</p>
                 </div>
               </div>
             </div>
-            <Link to="/community">
-              <Button style={{ width: "100%" }}>
+            <link to="/community" >
+              <button  style={{ width: "100%" }}>
                 Join Community
               </Button>
             </Link>
@@ -353,3 +377,5 @@ export default function AcademyPage() {
     </div>
   );
 }
+
+export const lovable = { component: true };

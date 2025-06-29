@@ -1,5 +1,7 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { CheckCircle2, XCircle, ChevronRight, RefreshCw } from "lucide-react";
 import "@/styles/quiz.css";
 
 // Quiz data structure based on the existing schema
@@ -56,13 +58,13 @@ const mockQuestions: QuizQuestion[] = [
   }
 ];
 
-const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComplete }) => {
+const QuizEngine: React.FC<quizprops  > = ({ quizId, lessonId, lessonTitle, onComplete }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState<number>(0);
   const [selectedOption, setSelectedOption] = React.useState<number | null>(null);
   const [isAnswered, setIsAnswered] = React.useState<boolean>(false);
   const [score, setScore] = React.useState<number>(0);
   const [quizComplete, setQuizComplete] = React.useState<boolean>(false);
-  const [userAnswers, setUserAnswers] = React.useState<Record<string, number>>({});
+  const [userAnswers, setUserAnswers] = React.useState<record  >>({});
   const [hasPassedQuiz, setHasPassedQuiz] = React.useState<boolean>(false);
 
   // Current question from mock data
@@ -144,20 +146,20 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
   };
 
   return (
-    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
+    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
       {/* Quiz Header */}
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <h2 style={{ color: "white", fontWeight: "700" }}>
+      <div className="flex justify-between items-center">
+        <h2 className="text-white text-xl font-bold">
           {lessonTitle || "Quiz"} 
-          <span style={{ color: "#9CA3AF" }}>
+          <span className="text-gray-400 ml-2 text-sm">
             ({currentQuestionIndex + 1} of {mockQuestions.length})
           </span>
         </h2>
         
         {/* Progress bar */}
-        <div >
+        <div className="w-1/3 h-2 bg-white/10 rounded-full overflow-hidden">
           <motion.div 
-            
+            className="h-full bg-cyan-600"
             initial={{ width: 0 }}
             animate={{ 
               width: `${((currentQuestionIndex + (isAnswered ? 1 : 0)) / mockQuestions.length) * 100}%` 
@@ -169,22 +171,22 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
 
       {/* Quiz Content */}
       {!quizComplete ? (
-        <AnimatePresence mode="wait">
+        <animatepresence mode="wait" >
           <motion.div
             key={currentQuestion.id}
             initial="hidden"
             animate="visible"
             exit="exit"
             variants={cardVariants}
-            
+            className="space-y-6"
           >
             {/* Question */}
-            <h3 style={{ color: "white" }}>
+            <h3 className="text-white text-lg font-semibold">
               {currentQuestion.question}
             </h3>
 
             {/* Options */}
-            <div >
+            <div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
                 <button
                   key={index}
@@ -202,9 +204,9 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                   
                   {isAnswered && (
                     index === currentQuestion.correctIndex ? (
-                      <span style={{fontSize: '16px'}}>✅</span>
+                      <checkcircle2  style={{ color: "white" }}>
                     ) : (
-                      index === selectedOption && <span style={{fontSize: '16px'}}>❌</span>
+                      index === selectedOption && <xcircle  style={{ color: "white" }}>
                     )
                   )}
                 </button>
@@ -222,7 +224,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                     : "bg-red-500/20 border-l-4 border-red-500"
                 }`}
               >
-                <p style={{ color: "white" }}>
+                <p className="text-white">
                   {selectedOption === currentQuestion.correctIndex ? "✅ " : "❌ "}
                   {currentQuestion.explanation}
                 </p>
@@ -230,26 +232,19 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             )}
 
             {/* Action Buttons */}
-            <div style={{ display: "flex" }}>
+            <div className="flex justify-end space-x-3">
               {!isAnswered ? (
-                <Button
-                  onClick={handleSubmitAnswer}
-                  disabled={selectedOption === null}
-                  style={{ color: "white" }}
-                >
+                <button  style={{ color: "white" }}>
                   Submit Answer
                 </Button>
               ) : (
-                <Button
-                  onClick={handleNextQuestion}
-                  style={{ color: "white" }}
-                >
+                <button  style={{ color: "white" }}>
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
-                        <ChevronRight  />
+                        <chevronright  >
                       </>
                     )
                   }
@@ -263,7 +258,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          
+          className="text-center space-y-6"
         >
           <motion.div
             initial={{ scale: 0 }}
@@ -274,17 +269,17 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {calculatePercentage()}%
           </motion.div>
 
-          <p style={{ color: "white" }}>
-            You got <span style={{ fontWeight: "700" }}>{score}</span> out of <span style={{ fontWeight: "700" }}>{mockQuestions.length}</span> questions correct
+          <p className="text-xl text-white">
+            You got <span className="font-bold">{score}</span> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
           </p>
           
           {isPassed() ? (
-            <div >
+            <div className="py-4">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                
+                className="text-green-400 text-lg font-medium"
               >
                 Congratulations! You've passed the quiz. 🎉
               </motion.div>
@@ -292,23 +287,20 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                 initial={{ scale: 0 }}
                 animate={{ scale: 1, rotate: 720 }}
                 transition={{ delay: 0.8, duration: 1 }}
-                
+                className="text-4xl my-4"
               >
                 🏆
               </motion.div>
             </div>
           ) : (
-            <p >
+            <p className="text-red-400">
               You need at least 70% to pass. Try again!
             </p>
           )}
 
-          <div >
-            <Button
-              onClick={resetQuiz}
-              style={{ color: "white" }}
-            >
-              <RefreshCw  />
+          <div className="pt-4">
+            <button  style={{ color: "white" }}>
+              <refreshcw  >
               Retry Quiz
             </Button>
           </div>
@@ -319,3 +311,4 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
 };
 
 export default QuizEngine; 
+export const lovable = { component: true };

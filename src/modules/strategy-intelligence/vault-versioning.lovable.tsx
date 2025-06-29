@@ -1,30 +1,32 @@
 // TODO: implement strategy versioning with diff viewer
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 interface VaultVersioningProps {
   strategyId: string;
 }
 
-export const VaultVersioning: React.FC<VaultVersioningProps> = ({ strategyId }) => {
+export const VaultVersioning: React.FC<vaultversioningprops  > = ({ strategyId }) => {
   const [versions, setVersions] = React.useState<any[]>([]);
   const [selectedVersion, setSelectedVersion] = React.useState<string>('');
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Version History</h2>
-      <div >
-        <div style={{ display: "flex" }}>
-          <Button variant="outline" size="sm">Compare Versions</Button>
-          <Button variant="outline" size="sm">Restore Version</Button>
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Version History</h2>
+      <div className="space-y-4">
+        <div className="flex gap-2">
+          <button variant="outline" size="sm" >Compare Versions</Button>
+          <button variant="outline" size="sm" >Restore Version</Button>
         </div>
-        <div >
+        <div className="space-y-2">
           {versions.map((v, i) => (
-            <div key={i} style={{ border: "1px solid #374151" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <span >v{v.version}</span>
-                <span >{v.date}</span>
+            <div key={i} className="p-3 border rounded hover:bg-accent cursor-pointer">
+              <div className="flex justify-between items-center">
+                <span className="font-medium">v{v.version}</span>
+                <span className="text-sm text-muted-foreground">{v.date}</span>
               </div>
-              <p >{v.changes}</p>
+              <p className="text-sm text-muted-foreground mt-1">{v.changes}</p>
             </div>
           ))}
         </div>
@@ -32,3 +34,4 @@ export const VaultVersioning: React.FC<VaultVersioningProps> = ({ strategyId }) 
     </Card>
   );
 }; 
+export const lovable = { component: true };

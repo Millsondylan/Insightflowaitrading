@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useToast } from "@/components/ui/use-toast";
 import LessonEngine, { LessonSection } from "./LessonEngine";
 import QuizEngine from "./QuizEngine";
 import LessonBookmark from "./LessonBookmark";
@@ -16,7 +17,7 @@ interface LessonViewProps {
   lesson: LessonData;
 }
 
-const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
+const LessonView: React.FC<lessonviewprops  > = ({ lesson }) => {
   const { toast } = useToast();
   const [activeQuizId, setActiveQuizId] = React.useState<string | null>(null);
   const [activeSectionId, setActiveSectionId] = React.useState<string | null>(null);
@@ -77,50 +78,38 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
   };
 
   return (
-    <div style={{ marginTop: "32px" }}>
+    <div className="space-y-8">
       {/* Lesson Header */}
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
         <div>
-          <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>{lesson.title}</h1>
-          <p >{lesson.description}</p>
+          <h1 className="text-3xl font-bold text-white">{lesson.title}</h1>
+          <p className="text-white/70 mt-2">{lesson.description}</p>
         </div>
         
-        <LessonBookmark
-          lessonId={lesson.id}
-          isBookmarked={isBookmarked}
-          isCompleted={isLessonCompleted}
-          onComplete={() => markComplete(lesson.id)}
+        <lessonbookmark  > markComplete(lesson.id)}
           onBookmark={handleToggleBookmark}
         />
       </div>
 
       {/* Lesson Content */}
       {!showQuiz && (
-        <LessonEngine 
-          sections={lesson.sections}
-          onProgressUpdate={handleProgressUpdate}
-          onTakeQuiz={handleTakeQuiz}
-        />
+        <lessonengine  >
       )}
       
       {/* Quiz Section */}
       {showQuiz && activeQuizId && (
-        <div id="lesson-quiz" >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h2 style={{ fontWeight: "700", color: "white" }}>Quiz: Test Your Knowledge</h2>
+        <div id="lesson-quiz" className="mt-10">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
             <button 
               onClick={handleBackToContent}
-              
+              className="text-white/70 hover:text-cyan-400 text-sm"
             >
               ← Back to lesson content
             </button>
           </div>
           
-          <QuizEngine 
-            quizId={activeQuizId}
-            lessonId={lesson.id}
-            lessonTitle={activeSectionId ? 
-              lesson.sections.find(s => s.id === activeSectionId)?.title : 
+          <quizengine  > s.id === activeSectionId)?.title : 
               lesson.title
             }
             onComplete={handleQuizComplete}
@@ -132,3 +121,4 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
 };
 
 export default LessonView; 
+export const lovable = { component: true };

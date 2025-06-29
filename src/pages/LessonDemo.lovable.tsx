@@ -77,10 +77,11 @@ const sampleLesson: LessonData = {
 
 const LessonDemo = () => {
   return (
-    <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingTop: "32px", paddingBottom: "32px", paddingLeft: "16px", paddingRight: "16px" }}>
-      <LessonView lesson={sampleLesson} />
+    <div className="container mx-auto py-8 px-4">
+      <lessonview  >
     </div>
   );
 };
 
 export default LessonDemo; 
+export const lovable = { component: true };

@@ -3,16 +3,43 @@ import { fetchUsers, User, FetchUsersOptions } from '@/lib/admin/fetchUsers';
 import { exportUsers } from '@/lib/admin/exportUsers';
 import UserRow from '@/components/ui/UserRow';
 import RoleBadge, { UserRole } from '@/components/ui/RoleBadge';
+import { Search, Download, Users, Plus, Filter } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Input } from '@/components/ui/input';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
+import { Skeleton } from '@/components/ui/skeleton';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@/components/ui/dropdown-menu';
+import { toast } from '@/components/ui/use-toast';
 
 const UserTable: React.FC = () => {
   // State for user data
-  const [users, setUsers] = useState<span style={{fontSize: '16px'}}>👤</span>([]);
+  const [users, setUsers] = useState<user  >([]);
   const [totalCount, setTotalCount] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(true);
   
   // State for filtering and pagination
-  const [filterOptions, setFilterOptions] = useState<FetchUsersOptions>({
+  const [filterOptions, setFilterOptions] = useState<fetchusersoptions  >({
     page: 1,
     perPage: 10,
     sortBy: 'created_at',
@@ -44,7 +71,7 @@ const UserTable: React.FC = () => {
   }, [filterOptions]);
   
   // Handle search input
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<htmlinputelement  >) => {
     // Debounce implementation would be better in production
     setFilterOptions(prev => ({ ...prev, search: e.target.value, page: 1 }));
   };
@@ -97,12 +124,10 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <Pagination >
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious 
-              href="#" 
-              onClick={(e) => {
+      <pagination  >
+        <paginationcontent  >
+          <paginationitem  >
+            <paginationprevious href="#" > {
                 e.preventDefault();
                 if (currentPage > 1) {
                   handlePageChange(currentPage - 1);
@@ -121,10 +146,8 @@ const UserTable: React.FC = () => {
               (page >= currentPage - 1 && page <= currentPage + 1)
             ) {
               return (
-                <PaginationItem key={page}>
-                  <PaginationLink 
-                    href="#" 
-                    onClick={(e) => {
+                <paginationitem  >
+                  <paginationlink href="#" > {
                       e.preventDefault();
                       handlePageChange(page);
                     }}
@@ -138,15 +161,13 @@ const UserTable: React.FC = () => {
               page === currentPage - 2 || 
               page === currentPage + 2
             ) {
-              return <PaginationEllipsis key={page} />;
+              return <paginationellipsis  >;
             }
             return null;
           })}
           
-          <PaginationItem>
-            <PaginationNext 
-              href="#" 
-              onClick={(e) => {
+          <paginationitem  >
+            <paginationnext href="#" > {
                 e.preventDefault();
                 if (currentPage < pageCount) {
                   handlePageChange(currentPage + 1);
@@ -164,132 +185,119 @@ const UserTable: React.FC = () => {
   const renderSkeleton = () => (
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
-        <tr key={i} >
-          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
-          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
-          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
-          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
-          <td style={{ paddingLeft: "16px", paddingRight: "16px" }}><Skeleton  /></td>
+        <tr key={i} className="border-b border-gray-800/30">
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
         </tr>
       ))}
     </>
   );
   
   return (
-    <div style={{ borderRadius: "0.75rem", border: "1px solid #374151" }}>
+    <div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
       {/* Filter and tools bar */}
-      <div style={{ padding: "16px", display: "flex", alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
+        <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
-          <div >
-            <span style={{fontSize: '16px'}}>🔍</span>
-            <Input 
-              type="text"
-              placeholder="Search wallet address..." 
-              style={{ width: "100%" }}
-              onChange={handleSearchChange}
-            />
+          <div className="relative">
+            <search  >
+            <input type="text" placeholder="Search wallet address..." style={{ width: "100%" }}>
           </div>
           
           {/* Role filter */}
-          <Select onValueChange={handleRoleFilterChange}>
-            <SelectTrigger >
-              <SelectValue placeholder="All roles" />
+          <select  >
+            <selecttrigger  >
+              <selectvalue placeholder="All roles" >
             </SelectTrigger>
-            <SelectContent >
-              <SelectItem value="">All roles</SelectItem>
-              <SelectItem value="Admin">
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <RoleBadge role="Admin" showTooltip={false} /> Admin
+            <selectcontent  >
+              <selectitem value="" >All roles</SelectItem>
+              <selectitem value="Admin" >
+                <div className="flex items-center gap-2">
+                  <rolebadge role="Admin" > Admin
                 </div>
               </SelectItem>
-              <SelectItem value="User">
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <RoleBadge role="User" showTooltip={false} /> User
+              <selectitem value="User" >
+                <div className="flex items-center gap-2">
+                  <rolebadge role="User" > User
                 </div>
               </SelectItem>
-              <SelectItem value="Trial">
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <RoleBadge role="Trial" showTooltip={false} /> Trial
+              <selectitem value="Trial" >
+                <div className="flex items-center gap-2">
+                  <rolebadge role="Trial" > Trial
                 </div>
               </SelectItem>
-              <SelectItem value="Expired">
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <RoleBadge role="Expired" showTooltip={false} /> Expired
+              <selectitem value="Expired" >
+                <div className="flex items-center gap-2">
+                  <rolebadge role="Expired" > Expired
                 </div>
               </SelectItem>
             </SelectContent>
           </Select>
           
           {/* Sort options */}
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" >
-                <Filter  />
+          <dropdownmenu  >
+            <dropdownmenutrigger  >
+              <button variant="outline" size="sm" >
+                <filter  >
                 Sort
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent style={{ border: "1px solid #374151" }}>
-              <DropdownMenuItem onClick={() => handleSortChange('created_at-desc')} >
+            <dropdownmenucontent  style={{ border: "1px solid #E5E7EB" }}>
+              <dropdownmenuitem  > handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('created_at-asc')} >
+              <dropdownmenuitem  > handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-desc')} >
+              <dropdownmenuitem  > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-asc')} >
+              <dropdownmenuitem  > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('role-asc')} >
+              <dropdownmenuitem  > handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
         
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="flex items-center gap-2">
           {/* Export button */}
-          <Button 
-            variant="outline" 
-            style={{ display: "flex", alignItems: "center" }} 
-            onClick={handleExport}
-            disabled={users.length === 0 || loading}
-          >
-            <span style={{fontSize: '16px'}}>⬇️</span>
+          <button variant="outline" style={{ display: "flex", alignItems: "center" }}>
+            <download  >
             Export CSV
           </Button>
           
           {/* Grant admin button */}
-          <Button 
-            style={{ display: "flex", alignItems: "center" }} 
-            onClick={handleGrantAdmin}
-          >
-            <span style={{fontSize: '16px'}}>➕</span>
+          <button  style={{ display: "flex", alignItems: "center" }}>
+            <plus  >
             Grant Admin
           </Button>
         </div>
       </div>
       
       {/* User table */}
-      <div >
-        <table style={{ width: "100%" }}>
-          <thead >
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-gray-900/50">
             <tr>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
               </th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
               </th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Subscription Plan
               </th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Role
               </th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -299,14 +307,14 @@ const UserTable: React.FC = () => {
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <span style={{fontSize: '16px'}}>👤</span>
+                <userrow  >
               ))
             ) : (
               <tr>
-                <td colSpan={5} style={{ paddingLeft: "16px", paddingRight: "16px", paddingTop: "32px", paddingBottom: "32px", color: "#9CA3AF" }}>
-                  <span style={{fontSize: '16px'}}>👤</span>
+                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
+                  <users  >
                   <p>No users found</p>
-                  <p >Try adjusting your search or filters</p>
+                  <p className="text-sm">Try adjusting your search or filters</p>
                 </td>
               </tr>
             )}
@@ -318,7 +326,7 @@ const UserTable: React.FC = () => {
       {!loading && pageCount > 1 && renderPagination()}
       
       {/* Summary stats */}
-      <div style={{ padding: "16px", color: "#9CA3AF" }}>
+      <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
           <p>
             Showing {users.length} of {totalCount} users
@@ -332,3 +340,4 @@ const UserTable: React.FC = () => {
 };
 
 export default UserTable; 
+export const lovable = { component: true };

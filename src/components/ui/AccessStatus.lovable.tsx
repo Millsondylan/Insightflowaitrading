@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle, XCircle, Clock, LockOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { PlanType } from '@/lib/subscription/subscriptionPlans';
 import confetti from 'canvas-confetti';
@@ -13,7 +14,7 @@ interface AccessStatusProps {
   onAnimationComplete?: () => void;
 }
 
-const AccessStatus: React.FC<AccessStatusProps> = ({
+const AccessStatus: React.FC<accessstatusprops  > = ({
   status,
   plan,
   expiryDate,
@@ -69,7 +70,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
   const formattedExpiry = expiryDate ? new Date(expiryDate).toLocaleDateString() : '';
 
   return (
-    <AnimatePresence mode="wait">
+    <animatepresence mode="wait" >
       <motion.div
         key={status}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -84,21 +85,21 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
           className
         )}
       >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div className="flex flex-col items-center space-y-4">
           {/* Status Icon */}
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            
+            className="relative"
           >
             {status === 'pending' && (
-              <span style={{fontSize: '16px'}}>⏰</span>
+              <clock  >
             )}
             {status === 'success' && (
               <>
                 <motion.div
-                  
+                  className="absolute inset-0 rounded-full bg-green-500/20"
                   animate={{
                     scale: [1, 1.5, 1],
                     opacity: [1, 0, 0],
@@ -109,11 +110,11 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
                     repeatDelay: 1,
                   }}
                 />
-                <span style={{fontSize: '16px'}}>🔒</span>
+                <lockopen  >
               </>
             )}
             {status === 'failure' && (
-              <span style={{fontSize: '16px'}}>❌</span>
+              <xcircle  >
             )}
           </motion.div>
 
@@ -122,7 +123,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            
+            className="space-y-2"
           >
             <h3 className={cn(
               "text-xl font-bold",
@@ -136,7 +137,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
             </h3>
             
             {message && (
-              <p >{message}</p>
+              <p className="text-gray-300">{message}</p>
             )}
             
             {status === 'success' && plan && (
@@ -144,13 +145,13 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                
+                className="mt-4 space-y-2"
               >
-                <p >
+                <p className="font-medium text-green-300">
                   {plan.charAt(0).toUpperCase() + plan.slice(1)} Plan Activated
                 </p>
                 {formattedExpiry && (
-                  <p style={{ color: "#9CA3AF" }}>
+                  <p className="text-sm text-gray-400">
                     Expires: {formattedExpiry}
                   </p>
                 )}
@@ -164,3 +165,4 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
 };
 
 export default AccessStatus; 
+export const lovable = { component: true };

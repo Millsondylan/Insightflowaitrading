@@ -5,42 +5,42 @@ import { Link } from 'react-router-dom';
 
 const LandingBuilderPage: React.FC = () => {
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div className="scroll-container min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Hero Section */}
-      <ScrollSection style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }} delay={0}>
-        <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-          <h1 style={{ fontWeight: "700", marginBottom: "32px" }}>
-            <span >Insight</span>{' '}
-            <span >Flow</span>
+      <scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div className="text-center max-w-6xl mx-auto">
+          <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight">
+            <span className="text-glow-cyan">Insight</span>{' '}
+            <span className="text-glow-violet">Flow</span>
           </h1>
-          <p >
+          <p className="text-2xl md:text-4xl text-gray-300 leading-relaxed font-light mb-12">
             Where Trading Intelligence Meets Intuition
           </p>
-          <div style={{ marginLeft: "auto", marginRight: "auto" }}></div>
+          <div className="threadline-glow w-48 mx-auto mb-16"></div>
           
           {/* Navigation Cards */}
-          <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-            <Link to="/strategy" >
-              <div >
-                <div style={{ marginBottom: "16px" }}>🧠</div>
-                <h3 >Strategy Builder</h3>
-                <p style={{ color: "#9CA3AF" }}>AI-powered strategy generation from your trading intuition</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <link to="/strategy" >
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-4xl mb-4 text-cyan-400">🧠</div>
+                <h3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</h3>
+                <p className="text-gray-400">AI-powered strategy generation from your trading intuition</p>
               </div>
             </Link>
             
-            <Link to="/journal" >
-              <div >
-                <div style={{ marginBottom: "16px" }}>📓</div>
-                <h3 >Trade Journal</h3>
-                <p style={{ color: "#9CA3AF" }}>Capture and reflect on your trading psychology</p>
+            <link to="/journal" >
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-4xl mb-4 text-violet-400">📓</div>
+                <h3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</h3>
+                <p className="text-gray-400">Capture and reflect on your trading psychology</p>
               </div>
             </Link>
             
-            <Link to="/academy" >
-              <div >
-                <div style={{ marginBottom: "16px" }}>📘</div>
-                <h3 >Trading Academy</h3>
-                <p style={{ color: "#9CA3AF" }}>Structured learning for trading mastery</p>
+            <link to="/academy" >
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-4xl mb-4 text-blue-400">📘</div>
+                <h3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</h3>
+                <p className="text-gray-400">Structured learning for trading mastery</p>
               </div>
             </Link>
           </div>
@@ -48,61 +48,61 @@ const LandingBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* Features Preview */}
-      <ScrollSection  delay={200} animation="slide-right">
-        <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-          <div >
-            <h2 style={{ fontWeight: "700", color: "white" }}>
+      <scrollsection animation="slide-right" >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Built for Modern Traders
             </h2>
-            <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Combining cutting-edge AI with deep market psychology insights
             </p>
           </div>
           
-          <div style={{ alignItems: "center" }}>
-            <div style={{ marginTop: "32px" }}>
-              <div >
-                <div style={{ display: "flex" }}>
-                  <div style={{ border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="glass-card">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-cyan-500/20 border border-cyan-400/30 rounded-full flex items-center justify-center text-cyan-300 flex-shrink-0 mt-1">
                     ✨
                   </div>
                   <div>
-                    <h4 style={{ color: "white" }}>AI Strategy Generation</h4>
-                    <p style={{ color: "#9CA3AF" }}>Transform your trading ideas into structured, backtestable strategies</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">AI Strategy Generation</h4>
+                    <p className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</p>
                   </div>
                 </div>
               </div>
               
-              <div >
-                <div style={{ display: "flex" }}>
-                  <div style={{ border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div className="glass-card">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-violet-500/20 border border-violet-400/30 rounded-full flex items-center justify-center text-violet-300 flex-shrink-0 mt-1">
                     🧠
                   </div>
                   <div>
-                    <h4 style={{ color: "white" }}>Psychology Tracking</h4>
-                    <p style={{ color: "#9CA3AF" }}>Identify patterns in your decision-making and emotional responses</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">Psychology Tracking</h4>
+                    <p className="text-gray-400">Identify patterns in your decision-making and emotional responses</p>
                   </div>
                 </div>
               </div>
               
-              <div >
-                <div style={{ display: "flex" }}>
-                  <div style={{ border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <div className="glass-card">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-blue-500/20 border border-blue-400/30 rounded-full flex items-center justify-center text-blue-300 flex-shrink-0 mt-1">
                     📈
                   </div>
                   <div>
-                    <h4 style={{ color: "white" }}>Adaptive Learning</h4>
-                    <p style={{ color: "#9CA3AF" }}>Personalized education that evolves with your trading journey</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">Adaptive Learning</h4>
+                    <p className="text-gray-400">Personalized education that evolves with your trading journey</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div >
-              <div style={{ borderRadius: "0.75rem", border: "1px solid #374151", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <div >
-                  <div style={{ marginBottom: "16px" }}>📊</div>
-                  <p style={{ color: "#9CA3AF" }}>Interactive Demo Placeholder</p>
+            <div className="glass-section">
+              <div className="h-80 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 rounded-xl border border-white/10 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">📊</div>
+                  <p className="text-gray-400">Interactive Demo Placeholder</p>
                 </div>
               </div>
             </div>
@@ -111,23 +111,23 @@ const LandingBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* Call to Action */}
-      <ScrollSection  delay={400} animation="scale-in">
-        <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-          <div >
-            <h3 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>
+      <scrollsection animation="scale-in" >
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="glass-section motion-shadow">
+            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Elevate Your Trading?
             </h3>
-            <p style={{ color: "#9CA3AF" }}>
+            <p className="text-xl text-gray-400 mb-12">
               Join thousands of traders who've transformed their approach with Insight Flow
             </p>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <Link to="/strategy">
-                <button >
+            <div className="flex flex-wrap justify-center gap-6">
+              <link to="/strategy" >
+                <button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
                 </button>
               </Link>
-              <Link to="/academy">
-                <button >
+              <link to="/academy" >
+                <button className="glow-button glow-blue text-lg px-8 py-4">
                   Begin Learning
                 </button>
               </Link>
@@ -140,3 +140,5 @@ const LandingBuilderPage: React.FC = () => {
 };
 
 export default LandingBuilderPage;
+
+export const lovable = { component: true };

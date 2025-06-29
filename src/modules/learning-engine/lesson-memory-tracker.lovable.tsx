@@ -1,5 +1,9 @@
 // TODO: implement spaced repetition memory tracker
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { Brain, Calendar, TrendingUp, Clock } from 'lucide-react';
 
 interface LessonMemoryTrackerProps {
   userId?: string;
@@ -15,8 +19,8 @@ interface MemoryItem {
   category: string;
 }
 
-export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId }) => {
-  const [memories, setMemories] = React.useState<MemoryItem[]>([
+export const LessonMemoryTracker: React.FC<lessonmemorytrackerprops  > = ({ userId }) => {
+  const [memories, setMemories] = React.useState<memoryitem  >([
     {
       id: '1',
       concept: 'SMA Crossover Strategy',
@@ -46,7 +50,7 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
     }
   ]);
 
-  const [selectedMemory, setSelectedMemory] = React.useState<MemoryItem | null>(null);
+  const [selectedMemory, setSelectedMemory] = React.useState<memoryitem  >(null);
 
   const reviewConcept = (memory: MemoryItem) => {
     setSelectedMemory(memory);
@@ -65,32 +69,32 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <span style={{fontSize: '16px'}}>🧠</span>
-        <h2 style={{ fontWeight: "700" }}>Memory Tracker</h2>
+    <card  >
+      <div className="flex items-center gap-2 mb-6">
+        <brain  >
+        <h2 className="text-2xl font-bold">Memory Tracker</h2>
       </div>
 
-      <div >
-        <div style={{ padding: "16px" }}>
-          <p style={{ fontSize: "1.875rem", fontWeight: "700" }}>{memories.length}</p>
-          <p >Concepts Learned</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="text-center p-4 bg-secondary/20 rounded-lg">
+          <p className="text-3xl font-bold">{memories.length}</p>
+          <p className="text-sm text-muted-foreground">Concepts Learned</p>
         </div>
-        <div style={{ padding: "16px" }}>
-          <p style={{ fontSize: "1.875rem", fontWeight: "700" }}>
+        <div className="text-center p-4 bg-secondary/20 rounded-lg">
+          <p className="text-3xl font-bold">
             {memories.filter(m => getDaysUntilReview(m.nextReview) <= 0).length}
           </p>
-          <p >Due for Review</p>
+          <p className="text-sm text-muted-foreground">Due for Review</p>
         </div>
-        <div style={{ padding: "16px" }}>
-          <p style={{ fontSize: "1.875rem", fontWeight: "700" }}>
+        <div className="text-center p-4 bg-secondary/20 rounded-lg">
+          <p className="text-3xl font-bold">
             {Math.round(memories.reduce((acc, m) => acc + m.strength, 0) / memories.length * 100)}%
           </p>
-          <p >Average Retention</p>
+          <p className="text-sm text-muted-foreground">Average Retention</p>
         </div>
       </div>
 
-      <div >
+      <div className="space-y-4">
         {memories.map((memory) => {
           const daysUntil = getDaysUntilReview(memory.nextReview);
           const isDue = daysUntil <= 0;
@@ -103,24 +107,24 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
               }`}
               onClick={() => reviewConcept(memory)}
             >
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="flex items-center justify-between mb-2">
                 <div>
-                  <h3 >{memory.concept}</h3>
-                  <p >{memory.category}</p>
+                  <h3 className="font-semibold">{memory.concept}</h3>
+                  <p className="text-sm text-muted-foreground">{memory.category}</p>
                 </div>
-                <div >
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span style={{fontSize: '16px'}}>⏰</span>
-                    <span >
+                <div className="text-right">
+                  <div className="flex items-center gap-2 mb-1">
+                    <clock  >
+                    <span className="text-sm">
                       {isDue ? (
-                        <span >Review now</span>
+                        <span className="text-yellow-500">Review now</span>
                       ) : (
                         `Review in ${daysUntil} days`
                       )}
                     </span>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span style={{fontSize: '16px'}}>📈</span>
+                  <div className="flex items-center gap-2">
+                    <trendingup  >
                     <span className={`text-sm font-medium ${getStrengthColor(memory.strength)}`}>
                       {Math.round(memory.strength * 100)}% strength
                     </span>
@@ -128,16 +132,16 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
                 </div>
               </div>
               
-              <div >
-                <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="mt-3">
+                <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
                   <span>Memory Strength</span>
                   <span>{memory.reviews} reviews</span>
                 </div>
-                <Progress value={memory.strength * 100}  />
+                <progress  >
               </div>
 
               {isDue && (
-                <Button size="sm" style={{ width: "100%" }}>
+                <button size="sm" style={{ width: "100%" }}>
                   Start Review
                 </Button>
               )}
@@ -146,11 +150,12 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
         })}
       </div>
 
-      <div style={{ padding: "16px" }}>
-        <p >
+      <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
+        <p className="text-sm text-muted-foreground">
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
         </p>
       </div>
     </Card>
   );
 }; 
+export const lovable = { component: true };

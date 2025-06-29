@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 export const AIStrategyBuilderV2: React.FC = () => {
   const [strategyName, setStrategyName] = useState('')
@@ -14,60 +18,49 @@ export const AIStrategyBuilderV2: React.FC = () => {
   }
 
   return (
-    <Card style={{ width: "100%", color: "white" }}>
-      <CardHeader>
-        <CardTitle>AI Strategy Builder V2</CardTitle>
+    <card  style={{ width: "100%", color: "white" }}>
+      <cardheader  >
+        <cardtitle  >AI Strategy Builder V2</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div >
+      <cardcontent  >
+        <div className="space-y-4">
           <div>
-            <label >Strategy Name</label>
-            <Input 
-              value={strategyName}
-              onChange={(e) => setStrategyName(e.target.value)}
+            <label className="block text-sm mb-2">Strategy Name</label>
+            <input  > setStrategyName(e.target.value)}
               placeholder="Enter strategy name"
-              style={{ color: "white" }}
+              className="bg-zinc-900 border-zinc-700 text-white"
             />
           </div>
 
           <div>
-            <label >Market</label>
-            <Select 
-              value={selectedMarket} 
-              onValueChange={setSelectedMarket}
-            >
-              <SelectTrigger style={{ color: "white" }}>
-                <SelectValue placeholder="Select Market" />
+            <label className="block text-sm mb-2">Market</label>
+            <select  >
+              <selecttrigger  style={{ color: "white" }}>
+                <selectvalue placeholder="Select Market" >
               </SelectTrigger>
-              <SelectContent>
+              <selectcontent  >
                 {markets.map((market) => (
-                  <SelectItem key={market} value={market}>{market}</SelectItem>
+                  <selectitem  >{market}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
 
           <div>
-            <label >Risk Level</label>
-            <Select 
-              value={riskLevel} 
-              onValueChange={setRiskLevel}
-            >
-              <SelectTrigger style={{ color: "white" }}>
-                <SelectValue placeholder="Select Risk Level" />
+            <label className="block text-sm mb-2">Risk Level</label>
+            <select  >
+              <selecttrigger  style={{ color: "white" }}>
+                <selectvalue placeholder="Select Risk Level" >
               </SelectTrigger>
-              <SelectContent>
+              <selectcontent  >
                 {riskLevels.map((level) => (
-                  <SelectItem key={level} value={level}>{level}</SelectItem>
+                  <selectitem  >{level}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
 
-          <Button 
-            onClick={handleGenerateStrategy}
-            style={{ width: "100%" }}
-          >
+          <button  style={{ width: "100%" }}>
             Generate AI Strategy
           </Button>
         </div>

@@ -1,11 +1,15 @@
 // TODO: implement AI coaching with behavior analysis
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Brain, Target, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface AICoachV2Props {
   userId?: string;
 }
 
-export const AICoachV2: React.FC<AICoachV2Props> = ({ userId }) => {
+export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
   const [analysis, setAnalysis] = React.useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = React.useState(false);
 
@@ -24,72 +28,72 @@ export const AICoachV2: React.FC<AICoachV2Props> = ({ userId }) => {
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
-        <span style={{fontSize: '16px'}}>🧠</span>
-        <h2 style={{ fontWeight: "700" }}>AI Coach</h2>
+    <card  >
+      <div className="flex items-center gap-2 mb-4">
+        <brain  >
+        <h2 className="text-2xl font-bold">AI Coach</h2>
       </div>
 
       {!analysis ? (
-        <div style={{ paddingTop: "32px", paddingBottom: "32px" }}>
-          <p style={{ marginBottom: "16px" }}>
+        <div className="text-center py-8">
+          <p className="text-muted-foreground mb-4">
             Get personalized coaching based on your trading behavior
           </p>
-          <Button onClick={runAnalysis} disabled={isAnalyzing}>
+          <button  >
             {isAnalyzing ? 'Analyzing...' : 'Analyze My Trading'}
           </Button>
         </div>
       ) : (
-        <div >
+        <div className="space-y-6">
           <div>
-            <h3 style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>📈</span>
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <trendingup  >
               Strengths
             </h3>
-            <div >
+            <div className="space-y-2">
               {analysis.strengths.map((strength: string, i: number) => (
-                <div key={i} style={{ display: "flex", alignItems: "center" }}>
-                  <Badge variant="default" >
+                <div key={i} className="flex items-center gap-2">
+                  <badge variant="default" >
                     ✓
                   </Badge>
-                  <span >{strength}</span>
+                  <span className="text-sm">{strength}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>⚠️</span>
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <alerttriangle  >
               Areas to Improve
             </h3>
-            <div >
+            <div className="space-y-2">
               {analysis.weaknesses.map((weakness: string, i: number) => (
-                <div key={i} style={{ display: "flex", alignItems: "center" }}>
-                  <Badge variant="default" >
+                <div key={i} className="flex items-center gap-2">
+                  <badge variant="default" >
                     !
                   </Badge>
-                  <span >{weakness}</span>
+                  <span className="text-sm">{weakness}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <h3 style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>🎯</span>
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <target  >
               Action Items
             </h3>
-            <div >
+            <div className="space-y-2">
               {analysis.suggestions.map((suggestion: string, i: number) => (
-                <div key={i} >
-                  <p >{suggestion}</p>
+                <div key={i} className="p-3 bg-secondary/20 rounded-lg">
+                  <p className="text-sm">{suggestion}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <Button variant="outline" style={{ width: "100%" }}>
+          <button variant="outline" style={{ width: "100%" }}>
             Schedule Coaching Session
           </Button>
         </div>
@@ -97,3 +101,4 @@ export const AICoachV2: React.FC<AICoachV2Props> = ({ userId }) => {
     </Card>
   );
 }; 
+export const lovable = { component: true };

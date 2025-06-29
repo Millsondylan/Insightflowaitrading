@@ -1,10 +1,13 @@
 // TODO: implement real-time market insights feed
 import React, { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { InsightFeedItem } from './types'
 import { calculateMarketSentiment } from './utils'
 
 export const InsightFeed: React.FC = () => {
-  const [insights, setInsights] = useState<InsightFeedItem[]>([
+  const [insights, setInsights] = useState<insightfeeditem  >([
     {
       id: '1',
       title: 'Bitcoin Breaks Resistance',
@@ -30,54 +33,44 @@ export const InsightFeed: React.FC = () => {
   const marketSentiment = calculateMarketSentiment(insights)
 
   return (
-    <Card style={{ width: "100%", color: "white" }}>
-      <CardHeader style={{ display: "flex", alignItems: "center" }}>
-        <CardTitle>Market Insights Feed</CardTitle>
-        <Badge 
-          variant={
-            marketSentiment === 'Bullish' ? 'default' : 
-            marketSentiment === 'Bearish' ? 'destructive' : 'secondary'
-          }
-        >
+    <card  style={{ width: "100%", color: "white" }}>
+      <cardheader  style={{ display: "flex", alignItems: "center" }}>
+        <cardtitle  >Market Insights Feed</CardTitle>
+        <badge  >
           {marketSentiment} Sentiment
         </Badge>
       </CardHeader>
-      <CardContent>
-        <div >
+      <cardcontent  >
+        <div className="space-y-4">
           {insights.map((insight) => (
             <div 
               key={insight.id} 
-              style={{ padding: "16px", border: "1px solid #374151" }}
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
             >
-              <div style={{ display: "flex" }}>
-                <h3 style={{ fontWeight: "700" }}>{insight.title}</h3>
-                <Badge 
-                  variant={
-                    insight.sentiment === 'Bullish' ? 'default' : 
-                    insight.sentiment === 'Bearish' ? 'destructive' : 'secondary'
-                  }
-                >
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-lg font-bold">{insight.title}</h3>
+                <badge  >
                   {insight.sentiment}
                 </Badge>
               </div>
-              <p >{insight.content}</p>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div style={{ display: "flex" }}>
+              <p className="text-sm text-gray-300 mb-2">{insight.content}</p>
+              <div className="flex justify-between items-center">
+                <div className="flex space-x-2">
                   {insight.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
+                    <badge variant="outline" >
                       {tag}
                     </Badge>
                   ))}
                 </div>
-                <div style={{ color: "#9CA3AF" }}>
+                <div className="text-xs text-gray-400">
                   {insight.timestamp.toLocaleString()}
                 </div>
               </div>
             </div>
           ))}
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="outline" style={{ color: "white" }}>
+        <div className="mt-4 flex justify-center">
+          <button variant="outline" style={{ color: "white" }}>
             Load More Insights
           </Button>
         </div>
@@ -85,3 +78,4 @@ export const InsightFeed: React.FC = () => {
     </Card>
   )
 } 
+export const lovable = { component: true };

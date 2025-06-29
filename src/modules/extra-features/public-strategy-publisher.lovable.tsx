@@ -1,5 +1,12 @@
 // TODO: implement public strategy publishing with Pro gate
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Switch } from '@/components/ui/switch';
+import { Badge } from '@/components/ui/badge';
+import { Globe, Lock, Crown, Eye, Download } from 'lucide-react';
 
 interface PublicStrategyPublisherProps {
   strategyId: string;
@@ -7,7 +14,7 @@ interface PublicStrategyPublisherProps {
   onPublish?: (data: any) => void;
 }
 
-export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = ({ 
+export const PublicStrategyPublisher: React.FC<publicstrategypublisherprops  > = ({ 
   strategyId, 
   isPro, 
   onPublish 
@@ -41,103 +48,79 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700" }}>Publish Strategy</h2>
+    <card  >
+      <h2 className="text-2xl font-bold mb-6">Publish Strategy</h2>
 
-      <div >
+      <div className="space-y-6">
         <div>
-          <label >Strategy Title</label>
-          <Input
-            placeholder="e.g., RSI Momentum Strategy"
-            value={publishSettings.title}
-            onChange={(e) => setPublishSettings({ ...publishSettings, title: e.target.value })}
+          <label className="text-sm font-medium mb-2 block">Strategy Title</label>
+          <input placeholder="e.g., RSI Momentum Strategy" > setPublishSettings({ ...publishSettings, title: e.target.value })}
           />
         </div>
 
         <div>
-          <label >Description</label>
-          <Textarea
-            placeholder="Describe your strategy, its performance, and best use cases..."
-            value={publishSettings.description}
-            onChange={(e) => setPublishSettings({ ...publishSettings, description: e.target.value })}
+          <label className="text-sm font-medium mb-2 block">Description</label>
+          <textarea placeholder="Describe your strategy, its performance, and best use cases..." > setPublishSettings({ ...publishSettings, description: e.target.value })}
             rows={4}
           />
         </div>
 
         <div>
-          <label >Tags</label>
-          <Input
-            placeholder="momentum, RSI, scalping (comma separated)"
-            value={publishSettings.tags}
-            onChange={(e) => setPublishSettings({ ...publishSettings, tags: e.target.value })}
+          <label className="text-sm font-medium mb-2 block">Tags</label>
+          <input placeholder="momentum, RSI, scalping (comma separated)" > setPublishSettings({ ...publishSettings, tags: e.target.value })}
           />
         </div>
 
-        <div >
-          <h3 >Visibility Settings</h3>
+        <div className="space-y-4">
+          <h3 className="font-semibold">Visibility Settings</h3>
           
-          <div >
-            <Button
-              variant={publishSettings.visibility === 'private' ? 'default' : 'outline'}
-              style={{ display: "flex", alignItems: "center" }}
-              onClick={() => setPublishSettings({ ...publishSettings, visibility: 'private' })}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'private' })}
             >
-              <span style={{fontSize: '16px'}}>🔒</span>
+              <lock  >
               Private
             </Button>
-            <Button
-              variant={publishSettings.visibility === 'unlisted' ? 'default' : 'outline'}
-              style={{ display: "flex", alignItems: "center" }}
-              onClick={() => setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
+            <button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
             >
-              <span style={{fontSize: '16px'}}>👁️</span>
+              <eye  >
               Unlisted
             </Button>
-            <Button
-              variant={publishSettings.visibility === 'public' ? 'default' : 'outline'}
-              style={{ display: "flex", alignItems: "center" }}
-              onClick={() => setPublishSettings({ ...publishSettings, visibility: 'public' })}
+            <button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'public' })}
               disabled={!isPro}
             >
-              <span style={{fontSize: '16px'}}>🌐</span>
+              <globe  >
               Public
-              {!isPro && <Crown  />}
+              {!isPro && <crown  >}
             </Button>
           </div>
 
           {!isPro && publishSettings.visibility === 'public' && (
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Crown  />
-              <p >
+            <div className="p-3 bg-yellow-500/10 rounded-lg flex items-center gap-2">
+              <crown  >
+              <p className="text-sm text-yellow-600">
                 Pro subscription required for public publishing
               </p>
             </div>
           )}
         </div>
 
-        <div >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="pro-gate" >
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <label htmlFor="pro-gate" className="text-sm font-medium">
               Require Pro for Access
             </label>
-            <Switch
-              id="pro-gate"
-              checked={publishSettings.requiresPro}
-              onCheckedChange={(checked) => 
+            <switch id="pro-gate" > 
                 setPublishSettings({ ...publishSettings, requiresPro: checked })
               }
               disabled={!isPro}
             />
           </div>
 
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="download" >
+          <div className="flex items-center justify-between">
+            <label htmlFor="download" className="text-sm font-medium">
               Allow Downloads
             </label>
-            <Switch
-              id="download"
-              checked={publishSettings.allowDownload}
-              onCheckedChange={(checked) => 
+            <switch id="download" > 
                 setPublishSettings({ ...publishSettings, allowDownload: checked })
               }
             />
@@ -146,59 +129,48 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
 
         {publishSettings.visibility === 'public' && isPro && (
           <div>
-            <label >
+            <label className="text-sm font-medium mb-2 block">
               Price (optional, 0 for free)
             </label>
-            <Input
-              type="number"
-              placeholder="0"
-              value={publishSettings.price}
-              onChange={(e) => setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
+            <input type="number" placeholder="0" > setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
             />
           </div>
         )}
 
-        <Button
-          onClick={handlePublish}
-          disabled={isPublishing || !publishSettings.title}
-          style={{ width: "100%" }}
-        >
+        <button  style={{ width: "100%" }}>
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
         </Button>
 
         {publishedUrl && (
-          <div style={{ padding: "16px" }}>
-            <p >
+          <div className="p-4 bg-green-500/10 rounded-lg">
+            <p className="text-sm font-medium text-green-600 mb-2">
               Strategy published successfully!
             </p>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Input
-                value={publishedUrl}
-                readOnly
-                
-              />
-              <Button size="sm" variant="outline">
+            <div className="flex items-center gap-2">
+              <input  style={{ fontSize: "0.75rem" }}>
+              <button size="sm" variant="outline" >
                 Copy Link
               </Button>
             </div>
           </div>
         )}
 
-        <div >
-          <div >
-            <p style={{ fontWeight: "700" }}>0</p>
-            <p >Views</p>
+        <div className="grid grid-cols-3 gap-4 text-center">
+          <div className="p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold">0</p>
+            <p className="text-xs text-muted-foreground">Views</p>
           </div>
-          <div >
-            <p style={{ fontWeight: "700" }}>0</p>
-            <p >Downloads</p>
+          <div className="p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold">0</p>
+            <p className="text-xs text-muted-foreground">Downloads</p>
           </div>
-          <div >
-            <p style={{ fontWeight: "700" }}>$0</p>
-            <p >Earned</p>
+          <div className="p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold">$0</p>
+            <p className="text-xs text-muted-foreground">Earned</p>
           </div>
         </div>
       </div>
     </Card>
   );
 }; 
+export const lovable = { component: true };

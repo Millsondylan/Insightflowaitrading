@@ -8,7 +8,7 @@ interface ScrollRevealOptions {
 }
 
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<htmlelement  >(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -66,3 +66,5 @@ export const ScrollSection = ({
     </section>
   );
 };
+
+export const lovable = { component: true };

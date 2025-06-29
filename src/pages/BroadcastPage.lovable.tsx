@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Radio, Send } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const mockChat = [
     { user: 'CryptoWhale', message: 'Great analysis on the current market.' },
@@ -9,41 +13,42 @@ const mockChat = [
 export default function BroadcastPage() {
   return (
     <div>
-        <Link to="/academy" style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
-            <ArrowLeft size={16} />
+        <link to="/academy" style={{ display: "flex", alignItems: "center" }}>
+            <arrowleft  >
             Back to Academy
         </Link>
-        <div >
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Main Video Player */}
-            <div >
-                <div style={{ backgroundColor: "black", border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <p >Live video stream would be here.</p>
+            <div className="lg:col-span-2 space-y-4">
+                <div className="bg-black border border-white/10 rounded-xl aspect-video flex items-center justify-center">
+                    <p className="text-gray-500">Live video stream would be here.</p>
                 </div>
                 <div>
-                    <h1 style={{ fontWeight: "700", color: "white" }}>Live Market Analysis with TraderPro</h1>
-                    <p style={{ color: "#9CA3AF" }}>Discussing Q3 earnings and macro trends.</p>
+                    <h1 className="text-2xl font-bold text-white">Live Market Analysis with TraderPro</h1>
+                    <p className="text-gray-400">Discussing Q3 earnings and macro trends.</p>
                 </div>
             </div>
 
             {/* Chat Sidebar */}
-            <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", display: "flex", flexDirection: "column" }}>
-                <div style={{ padding: "16px" }}>
-                    <h3 style={{ color: "white", display: "flex", alignItems: "center" }}><Radio size={18} /> Live Chat</h3>
+            <div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm h-full flex flex-col">
+                <div className="p-4 border-b border-white/10">
+                    <h3 className="font-semibold text-white flex items-center gap-2"><radio  > Live Chat</h3>
                 </div>
-                <div style={{ padding: "16px" }}>
+                <div className="flex-grow p-4 space-y-4 overflow-y-auto">
                     {mockChat.map((chat, index) => (
-                        <div key={index} >
-                            <span >{chat.user}: </span>
-                            <span >{chat.message}</span>
+                        <div key={index} className="text-sm">
+                            <span className="font-semibold text-blue-400">{chat.user}: </span>
+                            <span className="text-gray-300">{chat.message}</span>
                         </div>
                     ))}
                 </div>
-                <div style={{ padding: "16px", display: "flex" }}>
-                    <Textarea placeholder="Say something..."  rows={1}/>
-                    <Button><Send size={16} /></Button>
+                <div className="p-4 border-t border-white/10 flex gap-2">
+                    <textarea placeholder="Say something..." style={{ fontSize: "0.875rem" }}>
+                    <button  ><send  ></Button>
                 </div>
             </div>
         </div>
     </div>
   );
 } 
+export const lovable = { component: true };

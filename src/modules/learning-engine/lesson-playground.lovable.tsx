@@ -1,11 +1,15 @@
 // TODO: implement interactive lesson playground
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
+import { Play, RotateCcw, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
 
 interface LessonPlaygroundProps {
   lessonId: string;
 }
 
-export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) => {
+export const LessonPlayground: React.FC<lessonplaygroundprops  > = ({ lessonId }) => {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [userCode, setUserCode] = React.useState('');
   const [testResults, setTestResults] = React.useState<any[]>([]);
@@ -58,41 +62,41 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
   const progress = ((currentStep + 1) / lesson.steps.length) * 100;
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <div >
-        <h2 style={{ fontWeight: "700" }}>{lesson.title}</h2>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Progress value={progress}  />
-          <span >
+    <card  >
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
+        <div className="flex items-center gap-4">
+          <progress  >
+          <span className="text-sm text-muted-foreground">
             Step {currentStep + 1} of {lesson.steps.length}
           </span>
         </div>
       </div>
 
-      <div >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <h3 style={{ display: "flex", alignItems: "center" }}>
-            <span style={{fontSize: '16px'}}>❓</span>
+          <h3 className="font-semibold mb-3 flex items-center gap-2">
+            <helpcircle  >
             {lesson.steps[currentStep].instruction}
           </h3>
           
-          <div >
+          <div className="space-y-4">
             <div>
-              <label >Your Code:</label>
+              <label className="text-sm text-muted-foreground">Your Code:</label>
               <textarea
-                style={{ width: "100%" }}
+                className="w-full h-32 p-3 mt-1 bg-secondary/20 rounded-lg font-mono text-sm"
                 value={userCode || lesson.steps[currentStep].starter}
                 onChange={(e) => setUserCode(e.target.value)}
               />
             </div>
 
-            <div style={{ display: "flex" }}>
-              <Button onClick={runTests} disabled={isRunning} >
-                <Play  />
+            <div className="flex gap-2">
+              <button  >
+                <play  >
                 {isRunning ? 'Running...' : 'Run Tests'}
               </Button>
-              <Button variant="outline" onClick={() => setUserCode('')}>
-                <RotateCcw  />
+              <button variant="outline" > setUserCode('')}>
+                <rotateccw  >
                 Reset
               </Button>
             </div>
@@ -100,10 +104,10 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
         </div>
 
         <div>
-          <h3 >Test Results</h3>
+          <h3 className="font-semibold mb-3">Test Results</h3>
           
           {testResults.length > 0 ? (
-            <div >
+            <div className="space-y-2">
               {testResults.map((result, i) => (
                 <div
                   key={i}
@@ -114,29 +118,29 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
                   }`}
                 >
                   {result.passed ? (
-                    <span style={{fontSize: '16px'}}>✅</span>
+                    <checkcircle  >
                   ) : (
-                    <span style={{fontSize: '16px'}}>❌</span>
+                    <xcircle  >
                   )}
-                  <span >{result.name}</span>
+                  <span className="text-sm">{result.name}</span>
                 </div>
               ))}
               
               {testResults.every(r => r.passed) && (
-                <Button onClick={nextStep} style={{ width: "100%" }}>
+                <button  style={{ width: "100%" }}>
                   Continue to Next Step
                 </Button>
               )}
             </div>
           ) : (
-            <div style={{ padding: "32px" }}>
+            <div className="p-8 text-center text-muted-foreground">
               <p>Run your code to see test results</p>
             </div>
           )}
 
-          <div style={{ padding: "16px" }}>
-            <h4 >Hint</h4>
-            <p >
+          <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
+            <h4 className="font-medium mb-2">Hint</h4>
+            <p className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
             </p>
           </div>
@@ -145,3 +149,4 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
     </Card>
   );
 }; 
+export const lovable = { component: true };

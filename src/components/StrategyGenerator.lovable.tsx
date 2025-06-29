@@ -10,7 +10,7 @@ type StrategyOutput = {
   warning?: string;
 };
 
-async function generateMockStrategy(input: string): Promise<StrategyOutput> {
+async function generateMockStrategy(input: string): Promise<strategyoutput  > {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1500));
   
@@ -71,11 +71,11 @@ interface StrategyGeneratorProps {
 const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<StrategyOutput | null>(null);
-  const [parsedRules, setParsedRules] = useState<ParsedRule[]>([]);
+  const [result, setResult] = useState<strategyoutput  >(null);
+  const [parsedRules, setParsedRules] = useState<parsedrule  >([]);
   const [showParsed, setShowParsed] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<htmlformelement  >) => {
     e.preventDefault();
     if (!input.trim()) return;
     
@@ -137,21 +137,21 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   };
 
   return (
-    <div >
-      <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
+    <div className="space-y-6">
+      <div className="rounded-xl p-6 border border-white/10 backdrop-blur-md bg-black/30 space-y-6 shadow-md">
         {/* Input Section */}
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit} className="space-y-4">
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Describe your setup idea (e.g. breakout with EMA cross)"
-            style={{ color: "white", width: "100%" }}
+            className="bg-black/20 text-white w-full p-3 rounded-md outline-none resize-none h-32 placeholder:text-gray-500 focus:ring-2 focus:ring-cyan-500/30 transition-all"
             disabled={loading}
           />
           <button
             type="submit"
             disabled={!input.trim() || loading}
-            style={{ paddingLeft: "16px", paddingRight: "16px", color: "white", display: "flex", alignItems: "center" }}
+            className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2"
           >
             <span>🧠</span>
             <span>{loading ? "Generating..." : "Generate Strategy"}</span>
@@ -160,25 +160,25 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
         {/* Loading State */}
         {loading && (
-          <div >
-            <div  />
-            <div >
-              <div  />
-              <div  />
-              <div  />
+          <div className="space-y-4">
+            <div className="bg-white/10 h-8 rounded animate-pulse" />
+            <div className="space-y-2">
+              <div className="bg-white/10 h-4 rounded animate-pulse" />
+              <div className="bg-white/10 h-4 rounded animate-pulse w-5/6" />
+              <div className="bg-white/10 h-4 rounded animate-pulse w-4/6" />
             </div>
-            <div >
-              <div  />
-              <div  />
+            <div className="space-y-2">
+              <div className="bg-white/10 h-4 rounded animate-pulse w-4/6" />
+              <div className="bg-white/10 h-4 rounded animate-pulse w-3/6" />
             </div>
           </div>
         )}
 
         {/* Result Display */}
         {result && !loading && (
-          <div >
+          <div className="space-y-6 animate-in fade-in duration-500">
             {/* Title */}
-            <h2 style={{ fontWeight: "700" }}>
+            <h2 className="text-cyan-300 text-xl font-bold">
               {result.title}
             </h2>
 
@@ -186,38 +186,38 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             {parsedRules.length > 0 && (
               <button
                 onClick={() => setShowParsed(!showParsed)}
-                
+                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
               >
                 {showParsed ? '📝 Show Original' : '🔍 Show Parsed Analysis'}
               </button>
             )}
 
             {/* Rules Display */}
-            <div >
-              <h3 style={{ display: "flex", alignItems: "center" }}>
+            <div className="space-y-2">
+              <h3 className="text-white/80 font-semibold flex items-center gap-2">
                 <span>📌</span> Strategy Rules
               </h3>
               
               {showParsed ? (
                 // Parsed Rules View
-                <div >
+                <div className="space-y-3">
                   {parsedRules.map((rule, index) => (
-                    <div key={index} >
-                      <div style={{ display: "flex" }}>
+                    <div key={index} className="bg-black/20 p-3 rounded-lg space-y-2">
+                      <div className="flex items-start gap-2">
                         <span>{getRuleTypeIcon(rule.type)}</span>
-                        <div >
-                          <p >{rule.raw}</p>
-                          <div style={{ display: "flex" }}>
+                        <div className="flex-1">
+                          <p className="text-white/90 text-sm">{rule.raw}</p>
+                          <div className="mt-2 flex flex-wrap gap-2 text-xs">
                             <span className={`${getRuleTypeColor(rule.type)} font-semibold`}>
                               {rule.type.toUpperCase()}
                             </span>
                             {rule.timeframe && (
-                              <span >
+                              <span className="text-yellow-400">
                                 ⏱ {rule.timeframe}
                               </span>
                             )}
                             {rule.indicators.length > 0 && (
-                              <span >
+                              <span className="text-purple-400">
                                 📊 {rule.indicators.join(', ')}
                               </span>
                             )}
@@ -229,9 +229,9 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
                 </div>
               ) : (
                 // Original Rules View
-                <ol >
+                <ol className="list-decimal space-y-2 pl-5 text-white/90">
                   {result.rules.map((rule, index) => (
-                    <li key={index} >
+                    <li key={index} className="leading-relaxed">
                       {rule}
                     </li>
                   ))}
@@ -240,11 +240,11 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             </div>
 
             {/* Checklist */}
-            <div >
-              <h3 style={{ display: "flex", alignItems: "center" }}>
+            <div className="space-y-2">
+              <h3 className="text-white/80 font-semibold flex items-center gap-2">
                 <span>✅</span> Entry Checklist
               </h3>
-              <ul >
+              <ul className="list-disc pl-6 text-green-400 space-y-1">
                 {result.checklist.map((item, index) => (
                   <li key={index}>
                     {item}
@@ -255,7 +255,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
             {/* Warning */}
             {result.warning && (
-              <div style={{ border: "1px solid #374151", padding: "16px" }}>
+              <div className="bg-yellow-800/40 border border-yellow-400/20 p-4 rounded text-yellow-200 mt-4">
                 {result.warning}
               </div>
             )}
@@ -265,18 +265,15 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
       {/* Strategy Copilot - Shows after strategy is generated */}
       {result && !loading && (
-        <div >
-          <StrategyCopilot 
-            strategy={result} 
-            onSuggestionApply={handleSuggestionApply}
-          />
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <strategycopilot  >
         </div>
       )}
 
       {/* Strategy Export - Shows after strategy is generated */}
       {result && !loading && (
-        <div  style={{ animationDelay: '200ms' }}>
-          <StrategyExport strategy={result} />
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
+          <strategyexport  >
         </div>
       )}
     </div>
@@ -284,3 +281,4 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 };
 
 export default StrategyGenerator; 
+export const lovable = { component: true };

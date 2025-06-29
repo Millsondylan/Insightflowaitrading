@@ -1,11 +1,15 @@
 // TODO: implement emotion tagging system
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Heart, Brain, Zap, TrendingUp, TrendingDown } from 'lucide-react';
 
 interface EmotionTaggingProps {
   onTagSelect?: (emotion: string) => void;
 }
 
-export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) => {
+export const EmotionTagging: React.FC<emotiontaggingprops  > = ({ onTagSelect }) => {
   const emotions = [
     { id: 'confident', label: 'Confident', icon: TrendingUp, color: 'text-green-500' },
     { id: 'anxious', label: 'Anxious', icon: Brain, color: 'text-yellow-500' },
@@ -28,26 +32,22 @@ export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) =
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Emotion Tagging</h2>
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Emotion Tagging</h2>
       
-      <div >
+      <div className="space-y-6">
         <div>
-          <p >
+          <p className="text-sm text-muted-foreground mb-3">
             How are you feeling about your trading?
           </p>
-          <div >
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {emotions.map((emotion) => {
               const Icon = emotion.icon;
               return (
-                <Button
-                  key={emotion.id}
-                  variant={selectedEmotion === emotion.id ? 'default' : 'outline'}
-                  style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-                  onClick={() => handleEmotionSelect(emotion.id)}
+                <button  style={{ display: "flex", alignItems: "center" }}> handleEmotionSelect(emotion.id)}
                 >
-                  <Icon className={`h-6 w-6 ${emotion.color}`} />
-                  <span >{emotion.label}</span>
+                  <icon  >
+                  <span className="text-xs">{emotion.label}</span>
                 </Button>
               );
             })}
@@ -55,8 +55,8 @@ export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) =
         </div>
 
         {selectedEmotion && (
-          <div style={{ padding: "16px" }}>
-            <p >
+          <div className="p-4 bg-secondary/20 rounded-lg">
+            <p className="text-sm">
               You're feeling <strong>{emotions.find(e => e.id === selectedEmotion)?.label}</strong>.
               This emotion will be tagged with your current trading activity.
             </p>
@@ -64,32 +64,32 @@ export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) =
         )}
 
         <div>
-          <h3 >Recent Emotion Tags</h3>
-          <div >
+          <h3 className="font-semibold mb-3">Recent Emotion Tags</h3>
+          <div className="space-y-2">
             {recentTags.map((tag, i) => {
               const emotion = emotions.find(e => e.id === tag.emotion);
               const Icon = emotion?.icon || Heart;
               
               return (
-                <div key={i} style={{ display: "flex", alignItems: "center", border: "1px solid #374151" }}>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <Icon className={`h-5 w-5 ${emotion?.color}`} />
+                <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <icon  >
                     <div>
-                      <p >{emotion?.label}</p>
-                      <p >{tag.context}</p>
+                      <p className="font-medium">{emotion?.label}</p>
+                      <p className="text-sm text-muted-foreground">{tag.context}</p>
                     </div>
                   </div>
-                  <span >{tag.time}</span>
+                  <span className="text-xs text-muted-foreground">{tag.time}</span>
                 </div>
               );
             })}
           </div>
         </div>
 
-        <div style={{ padding: "16px" }}>
-          <h4 >Emotion Insights</h4>
-          <p >
-            Your best trades happen when you're feeling <span >confident</span> and <span >calm</span>.
+        <div className="p-4 bg-primary/5 rounded-lg">
+          <h4 className="font-medium mb-2">Emotion Insights</h4>
+          <p className="text-sm text-muted-foreground">
+            Your best trades happen when you're feeling <span className="text-green-500 font-medium">confident</span> and <span className="text-blue-500 font-medium">calm</span>.
             Consider meditation before trading to maintain emotional balance.
           </p>
         </div>
@@ -97,3 +97,4 @@ export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) =
     </Card>
   );
 }; 
+export const lovable = { component: true };

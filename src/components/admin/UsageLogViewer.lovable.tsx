@@ -1,4 +1,20 @@
 import * as React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Calendar, Clock, Filter, Search, Inbox } from "lucide-react";
 
 type UsageLog = { id: string; userEmail: string; action: string; timestamp: string };
 
@@ -11,10 +27,10 @@ type ActionFilter = "all" | "login" | "api" | "feature";
 
 export default function UsageLogViewer({ logs }: Props) {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [timeFilter, setTimeFilter] = React.useState<TimeFilter>("all");
-  const [actionFilter, setActionFilter] = React.useState<ActionFilter>("all");
-  const [filteredLogs, setFilteredLogs] = React.useState<UsageLog[]>(logs);
-  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [timeFilter, setTimeFilter] = React.useState<timefilter  >("all");
+  const [actionFilter, setActionFilter] = React.useState<actionfilter  >("all");
+  const [filteredLogs, setFilteredLogs] = React.useState<usagelog  >(logs);
+  const containerRef = React.useRef<htmldivelement  >(null);
 
   // Apply filters when any filter changes
   React.useEffect(() => {
@@ -82,76 +98,76 @@ export default function UsageLogViewer({ logs }: Props) {
   };
 
   return (
-    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151", color: "white" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <h2 style={{ color: "white" }}>Usage Logs</h2>
+    <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold text-white">Usage Logs</h2>
         
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="flex items-center space-x-2">
           {/* Search input */}
-          <div >
-            <span style={{fontSize: '16px'}}>🔍</span>
+          <div className="relative">
+            <search  >
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search logs..."
-              style={{ border: "1px solid #374151", color: "white" }}
+              className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
             />
           </div>
           
           {/* Time filter */}
-          <Select value={timeFilter} onValueChange={(value) => setTimeFilter(value as TimeFilter)}>
-            <SelectTrigger style={{ color: "white" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <span style={{fontSize: '16px'}}>⏰</span>
-                <SelectValue />
+          <select  > setTimeFilter(value as TimeFilter)}>
+            <selecttrigger  style={{ color: "white" }}>
+              <div className="flex items-center">
+                <clock  >
+                <selectvalue  >
               </div>
             </SelectTrigger>
-            <SelectContent style={{ color: "white" }}>
-              <SelectItem value="all">All Time</SelectItem>
-              <SelectItem value="today">Today</SelectItem>
-              <SelectItem value="week">This Week</SelectItem>
-              <SelectItem value="month">This Month</SelectItem>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="all" >All Time</SelectItem>
+              <selectitem value="today" >Today</SelectItem>
+              <selectitem value="week" >This Week</SelectItem>
+              <selectitem value="month" >This Month</SelectItem>
             </SelectContent>
           </Select>
           
           {/* Action filter */}
-          <Select value={actionFilter} onValueChange={(value) => setActionFilter(value as ActionFilter)}>
-            <SelectTrigger style={{ color: "white" }}>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <Filter style={{ color: "#9CA3AF" }} />
-                <SelectValue />
+          <select  > setActionFilter(value as ActionFilter)}>
+            <selecttrigger  style={{ color: "white" }}>
+              <div className="flex items-center">
+                <filter  >
+                <selectvalue  >
               </div>
             </SelectTrigger>
-            <SelectContent style={{ color: "white" }}>
-              <SelectItem value="all">All Actions</SelectItem>
-              <SelectItem value="login">Login</SelectItem>
-              <SelectItem value="api">API Usage</SelectItem>
-              <SelectItem value="feature">Feature Access</SelectItem>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="all" >All Actions</SelectItem>
+              <selectitem value="login" >Login</SelectItem>
+              <selectitem value="api" >API Usage</SelectItem>
+              <selectitem value="feature" >Feature Access</SelectItem>
             </SelectContent>
           </Select>
         </div>
       </div>
 
-      <div style={{ border: "1px solid #374151" }}>
+      <div className="rounded-lg border border-white/10 overflow-hidden">
         <div 
           ref={containerRef}
-          
+          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
         >
-          <Table>
-            <TableHeader style={{ backgroundColor: "black" }}>
-              <TableRow >
-                <TableHead >User</TableHead>
-                <TableHead >Action</TableHead>
-                <TableHead >Timestamp</TableHead>
+          <table  >
+            <tableheader  style={{ backgroundColor: "black" }}>
+              <tablerow  >
+                <tablehead  >User</TableHead>
+                <tablehead  >Action</TableHead>
+                <tablehead  >Timestamp</TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody>
+            <tablebody  >
               {filteredLogs.length > 0 ? (
                 filteredLogs.map((log) => (
-                  <TableRow key={log.id} >
-                    <TableCell>{log.userEmail}</TableCell>
-                    <TableCell>
+                  <tablerow  >
+                    <tablecell  >{log.userEmail}</TableCell>
+                    <tablecell  >
                       <span className={
                         log.action.toLowerCase().includes("error") ? "text-red-400" :
                         log.action.toLowerCase().includes("warn") ? "text-yellow-400" :
@@ -160,21 +176,21 @@ export default function UsageLogViewer({ logs }: Props) {
                         {log.action}
                       </span>
                     </TableCell>
-                    <TableCell style={{ color: "#9CA3AF" }}>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <span style={{fontSize: '16px'}}>📅</span>
+                    <tablecell  >
+                      <div className="flex items-center">
+                        <calendar  >
                         {formatTimestamp(log.timestamp)}
                       </div>
                     </TableCell>
                   </TableRow>
                 ))
               ) : (
-                <TableRow>
-                  <TableCell colSpan={3} >
-                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                      <Inbox  />
+                <tablerow  >
+                  <tablecell  >
+                    <div className="flex flex-col items-center gap-2 text-gray-500">
+                      <inbox  >
                       <p>No logs found</p>
-                      <p >Try adjusting your filters</p>
+                      <p className="text-xs">Try adjusting your filters</p>
                     </div>
                   </TableCell>
                 </TableRow>
@@ -184,13 +200,13 @@ export default function UsageLogViewer({ logs }: Props) {
         </div>
       </div>
       
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="text-xs text-gray-500 flex justify-between items-center">
         <div>
           Showing {filteredLogs.length} of {logs.length} logs
         </div>
         
         {logs.length > 0 && (
-          <div >
+          <div className="text-right">
             Latest activity: {formatTimestamp(logs[0].timestamp)}
           </div>
         )}
@@ -198,3 +214,4 @@ export default function UsageLogViewer({ logs }: Props) {
     </div>
   );
 } 
+export const lovable = { component: true };

@@ -130,33 +130,22 @@ export const LovableDemo = () => {
 
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         {activeTab === 'sentiment' && (
-          <SentimentDisplay
-            symbol="BTC/USD"
-            apiKey="demo-key"
-          />
+          <sentimentdisplay symbol="BTC/USD" apiKey="demo-key" >
         )}
 
         {activeTab === 'optimizer' && (
-          <MLStrategyOptimizerUI
-            strategy={demoStrategy}
-            onOptimizationComplete={handleOptimizationComplete}
-          />
+          <mlstrategyoptimizerui  >
         )}
 
         {activeTab === 'reflection' && (
-          <ReflectionGenerator
-            trade={demoTrade}
-            onReflectionGenerated={handleReflectionGenerated}
-          />
+          <reflectiongenerator  >
         )}
 
         {activeTab === 'subscription' && (
-          <PaymentForm
-            selectedTier={demoTier}
-            onPaymentComplete={handlePaymentComplete}
-          />
+          <paymentform  >
         )}
       </div>
     </div>
   );
 }; 
+export const lovable = { component: true };

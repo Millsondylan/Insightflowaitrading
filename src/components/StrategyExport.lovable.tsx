@@ -59,12 +59,12 @@ const StrategyExport = ({ result }: Props) => {
   };
 
   return (
-    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151" }}>
-        <h3 style={{ fontWeight: "700", color: "white" }}>Export Results</h3>
-        <div style={{ display: "flex" }}>
+    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-md space-y-4">
+        <h3 className="text-lg font-bold text-white">Export Results</h3>
+        <div className="flex flex-wrap gap-4">
             <button
               onClick={handleExportJSON}
-              style={{ display: "flex", alignItems: "center", color: "white", paddingLeft: "16px", paddingRight: "16px" }}
+              className="flex items-center gap-2 bg-white/10 hover:bg-cyan-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300"
               title="Download full backtest result as a JSON file"
             >
               🧾 Export JSON
@@ -72,7 +72,7 @@ const StrategyExport = ({ result }: Props) => {
 
             <button
               onClick={handleExportCSV}
-              style={{ display: "flex", alignItems: "center", color: "white", paddingLeft: "16px", paddingRight: "16px" }}
+              className="flex items-center gap-2 bg-white/10 hover:bg-green-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300"
               title="Download trade list as a CSV file"
             >
               📊 Export CSV
@@ -83,3 +83,4 @@ const StrategyExport = ({ result }: Props) => {
 };
 
 export default StrategyExport; 
+export const lovable = { component: true };

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import { verifyOwnership } from "@/lib/wallet/verifyOwnership";
 import { checkSubscription } from "@/lib/wallet/checkSubscription";
 
@@ -114,23 +115,23 @@ export default function WalletConnect({ onVerified }: Props) {
   };
 
   return (
-    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <h2 style={{ fontWeight: "700" }}>Wallet Connection</h2>
-        <p >
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
+      <div className="flex flex-col space-y-2">
+        <h2 className="text-xl font-bold">Wallet Connection</h2>
+        <p className="text-white/70 text-sm">
           Connect your wallet to verify ownership and access premium features.
         </p>
       </div>
 
       {!isMetaMaskInstalled && (
-        <div style={{ border: "1px solid #374151", padding: "16px" }}>
+        <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
           MetaMask is not installed. Please install MetaMask to continue.
-          <div >
+          <div className="mt-2">
             <a
               href="https://metamask.io/download/"
               target="_blank"
               rel="noopener noreferrer"
-              
+              className="text-cyan-400 hover:underline"
             >
               Download MetaMask
             </a>
@@ -139,35 +140,35 @@ export default function WalletConnect({ onVerified }: Props) {
       )}
 
       {error && (
-        <div style={{ border: "1px solid #374151", padding: "16px" }}>
+        <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
           {error}
         </div>
       )}
 
       {address && (
-        <div style={{ padding: "16px" }}>
-          <div style={{ color: "#9CA3AF" }}>Connected Address:</div>
-          <div >{address}</div>
+        <div className="bg-gray-800/50 rounded-lg p-4 break-all">
+          <div className="text-sm text-gray-400">Connected Address:</div>
+          <div className="font-mono">{address}</div>
         </div>
       )}
 
       {status === "verified" && (
         <div className={`rounded-lg p-4 ${isSubscribed ? "bg-green-900/20 border border-green-500/30" : "bg-yellow-900/20 border border-yellow-500/30"}`}>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="flex items-center">
             {isSubscribed ? (
               <>
-                <span >✓</span>
+                <span className="text-green-400 text-xl mr-2">✓</span>
                 <div>
-                  <div >Subscription Active</div>
-                  <div >You have access to all premium features.</div>
+                  <div className="font-semibold">Subscription Active</div>
+                  <div className="text-sm text-white/70">You have access to all premium features.</div>
                 </div>
               </>
             ) : (
               <>
-                <span >⚠</span>
+                <span className="text-yellow-400 text-xl mr-2">⚠</span>
                 <div>
-                  <div >No Active Subscription</div>
-                  <div >Consider upgrading to access premium features.</div>
+                  <div className="font-semibold">No Active Subscription</div>
+                  <div className="text-sm text-white/70">Consider upgrading to access premium features.</div>
                 </div>
               </>
             )}
@@ -175,28 +176,19 @@ export default function WalletConnect({ onVerified }: Props) {
         </div>
       )}
 
-      <div >
+      <div className="pt-2">
         {!address ? (
-          <Button
-            onClick={connectWallet}
-            disabled={status === "connecting" || !isMetaMaskInstalled}
-            style={{ width: "100%" }}
-          >
+          <button  style={{ width: "100%" }}>
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Button>
         ) : status === "verified" ? (
-          <Button
-            onClick={() => window.location.reload()}
-            style={{ width: "100%" }}
+          <button  > window.location.reload()}
+            className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect
           </Button>
         ) : (
-          <Button
-            onClick={verifyWallet}
-            disabled={status === "verifying"}
-            style={{ width: "100%" }}
-          >
+          <button  style={{ width: "100%" }}>
             {status === "verifying" ? "Verifying..." : "🔑 Verify Ownership"}
           </Button>
         )}
@@ -204,3 +196,4 @@ export default function WalletConnect({ onVerified }: Props) {
     </div>
   );
 } 
+export const lovable = { component: true };

@@ -13,12 +13,12 @@ type Props = {
 
 export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) {
   return (
-    <div >
-      <div style={{ display: "flex", alignItems: "center" }}>
+    <div className="theme-vault space-y-6">
+      <div className="flex items-center gap-2">
         {users.map((u) => (
           <span
             key={u.id}
-            style={{ color: "white" }}
+            className="px-3 py-1 text-xs rounded-full text-white"
             style={{ backgroundColor: u.color }}
           >
             🧑‍💻 {u.name}
@@ -28,15 +28,15 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
       <input
         value={strategy.title}
         onChange={(e) => onUpdate({ ...strategy, title: e.target.value })}
-        style={{ width: "100%", color: "white", fontWeight: "700" }}
+        className="bg-white/10 p-2 rounded w-full text-white text-lg font-bold"
       />
       <textarea
         value={strategy.notes}
         onChange={(e) => onUpdate({ ...strategy, notes: e.target.value })}
         placeholder="Strategy notes..."
-        style={{ padding: "16px", width: "100%" }}
+        className="bg-white/5 p-4 rounded w-full text-white/80"
       />
-      <div >
+      <div className="space-y-2">
         {strategy.rules.map((rule, i) => (
           <input
             key={i}
@@ -46,10 +46,11 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
               newRules[i] = e.target.value;
               onUpdate({ ...strategy, rules: newRules });
             }}
-            style={{ width: "100%", color: "white" }}
+            className="bg-white/5 p-2 rounded w-full text-white"
           />
         ))}
       </div>
     </div>
   );
 } 
+export const lovable = { component: true };

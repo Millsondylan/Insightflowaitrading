@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
+import { ScrollText, PlusCircle, Bot, Rss } from 'lucide-react';
 
 const mockEntries = [
     { id: '1', title: "NVDA Earnings Play", pnl: 450.75, sentiment: 'Confident', date: '2 days ago', tags: ['NVDA', 'Earnings'] },
@@ -10,15 +14,15 @@ const mockEntries = [
 const JournalEntryCard = ({ entry }: { entry: (typeof mockEntries)[0] }) => {
     const pnlColor = entry.pnl >= 0 ? 'text-green-400' : 'text-red-400';
     return (
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "16px" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-                <h4 style={{ color: "white" }}>{entry.title}</h4>
+        <div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
+            <div className="flex justify-between items-center">
+                <h4 className="font-semibold text-white">{entry.title}</h4>
                 <p className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
+            <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
                 <p>{entry.sentiment} • {entry.date}</p>
-                <div style={{ display: "flex" }}>
-                    {entry.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                <div className="flex gap-2">
+                    {entry.tags.map(tag => <badge variant="secondary" >{tag}</Badge>)}
                 </div>
             </div>
         </div>
@@ -29,60 +33,60 @@ export default function JournalPage() {
   const [newEntryText, setNewEntryText] = useState('');
 
   return (
-    <div >
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
       {/* Main Content */}
-      <div >
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="lg:col-span-2 space-y-6">
+        <div className="flex justify-between items-center">
             <div>
-                <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
-                    <span ><ScrollText  /></span>
+                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <span className="bg-white/10 p-2 rounded-lg"><scrolltext  ></span>
                     Trading Journal
                 </h1>
-                <p style={{ color: "#9CA3AF" }}>Reflect on your trades and mindset.</p>
+                <p className="text-gray-400 mt-1">Reflect on your trades and mindset.</p>
             </div>
         </div>
         
-        {mockEntries.map(entry => <JournalEntryCard key={entry.id} entry={entry} />)}
+        {mockEntries.map(entry => <journalentrycard  >)}
       </div>
 
       {/* Right Sidebar */}
-      <div >
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-            <h3 style={{ color: "white", display: "flex", alignItems: "center" }}>
-                <span style={{fontSize: '16px'}}>➕</span>
+      <div className="lg:col-span-1 space-y-6">
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
+                <pluscircle  >
                 New Journal Entry
             </h3>
-            <Textarea
-                value={newEntryText}
-                onChange={(e) => setNewEntryText(e.target.value)}
+            <textarea  > setNewEntryText(e.target.value)}
                 placeholder="What's on your mind? Capture your thoughts on recent trades..."
-                
+                className="bg-black/20 border-white/10 h-28"
             />
-            <Button style={{ width: "100%" }}>Save Entry</Button>
+            <button  style={{ width: "100%" }}>Save Entry</Button>
         </div>
 
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-            <h3 style={{ color: "white", marginBottom: "16px", display: "flex", alignItems: "center" }}>
-                <Bot size={18} />
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                <bot  >
                 AI Coach
             </h3>
-            <p style={{ color: "#9CA3AF", marginBottom: "16px" }}>Get personalized feedback on your journal entries.</p>
-            <Link to="/coach">
-                <Button variant="outline" style={{ width: "100%" }}>Ask for a Review</Button>
+            <p className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</p>
+            <link to="/coach" >
+                <button variant="outline" style={{ width: "100%" }}>Ask for a Review</Button>
             </Link>
         </div>
         
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-            <h3 style={{ color: "white", marginBottom: "16px", display: "flex", alignItems: "center" }}>
-                <Rss size={18} />
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                <rss  >
                 Insight Feed
             </h3>
-            <p style={{ color: "#9CA3AF", marginBottom: "16px" }}>Discover insights based on your trading patterns.</p>
-            <Link to="/feed">
-                <Button variant="outline" style={{ width: "100%" }}>View Your Feed</Button>
+            <p className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</p>
+            <link to="/feed" >
+                <button variant="outline" style={{ width: "100%" }}>View Your Feed</Button>
             </Link>
         </div>
       </div>
     </div>
   );
 }
+
+export const lovable = { component: true };

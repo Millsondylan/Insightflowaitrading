@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { UploadCloud, FileImage } from 'lucide-react';
 import '@/styles/vision.css';
 
 interface ChartUploaderProps {
@@ -29,23 +30,24 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
       className={`chart-uploader ${isDragActive ? 'active' : ''}`}
     >
       <input {...getInputProps()} />
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
         {isDragActive ? (
           <>
-            <span style={{fontSize: '16px'}}>📄</span>
-            <p style={{ color: "white" }}>Drop the chart here...</p>
+            <fileimage  >
+            <p className="text-lg font-semibold text-white">Drop the chart here...</p>
           </>
         ) : (
           <>
-            <span style={{fontSize: '16px'}}>⬆️</span>
-            <p style={{ color: "white" }}>Drag & drop a chart image, or click to select</p>
-            <p style={{ color: "#9CA3AF" }}>PNG or JPG supported</p>
+            <uploadcloud  >
+            <p className="text-lg font-semibold text-white">Drag & drop a chart image, or click to select</p>
+            <p className="text-sm text-gray-400">PNG or JPG supported</p>
           </>
         )}
       </div>
-      {isLoading && <div  />}
+      {isLoading && <div className="shimmer-overlay" />}
     </div>
   );
 };
 
 export default ChartUploader; 
+export const lovable = { component: true };

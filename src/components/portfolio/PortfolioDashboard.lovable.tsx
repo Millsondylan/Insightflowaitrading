@@ -18,9 +18,9 @@ type Props = {
 };
 
 const KPICard = ({ label, value, prefix = '', suffix = '' }: { label: string, value: string | number, prefix?: string, suffix?: string }) => (
-    <div style={{ padding: "16px", border: "1px solid #374151" }}>
-        <p >{label}</p>
-        <p style={{ fontWeight: "700", color: "white" }}>
+    <div className="bg-white/5 p-4 rounded-lg border border-white/10">
+        <p className="text-sm text-white/60">{label}</p>
+        <p className="text-2xl font-bold text-white">
             {prefix}{value}{suffix}
         </p>
     </div>
@@ -45,43 +45,43 @@ export const PortfolioDashboard = ({ trades }: Props) => {
   }, [trades]);
 
   return (
-    <div style={{ padding: "16px", marginTop: "32px" }}>
-      <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white" }}>Portfolio Dashboard</h1>
+    <div className="theme-portfolio p-4 md:p-6 space-y-8">
+      <h1 className="text-3xl md:text-4xl font-bold text-white">Portfolio Dashboard</h1>
       
-      <div >
-        <KPICard label="Total PnL" value={stats.totalPnl} prefix="$" />
-        <KPICard label="Win Rate" value={stats.winRate} suffix="%" />
-        <KPICard label="Avg R:R" value={stats.avgRr} />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <kpicard label="Total PnL" prefix="$" >
+        <kpicard label="Win Rate" suffix="%" >
+        <kpicard label="Avg R:R" >
       </div>
 
       <div>
-        <h2 style={{ marginBottom: "16px" }}>PnL Curve</h2>
-        <PnLCurve trades={trades} />
+        <h2 className="text-xl font-semibold text-white/90 mb-4">PnL Curve</h2>
+        <pnlcurve  >
       </div>
 
       <div>
-        <h2 style={{ marginBottom: "16px" }}>Trade History</h2>
-        <div >
-            <table style={{ width: "100%" }}>
-                <thead >
+        <h2 className="text-xl font-semibold text-white/90 mb-4">Trade History</h2>
+        <div className="overflow-x-auto bg-white/5 rounded-lg">
+            <table className="w-full text-left">
+                <thead className="bg-white/10 text-white/80 text-sm">
                     <tr>
-                        <th style={{ padding: "16px" }}>Symbol</th>
-                        <th style={{ padding: "16px" }}>PnL</th>
-                        <th style={{ padding: "16px" }}>R:R</th>
-                        <th style={{ padding: "16px" }}>Strategy</th>
-                        <th style={{ padding: "16px" }}>Timestamp</th>
+                        <th className="p-4">Symbol</th>
+                        <th className="p-4">PnL</th>
+                        <th className="p-4">R:R</th>
+                        <th className="p-4 hidden md:table-cell">Strategy</th>
+                        <th className="p-4 hidden md:table-cell">Timestamp</th>
                     </tr>
                 </thead>
-                <tbody >
+                <tbody className="text-white/80 text-sm">
                     {trades.map(trade => (
-                        <tr key={trade.id} >
-                            <td style={{ padding: "16px" }}>{trade.symbol}</td>
+                        <tr key={trade.id} className="border-b border-white/10 hover:bg-white/10">
+                            <td className="p-4">{trade.symbol}</td>
                             <td className={`p-4 ${trade.pnl > 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 ${trade.pnl.toFixed(2)}
                             </td>
-                            <td style={{ padding: "16px" }}>{trade.rr.toFixed(2)}</td>
-                            <td style={{ padding: "16px" }}>{trade.strategyId || 'N/A'}</td>
-                            <td style={{ padding: "16px" }}>{new Date(trade.exitTime).toLocaleString()}</td>
+                            <td className="p-4">{trade.rr.toFixed(2)}</td>
+                            <td className="p-4 hidden md:table-cell">{trade.strategyId || 'N/A'}</td>
+                            <td className="p-4 hidden md:table-cell">{new Date(trade.exitTime).toLocaleString()}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -91,3 +91,4 @@ export const PortfolioDashboard = ({ trades }: Props) => {
     </div>
   );
 }; 
+export const lovable = { component: true };

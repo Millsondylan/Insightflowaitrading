@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
 
 type Post = {
   title: string;
@@ -16,7 +17,7 @@ type Reply = {
 };
 
 // --- Mock Function (to be replaced with actual GPT call) ---
-const generateReply = (post: Post): Promise<Reply> => {
+const generateReply = (post: Post): Promise<reply  > => {
   return new Promise(resolve => {
     setTimeout(() => {
       let text = `Thanks for sharing your thoughts on "${post.title}". `;
@@ -35,7 +36,7 @@ const generateReply = (post: Post): Promise<Reply> => {
 
 
 const CommunityGPT = ({ post }: Props) => {
-  const [reply, setReply] = useState<Reply | null>(null);
+  const [reply, setReply] = useState<reply  >(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchReply = () => {
@@ -52,34 +53,34 @@ const CommunityGPT = ({ post }: Props) => {
   }, [post]);
 
   return (
-    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", color: "white" }}>
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+      <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
                 🧠
             </div>
             <div>
-                <p style={{ fontWeight: "700", color: "white" }}>Community AI</p>
+                <p className="font-bold text-white">Community AI</p>
                 {reply && !isLoading && (
-                    <span style={{ color: "white" }}>
+                    <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
                         {reply.tone}
                     </span>
                 )}
             </div>
           </div>
-          <Button variant="ghost" size="sm" onClick={fetchReply} disabled={isLoading}>
+          <button variant="ghost" size="sm" >
             Regenerate
           </Button>
       </div>
 
       {isLoading && (
-        <div >
+        <div className="text-white/70 animate-pulse">
             Generating AI analysis...
         </div>
       )}
 
       {reply && !isLoading && (
-        <p >
+        <p className="text-white/80 text-sm leading-relaxed pt-2">
             {reply.text}
         </p>
       )}
@@ -88,3 +89,4 @@ const CommunityGPT = ({ post }: Props) => {
 };
 
 export default CommunityGPT; 
+export const lovable = { component: true };

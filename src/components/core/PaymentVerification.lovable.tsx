@@ -4,6 +4,7 @@ import { WALLET_ADDRESSES } from '../../lib/config';
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Input } from '../ui/input';
+import { Copy, Check } from 'lucide-react';
 
 interface PaymentVerificationProps {
   onVerificationComplete?: () => void;
@@ -47,68 +48,44 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      style={{ padding: "24px", marginLeft: "auto", marginRight: "auto" }}
+      className="glass-container p-6 rounded-lg max-w-2xl mx-auto"
     >
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Payment Verification</h2>
-      <p style={{ color: "#9CA3AF" }}>
+      <h2 className="text-2xl font-bold mb-4 text-center">Payment Verification</h2>
+      <p className="text-gray-400 mb-6 text-center">
         Send your payment to one of the addresses below to activate your account.
       </p>
 
-      <Tabs 
-        value={activeTab} 
-        onValueChange={setActiveTab}
-        style={{ width: "100%" }}
-      >
-        <TabsList >
-          <TabsTrigger 
-            value="eth" 
-            
-          >
+      <tabs  style={{ width: "100%" }}>
+        <tabslist  style={{ display: "grid" }}>
+          <tabstrigger value="eth" >
             ETH
           </TabsTrigger>
-          <TabsTrigger 
-            value="usdt" 
-            
-          >
+          <tabstrigger value="usdt" >
             USDT
           </TabsTrigger>
-          <TabsTrigger 
-            value="btc" 
-            
-          >
+          <tabstrigger value="btc" >
             BTC
           </TabsTrigger>
         </TabsList>
 
         {Object.entries(wallets).map(([key, wallet]) => (
-          <TabsContent key={key} value={key} >
+          <tabscontent  >
             <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
               <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <Input 
-                  value={wallet.address} 
-                  readOnly 
-                  
-                />
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  
-                  onClick={() => handleCopy(wallet.address, key)}
+              <div className="flex items-center">
+                <input  >
+                <button variant="ghost" size="icon" > handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <span style={{fontSize: '16px'}}>✅</span> : <Copy  />}
+                  {copied === key ? <check  > : <copy  >}
                 </Button>
               </div>
             </div>
             
-            <div >
-              <p style={{ color: "#9CA3AF", marginBottom: "16px" }}>
+            <div className="text-center mt-6">
+              <p className="text-sm text-gray-400 mb-4">
                 After sending payment, click the button below to continue.
               </p>
-              <Button 
-                onClick={onVerificationComplete}
-                style={{ border: "1px solid #374151", color: "white" }}
-              >
+              <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
                 I've Sent the Payment
               </Button>
             </div>
@@ -120,3 +97,4 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
 };
 
 export default PaymentVerification; 
+export const lovable = { component: true };

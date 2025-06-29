@@ -9,7 +9,7 @@ interface ChartCanvasOverlayProps {
 }
 
 const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps) => {
-  const [hoveredZone, setHoveredZone] = useState<PatternZone | null>(null);
+  const [hoveredZone, setHoveredZone] = useState<patternzone  >(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   const handleZoneMouseEnter = (zone: PatternZone, e: React.MouseEvent) => {
@@ -31,7 +31,7 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
   };
 
   return (
-    <div >
+    <div className="chart-overlay-container">
       <img src={imageUrl} alt="Chart with pattern overlays" />
       
       {patternZones.map((zone) => (
@@ -51,21 +51,11 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
       ))}
       
       {hoveredZone && (
-        <PatternTooltip
-          label={hoveredZone.label}
-          description={hoveredZone.description}
-          confidence={hoveredZone.confidence}
-          type={hoveredZone.type}
-          style={{
-            position: 'fixed',
-            left: tooltipPosition.x,
-            top: tooltipPosition.y,
-            transform: 'translate(-50%, -100%) translateY(-10px)',
-          }}
-        />
+        <patterntooltip  >
       )}
     </div>
   );
 };
 
 export default ChartCanvasOverlay; 
+export const lovable = { component: true };

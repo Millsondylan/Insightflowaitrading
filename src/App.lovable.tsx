@@ -56,67 +56,67 @@ const queryClient = new QueryClient();
 
 export function App() {
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <AppLayout>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/auth" element={<AuthPage />} />
+    <themeprovider  >
+      <queryclientprovider  >
+        <router  >
+          <applayout  >
+            <routes  >
+              <route path="/" >} />
+              <route path="/auth" >} />
 
               {/* Strategy Routes */}
-              <Route path="/strategy/copilot" element={<StrategyCopilot />} />
-              <Route path="/strategy/export" element={<StrategyExport />} />
+              <route path="/strategy/copilot" >} />
+              <route path="/strategy/export" >} />
 
               {/* Backtest Routes */}
-              <Route path="/backtest/replay" element={<BacktestReplay />} />
+              <route path="/backtest/replay" >} />
 
               {/* Profile Routes */}
-              <Route path="/profile/risk-map" element={<ProfileRiskMap />} />
+              <route path="/profile/risk-map" >} />
 
               {/* Protected Routes */}
-              <Route path="/vault" element={<ProtectedRoute><VaultPage /></ProtectedRoute>} />
-              <Route path="/vault/:id" element={<ProtectedRoute><VaultDetailPage /></ProtectedRoute>} />
-              <Route path="/replay/:id" element={<ProtectedRoute><ReplayPage /></ProtectedRoute>} />
-              <Route path="/planner" element={<ProtectedRoute><PlannerPage /></ProtectedRoute>} />
-              <Route path="/journal" element={<ProtectedRoute><Journal /></ProtectedRoute>} />
-              <Route path="/coach" element={<ProtectedRoute><CoachPage /></ProtectedRoute>} />
-              <Route path="/feed" element={<ProtectedRoute><FeedPage /></ProtectedRoute>} />
-              <Route path="/broadcast" element={<ProtectedRoute><BroadcastPage /></ProtectedRoute>} />
+              <route path="/vault" ><vaultpage  ></ProtectedRoute>} />
+              <route path="/vault/:id" ><vaultdetailpage  ></ProtectedRoute>} />
+              <route path="/replay/:id" ><replaypage  ></ProtectedRoute>} />
+              <route path="/planner" ><plannerpage  ></ProtectedRoute>} />
+              <route path="/journal" ><journal  ></ProtectedRoute>} />
+              <route path="/coach" ><coachpage  ></ProtectedRoute>} />
+              <route path="/feed" ><feedpage  ></ProtectedRoute>} />
+              <route path="/broadcast" ><broadcastpage  ></ProtectedRoute>} />
 
               {/* New Themed Builder Routes */}
-              <Route path="/landing" element={<LandingBuilder />} />
-              <Route path="/strategy-builder" element={<StrategyBuilder />} />
-              <Route path="/journal-builder" element={<JournalBuilder />} />
-              <Route path="/academy-builder" element={<AcademyBuilder />} />
+              <route path="/landing" >} />
+              <route path="/strategy-builder" >} />
+              <route path="/journal-builder" >} />
+              <route path="/academy-builder" >} />
 
               {/* Lovable Routes */}
-              <Route path="/lovable/editor" element={<LovableEditorPage />} />
-              <Route path="/lovable/demo" element={<Demo />} />
+              <route path="/lovable/editor" >} />
+              <route path="/lovable/demo" >} />
 
               {/* Legacy Routes */}
-              <Route path="/legacy" element={<OldProtectedRoute accessLevel="subscribed"><Index /></OldProtectedRoute>} />
-              <Route path="/legacy/strategy" element={<OldProtectedRoute accessLevel="pro"><Strategy /></OldProtectedRoute>} />
-              <Route path="/legacy/vision" element={<OldProtectedRoute accessLevel="subscribed"><Vision /></OldProtectedRoute>} />
-              <Route path="/legacy/academy" element={<OldProtectedRoute accessLevel="subscribed"><Academy /></OldProtectedRoute>} />
-              <Route path="/legacy/wallet" element={<OldProtectedRoute accessLevel="subscribed"><Wallet /></OldProtectedRoute>} />
-              <Route path="/legacy/admin" element={<OldProtectedRoute accessLevel="admin"><Admin /></OldProtectedRoute>} />
+              <route path="/legacy" accessLevel="subscribed" ><index  ></OldProtectedRoute>} />
+              <route path="/legacy/strategy" accessLevel="pro" ><strategy  ></OldProtectedRoute>} />
+              <route path="/legacy/vision" accessLevel="subscribed" ><vision  ></OldProtectedRoute>} />
+              <route path="/legacy/academy" accessLevel="subscribed" ><academy  ></OldProtectedRoute>} />
+              <route path="/legacy/wallet" accessLevel="subscribed" ><wallet  ></OldProtectedRoute>} />
+              <route path="/legacy/admin" accessLevel="admin" ><admin  ></OldProtectedRoute>} />
 
               {/* Public Routes */}
-              <Route path="/markets" element={<Markets />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/digest" element={<Digest />} />
-              <Route path="/demo" element={<Demo />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/settings/notifications" element={<span style={{fontSize: '16px'}}>⚙️</span>} />
-              <Route path="/help" element={<Help />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/docs" element={<Docs />} />
-              <Route path="/chat" element={<Chat />} />
+              <route path="/markets" >} />
+              <route path="/portfolio" >} />
+              <route path="/community" >} />
+              <route path="/digest" >} />
+              <route path="/demo" >} />
+              <route path="/notifications" >} />
+              <route path="/settings/notifications" >} />
+              <route path="/help" >} />
+              <route path="/faq" >} />
+              <route path="/docs" >} />
+              <route path="/chat" >} />
 
               {/* 404 Route */}
-              <Route path="*" element={<NotFound />} />
+              <route path="*" >} />
             </Routes>
           </AppLayout>
         </Router>
@@ -124,3 +124,5 @@ export function App() {
     </ThemeProvider>
   );
 }
+
+export const lovable = { component: true };

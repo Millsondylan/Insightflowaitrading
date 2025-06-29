@@ -1,11 +1,15 @@
 // TODO: implement collaborative strategy editor
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Users, Save, Share2, Edit3 } from 'lucide-react';
 
 interface MultiplayerEditorProps {
   sessionId?: string;
 }
 
-export const MultiplayerEditor: React.FC<MultiplayerEditorProps> = ({ sessionId }) => {
+export const MultiplayerEditor: React.FC<multiplayereditorprops  > = ({ sessionId }) => {
   const [content, setContent] = React.useState(`// Collaborative Strategy Editor
 // Multiple users can edit simultaneously
 
@@ -32,33 +36,33 @@ exit_rules:
   ]);
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <span style={{fontSize: '16px'}}>👤</span>
-          <h2 style={{ fontWeight: "700" }}>Multiplayer Editor</h2>
+    <card  >
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <users  >
+          <h2 className="text-2xl font-bold">Multiplayer Editor</h2>
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ display: "flex" }}>
+        <div className="flex items-center gap-2">
+          <div className="flex -space-x-2">
             {activeUsers.map((user) => (
-              <Avatar key={user.id} >
-                <AvatarFallback style={{ backgroundColor: user.color }}>
+              <avatar  >
+                <avatarfallback  >
                   {user.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
             ))}
           </div>
-          <span >
+          <span className="text-sm text-muted-foreground ml-2">
             {activeUsers.length} active
           </span>
         </div>
       </div>
 
-      <div >
-        <div >
-          <div >
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2">
+          <div className="relative">
             <textarea
-              style={{ width: "100%", padding: "16px" }}
+              className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm resize-none"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder="Start typing your strategy..."
@@ -67,7 +71,7 @@ exit_rules:
             {activeUsers.filter(u => u.name !== 'You').map((user) => (
               <div
                 key={user.id}
-                
+                className="absolute w-0.5 h-5 animate-pulse"
                 style={{
                   backgroundColor: user.color,
                   top: `${user.cursor.line * 20}px`,
@@ -75,7 +79,7 @@ exit_rules:
                 }}
               >
                 <span
-                  
+                  className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
                   style={{ backgroundColor: user.color, color: 'white' }}
                 >
                   {user.name}
@@ -83,29 +87,29 @@ exit_rules:
               </div>
             ))}
           </div>
-          <div style={{ display: "flex" }}>
-            <Button >
-              <Save  />
+          <div className="flex gap-2 mt-4">
+            <button  >
+              <save  >
               Save Strategy
             </Button>
-            <Button variant="outline">
-              <span style={{fontSize: '16px'}}>🔗</span>
+            <button variant="outline" >
+              <share2  >
               Share
             </Button>
           </div>
         </div>
 
-        <div >
+        <div className="space-y-4">
           <div>
-            <h3 >Recent Edits</h3>
-            <div >
+            <h3 className="font-semibold mb-2">Recent Edits</h3>
+            <div className="space-y-2">
               {edits.map((edit, i) => (
-                <div key={i} >
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span style={{fontSize: '16px'}}>✏️</span>
-                    <span >{edit.user}</span>
+                <div key={i} className="text-sm p-2 bg-secondary/20 rounded">
+                  <div className="flex items-center gap-2">
+                    <edit3  >
+                    <span className="font-medium">{edit.user}</span>
                   </div>
-                  <p >
+                  <p className="text-xs text-muted-foreground mt-1">
                     {edit.action} • {edit.time}
                   </p>
                 </div>
@@ -114,11 +118,11 @@ exit_rules:
           </div>
 
           <div>
-            <h3 >Session Info</h3>
-            <p >
+            <h3 className="font-semibold mb-2">Session Info</h3>
+            <p className="text-sm text-muted-foreground">
               Session ID: {sessionId || 'demo-session'}
             </p>
-            <p >
+            <p className="text-sm text-muted-foreground">
               Started: 15 minutes ago
             </p>
           </div>
@@ -127,3 +131,4 @@ exit_rules:
     </Card>
   );
 }; 
+export const lovable = { component: true };

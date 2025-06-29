@@ -62,9 +62,9 @@ const KPICard = ({
   
   return (
     <div className={`kpi-card ${type}`}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <span >{label}</span>
-        <span >{icon}</span>
+      <div className="flex justify-between items-center mb-2">
+        <span className="kpi-label">{label}</span>
+        <span className="text-xl">{icon}</span>
       </div>
       <div className={`kpi-value ${type}`}>
         {format(displayValue)}
@@ -135,10 +135,10 @@ const KPICards = ({ stats }: KPICardsProps) => {
   ];
 
   return (
-    <div >
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
-        <BlockReveal key={card.label} delay={index * 0.1}>
-          <KPICard {...card} />
+        <blockreveal  >
+          <kpicard  >
         </BlockReveal>
       ))}
     </div>
@@ -146,3 +146,4 @@ const KPICards = ({ stats }: KPICardsProps) => {
 };
 
 export default KPICards; 
+export const lovable = { component: true };

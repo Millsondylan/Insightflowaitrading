@@ -1,10 +1,13 @@
 // TODO: implement live market broadcast with AI narrator
 import React, { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { BroadcastEvent } from './types'
 import { sortBroadcastEventsByImpact } from './utils'
 
 export const BroadcastMode: React.FC = () => {
-  const [events, setEvents] = useState<BroadcastEvent[]>([
+  const [events, setEvents] = useState<broadcastevent  >([
     {
       id: '1',
       title: 'Federal Reserve Interest Rate Decision',
@@ -28,41 +31,36 @@ export const BroadcastMode: React.FC = () => {
   const sortedEvents = sortBroadcastEventsByImpact(events)
 
   return (
-    <Card style={{ width: "100%", color: "white" }}>
-      <CardHeader style={{ display: "flex", alignItems: "center" }}>
-        <CardTitle>Market Broadcast Mode</CardTitle>
-        <Badge variant="default">
+    <card  style={{ width: "100%", color: "white" }}>
+      <cardheader  style={{ display: "flex", alignItems: "center" }}>
+        <cardtitle  >Market Broadcast Mode</CardTitle>
+        <badge variant="default" >
           {sortedEvents.length} Active Events
         </Badge>
       </CardHeader>
-      <CardContent>
-        <div >
+      <cardcontent  >
+        <div className="space-y-4">
           {sortedEvents.map((event) => (
             <div 
               key={event.id} 
-              style={{ padding: "16px", border: "1px solid #374151" }}
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
             >
-              <div style={{ display: "flex" }}>
-                <h3 style={{ fontWeight: "700" }}>{event.title}</h3>
-                <Badge 
-                  variant={
-                    event.impact === 'High' ? 'destructive' : 
-                    event.impact === 'Medium' ? 'default' : 'secondary'
-                  }
-                >
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-lg font-bold">{event.title}</h3>
+                <badge  >
                   {event.impact} Impact
                 </Badge>
               </div>
-              <p >{event.description}</p>
-              <div style={{ display: "flex", alignItems: "center" }}>
-                <div style={{ display: "flex" }}>
+              <p className="text-sm text-gray-300 mb-2">{event.description}</p>
+              <div className="flex justify-between items-center">
+                <div className="flex space-x-2">
                   {event.relatedAssets?.map((asset) => (
-                    <Badge key={asset} variant="outline">
+                    <badge variant="outline" >
                       {asset}
                     </Badge>
                   ))}
                 </div>
-                <div style={{ color: "#9CA3AF", display: "flex", alignItems: "center" }}>
+                <div className="text-xs text-gray-400 flex items-center space-x-2">
                   <span>{event.source}</span>
                   <span>•</span>
                   <span>{event.timestamp.toLocaleString()}</span>
@@ -71,8 +69,8 @@ export const BroadcastMode: React.FC = () => {
             </div>
           ))}
         </div>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="outline" style={{ color: "white" }}>
+        <div className="mt-4 flex justify-center">
+          <button variant="outline" style={{ color: "white" }}>
             Subscribe to Updates
           </Button>
         </div>
@@ -80,3 +78,4 @@ export const BroadcastMode: React.FC = () => {
     </Card>
   )
 } 
+export const lovable = { component: true };

@@ -8,7 +8,7 @@ interface ProgressSidebarProps {
   onBlockClick: (id: string) => void;
 }
 
-const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
+const ProgressSidebar: React.FC<progresssidebarprops  > = ({
   blocks,
   activeBlock,
   progress,
@@ -24,30 +24,30 @@ const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
   let currentTopic = blocks.find((b) => b.id === activeBlock)?.topic;
 
   return (
-    <aside >
-      <div >
+    <aside className="sticky top-24 h-full">
+      <div className="relative pl-8">
         {/* Progress Bar */}
-        <div  />
+        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700" />
         <div
-          
+          className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
           style={{ height: `calc(${progress}% - 1rem)` }}
         />
 
-        <nav style={{ display: "flex", flexDirection: "column" }}>
+        <nav className="flex flex-col items-start">
           {blocks.map((block) => {
             const isTopicHeader = block.id === topics.find(t => t.topic === block.topic)?.id;
             const isActive = block.id === activeBlock;
 
             return (
-              <div key={block.id} style={{ width: "100%" }}>
+              <div key={block.id} className="w-full">
                 {isTopicHeader && (
-                  <h3 style={{ fontWeight: "700" }}>
+                  <h3 className="text-lg font-bold mt-6 mb-3 text-blue-400">
                     {block.topic}
                   </h3>
                 )}
                 <button
                   onClick={() => onBlockClick(block.id)}
-                  style={{ display: "flex", alignItems: "center", width: "100%" }}
+                  className="flex items-center w-full text-left py-1.5 group"
                 >
                   <div
                     className={cn(
@@ -74,3 +74,4 @@ const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
 };
 
 export default ProgressSidebar; 
+export const lovable = { component: true };

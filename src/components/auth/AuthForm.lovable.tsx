@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { LogIn, UserPlus, Github, Mail } from 'lucide-react';
 import { signIn, signUp, AuthError } from '@/lib/auth/handleAuth';
 
 interface AuthFormProps {
@@ -44,85 +47,73 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
     };
 
     return (
-        <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
-            <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "32px" }}>
-                <h2 style={{ fontWeight: "700", color: "white" }}>
+        <div className="w-full max-w-md mx-auto">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-bold text-white mb-6">
                     {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
                 </h2>
 
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <Input
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            
+                        <input type="email" placeholder="Email" > setEmail(e.target.value)}
+                            className="bg-black/20 border-white/10"
                             required
                         />
                     </div>
 
                     <div>
-                        <Input
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            
+                        <input type="password" placeholder="Password" > setPassword(e.target.value)}
+                            className="bg-black/20 border-white/10"
                             required
                             minLength={8}
                         />
                     </div>
 
                     {error && (
-                        <div >{error}</div>
+                        <div className="text-red-400 text-sm">{error}</div>
                     )}
 
-                    <Button
-                        type="submit"
-                        style={{ width: "100%" }}
-                        disabled={loading}
-                    >
+                    <button type="submit" style={{ width: "100%" }}>
                         {loading ? (
-                            <div  />
+                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
                         ) : mode === 'signin' ? (
                             <>
-                                <LogIn  />
+                                <login  >
                                 Sign In
                             </>
                         ) : (
                             <>
-                                <span style={{fontSize: '16px'}}>👤</span>
+                                <userplus  >
                                 Sign Up
                             </>
                         )}
                     </Button>
 
-                    <div >
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                            <div style={{ width: "100%" }}></div>
+                    <div className="relative my-6">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-white/10"></div>
                         </div>
-                        <div style={{ display: "flex", justifyContent: "center" }}>
-                            <span >Or continue with</span>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-background-primary px-2 text-gray-500">Or continue with</span>
                         </div>
                     </div>
 
-                    <div >
-                        <Button variant="outline" style={{ width: "100%" }}>
-                            <Github  />
+                    <div className="grid grid-cols-2 gap-4">
+                        <button variant="outline" style={{ width: "100%" }}>
+                            <github  >
                             GitHub
                         </Button>
-                        <Button variant="outline" style={{ width: "100%" }}>
-                            <span style={{fontSize: '16px'}}>📧</span>
+                        <button variant="outline" style={{ width: "100%" }}>
+                            <mail  >
                             Google
                         </Button>
                     </div>
 
-                    <div >
+                    <div className="text-center mt-6">
                         <button
                             type="button"
                             onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
-                            style={{ color: "#9CA3AF" }}
+                            className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {mode === 'signin' ? (
                                 "Don't have an account? Sign up"
@@ -136,3 +127,4 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
         </div>
     );
 } 
+export const lovable = { component: true };

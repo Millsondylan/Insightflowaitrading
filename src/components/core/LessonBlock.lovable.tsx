@@ -1,12 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle2 } from "lucide-react";
 import { LessonBlock as LessonBlockType } from "@/lib/academy/lessonSchema";
 
 interface LessonBlockProps {
   block: LessonBlockType;
 }
 
-const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
+const LessonBlock: React.FC<lessonblockprops  > = ({ block }) => {
   return (
     <motion.div
       id={block.id}
@@ -14,24 +16,24 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      style={{ width: "100%" }}
+      className="w-full mb-12"
     >
-      <Card >
-        <CardHeader>
-          <CardTitle style={{ fontSize: "1.875rem", fontWeight: "700" }}>
+      <card  >
+        <cardheader  >
+          <cardtitle  style={{ fontWeight: "700" }}>
             {block.title}
           </CardTitle>
         </CardHeader>
-        <CardContent style={{ marginTop: "32px" }}>
-          <p >
+        <cardcontent  >
+          <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
             {block.content}
           </p>
 
           <div>
-            <h4 style={{ marginBottom: "16px" }}>
+            <h4 className="font-semibold text-xl mb-4 text-gray-200">
               Key Takeaways
             </h4>
-            <ul >
+            <ul className="space-y-3">
               {block.keyTakeaways.map((takeaway, index) => (
                 <motion.li
                   key={index}
@@ -39,10 +41,10 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.8 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  style={{ display: "flex" }}
+                  className="flex items-start"
                 >
-                  <span style={{fontSize: '16px'}}>✅</span>
-                  <span >{takeaway}</span>
+                  <checkcircle2  >
+                  <span className="text-gray-300 text-base">{takeaway}</span>
                 </motion.li>
               ))}
             </ul>
@@ -54,3 +56,4 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
 };
 
 export default LessonBlock; 
+export const lovable = { component: true };

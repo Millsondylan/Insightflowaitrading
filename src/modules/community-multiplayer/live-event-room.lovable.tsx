@@ -46,23 +46,23 @@ interface EventDetails {
   }[];
 }
 
-export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
+export const LiveEventRoom: React.FC<liveeventroomprops  > = ({
   eventId,
   userId,
   username,
   isHost = false,
   onLeave
 }) => {
-  const [event, setEvent] = useState<EventDetails | null>(null);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [participants, setParticipants] = useState<Participant[]>([]);
+  const [event, setEvent] = useState<eventdetails  >(null);
+  const [messages, setMessages] = useState<message  >([]);
+  const [participants, setParticipants] = useState<participant  >([]);
   const [messageInput, setMessageInput] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const socketRef = useRef<WebSocket | null>(null);
+  const messagesEndRef = useRef<htmldivelement  >(null);
+  const socketRef = useRef<websocket  >(null);
   
   useEffect(() => {
     fetchEventDetails();
@@ -298,44 +298,44 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
   
   if (loading) {
     return (
-      <div >
-        <div >Joining event...</div>
-        <div >Please wait while we connect you to the live event</div>
+      <div className="p-12 text-center">
+        <div className="text-xl font-semibold mb-2">Joining event...</div>
+        <div className="text-text-muted">Please wait while we connect you to the live event</div>
       </div>
     );
   }
   
   if (error || !event) {
     return (
-      <div style={{ padding: "24px" }}>
+      <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
         {error || 'Failed to join the event. Please try again.'}
       </div>
     );
   }
   
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className="live-event-room h-full flex flex-col">
       {/* Event Header */}
-      <div style={{ padding: "16px" }}>
-        <div style={{ display: "flex" }}>
+      <div className="p-4 bg-background-secondary border-b border-border-primary">
+        <div className="flex justify-between items-start">
           <div>
-            <h2 style={{ fontWeight: "700" }}>{event.title}</h2>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span style={{ alignItems: "center" }}>
-                <span ></span>
+            <h2 className="text-xl font-bold">{event.title}</h2>
+            <div className="flex items-center mt-1">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-status-success/20 text-status-success">
+                <span className="w-2 h-2 rounded-full bg-status-success mr-1"></span>
                 Live
               </span>
-              <span >
+              <span className="ml-2 text-sm text-text-muted">
                 {participants.length} participants
               </span>
-              <span >
+              <span className="ml-2 text-sm text-text-muted">
                 Host: {event.hostName}
               </span>
             </div>
           </div>
           
           <button
-            
+            className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}
           >
             Leave Event
@@ -343,21 +343,21 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
         </div>
         
         {event.description && (
-          <p >{event.description}</p>
+          <p className="mt-2 text-sm text-text-muted">{event.description}</p>
         )}
       </div>
       
       {/* Main Content Area */}
-      <div style={{ display: "flex" }}>
+      <div className="flex-1 flex overflow-hidden">
         {/* Chat Area */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="flex-1 flex flex-col bg-background-primary">
           {/* Messages */}
-          <div style={{ padding: "16px" }}>
-            <div >
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-3">
               {messages.map(message => (
                 <div key={message.id} className={`max-w-3xl ${message.userId === userId ? 'ml-auto' : ''}`}>
                   {message.type === 'system' ? (
-                    <div >
+                    <div className="py-1 px-3 text-xs text-text-muted bg-background-tertiary rounded-md inline-block">
                       {message.content}
                     </div>
                   ) : (
@@ -368,14 +368,14 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
                           ? 'bg-brand-secondary/20 text-text-primary'
                           : 'bg-background-secondary text-text-primary'
                     }`}>
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                      <div className="flex justify-between items-center mb-1">
                         <span className={`text-sm font-medium ${
                           message.userId === 'host-123' ? 'text-brand-secondary' : ''
                         }`}>
                           {message.username}
                           {message.userId === 'host-123' && ' (Host)'}
                         </span>
-                        <span >
+                        <span className="text-xs text-text-muted">
                           {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                         </span>
                       </div>
@@ -389,11 +389,11 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
           </div>
           
           {/* Message Input */}
-          <div >
-            <div style={{ display: "flex" }}>
+          <div className="p-3 border-t border-border-primary bg-background-secondary">
+            <div className="flex">
               <input
                 type="text"
-                style={{ border: "1px solid #374151" }}
+                className="flex-1 p-2 bg-background-primary border border-border-primary rounded-l-md focus:outline-none focus:ring-1 focus:ring-brand-primary"
                 placeholder="Type a message..."
                 value={messageInput}
                 onChange={(e) => setMessageInput(e.target.value)}
@@ -401,7 +401,7 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
                 disabled={!isConnected}
               />
               <button
-                style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
+                className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
                 disabled={!isConnected || !messageInput.trim()}
               >
@@ -409,7 +409,7 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
               </button>
             </div>
             {!isConnected && (
-              <div >
+              <div className="mt-2 text-sm text-status-error">
                 Connecting to chat... Please wait.
               </div>
             )}
@@ -417,31 +417,31 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
         </div>
         
         {/* Sidebar */}
-        <div >
+        <div className="w-64 border-l border-border-primary bg-background-secondary overflow-y-auto hidden md:block">
           {/* Resources */}
-          <div >
-            <h3 >Resources</h3>
+          <div className="p-3 border-b border-border-primary">
+            <h3 className="font-medium mb-2">Resources</h3>
             {event.resources && event.resources.length > 0 ? (
-              <ul >
+              <ul className="space-y-2">
                 {event.resources.map((resource, i) => (
                   <li key={i}>
                     <a
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ display: "flex", alignItems: "center" }}
+                      className="text-sm text-brand-primary hover:text-brand-primary/80 flex items-center"
                     >
                       {resource.type === 'document' && (
-                        <span >📄</span>
+                        <span className="mr-1">📄</span>
                       )}
                       {resource.type === 'video' && (
-                        <span >🎥</span>
+                        <span className="mr-1">🎥</span>
                       )}
                       {resource.type === 'chart' && (
-                        <span >📊</span>
+                        <span className="mr-1">📊</span>
                       )}
                       {resource.type === 'link' && (
-                        <span >🔗</span>
+                        <span className="mr-1">🔗</span>
                       )}
                       {resource.title}
                     </a>
@@ -449,28 +449,28 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
                 ))}
               </ul>
             ) : (
-              <p >No resources available</p>
+              <p className="text-sm text-text-muted">No resources available</p>
             )}
           </div>
           
           {/* Participants */}
-          <div >
-            <h3 >Participants ({participants.length})</h3>
-            <div >
+          <div className="p-3">
+            <h3 className="font-medium mb-2">Participants ({participants.length})</h3>
+            <div className="space-y-1 max-h-60 overflow-y-auto">
               {participants.map(participant => (
                 <div
                   key={participant.userId}
-                  style={{ display: "flex", alignItems: "center" }}
+                  className="flex items-center p-1 rounded hover:bg-background-interactive"
                 >
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
                     {participant.avatarUrl ? (
                       <img
                         src={participant.avatarUrl}
                         alt={participant.username}
-                        
+                        className="w-6 h-6 rounded-full"
                       />
                     ) : (
-                      <span >{participant.username.charAt(0).toUpperCase()}</span>
+                      <span className="text-xs">{participant.username.charAt(0).toUpperCase()}</span>
                     )}
                   </div>
                   <span className={`text-sm ${

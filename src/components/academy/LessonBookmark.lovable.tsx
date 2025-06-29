@@ -16,13 +16,14 @@ export default function LessonBookmark({
   onBookmark,
 }: Props) {
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
-      <button onClick={onBookmark} >
+    <div className="flex gap-4 items-center justify-end text-sm text-white/80">
+      <button onClick={onBookmark} className="hover:text-cyan-400 transition">
         {isBookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
       </button>
-      <button onClick={onComplete} >
+      <button onClick={onComplete} className="hover:text-green-400 transition">
         {isCompleted ? "✅ Completed" : "✔️ Mark as Complete"}
       </button>
     </div>
   );
 } 
+export const lovable = { component: true };

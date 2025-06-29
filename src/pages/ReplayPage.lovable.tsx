@@ -1,34 +1,37 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Play, Pause, FastForward, Settings } from 'lucide-react';
 
 export default function ReplayPage() {
   const { id } = useParams<{ id: string }>();
 
   return (
     <div>
-      <Link to={`/vault/${id}`} style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
-        <ArrowLeft size={16} />
+      <link  style={{ display: "flex", alignItems: "center" }}>
+        <arrowleft  >
         Back to Strategy Details
       </Link>
 
-      <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "32px", display: "flex", flexDirection: "column" }}>
-        <header style={{ display: "flex", alignItems: "center" }}>
-            <h1 style={{ fontWeight: "700", color: "white" }}>Replay for Strategy #{id}</h1>
-            <Button variant="ghost"><span style={{fontSize: '16px'}}>⚙️</span> </Button>
+      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
+        <header className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</h1>
+            <button variant="ghost" ><settings  > </Button>
         </header>
         
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <p >Chart and replay visualization would be here.</p>
+        <div className="flex-grow flex items-center justify-center">
+            <p className="text-gray-500 text-lg">Chart and replay visualization would be here.</p>
         </div>
 
-        <footer style={{ padding: "16px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Button variant="ghost"><FastForward  size={20} /></Button>
-            <Button size="lg" >
-                <Play size={24} />
+        <footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
+            <button variant="ghost" ><fastforward  ></Button>
+            <button size="lg" >
+                <play  >
             </Button>
-            <Button variant="ghost"><FastForward size={20} /></Button>
+            <button variant="ghost" ><fastforward  ></Button>
         </footer>
       </div>
     </div>
   );
 } 
+export const lovable = { component: true };

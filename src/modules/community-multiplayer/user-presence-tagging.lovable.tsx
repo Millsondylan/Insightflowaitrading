@@ -1,11 +1,16 @@
 // TODO: implement user presence and activity tagging
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Circle, Clock, TrendingUp, MessageSquare } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface UserPresenceTaggingProps {
   channelId?: string;
 }
 
-export const UserPresenceTagging: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ channelId }) => {
+export const UserPresenceTagging: React.FC<userpresencetaggingprops  > = ({ channelId }) => {
   const [users, setUsers] = React.useState([
     {
       id: 1,
@@ -46,61 +51,59 @@ export const UserPresenceTagging: React.FC<span style={{fontSize: '16px'}}>👤<
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Active Traders</h2>
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Active Traders</h2>
       
-      <div >
+      <div className="space-y-4">
         {users.map((user) => (
-          <div key={user.id} style={{ padding: "16px", border: "1px solid #374151" }}>
-            <div style={{ display: "flex" }}>
-              <div >
-                <Avatar >
-                  <AvatarFallback>
+          <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+            <div className="flex items-start gap-3">
+              <div className="relative">
+                <avatar  >
+                  <avatarfallback  >
                     {user.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
-                <Circle
-                  className={`absolute bottom-0 right-0 h-3 w-3 ${getStatusColor(user.status)} fill-current`}
-                />
+                <circle  >
               </div>
               
-              <div >
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <h3 >{user.name}</h3>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span style={{fontSize: '16px'}}>⏰</span>
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold">{user.name}</h3>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <clock  >
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
                   </div>
                 </div>
                 
-                <p >{user.activity}</p>
+                <p className="text-sm text-muted-foreground mt-1">{user.activity}</p>
                 
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <div style={{ display: "flex" }}>
+                <div className="flex items-center gap-4 mt-2">
+                  <div className="flex gap-1">
                     {user.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" >
+                      <badge variant="secondary" style={{ fontSize: "0.75rem" }}>
                         {tag}
                       </Badge>
                     ))}
                   </div>
                   
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span style={{fontSize: '16px'}}>📈</span>
-                    <span >{user.winRate}%</span>
+                  <div className="flex items-center gap-1 text-sm">
+                    <trendingup  >
+                    <span className="font-medium">{user.winRate}%</span>
                   </div>
                 </div>
               </div>
               
-              <Button variant="ghost" size="sm">
-                <MessageSquare  />
+              <button variant="ghost" size="sm" >
+                <messagesquare  >
               </Button>
             </div>
           </div>
         ))}
       </div>
       
-      <div >
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="mt-4 pt-4 border-t">
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
           <span>{users.filter(u => u.status === 'online').length} traders online</span>
           <span>{channelId || 'Global'} channel</span>
         </div>
@@ -108,3 +111,4 @@ export const UserPresenceTagging: React.FC<span style={{fontSize: '16px'}}>👤<
     </Card>
   );
 }; 
+export const lovable = { component: true };

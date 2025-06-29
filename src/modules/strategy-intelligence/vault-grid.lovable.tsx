@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Strategy, VaultGridOptions } from './types';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Badge } from '@/components/ui/badge';
 
 interface VaultGridProps {
-  initialOptions?: Partial<VaultGridOptions>;
+  initialOptions?: Partial<vaultgridoptions  >;
   onStrategySelect: (strategy: Strategy) => void;
   onCreateStrategy: () => void;
 }
 
-export const VaultGrid: React.FC<VaultGridProps> = ({
+export const VaultGrid: React.FC<vaultgridprops  > = ({
   initialOptions,
   onStrategySelect,
   onCreateStrategy
 }) => {
-  const [strategies, setStrategies] = useState<Strategy[]>([]);
+  const [strategies, setStrategies] = useState<strategy  >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   
-  const [options, setOptions] = useState<VaultGridOptions>({
+  const [options, setOptions] = useState<vaultgridoptions  >({
     sortBy: initialOptions?.sortBy || 'updatedAt',
     sortDirection: initialOptions?.sortDirection || 'desc',
     filter: initialOptions?.filter || {},
@@ -123,26 +127,26 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
   
   const renderGridView = () => {
     return (
-      <Card style={{ width: "100%" }}>
-        <CardHeader>
-          <CardTitle style={{ color: "white" }}>Strategy Vault Grid</CardTitle>
+      <card  style={{ width: "100%" }}>
+        <cardheader  >
+          <cardtitle  style={{ color: "white" }}>Strategy Vault Grid</CardTitle>
         </CardHeader>
-        <CardContent>
-          <ScrollArea style={{ width: "100%" }}>
-            <div >
+        <cardcontent  >
+          <scrollarea  style={{ width: "100%" }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {strategies.map((strategy) => (
-                <Card key={strategy.id} style={{ color: "white" }}>
-                  <CardContent style={{ padding: "16px" }}>
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <h3 style={{ fontWeight: "700" }}>{strategy.name}</h3>
-                      <Badge variant="secondary">{strategy.risk}</Badge>
+                <card  style={{ color: "white" }}>
+                  <cardcontent  style={{ padding: "1rem" }}>
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-lg font-bold">{strategy.name}</h3>
+                      <badge variant="secondary" >{strategy.risk}</Badge>
                     </div>
-                    <div >
+                    <div className="mt-2 text-green-400 font-semibold">
                       Performance: {strategy.performance}
                     </div>
-                    <div style={{ display: "flex" }}>
-                      <Button variant="outline" size="sm" style={{ color: "white" }} onClick={() => onStrategySelect(strategy)}>View</Button>
-                      <Button variant="destructive" size="sm">Delete</Button>
+                    <div className="mt-4 flex space-x-2">
+                      <button variant="outline" size="sm" style={{ color: "white" }}> onStrategySelect(strategy)}>View</Button>
+                      <button variant="destructive" size="sm" >Delete</Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -156,37 +160,37 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
   
   const renderListView = () => {
     return (
-      <div >
-        <table style={{ width: "100%" }}>
+      <div className="overflow-x-auto">
+        <table className="w-full">
           <thead>
-            <tr >
-              <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Name</th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Author</th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Win Rate</th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Profit Factor</th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Updated</th>
-              <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Tags</th>
+            <tr className="border-b border-border-primary">
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Author</th>
+              <th className="px-4 py-3 text-left">Win Rate</th>
+              <th className="px-4 py-3 text-left">Profit Factor</th>
+              <th className="px-4 py-3 text-left">Updated</th>
+              <th className="px-4 py-3 text-left">Tags</th>
             </tr>
           </thead>
           <tbody>
             {strategies.map(strategy => (
               <tr
                 key={strategy.id}
-                
+                className="border-b border-border-primary hover:bg-background-interactive cursor-pointer"
                 onClick={() => onStrategySelect(strategy)}
               >
-                <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span >{strategy.name}</span>
+                <td className="px-4 py-3">
+                  <div className="flex items-center">
+                    <span className="font-medium">{strategy.name}</span>
                     {strategy.isPublished && (
-                      <span >
+                      <span className="ml-2 px-2 py-0.5 bg-status-success/20 text-status-success text-xs rounded">
                         Published
                       </span>
                     )}
                   </div>
                 </td>
-                <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>{strategy.author}</td>
-                <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                <td className="px-4 py-3">{strategy.author}</td>
+                <td className="px-4 py-3">
                   {strategy.performance ? (
                     <span className={
                       strategy.performance.winRate > 0.5 ? 'text-status-success' : 
@@ -196,7 +200,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                     </span>
                   ) : '-'}
                 </td>
-                <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                <td className="px-4 py-3">
                   {strategy.performance ? (
                     <span className={
                       strategy.performance.profitFactor > 2 ? 'text-status-success' : 
@@ -206,13 +210,13 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                     </span>
                   ) : '-'}
                 </td>
-                <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                <td className="px-4 py-3">
                   {new Date(strategy.updatedAt).toLocaleDateString()}
                 </td>
-                <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-                  <div style={{ display: "flex" }}>
+                <td className="px-4 py-3">
+                  <div className="flex flex-wrap gap-1">
                     {strategy.tags.map((tag, i) => (
-                      <span key={i} >
+                      <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
                         {tag}
                       </span>
                     ))}
@@ -227,10 +231,10 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
   };
   
   return (
-    <div >
+    <div className="vault-grid">
       {/* Toolbar */}
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
+        <div className="flex items-center space-x-2">
           <button
             className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('grid')}
@@ -251,9 +255,9 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           </button>
         </div>
         
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="flex items-center space-x-2">
           <select
-            style={{ border: "1px solid #374151" }}
+            className="p-2 bg-background-secondary border border-border-primary rounded"
             value={options.sortBy}
             onChange={(e) => handleSortChange(e.target.value as VaultGridOptions['sortBy'])}
           >
@@ -264,7 +268,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           </select>
           
           <button
-            style={{ border: "1px solid #374151" }}
+            className="p-2 bg-background-secondary border border-border-primary rounded"
             onClick={() => setOptions(prev => ({
               ...prev,
               sortDirection: prev.sortDirection === 'asc' ? 'desc' : 'asc'
@@ -276,12 +280,12 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
       </div>
       
       {/* Filter Section */}
-      <div style={{ padding: "16px" }}>
-        <div style={{ display: "flex" }}>
+      <div className="mb-6 p-4 bg-background-secondary rounded-lg">
+        <div className="flex flex-wrap gap-4">
           <div>
-            <label >Tags</label>
+            <label className="block text-sm mb-1">Tags</label>
             <select
-              style={{ border: "1px solid #374151" }}
+              className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.tags?.[0] || ''}
               onChange={(e) => handleFilterChange('tags', e.target.value ? [e.target.value] : undefined)}
             >
@@ -293,9 +297,9 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           </div>
           
           <div>
-            <label >Min Win Rate</label>
+            <label className="block text-sm mb-1">Min Win Rate</label>
             <select
-              style={{ border: "1px solid #374151" }}
+              className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.minWinRate || ''}
               onChange={(e) => handleFilterChange('minWinRate', e.target.value ? Number(e.target.value) : undefined)}
             >
@@ -308,9 +312,9 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           </div>
           
           <div>
-            <label >Published</label>
+            <label className="block text-sm mb-1">Published</label>
             <select
-              style={{ border: "1px solid #374151" }}
+              className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.isPublished === undefined ? '' : options.filter.isPublished ? 'true' : 'false'}
               onChange={(e) => handleFilterChange('isPublished', e.target.value === '' ? undefined : e.target.value === 'true')}
             >
@@ -321,7 +325,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           </div>
           
           <button
-            style={{ paddingLeft: "16px", paddingRight: "16px" }}
+            className="self-end px-4 py-2 bg-background-tertiary rounded"
             onClick={() => setOptions(prev => ({ ...prev, filter: {} }))}
           >
             Clear Filters
@@ -331,20 +335,20 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
       
       {/* Content */}
       {loading ? (
-        <div >
-          <div >Loading strategies...</div>
-          <div >Please wait while we fetch your strategies</div>
+        <div className="p-12 text-center">
+          <div className="text-xl font-semibold mb-2">Loading strategies...</div>
+          <div className="text-text-muted">Please wait while we fetch your strategies</div>
         </div>
       ) : error ? (
-        <div style={{ padding: "24px" }}>
+        <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
           {error}
         </div>
       ) : strategies.length === 0 ? (
-        <div >
-          <div >No strategies found</div>
-          <div >Create your first strategy to get started</div>
+        <div className="p-12 text-center">
+          <div className="text-xl font-semibold mb-2">No strategies found</div>
+          <div className="text-text-muted mb-6">Create your first strategy to get started</div>
           <button
-            style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
+            className="px-4 py-2 bg-brand-primary text-white rounded-md"
             onClick={onCreateStrategy}
           >
             Create Strategy
@@ -355,16 +359,16 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           {options.view === 'grid' && renderGridView()}
           {options.view === 'list' && renderListView()}
           {options.view === 'compact' && (
-            <div style={{ padding: "24px" }}>
+            <div className="text-center p-6">
               Compact view is not yet implemented
             </div>
           )}
           
           {/* Pagination */}
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <div style={{ display: "flex" }}>
+          <div className="flex justify-center mt-6">
+            <div className="flex space-x-1">
               <button
-                
+                className="px-3 py-1 rounded bg-background-secondary disabled:opacity-50"
                 disabled={options.page === 1}
                 onClick={() => handlePageChange(options.page - 1)}
               >
@@ -389,7 +393,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
               })}
               
               <button
-                
+                className="px-3 py-1 rounded bg-background-secondary"
                 onClick={() => handlePageChange(options.page + 1)}
               >
                 Next

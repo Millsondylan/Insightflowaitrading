@@ -228,7 +228,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         gap: '24px' 
       }}>
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy} />
+          <strategycard  >
         ))}
       </div>
 
@@ -429,7 +429,7 @@ export const LovableDemo = () => {
           }}>
             🏦 Strategy Vault
           </h2>
-          <StrategyVault strategies={sampleStrategies} />
+          <strategyvault  >
         </div>
 
         {/* Footer */}
@@ -453,3 +453,4 @@ export const LovableDemo = () => {
 };
 
 export default LovableDemo; 
+export const lovable = { component: true };

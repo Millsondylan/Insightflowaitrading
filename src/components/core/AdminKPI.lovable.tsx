@@ -1,6 +1,7 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
+import { Users, Bot, BookOpen, Image as ImageIcon } from 'lucide-react';
 import { DashboardStats } from '@/lib/admin/fetchDashboardStats';
 import { cn } from '@/lib/utils';
 import '@/styles/admin.css';
@@ -16,9 +17,9 @@ const kpiItems = [
   { key: 'chartsUploaded', title: 'Charts Uploaded', icon: ImageIcon, color: 'emerald' },
 ];
 
-const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
+const AdminKPI: React.FC<adminkpiprops  > = ({ stats }) => {
   return (
-    <div >
+    <div className="kpi-grid">
       {kpiItems.map((item, index) => {
         const Icon = item.icon;
         const value = stats[item.key as keyof DashboardStats];
@@ -31,10 +32,10 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={cn('kpi-card', `glow-${item.color}`)}
           >
-            <Icon className={cn('kpi-icon', `text-${item.color}-500`)} />
-            <div >{item.title}</div>
-            <div >
-              <CountUp end={value} duration={2.5} separator="," />
+            <icon  >
+            <div className="kpi-title">{item.title}</div>
+            <div className="kpi-value">
+              <countup separator="," >
             </div>
           </motion.div>
         );
@@ -44,3 +45,4 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
 };
 
 export default AdminKPI; 
+export const lovable = { component: true };

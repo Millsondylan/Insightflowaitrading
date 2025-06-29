@@ -22,8 +22,8 @@ interface ScanResult {
   lastUpdated: string;
 }
 
-export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) => {
-  const [results, setResults] = useState<ScanResult[]>([]);
+export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }) => {
+  const [results, setResults] = useState<scanresult  >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTimeframe, setActiveTimeframe] = useState<string>('1h');
@@ -196,7 +196,7 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
     }
   };
   
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<htmlinputelement  >) => {
     setSearchQuery(e.target.value);
   };
   
@@ -224,11 +224,11 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
   };
   
   return (
-    <div >
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <h2 style={{ fontWeight: "700" }}>Market Scanner</h2>
+    <div className="market-scanner">
+      <div className="flex flex-wrap justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Market Scanner</h2>
         
-        <div style={{ display: "flex" }}>
+        <div className="flex space-x-2">
           {timeframes.map(tf => (
             <button
               key={tf}
@@ -243,18 +243,18 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
         </div>
       </div>
       
-      <div style={{ display: "flex" }}>
-        <div >
+      <div className="mb-6 flex flex-wrap gap-4">
+        <div className="flex-1">
           <input
             type="text"
-            style={{ width: "100%", border: "1px solid #374151" }}
+            className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             placeholder="Search markets..."
             value={searchQuery}
             onChange={handleSearch}
           />
         </div>
         
-        <div style={{ display: "flex" }}>
+        <div className="flex space-x-2">
           <button
             className={`px-4 py-2 rounded ${
               filterType === 'all' ? 'bg-brand-primary text-white' : 'bg-background-secondary'
@@ -283,46 +283,46 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
       </div>
       
       {loading ? (
-        <div >
-          <div >Scanning markets...</div>
-          <div >Please wait while we analyze market conditions</div>
+        <div className="p-12 text-center">
+          <div className="text-xl font-semibold mb-2">Scanning markets...</div>
+          <div className="text-text-muted">Please wait while we analyze market conditions</div>
         </div>
       ) : error ? (
-        <div style={{ padding: "24px" }}>
+        <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
           {error}
         </div>
       ) : filteredResults.length === 0 ? (
-        <div >
-          <div >No results found</div>
-          <div >Try changing your search criteria</div>
+        <div className="p-12 text-center">
+          <div className="text-xl font-semibold mb-2">No results found</div>
+          <div className="text-text-muted">Try changing your search criteria</div>
         </div>
       ) : (
-        <div >
-          <table style={{ width: "100%" }}>
+        <div className="overflow-x-auto">
+          <table className="w-full">
             <thead>
-              <tr >
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Market</th>
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Price</th>
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>24h Change</th>
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>24h Volume</th>
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Signals</th>
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Score</th>
-                <th style={{ paddingLeft: "16px", paddingRight: "16px" }}>Action</th>
+              <tr className="border-b border-border-primary">
+                <th className="px-4 py-3 text-left">Market</th>
+                <th className="px-4 py-3 text-right">Price</th>
+                <th className="px-4 py-3 text-right">24h Change</th>
+                <th className="px-4 py-3 text-right">24h Volume</th>
+                <th className="px-4 py-3 text-center">Signals</th>
+                <th className="px-4 py-3 text-center">Score</th>
+                <th className="px-4 py-3 text-center">Action</th>
               </tr>
             </thead>
             <tbody>
               {filteredResults.map(result => (
                 <tr
                   key={result.symbol}
-                  
+                  className="border-b border-border-primary hover:bg-background-interactive"
                 >
-                  <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <span >{result.symbol}</span>
-                      <span >{result.name}</span>
+                  <td className="px-4 py-3">
+                    <div className="flex flex-col">
+                      <span className="font-medium">{result.symbol}</span>
+                      <span className="text-sm text-text-muted">{result.name}</span>
                     </div>
                   </td>
-                  <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                  <td className="px-4 py-3 text-right font-medium">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
                   <td className={`px-4 py-3 text-right font-medium ${
@@ -330,11 +330,11 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                   }`}>
                     {result.change24h > 0 ? '+' : ''}{result.change24h.toFixed(2)}%
                   </td>
-                  <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                  <td className="px-4 py-3 text-right">
                     ${formatLargeNumber(result.volume24h)}
                   </td>
-                  <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
+                  <td className="px-4 py-3">
+                    <div className="flex flex-col gap-1">
                       {result.signals.map((signal, i) => (
                         <div
                           key={i}
@@ -349,14 +349,14 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                       ))}
                     </div>
                   </td>
-                  <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                  <td className="px-4 py-3 text-center">
                     <div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
                     </div>
                   </td>
-                  <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+                  <td className="px-4 py-3 text-center">
                     <button
-                      style={{ color: "white" }}
+                      className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
                       onClick={() => onSelectMarket(result.symbol)}
                     >
                       Select

@@ -11,16 +11,16 @@ type Props = {
 
 export default function InsightFeed({ insights }: Props) {
   return (
-    <div >
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 theme-feed">
       {insights.map((insight, i) => (
         <div
           key={i}
-          style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}
+          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-2"
         >
-          <h3 >{insight.title}</h3>
-          <p >{insight.summary}</p>
+          <h3 className="text-lg font-semibold">{insight.title}</h3>
+          <p className="text-white/70 text-sm italic">{insight.summary}</p>
           {insight.tone && (
-            <span style={{ color: "white" }}>
+            <span className="text-xs px-2 py-1 bg-cyan-600 text-white rounded-full">
               {insight.tone}
             </span>
           )}
@@ -29,3 +29,4 @@ export default function InsightFeed({ insights }: Props) {
     </div>
   );
 } 
+export const lovable = { component: true };

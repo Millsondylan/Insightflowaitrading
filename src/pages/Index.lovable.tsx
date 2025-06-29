@@ -1,4 +1,20 @@
 import React, { useRef, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { 
+  TrendingUp, 
+  Shield, 
+  Zap, 
+  BarChart3, 
+  Users, 
+  Star, 
+  ArrowRight, 
+  CheckCircle,
+  DollarSign,
+  Hexagon,
+  Bitcoin
+} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme, themes } from '@/contexts/ThemeContext';
 import { useLandingStats } from '@/hooks/useLandingStats';
@@ -18,10 +34,10 @@ const LandingPage = () => {
   const [platformUptime, setPlatformUptime] = React.useState('N/A');
 
   // Section refs for theme changes
-  const heroRef = useRef<HTMLDivElement>(null);
-  const featuresRef = useRef<HTMLDivElement>(null);
-  const pricingRef = useRef<HTMLDivElement>(null);
-  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<htmldivelement  >(null);
+  const featuresRef = useRef<htmldivelement  >(null);
+  const pricingRef = useRef<htmldivelement  >(null);
+  const testimonialsRef = useRef<htmldivelement  >(null);
 
   // Theme switching based on scroll position
   useEffect(() => {
@@ -151,28 +167,25 @@ const LandingPage = () => {
   ];
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
       {/* Navigation Header */}
-      <nav style={{ width: "100%", padding: "24px", display: "flex", alignItems: "center" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{fontSize: '16px'}}>📈</span>
+      <nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <trendingup  style={{ color: "white" }}>
           </div>
-          <h1 style={{ fontWeight: "700" }}>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
             InsightFlow AI
           </h1>
         </div>
-        <div style={{ display: "flex" }}>
-          <Button 
-            variant="outline" 
-            onClick={() => navigate('/auth')}
-            
+        <div className="flex space-x-4">
+          <button variant="outline" > navigate('/auth')}
+            className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
           </Button>
-          <Button 
-            onClick={() => navigate('/auth')}
-            
+          <button  > navigate('/auth')}
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
           </Button>
@@ -183,62 +196,57 @@ const LandingPage = () => {
       <motion.div 
         ref={heroRef} 
         id="hero" 
-        style={{ width: "100%" }}
+        className="w-full px-0 pt-20 pb-32"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        <div style={{ marginTop: "32px", width: "100%" }}>
-          <Badge style={{ paddingLeft: "16px", paddingRight: "16px" }}>
+        <div className="text-center space-y-8 w-full">
+          <badge  >
             🚀 Advanced Trading Platform - Now with AI Integration
           </Badge>
           
-          <h1 style={{ fontWeight: "700" }}>
-            <span >
+          <h1 className="text-6xl font-bold leading-tight">
+            <span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
               Trade Smarter with
             </span>
             <br />
-            <span >
+            <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
               AI-Powered Insights
             </span>
           </h1>
           
-          <p style={{ marginBottom: "32px", width: "100%" }}>
+          <p className="text-xl text-gray-300 mb-8 w-full leading-relaxed">
             Experience the future of trading with our ultra-modern platform featuring real-time market data, 
             advanced analytics, and risk-free demo trading. Start your 30-day free trial today.
           </p>
           
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Button 
-              size="lg"
-              onClick={() => navigate('/auth')}
-              
+          <div className="flex justify-center space-x-4 pt-8">
+            <button size="lg" > navigate('/auth')}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
             >
               Start Free Trial
-              <ArrowRight  />
+              <arrowright  >
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              onClick={() => navigate('/trading')}
-              
+            <button size="lg" variant="outline" > navigate('/trading')}
+              className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
             >
               View Demo
             </Button>
           </div>
           
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", color: "#9CA3AF" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>✅</span>
+          <div className="flex justify-center items-center space-x-8 pt-12 text-gray-400">
+            <div className="flex items-center space-x-2">
+              <checkcircle  >
               <span>30-Day Free Trial</span>
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>✅</span>
+            <div className="flex items-center space-x-2">
+              <checkcircle  >
               <span>No Credit Card Required</span>
             </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>✅</span>
+            <div className="flex items-center space-x-2">
+              <checkcircle  >
               <span>Cancel Anytime</span>
             </div>
           </div>
@@ -246,67 +254,67 @@ const LandingPage = () => {
       </motion.div>
 
       {/* Real-time Stats Section */}
-      <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}>
+      <div className="container mx-auto px-6 py-10">
         {loading ? (
-          <div >Loading stats...</div>
+          <div className="text-center text-blue-400">Loading stats...</div>
         ) : error ? (
-          <div >{error}</div>
+          <div className="text-center text-red-400">{error}</div>
         ) : (
-          <div >
-            <Card >
-              <CardHeader>
-                <span style={{fontSize: '16px'}}>👤</span>
-                <CardTitle style={{ color: "white" }}>{userCount.toLocaleString()}</CardTitle>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+            <card  >
+              <cardheader  >
+                <users  >
+                <cardtitle  style={{ color: "white" }}>{userCount.toLocaleString()}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <span style={{ color: "#9CA3AF" }}>Active Traders</span>
+              <cardcontent  >
+                <span className="text-gray-400">Active Traders</span>
               </CardContent>
             </Card>
-            <Card >
-              <CardHeader>
-                <span style={{fontSize: '16px'}}>📈</span>
-                <CardTitle style={{ color: "white" }}>
+            <card  >
+              <cardheader  >
+                <trendingup  >
+                <cardtitle  style={{ color: "white" }}>
                   {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <span style={{ color: "#9CA3AF" }}>Successful Trades</span>
+              <cardcontent  >
+                <span className="text-gray-400">Successful Trades</span>
               </CardContent>
             </Card>
-            <Card >
-              <CardHeader>
-                <span style={{fontSize: '16px'}}>✅</span>
-                <CardTitle style={{ color: "white" }}>{platformUptime}</CardTitle>
+            <card  >
+              <cardheader  >
+                <checkcircle  >
+                <cardtitle  style={{ color: "white" }}>{platformUptime}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <span style={{ color: "#9CA3AF" }}>Platform Uptime</span>
+              <cardcontent  >
+                <span className="text-gray-400">Platform Uptime</span>
               </CardContent>
             </Card>
-            <Card >
-              <CardHeader>
-                <BarChart3 style={{ marginLeft: "auto", marginRight: "auto" }} />
-                <CardTitle style={{ color: "white" }}>{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle>
+            <card  >
+              <cardheader  >
+                <barchart3  >
+                <cardtitle  style={{ color: "white" }}>{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <span style={{ color: "#9CA3AF" }}>Markets Covered</span>
+              <cardcontent  >
+                <span className="text-gray-400">Markets Covered</span>
               </CardContent>
             </Card>
-            <Card >
-              <CardHeader>
-                <span style={{fontSize: '16px'}}>💰</span>
-                <CardTitle style={{ color: "white" }}>${demoVolume.toLocaleString()}</CardTitle>
+            <card  >
+              <cardheader  >
+                <dollarsign  >
+                <cardtitle  style={{ color: "white" }}>${demoVolume.toLocaleString()}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <span style={{ color: "#9CA3AF" }}>Total Volume</span>
+              <cardcontent  >
+                <span className="text-gray-400">Total Volume</span>
               </CardContent>
             </Card>
-            <Card >
-              <CardHeader>
-                <span style={{fontSize: '16px'}}>⭐</span>
-                <CardTitle style={{ color: "white" }}>{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</CardTitle>
+            <card  >
+              <cardheader  >
+                <star  >
+                <cardtitle  style={{ color: "white" }}>{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</CardTitle>
               </CardHeader>
-              <CardContent>
-                <span style={{ color: "#9CA3AF" }}>User Rating</span>
+              <cardcontent  >
+                <span className="text-gray-400">User Rating</span>
               </CardContent>
             </Card>
           </div>
@@ -317,32 +325,32 @@ const LandingPage = () => {
       <motion.div 
         ref={featuresRef} 
         id="features" 
-        style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
+        className="container mx-auto px-6 py-24"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
       >
-        <div >
-          <h2 style={{ fontWeight: "700", color: "white" }}>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Powerful Features for Modern Traders
           </h2>
-          <p style={{ color: "#9CA3AF", marginLeft: "auto", marginRight: "auto" }}>
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Everything you need to trade successfully in today's markets
           </p>
         </div>
         
-        <div >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} >
-              <CardHeader >
+            <card  >
+              <cardheader  >
                 <div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
-                  <feature.icon style={{ color: "white" }} />
+                  <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <CardTitle style={{ color: "white" }}>{feature.title}</CardTitle>
+                <cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</CardTitle>
               </CardHeader>
-              <CardContent>
-                <p style={{ color: "#9CA3AF" }}>{feature.description}</p>
+              <cardcontent  >
+                <p className="text-gray-400 text-center">{feature.description}</p>
               </CardContent>
             </Card>
           ))}
@@ -353,42 +361,42 @@ const LandingPage = () => {
       <motion.div 
         ref={testimonialsRef} 
         id="testimonials" 
-        style={{ width: "100%" }}
+        className="w-full px-0 py-24"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
       >
-        <div style={{ width: "100%" }}>
-          <h2 style={{ fontWeight: "700", color: "white" }}>
+        <div className="text-center mb-16 w-full">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Trusted by Traders Worldwide
           </h2>
-          <p style={{ color: "#9CA3AF", width: "100%" }}>
+          <p className="text-xl text-gray-400 w-full">
             See what our users are saying about InsightFlow AI
           </p>
         </div>
-        <div style={{ width: "100%" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {loading ? (
-            <div >Loading reviews...</div>
+            <div className="col-span-3 text-center text-blue-400">Loading reviews...</div>
           ) : reviews.length === 0 ? (
-            <div style={{ color: "#9CA3AF" }}>No reviews yet.</div>
+            <div className="col-span-3 text-center text-gray-400">No reviews yet.</div>
           ) : (
             reviews.slice(0, 3).map((testimonial, index) => {
               if (testimonial && typeof testimonial === 'object' && 'content' in testimonial && 'name' in testimonial && 'role' in testimonial) {
                 const t = testimonial as any;
                 return (
-                  <Card key={index} >
-                    <CardHeader>
-                      <p >"{t.content}"</p>
+                  <card  >
+                    <cardheader  >
+                      <p className="text-gray-300 italic">"{t.content}"</p>
                     </CardHeader>
-                    <CardContent>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <span style={{fontSize: '16px'}}>👤</span>
+                    <cardcontent  >
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                          <users  style={{ color: "white" }}>
                         </div>
                         <div>
-                          <p style={{ color: "white" }}>{t.name}</p>
-                          <p style={{ color: "#9CA3AF" }}>{t.role}</p>
+                          <p className="text-white font-semibold">{t.name}</p>
+                          <p className="text-gray-400 text-sm">{t.role}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -402,24 +410,24 @@ const LandingPage = () => {
       </motion.div>
 
       {/* Crypto Payment Section */}
-      <div style={{ width: "100%" }} id="crypto-payment">
-        <div style={{ width: "100%" }}>
-          <h2 style={{ fontWeight: "700", color: "white" }}>
+      <div className="w-full px-0 py-20" id="crypto-payment">
+        <div className="text-center mb-16 w-full">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Secure Crypto Payment Integration
           </h2>
-          <p style={{ color: "#9CA3AF", width: "100%" }}>
+          <p className="text-xl text-gray-400 w-full">
             Pay with your preferred cryptocurrency using our verified wallet addresses
           </p>
         </div>
         
-        <div style={{ width: "100%" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
-            <Card key={coin} >
-              <CardHeader >
+            <card  >
+              <cardheader  >
                 <div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
-                  <Bitcoin style={{ color: "white" }} />
+                  <bitcoin  style={{ color: "white" }}>
                 </div>
-                <CardTitle style={{ color: "white" }}>{coin}</CardTitle>
+                <cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{coin}</CardTitle>
               </CardHeader>
             </Card>
           ))}
@@ -430,3 +438,5 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
+export const lovable = { component: true };

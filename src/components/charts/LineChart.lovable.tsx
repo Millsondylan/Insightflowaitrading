@@ -10,14 +10,14 @@ import {
 } from 'recharts';
 
 interface LineChartProps {
-  data: Array<Record<string, any>>;
+  data: Array<record  >>;
   xField: string;
   yField: string;
   height?: number;
   color?: string;
 }
 
-export const LineChart: React.FC<LineChartProps> = ({
+export const LineChart: React.FC<linechartprops  > = ({
   data,
   xField,
   yField,
@@ -25,36 +25,16 @@ export const LineChart: React.FC<LineChartProps> = ({
   color = '#2563eb'
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={height}>
-      <RechartsLineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.1} />
-        <span style={{fontSize: '16px'}}>❌</span>
-        <YAxis
-          stroke="#6b7280"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-          tickFormatter={(value) => `${value.toFixed(2)}`}
+    <responsivecontainer width="100%" >
+      <rechartslinechart  >
+        <cartesiangrid strokeDasharray="3 3" stroke="#374151" >
+        <xaxis stroke="#6b7280" >
+        <yaxis stroke="#6b7280" > `${value.toFixed(2)}`}
         />
-        <Tooltip
-          contentStyle={{
-            backgroundColor: '#1f2937',
-            border: 'none',
-            borderRadius: '0.5rem',
-            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-          }}
-          itemStyle={{ color: '#e5e7eb' }}
-          labelStyle={{ color: '#9ca3af' }}
-        />
-        <Line
-          type="monotone"
-          dataKey={yField}
-          stroke={color}
-          strokeWidth={2}
-          dot={false}
-          activeDot={{ r: 4, strokeWidth: 0 }}
-        />
+        <tooltip  >
+        <line type="monotone" >
       </RechartsLineChart>
     </ResponsiveContainer>
   );
 }; 
+export const lovable = { component: true };

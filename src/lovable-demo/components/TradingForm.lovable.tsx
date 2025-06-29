@@ -22,7 +22,7 @@ type TradingFormProps = {
 };
 
 export const TradingForm = ({ onSubmit }: TradingFormProps) => {
-  const [formData, setFormData] = useState<TradeFormData>({
+  const [formData, setFormData] = useState<tradeformdata  >({
     symbol: '',
     quantity: 1,
     price: 0,
@@ -30,7 +30,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
     orderType: 'market'
   });
 
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<formerrors  >({});
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -241,3 +241,4 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
     </div>
   );
 }; 
+export const lovable = { component: true };

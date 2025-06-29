@@ -1,5 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ArrowLeft, PlayCircle, TrendingUp, BarChart, Star, GitCommit } from 'lucide-react';
 
 // Mock data, in a real app this would come from an API
 const strategyDetails = {
@@ -18,12 +22,12 @@ const strategyDetails = {
 const GlassCard = ({ title, value, icon, unit = '' }: { title: string, value: string | number, icon: React.ElementType, unit?: string }) => {
     const Icon = icon;
     return (
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "16px" }}>
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", color: "#9CA3AF" }}>
-                <Icon size={14} />
+        <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+            <div className="flex justify-center items-center gap-2 text-gray-400 text-sm mb-2">
+                <icon  >
                 {title}
             </div>
-            <p style={{ fontWeight: "700", color: "white" }}>{value}{unit}</p>
+            <p className="text-2xl font-bold text-white">{value}{unit}</p>
         </div>
     );
 };
@@ -36,41 +40,42 @@ export default function VaultDetailPage() {
 
   return (
     <div>
-      <Link to="/vault" style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
-        <ArrowLeft size={16} />
+      <link to="/vault" style={{ display: "flex", alignItems: "center" }}>
+        <arrowleft  >
         Back to Vault
       </Link>
 
-      <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "32px" }}>
-        <header style={{ display: "flex", marginBottom: "32px" }}>
+      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+        <header className="flex justify-between items-start mb-8">
             <div>
-                <h1 style={{ fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
-                    <span ><GitCommit  /></span>
+                <h1 className="text-4xl font-bold text-white flex items-center gap-4">
+                    <span className="bg-white/10 p-3 rounded-lg"><gitcommit  ></span>
                     {strategy.name}
                 </h1>
-                <p style={{ color: "#9CA3AF" }}>by {strategy.author}</p>
+                <p className="text-gray-400 mt-2">by {strategy.author}</p>
             </div>
-            <Link to={`/replay/${id}`}>
-                <Button size="lg" style={{ color: "white" }}>
-                    <PlayCircle size={20} />
+            <link  >
+                <button size="lg" style={{ color: "white" }}>
+                    <playcircle  >
                     Launch Replay
                 </Button>
             </Link>
         </header>
 
-        <p >{strategy.description}</p>
+        <p className="text-gray-300 max-w-3xl mb-6">{strategy.description}</p>
         
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "32px" }}>
-          {strategy.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+        <div className="flex items-center gap-2 mb-8">
+          {strategy.tags.map(tag => <badge variant="secondary" >{tag}</Badge>)}
         </div>
 
-        <div >
-            <GlassCard title="Performance" value={strategy.performance} unit="%" icon={TrendingUp} />
-            <GlassCard title="Win Rate" value={strategy.winRate} unit="%" icon={Star} />
-            <GlassCard title="Avg PnL/Trade" value={strategy.avgPnl} unit="%" icon={BarChart} />
-            <GlassCard title="Backtests" value={strategy.backtests} icon={BarChart} />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <glasscard title="Performance" unit="%" >
+            <glasscard title="Win Rate" unit="%" >
+            <glasscard title="Avg PnL/Trade" unit="%" >
+            <glasscard title="Backtests" >
         </div>
       </div>
     </div>
   );
 } 
+export const lovable = { component: true };

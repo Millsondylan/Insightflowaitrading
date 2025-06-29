@@ -39,15 +39,15 @@ export const TradeTimeline = ({ trades }: Props) => {
   const sortedDates = Object.keys(groupedTrades).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
 
   return (
-    <div >
+    <div className="space-y-6">
       {sortedDates.map(date => (
         <div key={date}>
-          <h2 style={{ marginBottom: "16px" }}>
+          <h2 className="text-white/60 text-sm uppercase tracking-wide pb-2 border-b border-white/10 mb-4">
             {date}
           </h2>
-          <div >
+          <div className="space-y-4">
             {groupedTrades[date].map(trade => (
-              <TradeReplayCard key={trade.id} trade={trade} />
+              <tradereplaycard  >
             ))}
           </div>
         </div>
@@ -55,3 +55,4 @@ export const TradeTimeline = ({ trades }: Props) => {
     </div>
   );
 }; 
+export const lovable = { component: true };

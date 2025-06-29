@@ -5,6 +5,8 @@ import {
   StrategyOutput,
   Ticker,
 } from "@/lib/strategy/matchTickers";
+import { Button } from "@/components/ui/button";
+import { Sparkles, Eye } from "lucide-react";
 
 type Props = {
   strategy: StrategyOutput;
@@ -62,42 +64,38 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
   }, [matchedSymbols, strategy, tickers]);
 
   return (
-    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <Sparkles  />
-        <h3 style={{ color: "white" }}>
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+      <div className="flex items-center gap-3">
+        <sparkles  >
+        <h3 className="text-lg font-semibold text-white">
           Strategy Matches:{" "}
-          <span >{strategy.title}</span>
+          <span className="text-cyan-400">{strategy.title}</span>
         </h3>
       </div>
 
       {matchedTickersWithReason.length > 0 ? (
-        <div style={{ display: "flex" }}>
+        <div className="flex flex-wrap gap-3">
           {matchedTickersWithReason.map((ticker) => (
             <div
               key={ticker.symbol}
-              style={{ paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}
+              className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
             >
               <div>
-                <span style={{ color: "white" }}>{ticker.symbol}</span>
-                <span >
+                <span className="font-semibold text-white">{ticker.symbol}</span>
+                <span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
                 </span>
               </div>
-              <Button
-                size="sm"
-                variant="ghost"
-                style={{ color: "white" }}
-              >
-                <span style={{fontSize: '16px'}}>👁️</span>
+              <button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
+                <eye  >
                 View
               </Button>
             </div>
           ))}
         </div>
       ) : (
-        <div >
-          <p >
+        <div className="text-center py-4">
+          <p className="text-white/50">
             No tickers currently match this strategy.
           </p>
         </div>
@@ -105,3 +103,4 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
     </div>
   );
 } 
+export const lovable = { component: true };

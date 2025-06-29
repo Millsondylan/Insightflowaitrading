@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useTheme, ThemeName } from '../../contexts/ThemeContext';
 
 interface Section {
-  ref: React.RefObject<HTMLElement>;
+  ref: React.RefObject<htmlelement  >;
   theme: ThemeName;
 }
 
@@ -10,9 +10,9 @@ interface ThemeScrollObserverProps {
   sections: Section[];
 }
 
-const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) => {
+const ThemeScrollObserver: React.FC<themescrollobserverprops  > = ({ sections }) => {
   const { setTheme } = useTheme();
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const observerRef = useRef<intersectionobserver  >(null);
 
   useEffect(() => {
     if (observerRef.current) {
@@ -55,3 +55,4 @@ const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) =
 };
 
 export default ThemeScrollObserver; 
+export const lovable = { component: true };

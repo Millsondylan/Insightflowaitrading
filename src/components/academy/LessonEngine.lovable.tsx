@@ -33,9 +33,9 @@ const getEmbedUrl = (url: string): string | null => {
 };
 
 const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
-  const [completedIds, setCompletedIds] = React.useState<Set<string>>(new Set());
-  const [visibleSections, setVisibleSections] = React.useState<Set<string>>(new Set());
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const [completedIds, setCompletedIds] = React.useState<set  >>(new Set());
+  const [visibleSections, setVisibleSections] = React.useState<set  >>(new Set());
+  const containerRef = React.useRef<htmldivelement  >(null);
 
   React.useEffect(() => {
     if (onProgressUpdate) {
@@ -75,7 +75,7 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
   }, [sections, onProgressUpdate]);
   
   return (
-    <div ref={containerRef} style={{ marginTop: "32px" }}>
+    <div ref={containerRef} className="theme-academy space-y-8">
       {sections.map((section) => {
         const isVisible = visibleSections.has(section.id);
         const embedUrl = section.videoUrl ? getEmbedUrl(section.videoUrl) : null;
@@ -86,10 +86,10 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
             data-section-id={section.id}
             className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}
           >
-            <h2 style={{ color: "white", fontWeight: "700" }}>{section.title}</h2>
+            <h2 className="text-white text-2xl font-bold">{section.title}</h2>
             
             <div
-              
+              className="prose prose-invert max-w-none text-white/80"
               dangerouslySetInnerHTML={{ __html: section.content }}
             />
 
@@ -102,19 +102,19 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                   allowFullScreen
                   title={section.title}
                   style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
-                  
+                  className="rounded-lg"
                 />
               </div>
             )}
 
-            <div style={{ display: "flex" }}>
+            <div className="flex flex-wrap gap-4 pt-4">
               {section.pdfUrl && (
                 <a
                   href={section.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  style={{ color: "white", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}
+                  className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
                   <span>📄</span> Download PDF
                 </a>
@@ -123,7 +123,7 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
               {section.quizId && (
                 <button
                   onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
-                  style={{ color: "white", fontWeight: "700", display: "flex", alignItems: "center" }}
+                  className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
                   <span>🧠</span> Take Quiz
                 </button>
@@ -137,3 +137,4 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
 };
 
 export default LessonEngine; 
+export const lovable = { component: true };

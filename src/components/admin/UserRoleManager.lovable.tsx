@@ -1,4 +1,21 @@
 import * as React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Search } from "lucide-react";
 
 type User = { id: string; email: string; role: "admin" | "mod" | "user" };
 
@@ -9,7 +26,7 @@ type Props = {
 
 export default function UserRoleManager({ users, onRoleChange }: Props) {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [filteredUsers, setFilteredUsers] = React.useState<span style={{fontSize: '16px'}}>👤</span>(users);
+  const [filteredUsers, setFilteredUsers] = React.useState<user  >(users);
 
   // Filter users when search query changes
   React.useEffect(() => {
@@ -43,64 +60,59 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
   };
 
   return (
-    <div style={{ borderRadius: "0.75rem", padding: "24px", border: "1px solid #374151", color: "white" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <h2 style={{ color: "white" }}>User Management</h2>
+    <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold text-white">User Management</h2>
         
         {/* Search input */}
-        <div >
-          <span style={{fontSize: '16px'}}>🔍</span>
+        <div className="relative">
+          <search  >
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
-            style={{ border: "1px solid #374151", color: "white" }}
+            className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
           />
         </div>
       </div>
 
-      <div style={{ border: "1px solid #374151" }}>
-        <Table>
-          <TableHeader>
-            <TableRow >
-              <TableHead >ID</TableHead>
-              <TableHead >Email</TableHead>
-              <TableHead >Current Role</TableHead>
-              <TableHead >Manage Role</TableHead>
+      <div className="rounded-lg border border-white/10 overflow-hidden">
+        <table  >
+          <tableheader  >
+            <tablerow  >
+              <tablehead  >ID</TableHead>
+              <tablehead  >Email</TableHead>
+              <tablehead  >Current Role</TableHead>
+              <tablehead  >Manage Role</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <tablebody  >
             {filteredUsers.map((user) => (
-              <TableRow key={user.id} >
-                <TableCell >
+              <tablerow  >
+                <tablecell  style={{ fontSize: "0.75rem" }}>
                   {user.id.substring(0, 8)}...
                 </TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>
-                  <Badge 
-                    variant="outline" 
-                    className={getRoleBadgeColor(user.role)}
-                  >
+                <tablecell  >{user.email}</TableCell>
+                <tablecell  >
+                  <badge variant="outline" >
                     {user.role.toUpperCase()}
                   </Badge>
                 </TableCell>
-                <TableCell>
-                  <Select
-                    defaultValue={user.role}
-                    onValueChange={(value) => onRoleChange(user.id, value as User["role"])}
+                <tablecell  >
+                  <select  > onRoleChange(user.id, value as User["role"])}
                   >
-                    <SelectTrigger style={{ color: "white" }}>
-                      <SelectValue />
+                    <selecttrigger  style={{ color: "white" }}>
+                      <selectvalue  >
                     </SelectTrigger>
-                    <SelectContent style={{ color: "white" }}>
-                      <SelectItem value="user" >
+                    <selectcontent  style={{ color: "white" }}>
+                      <selectitem value="user" >
                         User
                       </SelectItem>
-                      <SelectItem value="mod" >
+                      <selectitem value="mod" >
                         Moderator
                       </SelectItem>
-                      <SelectItem value="admin" >
+                      <selectitem value="admin" >
                         Admin
                       </SelectItem>
                     </SelectContent>
@@ -110,8 +122,8 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
             ))}
             
             {filteredUsers.length === 0 && (
-              <TableRow>
-                <TableCell colSpan={4} style={{ paddingTop: "32px", paddingBottom: "32px" }}>
+              <tablerow  >
+                <tablecell  >
                   No users found matching your search.
                 </TableCell>
               </TableRow>
@@ -120,9 +132,10 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
         </Table>
       </div>
       
-      <div >
+      <div className="text-xs text-gray-500">
         Showing {filteredUsers.length} of {users.length} users
       </div>
     </div>
   );
 } 
+export const lovable = { component: true };

@@ -1,11 +1,15 @@
 // TODO: implement mindset insights feed
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Sparkles, Heart, Brain, Target } from 'lucide-react';
 
 interface MindsetFeedProps {
   userId?: string;
 }
 
-export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
+export const MindsetFeed: React.FC<mindsetfeedprops  > = ({ userId }) => {
   const [insights, setInsights] = React.useState([
     {
       id: 1,
@@ -56,31 +60,31 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Mindset Feed</h2>
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Mindset Feed</h2>
       
-      <ScrollArea >
-        <div >
+      <scrollarea  >
+        <div className="space-y-4">
           {insights.map((insight) => {
             const Icon = insight.icon;
             return (
-              <div key={insight.id} style={{ padding: "16px", border: "1px solid #374151" }}>
-                <div style={{ display: "flex" }}>
+              <div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+                <div className="flex items-start gap-3">
                   <div className={`mt-1 ${getTypeColor(insight.type)}`}>
-                    <Icon  />
+                    <icon  >
                   </div>
-                  <div >
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <h3 >{insight.title}</h3>
-                      <span >
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-semibold">{insight.title}</h3>
+                      <span className="text-xs text-muted-foreground">
                         {insight.timestamp.toLocaleTimeString()}
                       </span>
                     </div>
-                    <p >
+                    <p className="text-sm text-muted-foreground mb-2">
                       {insight.content}
                     </p>
                     {insight.actionable && (
-                      <Badge variant="outline" >
+                      <badge variant="outline" style={{ fontSize: "0.75rem" }}>
                         Actionable
                       </Badge>
                     )}
@@ -92,11 +96,12 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
         </div>
       </ScrollArea>
 
-      <div >
-        <p >
+      <div className="mt-4 pt-4 border-t">
+        <p className="text-sm text-muted-foreground text-center">
           Insights generated from your journal entries and trading patterns
         </p>
       </div>
     </Card>
   );
 }; 
+export const lovable = { component: true };

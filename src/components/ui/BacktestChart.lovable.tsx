@@ -24,11 +24,11 @@ const PriceTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div style={{ border: "1px solid #374151", color: "white" }}>
-        <p >
+      <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
+        <p className="text-gray-300 text-xs">
           {new Date(data.time * 1000).toLocaleString()}
         </p>
-        <p style={{ fontWeight: "700" }}>{`Price: ${data.price.toFixed(2)}`}</p>
+        <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
       </div>
     );
   }
@@ -41,8 +41,8 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
   const formattedTime = new Date(trade.time * 1000).toLocaleString();
   
   return (
-    <div style={{ border: "1px solid #374151", color: "white" }}>
-      <p style={{ fontWeight: "700" }}>
+    <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
+      <p className="font-bold">
         {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
       </p>
       <p>{formattedTime}</p>
@@ -58,7 +58,7 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
 
 const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
   const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<TradeMarker | null>(null);
+  const [hoveredTrade, setHoveredTrade] = useState<trademarker  >(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   
   // Start animation after component mounts
@@ -75,63 +75,34 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   const maxPrice = Math.max(...prices) * 1.005;
 
   return (
-    <BlockReveal>
-      <div >
-        <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
-          <h3 style={{ fontWeight: "700", color: "white" }}>
+    <blockreveal  >
+      <div className="chart-container">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-white">
             {ticker} ({timeframe})
           </h3>
         </div>
-        <ResponsiveContainer width="100%" height="90%">
-          <LineChart
-            data={animationComplete ? priceData : []}
-            margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <span style={{fontSize: '16px'}}>❌</span> new Date(time * 1000).toLocaleDateString()}
+        <responsivecontainer width="100%" height="90%" >
+          <linechart  >
+            <cartesiangrid strokeDasharray="3 3" >
+            <xaxis dataKey="time" > new Date(time * 1000).toLocaleDateString()}
               tick={{ fill: '#9ca3af' }}
             />
-            <YAxis
-              domain={[minPrice, maxPrice]}
-              tick={{ fill: '#9ca3af' }}
-              tickFormatter={(value) => value.toFixed(0)}
+            <yaxis  > value.toFixed(0)}
             />
-            <Tooltip content={<PriceTooltip />} />
-            <Line
-              type="monotone"
-              dataKey="price"
-              stroke="#22d3ee"
-              strokeWidth={2}
-              dot={false}
-              animationDuration={1500}
-            />
+            <tooltip  >} />
+            <line type="monotone" dataKey="price" stroke="#22d3ee" >
             
             {/* Trade entry markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'entry').map((marker, idx) => (
-              <ReferenceDot
-                key={`entry-${idx}`}
-                x={marker.time}
-                y={marker.price}
-                r={6}
-                fill="#22c55e"
-                stroke="#22c55e"
-                strokeWidth={2}
-                onMouseOver={() => setHoveredTrade(marker)}
+              <referencedot fill="#22c55e" stroke="#22c55e" > setHoveredTrade(marker)}
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
             
             {/* Trade exit markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'exit').map((marker, idx) => (
-              <ReferenceDot
-                key={`exit-${idx}`}
-                x={marker.time}
-                y={marker.price}
-                r={6}
-                fill="#ef4444"
-                stroke="#ef4444"
-                strokeWidth={2}
-                onMouseOver={() => setHoveredTrade(marker)}
+              <referencedot fill="#ef4444" stroke="#ef4444" > setHoveredTrade(marker)}
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
@@ -140,8 +111,8 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
-          <div >
-            <TradeTooltip trade={hoveredTrade} />
+          <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+            <tradetooltip  >
           </div>
         )}
       </div>
@@ -150,3 +121,4 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
 };
 
 export default BacktestChart; 
+export const lovable = { component: true };

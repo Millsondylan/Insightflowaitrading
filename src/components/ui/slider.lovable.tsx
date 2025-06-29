@@ -7,20 +7,15 @@ const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative flex w-full touch-none select-none items-center",
-      className
-    )}
-    {...props}
-  >
-    <SliderPrimitive.Track style={{ width: "100%" }}>
-      <SliderPrimitive.Range  />
+  <sliderprimitive  >
+    <sliderprimitive  style={{ width: "100%" }}>
+      <sliderprimitive  style={{ height: "100%" }}>
     </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb  />
+    <sliderprimitive  style={{ display: "block" }}>
   </SliderPrimitive.Root>
 ))
 Slider.displayName = SliderPrimitive.Root.displayName
 
 export { Slider }
+
+export const lovable = { component: true };

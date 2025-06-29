@@ -6,6 +6,7 @@ import BacktestChart from '@/components/ui/BacktestChart';
 import KPICards from '@/components/ui/KPICards';
 import TradeExplorer from './TradeExplorer';
 import BlockReveal from '@/components/ui/BlockReveal';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import '@/styles/backtest.css';
 
 interface BacktestResultDisplayProps {
@@ -19,8 +20,8 @@ const formatPercent = (n: number) => `${(n * 100).toFixed(2)}%`;
 const formatCurrency = (n: number) => n.toFixed(2);
 
 const StatCard = ({ label, value, color }: { label: string, value: string | number, color?: string }) => (
-  <div style={{ padding: "16px" }}>
-    <p style={{ color: "#9CA3AF" }}>{label}</p>
+  <div className="glass-section p-4 text-center">
+    <p className="text-gray-400 text-sm">{label}</p>
     <p className={`text-2xl font-bold ${color || ''}`}>{value}</p>
   </div>
 );
@@ -30,32 +31,32 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   const chartData = toChartSeries(candles, result.trades);
   
   return (
-    <div style={{ marginTop: "32px" }}>
-      <BlockReveal>
-        <h2 style={{ fontSize: "1.875rem", fontWeight: "700" }}>Backtest Results</h2>
+    <div className="space-y-8 mt-12">
+      <blockreveal  >
+        <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
       </BlockReveal>
       
-      <BlockReveal>
-        <KPICards stats={result.stats} />
+      <blockreveal  >
+        <kpicards  >
       </BlockReveal>
       
-      <BlockReveal delay={0.2}>
-        <Tabs value={activeTab} onValueChange={setActiveTab} style={{ width: "100%" }}>
-          <TabsList style={{ width: "100%" }}>
-            <TabsTrigger value="overview" >
+      <blockreveal  >
+        <tabs  style={{ width: "100%" }}>
+          <tabslist  style={{ width: "100%", display: "grid" }}>
+            <tabstrigger value="overview" >
               Chart View
             </TabsTrigger>
-            <TabsTrigger value="trades" >
+            <tabstrigger value="trades" >
               Trade Explorer
             </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="overview">
-            <BacktestChart chartData={chartData} ticker={ticker} timeframe={timeframe} />
+          <tabscontent value="overview" >
+            <backtestchart  >
           </TabsContent>
           
-          <TabsContent value="trades">
-            <TradeExplorer trades={result.trades} />
+          <tabscontent value="trades" >
+            <tradeexplorer  >
           </TabsContent>
         </Tabs>
       </BlockReveal>
@@ -64,3 +65,4 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
 };
 
 export default BacktestResultDisplay; 
+export const lovable = { component: true };

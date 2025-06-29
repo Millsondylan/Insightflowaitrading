@@ -79,7 +79,7 @@ type ThemeContextType = {
   setTheme: (themeName: ThemeName) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<themecontexttype  >(undefined);
 
 // 3. --- ThemeProvider Component ---
 
@@ -88,8 +88,8 @@ interface ThemeProviderProps {
   initialTheme?: ThemeName;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, initialTheme = 'landing' }) => {
-  const [themeName, setThemeName] = useState<ThemeName>(initialTheme);
+export const ThemeProvider: React.FC<themeproviderprops  > = ({ children, initialTheme = 'landing' }) => {
+  const [themeName, setThemeName] = useState<themename  >(initialTheme);
 
   const theme = themes[themeName];
 
@@ -117,7 +117,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, initialT
   }), [theme]);
 
   return (
-    <ThemeContext.Provider value={value}>
+    <themecontext  >
       {children}
     </ThemeContext.Provider>
   );
@@ -132,3 +132,4 @@ export const useTheme = () => {
   }
   return context;
 }; 
+export const lovable = { component: true };

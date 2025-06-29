@@ -1,11 +1,15 @@
 // TODO: implement daily trading plan generator
 import React, { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
 import { DailyPlan, MarketTicker, BroadcastEvent } from './types'
 import { generateDailyMarketInsight } from './utils'
 
 export const DailyPlanner: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date())
-  const [dailyPlan, setDailyPlan] = useState<DailyPlan>({
+  const [selectedDate, setSelectedDate] = useState<date  >(new Date())
+  const [dailyPlan, setDailyPlan] = useState<dailyplan  >({
     id: '1',
     date: new Date(),
     marketOutlook: 'Neutral',
@@ -52,44 +56,39 @@ export const DailyPlanner: React.FC = () => {
   }
 
   return (
-    <Card style={{ width: "100%", color: "white" }}>
-      <CardHeader style={{ display: "flex", alignItems: "center" }}>
-        <CardTitle>Daily Market Planner</CardTitle>
-        <Badge 
-          variant={
-            dailyPlan.marketOutlook === 'Bullish' ? 'default' : 
-            dailyPlan.marketOutlook === 'Bearish' ? 'destructive' : 'secondary'
-          }
-        >
+    <card  style={{ width: "100%", color: "white" }}>
+      <cardheader  style={{ display: "flex", alignItems: "center" }}>
+        <cardtitle  >Daily Market Planner</CardTitle>
+        <badge  >
           {dailyPlan.marketOutlook} Outlook
         </Badge>
       </CardHeader>
-      <CardContent>
-        <div >
+      <cardcontent  >
+        <div className="grid grid-cols-3 gap-4">
           <div>
-            <h3 style={{ fontWeight: "700" }}>Calendar</h3>
-            <span style={{fontSize: '16px'}}>📅</span>
+            <h3 className="text-lg font-bold mb-2">Calendar</h3>
+            <calendar mode="single" style={{ borderRadius: "0.375rem", border: "1px solid #E5E7EB" }}>
           </div>
           
-          <div >
-            <div >
+          <div className="col-span-2">
+            <div className="space-y-4">
               <div>
-                <h3 style={{ fontWeight: "700" }}>Potential Trades</h3>
-                <div >
+                <h3 className="text-lg font-bold mb-2">Potential Trades</h3>
+                <div className="space-y-2">
                   {dailyPlan.potentialTrades.map((trade) => (
                     <div 
                       key={trade.symbol}
-                      style={{ border: "1px solid #374151", display: "flex", alignItems: "center" }}
+                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
                     >
                       <div>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <h4 style={{ fontWeight: "700" }}>{trade.symbol}</h4>
-                          <Badge variant="outline">{trade.type}</Badge>
+                        <div className="flex items-center space-x-2">
+                          <h4 className="font-bold">{trade.symbol}</h4>
+                          <badge variant="outline" >{trade.type}</Badge>
                         </div>
-                        <p >{trade.name}</p>
+                        <p className="text-sm text-gray-300">{trade.name}</p>
                       </div>
-                      <div >
-                        <div style={{ fontWeight: "700" }}>
+                      <div className="text-right">
+                        <div className="text-lg font-bold">
                           ${trade.price.toLocaleString()}
                         </div>
                         <div className={`text-sm ${trade.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
@@ -102,28 +101,23 @@ export const DailyPlanner: React.FC = () => {
               </div>
 
               <div>
-                <h3 style={{ fontWeight: "700" }}>Key Events</h3>
-                <div >
+                <h3 className="text-lg font-bold mb-2">Key Events</h3>
+                <div className="space-y-2">
                   {dailyPlan.keyEvents.map((event) => (
                     <div 
                       key={event.id}
-                      style={{ border: "1px solid #374151" }}
+                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
                     >
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <h4 style={{ fontWeight: "700" }}>{event.title}</h4>
-                        <Badge 
-                          variant={
-                            event.impact === 'High' ? 'destructive' : 
-                            event.impact === 'Medium' ? 'default' : 'secondary'
-                          }
-                        >
+                      <div className="flex justify-between items-center mb-2">
+                        <h4 className="font-bold">{event.title}</h4>
+                        <badge  >
                           {event.impact} Impact
                         </Badge>
                       </div>
-                      <p >{event.description}</p>
-                      <div style={{ display: "flex" }}>
+                      <p className="text-sm text-gray-300 mb-2">{event.description}</p>
+                      <div className="flex space-x-2">
                         {event.relatedAssets?.map((asset) => (
-                          <Badge key={asset} variant="outline">{asset}</Badge>
+                          <badge variant="outline" >{asset}</Badge>
                         ))}
                       </div>
                     </div>
@@ -132,16 +126,16 @@ export const DailyPlanner: React.FC = () => {
               </div>
 
               <div>
-                <h3 style={{ fontWeight: "700" }}>Risk Management</h3>
-                <div style={{ border: "1px solid #374151" }}>
-                  <div >
+                <h3 className="text-lg font-bold mb-2">Risk Management</h3>
+                <div className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
+                  <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <p style={{ color: "#9CA3AF" }}>Total Risk</p>
-                      <p style={{ fontWeight: "700" }}>{(dailyPlan.riskManagement.totalRisk * 100).toFixed(1)}%</p>
+                      <p className="text-sm text-gray-400">Total Risk</p>
+                      <p className="font-bold">{(dailyPlan.riskManagement.totalRisk * 100).toFixed(1)}%</p>
                     </div>
                     <div>
-                      <p style={{ color: "#9CA3AF" }}>Max Drawdown</p>
-                      <p style={{ fontWeight: "700" }}>{(dailyPlan.riskManagement.maxDrawdown * 100).toFixed(1)}%</p>
+                      <p className="text-sm text-gray-400">Max Drawdown</p>
+                      <p className="font-bold">{(dailyPlan.riskManagement.maxDrawdown * 100).toFixed(1)}%</p>
                     </div>
                   </div>
                 </div>
@@ -150,11 +144,11 @@ export const DailyPlanner: React.FC = () => {
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button variant="outline" style={{ color: "white" }} onClick={generateInsight}>
+        <div className="mt-4 flex justify-center space-x-4">
+          <button variant="outline" style={{ color: "white" }}>
             Generate Market Insight
           </Button>
-          <Button variant="default">
+          <button variant="default" >
             Start Trading Session
           </Button>
         </div>
@@ -162,3 +156,4 @@ export const DailyPlanner: React.FC = () => {
     </Card>
   )
 } 
+export const lovable = { component: true };

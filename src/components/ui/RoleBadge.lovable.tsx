@@ -1,5 +1,11 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export type UserRole = 'Admin' | 'User' | 'Trial' | 'Expired';
 
@@ -9,7 +15,7 @@ interface RoleBadgeProps {
   className?: string;
 }
 
-export const RoleBadge: React.FC<RoleBadgeProps> = ({ 
+export const RoleBadge: React.FC<rolebadgeprops  > = ({ 
   role, 
   showTooltip = true,
   className 
@@ -61,13 +67,13 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
   // If tooltip is enabled, wrap badge in tooltip
   if (showTooltip) {
     return (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
+      <tooltipprovider  >
+        <tooltip  >
+          <tooltiptrigger  >
             {badge}
           </TooltipTrigger>
-          <TooltipContent>
-            <p >{tooltipContent[safeRole as UserRole]}</p>
+          <tooltipcontent  >
+            <p className="text-xs">{tooltipContent[safeRole as UserRole]}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -79,3 +85,4 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
 };
 
 export default RoleBadge; 
+export const lovable = { component: true };

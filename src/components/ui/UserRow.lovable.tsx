@@ -2,6 +2,20 @@ import React, { useState } from 'react';
 import { User } from '@/lib/admin/fetchUsers';
 import { updateUserRole, revokeUserAccess, UserRole } from '@/lib/admin/updateUserRole';
 import RoleBadge from './RoleBadge';
+import { MoreHorizontal, Copy, UserCog, XCircle, Eye } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
+  DropdownMenuPortal
+} from '@/components/ui/dropdown-menu';
 import { Button } from './button';
 import { cn } from '@/lib/utils';
 
@@ -10,7 +24,7 @@ interface UserRowProps {
   onUserUpdate?: (updatedUser: User) => void;
 }
 
-const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, onUserUpdate }) => {
+const UserRow: React.FC<userrowprops  > = ({ user, onUserUpdate }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   // Format address for display (shorten it)
@@ -129,9 +143,9 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
   };
 
   return (
-    <tr >
-      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+    <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
+      <td className="px-4 py-3">
+        <div className="flex items-center">
           <span 
             className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
@@ -146,57 +160,50 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
         </div>
       </td>
 
-      <td style={{ paddingLeft: "16px", paddingRight: "16px", color: "#9CA3AF" }}>
+      <td className="px-4 py-3 text-sm text-gray-400">
         {formatDate(user.created_at)}
       </td>
 
-      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-        <span >
+      <td className="px-4 py-3">
+        <span className="text-sm">
           {user.subscription_tier || '-'}
         </span>
       </td>
 
-      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-        <RoleBadge role={user.role as UserRole} />
+      <td className="px-4 py-3">
+        <rolebadge  >
       </td>
 
-      <td style={{ paddingLeft: "16px", paddingRight: "16px" }}>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild disabled={isLoading}>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              
-            >
-              <MoreHorizontal  />
+      <td className="px-4 py-3">
+        <dropdownmenu  >
+          <dropdownmenutrigger  >
+            <button variant="ghost" size="icon" >
+              <morehorizontal  >
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" style={{ border: "1px solid #374151" }}>
-            <DropdownMenuLabel>User Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
+          <dropdownmenucontent align="end" style={{ border: "1px solid #E5E7EB" }}>
+            <dropdownmenulabel  >User Actions</DropdownMenuLabel>
+            <dropdownmenuseparator  >
             
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <span style={{fontSize: '16px'}}>👤</span>
+            <dropdownmenusub  >
+              <dropdownmenusubtrigger  >
+                <usercog  >
                 <span>Change Role</span>
               </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent style={{ border: "1px solid #374151" }}>
-                  <DropdownMenuItem 
-                    onClick={() => handleRoleChange('Admin')}
-                    
+              <dropdownmenuportal  >
+                <dropdownmenusubcontent  style={{ border: "1px solid #E5E7EB" }}>
+                  <dropdownmenuitem  > handleRoleChange('Admin')}
+                    className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
                   >
                     Admin
                   </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    onClick={() => handleRoleChange('User')}
-                    
+                  <dropdownmenuitem  > handleRoleChange('User')}
+                    className="cursor-pointer text-green-300 hover:bg-green-900/30"
                   >
                     User
                   </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    onClick={() => handleRoleChange('Trial')}
-                    
+                  <dropdownmenuitem  > handleRoleChange('Trial')}
+                    className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
                   >
                     Trial
                   </DropdownMenuItem>
@@ -204,23 +211,20 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
               </DropdownMenuPortal>
             </DropdownMenuSub>
             
-            <DropdownMenuItem onClick={handleCopyAddress} >
-              <Copy  />
+            <dropdownmenuitem  >
+              <copy  >
               <span>Copy Address</span>
             </DropdownMenuItem>
             
-            <DropdownMenuItem >
-              <span style={{fontSize: '16px'}}>👁️</span>
+            <dropdownmenuitem  >
+              <eye  >
               <span>View Details</span>
             </DropdownMenuItem>
             
-            <DropdownMenuSeparator />
+            <dropdownmenuseparator  >
             
-            <DropdownMenuItem 
-              onClick={handleRevokeAccess}
-              
-            >
-              <span style={{fontSize: '16px'}}>❌</span>
+            <dropdownmenuitem  >
+              <xcircle  >
               <span>Revoke Access</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
@@ -231,3 +235,4 @@ const UserRow: React.FC<span style={{fontSize: '16px'}}>👤</span> = ({ user, o
 };
 
 export default UserRow; 
+export const lovable = { component: true };

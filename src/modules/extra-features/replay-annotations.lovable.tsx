@@ -1,12 +1,17 @@
 // TODO: implement replay annotation system
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import { Tag, AlertTriangle, TrendingUp, TrendingDown, Zap } from 'lucide-react';
 
 interface ReplayAnnotationsProps {
   tradeId?: string;
   onAnnotationAdd?: (annotation: any) => void;
 }
 
-export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, onAnnotationAdd }) => {
+export const ReplayAnnotations: React.FC<replayannotationsprops  > = ({ tradeId, onAnnotationAdd }) => {
   const annotationTypes = [
     { id: 'volatility-trap', label: 'Volatility Trap', icon: AlertTriangle, color: 'text-red-500' },
     { id: 'reversal', label: 'Reversal', icon: TrendingUp, color: 'text-blue-500' },
@@ -60,65 +65,57 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Replay Annotations</h2>
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Replay Annotations</h2>
 
-      <div >
+      <div className="space-y-6">
         <div>
-          <h3 >Add Annotation</h3>
-          <div style={{ marginBottom: "16px" }}>
+          <h3 className="font-semibold mb-3">Add Annotation</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
             {annotationTypes.map((type) => {
               const Icon = type.icon;
               return (
-                <Button
-                  key={type.id}
-                  variant={selectedType === type.id ? 'default' : 'outline'}
-                  size="sm"
-                  style={{ display: "flex", alignItems: "center" }}
-                  onClick={() => setSelectedType(type.id)}
+                <button size="sm" style={{ display: "flex", alignItems: "center" }}> setSelectedType(type.id)}
                 >
-                  <Icon className={`h-4 w-4 ${type.color}`} />
-                  <span >{type.label}</span>
+                  <icon  >
+                  <span className="text-xs">{type.label}</span>
                 </Button>
               );
             })}
           </div>
           
-          <div style={{ display: "flex" }}>
-            <Input
-              placeholder="Add a note about this moment..."
-              value={customNote}
-              onChange={(e) => setCustomNote(e.target.value)}
+          <div className="flex gap-2">
+            <input placeholder="Add a note about this moment..." > setCustomNote(e.target.value)}
             />
-            <Button onClick={addAnnotation} disabled={!selectedType}>
-              <Tag  />
+            <button  >
+              <tag  >
               Add
             </Button>
           </div>
         </div>
 
         <div>
-          <h3 >Annotations Timeline</h3>
-          <div >
+          <h3 className="font-semibold mb-3">Annotations Timeline</h3>
+          <div className="space-y-3">
             {annotations.map((annotation) => {
               const type = annotationTypes.find(t => t.id === annotation.type);
               const Icon = type?.icon || Tag;
 
               return (
-                <div key={annotation.id} style={{ display: "flex", border: "1px solid #374151" }}>
+                <div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
                   <div className={`mt-1 ${type?.color}`}>
-                    <Icon  />
+                    <icon  >
                   </div>
-                  <div >
-                    <div style={{ display: "flex", alignItems: "center" }}>
-                      <Badge variant="outline">{type?.label}</Badge>
-                      <div style={{ display: "flex", alignItems: "center" }}>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <badge variant="outline" >{type?.label}</Badge>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <span>{annotation.timestamp}</span>
                         <span>•</span>
                         <span>${annotation.price}</span>
                       </div>
                     </div>
-                    <p >{annotation.note}</p>
+                    <p className="text-sm">{annotation.note}</p>
                   </div>
                 </div>
               );
@@ -126,19 +123,19 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
           </div>
         </div>
 
-        <div style={{ padding: "16px" }}>
-          <h4 >Pattern Recognition</h4>
-          <p >
+        <div className="p-4 bg-secondary/20 rounded-lg">
+          <h4 className="font-medium mb-2">Pattern Recognition</h4>
+          <p className="text-sm text-muted-foreground mb-3">
             Based on your annotations, we've identified recurring patterns:
           </p>
-          <div >
-            <div >
-              <p style={{ fontWeight: "700" }}>3</p>
-              <p >Volatility Traps/Week</p>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="text-center p-2 bg-background rounded">
+              <p className="text-lg font-bold text-red-500">3</p>
+              <p className="text-xs text-muted-foreground">Volatility Traps/Week</p>
             </div>
-            <div >
-              <p style={{ fontWeight: "700" }}>78%</p>
-              <p >Exit Signal Accuracy</p>
+            <div className="text-center p-2 bg-background rounded">
+              <p className="text-lg font-bold text-green-500">78%</p>
+              <p className="text-xs text-muted-foreground">Exit Signal Accuracy</p>
             </div>
           </div>
         </div>
@@ -146,3 +143,4 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
     </Card>
   );
 }; 
+export const lovable = { component: true };

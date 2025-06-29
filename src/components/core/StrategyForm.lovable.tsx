@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '../../components/ui/select';
 import { StrategyFormData } from '../../lib/strategy/promptBuilder';
+import { Loader2 } from 'lucide-react';
 
 interface StrategyFormProps {
   onSubmit: (formData: StrategyFormData) => void;
@@ -19,7 +20,7 @@ interface StrategyFormProps {
 }
 
 const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
-  const [formData, setFormData] = useState<StrategyFormData>({
+  const [formData, setFormData] = useState<strategyformdata  >({
     strategyName: '',
     tradeStyle: '',
     instruments: '',
@@ -30,9 +31,9 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
     extraContext: '',
   });
 
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [formErrors, setFormErrors] = useState<record  >>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<htmlinputelement  >) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -109,149 +110,99 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
       variants={formVariants}
       initial="hidden"
       animate="visible"
-      style={{ padding: "24px" }}
+      className="glass-container p-6 rounded-lg"
     >
-      <div >
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="strategyName">Strategy Name (Optional)</Label>
-          <Input
-            id="strategyName"
-            name="strategyName"
-            placeholder="E.g., Momentum Breakout"
-            value={formData.strategyName}
-            onChange={handleChange}
-            
-          />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div variants={itemVariants} className="space-y-2">
+          <label htmlFor="strategyName" >Strategy Name (Optional)</Label>
+          <input id="strategyName" name="strategyName" placeholder="E.g., Momentum Breakout" >
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="tradeStyle">Trade Style*</Label>
-          <Select
-            value={formData.tradeStyle}
-            onValueChange={(value) => handleSelectChange(value, 'tradeStyle')}
+        <motion.div variants={itemVariants} className="space-y-2">
+          <label htmlFor="tradeStyle" >Trade Style*</Label>
+          <select  > handleSelectChange(value, 'tradeStyle')}
           >
-            <SelectTrigger >
-              <SelectValue placeholder="Select a trade style" />
+            <selecttrigger  >
+              <selectvalue placeholder="Select a trade style" >
             </SelectTrigger>
-            <SelectContent style={{ color: "white" }}>
-              <SelectItem value="Intraday">Intraday</SelectItem>
-              <SelectItem value="Swing">Swing</SelectItem>
-              <SelectItem value="Scalping">Scalping</SelectItem>
-              <SelectItem value="Position">Position</SelectItem>
-              <SelectItem value="Custom">Custom</SelectItem>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="Intraday" >Intraday</SelectItem>
+              <selectitem value="Swing" >Swing</SelectItem>
+              <selectitem value="Scalping" >Scalping</SelectItem>
+              <selectitem value="Position" >Position</SelectItem>
+              <selectitem value="Custom" >Custom</SelectItem>
             </SelectContent>
           </Select>
           {formErrors.tradeStyle && (
-            <p >{formErrors.tradeStyle}</p>
+            <p className="text-red-500 text-sm">{formErrors.tradeStyle}</p>
           )}
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="instruments">Instruments*</Label>
-          <Input
-            id="instruments"
-            name="instruments"
-            placeholder="E.g., BTC, ETH, AAPL"
-            value={formData.instruments}
-            onChange={handleChange}
-            
-          />
+        <motion.div variants={itemVariants} className="space-y-2">
+          <label htmlFor="instruments" >Instruments*</Label>
+          <input id="instruments" name="instruments" placeholder="E.g., BTC, ETH, AAPL" >
           {formErrors.instruments && (
-            <p >{formErrors.instruments}</p>
+            <p className="text-red-500 text-sm">{formErrors.instruments}</p>
           )}
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="timeframe">Timeframe*</Label>
-          <Select
-            value={formData.timeframe}
-            onValueChange={(value) => handleSelectChange(value, 'timeframe')}
+        <motion.div variants={itemVariants} className="space-y-2">
+          <label htmlFor="timeframe" >Timeframe*</Label>
+          <select  > handleSelectChange(value, 'timeframe')}
           >
-            <SelectTrigger >
-              <SelectValue placeholder="Select a timeframe" />
+            <selecttrigger  >
+              <selectvalue placeholder="Select a timeframe" >
             </SelectTrigger>
-            <SelectContent style={{ color: "white" }}>
-              <SelectItem value="1m">1 minute</SelectItem>
-              <SelectItem value="5m">5 minutes</SelectItem>
-              <SelectItem value="15m">15 minutes</SelectItem>
-              <SelectItem value="30m">30 minutes</SelectItem>
-              <SelectItem value="1h">1 hour</SelectItem>
-              <SelectItem value="4h">4 hours</SelectItem>
-              <SelectItem value="1d">Daily</SelectItem>
-              <SelectItem value="1w">Weekly</SelectItem>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="1m" >1 minute</SelectItem>
+              <selectitem value="5m" >5 minutes</SelectItem>
+              <selectitem value="15m" >15 minutes</SelectItem>
+              <selectitem value="30m" >30 minutes</SelectItem>
+              <selectitem value="1h" >1 hour</SelectItem>
+              <selectitem value="4h" >4 hours</SelectItem>
+              <selectitem value="1d" >Daily</SelectItem>
+              <selectitem value="1w" >Weekly</SelectItem>
             </SelectContent>
           </Select>
           {formErrors.timeframe && (
-            <p >{formErrors.timeframe}</p>
+            <p className="text-red-500 text-sm">{formErrors.timeframe}</p>
           )}
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="entryConditions">Entry Conditions*</Label>
-          <Textarea
-            id="entryConditions"
-            name="entryConditions"
-            placeholder="Describe your entry conditions..."
-            value={formData.entryConditions}
-            onChange={handleChange}
-            
-          />
+        <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
+          <label htmlFor="entryConditions" >Entry Conditions*</Label>
+          <textarea id="entryConditions" name="entryConditions" placeholder="Describe your entry conditions..." >
           {formErrors.entryConditions && (
-            <p >{formErrors.entryConditions}</p>
+            <p className="text-red-500 text-sm">{formErrors.entryConditions}</p>
           )}
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="exitConditions">Exit Conditions*</Label>
-          <Textarea
-            id="exitConditions"
-            name="exitConditions"
-            placeholder="Describe your exit conditions..."
-            value={formData.exitConditions}
-            onChange={handleChange}
-            
-          />
+        <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
+          <label htmlFor="exitConditions" >Exit Conditions*</Label>
+          <textarea id="exitConditions" name="exitConditions" placeholder="Describe your exit conditions..." >
           {formErrors.exitConditions && (
-            <p >{formErrors.exitConditions}</p>
+            <p className="text-red-500 text-sm">{formErrors.exitConditions}</p>
           )}
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="riskManagement">Risk Management*</Label>
-          <Textarea
-            id="riskManagement"
-            name="riskManagement"
-            placeholder="Describe your risk management approach..."
-            value={formData.riskManagement}
-            onChange={handleChange}
-            
-          />
+        <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
+          <label htmlFor="riskManagement" >Risk Management*</Label>
+          <textarea id="riskManagement" name="riskManagement" placeholder="Describe your risk management approach..." >
           {formErrors.riskManagement && (
-            <p >{formErrors.riskManagement}</p>
+            <p className="text-red-500 text-sm">{formErrors.riskManagement}</p>
           )}
         </motion.div>
 
-        <motion.div variants={itemVariants} >
-          <Label htmlFor="extraContext">Extra Context (Optional)</Label>
-          <Textarea
-            id="extraContext"
-            name="extraContext"
-            placeholder="Any additional information or context..."
-            value={formData.extraContext}
-            onChange={handleChange}
-            
-          />
+        <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
+          <label htmlFor="extraContext" >Extra Context (Optional)</Label>
+          <textarea id="extraContext" name="extraContext" placeholder="Any additional information or context..." >
         </motion.div>
 
-        <motion.div variants={itemVariants} style={{ display: "flex", justifyContent: "center" }}>
-          <Button
-            type="submit"
-            style={{ border: "1px solid #374151", color: "white", width: "100%" }}
-            disabled={isLoading}
-          >
+        <motion.div variants={itemVariants} className="md:col-span-2 flex justify-center mt-4">
+          <button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}>
             {isLoading ? (
               <>
-                <Loader2  /> Generating Strategy...
+                <loader2  > Generating Strategy...
               </>
             ) : (
               'Generate Strategy'
@@ -264,3 +215,4 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
 };
 
 export default StrategyForm; 
+export const lovable = { component: true };

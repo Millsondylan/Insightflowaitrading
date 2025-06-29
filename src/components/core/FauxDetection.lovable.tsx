@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<PatternZone[]>([]);
+  const [patternZones, setPatternZones] = useState<patternzone  >([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -31,18 +31,18 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   }, [result.confidence]);
 
   return (
-    <div >
-      <BlockReveal>
-        <div style={{ padding: "16px" }}>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <blockreveal  >
+        <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
-            <span style={{fontSize: '16px'}}>📊</span>
+            <chartcanvasoverlay  >
           ) : (
-            <img src={imagePreview} alt="Chart preview" style={{ width: "100%" }} />
+            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
           )}
-          <div style={{ display: "flex" }}>
+          <div className="mt-2 flex justify-end">
             <button 
               onClick={() => setShowOverlays(!showOverlays)} 
-              
+              className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
             </button>
@@ -50,44 +50,44 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
         </div>
       </BlockReveal>
       
-      <div >
-        <BlockReveal delay={0.1}>
-          <h3 style={{ fontWeight: "700" }}>Detected Patterns</h3>
-          <div style={{ display: "flex" }}>
+      <div className="space-y-6">
+        <blockreveal  >
+          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
+          <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
-              <PatternTag key={pattern} label={pattern} />
+              <patterntag  >
             ))}
           </div>
         </BlockReveal>
 
-        <BlockReveal delay={0.2}>
-          <h3 style={{ fontWeight: "700" }}>AI Summary</h3>
-          <p >{result.summary}</p>
+        <blockreveal  >
+          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
+          <p className="text-gray-300 mt-2">{result.summary}</p>
         </BlockReveal>
         
-        <BlockReveal delay={0.3}>
-          <h3 style={{ fontWeight: "700" }}>Confidence</h3>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div >
+        <blockreveal  >
+          <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
+          <div className="flex items-center gap-4 mt-2">
+            <div className="confidence-meter-bg flex-grow">
               <div
-                
+                className="confidence-meter-bar"
                 style={{ width: `${confidence}%` }}
               />
             </div>
-            <span style={{ fontWeight: "700", color: "white" }}>{confidence}%</span>
+            <span className="text-xl font-bold text-white">{confidence}%</span>
           </div>
         </BlockReveal>
         
-        <BlockReveal delay={0.4}>
-          <div style={{ display: "flex" }}>
-            <Button asChild >
-              <Link to="/journal?from=vision">📓 Save to Journal</Link>
+        <blockreveal  >
+          <div className="flex flex-wrap gap-4 mt-4">
+            <button  >
+              <link to="/journal?from=vision" >📓 Save to Journal</Link>
             </Button>
-            <Button asChild >
-              <Link to="/academy?topic=patterns">📘 Learn Pattern</Link>
+            <button  >
+              <link to="/academy?topic=patterns" >📘 Learn Pattern</Link>
             </Button>
-            <Button asChild >
-              <Link to="/strategy?from=vision">💡 Find Strategy</Link>
+            <button  >
+              <link to="/strategy?from=vision" >💡 Find Strategy</Link>
             </Button>
           </div>
         </BlockReveal>
@@ -97,3 +97,4 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 };
 
 export default FauxDetection; 
+export const lovable = { component: true };

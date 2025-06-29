@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { ROUTES } from '@/lib/routes';
 import '@/styles/nav.css';
 
@@ -23,34 +24,30 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-      <div style={{ width: "100%", marginLeft: "auto", marginRight: "auto", paddingLeft: "16px", paddingRight: "16px", display: "flex", alignItems: "center" }}>
-        <Link to="/" style={{ fontWeight: "700" }}>
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <link to="/" style={{ fontWeight: "700" }}>
           Insight Flow
         </Link>
 
         {/* Desktop Navigation */}
-        <div >
+        <div className="hidden md:flex space-x-6">
           {ROUTES.map((route) => (
-            <Link key={route.href} to={route.href} >
+            <link  >
               {route.label}
             </Link>
           ))}
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button style={{ color: "white" }} onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <span style={{fontSize: '16px'}}>❌</span> : <span style={{fontSize: '16px'}}>☰</span>}
+        <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <x  > : <menu  >}
         </button>
       </div>
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {ROUTES.map((route) => (
-          <Link
-            key={route.href}
-            to={route.href}
-            
-            onClick={() => setIsMobileMenuOpen(false)}
+          <link  > setIsMobileMenuOpen(false)}
           >
             {route.label}
           </Link>
@@ -61,3 +58,4 @@ const Navbar = () => {
 };
 
 export default Navbar; 
+export const lovable = { component: true };

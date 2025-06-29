@@ -1,3 +1,4 @@
+import { Loader2 } from 'lucide-react';
 import StrategyReveal from '../ui/StrategyReveal';
 import StrategyCTA from '../ui/StrategyCTA';
 import { StrategyResponse } from '../../pages/Strategy';
@@ -10,9 +11,9 @@ interface StrategyResultProps {
 const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   if (isLoading) {
     return (
-      <div style={{ padding: "32px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-        <Loader2 style={{ marginBottom: "16px" }} />
-        <p >Generating your trading strategy...</p>
+      <div className="glass-container p-8 rounded-lg flex flex-col items-center justify-center min-h-[300px]">
+        <loader2  >
+        <p className="text-lg text-gray-300">Generating your trading strategy...</p>
       </div>
     );
   }
@@ -21,10 +22,11 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
 
   return (
     <div>
-      <StrategyReveal result={result} />
-      <StrategyCTA strategyName={result.strategyName} />
+      <strategyreveal  >
+      <strategycta  >
     </div>
   );
 };
 
 export default StrategyResult; 
+export const lovable = { component: true };

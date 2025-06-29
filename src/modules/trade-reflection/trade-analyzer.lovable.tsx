@@ -38,12 +38,12 @@ interface TradeReflection {
   updatedAt: string;
 }
 
-export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
+export const TradeAnalyzer: React.FC<tradeanalyzerprops  > = ({
   tradeId,
   onSaveReflection
 }) => {
-  const [trade, setTrade] = useState<Trade | null>(null);
-  const [reflection, setReflection] = useState<Partial<TradeReflection>>({
+  const [trade, setTrade] = useState<trade  >(null);
+  const [reflection, setReflection] = useState<partial  >>({
     strengths: [],
     weaknesses: [],
     opportunities: [],
@@ -57,7 +57,7 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState<boolean>(false);
-  const [aiSuggestions, setAiSuggestions] = useState<Partial<TradeReflection> | null>(null);
+  const [aiSuggestions, setAiSuggestions] = useState<partial  > | null>(null);
   const [isGeneratingSuggestions, setIsGeneratingSuggestions] = useState<boolean>(false);
   
   useEffect(() => {
@@ -124,14 +124,14 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
   };
   
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<htmlinputelement  >,
     field: keyof TradeReflection
   ) => {
     setReflection(prev => ({ ...prev, [field]: e.target.value }));
   };
   
   const handleArrayInputChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
+    e: React.ChangeEvent<htmltextareaelement  >,
     field: 'strengths' | 'weaknesses' | 'opportunities' | 'threats' | 'actionItems'
   ) => {
     const items = e.target.value.split('\n').filter(item => item.trim() !== '');
@@ -200,7 +200,7 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
       // Mock AI response
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      const mockSuggestions: Partial<TradeReflection> = {
+      const mockSuggestions: Partial<tradereflection  > = {
         strengths: [
           'Proper position sizing according to risk management rules',
           'Patience in waiting for confirmation before entry',
@@ -257,16 +257,16 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
   
   if (loading) {
     return (
-      <div >
-        <div >Loading trade data...</div>
-        <div >Please wait while we fetch the trade details</div>
+      <div className="p-12 text-center">
+        <div className="text-xl font-semibold mb-2">Loading trade data...</div>
+        <div className="text-text-muted">Please wait while we fetch the trade details</div>
       </div>
     );
   }
   
   if (error) {
     return (
-      <div style={{ padding: "24px" }}>
+      <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
         {error}
       </div>
     );
@@ -274,30 +274,30 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
   
   if (!trade) {
     return (
-      <div >
-        <div >No trade selected</div>
-        <div >Please select a trade to analyze</div>
+      <div className="p-12 text-center">
+        <div className="text-xl font-semibold mb-2">No trade selected</div>
+        <div className="text-text-muted">Please select a trade to analyze</div>
       </div>
     );
   }
   
   return (
-    <div style={{ padding: "16px" }}>
-      <div >
-        <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Trade Analysis</h2>
+    <div className="trade-analyzer p-4 bg-background-secondary rounded-lg">
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold mb-4">Trade Analysis</h2>
         
         {/* Trade Summary */}
-        <div style={{ padding: "16px" }}>
-          <div style={{ display: "flex", marginBottom: "16px" }}>
+        <div className="p-4 bg-background-tertiary rounded-lg mb-6">
+          <div className="flex flex-wrap justify-between items-start mb-4">
             <div>
-              <h3 >{trade.symbol}</h3>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <h3 className="text-xl font-semibold">{trade.symbol}</h3>
+              <div className="flex items-center mt-1">
                 <span className={`px-2 py-1 rounded text-xs mr-2 ${
                   trade.direction === 'long' ? 'bg-status-success/20 text-status-success' : 'bg-status-error/20 text-status-error'
                 }`}>
                   {trade.direction.toUpperCase()}
                 </span>
-                <span >
+                <span className="text-sm text-text-muted">
                   {new Date(trade.entryTime).toLocaleString()} - {new Date(trade.exitTime).toLocaleString()}
                 </span>
               </div>
@@ -308,33 +308,33 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
             </div>
           </div>
           
-          <div style={{ marginBottom: "16px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <div >Entry Price</div>
-              <div >${trade.entryPrice.toLocaleString()}</div>
+              <div className="text-sm text-text-muted">Entry Price</div>
+              <div className="font-medium">${trade.entryPrice.toLocaleString()}</div>
             </div>
             <div>
-              <div >Exit Price</div>
-              <div >${trade.exitPrice.toLocaleString()}</div>
+              <div className="text-sm text-text-muted">Exit Price</div>
+              <div className="font-medium">${trade.exitPrice.toLocaleString()}</div>
             </div>
             <div>
-              <div >Position Size</div>
-              <div >{trade.size} {trade.symbol.split('/')[0]}</div>
+              <div className="text-sm text-text-muted">Position Size</div>
+              <div className="font-medium">{trade.size} {trade.symbol.split('/')[0]}</div>
             </div>
           </div>
           
           {trade.notes && (
             <div>
-              <div >Notes</div>
-              <div >{trade.notes}</div>
+              <div className="text-sm text-text-muted mb-1">Notes</div>
+              <div className="p-2 bg-background-primary rounded">{trade.notes}</div>
             </div>
           )}
         </div>
         
         {/* AI Suggestions Button */}
-        <div >
+        <div className="mb-6">
           <button
-            style={{ width: "100%", paddingLeft: "16px", paddingRight: "16px", color: "white", display: "flex", justifyContent: "center", alignItems: "center" }}
+            className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
             onClick={generateAiSuggestions}
             disabled={isGeneratingSuggestions}
           >
@@ -344,50 +344,50 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         
         {/* AI Suggestions Panel */}
         {aiSuggestions && (
-          <div style={{ padding: "16px", border: "1px solid #374151" }}>
-            <div style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}>
-              <h3 >AI Suggestions</h3>
+          <div className="mb-6 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</h3>
               <button
-                style={{ color: "white" }}
+                className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
                 onClick={applySuggestions}
               >
                 Apply All
               </button>
             </div>
             
-            <div >
+            <div className="space-y-4">
               <div>
-                <div >Strengths</div>
-                <ul >
+                <div className="text-sm font-medium mb-1">Strengths</div>
+                <ul className="list-disc pl-5 space-y-1">
                   {aiSuggestions.strengths?.map((item, i) => (
-                    <li key={i} >{item}</li>
+                    <li key={i} className="text-sm">{item}</li>
                   ))}
                 </ul>
               </div>
               
               <div>
-                <div >Weaknesses</div>
-                <ul >
+                <div className="text-sm font-medium mb-1">Weaknesses</div>
+                <ul className="list-disc pl-5 space-y-1">
                   {aiSuggestions.weaknesses?.map((item, i) => (
-                    <li key={i} >{item}</li>
+                    <li key={i} className="text-sm">{item}</li>
                   ))}
                 </ul>
               </div>
               
               <div>
-                <div >Lesson Learned</div>
-                <p >{aiSuggestions.lessonLearned}</p>
+                <div className="text-sm font-medium mb-1">Lesson Learned</div>
+                <p className="text-sm">{aiSuggestions.lessonLearned}</p>
               </div>
             </div>
           </div>
         )}
         
         {/* SWOT Analysis */}
-        <div >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div>
-            <label >Strengths</label>
+            <label className="block mb-1 font-medium">Strengths</label>
             <textarea
-              style={{ width: "100%", border: "1px solid #374151" }}
+              className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.strengths?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'strengths')}
@@ -396,9 +396,9 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
           </div>
           
           <div>
-            <label >Weaknesses</label>
+            <label className="block mb-1 font-medium">Weaknesses</label>
             <textarea
-              style={{ width: "100%", border: "1px solid #374151" }}
+              className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.weaknesses?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'weaknesses')}
@@ -407,9 +407,9 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
           </div>
           
           <div>
-            <label >Opportunities</label>
+            <label className="block mb-1 font-medium">Opportunities</label>
             <textarea
-              style={{ width: "100%", border: "1px solid #374151" }}
+              className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.opportunities?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'opportunities')}
@@ -418,9 +418,9 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
           </div>
           
           <div>
-            <label >Threats</label>
+            <label className="block mb-1 font-medium">Threats</label>
             <textarea
-              style={{ width: "100%", border: "1px solid #374151" }}
+              className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.threats?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'threats')}
@@ -430,10 +430,10 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         </div>
         
         {/* Emotional State */}
-        <div >
-          <label >Emotional State</label>
+        <div className="mb-6">
+          <label className="block mb-1 font-medium">Emotional State</label>
           <textarea
-            style={{ width: "100%", border: "1px solid #374151" }}
+            className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={2}
             value={reflection.emotionalState}
             onChange={(e) => handleInputChange(e, 'emotionalState')}
@@ -442,10 +442,10 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         </div>
         
         {/* Lesson Learned */}
-        <div >
-          <label >Lesson Learned</label>
+        <div className="mb-6">
+          <label className="block mb-1 font-medium">Lesson Learned</label>
           <textarea
-            style={{ width: "100%", border: "1px solid #374151" }}
+            className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={3}
             value={reflection.lessonLearned}
             onChange={(e) => handleInputChange(e, 'lessonLearned')}
@@ -454,10 +454,10 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         </div>
         
         {/* Action Items */}
-        <div >
-          <label >Action Items</label>
+        <div className="mb-6">
+          <label className="block mb-1 font-medium">Action Items</label>
           <textarea
-            style={{ width: "100%", border: "1px solid #374151" }}
+            className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={3}
             value={reflection.actionItems?.join('\n')}
             onChange={(e) => handleArrayInputChange(e, 'actionItems')}
@@ -466,9 +466,9 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         </div>
         
         {/* Trade Rating */}
-        <div >
-          <label >Trade Execution Rating (1-5)</label>
-          <div style={{ display: "flex" }}>
+        <div className="mb-6">
+          <label className="block mb-1 font-medium">Trade Execution Rating (1-5)</label>
+          <div className="flex space-x-2">
             {[1, 2, 3, 4, 5].map((rating) => (
               <button
                 key={rating}
@@ -484,9 +484,9 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         </div>
         
         {/* Save Button */}
-        <div style={{ display: "flex" }}>
+        <div className="flex justify-end">
           <button
-            style={{ paddingLeft: "16px", paddingRight: "16px", color: "white" }}
+            className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={handleSaveReflection}
             disabled={isSaving}
           >

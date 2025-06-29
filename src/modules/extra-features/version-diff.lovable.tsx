@@ -1,12 +1,16 @@
 // TODO: implement version diff comparison viewer
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { GitCompare, Plus, Minus, Edit } from 'lucide-react';
 
 interface VersionDiffProps {
   strategyId: string;
   versions?: any[];
 }
 
-export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions = [] }) => {
+export const VersionDiff: React.FC<versiondiffprops  > = ({ strategyId, versions = [] }) => {
   const [leftVersion, setLeftVersion] = React.useState('v1.0');
   const [rightVersion, setRightVersion] = React.useState('v1.1');
   
@@ -47,9 +51,9 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <span style={{fontSize: '16px'}}>➕</span>;
-      case 'removed': return <span style={{fontSize: '16px'}}>➖</span>;
-      case 'modified': return <span style={{fontSize: '16px'}}>✏️</span>;
+      case 'added': return <plus  >;
+      case 'removed': return <minus  >;
+      case 'modified': return <edit  >;
       default: return null;
     }
   };
@@ -64,22 +68,22 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <GitCompare  />
-        <h2 style={{ fontWeight: "700" }}>Version Comparison</h2>
+    <card  >
+      <div className="flex items-center gap-2 mb-6">
+        <gitcompare  >
+        <h2 className="text-2xl font-bold">Version Comparison</h2>
       </div>
 
-      <div >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label >Compare</label>
-          <Select value={leftVersion} onValueChange={setLeftVersion}>
-            <SelectTrigger>
-              <SelectValue />
+          <label className="text-sm text-muted-foreground mb-2 block">Compare</label>
+          <select  >
+            <selecttrigger  >
+              <selectvalue  >
             </SelectTrigger>
-            <SelectContent>
+            <selectcontent  >
               {mockVersions.map((v) => (
-                <SelectItem key={v.id} value={v.id}>
+                <selectitem  >
                   {v.label}
                 </SelectItem>
               ))}
@@ -88,14 +92,14 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
         </div>
         
         <div>
-          <label >With</label>
-          <Select value={rightVersion} onValueChange={setRightVersion}>
-            <SelectTrigger>
-              <SelectValue />
+          <label className="text-sm text-muted-foreground mb-2 block">With</label>
+          <select  >
+            <selecttrigger  >
+              <selectvalue  >
             </SelectTrigger>
-            <SelectContent>
+            <selectcontent  >
               {mockVersions.map((v) => (
-                <SelectItem key={v.id} value={v.id}>
+                <selectitem  >
                   {v.label}
                 </SelectItem>
               ))}
@@ -104,21 +108,21 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
         </div>
       </div>
 
-      <div >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <h3 >Changes</h3>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <span style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>➕</span>
-              <span >2 added</span>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold">Changes</h3>
+          <div className="flex items-center gap-4 text-sm">
+            <span className="flex items-center gap-1">
+              <plus  >
+              <span className="text-green-500">2 added</span>
             </span>
-            <span style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>➖</span>
-              <span >1 removed</span>
+            <span className="flex items-center gap-1">
+              <minus  >
+              <span className="text-red-500">1 removed</span>
             </span>
-            <span style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>✏️</span>
-              <span >1 modified</span>
+            <span className="flex items-center gap-1">
+              <edit  >
+              <span className="text-yellow-500">1 modified</span>
             </span>
           </div>
         </div>
@@ -128,31 +132,31 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
             key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
           >
-            <div style={{ display: "flex" }}>
+            <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
-              <div >
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <span >{diff.section}</span>
-                  <span >Line {diff.line}</span>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium">{diff.section}</span>
+                  <span className="text-xs text-muted-foreground">Line {diff.line}</span>
                 </div>
                 
                 {diff.type === 'modified' ? (
-                  <div >
-                    <div style={{ display: "flex" }}>
-                      <span style={{fontSize: '16px'}}>➖</span>
-                      <code >
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <minus  >
+                      <code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
                         {diff.oldContent}
                       </code>
                     </div>
-                    <div style={{ display: "flex" }}>
-                      <span style={{fontSize: '16px'}}>➕</span>
-                      <code >
+                    <div className="flex items-start gap-2">
+                      <plus  >
+                      <code className="text-sm bg-green-500/20 px-2 py-1 rounded">
                         {diff.newContent}
                       </code>
                     </div>
                   </div>
                 ) : (
-                  <code >
+                  <code className="text-sm bg-secondary/50 px-2 py-1 rounded">
                     {diff.content}
                   </code>
                 )}
@@ -162,14 +166,15 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
         ))}
       </div>
 
-      <div style={{ display: "flex" }}>
-        <Button variant="outline" >
+      <div className="mt-6 flex gap-2">
+        <button variant="outline" >
           Export Diff
         </Button>
-        <Button >
+        <button  >
           Apply Changes
         </Button>
       </div>
     </Card>
   );
 }; 
+export const lovable = { component: true };

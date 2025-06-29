@@ -1,4 +1,5 @@
 import * as React from "react";
+import { ArrowUp, ArrowDown, TrendingUp } from "lucide-react";
 
 export type DigestItem = {
   symbol: string;
@@ -61,17 +62,17 @@ export default function MarketDigest({ digest }: Props) {
   };
 
   return (
-    <div >
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {digest.map((item) => (
         <div
           key={item.symbol}
-          style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151" }}
+          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
         >
           {/* Card Header */}
-          <div style={{ display: "flex" }}>
+          <div className="flex justify-between items-start">
             <div>
-              <h3 style={{ fontWeight: "700", color: "white" }}>{item.symbol}</h3>
-              <p >
+              <h3 className="text-xl font-bold text-white">{item.symbol}</h3>
+              <p className="text-lg font-semibold text-white/90">
                 ${formatPrice(item.price)}
               </p>
             </div>
@@ -81,29 +82,29 @@ export default function MarketDigest({ digest }: Props) {
               )}`}
             >
               {item.change > 0 ? (
-                <span style={{fontSize: '16px'}}>⬆️</span>
+                <arrowup  >
               ) : (
-                <span style={{fontSize: '16px'}}>⬇️</span>
+                <arrowdown  >
               )}
               {formatPercent(item.change)}
             </div>
           </div>
 
           {/* AI Summary */}
-          <p >
+          <p className="text-white/70 text-sm italic border-l-2 border-cyan-400/50 pl-4">
             "{item.summary}"
           </p>
 
           {/* Card Footer with Stats */}
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="flex justify-between items-center pt-2">
             <div>
-              <span >24h Volume:</span>
-              <p style={{ color: "white" }}>
+              <span className="text-xs text-white/50">24h Volume:</span>
+              <p className="font-semibold text-white">
                 {formatVolume(item.volume)}
               </p>
             </div>
-            <div style={{ color: "white", display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>📈</span>
+            <div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
+              <trendingup  >
               <span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
@@ -115,3 +116,4 @@ export default function MarketDigest({ digest }: Props) {
     </div>
   );
 } 
+export const lovable = { component: true };

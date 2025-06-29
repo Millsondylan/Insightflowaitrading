@@ -1,12 +1,16 @@
 // TODO: implement trade timeline with activity feed
 import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Clock, TrendingUp, TrendingDown, AlertCircle } from 'lucide-react';
 
 interface TradeTimelineProps {
   userId?: string;
   limit?: number;
 }
 
-export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20 }) => {
+export const TradeTimeline: React.FC<tradetimelineprops  > = ({ userId, limit = 20 }) => {
   // Mock data - TODO: Connect to trade_logs table
   const activities = [
     {
@@ -39,46 +43,46 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
   ];
 
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <AlertCircle  />;
-    if (pnl && pnl > 0) return <span style={{fontSize: '16px'}}>📈</span>;
-    if (pnl && pnl < 0) return <span style={{fontSize: '16px'}}>📉</span>;
-    return <span style={{fontSize: '16px'}}>⏰</span>;
+    if (type === 'alert') return <alertcircle  >;
+    if (pnl && pnl > 0) return <trendingup  >;
+    if (pnl && pnl < 0) return <trendingdown  >;
+    return <clock  >;
   };
 
   return (
-    <Card style={{ padding: "24px" }}>
-      <h2 style={{ fontWeight: "700", marginBottom: "16px" }}>Trade Timeline</h2>
-      <ScrollArea >
-        <div >
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Trade Timeline</h2>
+      <scrollarea  >
+        <div className="space-y-4">
           {activities.map((activity) => (
-            <div key={activity.id} >
-              <div >
+            <div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
+              <div className="absolute left-0 top-1">
                 {getIcon(activity.type, activity.pnl)}
               </div>
-              <div >
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <span >{activity.symbol}</span>
+              <div className="border-l-2 border-gray-700 pl-6 -ml-2">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">{activity.symbol}</span>
                     {activity.action && (
-                      <Badge variant={activity.action === 'BUY' ? 'default' : 'secondary'}>
+                      <badge  >
                         {activity.action}
                       </Badge>
                     )}
                   </div>
-                  <span >
+                  <span className="text-xs text-muted-foreground">
                     {activity.timestamp.toLocaleTimeString()}
                   </span>
                 </div>
                 
                 {activity.type === 'trade_open' && (
-                  <p >
+                  <p className="text-sm text-muted-foreground">
                     Opened {activity.size} units at ${activity.price}
                   </p>
                 )}
                 
                 {activity.type === 'trade_close' && (
                   <div>
-                    <p >
+                    <p className="text-sm text-muted-foreground">
                       Closed {activity.size} units at ${activity.price}
                     </p>
                     <p className={`text-sm font-medium ${activity.pnl! > 0 ? 'text-green-500' : 'text-red-500'}`}>
@@ -88,7 +92,7 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
                 )}
                 
                 {activity.type === 'alert' && (
-                  <p >{activity.message}</p>
+                  <p className="text-sm text-muted-foreground">{activity.message}</p>
                 )}
               </div>
             </div>
@@ -98,3 +102,4 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
     </Card>
   );
 }; 
+export const lovable = { component: true };

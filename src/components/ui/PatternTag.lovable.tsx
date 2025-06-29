@@ -8,7 +8,7 @@ interface PatternTagProps {
 const PatternTag = ({ label }: PatternTagProps) => {
   return (
     <motion.div
-      
+      className="pattern-tag"
       whileHover={{ y: -2 }}
     >
       {label}
@@ -17,3 +17,4 @@ const PatternTag = ({ label }: PatternTagProps) => {
 };
 
 export default PatternTag; 
+export const lovable = { component: true };

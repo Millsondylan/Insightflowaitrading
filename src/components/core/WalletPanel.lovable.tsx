@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import TokenBalanceCard from '@/components/ui/TokenBalanceCard';
 import { getBalances, getMockInitialBalances, TokenBalance } from '@/lib/wallet/getBalances';
+import { useToast } from '@/components/ui/use-toast';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Wallet, CheckCircle } from 'lucide-react';
 import '@/styles/wallet.css';
 
 const WalletPanel: React.FC = () => {
   const { toast } = useToast();
   const [address, setAddress] = useState<string | null>(null);
-  const [balances, setBalances] = useState<TokenBalance[]>([]);
+  const [balances, setBalances] = useState<tokenbalance  >([]);
   const [loading, setLoading] = useState(true);
   const [inputValue, setInputValue] = useState('');
 
@@ -75,20 +79,20 @@ const WalletPanel: React.FC = () => {
     if (address) {
       return (
         <div>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <span style={{fontSize: '16px'}}>✅</span>
-              <p>Wallet Connected: <span >{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center space-x-2 text-green-400">
+              <checkcircle  >
+              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
             </div>
-            <Button variant="outline" onClick={handleDisconnect} size="sm">Disconnect</Button>
+            <button variant="outline" size="sm" >Disconnect</Button>
           </div>
           <motion.div 
             layout
-            
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <AnimatePresence>
+            <animatepresence  >
               {balances.map((token, index) => (
-                <TokenBalanceCard key={token.chain.id} token={token} index={index} />
+                <tokenbalancecard  >
               ))}
             </AnimatePresence>
           </motion.div>
@@ -97,25 +101,22 @@ const WalletPanel: React.FC = () => {
     }
 
     return (
-      <div >
-        <Wallet style={{ marginLeft: "auto", marginRight: "auto" }} />
-        <h2 style={{ fontWeight: "700" }}>Connect Your Wallet</h2>
-        <p style={{ color: "#9CA3AF" }}>Connect to access premium features and verify subscription payments.</p>
-        <div style={{ display: "flex", marginLeft: "auto", marginRight: "auto" }}>
-          <Input 
-            type="text" 
-            placeholder="Enter any wallet address to simulate..."
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            
+      <div className="wallet-connect-cta">
+        <wallet  >
+        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
+        <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
+        <div className="flex max-w-md mx-auto">
+          <input type="text" placeholder="Enter any wallet address to simulate..." > setInputValue(e.target.value)}
+            className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button onClick={handleConnect} >Connect</Button>
+          <button  >Connect</Button>
         </div>
       </div>
     );
   };
 
-  return <div >{renderContent()}</div>;
+  return <div className="wallet-panel">{renderContent()}</div>;
 };
 
 export default WalletPanel; 
+export const lovable = { component: true };

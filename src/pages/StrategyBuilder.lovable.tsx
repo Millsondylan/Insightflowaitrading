@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Bot, Sparkles, FileText, Settings, Book, GitCommit } from 'lucide-react';
 
 const ConfigItem = ({ icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) => {
   const Icon = icon;
   return (
     <div>
-      <h4 style={{ color: "#9CA3AF", display: "flex", alignItems: "center" }}>
-        <Icon size={16} />
+      <h4 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
+        <icon  >
         {title}
       </h4>
       {children}
@@ -18,66 +21,64 @@ export default function StrategyBuilderPage() {
   const [prompt, setPrompt] = useState('');
 
   return (
-    <div >
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
       {/* Main Builder Section */}
-      <div style={{ marginTop: "32px" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="lg:col-span-2 space-y-8">
+        <div className="flex justify-between items-center">
             <div>
-                <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
-                    <span ><Bot  /></span>
+                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <span className="bg-white/10 p-2 rounded-lg"><bot  ></span>
                     AI Strategy Builder
                 </h1>
-                <p style={{ color: "#9CA3AF" }}>Craft a new strategy using natural language.</p>
+                <p className="text-gray-400 mt-1">Craft a new strategy using natural language.</p>
             </div>
         </div>
 
         {/* Prompt Input */}
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-          <h3 style={{ color: "white" }}>Describe your strategy idea</h3>
-          <Textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+          <h3 className="font-semibold text-white mb-3">Describe your strategy idea</h3>
+          <textarea  > setPrompt(e.target.value)}
             placeholder="e.g., A mean-reversion strategy for AAPL on the 5-minute chart using Bollinger Bands and RSI..."
-            
+            className="bg-black/20 border-white/10 h-36"
           />
-          <div style={{ display: "flex" }}>
-            <Button style={{ color: "white" }}>
-                <Sparkles size={16} />
+          <div className="flex justify-end mt-4">
+            <button  style={{ color: "white" }}>
+                <sparkles  >
                 Generate Strategy
             </Button>
           </div>
         </div>
 
         {/* Generated Output */}
-        <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-            <h3 style={{ color: "white", display: "flex", alignItems: "center" }}>
-                <span style={{fontSize: '16px'}}>📄</span>
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
+                <filetext  >
                 Generated Pine Script
             </h3>
-            <div style={{ padding: "16px" }}>
+            <div className="bg-black/30 rounded-lg p-4 font-mono text-sm text-gray-300 h-64 overflow-auto">
                 // Your generated strategy code will appear here...
             </div>
         </div>
       </div>
 
       {/* Configuration Sidebar */}
-      <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-        <h2 style={{ fontWeight: "700", color: "white" }}>Configuration</h2>
+      <div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm space-y-6">
+        <h2 className="text-xl font-bold text-white">Configuration</h2>
         
-        <ConfigItem icon={Settings} title="Parameters">
+        <configitem title="Parameters" >
           {/* Placeholder for parameters */}
-          <p >Parameters will be extracted here.</p>
+          <p className="text-sm text-gray-500">Parameters will be extracted here.</p>
         </ConfigItem>
 
-        <div ></div>
+        <div className="border-t border-white/10"></div>
         
-        <ConfigItem icon={Book} title="Next Steps">
-            <div style={{ display: "flex", flexDirection: "column" }}>
-                <Link to="/planner">
-                    <Button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Button>
+        <configitem title="Next Steps" >
+            <div className="flex flex-col gap-3">
+                <link to="/planner" >
+                    <button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Button>
                 </Link>
-                <Link to="/vault">
-                    <Button variant="outline" style={{ width: "100%" }}>Save to Vault</Button>
+                <link to="/vault" >
+                    <button variant="outline" style={{ width: "100%" }}>Save to Vault</Button>
                 </Link>
             </div>
         </ConfigItem>
@@ -85,3 +86,5 @@ export default function StrategyBuilderPage() {
     </div>
   );
 }
+
+export const lovable = { component: true };

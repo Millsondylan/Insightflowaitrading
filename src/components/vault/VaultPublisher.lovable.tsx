@@ -14,23 +14,23 @@ type Props = {
 
 export default function VaultPublisher({ strategy, onPublish }: Props) {
   return (
-    <div style={{ padding: "24px", borderRadius: "0.75rem", border: "1px solid #374151", color: "white" }}>
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
       <div>
-        <h3 style={{ fontWeight: "700", color: "white" }}>📢 Publish Strategy</h3>
-        <p >Ready to share your strategy with the community?</p>
+        <h3 className="text-lg font-bold text-white">📢 Publish Strategy</h3>
+        <p className="text-sm text-white/60">Ready to share your strategy with the community?</p>
       </div>
 
-      <div style={{ padding: "16px", border: "1px solid #374151" }}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <p style={{ color: "white" }}>{strategy.title}</p>
-          <span >v{strategy.version}</span>
+      <div className="bg-white/5 p-4 rounded-lg border border-white/10 space-y-2">
+        <div className="flex justify-between items-center">
+          <p className="font-semibold text-white">{strategy.title}</p>
+          <span className="text-xs bg-cyan-800 text-cyan-200 px-2 py-0.5 rounded-full">v{strategy.version}</span>
         </div>
         
-        <p >"{strategy.summary}"</p>
+        <p className="text-white/70 italic text-sm">"{strategy.summary}"</p>
         
-        <div style={{ display: "flex" }}>
+        <div className="flex flex-wrap gap-2 pt-2">
           {strategy.tags.map((t, i) => (
-            <span key={i} >
+            <span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60">
               {t}
             </span>
           ))}
@@ -39,10 +39,11 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
       
       <button
         onClick={onPublish}
-        style={{ width: "100%", paddingLeft: "16px", paddingRight: "16px", color: "white", fontWeight: "700" }}
+        className="w-full mt-2 bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg text-white font-bold transition-colors duration-200"
       >
         🚀 Publish to Vault
       </button>
     </div>
   );
 } 
+export const lovable = { component: true };

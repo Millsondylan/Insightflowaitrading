@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { MessageSquare, ThumbsUp, TrendingUp, Send } from 'lucide-react';
 
 const mockPosts = [
     {
@@ -29,45 +34,43 @@ export default function CommunityPage() {
     const [newPost, setNewPost] = useState('');
 
     return (
-        <div >
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Main Feed */}
-            <div >
-                <div style={{ display: "flex", alignItems: "center" }}>
+            <div className="lg:col-span-2 space-y-6">
+                <div className="flex justify-between items-center">
                     <div>
-                        <h1 style={{ fontSize: "1.875rem", fontWeight: "700", color: "white", display: "flex", alignItems: "center" }}>
-                            <span ><MessageSquare  /></span>
+                        <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                            <span className="bg-white/10 p-2 rounded-lg"><messagesquare  ></span>
                             Community Feed
                         </h1>
-                        <p style={{ color: "#9CA3AF" }}>Connect with other traders and share insights.</p>
+                        <p className="text-gray-400 mt-1">Connect with other traders and share insights.</p>
                     </div>
                 </div>
 
                 {/* Create Post */}
-                <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "16px" }}>
-                    <Textarea
-                        value={newPost}
-                        onChange={(e) => setNewPost(e.target.value)}
+                <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
+                    <textarea  > setNewPost(e.target.value)}
                         placeholder="Share your thoughts, charts, or trade ideas..."
-                        
+                        className="bg-black/20 border-none"
                     />
-                    <div style={{ display: "flex" }}>
-                        <Button >
-                            <Send size={16}  /> Post
+                    <div className="flex justify-end mt-3">
+                        <button  >
+                            <send  > Post
                         </Button>
                     </div>
                 </div>
 
                 {/* Posts */}
                 {mockPosts.map(post => (
-                    <div key={post.id} style={{ border: "1px solid #374151", borderRadius: "0.75rem" }}>
-                        <div style={{ display: "flex" }}>
-                            <Avatar><AvatarImage src={post.author.avatar} /><AvatarFallback>{post.author.name[0]}</AvatarFallback></Avatar>
-                            <div >
-                                <p style={{ color: "white" }}>{post.author.name}</p>
-                                <p >{post.content}</p>
-                                <div style={{ display: "flex", alignItems: "center", color: "#9CA3AF" }}>
-                                    <button style={{ display: "flex", alignItems: "center" }}><ThumbsUp size={16} /> {post.likes}</button>
-                                    <button style={{ display: "flex", alignItems: "center" }}><MessageSquare size={16} /> {post.comments}</button>
+                    <div key={post.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
+                        <div className="flex items-start gap-4">
+                            <avatar  ><avatarimage  ><avatarfallback  >{post.author.name[0]}</AvatarFallback></Avatar>
+                            <div className="flex-1">
+                                <p className="font-semibold text-white">{post.author.name}</p>
+                                <p className="text-gray-300 mt-1">{post.content}</p>
+                                <div className="flex items-center gap-6 mt-4 text-sm text-gray-400">
+                                    <button className="flex items-center gap-1 hover:text-white"><thumbsup  > {post.likes}</button>
+                                    <button className="flex items-center gap-1 hover:text-white"><messagesquare  > {post.comments}</button>
                                 </div>
                             </div>
                         </div>
@@ -76,20 +79,20 @@ export default function CommunityPage() {
             </div>
 
             {/* Right Sidebar */}
-            <div >
-                <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-                    <h3 style={{ color: "white", marginBottom: "16px" }}>Trending Topics</h3>
-                    <div style={{ display: "flex" }}>
-                        {mockTrending.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+            <div className="lg:col-span-1 space-y-6">
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 className="font-semibold text-white mb-4">Trending Topics</h3>
+                    <div className="flex flex-wrap gap-2">
+                        {mockTrending.map(tag => <badge variant="secondary" >{tag}</Badge>)}
                     </div>
                 </div>
-                <div style={{ border: "1px solid #374151", borderRadius: "0.75rem", padding: "24px" }}>
-                    <h3 style={{ color: "white", marginBottom: "16px", display: "flex", alignItems: "center" }}><span style={{fontSize: '16px'}}>📈</span> Leaderboard</h3>
-                    <ul >
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><trendingup  > Leaderboard</h3>
+                    <ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
-                            <li key={user.name} style={{ display: "flex", alignItems: "center" }}>
-                                <span >{index + 1}. {user.name}</span>
-                                <span >{user.score.toLocaleString()}</span>
+                            <li key={user.name} className="flex justify-between items-center text-sm">
+                                <span className="text-gray-300">{index + 1}. {user.name}</span>
+                                <span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span>
                             </li>
                         ))}
                     </ul>
@@ -98,3 +101,5 @@ export default function CommunityPage() {
         </div>
     );
 }
+
+export const lovable = { component: true };

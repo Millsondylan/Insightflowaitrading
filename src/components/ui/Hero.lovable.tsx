@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, BrainCircuit, BarChart, BookOpen, PenSquare } from 'lucide-react';
 import '@/styles/landing.css';
 
 const Hero = () => {
@@ -25,58 +27,59 @@ const Hero = () => {
   };
 
   return (
-    <section style={{ color: "white" }}>
+    <section className="hero-section text-white">
       <motion.div
-        style={{ width: "100%", marginLeft: "auto", marginRight: "auto" }}
+        className="container mx-auto text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h1
-          style={{ fontWeight: "700", marginBottom: "16px" }}
+          className="text-6xl md:text-8xl font-bold text-glowing-cyan mb-4 text-glow-cyan"
           variants={itemVariants}
         >
           Insight Flow
         </motion.h1>
-        <motion.p style={{ marginBottom: "32px" }} variants={itemVariants}>
+        <motion.p className="text-xl md:text-2xl text-gray-300 mb-8" variants={itemVariants}>
           Where AI meets strategy, vision, and mastery
         </motion.p>
         <motion.div
-          style={{ display: "flex", justifyContent: "center" }}
+          className="flex flex-wrap justify-center gap-4"
           variants={itemVariants}
         >
-          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
-            <Link to="/strategy">
-              <span style={{fontSize: '16px'}}>🧠</span> Launch Builder
+          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <link to="/strategy" >
+              <braincircuit  > Launch Builder
             </Link>
           </Button>
-          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
-            <Link to="/academy">
-              <BookOpen  /> Explore Academy
+          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <link to="/academy" >
+              <bookopen  > Explore Academy
             </Link>
           </Button>
-          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
-            <Link to="/vision">
-              <BarChart  /> Upload Chart
+          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <link to="/vision" >
+              <barchart  > Upload Chart
             </Link>
           </Button>
-          <Button asChild style={{ border: "1px solid #374151", color: "white" }}>
-            <Link to="/journal">
-              <PenSquare  /> Journal Trade
+          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <link to="/journal" >
+              <pensquare  > Journal Trade
             </Link>
           </Button>
         </motion.div>
       </motion.div>
       <motion.div
-        style={{ color: "#9CA3AF" }}
+        className="absolute bottom-10 text-gray-400 scroll-invitation"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <ArrowRight  />
+        <arrowright  >
       </motion.div>
     </section>
   );
 };
 
 export default Hero; 
+export const lovable = { component: true };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface LessonBadgeProps {
@@ -7,7 +8,7 @@ interface LessonBadgeProps {
   className?: string;
 }
 
-const LessonBadge: React.FC<LessonBadgeProps> = ({
+const LessonBadge: React.FC<lessonbadgeprops  > = ({
   lessonName,
   unlocked = false,
   className,
@@ -22,23 +23,19 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
         className
       )}
     >
-      <div >
-        <Award
-          className={cn(
-            "h-24 w-24 transition-colors duration-500",
-            unlocked ? "text-yellow-400" : "text-gray-600"
-          )}
-        />
+      <div className="relative inline-block">
+        <award  >
         {unlocked && (
-          <div style={{ width: "100%" }}>
-            <Award  />
+          <div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
+            <award  >
           </div>
         )}
       </div>
-      <p >{lessonName}</p>
-      <p style={{ color: "#9CA3AF" }}>Lesson Complete!</p>
+      <p className="mt-2 text-lg font-semibold">{lessonName}</p>
+      <p className="text-sm text-gray-400">Lesson Complete!</p>
     </div>
   );
 };
 
 export default LessonBadge; 
+export const lovable = { component: true };

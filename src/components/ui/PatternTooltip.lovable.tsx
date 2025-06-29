@@ -17,10 +17,10 @@ const PatternTooltip = ({
 }: PatternTooltipProps) => {
   return (
     <div className={`pattern-tooltip ${type}`} style={style}>
-      <div >{label}</div>
-      <div >{description}</div>
+      <div className="pattern-name">{label}</div>
+      <div className="pattern-description">{description}</div>
       {confidence && (
-        <div >
+        <div className="pattern-confidence">
           Confidence: {confidence}%
         </div>
       )}
@@ -29,3 +29,4 @@ const PatternTooltip = ({
 };
 
 export default PatternTooltip; 
+export const lovable = { component: true };
