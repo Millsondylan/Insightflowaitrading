@@ -1,23 +1,69 @@
 import React, { useState } from 'react';
 import { Bell, Mail, Smartphone, AlertCircle, Palette, Bot, Globe, Volume2, Clock, MessageSquare } from 'lucide-react';
 
-// Simple UI Components for Lovable preview
-const Card = ({ children, className = "" }) => (
-  <div className={`bg-gray-800 border border-gray-700 rounded-lg p-6 ${className}`}>
+// Audio Settings Interface
+interface AudioSettings {
+  sounds_enabled: boolean;
+  volume: number;
+  voice_narration: boolean;
+  notification_sounds: boolean;
+}
+
+// User Settings Interface  
+interface UserSettings {
+  audio_settings: AudioSettings;
+  theme_preferences: {
+    mode: 'light' | 'dark';
+    accent_color: string;
+  };
+  notification_channels: {
+    email: boolean;
+    push: boolean;
+    in_app: boolean;
+  };
+}
+
+// Simple UI Components
+const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <div className={`bg-gray-800/50 border border-gray-700 rounded-lg backdrop-blur-sm ${className}`}>
     {children}
   </div>
 );
 
-const Button = ({ children, onClick, disabled = false, variant = "default" }) => {
-  const baseClasses = "px-4 py-2 rounded-md font-medium transition-colors";
+const CardHeader = ({ children }: { children: React.ReactNode }) => (
+  <div className="p-6 pb-4">{children}</div>
+);
+
+const CardTitle = ({ children }: { children: React.ReactNode }) => (
+  <h3 className="text-lg font-semibold text-white">{children}</h3>
+);
+
+const CardContent = ({ children }: { children: React.ReactNode }) => (
+  <div className="p-6 pt-0">{children}</div>
+);
+
+const Button = ({ 
+  children, 
+  onClick, 
+  disabled = false, 
+  variant = "default",
+  className = ""
+}: { 
+  children: React.ReactNode; 
+  onClick?: () => void; 
+  disabled?: boolean;
+  variant?: "default" | "outline";
+  className?: string;
+}) => {
+  const baseClasses = "px-4 py-2 rounded-md font-medium transition-all duration-200";
   const variantClasses = variant === "outline" 
-    ? "border border-gray-600 text-gray-300 hover:bg-gray-700" 
-    : "bg-blue-600 text-white hover:bg-blue-700";
-  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";
+    ? "border border-gray-600 text-gray-300 hover:bg-gray-700 hover:border-gray-500" 
+    : "bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl";
+  const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer";
   
   return (
     <button 
-      className={`${baseClasses} ${variantClasses} ${disabledClasses}`}
+      className={`${baseClasses} ${variantClasses} ${disabledClasses} ${className}`}
       onClick={onClick}
       disabled={disabled}
     >
@@ -26,19 +72,82 @@ const Button = ({ children, onClick, disabled = false, variant = "default" }) =>
   );
 };
 
-const Switch = ({ checked, onCheckedChange }) => (
+const Switch = ({ 
+  checked, 
+  onCheckedChange, 
+  disabled = false 
+}: { 
+  checked: boolean; 
+  onCheckedChange: (checked: boolean) => void;
+  disabled?: boolean;
+}) => (
   <button
-    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${
       checked ? 'bg-blue-600' : 'bg-gray-600'
-    }`}
-    onClick={() => onCheckedChange(!checked)}
+    } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+    onClick={() => !disabled && onCheckedChange(!checked)}
+    disabled={disabled}
   >
     <span
-      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
         checked ? 'translate-x-6' : 'translate-x-1'
       }`}
     />
   </button>
+);
+
+const Slider = ({ 
+  value, 
+  onValueChange, 
+  min = 0, 
+  max = 100, 
+  step = 1,
+  disabled = false 
+}: { 
+  value: number; 
+  onValueChange: (value: number) => void;
+  min?: number;
+  max?: number;
+  step?: number;
+  disabled?: boolean;
+}) => (
+  <div className="w-full">
+    <input
+      type="range"
+      min={min}
+      max={max}
+      step={step}
+      value={value}
+      onChange={(e) => onValueChange(Number(e.target.value))}
+      disabled={disabled}
+      className={`w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider ${
+        disabled ? 'opacity-50 cursor-not-allowed' : ''
+      }`}
+      style={{
+        background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${(value - min) / (max - min) * 100}%, #4B5563 ${(value - min) / (max - min) * 100}%, #4B5563 100%)`
+      }}
+    />
+         <style>{`
+       .slider::-webkit-slider-thumb {
+         appearance: none;
+         height: 16px;
+         width: 16px;
+         border-radius: 50%;
+         background: #3B82F6;
+         cursor: pointer;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+       }
+       .slider::-moz-range-thumb {
+         height: 16px;
+         width: 16px;
+         border-radius: 50%;
+         background: #3B82F6;
+         cursor: pointer;
+         border: none;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+       }
+     `}</style>
+  </div>
 );
 
 const Label = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -79,24 +188,6 @@ const TabsContent = ({ children, value, activeTab }: {
   activeTab: string;
 }) => (
   activeTab === value ? <div>{children}</div> : null
-);
-
-const Slider = ({ value, min, max, step, onValueChange }: {
-  value: number[];
-  min: number;
-  max: number;
-  step: number;
-  onValueChange: (value: number[]) => void;
-}) => (
-  <input
-    type="range"
-    min={min}
-    max={max}
-    step={step}
-    value={value[0]}
-    onChange={(e) => onValueChange([parseInt(e.target.value)])}
-    className="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
-  />
 );
 
 const RadioGroup = ({ children, value, onValueChange, className = "" }: {
@@ -145,258 +236,264 @@ const SelectItem = ({ children, value }: { children: React.ReactNode; value: str
   <option value={value}>{children}</option>
 );
 
-// Mock UserSettings interface
-interface UserSettings {
-  notification_channels: {
-    email: boolean;
-    push: boolean;
-    in_app: boolean;
-  };
-  notification_types: {
-    trade_alerts: boolean;
-    market_updates: boolean;
-    strategy_signals: boolean;
-    journal_reminders: boolean;
-    goal_progress: boolean;
-    course_updates: boolean;
-    community_mentions: boolean;
-  };
-  theme_preferences: {
-    mode: 'light' | 'dark';
-    accent_color: string;
-    chart_theme: string;
-  };
-  feature_toggles: {
-    ai_copilot: boolean;
-    auto_journaling: boolean;
-    smart_notifications: boolean;
-    voice_narration: boolean;
-    keyboard_shortcuts: boolean;
-    beta_features: boolean;
-  };
-  audio_settings: {
-    sounds_enabled: boolean;
-    volume: number;
-  };
-  coaching_tone: 'supportive' | 'balanced' | 'challenging' | 'analytical';
-  reminder_frequency: 'hourly' | 'daily' | 'weekly' | 'custom';
-  language: string;
-}
-
 const DEFAULT_SETTINGS: Partial<UserSettings> = {
   notification_channels: {
     email: true,
     push: true,
     in_app: true,
   },
-  notification_types: {
-    trade_alerts: true,
-    market_updates: true,
-    strategy_signals: true,
-    journal_reminders: true,
-    goal_progress: true,
-    course_updates: true,
-    community_mentions: true,
+  audio_settings: {
+    sounds_enabled: false,
+    volume: 80,
+    voice_narration: false,
+    notification_sounds: true
   },
   theme_preferences: {
     mode: "dark",
     accent_color: "#3B82F6",
-    chart_theme: "tradingview",
   },
-  feature_toggles: {
-    ai_copilot: true,
-    auto_journaling: false,
-    smart_notifications: true,
-    voice_narration: false,
-    keyboard_shortcuts: true,
-    beta_features: false,
-  },
-  audio_settings: {
-    sounds_enabled: false,
-    volume: 80,
-  },
-  coaching_tone: "balanced",
-  reminder_frequency: "daily",
-  language: "en",
 };
 
-export default function UserSettingsPage() {
-  const [settings, setSettings] = useState<Partial<UserSettings>>(DEFAULT_SETTINGS);
-  const [activeTab, setActiveTab] = useState("notifications");
-  const [saving, setSaving] = useState(false);
+export default function UserSettings() {
+  const [settings, setSettings] = useState<UserSettings>({
+    audio_settings: {
+      sounds_enabled: false,
+      volume: 80,
+      voice_narration: false,
+      notification_sounds: true
+    },
+    theme_preferences: {
+      mode: 'dark',
+      accent_color: '#3B82F6'
+    },
+    notification_channels: {
+      email: true,
+      push: true,
+      in_app: true
+    }
+  });
 
-  const updateToggle = (
-    section: 'notification_channels' | 'notification_types' | 'feature_toggles', 
-    key: string, 
-    value: boolean
-  ) => {
-    setSettings(prev => {
-      const prevSection = prev[section] as any || {};
-      return {
-        ...prev,
-        [section]: {
-          ...prevSection,
-          [key]: value,
-        }
-      };
-    });
+  const [hasChanges, setHasChanges] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const updateAudioSetting = (key: keyof AudioSettings, value: any) => {
+    setSettings(prev => ({
+      ...prev,
+      audio_settings: {
+        ...prev.audio_settings,
+        [key]: value
+      }
+    }));
+    setHasChanges(true);
   };
 
-  const saveSettings = async () => {
-    setSaving(true);
-    // Mock save operation
-    setTimeout(() => {
-      setSaving(false);
-      alert("Settings saved successfully!");
-    }, 1000);
+  const updateNotificationSetting = (key: keyof UserSettings['notification_channels'], value: boolean) => {
+    setSettings(prev => ({
+      ...prev,
+      notification_channels: {
+        ...prev.notification_channels,
+        [key]: value
+      }
+    }));
+    setHasChanges(true);
+  };
+
+  const handleSave = async () => {
+    setIsSaving(true);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setIsSaving(false);
+    setHasChanges(false);
+    
+    // Show success message
+    const successDiv = document.createElement('div');
+    successDiv.className = 'fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+    successDiv.textContent = 'Settings saved successfully!';
+    document.body.appendChild(successDiv);
+    setTimeout(() => document.body.removeChild(successDiv), 3000);
+  };
+
+  const handleReset = () => {
+    setSettings({
+      audio_settings: {
+        sounds_enabled: false,
+        volume: 80,
+        voice_narration: false,
+        notification_sounds: true
+      },
+      theme_preferences: {
+        mode: 'dark',
+        accent_color: '#3B82F6'
+      },
+      notification_channels: {
+        email: true,
+        push: true,
+        in_app: true
+      }
+    });
+    setHasChanges(true);
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-white">Settings</h1>
-            <p className="text-gray-400">Customize your trading platform experience</p>
-          </div>
-          <Button onClick={saveSettings} disabled={saving}>
-            {saving ? "Saving..." : "Save Changes"}
-          </Button>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+            ⚙️ User Settings
+          </h1>
+          <p className="text-gray-400">
+            Customize your InsightFlow AI Trading experience
+          </p>
         </div>
 
         <div className="space-y-6">
-          {/* Notification Settings */}
-          <Card>
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <span className="mr-2">🔔</span>
-              Notification Channels
-            </h2>
-            <p className="text-gray-400 mb-6">Choose how you want to receive notifications</p>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span>📧</span>
-                  <label className="text-sm font-medium">Email Notifications</label>
-                </div>
-                <Switch
-                  checked={settings.notification_channels?.email || false}
-                  onCheckedChange={(checked) => updateToggle('notification_channels', 'email', checked)}
-                />
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span>📱</span>
-                  <label className="text-sm font-medium">Push Notifications</label>
-                </div>
-                <Switch
-                  checked={settings.notification_channels?.push || false}
-                  onCheckedChange={(checked) => updateToggle('notification_channels', 'push', checked)}
-                />
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <span>⚠️</span>
-                  <label className="text-sm font-medium">In-App Alerts</label>
-                </div>
-                <Switch
-                  checked={settings.notification_channels?.in_app || false}
-                  onCheckedChange={(checked) => updateToggle('notification_channels', 'in_app', checked)}
-                />
-              </div>
-            </div>
-          </Card>
-
           {/* Audio Settings */}
           <Card>
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <span className="mr-2">🔊</span>
-              Audio Settings
-            </h2>
-            <p className="text-gray-400 mb-6">Configure sound effects and voice narration</p>
-            
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">Enable Sound Effects</label>
-                <Switch
-                  checked={settings.audio_settings?.sounds_enabled || false}
-                  onCheckedChange={(checked) => 
-                    setSettings({
-                      ...settings,
-                      audio_settings: {
-                        ...settings.audio_settings,
-                        sounds_enabled: checked
-                      }
-                    })
-                  }
-                />
-              </div>
-              
-              {settings.audio_settings?.sounds_enabled && (
-                <div className="space-y-2">
-                  <div className="flex justify-between">
-                    <label className="text-sm font-medium">Sound Volume</label>
-                    <span className="text-sm text-gray-400">
-                      {settings.audio_settings?.volume || 80}%
-                    </span>
+            <CardHeader>
+              <CardTitle>🔊 Audio Settings</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {/* Enable Sounds */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Enable Sounds</h4>
+                    <p className="text-sm text-gray-400">Turn on/off all sound effects</p>
                   </div>
-                  <input
-                    type="range"
-                    min={0}
-                    max={100}
-                    value={settings.audio_settings?.volume || 80}
-                    onChange={(e) =>
-                      setSettings({
-                        ...settings,
-                        audio_settings: {
-                          ...settings.audio_settings,
-                          volume: parseInt(e.target.value)
-                        }
-                      })
-                    }
-                    className="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer"
+                  <Switch
+                    checked={settings.audio_settings.sounds_enabled}
+                    onCheckedChange={(checked) => updateAudioSetting('sounds_enabled', checked)}
                   />
                 </div>
-              )}
-            </div>
+
+                {/* Volume Control */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-white font-medium">Volume</h4>
+                    <span className="text-blue-400 font-mono">
+                      {settings.audio_settings.volume}%
+                    </span>
+                  </div>
+                  <Slider
+                    value={settings.audio_settings.volume}
+                    onValueChange={(value) => updateAudioSetting('volume', value)}
+                    disabled={!settings.audio_settings.sounds_enabled}
+                  />
+                </div>
+
+                {/* Voice Narration */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Voice Narration</h4>
+                    <p className="text-sm text-gray-400">AI voice for lessons and alerts</p>
+                  </div>
+                  <Switch
+                    checked={settings.audio_settings.voice_narration}
+                    onCheckedChange={(checked) => updateAudioSetting('voice_narration', checked)}
+                    disabled={!settings.audio_settings.sounds_enabled}
+                  />
+                </div>
+
+                {/* Notification Sounds */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Notification Sounds</h4>
+                    <p className="text-sm text-gray-400">Sound alerts for trades and updates</p>
+                  </div>
+                  <Switch
+                    checked={settings.audio_settings.notification_sounds}
+                    onCheckedChange={(checked) => updateAudioSetting('notification_sounds', checked)}
+                    disabled={!settings.audio_settings.sounds_enabled}
+                  />
+                </div>
+              </div>
+            </CardContent>
           </Card>
 
-          {/* Feature Toggles */}
+          {/* Notification Settings */}
           <Card>
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
-              <span className="mr-2">🤖</span>
-              Feature Toggles
-            </h2>
-            <p className="text-gray-400 mb-6">Enable or disable platform features</p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">AI Copilot</label>
-                <Switch
-                  checked={settings.feature_toggles?.ai_copilot || false}
-                  onCheckedChange={(checked) => updateToggle('feature_toggles', 'ai_copilot', checked)}
-                />
+            <CardHeader>
+              <CardTitle>📢 Notification Channels</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Email Notifications</h4>
+                    <p className="text-sm text-gray-400">Receive updates via email</p>
+                  </div>
+                  <Switch
+                    checked={settings.notification_channels.email}
+                    onCheckedChange={(checked) => updateNotificationSetting('email', checked)}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Push Notifications</h4>
+                    <p className="text-sm text-gray-400">Browser push notifications</p>
+                  </div>
+                  <Switch
+                    checked={settings.notification_channels.push}
+                    onCheckedChange={(checked) => updateNotificationSetting('push', checked)}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">In-App Notifications</h4>
+                    <p className="text-sm text-gray-400">Show notifications within the app</p>
+                  </div>
+                  <Switch
+                    checked={settings.notification_channels.in_app}
+                    onCheckedChange={(checked) => updateNotificationSetting('in_app', checked)}
+                  />
+                </div>
               </div>
-              
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">Auto Journaling</label>
-                <Switch
-                  checked={settings.feature_toggles?.auto_journaling || false}
-                  onCheckedChange={(checked) => updateToggle('feature_toggles', 'auto_journaling', checked)}
-                />
-              </div>
-              
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-medium">Smart Notifications</label>
-                <Switch
-                  checked={settings.feature_toggles?.smart_notifications || false}
-                  onCheckedChange={(checked) => updateToggle('feature_toggles', 'smart_notifications', checked)}
-                />
-              </div>
-            </div>
+            </CardContent>
           </Card>
+
+          {/* Theme Preview */}
+          <Card>
+            <CardHeader>
+              <CardTitle>🎨 Theme Preview</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
+                <p className="text-white mb-2">Current Theme: <span className="text-blue-400">Dark Mode</span></p>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-blue-600"></div>
+                  <span className="text-gray-300">Accent Color: Blue</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Action Buttons */}
+          <div className="flex gap-4 pt-4">
+            <Button
+              onClick={handleSave}
+              disabled={!hasChanges || isSaving}
+              className="flex-1"
+            >
+              {isSaving ? '💾 Saving...' : '💾 Save Changes'}
+            </Button>
+            <Button
+              onClick={handleReset}
+              variant="outline"
+              className="flex-1"
+            >
+              🔄 Reset to Defaults
+            </Button>
+          </div>
+
+          {/* Status */}
+          {hasChanges && (
+            <div className="text-center">
+              <p className="text-yellow-400 text-sm">⚠️ You have unsaved changes</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
