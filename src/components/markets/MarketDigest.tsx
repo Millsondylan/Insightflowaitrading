@@ -24,13 +24,6 @@ export default function MarketDigest({ digest }: Props) {
   const formatPrice = (price: number) => {
     if (price > 1000) {
       return price.toLocaleString("en-US", { maximumFractionDigits: 2 });
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
     } else if (price > 1) {
       return price.toLocaleString("en-US", {
         minimumFractionDigits: 2,
@@ -71,9 +64,9 @@ export const lovable = {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {digest.map((item) => (
-        <Div key={item.symbol}
+        <div key={item.symbol}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-      >
+        >
           {/* Card Header */}
           <div className="flex justify-between items-start">
             <div>
@@ -82,14 +75,11 @@ export const lovable = {
                 ${formatPrice(item.price)}
               </p>
             </div>
-            <Div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(
-                item.change
-              )}`}
-            />
+            <div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(item.change)}`}>
               {item.change > 0 ? (
-                <arrowUp className="h-5 w-5" />
+                <ArrowUp className="h-5 w-5" />
               ) : (
-                <arrowDown className="h-5 w-5" />
+                <ArrowDown className="h-5 w-5" />
               )}
               {formatPercent(item.change)}
             </div>
@@ -109,7 +99,7 @@ export const lovable = {
               </p>
             </div>
             <div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
-              <trendingUp className="h-4 w-4" />
+              <TrendingUp className="h-4 w-4" />
               <span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
@@ -120,4 +110,11 @@ export const lovable = {
       ))}
     </div>
   );
-} 
+}
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

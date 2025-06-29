@@ -10,13 +10,6 @@ interface ProtectedRouteProps {
 export const ProtectedRoute: FC<protectedRouteProps> = ({ accessLevel, children }) => {
   const { loading, isAdmin, isSubscribed, hasProAccess } = useAuth();
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
   if (loading) {
     // You can replace this with a loading spinner component
     return <div>Loading...</div>;
@@ -43,4 +36,11 @@ export const lovable = {
       <Outlet />
     </>
   );
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

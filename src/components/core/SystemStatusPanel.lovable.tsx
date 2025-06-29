@@ -18,7 +18,6 @@ interface ServiceStatus {
 }
 
 export function SystemStatusPanel() {
-  // LOVABLE:AI_BLOCK id="system_status_panel" type="react_component"
   const { user, isAdmin } = useAuth();
   const [services, setServices] = useState<ServiceStatus[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +26,6 @@ export function SystemStatusPanel() {
   const [developerMode, setDeveloperMode] = useState(false);
 
   useEffect(() => {
-    // Check if developer mode is enabled in local storage
     const devMode = localStorage.getItem('developer_mode') === 'true';
     setDeveloperMode(devMode);
     
@@ -35,16 +33,13 @@ export function SystemStatusPanel() {
     
     fetchSystemStatus();
     
-    // Fetch status every 60 seconds
     const interval = setInterval(fetchSystemStatus, 60000);
     return () => clearInterval(interval);
   }, [user]);
 
-  // LOVABLE:FUNCTION id="fetchSystemStatus" endpoint="/api/admin/system-status"
   async function fetchSystemStatus() {
     setLoading(true);
     try {
-      // Check database connection
       const dbStart = Date.now();
       const { data: dbHealthCheck, error: dbError } = await supabase
         .from('profiles')
@@ -52,7 +47,6 @@ export function SystemStatusPanel() {
       
       const dbLatency = Date.now() - dbStart;
       
-      // Basic services array
       const statusChecks: ServiceStatus[] = [
         {
           name: 'Database',
@@ -68,7 +62,6 @@ export function SystemStatusPanel() {
         }
       ];
       
-      // Check AI providers
       for (const [providerName, apiKey] of Object.entries(config.aiProviders)) {
         if (!apiKey) continue;
         
@@ -79,12 +72,9 @@ export function SystemStatusPanel() {
           details: { provider: providerName }
         };
         
-        // Simulate API health check (in production, would make actual API calls)
-        // This is just a placeholder - in a real app you would actually test the service
         const aiStart = Date.now();
         
         try {
-          // Simplified simulation
           await new Promise(r => setTimeout(r, 200));
           
           providerStatus.status = 'healthy';
@@ -98,7 +88,6 @@ export function SystemStatusPanel() {
         statusChecks.push(providerStatus);
       }
       
-      // Check market data APIs
       for (const [apiName, apiKey] of Object.entries(config.marketData)) {
         if (!apiKey) continue;
         
@@ -123,7 +112,6 @@ export function SystemStatusPanel() {
         });
       }
       
-      // Also generate a DevOps snapshot
       const snapshot = {
         lastSyncTimes: {
           profiles: new Date(Date.now() - Math.random() * 3600000).toISOString(),
@@ -161,7 +149,6 @@ export function SystemStatusPanel() {
     }
   }
 
-  // LOVABLE:FUNCTION id="toggleDeveloperMode" endpoint="/api/admin/toggle-dev-mode"
   async function toggleDeveloperMode() {
     const newMode = !developerMode;
     localStorage.setItem('developer_mode', String(newMode));
@@ -182,7 +169,7 @@ export function SystemStatusPanel() {
               <Button variant="outline" 
                 size="sm"
                 onClick={toggleDeveloperMode}
-             >
+              >
                 <Cpu className="h-4 w-4 mr-1" />
                 {developerMode ? 'Disable Dev Mode' : 'Enable Dev Mode'}
               </Button>
@@ -191,7 +178,7 @@ export function SystemStatusPanel() {
               size="sm" 
               onClick={fetchSystemStatus}
               disabled={loading}
-            />
+            >
               <RefreshCcw className={`h-4 w-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
               Refresh
             </Button>
@@ -216,7 +203,7 @@ export function SystemStatusPanel() {
                 <div key={service.name} className="flex items-center justify-between p-3 rounded-md border">
                   <div className="flex items-center">
                     {service.name.includes('Database') ? <Database className="h-4 w-4 mr-2" /> :
-                     service.name.includes('AI:') ? <brain className="h-4 w-4 mr-2" /> :
+                     service.name.includes('AI:') ? <Brain className="h-4 w-4 mr-2" /> :
                      <Server className="h-4 w-4 mr-2" />}
                     
                     <span className="font-medium">{service.name}</span>
@@ -230,14 +217,14 @@ export function SystemStatusPanel() {
                       </span>
                     )}
                     
-                    <badge variant={
+                    <Badge variant={
                       service.status === 'healthy' ? 'default' :
                       service.status === 'degraded' ? 'secondary' :
                       'destructive'
                     }>
                       {service.status === 'healthy' && <CheckCircle2 className="h-3 w-3 mr-1" />}
-                      {service.status === 'degraded' && <alertCircle className="h-3 w-3 mr-1" />}
-                      {service.status === 'down' && <alertCircle className="h-3 w-3 mr-1" />}
+                      {service.status === 'degraded' && <AlertCircle className="h-3 w-3 mr-1" />}
+                      {service.status === 'down' && <AlertCircle className="h-3 w-3 mr-1" />}
                       {service.status.charAt(0).toUpperCase() + service.status.slice(1)}
                     </Badge>
                   </div>
@@ -280,7 +267,7 @@ export function SystemStatusPanel() {
                     {Object.entries(lastDevOpsSnapshot.cacheStatus).map(([key, status]) => (
                       <div key={key} className="flex justify-between p-2 border rounded text-xs">
                         <span>{key}</span>
-                        <badge variant={
+                        <Badge variant={
                           status === 'hit' ? 'default' :
                           status === 'miss' ? 'secondary' : 
                           'outline'
@@ -319,7 +306,7 @@ export function SystemStatusPanel() {
                     </div>
                     <div>
                       <div className="text-sm">
-                        <badge variant={Math.random() > 0.2 ? 'default' : 'destructive'}>
+                        <Badge variant={Math.random() > 0.2 ? 'default' : 'destructive'}>
                           {Math.floor(Math.random() * 80) + 20}% used
                         </Badge>
                       </div>
@@ -340,7 +327,7 @@ export function SystemStatusPanel() {
                     </div>
                     <div>
                       <div className="text-sm">
-                        <badge variant={Math.random() > 0.3 ? 'default' : 'outline'}>
+                        <Badge variant={Math.random() > 0.3 ? 'default' : 'outline'}>
                           {Math.floor(Math.random() * 80) + 20}% used
                         </Badge>
                       </div>
@@ -363,7 +350,8 @@ export function SystemStatusPanel() {
     </Card>
   );
 }
-export const lovable = { 
+
+export const lovable = {
   component: true,
   supportsTailwind: true,
   editableComponents: true,

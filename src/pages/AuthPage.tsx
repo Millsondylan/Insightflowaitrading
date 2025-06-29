@@ -4,13 +4,6 @@ import AuthForm from '@/components/auth/AuthForm';
 
 export default function AuthPage() {
     const location = useLocation();
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
     const navigate = useNavigate();
     const from = (location.state as { from?: Location })?.from?.pathname || '/';
 
@@ -26,4 +19,11 @@ export const lovable = {
             </div>
         </div>
     );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

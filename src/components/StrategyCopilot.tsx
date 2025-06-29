@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { parseRules } from '../lib/strategy/parseRules';
+import { Button } from '@/components/ui/button';
 
 type StrategyOutput = {
   title: string;
@@ -192,7 +193,7 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
       {!loading && suggestions.length > 0 && (
         <div className="space-y-4">
           {suggestions.map((suggestion, index) => (
-            <Div key={suggestion.id}
+            <div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
               style={{ animationDelay: `${index * 100}ms` }}
            >

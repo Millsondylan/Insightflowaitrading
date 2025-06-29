@@ -33,11 +33,11 @@ export default function PlannerPage() {
       </div>
     </div>
   );
+}
 
 export const lovable = { 
   component: true,
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-};
-} 
+}; 

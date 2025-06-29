@@ -32,7 +32,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <blockReveal>
+      <BlockReveal>
         <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
             <ChartCanvasOverlay imageUrl={imagePreview} patternZones={patternZones} />
@@ -50,7 +50,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
       </BlockReveal>
       
       <div className="space-y-6">
-        <blockReveal delay={0.1}>
+        <BlockReveal delay={0.1}>
           <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
           <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
@@ -59,12 +59,12 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
           </div>
         </BlockReveal>
 
-        <blockReveal delay={0.2}>
+        <BlockReveal delay={0.2}>
           <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
           <p className="text-gray-300 mt-2">{result.summary}</p>
         </BlockReveal>
         
-        <blockReveal delay={0.3}>
+        <BlockReveal delay={0.3}>
           <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
           <div className="flex items-center gap-4 mt-2">
             <div className="confidence-meter-bg flex-grow">
@@ -77,7 +77,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
           </div>
         </BlockReveal>
         
-        <blockReveal delay={0.4}>
+        <BlockReveal delay={0.4}>
           <div className="flex flex-wrap gap-4 mt-4">
             <Button asChild className="glow-button bg-violet-500/20 border-violet-500 hover:bg-violet-500/30">
               <Link to="/journal?from=vision">📓 Save to Journal</Link>

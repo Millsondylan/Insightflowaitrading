@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 const ChatPage: React.FC = () => {
   return (
@@ -55,7 +55,7 @@ const ChatPage: React.FC = () => {
                   <div className="text-gray-400">Type your message...</div>
                 </div>
               </div>
-              <button className="glow-button glow-violet px-6 py-3">
+              <Button className="glow-button glow-violet px-6 py-3">
                 Send
               </Button>
             </div>
@@ -67,16 +67,16 @@ const ChatPage: React.FC = () => {
           <div className="glass-section motion-shadow">
             <h3 className="text-lg font-semibold text-white mb-4">💡 Quick Questions</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <button className="glass-card hover-glow text-left p-3">
+              <Button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Analyze my portfolio risk</div>
               </Button>
-              <button className="glass-card hover-glow text-left p-3">
+              <Button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Market sentiment today</div>
               </Button>
-              <button className="glass-card hover-glow text-left p-3">
+              <Button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Best sectors to watch</div>
               </Button>
-              <button className="glass-card hover-glow text-left p-3">
+              <Button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Options flow analysis</div>
               </Button>
             </div>

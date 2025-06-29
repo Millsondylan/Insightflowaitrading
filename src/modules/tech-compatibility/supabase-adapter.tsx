@@ -10,7 +10,7 @@ interface SupabaseAdapterProps {
   onSync?: () => void;
 }
 
-export const SupabaseAdapter: React.FC<supabaseAdapterProps> = ({ onSync }) => {
+export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
   const [syncStatus, setSyncStatus] = React.useState({
     connected: true,
     lastSync: new Date('2024-02-12T10:30:00'),
@@ -22,13 +22,6 @@ export const SupabaseAdapter: React.FC<supabaseAdapterProps> = ({ onSync }) => {
       { name: 'users', status: 'synced', records: 42 }
     ]
   });
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
 
   const [isSyncing, setIsSyncing] = React.useState(false);
 
@@ -61,7 +54,7 @@ export const lovable = {
     switch (status) {
       case 'synced': return <CheckCircle className="h-4 w-4" />;
       case 'syncing': return <RefreshCw className="h-4 w-4 animate-spin" />;
-      default: return <alertCircle className="h-4 w-4" />;
+      default: return <AlertCircle className="h-4 w-4" />;
     }
   };
 
@@ -72,7 +65,7 @@ export const lovable = {
           <Database className="h-6 w-6" />
           <h2 className="text-2xl font-bold">Supabase Adapter</h2>
         </div>
-        <badge variant={syncStatus.connected ? 'default' : 'destructive'}>
+        <Badge variant={syncStatus.connected ? 'default' : 'destructive'}>
           {syncStatus.connected ? 'Connected' : 'Disconnected'}
         </Badge>
       </div>
@@ -107,7 +100,7 @@ export const lovable = {
                 <p className="text-sm text-muted-foreground">{table.records} records</p>
               </div>
             </div>
-            <badge variant="outline" className={getStatusColor(table.status)}>
+            <Badge variant="outline" className={getStatusColor(table.status)}>
               {table.status}
             </Badge>
           </div>
@@ -118,7 +111,7 @@ export const lovable = {
         <Button onClick={syncData} 
           disabled={isSyncing || !syncStatus.connected}
           className="flex-1"
-       >
+        >
           {isSyncing ? (
             <>
               <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
@@ -151,4 +144,11 @@ export const lovable = {
       </div>
     </Card>
   );
+};
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

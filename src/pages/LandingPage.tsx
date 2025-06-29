@@ -84,13 +84,13 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen text-gray-100 transition-colors duration-500">
-      <themeScrollObserver sections={sections} />
+      <ThemeScrollObserver sections={sections} />
       
       {/* Navigation Header - Stays consistent */}
       <nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <trendingUp className="w-6 h-6 text-white" />
+            <TrendingUp className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white">InsightFlow AI</h1>
         </div>
@@ -98,20 +98,20 @@ const LandingPage = () => {
           <Button variant="ghost" onClick={() => navigate('/auth')} className="text-white hover:bg-white/10">
             Sign In
           </Button>
-          <button onClick={() => navigate('/auth')} className="quantum-button text-white">
+          <Button onClick={() => navigate('/auth')} className="quantum-button text-white">
             Start Free Trial
           </Button>
         </div>
       </nav>
 
       {/* Hero Section (Landing Theme) */}
-      <sectionWrapper ref={heroRef} id="hero" className="pt-40 pb-32 text-center flex flex-col items-center">
+      <SectionWrapper ref={heroRef} id="hero" className="pt-40 pb-32 text-center flex flex-col items-center">
          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
          >
-            <badge className="mb-6 px-4 py-2 text-sm border bg-black/20 border-white/20">
+            <Badge className="mb-6 px-4 py-2 text-sm border bg-black/20 border-white/20">
               <span className="mr-2">🚀</span> Over 10,000 traders trust InsightFlow AI
             </Badge>
 
@@ -125,14 +125,14 @@ const LandingPage = () => {
 
             <div className="flex justify-center space-x-4 pt-8">
               <Button size="lg" onClick={() => navigate('/auth')} className="quantum-button text-lg px-8 py-4">
-                Get Started <arrowRight className="ml-2 w-5 h-5" />
+                Get Started <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
         </motion.div>
       </SectionWrapper>
 
       {/* Features Section (Academy Theme) */}
-      <sectionWrapper ref={featuresRef} id="features" className="container mx-auto">
+      <SectionWrapper ref={featuresRef} id="features" className="container mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">A New Standard for Trading Intelligence</h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -165,7 +165,7 @@ const LandingPage = () => {
       </SectionWrapper>
       
       {/* Placeholder for Portfolio Section */}
-      <sectionWrapper ref={portfolioRef} id="portfolio-demo" className="container mx-auto">
+      <SectionWrapper ref={portfolioRef} id="portfolio-demo" className="container mx-auto">
         <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">Your Portfolio, Supercharged</h2>
             <p className="text-xl text-gray-400">Track your performance with stunning visuals.</p>
@@ -179,7 +179,7 @@ const LandingPage = () => {
       </SectionWrapper>
 
       {/* Testimonials Section (NeonWave Theme) */}
-      <sectionWrapper ref={testimonialsRef} id="testimonials" className="container mx-auto">
+      <SectionWrapper ref={testimonialsRef} id="testimonials" className="container mx-auto">
          <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-4">Loved by Modern Traders</h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">

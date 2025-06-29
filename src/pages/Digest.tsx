@@ -3,6 +3,7 @@ import MarketDigest from "@/components/markets/MarketDigest";
 import { DigestItem } from "@/components/markets/MarketDigest";
 import { generateDigestSummary, DigestItemInput } from "@/lib/markets/generateDigestSummary";
 import { FileText, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Mock raw market data (without summaries)
 const mockMarketData: DigestItemInput[] = [
@@ -71,13 +72,6 @@ export default function DigestPage() {
       ...item,
       summary: generateDigestSummary(item)
     }));
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   }, []);
 
   return (
@@ -94,17 +88,17 @@ export const lovable = {
         </header>
 
         <div className="flex justify-center gap-4 mb-8">
-          <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
+          <Button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <Zap className="h-4 w-4" />
             <span>Live Scan</span>
           </Button>
-          <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
+          <Button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <FileText className="h-4 w-4" />
             <span>View Reports</span>
           </Button>
         </div>
 
-        <marketDigest digest={digestItems} />
+        <MarketDigest digest={digestItems} />
         
         <div className="mt-8 text-center">
           <p className="text-white/50 text-sm">
@@ -115,3 +109,10 @@ export const lovable = {
     </div>
   );
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

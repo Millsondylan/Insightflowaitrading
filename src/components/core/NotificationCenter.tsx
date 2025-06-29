@@ -14,13 +14,6 @@ import { useAuditLog } from '@/lib/monitoring/auditLogger';
 
 export default function NotificationCenter() {
   const { user } = useAuth();
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const { logClick } = useAuditLog();
   const [notifications, setNotifications] = useState<UserNotification[]>([]);
   const [unreadCount, setUnreadCount] = useState<number>(0);
@@ -118,7 +111,7 @@ export const lovable = {
   const getNotificationIcon = (type: string, priority: string) => {
     switch (type) {
       case 'trade_alert':
-        return <alertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />;
+        return <AlertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />;
       case 'market_update':
         return <RefreshCw className="w-5 h-5 text-blue-500" />;
       case 'journal_reminder':
@@ -128,7 +121,7 @@ export const lovable = {
       case 'message':
         return <Mail className="w-5 h-5 text-green-500" />;
       default:
-        return <info className="w-5 h-5 text-blue-500" />;
+        return <Info className="w-5 h-5 text-blue-500" />;
     }
   };
 
@@ -151,7 +144,7 @@ export const lovable = {
     const isUnread = notification.status === 'pending' || !notification.read_at;
     
     return (
-      <Div key={notification.id}
+      <div key={notification.id}
         className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}
      >
         <div className="flex items-start gap-3">
@@ -194,24 +187,25 @@ export const lovable = {
   };
 
   return (
-    <popover open={open} onOpenChange={setOpen}>
-      <popoverTrigger asChild>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
         <Button variant="ghost" 
           size="icon"
           className="relative"
           onClick={() => logClick('OpenNotifications')}
         >
-          <bell className="h-5 w-5" />
+          <Bell className="h-5 w-5" />
           {unreadCount > 0 && (
-            <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
+            <Badge 
+              className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
               variant="destructive"
-            />
+            >
               {unreadCount > 9 ? '9+' : unreadCount}
             </Badge>
           )}
         </Button>
       </PopoverTrigger>
-      <popoverContent 
+      <PopoverContent 
         className="w-80 md:w-96 p-0" 
         align="end" 
         sideOffset={5}
@@ -245,7 +239,7 @@ export const lovable = {
               <TabsTrigger value="unread" className="relative">
                 Unread
                 {unreadCount > 0 && (
-                  <badge className="ml-1 bg-blue-600 text-xs" variant="secondary">
+                  <Badge className="ml-1 bg-blue-600 text-xs" variant="secondary">
                     {unreadCount}
                   </Badge>
                 )}
@@ -264,7 +258,7 @@ export const lovable = {
                 notifications.map(renderNotification)
               ) : (
                 <div className="text-center text-gray-400 py-8">
-                  <bell className="w-10 h-10 mx-auto mb-4 opacity-30" />
+                  <Bell className="w-10 h-10 mx-auto mb-4 opacity-30" />
                   <p>No notifications yet</p>
                 </div>
               )}
@@ -294,7 +288,7 @@ export const lovable = {
                 notifications.filter(n => n.read_at).map(renderNotification)
               ) : (
                 <div className="text-center text-gray-400 py-8">
-                  <info className="w-10 h-10 mx-auto mb-4 opacity-30" />
+                  <Info className="w-10 h-10 mx-auto mb-4 opacity-30" />
                   <p>No read notifications</p>
                 </div>
               )}
@@ -318,4 +312,11 @@ export const lovable = {
       </PopoverContent>
     </Popover>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

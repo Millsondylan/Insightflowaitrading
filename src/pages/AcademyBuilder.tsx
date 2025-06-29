@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ScrollSection } from '../hooks/use-scroll-reveal';
 
@@ -224,10 +223,10 @@ const AcademyBuilderPage: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <button className="glow-button glow-blue">
                 Continue Learning
-              </Button>
+              </button>
               <button className="glow-button glow-emerald">
                 Practice Quiz
-              </Button>
+              </button>
             </div>
           </div>
         </div>

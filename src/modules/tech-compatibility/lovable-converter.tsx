@@ -55,7 +55,7 @@ export const lovable = {
   return (
     <Card className="theme-card p-6">
       <div className="flex items-center gap-2 mb-6">
-        <code2 className="h-6 w-6" />
+        <Code2 className="h-6 w-6" />
         <h2 className="text-2xl font-bold">Lovable Converter</h2>
       </div>
 
@@ -88,10 +88,10 @@ export const lovable = {
           ) : (
             <>
               Convert to Lovable
-              <arrowRight className="h-4 w-4 ml-2" />
+              <ArrowRight className="h-4 w-4 ml-2" />
             </>
           )}
-        </Button>
+        </button>
       </div>
 
       {conversionStatus && (
@@ -141,7 +141,7 @@ export const lovable = {
       )}
 
       <div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
-        <alertCircle className="h-4 w-4 text-yellow-500 mt-0.5" />
+        <AlertCircle className="h-4 w-4 text-yellow-500 mt-0.5" />
         <div className="text-sm">
           <p className="font-medium mb-1">Conversion Notes:</p>
           <ul className="space-y-1 text-muted-foreground">

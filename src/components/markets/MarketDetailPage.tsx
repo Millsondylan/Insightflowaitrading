@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { ArrowUp, ArrowDown, ChevronLeft, TrendingUp, Activity, Clock, Loader2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ChevronLeft, Loader2, ArrowUp, ArrowDown, TrendingUp, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { fetchTickerBySymbol } from "@/lib/markets/fetchTickers";
 
 type OHLCData = {
@@ -23,13 +23,6 @@ type Props = {
 
 export default function MarketDetailPage({ symbol, onBack }: Props) {
   const [loading, setLoading] = useState<boolean>(true);
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [error, setError] = useState<string | null>(null);
   const [marketData, setMarketData] = useState<{
     price: number;
@@ -190,7 +183,7 @@ export const lovable = {
             size="sm" 
             onClick={onBack}
             className="flex items-center gap-2 text-gray-400 hover:text-white"
-          />
+          >
             <ChevronLeft className="h-4 w-4" />
             Back to Markets
           </Button>
@@ -222,28 +215,30 @@ export const lovable = {
         <div className="space-y-1">
           <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-white">{symbol}</h1>
-            <badge variant="outline" className={getVolatilityBadgeClass(marketData.volatility)}>
+            <Badge variant="outline" className={getVolatilityBadgeClass(marketData.volatility)}>
               {marketData.volatility.charAt(0).toUpperCase() + marketData.volatility.slice(1)} Volatility
             </Badge>
           </div>
           
           <div className="flex items-center gap-2 text-2xl font-semibold">
             <span>${formatPrice(marketData.price)}</span>
-            <span className={`flex items-center ${getPriceChangeColorClass(marketData.changePercent)}`}>
-              {marketData.changePercent > 0 ? (
-                <arrowUp className="h-5 w-5" />
-              ) : marketData.changePercent < 0 ? (
-                <arrowDown className="h-5 w-5" />
-              ) : null}
-              {formatPercent(marketData.changePercent)}
-            </span>
+            <div className="flex items-center gap-2">
+              {marketData.change > 0 ? (
+                <ArrowUp className="h-4 w-4" />
+              ) : (
+                <ArrowDown className="h-4 w-4" />
+              )}
+              <span className={getPriceChangeColorClass(marketData.change)}>
+                {formatPercent(marketData.changePercent)}
+              </span>
+            </div>
           </div>
         </div>
         
         {/* Matching Strategies */}
         {marketData.matchingSetups > 0 && (
           <div className="bg-green-900/20 border border-green-400/30 rounded-lg px-4 py-3 flex items-center gap-3">
-            <trendingUp className="h-5 w-5 text-green-400" />
+            <TrendingUp className="h-5 w-5 text-green-400" />
             <div>
               <div className="font-semibold text-green-400">
                 {marketData.matchingSetups} {marketData.matchingSetups === 1 ? 'setup matches' : 'setups match'} {symbol} conditions
@@ -280,7 +275,7 @@ export const lovable = {
       <div className="bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 market-glow opacity-10" />
         <div className="text-center">
-          <activity className="h-10 w-10 mx-auto mb-4 text-cyan-500/50" />
+          <Activity className="h-10 w-10 mx-auto mb-4 text-cyan-500/50" />
           <h3 className="text-xl font-medium text-white mb-2">Chart will appear here</h3>
           <p className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
@@ -291,21 +286,14 @@ export const lovable = {
       {/* Market Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Clock className="h-5 w-5 text-gray-400" />
-          <div>
-            <div className="text-sm text-gray-400">Last Update</div>
-            <div className="font-medium">{new Date().toLocaleTimeString()}</div>
-          </div>
-        </div>
-        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <activity className="h-5 w-5 text-gray-400" />
+          <Activity className="h-5 w-5 text-gray-400" />
           <div>
             <div className="text-sm text-gray-400">24h Range</div>
             <div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</div>
           </div>
         </div>
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <trendingUp className="h-5 w-5 text-gray-400" />
+          <TrendingUp className="h-5 w-5 text-gray-400" />
           <div>
             <div className="text-sm text-gray-400">Price Change</div>
             <div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>
@@ -313,7 +301,29 @@ export const lovable = {
             </div>
           </div>
         </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <Activity className="h-5 w-5 text-gray-400" />
+          <div>
+            <div className="text-sm text-gray-400">Volume</div>
+            <div className="font-medium">{formatLargeNumber(marketData.ohlc.volume)}</div>
+          </div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <Activity className="h-5 w-5 text-gray-400" />
+          <div>
+            <div className="text-sm text-gray-400">
+              {marketData.matchingSetups} matching setups
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
-} 
+}
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

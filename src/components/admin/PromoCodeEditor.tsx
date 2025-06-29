@@ -8,26 +8,25 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Trash2, Plus, Copy } from "lucide-react";
+import { Trash2, Plus } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { cn } from "@/lib/utils";
 
-type PromoCode = { code: string; expiresAt: string; usesLeft: number };
+interface PromoCode {
+  id: string;
+  code: string;
+  expiresAt: string;
+  usesLeft: number;
+}
 
-type Props = {
+interface Props {
   codes: PromoCode[];
-  onGenerate: () => void;
-  onRevoke: (code: string) => void;
-};
+  onGenerate: (code: string) => void;
+  onRevoke: (codeId: string) => void;
+}
 
 export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) {
   const { toast } = useToast();
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
 
   // Format date to be more readable
   const formatDate = (dateString: string) => {
@@ -59,87 +58,80 @@ export const lovable = {
     });
   };
 
+  const generateNewCode = () => {
+    const code = "NEW" + Math.random().toString(36).substring(7).toUpperCase();
+    onGenerate(code);
+  };
+
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
         
-        <Button onClick={onGenerate}
+        <Button 
+          onClick={generateNewCode}
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-       >
-          <plus className="h-4 w-4 mr-2" />
-          Generate New Code
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          Generate Code
         </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table>
-          <tableHeader>
-            <tableRow className="hover:bg-white/5">
-              <tableHead className="text-white/70 font-medium">Code</TableHead>
-              <tableHead className="text-white/70 font-medium">Expires</TableHead>
-              <tableHead className="text-white/70 font-medium">Uses Left</TableHead>
-              <tableHead className="text-white/70 font-medium text-right">Actions</TableHead>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Code</TableHead>
+              <TableHead>Expires</TableHead>
+              <TableHead>Uses Left</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <tableBody>
-            {codes.length > 0 ? (
+          <TableBody>
+            {codes.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
+                  No active promo codes. Generate a new code to get started.
+                </TableCell>
+              </TableRow>
+            ) : (
               codes.map((code) => {
-                const daysRemaining = getDaysRemaining(code.expiresAt);
-                const isExpiringSoon = daysRemaining <= 5 && daysRemaining > 0;
-                const isExpired = daysRemaining <= 0;
+                const isExpired = new Date(code.expiresAt) < new Date();
+                const isLowUses = code.usesLeft < 5;
 
                 return (
-                  <tableRow key={code.code} className="hover:bg-white/5 border-white/10">
-                    <tableCell className="font-mono">
+                  <TableRow key={code.id} className="hover:bg-white/5 border-white/10">
+                    <TableCell className="font-mono">
                       <div className="flex items-center gap-2">
-                        {code.code}
-                        <Button  onClick={() => handleCopyCode(code.code)}
-                          className="text-gray-400 hover:text-cyan-400 transition-colors"
-                        >
-                          <Copy className="h-4 w-4" />
-                        </Button>
-                      </div>
-                    </TableCell>
-                    <tableCell>
-                      <div className="flex flex-col">
-                        <span className={isExpired ? "text-red-400" : isExpiringSoon ? "text-yellow-400" : ""}>
-                          {formatDate(code.expiresAt)}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {isExpired ? (
-                            "Expired"
-                          ) : (
-                            `${daysRemaining} ${daysRemaining === 1 ? "day" : "days"} left`
-                          )}
+                        <span className={cn(
+                          "text-sm",
+                          isExpired ? "text-red-400" : isLowUses ? "text-yellow-400" : "text-green-400"
+                        )}>
+                          {code.code}
                         </span>
                       </div>
                     </TableCell>
-                    <tableCell>
-                      <span className={code.usesLeft <= 3 ? "text-amber-400" : "text-white"}>
-                        {code.usesLeft}
-                      </span>
+                    <TableCell>
+                      {new Date(code.expiresAt).toLocaleDateString()}
                     </TableCell>
-                    <tableCell className="text-right">
-                      <Button  onClick={() => onRevoke(code.code)}
+                    <TableCell>
+                      {code.usesLeft}
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <Button 
+                        onClick={() => onRevoke(code.id)}
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
-                        <trash2 className="h-4 w-4" />
+                        <Trash2 className="h-4 w-4" />
                       </Button>
                     </TableCell>
                   </TableRow>
                 );
               })
-            ) : (
-              <tableRow>
-                <tableCell colSpan={4} className="text-center py-8 text-gray-500">
-                  No active promo codes. Generate a new code to get started.
-                </TableCell>
-              </TableRow>
             )}
           </TableBody>
-        </table>
+        </Table>
       </div>
       
       <div className="text-xs text-gray-500">
@@ -149,4 +141,11 @@ export const lovable = {
       </div>
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

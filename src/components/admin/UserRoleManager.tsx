@@ -16,23 +16,23 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Settings } from "lucide-react";
+import { ChangeEvent } from "react";
 
-type User = { id: string; email: string; role: "admin" | "mod" | "user" };
+interface User {
+  id: string;
+  email: string;
+  role: 'user' | 'admin' | 'mod';
+}
 
-type Props = {
+interface Props {
   users: User[];
-  onRoleChange: (id: string, newRole: User["role"]) => void;
-};
+  onRoleChange: (userId: string, newRole: User['role']) => void;
+}
 
-export default function UserRoleManager({ users, onRoleChange }: Props) {
+const UserRoleManager = ({ users, onRoleChange }: Props) => {
   const [searchQuery, setSearchQuery] = React.useState("");
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [filteredUsers, setFilteredUsers] = React.useState<User[]>(users);
 
   // Filter users when search query changes
@@ -66,6 +66,13 @@ export const lovable = {
     }
   };
 
+  const handleRoleChange = (userId: string, event: ChangeEvent<HTMLSelectElement>) => {
+    const newRole = event.target.value;
+    if (newRole === 'user' || newRole === 'admin' || newRole === 'mod') {
+      onRoleChange(userId, newRole);
+    }
+  };
+
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex justify-between items-center">
@@ -76,7 +83,7 @@ export const lovable = {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
           <input type="text"
             value={searchQuery}
-            onChange={(e) = /> setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
             className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
           />
@@ -84,62 +91,57 @@ export const lovable = {
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table>
-          <tableHeader>
-            <tableRow className="hover:bg-white/5">
-              <tableHead className="text-white/70 font-medium">ID</TableHead>
-              <tableHead className="text-white/70 font-medium">Email</TableHead>
-              <tableHead className="text-white/70 font-medium">Current Role</TableHead>
-              <tableHead className="text-white/70 font-medium">Manage Role</TableHead>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Email</TableHead>
+              <TableHead>Role</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <tableBody>
-            {filteredUsers.map((user) => (
-              <tableRow key={user.id} className="hover:bg-white/5 border-white/10">
-                <tableCell className="font-mono text-xs text-white/50">
-                  {user.id.substring(0, 8)}...
-                </TableCell>
-                <tableCell>{user.email}</TableCell>
-                <tableCell>
-                  <Badge variant="outline" 
-                    className={getRoleBadgeColor(user.role)}
-                 >
-                    {user.role.toUpperCase()}
-                  </Badge>
-                </TableCell>
-                <tableCell>
-                  <select
-                    defaultValue={user.role}
-                    onValueChange={(value) => onRoleChange(user.id, value as User["role"])}
-                  >
-                    <selectTrigger className="bg-black/50 border-white/10 text-white w-32">
-                      <selectValue />
-                    </SelectTrigger>
-                    <selectContent className="bg-gray-900 text-white border-white/10">
-                      <selectItem value="user" className="text-gray-200 focus:bg-gray-800 focus:text-white">
-                        User
-                      </SelectItem>
-                      <selectItem value="mod" className="text-blue-400 focus:bg-gray-800 focus:text-white">
-                        Moderator
-                      </SelectItem>
-                      <selectItem value="admin" className="text-green-400 focus:bg-gray-800 focus:text-white">
-                        Admin
-                      </SelectItem>
-                    </SelectContent>
-                  </select>
+          <TableBody>
+            {users.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={3} className="text-center py-8 text-gray-500">
+                  No users found.
                 </TableCell>
               </TableRow>
-            ))}
+            ) : (
+              users.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>
+                    <select
+                      value={user.role}
+                      onChange={(e) => handleRoleChange(user.id, e)}
+                      className="bg-transparent border border-white/10 rounded px-2 py-1"
+                    >
+                      <option value="user">User</option>
+                      <option value="mod">Moderator</option>
+                      <option value="admin">Admin</option>
+                    </select>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Button
+                      variant="ghost"
+                      className="h-8 w-8 p-0 text-gray-400 hover:text-white"
+                    >
+                      <Settings className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
             
             {filteredUsers.length === 0 && (
-              <tableRow>
-                <tableCell colSpan={4} className="text-center py-8 text-gray-500">
+              <TableRow>
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
                   No users found matching your search.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
-        </table>
+        </Table>
       </div>
       
       <div className="text-xs text-gray-500">
@@ -147,4 +149,6 @@ export const lovable = {
       </div>
     </div>
   );
-} 
+};
+
+export default UserRoleManager; 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ScrollSection } from '../hooks/use-scroll-reveal';
 import { Link } from 'react-router-dom';
@@ -124,12 +123,12 @@ const LandingBuilderPage: React.FC = () => {
               <Link to="/strategy">
                 <button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </Button>
+                </button>
               </Link>
               <Link to="/academy">
                 <button className="glow-button glow-blue text-lg px-8 py-4">
                   Begin Learning
-                </Button>
+                </button>
               </Link>
             </div>
           </div>

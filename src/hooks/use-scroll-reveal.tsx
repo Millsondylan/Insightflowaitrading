@@ -39,35 +39,37 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
   return { elementRef, isVisible };
 };
 
+interface ScrollSectionProps {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  animation?: "fade-in" | "slide-right" | "scale-in";
+}
+
 // Scroll section wrapper component
-export const ScrollSection = ({ 
+export const ScrollSection: React.FC<ScrollSectionProps> = ({ 
   children, 
   className = "", 
   delay = 0,
   animation = "fade-in"
-}: { 
-  children: React.ReactNode;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
-  className?: string; 
-  delay?: number;
-  animation?: "fade-in" | "slide-right" | "scale-in";
 }) => {
   const { elementRef, isVisible } = useScrollReveal();
   
   const animationClass = `scroll-${animation}`;
   
   return (
-    <Section ref={elementRef}
+    <section ref={elementRef}
       className={`${animationClass} scroll-section ${isVisible ? 'visible' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
-   >
+    >
       {children}
     </section>
   );
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 };

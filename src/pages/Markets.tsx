@@ -52,9 +52,9 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-              {item.type === 'crypto' && <bitcoin className="w-4 h-4 text-orange-400" />}
+              {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400" />}
               {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
-              {item.type === 'stock' && <barChart3 className="w-4 h-4 text-blue-400" />}
+              {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400" />}
               {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400" />}
             </div>
             <div>
@@ -81,7 +81,7 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
             )}
           </div>
           <div className={`flex items-center gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-            {isPositive ? <trendingUp className="w-4 h-4" /> : <trendingDown className="w-4 h-4" />}
+            {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
             <span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</span>
           </div>
         </div>
@@ -112,9 +112,9 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                      {item.type === 'crypto' && <bitcoin className="w-4 h-4 text-orange-400" />}
+                      {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400" />}
                       {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
-                      {item.type === 'stock' && <barChart3 className="w-4 h-4 text-blue-400" />}
+                      {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400" />}
                       {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400" />}
                     </div>
                     <div>
@@ -132,7 +132,7 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                 </td>
                 <td className="text-right py-3 px-4">
                   <div className={`flex items-center justify-end gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-                    {isPositive ? <trendingUp className="w-4 h-4" /> : <trendingDown className="w-4 h-4" />}
+                    {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
                     <span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</span>
                   </div>
                 </td>
@@ -167,13 +167,6 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
 
 export default function Markets() {
   const [selectedSymbol, setSelectedSymbol] = useState<string | null>(null);
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [watchlist, setWatchlist] = useState<string[]>([]);
@@ -271,7 +264,7 @@ export const lovable = {
   };
   
   if (selectedSymbol) {
-    return <marketDetailPage symbol={selectedSymbol} onBack={() => setSelectedSymbol(null)} />;
+    return <MarketDetailPage symbol={selectedSymbol} onBack={() => setSelectedSymbol(null)} />;
   }
   
   return (
@@ -279,7 +272,7 @@ export const lovable = {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <activity className="w-8 h-8 text-blue-400" />
+          <Activity className="w-8 h-8 text-blue-400" />
           Markets Overview
         </h1>
         <p className="text-gray-400">
@@ -296,7 +289,7 @@ export const lovable = {
                 <p className="text-sm text-gray-400">Total Markets</p>
                 <p className="text-2xl font-bold text-white">{allMarkets.length}</p>
               </div>
-              <barChart3 className="w-8 h-8 text-blue-400/20" />
+              <BarChart3 className="w-8 h-8 text-blue-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -320,7 +313,7 @@ export const lovable = {
                   {allMarkets.filter(m => m.change > 0).length}
                 </p>
               </div>
-              <trendingUp className="w-8 h-8 text-green-400/20" />
+              <TrendingUp className="w-8 h-8 text-green-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -333,7 +326,7 @@ export const lovable = {
                   {allMarkets.filter(m => m.change < 0).length}
                 </p>
               </div>
-              <trendingDown className="w-8 h-8 text-red-400/20" />
+              <TrendingDown className="w-8 h-8 text-red-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -344,7 +337,7 @@ export const lovable = {
         <Card className="bg-white/5 border-white/10">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <trendingUp className="w-5 h-5 text-green-400" />
+              <TrendingUp className="w-5 h-5 text-green-400" />
               Top Gainers
             </CardTitle>
           </CardHeader>
@@ -358,9 +351,9 @@ export const lovable = {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-green-400/20 rounded-full flex items-center justify-center">
-                      {market.type === 'crypto' && <bitcoin className="w-4 h-4 text-green-400" />}
+                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-green-400" />}
                       {market.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
-                      {market.type === 'stock' && <barChart3 className="w-4 h-4 text-green-400" />}
+                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-green-400" />}
                       {market.type === 'commodity' && <Coins className="w-4 h-4 text-green-400" />}
                     </div>
                     <div>
@@ -381,7 +374,7 @@ export const lovable = {
         <Card className="bg-white/5 border-white/10">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <trendingDown className="w-5 h-5 text-red-400" />
+              <TrendingDown className="w-5 h-5 text-red-400" />
               Top Losers
             </CardTitle>
           </CardHeader>
@@ -395,9 +388,9 @@ export const lovable = {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-red-400/20 rounded-full flex items-center justify-center">
-                      {market.type === 'crypto' && <bitcoin className="w-4 h-4 text-red-400" />}
+                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-red-400" />}
                       {market.type === 'forex' && <DollarSign className="w-4 h-4 text-red-400" />}
-                      {market.type === 'stock' && <barChart3 className="w-4 h-4 text-red-400" />}
+                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-red-400" />}
                       {market.type === 'commodity' && <Coins className="w-4 h-4 text-red-400" />}
                     </div>
                     <div>
@@ -422,7 +415,7 @@ export const lovable = {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input placeholder="Search markets..."
             value={searchTerm}
-            onChange={(e) = /> setSearchTerm(e.target.value)}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 bg-white/5 border-white/10 text-white"
           />
         </div>
@@ -447,7 +440,7 @@ export const lovable = {
         <TabsContent value="grid">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filteredMarkets.map((market) => (
-              <marketCard 
+              <MarketCard 
                 key={market.symbol} 
                 item={market} 
                 onClick={() => setSelectedSymbol(market.symbol)}
@@ -459,7 +452,7 @@ export const lovable = {
         <TabsContent value="table">
           <Card className="bg-white/5 border-white/10">
             <CardContent className="p-0">
-              <marketTable 
+              <MarketTable 
                 items={filteredMarkets} 
                 onSelect={setSelectedSymbol}
               />
@@ -485,3 +478,10 @@ export const lovable = {
     </div>
   );
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
