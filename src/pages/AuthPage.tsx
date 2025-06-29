@@ -20,7 +20,7 @@ export default function AuthPage() {
                 <meta name="description" content="Sign in to your InsightFlow AI Trading account to access advanced trading tools and analytics." />
             </Div>
             <Div className="w-full">
-                <AuthForm onSuccess={handleSuccess} /></Div></Div>
+                <AuthForm onSuccess={handleSuccess} /></Div></Div></Div>
             </Div>
         </Div>
     );

@@ -47,7 +47,7 @@ export const lovable = {
             marketSentiment === 'Bullish' ? 'default' : 
             marketSentiment === 'Bearish' ? 'destructive' : 'secondary'
           }
-    >
+   >
           {marketSentiment} Sentiment
         </Badge>
       </CardHeader>
@@ -63,7 +63,7 @@ export const lovable = {
                     insight.sentiment === 'Bullish' ? 'default' : 
                     insight.sentiment === 'Bearish' ? 'destructive' : 'secondary'
                   }
-              >
+             >
                   {insight.sentiment}
                 </Badge>
               </Div>
@@ -84,7 +84,7 @@ export const lovable = {
           ))}
         </Div>
         <Div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white" /></Div>
+          <Button variant="outline" className="text-white" /></Div></Div>
             Load More Insights
           </Div>
         </Div>

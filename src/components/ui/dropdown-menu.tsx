@@ -174,7 +174,7 @@ const DropdownMenuShortcut = ({
     <Span
       className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
       {...props}
-    /></DropdownMenuPrimitive>
+    /></DropdownMenuPrimitive></DropdownMenuPrimitive>
   )
 }
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut"

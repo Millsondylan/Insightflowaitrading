@@ -27,7 +27,7 @@ export default function PlannerPage() {
 
         <Div className="space-y-6">
             <Div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
-                <P className="text-gray-500"></Div>Checklist and planning components will be here.</Div>
+                <P className="text-gray-500"></Div></Div>Checklist and planning components will be here.</Div>
             </Div>
         </Div>
       </Div>

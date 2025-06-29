@@ -1,6 +1,6 @@
 import Ajv, { ValidateFunction, Options } from 'ajv';
 // Lazy-load ajv-formats to avoid type error if not installed yet
-let addFormatsFn: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any;
+let addFormatsFn: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any;
 try {
    
   addFormatsFn = require('ajv-formats');

@@ -6,7 +6,7 @@ const ProfileRiskMapPage: React.FC = () => {
     <Section className="theme-portfolio min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <Div className="text-center space-y-4 animate-in fade-in slide-up">
-        <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"></Section>
+        <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"></Section></Section>
           Risk Profile Map
         </Section>
         <P className="text-xl md:text-2xl text-gray-300 font-light">
@@ -16,12 +16,12 @@ const ProfileRiskMapPage: React.FC = () => {
 
       {/* Radial Risk Map */}
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <H2 className="text-3xl font-bold text-white mb-8 text-center"></Div>🎯 Risk Quadrants</Div>
+        <H2 className="text-3xl font-bold text-white mb-8 text-center"></Div></Div>🎯 Risk Quadrants</Div>
         <Div className="max-w-2xl mx-auto">
           <Div className="relative w-96 h-96 mx-auto">
             {/* Center Circle */}
             <Div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-indigo-500/20 border border-indigo-400/30 rounded-full flex items-center justify-center">
-              <Span className="text-indigo-400 font-semibold"></Div>Core</Div>
+              <Span className="text-indigo-400 font-semibold"></Div></Div>Core</Div>
             </Div>
 
             {/* Quadrant 1 - High Return, High Risk */}
@@ -61,7 +61,7 @@ const ProfileRiskMapPage: React.FC = () => {
 
       {/* Risk Metrics */}
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <H2 className="text-3xl font-bold text-white mb-6"></Div>📊 Risk Metrics</Div>
+        <H2 className="text-3xl font-bold text-white mb-6"></Div></Div>📊 Risk Metrics</Div>
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Div className="glass-card text-center">
             <Div className="text-2xl font-bold text-violet-400 mb-2">2.4</Div>

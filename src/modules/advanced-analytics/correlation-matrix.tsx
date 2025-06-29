@@ -147,7 +147,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
             {matrix.symbols.map((symbol, index) => (
               <Div key={symbol}
                 className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-         >
+        >
                 {symbol}
               </Div>
             ))}

@@ -85,7 +85,7 @@ export const lovable = {
         {suggestions.map((suggestion) => (
           <Div key={suggestion.id}
             className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
-     >
+    >
             <Div className="flex items-start justify-between mb-2">
               <H4 className="font-medium">{suggestion.title}</Div>
               <Badge variant="outline" className="text-xs">
@@ -135,7 +135,7 @@ export const lovable = {
       </Div>
 
       <Div className="p-4 border-t bg-secondary/20">
-        <P className="text-xs text-muted-foreground text-center"></Div>
+        <P className="text-xs text-muted-foreground text-center"></Div></Div>
           Copilot analyzes your strategy in real-time
         </Div>
       </Div>

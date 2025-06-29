@@ -57,7 +57,7 @@ const DrawerFooter = ({
   <Div
     className={cn("mt-auto flex flex-col gap-2 p-4", className)}
     {...props}
-  /></HTMLDivElement>
+  /></HTMLDivElement></HTMLDivElement>
 )
 DrawerFooter.displayName = "DrawerFooter"
 

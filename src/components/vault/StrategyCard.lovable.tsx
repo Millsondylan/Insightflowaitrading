@@ -40,7 +40,7 @@ export const StrategyCard = ({ strategy }: Props) => {
         </Div>
         <Div className="flex items-center gap-2">
           <arrowupright  />
-          <Span className="text-sm font-medium"></Div>
+          <Span className="text-sm font-medium"></Div></Div>
             ${strategy.totalPnL.toLocaleString()} PnL
           </Div>
         </Div>

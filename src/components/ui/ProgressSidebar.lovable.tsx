@@ -58,7 +58,7 @@ const ProgressSidebar: React.FC<Progresssidebarprops> = ({
                       "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
                       { "text-white": isActive }
                     )}
-                  /></Button>
+                  /></Button></Button>
                     {block.title}
                   </Button>
                 </Button>

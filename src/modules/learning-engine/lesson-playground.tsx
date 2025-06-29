@@ -122,11 +122,11 @@ export const lovable = {
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-           >
+          >
                   {result.passed ? (
                     <CheckCircle className="h-4 w-4" />
                   ) : (
-                    <XCircle className="h-4 w-4" /></Div></Div>
+                    <XCircle className="h-4 w-4" /></Div></Div></Div>
                   )}
                   <Span className="text-sm">{result.name}</Span>
                 </Div>
@@ -145,7 +145,7 @@ export const lovable = {
           )}
 
           <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2"></Div>Hint</Div>
+            <H4 className="font-medium mb-2"></Div></Div>Hint</Div>
             <P className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
             </P>

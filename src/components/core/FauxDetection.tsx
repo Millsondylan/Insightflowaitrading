@@ -86,7 +86,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
               <Link to="/academy?topic=patterns" />📘 Learn Pattern</Button>
             </Button>
             <Button asChild className="glow-button bg-green-500/20 border-green-500 hover:bg-green-500/30" />
-              <Link to="/strategy?from=vision" /></Button>💡 Find Strategy</Button>
+              <Link to="/strategy?from=vision" /></Button></Button>💡 Find Strategy</Button>
             </Button>
           </Div>
         </BlockReveal>

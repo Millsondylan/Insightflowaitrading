@@ -4,14 +4,14 @@ import { useMarketCorrelations } from '@/lib/realtime/useMarketCorrelations';
 // Mock Supabase client
 jest.mock('@/integrations/supabase/client', () => {
   const rows = [{ id: 1, base: 'BTC', quote: 'ETH', timeframe: '30d', correlation: 0.8, updated_at: new Date().toISOString() }];
-  const subscribers: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[] = [];
+  const subscribers: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[] = [];
   return {
     supabase: {
       from: () => ({
         select: () => ({ eq: () => ({ order: () => Promise.resolve({ data: rows, error: null }) }) }),
       }),
       channel: () => ({
-        on: (_event: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, _filter: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, cb: () => void) => {
+        on: (_event: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, _filter: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, cb: () => void) => {
           subscribers.push(cb);
           return { subscribe: () => {}, unsubscribe: () => {} };
         },

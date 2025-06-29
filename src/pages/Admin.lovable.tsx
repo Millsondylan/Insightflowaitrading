@@ -162,7 +162,7 @@ export default function AdminPage() {
               <Span>Promo Codes</Tabstrigger>
             </Tabstrigger>
             <Tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <Activity  /></Tabstrigger></Tabstrigger>
+              <Activity  /></Tabstrigger></Tabstrigger></Tabstrigger>
               <Span>Usage Logs</Span>
             </Tabstrigger>
           </Tabslist>

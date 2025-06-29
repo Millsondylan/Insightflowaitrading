@@ -147,7 +147,7 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
               Strategy published successfully!
             </Div>
             <Div className="flex items-center gap-2">
-              <Input style={{ fontSize: "0.75rem" }} /></Div>
+              <Input style={{ fontSize: "0.75rem" }} /></Div></Div>
               <Button size="sm" variant="outline"></Button>
                 Copy Link
               </Div>

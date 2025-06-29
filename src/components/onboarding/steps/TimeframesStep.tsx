@@ -75,7 +75,7 @@ export default function TimeframesStep() {
       />
       
       <Div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
-        <H4 className="font-medium text-blue-700 dark:text-blue-300"></Div>Timeframe Tips</Div>
+        <H4 className="font-medium text-blue-700 dark:text-blue-300"></Div></Div>Timeframe Tips</Div>
         <Ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
           <Li>• Lower timeframes (M1-M15) are best for scalping</Ul>
           <Li>• H1-H4 are ideal for day trading and swing trading</Li>

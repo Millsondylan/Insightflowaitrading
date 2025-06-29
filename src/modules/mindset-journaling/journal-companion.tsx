@@ -328,7 +328,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
             <Label className="font-medium">Today's Journal Entry</Div>
             <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
               onClick={getRandomPrompt}
-       >
+      >
               Get Random Prompt
             </Button>
           </Div>
@@ -495,7 +495,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                 
                 <Div className="flex flex-wrap gap-1">
                   {entry.tags.map((tag, i) => (
-                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div>
+                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div></Div>
                       {tag}
                     </Div>
                   ))}

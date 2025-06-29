@@ -79,7 +79,7 @@ export default function StrategyBuilderPage() {
                     <Button variant="outline" className="w-full" />Create Trading Plan</ConfigItem>
                 </Link>
                 <Link to="/vault" />
-                    <Button variant="outline" className="w-full" /></Link>Save to Vault</Link>
+                    <Button variant="outline" className="w-full" /></Link></Link>Save to Vault</Link>
                 </Link>
             </Div>
         </ConfigItem>

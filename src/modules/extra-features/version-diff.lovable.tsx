@@ -53,7 +53,7 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
     switch (type) {
       case 'added': return <plus  />;
       case 'removed': return <Minus >;
-      case 'modified': return <Edit  /></Versiondiffprops></Versiondiffprops>;
+      case 'modified': return <Edit  /></Versiondiffprops></Versiondiffprops></Versiondiffprops>;
       default: return null;
     }
   };
@@ -71,12 +71,12 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
     <Card >
       <Div className="flex items-center gap-2 mb-6">
         <gitcompare >
-        <H2 className="text-2xl font-bold"></Card>Version Comparison</Card>
+        <H2 className="text-2xl font-bold"></Card></Card>Version Comparison</Card>
       </Div>
 
       <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <Div>
-          <Label className="text-sm text-muted-foreground mb-2 block"></Div>Compare</Div>
+          <Label className="text-sm text-muted-foreground mb-2 block"></Div></Div>Compare</Div>
           <Select >
             <selecttrigger >
               <selectvalue >
@@ -92,7 +92,7 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
         </Div>
         
         <Div>
-          <Label className="text-sm text-muted-foreground mb-2 block"></Div>With</Div>
+          <Label className="text-sm text-muted-foreground mb-2 block"></Div></Div>With</Div>
           <Select >
             <selecttrigger >
               <selectvalue >
@@ -110,7 +110,7 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
 
       <Div className="space-y-4">
         <Div className="flex items-center justify-between">
-          <H3 className="font-semibold"></Div>Changes</Div>
+          <H3 className="font-semibold"></Div></Div>Changes</Div>
           <Div className="flex items-center gap-4 text-sm">
             <Span className="flex items-center gap-1">
               <plus >
@@ -130,7 +130,7 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
         {diffs.map((diff, i) => (
           <Div key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
-        >
+       >
             <Div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <Div className="flex-1">

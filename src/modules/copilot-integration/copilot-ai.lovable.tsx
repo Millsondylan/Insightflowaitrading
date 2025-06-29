@@ -50,7 +50,7 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
     return (
       <Button variant="outline" size="sm"> setIsVisible(true)}
       >
-        <Sparkles  /></Copilotaiprops></Copilotaiprops>
+        <Sparkles  /></Copilotaiprops></Copilotaiprops></Copilotaiprops>
         Show Copilot
       </Button>
     );
@@ -61,7 +61,7 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
       <Div className="p-4 border-b flex items-center justify-between">
         <Div className="flex items-center gap-2">
           <sparkles >
-          <H3 className="font-semibold"></Card>AI Copilot</Card>
+          <H3 className="font-semibold"></Card></Card>AI Copilot</Card>
         </Div>
         <Button variant="ghost" size="sm"> setIsVisible(false)}
         >
@@ -73,9 +73,9 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
         {suggestions.map((suggestion) => (
           <Div key={suggestion.id}
             className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
-        >
+       >
             <Div className="flex items-start justify-between mb-2">
-              <H4 className="font-medium"></Div>{suggestion.title}</Div>
+              <H4 className="font-medium"></Div></Div>{suggestion.title}</Div>
               <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
                 {suggestion.type}
               </Badge>
@@ -87,12 +87,12 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
             
             {suggestion.code && (
               <Pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
-                <Code></Pre>{suggestion.code}</Pre>
+                <Code></Pre></Pre>{suggestion.code}</Pre>
               </Pre>
             )}
             
             <Div className="flex items-center justify-between">
-              <Span className="text-xs font-medium text-green-500"></Div>
+              <Span className="text-xs font-medium text-green-500"></Div></Div>
                 {suggestion.impact}
               </Div>
               
@@ -118,7 +118,7 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
       </Div>
 
       <Div className="p-4 border-t bg-secondary/20">
-        <P className="text-xs text-muted-foreground text-center"></Div>
+        <P className="text-xs text-muted-foreground text-center"></Div></Div>
           Copilot analyzes your strategy in real-time
         </Div>
       </Div>

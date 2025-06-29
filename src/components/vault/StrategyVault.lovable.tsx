@@ -63,7 +63,7 @@ export const StrategyVault = ({ strategies }: Props) => {
         </Div>
         <Select >
           <selecttrigger  style={{ width: "100%" }}>
-            <Selectvalue placeholder="Sort by" /></Select></Select>
+            <Selectvalue placeholder="Sort by" /></Select></Select></Select>
           </SelectTrigger>
           <selectcontent >
             <selectitem value="totalPnL">Sort by PnL</SelectItem>
@@ -74,7 +74,7 @@ export const StrategyVault = ({ strategies }: Props) => {
 
       <Div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <Button ></Div> handleTagClick(tag)}
+          <Button ></Div></Div> handleTagClick(tag)}
             className="rounded-full"
           >
             {tag}

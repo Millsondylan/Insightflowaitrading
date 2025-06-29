@@ -40,7 +40,7 @@ export default function CoachPage() {
             </Div>
             <Div className="flex gap-4">
                 <Textarea placeholder="Ask your coach anything...">
-                <Button /></Div>Send</Div>
+                <Button /></Div></Div>Send</Div>
             </Div>
         </Div>
       </Div>

@@ -132,7 +132,7 @@ export default function PrivacyPage() {
           </Section>
           
           <Section>
-            <P className="text-gray-400 text-sm"></Section>
+            <P className="text-gray-400 text-sm"></Section></Section>
               Last updated: June 28, 2025
             </Section>
           </Section>

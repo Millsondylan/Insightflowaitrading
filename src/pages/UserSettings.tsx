@@ -234,12 +234,12 @@ export default function UserSettingsPage() {
           <Button variant="outline" 
             onClick={resetToDefaults}
             disabled={saving}
-      >
+     >
             Reset to Defaults
           </Div>
           <Button onClick={saveSettings} 
             disabled={!hasChanges() || saving}
-       >
+      >
             {saving ? (
               <>
                 <Div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></Button>
@@ -254,7 +254,7 @@ export default function UserSettingsPage() {
         value={activeTab} 
         onValueChange={setActiveTab}
         className="space-y-6"
-   >
+  >
         <TabsList className="grid grid-cols-5 w-full max-w-3xl mx-auto" />
           <TabsTrigger value="notifications" />
             <Bell className="w-4 h-4 mr-2" /> Notifications

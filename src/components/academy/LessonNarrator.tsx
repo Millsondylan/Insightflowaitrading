@@ -194,7 +194,7 @@ export const lovable = {
                 size="icon" 
                 className="h-8 w-8 text-blue-400"
                 onClick={handleRegenerateNarration}
-          >
+         >
                 <RefreshCw className="h-4 w-4" />
               </Button>
             )}

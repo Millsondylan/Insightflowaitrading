@@ -277,7 +277,7 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
           </Button>
           <Button className="px-4 py-2 rounded bg-background-secondary"
             onClick={fetchScanResults}
-     >
+    >
             Refresh
           </Button>
         </Div>
@@ -353,7 +353,7 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                   </Td>
                   <Td className="p-3">
                     <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-opacity-90 transition-colors"
-                      onClick={(e) =></Td> {
+                      onClick={(e) =></Td></Td> {
                         e.stopPropagation();
                         onSelectMarket(result.symbol);
                       }}

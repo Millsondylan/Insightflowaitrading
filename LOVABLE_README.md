@@ -135,3 +135,111 @@ This application follows Lovable.dev's recommended practices:
 ---
 
 Built with ❤️ using [Lovable.dev](https://lovable.dev)
+
+# Lovable.dev Visual Editor Compatibility
+
+This document provides instructions for maintaining compatibility with Lovable.dev visual editor in the InsightFlow AI Trading platform.
+
+## What is Lovable.dev?
+
+Lovable.dev is a visual editor for React components that enables designers and developers to collaboratively build UI components. It requires specific exports and structure in your React components.
+
+## Requirements for Lovable Compatibility
+
+1. **Lovable Export in Component Files**:
+   Every component file must include the Lovable export at the end:
+
+   ```typescript
+   export const lovable = { 
+     component: true,
+     supportsTailwind: true,
+     editableComponents: true,
+     visualEditing: true
+   };
+   ```
+
+2. **Proper JSX Syntax**:
+   - All JSX tags must be properly closed
+   - Self-closing tags must include a slash: `<Icon className="h-4" />`
+   - Component names must be properly capitalized: `<Button>` not `<button>`
+   - HTML elements must be lowercase: `<div>` not `<Div>`
+
+3. **Proper TypeScript Types**:
+   - Avoid using `any` types without disabling ESLint (use comment: `// eslint-disable-line @typescript-eslint/no-explicit-any`)
+   - Prefer `unknown` over `any` when possible
+   - Use proper React type definitions
+
+## Maintenance Scripts
+
+We've created several scripts to maintain Lovable compatibility:
+
+1. **Fix Lovable Compatibility (All-in-One)**:
+   ```
+   npm run lovable:check
+   ```
+   This script runs all the fixes in sequence.
+
+2. **Add Lovable Exports**:
+   ```
+   node scripts/add-lovable-exports.js
+   ```
+   Adds the required Lovable export to component files that don't have it.
+
+3. **Fix JSX Syntax Issues**:
+   ```
+   node scripts/fix-jsx-tags.js
+   ```
+   Fixes common JSX syntax issues like unclosed tags, missing slashes, and improper capitalization.
+
+4. **Fix TypeScript Errors**:
+   ```
+   node scripts/fix-typescript-errors.js
+   ```
+   Fixes common TypeScript errors like using `any` without ESLint disabling comments.
+
+## Development with Lovable
+
+To develop with Lovable.dev:
+
+1. Run the development server with Lovable config:
+   ```
+   npm run lovable:dev
+   ```
+
+2. Build with Lovable config:
+   ```
+   npm run lovable:build
+   ```
+
+## Troubleshooting
+
+If you encounter issues with Lovable compatibility:
+
+1. **JSX Parsing Errors**:
+   - Check for unclosed tags or incorrect capitalization
+   - Run `npm run lovable:check` to fix common issues
+
+2. **TypeScript Errors**:
+   - If TypeScript errors prevent builds, try fixing them or use temporarily looser settings in tsconfig.json
+   - TypeScript errors don't necessarily prevent Lovable from working, but fixing them improves development experience
+
+3. **Component Not Showing in Lovable Editor**:
+   - Check that the component has the lovable export
+   - Make sure all JSX is valid
+   - Check for runtime errors in the browser console
+
+## Best Practices
+
+1. When creating new components, always include the lovable export
+2. Use proper JSX syntax with correct capitalization
+3. Run `npm run lovable:check` periodically to maintain compatibility
+4. Always test your components in the Lovable editor before releasing
+
+## Known Issues
+
+1. Some TypeScript errors in background processing files - these don't affect Lovable functionality
+2. Complex dynamically created components might not work perfectly in the visual editor
+
+---
+
+For any questions or issues related to Lovable compatibility, please contact the development team.

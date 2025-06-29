@@ -83,7 +83,7 @@ export default function JournalPage() {
             </Div>
             <P className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</P>
             <Link to="/feed" />
-                <Button variant="outline" className="w-full" /></Link>View Your Feed</Link>
+                <Button variant="outline" className="w-full" /></Link></Link>View Your Feed</Link>
             </Link>
         </Div>
       </Div>

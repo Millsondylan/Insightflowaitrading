@@ -458,13 +458,12 @@ async function processPnLInsights(payload: unknown) {
   return insights;
 }
 
-async function generatePnLInsights(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]) {
+async function generatePnLInsights(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
   if (trades.length === 0) {
     return {
       summary: "No trades found in the last 30 days. Complete some trades to get performance insights.",
-      details: [],
-      improvement_areas: [],
-      strengths: []
+      keyMetrics: {},
+      suggestions: []
     };
   }
   
@@ -481,9 +480,8 @@ ${JSON.stringify(trades.slice(0, 20))}
 
 Provide performance insights in JSON format with these fields:
 - summary: A brief summary of overall performance (2-3 sentences)
-- details: Array of specific performance metrics observations
-- improvement_areas: Array of areas that need improvement
-- strengths: Array of trading strengths demonstrated
+- keyMetrics: Object containing key performance metrics
+- suggestions: Array of actionable suggestions for improvement
 `
     }
   ];
@@ -500,17 +498,15 @@ Provide performance insights in JSON format with these fields:
     const parsedResponse = JSON.parse(response.choices[0]?.message?.content || "{}");
     return {
       summary: parsedResponse.summary || "Performance analysis for your recent trades.",
-      details: parsedResponse.details || [],
-      improvement_areas: parsedResponse.improvement_areas || [],
-      strengths: parsedResponse.strengths || []
+      keyMetrics: parsedResponse.keyMetrics || {},
+      suggestions: parsedResponse.suggestions || []
     };
   } catch (error) {
     console.error("Error generating PnL insights:", error);
     return {
       summary: "Performance analysis is currently unavailable.",
-      details: [],
-      improvement_areas: ["Consider reviewing your trades manually"],
-      strengths: []
+      keyMetrics: {},
+      suggestions: ["Consider reviewing your trades manually"]
     };
   }
 }

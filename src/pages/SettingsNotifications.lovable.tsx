@@ -6,7 +6,7 @@ const SettingsNotificationsPage: React.FC = () => {
     <Section className="theme-notify min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <Div className="text-center space-y-4 animate-in fade-in slide-up">
-        <H1 className="text-6xl md:text-8xl font-bold text-glow-orange mb-8"></Section>
+        <H1 className="text-6xl md:text-8xl font-bold text-glow-orange mb-8"></Section></Section>
           Notification Settings
         </Section>
         <P className="text-xl md:text-2xl text-gray-300 font-light">
@@ -17,7 +17,7 @@ const SettingsNotificationsPage: React.FC = () => {
       {/* Settings Categories */}
       <Div className="space-y-8 animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
         <Div className="glass-section motion-shadow">
-          <H2 className="text-2xl font-bold text-orange-400 mb-6"></Div>📱 Push Notifications</Div>
+          <H2 className="text-2xl font-bold text-orange-400 mb-6"></Div></Div>📱 Push Notifications</Div>
           <Div className="space-y-4">
             <Div className="glass-card">
               <Div className="flex justify-between items-center">
@@ -41,7 +41,7 @@ const SettingsNotificationsPage: React.FC = () => {
         </Div>
 
         <Div className="glass-section motion-shadow">
-          <H2 className="text-2xl font-bold text-yellow-400 mb-6"></Div>📧 Email Notifications</Div>
+          <H2 className="text-2xl font-bold text-yellow-400 mb-6"></Div></Div>📧 Email Notifications</Div>
           <Div className="space-y-4">
             <Div className="glass-card">
               <Div className="flex justify-between items-center">
@@ -67,7 +67,7 @@ const SettingsNotificationsPage: React.FC = () => {
 
       {/* Frequency Settings */}
       <Div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <H2 className="text-2xl font-bold text-white mb-6"></Div>⏰ Notification Frequency</Div>
+        <H2 className="text-2xl font-bold text-white mb-6"></Div></Div>⏰ Notification Frequency</Div>
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Div className="glass-card text-center">
             <Div className="text-orange-400 font-semibold mb-2">Instant</Div>

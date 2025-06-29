@@ -191,7 +191,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
           />
           {screenshotPreview && (
             <Div className="mt-4">
-              <Img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" /></Input>
+              <Img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" /></Input></Input>
             </Input>
           )}
         </Div>
@@ -200,7 +200,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             <Button type="submit" 
               disabled={!isFormValid || isSubmitting}
               className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
-       ></Div>
+      ></Div></Div>
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
             </Div>
         </Div>

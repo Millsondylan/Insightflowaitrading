@@ -282,7 +282,7 @@ const UserTable: React.FC = () => {
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
             disabled={users.length === 0 || loading}
-      >
+     >
             <Download className="h-4 w-4" />
             Export CSV
           </Div>
@@ -333,7 +333,7 @@ const UserTable: React.FC = () => {
             ) : (
               <Tr>
                 <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" /></Tbody></Tbody>
+                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" /></Tbody></Tbody></Tbody>
                   <P>No users found</P>
                   <P className="text-sm">Try adjusting your search or filters</P>
                 </Td>
@@ -349,7 +349,7 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div>
+          <P></Div></Div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}

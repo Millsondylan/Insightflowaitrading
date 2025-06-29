@@ -28,7 +28,7 @@ export default function ReplayPage() {
             <Button size="lg">
                 <play >
             </Button>
-            <Button variant="ghost"><Fastforward /></Button></Button></Button>
+            <Button variant="ghost"><Fastforward /></Button></Button></Button></Button>
         </Footer>
       </Div>
     </Div>

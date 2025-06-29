@@ -70,7 +70,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
         
         <Button onClick={generateNewCode}
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-     >
+    >
           <Plus className="h-4 w-4 mr-2" />
           Generate Code
         </Button>
@@ -121,7 +121,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
-                        <Trash2 className="h-4 w-4" /></TableCell></TableCell>
+                        <Trash2 className="h-4 w-4" /></TableCell></TableCell></TableCell>
                       </Button>
                     </TableCell>
                   </TableRow>

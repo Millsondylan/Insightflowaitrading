@@ -79,7 +79,7 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
                   }`}
-              >
+             >
                   <P className="text-sm">{message.content}</Div>
                   <P className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString()}
@@ -110,7 +110,7 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
         <Button size="icon">
-          <Send /></Div></Div>
+          <Send /></Div></Div></Div>
         </Button>
       </Div>
     </Card>

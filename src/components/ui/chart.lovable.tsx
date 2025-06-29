@@ -178,7 +178,7 @@ const ChartTooltipContent = React.forwardRef<
           "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
           className
         )}
-    >
+   >
         {!nestLabel ? tooltipLabel : null}
         <Div className="grid gap-1.5">
           {payload.map((item, index) => {
@@ -226,7 +226,7 @@ const ChartTooltipContent = React.forwardRef<
                         "flex flex-1 justify-between leading-none",
                         nestLabel ? "items-end" : "items-center"
                       )}
-                  >
+                 >
                       <Div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
                         <Span className="text-muted-foreground">
@@ -278,7 +278,7 @@ const ChartLegendContent = React.forwardRef<
           verticalAlign === "top" ? "pb-3" : "pt-3",
           className
         )}
-    >
+   >
         {payload.map((item) => {
           const key = `${nameKey || item.dataKey || "value"}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)

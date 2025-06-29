@@ -104,7 +104,7 @@ export const lovable = {
               </Div>
               
               <Button variant="ghost" size="sm" />
-                <MessageSquare className="h-4 w-4" /></Button></Button>
+                <MessageSquare className="h-4 w-4" /></Button></Button></Button>
               </Button>
             </Div>
           </Div>

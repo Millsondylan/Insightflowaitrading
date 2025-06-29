@@ -53,7 +53,7 @@ const AlertDialogFooter = ({
       className
     )}
     {...props}
-  /></HTMLDivElement>
+  /></HTMLDivElement></HTMLDivElement>
 )
 AlertDialogFooter.displayName = "AlertDialogFooter"
 

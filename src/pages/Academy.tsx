@@ -82,7 +82,7 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
   return (
     <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
       onClick={handleCourseClick}
- >
+>
       <CardHeader>
         <Div className="flex justify-between items-start mb-4">
           <Div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
@@ -276,7 +276,7 @@ export default function AcademyPage() {
             <TabsTrigger key={category} 
               value={category} 
               className="capitalize data-[state=active]:bg-blue-600 data-[state=active]:text-white"
-         >
+        >
               {category}
             </Tabs>
           ))}
@@ -295,14 +295,14 @@ export default function AcademyPage() {
               key={course.id} 
               course={course} 
               progress={getProgressForCourse(course.id)}
-            /></Div></Div>
+            /></Div></Div></Div>
           ))}
         </Div>
       )}
       
       {courses.length === 0 && !loading && (
         <Div className="text-center py-12">
-          <P className="text-gray-400 text-lg"></Div>No courses found in this category.</Div>
+          <P className="text-gray-400 text-lg"></Div></Div>No courses found in this category.</Div>
         </Div>
       )}
     </Div>

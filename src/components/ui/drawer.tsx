@@ -98,7 +98,7 @@ const DrawerDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
     {...props}
-  /></HTMLDivElement></HTMLDivElement>
+  /></HTMLDivElement></HTMLDivElement></HTMLDivElement>
 ))
 DrawerDescription.displayName = DrawerPrimitive.Description.displayName
 

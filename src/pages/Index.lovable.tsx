@@ -368,7 +368,7 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
       >
         <Div className="text-center mb-16 w-full">
-          <H2 className="text-4xl font-bold text-white mb-6"></Div>
+          <H2 className="text-4xl font-bold text-white mb-6"></Div></Div>
             Trusted by Traders Worldwide
           </Div>
           <P className="text-xl text-gray-400 w-full">
@@ -386,7 +386,7 @@ const LandingPage = () => {
                 const t = testimonial as any;
                 return (
                   <Card >
-                    <Cardheader ></Card>
+                    <Cardheader ></Card></Card>
                       <P className="text-gray-300 italic">"{t.content}"</P>
                     </CardHeader>
                     <Cardcontent >
@@ -412,7 +412,7 @@ const LandingPage = () => {
       {/* Crypto Payment Section */}
       <Div className="w-full px-0 py-20" id="crypto-payment">
         <Div className="text-center mb-16 w-full">
-          <H2 className="text-4xl font-bold text-white mb-6"></Div>
+          <H2 className="text-4xl font-bold text-white mb-6"></Div></Div>
             Secure Crypto Payment Integration
           </Div>
           <P className="text-xl text-gray-400 w-full">
@@ -423,7 +423,7 @@ const LandingPage = () => {
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
             <Card >
-              <Cardheader ></Div>
+              <Cardheader ></Div></Div>
                 <Div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
                   <bitcoin  style={{ color: "white" }}>
                 </Div>

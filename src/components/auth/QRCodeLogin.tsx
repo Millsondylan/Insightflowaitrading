@@ -107,7 +107,7 @@ const QRCodeLogin = () => {
       </CardHeader>
       <CardContent className="flex flex-col items-center" />
         {/* This would be a QR code in production */}
-        <Div className="border-4 border-dashed border-gray-400 w-[200px] h-[200px] flex items-center justify-center p-4 text-center bg-white text-black"></CardContent>
+        <Div className="border-4 border-dashed border-gray-400 w-[200px] h-[200px] flex items-center justify-center p-4 text-center bg-white text-black"></CardContent></CardContent>
           QR Code for: {qrCodeValue}
         </CardContent>
         

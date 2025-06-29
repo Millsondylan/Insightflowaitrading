@@ -69,14 +69,14 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
             <Label className="text-sm text-muted-foreground">Branch</Div>
             <Div className="flex items-center gap-2 mt-1">
               <gitbranch >
-              <Input style={{ fontSize: "0.875rem" }} /></Div>
+              <Input style={{ fontSize: "0.875rem" }} /></Div></Div>
             </Div>
           </Div>
         </Div>
 
         <Div className="p-4 bg-secondary/20 rounded-lg">
           <Div className="flex items-center justify-between mb-3">
-            <H3 className="font-semibold"></Div>Last Commit</Div>
+            <H3 className="font-semibold"></Div></Div>Last Commit</Div>
             <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
               {repoInfo.lastCommit.sha}
             </Badge>
@@ -126,7 +126,7 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
 
         <Div className="p-3 bg-blue-500/10 rounded-lg flex items-center gap-2">
           <github >
-          <P className="text-sm text-blue-600"></Div>
+          <P className="text-sm text-blue-600"></Div></Div>
             Strategies are automatically versioned and backed up to GitHub
           </Div>
         </Div>

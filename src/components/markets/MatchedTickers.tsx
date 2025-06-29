@@ -85,7 +85,7 @@ export const lovable = {
           {matchedTickersWithReason.map((ticker) => (
             <Div key={ticker.symbol}
               className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
-       >
+      >
               <Div>
                 <Span className="font-semibold text-white">{ticker.symbol}</Div>
                 <Span className="ml-2 text-xs text-white/70">
@@ -96,7 +96,7 @@ export const lovable = {
                 variant="ghost"
                 className="h-auto px-3 py-1 text-xs bg-cyan-600/30 hover:bg-cyan-600 text-white rounded-full"
               />
-                <Eye className="h-3 w-3 mr-1.5" /></Button></Button>
+                <Eye className="h-3 w-3 mr-1.5" /></Button></Button></Button>
                 View
               </Button>
             </Div>
@@ -104,7 +104,7 @@ export const lovable = {
         </Div>
       ) : (
         <Div className="text-center py-4">
-          <P className="text-white/50"></Div>
+          <P className="text-white/50"></Div></Div>
             No tickers currently match this strategy.
           </Div>
         </Div>

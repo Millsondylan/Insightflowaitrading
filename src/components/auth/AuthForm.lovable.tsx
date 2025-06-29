@@ -94,7 +94,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             <Div className="w-full border-t border-white/10"></Div>
                         </Div>
                         <Div className="relative flex justify-center text-xs uppercase">
-                            <Span className="bg-background-primary px-2 text-gray-500"></Div>Or continue with</Div>
+                            <Span className="bg-background-primary px-2 text-gray-500"></Div></Div>Or continue with</Div>
                         </Div>
                     </Div>
 
@@ -111,7 +111,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
 
                     <Div className="text-center mt-6">
                         <Button  type="button"
-                            onClick={() =></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
+                            onClick={() =></Div></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {mode === 'signin' ? (

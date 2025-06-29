@@ -258,7 +258,7 @@ export default function MarketSetupPage() {
                     {['RSI', 'MACD', 'EMA', 'SMA', 'Bollinger Bands', 'Stochastic', 'Fibonacci', 'Volume Profile'].map(indicator => (
                       <Div className="flex items-center space-x-2" key={indicator}>
                         <Switch id={`indicator-${indicator}`} defaultChecked={['RSI', 'EMA', 'Bollinger Bands'].includes(indicator)} />
-                        <Label htmlFor={`indicator-${indicator}`} /></Div>{indicator}</Div>
+                        <Label htmlFor={`indicator-${indicator}`} /></Div></Div>{indicator}</Div>
                       </Div>
                     ))}
                   </Div>
@@ -266,7 +266,7 @@ export default function MarketSetupPage() {
               </Div>
             </CardContent>
             <CardFooter>
-              <Button></CardFooter>Save Preferences</CardFooter>
+              <Button></CardFooter></CardFooter>Save Preferences</CardFooter>
             </CardFooter>
           </Card>
         </TabsContent>

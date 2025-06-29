@@ -76,7 +76,7 @@ export const lovable = {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-     >
+    >
             {plan.recommended && (
               <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended
@@ -127,7 +127,7 @@ export const lovable = {
           </P>
         </Div>
         <Div className="text-center p-4">
-          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500" /></Div></Div>
+          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500" /></Div></Div></Div>
           <H4 className="font-semibold">Cancel Anytime</H4>
           <P className="text-sm text-muted-foreground">
             No questions asked

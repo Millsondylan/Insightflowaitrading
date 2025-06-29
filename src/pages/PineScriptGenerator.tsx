@@ -81,7 +81,7 @@ plot(slowMA, "Slow MA", color.red)`);
             <Button onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
               className="w-full bg-blue-600 hover:bg-blue-700"
-         >
+        >
               {isGenerating ? 'Generating...' : 'Generate PineScript'}
             </CardContent>
           </CardContent>
@@ -99,20 +99,20 @@ plot(slowMA, "Slow MA", color.red)`);
                   size="icon"
                   onClick={handleCopy}
                   disabled={!generatedCode}
-             >
+            >
                   <Copy className="h-4 w-4" />
                 </Div>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-             >
+            >
                   <Share2 className="h-4 w-4" />
                 </Button>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-             >
-                  <Download className="h-4 w-4" /></Button></Button>
+            >
+                  <Download className="h-4 w-4" /></Button></Button></Button>
                 </Button>
               </Div>
             </Div>
@@ -120,7 +120,7 @@ plot(slowMA, "Slow MA", color.red)`);
           <CardContent>
             {generatedCode ? (
               <Pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-                <Code className="text-sm text-gray-300"></CardContent>{generatedCode}</CardContent>
+                <Code className="text-sm text-gray-300"></CardContent></CardContent>{generatedCode}</CardContent>
               </Pre>
             ) : (
               <Div className="text-center py-16 text-gray-400">

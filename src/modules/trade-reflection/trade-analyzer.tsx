@@ -348,7 +348,7 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
               <H3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</Div>
               <Button className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
                 onClick={applySuggestions}
-          >
+         >
                 Apply All
               </Button>
             </Div>
@@ -485,7 +485,7 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={handleSaveReflection}
             disabled={isSaving}
-          /></Div>
+          /></Div></Div>
             {isSaving ? 'Saving...' : 'Save Reflection'}
           </Div>
         </Div>

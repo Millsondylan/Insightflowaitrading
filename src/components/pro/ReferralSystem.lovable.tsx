@@ -247,7 +247,7 @@ export function ReferralSystem() {
       {referralData?.code && (
         <CardFooter className="bg-muted/50 flex gap-2" />
           <Button className="w-full" onClick={shareReferral}>
-            <Share2 className="h-4 w-4 mr-2" /></CardFooter></CardFooter>
+            <Share2 className="h-4 w-4 mr-2" /></CardFooter></CardFooter></CardFooter>
             Share Referral Link
           </Button>
         </CardFooter>

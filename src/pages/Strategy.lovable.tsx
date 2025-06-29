@@ -51,7 +51,7 @@ const StrategyPage = () => {
       <Scrollsection >
         <Div className="max-w-5xl mx-auto text-center">
           <Div className="mb-12">
-            <H4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4"></Scrollsection>Ready to Execute?</Scrollsection>
+            <H4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4"></Scrollsection></Scrollsection>Ready to Execute?</Scrollsection>
             <P className="text-gray-400 text-lg">Take your strategy to the next level</P>
           </Div>
           <Div className="flex flex-wrap justify-center gap-6">

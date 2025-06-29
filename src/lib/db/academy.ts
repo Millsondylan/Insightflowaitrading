@@ -30,7 +30,7 @@ export interface AcademyCourse {
   rating: number;
   tags: string[];
   prerequisites: string[];
-  learning_objectives: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[];
+  learning_objectives: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[];
   author_info: Record<string, any>;
   is_active: boolean;
   created_at: string;
@@ -46,7 +46,7 @@ export interface AcademyProgress {
   completed_at?: string;
   progress_percentage: number;
   module_checkpoints: Record<string, any>;
-  quiz_answers: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[];
+  quiz_answers: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[];
   time_spent_seconds: number;
   reflection_timestamps: string[];
   notes: string[];
@@ -199,7 +199,7 @@ export async function updateProgress(
   }
 ): Promise<academyProgress | null> {
   try {
-    const updateData: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any = {
+    const updateData: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any = {
       ...updates,
       last_accessed_at: new Date().toISOString()
     };
@@ -403,7 +403,7 @@ export async function migrateCoursesToDatabase(): Promise<void> {
   }
 }
 
-function getCategoryFromCourse(course: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string {
+function getCategoryFromCourse(course: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string {
   // Map course topics to categories
   const topicMap: Record<string, string> = {
     'technical-analysis': 'Stocks',
@@ -426,7 +426,7 @@ function getCategoryFromCourse(course: any // eslint-disable-line @typescript-es
   return 'Stocks'; // Default
 }
 
-function extractCourseTypes(course: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string[] {
+function extractCourseTypes(course: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string[] {
   const types = [];
   const content = JSON.stringify(course).toLowerCase();
 
@@ -441,7 +441,7 @@ function extractCourseTypes(course: any // eslint-disable-line @typescript-eslin
   return types.length > 0 ? types : ['technical'];
 }
 
-function extractTags(course: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string[] {
+function extractTags(course: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string[] {
   const tags = new Set<string>();
   
   // Add difficulty as tag

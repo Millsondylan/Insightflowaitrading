@@ -60,28 +60,28 @@ export default function JournalPage() {
                 placeholder="What's on your mind? Capture your thoughts on recent trades..."
                 className="bg-black/20 border-white/10 h-28"
             />
-            <Button  style={{ width: "100%" }}></Textarea>Save Entry</Textarea>
+            <Button  style={{ width: "100%" }}></Textarea></Textarea>Save Entry</Textarea>
         </Div>
 
         <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div>
+            <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div></Div>
                 <bot >
                 AI Coach
             </Div>
             <P className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</P>
             <Link to="/coach">
-                <Button variant="outline" style={{ width: "100%" }}></Link>Ask for a Review</Link>
+                <Button variant="outline" style={{ width: "100%" }}></Link></Link>Ask for a Review</Link>
             </Link>
         </Div>
         
         <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div>
+            <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div></Div>
                 <rss >
                 Insight Feed
             </Div>
             <P className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</P>
             <Link to="/feed">
-                <Button variant="outline" style={{ width: "100%" }}></Link>View Your Feed</Link>
+                <Button variant="outline" style={{ width: "100%" }}></Link></Link>View Your Feed</Link>
             </Link>
         </Div>
       </Div>

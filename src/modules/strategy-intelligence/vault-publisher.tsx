@@ -125,7 +125,7 @@ export const lovable = {
 
           <Button onClick={handlePublish}
             className="w-full bg-blue-600 hover:bg-blue-700"
-      >
+     >
             Publish Strategy
           </Button>
         </Div>

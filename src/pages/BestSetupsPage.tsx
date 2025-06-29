@@ -192,7 +192,7 @@ export default function BestSetupsPage() {
                   <Copy className="mr-2 h-4 w-4" /> Copy
                 </Div>
                 <Button size="sm" />
-                  <Share2 className="mr-2 h-4 w-4" /></Button></Button> Share
+                  <Share2 className="mr-2 h-4 w-4" /></Button></Button></Button> Share
                 </Button>
               </Div>
             </Div>

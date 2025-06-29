@@ -55,7 +55,7 @@ export default function VaultDetailPage() {
                 <P className="text-gray-400 mt-2">by {strategy.author}</P>
             </Div>
             <Link  />
-                <Button size="lg" style={{ color: "white" }}></Link>
+                <Button size="lg" style={{ color: "white" }}></Link></Link>
                     <playcircle >
                     Launch Replay
                 </Link>
@@ -65,7 +65,7 @@ export default function VaultDetailPage() {
         <P className="text-gray-300 max-w-3xl mb-6">{strategy.description}</P>
         
         <Div className="flex items-center gap-2 mb-8">
-          {strategy.tags.map(tag => <Badge variant="secondary"></Div>{tag}</Div>)}
+          {strategy.tags.map(tag => <Badge variant="secondary"></Div></Div>{tag}</Div>)}
         </Div>
 
         <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">

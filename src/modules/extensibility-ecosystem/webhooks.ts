@@ -311,7 +311,7 @@ export class WebhookManager {
     // TODO: add more validation rules
   }
 
-  private applyFilters(filters: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[], payload: unknown): boolean {
+  private applyFilters(filters: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[], payload: unknown): boolean {
     // TODO: implement filter logic
     return true;
   }

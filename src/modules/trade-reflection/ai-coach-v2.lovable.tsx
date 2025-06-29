@@ -47,13 +47,13 @@ export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
         <Div className="space-y-6">
           <Div>
             <H3 className="font-semibold mb-3 flex items-center gap-2">
-              <Trendingup  /></Div></Div>
+              <Trendingup  /></Div></Div></Div>
               Strengths
             </H3>
             <Div className="space-y-2">
               {analysis.strengths.map((strength: string, i: number) => (
                 <Div key={i} className="flex items-center gap-2">
-                  <Badge variant="default"></Div>
+                  <Badge variant="default"></Div></Div>
                     ✓
                   </Div>
                   <Span className="text-sm">{strength}</Span>
@@ -63,14 +63,14 @@ export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
           </Div>
 
           <Div>
-            <H3 className="font-semibold mb-3 flex items-center gap-2"></Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2"></Div></Div>
               <alerttriangle >
               Areas to Improve
             </Div>
             <Div className="space-y-2">
               {analysis.weaknesses.map((weakness: string, i: number) => (
                 <Div key={i} className="flex items-center gap-2">
-                  <Badge variant="default"></Div>
+                  <Badge variant="default"></Div></Div>
                     !
                   </Div>
                   <Span className="text-sm">{weakness}</Span>
@@ -80,14 +80,14 @@ export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
           </Div>
 
           <Div>
-            <H3 className="font-semibold mb-3 flex items-center gap-2"></Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2"></Div></Div>
               <target >
               Action Items
             </Div>
             <Div className="space-y-2">
               {analysis.suggestions.map((suggestion: string, i: number) => (
                 <Div key={i} className="p-3 bg-secondary/20 rounded-lg">
-                  <P className="text-sm"></Div>{suggestion}</Div>
+                  <P className="text-sm"></Div></Div>{suggestion}</Div>
                 </Div>
               ))}
             </Div>

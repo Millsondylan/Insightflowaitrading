@@ -46,7 +46,7 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
   return (
     <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group"
       onClick={onClick}
- >
+>
       <CardContent className="p-4" />
         <Div className="flex items-center justify-between mb-2">
           <Div className="flex items-center gap-2">

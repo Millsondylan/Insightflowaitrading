@@ -78,7 +78,7 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
 
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Table >
-          <Tableheader  /></Div></Div>
+          <Tableheader  /></Div></Div></Div>
             <tablerow >
               <tablehead >ID</TableHead>
               <tablehead >Email</TableHead>

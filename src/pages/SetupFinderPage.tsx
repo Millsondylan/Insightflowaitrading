@@ -132,7 +132,7 @@ export default function SetupFinderPage() {
           
           <Card className="mt-6" />
             <CardHeader>
-              <CardTitle></Card>Strategy Examples</Card>
+              <CardTitle></Card></Card>Strategy Examples</Card>
               <CardDescription>
                 Here are some examples of strategies you can define
               </CardDescription>
@@ -140,7 +140,7 @@ export default function SetupFinderPage() {
             <CardContent>
               <Div className="space-y-4">
                 <Div>
-                  <H3 className="font-medium"></CardContent>Moving Average Crossover</CardContent>
+                  <H3 className="font-medium"></CardContent></CardContent>Moving Average Crossover</CardContent>
                   <P className="text-sm text-muted-foreground">
                     "When the 50 EMA crosses above the 200 EMA on the 4H timeframe, go long with a stop
                     below the last swing low. Take profit when price reaches the next major resistance level."
@@ -148,7 +148,7 @@ export default function SetupFinderPage() {
                 </Div>
                 
                 <Div>
-                  <H3 className="font-medium"></Div>Breakout Strategy</Div>
+                  <H3 className="font-medium"></Div></Div>Breakout Strategy</Div>
                   <P className="text-sm text-muted-foreground">
                     "When price breaks above a resistance level that has been tested at least twice before,
                     enter a long position with a stop below the breakout candle. Target the next major resistance level."
@@ -156,7 +156,7 @@ export default function SetupFinderPage() {
                 </Div>
                 
                 <Div>
-                  <H3 className="font-medium"></Div>RSI Divergence</Div>
+                  <H3 className="font-medium"></Div></Div>RSI Divergence</Div>
                   <P className="text-sm text-muted-foreground">
                     "Look for bullish divergence between price making lower lows while RSI makes higher lows on 
                     the 1H chart. Enter long when a bullish reversal candle forms, with stop below the recent low."

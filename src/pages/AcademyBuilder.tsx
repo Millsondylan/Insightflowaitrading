@@ -7,7 +7,7 @@ const AcademyBuilderPage: React.FC = () => {
       {/* Hero Section */}
       <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
         <Div className="text-center max-w-5xl mx-auto">
-          <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight"></Div>
+          <H1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight"></Div></Div>
             Learn, Test, Evolve
           </Div>
           <P className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">

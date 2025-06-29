@@ -112,7 +112,7 @@ export const BehaviorTagGroup: React.FC<behaviortaggroupprops > = ({
         <behaviortag >
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline"></Div>
+        <Badge variant="outline"></Div></Div>
           +{hiddenCount} more
         </Div>
       )}

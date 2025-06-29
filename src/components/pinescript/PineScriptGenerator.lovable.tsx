@@ -243,7 +243,7 @@ export default function PineScriptGenerator() {
                 variant="default" 
                 size="sm"
                 onClick={handleUpgradeClick}
-           >
+          >
                 Upgrade Now
               </Button>
             </Alert>
@@ -267,7 +267,7 @@ export default function PineScriptGenerator() {
                           <formLabel>Script Type</TabsContent>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                        >
+                       >
                             <formControl>
                               <selectTrigger>
                                 <selectValue placeholder="Select script type" />
@@ -292,7 +292,7 @@ export default function PineScriptGenerator() {
                           <formLabel>Default Timeframe</FormLabel>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                        >
+                       >
                             <formControl>
                               <selectTrigger>
                                 <selectValue placeholder="Select timeframe" />
@@ -355,7 +355,7 @@ export default function PineScriptGenerator() {
                   <Button type="submit" 
                     className="w-full"
                     disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}
-               >
+              >
                     {isGenerating ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -380,7 +380,7 @@ export default function PineScriptGenerator() {
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={handleCopy}
-                   >
+                  >
                         {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                         <Span>{copied ? "Copied!" : "Copy"}</Div>
                       </Button>
@@ -388,7 +388,7 @@ export default function PineScriptGenerator() {
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={handleShare}
-                   >
+                  >
                         <Share2 className="h-4 w-4" />
                         <Span>Share</Button>
                       </Button>

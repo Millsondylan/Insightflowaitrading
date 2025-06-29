@@ -226,7 +226,7 @@ export const lovable = {
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-500"
                         }`}
-                      /></Button></Button>
+                      /></Button></Button></Button>
                     </Button>
                   </TableCell>
                   <tableCell className="font-medium">{ticker.symbol}</TableCell>

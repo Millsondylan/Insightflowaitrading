@@ -126,14 +126,14 @@ export default function CommunityPage() {
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-purple-400"
-                                 >
+                                >
                                         <MessageSquare className="h-4 w-4 mr-2" />
                                         {post.comments}
                                     </Button>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-green-400"
-                                 >
+                                >
                                         <Share2 className="h-4 w-4 mr-2" />
                                         Share
                                     </Button>
@@ -153,7 +153,7 @@ export default function CommunityPage() {
                     </Div>
                 </Div>
                 <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></Div></Div> Leaderboard</H3>
+                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></Div></Div></Div> Leaderboard</H3>
                     <Ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
                             <Li key={user.name} className="flex justify-between items-center text-sm">

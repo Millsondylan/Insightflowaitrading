@@ -51,7 +51,7 @@ const LandingBuilderPage: React.FC = () => {
       <Scrollsection animation="slide-right" /></Scrollsection>
         <Div className="max-w-7xl mx-auto">
           <Div className="text-center mb-16">
-            <H2 className="text-4xl md:text-6xl font-bold text-white mb-6"></Div>
+            <H2 className="text-4xl md:text-6xl font-bold text-white mb-6"></Div></Div>
               Built for Modern Traders
             </Div>
             <P className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -67,7 +67,7 @@ const LandingBuilderPage: React.FC = () => {
                     ✨
                   </Div>
                   <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2"></Div>AI Strategy Generation</Div>
+                    <H4 className="text-lg font-semibold text-white mb-2"></Div></Div>AI Strategy Generation</Div>
                     <P className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</P>
                   </Div>
                 </Div>
@@ -79,7 +79,7 @@ const LandingBuilderPage: React.FC = () => {
                     🧠
                   </Div>
                   <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2"></Div>Psychology Tracking</Div>
+                    <H4 className="text-lg font-semibold text-white mb-2"></Div></Div>Psychology Tracking</Div>
                     <P className="text-gray-400">Identify patterns in your decision-making and emotional responses</P>
                   </Div>
                 </Div>
@@ -91,7 +91,7 @@ const LandingBuilderPage: React.FC = () => {
                     📈
                   </Div>
                   <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2"></Div>Adaptive Learning</Div>
+                    <H4 className="text-lg font-semibold text-white mb-2"></Div></Div>Adaptive Learning</Div>
                     <P className="text-gray-400">Personalized education that evolves with your trading journey</P>
                   </Div>
                 </Div>
@@ -114,7 +114,7 @@ const LandingBuilderPage: React.FC = () => {
       <scrollsection animation="scale-in">
         <Div className="max-w-4xl mx-auto text-center">
           <Div className="glass-section motion-shadow">
-            <H3 className="text-3xl md:text-5xl font-bold text-white mb-6"></Div>
+            <H3 className="text-3xl md:text-5xl font-bold text-white mb-6"></Div></Div>
               Ready to Elevate Your Trading?
             </Div>
             <P className="text-xl text-gray-400 mb-12">
@@ -122,12 +122,12 @@ const LandingBuilderPage: React.FC = () => {
             </P>
             <Div className="flex flex-wrap justify-center gap-6">
               <Link to="/strategy">
-                <Button className="glow-button glow-cyan text-lg px-8 py-4"></Div>
+                <Button className="glow-button glow-cyan text-lg px-8 py-4"></Div></Div>
                   Start Building Strategies
                 </Div>
               </Link>
               <Link to="/academy">
-                <Button className="glow-button glow-blue text-lg px-8 py-4"></Link>
+                <Button className="glow-button glow-blue text-lg px-8 py-4"></Link></Link>
                   Begin Learning
                 </Link>
               </Link>

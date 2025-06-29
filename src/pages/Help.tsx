@@ -81,7 +81,7 @@ export default function HelpPage() {
       <Card>
         <CardContent className="p-8" />
           <Div className="text-center">
-            <H2 className="text-2xl font-bold text-white mb-2"></Card>Need More Help?</Card>
+            <H2 className="text-2xl font-bold text-white mb-2"></Card></Card>Need More Help?</Card>
             <P className="text-gray-400 mb-6">
               Our support team is available 24/7 to assist you with any questions
             </P>

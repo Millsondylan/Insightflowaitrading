@@ -119,7 +119,7 @@ export default function AdminPage() {
           </TabsContent>
 
           <TabsContent value="logs" />
-            <UsageLogViewer logs={logs} /></TabsContent></TabsContent>
+            <UsageLogViewer logs={logs} /></TabsContent></TabsContent></TabsContent>
           </TabsContent>
         </Tabs>
       </Div>

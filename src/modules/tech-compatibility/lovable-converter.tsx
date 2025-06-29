@@ -141,9 +141,9 @@ export const lovable = {
       )}
 
       <Div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
-        <AlertCircle className="h-4 w-4 text-yellow-500 mt-0.5" /></Div></Div>
+        <AlertCircle className="h-4 w-4 text-yellow-500 mt-0.5" /></Div></Div></Div>
         <Div className="text-sm">
-          <P className="font-medium mb-1"></Div>Conversion Notes:</Div>
+          <P className="font-medium mb-1"></Div></Div>Conversion Notes:</Div>
           <Ul className="space-y-1 text-muted-foreground">
             <Li>• localStorage → Lovable Tables</Ul>
             <Li>• API calls → Lovable Functions</Li>

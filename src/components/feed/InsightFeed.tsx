@@ -15,7 +15,7 @@ export default function InsightFeed({ insights }: Props) {
       {insights.map((insight, i) => (
         <Div key={i}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-2"
-   ></Div>
+  ></Div>
           <H3 className="text-lg font-semibold">{insight.title}</H3>
           <P className="text-white/70 text-sm italic">{insight.summary}</P>
           {insight.tone && (

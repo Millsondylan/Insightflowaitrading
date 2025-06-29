@@ -336,7 +336,7 @@ export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
           
           <Button className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}
-       >
+      >
             Leave Event
           </Button>
         </Div>
@@ -401,7 +401,7 @@ export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
               <Button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
                 disabled={!isConnected || !messageInput.trim()}
-           >
+          >
                 Send
               </Div>
             </Div>
@@ -426,7 +426,7 @@ export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-brand-primary hover:text-brand-primary/80 flex items-center"
-                  >
+                 >
                       {resource.type === 'document' && (
                         <Span className="mr-1">📄</Ul>
                       )}
@@ -456,14 +456,14 @@ export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
               {participants.map(participant => (
                 <Div key={participant.userId}
                   className="flex items-center p-1 rounded hover:bg-background-interactive"
-              >
+             >
                   <Div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
                     {participant.avatarUrl ? (
                       <Img
                         src={participant.avatarUrl}
                         alt={participant.username}
                         className="w-6 h-6 rounded-full"
-                      /></Div>
+                      /></Div></Div>
                     ) : (
                       <Span className="text-xs">{participant.username.charAt(0).toUpperCase()}</Span>
                     )}

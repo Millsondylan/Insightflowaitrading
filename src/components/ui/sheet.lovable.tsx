@@ -85,7 +85,7 @@ const SheetFooter = ({
       className
     )}
     {...props}
-  /></HTMLDivElement>
+  /></HTMLDivElement></HTMLDivElement>
 )
 SheetFooter.displayName = "SheetFooter"
 

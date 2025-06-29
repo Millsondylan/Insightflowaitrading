@@ -99,7 +99,7 @@ export default function CryptoPaymentPage() {
           </Div>
           
           <Div>
-            <CryptoPayment /></Div></Div>
+            <CryptoPayment /></Div></Div></Div>
           </Div>
         </Div>
       </Div>

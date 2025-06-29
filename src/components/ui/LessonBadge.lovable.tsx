@@ -26,7 +26,7 @@ const LessonBadge: React.FC<Lessonbadgeprops > = ({
         <Award >
         {unlocked && (
           <Div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
-            <Award  /></Lessonbadgeprops></Lessonbadgeprops>
+            <Award  /></Lessonbadgeprops></Lessonbadgeprops></Lessonbadgeprops>
           </Div>
         )}
       </Div>

@@ -61,7 +61,7 @@ export default function Sidebar() {
                   ? 'bg-blue-600/20 text-blue-400'
                   : 'text-gray-500 hover:text-white hover:bg-gray-800'
               }`}
-        >
+       >
               <Icon size={24} />
             </TooltipProvider>
           </TooltipTrigger>
@@ -132,8 +132,8 @@ export default function Sidebar() {
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
                 location.pathname === '/pine-script-generator' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               }`}
-         >
-              <FileCode size={16} /></Div></Div>
+        >
+              <FileCode size={16} /></Div></Div></Div>
               <Span>Pine Script Generator</Span>
             </Link>
           </Div>

@@ -146,9 +146,9 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
               src={userProfile.avatar} 
               alt={userProfile.displayName}
               className="w-12 h-12 rounded-full border-2 border-white/20"
-            /></Div>
+            /></Div></Div>
             <Div>
-              <H2 className="text-xl font-bold text-white"></Div>{userProfile.displayName}</Div>
+              <H2 className="text-xl font-bold text-white"></Div></Div>{userProfile.displayName}</Div>
               <P className="text-sm text-white/60">Level {userProfile.level}</P>
             </Div>
           </Div>
@@ -164,7 +164,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
         <Div className="w-full bg-white/10 rounded-full h-2 mb-2">
           <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
             style={{ width: `${completionStats.percentage}%` }}
-        ></Div>
+       ></Div>
         </Div>
         <Div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
@@ -199,7 +199,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
       <Div className="flex flex-wrap gap-2 mb-6">
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
           <Button key={category}
-            onClick={() =></Div> setSelectedCategory(category)}
+            onClick={() =></Div></Div> setSelectedCategory(category)}
             className={`
               px-3 py-1 rounded-full text-xs font-medium transition-all duration-200
               ${selectedCategory === category 
@@ -216,13 +216,13 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
       {/* Recent badges */}
       {userProfile.badges.length > 0 && (
         <Div className="mb-6">
-          <H3 className="text-lg font-semibold text-white mb-3"></Div>Recent Badges</Div>
+          <H3 className="text-lg font-semibold text-white mb-3"></Div></Div>Recent Badges</Div>
           <Div className="flex flex-wrap gap-2">
             {userProfile.badges.slice(0, 6).map((badge, index) => (
               <Div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
                 title={badge.description}
-            >
+           >
                 <Span className="text-lg">{badge.icon}</Div>
                 <Span className="text-xs text-white/80">{badge.name}</Span>
               </Div>
@@ -246,13 +246,13 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
                 }
               `}
-          >
+         >
               <Div className="flex items-start space-x-3">
                 <Div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
                 </Div>
                 <Div className="flex-1">
-                  <H4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></Div>
+                  <H4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></Div></Div>
                     {achievement.name}
                   </Div>
                   <P className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
@@ -265,7 +265,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
                       <Div className="w-full bg-white/20 rounded-full h-1">
                         <Div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-                      ></Div>
+                     ></Div>
                       </Div>
                       <Div className="text-xs text-white/60 mt-1">{progress}% complete</Div>
                     </Div>

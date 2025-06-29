@@ -173,7 +173,7 @@ export const lovable = {
           <Div className="mt-4">
             <Alert variant={isCorrect ? "default" : "destructive"} 
               className={isCorrect ? "border-green-500 bg-green-900/20" : ""}
-        >
+       >
               <alertTitle>{isCorrect ? "Correct!" : "Not quite right"}</Div>
               <alertDescription>
                 {quiz.explanation}
@@ -289,7 +289,7 @@ export const lovable = {
               
               <Button onClick={handleNextSection}
                 disabled={currentSection.quiz && !showExplanation[currentSection.id]}
-           >
+          >
                 {isLastSection ? (
                   <>
                     <Medal className="mr-2 h-4 w-4" /> Complete Lesson

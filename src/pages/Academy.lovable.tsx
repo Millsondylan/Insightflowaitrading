@@ -111,7 +111,7 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
 const FeaturedSection = () => {
   return (
     <Div className="mb-8">
-      <H2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2"></Div>
+      <H2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2"></Div></Div>
         <zap >
         Featured Courses
       </Div>
@@ -123,7 +123,7 @@ const FeaturedSection = () => {
                 <target  style={{ color: "white" }}>
               </Div>
               <Div>
-                <Cardtitle  style={{ color: "white" }}></Div>Quick Start Trading</Div>
+                <Cardtitle  style={{ color: "white" }}></Div></Div>Quick Start Trading</Div>
                 <Carddescription >
                   Get trading in 7 days
                 </Carddescription>
@@ -147,7 +147,7 @@ const FeaturedSection = () => {
                 <award  style={{ color: "white" }}>
               </Card>
               <Div>
-                <Cardtitle  style={{ color: "white" }}></Div>Pro Certification</Div>
+                <Cardtitle  style={{ color: "white" }}></Div></Div>Pro Certification</Div>
                 <Carddescription >
                   Industry recognized cert
                 </Carddescription>
@@ -171,7 +171,7 @@ const FeaturedSection = () => {
                 <users  style={{ color: "white" }}>
               </Card>
               <Div>
-                <Cardtitle  style={{ color: "white" }}></Div>Live Mentorship</Div>
+                <Cardtitle  style={{ color: "white" }}></Div></Div>Live Mentorship</Div>
                 <Carddescription >
                   1-on-1 with experts
                 </Carddescription>
@@ -206,7 +206,7 @@ export default function AcademyPage() {
       {/* Header */}
       <Div className="text-center mb-8">
         <H1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-          <Span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl"></Div>
+          <Span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl"></Div></Div>
             <bookopen  style={{ color: "white" }}>
           </Div>
           Trading Academy
@@ -260,7 +260,7 @@ export default function AcademyPage() {
       <tabs defaultValue="all">
         <Tabslist  style={{ display: "grid", width: "100%" }}>
           {categories.map((category) => (
-            <Tabstrigger ></Tabslist>
+            <Tabstrigger ></Tabslist></Tabslist>
               {category}
             </Tabslist>
           ))}
@@ -279,7 +279,7 @@ export default function AcademyPage() {
       <Div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
         <Card >
           <Cardheader >
-            <Cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}></Div>
+            <Cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}></Div></Div>
               <radio >
               Live Trading Sessions
             </Div>
@@ -291,7 +291,7 @@ export default function AcademyPage() {
             <Div className="space-y-4">
               <Div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <Div>
-                  <H4 className="font-medium text-white"></Cardcontent>Forex London Session</Cardcontent>
+                  <H4 className="font-medium text-white"></Cardcontent></Cardcontent>Forex London Session</Cardcontent>
                   <P className="text-sm text-gray-400">With TraderPro • Starting in 2h</P>
                 </Div>
                 <Button size="sm">
@@ -300,7 +300,7 @@ export default function AcademyPage() {
               </Div>
               <Div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <Div>
-                  <H4 className="font-medium text-white"></Div>Crypto Market Review</Div>
+                  <H4 className="font-medium text-white"></Div></Div>Crypto Market Review</Div>
                   <P className="text-sm text-gray-400">With CryptoKing • Tomorrow 9 AM</P>
                 </Div>
                 <Button size="sm" variant="outline">
@@ -309,7 +309,7 @@ export default function AcademyPage() {
               </Div>
               <Div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <Div>
-                  <H4 className="font-medium text-white"></Div>Options Strategy Workshop</Div>
+                  <H4 className="font-medium text-white"></Div></Div>Options Strategy Workshop</Div>
                   <P className="text-sm text-gray-400">With ThetaGang • Friday 2 PM</P>
                 </Div>
                 <Button size="sm" variant="outline">
@@ -318,7 +318,7 @@ export default function AcademyPage() {
               </Div>
             </Div>
             <Link to="/broadcast" style={{ display: "block" }}>
-              <Button variant="ghost" style={{ width: "100%" }}></Link>
+              <Button variant="ghost" style={{ width: "100%" }}></Link></Link>
                 View All Sessions
                 <chevronright >
               </Link>
@@ -328,7 +328,7 @@ export default function AcademyPage() {
         
         <Card >
           <Cardheader >
-            <Cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}></Card>
+            <Cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}></Card></Card>
               <messagesquare >
               Community
             </Card>
@@ -367,7 +367,7 @@ export default function AcademyPage() {
               </Div>
             </Div>
             <Link to="/community">
-              <Button  style={{ width: "100%" }}></Link>
+              <Button  style={{ width: "100%" }}></Link></Link>
                 Join Community
               </Link>
             </Link>

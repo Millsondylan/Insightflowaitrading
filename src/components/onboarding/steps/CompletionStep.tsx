@@ -29,7 +29,7 @@ export default function CompletionStep() {
   return (
     <Div className="space-y-6">
       <Div className="flex flex-col items-center justify-center py-4">
-        <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" /></ExperienceLevel></ExperienceLevel>
+        <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" /></ExperienceLevel></ExperienceLevel></ExperienceLevel>
         <H2 className="text-2xl font-bold text-center">Your Profile is Ready!</H2>
         <P className="text-gray-500 dark:text-gray-400 text-center mt-2">
           We've personalized your trading experience based on your preferences
@@ -38,7 +38,7 @@ export default function CompletionStep() {
       
       <Div className="space-y-4">
         <Div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-md">
-          <H3 className="font-medium mb-2"></Div>Your Trading Profile</Div>
+          <H3 className="font-medium mb-2"></Div></Div>Your Trading Profile</Div>
           
           <Div className="grid grid-cols-2 gap-3 text-sm">
             <Div>
@@ -60,7 +60,7 @@ export default function CompletionStep() {
               <Div className="flex flex-wrap gap-1 mt-1">
                 {formData.style?.length > 0 ? (
                   formData.style.map((style: TradingStyle) => (
-                    <Badge key={style} variant="secondary"></Div>{style}</Div>
+                    <Badge key={style} variant="secondary"></Div></Div>{style}</Div>
                   ))
                 ) : (
                   <Span className="text-gray-500 italic">None selected</Span>
@@ -73,7 +73,7 @@ export default function CompletionStep() {
               <Div className="flex flex-wrap gap-1 mt-1">
                 {formData.favorite_markets?.length > 0 ? (
                   formData.favorite_markets.map((market: MarketType) => (
-                    <Badge key={market} variant="secondary"></Div>{market}</Div>
+                    <Badge key={market} variant="secondary"></Div></Div>{market}</Div>
                   ))
                 ) : (
                   <Span className="text-gray-500 italic">None selected</Span>
@@ -86,7 +86,7 @@ export default function CompletionStep() {
               <Div className="flex flex-wrap gap-1 mt-1">
                 {formData.favorite_timeframes?.length > 0 ? (
                   formData.favorite_timeframes.map((timeframe: Timeframe) => (
-                    <Badge key={timeframe} variant="secondary"></Div>{timeframe}</Div>
+                    <Badge key={timeframe} variant="secondary"></Div></Div>{timeframe}</Div>
                   ))
                 ) : (
                   <Span className="text-gray-500 italic">None selected</Span>
@@ -97,7 +97,7 @@ export default function CompletionStep() {
         </Div>
         
         <Div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-md">
-          <H3 className="font-medium text-green-700 dark:text-green-300 mb-2"></Div>
+          <H3 className="font-medium text-green-700 dark:text-green-300 mb-2"></Div></Div>
             What happens next?
           </Div>
           <Ul className="text-sm text-green-600 dark:text-green-300 space-y-1">

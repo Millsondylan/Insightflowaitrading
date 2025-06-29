@@ -66,7 +66,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Table  />
           <Tableheader >
-            <Tablerow  /></Div></Div>
+            <Tablerow  /></Div></Div></Div>
               <tablehead >Code</TableHead>
               <tablehead >Expires</TableHead>
               <tablehead >Uses Left</TableHead>

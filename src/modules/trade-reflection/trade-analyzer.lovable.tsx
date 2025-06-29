@@ -336,7 +336,7 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops> = ({
           <Button className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
             onClick={generateAiSuggestions}
             disabled={isGeneratingSuggestions}
-       >
+      >
             {isGeneratingSuggestions ? 'Generating Suggestions...' : 'Generate AI Suggestions'}
           </Div>
         </Div>
@@ -348,7 +348,7 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops> = ({
               <H3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</Div>
               <Button className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
                 onClick={applySuggestions}
-           >
+          >
                 Apply All
               </Button>
             </Div>
@@ -465,14 +465,14 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops> = ({
         
         {/* Trade Rating */}
         <Div className="mb-6">
-          <Label className="block mb-1 font-medium"></Div>Trade Execution Rating (1-5)</Div>
+          <Label className="block mb-1 font-medium"></Div></Div>Trade Execution Rating (1-5)</Div>
           <Div className="flex space-x-2">
             {[1, 2, 3, 4, 5].map((rating) => (
               <Button key={rating}
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   reflection.rating === rating ? 'bg-brand-primary text-white' : 'bg-background-tertiary'
                 }`}
-                onClick={() =></Div> handleRatingChange(rating)}
+                onClick={() =></Div></Div> handleRatingChange(rating)}
               >
                 {rating}
               </Div>
@@ -485,7 +485,7 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops> = ({
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={handleSaveReflection}
             disabled={isSaving}
-       ></Div>
+      ></Div></Div>
             {isSaving ? 'Saving...' : 'Save Reflection'}
           </Div>
         </Div>

@@ -135,7 +135,7 @@ const MenubarShortcut = ({
         className
       )}
       {...props}
-    /></HTMLSpanElement>
+    /></HTMLSpanElement></HTMLSpanElement>
   )
 }
 MenubarShortcut.displayname = "MenubarShortcut"

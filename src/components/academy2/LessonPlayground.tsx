@@ -28,7 +28,7 @@ export const lovable = {
       {chunks.map((chunk) => (
         <Div key={chunk.id}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
-   >
+  >
           {chunk.type === "markdown" && (
             <ReactMarkdown>{chunk.content}</Div>
           )}
@@ -36,7 +36,7 @@ export const lovable = {
             <Textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />
           )}
           {chunk.aiCommentary && (
-            <P className="italic text-white/70"></Textarea>🧠 {chunk.aiCommentary}</Textarea>
+            <P className="italic text-white/70"></Textarea></Textarea>🧠 {chunk.aiCommentary}</Textarea>
           )}
         </Div>
       ))}

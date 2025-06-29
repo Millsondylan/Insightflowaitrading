@@ -66,7 +66,7 @@ export default function MarketDigest({ digest }: Props) {
       {digest.map((item) => (
         <Div key={item.symbol}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-   >
+  >
           {/* Card Header */}
           <Div className="flex justify-between items-start">
             <Div>
@@ -80,7 +80,7 @@ export default function MarketDigest({ digest }: Props) {
               )}`}
             />
               {item.change > 0 ? (
-                <Arrowup  /></Div></Div>
+                <Arrowup  /></Div></Div></Div>
               ) : (
                 <arrowdown >
               )}
@@ -96,14 +96,14 @@ export default function MarketDigest({ digest }: Props) {
           {/* Card Footer with Stats */}
           <Div className="flex justify-between items-center pt-2">
             <Div>
-              <Span className="text-xs text-white/50"></Div>24h Volume:</Div>
+              <Span className="text-xs text-white/50"></Div></Div>24h Volume:</Div>
               <P className="font-semibold text-white">
                 {formatVolume(item.volume)}
               </P>
             </Div>
             <Div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
               <trendingup >
-              <Span></Div>
+              <Span></Div></Div>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
               </Div>

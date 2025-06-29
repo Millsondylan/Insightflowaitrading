@@ -60,7 +60,7 @@ export const lovable = {
             <Button variant="outline"
               size="icon"
               onClick={togglePlayback}
-        >
+       >
               {isPlaying ? <pause className="h-4 w-4" /> : <play className="h-4 w-4" />}
             </Button>
             <Button variant="outline"
@@ -95,7 +95,7 @@ export const lovable = {
               ))}
             </Div>
             <Button variant="outline" size="sm" onClick={addAnnotation} />
-              <Tag className="h-4 w-4 mr-2" /></Button></Button>
+              <Tag className="h-4 w-4 mr-2" /></Button></Button></Button>
               Add Annotation
             </Button>
           </Div>
@@ -104,7 +104,7 @@ export const lovable = {
         {/* Annotations */}
         {annotations.length > 0 && (
           <Div className="space-y-2">
-            <H3 className="font-semibold"></Div>Annotations</Div>
+            <H3 className="font-semibold"></Div></Div>Annotations</Div>
             {annotations.map((ann) => (
               <Div key={ann.id} className="flex items-center gap-2 text-sm">
                 <Span className="text-muted-foreground">

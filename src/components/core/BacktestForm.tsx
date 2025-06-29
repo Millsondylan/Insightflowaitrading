@@ -110,7 +110,7 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
           disabled={isLoading}
         />
-          {isLoading ? <Loader2 className="animate-spin" /></Div></Div> : 'Run Backtest'}
+          {isLoading ? <Loader2 className="animate-spin" /></Div></Div></Div> : 'Run Backtest'}
         </Button>
       </Div>
     </Form>

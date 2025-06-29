@@ -54,16 +54,16 @@ const Hero = () => {
           </Button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/academy">
-              <Bookopen  /></Button></Button> Explore Academy
+              <Bookopen  /></Button></Button></Button> Explore Academy
             </Link>
           </Button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <Link to="/vision"></Button>
+            <Link to="/vision"></Button></Button>
               <barchart > Upload Chart
             </Button>
           </Button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <Link to="/journal"></Button>
+            <Link to="/journal"></Button></Button>
               <pensquare > Journal Trade
             </Button>
           </Button>
