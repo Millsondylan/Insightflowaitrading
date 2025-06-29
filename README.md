@@ -122,16 +122,83 @@ Full user journey tests:
 
 ## Lovable.dev Integration
 
-This project is fully compatible with Lovable.dev:
+This project is integrated with Lovable.dev for visual component editing and AI-powered development. The integration provides:
 
-- **Registered blocks**: SystemStatusPanel, CorrelationHeatmap, ReferralSystem, PineScriptGeneratorPage
-- **AI-friendly structure**: Dual file pattern (`.tsx` + `.lovable.tsx`)
-- **Function endpoints**: All API routes follow Lovable conventions
+- Visual component editing
+- AI-powered code generation
+- Theme support
+- Responsive preview
+- Component search
+- Prop editing
+- Code export
 
-To sync with Lovable:
+### Setup
+
+1. Clone the repository
 ```bash
-npx lovable-tagger serve src/lovable-demo/LovableDemo.tsx
+git clone https://github.com/yourusername/Insightflowaitrading.git
+cd Insightflowaitrading
 ```
+
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Configure environment variables
+```bash
+cp env.example .env
+# Edit .env with your configuration
+```
+
+4. Start development server
+```bash
+npm run dev
+```
+
+### Project Structure
+
+```
+├── public/           # Static assets
+├── src/
+│   ├── components/   # React components
+│   ├── modules/      # Feature modules
+│   ├── pages/        # Page components
+│   ├── lib/          # Utilities and config
+│   └── styles/       # Global styles
+└── lovable.config.js # Lovable.dev configuration
+```
+
+### Tech Stack
+
+- React with TypeScript
+- Tailwind CSS for styling
+- Vite for build tooling
+- Supabase for backend
+- Lovable.dev for visual editing
+
+### Development Workflow
+
+1. Components are created in `src/components/`
+2. Use `.lovable.tsx` extension for components that support visual editing
+3. Run `npm run dev` to start development server
+4. Access Lovable.dev editor at `http://localhost:3000`
+
+### Deployment
+
+1. Build the project:
+```bash
+npm run build
+```
+
+2. Deploy to your hosting platform of choice.
+
+### Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## License
 
