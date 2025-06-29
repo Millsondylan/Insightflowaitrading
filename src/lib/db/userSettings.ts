@@ -42,6 +42,10 @@ export interface UserSettings {
     keyboard_shortcuts: boolean;
     beta_features: boolean;
   };
+  audio_settings: {
+    sounds_enabled: boolean;
+    volume: number;
+  };
   coaching_tone: 'supportive' | 'balanced' | 'challenging' | 'analytical';
   reminder_frequency: 'hourly' | 'daily' | 'weekly' | 'custom';
   language: string;
@@ -178,7 +182,7 @@ export async function createNotification(
       .single();
 
     if (error) throw error;
-    return data;
+    return data as UserNotification;
   } catch (error) {
     console.error('Error creating notification:', error);
     return null;
@@ -215,7 +219,7 @@ export async function getUserNotifications(
     const { data, error } = await query;
 
     if (error) throw error;
-    return data || [];
+    return (data || []) as UserNotification[];
   } catch (error) {
     console.error('Error fetching notifications:', error);
     return [];

@@ -1,2 +1,2 @@
-import UserSettings from './UserSettings';
-export default UserSettings; 
+import UserSettingsPage from "./UserSettings"; 
+export default UserSettingsPage; 

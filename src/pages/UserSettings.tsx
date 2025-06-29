@@ -73,6 +73,10 @@ const DEFAULT_SETTINGS: Partial<UserSettings> = {
     keyboard_shortcuts: true,
     beta_features: false,
   },
+  audio_settings: {
+    sounds_enabled: false,
+    volume: 80,
+  },
   coaching_tone: "balanced",
   reminder_frequency: "daily",
   language: "en",
@@ -127,13 +131,16 @@ export default function UserSettingsPage() {
     key: keyof UserSettings[T], 
     value: any
   ) => {
-    setSettings(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [key]: value,
-      }
-    }));
+    setSettings(prev => {
+      const prevSection = prev[section] as any || {};
+      return {
+        ...prev,
+        [section]: {
+          ...prevSection,
+          [key]: value,
+        }
+      };
+    });
     
     logClick('UpdateSetting', { section, key, value });
   };
@@ -143,13 +150,16 @@ export default function UserSettingsPage() {
     key: string, 
     value: boolean
   ) => {
-    setSettings(prev => ({
-      ...prev,
-      [section]: {
-        ...prev[section],
-        [key]: value,
-      }
-    }));
+    setSettings(prev => {
+      const prevSection = prev[section] as any || {};
+      return {
+        ...prev,
+        [section]: {
+          ...prevSection,
+          [key]: value,
+        }
+      };
+    });
     
     logClick('ToggleSetting', { section, key, value });
   };

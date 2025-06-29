@@ -1682,6 +1682,7 @@ export type Database = {
           layout_preferences: Json;
           chart_settings: Json;
           feature_toggles: Json;
+          audio_settings: Json;
           coaching_tone: string;
           reminder_frequency: string;
           language: string;
@@ -1698,6 +1699,7 @@ export type Database = {
           layout_preferences?: Json;
           chart_settings?: Json;
           feature_toggles?: Json;
+          audio_settings?: Json;
           coaching_tone?: string;
           reminder_frequency?: string;
           language?: string;
@@ -1714,6 +1716,7 @@ export type Database = {
           layout_preferences?: Json;
           chart_settings?: Json;
           feature_toggles?: Json;
+          audio_settings?: Json;
           coaching_tone?: string;
           reminder_frequency?: string;
           language?: string;
