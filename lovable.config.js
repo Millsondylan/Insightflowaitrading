@@ -53,5 +53,32 @@ module.exports = {
       enabled: true,
       autoCommit: false
     }
+  },
+  apps: [
+    {
+      name: "web",
+      type: "nextjs",
+      root: ".",
+      buildCommand: "pnpm run build",
+      startCommand: "pnpm start",
+      testCommand: "npx lovable test:web"
+    },
+    {
+      name: "mobile",
+      type: "expo",
+      root: "expo-app",
+      buildCommand: "expo build",
+      startCommand: "expo start --dev-client --non-interactive",
+      testCommand: "npx lovable test:mobile"
+    }
+  ],
+  qa: {
+    enabled: true,
+    pipelines: {
+      web: "lovable test:web",
+      mobile: "lovable test:mobile",
+      backend: "lovable test:backend"
+    },
+    blockOnFailure: true
   }
 }; 

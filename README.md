@@ -1,5 +1,8 @@
 # Insight Flow AI Trading Platform
 
+[![Lovable Quality Gate](https://lovable.dev/badge/Insightflowaitrading)](https://lovable.dev/projects/Insightflowaitrading)
+[![CI Tests](https://github.com/Millsondylan/Insightflowaitrading/actions/workflows/lovable.yml/badge.svg)](https://github.com/Millsondylan/Insightflowaitrading/actions/workflows/lovable.yml)
+
 A comprehensive AI-powered trading platform with real-time market analysis, strategy building, and Pine Script generation.
 
 ## Features
