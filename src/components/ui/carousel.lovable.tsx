@@ -199,7 +199,7 @@ const CarouselNext = React.forwardRef<
   return (
     <Button >
       <arrowright >
-      <Span className="sr-only"></Button></Button></Button></Button></Button></Button></Button></Button>Next slide</Button>
+      <Span className="sr-only"></Button></Button></Button></Button></Button></Button></Button></Button></Button>Next slide</Button>
     </Button>
   )
 })

@@ -98,7 +98,7 @@ export default function MarketDigest({ digest }: Props) {
               </P>
             </Div>
             <Div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
-              <TrendingUp className="h-4 w-4" /></Div></Div></Div></Div></Div></Div>
+              <TrendingUp className="h-4 w-4" /></Div></Div></Div></Div></Div></Div></Div>
               <Span></Span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}

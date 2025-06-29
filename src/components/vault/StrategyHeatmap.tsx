@@ -50,7 +50,7 @@ const StrategyHeatmap = ({ data }: Props) => {
                   
                   <H3 className="font-bold text-center text-white break-words" 
                     style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}
-        >
+       >
                     {item.tag}
                   </H3>
                   

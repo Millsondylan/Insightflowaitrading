@@ -163,8 +163,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
         {/* Progress bar */}
         <Div className="w-full bg-white/10 rounded-full h-2 mb-2">
           <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
-            style={{ width: `${completionStats.percentage}%` }}
-></Div>
+            style={{ width: `${completionStats.percentage}%` }}></Div>
         </Div>
         <Div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
@@ -222,7 +221,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
               <Div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
                 title={badge.description}
-    >
+   >
                 <Span className="text-lg">{badge.icon}</Div>
                 <Span className="text-xs text-white/80">{badge.name}</Span>
               </Div>
@@ -246,7 +245,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
                 }
               `}
-  >
+ >
               <Div className="flex items-start space-x-3">
                 <Div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
@@ -265,7 +264,7 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
                       <Div className="w-full bg-white/20 rounded-full h-1">
                         <Div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-              ></Div>
+             ></Div>
                       </Div>
                       <Div className="text-xs text-white/60 mt-1">{progress}% complete</Div>
                     </Div>

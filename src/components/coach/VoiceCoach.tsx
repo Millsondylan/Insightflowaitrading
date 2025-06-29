@@ -284,13 +284,13 @@ export default function VoiceCoach({ marketContext, strategyId }: VoiceCoachProp
                   {transcript.map((message, index) => (
                     <Div key={index} 
                       className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
+         >
                       <Div className={`max-w-[80%] p-3 rounded-lg ${
                           message.role === 'user' 
                             ? 'bg-primary text-primary-foreground' 
                             : 'bg-muted'
                         }`}
-            >
+           >
                         <P>{message.content}</CardContent>
                         <Div className="text-xs opacity-70 mt-1">
                           {new Date(message.timestamp).toLocaleTimeString()}
@@ -303,14 +303,14 @@ export default function VoiceCoach({ marketContext, strategyId }: VoiceCoachProp
             <CardFooter className="flex justify-between" />
               <Button variant="outline"
                 onClick={handleEndSession}
-   >
+  >
                 End Session
               </CardFooter>
               <Button variant={isRecording ? "destructive" : "default"}
                 onClick={isRecording ? stopRecording : startRecording}
                 disabled={isProcessing || !sessionId}
                 className="w-20"
-   >
+  >
                 {isRecording ? <MicOff className="mr-2 h-4 w-4" /> : <Mic className="mr-2 h-4 w-4" /></Button></Button></Button></Button></Button></Button>}
                 {isRecording ? "Stop" : "Talk"}
               </button />

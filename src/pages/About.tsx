@@ -63,7 +63,7 @@ export default function AboutPage() {
       </P>
       
       <Div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-lg border border-blue-500/20 text-center">
-        <H2 className="text-2xl font-bold mb-4 text-white"></Div></Div></Div></Div>Join Our Community</Div>
+        <H2 className="text-2xl font-bold mb-4 text-white"></Div></Div></Div></Div></Div>Join Our Community</Div>
         <P className="mb-6 text-gray-300">
           Become part of a growing community of traders who use AI to enhance their trading decisions.
         </P>

@@ -72,8 +72,7 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
       <Div className="flex-1 overflow-y-auto p-4 space-y-4">
         {suggestions.map((suggestion) => (
           <Div key={suggestion.id}
-            className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
->
+            className="p-3 border rounded-lg hover:bg-accent/50 transition-colors">
             <Div className="flex items-start justify-between mb-2">
               <H4 className="font-medium"></Div>{suggestion.title}</Div>
               <Badge variant="outline" style={{ fontSize: "0.75rem" }}>

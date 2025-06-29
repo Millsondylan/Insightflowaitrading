@@ -31,10 +31,10 @@ async function main() {
   try {
     console.log('\n1️⃣ Adding Lovable exports to all component files...');
     await runScript('add-lovable-exports.js');
-    /*
+    
     console.log('\n2️⃣ Fixing JSX syntax issues...');
     await runScript('fix-jsx-tags.js');
-    */
+    
     console.log('\n3️⃣ Fixing TypeScript errors...');
     await runScript('fix-typescript-errors.js');
 

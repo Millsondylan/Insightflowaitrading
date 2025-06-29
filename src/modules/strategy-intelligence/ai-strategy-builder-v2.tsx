@@ -34,8 +34,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
           <Div>
             <Label className="block text-sm mb-2">Market</Input>
             <Select value={selectedMarket} 
-              onValueChange={setSelectedMarket}
->
+              onValueChange={setSelectedMarket}>
               <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
                 <selectValue placeholder="Select Market" / />
               <selectContent>

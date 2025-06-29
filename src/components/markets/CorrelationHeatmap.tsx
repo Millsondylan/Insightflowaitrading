@@ -275,12 +275,12 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
             <TabsList className="bg-transparent border-b-0" />
               <TabsTrigger value="all"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
-   >
+  >
                 All Assets
               </CardContent>
               <TabsTrigger value="favorites"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
-   >
+  >
                 Favorites
               </TabsTrigger />
             <Div className="flex justify-end items-center py-2 gap-2">
@@ -289,7 +289,7 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                 onPressedChange={setShowCorrelationValue}
                 size="sm"
                 className="text-xs h-7"
-   >
+  >
                 Show Values
               </TabsTrigger>
               <Button variant="ghost" 
@@ -347,7 +347,7 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                 </Div>
                 
                 <Badge variant={getCorrelationBadgeVariant(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
-    >
+   >
                   {formatCorrelation(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
                 </Badge>
                 

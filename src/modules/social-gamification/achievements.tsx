@@ -264,7 +264,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
                       <Div className="w-full bg-white/20 rounded-full h-1">
                         <Div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-              ></Div>
+             ></Div>
                       </Div>
                       <Div className="text-xs text-white/60 mt-1">{progress}% complete</Div>
                     </Div>
@@ -396,7 +396,7 @@ const fetchAllAchievements = async (): Promise<achievement[]> => {
   ];
 };
 
-const fetchUserAchievements = async (userId: string): Promise<UserAchievement[] /></UserProfile></UserProfile></UserProfile></UserProfile> => {
+const fetchUserAchievements = async (userId: string): Promise<UserAchievement[] /></UserProfile></UserProfile></UserProfile></UserProfile></UserProfile> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 200));
   

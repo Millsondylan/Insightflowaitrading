@@ -86,7 +86,7 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
                 </Span>
               </Div>
               <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
-                <Eye ></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
+                <Eye ></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
                 View
               </Button>
             </Div>
@@ -94,7 +94,7 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
         </Div>
       ) : (
         <Div className="text-center py-4">
-          <P className="text-white/50"></Div></Div></Div></Div>
+          <P className="text-white/50"></Div></Div></Div></Div></Div>
             No tickers currently match this strategy.
           </Div>
         </Div>

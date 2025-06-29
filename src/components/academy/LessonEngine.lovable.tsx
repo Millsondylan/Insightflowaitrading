@@ -111,8 +111,8 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                   rel="noopener noreferrer"
                   download
                   className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
-      >
-                  <Span></Div></Div></Div></Div></Div>📄</Div> Download PDF
+     >
+                  <Span></Div></Div></Div></Div></Div></Div>📄</Div> Download PDF
                 </A>
               )}
 
@@ -120,7 +120,7 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                 <Button  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
                   className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
-                  <Span></Button></Button></Button></Button></Button></Button></Button></Button></Button>🧠</Button> Take Quiz
+                  <Span></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>🧠</Button> Take Quiz
                 </Button>
               )}
             </Div>

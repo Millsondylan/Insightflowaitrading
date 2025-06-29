@@ -47,7 +47,7 @@ export default function RiskProfileStep() {
               <RadioGroup onValueChange={field.onChange}
                 defaultValue={field.value}
                 className="grid gap-4 pt-2"
-   >
+  >
                 {riskProfiles.map((profile) => (
                   <Div key={profile.value} className="relative">
                     <RadioGroupItem
@@ -57,7 +57,7 @@ export default function RiskProfileStep() {
                     />
                     <Label htmlFor={`risk-${profile.value}`}
                       className="flex flex-col p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 peer-data-[state=checked]:border-blue-500 peer-data-[state=checked]:bg-blue-50 dark:peer-data-[state=checked]:bg-blue-950 dark:peer-data-[state=checked]:border-blue-700 cursor-pointer"
-         >
+        >
                       <Div className="flex items-start gap-4">
                         <Div className="flex-shrink-0 mt-1">{profile.icon}</FormField>
                         <Div>

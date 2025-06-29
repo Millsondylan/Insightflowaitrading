@@ -258,7 +258,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   "w-28",
                   formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
                 )}
-  >
+ >
                 🟢 Bullish
               </Div>
               <Button type="button"

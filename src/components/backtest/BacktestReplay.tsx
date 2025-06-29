@@ -117,7 +117,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
             <FastForward className="h-4 w-4" />
           </Button>
       <Button variant="ghost" size="icon" onClick={toggleSpeed} title="Toggle Speed">
-          <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`} /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
+          <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`} /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
         </Button>
       </Div>
     </Div>

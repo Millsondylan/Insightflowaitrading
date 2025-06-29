@@ -98,7 +98,7 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
               </Div>
               <Button onClick={onVerificationComplete}
                 className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30"
-  >
+ >
                 I've Sent the Payment
               </Button>
             </div />

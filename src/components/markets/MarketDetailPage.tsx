@@ -306,7 +306,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
           </Div>
         </Div>
         <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Activity className="h-5 w-5 text-gray-400" /></Div></Div></Div></Div></Div></Div>
+          <Activity className="h-5 w-5 text-gray-400" /></Div></Div></Div></Div></Div></Div></Div>
           <Div></Div>
             <Div className="text-sm text-gray-400">
               {marketData.matchingSetups} matching setups

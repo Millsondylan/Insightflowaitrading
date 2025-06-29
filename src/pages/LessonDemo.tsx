@@ -72,7 +72,7 @@ const sampleLesson: LessonData = {
 const LessonDemo = () => {
   return (
     <Div className="container mx-auto py-8 px-4">
-      <LessonView lesson={sampleLesson} /></Li></Li></Li></Li></Div></Div>
+      <LessonView lesson={sampleLesson} /></Li></Li></Li></Li></Li></Div></Div>
     </Div>
   );
 };

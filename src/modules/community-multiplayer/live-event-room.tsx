@@ -425,7 +425,7 @@ export const LiveEventRoom: React.FC<liveEventRoomProps> = ({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-brand-primary hover:text-brand-primary/80 flex items-center"
-          >
+         >
                       {resource.type === 'document' && (
                         <Span className="mr-1">📄</Ul>
                       )}
@@ -461,7 +461,7 @@ export const LiveEventRoom: React.FC<liveEventRoomProps> = ({
                         src={participant.avatarUrl}
                         alt={participant.username}
                         className="w-6 h-6 rounded-full"
-                      /></Div></Div></Div></Div></Div>
+                      /></Div></Div></Div></Div></Div></Div>
                     ) : (
                       <Span className="text-xs">{participant.username.charAt(0).toUpperCase()}</Span>
                     )}

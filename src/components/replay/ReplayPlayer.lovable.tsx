@@ -44,7 +44,7 @@ export default function ReplayPlayer({ candles, entryTime, exitTime }: Props) {
           onChange={(e) => setStep(Number(e.target.value))}
           className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
         />
-        <Span className="text-sm font-mono text-white/60 w-28 text-right"></Div></Div></Div></Div>
+        <Span className="text-sm font-mono text-white/60 w-28 text-right"></Div></Div></Div></Div></Div>
           {step + 1} / {candles.length}
         </Div>
       </Div>

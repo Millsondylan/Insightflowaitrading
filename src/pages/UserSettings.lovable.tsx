@@ -461,7 +461,7 @@ export default function UserSettings() {
             <Button onClick={handleReset}
               variant="outline"
               className="flex-1"
- >
+>
               🔄 Reset to Defaults
             </Button>
           </Div>
@@ -469,7 +469,7 @@ export default function UserSettings() {
           {/* Status */}
           {hasChanges && (
             <Div className="text-center">
-              <P className="text-yellow-400 text-sm"></Div></Div></Div></Div>⚠️ You have unsaved changes</Div>
+              <P className="text-yellow-400 text-sm"></Div></Div></Div></Div></Div>⚠️ You have unsaved changes</Div>
             </Div>
           )}
         </Div>

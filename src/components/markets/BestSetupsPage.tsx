@@ -490,7 +490,7 @@ export function BestSetupsPage({ onSetupSelect }: BestSetupsPageProps) {
                         {setup.symbol}
                         <Badge variant={isLong ? 'default' : 'destructive'}
                           className="ml-2"
-             >
+            >
                           {isLong ? (
                             <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</Skeleton>
                           ) : (

@@ -59,8 +59,7 @@ export const lovable = {
             </Div>
             <Button variant="outline"
               size="icon"
-              onClick={togglePlayback}
->
+              onClick={togglePlayback}>
               {isPlaying ? <pause className="h-4 w-4" /> : <play className="h-4 w-4" />}
             </Button>
             <Button variant="outline"

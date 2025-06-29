@@ -132,7 +132,7 @@ export default function WalletConnect({ onVerified }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 hover:underline"
-  >
+ >
               Download MetaMask
             </Div>
           </Div>

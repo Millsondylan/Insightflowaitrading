@@ -114,7 +114,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
             {isPlaying ? <pause > : <play >}
           </Button>
           <Button variant="outline" size="icon" title="Next Candle">
-            <Fastforward /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
+            <Fastforward /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
           </Button>
       <Button variant="ghost" size="icon" title="Toggle Speed">
           <zap >

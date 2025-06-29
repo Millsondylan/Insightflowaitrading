@@ -271,7 +271,7 @@ export default function CryptoPayment() {
                     size="icon"
                     className="ml-2"
                     aria-label="Copy wallet address"
-       >
+      >
                     <Copy className="h-4 w-4" />
                   </Div>
                 </Div>

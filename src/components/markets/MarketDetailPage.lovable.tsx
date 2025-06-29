@@ -262,7 +262,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         <Div className="absolute inset-0 market-glow opacity-10" />
         <Div className="text-center">
           <activity >
-          <H3 className="text-xl font-medium text-white mb-2"></Div></Div></Div></Div>Chart will appear here</Div>
+          <H3 className="text-xl font-medium text-white mb-2"></Div></Div></Div></Div></Div>Chart will appear here</Div>
           <P className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
           </P>

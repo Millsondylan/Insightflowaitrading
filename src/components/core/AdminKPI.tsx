@@ -35,7 +35,7 @@ const AdminKPI: React.FC<adminKPIProps> = ({ stats }) => {
             <Icon className={cn('kpi-icon', `text-${item.color}-500`)} />
             <Div className="kpi-title">{item.title}</Div>
             <Div className="kpi-value">
-              <CountUp end={value} duration={2.5} separator="," /></Div></Div></Div></Div></Div></Div>
+              <CountUp end={value} duration={2.5} separator="," /></Div></Div></Div></Div></Div></Div></Div>
             </Div>
           </motion.div>
         );

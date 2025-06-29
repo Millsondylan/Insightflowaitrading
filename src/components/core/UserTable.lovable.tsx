@@ -313,7 +313,7 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div></Div></Div></Div>
+          <P></Div></Div></Div></Div></Div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}

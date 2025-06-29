@@ -190,7 +190,7 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
           </Div>
           
           <Div className="pt-4 border-t border-white/20">
-            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div></Div></Div></Div>Mock Backtest Preview</Div>
+            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div></Div></Div></Div></Div>Mock Backtest Preview</Div>
             <Div className="flex gap-4 text-center">
                 <Div className="bg-white/10 p-3 rounded-lg flex-1">
                     <P className="text-sm text-white/60">Est. Win Rate</Div>

@@ -309,7 +309,7 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
               {filteredResults.map(result => (
                 <Tr key={result.symbol}
                   className="border-b border-border-primary hover:bg-background-interactive"
-   >
+  >
                   <Td className="px-4 py-3">
                     <Div className="flex flex-col">
                       <Span className="font-medium">{result.symbol}</Tbody>

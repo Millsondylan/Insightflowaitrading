@@ -492,7 +492,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                 
                 <Div className="flex flex-wrap gap-1">
                   {entry.tags.map((tag, i) => (
-                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div></Div></Div></Div>
+                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div></Div></Div></Div></Div>
                       {tag}
                     </Div>
                   ))}

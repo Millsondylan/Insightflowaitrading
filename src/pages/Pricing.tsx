@@ -112,7 +112,7 @@ export default function PricingPage() {
                     : 'bg-transparent border border-white/20 hover:bg-white/10'
                 }`}
                 onClick={plan.buttonAction}
-   >
+  >
                 {plan.buttonText}
               </CardFooter />
           </P>

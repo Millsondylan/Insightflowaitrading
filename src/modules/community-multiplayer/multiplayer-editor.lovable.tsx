@@ -75,10 +75,10 @@ exit_rules:
                   top: `${user.cursor.line * 20}px`,
                   left: `${user.cursor.col * 8}px`
                 }}
-    >
+   >
                 <Span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
                   style={{ backgroundColor: user.color, color: 'white' }}
-      ></Div>
+     ></Div>
                   {user.name}
                 </Div>
               </Div>

@@ -280,7 +280,7 @@ export const lovable = {
                                     backgroundColor: getCorrelationColor(correlation.correlation_value, correlation.color_palette),
                                     color: 'white'
                                   }}
-                    >
+                   >
                                   {getCorrelationEmoji(correlation.correlation_value)}
                                   {formatCorrelationValue(correlation.correlation_value)}
                                 </TooltipProvider />

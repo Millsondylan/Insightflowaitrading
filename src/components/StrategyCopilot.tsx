@@ -170,40 +170,40 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   }
 
   return (
-    <div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
+    <Div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
       <H3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-        <span>🤖</span> Strategy Copilot
+        <Span>🤖</Div> Strategy Copilot
       </H3>
 
       {loading && (
-        <div className="space-y-3">
+        <Div className="space-y-3">
           {[...Array(3)].map((_, i) => (
-            <div key={i} className="animate-pulse">
-              <div className="bg-white/10 h-20 rounded-lg"></div>
-            </div>
+            <Div key={i} className="animate-pulse">
+              <Div className="bg-white/10 h-20 rounded-lg"></Div>
+            </Div>
           ))}
-        </div>
+        </Div>
       )}
 
       {error && (
-        <div className="text-red-400 text-sm">
+        <Div className="text-red-400 text-sm">
           {error}
-        </div>
+        </Div>
       )}
 
       {!loading && suggestions.length > 0 && (
-        <div className="space-y-4">
+        <Div className="space-y-4">
           {suggestions.map((suggestion, index) => (
-            <div key={suggestion.id}
+            <Div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
               style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">{suggestion.icon}</span>
-                <div className="flex-1">
+           >
+              <Div className="flex items-start gap-3">
+                <Span className="text-2xl flex-shrink-0">{suggestion.icon}</Div>
+                <Div className="flex-1">
                   <P className="text-sm text-white/70 leading-relaxed">
                     {suggestion.message}
-                  </P>
+                  </Div>
                   {onSuggestionApply && suggestion.ruleToAdd && (
                     <Button  onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
                       className="bg-cyan-600 hover:bg-cyan-700 rounded px-4 py-1 mt-2 text-sm text-white transition-colors"
@@ -211,11 +211,11 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
                       Apply Suggestion
                     </Button>
                   )}
-                </div>
-              </div>
-            </div>
+                </Div>
+              </Div>
+            </Div>
           ))}
-        </div>
+        </Div>
       )}
 
       {!loading && suggestions.length === 0 && !error && (
@@ -223,7 +223,7 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
           Analyzing your strategy...
         </P>
       )}
-    </div>
+    </Div>
   );
 };
 

@@ -308,7 +308,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
                         className={optionClassName}
-         >
+        >
                         <Div className="quiz-option-radio" />
                         <Span className="text-gray-200">{option.label}</div />
                     </motion.div>
@@ -331,7 +331,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                     {canProceed && (
                       <Button onClick={handleNextQuestion}
                         className="quiz-submit-btn"
-           >
+          >
                         Next Question
                         <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
                       </Div>

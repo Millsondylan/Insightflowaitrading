@@ -95,7 +95,7 @@ export const lovable = {
                 variant="ghost"
                 className="h-auto px-3 py-1 text-xs bg-cyan-600/30 hover:bg-cyan-600 text-white rounded-full"
               />
-                <Eye className="h-3 w-3 mr-1.5" /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
+                <Eye className="h-3 w-3 mr-1.5" /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
                 View
               </Button>
             </Div>
@@ -103,7 +103,7 @@ export const lovable = {
         </Div>
       ) : (
         <Div className="text-center py-4">
-          <P className="text-white/50"></Div></Div></Div></Div>
+          <P className="text-white/50"></Div></Div></Div></Div></Div>
             No tickers currently match this strategy.
           </Div>
         </Div>

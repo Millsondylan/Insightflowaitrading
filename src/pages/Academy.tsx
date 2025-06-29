@@ -270,7 +270,7 @@ export default function AcademyPage() {
             <TabsTrigger key={category} 
               value={category} 
               className="capitalize data-[state=active]:bg-blue-600 data-[state=active]:text-white"
- >
+>
               {category}
             </Tabs>
           ))}
@@ -288,14 +288,14 @@ export default function AcademyPage() {
               key={course.id} 
               course={course} 
               progress={getProgressForCourse(course.id)}
-            /></Div></Div></Div></Div></Div></Div>
+            /></Div></Div></Div></Div></Div></Div></Div>
           ))}
         </Div>
       )}
       
       {courses.length === 0 && !loading && (
         <Div className="text-center py-12">
-          <P className="text-gray-400 text-lg"></Div></Div></Div></Div>No courses found in this category.</Div>
+          <P className="text-gray-400 text-lg"></Div></Div></Div></Div></Div>No courses found in this category.</Div>
         </Div>
       )}
     </Div>

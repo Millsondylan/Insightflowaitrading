@@ -54,25 +54,25 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
   // Show minimalist layout for special pages
   if (location.pathname.includes('/auth/') || location.pathname.includes('/landing')) {
     return (
-      <div className="min-h-screen flex flex-col">
-        <main className="flex-1">
+      <Div className="min-h-screen flex flex-col">
+        <Main className="flex-1">
           <Outlet />
-        </main>
+        </AppLayoutProps>
         <Footer />
-      </div>
+      </Footer>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      <header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="flex h-14 items-center px-4 md:px-6">
+    <Div className="min-h-screen bg-background flex flex-col">
+      <Header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <Div className="flex h-14 items-center px-4 md:px-6">
           <Button 
             variant="ghost"
             className="mr-2 md:hidden"
             size="icon"
             onClick={() => setSidebarOpen(!sidebarOpen)}>
-            <span className="sr-only">Toggle Menu</span>
+            <Span className="sr-only">Toggle Menu</Div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -90,28 +90,28 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
             </svg>
           </Button>
           
-          <div className="ml-auto flex items-center gap-2">
+          <Div className="ml-auto flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={toggleDeveloperMode}>
               {developerMode ? 'Dev-Mode: ON' : 'Dev-Mode: OFF'}
-            </Button>
+            </Div>
             {/* <NotificationCenter /> */}
-            <Button variant="ghost" onClick={logout}>Logout</Button>
-          </div>
-        </div>
-      </header>
+            <Button variant="ghost" onClick={logout}>Logout</NotificationCenter>
+          </Div>
+        </Div>
+      </Header>
       
-      <div className="flex-1 flex">
+      <Div className="flex-1 flex">
         {/* {sidebarOpen && <Sidebar className="hidden md:block" />} */}
-        <main className="flex-1">
+        <Main className="flex-1">
           <Outlet />
-        </main>
+        </Div>
         {/* Add the BottomTabNavigator for mobile view */}
         {isMobile && <BottomTabNavigator />}
-      </div>
+      </BottomTabNavigator>
       
       {/* Developer Mode System Status Panel */}
-      {developerMode && <SystemStatusPanel />}
-    </div>
+      {developerMode && <SystemStatusPanel /></SystemStatusPanel>}
+    </Div>
   );
 };
 

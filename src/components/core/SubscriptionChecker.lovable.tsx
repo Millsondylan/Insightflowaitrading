@@ -307,7 +307,7 @@ const SubscriptionChecker: React.FC = () => {
                   <Div className="flex items-center space-x-2">
                     <Button onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
-         >
+        >
                       <copy >
                     </Div>
                     <Button  onClick={() => toast({

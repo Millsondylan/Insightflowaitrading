@@ -26,7 +26,7 @@ export function Toaster() {
             <ToastClose / />
         )
       })}
-      <ToastViewport / /></ToastClose></ToastClose></ToastClose></ToastClose>
+      <ToastViewport / /></ToastClose></ToastClose></ToastClose></ToastClose></ToastClose>
     </ToastProvider>
   )
 }

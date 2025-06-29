@@ -114,7 +114,7 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-      >
+     >
                   {result.passed ? (
                     <checkcircle >
                   ) : (

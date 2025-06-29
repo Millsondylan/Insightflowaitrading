@@ -91,7 +91,7 @@ const BreadcrumbEllipsis = ({
     aria-hidden="true"
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}>
-    <Morehorizontal  /></Span></Span></Span></Span></Span></Span></Span></Span></Span></Span>
+    <Morehorizontal  /></Span></Span></Span></Span></Span></Span></Span></Span></Span></Span></Span>
     <Span className="sr-only">More</Span>
   </Span>
 )

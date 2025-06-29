@@ -231,7 +231,7 @@ export const lovable = {
                 variant="default" 
                 size="sm"
                 onClick={handleUpgradeClick}
-   >
+  >
                 Upgrade Now
               </button />
           )}
@@ -253,7 +253,7 @@ export const lovable = {
                           <formLabel>Script Type</TabsTrigger>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                >
+               >
                             <formControl>
                               <selectTrigger>
                                 <selectValue placeholder="Select script type" / />
@@ -275,7 +275,7 @@ export const lovable = {
                           <formLabel>Default Timeframe</FormLabel>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                >
+               >
                             <formControl>
                               <selectTrigger>
                                 <selectValue placeholder="Select timeframe" / />
@@ -341,7 +341,7 @@ export const lovable = {
                   <Button type="submit" 
                     className="w-full"
                     disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}
-       >
+      >
                     {isGenerating ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -364,7 +364,7 @@ export const lovable = {
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={handleCopy}
-           >
+          >
                         {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                         <Span>{copied ? "Copied!" : "Copy"}</Div>
                       </Button>
