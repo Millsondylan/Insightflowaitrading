@@ -22,8 +22,8 @@ interface ScanResult {
   lastUpdated: string;
 }
 
-export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }) => {
-  const [results, setResults] = useState<scanresult  >([]);
+export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) => {
+  const [results, setResults] = useState<ScanResult[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [activeTimeframe, setActiveTimeframe] = useState<string>('1h');
@@ -196,7 +196,7 @@ export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }
     }
   };
   
-  const handleSearch = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
   
@@ -248,7 +248,7 @@ export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }
           <input
             type="text"
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
-            placeholder="Search markets..."
+            placeholder="Search by symbol or name..."
             value={searchQuery}
             onChange={handleSearch}
           />
@@ -265,7 +265,7 @@ export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }
           </button>
           <button
             className={`px-4 py-2 rounded ${
-              filterType === 'bullish' ? 'bg-status-success text-white' : 'bg-background-secondary'
+              filterType === 'bullish' ? 'bg-green-600 text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('bullish')}
           >
@@ -273,93 +273,99 @@ export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }
           </button>
           <button
             className={`px-4 py-2 rounded ${
-              filterType === 'bearish' ? 'bg-status-error text-white' : 'bg-background-secondary'
+              filterType === 'bearish' ? 'bg-red-600 text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('bearish')}
           >
             Bearish
           </button>
+          <button
+            className="px-4 py-2 rounded bg-background-secondary"
+            onClick={fetchScanResults}
+          >
+            Refresh
+          </button>
         </div>
       </div>
       
       {loading ? (
-        <div className="p-12 text-center">
-          <div className="text-xl font-semibold mb-2">Scanning markets...</div>
-          <div className="text-text-muted">Please wait while we analyze market conditions</div>
+        <div className="flex justify-center items-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-primary"></div>
         </div>
       ) : error ? (
-        <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
-          {error}
-        </div>
+        <div className="text-status-error p-4 bg-status-error/10 rounded-md">{error}</div>
       ) : filteredResults.length === 0 ? (
-        <div className="p-12 text-center">
-          <div className="text-xl font-semibold mb-2">No results found</div>
-          <div className="text-text-muted">Try changing your search criteria</div>
-        </div>
+        <div className="text-center py-8">No scan results matched your criteria.</div>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-border-primary">
-                <th className="px-4 py-3 text-left">Market</th>
-                <th className="px-4 py-3 text-right">Price</th>
-                <th className="px-4 py-3 text-right">24h Change</th>
-                <th className="px-4 py-3 text-right">24h Volume</th>
-                <th className="px-4 py-3 text-center">Signals</th>
-                <th className="px-4 py-3 text-center">Score</th>
-                <th className="px-4 py-3 text-center">Action</th>
+                <th className="text-left p-3">Symbol</th>
+                <th className="text-left p-3">Price</th>
+                <th className="text-left p-3">24h Change</th>
+                <th className="text-left p-3 hidden md:table-cell">Volume</th>
+                <th className="text-left p-3 hidden lg:table-cell">Signals</th>
+                <th className="text-left p-3">Score</th>
+                <th className="text-left p-3">Action</th>
               </tr>
             </thead>
             <tbody>
               {filteredResults.map(result => (
-                <tr
-                  key={result.symbol}
-                  className="border-b border-border-primary hover:bg-background-interactive"
+                <tr 
+                  key={result.symbol} 
+                  className="border-b border-border-primary hover:bg-background-secondary transition-colors cursor-pointer"
+                  onClick={() => onSelectMarket(result.symbol)}
                 >
-                  <td className="px-4 py-3">
-                    <div className="flex flex-col">
-                      <span className="font-medium">{result.symbol}</span>
-                      <span className="text-sm text-text-muted">{result.name}</span>
+                  <td className="p-3">
+                    <div>
+                      <div className="font-semibold">{result.symbol}</div>
+                      <div className="text-sm text-text-tertiary">{result.name}</div>
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-right font-medium">
+                  <td className="p-3">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
-                  <td className={`px-4 py-3 text-right font-medium ${
-                    result.change24h > 0 ? 'text-status-success' : 'text-status-error'
-                  }`}>
-                    {result.change24h > 0 ? '+' : ''}{result.change24h.toFixed(2)}%
+                  <td className="p-3">
+                    <span className={result.change24h >= 0 ? 'text-status-success' : 'text-status-error'}>
+                      {result.change24h >= 0 ? '+' : ''}{result.change24h.toFixed(2)}%
+                    </span>
                   </td>
-                  <td className="px-4 py-3 text-right">
+                  <td className="p-3 hidden md:table-cell">
                     ${formatLargeNumber(result.volume24h)}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="p-3 hidden lg:table-cell">
                     <div className="flex flex-col gap-1">
-                      {result.signals.map((signal, i) => (
-                        <div
-                          key={i}
-                          className={`px-2 py-1 rounded text-xs ${
-                            signal.type === 'bullish' ? 'bg-status-success/20 text-status-success' :
-                            signal.type === 'bearish' ? 'bg-status-error/20 text-status-error' :
-                            'bg-status-warning/20 text-status-warning'
-                          }`}
+                      {result.signals.slice(0, 2).map((signal, idx) => (
+                        <div 
+                          key={idx} 
+                          className={`text-xs px-2 py-1 rounded inline-flex items-center
+                            ${signal.type === 'bullish' 
+                              ? 'bg-green-500/20 text-green-500' 
+                              : signal.type === 'bearish' 
+                                ? 'bg-red-500/20 text-red-500' 
+                                : 'bg-gray-500/20 text-gray-500'
+                            }`}
                         >
-                          {signal.indicator}: {signal.description}
+                          {signal.indicator}
                         </div>
                       ))}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-center">
-                    <div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
+                  <td className="p-3">
+                    <div className={`font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
                     </div>
                   </td>
-                  <td className="px-4 py-3 text-center">
+                  <td className="p-3">
                     <button
-                      className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
-                      onClick={() => onSelectMarket(result.symbol)}
+                      className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-opacity-90 transition-colors"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectMarket(result.symbol);
+                      }}
                     >
-                      Select
+                      View
                     </button>
                   </td>
                 </tr>
@@ -372,9 +378,9 @@ export const MarketScanner: React.FC<marketscannerprops  > = ({ onSelectMarket }
   );
 };
 
-// Add Lovable.dev compatibility
-export const lovable = {
-  tables: ['markets', 'marketSignals'],
-  aiBlocks: ['marketAnalysis'],
-  functions: ['scanMarkets', 'getMarketSignals']
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

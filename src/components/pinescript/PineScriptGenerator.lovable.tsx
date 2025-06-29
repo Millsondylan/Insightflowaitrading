@@ -468,4 +468,16 @@ export default function PineScriptGenerator() {
       </Card>
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true,
+  functions: [
+    'checkPineScriptQuota', 
+    'generatePineScript', 
+    'sharePineScript'
+  ]
+}; 
