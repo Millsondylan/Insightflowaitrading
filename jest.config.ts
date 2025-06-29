@@ -1,10 +1,9 @@
-import { pathsToModuleNameMapper } from 'ts-jest';
-import { compilerOptions } from './tsconfig.json';
-
 export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, { prefix: '<rootDir>/' }),
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1'
+  },
   transform: {
     '^.+\\.(t|j)sx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
   },
