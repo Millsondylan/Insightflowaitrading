@@ -82,13 +82,13 @@ const StrategyBuilderV2 = () => {
       </div>
 
       <div className="space-y-4">
-        <Textarea
+        <textarea
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="e.g., 'A simple RSI strategy that buys on oversold signals and sells on overbought signals. Also look for a breakout with volume confirmation.'"
           className="bg-white/5 p-4 rounded-lg text-white/80 w-full min-h-[120px]"
         />
-        <Button onClick={handleSubmit} className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-full text-white font-semibold">
+        <button onClick={handleSubmit} className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-full text-white font-semibold">
           Generate Strategy
         </Button>
       </div>
@@ -139,4 +139,11 @@ const StrategyBuilderV2 = () => {
   );
 };
 
-export default StrategyBuilderV2; 
+export default StrategyBuilderV2;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

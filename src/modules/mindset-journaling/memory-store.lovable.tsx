@@ -48,7 +48,7 @@ export const MemoryStore: React.FC<Memorystoreprops > = ({ userId }) => {
   return (
     <Card  />
       <div className="flex items-center gap-2 mb-4">
-        <brain  >
+        <Brain >
         <h2 className="text-2xl font-bold">Memory Store</h2>
       </div>
 
@@ -56,7 +56,7 @@ export const MemoryStore: React.FC<Memorystoreprops > = ({ userId }) => {
         {memories.map((memory) => (
           <div key={memory.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start justify-between mb-2">
-              <badge variant="default" >
+              <Badge variant="default" />
                 {memory.type}
               </Badge>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">

@@ -153,7 +153,7 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
             )}
             onClick={handleCopyAddress}
             title="Click to copy"
-         >
+        >
             {formatAddress(user.address)}
           </span>
         </div>
@@ -176,11 +176,10 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
       <td className="px-4 py-3">
         <DropdownMenu>
           <DropdownMenuTrigger asChild disabled={isLoading}>
-            <Button 
-              variant="ghost" 
+            <Button variant="ghost" 
               size="icon" 
               className="h-8 w-8 rounded-full p-0"
-            >
+            />
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -243,4 +242,11 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
   );
 };
 
-export default UserRow; 
+export default UserRow;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

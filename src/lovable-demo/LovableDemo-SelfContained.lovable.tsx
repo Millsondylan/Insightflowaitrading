@@ -38,7 +38,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
         onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
         >
           View
-        </button>
+        </Button>
       </div>
       <p style={{
         fontSize: '14px',
@@ -146,11 +146,10 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             fontSize: '20px',
             pointerEvents: 'none'
           }}>🔍</span>
-          <input 
-            type="text"
+          <input type="text"
             placeholder="Search by title or tag..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) = /> setSearchTerm(e.target.value)}
             style={{
               width: '100%',
               padding: '12px 12px 12px 40px',
@@ -190,8 +189,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
         {allTags.map(tag => (
-          <button 
-            key={tag}
+          <Button key={tag}
             onClick={() => handleTagClick(tag)}
             style={{
               padding: '8px 16px',
@@ -218,7 +216,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             }}
           >
             {tag}
-          </button>
+          </Button>
         ))}
       </div>
 

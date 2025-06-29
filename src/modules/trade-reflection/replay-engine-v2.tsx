@@ -11,6 +11,13 @@ interface ReplayEngineV2Props {
 
 export const ReplayEngineV2: React.FC<ReplayEngineV2Props> = ({ tradeId }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [currentTime, setCurrentTime] = React.useState(0);
   const [speed, setSpeed] = React.useState(1);
   const [annotations, setAnnotations] = React.useState<any[]>([]);
@@ -44,22 +51,19 @@ export const ReplayEngineV2: React.FC<ReplayEngineV2Props> = ({ tradeId }) => {
         {/* Playback controls */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
+            <Button variant="outline"
               size="icon"
               onClick={() => setCurrentTime(Math.max(0, currentTime - 10))}
             >
               <SkipBack className="h-4 w-4" />
             </Button>
-            <Button
-              variant="outline"
+            <Button variant="outline"
               size="icon"
               onClick={togglePlayback}
-            >
-              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+           >
+              {isPlaying ? <pause className="h-4 w-4" /> : <play className="h-4 w-4" />}
             </Button>
-            <Button
-              variant="outline"
+            <Button variant="outline"
               size="icon"
               onClick={() => setCurrentTime(Math.min(totalDuration, currentTime + 10))}
             >
@@ -82,8 +86,7 @@ export const ReplayEngineV2: React.FC<ReplayEngineV2Props> = ({ tradeId }) => {
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">Speed:</span>
               {[0.5, 1, 2, 4].map((s) => (
-                <Button
-                  key={s}
+                <Button key={s}
                   variant={speed === s ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSpeed(s)}

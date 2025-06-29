@@ -271,7 +271,7 @@ export class ReputationSystem {
 
   public async getLeaderboard(
     category?: ReputationCategory
-  ): Promise<Array<{
+  ): Promise<array<{
     user: User;
     reputation: ReputationScore;
   }>> {
@@ -281,7 +281,7 @@ export class ReputationSystem {
 
   public async getMentorshipRecommendations(
     userId: string
-  ): Promise<Array<{
+  ): Promise<array<{
     mentor: User;
     reputation: ReputationScore;
     matchScore: number;
@@ -298,13 +298,13 @@ export class ReputationSystem {
   ): Promise<{
     activities: ReputationActivity[];
     totalEarned: number;
-    breakdown: Record<ActivityType, number>;
+    breakdown: Record<activityType, number>;
   }> {
     // Implementation
     return {
       activities: [],
       totalEarned: 0,
-      breakdown: {} as Record<ActivityType, number>
+      breakdown: {} as Record<activityType, number>
     };
   }
 } 

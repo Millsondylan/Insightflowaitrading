@@ -131,4 +131,11 @@ export const useTheme = () => {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

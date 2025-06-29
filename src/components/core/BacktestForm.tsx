@@ -29,7 +29,7 @@ rsi <(14, 60)`;
 const defaultExitLogic = 'close < sma(50)';
 
 const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<BacktestFormState>({
+  const [formState, setFormState] = useState<backtestFormState>({
     ticker: 'BTC',
     timeframe: '1H',
     entryLogic: defaultEntryLogic,
@@ -54,50 +54,49 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="ticker">Ticker</Label>
-          <Select
+          <label htmlFor="ticker">Ticker</label>
+          <select
             value={formState.ticker}
             onValueChange={(value) => handleSelectChange('ticker', value)}
           >
-            <SelectTrigger className="bg-black/30 border-gray-700">
-              <SelectValue />
+            <selectTrigger className="bg-black/30 border-gray-700">
+              <selectValue />
             </SelectTrigger>
-            <SelectContent className="bg-black/90 border-gray-700 text-white">
+            <selectContent className="bg-black/90 border-gray-700 text-white">
               {Object.keys(sampleData).map(ticker => (
-                <SelectItem key={ticker} value={ticker}>{ticker}</SelectItem>
+                <selectItem key={ticker} value={ticker}>{ticker}</SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </select>
         </div>
         <div>
-          <Label htmlFor="timeframe">Timeframe</Label>
-          <Select
+          <label htmlFor="timeframe">Timeframe</label>
+          <select
             value={formState.timeframe}
             onValueChange={(value) => handleSelectChange('timeframe', value)}
           >
-            <SelectTrigger className="bg-black/30 border-gray-700">
-              <SelectValue />
+            <selectTrigger className="bg-black/30 border-gray-700">
+              <selectValue />
             </SelectTrigger>
-            <SelectContent className="bg-black/90 border-gray-700 text-white">
-              <SelectItem value="1H">1 Hour</SelectItem>
+            <selectContent className="bg-black/90 border-gray-700 text-white">
+              <selectItem value="1H">1 Hour</SelectItem>
             </SelectContent>
-          </Select>
+          </select>
         </div>
       </div>
       <div>
-        <Label htmlFor="entryLogic">Entry Logic</Label>
-        <Textarea
-          id="entryLogic"
+        <label htmlFor="entryLogic">Entry Logic</label>
+        <Textarea id="entryLogic"
           name="entryLogic"
           value={formState.entryLogic}
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
-          placeholder="e.g., close > sma(50)"
+          placeholder="e.g., close> sma(50)"
         />
       </div>
       <div>
-        <Label htmlFor="exitLogic">Exit Logic</Label>
-        <Textarea
+        <label htmlFor="exitLogic">Exit Logic</label>
+        <textarea
           id="exitLogic"
           name="exitLogic"
           value={formState.exitLogic}
@@ -107,11 +106,10 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
         />
       </div>
       <div className="flex justify-center">
-        <Button
-          type="submit"
+        <Button type="submit"
           className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
           disabled={isLoading}
-        >
+        />
           {isLoading ? <Loader2 className="animate-spin" /> : 'Run Backtest'}
         </Button>
       </div>
@@ -119,4 +117,11 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
   );
 };
 
-export default BacktestForm; 
+export default BacktestForm;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

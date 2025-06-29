@@ -296,28 +296,28 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
         </p>
         
         <div className="flex space-x-4">
-          <Button
+          <button
             onClick={() => handleOptimize('genetic')}
             disabled={optimizing}
             variant="default"
           >
             Genetic Algorithm
-          </Button>
+          </button>
           
-          <Button
+          <button
             onClick={() => handleOptimize('bayesian')}
             disabled={optimizing}
             variant="default"
           >
             Bayesian Optimization
-          </Button>
+          </button>
         </div>
       </div>
 
       {status === 'running' && (
         <div className="space-y-2">
           <p className="text-sm font-medium">{currentPhase}</p>
-          <Progress value={progress} className="w-full" />
+          <progress value={progress} className="w-full" />
           <p className="text-xs text-muted-foreground">
             Progress: {Math.round(progress)}%
           </p>

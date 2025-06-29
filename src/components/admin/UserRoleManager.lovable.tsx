@@ -67,10 +67,9 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
         {/* Search input */}
         <div className="relative">
           <Search  />
-          <input
-            type="text"
+          <input type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) = /> setSearchQuery(e.target.value)}
             placeholder="Search users..."
             className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
           />
@@ -78,8 +77,8 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table  >
-          <tableheader  >
+        <Table >
+          <Tableheader  />
             <tablerow  >
               <tablehead  >ID</TableHead>
               <tablehead  >Email</TableHead>
@@ -116,7 +115,7 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
                         Admin
                       </SelectItem>
                     </SelectContent>
-                  </Select>
+                  </select>
                 </TableCell>
               </TableRow>
             ))}
@@ -129,7 +128,7 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
               </TableRow>
             )}
           </TableBody>
-        </Table>
+        </table>
       </div>
       
       <div className="text-xs text-gray-500">

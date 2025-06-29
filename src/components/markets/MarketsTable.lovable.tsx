@@ -30,7 +30,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
   const [search, setSearch] = useState("");
   const [sortField, setSortField] = useState<Sortfield >("symbol");
   const [sortDirection, setSortDirection] = useState<Sortdirection  />("asc");
-  const [favorites, setFavorites] = useState<set  >>(new Set());
+  const [favorites, setFavorites] = useState<Set >>(new Set());
 
   // Filter and sort tickers
   const filteredTickers = useMemo(() => {
@@ -131,8 +131,8 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
     <div className="space-y-4">
       {/* Search Bar */}
       <div className="relative">
-        <search  >
-        <input placeholder="Search by symbol..." > setSearch(e.target.value)}
+        <Search  />
+        <input placeholder="Search by symbol..."  /> setSearch(e.target.value)}
           className="pl-10 bg-black/30 border-white/10 text-white"
         />
       </div>
@@ -202,12 +202,11 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                   }`}
                 >
                   <tablecell  >
-                    <button 
-                      onClick={(e) => toggleFavorite(ticker.symbol, e)}
+                    <Button  onClick={(e) => toggleFavorite(ticker.symbol, e)}
                       className="focus:outline-none"
                     >
                       <star  >
-                    </button>
+                    </Button>
                   </TableCell>
                   <tablecell  >{ticker.symbol}</TableCell>
                   <tablecell  >${formatPrice(ticker.price)}</TableCell>
@@ -228,7 +227,7 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
                 </TableRow>
               )}
             </TableBody>
-          </Table>
+          </table>
         </div>
       </div>
       

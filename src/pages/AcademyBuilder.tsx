@@ -224,10 +224,10 @@ const AcademyBuilderPage: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <button className="glow-button glow-blue">
                 Continue Learning
-              </button>
+              </Button>
               <button className="glow-button glow-emerald">
                 Practice Quiz
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -237,3 +237,10 @@ const AcademyBuilderPage: React.FC = () => {
 };
 
 export default AcademyBuilderPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

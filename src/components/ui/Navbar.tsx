@@ -32,7 +32,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
           {ROUTES.map((route) => (
-            <Link key={route.href} to={route.href} className="nav-link font-medium">
+            <link key={route.href} to={route.href} className="nav-link font-medium">
               {route.label}
             </Link>
           ))}
@@ -40,14 +40,14 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <menu className="h-6 w-6" />}
+        </Button>
       </div>
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {ROUTES.map((route) => (
-          <Link
+          <link
             key={route.href}
             to={route.href}
             className="mobile-nav-link"
@@ -61,4 +61,11 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

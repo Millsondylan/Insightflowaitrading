@@ -193,11 +193,11 @@ export function ReferralSystem() {
         ) : !referralData?.code ? (
           <div className="text-center py-6">
             <div className="mb-6 text-muted-foreground">
-              <Info className="h-12 w-12 mx-auto mb-2" />
+              <info className="h-12 w-12 mx-auto mb-2" />
               <p>You haven't generated your referral code yet.</p>
             </div>
             
-            <Button onClick={generateReferralCode}>
+            <button onClick={generateReferralCode}>
               Generate My Referral Code
             </Button>
           </div>
@@ -206,7 +206,7 @@ export function ReferralSystem() {
             <div>
               <div className="text-sm font-medium mb-2">Your Referral Link</div>
               <div className="flex gap-2">
-                <Input 
+                <input 
                   value={`${config.app.baseUrl}/signup?ref=${referralData.code}`}
                   readOnly
                   className="font-mono text-sm bg-muted/50"
@@ -246,7 +246,7 @@ export function ReferralSystem() {
       
       {referralData?.code && (
         <CardFooter className="bg-muted/50 flex gap-2">
-          <Button className="w-full" onClick={shareReferral}>
+          <button className="w-full" onClick={shareReferral}>
             <Share2 className="h-4 w-4 mr-2" />
             Share Referral Link
           </Button>

@@ -26,3 +26,10 @@ const TooltipContent = React.forwardRef<
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

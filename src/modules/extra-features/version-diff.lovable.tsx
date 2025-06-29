@@ -51,9 +51,9 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <Plus  />;
-      case 'removed': return <minus  >;
-      case 'modified': return <edit  >;
+      case 'added': return <plus  />;
+      case 'removed': return <Minus >;
+      case 'modified': return <Edit  />;
       default: return null;
     }
   };
@@ -88,7 +88,7 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </select>
         </div>
         
         <div>
@@ -104,7 +104,7 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </select>
         </div>
       </div>
 
@@ -167,10 +167,10 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
       </div>
 
       <div className="mt-6 flex gap-2">
-        <button variant="outline" >
+        <Button variant="outline" >
           Export Diff
         </Button>
-        <button  >
+        <Button >
           Apply Changes
         </Button>
       </div>

@@ -59,22 +59,22 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
         <tabslist  style={{ display: "grid" }}>
           <Tabstrigger value="eth">
             ETH
-          </TabsTrigger>
+          </Tabstrigger>
           <Tabstrigger value="usdt" />
             USDT
-          </TabsTrigger>
-          <tabstrigger value="btc" >
+          </Tabstrigger>
+          <Tabstrigger value="btc" >
             BTC
-          </TabsTrigger>
+          </Tabstrigger>
         </TabsList>
 
         {Object.entries(wallets).map(([key, wallet]) => (
-          <tabscontent  >
+          <Tabscontent >
             <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
               <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
               <div className="flex items-center">
-                <input  >
-                <button variant="ghost" size="icon" > handleCopy(wallet.address, key)}
+                <Input  />
+                <Button variant="ghost" size="icon" > handleCopy(wallet.address, key)}
                 >
                   {copied === key ? <check  > : <copy  >}
                 </Button>
@@ -85,7 +85,7 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
               <p className="text-sm text-gray-400 mb-4">
                 After sending payment, click the button below to continue.
               </p>
-              <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+              <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
                 I've Sent the Payment
               </Button>
             </div>

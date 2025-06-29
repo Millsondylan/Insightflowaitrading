@@ -29,10 +29,10 @@ const QuizBlock: React.FC<Quizblockprops > = ({
   const [quiz, setQuiz] = useState<Quiz  />(null);
   const [loading, setLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<record  >>({});
-  const [submittedAnswers, setSubmittedAnswers] = useState<record  >>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<Record >>({});
+  const [submittedAnswers, setSubmittedAnswers] = useState<Record  />>({});
   const [feedbacks, setFeedbacks] = useState<record  >>({});
-  const [quizResult, setQuizResult] = useState<quizresult  >(null);
+  const [quizResult, setQuizResult] = useState<Quizresult  >(null);
   const [showCompletion, setShowCompletion] = useState(false);
 
   const currentQuestion = quiz?.questions[currentQuestionIndex];
@@ -190,7 +190,7 @@ const QuizBlock: React.FC<Quizblockprops > = ({
                 Upgrade to a Pro plan to test your knowledge with quizzes tailored to each lesson.
               </p>
             </div>
-            <button  >
+            <Button >
               Upgrade to Pro
             </Button>
           </CardContent>
@@ -233,7 +233,7 @@ const QuizBlock: React.FC<Quizblockprops > = ({
       <card  >
         <cardcontent  >
           <p className="text-gray-400">Ready to test your knowledge?</p>
-          <button  >
+          <Button >
             Generate Quiz
           </Button>
         </CardContent>
@@ -302,13 +302,12 @@ const QuizBlock: React.FC<Quizblockprops > = ({
                       transition={{ delay: 0.1 * parseInt(option.id.slice(-1)), duration: 0.4 }}
                       className="quiz-option"
                     >
-                      <input
-                        type="radio"
+                      <input type="radio"
                         id={`${currentQuestion.id}-${option.id}`}
                         name={currentQuestion.id}
                         value={option.id}
                         checked={isSelected}
-                        onChange={() => handleAnswerSelect(currentQuestion.id, option.id)}
+                        onChange={() = /> handleAnswerSelect(currentQuestion.id, option.id)}
                         disabled={isSubmitted}
                         className="quiz-option-input"
                       />
@@ -328,13 +327,13 @@ const QuizBlock: React.FC<Quizblockprops > = ({
               <div className="flex justify-between items-center">
                 <div />
                 {!isQuestionAnswered ? (
-                  <button  >
+                  <Button >
                     Submit Answer
                   </Button>
                 ) : (
                   <div className="flex space-x-3">
                     {canProceed && (
-                      <button  >
+                      <Button >
                         Next Question
                         <chevrondown  >
                       </Button>
@@ -358,7 +357,7 @@ const QuizBlock: React.FC<Quizblockprops > = ({
 
               {/* Feedback */}
               {feedbacks[currentQuestion.id] && (
-                <quizfeedback  >
+                <Quizfeedback  >
               )}
             </>
           )}
@@ -386,7 +385,7 @@ const QuizBlock: React.FC<Quizblockprops > = ({
             <p className="text-lg font-semibold text-green-400">
               Score: {quizResult.score.toFixed(0)}%
             </p>
-            <button  > setShowCompletion(false)}
+            <Button > setShowCompletion(false)}
               className="mt-4 bg-yellow-600 hover:bg-yellow-700"
             >
               Continue Learning

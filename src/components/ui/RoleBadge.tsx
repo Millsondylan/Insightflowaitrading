@@ -58,7 +58,7 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
         safeGlowEffect,
         className
       )}
-   >
+  >
       {role}
     </span>
   );
@@ -83,4 +83,11 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
   return badge;
 };
 
-export default RoleBadge; 
+export default RoleBadge;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

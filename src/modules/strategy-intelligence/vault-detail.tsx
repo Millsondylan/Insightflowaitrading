@@ -68,9 +68,9 @@ export const VaultDetail: React.FC = () => {
             <h4 className="font-semibold mb-2">Tags</h4>
             <div className="flex space-x-2">
               {strategy.tags?.map((tag) => (
-                <Span key={tag} 
+                <span key={tag} 
                   className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
-               >
+                >
                   {tag}
                 </span>
               ))}
@@ -85,4 +85,11 @@ export const VaultDetail: React.FC = () => {
       </CardContent>
     </Card>
   );
+}; 
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

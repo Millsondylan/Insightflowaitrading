@@ -23,6 +23,13 @@ type Props = {
 
 export default function WalletConnect({ onVerified }: Props) {
   const [address, setAddress] = useState<string | null>(null);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [status, setStatus] = useState<"idle" | "connecting" | "verifying" | "verified" | "error">("idle");
   const [isSubscribed, setIsSubscribed] = useState<boolean | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -178,26 +185,23 @@ export default function WalletConnect({ onVerified }: Props) {
 
       <div className="pt-2">
         {!address ? (
-          <Button
-            onClick={connectWallet}
+          <Button onClick={connectWallet}
             disabled={status === "connecting" || !isMetaMaskInstalled}
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
-          >
+         >
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Button>
         ) : status === "verified" ? (
-          <Button
-            onClick={() => window.location.reload()}
+          <Button  onClick={() => window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect
           </Button>
         ) : (
-          <Button
-            onClick={verifyWallet}
+          <Button onClick={verifyWallet}
             disabled={status === "verifying"}
             className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
-          >
+          />
             {status === "verifying" ? "Verifying..." : "🔑 Verify Ownership"}
           </Button>
         )}

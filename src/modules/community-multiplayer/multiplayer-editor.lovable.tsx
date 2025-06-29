@@ -39,13 +39,13 @@ exit_rules:
     <Card  />
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <users  >
+          <Users >
           <h2 className="text-2xl font-bold">Multiplayer Editor</h2>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex -space-x-2">
             {activeUsers.map((user) => (
-              <avatar  >
+              <Avatar  />
                 <avatarfallback  >
                   {user.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
@@ -88,11 +88,11 @@ exit_rules:
             ))}
           </div>
           <div className="flex gap-2 mt-4">
-            <button  >
+            <Button >
               <save  >
               Save Strategy
             </Button>
-            <button variant="outline" >
+            <Button variant="outline" >
               <share2  >
               Share
             </Button>

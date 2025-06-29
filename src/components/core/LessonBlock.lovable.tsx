@@ -19,12 +19,12 @@ const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
       className="w-full mb-12"
     >
       <Card  />
-        <cardheader  >
-          <cardtitle  style={{ fontWeight: "700" }}>
+        <Cardheader  >
+          <Cardtitle  style={{ fontWeight: "700" }}>
             {block.title}
-          </CardTitle>
-        </CardHeader>
-        <cardcontent  >
+          </Cardtitle>
+        </Cardheader>
+        <Cardcontent  >
           <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
             {block.content}
           </p>
@@ -49,7 +49,7 @@ const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
               ))}
             </ul>
           </div>
-        </CardContent>
+        </Cardcontent>
       </Card>
     </motion.div>
   );

@@ -4,28 +4,28 @@ import { BrainCircuit, BarChart, BookOpen, PenSquare } from 'lucide-react';
 
 const features = [
   {
-    icon: <Braincircuit >,
+    icon: <Braincircuit>,
     title: 'Strategy Builder',
     description: 'Design and test your trading strategies with AI-powered insights.',
     link: '/strategy',
     borderColor: 'hover:border-cyan-400',
   },
   {
-    icon: <Barchart  />,
+    icon: <barchart  />,
     title: 'Chart Vision',
     description: 'Upload chart images and get AI-driven technical analysis.',
     link: '/vision',
     borderColor: 'hover:border-violet-400',
   },
   {
-    icon: <pensquare  >,
+    icon: <Pensquare >,
     title: 'Trade Journal',
     description: 'Log and analyze your trades to discover patterns and improve.',
     link: '/journal',
     borderColor: 'hover:border-blue-400',
   },
   {
-    icon: <bookopen  >,
+    icon: <Bookopen  />,
     title: 'Academy',
     description: 'Learn from a curated knowledge base of trading concepts and strategies.',
     link: '/academy',

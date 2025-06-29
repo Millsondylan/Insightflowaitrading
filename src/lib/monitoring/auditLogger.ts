@@ -294,7 +294,7 @@ export async function trackInteraction(
     if (!user) return;
 
     const mouseEvent = event as MouseEvent;
-    const interaction: Omit<InteractionHeatmap, 'id' | 'created_at'> = {
+    const interaction: Omit<interactionHeatmap, 'id' | 'created_at'> = {
       user_id: user.id,
       page_path: window.location.pathname,
       component_id: componentId,

@@ -68,7 +68,7 @@ const CommunityGPT = ({ post }: Props) => {
                 )}
             </div>
           </div>
-          <button variant="ghost" size="sm" >
+          <Button variant="ghost" size="sm">
             Regenerate
           </Button>
       </div>

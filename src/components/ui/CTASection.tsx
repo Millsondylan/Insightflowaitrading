@@ -29,12 +29,11 @@ const CTASection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <Button
-            asChild
+          <Button asChild
             className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 text-lg px-8 py-6"
-          >
+         >
             <Link to="/strategy">
-              Get Started <ArrowRight className="ml-2 h-5 w-5" />
+              Get Started <arrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </motion.div>
@@ -43,4 +42,11 @@ const CTASection = () => {
   );
 };
 
-export default CTASection; 
+export default CTASection;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

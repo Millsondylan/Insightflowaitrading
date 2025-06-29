@@ -19,8 +19,8 @@ interface AccessStatus {
   };
 }
 
-export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
-  const [accessStatus, setAccessStatus] = React.useState<Accessstatus  />([
+export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
+  const [accessStatus, setAccessStatus] = React.useState<accessstatus  />([
     {
       feature: 'AI Strategy Builder',
       isLocked: false,
@@ -60,9 +60,9 @@ export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
   };
 
   return (
-    <card  >
+    <Card >
       <div className="flex items-center gap-2 mb-6">
-        <crown  >
+        <Crown  />
         <h2 className="text-2xl font-bold">Feature Access</h2>
       </div>
 
@@ -134,7 +134,7 @@ export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
         <p className="text-sm text-muted-foreground mb-3">
           Unlock all features with Pro subscription
         </p>
-        <button  style={{ width: "100%" }}>
+        <Button  style={{ width: "100%" }}>
           Upgrade to Pro
         </Button>
       </div>

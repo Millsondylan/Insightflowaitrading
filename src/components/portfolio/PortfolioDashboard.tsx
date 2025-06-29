@@ -30,6 +30,13 @@ export const PortfolioDashboard = ({ trades }: Props) => {
   const stats = useMemo(() => {
     if (trades.length === 0) {
       return { winRate: 0, totalPnl: 0, avgRr: 0 };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
     }
     const totalPnl = trades.reduce((acc, trade) => acc + trade.pnl, 0);
     const winningTrades = trades.filter(t => t.pnl > 0).length;
@@ -56,7 +63,7 @@ export const PortfolioDashboard = ({ trades }: Props) => {
 
       <div>
         <h2 className="text-xl font-semibold text-white/90 mb-4">PnL Curve</h2>
-        <PnLCurve trades={trades} />
+        <pnLCurve trades={trades} />
       </div>
 
       <div>
@@ -76,7 +83,7 @@ export const PortfolioDashboard = ({ trades }: Props) => {
                     {trades.map(trade => (
                         <tr key={trade.id} className="border-b border-white/10 hover:bg-white/10">
                             <td className="p-4">{trade.symbol}</td>
-                            <Td className={`p-4 ${trade.pnl> 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            <td className={`p-4 ${trade.pnl> 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 ${trade.pnl.toFixed(2)}
                             </td>
                             <td className="p-4">{trade.rr.toFixed(2)}</td>

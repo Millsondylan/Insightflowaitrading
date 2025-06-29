@@ -50,7 +50,7 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
   return (
     <Card  />
       <div className="flex items-center gap-2 mb-6">
-        <github  >
+        <Github >
         <h2 className="text-2xl font-bold">GitHub Sync</h2>
       </div>
 
@@ -59,8 +59,8 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
           <div>
             <label className="text-sm text-muted-foreground">Repository</label>
             <div className="flex items-center gap-2 mt-1">
-              <input  style={{ fontSize: "0.875rem" }}>
-              <button variant="outline" size="sm" >
+              <input style={{ fontSize: "0.875rem" }} />
+              <Button variant="outline" size="sm" />
                 Change
               </Button>
             </div>
@@ -69,7 +69,7 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
             <label className="text-sm text-muted-foreground">Branch</label>
             <div className="flex items-center gap-2 mt-1">
               <gitbranch  >
-              <input  style={{ fontSize: "0.875rem" }}>
+              <input style={{ fontSize: "0.875rem" }} />
             </div>
           </div>
         </div>
@@ -115,10 +115,10 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
         </div>
 
         <div className="flex gap-2">
-          <button  >
+          <Button >
             {isSyncing ? 'Syncing...' : 'Sync Now'}
           </Button>
-          <button variant="outline" >
+          <Button variant="outline" >
             <gitpullrequest  >
             Create PR
           </Button>

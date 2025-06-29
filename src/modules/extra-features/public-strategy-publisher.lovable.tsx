@@ -14,7 +14,7 @@ interface PublicStrategyPublisherProps {
   onPublish?: (data: any) => void;
 }
 
-export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops > = ({ 
+export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = ({ 
   strategyId, 
   isPro, 
   onPublish 
@@ -54,20 +54,20 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops > = 
       <div className="space-y-6">
         <div>
           <label className="text-sm font-medium mb-2 block">Strategy Title</label>
-          <input placeholder="e.g., RSI Momentum Strategy" > setPublishSettings({ ...publishSettings, title: e.target.value })}
+          <Input placeholder="e.g., RSI Momentum Strategy" /> setPublishSettings({ ...publishSettings, title: e.target.value })}
           />
         </div>
 
         <div>
           <label className="text-sm font-medium mb-2 block">Description</label>
-          <textarea placeholder="Describe your strategy, its performance, and best use cases..." > setPublishSettings({ ...publishSettings, description: e.target.value })}
+          <Textarea placeholder="Describe your strategy, its performance, and best use cases..." /> setPublishSettings({ ...publishSettings, description: e.target.value })}
             rows={4}
           />
         </div>
 
         <div>
           <label className="text-sm font-medium mb-2 block">Tags</label>
-          <input placeholder="momentum, RSI, scalping (comma separated)" > setPublishSettings({ ...publishSettings, tags: e.target.value })}
+          <input placeholder="momentum, RSI, scalping (comma separated)"  /> setPublishSettings({ ...publishSettings, tags: e.target.value })}
           />
         </div>
 
@@ -75,17 +75,17 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops > = 
           <h3 className="font-semibold">Visibility Settings</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'private' })}
+            <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'private' })}
             >
               <lock  >
               Private
             </Button>
-            <button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
+            <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
             >
               <eye  >
               Unlisted
             </Button>
-            <button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'public' })}
+            <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'public' })}
               disabled={!isPro}
             >
               <globe  >
@@ -132,12 +132,12 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops > = 
             <label className="text-sm font-medium mb-2 block">
               Price (optional, 0 for free)
             </label>
-            <input type="number" placeholder="0" > setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
+            <input type="number" placeholder="0"  /> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
             />
           </div>
         )}
 
-        <button  style={{ width: "100%" }}>
+        <Button  style={{ width: "100%" }}>
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
         </Button>
 
@@ -147,8 +147,8 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops > = 
               Strategy published successfully!
             </p>
             <div className="flex items-center gap-2">
-              <input  style={{ fontSize: "0.75rem" }}>
-              <button size="sm" variant="outline" >
+              <input style={{ fontSize: "0.75rem" }} />
+              <Button size="sm" variant="outline" >
                 Copy Link
               </Button>
             </div>

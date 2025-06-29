@@ -20,6 +20,13 @@ type Props = {
 export const PnLCurve = ({ trades }: Props) => {
   const data = trades.reduce((acc, trade, index) => {
     const cumulativePnl = (acc[index - 1]?.cumulativePnl || 0) + trade.pnl;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
     acc.push({
       name: `Trade ${index + 1}`,
       pnl: trade.pnl,
@@ -31,12 +38,11 @@ export const PnLCurve = ({ trades }: Props) => {
   return (
     <div className="h-64 w-full bg-white/5 rounded-lg p-4">
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart
-          data={data}
+        <AreaChart data={data}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
-        >
+       >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -52,7 +58,7 @@ export const PnLCurve = ({ trades }: Props) => {
               borderColor: 'rgba(255, 255, 255, 0.2)' 
             }}
           />
-          <Area 
+          <area 
             type="monotone" 
             dataKey="cumulativePnl" 
             stroke="#8884d8" 

@@ -111,9 +111,9 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
             <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
             <Button onClick={handleBackToContent}
               className="text-white/70 hover:text-cyan-400 text-sm"
-           >
+          >
               ← Back to lesson content
-            </button>
+            </Button>
           </div>
           
           <QuizEngine 
@@ -131,4 +131,11 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
   );
 };
 
-export default LessonView; 
+export default LessonView;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

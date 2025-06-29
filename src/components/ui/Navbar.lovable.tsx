@@ -25,14 +25,14 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <link to="/" style={{ fontWeight: "700" }}>
+        <Link to="/" style={{ fontWeight: "700" }}>
           Insight Flow
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
           {ROUTES.map((route) => (
-            <Link >
+            <Link>
               {route.label}
             </Link>
           ))}
@@ -40,14 +40,14 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <x  > : <Menu  />}
-        </button>
+          {isMobileMenuOpen ? <x  > : <menu  />}
+        </Button>
       </div>
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {ROUTES.map((route) => (
-          <link  > setIsMobileMenuOpen(false)}
+          <Link > setIsMobileMenuOpen(false)}
           >
             {route.label}
           </Link>

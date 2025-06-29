@@ -25,15 +25,15 @@ const StrategyCopilotPage: React.FC = () => {
               <h3 className="text-lg font-semibold text-cyan-400 mb-2">Strategy Analysis</h3>
               <p className="text-gray-300 mb-4">What market conditions favor your current approach?</p>
               <div className="flex space-x-2">
-                <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
-                  Bullish
-                </button>
-                <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
-                  Bearish
-                </button>
-                <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
-                  Sideways
-                </button>
+                                  <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
+                    Bullish
+                  </button>
+                  <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
+                    Bearish
+                  </button>
+                  <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
+                    Sideways
+                  </button>
               </div>
             </div>
           </div>
@@ -74,3 +74,10 @@ const StrategyCopilotPage: React.FC = () => {
 };
 
 export default StrategyCopilotPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

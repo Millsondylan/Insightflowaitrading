@@ -10,9 +10,9 @@ interface ThemeScrollObserverProps {
   sections: Section[];
 }
 
-const ThemeScrollObserver: React.FC<Themescrollobserverprops  /> = ({ sections }) => {
+const ThemeScrollObserver: React.FC<themescrollobserverprops  /> = ({ sections }) => {
   const { setTheme } = useTheme();
-  const observerRef = useRef<intersectionobserver  >(null);
+  const observerRef = useRef<Intersectionobserver >(null);
 
   useEffect(() => {
     if (observerRef.current) {

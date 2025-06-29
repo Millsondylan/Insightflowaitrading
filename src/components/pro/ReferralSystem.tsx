@@ -30,6 +30,13 @@ interface EarningEvent {
 
 export function ReferralSystem() {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const { toast } = useToast();
   const [referralCode, setReferralCode] = useState<string>('');
   const [referrals, setReferrals] = useState<Referral[]>([]);
@@ -231,7 +238,7 @@ export function ReferralSystem() {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           <span>Referral Program</span>
-          <Badge variant="outline" className="text-sm font-normal">
+          <badge variant="outline" className="text-sm font-normal">
             Earn 10% on Referred Payments
           </Badge>
         </CardTitle>
@@ -242,9 +249,9 @@ export function ReferralSystem() {
       
       <CardContent className="space-y-6">
         <div className="space-y-3">
-          <Label htmlFor="referral-link">Your Referral Link</Label>
+          <label htmlFor="referral-link">Your Referral Link</label>
           <div className="flex gap-2">
-            <Input 
+            <input 
               id="referral-link" 
               value={`${config.app.baseUrl}/signup?ref=${referralCode}`}
               readOnly 
@@ -307,7 +314,7 @@ export function ReferralSystem() {
                       </div>
                     </div>
                     <div className="flex items-center">
-                      <Badge variant={
+                      <badge variant={
                         referral.status === 'confirmed' ? 'default' : 
                         referral.status === 'pending' ? 'outline' : 'destructive'
                       }>
@@ -332,15 +339,14 @@ export function ReferralSystem() {
           <TabsContent value="earnings">
             <div className="space-y-5">
               <div>
-                <Label htmlFor="wallet-address">Payout Wallet Address</Label>
+                <label htmlFor="wallet-address">Payout Wallet Address</label>
                 <div className="flex gap-2 mt-1.5">
-                  <Input 
-                    id="wallet-address"
+                  <input id="wallet-address"
                     placeholder="Enter your crypto wallet address" 
                     value={walletAddress} 
-                    onChange={(e) => setWalletAddress(e.target.value)}
+                    onChange={(e) = /> setWalletAddress(e.target.value)}
                   />
-                  <Button onClick={saveWalletAddress}>Save</Button>
+                  <button onClick={saveWalletAddress}>Save</Button>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
                   We pay out in USDT on Ethereum or BNB Smart Chain
@@ -360,7 +366,7 @@ export function ReferralSystem() {
                             {new Date(earning.payment_date).toLocaleDateString()} • {earning.referred_email}
                           </div>
                         </div>
-                        <Badge variant={
+                        <badge variant={
                           earning.status === 'processed' ? 'default' : 
                           earning.status === 'pending' ? 'outline' : 'destructive'
                         }>

@@ -14,7 +14,7 @@ const StrategyPage = () => {
   return (
     <div className="theme-strategy scroll-container min-h-screen">
       {/* Hero Section */}
-      <scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-bold text-glow-cyan mb-8 leading-tight">
             Visualize Your Edge
@@ -26,7 +26,7 @@ const StrategyPage = () => {
             <div className="threadline-glow w-32 mx-auto"></div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* Strategy Generator Section */}
       <Scrollsection >
@@ -45,10 +45,10 @@ const StrategyPage = () => {
           
           <Strategygenerator  />
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* CTA Footer */}
-      <scrollsection  >
+      <Scrollsection  >
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-12">
             <h4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4">Ready to Execute?</h4>
@@ -57,19 +57,19 @@ const StrategyPage = () => {
           <div className="flex flex-wrap justify-center gap-6">
             <button className="glow-button glow-cyan text-lg px-8 py-4">
               🔁 Backtest Strategy
-            </button>
+            </Button>
             <button className="glow-button glow-cyan text-lg px-8 py-4">
               📓 Save to Journal
-            </button>
+            </Button>
             <button className="glow-button glow-cyan text-lg px-8 py-4">
               📘 Learn in Academy
-            </button>
+            </Button>
             <button className="glow-button glow-cyan text-lg px-8 py-4">
               💬 Share Strategy
-            </button>
+            </Button>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
     </div>
   );
 };

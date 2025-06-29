@@ -12,6 +12,13 @@ interface AuthFormProps {
 
 export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthFormProps) {
     const [mode, setMode] = useState<'signin' | 'signup'>(defaultMode);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
@@ -55,22 +62,20 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <Input
-                            type="email"
+                        <input type="email"
                             placeholder="Email"
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            onChange={(e) = /> setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                         />
                     </div>
 
                     <div>
-                        <Input
-                            type="password"
+                        <input type="password"
                             placeholder="Password"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) = /> setPassword(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                             minLength={8}
@@ -81,11 +86,10 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                         <div className="text-red-400 text-sm">{error}</div>
                     )}
 
-                    <Button
-                        type="submit"
+                    <Button type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-700"
                         disabled={loading}
-                    >
+                   >
                         {loading ? (
                             <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
                         ) : mode === 'signin' ? (
@@ -122,8 +126,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                     </div>
 
                     <div className="text-center mt-6">
-                        <button
-                            type="button"
+                        <Button  type="button"
                             onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
@@ -132,7 +135,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             ) : (
                                 "Already have an account? Sign in"
                             )}
-                        </button>
+                        </Button>
                     </div>
                 </form>
             </div>

@@ -35,6 +35,13 @@ const GlassCard = ({ title, value, icon, unit = '' }: { title: string, value: st
 
 export default function VaultDetailPage() {
   const { id } = useParams<{ id: string }>();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   // In a real app, you'd fetch strategy details based on the id
   const strategy = strategyDetails;
 
@@ -56,7 +63,7 @@ export default function VaultDetailPage() {
             </div>
             <Link to={`/replay/${id}`}>
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                    <PlayCircle size={20} className="mr-2"/>
+                    <playCircle size={20} className="mr-2"/>
                     Launch Replay
                 </Button>
             </Link>
@@ -65,7 +72,7 @@ export default function VaultDetailPage() {
         <p className="text-gray-300 max-w-3xl mb-6">{strategy.description}</p>
         
         <div className="flex items-center gap-2 mb-8">
-          {strategy.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+          {strategy.tags.map(tag => <badge key={tag} variant="secondary">{tag}</Badge>)}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

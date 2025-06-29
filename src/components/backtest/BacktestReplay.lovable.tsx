@@ -85,7 +85,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
         {currentEvent && (
           <Div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
               ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}
-         >
+        >
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
               <span className="ml-2 font-mono">
@@ -105,20 +105,20 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
 
       <div className="flex justify-between items-center gap-4 mt-4">
         <Button variant="ghost" size="icon" title="Reset" />
-          <repeat  >
+          <Repeat  />
         </Button>
         <div className="flex items-center gap-2">
-          <button variant="outline" size="icon" title="Previous Candle" >
+          <Button variant="outline" size="icon" title="Previous Candle" >
             <rewind  >
           </Button>
-          <button variant="outline" size="icon" >
+          <Button variant="outline" size="icon" >
             {isPlaying ? <pause  > : <play  >}
           </Button>
-          <button variant="outline" size="icon" title="Next Candle" >
-            <fastforward  >
+          <Button variant="outline" size="icon" title="Next Candle" >
+            <Fastforward />
           </Button>
         </div>
-        <button variant="ghost" size="icon" title="Toggle Speed" >
+        <Button variant="ghost" size="icon" title="Toggle Speed" >
           <zap  >
         </Button>
       </div>

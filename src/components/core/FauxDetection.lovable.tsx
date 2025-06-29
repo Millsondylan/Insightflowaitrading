@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<Patternzone >([]);
+  const [patternZones, setPatternZones] = useState<Patternzone>([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -32,26 +32,25 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <Blockreveal  />
+      <blockreveal  />
         <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
-            <chartcanvasoverlay  >
+            <Chartcanvasoverlay >
           ) : (
             <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
           )}
           <div className="mt-2 flex justify-end">
-            <button 
-              onClick={() => setShowOverlays(!showOverlays)} 
+            <Button  onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </button>
+            </Button>
           </div>
         </div>
       </BlockReveal>
       
       <div className="space-y-6">
-        <blockreveal  >
+        <Blockreveal  />
           <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
           <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
@@ -80,14 +79,14 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
         
         <blockreveal  >
           <div className="flex flex-wrap gap-4 mt-4">
-            <button  >
-              <link to="/journal?from=vision" >📓 Save to Journal</Link>
+            <Button >
+              <Link to="/journal?from=vision" >📓 Save to Journal</Link>
             </Button>
-            <button  >
-              <link to="/academy?topic=patterns" >📘 Learn Pattern</Link>
+            <Button >
+              <Link to="/academy?topic=patterns" >📘 Learn Pattern</Link>
             </Button>
-            <button  >
-              <link to="/strategy?from=vision" >💡 Find Strategy</Link>
+            <Button >
+              <Link to="/strategy?from=vision" >💡 Find Strategy</Link>
             </Button>
           </div>
         </BlockReveal>

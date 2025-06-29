@@ -6,7 +6,7 @@ const JournalBuilderPage: React.FC = () => {
   return (
     <div className="theme-journal scroll-container min-h-screen">
       {/* Hero Section */}
-      <scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-bold text-glow-violet mb-8 leading-tight">
             Your Trading Mind, Captured
@@ -18,7 +18,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="threadline-glow w-40 mx-auto"></div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* New Entry Section */}
       <Scrollsection >
@@ -57,11 +57,11 @@ const JournalBuilderPage: React.FC = () => {
             <div className="mt-8 text-center">
               <button className="glow-button glow-violet text-lg px-8 py-4">
                 Save Entry
-              </button>
+              </Button>
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* Recent Entries Timeline */}
       <Scrollsection animation="slide-right" />
@@ -124,10 +124,10 @@ const JournalBuilderPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* Insights Section */}
-      <scrollsection animation="scale-in" >
+      <Scrollsection animation="scale-in" >
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-section motion-shadow">
             <h4 className="text-2xl md:text-3xl font-semibold text-glow-violet mb-6">🧠 AI Insights</h4>
@@ -147,7 +147,7 @@ const JournalBuilderPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
     </div>
   );
 };

@@ -62,6 +62,13 @@ const mockLogs = [
 
 export default function AdminPage() {
   const { toast } = useToast();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [users, setUsers] = React.useState(mockUsers);
   const [promoCodes, setPromoCodes] = React.useState(mockPromoCodes);
   const [logs, setLogs] = React.useState(mockLogs);
@@ -162,7 +169,7 @@ export default function AdminPage() {
               <span>Promo Codes</span>
             </TabsTrigger>
             <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
-              <Activity className="h-4 w-4" />
+              <activity className="h-4 w-4" />
               <span>Usage Logs</span>
             </TabsTrigger>
           </TabsList>
@@ -172,7 +179,7 @@ export default function AdminPage() {
           </TabsContent>
 
           <TabsContent value="promo">
-            <PromoCodeEditor 
+            <promoCodeEditor 
               codes={promoCodes} 
               onGenerate={handleGeneratePromoCode} 
               onRevoke={handleRevokePromoCode} 

@@ -38,12 +38,12 @@ interface TradeReflection {
   updatedAt: string;
 }
 
-export const TradeAnalyzer: React.FC<Tradeanalyzerprops > = ({
+export const TradeAnalyzer: React.FC<Tradeanalyzerprops> = ({
   tradeId,
   onSaveReflection
 }) => {
-  const [trade, setTrade] = useState<Trade  />(null);
-  const [reflection, setReflection] = useState<partial  >>({
+  const [trade, setTrade] = useState<trade  />(null);
+  const [reflection, setReflection] = useState<Partial >>({
     strengths: [],
     weaknesses: [],
     opportunities: [],
@@ -57,7 +57,7 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops > = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState<boolean>(false);
-  const [aiSuggestions, setAiSuggestions] = useState<partial  > | null>(null);
+  const [aiSuggestions, setAiSuggestions] = useState<Partial  /> | null>(null);
   const [isGeneratingSuggestions, setIsGeneratingSuggestions] = useState<boolean>(false);
   
   useEffect(() => {
@@ -333,13 +333,12 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops > = ({
         
         {/* AI Suggestions Button */}
         <div className="mb-6">
-          <button
-            className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
+          <Button  className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
             onClick={generateAiSuggestions}
             disabled={isGeneratingSuggestions}
           >
             {isGeneratingSuggestions ? 'Generating Suggestions...' : 'Generate AI Suggestions'}
-          </button>
+          </Button>
         </div>
         
         {/* AI Suggestions Panel */}
@@ -347,12 +346,11 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops > = ({
           <div className="mb-6 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
             <div className="flex justify-between items-center mb-4">
               <h3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</h3>
-              <button
-                className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
+              <Button  className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
                 onClick={applySuggestions}
               >
                 Apply All
-              </button>
+              </Button>
             </div>
             
             <div className="space-y-4">
@@ -470,28 +468,26 @@ export const TradeAnalyzer: React.FC<Tradeanalyzerprops > = ({
           <label className="block mb-1 font-medium">Trade Execution Rating (1-5)</label>
           <div className="flex space-x-2">
             {[1, 2, 3, 4, 5].map((rating) => (
-              <button
-                key={rating}
+              <Button key={rating}
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
                   reflection.rating === rating ? 'bg-brand-primary text-white' : 'bg-background-tertiary'
                 }`}
                 onClick={() => handleRatingChange(rating)}
               >
                 {rating}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
         
         {/* Save Button */}
         <div className="flex justify-end">
-          <button
-            className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+          <Button  className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={handleSaveReflection}
             disabled={isSaving}
           >
             {isSaving ? 'Saving...' : 'Save Reflection'}
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ interface ProUnlockerProps {
   onUnlock?: (plan: string) => void;
 }
 
-export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
+export const ProUnlocker: React.FC<proUnlockerProps> = ({ onUnlock }) => {
   const plans = [
     {
       name: 'Basic',
@@ -49,6 +49,13 @@ export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
     }
   ];
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   return (
     <Card className="theme-card p-6">
       <div className="text-center mb-8">
@@ -69,9 +76,9 @@ export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-         >
+        >
             {plan.recommended && (
-              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended
               </Badge>
             )}
@@ -93,8 +100,7 @@ export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
               ))}
             </ul>
 
-            <Button
-              className="w-full"
+            <Button  className="w-full"
               variant={plan.recommended ? 'default' : 'outline'}
               disabled={plan.current}
               onClick={() => onUnlock?.(plan.name)}

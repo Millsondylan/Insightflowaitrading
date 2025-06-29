@@ -47,23 +47,23 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-4"
           variants={itemVariants}
         >
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/strategy">
-              <Braincircuit  /> Launch Builder
+              <braincircuit  /> Launch Builder
             </Link>
           </Button>
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/academy" >
-              <bookopen  > Explore Academy
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <Link to="/academy">
+              <Bookopen  /> Explore Academy
             </Link>
           </Button>
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/vision" >
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <Link to="/vision" >
               <barchart  > Upload Chart
             </Link>
           </Button>
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/journal" >
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <Link to="/journal" >
               <pensquare  > Journal Trade
             </Link>
           </Button>

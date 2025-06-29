@@ -21,9 +21,9 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
           : "transform scale-50 opacity-0",
         className
       )}
-   >
+  >
       <div className="relative inline-block">
-        <Award
+        <award
           className={cn(
             "h-24 w-24 transition-colors duration-500",
             unlocked ? "text-yellow-400" : "text-gray-600"
@@ -31,7 +31,7 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
         />
         {unlocked && (
           <div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
-            <Award className="h-24 w-24 text-yellow-400 opacity-75" />
+            <award className="h-24 w-24 text-yellow-400 opacity-75" />
           </div>
         )}
       </div>
@@ -41,4 +41,11 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
   );
 };
 
-export default LessonBadge; 
+export default LessonBadge;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

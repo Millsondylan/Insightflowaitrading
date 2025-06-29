@@ -63,7 +63,7 @@ export const MindsetFeed: React.FC<Mindsetfeedprops > = ({ userId }) => {
     <Card  />
       <h2 className="text-2xl font-bold mb-4">Mindset Feed</h2>
       
-      <scrollarea  >
+      <Scrollarea >
         <div className="space-y-4">
           {insights.map((insight) => {
             const Icon = insight.icon;
@@ -71,7 +71,7 @@ export const MindsetFeed: React.FC<Mindsetfeedprops > = ({ userId }) => {
               <div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className={`mt-1 ${getTypeColor(insight.type)}`}>
-                    <icon  >
+                    <Icon />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">

@@ -53,7 +53,7 @@ const ChartContainer = React.forwardRef<
           className
         )}
         {...props}
-     >
+    >
         <ChartStyle id={chartId} config={config} />
         <RechartsPrimitive.ResponsiveContainer>
           {children}
@@ -173,7 +173,7 @@ const ChartTooltipContent = React.forwardRef<
     const nestLabel = payload.length === 1 && indicator !== "dot"
 
     return (
-      <Div ref={ref}
+      <div ref={ref}
         className={cn(
           "grid min-w-[8rem] items-start gap-1.5 rounded-lg border border-border/50 bg-background px-2.5 py-1.5 text-xs shadow-xl",
           className
@@ -222,12 +222,11 @@ const ChartTooltipContent = React.forwardRef<
                         />
                       )
                     )}
-                    <div
-                      className={cn(
+                    <Div className={cn(
                         "flex flex-1 justify-between leading-none",
                         nestLabel ? "items-end" : "items-center"
                       )}
-                    >
+                    />
                       <div className="grid gap-1.5">
                         {nestLabel ? tooltipLabel : null}
                         <span className="text-muted-foreground">
@@ -359,3 +358,10 @@ export {
   ChartLegendContent,
   ChartStyle,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

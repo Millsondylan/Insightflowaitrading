@@ -82,11 +82,11 @@ const StrategyBuilderV2 = () => {
       </div>
 
       <div className="space-y-4">
-        <Textarea  /> setPrompt(e.target.value)}
+        <textarea  /> setPrompt(e.target.value)}
           placeholder="e.g., 'A simple RSI strategy that buys on oversold signals and sells on overbought signals. Also look for a breakout with volume confirmation.'"
           className="bg-white/5 p-4 rounded-lg text-white/80 w-full min-h-[120px]"
         />
-        <button  style={{ color: "white" }}>
+        <Button  style={{ color: "white" }}>
           Generate Strategy
         </Button>
       </div>

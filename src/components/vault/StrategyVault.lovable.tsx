@@ -57,24 +57,24 @@ export const StrategyVault = ({ strategies }: Props) => {
       <div className="flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search >
-          <Input placeholder="Search by title or tag..." /> setSearchTerm(e.target.value)}
+          <input placeholder="Search by title or tag..." /> setSearchTerm(e.target.value)}
             className="pl-10 bg-black/30 border-white/10"
           />
         </div>
-        <select  >
+        <Select >
           <selecttrigger  style={{ width: "100%" }}>
-            <selectvalue placeholder="Sort by" >
+            <Selectvalue placeholder="Sort by" />
           </SelectTrigger>
           <selectcontent  >
             <selectitem value="totalPnL" >Sort by PnL</SelectItem>
             <selectitem value="winRate" >Sort by Win Rate</SelectItem>
           </SelectContent>
-        </Select>
+        </select>
       </div>
 
       <div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <button  > handleTagClick(tag)}
+          <Button > handleTagClick(tag)}
             className="rounded-full"
           >
             {tag}

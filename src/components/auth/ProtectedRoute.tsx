@@ -8,10 +8,17 @@ interface ProtectedRouteProps {
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     const location = useLocation();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
     
     if (!isAuthenticated()) {
         // Redirect to sign-in page while saving the attempted URL
-        return <Navigate to="/auth" state={{ from: location }} replace />;
+        return <navigate to="/auth" state={{ from: location }} replace />;
     }
 
     return <>{children}</>;

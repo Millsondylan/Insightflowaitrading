@@ -27,9 +27,9 @@ type ActionFilter = "all" | "login" | "api" | "feature";
 
 export default function UsageLogViewer({ logs }: Props) {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [timeFilter, setTimeFilter] = React.useState<Timefilter >("all");
-  const [actionFilter, setActionFilter] = React.useState<Actionfilter  />("all");
-  const [filteredLogs, setFilteredLogs] = React.useState<usagelog  >(logs);
+  const [timeFilter, setTimeFilter] = React.useState<Timefilter>("all");
+  const [actionFilter, setActionFilter] = React.useState<actionfilter  />("all");
+  const [filteredLogs, setFilteredLogs] = React.useState<Usagelog >(logs);
   const containerRef = React.useRef<HTMLDivElement  >(null);
 
   // Apply filters when any filter changes
@@ -105,11 +105,10 @@ export default function UsageLogViewer({ logs }: Props) {
         <div className="flex items-center space-x-2">
           {/* Search input */}
           <div className="relative">
-            <search  >
-            <input
-              type="text"
+            <Search  />
+            <input type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) = /> setSearchQuery(e.target.value)}
               placeholder="Search logs..."
               className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
             />
@@ -129,7 +128,7 @@ export default function UsageLogViewer({ logs }: Props) {
               <selectitem value="week" >This Week</SelectItem>
               <selectitem value="month" >This Month</SelectItem>
             </SelectContent>
-          </Select>
+          </select>
           
           {/* Action filter */}
           <select  > setActionFilter(value as ActionFilter)}>
@@ -145,7 +144,7 @@ export default function UsageLogViewer({ logs }: Props) {
               <selectitem value="api" >API Usage</SelectItem>
               <selectitem value="feature" >Feature Access</SelectItem>
             </SelectContent>
-          </Select>
+          </select>
         </div>
       </div>
 
@@ -196,7 +195,7 @@ export default function UsageLogViewer({ logs }: Props) {
                 </TableRow>
               )}
             </TableBody>
-          </Table>
+          </table>
         </div>
       </div>
       

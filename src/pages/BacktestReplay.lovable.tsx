@@ -64,13 +64,13 @@ const BacktestReplayPage: React.FC = () => {
         <div className="flex items-center justify-center space-x-6">
           <button className="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
             <span className="text-emerald-400">⏮️</span>
-          </button>
+          </Button>
           <button className="w-16 h-16 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
             <span className="text-emerald-400 text-xl">▶️</span>
-          </button>
+          </Button>
           <button className="w-12 h-12 bg-emerald-500/20 border border-emerald-400/30 rounded-full flex items-center justify-center hover:bg-emerald-500/30 transition-colors">
             <span className="text-emerald-400">⏭️</span>
-          </button>
+          </Button>
         </div>
       </div>
     </section>

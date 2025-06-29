@@ -9,7 +9,7 @@ import { MarketTicker, MarketType, MarketScannerFilter } from './types'
 import { filterMarketTickers } from './utils'
 
 export const TickerScanningEngine: React.FC = () => {
-  const [tickers, setTickers] = useState<Marketticker >([
+  const [tickers, setTickers] = useState<Marketticker>([
     {
       symbol: 'AAPL',
       name: 'Apple Inc.',
@@ -30,7 +30,7 @@ export const TickerScanningEngine: React.FC = () => {
     }
   ])
 
-  const [filter, setFilter] = useState<Marketscannerfilter  />({
+  const [filter, setFilter] = useState<marketscannerfilter  />({
     marketType: 'Stocks',
     minPrice: 50,
     minVolume: 1_000_000
@@ -45,8 +45,8 @@ export const TickerScanningEngine: React.FC = () => {
   return (
     <card  style={{ width: "100%", color: "white" }}>
       <cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <cardtitle  >Ticker Scanning Engine</CardTitle>
-        <badge variant="default" >
+        <Cardtitle >Ticker Scanning Engine</CardTitle>
+        <Badge variant="default" />
           {filteredTickers.length} Matching Tickers
         </Badge>
       </CardHeader>
@@ -65,18 +65,18 @@ export const TickerScanningEngine: React.FC = () => {
                     <selectitem  >{type}</SelectItem>
                   ))}
                 </SelectContent>
-              </Select>
+              </select>
             </div>
             <div>
               <label className="block text-sm mb-1">Min Price</label>
-              <input type="number" > handleFilterChange('minPrice', Number(e.target.value))}
+              <input type="number"  /> handleFilterChange('minPrice', Number(e.target.value))}
                 placeholder="Minimum Price"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
             </div>
             <div>
               <label className="block text-sm mb-1">Min Volume</label>
-              <input type="number" > handleFilterChange('minVolume', Number(e.target.value))}
+              <input type="number"  /> handleFilterChange('minVolume', Number(e.target.value))}
                 placeholder="Minimum Volume"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
@@ -111,7 +111,7 @@ export const TickerScanningEngine: React.FC = () => {
           ))}
         </div>
         <div className="mt-4 flex justify-center">
-          <button variant="outline" style={{ color: "white" }}>
+          <Button variant="outline" style={{ color: "white" }}>
             Refresh Tickers
           </Button>
         </div>

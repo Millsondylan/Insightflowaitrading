@@ -9,7 +9,14 @@ import {
 } from "@/components/ui/toast"
 
 export function Toaster() {
-  const { toasts } = useToast()
+  const { toasts }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; = useToast()
 
   return (
     <ToastProvider>

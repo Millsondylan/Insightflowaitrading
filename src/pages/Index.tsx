@@ -172,22 +172,20 @@ const LandingPage = () => {
       <nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white" />
+            <trendingUp className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
             InsightFlow AI
           </h1>
         </div>
         <div className="flex space-x-4">
-          <Button 
-            variant="outline" 
+          <Button variant="outline" 
             onClick={() => navigate('/auth')}
             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
           </Button>
-          <Button 
-            onClick={() => navigate('/auth')}
+          <Button  onClick={() => navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
@@ -206,7 +204,7 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <div className="text-center space-y-8 w-full">
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
+          <badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
             🚀 Advanced Trading Platform - Now with AI Integration
           </Badge>
           
@@ -226,16 +224,14 @@ const LandingPage = () => {
           </p>
           
           <div className="flex justify-center space-x-4 pt-8">
-            <Button 
-              size="lg"
+            <Button size="lg"
               onClick={() => navigate('/auth')}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
             >
               Start Free Trial
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <arrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button 
-              size="lg" 
+            <Button size="lg" 
               variant="outline"
               onClick={() => navigate('/trading')}
               className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
@@ -280,7 +276,7 @@ const LandingPage = () => {
             </Card>
             <Card className="bg-gray-800/50 border-cyan-500/30">
               <CardHeader>
-                <TrendingUp className="w-8 h-8 mx-auto text-cyan-400" />
+                <trendingUp className="w-8 h-8 mx-auto text-cyan-400" />
                 <CardTitle className="text-white text-2xl">
                   {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
                 </CardTitle>
@@ -300,7 +296,7 @@ const LandingPage = () => {
             </Card>
             <Card className="bg-gray-800/50 border-purple-500/30">
               <CardHeader>
-                <BarChart3 className="w-8 h-8 mx-auto text-purple-400" />
+                <barChart3 className="w-8 h-8 mx-auto text-purple-400" />
                 <CardTitle className="text-white text-2xl">{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle>
               </CardHeader>
               <CardContent>
@@ -433,7 +429,7 @@ const LandingPage = () => {
             <Card key={coin} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
               <CardHeader className="text-center">
                 <div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
-                  <Bitcoin className="w-8 h-8 text-white" />
+                  <bitcoin className="w-8 h-8 text-white" />
                 </div>
                 <CardTitle className="text-white text-xl">{coin}</CardTitle>
               </CardHeader>
@@ -446,3 +442,10 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

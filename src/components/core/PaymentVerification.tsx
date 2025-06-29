@@ -86,13 +86,12 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
             <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
               <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
               <div className="flex items-center">
-                <Input 
+                <input 
                   value={wallet.address} 
                   readOnly 
                   className="bg-black/30 border-gray-700 flex-grow"
                 />
-                <Button
-                  variant="ghost"
+                <Button variant="ghost"
                   size="icon"
                   className="ml-2"
                   onClick={() => handleCopy(wallet.address, key)}
@@ -106,10 +105,9 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
               <p className="text-sm text-gray-400 mb-4">
                 After sending payment, click the button below to continue.
               </p>
-              <Button 
-                onClick={onVerificationComplete}
+              <Button onClick={onVerificationComplete}
                 className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30"
-              >
+             >
                 I've Sent the Payment
               </Button>
             </div>
@@ -120,4 +118,11 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
   );
 };
 
-export default PaymentVerification; 
+export default PaymentVerification;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

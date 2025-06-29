@@ -70,7 +70,7 @@ const LovableEditorPage: React.FC = () => {
           
           <TabsContent value="supabase" className="p-0 m-0">
             <div className="p-6">
-              <SupabaseAdapter />
+              <supabaseAdapter />
             </div>
           </TabsContent>
         </Card>

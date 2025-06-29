@@ -49,13 +49,13 @@ export default function CommunityPage() {
 
                 {/* Create Post */}
                 <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
-                    <Textarea  /> setNewPost(e.target.value)}
+                    <textarea  /> setNewPost(e.target.value)}
                         placeholder="Share your thoughts, charts, or trade ideas..."
                         className="bg-black/20 border-none"
                     />
                     <div className="flex justify-end mt-3">
-                        <button  >
-                            <send  > Post
+                        <Button >
+                            <Send /> Post
                         </Button>
                     </div>
                 </div>
@@ -69,8 +69,8 @@ export default function CommunityPage() {
                                 <p className="font-semibold text-white">{post.author.name}</p>
                                 <p className="text-gray-300 mt-1">{post.content}</p>
                                 <div className="flex items-center gap-6 mt-4 text-sm text-gray-400">
-                                    <button className="flex items-center gap-1 hover:text-white"><thumbsup  > {post.likes}</button>
-                                    <button className="flex items-center gap-1 hover:text-white"><messagesquare  > {post.comments}</button>
+                                    <button className="flex items-center gap-1 hover:text-white"><thumbsup  > {post.likes}</Button>
+                                    <button className="flex items-center gap-1 hover:text-white"><Messagesquare  > {post.comments}</Button>
                                 </div>
                             </div>
                         </div>

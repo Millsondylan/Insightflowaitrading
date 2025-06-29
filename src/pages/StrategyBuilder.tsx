@@ -20,6 +20,13 @@ const ConfigItem = ({ icon, title, children }: { icon: React.ElementType, title:
 export default function StrategyBuilderPage() {
   const [prompt, setPrompt] = useState('');
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
       {/* Main Builder Section */}
@@ -27,7 +34,7 @@ export default function StrategyBuilderPage() {
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Bot className="text-blue-400" /></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><bot className="text-blue-400" /></span>
                     AI Strategy Builder
                 </h1>
                 <p className="text-gray-400 mt-1">Craft a new strategy using natural language.</p>
@@ -37,14 +44,14 @@ export default function StrategyBuilderPage() {
         {/* Prompt Input */}
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
           <h3 className="font-semibold text-white mb-3">Describe your strategy idea</h3>
-          <Textarea
+          <textarea
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g., A mean-reversion strategy for AAPL on the 5-minute chart using Bollinger Bands and RSI..."
             className="bg-black/20 border-white/10 h-36"
           />
           <div className="flex justify-end mt-4">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white">
                 <Sparkles size={16} className="mr-2"/>
                 Generate Strategy
             </Button>

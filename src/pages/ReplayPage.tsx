@@ -6,6 +6,13 @@ import { ArrowLeft, Play, Pause, FastForward, Settings } from 'lucide-react';
 export default function ReplayPage() {
   const { id } = useParams<{ id: string }>();
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   return (
     <div>
       <Link to={`/vault/${id}`} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
@@ -26,7 +33,7 @@ export default function ReplayPage() {
         <footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
             <Button variant="ghost"><FastForward className="transform -scale-x-100" size={20} /></Button>
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 rounded-full w-16 h-16">
-                <Play size={24} />
+                <play size={24} />
             </Button>
             <Button variant="ghost"><FastForward size={20} /></Button>
         </footer>

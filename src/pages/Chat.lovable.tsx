@@ -57,7 +57,7 @@ const ChatPage: React.FC = () => {
               </div>
               <button className="glow-button glow-violet px-6 py-3">
                 Send
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -69,16 +69,16 @@ const ChatPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Analyze my portfolio risk</div>
-              </button>
+              </Button>
               <button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Market sentiment today</div>
-              </button>
+              </Button>
               <button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Best sectors to watch</div>
-              </button>
+              </Button>
               <button className="glass-card hover-glow text-left p-3">
                 <div className="text-sm text-gray-300">Options flow analysis</div>
-              </button>
+              </Button>
             </div>
           </div>
         </div>

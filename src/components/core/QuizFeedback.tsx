@@ -78,7 +78,7 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
         className="space-y-4"
       >
         <div className="flex items-start space-x-3">
-          <Lightbulb className={cn(
+          <lightbulb className={cn(
             "h-5 w-5 mt-0.5 flex-shrink-0",
             isCorrect ? "text-green-400" : "text-red-400"
           )} />
@@ -96,7 +96,7 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="flex items-start space-x-3 pt-4 border-t border-gray-600/30"
           >
-            <TrendingUp className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+            <trendingUp className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
             <div>
               <h4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</h4>
               <p className="text-gray-300 leading-relaxed">{hint}</p>
@@ -146,4 +146,11 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
   );
 };
 
-export default QuizFeedback; 
+export default QuizFeedback;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

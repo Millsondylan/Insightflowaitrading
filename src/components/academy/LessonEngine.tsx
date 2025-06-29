@@ -37,6 +37,13 @@ interface LessonData {
 
 export default function LessonEngine({ lesson }: { lesson: LessonData }) {
   const { lessonId } = useParams<{ lessonId: string }>();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const { logClick } = useAuditLog();
   const navigate = useNavigate();
   
@@ -164,19 +171,17 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
         
         {showAnswer ? (
           <div className="mt-4">
-            <Alert 
-              variant={isCorrect ? "default" : "destructive"} 
+            <Alert variant={isCorrect ? "default" : "destructive"} 
               className={isCorrect ? "border-green-500 bg-green-900/20" : ""}
-            >
-              <AlertTitle>{isCorrect ? "Correct!" : "Not quite right"}</AlertTitle>
-              <AlertDescription>
+           >
+              <alertTitle>{isCorrect ? "Correct!" : "Not quite right"}</AlertTitle>
+              <alertDescription>
                 {quiz.explanation}
               </AlertDescription>
             </Alert>
           </div>
         ) : (
-          <Button 
-            className="mt-4" 
+          <Button  className="mt-4" 
             disabled={selectedAnswer === undefined}
             onClick={() => handleCheckAnswer(sectionId, quiz.correctAnswer)}
           >
@@ -207,7 +212,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
             Section {currentSectionIndex + 1} of {lesson.sections.length}
           </div>
         </div>
-        <Progress value={progress} className="h-2" />
+        <progress value={progress} className="h-2" />
       </div>
       
       {currentSection && (
@@ -241,10 +246,10 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
                 >
                   <TabsList className="grid grid-cols-2 w-[400px]">
                     <TabsTrigger value="content" className="flex items-center gap-2">
-                      <BookOpen className="h-4 w-4" /> Content
+                      <bookOpen className="h-4 w-4" /> Content
                     </TabsTrigger>
                     <TabsTrigger value="code" className="flex items-center gap-2">
-                      <Code className="h-4 w-4" /> Code Example
+                      <code className="h-4 w-4" /> Code Example
                     </TabsTrigger>
                   </TabsList>
                   
@@ -276,16 +281,14 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
             </CardContent>
             
             <CardFooter className="flex justify-between pt-6">
-              <Button
-                variant="outline"
+              <Button variant="outline"
                 onClick={handlePrevSection}
                 disabled={currentSectionIndex === 0}
-              >
+              />
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
               </Button>
               
-              <Button
-                onClick={handleNextSection}
+              <Button  onClick={handleNextSection}
                 disabled={currentSection.quiz && !showExplanation[currentSection.id]}
               >
                 {isLastSection ? (
@@ -294,7 +297,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
                   </>
                 ) : (
                   <>
-                    Next <ArrowRight className="ml-2 h-4 w-4" />
+                    Next <arrowRight className="ml-2 h-4 w-4" />
                   </>
                 )}
               </Button>

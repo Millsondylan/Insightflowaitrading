@@ -36,7 +36,7 @@ const LandingBuilderPage: React.FC = () => {
               </div>
             </Link>
             
-            <link to="/academy" >
+            <Link to="/academy">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="text-4xl mb-4 text-blue-400">📘</div>
                 <h3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</h3>
@@ -48,7 +48,7 @@ const LandingBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* Features Preview */}
-      <scrollsection animation="slide-right" >
+      <Scrollsection animation="slide-right" />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
@@ -121,15 +121,15 @@ const LandingBuilderPage: React.FC = () => {
               Join thousands of traders who've transformed their approach with Insight Flow
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <link to="/strategy" >
+              <Link to="/strategy" >
                 <button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </button>
+                </Button>
               </Link>
-              <link to="/academy" >
+              <Link to="/academy" >
                 <button className="glow-button glow-blue text-lg px-8 py-4">
                   Begin Learning
-                </button>
+                </Button>
               </Link>
             </div>
           </div>

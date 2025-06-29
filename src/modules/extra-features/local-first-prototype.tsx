@@ -12,6 +12,13 @@ interface LocalFirstPrototypeProps {
 
 export const LocalFirstPrototype: React.FC<LocalFirstPrototypeProps> = ({ onSync }) => {
   const [syncStatus, setSyncStatus] = React.useState<'synced' | 'pending' | 'offline'>('synced');
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [localChanges, setLocalChanges] = React.useState(0);
   const [prototypeCode, setPrototypeCode] = React.useState(`// Local Strategy Prototype
 // Changes are saved locally first
@@ -62,7 +69,7 @@ exit_rules:
           <h2 className="text-2xl font-bold">Local Prototype</h2>
         </div>
         <div className="flex items-center gap-4">
-          <Badge variant={syncStatus === 'synced' ? 'default' : syncStatus === 'pending' ? 'secondary' : 'destructive'}>
+          <badge variant={syncStatus === 'synced' ? 'default' : syncStatus === 'pending' ? 'secondary' : 'destructive'}>
             {syncStatus === 'synced' ? (
               <>
                 <Cloud className="h-3 w-3 mr-1" />
@@ -80,12 +87,11 @@ exit_rules:
               </>
             )}
           </Badge>
-          <Button
-            variant="outline"
+          <Button variant="outline"
             size="sm"
             onClick={syncToCloud}
             disabled={localChanges === 0 || syncStatus === 'offline'}
-          >
+         >
             Sync to Cloud
           </Button>
         </div>
@@ -110,7 +116,7 @@ exit_rules:
               }}
             />
             <div className="absolute top-2 right-2 flex items-center gap-2">
-              <Badge variant="outline" className="text-xs">
+              <badge variant="outline" className="text-xs">
                 <HardDrive className="h-3 w-3 mr-1" />
                 Local Only
               </Badge>
@@ -118,8 +124,8 @@ exit_rules:
           </div>
           
           <div className="flex gap-2">
-            <Button onClick={runLocalBacktest} className="flex-1">
-              <Play className="h-4 w-4 mr-2" />
+            <button onClick={runLocalBacktest} className="flex-1">
+              <play className="h-4 w-4 mr-2" />
               Run Local Test
             </Button>
             <Button variant="outline">
@@ -163,21 +169,21 @@ exit_rules:
                 <p className="font-medium">Current Draft</p>
                 <p className="text-sm text-muted-foreground">Modified 2 minutes ago</p>
               </div>
-              <Badge variant="secondary">Unsaved</Badge>
+              <badge variant="secondary">Unsaved</Badge>
             </div>
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
                 <p className="font-medium">v1.2 - Risk Update</p>
                 <p className="text-sm text-muted-foreground">Saved locally 1 hour ago</p>
               </div>
-              <Badge>Synced</Badge>
+              <badge>Synced</Badge>
             </div>
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
                 <p className="font-medium">v1.1 - Initial Strategy</p>
                 <p className="text-sm text-muted-foreground">Created yesterday</p>
               </div>
-              <Badge>Synced</Badge>
+              <badge>Synced</Badge>
             </div>
           </div>
         </TabsContent>

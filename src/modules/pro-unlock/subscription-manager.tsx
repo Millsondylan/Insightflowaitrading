@@ -33,12 +33,12 @@ interface UserSubscription {
   };
 }
 
-export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
+export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
   userId,
   onSubscribe,
   onCancel
 }) => {
-  const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
+  const [plans, setPlans] = useState<subscriptionPlan[]>([]);
   const [userSubscription, setUserSubscription] = useState<UserSubscription | null>(null);
   const [selectedPlanId, setSelectedPlanId] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -343,28 +343,25 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
           </div>
           
           {userSubscription.status === 'active' && (
-            <button
-              className="px-4 py-2 bg-status-error/20 text-status-error rounded-md hover:bg-status-error/30"
+            <Button  className="px-4 py-2 bg-status-error/20 text-status-error rounded-md hover:bg-status-error/30"
               onClick={() => setShowCancelModal(true)}
             >
               Cancel Subscription
-            </button>
+            </Button>
           )}
           
           {userSubscription.status === 'canceled' && (
             <div className="flex space-x-4">
-              <button
-                className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80"
+              <Button  className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80"
                 onClick={() => setSelectedPlanId(userSubscription.planId)}
               >
                 Renew Subscription
-              </button>
-              <button
-                className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
+              </Button>
+              <Button  className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
                 onClick={() => setSelectedPlanId('')}
               >
                 Change Plan
-              </button>
+              </Button>
             </div>
           )}
         </div>
@@ -385,7 +382,7 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
                     ? 'border-brand-primary bg-brand-primary/5'
                     : 'border-border-primary bg-background-tertiary hover:border-brand-primary/50'
                 } ${plan.popular ? 'relative' : ''}`}
-             >
+            >
                 {plan.popular && (
                   <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 bg-brand-secondary text-white text-xs px-2 py-1 rounded-full">
                     Most Popular
@@ -417,8 +414,7 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
                   ))}
                 </ul>
                 
-                <button
-                  className={`w-full py-2 rounded-md ${
+                <Button  className={`w-full py-2 rounded-md ${
                     selectedPlanId === plan.id
                       ? 'bg-brand-primary text-white'
                       : 'bg-background-interactive hover:bg-brand-primary/20'
@@ -426,19 +422,19 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
                   onClick={() => handleSelectPlan(plan.id)}
                 >
                   {selectedPlanId === plan.id ? 'Selected' : 'Select'}
-                </button>
+                </Button>
               </div>
             ))}
           </div>
           
           {selectedPlanId && (
             <div className="mt-6 flex justify-center">
-              <Button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSubscribe}
                 disabled={processing}
               />
                 {processing ? 'Processing...' : 'Subscribe Now'}
-              </button>
+              </Button>
             </div>
           )}
         </div>
@@ -455,20 +451,18 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
             </p>
             
             <div className="flex justify-end space-x-3">
-              <button
-                className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
+              <Button  className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
                 onClick={() => setShowCancelModal(false)}
                 disabled={processing}
               >
                 Keep Subscription
-              </button>
-              <button
-                className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
+              </Button>
+              <Button className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
                 onClick={handleCancelSubscription}
                 disabled={processing}
-              >
+              />
                 {processing ? 'Processing...' : 'Confirm Cancellation'}
-              </button>
+              </Button>
             </div>
           </div>
         </div>

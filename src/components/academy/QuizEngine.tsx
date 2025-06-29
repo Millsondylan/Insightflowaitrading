@@ -171,7 +171,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
 
       {/* Quiz Content */}
       {!quizComplete ? (
-        <AnimatePresence mode="wait">
+        <animatePresence mode="wait">
           <motion.div
             key={currentQuestion.id}
             initial="hidden"
@@ -188,8 +188,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {/* Options */}
             <div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
-                <button
-                  key={index}
+                <Button key={index}
                   onClick={() => handleOptionSelect(index)}
                   disabled={isAnswered}
                   className={`
@@ -209,7 +208,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                       index === selectedOption && <XCircle className="h-5 w-5 text-white" />
                     )
                   )}
-                </button>
+                </Button>
               ))}
             </div>
 
@@ -234,18 +233,16 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3">
               {!isAnswered ? (
-                <Button
-                  onClick={handleSubmitAnswer}
+                <Button onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
                   className="bg-white/10 hover:bg-cyan-600 text-white px-6"
-                >
+               >
                   Submit Answer
                 </Button>
               ) : (
-                <Button
-                  onClick={handleNextQuestion}
+                <Button onClick={handleNextQuestion}
                   className="bg-white/10 hover:bg-white/20 text-white px-6"
-                >
+                />
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
@@ -306,8 +303,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
           )}
 
           <div className="pt-4">
-            <Button
-              onClick={resetQuiz}
+            <Button  onClick={resetQuiz}
               className="bg-white/10 hover:bg-white/20 text-white px-6"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
@@ -320,4 +316,11 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
   );
 };
 
-export default QuizEngine; 
+export default QuizEngine;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

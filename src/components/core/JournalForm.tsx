@@ -161,8 +161,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <div className="space-y-2">
-            <Label htmlFor="title">Trade Title</Label>
-            <Input
+            <label htmlFor="title">Trade Title</label>
+            <input
               id="title"
               name="title"
               value={formData.title}
@@ -176,8 +176,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           {/* Pair and Timeframe - 2 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="pair">Instrument/Pair</Label>
-              <Input
+              <label htmlFor="pair">Instrument/Pair</label>
+              <input
                 id="pair"
                 name="pair"
                 value={formData.pair}
@@ -189,8 +189,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="timeframe">Timeframe</Label>
-              <Input
+              <label htmlFor="timeframe">Timeframe</label>
+              <input
                 id="timeframe"
                 name="timeframe"
                 value={formData.timeframe}
@@ -205,8 +205,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           {/* Entry and Exit Prices - 2 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="entryPrice">Entry Price</Label>
-              <Input
+              <label htmlFor="entryPrice">Entry Price</label>
+              <input
                 id="entryPrice"
                 name="entryPrice"
                 type="number"
@@ -219,8 +219,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="exitPrice">Exit Price</Label>
-              <Input
+              <label htmlFor="exitPrice">Exit Price</label>
+              <input
                 id="exitPrice"
                 name="exitPrice"
                 type="number"
@@ -235,8 +235,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           
           {/* Reason/Notes */}
           <div className="space-y-2">
-            <Label htmlFor="reason">Reason for Trade</Label>
-            <Textarea
+            <label htmlFor="reason">Reason for Trade</label>
+            <textarea
               id="reason"
               name="reason"
               value={formData.reason}
@@ -250,28 +250,26 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           
           {/* Sentiment Toggle */}
           <div className="space-y-2">
-            <Label>Trade Sentiment</Label>
+            <label>Trade Sentiment</label>
             <div className="flex items-center space-x-2">
-              <Button
-                type="button"
+              <Button type="button"
                 variant={formData.sentiment === "Bullish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
                 className={cn(
                   "w-28",
                   formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
                 )}
-              >
+             >
                 🟢 Bullish
               </Button>
-              <Button
-                type="button"
+              <Button type="button"
                 variant={formData.sentiment === "Bearish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
                 className={cn(
                   "w-28",
                   formData.sentiment === "Bearish" && "bg-red-600 hover:bg-red-700"
                 )}
-              >
+              />
                 🔴 Bearish
               </Button>
             </div>
@@ -279,8 +277,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           
           {/* Tags */}
           <div className="space-y-2">
-            <Label htmlFor="tags">Tags (comma-separated)</Label>
-            <Input
+            <label htmlFor="tags">Tags (comma-separated)</label>
+            <input
               id="tags"
               name="tags"
               value={formData.tags}
@@ -291,7 +289,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           
           {/* Chart Upload */}
           <div className="space-y-2">
-            <Label>Attach Chart Image (Optional)</Label>
+            <label>Attach Chart Image (Optional)</label>
             <div 
               className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors file-upload-zone"
               onClick={() => fileInputRef.current?.click()}
@@ -302,8 +300,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   <p className="text-xs text-gray-400">
                     {(formData.chartFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
-                  <Button 
-                    type="button" 
+                  <Button  type="button" 
                     variant="ghost" 
                     size="sm"
                     onClick={(e) => {
@@ -334,8 +331,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
       </CardContent>
       
       <CardFooter>
-        <Button 
-          type="button" 
+        <Button  type="button" 
           onClick={handleSubmit} 
           disabled={isSubmitting} 
           className={cn(
@@ -350,4 +346,11 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   );
 };
 
-export default JournalForm; 
+export default JournalForm;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

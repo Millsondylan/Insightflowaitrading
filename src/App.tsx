@@ -62,10 +62,10 @@ export function App() {
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <Router>
-          <AppLayout>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/auth" element={<AuthPage />} />
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<LandingPage />} />
+              <Route path="auth" element={<AuthPage />} />
 
               {/* Strategy Routes */}
               <Route path="/strategy/copilot" element={<StrategyCopilot />} />
@@ -123,10 +123,17 @@ export function App() {
 
               {/* 404 Route */}
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AppLayout>
+            </Route>
+          </Routes>
         </Router>
       </QueryClientProvider>
     </ThemeProvider>
   );
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

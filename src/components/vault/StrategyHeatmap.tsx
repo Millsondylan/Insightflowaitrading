@@ -41,7 +41,7 @@ const StrategyHeatmap = ({ data }: Props) => {
               <TooltipTrigger asChild>
                 <Div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
                   style={tileStyle}
-               >
+              >
                   <div>
                     <span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
                       {item.dominantEmotion}
@@ -72,4 +72,11 @@ const StrategyHeatmap = ({ data }: Props) => {
   );
 };
 
-export default StrategyHeatmap; 
+export default StrategyHeatmap;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

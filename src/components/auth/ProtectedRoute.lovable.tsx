@@ -11,7 +11,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     
     if (!isAuthenticated()) {
         // Redirect to sign-in page while saving the attempted URL
-        return <Navigate to="/auth">;
+        return <navigate to="/auth">;
     }
 
     return <>{children}</>;

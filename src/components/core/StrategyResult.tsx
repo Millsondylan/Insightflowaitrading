@@ -28,4 +28,11 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   );
 };
 
-export default StrategyResult; 
+export default StrategyResult;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

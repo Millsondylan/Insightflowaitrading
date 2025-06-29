@@ -7,7 +7,7 @@ import { InsightFeedItem } from './types'
 import { calculateMarketSentiment } from './utils'
 
 export const InsightFeed: React.FC = () => {
-  const [insights, setInsights] = useState<InsightFeedItem[]>([
+  const [insights, setInsights] = useState<insightFeedItem[]>([
     {
       id: '1',
       title: 'Bitcoin Breaks Resistance',
@@ -17,7 +17,14 @@ export const InsightFeed: React.FC = () => {
       sentiment: 'Bullish',
       confidence: 0.85,
       relatedAssets: ['BTC/USDT']
-    },
+    }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};,
     {
       id: '2',
       title: 'Tech Stocks Facing Headwinds',
@@ -36,12 +43,11 @@ export const InsightFeed: React.FC = () => {
     <Card className="w-full bg-black/80 border-zinc-800 text-white">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Market Insights Feed</CardTitle>
-        <Badge 
-          variant={
+        <Badge variant={
             marketSentiment === 'Bullish' ? 'default' : 
             marketSentiment === 'Bearish' ? 'destructive' : 'secondary'
           }
-        >
+       >
           {marketSentiment} Sentiment
         </Badge>
       </CardHeader>
@@ -50,10 +56,10 @@ export const InsightFeed: React.FC = () => {
           {insights.map((insight) => (
             <Div key={insight.id} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
-           >
+           />
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-bold">{insight.title}</h3>
-                <Badge 
+                <badge 
                   variant={
                     insight.sentiment === 'Bullish' ? 'default' : 
                     insight.sentiment === 'Bearish' ? 'destructive' : 'secondary'
@@ -66,7 +72,7 @@ export const InsightFeed: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div className="flex space-x-2">
                   {insight.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
+                    <badge key={tag} variant="outline">
                       {tag}
                     </Badge>
                   ))}

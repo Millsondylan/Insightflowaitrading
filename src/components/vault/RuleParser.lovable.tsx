@@ -9,11 +9,11 @@ const KEYWORDS = ['RSI', 'MACD', 'Moving Average', 'Support', 'Resistance', 'Bre
 
 const getIconForRule = (rule: string) => {
   const lowerRule = rule.toLowerCase();
-  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <Trendingup >;
+  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <Trendingup>;
   if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat  />;
   if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <barchart3  >;
-  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <activity  >;
-  return <chevronright  >;
+  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <Activity >;
+  return <Chevronright  />;
 };
 
 const highlightKeywords = (rule: string) => {

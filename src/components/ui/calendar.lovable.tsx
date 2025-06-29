@@ -14,8 +14,8 @@ function Calendar({
   ...props
 }: CalendarProps) {
   return (
-    <Daypicker > <Chevronleft  />,
-        IconRight: ({ ..._props }) => <chevronright  >,
+    <Daypicker > <Chevronleft />,
+        IconRight: ({ ..._props }) => <Chevronright >,
       }}
       {...props}
     />

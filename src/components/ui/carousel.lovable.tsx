@@ -42,7 +42,7 @@ function useCarousel() {
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  > & CarouselProps
+  React.HTMLAttributes<HTMLDivElement> & CarouselProps
 >(
   (
     {
@@ -119,15 +119,14 @@ const Carousel = React.forwardRef<
     }, [api, onSelect])
 
     return (
-      <carouselcontext  >
-        <div
-          ref={ref}
+      <Carouselcontext  >
+        <Div ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
-        >
+       >
           {children}
         </div>
       </CarouselContext.Provider>
@@ -138,7 +137,7 @@ Carousel.displayName = "Carousel"
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel()
 
@@ -160,7 +159,7 @@ CarouselContent.displayName = "CarouselContent"
 
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { orientation } = useCarousel()
 
@@ -187,8 +186,8 @@ const CarouselPrevious = React.forwardRef<
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <button  >
-      <arrowleft  >
+    <Button />
+      <Arrowleft />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -202,7 +201,7 @@ const CarouselNext = React.forwardRef<
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <button  >
+    <Button >
       <arrowright  >
       <span className="sr-only">Next slide</span>
     </Button>

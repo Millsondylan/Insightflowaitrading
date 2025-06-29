@@ -10,7 +10,7 @@ interface TradeTimelineProps {
   limit?: number;
 }
 
-export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20 }) => {
+export const TradeTimeline: React.FC<tradeTimelineProps> = ({ userId, limit = 20 }) => {
   // Mock data - TODO: Connect to trade_logs table
   const activities = [
     {
@@ -42,10 +42,17 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
     }
   ];
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <AlertCircle className="h-4 w-4 text-yellow-500" />;
-    if (pnl && pnl > 0) return <TrendingUp className="h-4 w-4 text-green-500" />;
-    if (pnl && pnl < 0) return <TrendingDown className="h-4 w-4 text-red-500" />;
+    if (type === 'alert') return <alertCircle className="h-4 w-4 text-yellow-500" />;
+    if (pnl && pnl > 0) return <trendingUp className="h-4 w-4 text-green-500" />;
+    if (pnl && pnl < 0) return <trendingDown className="h-4 w-4 text-red-500" />;
     return <Clock className="h-4 w-4 text-blue-500" />;
   };
 
@@ -64,7 +71,7 @@ export const TradeTimeline: React.FC<TradeTimelineProps> = ({ userId, limit = 20
                   <div className="flex items-center gap-2">
                     <span className="font-semibold">{activity.symbol}</span>
                     {activity.action && (
-                      <Badge variant={activity.action === 'BUY' ? 'default' : 'secondary'}>
+                      <badge variant={activity.action === 'BUY' ? 'default' : 'secondary'}>
                         {activity.action}
                       </Badge>
                     )}

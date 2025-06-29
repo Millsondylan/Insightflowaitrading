@@ -212,15 +212,13 @@ export default function UserSettingsPage() {
           <p className="text-gray-400">Customize your trading platform experience</p>
         </div>
         <div className="space-x-4">
-          <Button 
-            variant="outline" 
+          <Button variant="outline" 
             onClick={resetToDefaults}
             disabled={saving}
-          >
+         >
             Reset to Defaults
           </Button>
-          <Button 
-            onClick={saveSettings} 
+          <Button onClick={saveSettings} 
             disabled={!hasChanges() || saving}
           >
             {saving ? (
@@ -270,7 +268,7 @@ export default function UserSettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-gray-400" />
-                  <Label>Email Notifications</Label>
+                  <label>Email Notifications</label>
                 </div>
                 <Switch
                   checked={settings.notification_channels?.email}
@@ -280,7 +278,7 @@ export default function UserSettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Smartphone className="w-4 h-4 text-gray-400" />
-                  <Label>Push Notifications</Label>
+                  <label>Push Notifications</label>
                 </div>
                 <Switch
                   checked={settings.notification_channels?.push}
@@ -290,7 +288,7 @@ export default function UserSettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 text-gray-400" />
-                  <Label>In-App Alerts</Label>
+                  <label>In-App Alerts</label>
                 </div>
                 <Switch
                   checked={settings.notification_channels?.in_app}
@@ -310,49 +308,49 @@ export default function UserSettingsPage() {
             </CardHeader>
             <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center justify-between">
-                <Label>Trade Alerts</Label>
+                <label>Trade Alerts</label>
                 <Switch
                   checked={settings.notification_types?.trade_alerts}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'trade_alerts', checked)}
                 />
               </div>
               <div className="flex items-center justify-between">
-                <Label>Market Updates</Label>
+                <label>Market Updates</label>
                 <Switch
                   checked={settings.notification_types?.market_updates}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'market_updates', checked)}
                 />
               </div>
               <div className="flex items-center justify-between">
-                <Label>Strategy Signals</Label>
+                <label>Strategy Signals</label>
                 <Switch
                   checked={settings.notification_types?.strategy_signals}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'strategy_signals', checked)}
                 />
               </div>
               <div className="flex items-center justify-between">
-                <Label>Journal Reminders</Label>
+                <label>Journal Reminders</label>
                 <Switch
                   checked={settings.notification_types?.journal_reminders}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'journal_reminders', checked)}
                 />
               </div>
               <div className="flex items-center justify-between">
-                <Label>Goal Progress</Label>
+                <label>Goal Progress</label>
                 <Switch
                   checked={settings.notification_types?.goal_progress}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'goal_progress', checked)}
                 />
               </div>
               <div className="flex items-center justify-between">
-                <Label>Course Updates</Label>
+                <label>Course Updates</label>
                 <Switch
                   checked={settings.notification_types?.course_updates}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'course_updates', checked)}
                 />
               </div>
               <div className="flex items-center justify-between">
-                <Label>Community Mentions</Label>
+                <label>Community Mentions</label>
                 <Switch
                   checked={settings.notification_types?.community_mentions}
                   onCheckedChange={(checked) => updateToggle('notification_types', 'community_mentions', checked)}
@@ -374,7 +372,7 @@ export default function UserSettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label>Enable Quiet Hours</Label>
+                <label>Enable Quiet Hours</label>
                 <Switch
                   checked={settings.quiet_hours?.enabled}
                   onCheckedChange={(checked) => updateSetting('quiet_hours', 'enabled', checked)}
@@ -384,23 +382,21 @@ export default function UserSettingsPage() {
               {settings.quiet_hours?.enabled && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                   <div className="space-y-2">
-                    <Label>Start Time</Label>
-                    <Input
-                      type="time"
+                    <label>Start Time</label>
+                    <input type="time"
                       value={settings.quiet_hours?.start}
                       onChange={(e) => updateSetting('quiet_hours', 'start', e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>End Time</Label>
-                    <Input
-                      type="time"
+                    <label>End Time</label>
+                    <input type="time"
                       value={settings.quiet_hours?.end}
                       onChange={(e) => updateSetting('quiet_hours', 'end', e.target.value)}
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
-                    <Label>Timezone</Label>
+                    <label>Timezone</label>
                     <Select
                       value={settings.quiet_hours?.timezone}
                       onValueChange={(value) => updateSetting('quiet_hours', 'timezone', value)}
@@ -447,7 +443,7 @@ export default function UserSettingsPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
-                <Label>Theme Mode</Label>
+                <label>Theme Mode</label>
                 <RadioGroup
                   value={settings.theme_preferences?.mode || "dark"}
                   onValueChange={(value) => updateSetting('theme_preferences', 'mode', value)}
@@ -455,27 +451,27 @@ export default function UserSettingsPage() {
                 >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="dark" id="dark" />
-                    <Label htmlFor="dark" className="flex items-center">
+                    <label htmlFor="dark" className="flex items-center">
                       <Moon className="w-4 h-4 mr-2" /> Dark
-                    </Label>
+                    </label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="light" id="light" />
-                    <Label htmlFor="light" className="flex items-center">
+                    <label htmlFor="light" className="flex items-center">
                       <Sun className="w-4 h-4 mr-2" /> Light
-                    </Label>
+                    </label>
                   </div>
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="system" id="system" />
-                    <Label htmlFor="system" className="flex items-center">
+                    <label htmlFor="system" className="flex items-center">
                       <Globe className="w-4 h-4 mr-2" /> System
-                    </Label>
+                    </label>
                   </div>
                 </RadioGroup>
               </div>
 
               <div className="space-y-4">
-                <Label>Accent Color</Label>
+                <label>Accent Color</label>
                 <div className="flex flex-wrap gap-3">
                   {[
                     { label: "Blue", value: "#3B82F6" },
@@ -485,8 +481,7 @@ export default function UserSettingsPage() {
                     { label: "Orange", value: "#F59E0B" },
                     { label: "Pink", value: "#EC4899" },
                   ].map((color) => (
-                    <Button
-                      key={color.value}
+                    <Button key={color.value}
                       variant={settings.theme_preferences?.accent_color === color.value ? "default" : "outline"}
                       className="w-10 h-10 p-0 rounded-full"
                       style={{ backgroundColor: settings.theme_preferences?.accent_color === color.value ? color.value : "transparent" }}
@@ -497,7 +492,7 @@ export default function UserSettingsPage() {
               </div>
 
               <div className="space-y-4">
-                <Label>Chart Theme</Label>
+                <label>Chart Theme</label>
                 <Select
                   value={settings.theme_preferences?.chart_theme}
                   onValueChange={(value) => updateSetting('theme_preferences', 'chart_theme', value)}
@@ -529,7 +524,7 @@ export default function UserSettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label>Collapse Sidebar by Default</Label>
+                <label>Collapse Sidebar by Default</label>
                 <Switch
                   checked={settings.layout_preferences?.sidebar_collapsed}
                   onCheckedChange={(checked) => updateSetting('layout_preferences', 'sidebar_collapsed', checked)}
@@ -537,7 +532,7 @@ export default function UserSettingsPage() {
               </div>
 
               <div className="space-y-2">
-                <Label>Default View</Label>
+                <label>Default View</label>
                 <Select
                   value={settings.layout_preferences?.default_view}
                   onValueChange={(value) => updateSetting('layout_preferences', 'default_view', value)}
@@ -571,7 +566,7 @@ export default function UserSettingsPage() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label>Default Timeframe</Label>
+                  <label>Default Timeframe</label>
                   <Select
                     value={settings.chart_settings?.default_timeframe || "1h"}
                     onValueChange={(value) => updateSetting('chart_settings', 'default_timeframe', value)}
@@ -591,10 +586,10 @@ export default function UserSettingsPage() {
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label>Chart Style</Label>
+                  <label>Chart Style</label>
                   <Select
-                    value={settings.chart_settings?.chart_style || "candles"}
-                    onValueChange={(value) => updateSetting('chart_settings', 'chart_style', value)}
+                    value={settings.chart_settings?.style || "candles"}
+                    onValueChange={(value) => updateSetting('chart_settings', 'style', value)}
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select chart style" />
@@ -627,7 +622,7 @@ export default function UserSettingsPage() {
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <Label>AI Copilot</Label>
+                  <label>AI Copilot</label>
                   <p className="text-sm text-gray-400">Get intelligent suggestions as you trade</p>
                 </div>
                 <Switch
@@ -638,7 +633,7 @@ export default function UserSettingsPage() {
               <Separator />
               <div className="flex items-center justify-between">
                 <div>
-                  <Label>Automated Journaling</Label>
+                  <label>Automated Journaling</label>
                   <p className="text-sm text-gray-400">Automatically generate trade journals</p>
                 </div>
                 <Switch
@@ -649,7 +644,7 @@ export default function UserSettingsPage() {
               <Separator />
               <div className="flex items-center justify-between">
                 <div>
-                  <Label>Smart Notifications</Label>
+                  <label>Smart Notifications</label>
                   <p className="text-sm text-gray-400">AI-powered alerts based on your activity</p>
                 </div>
                 <Switch
@@ -660,7 +655,7 @@ export default function UserSettingsPage() {
               <Separator />
               <div className="flex items-center justify-between">
                 <div>
-                  <Label>Voice Narration</Label>
+                  <label>Voice Narration</label>
                   <p className="text-sm text-gray-400">Listen to AI-generated commentary</p>
                 </div>
                 <Switch
@@ -682,7 +677,7 @@ export default function UserSettingsPage() {
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <Label>Keyboard Shortcuts</Label>
+                  <label>Keyboard Shortcuts</label>
                   <p className="text-sm text-gray-400">Enable hotkeys for faster navigation</p>
                 </div>
                 <Switch
@@ -693,7 +688,7 @@ export default function UserSettingsPage() {
               <Separator />
               <div className="flex items-center justify-between">
                 <div>
-                  <Label>Beta Features</Label>
+                  <label>Beta Features</label>
                   <p className="text-sm text-gray-400">Try experimental features before they're released</p>
                 </div>
                 <Switch
@@ -725,22 +720,22 @@ export default function UserSettingsPage() {
               >
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="supportive" id="supportive" />
-                  <Label htmlFor="supportive" className="font-medium">Supportive</Label>
+                  <label htmlFor="supportive" className="font-medium">Supportive</label>
                   <p className="text-sm text-gray-400 ml-2">Focuses on encouragement and positive reinforcement</p>
                 </div>
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="balanced" id="balanced" />
-                  <Label htmlFor="balanced" className="font-medium">Balanced</Label>
+                  <label htmlFor="balanced" className="font-medium">Balanced</label>
                   <p className="text-sm text-gray-400 ml-2">Provides a mix of encouragement and constructive feedback</p>
                 </div>
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="challenging" id="challenging" />
-                  <Label htmlFor="challenging" className="font-medium">Challenging</Label>
+                  <label htmlFor="challenging" className="font-medium">Challenging</label>
                   <p className="text-sm text-gray-400 ml-2">Pushes you with direct feedback and high expectations</p>
                 </div>
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="analytical" id="analytical" />
-                  <Label htmlFor="analytical" className="font-medium">Analytical</Label>
+                  <label htmlFor="analytical" className="font-medium">Analytical</label>
                   <p className="text-sm text-gray-400 ml-2">Focuses on data, metrics, and objective analysis</p>
                 </div>
               </RadioGroup>
@@ -765,19 +760,19 @@ export default function UserSettingsPage() {
               >
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="hourly" id="hourly" />
-                  <Label htmlFor="hourly">Hourly</Label>
+                  <label htmlFor="hourly">Hourly</label>
                 </div>
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="daily" id="daily" />
-                  <Label htmlFor="daily">Daily</Label>
+                  <label htmlFor="daily">Daily</label>
                 </div>
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="weekly" id="weekly" />
-                  <Label htmlFor="weekly">Weekly</Label>
+                  <label htmlFor="weekly">Weekly</label>
                 </div>
                 <div className="flex items-center space-x-3">
                   <RadioGroupItem value="custom" id="custom" />
-                  <Label htmlFor="custom">Custom</Label>
+                  <label htmlFor="custom">Custom</label>
                 </div>
               </RadioGroup>
             </CardContent>
@@ -796,7 +791,7 @@ export default function UserSettingsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <Label>Language</Label>
+                <label>Language</label>
                 <Select
                   value={settings.language || "en"}
                   onValueChange={(value) => setSettings({ ...settings, language: value })}
@@ -832,7 +827,7 @@ export default function UserSettingsPage() {
             <CardContent className="space-y-6">
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label>Enable Sound Effects</Label>
+                  <label>Enable Sound Effects</label>
                   <Switch
                     checked={settings.audio_settings?.sounds_enabled || false}
                     onCheckedChange={(checked) => 
@@ -850,7 +845,7 @@ export default function UserSettingsPage() {
                   <div className="space-y-4 pt-2">
                     <div className="space-y-2">
                       <div className="flex justify-between">
-                        <Label>Sound Volume</Label>
+                        <label>Sound Volume</label>
                         <span className="text-sm text-gray-400">
                           {settings.audio_settings?.volume || 80}%
                         </span>
@@ -883,11 +878,10 @@ export default function UserSettingsPage() {
         <div className="fixed bottom-0 left-0 right-0 p-4 bg-gray-900/90 backdrop-blur-sm border-t border-gray-800 flex items-center justify-center z-10">
           <div className="flex items-center gap-4">
             <p className="text-white">You have unsaved changes</p>
-            <Button onClick={saveSettings} disabled={saving}>
+            <button onClick={saveSettings} disabled={saving}>
               {saving ? "Saving..." : "Save Changes"}
-            </Button>
-            <Button 
-              variant="outline" 
+            </button>
+            <Button variant="outline" 
               onClick={() => setSettings(originalSettings)}
             >
               Discard
@@ -897,4 +891,11 @@ export default function UserSettingsPage() {
       )}
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

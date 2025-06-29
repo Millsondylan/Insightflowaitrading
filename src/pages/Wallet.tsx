@@ -5,6 +5,13 @@ import WalletConnect from "@/components/wallet/WalletConnect";
 export default function Wallet() {
   const { toast } = useToast();
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const handleVerified = (address: string) => {
     toast({
       title: "Wallet Verified",

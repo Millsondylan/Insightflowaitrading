@@ -20,8 +20,8 @@ const RadioGroupItem = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <Radiogroupprimitive  />
-      <radiogroupprimitive  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <circle  >
+      <Radiogroupprimitive  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Circle >
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

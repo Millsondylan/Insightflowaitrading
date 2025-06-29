@@ -21,7 +21,14 @@ export const DailyPlanner: React.FC = () => {
         price: 185.50,
         changePercent: 2.3,
         volume: 45_000_000
-      },
+      }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};,
       {
         symbol: 'BTC/USDT',
         name: 'Bitcoin',
@@ -59,12 +66,11 @@ export const DailyPlanner: React.FC = () => {
     <Card className="w-full bg-black/80 border-zinc-800 text-white">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Daily Market Planner</CardTitle>
-        <Badge 
-          variant={
+        <Badge variant={
             dailyPlan.marketOutlook === 'Bullish' ? 'default' : 
             dailyPlan.marketOutlook === 'Bearish' ? 'destructive' : 'secondary'
           }
-        >
+       >
           {dailyPlan.marketOutlook} Outlook
         </Badge>
       </CardHeader>
@@ -88,11 +94,11 @@ export const DailyPlanner: React.FC = () => {
                   {dailyPlan.potentialTrades.map((trade) => (
                     <Div key={trade.symbol}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
-                   >
+                   />
                       <div>
                         <div className="flex items-center space-x-2">
                           <h4 className="font-bold">{trade.symbol}</h4>
-                          <Badge variant="outline">{trade.type}</Badge>
+                          <badge variant="outline">{trade.type}</Badge>
                         </div>
                         <p className="text-sm text-gray-300">{trade.name}</p>
                       </div>
@@ -100,7 +106,7 @@ export const DailyPlanner: React.FC = () => {
                         <div className="text-lg font-bold">
                           ${trade.price.toLocaleString()}
                         </div>
-                        <Div className={`text-sm ${trade.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        <div className={`text-sm ${trade.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
                           {trade.changePercent >= 0 ? '+' : ''}{trade.changePercent.toFixed(2)}%
                         </div>
                       </div>
@@ -119,7 +125,7 @@ export const DailyPlanner: React.FC = () => {
                     >
                       <div className="flex justify-between items-center mb-2">
                         <h4 className="font-bold">{event.title}</h4>
-                        <Badge 
+                        <badge 
                           variant={
                             event.impact === 'High' ? 'destructive' : 
                             event.impact === 'Medium' ? 'default' : 'secondary'
@@ -131,7 +137,7 @@ export const DailyPlanner: React.FC = () => {
                       <p className="text-sm text-gray-300 mb-2">{event.description}</p>
                       <div className="flex space-x-2">
                         {event.relatedAssets?.map((asset) => (
-                          <Badge key={asset} variant="outline">{asset}</Badge>
+                          <badge key={asset} variant="outline">{asset}</Badge>
                         ))}
                       </div>
                     </div>

@@ -51,12 +51,12 @@ export const PortfolioDashboard = ({ trades }: Props) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Kpicard label="Total PnL" prefix="$">
         <Kpicard label="Win Rate" suffix="%" />
-        <kpicard label="Avg R:R" >
+        <Kpicard label="Avg R:R" >
       </div>
 
       <div>
         <h2 className="text-xl font-semibold text-white/90 mb-4">PnL Curve</h2>
-        <pnlcurve  >
+        <Pnlcurve >
       </div>
 
       <div>
@@ -76,7 +76,7 @@ export const PortfolioDashboard = ({ trades }: Props) => {
                     {trades.map(trade => (
                         <tr key={trade.id} className="border-b border-white/10 hover:bg-white/10">
                             <td className="p-4">{trade.symbol}</td>
-                            <td className={`p-4 ${trade.pnl > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            <Td className={`p-4 ${trade.pnl /> 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 ${trade.pnl.toFixed(2)}
                             </td>
                             <td className="p-4">{trade.rr.toFixed(2)}</td>

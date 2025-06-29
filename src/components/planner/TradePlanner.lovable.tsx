@@ -17,8 +17,7 @@ export default function TradePlanner({ tickers, strategies }: Props) {
       <h2 className="text-white text-lg font-bold">📌 Select Today's Setups</h2>
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {strategies.map((s) => (
-          <button
-            key={s.id}
+          <Button key={s.id}
             onClick={() =>
               setSelected((prev) =>
                 prev.includes(s.id) ? prev.filter((x) => x !== s.id) : [...prev, s.id]
@@ -31,7 +30,7 @@ export default function TradePlanner({ tickers, strategies }: Props) {
             }`}
           >
             ✅ {s.title}
-          </button>
+          </Button>
         ))}
       </div>
       <textarea
@@ -42,7 +41,7 @@ export default function TradePlanner({ tickers, strategies }: Props) {
       />
       <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full">
         🔒 Lock Plan
-      </button>
+      </Button>
     </div>
   );
 } 

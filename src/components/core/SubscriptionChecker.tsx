@@ -36,7 +36,7 @@ const MOCK_USER_ID = 'current-user-id';
 
 const SubscriptionChecker: React.FC = () => {
   const { toast } = useToast();
-  const [selectedPlan, setSelectedPlan] = useState<PlanType>('monthly');
+  const [selectedPlan, setSelectedPlan] = useState<planType>('monthly');
   const [selectedChain, setSelectedChain] = useState<string>('ETH');
   const [txHash, setTxHash] = useState<string>('');
   const [cryptoAmount, setCryptoAmount] = useState<number | null>(null);
@@ -198,7 +198,7 @@ const SubscriptionChecker: React.FC = () => {
     return (
       <Card className="w-full">
         <CardContent className="pt-6">
-          <AccessStatus 
+          <accessStatus 
             status={verificationStatus} 
             plan={selectedPlan}
             expiryDate={expiryDate || undefined}
@@ -208,7 +208,7 @@ const SubscriptionChecker: React.FC = () => {
 
           {verificationStatus === 'failure' && (
             <div className="mt-6 text-center">
-              <Button onClick={resetVerification}>Try Again</Button>
+              <button onClick={resetVerification}>Try Again</Button>
             </div>
           )}
         </CardContent>
@@ -253,7 +253,7 @@ const SubscriptionChecker: React.FC = () => {
                     <ul className="space-y-1">
                       {plan.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start">
-                          <ArrowRight className="h-4 w-4 mr-2 mt-0.5 text-blue-400" />
+                          <arrowRight className="h-4 w-4 mr-2 mt-0.5 text-blue-400" />
                           {feature}
                         </li>
                       ))}
@@ -268,26 +268,26 @@ const SubscriptionChecker: React.FC = () => {
           <div>
             <h3 className="text-lg font-medium mb-4">Step 2: Select Payment Method</h3>
             <div className="space-y-4">
-              <Select value={selectedChain} onValueChange={handleChainChange}>
-                <SelectTrigger className="w-full sm:w-[240px]">
-                  <SelectValue placeholder="Select Chain" />
+              <select value={selectedChain} onValueChange={handleChainChange}>
+                <selectTrigger className="w-full sm:w-[240px]">
+                  <selectValue placeholder="Select Chain" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Crypto Network</SelectLabel>
-                    <SelectItem value="ETH">
+                <selectContent>
+                  <selectGroup>
+                    <selectLabel>Crypto Network</SelectLabel>
+                    <selectItem value="ETH">
                       <div className="flex items-center">
                         <CircleDollarSign className="mr-2 h-4 w-4" />
                         <span>Ethereum (ERC20)</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="BTC">
+                    <selectItem value="BTC">
                       <div className="flex items-center">
-                        <Bitcoin className="mr-2 h-4 w-4" />
+                        <bitcoin className="mr-2 h-4 w-4" />
                         <span>Bitcoin</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="TRX">
+                    <selectItem value="TRX">
                       <div className="flex items-center">
                         <DollarSign className="mr-2 h-4 w-4" />
                         <span>TRON (USDT)</span>
@@ -295,7 +295,7 @@ const SubscriptionChecker: React.FC = () => {
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </Select>
+              </select>
 
               {/* Payment Instructions */}
               <div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4">
@@ -323,23 +323,22 @@ const SubscriptionChecker: React.FC = () => {
                   <div className="flex items-center space-x-2">
                     <Button onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
-                   >
+                  >
                       <Copy className="h-4 w-4" />
-                    </button>
-                    <button 
-                      onClick={() => toast({
+                    </Button>
+                    <Button  onClick={() => toast({
                         title: "QR Code",
                         description: "Scan this code to make your payment",
                         action: (
                           <div className="p-4 bg-white rounded-lg">
-                            <QRCodeSVG value={walletAddress || ''} size={150} />
+                            <QrCodeSVG value={walletAddress || ''} size={150} />
                           </div>
                         )
                       })} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
                     >
                       <QrCode className="h-4 w-4" />
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -354,7 +353,7 @@ const SubscriptionChecker: React.FC = () => {
                 <label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
                   After payment, paste the transaction hash (TX ID) below to verify
                 </label>
-                <Input 
+                <input 
                   id="txHash"
                   value={txHash}
                   onChange={handleTxHashChange}
@@ -363,11 +362,10 @@ const SubscriptionChecker: React.FC = () => {
                 />
               </div>
               
-              <Button
-                onClick={handleVerifyTransaction}
+              <Button onClick={handleVerifyTransaction}
                 disabled={!txHash.trim() || loading}
                 className="w-full"
-              >
+              />
                 {loading ? 'Verifying...' : 'Verify Payment'}
               </Button>
             </div>
@@ -378,4 +376,11 @@ const SubscriptionChecker: React.FC = () => {
   );
 };
 
-export default SubscriptionChecker; 
+export default SubscriptionChecker;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

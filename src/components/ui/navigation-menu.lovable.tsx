@@ -9,9 +9,9 @@ const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <Navigationmenuprimitive >
+  <Navigationmenuprimitive>
     {children}
-    <Navigationmenuviewport  />
+    <navigationmenuviewport  />
   </NavigationMenuPrimitive.Root>
 ))
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
@@ -20,7 +20,7 @@ const NavigationMenuList = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
 >(({ className, ...props }, ref) => (
-  <navigationmenuprimitive  >
+  <Navigationmenuprimitive >
 ))
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
@@ -34,7 +34,7 @@ const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <navigationmenuprimitive  >
+  <Navigationmenuprimitive  />
     {children}{" "}
     <chevrondown hidden="true" >
   </NavigationMenuPrimitive.Trigger>

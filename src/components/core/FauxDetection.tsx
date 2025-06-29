@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<PatternZone[]>([]);
+  const [patternZones, setPatternZones] = useState<patternZone[]>([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <BlockReveal>
+      <blockReveal>
         <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
             <ChartCanvasOverlay imageUrl={imagePreview} patternZones={patternZones} />
@@ -40,32 +40,31 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
             <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
           )}
           <div className="mt-2 flex justify-end">
-            <button 
-              onClick={() => setShowOverlays(!showOverlays)} 
+            <Button  onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </button>
+            </Button>
           </div>
         </div>
       </BlockReveal>
       
       <div className="space-y-6">
-        <BlockReveal delay={0.1}>
+        <blockReveal delay={0.1}>
           <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
           <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
-              <PatternTag key={pattern} label={pattern} />
+              <patternTag key={pattern} label={pattern} />
             ))}
           </div>
         </BlockReveal>
 
-        <BlockReveal delay={0.2}>
+        <blockReveal delay={0.2}>
           <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
           <p className="text-gray-300 mt-2">{result.summary}</p>
         </BlockReveal>
         
-        <BlockReveal delay={0.3}>
+        <blockReveal delay={0.3}>
           <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
           <div className="flex items-center gap-4 mt-2">
             <div className="confidence-meter-bg flex-grow">
@@ -78,7 +77,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
           </div>
         </BlockReveal>
         
-        <BlockReveal delay={0.4}>
+        <blockReveal delay={0.4}>
           <div className="flex flex-wrap gap-4 mt-4">
             <Button asChild className="glow-button bg-violet-500/20 border-violet-500 hover:bg-violet-500/30">
               <Link to="/journal?from=vision">📓 Save to Journal</Link>
@@ -96,4 +95,11 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   );
 };
 
-export default FauxDetection; 
+export default FauxDetection;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

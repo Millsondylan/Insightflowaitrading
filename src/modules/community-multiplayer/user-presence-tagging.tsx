@@ -41,6 +41,13 @@ export const UserPresenceTagging: React.FC<UserPresenceTaggingProps> = ({ channe
     }
   ]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'online': return 'text-green-500';
@@ -59,8 +66,8 @@ export const UserPresenceTagging: React.FC<UserPresenceTaggingProps> = ({ channe
           <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start gap-3">
               <div className="relative">
-                <Avatar className="h-10 w-10">
-                  <AvatarFallback>
+                <avatar className="h-10 w-10">
+                  <avatarFallback>
                     {user.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
@@ -83,14 +90,14 @@ export const UserPresenceTagging: React.FC<UserPresenceTaggingProps> = ({ channe
                 <div className="flex items-center gap-4 mt-2">
                   <div className="flex gap-1">
                     {user.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <badge key={tag} variant="secondary" className="text-xs">
                         {tag}
                       </Badge>
                     ))}
                   </div>
                   
                   <div className="flex items-center gap-1 text-sm">
-                    <TrendingUp className="h-3 w-3 text-green-500" />
+                    <trendingUp className="h-3 w-3 text-green-500" />
                     <span className="font-medium">{user.winRate}%</span>
                   </div>
                 </div>

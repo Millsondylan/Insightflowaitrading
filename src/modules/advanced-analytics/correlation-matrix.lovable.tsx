@@ -22,7 +22,7 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
   const [matrix, setMatrix] = useState<Correlationmatrix  />(null);
   const [loading, setLoading] = useState(true);
   const [selectedCell, setSelectedCell] = useState<{ row: number; col: number } | null>(null);
-  const [rollingData, setRollingData] = useState<rollingcorrelation  >(null);
+  const [rollingData, setRollingData] = useState<Rollingcorrelation >(null);
 
   // TODO: implement real correlation calculation
   useEffect(() => {
@@ -145,10 +145,9 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
           <div className="flex">
             <div className="w-16 h-8"></div> {/* Empty corner */}
             {matrix.symbols.map((symbol, index) => (
-              <div
-                key={symbol}
+              <Div key={symbol}
                 className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-              >
+              />
                 {symbol}
               </div>
             ))}
@@ -255,7 +254,7 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
 const generateMockCorrelationMatrix = async (
   symbols: string[], 
   timeframe: string
-): Promise<correlationmatrix  > => {
+): Promise<Correlationmatrix  > => {
   // TODO: replace with real correlation calculation
   const correlations = symbols.map((_, i) =>
     symbols.map((_, j) => {

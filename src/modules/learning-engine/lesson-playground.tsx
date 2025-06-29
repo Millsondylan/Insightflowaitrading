@@ -11,6 +11,13 @@ interface LessonPlaygroundProps {
 
 export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) => {
   const [currentStep, setCurrentStep] = React.useState(0);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [userCode, setUserCode] = React.useState('');
   const [testResults, setTestResults] = React.useState<any[]>([]);
   const [isRunning, setIsRunning] = React.useState(false);
@@ -66,7 +73,7 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
         <div className="flex items-center gap-4">
-          <Progress value={progress} className="flex-1" />
+          <progress value={progress} className="flex-1" />
           <span className="text-sm text-muted-foreground">
             Step {currentStep + 1} of {lesson.steps.length}
           </span>
@@ -91,8 +98,8 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
             </div>
 
             <div className="flex gap-2">
-              <Button onClick={runTests} disabled={isRunning} className="flex-1">
-                <Play className="h-4 w-4 mr-2" />
+              <button onClick={runTests} disabled={isRunning} className="flex-1">
+                <play className="h-4 w-4 mr-2" />
                 {isRunning ? 'Running...' : 'Run Tests'}
               </Button>
               <Button variant="outline" onClick={() => setUserCode('')}>
@@ -115,7 +122,7 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-               >
+              >
                   {result.passed ? (
                     <CheckCircle className="h-4 w-4" />
                   ) : (
@@ -126,7 +133,7 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
               ))}
               
               {testResults.every(r => r.passed) && (
-                <Button onClick={nextStep} className="w-full mt-4">
+                <button onClick={nextStep} className="w-full mt-4">
                   Continue to Next Step
                 </Button>
               )}

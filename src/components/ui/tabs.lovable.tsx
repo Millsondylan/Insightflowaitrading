@@ -25,7 +25,7 @@ const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...props }, ref) => (
-  <tabsprimitive  >
+  <Tabsprimitive  >
 ))
 TabsContent.displayName = TabsPrimitive.Content.displayName
 

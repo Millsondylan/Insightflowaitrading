@@ -21,7 +21,7 @@ export const StrategyCard = ({ strategy }: Props) => {
         <h3 className="text-xl font-semibold">{strategy.title}</h3>
         <button className="text-sm text-white/70 hover:text-white transition-colors">
           View
-        </button>
+        </Button>
       </div>
       <p className="text-sm text-white/70 h-10">{strategy.summary}</p>
       <div className="flex flex-wrap gap-2">
@@ -39,7 +39,7 @@ export const StrategyCard = ({ strategy }: Props) => {
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <Arrowupright  />
+          <arrowupright  />
           <span className="text-sm font-medium">
             ${strategy.totalPnL.toLocaleString()} PnL
           </span>

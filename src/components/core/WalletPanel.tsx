@@ -90,7 +90,7 @@ const WalletPanel: React.FC = () => {
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <AnimatePresence>
+            <animatePresence>
               {balances.map((token, index) => (
                 <TokenBalanceCard key={token.chain.id} token={token} index={index} />
               ))}
@@ -106,14 +106,13 @@ const WalletPanel: React.FC = () => {
         <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
         <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
         <div className="flex max-w-md mx-auto">
-          <Input 
-            type="text" 
+          <input type="text" 
             placeholder="Enter any wallet address to simulate..."
             value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
+            onChange={(e) = /> setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button onClick={handleConnect} className="connect-wallet-btn shrink-0">Connect</Button>
+          <button onClick={handleConnect} className="connect-wallet-btn shrink-0">Connect</Button>
         </div>
       </div>
     );
@@ -122,4 +121,11 @@ const WalletPanel: React.FC = () => {
   return <div className="wallet-panel">{renderContent()}</div>;
 };
 
-export default WalletPanel; 
+export default WalletPanel;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

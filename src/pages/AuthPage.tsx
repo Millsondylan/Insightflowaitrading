@@ -4,6 +4,13 @@ import AuthForm from '@/components/auth/AuthForm';
 
 export default function AuthPage() {
     const location = useLocation();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
     const navigate = useNavigate();
     const from = (location.state as { from?: Location })?.from?.pathname || '/';
 
@@ -15,7 +22,7 @@ export default function AuthPage() {
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
             <div className="w-full">
-                <AuthForm onSuccess={handleSuccess} />
+                <authForm onSuccess={handleSuccess} />
             </div>
         </div>
     );

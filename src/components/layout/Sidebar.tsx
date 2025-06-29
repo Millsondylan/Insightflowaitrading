@@ -44,6 +44,13 @@ const bottomNavItems = [
 
 export default function Sidebar() {
   const location = useLocation();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const { profile } = useAuth();
 
   const isActive = (path: string) => location.pathname.startsWith(path);
@@ -55,14 +62,13 @@ export default function Sidebar() {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Link
-              to={item.path}
+            <Link to={item.path}
               className={`flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-200 ${
                 active
                   ? 'bg-blue-600/20 text-blue-400'
                   : 'text-gray-500 hover:text-white hover:bg-gray-800'
               }`}
-            >
+           >
               <Icon size={24} />
             </Link>
           </TooltipTrigger>
@@ -78,13 +84,13 @@ export default function Sidebar() {
     <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
       <div className="flex flex-col items-center gap-10">
         <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-          <TrendingUp className="w-6 h-6 text-white" />
+          <trendingUp className="w-6 h-6 text-white" />
         </Link>
         <nav>
           <ul className="space-y-4">
             {navItems.map((item) => (
               <li key={item.path}>
-                <NavLink item={item} />
+                <navLink item={item} />
               </li>
             ))}
           </ul>
@@ -96,7 +102,7 @@ export default function Sidebar() {
           <ul className="space-y-2">
             {bottomNavItems.map((item) => (
               <li key={item.path}>
-                <NavLink item={item} />
+                <navLink item={item} />
               </li>
             ))}
           </ul>
@@ -106,9 +112,9 @@ export default function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link to="/profile">
-                <Avatar>
-                  <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+                <avatar>
+                  <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
+                  <avatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
                 </Avatar>
               </Link>
             </TooltipTrigger>
@@ -129,12 +135,11 @@ export default function Sidebar() {
             Tools
           </h2>
           <div className="space-y-1">
-            <Link
-              to="/pine-script-generator"
+            <Link to="/pine-script-generator"
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
                 location.pathname === '/pine-script-generator' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               }`}
-            >
+            />
               <FileCode size={16} />
               <span>Pine Script Generator</span>
             </Link>

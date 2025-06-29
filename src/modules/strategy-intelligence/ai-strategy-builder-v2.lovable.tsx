@@ -20,13 +20,13 @@ export const AIStrategyBuilderV2: React.FC = () => {
   return (
     <card  style={{ width: "100%", color: "white" }}>
       <Cardheader >
-        <Cardtitle  />AI Strategy Builder V2</CardTitle>
-      </CardHeader>
-      <cardcontent  >
+        <Cardtitle  />AI Strategy Builder V2</Cardtitle>
+      </Cardheader>
+      <Cardcontent >
         <div className="space-y-4">
           <div>
             <label className="block text-sm mb-2">Strategy Name</label>
-            <input  > setStrategyName(e.target.value)}
+            <Input  /> setStrategyName(e.target.value)}
               placeholder="Enter strategy name"
               className="bg-zinc-900 border-zinc-700 text-white"
             />
@@ -43,7 +43,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
                   <selectitem  >{market}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
           </div>
 
           <div>
@@ -57,10 +57,10 @@ export const AIStrategyBuilderV2: React.FC = () => {
                   <selectitem  >{level}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
           </div>
 
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}>
             Generate AI Strategy
           </Button>
         </div>

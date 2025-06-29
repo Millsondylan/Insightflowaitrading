@@ -89,7 +89,7 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
           <div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
             <Icon className="w-6 h-6" />
           </div>
-          <Badge className={categoryColors[course.difficulty || 'beginner']}>
+          <badge className={categoryColors[course.difficulty || 'beginner']}>
             {course.difficulty}
           </Badge>
         </div>
@@ -106,7 +106,7 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
                 <span className="text-gray-400">Progress</span>
                 <span className="text-white font-semibold">{Math.round(progress.progress_percentage)}%</span>
               </div>
-              <Progress 
+              <progress 
                 value={progress.progress_percentage} 
                 className="h-2 bg-gray-700"
               />
@@ -123,7 +123,7 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
               <span>{course.enrolled_count.toLocaleString()} enrolled</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <BookOpen className="w-4 h-4" />
+              <bookOpen className="w-4 h-4" />
               <span>{course.modules_count} lessons</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
@@ -134,7 +134,7 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
           
           <div className="flex flex-wrap gap-2">
             {course.tags.slice(0, 3).map((tag, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
+              <badge key={index} variant="secondary" className="text-xs">
                 {tag}
               </Badge>
             ))}
@@ -163,11 +163,18 @@ const AchievementCard = ({ icon: Icon, title, value, color }: any) => (
 
 export default function AcademyPage() {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const { logNavigation } = useAuditLog();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [categories, setCategories] = useState<AcademyCategory[]>([]);
-  const [courses, setCourses] = useState<AcademyCourse[]>([]);
-  const [userProgress, setUserProgress] = useState<AcademyProgress[]>([]);
+  const [categories, setCategories] = useState<academyCategory[]>([]);
+  const [courses, setCourses] = useState<academyCourse[]>([]);
+  const [userProgress, setUserProgress] = useState<academyProgress[]>([]);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -232,7 +239,7 @@ export default function AcademyPage() {
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
-            <BookOpen className="w-8 h-8 text-white" />
+            <bookOpen className="w-8 h-8 text-white" />
           </span>
           Trading Academy
         </h1>
@@ -245,25 +252,25 @@ export default function AcademyPage() {
       {/* Stats */}
       {user && userProgress.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <AchievementCard
+          <achievementCard
             icon={Award}
             title="Courses Completed"
             value={completedCourses}
             color="bg-green-600"
           />
-          <AchievementCard
+          <achievementCard
             icon={Target}
             title="Average Progress"
             value={`${Math.round(averageProgress)}%`}
             color="bg-blue-600"
           />
-          <AchievementCard
+          <achievementCard
             icon={Clock}
             title="Time Invested"
             value={`${totalTimeSpent.toFixed(1)}h`}
             color="bg-purple-600"
           />
-          <AchievementCard
+          <achievementCard
             icon={Zap}
             title="Current Streak"
             value="7 days"

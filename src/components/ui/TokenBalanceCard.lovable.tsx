@@ -68,11 +68,11 @@ const TokenBalanceCard: React.FC<Tokenbalancecardprops > = ({ token, index }) =>
             <span className="font-mono text-sm text-gray-300">{shortAddress}</span>
             <div className="flex items-center space-x-2">
               <button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
-                {copied ? <Check  /> : <copy  >}
-              </button>
+                {copied ? <Check  /> : <Copy >}
+              </Button>
               <button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
-                <qrcode  >
-              </button>
+                <Qrcode  />
+              </Button>
             </div>
           </div>
         </div>

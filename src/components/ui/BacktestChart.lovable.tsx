@@ -58,7 +58,7 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
 
 const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
   const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<Trademarker >(null);
+  const [hoveredTrade, setHoveredTrade] = useState<Trademarker>(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   
   // Start animation after component mounts
@@ -75,15 +75,15 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   const maxPrice = Math.max(...prices) * 1.005;
 
   return (
-    <Blockreveal  />
+    <blockreveal  />
       <div className="chart-container">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-bold text-white">
             {ticker} ({timeframe})
           </h3>
         </div>
-        <responsivecontainer width="100%" height="90%" >
-          <linechart  >
+        <Responsivecontainer width="100%" height="90%">
+          <Linechart  />
             <cartesiangrid strokeDasharray="3 3" >
             <xaxis dataKey="time" > new Date(time * 1000).toLocaleDateString()}
               tick={{ fill: '#9ca3af' }}

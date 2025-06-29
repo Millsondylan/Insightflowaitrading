@@ -46,7 +46,7 @@ interface EventDetails {
   }[];
 }
 
-export const LiveEventRoom: React.FC<Liveeventroomprops > = ({
+export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
   eventId,
   userId,
   username,
@@ -54,8 +54,8 @@ export const LiveEventRoom: React.FC<Liveeventroomprops > = ({
   onLeave
 }) => {
   const [event, setEvent] = useState<Eventdetails  />(null);
-  const [messages, setMessages] = useState<message  >([]);
-  const [participants, setParticipants] = useState<participant  >([]);
+  const [messages, setMessages] = useState<Message >([]);
+  const [participants, setParticipants] = useState<Participant  />([]);
   const [messageInput, setMessageInput] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -334,12 +334,11 @@ export const LiveEventRoom: React.FC<Liveeventroomprops > = ({
             </div>
           </div>
           
-          <button
-            className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
+          <Button  className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}
           >
             Leave Event
-          </button>
+          </Button>
         </div>
         
         {event.description && (
@@ -391,22 +390,20 @@ export const LiveEventRoom: React.FC<Liveeventroomprops > = ({
           {/* Message Input */}
           <div className="p-3 border-t border-border-primary bg-background-secondary">
             <div className="flex">
-              <input
-                type="text"
+              <input type="text"
                 className="flex-1 p-2 bg-background-primary border border-border-primary rounded-l-md focus:outline-none focus:ring-1 focus:ring-brand-primary"
                 placeholder="Type a message..."
                 value={messageInput}
-                onChange={(e) => setMessageInput(e.target.value)}
+                onChange={(e) = /> setMessageInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 disabled={!isConnected}
               />
-              <button
-                className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <Button  className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
                 disabled={!isConnected || !messageInput.trim()}
               >
                 Send
-              </button>
+              </Button>
             </div>
             {!isConnected && (
               <div className="mt-2 text-sm text-status-error">

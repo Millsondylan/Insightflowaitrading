@@ -152,32 +152,32 @@ export default function AdminPage() {
         </header>
 
         <Tabs defaultValue="users">
-          <tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
-            <tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
+          <Tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
+            <Tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
               <Shieldcheck  />
               <span>Users</span>
-            </TabsTrigger>
-            <tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
-              <ticket  >
+            </Tabstrigger>
+            <Tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
+              <Ticket >
               <span>Promo Codes</span>
-            </TabsTrigger>
-            <tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <activity  >
+            </Tabstrigger>
+            <Tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
+              <Activity  />
               <span>Usage Logs</span>
-            </TabsTrigger>
-          </TabsList>
+            </Tabstrigger>
+          </Tabslist>
 
-          <tabscontent value="users" >
+          <Tabscontent value="users" >
             <userrolemanager  >
-          </TabsContent>
+          </Tabscontent>
 
-          <tabscontent value="promo" >
+          <Tabscontent value="promo" >
             <promocodeeditor  >
-          </TabsContent>
+          </Tabscontent>
 
-          <tabscontent value="logs" >
+          <Tabscontent value="logs" >
             <usagelogviewer  >
-          </TabsContent>
+          </Tabscontent>
         </Tabs>
       </div>
     </div>

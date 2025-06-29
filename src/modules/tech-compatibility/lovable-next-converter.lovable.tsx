@@ -15,14 +15,13 @@ export const LovableNextConverter: React.FC = () => {
       <Card className="p-4">
         <div className="mb-4">
           <label className="block mb-2">Project Path:</label>
-          <Input 
-            value={projectPath}
-            onChange={(e) => setProjectPath(e.target.value)}
+          <input value={projectPath}
+            onChange={(e) = /> setProjectPath(e.target.value)}
             placeholder="./my-project"
           />
         </div>
         
-        <Button>Start Migration</Button>
+        <button>Start Migration</Button>
       </Card>
     </div>
   );

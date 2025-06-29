@@ -9,7 +9,7 @@ import { MarketTicker, MarketType, MarketScannerFilter } from './types'
 import { filterMarketTickers } from './utils'
 
 export const TickerScanningEngine: React.FC = () => {
-  const [tickers, setTickers] = useState<MarketTicker[]>([
+  const [tickers, setTickers] = useState<marketTicker[]>([
     {
       symbol: 'AAPL',
       name: 'Apple Inc.',
@@ -18,7 +18,14 @@ export const TickerScanningEngine: React.FC = () => {
       changePercent: 2.3,
       volume: 45_000_000,
       marketCap: 2_900_000_000_000
-    },
+    }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};,
     {
       symbol: 'BTC/USDT',
       name: 'Bitcoin',
@@ -30,7 +37,7 @@ export const TickerScanningEngine: React.FC = () => {
     }
   ])
 
-  const [filter, setFilter] = useState<MarketScannerFilter>({
+  const [filter, setFilter] = useState<marketScannerFilter>({
     marketType: 'Stocks',
     minPrice: 50,
     minVolume: 1_000_000
@@ -46,7 +53,7 @@ export const TickerScanningEngine: React.FC = () => {
     <Card className="w-full bg-black/80 border-zinc-800 text-white">
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle>Ticker Scanning Engine</CardTitle>
-        <Badge variant="default">
+        <badge variant="default">
           {filteredTickers.length} Matching Tickers
         </Badge>
       </CardHeader>
@@ -55,36 +62,34 @@ export const TickerScanningEngine: React.FC = () => {
           <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="block text-sm mb-1">Market Type</label>
-              <Select 
+              <select 
                 value={filter.marketType} 
                 onValueChange={(value: MarketType) => handleFilterChange('marketType', value)}
               >
-                <SelectTrigger className="bg-zinc-900 border-zinc-700 text-white">
-                  <SelectValue placeholder="Select Market" />
+                <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
+                  <selectValue placeholder="Select Market" />
                 </SelectTrigger>
-                <SelectContent>
+                <selectContent>
                   {['Stocks', 'Crypto', 'Forex', 'Commodities'].map((type) => (
-                    <SelectItem key={type} value={type}>{type}</SelectItem>
+                    <selectItem key={type} value={type}>{type}</SelectItem>
                   ))}
                 </SelectContent>
-              </Select>
+              </select>
             </div>
             <div>
               <label className="block text-sm mb-1">Min Price</label>
-              <Input 
-                type="number"
+              <input type="number"
                 value={filter.minPrice || ''}
-                onChange={(e) => handleFilterChange('minPrice', Number(e.target.value))}
+                onChange={(e) = /> handleFilterChange('minPrice', Number(e.target.value))}
                 placeholder="Minimum Price"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
             </div>
             <div>
               <label className="block text-sm mb-1">Min Volume</label>
-              <Input 
-                type="number"
+              <input type="number"
                 value={filter.minVolume || ''}
-                onChange={(e) => handleFilterChange('minVolume', Number(e.target.value))}
+                onChange={(e) = /> handleFilterChange('minVolume', Number(e.target.value))}
                 placeholder="Minimum Volume"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
@@ -95,11 +100,11 @@ export const TickerScanningEngine: React.FC = () => {
           {filteredTickers.map((ticker) => (
             <Div key={ticker.symbol} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center"
-           >
+          >
               <div>
                 <div className="flex items-center space-x-2">
                   <h3 className="text-lg font-bold">{ticker.symbol}</h3>
-                  <Badge variant="outline">{ticker.type}</Badge>
+                  <badge variant="outline">{ticker.type}</Badge>
                 </div>
                 <p className="text-sm text-gray-300">{ticker.name}</p>
               </div>
@@ -107,7 +112,7 @@ export const TickerScanningEngine: React.FC = () => {
                 <div className="text-lg font-bold">
                   ${ticker.price.toLocaleString()}
                 </div>
-                <Div className={`text-sm ${ticker.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <div className={`text-sm ${ticker.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
                   {ticker.changePercent >= 0 ? '+' : ''}{ticker.changePercent.toFixed(2)}%
                 </div>
                 <div className="text-xs text-gray-400">

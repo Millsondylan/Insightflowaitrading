@@ -43,11 +43,18 @@ export default function BroadcastPage() {
                     ))}
                 </div>
                 <div className="p-4 border-t border-white/10 flex gap-2">
-                    <Textarea placeholder="Say something..." className="bg-black/20 border-none text-sm" rows={1}/>
-                    <Button><Send size={16} /></Button>
+                    <textarea placeholder="Say something..." className="bg-black/20 border-none text-sm" rows={1}/>
+                    <button><Send size={16} /></Button>
                 </div>
             </div>
         </div>
     </div>
   );
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 } 

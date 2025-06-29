@@ -137,7 +137,7 @@ const KPICards = ({ stats }: KPICardsProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
-        <BlockReveal key={card.label} delay={index * 0.1}>
+        <blockReveal key={card.label} delay={index * 0.1}>
           <KPICard {...card} />
         </BlockReveal>
       ))}
@@ -145,4 +145,11 @@ const KPICards = ({ stats }: KPICardsProps) => {
   );
 };
 
-export default KPICards; 
+export default KPICards;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

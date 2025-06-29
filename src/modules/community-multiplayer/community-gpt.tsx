@@ -19,6 +19,13 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
       timestamp: new Date()
     }
   ]);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [input, setInput] = React.useState('');
   const [isTyping, setIsTyping] = React.useState(false);
 
@@ -52,7 +59,7 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
   return (
     <Card className="theme-card p-6 h-[600px] flex flex-col">
       <div className="flex items-center gap-2 mb-4">
-        <Bot className="h-6 w-6" />
+        <bot className="h-6 w-6" />
         <h2 className="text-2xl font-bold">Community GPT</h2>
       </div>
 
@@ -61,7 +68,7 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
           {messages.map((message) => (
             <Div key={message.id}
               className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-           >
+          >
               <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
@@ -70,11 +77,11 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
                     </div>
                   ) : (
                     <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                      <Bot className="h-4 w-4" />
+                      <bot className="h-4 w-4" />
                     </div>
                   )}
                 </div>
-                <Div className={`p-3 rounded-lg ${
+                <div className={`p-3 rounded-lg ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
@@ -91,7 +98,7 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
           {isTyping && (
             <div className="flex gap-3">
               <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                <Bot className="h-4 w-4" />
+                <bot className="h-4 w-4" />
               </div>
               <div className="bg-secondary p-3 rounded-lg">
                 <div className="flex gap-1">
@@ -106,13 +113,12 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
       </ScrollArea>
 
       <div className="flex gap-2">
-        <Input
-          placeholder="Ask about strategies, analysis, or community insights..."
+        <input placeholder="Ask about strategies, analysis, or community insights..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) = /> setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <Button onClick={sendMessage} size="icon">
+        <button onClick={sendMessage} size="icon">
           <Send className="h-4 w-4" />
         </Button>
       </div>

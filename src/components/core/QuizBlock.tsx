@@ -190,7 +190,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                 Upgrade to a Pro plan to test your knowledge with quizzes tailored to each lesson.
               </p>
             </div>
-            <Button onClick={generateQuiz} className="mt-4">
+            <button onClick={generateQuiz} className="mt-4">
               Upgrade to Pro
             </Button>
           </CardContent>
@@ -208,7 +208,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
       >
         <Card className="quiz-block">
           <CardContent className="p-8 text-center space-y-6">
-            <Brain className="h-12 w-12 text-blue-400 mx-auto animate-pulse" />
+            <brain className="h-12 w-12 text-blue-400 mx-auto animate-pulse" />
             <div>
               <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Generating Quiz Questions
@@ -233,7 +233,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
       <Card className="quiz-block">
         <CardContent className="p-8 text-center">
           <p className="text-gray-400">Ready to test your knowledge?</p>
-          <Button onClick={generateQuiz} className="mt-4">
+          <button onClick={generateQuiz} className="mt-4">
             Generate Quiz
           </Button>
         </CardContent>
@@ -253,7 +253,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center space-x-3">
-              <Brain className="h-6 w-6 text-blue-400" />
+              <brain className="h-6 w-6 text-blue-400" />
               <span>{quiz.title}</span>
             </CardTitle>
             <div className="text-sm text-gray-400">
@@ -302,19 +302,18 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                       transition={{ delay: 0.1 * parseInt(option.id.slice(-1)), duration: 0.4 }}
                       className="quiz-option"
                     >
-                      <input
-                        type="radio"
+                      <input type="radio"
                         id={`${currentQuestion.id}-${option.id}`}
                         name={currentQuestion.id}
                         value={option.id}
                         checked={isSelected}
-                        onChange={() => handleAnswerSelect(currentQuestion.id, option.id)}
+                        onChange={() = /> handleAnswerSelect(currentQuestion.id, option.id)}
                         disabled={isSubmitted}
                         className="quiz-option-input"
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
                         className={optionClassName}
-                     >
+                    >
                         <div className="quiz-option-radio" />
                         <span className="text-gray-200">{option.label}</span>
                       </label>
@@ -327,18 +326,16 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               <div className="flex justify-between items-center">
                 <div />
                 {!isQuestionAnswered ? (
-                  <Button
-                    onClick={handleSubmitAnswer}
+                  <Button onClick={handleSubmitAnswer}
                     disabled={!selectedAnswers[currentQuestion.id]}
                     className="quiz-submit-btn"
-                  >
+                  />
                     Submit Answer
                   </Button>
                 ) : (
                   <div className="flex space-x-3">
                     {canProceed && (
-                      <Button
-                        onClick={handleNextQuestion}
+                      <Button  onClick={handleNextQuestion}
                         className="quiz-submit-btn"
                       >
                         Next Question
@@ -381,7 +378,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         >
           <div className="badge-content">
             <div className="badge-icon">
-              <Trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
+              <trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
             </div>
             <h2 className="text-2xl font-bold text-yellow-400 mb-2">
               Quiz Complete!
@@ -392,8 +389,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
             <p className="text-lg font-semibold text-green-400">
               Score: {quizResult.score.toFixed(0)}%
             </p>
-            <Button
-              onClick={() => setShowCompletion(false)}
+            <Button  onClick={() => setShowCompletion(false)}
               className="mt-4 bg-yellow-600 hover:bg-yellow-700"
             >
               Continue Learning
@@ -405,4 +401,11 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   );
 };
 
-export default QuizBlock; 
+export default QuizBlock;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

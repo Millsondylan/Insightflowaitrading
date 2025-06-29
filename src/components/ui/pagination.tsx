@@ -36,7 +36,7 @@ PaginationItem.displayName = "PaginationItem"
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & Pick<ButtonProps, "size"> &
+} & Pick<buttonProps, "size"> &
   React.ComponentProps<"a">
 
 const PaginationLink = ({
@@ -63,12 +63,11 @@ const PaginationPrevious = ({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label="Go to previous page"
+  <PaginationLink aria-label="Go to previous page"
     size="default"
     className={cn("gap-1 pl-2.5", className)}
     {...props}
-  >
+ >
     <ChevronLeft className="h-4 w-4" />
     <span>Previous</span>
   </PaginationLink>
@@ -79,12 +78,11 @@ const PaginationNext = ({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label="Go to next page"
+  <PaginationLink aria-label="Go to next page"
     size="default"
     className={cn("gap-1 pr-2.5", className)}
     {...props}
-  >
+  />
     <span>Next</span>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
@@ -95,7 +93,7 @@ const PaginationEllipsis = ({
   className,
   ...props
 }: React.ComponentProps<"span">) => (
-  <Span aria-hidden
+  <span aria-hidden
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
  >
@@ -114,3 +112,10 @@ export {
   PaginationNext,
   PaginationPrevious,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

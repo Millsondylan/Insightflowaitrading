@@ -90,14 +90,14 @@ export default function DigestPage() {
           <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <Zap >
             <span>Live Scan</span>
-          </button>
+          </Button>
           <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <Filetext  />
             <span>View Reports</span>
-          </button>
+          </Button>
         </div>
 
-        <marketdigest  >
+        <Marketdigest >
         
         <div className="mt-8 text-center">
           <p className="text-white/50 text-sm">

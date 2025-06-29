@@ -23,7 +23,7 @@ export default function AppLayout({ children, rightColumn }: AppLayoutProps) {
           </main>
         </div>
       </div>
-      <toaster  >
+      <Toaster >
     </div>
   );
 }

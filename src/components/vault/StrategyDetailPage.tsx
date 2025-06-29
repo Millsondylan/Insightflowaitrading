@@ -67,11 +67,18 @@ export const StrategyDetailPage = ({ strategy }: Props) => {
                 </div>
             </div>
 
-            <Button className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-full text-white h-12 text-lg font-bold">
+            <button className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-full text-white h-12 text-lg font-bold">
                 Clone to Builder
             </Button>
         </div>
       </div>
     </div>
   );
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 }; 

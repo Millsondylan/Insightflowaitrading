@@ -16,12 +16,19 @@ type Props = {
 export default function LessonPlayground({ lessonId, chunks }: Props) {
   const [completed, setCompleted] = useState<string[]>([]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   return (
     <div className="space-y-6 theme-academy">
       {chunks.map((chunk) => (
         <Div key={chunk.id}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
-       >
+      >
           {chunk.type === "markdown" && (
             <ReactMarkdown>{chunk.content}</ReactMarkdown>
           )}

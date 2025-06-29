@@ -53,8 +53,7 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
         gap: '8px'
       }}>
         {navItems.map((item) => (
-          <button
-            key={item.path}
+          <Button key={item.path}
             onClick={() => handleNavClick(item.path)}
             style={{
               display: 'flex',
@@ -80,7 +79,7 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
           >
             <span style={{ fontSize: '16px' }}>{item.icon}</span>
             {item.label}
-          </button>
+          </Button>
         ))}
       </div>
 

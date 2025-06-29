@@ -55,11 +55,10 @@ export default function AppLayout() {
         <header className="h-16 shrink-0 border-b border-gray-800 bg-gray-900">
           <div className="flex h-full items-center justify-end px-6 gap-4">
             {/* Developer-mode toggle – visible only in dev or admin builds */}
-            <Button
-              variant={developerMode ? 'default' : 'outline'}
+            <Button variant={developerMode ? 'default' : 'outline'}
               size="sm"
               onClick={toggleDeveloperMode}
-            >
+           >
               {developerMode ? 'Dev-Mode: ON' : 'Dev-Mode: OFF'}
             </Button>
             <NotificationCenter />
@@ -75,3 +74,10 @@ export default function AppLayout() {
     </div>
   );
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

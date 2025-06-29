@@ -14,7 +14,7 @@ interface AccessStatusProps {
   onAnimationComplete?: () => void;
 }
 
-const AccessStatus: React.FC<Accessstatusprops > = ({
+const AccessStatus: React.FC<Accessstatusprops> = ({
   status,
   plan,
   expiryDate,
@@ -70,7 +70,7 @@ const AccessStatus: React.FC<Accessstatusprops > = ({
   const formattedExpiry = expiryDate ? new Date(expiryDate).toLocaleDateString() : '';
 
   return (
-    <Animatepresence mode="wait" />
+    <animatepresence mode="wait" />
       <motion.div
         key={status}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -94,7 +94,7 @@ const AccessStatus: React.FC<Accessstatusprops > = ({
             className="relative"
           >
             {status === 'pending' && (
-              <clock  >
+              <Clock >
             )}
             {status === 'success' && (
               <>
@@ -110,7 +110,7 @@ const AccessStatus: React.FC<Accessstatusprops > = ({
                     repeatDelay: 1,
                   }}
                 />
-                <lockopen  >
+                <Lockopen  />
               </>
             )}
             {status === 'failure' && (

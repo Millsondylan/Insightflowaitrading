@@ -88,3 +88,10 @@ const SettingsNotificationsPage: React.FC = () => {
 };
 
 export default SettingsNotificationsPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

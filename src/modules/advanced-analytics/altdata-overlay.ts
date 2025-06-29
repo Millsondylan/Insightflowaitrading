@@ -56,7 +56,7 @@ export class AltDataOverlayEngine {
    * TODO: implement parallel data fetching
    * TODO: add data quality scoring
    */
-  async getAltDataOverlay(symbol: string): Promise<AltDataOverlay> {
+  async getAltDataOverlay(symbol: string): Promise<altDataOverlay> {
     const [sentiment, news, onchain, options] = await Promise.allSettled([
       this.getSentimentData(symbol),
       this.getNewsData(symbol),
@@ -205,7 +205,7 @@ export class AltDataOverlayEngine {
    * TODO: implement real options data APIs
    * TODO: add unusual activity detection
    */
-  async getOptionsFlow(symbol: string): Promise<OptionsFlowData | undefined> {
+  async getOptionsFlow(symbol: string): Promise<optionsFlowData | undefined> {
     // Only for optionable symbols
     if (!this.isOptionableSymbol(symbol)) return undefined;
 

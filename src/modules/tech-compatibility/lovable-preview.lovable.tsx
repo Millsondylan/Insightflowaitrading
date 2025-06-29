@@ -75,17 +75,15 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-bold">Visual Editor</h2>
         <div className="flex space-x-2">
-          <Button
-            variant="outline"
+          <Button variant="outline"
             onClick={() => setIsEditing(false)}
             disabled={!isEditing}
           >
             Cancel
           </Button>
-          <Button
-            onClick={applyChanges}
+          <Button onClick={applyChanges}
             disabled={!isEditing}
-          >
+         >
             Apply Changes
           </Button>
         </div>
@@ -128,18 +126,16 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                   <div className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium mb-1">Text Content</label>
-                      <Input
-                        value={editableProperties.textContent}
-                        onChange={(e) => handlePropertyChange('textContent', e.target.value)}
+                      <input value={editableProperties.textContent}
+                        onChange={(e) = /> handlePropertyChange('textContent', e.target.value)}
                         className="w-full"
                       />
                     </div>
                     
                     <div>
                       <label className="block text-sm font-medium mb-1">CSS Classes</label>
-                      <Input
-                        value={editableProperties.className}
-                        onChange={(e) => handlePropertyChange('className', e.target.value)}
+                      <input value={editableProperties.className}
+                        onChange={(e) = /> handlePropertyChange('className', e.target.value)}
                         className="w-full"
                       />
                     </div>
@@ -147,15 +143,13 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                     <div>
                       <label className="block text-sm font-medium mb-2">Text Color</label>
                       <div className="flex items-center space-x-2">
-                        <input
-                          type="color"
+                        <input type="color"
                           value={editableProperties.style.color}
-                          onChange={(e) => handleStyleChange('color', e.target.value)}
+                          onChange={(e) = /> handleStyleChange('color', e.target.value)}
                           className="w-8 h-8 rounded"
                         />
-                        <Input
-                          value={editableProperties.style.color}
-                          onChange={(e) => handleStyleChange('color', e.target.value)}
+                        <input value={editableProperties.style.color}
+                          onChange={(e) = /> handleStyleChange('color', e.target.value)}
                           className="flex-1"
                         />
                       </div>
@@ -164,19 +158,17 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                     <div>
                       <label className="block text-sm font-medium mb-1">Font Size</label>
                       <div className="flex items-center space-x-2">
-                        <Input
-                          type="number"
+                        <input type="number"
                           value={parseInt(editableProperties.style.fontSize)}
-                          onChange={(e) => handleStyleChange('fontSize', `${e.target.value}px`)}
+                          onChange={(e) = /> handleStyleChange('fontSize', `${e.target.value}px`)}
                           className="w-20"
                           min={8}
                           max={72}
                         />
                         <span>px</span>
-                        <input
-                          type="range"
+                        <input type="range"
                           value={parseInt(editableProperties.style.fontSize)}
-                          onChange={(e) => handleStyleChange('fontSize', `${e.target.value}px`)}
+                          onChange={(e) = /> handleStyleChange('fontSize', `${e.target.value}px`)}
                           min={8}
                           max={72}
                           className="flex-1"
@@ -202,7 +194,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                 <div className="text-center text-text-muted h-full flex items-center justify-center">
                   <div>
                     <p className="mb-4">Select a component to edit</p>
-                    <Button onClick={() => handleComponentSelect('sample-component-1')}>
+                    <button onClick={() => handleComponentSelect('sample-component-1')}>
                       Select Component
                     </Button>
                   </div>

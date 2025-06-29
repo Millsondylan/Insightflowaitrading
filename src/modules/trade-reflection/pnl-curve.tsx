@@ -8,8 +8,15 @@ interface PnLCurveProps {
   timeframe?: '1D' | '1W' | '1M' | '3M' | '1Y' | 'ALL';
 }
 
-export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
+export const PnLCurve: React.FC<pnLCurveProps> = ({ timeframe = '1M' }) => {
   const [selectedTimeframe, setSelectedTimeframe] = React.useState(timeframe);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   
   // Mock data - TODO: Connect to generatePnLCurve function
   const data = [
@@ -30,8 +37,7 @@ export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
         <h2 className="text-2xl font-bold">P&L Curve</h2>
         <div className="flex gap-1">
           {timeframes.map((tf) => (
-            <Button
-              key={tf}
+            <Button key={tf}
               variant={selectedTimeframe === tf ? 'default' : 'outline'}
               size="sm"
               onClick={() => setSelectedTimeframe(tf as any)}
@@ -44,7 +50,7 @@ export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
       
       <div className="h-[400px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <lineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#333" />
             <XAxis 
               dataKey="date" 
@@ -65,7 +71,7 @@ export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
               labelStyle={{ color: '#999' }}
               formatter={(value: any) => [`$${value.toLocaleString()}`, 'Balance']}
             />
-            <Line
+            <line
               type="monotone"
               dataKey="value"
               stroke="#00ff88"

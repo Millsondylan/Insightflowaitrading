@@ -128,10 +128,9 @@ const SidebarProvider = React.forwardRef<
     )
 
     return (
-      <sidebarcontext  >
-        <tooltipprovider  >
-          <div
-            style={
+      <Sidebarcontext  >
+        <Tooltipprovider >
+          <Div style={
               {
                 "--sidebar-width": SIDEBAR_WIDTH,
                 "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
@@ -144,7 +143,7 @@ const SidebarProvider = React.forwardRef<
             )}
             ref={ref}
             {...props}
-          >
+          />
             {children}
           </div>
         </TooltipProvider>
@@ -261,7 +260,7 @@ const SidebarTrigger = React.forwardRef<
   const { toggleSidebar } = useSidebar()
 
   return (
-    <button sidebar="trigger" variant="ghost" size="icon" > {
+    <Button sidebar="trigger" variant="ghost" size="icon" > {
         onClick?.(event)
         toggleSidebar()
       }}
@@ -281,8 +280,7 @@ const SidebarRail = React.forwardRef<
   const { toggleSidebar } = useSidebar()
 
   return (
-    <button
-      ref={ref}
+    <Button ref={ref}
       data-sidebar="rail"
       aria-label="Toggle Sidebar"
       tabIndex={-1}
@@ -326,7 +324,7 @@ const SidebarInput = React.forwardRef<
   React.ComponentProps<typeof Input>
 >(({ className, ...props }, ref) => {
   return (
-    <input sidebar="input" >
+    <input sidebar="input"  />
   )
 })
 SidebarInput.displayName = "SidebarInput"

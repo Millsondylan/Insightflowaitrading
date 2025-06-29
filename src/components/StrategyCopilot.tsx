@@ -203,12 +203,11 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
                     {suggestion.message}
                   </p>
                   {onSuggestionApply && suggestion.ruleToAdd && (
-                    <button
-                      onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
+                    <Button  onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
                       className="bg-cyan-600 hover:bg-cyan-700 rounded px-4 py-1 mt-2 text-sm text-white transition-colors"
                     >
                       Apply Suggestion
-                    </button>
+                    </Button>
                   )}
                 </div>
               </div>
@@ -226,4 +225,11 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   );
 };
 
-export default StrategyCopilot; 
+export default StrategyCopilot;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

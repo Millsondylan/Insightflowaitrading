@@ -29,7 +29,7 @@ rsi <(14, 60)`;
 const defaultExitLogic = 'close < sma(50)';
 
 const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<Backtestformstate >({
+  const [formState, setFormState] = useState<Backtestformstate>({
     ticker: 'BTC',
     timeframe: '1H',
     entryLogic: defaultEntryLogic,
@@ -54,10 +54,10 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="ticker" />Ticker</Label>
-          <select  > handleSelectChange('ticker', value)}
+          <label htmlFor="ticker" />Ticker</label>
+          <Select > handleSelectChange('ticker', value)}
           >
-            <selecttrigger  >
+            <Selecttrigger  />
               <selectvalue  >
             </SelectTrigger>
             <selectcontent  style={{ color: "white" }}>
@@ -65,10 +65,10 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
                 <selectitem  >{ticker}</SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </select>
         </div>
         <div>
-          <label htmlFor="timeframe" >Timeframe</Label>
+          <label htmlFor="timeframe" >Timeframe</label>
           <select  > handleSelectChange('timeframe', value)}
           >
             <selecttrigger  >
@@ -77,16 +77,16 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
             <selectcontent  style={{ color: "white" }}>
               <selectitem value="1H" >1 Hour</SelectItem>
             </SelectContent>
-          </Select>
+          </select>
         </div>
       </div>
       <div>
-        <label htmlFor="entryLogic" >Entry Logic</Label>
+        <label htmlFor="entryLogic" >Entry Logic</label>
         <textarea id="entryLogic" name="entryLogic" > sma(50)"
         />
       </div>
       <div>
-        <label htmlFor="exitLogic" >Exit Logic</Label>
+        <label htmlFor="exitLogic" >Exit Logic</label>
         <textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)" >
       </div>
       <div className="flex justify-center">

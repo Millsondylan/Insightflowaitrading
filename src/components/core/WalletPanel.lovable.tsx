@@ -84,15 +84,15 @@ const WalletPanel: React.FC = () => {
               <Checkcircle  />
               <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
             </div>
-            <button variant="outline" size="sm" >Disconnect</Button>
+            <Button variant="outline" size="sm">Disconnect</Button>
           </div>
           <motion.div 
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <animatepresence  >
+            <Animatepresence  />
               {balances.map((token, index) => (
-                <tokenbalancecard  >
+                <Tokenbalancecard  >
               ))}
             </AnimatePresence>
           </motion.div>
@@ -106,10 +106,10 @@ const WalletPanel: React.FC = () => {
         <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
         <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
         <div className="flex max-w-md mx-auto">
-          <input type="text" placeholder="Enter any wallet address to simulate..." > setInputValue(e.target.value)}
+          <input type="text" placeholder="Enter any wallet address to simulate..."  /> setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <button  >Connect</Button>
+          <Button >Connect</Button>
         </div>
       </div>
     );

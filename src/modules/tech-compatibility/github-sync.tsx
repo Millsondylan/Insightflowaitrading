@@ -10,7 +10,7 @@ interface GitHubSyncProps {
   onSync?: () => void;
 }
 
-export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
+export const GitHubSync: React.FC<GithubSyncProps> = ({ onSync }) => {
   const [repoInfo, setRepoInfo] = React.useState({
     owner: 'insightflow',
     repo: 'trading-strategies',
@@ -27,6 +27,13 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
       conflicts: 0
     }
   });
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 
   const [isSyncing, setIsSyncing] = React.useState(false);
 
@@ -59,7 +66,7 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
           <div>
             <label className="text-sm text-muted-foreground">Repository</label>
             <div className="flex items-center gap-2 mt-1">
-              <Input
+              <input
                 value={`${repoInfo.owner}/${repoInfo.repo}`}
                 readOnly
                 className="font-mono text-sm"
@@ -73,7 +80,7 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
             <label className="text-sm text-muted-foreground">Branch</label>
             <div className="flex items-center gap-2 mt-1">
               <GitBranch className="h-4 w-4 text-muted-foreground" />
-              <Input
+              <input
                 value={repoInfo.branch}
                 readOnly
                 className="font-mono text-sm"
@@ -85,7 +92,7 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
         <div className="p-4 bg-secondary/20 rounded-lg">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-semibold">Last Commit</h3>
-            <Badge variant="outline" className="font-mono text-xs">
+            <badge variant="outline" className="font-mono text-xs">
               {repoInfo.lastCommit.sha}
             </Badge>
           </div>
@@ -123,11 +130,10 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
         </div>
 
         <div className="flex gap-2">
-          <Button
-            onClick={syncRepository}
+          <Button onClick={syncRepository}
             disabled={isSyncing}
             className="flex-1"
-          >
+         >
             {isSyncing ? 'Syncing...' : 'Sync Now'}
           </Button>
           <Button variant="outline">

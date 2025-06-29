@@ -62,12 +62,12 @@ export const StrategyDetailPage = ({ strategy }: Props) => {
                 <h3 className="text-lg font-semibold text-white/90 mb-2">Performance</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
                     <Kpicard label="Win Rate" suffix="%" />
-                    <kpicard label="Total PnL" prefix="$" >
-                    <kpicard label="Total Trades" >
+                    <Kpicard label="Total PnL" prefix="$" >
+                    <Kpicard label="Total Trades" >
                 </div>
             </div>
 
-            <button  style={{ width: "100%", color: "white", fontSize: "1.125rem", fontWeight: "700" }}>
+            <Button  style={{ width: "100%", color: "white", fontSize: "1.125rem", fontWeight: "700" }}>
                 Clone to Builder
             </Button>
         </div>

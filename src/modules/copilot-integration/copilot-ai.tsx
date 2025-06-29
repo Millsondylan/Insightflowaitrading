@@ -12,6 +12,13 @@ interface CopilotAIProps {
 
 export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply }) => {
   const [isVisible, setIsVisible] = React.useState(true);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [suggestions, setSuggestions] = React.useState([
     {
       id: 1,
@@ -48,8 +55,7 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
 
   if (!isVisible) {
     return (
-      <Button
-        variant="outline"
+      <Button variant="outline"
         size="sm"
         className="fixed bottom-4 right-4"
         onClick={() => setIsVisible(true)}
@@ -67,8 +73,7 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
           <Sparkles className="h-5 w-5 text-primary" />
           <h3 className="font-semibold">AI Copilot</h3>
         </div>
-        <Button
-          variant="ghost"
+        <Button variant="ghost"
           size="sm"
           onClick={() => setIsVisible(false)}
         >
@@ -80,10 +85,10 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
         {suggestions.map((suggestion) => (
           <Div key={suggestion.id}
             className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
-         >
+        >
             <div className="flex items-start justify-between mb-2">
               <h4 className="font-medium">{suggestion.title}</h4>
-              <Badge variant="outline" className="text-xs">
+              <badge variant="outline" className="text-xs">
                 {suggestion.type}
               </Badge>
             </div>
@@ -104,24 +109,21 @@ export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply
               </span>
               
               <div className="flex items-center gap-2">
-                <Button
-                  variant="ghost"
+                <Button variant="ghost"
                   size="sm"
                   onClick={() => handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <ThumbsUp className="h-3 w-3" />
+                  <thumbsUp className="h-3 w-3" />
                 </Button>
-                <Button
-                  variant="ghost"
+                <Button variant="ghost"
                   size="sm"
                   onClick={() => handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <ThumbsDown className="h-3 w-3" />
+                  <thumbsDown className="h-3 w-3" />
                 </Button>
-                <Button
-                  size="sm"
+                <Button size="sm"
                   onClick={() => onSuggestionApply?.(suggestion.code)}
                 >
                   Apply

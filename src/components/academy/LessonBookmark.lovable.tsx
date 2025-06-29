@@ -19,10 +19,10 @@ export default function LessonBookmark({
     <div className="flex gap-4 items-center justify-end text-sm text-white/80">
       <button onClick={onBookmark} className="hover:text-cyan-400 transition">
         {isBookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
-      </button>
+      </Button>
       <button onClick={onComplete} className="hover:text-green-400 transition">
         {isCompleted ? "✅ Completed" : "✔️ Mark as Complete"}
-      </button>
+      </Button>
     </div>
   );
 } 

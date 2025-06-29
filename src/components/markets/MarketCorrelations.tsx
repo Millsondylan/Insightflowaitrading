@@ -44,6 +44,13 @@ const correlationThresholds = [0.5, 0.7, 0.8, 0.9];
 
 export default function MarketCorrelations() {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [correlations, setCorrelations] = useState<CorrelationData[]>([]);
   const [favoritePairs, setFavoritePairs] = useState<FavoritePair[]>([]);
   const [loading, setLoading] = useState(true);
@@ -148,8 +155,8 @@ export default function MarketCorrelations() {
   };
 
   const getCorrelationEmoji = (value: number) => {
-    if (value >= 0.7) return <TrendingUp className="w-4 h-4" />;
-    if (value <= -0.7) return <TrendingDown className="w-4 h-4" />;
+    if (value >= 0.7) return <trendingUp className="w-4 h-4" />;
+    if (value <= -0.7) return <trendingDown className="w-4 h-4" />;
     return <Minus className="w-4 h-4" />;
   };
 
@@ -181,8 +188,8 @@ export default function MarketCorrelations() {
     return (
       <div className="h-20 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={chartData}>
-            <Line 
+          <lineChart data={chartData}>
+            <line 
               type="monotone" 
               dataKey="value" 
               stroke="#3B82F6" 
@@ -211,7 +218,7 @@ export default function MarketCorrelations() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             Market Correlations
-            <Badge variant="secondary">{correlations.length} pairs</Badge>
+            <badge variant="secondary">{correlations.length} pairs</Badge>
           </CardTitle>
           <CardDescription>
             Track correlations between different trading pairs with real-time updates
@@ -220,16 +227,16 @@ export default function MarketCorrelations() {
         <CardContent className="space-y-4">
           {/* Controls */}
           <div className="flex flex-wrap gap-4">
-            <Select value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
-              <SelectTrigger className="w-32">
-                <SelectValue />
+            <select value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
+              <selectTrigger className="w-32">
+                <selectValue />
               </SelectTrigger>
-              <SelectContent>
+              <selectContent>
                 {timeframes.map(tf => (
-                  <SelectItem key={tf} value={tf}>{tf}</SelectItem>
+                  <selectItem key={tf} value={tf}>{tf}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
 
             <Tabs value={filterMode} onValueChange={(v) => setFilterMode(v as any)}>
               <TabsList>
@@ -245,16 +252,16 @@ export default function MarketCorrelations() {
                 checked={showSignificantOnly}
                 onCheckedChange={setShowSignificantOnly}
               />
-              <Label htmlFor="significant">Significant only (|r| &gt; 0.7)</Label>
+              <label htmlFor="significant">Significant only (|r| &gt; 0.7)</label>
             </div>
           </div>
 
           {/* Correlation Grid */}
           <div className="grid gap-4">
             {filteredCorrelations.length === 0 ? (
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertDescription>
+              <alert>
+                <info className="h-4 w-4" />
+                <alertDescription>
                   No correlations found for the selected filters
                 </AlertDescription>
               </Alert>
@@ -278,12 +285,11 @@ export default function MarketCorrelations() {
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger>
-                                <Badge 
-                                  style={{ 
+                                <Badge style={{ 
                                     backgroundColor: getCorrelationColor(correlation.correlation_value, correlation.color_palette),
                                     color: 'white'
                                   }}
-                                >
+                               >
                                   {getCorrelationEmoji(correlation.correlation_value)}
                                   {formatCorrelationValue(correlation.correlation_value)}
                                 </Badge>
@@ -297,7 +303,7 @@ export default function MarketCorrelations() {
                             </Tooltip>
                           </TooltipProvider>
                           {correlation.significance_level && correlation.significance_level > 0.95 && (
-                            <Badge variant="outline">95% significant</Badge>
+                            <badge variant="outline">95% significant</Badge>
                           )}
                         </div>
                         
@@ -315,8 +321,7 @@ export default function MarketCorrelations() {
 
                       <div className="flex gap-2">
                         {user && (
-                          <Button
-                            variant="ghost"
+                          <Button variant="ghost"
                             size="icon"
                             onClick={(e) => {
                               e.stopPropagation();
@@ -371,9 +376,9 @@ export default function MarketCorrelations() {
                   </div>
                 </div>
 
-                <Alert>
-                  <Info className="h-4 w-4" />
-                  <AlertDescription>
+                <alert>
+                  <info className="h-4 w-4" />
+                  <alertDescription>
                     {selectedPair.correlation_value > 0.7 && "These pairs move strongly in the same direction. Consider this when diversifying."}
                     {selectedPair.correlation_value < -0.7 && "These pairs move in opposite directions. One can hedge the other."}
                     {Math.abs(selectedPair.correlation_value) <= 0.7 && "These pairs have moderate to low correlation."}

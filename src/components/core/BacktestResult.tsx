@@ -32,15 +32,15 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   
   return (
     <div className="space-y-8 mt-12">
-      <BlockReveal>
+      <blockReveal>
         <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
       </BlockReveal>
       
-      <BlockReveal>
+      <blockReveal>
         <KPICards stats={result.stats} />
       </BlockReveal>
       
-      <BlockReveal delay={0.2}>
+      <blockReveal delay={0.2}>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="w-full grid grid-cols-2 mb-6">
             <TabsTrigger value="overview" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
@@ -52,11 +52,11 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
           </TabsList>
           
           <TabsContent value="overview">
-            <BacktestChart chartData={chartData} ticker={ticker} timeframe={timeframe} />
+            <backtestChart chartData={chartData} ticker={ticker} timeframe={timeframe} />
           </TabsContent>
           
           <TabsContent value="trades">
-            <TradeExplorer trades={result.trades} />
+            <tradeExplorer trades={result.trades} />
           </TabsContent>
         </Tabs>
       </BlockReveal>
@@ -64,4 +64,11 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   );
 };
 
-export default BacktestResultDisplay; 
+export default BacktestResultDisplay;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

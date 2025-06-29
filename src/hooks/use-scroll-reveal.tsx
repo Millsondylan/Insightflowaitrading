@@ -46,7 +46,14 @@ export const ScrollSection = ({
   delay = 0,
   animation = "fade-in"
 }: { 
-  children: React.ReactNode; 
+  children: React.ReactNode;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 
   className?: string; 
   delay?: number;
   animation?: "fade-in" | "slide-right" | "scale-in";
@@ -56,11 +63,10 @@ export const ScrollSection = ({
   const animationClass = `scroll-${animation}`;
   
   return (
-    <section
-      ref={elementRef}
+    <Section ref={elementRef}
       className={`${animationClass} scroll-section ${isVisible ? 'visible' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
-    >
+   >
       {children}
     </section>
   );

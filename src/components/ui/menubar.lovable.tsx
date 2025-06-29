@@ -18,7 +18,7 @@ const Menubar = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <Menubarprimitive >
+  <Menubarprimitive>
 ))
 Menubar.displayName = MenubarPrimitive.Root.displayName
 
@@ -26,7 +26,7 @@ const MenubarTrigger = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
-  <Menubarprimitive  />
+  <menubarprimitive  />
 ))
 MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName
 
@@ -36,9 +36,9 @@ const MenubarSubTrigger = React.forwardRef<
     inset?: boolean
   }
 >(({ className, inset, children, ...props }, ref) => (
-  <menubarprimitive  >
+  <Menubarprimitive >
     {children}
-    <chevronright  >
+    <Chevronright  />
   </MenubarPrimitive.SubTrigger>
 ))
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
@@ -127,7 +127,7 @@ MenubarSeparator.displayName = MenubarPrimitive.Separator.displayName
 const MenubarShortcut = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement  >) => {
+}: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
     <span
       className={cn(

@@ -36,7 +36,7 @@ const MOCK_USER_ID = 'current-user-id';
 
 const SubscriptionChecker: React.FC = () => {
   const { toast } = useToast();
-  const [selectedPlan, setSelectedPlan] = useState<Plantype >('monthly');
+  const [selectedPlan, setSelectedPlan] = useState<Plantype>('monthly');
   const [selectedChain, setSelectedChain] = useState<string>('ETH');
   const [txHash, setTxHash] = useState<string>('');
   const [cryptoAmount, setCryptoAmount] = useState<number | null>(null);
@@ -198,14 +198,14 @@ const SubscriptionChecker: React.FC = () => {
     return (
       <card  style={{ width: "100%" }}>
         <Cardcontent  />
-          <accessstatus  >
+          <Accessstatus >
 
           {verificationStatus === 'failure' && (
             <div className="mt-6 text-center">
-              <button  >Try Again</Button>
+              <Button />Try Again</Button>
             </div>
           )}
-        </CardContent>
+        </Cardcontent>
       </Card>
     );
   }
@@ -217,7 +217,7 @@ const SubscriptionChecker: React.FC = () => {
         <carddescription  >Choose a plan and payment method to unlock premium features</CardDescription>
       </CardHeader>
       
-      <cardcontent  >
+      <Cardcontent  >
         <div className="space-y-6">
           {/* Plan Selection */}
           <div>
@@ -240,7 +240,7 @@ const SubscriptionChecker: React.FC = () => {
                     <cardtitle  >{plan.name}</CardTitle>
                     <div className="text-2xl font-bold text-white">${plan.priceUSD}</div>
                   </CardHeader>
-                  <cardcontent  style={{ fontSize: "0.875rem" }}>
+                  <Cardcontent  style={{ fontSize: "0.875rem" }}>
                     <p className="mb-2">{plan.description}</p>
                     <ul className="space-y-1">
                       {plan.features.map((feature, idx) => (
@@ -250,7 +250,7 @@ const SubscriptionChecker: React.FC = () => {
                         </li>
                       ))}
                     </ul>
-                  </CardContent>
+                  </Cardcontent>
                 </Card>
               ))}
             </div>
@@ -287,7 +287,7 @@ const SubscriptionChecker: React.FC = () => {
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </Select>
+              </select>
 
               {/* Payment Instructions */}
               <div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4">
@@ -313,14 +313,12 @@ const SubscriptionChecker: React.FC = () => {
                     {walletAddress || 'Select a chain'}
                   </div>
                   <div className="flex items-center space-x-2">
-                    <button 
-                      onClick={handleCopyAddress} 
+                    <Button  onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
                     >
                       <copy  >
-                    </button>
-                    <button 
-                      onClick={() => toast({
+                    </Button>
+                    <Button  onClick={() => toast({
                         title: "QR Code",
                         description: "Scan this code to make your payment",
                         action: (
@@ -332,7 +330,7 @@ const SubscriptionChecker: React.FC = () => {
                       className="p-1 hover:text-white text-gray-400 transition-colors"
                     >
                       <qrcode  >
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -347,16 +345,16 @@ const SubscriptionChecker: React.FC = () => {
                 <label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
                   After payment, paste the transaction hash (TX ID) below to verify
                 </label>
-                <input id="txHash" >
+                <input id="txHash"  />
               </div>
               
-              <button  style={{ width: "100%" }}>
+              <Button  style={{ width: "100%" }}>
                 {loading ? 'Verifying...' : 'Verify Payment'}
               </Button>
             </div>
           </div>
         </div>
-      </CardContent>
+      </Cardcontent>
     </Card>
   );
 };

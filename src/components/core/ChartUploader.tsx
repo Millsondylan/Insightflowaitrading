@@ -48,4 +48,11 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   );
 };
 
-export default ChartUploader; 
+export default ChartUploader;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

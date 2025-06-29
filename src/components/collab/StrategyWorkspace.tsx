@@ -19,14 +19,13 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
           <Span key={u.id}
             className="px-3 py-1 text-xs rounded-full text-white"
             style={{ backgroundColor: u.color }}
-         >
+        >
             🧑‍💻 {u.name}
           </span>
         ))}
       </div>
-      <input
-        value={strategy.title}
-        onChange={(e) => onUpdate({ ...strategy, title: e.target.value })}
+      <input value={strategy.title}
+        onChange={(e) = /> onUpdate({ ...strategy, title: e.target.value })}
         className="bg-white/10 p-2 rounded w-full text-white text-lg font-bold"
       />
       <textarea
@@ -37,11 +36,17 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
       />
       <div className="space-y-2">
         {strategy.rules.map((rule, i) => (
-          <input
-            key={i}
+          <input key={i}
             value={rule}
-            onChange={(e) => {
+            onChange={(e) = /> {
               const newRules = [...strategy.rules];
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
               newRules[i] = e.target.value;
               onUpdate({ ...strategy, rules: newRules });
             }}

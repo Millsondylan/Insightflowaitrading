@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -19,7 +19,7 @@ Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -58,7 +58,7 @@ CardDescription.displayName = "CardDescription"
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("p-0", className)} {...props} />
 ))
@@ -66,7 +66,7 @@ CardContent.displayName = "CardContent"
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}

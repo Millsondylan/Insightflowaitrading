@@ -46,7 +46,7 @@ interface EventDetails {
   }[];
 }
 
-export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
+export const LiveEventRoom: React.FC<liveEventRoomProps> = ({
   eventId,
   userId,
   username,
@@ -55,7 +55,7 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
 }) => {
   const [event, setEvent] = useState<EventDetails | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [participants, setParticipants] = useState<Participant[]>([]);
+  const [participants, setParticipants] = useState<participant[]>([]);
   const [messageInput, setMessageInput] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -336,9 +336,9 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
           
           <Button className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}
-         >
+        >
             Leave Event
-          </button>
+          </Button>
         </div>
         
         {event.description && (
@@ -390,21 +390,20 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
           {/* Message Input */}
           <div className="p-3 border-t border-border-primary bg-background-secondary">
             <div className="flex">
-              <input
-                type="text"
+              <input type="text"
                 className="flex-1 p-2 bg-background-primary border border-border-primary rounded-l-md focus:outline-none focus:ring-1 focus:ring-brand-primary"
                 placeholder="Type a message..."
                 value={messageInput}
-                onChange={(e) => setMessageInput(e.target.value)}
+                onChange={(e) = /> setMessageInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 disabled={!isConnected}
               />
-              <Button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
                 disabled={!isConnected || !messageInput.trim()}
               />
                 Send
-              </button>
+              </Button>
             </div>
             {!isConnected && (
               <div className="mt-2 text-sm text-status-error">
@@ -456,10 +455,9 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
             <h3 className="font-medium mb-2">Participants ({participants.length})</h3>
             <div className="space-y-1 max-h-60 overflow-y-auto">
               {participants.map(participant => (
-                <div
-                  key={participant.userId}
+                <Div key={participant.userId}
                   className="flex items-center p-1 rounded hover:bg-background-interactive"
-                >
+                />
                   <div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
                     {participant.avatarUrl ? (
                       <img

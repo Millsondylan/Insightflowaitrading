@@ -6,7 +6,7 @@ const AcademyBuilderPage: React.FC = () => {
   return (
     <div className="theme-academy scroll-container min-h-screen">
       {/* Hero Section */}
-      <scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight">
             Learn, Test, Evolve
@@ -18,7 +18,7 @@ const AcademyBuilderPage: React.FC = () => {
             <div className="threadline-glow w-32 mx-auto"></div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* Progress Overview */}
       <Scrollsection >
@@ -47,7 +47,7 @@ const AcademyBuilderPage: React.FC = () => {
             </p>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* Lesson Blocks Grid */}
       <Scrollsection animation="slide-right" />
@@ -205,10 +205,10 @@ const AcademyBuilderPage: React.FC = () => {
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
 
       {/* Achievement Badge */}
-      <scrollsection animation="scale-in" >
+      <Scrollsection animation="scale-in" >
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-section motion-shadow">
             <div className="text-6xl mb-6">🏆</div>
@@ -224,14 +224,14 @@ const AcademyBuilderPage: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <button className="glow-button glow-blue">
                 Continue Learning
-              </button>
+              </Button>
               <button className="glow-button glow-emerald">
                 Practice Quiz
-              </button>
+              </Button>
             </div>
           </div>
         </div>
-      </ScrollSection>
+      </Scrollsection>
     </div>
   );
 };

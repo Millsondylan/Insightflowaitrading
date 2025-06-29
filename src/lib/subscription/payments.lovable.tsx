@@ -16,7 +16,7 @@ interface PaymentFormProps {
   onPaymentComplete: (transactionId: string) => void;
 }
 
-export const PaymentForm: React.FC<PaymentFormProps> = ({
+export const PaymentForm: React.FC<paymentFormProps> = ({
   selectedTier,
   onPaymentComplete
 }) => {
@@ -91,8 +91,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
           Payment Method
         </div>
         <div style={{ display: 'flex', gap: '12px' }}>
-          <button
-            onClick={() => setPaymentMethod('card')}
+          <Button  onClick={() => setPaymentMethod('card')}
             style={{
               padding: '12px 24px',
               backgroundColor: paymentMethod === 'card' ? '#2563eb' : '#f3f4f6',
@@ -105,9 +104,8 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
             }}
           >
             💳 Credit Card
-          </button>
-          <button
-            onClick={() => setPaymentMethod('crypto')}
+          </Button>
+          <Button  onClick={() => setPaymentMethod('crypto')}
             style={{
               padding: '12px 24px',
               backgroundColor: paymentMethod === 'crypto' ? '#2563eb' : '#f3f4f6',
@@ -120,7 +118,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
             }}
           >
             ₿ Crypto
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -243,9 +241,9 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
           fontWeight: 'bold',
           cursor: loading ? 'not-allowed' : 'pointer'
         }}
-     >
+    >
         {loading ? 'Processing...' : `Pay ${paymentMethod === 'card' ? '$' + selectedTier.price : selectedTier.cryptoPrice + ' ' + selectedTier.cryptoCurrency}`}
-      </button>
+      </Button>
 
       {error && (
         <div style={{

@@ -66,7 +66,7 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
         <div className="flex items-center gap-4">
-          <progress  >
+          <Progress >
           <span className="text-sm text-muted-foreground">
             Step {currentStep + 1} of {lesson.steps.length}
           </span>
@@ -76,7 +76,7 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
           <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <helpcircle  >
+            <Helpcircle  />
             {lesson.steps[currentStep].instruction}
           </h3>
           
@@ -91,11 +91,11 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
             </div>
 
             <div className="flex gap-2">
-              <button  >
+              <Button >
                 <play  >
                 {isRunning ? 'Running...' : 'Run Tests'}
               </Button>
-              <button variant="outline" > setUserCode('')}>
+              <Button variant="outline" > setUserCode('')}>
                 <rotateccw  >
                 Reset
               </Button>
@@ -127,7 +127,7 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
               ))}
               
               {testResults.every(r => r.passed) && (
-                <button  style={{ width: "100%" }}>
+                <Button  style={{ width: "100%" }}>
                   Continue to Next Step
                 </Button>
               )}

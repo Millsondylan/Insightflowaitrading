@@ -143,7 +143,7 @@ const SidebarProvider = React.forwardRef<
             )}
             ref={ref}
             {...props}
-         >
+        >
             {children}
           </div>
         </TooltipProvider>
@@ -176,7 +176,7 @@ const Sidebar = React.forwardRef<
 
     if (collapsible === "none") {
       return (
-        <Div className={cn(
+        <div className={cn(
             "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
             className
           )}
@@ -209,14 +209,13 @@ const Sidebar = React.forwardRef<
     }
 
     return (
-      <div
-        ref={ref}
+      <Div ref={ref}
         className="group peer hidden md:block text-sidebar-foreground"
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
         data-side={side}
-      >
+      />
         {/* This is what handles the sidebar gap on desktop */}
         <div
           className={cn(
@@ -262,8 +261,7 @@ const SidebarTrigger = React.forwardRef<
   const { toggleSidebar } = useSidebar()
 
   return (
-    <Button
-      ref={ref}
+    <Button ref={ref}
       data-sidebar="trigger"
       variant="ghost"
       size="icon"
@@ -274,7 +272,7 @@ const SidebarTrigger = React.forwardRef<
       }}
       {...props}
     >
-      <PanelLeft />
+      <panelLeft />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   )
@@ -288,8 +286,7 @@ const SidebarRail = React.forwardRef<
   const { toggleSidebar } = useSidebar()
 
   return (
-    <button
-      ref={ref}
+    <Button ref={ref}
       data-sidebar="rail"
       aria-label="Toggle Sidebar"
       tabIndex={-1}
@@ -333,7 +330,7 @@ const SidebarInput = React.forwardRef<
   React.ComponentProps<typeof Input>
 >(({ className, ...props }, ref) => {
   return (
-    <Input
+    <input
       ref={ref}
       data-sidebar="input"
       className={cn(
@@ -757,3 +754,10 @@ export {
   SidebarTrigger,
   useSidebar,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

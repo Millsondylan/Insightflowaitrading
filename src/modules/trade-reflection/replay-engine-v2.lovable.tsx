@@ -46,12 +46,12 @@ export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => 
           <div className="flex items-center gap-2">
             <Button variant="outline" size="icon" /> setCurrentTime(Math.max(0, currentTime - 10))}
             >
-              <skipback  >
+              <Skipback >
             </Button>
-            <button variant="outline" size="icon" >
+            <Button variant="outline" size="icon" />
               {isPlaying ? <pause  > : <play  >}
             </Button>
-            <button variant="outline" size="icon" > setCurrentTime(Math.min(totalDuration, currentTime + 10))}
+            <Button variant="outline" size="icon" > setCurrentTime(Math.min(totalDuration, currentTime + 10))}
             >
               <skipforward  >
             </Button>
@@ -68,13 +68,13 @@ export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => 
             <div className="flex items-center gap-2">
               <span className="text-sm text-muted-foreground">Speed:</span>
               {[0.5, 1, 2, 4].map((s) => (
-                <button size="sm" > setSpeed(s)}
+                <Button size="sm" > setSpeed(s)}
                 >
                   {s}x
                 </Button>
               ))}
             </div>
-            <button variant="outline" size="sm" >
+            <Button variant="outline" size="sm" >
               <tag  >
               Add Annotation
             </Button>

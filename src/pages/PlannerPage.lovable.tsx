@@ -6,8 +6,8 @@ import { ArrowLeft, Calendar, CheckSquare } from 'lucide-react';
 export default function PlannerPage() {
   return (
     <div>
-      <link to="/strategy-builder" style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft >
+      <Link to="/strategy-builder" style={{ display: "flex", alignItems: "center" }}>
+        <Arrowleft>
         Back to Strategy Builder
       </Link>
       
@@ -20,7 +20,7 @@ export default function PlannerPage() {
                 </h1>
                 <p className="text-gray-400 mt-1">Outline your trading plan for the generated strategy.</p>
             </div>
-            <button size="lg" style={{ color: "white" }}>
+            <Button size="lg" style={{ color: "white" }}>
                 Save Plan
             </Button>
         </header>

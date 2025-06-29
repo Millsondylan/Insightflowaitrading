@@ -62,20 +62,20 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
       <Cardheader  />
         <div className="flex justify-between items-start">
           <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 transition-colors">
-            <icon  >
+            <Icon >
           </div>
-          <badge  >
+          <Badge  />
             {course.category}
           </Badge>
         </div>
-        <cardtitle  style={{ fontSize: "1.125rem", color: "white" }}>
+        <Cardtitle  style={{ fontSize: "1.125rem", color: "white" }}>
           {course.title}
-        </CardTitle>
-        <carddescription  >
+        </Cardtitle>
+        <Carddescription  >
           {course.description}
-        </CardDescription>
-      </CardHeader>
-      <cardcontent  >
+        </Carddescription>
+      </Cardheader>
+      <Cardcontent  >
         <div className="space-y-4">
           <div className="flex items-center justify-between text-sm">
             <span className="text-gray-400">Duration</span>
@@ -97,13 +97,13 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
             </div>
             <span className="text-sm text-gray-400">({course.rating})</span>
           </div>
-          <button  style={{ width: "100%" }}> navigate(`/academy/${course.id}`)}
+          <Button  style={{ width: "100%" }}> navigate(`/academy/${course.id}`)}
           >
             Start Learning
             <chevronright  >
           </Button>
         </div>
-      </CardContent>
+      </Cardcontent>
     </Card>
   );
 };
@@ -116,76 +116,76 @@ const FeaturedSection = () => {
         Featured Courses
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <card  >
-          <cardheader  >
+        <Card  >
+          <Cardheader  >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                 <target  style={{ color: "white" }}>
               </div>
               <div>
-                <cardtitle  style={{ color: "white" }}>Quick Start Trading</CardTitle>
-                <carddescription  >
+                <Cardtitle  style={{ color: "white" }}>Quick Start Trading</Cardtitle>
+                <Carddescription  >
                   Get trading in 7 days
-                </CardDescription>
+                </Carddescription>
               </div>
             </div>
-          </CardHeader>
-          <cardcontent  >
+          </Cardheader>
+          <Cardcontent  >
             <p className="text-sm text-gray-300 mb-4">
               Intensive bootcamp covering all essentials to start trading confidently within a week.
             </p>
-            <button  style={{ width: "100%", color: "white" }}>
+            <Button  style={{ width: "100%", color: "white" }}>
               Enroll Now
             </Button>
-          </CardContent>
+          </Cardcontent>
         </Card>
         
-        <card  >
-          <cardheader  >
+        <Card  >
+          <Cardheader  >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                 <award  style={{ color: "white" }}>
               </div>
               <div>
-                <cardtitle  style={{ color: "white" }}>Pro Certification</CardTitle>
-                <carddescription  >
+                <Cardtitle  style={{ color: "white" }}>Pro Certification</Cardtitle>
+                <Carddescription  >
                   Industry recognized cert
-                </CardDescription>
+                </Carddescription>
               </div>
             </div>
-          </CardHeader>
-          <cardcontent  >
+          </Cardheader>
+          <Cardcontent  >
             <p className="text-sm text-gray-300 mb-4">
               Complete comprehensive program and earn your professional trading certification.
             </p>
-            <button  style={{ width: "100%", color: "white" }}>
+            <Button  style={{ width: "100%", color: "white" }}>
               Learn More
             </Button>
-          </CardContent>
+          </Cardcontent>
         </Card>
         
-        <card  >
-          <cardheader  >
+        <Card  >
+          <Cardheader  >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                 <users  style={{ color: "white" }}>
               </div>
               <div>
-                <cardtitle  style={{ color: "white" }}>Live Mentorship</CardTitle>
-                <carddescription  >
+                <Cardtitle  style={{ color: "white" }}>Live Mentorship</Cardtitle>
+                <Carddescription  >
                   1-on-1 with experts
-                </CardDescription>
+                </Carddescription>
               </div>
             </div>
-          </CardHeader>
-          <cardcontent  >
+          </Cardheader>
+          <Cardcontent  >
             <p className="text-sm text-gray-300 mb-4">
               Get personalized guidance from professional traders in live sessions.
             </p>
-            <button  style={{ width: "100%", color: "white" }}>
+            <Button  style={{ width: "100%", color: "white" }}>
               Book Session
             </Button>
-          </CardContent>
+          </Cardcontent>
         </Card>
       </div>
     </div>
@@ -219,37 +219,37 @@ export default function AcademyPage() {
       
       {/* Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <card  >
-          <cardcontent  >
+        <Card  >
+          <Cardcontent  >
             <div className="text-3xl font-bold text-white mb-1">
               {comprehensiveCourses.length}+
             </div>
             <div className="text-sm text-gray-400">Courses</div>
-          </CardContent>
+          </Cardcontent>
         </Card>
-        <card  >
-          <cardcontent  >
+        <Card  >
+          <Cardcontent  >
             <div className="text-3xl font-bold text-white mb-1">
               {comprehensiveCourses.reduce((acc, course) => acc + course.enrolled, 0).toLocaleString()}+
             </div>
             <div className="text-sm text-gray-400">Students</div>
-          </CardContent>
+          </Cardcontent>
         </Card>
-        <card  >
-          <cardcontent  >
+        <Card  >
+          <Cardcontent  >
             <div className="text-3xl font-bold text-white mb-1">
               {comprehensiveCourses.reduce((acc, course) => acc + course.lessons.length, 0)}+
             </div>
             <div className="text-sm text-gray-400">Lessons</div>
-          </CardContent>
+          </Cardcontent>
         </Card>
-        <card  >
-          <cardcontent  >
+        <Card  >
+          <Cardcontent  >
             <div className="text-3xl font-bold text-white mb-1">
               4.8
             </div>
             <div className="text-sm text-gray-400">Avg Rating</div>
-          </CardContent>
+          </Cardcontent>
         </Card>
       </div>
       
@@ -277,24 +277,24 @@ export default function AcademyPage() {
       
       {/* Live Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
-        <card  >
-          <cardheader  >
-            <cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}>
+        <Card  >
+          <Cardheader  >
+            <Cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}>
               <radio  >
               Live Trading Sessions
-            </CardTitle>
-            <carddescription  >
+            </Cardtitle>
+            <Carddescription  >
               Join professional traders in real-time market analysis
-            </CardDescription>
-          </CardHeader>
-          <cardcontent  >
+            </Carddescription>
+          </Cardheader>
+          <Cardcontent  >
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                 <div>
                   <h4 className="font-medium text-white">Forex London Session</h4>
                   <p className="text-sm text-gray-400">With TraderPro • Starting in 2h</p>
                 </div>
-                <button size="sm" >
+                <Button size="sm" >
                   Join Live
                 </Button>
               </div>
@@ -303,7 +303,7 @@ export default function AcademyPage() {
                   <h4 className="font-medium text-white">Crypto Market Review</h4>
                   <p className="text-sm text-gray-400">With CryptoKing • Tomorrow 9 AM</p>
                 </div>
-                <button size="sm" variant="outline" >
+                <Button size="sm" variant="outline" >
                   Set Reminder
                 </Button>
               </div>
@@ -312,31 +312,31 @@ export default function AcademyPage() {
                   <h4 className="font-medium text-white">Options Strategy Workshop</h4>
                   <p className="text-sm text-gray-400">With ThetaGang • Friday 2 PM</p>
                 </div>
-                <button size="sm" variant="outline" >
+                <Button size="sm" variant="outline" >
                   Set Reminder
                 </Button>
               </div>
             </div>
-            <link to="/broadcast" style={{ display: "block" }}>
-              <button variant="ghost" style={{ width: "100%" }}>
+            <Link to="/broadcast" style={{ display: "block" }}>
+              <Button variant="ghost" style={{ width: "100%" }}>
                 View All Sessions
                 <chevronright  >
               </Button>
             </Link>
-          </CardContent>
+          </Cardcontent>
         </Card>
         
-        <card  >
-          <cardheader  >
-            <cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}>
+        <Card  >
+          <Cardheader  >
+            <Cardtitle  style={{ color: "white", display: "flex", alignItems: "center" }}>
               <messagesquare  >
               Community
-            </CardTitle>
-            <carddescription  >
+            </Cardtitle>
+            <Carddescription  >
               Connect with fellow traders
-            </CardDescription>
-          </CardHeader>
-          <cardcontent  >
+            </Carddescription>
+          </Cardheader>
+          <Cardcontent  >
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-blue-600/20 rounded-full flex items-center justify-center">
@@ -366,12 +366,12 @@ export default function AcademyPage() {
                 </div>
               </div>
             </div>
-            <link to="/community" >
-              <button  style={{ width: "100%" }}>
+            <Link to="/community" >
+              <Button  style={{ width: "100%" }}>
                 Join Community
               </Button>
             </Link>
-          </CardContent>
+          </Cardcontent>
         </Card>
       </div>
     </div>

@@ -75,9 +75,9 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
             {annotationTypes.map((type) => {
               const Icon = type.icon;
               return (
-                <button size="sm" style={{ display: "flex", alignItems: "center" }}> setSelectedType(type.id)}
+                <Button size="sm" style={{ display: "flex", alignItems: "center" }}> setSelectedType(type.id)}
                 >
-                  <icon  >
+                  <Icon >
                   <span className="text-xs">{type.label}</span>
                 </Button>
               );
@@ -85,9 +85,9 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
           </div>
           
           <div className="flex gap-2">
-            <input placeholder="Add a note about this moment..." > setCustomNote(e.target.value)}
+            <Input placeholder="Add a note about this moment..." /> setCustomNote(e.target.value)}
             />
-            <button  >
+            <Button >
               <tag  >
               Add
             </Button>
@@ -104,7 +104,7 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
               return (
                 <div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
                   <div className={`mt-1 ${type?.color}`}>
-                    <icon  >
+                    <Icon >
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">

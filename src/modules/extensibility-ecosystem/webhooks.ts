@@ -248,7 +248,7 @@ export class WebhookManager {
    * Configure integration
    * TODO: implement secure credential storage
    */
-  async configureIntegration(type: string, config: Omit<IntegrationConfig, 'id' | 'type'>): Promise<void> {
+  async configureIntegration(type: string, config: Omit<integrationConfig, 'id' | 'type'>): Promise<void> {
     const integrationId = `${type}_${Date.now()}`;
     
     const integration: IntegrationConfig = {

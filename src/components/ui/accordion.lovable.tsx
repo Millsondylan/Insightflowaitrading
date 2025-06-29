@@ -10,7 +10,7 @@ const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
-  <Accordionprimitive >
+  <Accordionprimitive>
 ))
 AccordionItem.displayName = "AccordionItem"
 
@@ -19,13 +19,13 @@ const AccordionTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
   <accordionprimitive  style={{ display: "flex" }}>
-    <Accordionprimitive  />svg]:rotate-180",
+    <accordionprimitive  />svg]:rotate-180",
         className
       )}
       {...props}
     >
       {children}
-      <chevrondown  >
+      <Chevrondown >
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

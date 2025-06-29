@@ -30,7 +30,7 @@ export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
   return (
     <Card >
       <div className="flex items-center gap-2 mb-4">
-        <Brain  />
+        <brain  />
         <h2 className="text-2xl font-bold">AI Coach</h2>
       </div>
 
@@ -39,7 +39,7 @@ export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
           <p className="text-muted-foreground mb-4">
             Get personalized coaching based on your trading behavior
           </p>
-          <button  >
+          <Button >
             {isAnalyzing ? 'Analyzing...' : 'Analyze My Trading'}
           </Button>
         </div>
@@ -47,7 +47,7 @@ export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <trendingup  >
+              <Trendingup  />
               Strengths
             </h3>
             <div className="space-y-2">
@@ -93,7 +93,7 @@ export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
             </div>
           </div>
 
-          <button variant="outline" style={{ width: "100%" }}>
+          <Button variant="outline" style={{ width: "100%" }}>
             Schedule Coaching Session
           </Button>
         </div>

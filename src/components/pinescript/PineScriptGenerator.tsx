@@ -54,10 +54,17 @@ const formSchema = z.object({
 
 export default function PineScriptGenerator() {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedCode, setGeneratedCode] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState('prompt');
-  const [quota, setQuota] = useState<PineScriptQuotaInfo | null>(null);
+  const [quota, setQuota] = useState<pineScriptQuotaInfo | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
@@ -174,14 +181,14 @@ export default function PineScriptGenerator() {
                   {quota.isLimited ? (
                     <>
                       {quota.remaining}/{quota.limit} generations remaining this month
-                      <Badge variant={quota.remaining > 0 ? "outline" : "destructive"} className="ml-2">
+                      <Badge variant={quota.remaining> 0 ? "outline" : "destructive"} className="ml-2">
                         {quota.remaining > 0 ? "Free Tier" : "Limit Reached"}
                       </Badge>
                     </>
                   ) : (
                     <>
                       Unlimited generations
-                      <Badge variant="secondary" className="ml-2">Pro</Badge>
+                      <badge variant="secondary" className="ml-2">Pro</Badge>
                     </>
                   )}
                 </span>
@@ -193,11 +200,10 @@ export default function PineScriptGenerator() {
               </div>
               
               {quota.isLimited && (
-                <Button 
-                  variant="outline" 
+                <Button variant="outline" 
                   size="sm"
                   onClick={handleUpgradeClick}
-                >
+                />
                   Upgrade to Pro
                 </Button>
               )}
@@ -207,23 +213,22 @@ export default function PineScriptGenerator() {
         
         <CardContent>
           {error && (
-            <Alert variant="destructive" className="mb-4">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>{error}</AlertDescription>
+            <alert variant="destructive" className="mb-4">
+              <alertCircle className="h-4 w-4" />
+              <alertTitle>Error</AlertTitle>
+              <alertDescription>{error}</AlertDescription>
             </Alert>
           )}
           
           {showUpgradePrompt && (
-            <Alert className="mb-4 bg-muted">
-              <Info className="h-4 w-4" />
-              <AlertTitle>Upgrade to Pro</AlertTitle>
-              <AlertDescription>
+            <alert className="mb-4 bg-muted">
+              <info className="h-4 w-4" />
+              <alertTitle>Upgrade to Pro</AlertTitle>
+              <alertDescription>
                 You've reached your monthly Pine Script generation limit. 
                 Upgrade to Pro for unlimited generations.
               </AlertDescription>
-              <Button 
-                className="mt-2" 
+              <Button  className="mt-2" 
                 variant="default" 
                 size="sm"
                 onClick={handleUpgradeClick}
@@ -240,82 +245,82 @@ export default function PineScriptGenerator() {
             </TabsList>
             
             <TabsContent value="prompt">
-              <Form {...form}>
+              <form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField
+                    <formField
                       control={form.control}
                       name="scriptType"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Script Type</FormLabel>
-                          <Select 
+                        <formItem>
+                          <formLabel>Script Type</FormLabel>
+                          <select 
                             onValueChange={field.onChange} 
                             defaultValue={field.value}
                           >
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select script type" />
+                            <formControl>
+                              <selectTrigger>
+                                <selectValue placeholder="Select script type" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent>
-                              <SelectItem value="indicator">Indicator</SelectItem>
-                              <SelectItem value="strategy">Trading Strategy</SelectItem>
-                              <SelectItem value="library">Library</SelectItem>
+                            <selectContent>
+                              <selectItem value="indicator">Indicator</SelectItem>
+                              <selectItem value="strategy">Trading Strategy</SelectItem>
+                              <selectItem value="library">Library</SelectItem>
                             </SelectContent>
-                          </Select>
-                          <FormMessage />
+                          </select>
+                          <formMessage />
                         </FormItem>
                       )}
                     />
                     
-                    <FormField
+                    <formField
                       control={form.control}
                       name="timeframe"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Default Timeframe</FormLabel>
-                          <Select 
+                        <formItem>
+                          <formLabel>Default Timeframe</FormLabel>
+                          <select 
                             onValueChange={field.onChange} 
                             defaultValue={field.value}
                           >
-                            <FormControl>
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select timeframe" />
+                            <formControl>
+                              <selectTrigger>
+                                <selectValue placeholder="Select timeframe" />
                               </SelectTrigger>
                             </FormControl>
-                            <SelectContent>
-                              <SelectItem value="1m">1 Minute</SelectItem>
-                              <SelectItem value="5m">5 Minutes</SelectItem>
-                              <SelectItem value="15m">15 Minutes</SelectItem>
-                              <SelectItem value="30m">30 Minutes</SelectItem>
-                              <SelectItem value="1h">1 Hour</SelectItem>
-                              <SelectItem value="4h">4 Hours</SelectItem>
-                              <SelectItem value="1D">1 Day</SelectItem>
-                              <SelectItem value="1W">1 Week</SelectItem>
-                              <SelectItem value="1M">1 Month</SelectItem>
+                            <selectContent>
+                              <selectItem value="1m">1 Minute</SelectItem>
+                              <selectItem value="5m">5 Minutes</SelectItem>
+                              <selectItem value="15m">15 Minutes</SelectItem>
+                              <selectItem value="30m">30 Minutes</SelectItem>
+                              <selectItem value="1h">1 Hour</SelectItem>
+                              <selectItem value="4h">4 Hours</SelectItem>
+                              <selectItem value="1D">1 Day</SelectItem>
+                              <selectItem value="1W">1 Week</SelectItem>
+                              <selectItem value="1M">1 Month</SelectItem>
                             </SelectContent>
-                          </Select>
-                          <FormMessage />
+                          </select>
+                          <formMessage />
                         </FormItem>
                       )}
                     />
                   </div>
 
-                  <FormField
+                  <formField
                     control={form.control}
                     name="prompt"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Describe what you want to create</FormLabel>
-                        <FormControl>
-                          <Textarea 
+                      <formItem>
+                        <formLabel>Describe what you want to create</FormLabel>
+                        <formControl>
+                          <textarea 
                             placeholder="E.g., Create an RSI indicator with overbought/oversold levels at 70/30 and signal line crossovers" 
                             className="h-32"
                             {...field} 
                           />
                         </FormControl>
-                        <FormMessage />
+                        <formMessage />
                         {hints.length > 0 && (
                           <div className="mt-2 flex flex-wrap gap-2 text-xs">
                             {hints.map((h) => (
@@ -329,26 +334,25 @@ export default function PineScriptGenerator() {
                     )}
                   />
                   
-                  <FormField
+                  <formField
                     control={form.control}
                     name="additionalContext"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Additional Context (Optional)</FormLabel>
-                        <FormControl>
-                          <Textarea 
+                      <formItem>
+                        <formLabel>Additional Context (Optional)</FormLabel>
+                        <formControl>
+                          <textarea 
                             placeholder="Any additional details or specific requirements" 
                             className="h-24"
                             {...field} 
                           />
                         </FormControl>
-                        <FormMessage />
+                        <formMessage />
                       </FormItem>
                     )}
                   />
 
-                  <Button 
-                    type="submit" 
+                  <Button  type="submit" 
                     className="w-full"
                     disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}
                   >
@@ -360,7 +364,7 @@ export default function PineScriptGenerator() {
                     ) : "Generate Pine Script"}
                   </Button>
                 </form>
-              </Form>
+              </form>
             </TabsContent>
             
             <TabsContent value="code">
@@ -368,12 +372,11 @@ export default function PineScriptGenerator() {
                 <>
                   <div className="flex justify-between items-center mb-2">
                     <div className="flex items-center">
-                      <Code className="h-4 w-4 mr-2" />
+                      <code className="h-4 w-4 mr-2" />
                       <h3 className="font-medium">Generated Pine Script</h3>
                     </div>
                     <div className="flex space-x-2">
-                      <Button 
-                        variant="outline" 
+                      <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={handleCopy}
@@ -381,8 +384,7 @@ export default function PineScriptGenerator() {
                         {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                         <span>{copied ? "Copied!" : "Copy"}</span>
                       </Button>
-                      <Button 
-                        variant="outline" 
+                      <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={() => {
@@ -398,10 +400,10 @@ export default function PineScriptGenerator() {
                   </div>
                   
                   {syntaxValid === false && (
-                    <Alert variant="destructive" className="mb-3">
-                      <AlertCircle className="h-4 w-4" />
-                      <AlertTitle>Syntax Warning</AlertTitle>
-                      <AlertDescription>
+                    <alert variant="destructive" className="mb-3">
+                      <alertCircle className="h-4 w-4" />
+                      <alertTitle>Syntax Warning</AlertTitle>
+                      <alertDescription>
                         The generated code might have syntax issues. {errorDetails && (
                           <span>
                             Line {errorDetails.line}: {errorDetails.message}
@@ -423,7 +425,7 @@ export default function PineScriptGenerator() {
                     
                     <div className="absolute top-4 right-4">
                       {syntaxValid === true && (
-                        <Badge variant="secondary" className="mb-1">Syntax Valid</Badge>
+                        <badge variant="secondary" className="mb-1">Syntax Valid</Badge>
                       )}
                     </div>
                   </div>
@@ -453,7 +455,7 @@ export default function PineScriptGenerator() {
                 <span>Monthly quota</span>
                 <span>{quota.used}/{quota.limit} used</span>
               </div>
-              <Progress value={(quota.used / quota.limit) * 100} className="h-2" />
+              <progress value={(quota.used / quota.limit) * 100} className="h-2" />
             </div>
           )}
         </CardFooter>

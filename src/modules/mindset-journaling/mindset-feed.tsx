@@ -49,6 +49,13 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
     }
   ]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'emotion': return 'text-pink-500';
@@ -84,7 +91,7 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
                       {insight.content}
                     </p>
                     {insight.actionable && (
-                      <Badge variant="outline" className="text-xs">
+                      <badge variant="outline" className="text-xs">
                         Actionable
                       </Badge>
                     )}

@@ -36,7 +36,7 @@ export async function createGoal(
 export async function updateGoal(
   goalId: string,
   userId: string,
-  updates: Partial<TradingGoal>
+  updates: Partial<tradingGoal>
 ): Promise<{ goal: TradingGoal | null; error: Error | null }> {
   const { data: goal, error } = await supabase
     .from('trading_goals')

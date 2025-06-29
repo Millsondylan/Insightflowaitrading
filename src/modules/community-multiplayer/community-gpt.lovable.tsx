@@ -52,17 +52,16 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
   return (
     <card  style={{ display: "flex" }}>
       <div className="flex items-center gap-2 mb-4">
-        <Bot  />
+        <bot  />
         <h2 className="text-2xl font-bold">Community GPT</h2>
       </div>
 
-      <scrollarea  >
+      <Scrollarea >
         <div className="space-y-4">
           {messages.map((message) => (
-            <div
-              key={message.id}
+            <Div key={message.id}
               className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
+            />
               <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
@@ -108,11 +107,11 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
       </ScrollArea>
 
       <div className="flex gap-2">
-        <input placeholder="Ask about strategies, analysis, or community insights..." > setInput(e.target.value)}
+        <input placeholder="Ask about strategies, analysis, or community insights..."  /> setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <button size="icon" >
-          <send  >
+        <Button size="icon" >
+          <Send />
         </Button>
       </div>
     </Card>

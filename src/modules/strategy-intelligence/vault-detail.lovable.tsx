@@ -33,9 +33,9 @@ export const VaultDetail: React.FC = () => {
   return (
     <card  style={{ width: "100%", color: "white" }}>
       <Cardheader >
-        <Cardtitle  />{strategy.name} - Strategy Details</CardTitle>
-      </CardHeader>
-      <cardcontent  >
+        <Cardtitle  />{strategy.name} - Strategy Details</Cardtitle>
+      </Cardheader>
+      <Cardcontent >
         <div className="space-y-4">
           <div>
             <h3 className="text-lg font-bold mb-2">Description</h3>
@@ -68,10 +68,9 @@ export const VaultDetail: React.FC = () => {
             <h4 className="font-semibold mb-2">Tags</h4>
             <div className="flex space-x-2">
               {strategy.tags?.map((tag) => (
-                <span 
-                  key={tag} 
+                <Span key={tag} 
                   className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
-                >
+                />
                   {tag}
                 </span>
               ))}
@@ -79,8 +78,8 @@ export const VaultDetail: React.FC = () => {
           </div>
 
           <div className="flex space-x-4">
-            <button variant="outline" style={{ color: "white" }}>Edit Strategy</Button>
-            <button variant="destructive" >Delete Strategy</Button>
+            <Button variant="outline" style={{ color: "white" }}>Edit Strategy</Button>
+            <Button variant="destructive" >Delete Strategy</Button>
           </div>
         </div>
       </CardContent>

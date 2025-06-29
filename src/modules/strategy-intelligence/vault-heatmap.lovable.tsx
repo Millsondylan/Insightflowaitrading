@@ -22,7 +22,7 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
   const [heatmapData, setHeatmapData] = useState<Heatmapdata  />(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [hoveredCell, setHoveredCell] = useState<heatmapcell  >(null);
+  const [hoveredCell, setHoveredCell] = useState<Heatmapcell >(null);
 
   // Generate color based on value and selected color scale
   const getColor = (value: number): string => {
@@ -212,7 +212,7 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
 
   return (
     <card  style={{ width: "100%" }}>
-      <cardheader  >
+      <Cardheader  />
         <cardtitle  style={{ color: "white" }}>Strategy Performance Heatmap</CardTitle>
       </CardHeader>
       <cardcontent  >

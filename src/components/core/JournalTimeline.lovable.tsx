@@ -25,7 +25,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
   const [entries, setEntries] = useState<Journalentry  />([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [expandedReflections, setExpandedReflections] = useState<set  >>(new Set());
+  const [expandedReflections, setExpandedReflections] = useState<Set >>(new Set());
 
   useEffect(() => {
     const fetchEntries = async () => {
@@ -139,8 +139,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
         const isReflectionExpanded = expandedReflections.has(entry.id);
 
         return (
-          <div
-            key={entry.id}
+          <Div key={entry.id}
             className={cn(
               "journal-entry-card opacity-0 transform translate-y-4",
               "animate-fade-in-up",
@@ -152,7 +151,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
               animationDelay: `${(index % 5) * 100}ms`,
               animationFillMode: "forwards"
             }}
-          >
+          />
             <card  >
               <div
                 className={cn(
@@ -174,7 +173,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
                     {isProfitable ? "+" : ""}{profitLoss.toFixed(2)}%
                   </Badge>
                   
-                  <button variant="ghost" size="sm" > toggleReflection(entry.id)}
+                  <Button variant="ghost" size="sm" > toggleReflection(entry.id)}
                     className="h-8 w-8 p-0 hover:bg-blue-500/10"
                   >
                     <brain  >
@@ -234,7 +233,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
 
                 <collapsible  > toggleReflection(entry.id)}>
                   <collapsibletrigger  >
-                    <button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
+                    <Button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
                       <div className="flex items-center space-x-2">
                         <brain  >
                         <span className="text-blue-400">AI Analysis</span>

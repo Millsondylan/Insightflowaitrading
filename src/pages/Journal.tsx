@@ -56,13 +56,13 @@ export default function JournalPage() {
                 <PlusCircle size={18} />
                 New Journal Entry
             </h3>
-            <Textarea
+            <textarea
                 value={newEntryText}
                 onChange={(e) => setNewEntryText(e.target.value)}
                 placeholder="What's on your mind? Capture your thoughts on recent trades..."
                 className="bg-black/20 border-white/10 h-28"
             />
-            <Button className="w-full mt-3 bg-blue-600 hover:bg-blue-700">Save Entry</Button>
+            <button className="w-full mt-3 bg-blue-600 hover:bg-blue-700">Save Entry</button>
         </div>
 
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
@@ -90,3 +90,10 @@ export default function JournalPage() {
     </div>
   );
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -8,7 +8,7 @@ interface PortfolioDashboardProps {
   userId?: string;
 }
 
-export const PortfolioDashboard: React.FC<Portfoliodashboardprops > = ({ userId }) => {
+export const PortfolioDashboard: React.FC<Portfoliodashboardprops> = ({ userId }) => {
   const [stats, setStats] = React.useState({
     totalValue: 125000,
     dayChange: 2.5,
@@ -27,14 +27,14 @@ export const PortfolioDashboard: React.FC<Portfoliodashboardprops > = ({ userId 
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Total Value</p>
             <p className="text-2xl font-bold flex items-center gap-2">
-              <dollarsign  >
+              <Dollarsign >
               {stats.totalValue.toLocaleString()}
             </p>
           </div>
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Day Change</p>
             <p className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange > 0 ? 'text-green-500' : 'text-red-500'}`}>
-              {stats.dayChange > 0 ? <trendingup  > : <trendingdown  >}
+              {stats.dayChange > 0 ? <Trendingup  /> : <trendingdown  >}
               {stats.dayChange > 0 ? '+' : ''}{stats.dayChange}%
             </p>
           </div>
@@ -55,7 +55,7 @@ export const PortfolioDashboard: React.FC<Portfoliodashboardprops > = ({ userId 
         </div>
       </Card>
 
-      <card  >
+      <Card  >
         <h3 className="text-lg font-semibold mb-4">Performance Metrics</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>

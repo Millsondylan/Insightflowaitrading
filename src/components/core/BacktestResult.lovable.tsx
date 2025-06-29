@@ -32,15 +32,15 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   
   return (
     <div className="space-y-8 mt-12">
-      <Blockreveal >
+      <Blockreveal>
         <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
       </BlockReveal>
       
-      <Blockreveal  />
-        <kpicards  >
+      <blockreveal  />
+        <Kpicards >
       </BlockReveal>
       
-      <blockreveal  >
+      <Blockreveal  />
         <tabs  style={{ width: "100%" }}>
           <tabslist  style={{ width: "100%", display: "grid" }}>
             <tabstrigger value="overview" >

@@ -16,8 +16,8 @@ export const VaultVersioning: React.FC<Vaultversioningprops > = ({ strategyId })
       <h2 className="text-2xl font-bold mb-4">Version History</h2>
       <div className="space-y-4">
         <div className="flex gap-2">
-          <button variant="outline" size="sm" >Compare Versions</Button>
-          <button variant="outline" size="sm" >Restore Version</Button>
+          <Button variant="outline" size="sm">Compare Versions</Button>
+          <Button variant="outline" size="sm" />Restore Version</Button>
         </div>
         <div className="space-y-2">
           {versions.map((v, i) => (

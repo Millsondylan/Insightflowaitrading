@@ -33,6 +33,13 @@ const mockLeaderboard = [
 export default function CommunityPage() {
     const [newPost, setNewPost] = useState('');
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Main Feed */}
@@ -49,14 +56,14 @@ export default function CommunityPage() {
 
                 {/* Create Post */}
                 <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
-                    <Textarea
+                    <textarea
                         value={newPost}
                         onChange={(e) => setNewPost(e.target.value)}
                         placeholder="Share your thoughts, charts, or trade ideas..."
                         className="bg-black/20 border-none"
                     />
                     <div className="flex justify-end mt-3">
-                        <Button className="bg-blue-600 hover:bg-blue-700">
+                        <button className="bg-blue-600 hover:bg-blue-700">
                             <Send size={16} className="mr-2" /> Post
                         </Button>
                     </div>
@@ -66,13 +73,13 @@ export default function CommunityPage() {
                 {mockPosts.map(post => (
                     <div key={post.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
                         <div className="flex items-start gap-4">
-                            <Avatar><AvatarImage src={post.author.avatar} /><AvatarFallback>{post.author.name[0]}</AvatarFallback></Avatar>
+                            <avatar><avatarImage src={post.author.avatar} /><avatarFallback>{post.author.name[0]}</AvatarFallback></Avatar>
                             <div className="flex-1">
                                 <p className="font-semibold text-white">{post.author.name}</p>
                                 <p className="text-gray-300 mt-1">{post.content}</p>
                                 <div className="flex items-center gap-6 mt-4 text-sm text-gray-400">
-                                    <button className="flex items-center gap-1 hover:text-white"><ThumbsUp size={16} /> {post.likes}</button>
-                                    <button className="flex items-center gap-1 hover:text-white"><MessageSquare size={16} /> {post.comments}</button>
+                                    <button className="flex items-center gap-1 hover:text-white"><thumbsUp size={16} /> {post.likes}</Button>
+                                    <button className="flex items-center gap-1 hover:text-white"><MessageSquare size={16} /> {post.comments}</Button>
                                 </div>
                             </div>
                         </div>
@@ -85,11 +92,11 @@ export default function CommunityPage() {
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
                     <h3 className="font-semibold text-white mb-4">Trending Topics</h3>
                     <div className="flex flex-wrap gap-2">
-                        {mockTrending.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
+                        {mockTrending.map(tag => <badge key={tag} variant="secondary">{tag}</Badge>)}
                     </div>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/> Leaderboard</h3>
+                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><trendingUp size={18}/> Leaderboard</h3>
                     <ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
                             <li key={user.name} className="flex justify-between items-center text-sm">

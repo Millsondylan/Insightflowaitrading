@@ -58,7 +58,7 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
 
 const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
   const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<TradeMarker | null>(null);
+  const [hoveredTrade, setHoveredTrade] = useState<tradeMarker | null>(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   
   // Start animation after component mounts
@@ -75,7 +75,7 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   const maxPrice = Math.max(...prices) * 1.005;
 
   return (
-    <BlockReveal>
+    <blockReveal>
       <div className="chart-container">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-bold text-white">
@@ -83,10 +83,9 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
           </h3>
         </div>
         <ResponsiveContainer width="100%" height="90%">
-          <LineChart
-            data={animationComplete ? priceData : []}
+          <LineChart data={animationComplete ? priceData : []}
             margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
-          >
+         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="time"
@@ -98,8 +97,8 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
               tick={{ fill: '#9ca3af' }}
               tickFormatter={(value) => value.toFixed(0)}
             />
-            <Tooltip content={<PriceTooltip />} />
-            <Line
+            <Tooltip content={<priceTooltip />} />
+            <line
               type="monotone"
               dataKey="price"
               stroke="#22d3ee"
@@ -143,7 +142,7 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
           <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <TradeTooltip trade={hoveredTrade} />
+            <tradeTooltip trade={hoveredTrade} />
           </div>
         )}
       </div>
@@ -151,4 +150,11 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   );
 };
 
-export default BacktestChart; 
+export default BacktestChart;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

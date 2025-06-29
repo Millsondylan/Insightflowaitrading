@@ -81,11 +81,10 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
         const embedUrl = section.videoUrl ? getEmbedUrl(section.videoUrl) : null;
 
         return (
-          <div
-            key={section.id}
+          <Div key={section.id}
             data-section-id={section.id}
             className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}
-          >
+         >
             <h2 className="text-white text-2xl font-bold">{section.title}</h2>
             
             <div
@@ -121,12 +120,11 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
               )}
 
               {section.quizId && (
-                <button
-                  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
+                <Button  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
                   className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
                   <span>🧠</span> Take Quiz
-                </button>
+                </Button>
               )}
             </div>
           </div>

@@ -17,7 +17,9 @@
     "test:watch": "jest --watch",
     "cypress": "cypress open",
     "cypress:run": "cypress run",
-    "fix-lovable": "node --experimental-modules fix-lovable-compatibility.js && node --experimental-modules fix-jsx-elements.js && node --experimental-modules add-lovable-exports.js"
+    "fix-lovable": "node --experimental-modules fix-lovable-compatibility.js && node --experimental-modules fix-jsx-elements.js && node --experimental-modules add-lovable-exports.js",
+    "fix-html-elements": "node fix-lovable.mjs",
+    "fix-component-case": "node fix-component-case.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",

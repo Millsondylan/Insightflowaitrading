@@ -76,7 +76,7 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
       {matchedTickersWithReason.length > 0 ? (
         <div className="flex flex-wrap gap-3">
           {matchedTickersWithReason.map((ticker) => (
-            <Div key={ticker.symbol}
+            <div key={ticker.symbol}
               className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
             />
               <div>
@@ -85,8 +85,8 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
                   {ticker.reason}
                 </span>
               </div>
-              <button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
-                <eye  >
+              <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
+                <Eye >
                 View
               </Button>
             </div>

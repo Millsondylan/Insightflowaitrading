@@ -72,7 +72,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<Strategyoutput  />(null);
-  const [parsedRules, setParsedRules] = useState<parsedrule  >([]);
+  const [parsedRules, setParsedRules] = useState<Parsedrule >([]);
   const [showParsed, setShowParsed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement  >) => {
@@ -148,14 +148,13 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             className="bg-black/20 text-white w-full p-3 rounded-md outline-none resize-none h-32 placeholder:text-gray-500 focus:ring-2 focus:ring-cyan-500/30 transition-all"
             disabled={loading}
           />
-          <button
-            type="submit"
+          <Button type="submit"
             disabled={!input.trim() || loading}
             className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2"
-          >
+          />
             <span>🧠</span>
             <span>{loading ? "Generating..." : "Generate Strategy"}</span>
-          </button>
+          </Button>
         </form>
 
         {/* Loading State */}
@@ -184,12 +183,11 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
             {/* Toggle Parsed View */}
             {parsedRules.length > 0 && (
-              <button
-                onClick={() => setShowParsed(!showParsed)}
+              <Button  onClick={() => setShowParsed(!showParsed)}
                 className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
               >
                 {showParsed ? '📝 Show Original' : '🔍 Show Parsed Analysis'}
-              </button>
+              </Button>
             )}
 
             {/* Rules Display */}

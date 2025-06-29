@@ -67,7 +67,7 @@ const HelpPage: React.FC = () => {
           <p className="text-gray-300 mb-6">Can't find what you're looking for? Our support team is here to help.</p>
           <button className="glow-button glow-indigo px-8 py-3">
             Contact Support
-          </button>
+          </Button>
         </div>
       </div>
     </section>

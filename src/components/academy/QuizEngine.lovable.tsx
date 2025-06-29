@@ -171,7 +171,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
 
       {/* Quiz Content */}
       {!quizComplete ? (
-        <animatepresence mode="wait" >
+        <Animatepresence mode="wait">
           <motion.div
             key={currentQuestion.id}
             initial="hidden"
@@ -188,8 +188,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
             {/* Options */}
             <div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
-                <button
-                  key={index}
+                <Button key={index}
                   onClick={() => handleOptionSelect(index)}
                   disabled={isAnswered}
                   className={`
@@ -209,7 +208,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
                       index === selectedOption && <xcircle  style={{ color: "white" }}>
                     )
                   )}
-                </button>
+                </Button>
               ))}
             </div>
 
@@ -234,17 +233,17 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3">
               {!isAnswered ? (
-                <button  style={{ color: "white" }}>
+                <Button  style={{ color: "white" }}>
                   Submit Answer
                 </Button>
               ) : (
-                <button  style={{ color: "white" }}>
+                <Button  style={{ color: "white" }}>
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
-                        <chevronright  >
+                        <Chevronright  />
                       </>
                     )
                   }
@@ -299,7 +298,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
           )}
 
           <div className="pt-4">
-            <button  style={{ color: "white" }}>
+            <Button  style={{ color: "white" }}>
               <refreshcw  >
               Retry Quiz
             </Button>

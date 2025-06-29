@@ -27,13 +27,13 @@ const StrategyCopilotPage: React.FC = () => {
               <div className="flex space-x-2">
                 <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
                   Bullish
-                </button>
+                </Button>
                 <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
                   Bearish
-                </button>
+                </Button>
                 <button className="px-4 py-2 bg-cyan-500/20 border border-cyan-400/30 rounded-lg text-cyan-300 text-sm hover:bg-cyan-500/30 transition-colors">
                   Sideways
-                </button>
+                </Button>
               </div>
             </div>
           </div>

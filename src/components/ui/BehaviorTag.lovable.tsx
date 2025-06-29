@@ -41,7 +41,7 @@ interface BehaviorTagProps {
   animationDelay?: number;
 }
 
-const BehaviorTag: React.FC<Behaviortagprops > = ({ 
+const BehaviorTag: React.FC<Behaviortagprops> = ({ 
   tag, 
   className, 
   animated = false, 
@@ -62,15 +62,15 @@ const BehaviorTag: React.FC<Behaviortagprops > = ({
   };
   
   const tagElement = (
-    <Badge variant="outline" />
+    <badge variant="outline" />
       {tag}
     </Badge>
   );
   
   // Wrap with tooltip if we have a description
   return (
-    <tooltipprovider  >
-      <tooltip  >
+    <Tooltipprovider >
+      <Tooltip  />
         <tooltiptrigger  >
           {tagElement}
         </TooltipTrigger>

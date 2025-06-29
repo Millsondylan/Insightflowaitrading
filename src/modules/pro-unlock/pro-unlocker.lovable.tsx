@@ -9,7 +9,7 @@ interface ProUnlockerProps {
   onUnlock?: (plan: string) => void;
 }
 
-export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
+export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
   const plans = [
     {
       name: 'Basic',
@@ -52,7 +52,7 @@ export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
   return (
     <Card  />
       <div className="text-center mb-8">
-        <crown  >
+        <Crown >
         <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</h2>
         <p className="text-muted-foreground">
           Take your trading to the next level with advanced tools and insights
@@ -61,8 +61,7 @@ export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
-          <div
-            key={plan.name}
+          <Div key={plan.name}
             className={`relative p-6 rounded-lg border-2 ${
               plan.recommended
                 ? 'border-primary bg-primary/5'
@@ -70,7 +69,7 @@ export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-          >
+          />
             {plan.recommended && (
               <badge  >
                 Recommended
@@ -94,7 +93,7 @@ export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
               ))}
             </ul>
 
-            <button  style={{ width: "100%" }}> onUnlock?.(plan.name)}
+            <Button  style={{ width: "100%" }}> onUnlock?.(plan.name)}
             >
               {plan.current ? 'Current Plan' : `Upgrade to ${plan.name}`}
             </Button>

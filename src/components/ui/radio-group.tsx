@@ -40,3 +40,10 @@ const RadioGroupItem = React.forwardRef<
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 
 export { RadioGroup, RadioGroupItem }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

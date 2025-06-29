@@ -46,18 +46,18 @@ export const VaultPublisher: React.FC = () => {
   return (
     <card  style={{ width: "100%", color: "white" }}>
       <Cardheader  />
-        <cardtitle  >Strategy Publisher</CardTitle>
-      </CardHeader>
-      <cardcontent  >
+        <Cardtitle >Strategy Publisher</CardTitle>
+      </Cardheader>
+      <Cardcontent  />
         <div className="space-y-4">
           <div>
             <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
             <div className="grid grid-cols-2 gap-4">
-              <input  > setStrategy(prev => ({ ...prev, name: e.target.value }))}
+              <input   /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <input  > setStrategy(prev => ({ ...prev, version: e.target.value }))}
+              <input   /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
@@ -75,12 +75,12 @@ export const VaultPublisher: React.FC = () => {
               <div>
                 <label className="block text-sm mb-1">Visibility</label>
                 <div className="flex space-x-2">
-                  <button  > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
+                  <Button > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
                   </Button>
-                  <button  > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
+                  <Button > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
@@ -88,12 +88,12 @@ export const VaultPublisher: React.FC = () => {
                 </div>
               </div>
 
-              <input  > setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
+              <input   /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <input  > setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
+              <input   /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
@@ -106,7 +106,7 @@ export const VaultPublisher: React.FC = () => {
             </div>
           </div>
 
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}>
             Publish Strategy
           </Button>
         </div>

@@ -9,7 +9,7 @@ const ConfigItem = ({ icon, title, children }: { icon: React.ElementType, title:
   return (
     <div>
       <h4 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
-        <Icon >
+        <Icon>
         {title}
       </h4>
       {children}
@@ -27,7 +27,7 @@ export default function StrategyBuilderPage() {
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Bot  /></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><bot  /></span>
                     AI Strategy Builder
                 </h1>
                 <p className="text-gray-400 mt-1">Craft a new strategy using natural language.</p>
@@ -37,13 +37,13 @@ export default function StrategyBuilderPage() {
         {/* Prompt Input */}
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
           <h3 className="font-semibold text-white mb-3">Describe your strategy idea</h3>
-          <textarea  > setPrompt(e.target.value)}
+          <Textarea > setPrompt(e.target.value)}
             placeholder="e.g., A mean-reversion strategy for AAPL on the 5-minute chart using Bollinger Bands and RSI..."
             className="bg-black/20 border-white/10 h-36"
           />
           <div className="flex justify-end mt-4">
-            <button  style={{ color: "white" }}>
-                <sparkles  >
+            <Button  style={{ color: "white" }}>
+                <Sparkles  />
                 Generate Strategy
             </Button>
           </div>
@@ -74,11 +74,11 @@ export default function StrategyBuilderPage() {
         
         <configitem title="Next Steps" >
             <div className="flex flex-col gap-3">
-                <link to="/planner" >
-                    <button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Button>
+                <Link to="/planner" >
+                    <Button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Button>
                 </Link>
-                <link to="/vault" >
-                    <button variant="outline" style={{ width: "100%" }}>Save to Vault</Button>
+                <Link to="/vault" >
+                    <Button variant="outline" style={{ width: "100%" }}>Save to Vault</Button>
                 </Link>
             </div>
         </ConfigItem>

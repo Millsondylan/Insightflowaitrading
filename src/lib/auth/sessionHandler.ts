@@ -12,7 +12,7 @@ export interface AuthenticatedUser {
 /**
  * Gets the authenticated user from a request
  */
-export async function getAuthenticatedUser(req: NextRequest): Promise<AuthenticatedUser | null> {
+export async function getAuthenticatedUser(req: NextRequest): Promise<authenticatedUser | null> {
   try {
     // Get Supabase authentication cookie from the request
     const authCookie = req.cookies.get('sb-auth-token')?.value;

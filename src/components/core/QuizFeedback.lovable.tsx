@@ -78,7 +78,7 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
         className="space-y-4"
       >
         <div className="flex items-start space-x-3">
-          <lightbulb  >
+          <Lightbulb >
           <div>
             <h4 className="font-semibold text-gray-200 mb-2">Explanation</h4>
             <p className="text-gray-300 leading-relaxed">{explanation}</p>
@@ -93,7 +93,7 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
             transition={{ delay: 0.5, duration: 0.4 }}
             className="flex items-start space-x-3 pt-4 border-t border-gray-600/30"
           >
-            <trendingup  >
+            <Trendingup  />
             <div>
               <h4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</h4>
               <p className="text-gray-300 leading-relaxed">{hint}</p>

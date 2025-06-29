@@ -33,7 +33,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
   onSaveEntry
 }) => {
   const [entries, setEntries] = useState<JournalEntry[]>([]);
-  const [currentEntry, setCurrentEntry] = useState<Partial<JournalEntry>>({
+  const [currentEntry, setCurrentEntry] = useState<partial<JournalEntry>>({
     content: '',
     mood: 'neutral',
     tags: []
@@ -328,9 +328,9 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
             <label className="font-medium">Today's Journal Entry</label>
             <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
               onClick={getRandomPrompt}
-           >
+          >
               Get Random Prompt
-            </button>
+            </Button>
           </div>
           
           {selectedPrompt && (
@@ -351,8 +351,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
           <div>
             <label className="block mb-1 font-medium">How are you feeling?</label>
             <div className="flex space-x-2">
-              <button
-                className={`px-4 py-2 rounded-md ${
+              <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'positive' 
                     ? 'bg-status-success text-white' 
                     : 'bg-background-tertiary hover:bg-background-interactive'
@@ -360,9 +359,8 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                 onClick={() => handleMoodChange('positive')}
               >
                 Positive
-              </button>
-              <button
-                className={`px-4 py-2 rounded-md ${
+              </Button>
+              <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'neutral' 
                     ? 'bg-status-warning text-white' 
                     : 'bg-background-tertiary hover:bg-background-interactive'
@@ -370,9 +368,8 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                 onClick={() => handleMoodChange('neutral')}
               >
                 Neutral
-              </button>
-              <button
-                className={`px-4 py-2 rounded-md ${
+              </Button>
+              <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'negative' 
                     ? 'bg-status-error text-white' 
                     : 'bg-background-tertiary hover:bg-background-interactive'
@@ -380,7 +377,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                 onClick={() => handleMoodChange('negative')}
               >
                 Negative
-              </button>
+              </Button>
             </div>
           </div>
           
@@ -403,20 +400,19 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
         )}
         
         <div className="flex justify-between">
-          <Button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
+          <button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
             onClick={analyzeEntry}
             disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}
           />
             {analyzing ? 'Analyzing...' : 'Analyze with AI'}
-          </button>
+          </Button>
           
-          <button
-            className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+          <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={saveEntry}
             disabled={saving || !currentEntry.content || currentEntry.content.trim().length < 10}
-          >
+          />
             {saving ? 'Saving...' : 'Save Entry'}
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -488,12 +484,11 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                     </span>
                   </div>
                   
-                  <button
-                    className="text-sm text-brand-primary hover:text-brand-primary/80"
+                  <Button  className="text-sm text-brand-primary hover:text-brand-primary/80"
                     onClick={() => editEntry(entry)}
                   >
                     Edit
-                  </button>
+                  </Button>
                 </div>
                 
                 <p className="mb-3 line-clamp-3">{entry.content}</p>

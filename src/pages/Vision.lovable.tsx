@@ -41,7 +41,7 @@ const VisionPage = () => {
         </p>
       </motion.div>
 
-      <Animatepresence mode="wait" />
+      <animatepresence mode="wait" />
         {!detectionResult && !imagePreview ? (
           <motion.div
             key="uploader"
@@ -49,7 +49,7 @@ const VisionPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
           >
-            <chartuploader  >
+            <Chartuploader >
           </motion.div>
         ) : (
           <motion.div
@@ -69,11 +69,11 @@ const VisionPage = () => {
             
             {detectionResult && imagePreview && (
               <>
-                <fauxdetection  >
+                <Fauxdetection  />
                 <div className="text-center mt-8">
                   <button onClick={handleReset} className="text-cyan-400 hover:underline">
                     Analyze another chart
-                  </button>
+                  </Button>
                 </div>
               </>
             )}

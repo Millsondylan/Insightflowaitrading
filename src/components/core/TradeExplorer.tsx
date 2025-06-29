@@ -51,60 +51,60 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
   };
 
   return (
-    <BlockReveal>
+    <blockReveal>
       <div className="trade-table">
-        <Table>
-          <TableHeader>
-            <TableRow className="trade-table-header">
-              <TableHead className="w-12">#</TableHead>
-              <TableHead>Entry Time</TableHead>
-              <TableHead>Exit Time</TableHead>
-              <TableHead>Duration</TableHead>
-              <TableHead>Entry Price</TableHead>
-              <TableHead>Exit Price</TableHead>
-              <TableHead>PnL</TableHead>
-              <TableHead>PnL %</TableHead>
+        <table>
+          <tableHeader>
+            <tableRow className="trade-table-header">
+              <tableHead className="w-12">#</TableHead>
+              <tableHead>Entry Time</TableHead>
+              <tableHead>Exit Time</TableHead>
+              <tableHead>Duration</TableHead>
+              <tableHead>Entry Price</TableHead>
+              <tableHead>Exit Price</TableHead>
+              <tableHead>PnL</TableHead>
+              <tableHead>PnL %</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <tableBody>
             {currentTrades.map((trade, index) => {
               const isWin = trade.pnl > 0;
               const tradeIndex = indexOfFirstTrade + index + 1;
               
               return (
-                <TableRow key={index} className={`trade-row ${isWin ? 'win' : 'loss'}`}>
-                  <TableCell className="font-medium">{tradeIndex}</TableCell>
-                  <TableCell>{formatTime(trade.entryTime)}</TableCell>
-                  <TableCell>{formatTime(trade.exitTime)}</TableCell>
-                  <TableCell>{formatDuration(trade.entryTime, trade.exitTime)}</TableCell>
-                  <TableCell>{formatCurrency(trade.entryPrice)}</TableCell>
-                  <TableCell>{formatCurrency(trade.exitPrice)}</TableCell>
-                  <TableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>
+                <tableRow key={index} className={`trade-row ${isWin ? 'win' : 'loss'}`}>
+                  <tableCell className="font-medium">{tradeIndex}</TableCell>
+                  <tableCell>{formatTime(trade.entryTime)}</TableCell>
+                  <tableCell>{formatTime(trade.exitTime)}</TableCell>
+                  <tableCell>{formatDuration(trade.entryTime, trade.exitTime)}</TableCell>
+                  <tableCell>{formatCurrency(trade.entryPrice)}</TableCell>
+                  <tableCell>{formatCurrency(trade.exitPrice)}</TableCell>
+                  <tableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>
                     {formatCurrency(trade.pnl)}
                   </TableCell>
-                  <TableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>
+                  <tableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>
                     {formatPercent(trade.pnlPercentage)}
                   </TableCell>
                 </TableRow>
               );
             })}
           </TableBody>
-        </Table>
+        </table>
         
         {totalPages > 1 && (
           <div className="py-4 flex justify-center">
-            <Pagination>
-              <PaginationContent>
-                <PaginationItem>
-                  <PaginationPrevious 
+            <pagination>
+              <paginationContent>
+                <paginationItem>
+                  <paginationPrevious 
                     onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
                     className={currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
                 </PaginationItem>
                 
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <PaginationItem key={page}>
-                    <PaginationLink
+                  <paginationItem key={page}>
+                    <paginationLink
                       onClick={() => handlePageChange(page)}
                       isActive={page === currentPage}
                       className="cursor-pointer"
@@ -114,8 +114,8 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                   </PaginationItem>
                 ))}
                 
-                <PaginationItem>
-                  <PaginationNext
+                <paginationItem>
+                  <paginationNext
                     onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
                     className={currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
@@ -129,4 +129,11 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
   );
 };
 
-export default TradeExplorer; 
+export default TradeExplorer;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

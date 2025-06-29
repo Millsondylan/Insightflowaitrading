@@ -28,10 +28,10 @@ export default function Topbar() {
       <div className="flex items-center gap-6">
         <span className="text-sm text-text-muted">{today}</span>
         <Button variant="ghost" size="icon" />
-          <bell  >
+          <Bell >
         </Button>
         <div className="flex items-center gap-3">
-          <avatar  >
+          <Avatar  />
             <avatarimage  >
             <avatarfallback  >{profile?.full_name?.[0] || 'U'}</AvatarFallback>
           </Avatar>

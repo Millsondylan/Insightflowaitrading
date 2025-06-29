@@ -17,7 +17,7 @@ interface LineChartProps {
   color?: string;
 }
 
-export const LineChart: React.FC<LineChartProps> = ({
+export const LineChart: React.FC<lineChartProps> = ({
   data,
   xField,
   yField,
@@ -52,7 +52,7 @@ export const LineChart: React.FC<LineChartProps> = ({
           itemStyle={{ color: '#e5e7eb' }}
           labelStyle={{ color: '#9ca3af' }}
         />
-        <Line
+        <line
           type="monotone"
           dataKey={yField}
           stroke={color}
@@ -63,4 +63,11 @@ export const LineChart: React.FC<LineChartProps> = ({
       </RechartsLineChart>
     </ResponsiveContainer>
   );
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 }; 

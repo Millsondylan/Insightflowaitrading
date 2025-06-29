@@ -46,7 +46,7 @@ const ToastAction = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Action>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Action>
 >(({ className, ...props }, ref) => (
-  <toastprimitives  >
+  <Toastprimitives  >
 ))
 ToastAction.displayName = ToastPrimitives.Action.displayName
 
@@ -54,7 +54,7 @@ const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
 >(({ className, ...props }, ref) => (
-  <toastprimitives close="" >
+  <Toastprimitives close="" >
     <x  >
   </ToastPrimitives.Close>
 ))
@@ -64,7 +64,7 @@ const ToastTitle = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Title>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Title>
 >(({ className, ...props }, ref) => (
-  <toastprimitives  >
+  <Toastprimitives  >
 ))
 ToastTitle.displayName = ToastPrimitives.Title.displayName
 
@@ -72,7 +72,7 @@ const ToastDescription = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Description>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Description>
 >(({ className, ...props }, ref) => (
-  <toastprimitives  >
+  <Toastprimitives  >
 ))
 ToastDescription.displayName = ToastPrimitives.Description.displayName
 

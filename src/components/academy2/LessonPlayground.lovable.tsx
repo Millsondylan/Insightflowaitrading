@@ -21,9 +21,9 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
       {chunks.map((chunk) => (
         <Div key={chunk.id}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
-       >
+      >
           {chunk.type === "markdown" && (
-            <Reactmarkdown  />{chunk.content}</ReactMarkdown>
+            <Reactmarkdown  />{chunk.content}</Reactmarkdown>
           )}
           {chunk.type === "prompt" && (
             <textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />

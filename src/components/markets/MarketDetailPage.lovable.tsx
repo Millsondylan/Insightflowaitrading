@@ -157,7 +157,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     return (
       <div className="theme-markets space-y-6">
         {onBack && (
-          <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+          <Button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
             <Chevronleft >
             Back to Markets
           </Button>
@@ -175,8 +175,8 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     return (
       <div className="theme-markets space-y-6">
         {onBack && (
-          <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
-            <Chevronleft  />
+          <Button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+            <Chevronleft />
             Back to Markets
           </Button>
         )}
@@ -192,8 +192,8 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     <div className="theme-markets space-y-6">
       {/* Back button */}
       {onBack && (
-        <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
-          <chevronleft  >
+        <Button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+          <Chevronleft />
           Back to Markets
         </Button>
       )}
@@ -203,7 +203,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         <div className="space-y-1">
           <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-white">{symbol}</h1>
-            <badge variant="outline" >
+            <Badge variant="outline">
               {marketData.volatility.charAt(0).toUpperCase() + marketData.volatility.slice(1)} Volatility
             </Badge>
           </div>
@@ -212,7 +212,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
             <span>${formatPrice(marketData.price)}</span>
             <span className={`flex items-center ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {marketData.changePercent > 0 ? (
-                <arrowup  >
+                <Arrowup  />
               ) : marketData.changePercent < 0 ? (
                 <arrowdown  >
               ) : null}

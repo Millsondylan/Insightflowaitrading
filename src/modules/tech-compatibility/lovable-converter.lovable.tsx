@@ -66,13 +66,13 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
       </div>
 
       <div className="flex justify-center my-6">
-        <button  >
+        <Button >
           {isConverting ? (
             'Converting...'
           ) : (
             <>
               Convert to Lovable
-              <arrowright  >
+              <Arrowright  />
             </>
           )}
         </Button>

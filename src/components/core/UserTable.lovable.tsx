@@ -124,8 +124,8 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <pagination  >
-        <paginationcontent  >
+      <Pagination >
+        <Paginationcontent  />
           <paginationitem  >
             <paginationprevious href="#" > {
                 e.preventDefault();
@@ -204,7 +204,7 @@ const UserTable: React.FC = () => {
           {/* Search input */}
           <div className="relative">
             <search  >
-            <input type="text" placeholder="Search wallet address..." style={{ width: "100%" }}>
+            <input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} />
           </div>
           
           {/* Role filter */}
@@ -235,12 +235,12 @@ const UserTable: React.FC = () => {
                 </div>
               </SelectItem>
             </SelectContent>
-          </Select>
+          </select>
           
           {/* Sort options */}
           <dropdownmenu  >
             <dropdownmenutrigger  >
-              <button variant="outline" size="sm" >
+              <Button variant="outline" size="sm" >
                 <filter  >
                 Sort
               </Button>
@@ -267,13 +267,13 @@ const UserTable: React.FC = () => {
         
         <div className="flex items-center gap-2">
           {/* Export button */}
-          <button variant="outline" style={{ display: "flex", alignItems: "center" }}>
+          <Button variant="outline" style={{ display: "flex", alignItems: "center" }}>
             <download  >
             Export CSV
           </Button>
           
           {/* Grant admin button */}
-          <button  style={{ display: "flex", alignItems: "center" }}>
+          <Button  style={{ display: "flex", alignItems: "center" }}>
             <plus  >
             Grant Admin
           </Button>
@@ -307,12 +307,12 @@ const UserTable: React.FC = () => {
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <userrow  >
+                <Userrow  >
               ))
             ) : (
               <tr>
                 <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <users  >
+                  <Users  >
                   <p>No users found</p>
                   <p className="text-sm">Try adjusting your search or filters</p>
                 </td>

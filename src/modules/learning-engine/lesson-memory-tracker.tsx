@@ -50,6 +50,13 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
     }
   ]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const [selectedMemory, setSelectedMemory] = React.useState<MemoryItem | null>(null);
 
   const reviewConcept = (memory: MemoryItem) => {
@@ -71,7 +78,7 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
   return (
     <Card className="theme-card p-6">
       <div className="flex items-center gap-2 mb-6">
-        <Brain className="h-6 w-6" />
+        <brain className="h-6 w-6" />
         <h2 className="text-2xl font-bold">Memory Tracker</h2>
       </div>
 
@@ -124,7 +131,7 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <TrendingUp className={`h-4 w-4 ${getStrengthColor(memory.strength)}`} />
+                    <trendingUp className={`h-4 w-4 ${getStrengthColor(memory.strength)}`} />
                     <span className={`text-sm font-medium ${getStrengthColor(memory.strength)}`}>
                       {Math.round(memory.strength * 100)}% strength
                     </span>
@@ -137,7 +144,7 @@ export const LessonMemoryTracker: React.FC<LessonMemoryTrackerProps> = ({ userId
                   <span>Memory Strength</span>
                   <span>{memory.reviews} reviews</span>
                 </div>
-                <Progress value={memory.strength * 100} className="h-2" />
+                <progress value={memory.strength * 100} className="h-2" />
               </div>
 
               {isDue && (

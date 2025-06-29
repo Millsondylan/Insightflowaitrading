@@ -12,8 +12,8 @@ const mockInsights = [
 export default function FeedPage() {
   return (
     <div>
-      <link to="/journal" style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft >
+      <Link to="/journal" style={{ display: "flex", alignItems: "center" }}>
+        <Arrowleft>
         Back to Journal
       </Link>
       
@@ -29,8 +29,8 @@ export default function FeedPage() {
         {mockInsights.map(insight => (
             <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
                 <p className="text-gray-200">{insight.text}</p>
-                <button variant="ghost" size="icon" >
-                    <eye  >
+                <Button variant="ghost" size="icon">
+                    <Eye  />
                 </Button>
             </div>
         ))}

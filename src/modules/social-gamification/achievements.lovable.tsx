@@ -16,14 +16,14 @@ interface AchievementsProps {
   className?: string;
 }
 
-export const AchievementsComponent: React.FC<Achievementsprops > = ({
+export const AchievementsComponent: React.FC<Achievementsprops> = ({
   userId,
   onAchievementUnlocked,
   className = '',
 }) => {
   const [userProfile, setUserProfile] = useState<Userprofile  />(null);
-  const [achievements, setAchievements] = useState<achievement  >([]);
-  const [userAchievements, setUserAchievements] = useState<userachievement  >([]);
+  const [achievements, setAchievements] = useState<Achievement >([]);
+  const [userAchievements, setUserAchievements] = useState<Userachievement  />([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
 
@@ -199,8 +199,7 @@ export const AchievementsComponent: React.FC<Achievementsprops > = ({
       {/* Category filters */}
       <div className="flex flex-wrap gap-2 mb-6">
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
-          <button
-            key={category}
+          <Button key={category}
             onClick={() => setSelectedCategory(category)}
             className={`
               px-3 py-1 rounded-full text-xs font-medium transition-all duration-200
@@ -211,7 +210,7 @@ export const AchievementsComponent: React.FC<Achievementsprops > = ({
             `}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -304,7 +303,7 @@ export const AchievementsComponent: React.FC<Achievementsprops > = ({
 };
 
 // Mock data functions (TODO: replace with real API calls)
-const fetchUserProfile = async (userId: string): Promise<userprofile  > => {
+const fetchUserProfile = async (userId: string): Promise<Userprofile  > => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 500));
   

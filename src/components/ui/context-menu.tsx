@@ -196,3 +196,10 @@ export {
   ContextMenuSubTrigger,
   ContextMenuRadioGroup,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

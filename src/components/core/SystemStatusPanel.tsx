@@ -19,6 +19,13 @@ interface ServiceStatus {
 
 export function SystemStatusPanel() {
   const { user, isAdmin } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [services, setServices] = useState<ServiceStatus[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("overview");
@@ -167,12 +174,11 @@ export function SystemStatusPanel() {
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle className="text-xl font-bold">System Status</CardTitle>
-          <Button 
-            variant="outline" 
+          <Button variant="outline" 
             size="sm" 
             onClick={fetchSystemStatus}
             disabled={loading}
-          >
+         >
             <RefreshCcw className={`h-4 w-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
@@ -196,7 +202,7 @@ export function SystemStatusPanel() {
                 <div key={service.name} className="flex items-center justify-between p-3 rounded-md border">
                   <div className="flex items-center">
                     {service.name.includes('Database') ? <Database className="h-4 w-4 mr-2" /> :
-                     service.name.includes('AI:') ? <Brain className="h-4 w-4 mr-2" /> :
+                     service.name.includes('AI:') ? <brain className="h-4 w-4 mr-2" /> :
                      <Server className="h-4 w-4 mr-2" />}
                     
                     <span className="font-medium">{service.name}</span>
@@ -210,14 +216,14 @@ export function SystemStatusPanel() {
                       </span>
                     )}
                     
-                    <Badge variant={
+                    <badge variant={
                       service.status === 'healthy' ? 'default' :
                       service.status === 'degraded' ? 'secondary' :
                       'destructive'
                     }>
                       {service.status === 'healthy' && <CheckCircle2 className="h-3 w-3 mr-1" />}
-                      {service.status === 'degraded' && <AlertCircle className="h-3 w-3 mr-1" />}
-                      {service.status === 'down' && <AlertCircle className="h-3 w-3 mr-1" />}
+                      {service.status === 'degraded' && <alertCircle className="h-3 w-3 mr-1" />}
+                      {service.status === 'down' && <alertCircle className="h-3 w-3 mr-1" />}
                       {service.status.charAt(0).toUpperCase() + service.status.slice(1)}
                     </Badge>
                   </div>
@@ -260,7 +266,7 @@ export function SystemStatusPanel() {
                     {Object.entries(lastDevOpsSnapshot.cacheStatus).map(([key, status]) => (
                       <div key={key} className="flex justify-between p-2 border rounded text-xs">
                         <span>{key}</span>
-                        <Badge variant={
+                        <badge variant={
                           status === 'hit' ? 'default' :
                           status === 'miss' ? 'secondary' : 
                           'outline'
@@ -299,7 +305,7 @@ export function SystemStatusPanel() {
                     </div>
                     <div>
                       <div className="text-sm">
-                        <Badge variant={Math.random() > 0.2 ? 'default' : 'destructive'}>
+                        <Badge variant={Math.random() /> 0.2 ? 'default' : 'destructive'}>
                           {Math.floor(Math.random() * 80) + 20}% used
                         </Badge>
                       </div>
@@ -320,7 +326,7 @@ export function SystemStatusPanel() {
                     </div>
                     <div>
                       <div className="text-sm">
-                        <Badge variant={Math.random() > 0.3 ? 'default' : 'outline'}>
+                        <badge variant={Math.random() > 0.3 ? 'default' : 'outline'}>
                           {Math.floor(Math.random() * 80) + 20}% used
                         </Badge>
                       </div>

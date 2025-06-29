@@ -54,7 +54,7 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
   const [colorTheme, setColorTheme] = useState<ColorPaletteTheme>(defaultTheme);
   const [timePeriod, setTimePeriod] = useState<CorrelationTimePeriod>(defaultTimePeriod);
   const [selectedCell, setSelectedCell] = useState<{ row: number; col: number } | null>(null);
-  const [favorites, setFavorites] = useState<Array<{ base: string; quote: string }>>([]); // Simplified version without DB interaction
+  const [favorites, setFavorites] = useState<array<{ base: string; quote: string }>>([]); // Simplified version without DB interaction
   const [showCorrelationValue, setShowCorrelationValue] = useState(true);
   const [viewMode, setViewMode] = useState<'all' | 'favorites'>('all');
 
@@ -191,9 +191,9 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center h-64">
-            <AlertTriangle className="h-12 w-12 text-red-500 mb-4" />
+            <alertTriangle className="h-12 w-12 text-red-500 mb-4" />
             <p>{error}</p>
-            <Button onClick={() => setLoading(true)} className="mt-4">
+            <button onClick={() => setLoading(true)} className="mt-4">
               <RefreshCw className="mr-2 h-4 w-4" />
               Retry
             </Button>
@@ -213,14 +213,13 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center h-64">
-            <Info className="h-12 w-12 text-gray-400 mb-4" />
+            <info className="h-12 w-12 text-gray-400 mb-4" />
             <p>No assets available for correlation analysis</p>
             {viewMode === 'favorites' && favorites.length === 0 && (
               <p className="text-sm text-gray-500 mt-2">Add some favorite pairs to view them here</p>
             )}
             {viewMode === 'favorites' && (
-              <Button 
-                variant="outline" 
+              <Button variant="outline" 
                 onClick={() => setViewMode('all')} 
                 className="mt-4"
               >
@@ -245,39 +244,39 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
         
         {showSettings && (
           <div className="flex items-center space-x-2">
-            <Select
+            <select
               value={timePeriod}
               onValueChange={(value) => setTimePeriod(value as CorrelationTimePeriod)}
             >
-              <SelectTrigger className="w-[100px] h-8">
-                <SelectValue placeholder="Time Period" />
+              <selectTrigger className="w-[100px] h-8">
+                <selectValue placeholder="Time Period" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="1d">1 Day</SelectItem>
-                <SelectItem value="7d">1 Week</SelectItem>
-                <SelectItem value="30d">1 Month</SelectItem>
-                <SelectItem value="90d">3 Months</SelectItem>
-                <SelectItem value="1y">1 Year</SelectItem>
+              <selectContent>
+                <selectItem value="1d">1 Day</SelectItem>
+                <selectItem value="7d">1 Week</SelectItem>
+                <selectItem value="30d">1 Month</SelectItem>
+                <selectItem value="90d">3 Months</SelectItem>
+                <selectItem value="1y">1 Year</SelectItem>
               </SelectContent>
-            </Select>
+            </select>
             
-            <Select
+            <select
               value={colorTheme}
               onValueChange={(value) => setColorTheme(value as ColorPaletteTheme)}
             >
-              <SelectTrigger className="w-[120px] h-8">
-                <SelectValue placeholder="Color Theme" />
+              <selectTrigger className="w-[120px] h-8">
+                <selectValue placeholder="Color Theme" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="blueRed">Blue-Red</SelectItem>
-                <SelectItem value="greenRed">Green-Red</SelectItem>
-                <SelectItem value="purpleGreen">Purple-Green</SelectItem>
-                <SelectItem value="orangeBlue">Orange-Blue</SelectItem>
-                <SelectItem value="monochrome">Monochrome</SelectItem>
-                <SelectItem value="highContrast">High Contrast</SelectItem>
-                <SelectItem value="pastel">Pastel</SelectItem>
+              <selectContent>
+                <selectItem value="blueRed">Blue-Red</SelectItem>
+                <selectItem value="greenRed">Green-Red</SelectItem>
+                <selectItem value="purpleGreen">Purple-Green</SelectItem>
+                <selectItem value="orangeBlue">Orange-Blue</SelectItem>
+                <selectItem value="monochrome">Monochrome</SelectItem>
+                <selectItem value="highContrast">High Contrast</SelectItem>
+                <selectItem value="pastel">Pastel</SelectItem>
               </SelectContent>
-            </Select>
+            </select>
           </div>
         )}
       </CardHeader>
@@ -309,8 +308,7 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
               >
                 Show Values
               </Toggle>
-              <Button 
-                variant="ghost" 
+              <Button variant="ghost" 
                 size="icon" 
                 onClick={() => setLoading(true)}
                 className="h-7 w-7"
@@ -367,14 +365,12 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                   {correlationMatrix.assets[selectedCell.row]} / {correlationMatrix.assets[selectedCell.col]}
                 </h4>
                 
-                <Badge 
-                  variant={getCorrelationBadgeVariant(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
-                >
+                <Badge variant={getCorrelationBadgeVariant(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
+               >
                   {formatCorrelation(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
                 </Badge>
                 
-                <Button
-                  variant="ghost"
+                <Button variant="ghost"
                   size="icon"
                   onClick={() => {
                     const baseAsset = correlationMatrix.assets[selectedCell.row];
@@ -425,7 +421,7 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
               style={{
                 transform: 'rotate(-45deg)',
               }}
-           >
+           />
               {asset}
             </div>
           ))}

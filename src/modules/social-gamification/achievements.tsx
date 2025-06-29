@@ -16,13 +16,13 @@ interface AchievementsProps {
   className?: string;
 }
 
-export const AchievementsComponent: React.FC<AchievementsProps> = ({
+export const AchievementsComponent: React.FC<achievementsProps> = ({
   userId,
   onAchievementUnlocked,
   className = '',
 }) => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [achievements, setAchievements] = useState<Achievement[]>([]);
+  const [achievements, setAchievements] = useState<achievement[]>([]);
   const [userAchievements, setUserAchievements] = useState<UserAchievement[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
@@ -164,7 +164,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
         <div className="w-full bg-white/10 rounded-full h-2 mb-2">
           <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
             style={{ width: `${completionStats.percentage}%` }}
-         ></div>
+        ></div>
         </div>
         <div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
@@ -198,8 +198,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
       {/* Category filters */}
       <div className="flex flex-wrap gap-2 mb-6">
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
-          <button
-            key={category}
+          <Button key={category}
             onClick={() => setSelectedCategory(category)}
             className={`
               px-3 py-1 rounded-full text-xs font-medium transition-all duration-200
@@ -210,7 +209,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
             `}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
-          </button>
+          </Button>
         ))}
       </div>
 
@@ -220,7 +219,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
           <h3 className="text-lg font-semibold text-white mb-3">Recent Badges</h3>
           <div className="flex flex-wrap gap-2">
             {userProfile.badges.slice(0, 6).map((badge, index) => (
-              <Div key={badge.id}
+              <div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
                 title={badge.description}
               />
@@ -239,8 +238,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
           const progress = getProgressPercentage(achievement.id);
           
           return (
-            <div
-              key={achievement.id}
+            <Div key={achievement.id}
               className={`
                 p-4 rounded-lg border transition-all duration-200 hover:scale-105
                 ${isUnlocked 
@@ -248,7 +246,7 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
                 }
               `}
-            >
+            />
               <div className="flex items-start space-x-3">
                 <div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
@@ -353,7 +351,7 @@ const fetchUserProfile = async (userId: string): Promise<UserProfile> => {
   };
 };
 
-const fetchAllAchievements = async (): Promise<Achievement[]> => {
+const fetchAllAchievements = async (): Promise<achievement[]> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 300));
   
@@ -422,4 +420,11 @@ const fetchUserAchievements = async (userId: string): Promise<UserAchievement[]>
   ];
 };
 
-export default AchievementsComponent; 
+export default AchievementsComponent;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

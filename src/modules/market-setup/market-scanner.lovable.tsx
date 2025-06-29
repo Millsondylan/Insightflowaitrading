@@ -22,7 +22,7 @@ interface ScanResult {
   lastUpdated: string;
 }
 
-export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) => {
+export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) => {
   const [results, setResults] = useState<ScanResult[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -230,15 +230,14 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
         
         <div className="flex space-x-2">
           {timeframes.map(tf => (
-            <button
-              key={tf}
+            <Button key={tf}
               className={`px-3 py-1 rounded ${
                 activeTimeframe === tf ? 'bg-brand-primary text-white' : 'bg-background-secondary'
               }`}
               onClick={() => setActiveTimeframe(tf)}
             >
               {tf}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -255,35 +254,32 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
         </div>
         
         <div className="flex space-x-2">
-          <button
-            className={`px-4 py-2 rounded ${
+          <Button  className={`px-4 py-2 rounded ${
               filterType === 'all' ? 'bg-brand-primary text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('all')}
           >
             All
-          </button>
-          <button
-            className={`px-4 py-2 rounded ${
+          </Button>
+          <Button  className={`px-4 py-2 rounded ${
               filterType === 'bullish' ? 'bg-green-600 text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('bullish')}
           >
             Bullish
-          </button>
-          <button
-            className={`px-4 py-2 rounded ${
+          </Button>
+          <Button  className={`px-4 py-2 rounded ${
               filterType === 'bearish' ? 'bg-red-600 text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('bearish')}
           >
             Bearish
-          </button>
+          </Button>
           <Button className="px-4 py-2 rounded bg-background-secondary"
             onClick={fetchScanResults}
-         >
+        >
             Refresh
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -326,7 +322,7 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
                   <td className="p-3">
-                    <Span className={result.change24h />= 0 ? 'text-status-success' : 'text-status-error'}>
+                    <span className={result.change24h />= 0 ? 'text-status-success' : 'text-status-error'}>
                       {result.change24h >= 0 ? '+' : ''}{result.change24h.toFixed(2)}%
                     </span>
                   </td>
@@ -336,8 +332,7 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                   <td className="p-3 hidden lg:table-cell">
                     <div className="flex flex-col gap-1">
                       {result.signals.slice(0, 2).map((signal, idx) => (
-                        <div 
-                          key={idx} 
+                        <Div key={idx} 
                           className={`text-xs px-2 py-1 rounded inline-flex items-center
                             ${signal.type === 'bullish' 
                               ? 'bg-green-500/20 text-green-500' 
@@ -345,7 +340,7 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                                 ? 'bg-red-500/20 text-red-500' 
                                 : 'bg-gray-500/20 text-gray-500'
                             }`}
-                        >
+                        />
                           {signal.indicator}
                         </div>
                       ))}
@@ -357,15 +352,14 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                     </div>
                   </td>
                   <td className="p-3">
-                    <button
-                      className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-opacity-90 transition-colors"
+                    <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-opacity-90 transition-colors"
                       onClick={(e) => {
                         e.stopPropagation();
                         onSelectMarket(result.symbol);
                       }}
                     >
                       View
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               ))}

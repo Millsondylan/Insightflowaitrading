@@ -66,7 +66,7 @@ export default function MarketDigest({ digest }: Props) {
       {digest.map((item) => (
         <Div key={item.symbol}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-       >
+      >
           {/* Card Header */}
           <div className="flex justify-between items-start">
             <div>
@@ -75,12 +75,12 @@ export default function MarketDigest({ digest }: Props) {
                 ${formatPrice(item.price)}
               </p>
             </div>
-            <Div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(
+            <div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(
                 item.change
               )}`}
             />
               {item.change > 0 ? (
-                <arrowup  >
+                <Arrowup  />
               ) : (
                 <arrowdown  >
               )}

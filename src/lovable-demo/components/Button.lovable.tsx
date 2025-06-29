@@ -115,9 +115,9 @@ export const Button = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       disabled={disabled}
-   >
+  >
       {children}
-    </button>
+    </Button>
   );
 }; 
 

@@ -12,7 +12,7 @@ interface UseMarketCorrelationsOptions {
 }
 
 export function useMarketCorrelations({ timeframe = '30d', autoSubscribe = true }: UseMarketCorrelationsOptions = {}) {
-  const [data, setData] = useState<MarketCorrelationRow[]>([]);
+  const [data, setData] = useState<marketCorrelationRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [channel, setChannel] = useState<RealtimeChannel | null>(null);

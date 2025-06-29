@@ -22,7 +22,7 @@ type FormFieldContextValue<
   name: TName
 }
 
-const FormFieldContext = React.createContext<FormFieldContextValue>(
+const FormFieldContext = React.createContext<formFieldContextValue>(
   {} as FormFieldContextValue
 )
 
@@ -33,7 +33,7 @@ const FormField = <
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
+    <formFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
     </FormFieldContext.Provider>
   )
@@ -47,7 +47,7 @@ const useFormField = () => {
   const fieldState = getFieldState(fieldContext.name, formState)
 
   if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>")
+    throw new Error("useFormField should be used within <formField>")
   }
 
   const { id } = itemContext
@@ -66,7 +66,7 @@ type FormItemContextValue = {
   id: string
 }
 
-const FormItemContext = React.createContext<FormItemContextValue>(
+const FormItemContext = React.createContext<formItemContextValue>(
   {} as FormItemContextValue
 )
 
@@ -77,7 +77,7 @@ const FormItem = React.forwardRef<
   const id = React.useId()
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <formItemContext.Provider value={{ id }}>
       <div ref={ref} className={cn("space-y-2", className)} {...props} />
     </FormItemContext.Provider>
   )
@@ -91,7 +91,7 @@ const FormLabel = React.forwardRef<
   const { error, formItemId } = useFormField()
 
   return (
-    <Label
+    <label
       ref={ref}
       className={cn(error && "text-destructive", className)}
       htmlFor={formItemId}
@@ -174,3 +174,10 @@ export {
   FormMessage,
   FormField,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

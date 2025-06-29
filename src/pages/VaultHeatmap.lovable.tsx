@@ -55,12 +55,12 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
               </CardTitle>
               <Carddescription  />
                 {strategy.description}
-              </CardDescription>
+              </Carddescription>
             </div>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
-            <badge variant="secondary" >{strategy.category}</Badge>
-            <badge  >
+            <Badge variant="secondary">{strategy.category}</Badge>
+            <Badge  />
               {strategy.riskLevel}
             </Badge>
             {strategy.author.verified && (
@@ -70,7 +70,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
               </Badge>
             )}
           </div>
-        </CardHeader>
+        </Cardheader>
         <cardcontent  >
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
@@ -258,7 +258,7 @@ export default function VaultPage() {
           <div className="flex-1">
             <div className="relative">
               <search  >
-              <input placeholder="Search strategies, tags, or descriptions..." > setSearchTerm(e.target.value)}
+              <input placeholder="Search strategies, tags, or descriptions..."  /> setSearchTerm(e.target.value)}
                 className="pl-10 bg-white/5 border-white/10 text-white"
               />
             </div>
@@ -274,7 +274,7 @@ export default function VaultPage() {
                   <selectitem  >{cat}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
             
             <select  >
               <selecttrigger  style={{ color: "white" }}>
@@ -286,7 +286,7 @@ export default function VaultPage() {
                   <selectitem  >{risk}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
             
             <select  >
               <selecttrigger  style={{ color: "white" }}>
@@ -298,7 +298,7 @@ export default function VaultPage() {
                   <selectitem  >{market}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
             
             <select  > setSortBy(v as any)}>
               <selecttrigger  style={{ color: "white" }}>
@@ -312,9 +312,9 @@ export default function VaultPage() {
                 <selectitem value="users" >Users</SelectItem>
                 <selectitem value="stars" >Stars</SelectItem>
               </SelectContent>
-            </Select>
+            </select>
             
-            <button variant="outline" size="icon" > setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+            <Button variant="outline" size="icon" > setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
               className="border-white/10"
             >
               {sortOrder === 'asc' ? <sortasc  > : <sortdesc  >}
@@ -348,7 +348,7 @@ export default function VaultPage() {
       {filteredStrategies.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-400">No strategies found matching your criteria.</p>
-          <button variant="ghost" > {
+          <Button variant="ghost" > {
               setSearchTerm('');
               setSelectedCategory('all');
               setSelectedRisk('all');

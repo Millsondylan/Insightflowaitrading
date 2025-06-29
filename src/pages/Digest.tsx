@@ -71,6 +71,13 @@ export default function DigestPage() {
       ...item,
       summary: generateDigestSummary(item)
     }));
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   }, []);
 
   return (
@@ -90,14 +97,14 @@ export default function DigestPage() {
           <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <Zap className="h-4 w-4" />
             <span>Live Scan</span>
-          </button>
+          </Button>
           <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <FileText className="h-4 w-4" />
             <span>View Reports</span>
-          </button>
+          </Button>
         </div>
 
-        <MarketDigest digest={digestItems} />
+        <marketDigest digest={digestItems} />
         
         <div className="mt-8 text-center">
           <p className="text-white/50 text-sm">

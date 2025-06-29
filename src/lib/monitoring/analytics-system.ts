@@ -448,7 +448,7 @@ export class AnalyticsSystem {
   private async calculateTradingMetrics(
     trades: Trade[],
     strategies: Strategy[]
-  ): Promise<TradingMetrics> {
+  ): Promise<tradingMetrics> {
     const profitableTrades = trades.filter(t => t.profit > 0);
     const totalProfit = trades.reduce((sum, t) => sum + t.profit, 0);
     const totalLoss = trades.reduce((sum, t) => t.profit < 0 ? sum + Math.abs(t.profit) : sum, 0);
@@ -1293,7 +1293,7 @@ export class AnalyticsSystem {
   }
 
   // Database interaction methods
-  private async getUserTrades(userId: string): Promise<Trade[]> {
+  private async getUserTrades(userId: string): Promise<trade[]> {
     const { data, error } = await this.supabase
       .from('trades')
       .select('*')

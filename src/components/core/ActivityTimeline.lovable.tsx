@@ -17,15 +17,15 @@ interface ActivityTimelineProps {
   events: ActivityEvent[];
 }
 
-const iconMap: Record<Activitytype > = {
+const iconMap: Record<Activitytype> = {
   journal: BookOpen,
   strategy: Bot,
   user: UserPlus,
   reflection: Brain,
 };
 
-const ActivityTimeline: React.FC<Activitytimelineprops  /> = ({ events }) => {
-  const [filter, setFilter] = useState<activitytype  >('all');
+const ActivityTimeline: React.FC<activitytimelineprops  /> = ({ events }) => {
+  const [filter, setFilter] = useState<Activitytype >('all');
 
   const filteredEvents = useMemo(() => {
     if (filter === 'all') {
@@ -36,7 +36,7 @@ const ActivityTimeline: React.FC<Activitytimelineprops  /> = ({ events }) => {
 
   const renderIcon = (type: ActivityType) => {
     const Icon = iconMap[type] || BookOpen;
-    return <icon  >;
+    return <Icon />;
   };
 
   return (
@@ -53,7 +53,7 @@ const ActivityTimeline: React.FC<Activitytimelineprops  /> = ({ events }) => {
             <selectitem value="journal" >Journals</SelectItem>
             <selectitem value="strategy" >Strategies</SelectItem>
           </SelectContent>
-        </Select>
+        </select>
       </div>
       
       <div className="activity-timeline">

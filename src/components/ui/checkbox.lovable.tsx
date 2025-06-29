@@ -10,7 +10,7 @@ const Checkbox = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <Checkboxprimitive >
     <Checkboxprimitive  />
-      <check  >
+      <Check >
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))

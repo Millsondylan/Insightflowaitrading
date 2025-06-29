@@ -36,6 +36,13 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
     }
   ]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'pattern': return 'bg-blue-500/20 text-blue-500';
@@ -48,7 +55,7 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
   return (
     <Card className="theme-card p-6">
       <div className="flex items-center gap-2 mb-4">
-        <Brain className="h-6 w-6" />
+        <brain className="h-6 w-6" />
         <h2 className="text-2xl font-bold">Memory Store</h2>
       </div>
 
@@ -56,7 +63,7 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
         {memories.map((memory) => (
           <div key={memory.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start justify-between mb-2">
-              <Badge variant="default" className={getTypeColor(memory.type)}>
+              <badge variant="default" className={getTypeColor(memory.type)}>
                 {memory.type}
               </Badge>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">

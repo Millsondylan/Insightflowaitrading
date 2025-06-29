@@ -34,6 +34,13 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
       .join(" ")
       .toLowerCase();
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
     if (text.includes("breakout") && Math.abs(ticker.change) > 1)
       return "📈 Breakout";
     if (text.includes("volume") && ticker.volume > 1_000_000)
@@ -78,18 +85,17 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
           {matchedTickersWithReason.map((ticker) => (
             <Div key={ticker.symbol}
               className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
-           >
+          >
               <div>
                 <span className="font-semibold text-white">{ticker.symbol}</span>
                 <span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
                 </span>
               </div>
-              <Button
-                size="sm"
+              <Button size="sm"
                 variant="ghost"
                 className="h-auto px-3 py-1 text-xs bg-cyan-600/30 hover:bg-cyan-600 text-white rounded-full"
-              >
+              />
                 <Eye className="h-3 w-3 mr-1.5" />
                 View
               </Button>

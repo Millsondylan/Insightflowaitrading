@@ -139,7 +139,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                   <CardContent className="p-4">
                     <div className="flex justify-between items-center">
                       <h3 className="text-lg font-bold">{strategy.name}</h3>
-                      <Badge variant="secondary">{strategy.risk}</Badge>
+                      <badge variant="secondary">{strategy.risk}</Badge>
                     </div>
                     <div className="mt-2 text-green-400 font-semibold">
                       Performance: {strategy.performance}
@@ -192,7 +192,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                 <td className="px-4 py-3">{strategy.author}</td>
                 <td className="px-4 py-3">
                   {strategy.performance ? (
-                    <Span className={
+                    <span className={
                       strategy.performance.winRate> 0.5 ? 'text-status-success' : 
                       strategy.performance.winRate > 0.4 ? 'text-status-warning' : 'text-status-error'
                     }>
@@ -202,7 +202,7 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                 </td>
                 <td className="px-4 py-3">
                   {strategy.performance ? (
-                    <Span className={
+                    <span className={
                       strategy.performance.profitFactor /> 2 ? 'text-status-success' : 
                       strategy.performance.profitFactor > 1.5 ? 'text-status-warning' : 'text-text-primary'
                     }>
@@ -235,24 +235,21 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
       {/* Toolbar */}
       <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
         <div className="flex items-center space-x-2">
-          <button
-            className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          <Button  className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('grid')}
           >
             Grid
-          </button>
-          <button
-            className={`px-3 py-1 rounded ${options.view === 'list' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          </Button>
+          <Button  className={`px-3 py-1 rounded ${options.view === 'list' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('list')}
           >
             List
-          </button>
-          <button
-            className={`px-3 py-1 rounded ${options.view === 'compact' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          </Button>
+          <Button  className={`px-3 py-1 rounded ${options.view === 'compact' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('compact')}
           >
             Compact
-          </button>
+          </Button>
         </div>
         
         <div className="flex items-center space-x-2">
@@ -267,15 +264,14 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
             <option value="performance.profitFactor">Profit Factor</option>
           </select>
           
-          <button
-            className="p-2 bg-background-secondary border border-border-primary rounded"
+          <Button  className="p-2 bg-background-secondary border border-border-primary rounded"
             onClick={() => setOptions(prev => ({
               ...prev,
               sortDirection: prev.sortDirection === 'asc' ? 'desc' : 'asc'
             }))}
           >
             {options.sortDirection === 'asc' ? '↑' : '↓'}
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -324,12 +320,11 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
             </select>
           </div>
           
-          <button
-            className="self-end px-4 py-2 bg-background-tertiary rounded"
+          <Button  className="self-end px-4 py-2 bg-background-tertiary rounded"
             onClick={() => setOptions(prev => ({ ...prev, filter: {} }))}
           >
             Clear Filters
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -347,12 +342,11 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
         <div className="p-12 text-center">
           <div className="text-xl font-semibold mb-2">No strategies found</div>
           <div className="text-text-muted mb-6">Create your first strategy to get started</div>
-          <button
-            className="px-4 py-2 bg-brand-primary text-white rounded-md"
+          <Button className="px-4 py-2 bg-brand-primary text-white rounded-md"
             onClick={onCreateStrategy}
-          >
+         >
             Create Strategy
-          </button>
+          </Button>
         </div>
       ) : (
         <>
@@ -367,37 +361,34 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           {/* Pagination */}
           <div className="flex justify-center mt-6">
             <div className="flex space-x-1">
-              <button
-                className="px-3 py-1 rounded bg-background-secondary disabled:opacity-50"
+              <Button  className="px-3 py-1 rounded bg-background-secondary disabled:opacity-50"
                 disabled={options.page === 1}
                 onClick={() => handlePageChange(options.page - 1)}
               >
                 Prev
-              </button>
+              </Button>
               
               {[...Array(3)].map((_, i) => {
                 const pageNum = options.page - 1 + i;
                 if (pageNum < 1) return null;
                 
                 return (
-                  <button
-                    key={pageNum}
+                  <Button key={pageNum}
                     className={`px-3 py-1 rounded ${
                       pageNum === options.page ? 'bg-brand-primary text-white' : 'bg-background-secondary'
                     }`}
                     onClick={() => handlePageChange(pageNum)}
                   >
                     {pageNum}
-                  </button>
+                  </Button>
                 );
               })}
               
-              <button
-                className="px-3 py-1 rounded bg-background-secondary"
+              <Button  className="px-3 py-1 rounded bg-background-secondary"
                 onClick={() => handlePageChange(options.page + 1)}
               >
                 Next
-              </button>
+              </Button>
             </div>
           </div>
         </>

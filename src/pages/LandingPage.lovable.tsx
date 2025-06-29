@@ -84,7 +84,7 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen text-gray-100 transition-colors duration-500">
-      <Themescrollobserver >
+      <Themescrollobserver>
       
       {/* Navigation Header - Stays consistent */}
       <nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
@@ -98,7 +98,7 @@ const LandingPage = () => {
           <Button variant="ghost" /> navigate('/auth')} className="text-white hover:bg-white/10">
             Sign In
           </Button>
-          <button  > navigate('/auth')} className="quantum-button text-white">
+          <Button > navigate('/auth')} className="quantum-button text-white">
             Start Free Trial
           </Button>
         </div>
@@ -124,7 +124,7 @@ const LandingPage = () => {
             </p>
 
             <div className="flex justify-center space-x-4 pt-8">
-              <button size="lg" > navigate('/auth')} className="quantum-button text-lg px-8 py-4">
+              <Button size="lg" /> navigate('/auth')} className="quantum-button text-lg px-8 py-4">
                 Get Started <arrowright  >
               </Button>
             </div>

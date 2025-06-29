@@ -16,13 +16,13 @@ interface AIReflectionProps {
   autoGenerate?: boolean;
 }
 
-const AIReflection: React.FC<Aireflectionprops > = ({ 
+const AIReflection: React.FC<Aireflectionprops> = ({ 
   entry, 
   className, 
   autoGenerate = false 
 }) => {
   const { toast } = useToast();
-  const [reflection, setReflection] = useState<Aireflectiontype  />(null);
+  const [reflection, setReflection] = useState<aireflectiontype  />(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasGenerated, setHasGenerated] = useState(false);
@@ -77,8 +77,8 @@ const AIReflection: React.FC<Aireflectionprops > = ({
   // Loading state
   if (loading) {
     return (
-      <card  >
-        <cardheader  >
+      <Card >
+        <Cardheader  />
           <div className="flex items-center space-x-2">
             <brain  >
             <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
@@ -125,7 +125,7 @@ const AIReflection: React.FC<Aireflectionprops > = ({
           <div className="text-red-400 text-sm">
             {error}
           </div>
-          <button variant="outline" size="sm" >
+          <Button variant="outline" size="sm" >
             Try Again
           </Button>
         </CardContent>
@@ -150,7 +150,7 @@ const AIReflection: React.FC<Aireflectionprops > = ({
           <p className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
           </p>
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}>
             <brain  >
             Analyze Trade
           </Button>
@@ -213,7 +213,7 @@ const AIReflection: React.FC<Aireflectionprops > = ({
 
         {/* Regenerate Button */}
         <div className="pt-2 border-t border-gray-700/50">
-          <button variant="ghost" size="sm" >
+          <Button variant="ghost" size="sm" >
             <brain  >
             Regenerate Analysis
           </Button>

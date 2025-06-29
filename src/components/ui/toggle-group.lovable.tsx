@@ -34,7 +34,7 @@ const ToggleGroupItem = React.forwardRef<
   const context = React.useContext(ToggleGroupContext)
 
   return (
-    <togglegroupprimitive  >
+    <Togglegroupprimitive  >
       {children}
     </ToggleGroupPrimitive.Item>
   )

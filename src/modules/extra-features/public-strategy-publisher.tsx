@@ -14,7 +14,7 @@ interface PublicStrategyPublisherProps {
   onPublish?: (data: any) => void;
 }
 
-export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = ({ 
+export const PublicStrategyPublisher: React.FC<publicStrategyPublisherProps> = ({ 
   strategyId, 
   isPro, 
   onPublish 
@@ -28,6 +28,13 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
     allowDownload: false,
     price: 0
   });
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 
   const [isPublishing, setIsPublishing] = React.useState(false);
   const [publishedUrl, setPublishedUrl] = React.useState('');
@@ -54,16 +61,15 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
       <div className="space-y-6">
         <div>
           <label className="text-sm font-medium mb-2 block">Strategy Title</label>
-          <Input
-            placeholder="e.g., RSI Momentum Strategy"
+          <input placeholder="e.g., RSI Momentum Strategy"
             value={publishSettings.title}
-            onChange={(e) => setPublishSettings({ ...publishSettings, title: e.target.value })}
+            onChange={(e) = /> setPublishSettings({ ...publishSettings, title: e.target.value })}
           />
         </div>
 
         <div>
           <label className="text-sm font-medium mb-2 block">Description</label>
-          <Textarea
+          <textarea
             placeholder="Describe your strategy, its performance, and best use cases..."
             value={publishSettings.description}
             onChange={(e) => setPublishSettings({ ...publishSettings, description: e.target.value })}
@@ -73,10 +79,9 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
 
         <div>
           <label className="text-sm font-medium mb-2 block">Tags</label>
-          <Input
-            placeholder="momentum, RSI, scalping (comma separated)"
+          <input placeholder="momentum, RSI, scalping (comma separated)"
             value={publishSettings.tags}
-            onChange={(e) => setPublishSettings({ ...publishSettings, tags: e.target.value })}
+            onChange={(e) = /> setPublishSettings({ ...publishSettings, tags: e.target.value })}
           />
         </div>
 
@@ -84,24 +89,21 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
           <h3 className="font-semibold">Visibility Settings</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Button
-              variant={publishSettings.visibility === 'private' ? 'default' : 'outline'}
+            <Button variant={publishSettings.visibility === 'private' ? 'default' : 'outline'}
               className="flex items-center gap-2"
               onClick={() => setPublishSettings({ ...publishSettings, visibility: 'private' })}
             >
               <Lock className="h-4 w-4" />
               Private
             </Button>
-            <Button
-              variant={publishSettings.visibility === 'unlisted' ? 'default' : 'outline'}
+            <Button variant={publishSettings.visibility === 'unlisted' ? 'default' : 'outline'}
               className="flex items-center gap-2"
               onClick={() => setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
             >
               <Eye className="h-4 w-4" />
               Unlisted
             </Button>
-            <Button
-              variant={publishSettings.visibility === 'public' ? 'default' : 'outline'}
+            <Button variant={publishSettings.visibility === 'public' ? 'default' : 'outline'}
               className="flex items-center gap-2"
               onClick={() => setPublishSettings({ ...publishSettings, visibility: 'public' })}
               disabled={!isPro}
@@ -156,20 +158,18 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
             <label className="text-sm font-medium mb-2 block">
               Price (optional, 0 for free)
             </label>
-            <Input
-              type="number"
+            <input type="number"
               placeholder="0"
               value={publishSettings.price}
-              onChange={(e) => setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
+              onChange={(e) = /> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
             />
           </div>
         )}
 
-        <Button
-          onClick={handlePublish}
+        <Button onClick={handlePublish}
           disabled={isPublishing || !publishSettings.title}
           className="w-full"
-        >
+       >
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
         </Button>
 
@@ -179,7 +179,7 @@ export const PublicStrategyPublisher: React.FC<PublicStrategyPublisherProps> = (
               Strategy published successfully!
             </p>
             <div className="flex items-center gap-2">
-              <Input
+              <input
                 value={publishedUrl}
                 readOnly
                 className="text-xs"

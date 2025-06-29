@@ -138,7 +138,7 @@ const Carousel = React.forwardRef<
           role="region"
           aria-roledescription="carousel"
           {...props}
-       >
+      >
           {children}
         </div>
       </CarouselContext.Provider>
@@ -198,8 +198,7 @@ const CarouselPrevious = React.forwardRef<
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button
-      ref={ref}
+    <Button ref={ref}
       variant={variant}
       size={size}
       className={cn(
@@ -212,7 +211,7 @@ const CarouselPrevious = React.forwardRef<
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}
-    >
+    />
       <ArrowLeft className="h-4 w-4" />
       <span className="sr-only">Previous slide</span>
     </Button>
@@ -227,8 +226,7 @@ const CarouselNext = React.forwardRef<
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button
-      ref={ref}
+    <Button ref={ref}
       variant={variant}
       size={size}
       className={cn(
@@ -242,7 +240,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="h-4 w-4" />
+      <arrowRight className="h-4 w-4" />
       <span className="sr-only">Next slide</span>
     </Button>
   )
@@ -257,3 +255,10 @@ export {
   CarouselPrevious,
   CarouselNext,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -12,7 +12,7 @@ export default function AICoachV2({ trades }: Props) {
       {reviews.map((r, i) => (
         <Div key={i}
           className="bg-black/30 rounded-xl p-6 border border-white/10 backdrop-blur-md text-white space-y-2 shadow"
-       >
+      >
           <p className="italic text-white/80">🧠 {r.summary}</p>
           <span className="inline-block px-2 py-1 rounded-full text-xs bg-cyan-600 text-white">
             🎭 {r.emotion}

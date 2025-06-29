@@ -38,11 +38,10 @@ const StrategyHeatmap = ({ data }: Props) => {
 
           return (
             <Tooltip  />
-              <tooltiptrigger  >
-                <div 
-                  className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
+              <Tooltiptrigger  >
+                <Div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
                   style={tileStyle}
-                >
+               >
                   <div>
                     <span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
                       {item.dominantEmotion}
@@ -61,15 +60,15 @@ const StrategyHeatmap = ({ data }: Props) => {
                     <span>{(item.avgWinRate * 100).toFixed(0)}% Win Rate</span>
                   </div>
                 </div>
-              </TooltipTrigger>
-              <tooltipcontent  >
+              </Tooltiptrigger>
+              <Tooltipcontent  >
                 <p>{item.tag} - {item.dominantEmotion}</p>
-              </TooltipContent>
+              </Tooltipcontent>
             </Tooltip>
           );
         })}
       </div>
-    </TooltipProvider>
+    </Tooltipprovider>
   );
 };
 

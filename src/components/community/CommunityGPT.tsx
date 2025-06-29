@@ -88,4 +88,11 @@ const CommunityGPT = ({ post }: Props) => {
   );
 };
 
-export default CommunityGPT; 
+export default CommunityGPT;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

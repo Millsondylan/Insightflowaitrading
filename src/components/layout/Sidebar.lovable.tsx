@@ -44,23 +44,23 @@ export default function Sidebar() {
     return (
       <Tooltipprovider >
         <Tooltip  />
-          <tooltiptrigger  >
-            <link  >
-              <icon  >
+          <Tooltiptrigger  >
+            <Link >
+              <Icon />
             </Link>
-          </TooltipTrigger>
-          <tooltipcontent side="right" >
+          </Tooltiptrigger>
+          <Tooltipcontent side="right" >
             <p>{item.label}</p>
-          </TooltipContent>
+          </Tooltipcontent>
         </Tooltip>
-      </TooltipProvider>
+      </Tooltipprovider>
     );
   };
 
   return (
     <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
       <div className="flex flex-col items-center gap-10">
-        <link to="/" style={{ borderRadius: "0.5rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Link to="/" style={{ borderRadius: "0.5rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <trendingup  style={{ color: "white" }}>
         </Link>
         <nav>
@@ -85,25 +85,25 @@ export default function Sidebar() {
           </ul>
         </nav>
         <div className="border-t border-gray-800 w-full my-2"></div>
-        <tooltipprovider  >
-          <tooltip  >
-            <tooltiptrigger  >
-              <link to="/profile" >
+        <Tooltipprovider  >
+          <Tooltip  >
+            <Tooltiptrigger  >
+              <Link to="/profile" >
                 <avatar  >
                   <avatarimage  >
                   <avatarfallback  >{profile?.full_name?.[0] || 'U'}</AvatarFallback>
                 </Avatar>
               </Link>
-            </TooltipTrigger>
-            <tooltipcontent side="right" >
+            </Tooltiptrigger>
+            <Tooltipcontent side="right" >
               <p>{profile?.full_name || 'Profile'}</p>
-              <button variant="ghost" size="sm" style={{ width: "100%" }}>
+              <Button variant="ghost" size="sm" style={{ width: "100%" }}>
                 <logout  >
                 Logout
               </Button>
-            </TooltipContent>
+            </Tooltipcontent>
           </Tooltip>
-        </TooltipProvider>
+        </Tooltipprovider>
       </div>
     </div>
   );

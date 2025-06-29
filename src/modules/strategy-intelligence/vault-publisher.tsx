@@ -24,7 +24,14 @@ export const VaultPublisher: React.FC = () => {
       averageTradeDuration: 5,
       expectancy: 0.4,
       riskRewardRatio: 2.5
-    },
+    }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};,
     tags: ['Trend Following', 'Long-Term'],
     author: 'AI Strategist',
     createdAt: new Date('2024-01-15'),
@@ -53,20 +60,18 @@ export const VaultPublisher: React.FC = () => {
           <div>
             <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
             <div className="grid grid-cols-2 gap-4">
-              <Input 
-                value={strategy.name}
-                onChange={(e) => setStrategy(prev => ({ ...prev, name: e.target.value }))}
+              <input value={strategy.name}
+                onChange={(e) = /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <Input 
-                value={strategy.version || ''}
-                onChange={(e) => setStrategy(prev => ({ ...prev, version: e.target.value }))}
+              <input value={strategy.version || ''}
+                onChange={(e) = /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
             </div>
-            <Textarea 
+            <textarea 
               value={strategy.description || ''}
               onChange={(e) => setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
@@ -81,15 +86,13 @@ export const VaultPublisher: React.FC = () => {
               <div>
                 <label className="block text-sm mb-1">Visibility</label>
                 <div className="flex space-x-2">
-                  <Button 
-                    variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
+                  <Button variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
                   </Button>
-                  <Button 
-                    variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
+                  <Button variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
@@ -98,21 +101,19 @@ export const VaultPublisher: React.FC = () => {
                 </div>
               </div>
 
-              <Input 
-                value={publishDetails.communityTags}
-                onChange={(e) => setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
+              <input value={publishDetails.communityTags}
+                onChange={(e) = /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Input 
-                value={publishDetails.marketConditions}
-                onChange={(e) => setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
+              <input value={publishDetails.marketConditions}
+                onChange={(e) = /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Textarea 
+              <textarea 
                 value={publishDetails.disclaimer}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
@@ -122,10 +123,9 @@ export const VaultPublisher: React.FC = () => {
             </div>
           </div>
 
-          <Button 
-            onClick={handlePublish}
+          <Button onClick={handlePublish}
             className="w-full bg-blue-600 hover:bg-blue-700"
-          >
+         >
             Publish Strategy
           </Button>
         </div>

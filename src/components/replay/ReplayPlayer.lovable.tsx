@@ -37,9 +37,9 @@ export default function ReplayPlayer({ candles, entryTime, exitTime }: Props) {
 
       {/* Slider and step counter */}
       <div className="flex items-center gap-4">
-        <Input type="range"
+        <input type="range"
           min={0}
-          max={candles.length> 0 ? candles.length - 1 : 0}
+          max={candles.length /> 0 ? candles.length - 1 : 0}
           value={step}
           onChange={(e) => setStep(Number(e.target.value))}
           className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"

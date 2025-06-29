@@ -57,16 +57,16 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
         
-        <button  style={{ color: "white" }}>
-          <Plus >
+        <Button  style={{ color: "white" }}>
+          <Plus>
           Generate New Code
         </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <Table  />
-          <tableheader  >
-            <tablerow  >
+        <table  />
+          <Tableheader >
+            <Tablerow  />
               <tablehead  >Code</TableHead>
               <tablehead  >Expires</TableHead>
               <tablehead  >Uses Left</TableHead>
@@ -85,12 +85,11 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                     <tablecell  >
                       <div className="flex items-center gap-2">
                         {code.code}
-                        <button
-                          onClick={() => handleCopyCode(code.code)}
+                        <Button  onClick={() => handleCopyCode(code.code)}
                           className="text-gray-400 hover:text-cyan-400 transition-colors"
                         >
                           <copy  >
-                        </button>
+                        </Button>
                       </div>
                     </TableCell>
                     <tablecell  >
@@ -113,7 +112,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                       </span>
                     </TableCell>
                     <tablecell  >
-                      <button  > onRevoke(code.code)}
+                      <Button > onRevoke(code.code)}
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
@@ -131,7 +130,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
               </TableRow>
             )}
           </TableBody>
-        </Table>
+        </table>
       </div>
       
       <div className="text-xs text-gray-500">

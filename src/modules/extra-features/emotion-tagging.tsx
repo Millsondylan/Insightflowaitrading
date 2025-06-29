@@ -9,7 +9,7 @@ interface EmotionTaggingProps {
   onTagSelect?: (emotion: string) => void;
 }
 
-export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) => {
+export const EmotionTagging: React.FC<emotionTaggingProps> = ({ onTagSelect }) => {
   const emotions = [
     { id: 'confident', label: 'Confident', icon: TrendingUp, color: 'text-green-500' },
     { id: 'anxious', label: 'Anxious', icon: Brain, color: 'text-yellow-500' },
@@ -17,6 +17,13 @@ export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) =
     { id: 'excited', label: 'Excited', icon: Zap, color: 'text-purple-500' },
     { id: 'calm', label: 'Calm', icon: Heart, color: 'text-blue-500' }
   ];
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 
   const [selectedEmotion, setSelectedEmotion] = React.useState<string | null>(null);
   const [recentTags, setRecentTags] = React.useState([
@@ -44,8 +51,7 @@ export const EmotionTagging: React.FC<EmotionTaggingProps> = ({ onTagSelect }) =
             {emotions.map((emotion) => {
               const Icon = emotion.icon;
               return (
-                <Button
-                  key={emotion.id}
+                <Button key={emotion.id}
                   variant={selectedEmotion === emotion.id ? 'default' : 'outline'}
                   className="flex flex-col items-center gap-2 h-auto py-4"
                   onClick={() => handleEmotionSelect(emotion.id)}

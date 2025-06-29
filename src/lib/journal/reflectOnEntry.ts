@@ -33,7 +33,7 @@ export async function reflectOnEntry(
     saveToDatabase?: boolean;
     userId?: string;
   } = {}
-): Promise<AIReflection> {
+): Promise<aIReflection> {
   const { 
     forceRefresh = false, 
     additionalContext, 
@@ -214,7 +214,7 @@ export async function batchReflectOnEntries(
     saveToDatabase?: boolean;
     userId?: string;
   } = {}
-): Promise<Array<{ entryId: string; reflection: AIReflection | null; error?: string }>> {
+): Promise<array<{ entryId: string; reflection: AIReflection | null; error?: string }>> {
   const { maxConcurrent = 3, additionalContext, saveToDatabase = true, userId } = options;
   
   const results: Array<{ entryId: string; reflection: AIReflection | null; error?: string }> = [];

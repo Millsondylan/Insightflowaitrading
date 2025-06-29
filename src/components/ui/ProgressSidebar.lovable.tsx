@@ -8,7 +8,7 @@ interface ProgressSidebarProps {
   onBlockClick: (id: string) => void;
 }
 
-const ProgressSidebar: React.FC<Progresssidebarprops > = ({
+const ProgressSidebar: React.FC<Progresssidebarprops> = ({
   blocks,
   activeBlock,
   progress,
@@ -45,8 +45,7 @@ const ProgressSidebar: React.FC<Progresssidebarprops > = ({
                     {block.topic}
                   </h3>
                 )}
-                <button
-                  onClick={() => onBlockClick(block.id)}
+                <Button  onClick={() => onBlockClick(block.id)}
                   className="flex items-center w-full text-left py-1.5 group"
                 >
                   <div
@@ -55,14 +54,14 @@ const ProgressSidebar: React.FC<Progresssidebarprops > = ({
                       { "bg-blue-500 border-blue-500 scale-125": isActive }
                     )}
                   />
-                  <Span className={cn(
+                  <span className={cn(
                       "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
                       { "text-white": isActive }
                     )}
                   />
                     {block.title}
                   </span>
-                </button>
+                </Button>
               </div>
             );
           })}

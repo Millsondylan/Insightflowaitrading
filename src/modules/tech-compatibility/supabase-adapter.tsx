@@ -10,7 +10,7 @@ interface SupabaseAdapterProps {
   onSync?: () => void;
 }
 
-export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
+export const SupabaseAdapter: React.FC<supabaseAdapterProps> = ({ onSync }) => {
   const [syncStatus, setSyncStatus] = React.useState({
     connected: true,
     lastSync: new Date('2024-02-12T10:30:00'),
@@ -22,6 +22,13 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
       { name: 'users', status: 'synced', records: 42 }
     ]
   });
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 
   const [isSyncing, setIsSyncing] = React.useState(false);
 
@@ -54,7 +61,7 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
     switch (status) {
       case 'synced': return <CheckCircle className="h-4 w-4" />;
       case 'syncing': return <RefreshCw className="h-4 w-4 animate-spin" />;
-      default: return <AlertCircle className="h-4 w-4" />;
+      default: return <alertCircle className="h-4 w-4" />;
     }
   };
 
@@ -65,7 +72,7 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
           <Database className="h-6 w-6" />
           <h2 className="text-2xl font-bold">Supabase Adapter</h2>
         </div>
-        <Badge variant={syncStatus.connected ? 'default' : 'destructive'}>
+        <badge variant={syncStatus.connected ? 'default' : 'destructive'}>
           {syncStatus.connected ? 'Connected' : 'Disconnected'}
         </Badge>
       </div>
@@ -100,7 +107,7 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
                 <p className="text-sm text-muted-foreground">{table.records} records</p>
               </div>
             </div>
-            <Badge variant="outline" className={getStatusColor(table.status)}>
+            <badge variant="outline" className={getStatusColor(table.status)}>
               {table.status}
             </Badge>
           </div>
@@ -108,11 +115,10 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
       </div>
 
       <div className="flex gap-2">
-        <Button 
-          onClick={syncData} 
+        <Button onClick={syncData} 
           disabled={isSyncing || !syncStatus.connected}
           className="flex-1"
-        >
+       >
           {isSyncing ? (
             <>
               <RefreshCw className="h-4 w-4 mr-2 animate-spin" />

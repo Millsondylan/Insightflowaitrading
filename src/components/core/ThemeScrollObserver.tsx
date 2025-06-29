@@ -10,9 +10,9 @@ interface ThemeScrollObserverProps {
   sections: Section[];
 }
 
-const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) => {
+const ThemeScrollObserver: React.FC<themeScrollObserverProps> = ({ sections }) => {
   const { setTheme } = useTheme();
-  const observerRef = useRef<IntersectionObserver | null>(null);
+  const observerRef = useRef<intersectionObserver | null>(null);
 
   useEffect(() => {
     if (observerRef.current) {
@@ -54,4 +54,11 @@ const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) =
   return null; // This component does not render anything
 };
 
-export default ThemeScrollObserver; 
+export default ThemeScrollObserver;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

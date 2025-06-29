@@ -178,17 +178,17 @@ export default function WalletConnect({ onVerified }: Props) {
 
       <div className="pt-2">
         {!address ? (
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}>
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Button>
         ) : status === "verified" ? (
-          <Button > window.location.reload()}
+          <Button> window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect
           </Button>
         ) : (
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}>
             {status === "verifying" ? "Verifying..." : "🔑 Verify Ownership"}
           </Button>
         )}

@@ -57,3 +57,10 @@ const ToggleGroupItem = React.forwardRef<
 ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName
 
 export { ToggleGroup, ToggleGroupItem }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

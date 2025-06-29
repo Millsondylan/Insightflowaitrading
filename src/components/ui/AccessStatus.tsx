@@ -14,7 +14,7 @@ interface AccessStatusProps {
   onAnimationComplete?: () => void;
 }
 
-const AccessStatus: React.FC<AccessStatusProps> = ({
+const AccessStatus: React.FC<accessStatusProps> = ({
   status,
   plan,
   expiryDate,
@@ -70,7 +70,7 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
   const formattedExpiry = expiryDate ? new Date(expiryDate).toLocaleDateString() : '';
 
   return (
-    <AnimatePresence mode="wait">
+    <animatePresence mode="wait">
       <motion.div
         key={status}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -164,4 +164,11 @@ const AccessStatus: React.FC<AccessStatusProps> = ({
   );
 };
 
-export default AccessStatus; 
+export default AccessStatus;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

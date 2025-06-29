@@ -72,7 +72,7 @@ export abstract class InsightFlowPlugin {
     // TODO: persist configuration changes
   }
 
-  protected async getPluginInstance(): Promise<PluginInstance> {
+  protected async getPluginInstance(): Promise<pluginInstance> {
     // TODO: implement plugin instance retrieval
     throw new Error('Plugin instance retrieval not implemented');
   }

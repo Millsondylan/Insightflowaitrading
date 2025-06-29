@@ -51,11 +51,11 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
   };
 
   return (
-    <Blockreveal >
+    <Blockreveal>
       <div className="trade-table">
-        <Table  />
-          <tableheader  >
-            <tablerow  >
+        <table  />
+          <Tableheader >
+            <Tablerow  />
               <tablehead  >#</TableHead>
               <tablehead  >Entry Time</TableHead>
               <tablehead  >Exit Time</TableHead>
@@ -89,7 +89,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
               );
             })}
           </TableBody>
-        </Table>
+        </table>
         
         {totalPages > 1 && (
           <div className="py-4 flex justify-center">

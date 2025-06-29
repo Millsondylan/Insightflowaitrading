@@ -24,7 +24,7 @@ const GlassCard = ({ title, value, icon, unit = '' }: { title: string, value: st
     return (
         <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
             <div className="flex justify-center items-center gap-2 text-gray-400 text-sm mb-2">
-                <Icon >
+                <Icon>
                 {title}
             </div>
             <p className="text-2xl font-bold text-white">{value}{unit}</p>
@@ -40,8 +40,8 @@ export default function VaultDetailPage() {
 
   return (
     <div>
-      <link to="/vault" style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft  />
+      <Link to="/vault" style={{ display: "flex", alignItems: "center" }}>
+        <Arrowleft />
         Back to Vault
       </Link>
 
@@ -49,13 +49,13 @@ export default function VaultDetailPage() {
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-4xl font-bold text-white flex items-center gap-4">
-                    <span className="bg-white/10 p-3 rounded-lg"><gitcommit  ></span>
+                    <span className="bg-white/10 p-3 rounded-lg"><Gitcommit ></span>
                     {strategy.name}
                 </h1>
                 <p className="text-gray-400 mt-2">by {strategy.author}</p>
             </div>
-            <link  >
-                <button size="lg" style={{ color: "white" }}>
+            <Link  />
+                <Button size="lg" style={{ color: "white" }}>
                     <playcircle  >
                     Launch Replay
                 </Button>

@@ -22,3 +22,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = "Textarea"
 
 export { Textarea }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

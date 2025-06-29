@@ -62,3 +62,10 @@ function Calendar({
 Calendar.displayName = "Calendar";
 
 export { Calendar };
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

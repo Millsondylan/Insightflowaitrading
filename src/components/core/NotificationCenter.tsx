@@ -14,6 +14,13 @@ import { useAuditLog } from '@/lib/monitoring/auditLogger';
 
 export default function NotificationCenter() {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const { logClick } = useAuditLog();
   const [notifications, setNotifications] = useState<UserNotification[]>([]);
   const [unreadCount, setUnreadCount] = useState<number>(0);
@@ -111,7 +118,7 @@ export default function NotificationCenter() {
   const getNotificationIcon = (type: string, priority: string) => {
     switch (type) {
       case 'trade_alert':
-        return <AlertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />;
+        return <alertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />;
       case 'market_update':
         return <RefreshCw className="w-5 h-5 text-blue-500" />;
       case 'journal_reminder':
@@ -121,7 +128,7 @@ export default function NotificationCenter() {
       case 'message':
         return <Mail className="w-5 h-5 text-green-500" />;
       default:
-        return <Info className="w-5 h-5 text-blue-500" />;
+        return <info className="w-5 h-5 text-blue-500" />;
     }
   };
 
@@ -168,8 +175,7 @@ export default function NotificationCenter() {
                 </Button>
               )}
               {isUnread && (
-                <Button
-                  size="sm"
+                <Button size="sm"
                   variant="ghost"
                   className="h-8 text-xs ml-auto"
                   onClick={(e) => {
@@ -188,26 +194,24 @@ export default function NotificationCenter() {
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button 
-          variant="ghost" 
+    <popover open={open} onOpenChange={setOpen}>
+      <popoverTrigger asChild>
+        <Button variant="ghost" 
           size="icon"
           className="relative"
           onClick={() => logClick('OpenNotifications')}
         >
-          <Bell className="h-5 w-5" />
+          <bell className="h-5 w-5" />
           {unreadCount > 0 && (
-            <Badge 
-              className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
+            <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
               variant="destructive"
-            >
+            />
               {unreadCount > 9 ? '9+' : unreadCount}
             </Badge>
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent 
+      <popoverContent 
         className="w-80 md:w-96 p-0" 
         align="end" 
         sideOffset={5}
@@ -216,8 +220,7 @@ export default function NotificationCenter() {
           <h3 className="font-semibold text-lg text-white">Notifications</h3>
           <div className="flex items-center gap-2">
             {unreadCount > 0 && (
-              <Button 
-                variant="ghost" 
+              <Button variant="ghost" 
                 size="sm" 
                 className="text-xs"
                 onClick={handleReadAll}
@@ -242,7 +245,7 @@ export default function NotificationCenter() {
               <TabsTrigger value="unread" className="relative">
                 Unread
                 {unreadCount > 0 && (
-                  <Badge className="ml-1 bg-blue-600 text-xs" variant="secondary">
+                  <badge className="ml-1 bg-blue-600 text-xs" variant="secondary">
                     {unreadCount}
                   </Badge>
                 )}
@@ -261,7 +264,7 @@ export default function NotificationCenter() {
                 notifications.map(renderNotification)
               ) : (
                 <div className="text-center text-gray-400 py-8">
-                  <Bell className="w-10 h-10 mx-auto mb-4 opacity-30" />
+                  <bell className="w-10 h-10 mx-auto mb-4 opacity-30" />
                   <p>No notifications yet</p>
                 </div>
               )}
@@ -291,7 +294,7 @@ export default function NotificationCenter() {
                 notifications.filter(n => n.read_at).map(renderNotification)
               ) : (
                 <div className="text-center text-gray-400 py-8">
-                  <Info className="w-10 h-10 mx-auto mb-4 opacity-30" />
+                  <info className="w-10 h-10 mx-auto mb-4 opacity-30" />
                   <p>No read notifications</p>
                 </div>
               )}
@@ -300,8 +303,7 @@ export default function NotificationCenter() {
         </Tabs>
         
         <div className="p-2 border-t border-gray-800">
-          <Button 
-            variant="ghost" 
+          <Button variant="ghost" 
             size="sm" 
             className="w-full text-xs text-gray-400"
             onClick={() => {

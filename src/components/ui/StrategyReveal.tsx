@@ -25,19 +25,19 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
   return (
     <div className="strategy-reveal max-w-3xl mx-auto space-y-12">
-      <BlockReveal variant="fade">
+      <blockReveal variant="fade">
         <h2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan">
           {strategyName}
         </h2>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <p className="text-gray-300 text-lg leading-relaxed text-center max-w-[70ch] mx-auto">
           {description}
         </p>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section">
           <h3 className="section-heading">Rules</h3>
           <ol className="space-y-2 list-decimal list-inside">
@@ -48,7 +48,7 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
         </section>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section">
           <h3 className="section-heading">Entry Checklist ✅</h3>
           <ul className="space-y-2 list-disc list-inside">
@@ -59,7 +59,7 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
         </section>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section border-l-4 border-yellow-400 pl-4">
           <h3 className="section-heading text-yellow-400">⚠️ Warnings</h3>
           <ul className="space-y-2 list-disc list-inside">
@@ -70,7 +70,7 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
         </section>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section italic">
           <h3 className="section-heading">Backtest Tips 💡</h3>
           <ul className="space-y-2 list-disc list-inside">
@@ -85,3 +85,10 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 };
 
 export default StrategyReveal;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

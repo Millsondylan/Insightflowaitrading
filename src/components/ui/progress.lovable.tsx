@@ -7,7 +7,7 @@ const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>
 >(({ className, value, ...props }, ref) => (
-  <Progressprimitive >
+  <Progressprimitive>
     <progressprimitive  style={{ height: "100%", width: "100%" }}>
   </ProgressPrimitive.Root>
 ))

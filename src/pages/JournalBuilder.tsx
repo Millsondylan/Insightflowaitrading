@@ -57,7 +57,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="mt-8 text-center">
               <button className="glow-button glow-violet text-lg px-8 py-4">
                 Save Entry
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -153,3 +153,10 @@ const JournalBuilderPage: React.FC = () => {
 };
 
 export default JournalBuilderPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

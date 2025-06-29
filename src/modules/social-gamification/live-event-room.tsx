@@ -17,13 +17,13 @@ interface LiveEventRoomProps {
   className?: string;
 }
 
-export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
+export const LiveEventRoomComponent: React.FC<liveEventRoomProps> = ({
   roomId,
   userId,
   onRoomEvent,
   className = '',
 }) => {
-  const [room, setRoom] = useState<LiveEventRoom | null>(null);
+  const [room, setRoom] = useState<liveEventRoom | null>(null);
   const [messages, setMessages] = useState<RoomMessage[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -269,14 +269,13 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
                     {message.reactions.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-1">
                         {message.reactions.map((reaction, index) => (
-                          <button
-                            key={index}
+                          <Button key={index}
                             onClick={() => addReaction(message.id, reaction.emoji)}
                             className="flex items-center space-x-1 bg-white/10 hover:bg-white/20 rounded px-1 py-0.5 text-xs transition-colors"
                           >
                             <span>{reaction.emoji}</span>
                             <span className="text-white/60">{reaction.count}</span>
-                          </button>
+                          </Button>
                         ))}
                       </div>
                     )}
@@ -291,10 +290,9 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
           {room.settings.allowChat && (
             <div className="p-3 border-t border-white/10">
               <div className="flex space-x-2">
-                <input
-                  type="text"
+                <input type="text"
                   value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
+                  onChange={(e) = /> setNewMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type a message..."
                   className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-blue-400"
@@ -303,9 +301,9 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
                 <Button onClick={sendMessage}
                   disabled={!newMessage.trim() || !isConnected}
                   className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"
-               >
+              >
                   Send
-                </button>
+                </Button>
               </div>
             </div>
           )}
@@ -325,13 +323,13 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
             {/* TODO: Add room control buttons */}
             <button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
               📋 Annotations
-            </button>
+            </Button>
             <button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
               📊 Share Chart
-            </button>
+            </Button>
             <button className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded text-xs transition-colors">
               🚪 Leave
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -340,7 +338,7 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
 };
 
 // Mock functions (TODO: replace with real implementations)
-const fetchRoomData = async (roomId: string): Promise<LiveEventRoom> => {
+const fetchRoomData = async (roomId: string): Promise<liveEventRoom> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 1000));
   
@@ -444,4 +442,11 @@ const getCurrentUser = () => {
   };
 };
 
-export default LiveEventRoomComponent; 
+export default LiveEventRoomComponent;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

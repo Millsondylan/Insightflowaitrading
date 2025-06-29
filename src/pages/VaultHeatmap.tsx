@@ -59,12 +59,12 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
             </div>
           </div>
           <div className="flex items-center gap-2 flex-wrap">
-            <Badge variant="secondary">{strategy.category}</Badge>
-            <Badge className={getRiskColor(strategy.riskLevel)}>
+            <badge variant="secondary">{strategy.category}</Badge>
+            <badge className={getRiskColor(strategy.riskLevel)}>
               {strategy.riskLevel}
             </Badge>
             {strategy.author.verified && (
-              <Badge variant="outline" className="border-blue-500/50 text-blue-400">
+              <badge variant="outline" className="border-blue-500/50 text-blue-400">
                 <Shield className="w-3 h-3 mr-1" />
                 Verified
               </Badge>
@@ -124,7 +124,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
                 </div>
                 <span className="text-sm text-gray-400">{strategy.author.name}</span>
               </div>
-              <Badge variant="outline" className="text-xs">
+              <badge variant="outline" className="text-xs">
                 <DollarSign className="w-3 h-3 mr-1" />
                 {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
@@ -138,6 +138,13 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
 
 export default function VaultPage() {
   const [searchTerm, setSearchTerm] = useState('');
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedRisk, setSelectedRisk] = useState<string>('all');
   const [selectedMarket, setSelectedMarket] = useState<string>('all');
@@ -207,7 +214,7 @@ export default function VaultPage() {
                   +{stats.avgReturn.toFixed(1)}%
                 </p>
               </div>
-              <TrendingUp className="w-8 h-8 text-green-400/20" />
+              <trendingUp className="w-8 h-8 text-green-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -220,7 +227,7 @@ export default function VaultPage() {
                   {stats.avgSharpe.toFixed(2)}
                 </p>
               </div>
-              <BarChart3 className="w-8 h-8 text-blue-400/20" />
+              <barChart3 className="w-8 h-8 text-blue-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -258,67 +265,65 @@ export default function VaultPage() {
           <div className="flex-1">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <Input
-                placeholder="Search strategies, tags, or descriptions..."
+              <input placeholder="Search strategies, tags, or descriptions..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) = /> setSearchTerm(e.target.value)}
                 className="pl-10 bg-white/5 border-white/10 text-white"
               />
             </div>
           </div>
           <div className="flex gap-2">
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Category" />
+            <select value={selectedCategory} onValueChange={setSelectedCategory}>
+              <selectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+                <selectValue placeholder="Category" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
+              <selectContent>
+                <selectItem value="all">All Categories</SelectItem>
                 {strategyCategories.map(cat => (
-                  <SelectItem key={cat} value={cat}>{cat}</SelectItem>
+                  <selectItem key={cat} value={cat}>{cat}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
             
-            <Select value={selectedRisk} onValueChange={setSelectedRisk}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Risk Level" />
+            <select value={selectedRisk} onValueChange={setSelectedRisk}>
+              <selectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+                <selectValue placeholder="Risk Level" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Risk Levels</SelectItem>
+              <selectContent>
+                <selectItem value="all">All Risk Levels</SelectItem>
                 {riskLevels.map(risk => (
-                  <SelectItem key={risk} value={risk}>{risk}</SelectItem>
+                  <selectItem key={risk} value={risk}>{risk}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
             
-            <Select value={selectedMarket} onValueChange={setSelectedMarket}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Market" />
+            <select value={selectedMarket} onValueChange={setSelectedMarket}>
+              <selectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+                <selectValue placeholder="Market" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Markets</SelectItem>
+              <selectContent>
+                <selectItem value="all">All Markets</SelectItem>
                 {marketTypes.map(market => (
-                  <SelectItem key={market} value={market}>{market}</SelectItem>
+                  <selectItem key={market} value={market}>{market}</SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </select>
             
-            <Select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Sort by" />
+            <select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
+              <selectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+                <selectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="returns">Returns</SelectItem>
-                <SelectItem value="sharpe">Sharpe Ratio</SelectItem>
-                <SelectItem value="drawdown">Drawdown</SelectItem>
-                <SelectItem value="winRate">Win Rate</SelectItem>
-                <SelectItem value="users">Users</SelectItem>
-                <SelectItem value="stars">Stars</SelectItem>
+              <selectContent>
+                <selectItem value="returns">Returns</SelectItem>
+                <selectItem value="sharpe">Sharpe Ratio</SelectItem>
+                <selectItem value="drawdown">Drawdown</SelectItem>
+                <selectItem value="winRate">Win Rate</SelectItem>
+                <selectItem value="users">Users</SelectItem>
+                <selectItem value="stars">Stars</SelectItem>
               </SelectContent>
-            </Select>
+            </select>
             
-            <Button
-              variant="outline"
+            <Button variant="outline"
               size="icon"
               onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
               className="border-white/10"
@@ -354,8 +359,7 @@ export default function VaultPage() {
       {filteredStrategies.length === 0 && (
         <div className="text-center py-12">
           <p className="text-gray-400">No strategies found matching your criteria.</p>
-          <Button 
-            variant="ghost" 
+          <Button variant="ghost" 
             onClick={() => {
               setSearchTerm('');
               setSelectedCategory('all');

@@ -53,7 +53,7 @@ export interface AcademyProgress {
 }
 
 // Category Management
-export async function getCategories(): Promise<AcademyCategory[]> {
+export async function getCategories(): Promise<academyCategory[]> {
   try {
     const { data, error } = await supabase
       .from('academy_categories')
@@ -76,7 +76,7 @@ export async function getCourses(options: {
   categoryId?: string;
   difficulty?: string;
   search?: string;
-} = {}): Promise<AcademyCourse[]> {
+} = {}): Promise<academyCourse[]> {
   try {
     let query = supabase
       .from('academy_courses')
@@ -110,7 +110,7 @@ export async function getCourses(options: {
   }
 }
 
-export async function getCourse(courseId: string): Promise<AcademyCourse | null> {
+export async function getCourse(courseId: string): Promise<academyCourse | null> {
   try {
     const { data, error } = await supabase
       .from('academy_courses')
@@ -127,7 +127,7 @@ export async function getCourse(courseId: string): Promise<AcademyCourse | null>
 }
 
 // Progress Tracking
-export async function getUserProgress(userId: string, courseId?: string): Promise<AcademyProgress[]> {
+export async function getUserProgress(userId: string, courseId?: string): Promise<academyProgress[]> {
   try {
     let query = supabase
       .from('academy_progress')
@@ -148,7 +148,7 @@ export async function getUserProgress(userId: string, courseId?: string): Promis
   }
 }
 
-export async function startCourse(userId: string, courseId: string): Promise<AcademyProgress | null> {
+export async function startCourse(userId: string, courseId: string): Promise<academyProgress | null> {
   try {
     // Check if already started
     const existing = await getUserProgress(userId, courseId);
@@ -197,7 +197,7 @@ export async function updateProgress(
     notes?: string[];
     completed_at?: string;
   }
-): Promise<AcademyProgress | null> {
+): Promise<academyProgress | null> {
   try {
     const updateData: any = {
       ...updates,

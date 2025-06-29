@@ -34,6 +34,13 @@ export default function LessonNarrator({
   topics
 }: LessonNarratorProps) {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const { logClick } = useAuditLog();
   
   const [narration, setNarration] = useState<string>('');
@@ -46,7 +53,7 @@ export default function LessonNarrator({
   const [showSettings, setShowSettings] = useState<boolean>(false);
   
   // Narrator options state
-  const [narratorOptions, setNarratorOptions] = useState<Partial<NarratorOptions>>({
+  const [narratorOptions, setNarratorOptions] = useState<partial<NarratorOptions>>({
     voice: 'friendly',
     style: 'educational',
     pace: 'medium',
@@ -157,7 +164,7 @@ export default function LessonNarrator({
     return (
       <div className="flex items-center justify-between p-4 border rounded-lg border-gray-800 bg-gray-900/50 mb-6">
         <div className="flex items-center gap-3">
-          <Bot className="h-5 w-5 text-blue-400" />
+          <bot className="h-5 w-5 text-blue-400" />
           <div>
             <h3 className="font-medium">AI Narration</h3>
             <p className="text-sm text-gray-400">Get personalized commentary on this lesson</p>
@@ -176,27 +183,25 @@ export default function LessonNarrator({
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center text-lg text-blue-400">
-            <Bot className="mr-2 h-5 w-5" />
+            <bot className="mr-2 h-5 w-5" />
             AI Lesson Narrator
           </CardTitle>
           <div className="flex items-center gap-2">
             {loading ? (
               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
             ) : (
-              <Button 
-                variant="ghost" 
+              <Button variant="ghost" 
                 size="icon" 
                 className="h-8 w-8 text-blue-400"
                 onClick={handleRegenerateNarration}
-              >
+             >
                 <RefreshCw className="h-4 w-4" />
               </Button>
             )}
             
-            <Popover open={showSettings} onOpenChange={setShowSettings}>
-              <PopoverTrigger asChild>
-                <Button 
-                  variant="ghost" 
+            <popover open={showSettings} onOpenChange={setShowSettings}>
+              <popoverTrigger asChild>
+                <Button variant="ghost" 
                   size="icon"
                   className="h-8 w-8 text-blue-400"
                   onClick={() => {
@@ -207,7 +212,7 @@ export default function LessonNarrator({
                   <Settings className="h-4 w-4" />
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-80 p-4">
+              <popoverContent className="w-80 p-4">
                 <div className="space-y-4">
                   <h4 className="font-medium text-sm">Narrator Settings</h4>
                   
@@ -220,19 +225,19 @@ export default function LessonNarrator({
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="friendly" id="friendly" />
-                        <Label htmlFor="friendly">Friendly</Label>
+                        <label htmlFor="friendly">Friendly</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="professional" id="professional" />
-                        <Label htmlFor="professional">Professional</Label>
+                        <label htmlFor="professional">Professional</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="enthusiastic" id="enthusiastic" />
-                        <Label htmlFor="enthusiastic">Enthusiastic</Label>
+                        <label htmlFor="enthusiastic">Enthusiastic</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="calm" id="calm" />
-                        <Label htmlFor="calm">Calm</Label>
+                        <label htmlFor="calm">Calm</label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -247,15 +252,15 @@ export default function LessonNarrator({
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="conversational" id="conversational" />
-                        <Label htmlFor="conversational">Conversational</Label>
+                        <label htmlFor="conversational">Conversational</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="educational" id="educational" />
-                        <Label htmlFor="educational">Educational</Label>
+                        <label htmlFor="educational">Educational</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="coaching" id="coaching" />
-                        <Label htmlFor="coaching">Coaching</Label>
+                        <label htmlFor="coaching">Coaching</label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -271,20 +276,20 @@ export default function LessonNarrator({
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="slow" id="slow" />
-                        <Label htmlFor="slow">Slow</Label>
+                        <label htmlFor="slow">Slow</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="medium" id="medium" />
-                        <Label htmlFor="medium">Medium</Label>
+                        <label htmlFor="medium">Medium</label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="fast" id="fast" />
-                        <Label htmlFor="fast">Fast</Label>
+                        <label htmlFor="fast">Fast</label>
                       </div>
                     </RadioGroup>
                   </div>
                   
-                  <Button onClick={handleSettingsChange} className="w-full">
+                  <button onClick={handleSettingsChange} className="w-full">
                     Apply Settings
                   </Button>
                 </div>
@@ -310,8 +315,8 @@ export default function LessonNarrator({
             <Skeleton className="h-4 w-[85%]" />
           </div>
         ) : error ? (
-          <Alert variant="destructive">
-            <AlertDescription>{error}</AlertDescription>
+          <alert variant="destructive">
+            <alertDescription>{error}</AlertDescription>
           </Alert>
         ) : (
           <>
@@ -322,23 +327,21 @@ export default function LessonNarrator({
             </div>
             
             <div className="flex items-center justify-between">
-              <Button
-                variant="outline" 
+              <Button variant="outline" 
                 size="sm"
                 className={`${playing ? 'bg-blue-600 text-white' : ''} w-24`}
                 onClick={handlePlayPause}
-              >
+              />
                 {playing ? (
-                  <><Pause className="h-3 w-3 mr-2" /> Pause</>
+                  <><pause className="h-3 w-3 mr-2" /> Pause</>
                 ) : (
-                  <><Play className="h-3 w-3 mr-2" /> Listen</>
+                  <><play className="h-3 w-3 mr-2" /> Listen</>
                 )}
               </Button>
               
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <Button 
-                    variant="ghost" 
+                  <Button variant="ghost" 
                     size="icon"
                     className="h-8 w-8" 
                     onClick={() => setVolume(volume === 0 ? 80 : 0)}

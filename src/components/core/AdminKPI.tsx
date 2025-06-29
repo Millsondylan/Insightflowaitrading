@@ -17,7 +17,7 @@ const kpiItems = [
   { key: 'chartsUploaded', title: 'Charts Uploaded', icon: ImageIcon, color: 'emerald' },
 ];
 
-const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
+const AdminKPI: React.FC<adminKPIProps> = ({ stats }) => {
   return (
     <div className="kpi-grid">
       {kpiItems.map((item, index) => {
@@ -44,4 +44,11 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
   );
 };
 
-export default AdminKPI; 
+export default AdminKPI;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

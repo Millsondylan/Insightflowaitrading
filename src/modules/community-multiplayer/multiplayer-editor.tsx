@@ -24,6 +24,13 @@ exit_rules:
   - trailing_stop(2%)
 `);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const [activeUsers, setActiveUsers] = React.useState([
     { id: 1, name: 'Alex T.', color: '#FF6B6B', cursor: { line: 3, col: 15 } },
     { id: 2, name: 'Sarah M.', color: '#4ECDC4', cursor: { line: 7, col: 8 } },
@@ -45,8 +52,8 @@ exit_rules:
         <div className="flex items-center gap-2">
           <div className="flex -space-x-2">
             {activeUsers.map((user) => (
-              <Avatar key={user.id} className="h-8 w-8 border-2 border-background">
-                <AvatarFallback style={{ backgroundColor: user.color }}>
+              <avatar key={user.id} className="h-8 w-8 border-2 border-background">
+                <avatarFallback style={{ backgroundColor: user.color }}>
                   {user.name.split(' ').map(n => n[0]).join('')}
                 </AvatarFallback>
               </Avatar>
@@ -76,8 +83,8 @@ exit_rules:
                   top: `${user.cursor.line * 20}px`,
                   left: `${user.cursor.col * 8}px`
                 }}
-             >
-                <Span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
+            >
+                <span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
                   style={{ backgroundColor: user.color, color: 'white' }}
                 />
                   {user.name}
@@ -86,7 +93,7 @@ exit_rules:
             ))}
           </div>
           <div className="flex gap-2 mt-4">
-            <Button className="flex-1">
+            <button className="flex-1">
               <Save className="h-4 w-4 mr-2" />
               Save Strategy
             </Button>

@@ -910,7 +910,7 @@ export class GamificationSystem {
   public async getAchievements(
     userId: string,
     category?: AchievementCategory
-  ): Promise<Achievement[]> {
+  ): Promise<achievement[]> {
     // Implement achievement retrieval
     return [];
   }

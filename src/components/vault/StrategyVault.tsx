@@ -11,6 +11,13 @@ type Props = {
 
 export const StrategyVault = ({ strategies }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState('totalPnL');
 
@@ -57,28 +64,26 @@ export const StrategyVault = ({ strategies }: Props) => {
       <div className="flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
-          <Input 
-            placeholder="Search by title or tag..."
+          <input placeholder="Search by title or tag..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) = /> setSearchTerm(e.target.value)}
             className="pl-10 bg-black/30 border-white/10"
           />
         </div>
-        <Select value={sortBy} onValueChange={setSortBy}>
-          <SelectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
-            <SelectValue placeholder="Sort by" />
+        <select value={sortBy} onValueChange={setSortBy}>
+          <selectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
+            <selectValue placeholder="Sort by" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="totalPnL">Sort by PnL</SelectItem>
-            <SelectItem value="winRate">Sort by Win Rate</SelectItem>
+          <selectContent>
+            <selectItem value="totalPnL">Sort by PnL</SelectItem>
+            <selectItem value="winRate">Sort by Win Rate</SelectItem>
           </SelectContent>
-        </Select>
+        </select>
       </div>
 
       <div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <Button 
-            key={tag}
+          <Button key={tag}
             variant={selectedTags.includes(tag) ? 'secondary' : 'outline'}
             onClick={() => handleTagClick(tag)}
             className="rounded-full"

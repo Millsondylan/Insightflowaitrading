@@ -55,14 +55,14 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <Input type="email" placeholder="Email"> setEmail(e.target.value)}
+                        <input type="email" placeholder="Email" /> setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                         />
                     </div>
 
                     <div>
-                        <Input type="password" placeholder="Password" /> setPassword(e.target.value)}
+                        <input type="password" placeholder="Password" /> setPassword(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                             minLength={8}
@@ -78,12 +78,12 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
                         ) : mode === 'signin' ? (
                             <>
-                                <login  >
+                                <Login >
                                 Sign In
                             </>
                         ) : (
                             <>
-                                <userplus  >
+                                <Userplus  />
                                 Sign Up
                             </>
                         )}
@@ -99,19 +99,18 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <button variant="outline" style={{ width: "100%" }}>
+                        <Button variant="outline" style={{ width: "100%" }}>
                             <github  >
                             GitHub
                         </Button>
-                        <button variant="outline" style={{ width: "100%" }}>
+                        <Button variant="outline" style={{ width: "100%" }}>
                             <mail  >
                             Google
                         </Button>
                     </div>
 
                     <div className="text-center mt-6">
-                        <button
-                            type="button"
+                        <Button  type="button"
                             onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
@@ -120,7 +119,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             ) : (
                                 "Already have an account? Sign in"
                             )}
-                        </button>
+                        </Button>
                     </div>
                 </form>
             </div>

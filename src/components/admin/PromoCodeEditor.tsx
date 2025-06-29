@@ -22,6 +22,13 @@ type Props = {
 export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) {
   const { toast } = useToast();
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   // Format date to be more readable
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -57,26 +64,25 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
         
-        <Button
-          onClick={onGenerate}
+        <Button onClick={onGenerate}
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
-        >
-          <Plus className="h-4 w-4 mr-2" />
+       >
+          <plus className="h-4 w-4 mr-2" />
           Generate New Code
         </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow className="hover:bg-white/5">
-              <TableHead className="text-white/70 font-medium">Code</TableHead>
-              <TableHead className="text-white/70 font-medium">Expires</TableHead>
-              <TableHead className="text-white/70 font-medium">Uses Left</TableHead>
-              <TableHead className="text-white/70 font-medium text-right">Actions</TableHead>
+        <table>
+          <tableHeader>
+            <tableRow className="hover:bg-white/5">
+              <tableHead className="text-white/70 font-medium">Code</TableHead>
+              <tableHead className="text-white/70 font-medium">Expires</TableHead>
+              <tableHead className="text-white/70 font-medium">Uses Left</TableHead>
+              <tableHead className="text-white/70 font-medium text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <tableBody>
             {codes.length > 0 ? (
               codes.map((code) => {
                 const daysRemaining = getDaysRemaining(code.expiresAt);
@@ -84,19 +90,18 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                 const isExpired = daysRemaining <= 0;
 
                 return (
-                  <TableRow key={code.code} className="hover:bg-white/5 border-white/10">
-                    <TableCell className="font-mono">
+                  <tableRow key={code.code} className="hover:bg-white/5 border-white/10">
+                    <tableCell className="font-mono">
                       <div className="flex items-center gap-2">
                         {code.code}
-                        <button
-                          onClick={() => handleCopyCode(code.code)}
+                        <Button  onClick={() => handleCopyCode(code.code)}
                           className="text-gray-400 hover:text-cyan-400 transition-colors"
                         >
                           <Copy className="h-4 w-4" />
-                        </button>
+                        </Button>
                       </div>
                     </TableCell>
-                    <TableCell>
+                    <tableCell>
                       <div className="flex flex-col">
                         <span className={isExpired ? "text-red-400" : isExpiringSoon ? "text-yellow-400" : ""}>
                           {formatDate(code.expiresAt)}
@@ -110,32 +115,31 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                         </span>
                       </div>
                     </TableCell>
-                    <TableCell>
+                    <tableCell>
                       <span className={code.usesLeft <= 3 ? "text-amber-400" : "text-white"}>
                         {code.usesLeft}
                       </span>
                     </TableCell>
-                    <TableCell className="text-right">
-                      <Button
-                        onClick={() => onRevoke(code.code)}
+                    <tableCell className="text-right">
+                      <Button  onClick={() => onRevoke(code.code)}
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <trash2 className="h-4 w-4" />
                       </Button>
                     </TableCell>
                   </TableRow>
                 );
               })
             ) : (
-              <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
+              <tableRow>
+                <tableCell colSpan={4} className="text-center py-8 text-gray-500">
                   No active promo codes. Generate a new code to get started.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
-        </Table>
+        </table>
       </div>
       
       <div className="text-xs text-gray-500">

@@ -95,7 +95,7 @@ export class PositionSizingEngine {
   /**
    * Update configuration
    */
-  updateConfig(newConfig: Partial<PositionSizingConfig>): void {
+  updateConfig(newConfig: Partial<positionSizingConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 

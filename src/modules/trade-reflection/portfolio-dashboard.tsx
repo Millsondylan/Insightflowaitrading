@@ -8,7 +8,7 @@ interface PortfolioDashboardProps {
   userId?: string;
 }
 
-export const PortfolioDashboard: React.FC<PortfolioDashboardProps> = ({ userId }) => {
+export const PortfolioDashboard: React.FC<portfolioDashboardProps> = ({ userId }) => {
   const [stats, setStats] = React.useState({
     totalValue: 125000,
     dayChange: 2.5,
@@ -18,6 +18,13 @@ export const PortfolioDashboard: React.FC<PortfolioDashboardProps> = ({ userId }
     profitFactor: 1.85,
     sharpeRatio: 1.42
   });
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 
   return (
     <div className="space-y-6">
@@ -34,7 +41,7 @@ export const PortfolioDashboard: React.FC<PortfolioDashboardProps> = ({ userId }
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Day Change</p>
             <p className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange > 0 ? 'text-green-500' : 'text-red-500'}`}>
-              {stats.dayChange > 0 ? <TrendingUp className="h-5 w-5" /> : <TrendingDown className="h-5 w-5" />}
+              {stats.dayChange > 0 ? <trendingUp className="h-5 w-5" /> : <trendingDown className="h-5 w-5" />}
               {stats.dayChange > 0 ? '+' : ''}{stats.dayChange}%
             </p>
           </div>
@@ -42,13 +49,13 @@ export const PortfolioDashboard: React.FC<PortfolioDashboardProps> = ({ userId }
             <p className="text-sm text-muted-foreground">Win Rate</p>
             <div className="space-y-1">
               <p className="text-2xl font-bold">{stats.winRate}%</p>
-              <Progress value={stats.winRate} className="h-2" />
+              <progress value={stats.winRate} className="h-2" />
             </div>
           </div>
           <div className="space-y-2">
             <p className="text-sm text-muted-foreground">Sharpe Ratio</p>
             <p className="text-2xl font-bold flex items-center gap-2">
-              <Activity className="h-5 w-5" />
+              <activity className="h-5 w-5" />
               {stats.sharpeRatio}
             </p>
           </div>

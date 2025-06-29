@@ -147,7 +147,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
             {matrix.symbols.map((symbol, index) => (
               <Div key={symbol}
                 className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-             >
+            >
                 {symbol}
               </div>
             ))}
@@ -211,7 +211,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
           <div className="h-32 flex items-end space-x-1">
             {/* TODO: implement mini chart for rolling correlation */}
             {rollingData.correlations.slice(-30).map((point, index) => (
-              <Div key={index}
+              <div key={index}
                 className="flex-1 bg-blue-500 opacity-70 hover:opacity-100 transition-opacity"
                 style={{
                   height: `${Math.abs(point.correlation) * 100}%`,
@@ -325,4 +325,11 @@ const findMinCorrelation = (matrix: CorrelationMatrix): number => {
   return min;
 };
 
-export default CorrelationMatrixComponent; 
+export default CorrelationMatrixComponent;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

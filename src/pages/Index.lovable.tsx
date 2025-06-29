@@ -184,7 +184,7 @@ const LandingPage = () => {
           >
             Sign In
           </Button>
-          <Button  /> navigate('/auth')}
+          <Button /> navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
@@ -203,7 +203,7 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <div className="text-center space-y-8 w-full">
-          <badge  >
+          <Badge >
             🚀 Advanced Trading Platform - Now with AI Integration
           </Badge>
           
@@ -223,13 +223,13 @@ const LandingPage = () => {
           </p>
           
           <div className="flex justify-center space-x-4 pt-8">
-            <button size="lg" > navigate('/auth')}
+            <Button size="lg" /> navigate('/auth')}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
             >
               Start Free Trial
               <arrowright  >
             </Button>
-            <button size="lg" variant="outline" > navigate('/trading')}
+            <Button size="lg" variant="outline" > navigate('/trading')}
               className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
             >
               View Demo

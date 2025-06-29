@@ -146,7 +146,7 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
     <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
       <td className="px-4 py-3">
         <div className="flex items-center">
-          <Span className={cn(
+          <span className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
               user.role === 'Admin' && 'text-violet-300',
               user.role === 'Expired' && 'text-gray-400'
@@ -170,13 +170,13 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
       </td>
 
       <td className="px-4 py-3">
-        <rolebadge  >
+        <Rolebadge >
       </td>
 
       <td className="px-4 py-3">
-        <dropdownmenu  >
+        <Dropdownmenu  />
           <dropdownmenutrigger  >
-            <button variant="ghost" size="icon" >
+            <Button variant="ghost" size="icon" >
               <morehorizontal  >
             </Button>
           </DropdownMenuTrigger>

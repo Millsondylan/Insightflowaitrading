@@ -48,9 +48,9 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
 
   if (!isVisible) {
     return (
-      <button variant="outline" size="sm" > setIsVisible(true)}
+      <Button variant="outline" size="sm"> setIsVisible(true)}
       >
-        <sparkles  >
+        <Sparkles  />
         Show Copilot
       </Button>
     );
@@ -63,7 +63,7 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
           <sparkles  >
           <h3 className="font-semibold">AI Copilot</h3>
         </div>
-        <button variant="ghost" size="sm" > setIsVisible(false)}
+        <Button variant="ghost" size="sm" > setIsVisible(false)}
         >
           <x  >
         </Button>
@@ -98,17 +98,17 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
               </span>
               
               <div className="flex items-center gap-2">
-                <button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'up')}
+                <Button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
                   <thumbsup  >
                 </Button>
-                <button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'down')}
+                <Button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
                   <thumbsdown  >
                 </Button>
-                <button size="sm" > onSuggestionApply?.(suggestion.code)}
+                <Button size="sm" > onSuggestionApply?.(suggestion.code)}
                 >
                   Apply
                 </Button>

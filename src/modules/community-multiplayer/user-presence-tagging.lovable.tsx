@@ -59,8 +59,8 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
           <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start gap-3">
               <div className="relative">
-                <avatar  >
-                  <avatarfallback  >
+                <Avatar >
+                  <Avatarfallback  />
                     {user.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
@@ -94,7 +94,7 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
                 </div>
               </div>
               
-              <button variant="ghost" size="sm" >
+              <Button variant="ghost" size="sm" >
                 <messagesquare  >
               </Button>
             </div>

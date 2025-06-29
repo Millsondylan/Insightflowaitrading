@@ -58,11 +58,11 @@ exit_rules:
     <Card  />
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <harddrive  >
+          <Harddrive >
           <h2 className="text-2xl font-bold">Local Prototype</h2>
         </div>
         <div className="flex items-center gap-4">
-          <badge  >
+          <Badge  />
             {syncStatus === 'synced' ? (
               <>
                 <cloud  >
@@ -80,7 +80,7 @@ exit_rules:
               </>
             )}
           </Badge>
-          <button variant="outline" size="sm" >
+          <Button variant="outline" size="sm" >
             Sync to Cloud
           </Button>
         </div>
@@ -113,11 +113,11 @@ exit_rules:
           </div>
           
           <div className="flex gap-2">
-            <button  >
+            <Button >
               <play  >
               Run Local Test
             </Button>
-            <button variant="outline" >
+            <Button variant="outline" >
               <save  >
               Save Draft
             </Button>

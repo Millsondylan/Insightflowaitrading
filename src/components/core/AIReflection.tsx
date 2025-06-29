@@ -16,13 +16,13 @@ interface AIReflectionProps {
   autoGenerate?: boolean;
 }
 
-const AIReflection: React.FC<AIReflectionProps> = ({ 
+const AIReflection: React.FC<aIReflectionProps> = ({ 
   entry, 
   className, 
   autoGenerate = false 
 }) => {
   const { toast } = useToast();
-  const [reflection, setReflection] = useState<AIReflectionType | null>(null);
+  const [reflection, setReflection] = useState<aIReflectionType | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasGenerated, setHasGenerated] = useState(false);
@@ -80,7 +80,7 @@ const AIReflection: React.FC<AIReflectionProps> = ({
       <Card className={cn('ai-reflection-card border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-purple-900/10', className)}>
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <Brain className="h-5 w-5 text-blue-400 animate-pulse" />
+            <brain className="h-5 w-5 text-blue-400 animate-pulse" />
             <CardTitle className="text-lg">AI Analysis</CardTitle>
             <div className="flex space-x-1">
               <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
@@ -117,7 +117,7 @@ const AIReflection: React.FC<AIReflectionProps> = ({
       <Card className={cn('ai-reflection-card border-red-500/30 bg-gradient-to-br from-red-900/10 to-orange-900/10', className)}>
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <Brain className="h-5 w-5 text-red-400" />
+            <brain className="h-5 w-5 text-red-400" />
             <CardTitle className="text-lg">AI Analysis</CardTitle>
           </div>
         </CardHeader>
@@ -125,12 +125,11 @@ const AIReflection: React.FC<AIReflectionProps> = ({
           <div className="text-red-400 text-sm">
             {error}
           </div>
-          <Button 
-            onClick={generateReflection}
+          <Button onClick={generateReflection}
             variant="outline"
             size="sm"
             className="border-red-500/30 hover:bg-red-500/10"
-          >
+         >
             Try Again
           </Button>
         </CardContent>
@@ -145,7 +144,7 @@ const AIReflection: React.FC<AIReflectionProps> = ({
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Brain className="h-5 w-5 text-gray-400" />
+              <brain className="h-5 w-5 text-gray-400" />
               <CardTitle className="text-lg">AI Analysis</CardTitle>
             </div>
             <Sparkles className="h-4 w-4 text-gray-400" />
@@ -155,12 +154,11 @@ const AIReflection: React.FC<AIReflectionProps> = ({
           <p className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
           </p>
-          <Button 
-            onClick={generateReflection}
+          <Button onClick={generateReflection}
             className="w-full bg-blue-600 hover:bg-blue-700"
             disabled={loading}
-          >
-            <Brain className="h-4 w-4 mr-2" />
+          />
+            <brain className="h-4 w-4 mr-2" />
             Analyze Trade
           </Button>
         </CardContent>
@@ -174,7 +172,7 @@ const AIReflection: React.FC<AIReflectionProps> = ({
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Brain className="h-5 w-5 text-blue-400" />
+            <brain className="h-5 w-5 text-blue-400" />
             <CardTitle className="text-lg">AI Analysis</CardTitle>
           </div>
           <div className="flex items-center space-x-2">
@@ -205,7 +203,7 @@ const AIReflection: React.FC<AIReflectionProps> = ({
               <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
               <h4 className="text-sm font-medium text-purple-400">Behavioral Patterns</h4>
             </div>
-            <BehaviorTagGroup 
+            <behaviorTagGroup 
               tags={reflection!.tags} 
               animated={true}
               className="ai-reflection-tags"
@@ -216,7 +214,7 @@ const AIReflection: React.FC<AIReflectionProps> = ({
         {/* Suggestion Section */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2 mb-2">
-            <Lightbulb className="h-4 w-4 text-yellow-400" />
+            <lightbulb className="h-4 w-4 text-yellow-400" />
             <h4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</h4>
           </div>
           <p className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
@@ -226,14 +224,13 @@ const AIReflection: React.FC<AIReflectionProps> = ({
 
         {/* Regenerate Button */}
         <div className="pt-2 border-t border-gray-700/50">
-          <Button 
-            onClick={generateReflection}
+          <Button  onClick={generateReflection}
             variant="ghost"
             size="sm"
             className="text-gray-400 hover:text-white"
             disabled={loading}
           >
-            <Brain className="h-3 w-3 mr-2" />
+            <brain className="h-3 w-3 mr-2" />
             Regenerate Analysis
           </Button>
         </div>
@@ -242,4 +239,11 @@ const AIReflection: React.FC<AIReflectionProps> = ({
   );
 };
 
-export default AIReflection; 
+export default AIReflection;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

@@ -58,8 +58,8 @@ export const DailyPlanner: React.FC = () => {
   return (
     <card  style={{ width: "100%", color: "white" }}>
       <cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <cardtitle  >Daily Market Planner</CardTitle>
-        <badge  >
+        <Cardtitle >Daily Market Planner</CardTitle>
+        <Badge  />
           {dailyPlan.marketOutlook} Outlook
         </Badge>
       </CardHeader>
@@ -145,10 +145,10 @@ export const DailyPlanner: React.FC = () => {
         </div>
 
         <div className="mt-4 flex justify-center space-x-4">
-          <button variant="outline" style={{ color: "white" }}>
+          <Button variant="outline" style={{ color: "white" }}>
             Generate Market Insight
           </Button>
-          <button variant="default" >
+          <Button variant="default" >
             Start Trading Session
           </Button>
         </div>

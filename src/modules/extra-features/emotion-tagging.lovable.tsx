@@ -9,7 +9,7 @@ interface EmotionTaggingProps {
   onTagSelect?: (emotion: string) => void;
 }
 
-export const EmotionTagging: React.FC<Emotiontaggingprops > = ({ onTagSelect }) => {
+export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) => {
   const emotions = [
     { id: 'confident', label: 'Confident', icon: TrendingUp, color: 'text-green-500' },
     { id: 'anxious', label: 'Anxious', icon: Brain, color: 'text-yellow-500' },
@@ -44,9 +44,9 @@ export const EmotionTagging: React.FC<Emotiontaggingprops > = ({ onTagSelect }) 
             {emotions.map((emotion) => {
               const Icon = emotion.icon;
               return (
-                <button  style={{ display: "flex", alignItems: "center" }}> handleEmotionSelect(emotion.id)}
+                <Button  style={{ display: "flex", alignItems: "center" }}> handleEmotionSelect(emotion.id)}
                 >
-                  <icon  >
+                  <Icon >
                   <span className="text-xs">{emotion.label}</span>
                 </Button>
               );
@@ -73,7 +73,7 @@ export const EmotionTagging: React.FC<Emotiontaggingprops > = ({ onTagSelect }) 
               return (
                 <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex items-center gap-3">
-                    <icon  >
+                    <Icon />
                     <div>
                       <p className="font-medium">{emotion?.label}</p>
                       <p className="text-sm text-muted-foreground">{tag.context}</p>

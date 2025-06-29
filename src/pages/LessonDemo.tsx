@@ -83,4 +83,11 @@ const LessonDemo = () => {
   );
 };
 
-export default LessonDemo; 
+export default LessonDemo;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

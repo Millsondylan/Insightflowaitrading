@@ -68,3 +68,10 @@ const PortfolioPage: React.FC = () => {
 };
 
 export default PortfolioPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -25,3 +25,11 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </AuthProvider>
 );
+
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -220,7 +220,7 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
           {strategies.map((strategy) => (
             <Div key={strategy.id} 
               className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
-           >
+          >
               <h3 className="text-lg font-bold">{strategy.name}</h3>
               <div className="text-xs text-gray-300 mb-2">{strategy.description}</div>
               <div className="mt-2">
@@ -232,7 +232,7 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
               </div>
               <div className="mt-2 flex space-x-2">
                 {strategy.tags?.map((tag) => (
-                  <Span key={tag} 
+                  <span key={tag} 
                     className="px-2 py-1 bg-black/30 rounded-full text-xs"
                   />
                     {tag}

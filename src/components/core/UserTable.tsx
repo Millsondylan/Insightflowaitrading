@@ -124,10 +124,10 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <Pagination className="mt-4">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious 
+      <pagination className="mt-4">
+        <paginationContent>
+          <paginationItem>
+            <paginationPrevious 
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
@@ -148,8 +148,8 @@ const UserTable: React.FC = () => {
               (page >= currentPage - 1 && page <= currentPage + 1)
             ) {
               return (
-                <PaginationItem key={page}>
-                  <PaginationLink 
+                <paginationItem key={page}>
+                  <paginationLink 
                     href="#" 
                     onClick={(e) => {
                       e.preventDefault();
@@ -165,13 +165,13 @@ const UserTable: React.FC = () => {
               page === currentPage - 2 || 
               page === currentPage + 2
             ) {
-              return <PaginationEllipsis key={page} />;
+              return <paginationEllipsis key={page} />;
             }
             return null;
           })}
           
-          <PaginationItem>
-            <PaginationNext 
+          <paginationItem>
+            <paginationNext 
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
@@ -210,7 +210,7 @@ const UserTable: React.FC = () => {
           {/* Search input */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <Input 
+            <input 
               type="text"
               placeholder="Search wallet address..." 
               className="pl-9 w-full min-w-[200px] bg-gray-900/80"
@@ -219,34 +219,34 @@ const UserTable: React.FC = () => {
           </div>
           
           {/* Role filter */}
-          <Select onValueChange={handleRoleFilterChange}>
-            <SelectTrigger className="w-[140px] bg-gray-900/80">
-              <SelectValue placeholder="All roles" />
+          <select onValueChange={handleRoleFilterChange}>
+            <selectTrigger className="w-[140px] bg-gray-900/80">
+              <selectValue placeholder="All roles" />
             </SelectTrigger>
-            <SelectContent className="bg-gray-900">
-              <SelectItem value="">All roles</SelectItem>
-              <SelectItem value="Admin">
+            <selectContent className="bg-gray-900">
+              <selectItem value="">All roles</SelectItem>
+              <selectItem value="Admin">
                 <div className="flex items-center gap-2">
                   <RoleBadge role="Admin" showTooltip={false} /> Admin
                 </div>
               </SelectItem>
-              <SelectItem value="User">
+              <selectItem value="User">
                 <div className="flex items-center gap-2">
                   <RoleBadge role="User" showTooltip={false} /> User
                 </div>
               </SelectItem>
-              <SelectItem value="Trial">
+              <selectItem value="Trial">
                 <div className="flex items-center gap-2">
                   <RoleBadge role="Trial" showTooltip={false} /> Trial
                 </div>
               </SelectItem>
-              <SelectItem value="Expired">
+              <selectItem value="Expired">
                 <div className="flex items-center gap-2">
                   <RoleBadge role="Expired" showTooltip={false} /> Expired
                 </div>
               </SelectItem>
             </SelectContent>
-          </Select>
+          </select>
           
           {/* Sort options */}
           <DropdownMenu>
@@ -278,22 +278,20 @@ const UserTable: React.FC = () => {
         
         <div className="flex items-center gap-2">
           {/* Export button */}
-          <Button 
-            variant="outline" 
+          <Button variant="outline" 
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
             disabled={users.length === 0 || loading}
-          >
+         >
             <Download className="h-4 w-4" />
             Export CSV
           </Button>
           
           {/* Grant admin button */}
-          <Button 
-            className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
+          <Button className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
             onClick={handleGrantAdmin}
-          >
-            <Plus className="h-4 w-4" />
+          />
+            <plus className="h-4 w-4" />
             Grant Admin
           </Button>
         </div>
@@ -362,4 +360,11 @@ const UserTable: React.FC = () => {
   );
 };
 
-export default UserTable; 
+export default UserTable;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

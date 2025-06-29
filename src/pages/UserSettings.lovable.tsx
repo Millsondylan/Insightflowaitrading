@@ -65,9 +65,9 @@ const Button = ({
     <Button className={`${baseClasses} ${variantClasses} ${disabledClasses} ${className}`}
       onClick={onClick}
       disabled={disabled}
-   >
+  >
       {children}
-    </button>
+    </Button>
   );
 };
 
@@ -80,8 +80,7 @@ const Switch = ({
   onCheckedChange: (checked: boolean) => void;
   disabled?: boolean;
 }) => (
-  <button
-    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${
+  <Button  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 ${
       checked ? 'bg-blue-600' : 'bg-gray-600'
     } ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
     onClick={() => !disabled && onCheckedChange(!checked)}
@@ -92,7 +91,7 @@ const Switch = ({
         checked ? 'translate-x-6' : 'translate-x-1'
       }`}
     />
-  </button>
+  </Button>
 );
 
 const Slider = ({ 
@@ -111,13 +110,12 @@ const Slider = ({
   disabled?: boolean;
 }) => (
   <div className="w-full">
-    <input
-      type="range"
+    <input type="range"
       min={min}
       max={max}
       step={step}
       value={value}
-      onChange={(e) => onValueChange(Number(e.target.value))}
+      onChange={(e) = /> onValueChange(Number(e.target.value))}
       disabled={disabled}
       className={`w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider ${
         disabled ? 'opacity-50 cursor-not-allowed' : ''
@@ -171,13 +169,13 @@ const TabsTrigger = ({ children, value, isActive, onClick }: {
   isActive: boolean;
   onClick: () => void;
 }) => (
-  <Button className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+  <button className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
       isActive ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
     }`}
     onClick={onClick}
   />
     {children}
-  </button>
+  </Button>
 );
 
 const TabsContent = ({ children, value, activeTab }: { 
@@ -203,12 +201,11 @@ const RadioGroupItem = ({ value, id, checked, onChange }: {
   checked: boolean;
   onChange: (value: string) => void;
 }) => (
-  <input
-    type="radio"
+  <input type="radio"
     id={id}
     value={value}
     checked={checked}
-    onChange={() => onChange(value)}
+    onChange={() = /> onChange(value)}
     className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600"
   />
 );
@@ -470,15 +467,13 @@ export default function UserSettings() {
 
           {/* Action Buttons */}
           <div className="flex gap-4 pt-4">
-            <Button
-              onClick={handleSave}
+            <Button onClick={handleSave}
               disabled={!hasChanges || isSaving}
               className="flex-1"
-            >
+            />
               {isSaving ? '💾 Saving...' : '💾 Save Changes'}
             </Button>
-            <Button
-              onClick={handleReset}
+            <Button  onClick={handleReset}
               variant="outline"
               className="flex-1"
             >

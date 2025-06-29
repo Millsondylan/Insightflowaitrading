@@ -12,6 +12,13 @@ interface VersionDiffProps {
 
 export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions = [] }) => {
   const [leftVersion, setLeftVersion] = React.useState('v1.0');
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [rightVersion, setRightVersion] = React.useState('v1.1');
   
   const mockVersions = [
@@ -51,7 +58,7 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <Plus className="h-4 w-4 text-green-500" />;
+      case 'added': return <plus className="h-4 w-4 text-green-500" />;
       case 'removed': return <Minus className="h-4 w-4 text-red-500" />;
       case 'modified': return <Edit className="h-4 w-4 text-yellow-500" />;
       default: return null;
@@ -77,34 +84,34 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
           <label className="text-sm text-muted-foreground mb-2 block">Compare</label>
-          <Select value={leftVersion} onValueChange={setLeftVersion}>
-            <SelectTrigger>
-              <SelectValue />
+          <select value={leftVersion} onValueChange={setLeftVersion}>
+            <selectTrigger>
+              <selectValue />
             </SelectTrigger>
-            <SelectContent>
+            <selectContent>
               {mockVersions.map((v) => (
-                <SelectItem key={v.id} value={v.id}>
+                <selectItem key={v.id} value={v.id}>
                   {v.label}
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </select>
         </div>
         
         <div>
           <label className="text-sm text-muted-foreground mb-2 block">With</label>
-          <Select value={rightVersion} onValueChange={setRightVersion}>
-            <SelectTrigger>
-              <SelectValue />
+          <select value={rightVersion} onValueChange={setRightVersion}>
+            <selectTrigger>
+              <selectValue />
             </SelectTrigger>
-            <SelectContent>
+            <selectContent>
               {mockVersions.map((v) => (
-                <SelectItem key={v.id} value={v.id}>
+                <selectItem key={v.id} value={v.id}>
                   {v.label}
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </select>
         </div>
       </div>
 
@@ -113,7 +120,7 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
           <h3 className="font-semibold">Changes</h3>
           <div className="flex items-center gap-4 text-sm">
             <span className="flex items-center gap-1">
-              <Plus className="h-3 w-3 text-green-500" />
+              <plus className="h-3 w-3 text-green-500" />
               <span className="text-green-500">2 added</span>
             </span>
             <span className="flex items-center gap-1">
@@ -130,7 +137,7 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
         {diffs.map((diff, i) => (
           <Div key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
-         >
+        >
             <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <div className="flex-1">
@@ -148,7 +155,7 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
                       </code>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Plus className="h-3 w-3 text-green-500 mt-1" />
+                      <plus className="h-3 w-3 text-green-500 mt-1" />
                       <code className="text-sm bg-green-500/20 px-2 py-1 rounded">
                         {diff.newContent}
                       </code>
@@ -169,7 +176,7 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
         <Button variant="outline" className="flex-1">
           Export Diff
         </Button>
-        <Button className="flex-1">
+        <button className="flex-1">
           Apply Changes
         </Button>
       </div>

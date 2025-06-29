@@ -7,6 +7,13 @@ import { useAuth } from '@/hooks/use-auth';
 
 export default function Topbar() {
   const { profile, hasProAccess } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const today = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -28,17 +35,17 @@ export default function Topbar() {
       <div className="flex items-center gap-6">
         <span className="text-sm text-text-muted">{today}</span>
         <Button variant="ghost" size="icon">
-          <Bell className="w-5 h-5" />
+          <bell className="w-5 h-5" />
         </Button>
         <div className="flex items-center gap-3">
-          <Avatar>
-            <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-            <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+          <avatar>
+            <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
+            <avatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
           </Avatar>
           <div>
             <p className="font-semibold">{profile?.full_name || 'Guest'}</p>
             {hasProAccess && (
-              <Badge variant="outline" className="border-brand-primary text-brand-primary">
+              <badge variant="outline" className="border-brand-primary text-brand-primary">
                 PRO
               </Badge>
             )}

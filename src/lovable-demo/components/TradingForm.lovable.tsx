@@ -22,7 +22,7 @@ type TradingFormProps = {
 };
 
 export const TradingForm = ({ onSubmit }: TradingFormProps) => {
-  const [formData, setFormData] = useState<Tradeformdata >({
+  const [formData, setFormData] = useState<Tradeformdata>({
     symbol: '',
     quantity: 1,
     price: 0,
@@ -30,7 +30,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
     orderType: 'market'
   });
 
-  const [errors, setErrors] = useState<Formerrors  />({});
+  const [errors, setErrors] = useState<formerrors  />({});
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -107,10 +107,9 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div>
           <label style={labelStyles}>Symbol</label>
-          <input
-            type="text"
+          <input type="text"
             value={formData.symbol}
-            onChange={(e) => setFormData({ ...formData, symbol: e.target.value.toUpperCase() })}
+            onChange={(e) = /> setFormData({ ...formData, symbol: e.target.value.toUpperCase() })}
             placeholder="e.g., AAPL, TSLA, BTC"
             style={{
               ...inputStyles,
@@ -164,11 +163,10 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
 
         <div>
           <label style={labelStyles}>Quantity</label>
-          <input
-            type="number"
+          <input type="number"
             min="1"
             value={formData.quantity}
-            onChange={(e) => setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })}
+            onChange={(e) = /> setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })}
             style={{
               ...inputStyles,
               borderColor: errors.quantity ? '#EF4444' : 'rgba(255, 255, 255, 0.1)'
@@ -190,12 +188,11 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
         {formData.orderType === 'limit' && (
           <div>
             <label style={labelStyles}>Limit Price</label>
-            <input
-              type="number"
+            <input type="number"
               min="0"
               step="0.01"
               value={formData.price}
-              onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })}
+              onChange={(e) = /> setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })}
               style={{
                 ...inputStyles,
                 borderColor: errors.price ? '#EF4444' : 'rgba(255, 255, 255, 0.1)'
@@ -216,8 +213,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
         )}
 
         <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-          <button
-            type="submit"
+          <Button  type="submit"
             style={{
               width: '100%',
               padding: '12px 24px',
@@ -235,7 +231,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
             onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
           >
             {formData.type === 'buy' ? '🟢 Buy' : '🔴 Sell'} {formData.symbol || 'Asset'}
-          </button>
+          </Button>
         </div>
       </form>
     </div>

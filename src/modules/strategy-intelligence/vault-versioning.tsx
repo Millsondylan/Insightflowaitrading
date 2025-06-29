@@ -9,6 +9,13 @@ interface VaultVersioningProps {
 
 export const VaultVersioning: React.FC<VaultVersioningProps> = ({ strategyId }) => {
   const [versions, setVersions] = React.useState<any[]>([]);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [selectedVersion, setSelectedVersion] = React.useState<string>('');
 
   return (

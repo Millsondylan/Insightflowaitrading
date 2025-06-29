@@ -63,3 +63,10 @@ const FAQPage: React.FC = () => {
 };
 
 export default FAQPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

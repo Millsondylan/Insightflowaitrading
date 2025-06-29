@@ -5,6 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 export default function PineScriptGeneratorPage() {
   const { user, loading } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const navigate = useNavigate();
   
   // Redirect if not logged in
@@ -29,7 +36,7 @@ export default function PineScriptGeneratorPage() {
   return (
     <div className="container mx-auto p-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Pine Script Generator</h1>
-      <PineScriptGenerator />
+      <pineScriptGenerator />
       
       <div className="mt-12">
         <h2 className="text-2xl font-semibold mb-4">About Pine Script Generator</h2>

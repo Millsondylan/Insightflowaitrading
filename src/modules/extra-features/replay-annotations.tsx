@@ -19,6 +19,13 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
     { id: 'exit-signal', label: 'Exit Signal', icon: TrendingDown, color: 'text-yellow-500' }
   ];
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const [annotations, setAnnotations] = React.useState([
     {
       id: 1,
@@ -75,8 +82,7 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
             {annotationTypes.map((type) => {
               const Icon = type.icon;
               return (
-                <Button
-                  key={type.id}
+                <Button key={type.id}
                   variant={selectedType === type.id ? 'default' : 'outline'}
                   size="sm"
                   className="flex items-center gap-2"
@@ -90,12 +96,11 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
           </div>
           
           <div className="flex gap-2">
-            <Input
-              placeholder="Add a note about this moment..."
+            <input placeholder="Add a note about this moment..."
               value={customNote}
-              onChange={(e) => setCustomNote(e.target.value)}
+              onChange={(e) = /> setCustomNote(e.target.value)}
             />
-            <Button onClick={addAnnotation} disabled={!selectedType}>
+            <button onClick={addAnnotation} disabled={!selectedType}>
               <Tag className="h-4 w-4 mr-2" />
               Add
             </Button>
@@ -116,7 +121,7 @@ export const ReplayAnnotations: React.FC<ReplayAnnotationsProps> = ({ tradeId, o
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <Badge variant="outline">{type?.label}</Badge>
+                      <badge variant="outline">{type?.label}</Badge>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <span>{annotation.timestamp}</span>
                         <span>•</span>

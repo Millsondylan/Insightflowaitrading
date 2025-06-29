@@ -93,7 +93,7 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
 
       {/* Lesson Content */}
       {!showQuiz && (
-        <lessonengine  >
+        <Lessonengine >
       )}
       
       {/* Quiz Section */}
@@ -101,12 +101,11 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
         <div id="lesson-quiz" className="mt-10">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
-            <button 
-              onClick={handleBackToContent}
+            <Button onClick={handleBackToContent}
               className="text-white/70 hover:text-cyan-400 text-sm"
-            >
+            />
               ← Back to lesson content
-            </button>
+            </Button>
           </div>
           
           <quizengine  > s.id === activeSectionId)?.title : 

@@ -69,10 +69,10 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
             <div className="flex items-center space-x-2">
               <button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
                 {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-              </button>
+              </Button>
               <button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
                 <QrCode className="h-4 w-4" />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -100,4 +100,11 @@ const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => 
   );
 };
 
-export default TokenBalanceCard; 
+export default TokenBalanceCard;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

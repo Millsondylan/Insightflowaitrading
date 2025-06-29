@@ -18,7 +18,7 @@ export interface ActivityEvent {
  * @param limit The number of events to fetch.
  * @returns A promise that resolves to an array of activity events.
  */
-export const getActivityTimeline = async (limit = 20): Promise<ActivityEvent[]> => {
+export const getActivityTimeline = async (limit = 20): Promise<activityEvent[]> => {
   try {
     // Fetch recent journal entries using correct column names
     const { data: journals, error: journalsError } = await supabase

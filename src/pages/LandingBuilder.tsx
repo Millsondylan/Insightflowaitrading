@@ -124,12 +124,12 @@ const LandingBuilderPage: React.FC = () => {
               <Link to="/strategy">
                 <button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </button>
+                </Button>
               </Link>
               <Link to="/academy">
                 <button className="glow-button glow-blue text-lg px-8 py-4">
                   Begin Learning
-                </button>
+                </Button>
               </Link>
             </div>
           </div>
@@ -140,3 +140,10 @@ const LandingBuilderPage: React.FC = () => {
 };
 
 export default LandingBuilderPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

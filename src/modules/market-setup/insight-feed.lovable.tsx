@@ -16,7 +16,7 @@ interface InsightFeedItem {
 }
 
 export const InsightFeed: React.FC = () => {
-  const [insights, setInsights] = useState<InsightFeedItem[]>([])
+  const [insights, setInsights] = useState<insightFeedItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export const InsightFeed: React.FC = () => {
     <Card style={{ width: "100%", color: "white" }}>
       <CardHeader style={{ display: "flex", alignItems: "center" }}>
         <CardTitle>Market Insights Feed</CardTitle>
-        <Badge variant="outline">LIVE</Badge>
+        <badge variant="outline">LIVE</Badge>
       </CardHeader>
       
       <CardContent>
@@ -58,10 +58,10 @@ export const InsightFeed: React.FC = () => {
           {insights.map(insight => (
             <Div key={insight.id}
               className={`p-4 border rounded-lg ${insight.sentiment === 'bullish' ? 'border-green-500/30 bg-green-500/5' : insight.sentiment === 'bearish' ? 'border-red-500/30 bg-red-500/5' : 'border-gray-500/30 bg-gray-500/5'}`}
-           >
+          >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-bold">{insight.title}</h3>
-                <Badge variant={insight.sentiment === 'bullish' ? 'default' : insight.sentiment === 'bearish' ? 'destructive' : 'secondary'}>
+                <badge variant={insight.sentiment === 'bullish' ? 'default' : insight.sentiment === 'bearish' ? 'destructive' : 'secondary'}>
                   {insight.sentiment.toUpperCase()}
                 </Badge>
               </div>
@@ -69,7 +69,7 @@ export const InsightFeed: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div className="flex space-x-2">
                   {insight.tags.map(tag => (
-                    <Badge variant="outline" key={tag}>
+                    <badge variant="outline" key={tag}>
                       {tag}
                     </Badge>
                   ))}

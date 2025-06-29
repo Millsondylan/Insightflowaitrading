@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 
 interface ScrollRevealOptions {
@@ -8,7 +7,7 @@ interface ScrollRevealOptions {
 }
 
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
-  const elementRef = useRef<Htmlelement >(null);
+  const elementRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ export const ScrollSection = ({
     <Section ref={elementRef}
       className={`${animationClass} scroll-section ${isVisible ? 'visible' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
-    />
+   >
       {children}
     </section>
   );

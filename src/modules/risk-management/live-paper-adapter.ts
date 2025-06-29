@@ -35,11 +35,11 @@ export abstract class BaseBrokerAdapter {
   // Abstract methods to be implemented by specific broker adapters
   abstract connect(): Promise<boolean>;
   abstract disconnect(): Promise<void>;
-  abstract getAccountInfo(): Promise<LivePaperAccount>;
-  abstract getPositions(): Promise<Position[]>;
-  abstract placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder>;
+  abstract getAccountInfo(): Promise<livePaperAccount>;
+  abstract getPositions(): Promise<position[]>;
+  abstract placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder>;
   abstract cancelOrder(orderId: string): Promise<boolean>;
-  abstract getOrderStatus(orderId: string): Promise<TradeOrder>;
+  abstract getOrderStatus(orderId: string): Promise<tradeOrder>;
 
   /**
    * Set event callback for risk events
@@ -103,7 +103,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     this.isConnected = false;
   }
 
-  async getAccountInfo(): Promise<LivePaperAccount> {
+  async getAccountInfo(): Promise<livePaperAccount> {
     if (!this.isConnected) {
       throw new Error('Not connected to IB TWS');
     }
@@ -115,7 +115,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     };
   }
 
-  async getPositions(): Promise<Position[]> {
+  async getPositions(): Promise<position[]> {
     if (!this.isConnected) {
       throw new Error('Not connected to IB TWS');
     }
@@ -124,7 +124,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     return [];
   }
 
-  async placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder> {
+  async placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder> {
     if (!this.isConnected) {
       throw new Error('Not connected to IB TWS');
     }
@@ -144,7 +144,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     return true;
   }
 
-  async getOrderStatus(orderId: string): Promise<TradeOrder> {
+  async getOrderStatus(orderId: string): Promise<tradeOrder> {
     // TODO: implement order status retrieval
     throw new Error('Order not found');
   }
@@ -181,17 +181,17 @@ export class MT5Adapter extends BaseBrokerAdapter {
     // TODO: implement MT5 disconnection
   }
 
-  async getAccountInfo(): Promise<LivePaperAccount> {
+  async getAccountInfo(): Promise<livePaperAccount> {
     // TODO: fetch MT5 account information
     return this.account;
   }
 
-  async getPositions(): Promise<Position[]> {
+  async getPositions(): Promise<position[]> {
     // TODO: fetch MT5 positions
     return [];
   }
 
-  async placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder> {
+  async placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder> {
     // TODO: implement MT5 order placement
     return {
       id: `mt5_${Date.now()}`,
@@ -205,7 +205,7 @@ export class MT5Adapter extends BaseBrokerAdapter {
     return true;
   }
 
-  async getOrderStatus(orderId: string): Promise<TradeOrder> {
+  async getOrderStatus(orderId: string): Promise<tradeOrder> {
     // TODO: implement MT5 order status retrieval
     throw new Error('Order not found');
   }
@@ -228,18 +228,18 @@ export class DemoAdapter extends BaseBrokerAdapter {
     // Demo disconnection
   }
 
-  async getAccountInfo(): Promise<LivePaperAccount> {
+  async getAccountInfo(): Promise<livePaperAccount> {
     return {
       ...this.account,
       lastSync: new Date(),
     };
   }
 
-  async getPositions(): Promise<Position[]> {
+  async getPositions(): Promise<position[]> {
     return [...this.positions];
   }
 
-  async placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder> {
+  async placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder> {
     const tradeOrder: TradeOrder = {
       id: `demo_${Date.now()}`,
       status: 'filled', // Demo orders fill immediately
@@ -263,7 +263,7 @@ export class DemoAdapter extends BaseBrokerAdapter {
     return false;
   }
 
-  async getOrderStatus(orderId: string): Promise<TradeOrder> {
+  async getOrderStatus(orderId: string): Promise<tradeOrder> {
     const order = this.orders.find(o => o.id === orderId);
     if (!order) {
       throw new Error('Order not found');

@@ -107,9 +107,9 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
             borderRadius: '8px',
             cursor: status === 'running' ? 'not-allowed' : 'pointer'
           }}
-       >
+      >
           {status === 'running' ? 'Optimizing...' : 'Start Optimization'}
-        </button>
+        </Button>
       </div>
 
       {status === 'running' && (

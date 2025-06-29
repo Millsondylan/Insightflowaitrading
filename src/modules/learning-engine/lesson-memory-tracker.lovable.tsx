@@ -50,7 +50,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
     }
   ]);
 
-  const [selectedMemory, setSelectedMemory] = React.useState<memoryitem  >(null);
+  const [selectedMemory, setSelectedMemory] = React.useState<Memoryitem  >(null);
 
   const reviewConcept = (memory: MemoryItem) => {
     setSelectedMemory(memory);
@@ -69,9 +69,9 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
   };
 
   return (
-    <card  >
+    <Card >
       <div className="flex items-center gap-2 mb-6">
-        <brain  >
+        <Brain  />
         <h2 className="text-2xl font-bold">Memory Tracker</h2>
       </div>
 
@@ -141,7 +141,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
               </div>
 
               {isDue && (
-                <button size="sm" style={{ width: "100%" }}>
+                <Button size="sm" style={{ width: "100%" }}>
                   Start Review
                 </Button>
               )}

@@ -55,18 +55,18 @@ const StrategyPage = () => {
             <p className="text-gray-400 text-lg">Take your strategy to the next level</p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
-              🔁 Backtest Strategy
-            </button>
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
-              📓 Save to Journal
-            </button>
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
-              📘 Learn in Academy
-            </button>
-            <button className="glow-button glow-cyan text-lg px-8 py-4">
-              💬 Share Strategy
-            </button>
+                          <button className="glow-button glow-cyan text-lg px-8 py-4">
+                🔁 Backtest Strategy
+              </button>
+              <button className="glow-button glow-cyan text-lg px-8 py-4">
+                📓 Save to Journal
+              </button>
+              <button className="glow-button glow-cyan text-lg px-8 py-4">
+                📘 Learn in Academy
+              </button>
+              <button className="glow-button glow-cyan text-lg px-8 py-4">
+                💬 Share Strategy
+              </button>
           </div>
         </div>
       </ScrollSection>
@@ -75,3 +75,10 @@ const StrategyPage = () => {
 };
 
 export default StrategyPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

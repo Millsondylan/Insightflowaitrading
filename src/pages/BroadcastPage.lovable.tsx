@@ -13,8 +13,8 @@ const mockChat = [
 export default function BroadcastPage() {
   return (
     <div>
-        <link to="/academy" style={{ display: "flex", alignItems: "center" }}>
-            <Arrowleft >
+        <Link to="/academy" style={{ display: "flex", alignItems: "center" }}>
+            <Arrowleft>
             Back to Academy
         </Link>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -44,7 +44,7 @@ export default function BroadcastPage() {
                 </div>
                 <div className="p-4 border-t border-white/10 flex gap-2">
                     <textarea placeholder="Say something..." style={{ fontSize: "0.875rem" }}>
-                    <button  ><send  ></Button>
+                    <Button ><Send /></Button>
                 </div>
             </div>
         </div>

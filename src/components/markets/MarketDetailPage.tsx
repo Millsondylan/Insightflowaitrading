@@ -23,6 +23,13 @@ type Props = {
 
 export default function MarketDetailPage({ symbol, onBack }: Props) {
   const [loading, setLoading] = useState<boolean>(true);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [error, setError] = useState<string | null>(null);
   const [marketData, setMarketData] = useState<{
     price: number;
@@ -157,12 +164,11 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     return (
       <div className="theme-markets space-y-6">
         {onBack && (
-          <Button 
-            variant="ghost" 
+          <Button variant="ghost" 
             size="sm" 
             onClick={onBack}
             className="flex items-center gap-2 text-gray-400 hover:text-white"
-          >
+         >
             <ChevronLeft className="h-4 w-4" />
             Back to Markets
           </Button>
@@ -180,12 +186,11 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     return (
       <div className="theme-markets space-y-6">
         {onBack && (
-          <Button 
-            variant="ghost" 
+          <Button variant="ghost" 
             size="sm" 
             onClick={onBack}
             className="flex items-center gap-2 text-gray-400 hover:text-white"
-          >
+          />
             <ChevronLeft className="h-4 w-4" />
             Back to Markets
           </Button>
@@ -202,8 +207,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     <div className="theme-markets space-y-6">
       {/* Back button */}
       {onBack && (
-        <Button 
-          variant="ghost" 
+        <Button variant="ghost" 
           size="sm" 
           onClick={onBack}
           className="flex items-center gap-2 text-gray-400 hover:text-white"
@@ -218,7 +222,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         <div className="space-y-1">
           <div className="flex items-center gap-3">
             <h1 className="text-3xl font-bold text-white">{symbol}</h1>
-            <Badge variant="outline" className={getVolatilityBadgeClass(marketData.volatility)}>
+            <badge variant="outline" className={getVolatilityBadgeClass(marketData.volatility)}>
               {marketData.volatility.charAt(0).toUpperCase() + marketData.volatility.slice(1)} Volatility
             </Badge>
           </div>
@@ -227,9 +231,9 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
             <span>${formatPrice(marketData.price)}</span>
             <span className={`flex items-center ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {marketData.changePercent > 0 ? (
-                <ArrowUp className="h-5 w-5" />
+                <arrowUp className="h-5 w-5" />
               ) : marketData.changePercent < 0 ? (
-                <ArrowDown className="h-5 w-5" />
+                <arrowDown className="h-5 w-5" />
               ) : null}
               {formatPercent(marketData.changePercent)}
             </span>
@@ -239,7 +243,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         {/* Matching Strategies */}
         {marketData.matchingSetups > 0 && (
           <div className="bg-green-900/20 border border-green-400/30 rounded-lg px-4 py-3 flex items-center gap-3">
-            <TrendingUp className="h-5 w-5 text-green-400" />
+            <trendingUp className="h-5 w-5 text-green-400" />
             <div>
               <div className="font-semibold text-green-400">
                 {marketData.matchingSetups} {marketData.matchingSetups === 1 ? 'setup matches' : 'setups match'} {symbol} conditions
@@ -276,7 +280,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       <div className="bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 market-glow opacity-10" />
         <div className="text-center">
-          <Activity className="h-10 w-10 mx-auto mb-4 text-cyan-500/50" />
+          <activity className="h-10 w-10 mx-auto mb-4 text-cyan-500/50" />
           <h3 className="text-xl font-medium text-white mb-2">Chart will appear here</h3>
           <p className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
@@ -294,14 +298,14 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
           </div>
         </div>
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Activity className="h-5 w-5 text-gray-400" />
+          <activity className="h-5 w-5 text-gray-400" />
           <div>
             <div className="text-sm text-gray-400">24h Range</div>
             <div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</div>
           </div>
         </div>
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <TrendingUp className="h-5 w-5 text-gray-400" />
+          <trendingUp className="h-5 w-5 text-gray-400" />
           <div>
             <div className="text-sm text-gray-400">Price Change</div>
             <div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>

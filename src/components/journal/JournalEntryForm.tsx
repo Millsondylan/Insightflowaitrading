@@ -112,11 +112,10 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</label>
-          <input
-            id="title"
+          <input id="title"
             type="text"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) = /> setTitle(e.target.value)}
             placeholder="e.g. Breakout scalp on BTC"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
             required
@@ -125,11 +124,10 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
 
         <div>
           <label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</label>
-          <input
-            id="date"
+          <input id="date"
             type="date"
             value={date}
-            onChange={(e) => setDate(e.target.value)}
+            onChange={(e) = /> setDate(e.target.value)}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition calendar-picker-indicator"
             required
           />
@@ -141,7 +139,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             {tags.map(tag => (
               <span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
                 {tag}
-                <button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</button>
+                <button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</Button>
               </span>
             ))}
           </div>
@@ -202,13 +200,20 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             <Button type="submit" 
               disabled={!isFormValid || isSubmitting}
               className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
-           >
+          >
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
-            </button>
+            </Button>
         </div>
       </form>
     </div>
   );
 };
 
-export default JournalEntryForm; 
+export default JournalEntryForm;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

@@ -41,3 +41,10 @@ const Toggle = React.forwardRef<
 Toggle.displayName = TogglePrimitive.Root.displayName
 
 export { Toggle, toggleVariants }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

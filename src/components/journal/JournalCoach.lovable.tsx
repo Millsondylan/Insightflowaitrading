@@ -30,7 +30,7 @@ const mockAIFeedback: AIFeedback = {
 };
 
 // Mock function to simulate an API call to an AI model
-const getAIFeedback = (entry: JournalEntry): Promise<Aifeedback > => {
+const getAIFeedback = (entry: JournalEntry): Promise<Aifeedback> => {
   console.log("Analyzing entry:", entry.title);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -60,7 +60,7 @@ const getEmotionBadgeStyle = (emotion: string): string => {
 
 
 const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
-  const [feedback, setFeedback] = useState<Aifeedback  />(null);
+  const [feedback, setFeedback] = useState<aifeedback  />(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

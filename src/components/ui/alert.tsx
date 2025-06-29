@@ -57,3 +57,10 @@ const AlertDescription = React.forwardRef<
 AlertDescription.displayName = "AlertDescription"
 
 export { Alert, AlertTitle, AlertDescription }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

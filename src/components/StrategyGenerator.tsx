@@ -72,7 +72,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<StrategyOutput | null>(null);
-  const [parsedRules, setParsedRules] = useState<ParsedRule[]>([]);
+  const [parsedRules, setParsedRules] = useState<parsedRule[]>([]);
   const [showParsed, setShowParsed] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -151,10 +151,10 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
           <Button type="submit"
             disabled={!input.trim() || loading}
             className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2"
-         >
+        >
             <span>🧠</span>
             <span>{loading ? "Generating..." : "Generate Strategy"}</span>
-          </button>
+          </Button>
         </form>
 
         {/* Loading State */}
@@ -183,12 +183,11 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
 
             {/* Toggle Parsed View */}
             {parsedRules.length > 0 && (
-              <button
-                onClick={() => setShowParsed(!showParsed)}
+              <Button  onClick={() => setShowParsed(!showParsed)}
                 className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
               >
                 {showParsed ? '📝 Show Original' : '🔍 Show Parsed Analysis'}
-              </button>
+              </Button>
             )}
 
             {/* Rules Display */}
@@ -282,4 +281,11 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   );
 };
 
-export default StrategyGenerator; 
+export default StrategyGenerator;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

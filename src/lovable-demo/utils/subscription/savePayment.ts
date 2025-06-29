@@ -24,7 +24,7 @@ export const savePayment = async (
     chain: string;
     txResult: TxVerificationResult;
   }
-): Promise<PaymentRecord> => {
+): Promise<paymentRecord> => {
   if (!payment.txResult.success || !payment.txResult.data) {
     throw new Error('Cannot save unsuccessful payment');
   }

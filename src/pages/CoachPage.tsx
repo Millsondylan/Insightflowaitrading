@@ -16,7 +16,7 @@ export default function CoachPage() {
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Bot className="text-blue-400" /></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><bot className="text-blue-400" /></span>
                     AI Coach
                 </h1>
                 <p className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</p>
@@ -39,11 +39,18 @@ export default function CoachPage() {
                 </div>
             </div>
             <div className="flex gap-4">
-                <Textarea placeholder="Ask your coach anything..." className="bg-black/20 border-white/10"/>
-                <Button className="bg-blue-600 hover:bg-blue-700">Send</Button>
+                <textarea placeholder="Ask your coach anything..." className="bg-black/20 border-white/10"/>
+                <button className="bg-blue-600 hover:bg-blue-700">Send</Button>
             </div>
         </div>
       </div>
     </div>
   );
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
 } 

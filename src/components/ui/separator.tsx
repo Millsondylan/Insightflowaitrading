@@ -27,3 +27,10 @@ const Separator = React.forwardRef<
 Separator.displayName = SeparatorPrimitive.Root.displayName
 
 export { Separator }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
