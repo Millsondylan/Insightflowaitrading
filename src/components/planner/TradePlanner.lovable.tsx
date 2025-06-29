@@ -13,9 +13,9 @@ export default function TradePlanner({ tickers, strategies }: Props) {
   const [note, setNote] = useState("");
 
   return (
-    <div className="theme-planner space-y-6">
-      <h2 className="text-white text-lg font-bold">📌 Select Today's Setups</h2>
-      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <Div className="theme-planner space-y-6">
+      <H2 className="text-white text-lg font-bold">📌 Select Today's Setups</Div>
+      <Div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
         {strategies.map((s) => (
           <Button key={s.id}
             onClick={() =>
@@ -30,19 +30,19 @@ export default function TradePlanner({ tickers, strategies }: Props) {
             }`}
           >
             ✅ {s.title}
-          </Button>
+          </Div>
         ))}
-      </div>
-      <textarea
+      </Div>
+      <Textarea
         placeholder="🧠 Write today's focus..."
         value={note}
         onChange={(e) => setNote(e.target.value)}
         className="w-full bg-white/10 rounded p-4 text-white/80"
       />
-      <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full">
+      <Button className="bg-cyan-600 hover:bg-cyan-700 text-white px-6 py-3 rounded-full">
         🔒 Lock Plan
-      </Button>
-    </div>
+      </Textarea>
+    </Div>
   );
 } 
 

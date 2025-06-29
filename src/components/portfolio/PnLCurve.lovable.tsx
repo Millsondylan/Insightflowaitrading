@@ -29,7 +29,7 @@ export const PnLCurve = ({ trades }: Props) => {
   }, [] as { name: string; pnl: number; cumulativePnl: number }[]);
 
   return (
-    <div className="h-64 w-full bg-white/5 rounded-lg p-4">
+    <Div className="h-64 w-full bg-white/5 rounded-lg p-4">
       <Responsivecontainer width="100%" height="100%">
         <areachart  />
           <defs>
@@ -39,13 +39,13 @@ export const PnLCurve = ({ trades }: Props) => {
             </linearGradient>
           </defs>
           <Cartesiangrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)">
-          <Xaxis dataKey="name" stroke="rgba(255, 255, 255, 0.5)" />
-          <yaxis stroke="rgba(255, 255, 255, 0.5)" >
-          <tooltip  >
-          <area type="monotone" dataKey="cumulativePnl" stroke="#8884d8" fill="url(#colorUv)" name="Cumulative PnL" >
+          <Xaxis dataKey="name" stroke="rgba(255, 255, 255, 0.5)" /></Div>
+          <yaxis stroke="rgba(255, 255, 255, 0.5)">
+          <tooltip >
+          <area type="monotone" dataKey="cumulativePnl" stroke="#8884d8" fill="url(#colorUv)" name="Cumulative PnL">
         </AreaChart>
       </Responsivecontainer>
-    </div>
+    </Div>
   );
 }; 
 

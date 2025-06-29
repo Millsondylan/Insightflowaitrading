@@ -15,7 +15,7 @@ interface RoleBadgeProps {
   className?: string;
 }
 
-export const RoleBadge: React.FC<RoleBadgeProps> = ({ 
+export const RoleBadge: React.FC<RoleBadgeProps></RoleBadgeProps> = ({ 
   role, 
   showTooltip = true,
   className 
@@ -58,9 +58,9 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
         safeGlowEffect,
         className
       )}
-  >
+></Span>
       {role}
-    </span>
+    </Span>
   );
 
   // If tooltip is enabled, wrap badge in tooltip
@@ -70,9 +70,9 @@ export const RoleBadge: React.FC<RoleBadgeProps> = ({
         <Tooltip>
           <TooltipTrigger asChild>
             {badge}
-          </TooltipTrigger>
+          </TooltipProvider>
           <TooltipContent>
-            <p className="text-xs">{tooltipContent[safeRole as UserRole]}</p>
+            <P className="text-xs">{tooltipContent[safeRole as UserRole]}</TooltipContent>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

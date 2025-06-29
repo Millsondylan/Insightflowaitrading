@@ -31,11 +31,11 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
   };
 
   return (
-    <div className="chart-overlay-container">
-      <img src={imageUrl} alt="Chart with pattern overlays" />
+    <Div className="chart-overlay-container">
+      <Img src={imageUrl} alt="Chart with pattern overlays" />
       
       {patternZones.map((zone) => (
-        <div
+        <Div
           key={zone.id}
           className={`pattern-zone ${zone.type || 'neutral'}`}
           style={{
@@ -53,7 +53,7 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
       {hoveredZone && (
         <patterntooltip  />
       )}
-    </div>
+    </Patternzone>
   );
 };
 

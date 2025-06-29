@@ -61,46 +61,46 @@ export const MindsetFeed: React.FC<Mindsetfeedprops > = ({ userId }) => {
 
   return (
     <Card  />
-      <h2 className="text-2xl font-bold mb-4">Mindset Feed</h2>
+      <H2 className="text-2xl font-bold mb-4">Mindset Feed</Mindsetfeedprops>
       
       <Scrollarea >
-        <div className="space-y-4">
+        <Div className="space-y-4">
           {insights.map((insight) => {
             const Icon = insight.icon;
             return (
-              <div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-                <div className="flex items-start gap-3">
-                  <div className={`mt-1 ${getTypeColor(insight.type)}`}>
+              <Div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+                <Div className="flex items-start gap-3">
+                  <Div className={`mt-1 ${getTypeColor(insight.type)}`}>
                     <Icon />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold">{insight.title}</h3>
-                      <span className="text-xs text-muted-foreground">
+                  </Scrollarea>
+                  <Div className="flex-1">
+                    <Div className="flex items-center justify-between mb-1">
+                      <H3 className="font-semibold">{insight.title}</Div>
+                      <Span className="text-xs text-muted-foreground">
                         {insight.timestamp.toLocaleTimeString()}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted-foreground mb-2">
+                      </Span>
+                    </Div>
+                    <P className="text-sm text-muted-foreground mb-2">
                       {insight.content}
-                    </p>
+                    </P>
                     {insight.actionable && (
-                      <badge variant="outline" style={{ fontSize: "0.75rem" }}>
+                      <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
                         Actionable
                       </Badge>
                     )}
-                  </div>
-                </div>
-              </div>
+                  </Div>
+                </Div>
+              </Div>
             );
           })}
-        </div>
+        </Div>
       </ScrollArea>
 
-      <div className="mt-4 pt-4 border-t">
-        <p className="text-sm text-muted-foreground text-center">
+      <Div className="mt-4 pt-4 border-t">
+        <P className="text-sm text-muted-foreground text-center">
           Insights generated from your journal entries and trading patterns
-        </p>
-      </div>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

@@ -74,38 +74,38 @@ export default function DigestPage() {
   }, []);
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="theme-markets">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-white mb-2">
+    <Div className="container mx-auto py-8 px-4">
+      <Div className="theme-markets">
+        <Header className="mb-8 text-center">
+          <H1 className="text-4xl font-bold text-white mb-2">
             AI Market Digest
-          </h1>
-          <p className="text-lg text-white/70">
+          </Div>
+          <P className="text-lg text-white/70">
             A real-time feed of markets matching your active strategies, powered
             by AI.
-          </p>
-        </header>
+          </P>
+        </Header>
 
-        <div className="flex justify-center gap-4 mb-8">
-          <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
+        <Div className="flex justify-center gap-4 mb-8">
+          <Button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <Zap >
-            <span>Live Scan</span>
+            <Span>Live Scan</Div>
           </Button>
-          <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <Filetext  />
-            <span>View Reports</span>
+          <Button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
+            <Filetext  /></Button>
+            <Span>View Reports</Span>
           </Button>
-        </div>
+        </Div>
 
-        <Marketdigest >
+        <Marketdigest ></Marketdigest>
         
-        <div className="mt-8 text-center">
-          <p className="text-white/50 text-sm">
+        <Div className="mt-8 text-center">
+          <P className="text-white/50 text-sm">
             Summaries generated automatically based on price action, volume, and strategy matches
-          </p>
-        </div>
-      </div>
-    </div>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 }
 

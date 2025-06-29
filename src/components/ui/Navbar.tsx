@@ -1,63 +1,156 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, TrendingUp, Scan, Trophy } from 'lucide-react';
 import { ROUTES } from '@/lib/routes';
 import '@/styles/nav.css';
+import { Button } from '@/components/ui/button';
+import LanguageSelector from './LanguageSelector';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+export const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
+  // Check if user is authenticated
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        // Here you would check for an auth token or session
+        const token = localStorage.getItem('authToken');
+        setIsAuthenticated(!!token);
+      } catch (error) {
+        console.error('Error checking auth status:', error);
+        setIsAuthenticated(false);
+      }
+    };
+    
+    checkAuth();
+  }, []);
+  
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 10;
-      setIsScrolled(scrolled);
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
     };
-
+    
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-
+  
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Add our new items with the same format as ROUTES
+  const navigationItems = [
+    ...ROUTES,
+    { 
+      label: "Market Setup", 
+      href: "/market-setup"
+    },
+    { 
+      label: "Setup Finder", 
+      href: "/setup-finder"
+    },
+    { 
+      label: "Best Setups", 
+      href: "/best-setups"
+    },
+  ];
+
   return (
-    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-cyan-400 text-glow-cyan">
-          Insight Flow
-        </Link>
-
+    <Nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <Div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <Div className="flex items-center">
+          <Link to="/" className="flex items-center" />
+            <Img src="/placeholder.svg" alt="Logo" className="h-8 w-8 mr-2" />
+            <Span className="text-lg font-bold">InsightFlow</Nav>
+          </Link>
+        </Div>
+        
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          {ROUTES.map((route) => (
-            <link key={route.href} to={route.href} className="nav-link font-medium">
+        <Div className="hidden md:flex space-x-6 items-center">
+          {navigationItems.map((route) => (
+            <Link key={route.href} to={route.href} className="nav-link font-medium" />
               {route.label}
-            </Link>
+            </Div>
           ))}
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <X className="h-6 w-6" /> : <menu className="h-6 w-6" />}
-        </Button>
-      </div>
-
+        </Div>
+        
+        <Div className="hidden md:flex items-center space-x-4">
+          {!isAuthenticated ? (
+            <>
+              <Link to="/auth" className="nav-link" />Log In</Div>
+              <Link to="/register" className="btn-primary" />Sign Up</Link>
+            </>
+          ) : (
+            <>
+              <Link to="/profile" className="nav-link" />Profile</Link>
+              <Button className="btn-secondary" onClick={() => {
+                localStorage.removeItem('authToken');
+                setIsAuthenticated(false);
+              }}>
+                Logout
+              </Button>
+            </>
+          )}
+        </Div>
+        
+        {/* Mobile Menu Button */}
+        <Div className="md:hidden">
+          <Button onClick={toggleMobileMenu} className="text-gray-600">
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </Div>
+        </Div>
+      </Div>
+      
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-        {ROUTES.map((route) => (
-          <link
-            key={route.href}
+      <Div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+        {navigationItems.map((route) => (
+          <Link key={route.href}
             to={route.href}
             className="mobile-nav-link"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
+            onClick={toggleMobileMenu}
+        >
             {route.label}
-          </Link>
+          </Div>
         ))}
-      </div>
-    </nav>
+        
+        <Div className="mobile-auth">
+          {!isAuthenticated ? (
+            <>
+              <Link to="/auth" className="mobile-nav-link" onClick={toggleMobileMenu} />
+                Log In
+              </Div>
+              <Link to="/register" className="btn-primary w-full text-center" onClick={toggleMobileMenu} />
+                Sign Up
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/profile" className="mobile-nav-link" onClick={toggleMobileMenu} />
+                Profile
+              </Link>
+              <Button
+                className="btn-secondary w-full"
+                onClick={() => {
+                  localStorage.removeItem('authToken');
+                  setIsAuthenticated(false);
+                  toggleMobileMenu();
+                }}
+              >
+                Logout
+              </Button>
+            </>
+          )}
+        </Div>
+      </Div>
+    </Nav>
   );
 };
 

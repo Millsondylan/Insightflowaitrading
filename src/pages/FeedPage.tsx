@@ -11,31 +11,31 @@ const mockInsights = [
 
 export default function FeedPage() {
   return (
-    <div>
-      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+    <Div>
+      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors" />
         <ArrowLeft size={16} />
         Back to Journal
-      </Link>
+      </Div>
       
-      <div className="space-y-6">
-        <header>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                <span className="bg-white/10 p-2 rounded-lg"><Rss className="text-blue-400" /></span>
+      <Div className="space-y-6">
+        <Header>
+            <H1 className="text-3xl font-bold text-white flex items-center gap-3">
+                <Span className="bg-white/10 p-2 rounded-lg"><Rss className="text-blue-400" /></Div>
                 Your Insight Feed
-            </h1>
-            <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>
-        </header>
+            </H1>
+            <P className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</P>
+        </Header>
 
         {mockInsights.map(insight => (
-            <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
-                <p className="text-gray-200">{insight.text}</p>
-                <Button variant="ghost" size="icon">
-                    <Eye size={18} />
+            <Div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
+                <P className="text-gray-200">{insight.text}</Div>
+                <Button variant="ghost" size="icon" />
+                    <Eye size={18} /></Button>
                 </Button>
-            </div>
+            </Div>
         ))}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 }
 

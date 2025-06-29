@@ -160,192 +160,192 @@ export function SystemStatusPanel() {
   if (!isAdmin && !developerMode) return null;
 
   return (
-    <Card className="w-full">
+    <Card className="w-full" />
       <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-xl font-bold">System Status</CardTitle>
-          <div className="flex gap-2">
+        <Div className="flex items-center justify-between">
+          <CardTitle className="text-xl font-bold" />System Status</ServiceStatus>
+          <Div className="flex gap-2">
             {isAdmin && (
               <Button variant="outline" 
                 size="sm"
                 onClick={toggleDeveloperMode}
-              >
+            >
                 <Cpu className="h-4 w-4 mr-1" />
                 {developerMode ? 'Disable Dev Mode' : 'Enable Dev Mode'}
-              </Button>
+              </Div>
             )}
             <Button variant="outline" 
               size="sm" 
               onClick={fetchSystemStatus}
               disabled={loading}
-            >
+          >
               <RefreshCcw className={`h-4 w-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
               Refresh
             </Button>
-          </div>
-        </div>
+          </Div>
+        </Div>
         <CardDescription>
           Monitor system health across all integrated services
         </CardDescription>
       </CardHeader>
       
       <CardContent>
-        <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="mb-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="devops">DevOps Snapshot</TabsTrigger>
-            <TabsTrigger value="api">API Usage</TabsTrigger>
+        <Tabs defaultValue="overview" value={activeTab} onValueChange={setActiveTab} />
+          <TabsList className="mb-4" />
+            <TabsTrigger value="overview" />Overview</CardContent>
+            <TabsTrigger value="devops" />DevOps Snapshot</TabsTrigger>
+            <TabsTrigger value="api" />API Usage</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="overview">
-            <div className="space-y-4">
+          <TabsContent value="overview" />
+            <Div className="space-y-4">
               {services.map(service => (
-                <div key={service.name} className="flex items-center justify-between p-3 rounded-md border">
-                  <div className="flex items-center">
+                <Div key={service.name} className="flex items-center justify-between p-3 rounded-md border">
+                  <Div className="flex items-center">
                     {service.name.includes('Database') ? <Database className="h-4 w-4 mr-2" /> :
                      service.name.includes('AI:') ? <Brain className="h-4 w-4 mr-2" /> :
                      <Server className="h-4 w-4 mr-2" />}
                     
-                    <span className="font-medium">{service.name}</span>
-                  </div>
+                    <Span className="font-medium">{service.name}</TabsContent>
+                  </Div>
                   
-                  <div className="flex items-center space-x-3">
+                  <Div className="flex items-center space-x-3">
                     {service.latency && (
-                      <span className="text-xs text-gray-500 flex items-center">
+                      <Span className="text-xs text-gray-500 flex items-center">
                         <Clock className="h-3 w-3 mr-1" />
                         {service.latency}ms
-                      </span>
+                      </Div>
                     )}
                     
                     <Badge variant={
                       service.status === 'healthy' ? 'default' :
                       service.status === 'degraded' ? 'secondary' :
                       'destructive'
-                    }>
+                    } />
                       {service.status === 'healthy' && <CheckCircle2 className="h-3 w-3 mr-1" />}
                       {service.status === 'degraded' && <AlertCircle className="h-3 w-3 mr-1" />}
                       {service.status === 'down' && <AlertCircle className="h-3 w-3 mr-1" />}
                       {service.status.charAt(0).toUpperCase() + service.status.slice(1)}
                     </Badge>
-                  </div>
-                </div>
+                  </Div>
+                </Div>
               ))}
-            </div>
+            </Div>
           </TabsContent>
           
-          <TabsContent value="devops">
+          <TabsContent value="devops" />
             {lastDevOpsSnapshot && (
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-sm font-medium mb-2">Last Table Sync Times</h3>
-                  <div className="grid grid-cols-2 gap-2">
+              <Div className="space-y-4">
+                <Div>
+                  <H3 className="text-sm font-medium mb-2">Last Table Sync Times</TabsContent>
+                  <Div className="grid grid-cols-2 gap-2">
                     {Object.entries(lastDevOpsSnapshot.lastSyncTimes).map(([table, time]) => (
-                      <div key={table} className="flex justify-between p-2 border rounded text-xs">
-                        <span className="font-mono">{table}</span>
-                        <span>{new Date(time as string).toLocaleTimeString()}</span>
-                      </div>
+                      <Div key={table} className="flex justify-between p-2 border rounded text-xs">
+                        <Span className="font-mono">{table}</Div>
+                        <Span>{new Date(time as string).toLocaleTimeString()}</Span>
+                      </Div>
                     ))}
-                  </div>
-                </div>
+                  </Div>
+                </Div>
                 
-                <div>
-                  <h3 className="text-sm font-medium mb-2">Last Errors</h3>
-                  <div className="space-y-2">
+                <Div>
+                  <H3 className="text-sm font-medium mb-2">Last Errors</Div>
+                  <Div className="space-y-2">
                     {Object.values(lastDevOpsSnapshot.lastErrors).map((error: any, i) => (
-                      <div key={i} className="p-2 border rounded bg-red-50 text-xs">
-                        <div className="font-medium text-red-700">{error.component}</div>
-                        <div className="text-gray-500">{new Date(error.timestamp).toLocaleString()}</div>
-                        <div className="mt-1">{error.message}</div>
-                      </div>
+                      <Div key={i} className="p-2 border rounded bg-red-50 text-xs">
+                        <Div className="font-medium text-red-700">{error.component}</Div>
+                        <Div className="text-gray-500">{new Date(error.timestamp).toLocaleString()}</Div>
+                        <Div className="mt-1">{error.message}</Div>
+                      </Div>
                     ))}
-                  </div>
-                </div>
+                  </Div>
+                </Div>
                 
-                <div>
-                  <h3 className="text-sm font-medium mb-2">Cache Status</h3>
-                  <div className="grid grid-cols-3 gap-2">
+                <Div>
+                  <H3 className="text-sm font-medium mb-2">Cache Status</Div>
+                  <Div className="grid grid-cols-3 gap-2">
                     {Object.entries(lastDevOpsSnapshot.cacheStatus).map(([key, status]) => (
-                      <div key={key} className="flex justify-between p-2 border rounded text-xs">
-                        <span>{key}</span>
+                      <Div key={key} className="flex justify-between p-2 border rounded text-xs">
+                        <Span>{key}</Div>
                         <Badge variant={
                           status === 'hit' ? 'default' :
                           status === 'miss' ? 'secondary' : 
                           'outline'
-                        }>
+                        } />
                           {String(status)}
                         </Badge>
-                      </div>
+                      </Div>
                     ))}
-                  </div>
-                </div>
+                  </Div>
+                </Div>
                 
                 {lastDevOpsSnapshot.pendingMigrations.length > 0 && (
-                  <div>
-                    <h3 className="text-sm font-medium mb-2">Pending Migrations</h3>
-                    <div className="space-y-1">
+                  <Div>
+                    <H3 className="text-sm font-medium mb-2">Pending Migrations</Div>
+                    <Div className="space-y-1">
                       {lastDevOpsSnapshot.pendingMigrations.map((migration: string) => (
-                        <div key={migration} className="p-2 border rounded bg-amber-50 text-xs">
+                        <Div key={migration} className="p-2 border rounded bg-amber-50 text-xs">
                           {migration}
-                        </div>
+                        </Div>
                       ))}
-                    </div>
-                  </div>
+                    </Div>
+                  </Div>
                 )}
-              </div>
+              </Div>
             )}
           </TabsContent>
           
-          <TabsContent value="api">
-            <div className="space-y-3">
+          <TabsContent value="api" />
+            <Div className="space-y-3">
               {Object.entries(config.aiProviders).map(([provider, key]) => key && (
-                <div key={provider} className="p-3 border rounded-md">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h3 className="font-medium">{provider.charAt(0).toUpperCase() + provider.slice(1)}</h3>
-                      <p className="text-xs text-gray-500">AI Provider</p>
-                    </div>
-                    <div>
-                      <div className="text-sm">
-                        <Badge variant={Math.random() > 0.2 ? 'default' : 'destructive'}>
+                <Div key={provider} className="p-3 border rounded-md">
+                  <Div className="flex justify-between items-center">
+                    <Div>
+                      <H3 className="font-medium">{provider.charAt(0).toUpperCase() + provider.slice(1)}</TabsContent>
+                      <P className="text-xs text-gray-500">AI Provider</P>
+                    </Div>
+                    <Div>
+                      <Div className="text-sm">
+                        <Badge variant={Math.random() /> 0.2 ? 'default' : 'destructive'}>
                           {Math.floor(Math.random() * 80) + 20}% used
-                        </Badge>
-                      </div>
-                      <div className="text-xs text-gray-500 mt-1">
+                        </Div>
+                      </Div>
+                      <Div className="text-xs text-gray-500 mt-1">
                         Reset in {Math.floor(Math.random() * 30) + 1} days
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      </Div>
+                    </Div>
+                  </Div>
+                </Div>
               ))}
               
               {Object.entries(config.marketData).map(([provider, key]) => key && (
-                <div key={provider} className="p-3 border rounded-md">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h3 className="font-medium">{provider.charAt(0).toUpperCase() + provider.slice(1)}</h3>
-                      <p className="text-xs text-gray-500">Market Data API</p>
-                    </div>
-                    <div>
-                      <div className="text-sm">
-                        <Badge variant={Math.random() > 0.3 ? 'default' : 'outline'}>
+                <Div key={provider} className="p-3 border rounded-md">
+                  <Div className="flex justify-between items-center">
+                    <Div>
+                      <H3 className="font-medium">{provider.charAt(0).toUpperCase() + provider.slice(1)}</Div>
+                      <P className="text-xs text-gray-500">Market Data API</P>
+                    </Div>
+                    <Div>
+                      <Div className="text-sm">
+                        <Badge variant={Math.random() /> 0.3 ? 'default' : 'outline'}>
                           {Math.floor(Math.random() * 80) + 20}% used
-                        </Badge>
-                      </div>
-                      <div className="text-xs text-gray-500 mt-1">
+                        </Div>
+                      </Div>
+                      <Div className="text-xs text-gray-500 mt-1">
                         {Math.floor(Math.random() * 1000)} calls remaining
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      </Div>
+                    </Div>
+                  </Div>
+                </Div>
               ))}
-            </div>
+            </Div>
           </TabsContent>
         </Tabs>
       </CardContent>
       
-      <CardFooter className="flex justify-between text-xs text-gray-500">
-        <span>Last refreshed: {new Date().toLocaleString()}</span>
-        <span>Supabase version: 2.x</span>
+      <CardFooter className="flex justify-between text-xs text-gray-500" />
+        <Span>Last refreshed: {new Date().toLocaleString()}</CardFooter>
+        <Span>Supabase version: 2.x</Span>
       </CardFooter>
     </Card>
   );

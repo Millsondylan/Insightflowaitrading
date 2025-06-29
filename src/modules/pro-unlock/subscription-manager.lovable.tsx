@@ -269,78 +269,78 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
   
   if (loading) {
     return (
-      <div className="p-12 text-center">
-        <div className="text-xl font-semibold mb-2">Loading subscription data...</div>
-        <div className="text-text-muted">Please wait</div>
-      </div>
+      <Div className="p-12 text-center">
+        <Div className="text-xl font-semibold mb-2">Loading subscription data...</Subscriptionmanagerprops>
+        <Div className="text-text-muted">Please wait</Div>
+      </Div>
     );
   }
   
   const activePlan = getActivePlan();
   
   return (
-    <div className="subscription-manager p-4 bg-background-secondary rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">InsightFlow Pro</h2>
+    <Div className="subscription-manager p-4 bg-background-secondary rounded-lg">
+      <H2 className="text-2xl font-bold mb-6">InsightFlow Pro</Div>
       
       {error && (
-        <div className="mb-6 p-3 bg-status-error/20 text-status-error rounded-lg">
+        <Div className="mb-6 p-3 bg-status-error/20 text-status-error rounded-lg">
           {error}
-        </div>
+        </Div>
       )}
       
       {/* Current Subscription */}
       {userSubscription && (
-        <div className="mb-8 p-4 bg-background-tertiary rounded-lg">
-          <h3 className="text-xl font-semibold mb-3">Your Subscription</h3>
+        <Div className="mb-8 p-4 bg-background-tertiary rounded-lg">
+          <H3 className="text-xl font-semibold mb-3">Your Subscription</Div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <div className="text-sm text-text-muted">Plan</div>
-              <div className="font-medium">{activePlan?.name}</div>
-            </div>
+          <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <Div>
+              <Div className="text-sm text-text-muted">Plan</Div>
+              <Div className="font-medium">{activePlan?.name}</Div>
+            </Div>
             
-            <div>
-              <div className="text-sm text-text-muted">Status</div>
-              <div className={`font-medium ${
+            <Div>
+              <Div className="text-sm text-text-muted">Status</Div>
+              <Div className={`font-medium ${
                 userSubscription.status === 'active' ? 'text-status-success' :
                 userSubscription.status === 'canceled' ? 'text-status-error' :
                 userSubscription.status === 'trial' ? 'text-status-warning' : ''
               }`}>
                 {userSubscription.status.charAt(0).toUpperCase() + userSubscription.status.slice(1)}
-              </div>
-            </div>
+              </Div>
+            </Div>
             
-            <div>
-              <div className="text-sm text-text-muted">Start Date</div>
-              <div>{formatDate(userSubscription.startDate)}</div>
-            </div>
+            <Div>
+              <Div className="text-sm text-text-muted">Start Date</Div>
+              <Div>{formatDate(userSubscription.startDate)}</Div>
+            </Div>
             
             {userSubscription.status === 'active' && userSubscription.renewalDate && (
-              <div>
-                <div className="text-sm text-text-muted">Next Renewal</div>
-                <div>{formatDate(userSubscription.renewalDate)}</div>
-              </div>
+              <Div>
+                <Div className="text-sm text-text-muted">Next Renewal</Div>
+                <Div>{formatDate(userSubscription.renewalDate)}</Div>
+              </Div>
             )}
             
             {userSubscription.status === 'canceled' && (
-              <div>
-                <div className="text-sm text-text-muted">Access Until</div>
-                <div>{formatDate(userSubscription.endDate)}</div>
-              </div>
+              <Div>
+                <Div className="text-sm text-text-muted">Access Until</Div>
+                <Div>{formatDate(userSubscription.endDate)}</Div>
+              </Div>
             )}
             
             {userSubscription.paymentMethod && (
-              <div>
-                <div className="text-sm text-text-muted">Payment Method</div>
-                <div>
+              <Div>
+                <Div className="text-sm text-text-muted">Payment Method</Div>
+                <Div>
                   {userSubscription.paymentMethod.type === 'credit_card' && 'Credit Card'}
                   {userSubscription.paymentMethod.type === 'paypal' && 'PayPal'}
                   {userSubscription.paymentMethod.type === 'crypto' && 'Cryptocurrency'}
                   {userSubscription.paymentMethod.lastFour && ` ending in ${userSubscription.paymentMethod.lastFour}`}
-                </div>
-              </div>
+                </Div>
+              </Div>
             )}
-          </div>
+          </Div>
           
           {userSubscription.status === 'active' && (
             <Button  className="px-4 py-2 bg-status-error/20 text-status-error rounded-md hover:bg-status-error/30"
@@ -351,30 +351,30 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
           )}
           
           {userSubscription.status === 'canceled' && (
-            <div className="flex space-x-4">
+            <Div className="flex space-x-4">
               <Button  className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80"
                 onClick={() => setSelectedPlanId(userSubscription.planId)}
               >
                 Renew Subscription
-              </Button>
+              </Div>
               <Button  className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
                 onClick={() => setSelectedPlanId('')}
               >
                 Change Plan
               </Button>
-            </div>
+            </Div>
           )}
-        </div>
+        </Div>
       )}
       
       {/* Plan Selection */}
       {(!userSubscription || userSubscription.status === 'canceled' || selectedPlanId) && (
-        <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">
+        <Div className="mb-8">
+          <H3 className="text-xl font-semibold mb-4">
             {!userSubscription ? 'Choose a Plan' : 'Change Your Plan'}
-          </h3>
+          </Div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map(plan => (
               <Div key={plan.id}
                 className={`p-4 rounded-lg border-2 transition-all ${
@@ -382,37 +382,37 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
                     ? 'border-brand-primary bg-brand-primary/5'
                     : 'border-border-primary bg-background-tertiary hover:border-brand-primary/50'
                 } ${plan.popular ? 'relative' : ''}`}
-              />
+              /></Div>
                 {plan.popular && (
-                  <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 bg-brand-secondary text-white text-xs px-2 py-1 rounded-full">
+                  <Div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 bg-brand-secondary text-white text-xs px-2 py-1 rounded-full">
                     Most Popular
-                  </div>
+                  </Div>
                 )}
                 
-                <h4 className="text-lg font-semibold mb-1">{plan.name}</h4>
-                <p className="text-sm text-text-muted mb-3">{plan.description}</p>
+                <H4 className="text-lg font-semibold mb-1">{plan.name}</H4>
+                <P className="text-sm text-text-muted mb-3">{plan.description}</P>
                 
-                <div className="mb-4">
-                  <span className="text-2xl font-bold">{formatPrice(plan.price, plan.currency)}</span>
-                  <span className="text-text-muted">
+                <Div className="mb-4">
+                  <Span className="text-2xl font-bold">{formatPrice(plan.price, plan.currency)}</Div>
+                  <Span className="text-text-muted">
                     /{plan.interval === 'monthly' ? 'month' : plan.interval === 'quarterly' ? 'quarter' : 'year'}
-                  </span>
+                  </Span>
                   
                   {plan.discountPercentage && (
-                    <div className="text-status-success text-sm mt-1">
+                    <Div className="text-status-success text-sm mt-1">
                       Save {plan.discountPercentage}%
-                    </div>
+                    </Div>
                   )}
-                </div>
+                </Div>
                 
-                <ul className="mb-4 space-y-2">
+                <Ul className="mb-4 space-y-2">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-status-success mr-2">✓</span>
-                      <span className="text-sm">{feature}</span>
-                    </li>
+                    <Li key={i} className="flex items-start">
+                      <Span className="text-status-success mr-2">✓</Ul>
+                      <Span className="text-sm">{feature}</Span>
+                    </Li>
                   ))}
-                </ul>
+                </Ul>
                 
                 <Button  className={`w-full py-2 rounded-md ${
                     selectedPlanId === plan.id
@@ -423,51 +423,51 @@ export const SubscriptionManager: React.FC<Subscriptionmanagerprops> = ({
                 >
                   {selectedPlanId === plan.id ? 'Selected' : 'Select'}
                 </Button>
-              </div>
+              </Div>
             ))}
-          </div>
+          </Div>
           
           {selectedPlanId && (
-            <div className="mt-6 flex justify-center">
-              <Button  className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+            <Div className="mt-6 flex justify-center">
+              <Button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSubscribe}
                 disabled={processing}
-              >
+            >
                 {processing ? 'Processing...' : 'Subscribe Now'}
-              </Button>
-            </div>
+              </Div>
+            </Div>
           )}
-        </div>
+        </Div>
       )}
       
       {/* Cancellation Modal */}
       {showCancelModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-background-primary rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-semibold mb-4">Cancel Subscription</h3>
+        <Div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <Div className="bg-background-primary rounded-lg p-6 max-w-md w-full">
+            <H3 className="text-xl font-semibold mb-4">Cancel Subscription</Div>
             
-            <p className="mb-4">
+            <P className="mb-4">
               Are you sure you want to cancel your subscription? You'll continue to have access until {userSubscription ? formatDate(userSubscription.endDate) : 'the end of your billing period'}.
-            </p>
+            </P>
             
-            <div className="flex justify-end space-x-3">
+            <Div className="flex justify-end space-x-3">
               <Button  className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
                 onClick={() => setShowCancelModal(false)}
                 disabled={processing}
               >
                 Keep Subscription
-              </Button>
-              <Button  className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
+              </Div>
+              <Button className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
                 onClick={handleCancelSubscription}
                 disabled={processing}
-              >
+            >
                 {processing ? 'Processing...' : 'Confirm Cancellation'}
               </Button>
-            </div>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 };
 

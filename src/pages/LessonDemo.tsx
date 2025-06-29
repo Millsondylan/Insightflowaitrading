@@ -12,36 +12,36 @@ const sampleLesson: LessonData = {
       id: "section-001",
       title: "What is Technical Analysis?",
       content: `
-      <p>Technical analysis is a trading discipline employed to evaluate investments and identify trading opportunities by analyzing statistical trends gathered from trading activity, such as price movement and volume.</p>
-      <p>Unlike fundamental analysis, which focuses on a company's financials to determine its value, technical analysis focuses on the study of price and volume.</p>
-      <h3>Core Principles</h3>
-      <ul>
-        <li>Price reflects all available market information</li>
-        <li>Price movements are not completely random - they follow trends</li>
-        <li>History tends to repeat itself - patterns are recurring</li>
-      </ul>
+      <P>Technical analysis is a trading discipline employed to evaluate investments and identify trading opportunities by analyzing statistical trends gathered from trading activity, such as price movement and volume.</P>
+      <P>Unlike fundamental analysis, which focuses on a company's financials to determine its value, technical analysis focuses on the study of price and volume.</P>
+      <H3>Core Principles</H3>
+      <Ul>
+        <Li>Price reflects all available market information</Ul>
+        <Li>Price movements are not completely random - they follow trends</Li>
+        <Li>History tends to repeat itself - patterns are recurring</Li>
+      </Ul>
       `,
     },
     {
       id: "section-002",
       title: "Common Chart Patterns",
       content: `
-      <h3>Reversal Patterns</h3>
-      <p>These patterns signal that a prior trend may be ending and reversing:</p>
-      <ul>
-        <li>Double Top/Bottom</li>
-        <li>Head and Shoulders</li>
-        <li>Triple Top/Bottom</li>
-        <li>Rounding Bottom</li>
-      </ul>
-      <h3>Continuation Patterns</h3>
-      <p>These patterns suggest a pause in the current trend before continuing in the same direction:</p>
-      <ul>
-        <li>Flags and Pennants</li>
-        <li>Triangles (Ascending, Descending, Symmetrical)</li>
-        <li>Rectangles</li>
-        <li>Cup and Handle</li>
-      </ul>
+      <H3>Reversal Patterns</H3>
+      <P>These patterns signal that a prior trend may be ending and reversing:</P>
+      <Ul>
+        <Li>Double Top/Bottom</Ul>
+        <Li>Head and Shoulders</Li>
+        <Li>Triple Top/Bottom</Li>
+        <Li>Rounding Bottom</Li>
+      </Ul>
+      <H3>Continuation Patterns</H3>
+      <P>These patterns suggest a pause in the current trend before continuing in the same direction:</P>
+      <Ul>
+        <Li>Flags and Pennants</Ul>
+        <Li>Triangles (Ascending, Descending, Symmetrical)</Li>
+        <Li>Rectangles</Li>
+        <Li>Cup and Handle</Li>
+      </Ul>
       `,
       videoUrl: "https://youtu.be/watch?v=example123",
     },
@@ -49,24 +49,24 @@ const sampleLesson: LessonData = {
       id: "section-003",
       title: "Key Technical Indicators",
       content: `
-      <p>Technical indicators are mathematical calculations based on price, volume, or open interest of a security.</p>
-      <h3>Trend Indicators</h3>
-      <ul>
-        <li>Moving Averages</li>
-        <li>MACD (Moving Average Convergence Divergence)</li>
-        <li>ADX (Average Directional Index)</li>
-      </ul>
-      <h3>Momentum Indicators</h3>
-      <ul>
-        <li>RSI (Relative Strength Index)</li>
-        <li>Stochastic Oscillator</li>
-        <li>CCI (Commodity Channel Index)</li>
-      </ul>
-      <h3>Volatility Indicators</h3>
-      <ul>
-        <li>Bollinger Bands</li>
-        <li>ATR (Average True Range)</li>
-      </ul>
+      <P>Technical indicators are mathematical calculations based on price, volume, or open interest of a security.</P>
+      <H3>Trend Indicators</H3>
+      <Ul>
+        <Li>Moving Averages</Ul>
+        <Li>MACD (Moving Average Convergence Divergence)</Li>
+        <Li>ADX (Average Directional Index)</Li>
+      </Ul>
+      <H3>Momentum Indicators</H3>
+      <Ul>
+        <Li>RSI (Relative Strength Index)</Ul>
+        <Li>Stochastic Oscillator</Li>
+        <Li>CCI (Commodity Channel Index)</Li>
+      </Ul>
+      <H3>Volatility Indicators</H3>
+      <Ul>
+        <Li>Bollinger Bands</Ul>
+        <Li>ATR (Average True Range)</Li>
+      </Ul>
       `,
       pdfUrl: "/resources/technical-indicators-cheatsheet.pdf",
       quizId: "quiz-001"
@@ -77,9 +77,9 @@ const sampleLesson: LessonData = {
 
 const LessonDemo = () => {
   return (
-    <div className="container mx-auto py-8 px-4">
-      <LessonView lesson={sampleLesson} />
-    </div>
+    <Div className="container mx-auto py-8 px-4">
+      <LessonView lesson={sampleLesson} /></Div>
+    </Div>
   );
 };
 

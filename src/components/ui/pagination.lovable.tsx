@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
-  <nav
+  <Nav
     role="navigation"
     aria-label="pagination"
     className={cn("mx-auto flex w-full justify-center", className)}
@@ -18,7 +18,7 @@ const PaginationContent = React.forwardRef<
   HTMLUListElement,
   React.ComponentProps<"ul">
 >(({ className, ...props }, ref) => (
-  <ul
+  <Ul
     ref={ref}
     className={cn("flex flex-row items-center gap-1", className)}
     {...props}
@@ -30,7 +30,7 @@ const PaginationItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentProps<"li">
 >(({ className, ...props }, ref) => (
-  <li ref={ref} className={cn("", className)} {...props} />
+  <Li ref={ref} className={cn("", className)} {...props} />
 ))
 PaginationItem.displayName = "PaginationItem"
 
@@ -45,7 +45,7 @@ const PaginationLink = ({
   size = "icon",
   ...props
 }: PaginationLinkProps) => (
-  <a
+  <A
     aria-current={isActive ? "page" : undefined}
     className={cn(
       buttonVariants({
@@ -65,7 +65,7 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <paginationlink label="Go to previous page" size="default" />
     <Chevronleft >
-    <span>Previous</span>
+    <Span>Previous</Nav>
   </PaginationLink>
 )
 PaginationPrevious.displayName = "PaginationPrevious"
@@ -74,9 +74,9 @@ const PaginationNext = ({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
-  <Paginationlink label="Go to next page" size="default" />
-    <span>Next</span>
-    <chevronright  >
+  <Paginationlink label="Go to next page" size="default" /></Paginationlink>
+    <Span>Next</Span>
+    <chevronright >
   </PaginationLink>
 )
 PaginationNext.displayName = "PaginationNext"
@@ -85,14 +85,13 @@ const PaginationEllipsis = ({
   className,
   ...props
 }: React.ComponentProps<"span">) => (
-  <span
-    aria-hidden
+  <Span aria-hidden
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}
-  >
-    <morehorizontal  >
-    <span className="sr-only">More pages</span>
-  </span>
+ >
+    <morehorizontal >
+    <Span className="sr-only">More pages</Span>
+  </Span>
 )
 PaginationEllipsis.displayName = "PaginationEllipsis"
 

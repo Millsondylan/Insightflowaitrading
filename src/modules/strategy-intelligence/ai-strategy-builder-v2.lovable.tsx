@@ -18,52 +18,52 @@ export const AIStrategyBuilderV2: React.FC = () => {
   }
 
   return (
-    <card  style={{ width: "100%", color: "white" }}>
+    <Card  style={{ width: "100%", color: "white" }}>
       <Cardheader >
-        <Cardtitle  />AI Strategy Builder V2</Cardtitle>
+        <Cardtitle  />AI Strategy Builder V2</Card>
       </Cardheader>
       <Cardcontent >
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm mb-2">Strategy Name</label>
+        <Div className="space-y-4">
+          <Div>
+            <Label className="block text-sm mb-2">Strategy Name</Cardcontent>
             <Input  /> setStrategyName(e.target.value)}
               placeholder="Enter strategy name"
               className="bg-zinc-900 border-zinc-700 text-white"
             />
-          </div>
+          </Input>
 
-          <div>
-            <label className="block text-sm mb-2">Market</label>
-            <select  >
+          <Div>
+            <Label className="block text-sm mb-2">Market</Div>
+            <Select >
               <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Select Market" >
-              </SelectTrigger>
-              <selectcontent  >
+                <selectvalue placeholder="Select Market">
+              </Select>
+              <selectcontent >
                 {markets.map((market) => (
-                  <selectitem  >{market}</SelectItem>
+                  <selectitem >{market}</SelectItem>
                 ))}
               </SelectContent>
-            </select>
-          </div>
+            </Select>
+          </Div>
 
-          <div>
-            <label className="block text-sm mb-2">Risk Level</label>
-            <select  >
+          <Div>
+            <Label className="block text-sm mb-2">Risk Level</Div>
+            <Select >
               <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Select Risk Level" >
-              </SelectTrigger>
-              <selectcontent  >
+                <selectvalue placeholder="Select Risk Level">
+              </Select>
+              <selectcontent >
                 {riskLevels.map((level) => (
-                  <selectitem  >{level}</SelectItem>
+                  <selectitem >{level}</SelectItem>
                 ))}
               </SelectContent>
-            </select>
-          </div>
+            </Select>
+          </Div>
 
           <Button  style={{ width: "100%" }}>
             Generate AI Strategy
           </Button>
-        </div>
+        </Div>
       </CardContent>
     </Card>
   )

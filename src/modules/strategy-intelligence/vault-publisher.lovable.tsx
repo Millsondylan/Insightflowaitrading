@@ -44,72 +44,72 @@ export const VaultPublisher: React.FC = () => {
   }
 
   return (
-    <card  style={{ width: "100%", color: "white" }}>
+    <Card  style={{ width: "100%", color: "white" }}>
       <Cardheader  />
-        <Cardtitle >Strategy Publisher</CardTitle>
+        <Cardtitle >Strategy Publisher</Strategy>
       </Cardheader>
       <Cardcontent  />
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <input   /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
+        <Div className="space-y-4">
+          <Div>
+            <H3 className="text-lg font-bold mb-2">Strategy Details</Cardcontent>
+            <Div className="grid grid-cols-2 gap-4">
+              <Input   /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <input   /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
+              <Input   /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-            </div>
-            <textarea  > setStrategy(prev => ({ ...prev, description: e.target.value }))}
+            </Div>
+            <Textarea > setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
             />
-          </div>
+          </Textarea>
 
-          <div>
-            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
-            <div className="space-y-2">
-              <div>
-                <label className="block text-sm mb-1">Visibility</label>
-                <div className="flex space-x-2">
+          <Div>
+            <H3 className="text-lg font-bold mb-2">Publish Settings</Div>
+            <Div className="space-y-2">
+              <Div>
+                <Label className="block text-sm mb-1">Visibility</Div>
+                <Div className="flex space-x-2">
                   <Button > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
-                  </Button>
+                  </Div>
                   <Button > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
                   </Button>
-                </div>
-              </div>
+                </Div>
+              </Div>
 
-              <input   /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
+              <Input   /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <input   /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
+              <Input   /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <textarea  > setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
+              <Textarea > setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
               />
-            </div>
-          </div>
+            </Input>
+          </Div>
 
           <Button  style={{ width: "100%" }}>
             Publish Strategy
           </Button>
-        </div>
+        </Div>
       </CardContent>
     </Card>
   )

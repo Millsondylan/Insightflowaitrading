@@ -25,7 +25,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <Chevrondown >
+      <Chevrondown ></Accordionprimitive>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -36,7 +36,7 @@ const AccordionContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
   <accordionprimitive  style={{ fontSize: "0.875rem" }}>
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
+    <Div className={cn("pb-4 pt-0", className)}>{children}</Div>
   </AccordionPrimitive.Content>
 ))
 

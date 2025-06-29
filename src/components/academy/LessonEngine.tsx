@@ -136,13 +136,13 @@ export const lovable = {
     const showAnswer = showExplanation[sectionId];
     
     return (
-      <div className="mt-8 space-y-4 border rounded-lg p-6 bg-gray-900">
-        <h3 className="text-xl font-bold">Quiz Time</h3>
-        <p className="text-gray-300 mb-4">{quiz.question}</p>
+      <Div className="mt-8 space-y-4 border rounded-lg p-6 bg-gray-900">
+        <H3 className="text-xl font-bold">Quiz Time</Div>
+        <P className="text-gray-300 mb-4">{quiz.question}</P>
         
-        <div className="space-y-3">
+        <Div className="space-y-3">
           {quiz.options.map((option, idx) => (
-            <div 
+            <Div 
               key={idx}
               onClick={() => !showAnswer && handleAnswerSelect(sectionId, idx)}
               className={`
@@ -159,67 +159,67 @@ export const lovable = {
                 }
               `}
             >
-              <div className="flex items-center justify-between">
-                <div>{option}</div>
+              <Div className="flex items-center justify-between">
+                <Div>{option}</Div>
                 {showAnswer && idx === quiz.correctAnswer && (
                   <Check className="text-green-500 h-5 w-5" />
                 )}
-              </div>
-            </div>
+              </Check>
+            </Div>
           ))}
-        </div>
+        </Div>
         
         {showAnswer ? (
-          <div className="mt-4">
+          <Div className="mt-4">
             <Alert variant={isCorrect ? "default" : "destructive"} 
               className={isCorrect ? "border-green-500 bg-green-900/20" : ""}
-           >
-              <alertTitle>{isCorrect ? "Correct!" : "Not quite right"}</AlertTitle>
+         >
+              <alertTitle>{isCorrect ? "Correct!" : "Not quite right"}</Div>
               <alertDescription>
                 {quiz.explanation}
               </AlertDescription>
             </Alert>
-          </div>
+          </Div>
         ) : (
-          <Button  className="mt-4" 
+          <Button className="mt-4" 
             disabled={selectedAnswer === undefined}
-            onClick={() => handleCheckAnswer(sectionId, quiz.correctAnswer)}
+            onClick={() = /> handleCheckAnswer(sectionId, quiz.correctAnswer)}
           >
             Check Answer
           </Button>
         )}
-      </div>
+      </Div>
     );
   };
 
   return (
-    <div className="container max-w-4xl mx-auto py-8 px-4">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold">{lesson.title}</h1>
-          <p className="text-gray-400">{lesson.description}</p>
-        </div>
+    <Div className="container max-w-4xl mx-auto py-8 px-4">
+      <Div className="flex items-center justify-between mb-6">
+        <Div>
+          <H1 className="text-2xl font-bold">{lesson.title}</Div>
+          <P className="text-gray-400">{lesson.description}</P>
+        </Div>
         
         <LessonBookmark lessonId={lessonId || ''} />
-      </div>
+      </LessonBookmark>
       
-      <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
-          <div className="text-sm text-gray-400">
+      <Div className="mb-8">
+        <Div className="flex items-center justify-between mb-2">
+          <Div className="text-sm text-gray-400">
             Progress: {Math.round(progress)}%
-          </div>
-          <div className="text-sm text-gray-400">
+          </Div>
+          <Div className="text-sm text-gray-400">
             Section {currentSectionIndex + 1} of {lesson.sections.length}
-          </div>
-        </div>
+          </Div>
+        </Div>
         <progress value={progress} className="h-2" />
-      </div>
+      </Div>
       
       {currentSection && (
         <>
-          <Card className="mb-8">
+          <Card className="mb-8" />
             <CardHeader>
-              <CardTitle className="text-xl">{currentSection.title}</CardTitle>
+              <CardTitle className="text-xl" />{currentSection.title}</Card>
             </CardHeader>
             
             {/* Include the AI lesson narrator */}
@@ -238,59 +238,58 @@ export const lovable = {
               )}
               
               {currentSection.code_example ? (
-                <Tabs 
-                  defaultValue="content" 
+                <Tabs defaultValue="content" 
                   value={selectedTab}
-                  onValueChange={(v) => setSelectedTab(v as 'content' | 'code')}
+                  onValueChange={(v) = /> setSelectedTab(v as 'content' | 'code')}
                   className="mt-4"
                 >
-                  <TabsList className="grid grid-cols-2 w-[400px]">
-                    <TabsTrigger value="content" className="flex items-center gap-2">
+                  <TabsList className="grid grid-cols-2 w-[400px]" />
+                    <TabsTrigger value="content" className="flex items-center gap-2" />
                       <bookOpen className="h-4 w-4" /> Content
-                    </TabsTrigger>
-                    <TabsTrigger value="code" className="flex items-center gap-2">
-                      <code className="h-4 w-4" /> Code Example
+                    </CardContent>
+                    <TabsTrigger value="code" className="flex items-center gap-2" />
+                      <Code className="h-4 w-4" /> Code Example
                     </TabsTrigger>
                   </TabsList>
                   
-                  <TabsContent value="content" className="mt-6">
-                    <div className="prose prose-invert max-w-none">
-                      <div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
-                    </div>
+                  <TabsContent value="content" className="mt-6" />
+                    <Div className="prose prose-invert max-w-none">
+                      <Div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
+                    </TabsContent>
                     
                     {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
                   </TabsContent>
                   
-                  <TabsContent value="code" className="mt-6">
-                    <div className="bg-gray-900 p-4 rounded-md overflow-auto">
-                      <pre className="text-sm">
-                        <code>{currentSection.code_example}</code>
-                      </pre>
-                    </div>
+                  <TabsContent value="code" className="mt-6" />
+                    <Div className="bg-gray-900 p-4 rounded-md overflow-auto">
+                      <Pre className="text-sm">
+                        <Code>{currentSection.code_example}</TabsContent>
+                      </Pre>
+                    </Div>
                   </TabsContent>
                 </Tabs>
               ) : (
                 <>
-                  <div className="prose prose-invert max-w-none">
-                    <div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
-                  </div>
+                  <Div className="prose prose-invert max-w-none">
+                    <Div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
+                  </Div>
                   
                   {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
                 </>
               )}
             </CardContent>
             
-            <CardFooter className="flex justify-between pt-6">
+            <CardFooter className="flex justify-between pt-6" />
               <Button variant="outline"
                 onClick={handlePrevSection}
                 disabled={currentSectionIndex === 0}
               />
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-              </Button>
+              </CardFooter>
               
-              <Button  onClick={handleNextSection}
+              <Button onClick={handleNextSection}
                 disabled={currentSection.quiz && !showExplanation[currentSection.id]}
-              >
+            >
                 {isLastSection ? (
                   <>
                     <Medal className="mr-2 h-4 w-4" /> Complete Lesson
@@ -305,6 +304,6 @@ export const lovable = {
           </Card>
         </>
       )}
-    </div>
+    </Div>
   );
 } 

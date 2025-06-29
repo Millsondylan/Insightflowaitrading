@@ -10,59 +10,59 @@ const DemoPage = () => {
   };
 
   return (
-    <div className="theme-strategy min-h-screen px-6 py-20">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-glow-cyan mb-4">
+    <Div className="theme-strategy min-h-screen px-6 py-20">
+      <Div className="max-w-4xl mx-auto">
+        <Div className="text-center mb-12">
+          <H1 className="text-4xl md:text-6xl font-bold text-glow-cyan mb-4">
             Strategy Generator + Copilot Demo
-          </h1>
-          <p className="text-xl text-gray-400">
+          </Div>
+          <P className="text-xl text-gray-400">
             Generate strategies with AI-powered suggestions
-          </p>
-        </div>
+          </P>
+        </Div>
 
-        <div className="mb-8 glass-section p-4">
-          <h2 className="text-2xl font-semibold text-cyan-300 mb-4">🧪 Try these examples:</h2>
-          <div className="grid md:grid-cols-2 gap-4 text-gray-300">
-            <div className="space-y-2">
-              <h3 className="text-white font-medium">Breakout Strategy:</h3>
-              <p className="text-sm">Type "breakout" to see momentum strategy with volume suggestions</p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-white font-medium">RSI Strategy:</h3>
-              <p className="text-sm">Type "RSI divergence" for oscillator-based strategy</p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-white font-medium">EMA Strategy:</h3>
-              <p className="text-sm">Type anything else for moving average pullback strategy</p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-white font-medium">Risk Warnings:</h3>
-              <p className="text-sm">Add "news" or "volatile" to see risk warnings</p>
-            </div>
-          </div>
-        </div>
+        <Div className="mb-8 glass-section p-4">
+          <H2 className="text-2xl font-semibold text-cyan-300 mb-4">🧪 Try these examples:</Div>
+          <Div className="grid md:grid-cols-2 gap-4 text-gray-300">
+            <Div className="space-y-2">
+              <H3 className="text-white font-medium">Breakout Strategy:</Div>
+              <P className="text-sm">Type "breakout" to see momentum strategy with volume suggestions</P>
+            </Div>
+            <Div className="space-y-2">
+              <H3 className="text-white font-medium">RSI Strategy:</Div>
+              <P className="text-sm">Type "RSI divergence" for oscillator-based strategy</P>
+            </Div>
+            <Div className="space-y-2">
+              <H3 className="text-white font-medium">EMA Strategy:</Div>
+              <P className="text-sm">Type anything else for moving average pullback strategy</P>
+            </Div>
+            <Div className="space-y-2">
+              <H3 className="text-white font-medium">Risk Warnings:</Div>
+              <P className="text-sm">Add "news" or "volatile" to see risk warnings</P>
+            </Div>
+          </Div>
+        </Div>
 
-        <Strategygenerator >
+        <Strategygenerator ></Strategygenerator>
 
         {generatedStrategy && (
-          <div className="mt-12 glass-section p-6 animate-in fade-in slide-up">
-            <h3 className="text-xl font-semibold text-white mb-4">📊 Generated Strategy Summary</h3>
-            <div className="space-y-2 text-gray-300">
-              <p><strong>Title:</strong> {generatedStrategy.title}</p>
-              <p><strong>Rules:</strong> {generatedStrategy.rules.length}</p>
-              <p><strong>Checklist Items:</strong> {generatedStrategy.checklist.length}</p>
+          <Div className="mt-12 glass-section p-6 animate-in fade-in slide-up">
+            <H3 className="text-xl font-semibold text-white mb-4">📊 Generated Strategy Summary</Div>
+            <Div className="space-y-2 text-gray-300">
+              <P><strong>Title:</strong> {generatedStrategy.title}</Div>
+              <P><strong>Rules:</strong> {generatedStrategy.rules.length}</P>
+              <P><strong>Checklist Items:</strong> {generatedStrategy.checklist.length}</P>
               {generatedStrategy.warning && (
-                <p className="text-yellow-400"><strong>Warning:</strong> Yes</p>
+                <P className="text-yellow-400"><strong>Warning:</strong> Yes</P>
               )}
-            </div>
-            <div className="mt-4 text-sm text-gray-400">
+            </Div>
+            <Div className="mt-4 text-sm text-gray-400">
               The Strategy Copilot above provides AI-powered suggestions to improve your strategy!
-            </div>
-          </div>
+            </Div>
+          </Div>
         )}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

@@ -27,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-section text-white">
+    <Section className="hero-section text-white">
       <motion.div
         className="container mx-auto text-center"
         variants={containerVariants}
@@ -50,22 +50,22 @@ const Hero = () => {
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/strategy">
               <braincircuit  /> Launch Builder
-            </Link>
+            </Section>
           </Button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/academy">
-              <Bookopen  /> Explore Academy
+              <Bookopen  /></Button> Explore Academy
             </Link>
           </Button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <Link to="/vision" >
-              <barchart  > Upload Chart
-            </Link>
+            <Link to="/vision">
+              <barchart > Upload Chart
+            </Button>
           </Button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <Link to="/journal" >
-              <pensquare  > Journal Trade
-            </Link>
+            <Link to="/journal">
+              <pensquare > Journal Trade
+            </Button>
           </Button>
         </motion.div>
       </motion.div>
@@ -75,9 +75,9 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <arrowright  >
+        <arrowright >
       </motion.div>
-    </section>
+    </Section>
   );
 };
 

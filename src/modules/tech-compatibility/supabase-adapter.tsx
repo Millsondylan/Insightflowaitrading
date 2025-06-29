@@ -59,59 +59,59 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-2">
+    <Card className="theme-card p-6" />
+      <Div className="flex items-center justify-between mb-6">
+        <Div className="flex items-center gap-2">
           <Database className="h-6 w-6" />
-          <h2 className="text-2xl font-bold">Supabase Adapter</h2>
-        </div>
-        <Badge variant={syncStatus.connected ? 'default' : 'destructive'}>
+          <H2 className="text-2xl font-bold">Supabase Adapter</SupabaseAdapterProps>
+        </Div>
+        <Badge variant={syncStatus.connected ? 'default' : 'destructive'} />
           {syncStatus.connected ? 'Connected' : 'Disconnected'}
         </Badge>
-      </div>
+      </Div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="p-4 bg-secondary/20 rounded-lg">
-          <p className="text-sm text-muted-foreground">Last Sync</p>
-          <p className="font-medium">{syncStatus.lastSync.toLocaleString()}</p>
-        </div>
-        <div className="p-4 bg-secondary/20 rounded-lg">
-          <p className="text-sm text-muted-foreground">Pending Changes</p>
-          <p className="font-medium">{syncStatus.pendingChanges}</p>
-        </div>
-        <div className="p-4 bg-secondary/20 rounded-lg">
-          <p className="text-sm text-muted-foreground">Total Records</p>
-          <p className="font-medium">
+      <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <Div className="p-4 bg-secondary/20 rounded-lg">
+          <P className="text-sm text-muted-foreground">Last Sync</Div>
+          <P className="font-medium">{syncStatus.lastSync.toLocaleString()}</P>
+        </Div>
+        <Div className="p-4 bg-secondary/20 rounded-lg">
+          <P className="text-sm text-muted-foreground">Pending Changes</Div>
+          <P className="font-medium">{syncStatus.pendingChanges}</P>
+        </Div>
+        <Div className="p-4 bg-secondary/20 rounded-lg">
+          <P className="text-sm text-muted-foreground">Total Records</Div>
+          <P className="font-medium">
             {syncStatus.tables.reduce((acc, t) => acc + t.records, 0).toLocaleString()}
-          </p>
-        </div>
-      </div>
+          </P>
+        </Div>
+      </Div>
 
-      <div className="space-y-4 mb-6">
-        <h3 className="font-semibold">Table Status</h3>
+      <Div className="space-y-4 mb-6">
+        <H3 className="font-semibold">Table Status</Div>
         {syncStatus.tables.map((table) => (
-          <div key={table.name} className="flex items-center justify-between p-3 border rounded-lg">
-            <div className="flex items-center gap-3">
-              <div className={getStatusColor(table.status)}>
+          <Div key={table.name} className="flex items-center justify-between p-3 border rounded-lg">
+            <Div className="flex items-center gap-3">
+              <Div className={getStatusColor(table.status)}>
                 {getStatusIcon(table.status)}
-              </div>
-              <div>
-                <p className="font-medium">{table.name}</p>
-                <p className="text-sm text-muted-foreground">{table.records} records</p>
-              </div>
-            </div>
-            <Badge variant="outline" className={getStatusColor(table.status)}>
+              </Div>
+              <Div>
+                <P className="font-medium">{table.name}</Div>
+                <P className="text-sm text-muted-foreground">{table.records} records</P>
+              </Div>
+            </Div>
+            <Badge variant="outline" className={getStatusColor(table.status)} />
               {table.status}
             </Badge>
-          </div>
+          </Div>
         ))}
-      </div>
+      </Div>
 
-      <div className="flex gap-2">
+      <Div className="flex gap-2">
         <Button onClick={syncData} 
           disabled={isSyncing || !syncStatus.connected}
           className="flex-1"
-        >
+      >
           {isSyncing ? (
             <>
               <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
@@ -123,25 +123,25 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
               Sync Now
             </>
           )}
-        </Button>
-        <Button variant="outline">
+        </Div>
+        <Button variant="outline" />
           Configure
         </Button>
-      </div>
+      </Div>
 
-      <div className="mt-6 p-4 bg-primary/5 rounded-lg">
-        <h4 className="font-medium mb-2">Connection Details</h4>
-        <div className="space-y-2 text-sm text-muted-foreground">
-          <div className="flex items-center justify-between">
-            <span>Project URL:</span>
-            <code className="bg-secondary px-2 py-1 rounded">your-project.supabase.co</code>
-          </div>
-          <div className="flex items-center justify-between">
-            <span>Region:</span>
-            <span>us-east-1</span>
-          </div>
-        </div>
-      </div>
+      <Div className="mt-6 p-4 bg-primary/5 rounded-lg">
+        <H4 className="font-medium mb-2">Connection Details</Div>
+        <Div className="space-y-2 text-sm text-muted-foreground">
+          <Div className="flex items-center justify-between">
+            <Span>Project URL:</Div>
+            <Code className="bg-secondary px-2 py-1 rounded">your-project.supabase.co</Code>
+          </Div>
+          <Div className="flex items-center justify-between">
+            <Span>Region:</Div>
+            <Span>us-east-1</Span>
+          </Div>
+        </Div>
+      </Div>
     </Card>
   );
 };

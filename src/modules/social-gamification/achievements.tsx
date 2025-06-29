@@ -119,84 +119,84 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
 
   if (loading) {
     return (
-      <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
-          <span className="ml-2 text-white/60">Loading achievements...</span>
-        </div>
-      </div>
+      <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+        <Div className="flex items-center justify-center h-64">
+          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></UserProfile>
+          <Span className="ml-2 text-white/60">Loading achievements...</Span>
+        </Div>
+      </Div>
     );
   }
 
   if (!userProfile) {
     return (
-      <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Failed to load user profile</p>
-      </div>
+      <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+        <P className="text-center text-white/60">Failed to load user profile</Div>
+      </Div>
     );
   }
 
   return (
-    <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+    <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
       {/* Header with user stats */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-3">
-            <img 
+      <Div className="mb-6">
+        <Div className="flex items-center justify-between mb-4">
+          <Div className="flex items-center space-x-3">
+            <Img 
               src={userProfile.avatar} 
               alt={userProfile.displayName}
               className="w-12 h-12 rounded-full border-2 border-white/20"
             />
-            <div>
-              <h2 className="text-xl font-bold text-white">{userProfile.displayName}</h2>
-              <p className="text-sm text-white/60">Level {userProfile.level}</p>
-            </div>
-          </div>
-          <div className="text-right">
-            <div className="text-lg font-bold text-blue-400">{userProfile.experience} XP</div>
-            <div className="text-xs text-white/60">
+            <Div>
+              <H2 className="text-xl font-bold text-white">{userProfile.displayName}</Div>
+              <P className="text-sm text-white/60">Level {userProfile.level}</P>
+            </Div>
+          </Div>
+          <Div className="text-right">
+            <Div className="text-lg font-bold text-blue-400">{userProfile.experience} XP</Div>
+            <Div className="text-xs text-white/60">
               {completionStats.completed}/{completionStats.total} achievements
-            </div>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
 
         {/* Progress bar */}
-        <div className="w-full bg-white/10 rounded-full h-2 mb-2">
+        <Div className="w-full bg-white/10 rounded-full h-2 mb-2">
           <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
             style={{ width: `${completionStats.percentage}%` }}
-        ></div>
-        </div>
-        <div className="text-xs text-white/60 text-center">
+      ></Div>
+        </Div>
+        <Div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
-        </div>
-      </div>
+        </Div>
+      </Div>
 
       {/* Streak indicators */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-orange-400">🔥</div>
-          <div className="text-sm text-white/80">{userProfile.streaks.currentTradingStreak}</div>
-          <div className="text-xs text-white/60">Trading Streak</div>
-        </div>
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-blue-400">📚</div>
-          <div className="text-sm text-white/80">{userProfile.streaks.currentLearningStreak}</div>
-          <div className="text-xs text-white/60">Learning Streak</div>
-        </div>
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-green-400">🎯</div>
-          <div className="text-sm text-white/80">{userProfile.stats.totalTrades}</div>
-          <div className="text-xs text-white/60">Total Trades</div>
-        </div>
-        <div className="p-3 bg-white/5 rounded-lg text-center">
-          <div className="text-lg font-bold text-purple-400">💎</div>
-          <div className="text-sm text-white/80">{userProfile.badges.length}</div>
-          <div className="text-xs text-white/60">Badges Earned</div>
-        </div>
-      </div>
+      <Div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <Div className="p-3 bg-white/5 rounded-lg text-center">
+          <Div className="text-lg font-bold text-orange-400">🔥</Div>
+          <Div className="text-sm text-white/80">{userProfile.streaks.currentTradingStreak}</Div>
+          <Div className="text-xs text-white/60">Trading Streak</Div>
+        </Div>
+        <Div className="p-3 bg-white/5 rounded-lg text-center">
+          <Div className="text-lg font-bold text-blue-400">📚</Div>
+          <Div className="text-sm text-white/80">{userProfile.streaks.currentLearningStreak}</Div>
+          <Div className="text-xs text-white/60">Learning Streak</Div>
+        </Div>
+        <Div className="p-3 bg-white/5 rounded-lg text-center">
+          <Div className="text-lg font-bold text-green-400">🎯</Div>
+          <Div className="text-sm text-white/80">{userProfile.stats.totalTrades}</Div>
+          <Div className="text-xs text-white/60">Total Trades</Div>
+        </Div>
+        <Div className="p-3 bg-white/5 rounded-lg text-center">
+          <Div className="text-lg font-bold text-purple-400">💎</Div>
+          <Div className="text-sm text-white/80">{userProfile.badges.length}</Div>
+          <Div className="text-xs text-white/60">Badges Earned</Div>
+        </Div>
+      </Div>
 
       {/* Category filters */}
-      <div className="flex flex-wrap gap-2 mb-6">
+      <Div className="flex flex-wrap gap-2 mb-6">
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
           <Button key={category}
             onClick={() => setSelectedCategory(category)}
@@ -209,30 +209,30 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
             `}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
-          </Button>
+          </Div>
         ))}
-      </div>
+      </Div>
 
       {/* Recent badges */}
       {userProfile.badges.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold text-white mb-3">Recent Badges</h3>
-          <div className="flex flex-wrap gap-2">
+        <Div className="mb-6">
+          <H3 className="text-lg font-semibold text-white mb-3">Recent Badges</Div>
+          <Div className="flex flex-wrap gap-2">
             {userProfile.badges.slice(0, 6).map((badge, index) => (
-              <div key={badge.id}
+              <Div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
                 title={badge.description}
               />
-                <span className="text-lg">{badge.icon}</span>
-                <span className="text-xs text-white/80">{badge.name}</span>
-              </div>
+                <Span className="text-lg">{badge.icon}</Div>
+                <Span className="text-xs text-white/80">{badge.name}</Span>
+              </Div>
             ))}
-          </div>
-        </div>
+          </Div>
+        </Div>
       )}
 
       {/* Achievements grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredAchievements.map((achievement) => {
           const isUnlocked = isAchievementUnlocked(achievement.id);
           const progress = getProgressPercentage(achievement.id);
@@ -246,61 +246,60 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
                 }
               `}
-            />
-              <div className="flex items-start space-x-3">
-                <div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
+            /></Div>
+              <Div className="flex items-start space-x-3">
+                <Div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
-                </div>
-                <div className="flex-1">
-                  <h4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}>
+                </Div>
+                <Div className="flex-1">
+                  <H4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}>
                     {achievement.name}
-                  </h4>
-                  <p className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
+                  </Div>
+                  <P className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
                     {achievement.description}
-                  </p>
+                  </P>
                   
                   {/* Progress bar for locked achievements */}
                   {!isUnlocked && progress > 0 && (
-                    <div className="mb-2">
-                      <div className="w-full bg-white/20 rounded-full h-1">
-                        <div 
-                          className="bg-blue-400 h-1 rounded-full transition-all duration-500"
+                    <Div className="mb-2">
+                      <Div className="w-full bg-white/20 rounded-full h-1">
+                        <Div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-                        ></div>
-                      </div>
-                      <div className="text-xs text-white/60 mt-1">{progress}% complete</div>
-                    </div>
+                       ></Div>
+                      </Div>
+                      <Div className="text-xs text-white/60 mt-1">{progress}% complete</Div>
+                    </Div>
                   )}
 
                   {/* Achievement rewards */}
-                  <div className="flex items-center justify-between text-xs">
-                    <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
+                  <Div className="flex items-center justify-between text-xs">
+                    <Span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       {achievement.difficulty.toUpperCase()}
-                    </span>
-                    <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
+                    </Div>
+                    <Span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       +{achievement.rewards.points} XP
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    </Span>
+                  </Div>
+                </Div>
+              </Div>
+            </Div>
           );
         })}
-      </div>
+      </Div>
 
       {/* Empty state */}
       {filteredAchievements.length === 0 && (
-        <div className="text-center py-8">
-          <div className="text-4xl mb-4">🎯</div>
-          <p className="text-white/60">No achievements found for this category</p>
-        </div>
+        <Div className="text-center py-8">
+          <Div className="text-4xl mb-4">🎯</Div>
+          <P className="text-white/60">No achievements found for this category</P>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 };
 
 // Mock data functions (TODO: replace with real API calls)
-const fetchUserProfile = async (userId: string): Promise<UserProfile> => {
+const fetchUserProfile = async (userId: string): Promise<UserProfile></UserProfile> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 500));
   
@@ -398,7 +397,7 @@ const fetchAllAchievements = async (): Promise<achievement[]> => {
   ];
 };
 
-const fetchUserAchievements = async (userId: string): Promise<UserAchievement[]> => {
+const fetchUserAchievements = async (userId: string): Promise<UserAchievement[]></UserAchievement> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 200));
   

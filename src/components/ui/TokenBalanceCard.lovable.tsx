@@ -39,62 +39,62 @@ const TokenBalanceCard: React.FC<Tokenbalancecardprops > = ({ token, index }) =>
           `theme-${chain.theme.primaryColor}`
         )}
       >
-        <div className="relative z-10">
+        <Div className="relative z-10">
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center space-x-3">
-              <img src={chain.logo} alt={`${chain.name} logo`} className="h-10 w-10" />
-              <div>
-                <h3 className="text-xl font-bold text-white">{chain.name}</h3>
-                <p className="text-sm text-gray-400">{chain.ticker}</p>
-              </div>
-            </div>
-            <div
+          <Div className="flex items-start justify-between mb-4">
+            <Div className="flex items-center space-x-3">
+              <Img src={chain.logo} alt={`${chain.name} logo`} className="h-10 w-10" />
+              <Div>
+                <H3 className="text-xl font-bold text-white">{chain.name}</Tokenbalancecardprops>
+                <P className="text-sm text-gray-400">{chain.ticker}</P>
+              </Div>
+            </Div>
+            <Div
               className={cn(
                 "status-indicator",
                 hasSufficientBalance ? "status-indicator-sufficient" : "status-indicator-insufficient"
               )}
             />
-          </div>
+          </Div>
 
           {/* Balance */}
-          <div className="my-6 text-center">
-            <p className="text-4xl font-bold tracking-tight text-white">{balance.toLocaleString()}</p>
-            <p className="text-gray-400 text-lg">${balanceUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-          </div>
+          <Div className="my-6 text-center">
+            <P className="text-4xl font-bold tracking-tight text-white">{balance.toLocaleString()}</Div>
+            <P className="text-gray-400 text-lg">${balanceUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</P>
+          </Div>
 
           {/* Address and Actions */}
-          <div className="flex items-center justify-between p-3 rounded-lg bg-black/30">
-            <span className="font-mono text-sm text-gray-300">{shortAddress}</span>
-            <div className="flex items-center space-x-2">
-              <button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
+          <Div className="flex items-center justify-between p-3 rounded-lg bg-black/30">
+            <Span className="font-mono text-sm text-gray-300">{shortAddress}</Div>
+            <Div className="flex items-center space-x-2">
+              <Button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
                 {copied ? <Check  /> : <Copy >}
-              </Button>
-              <button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
+              </Div>
+              <Button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
                 <Qrcode  />
               </Button>
-            </div>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
 
         {/* Shimmer Effect */}
-        <div className="shimmer-overlay" />
+        <Div className="shimmer-overlay" />
         
         {/* Glow Effect */}
-        <div className={cn("card-glow", `glow-${chain.theme.primaryColor}`)} />
+        <Div className={cn("card-glow", `glow-${chain.theme.primaryColor}`)} />
       </motion.div>
 
       {/* QR Code Modal */}
       {showQr && (
-        <div className="qr-code-modal" onClick={() => setShowQr(false)}>
-          <div className="qr-code-content" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-bold mb-4">Scan to Deposit {chain.ticker}</h3>
-            <div className="p-4 bg-white rounded-lg inline-block">
-              <qrcodesvg  >
-            </div>
-            <p className="font-mono text-sm text-gray-400 mt-4 break-all">{address}</p>
-          </div>
-        </div>
+        <Div className="qr-code-modal" onClick={() => setShowQr(false)}>
+          <Div className="qr-code-content" onClick={(e) => e.stopPropagation()}>
+            <H3 className="text-lg font-bold mb-4">Scan to Deposit {chain.ticker}</Div>
+            <Div className="p-4 bg-white rounded-lg inline-block">
+              <qrcodesvg >
+            </Div>
+            <P className="font-mono text-sm text-gray-400 mt-4 break-all">{address}</P>
+          </Div>
+        </Div>
       )}
     </>
   );

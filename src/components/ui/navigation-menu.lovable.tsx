@@ -36,7 +36,7 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <Navigationmenuprimitive  />
     {children}{" "}
-    <chevrondown hidden="true" >
+    <chevrondown hidden="true">
   </NavigationMenuPrimitive.Trigger>
 ))
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
@@ -45,7 +45,7 @@ const NavigationMenuContent = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
 >(({ className, ...props }, ref) => (
-  <navigationmenuprimitive  >
+  <navigationmenuprimitive >
 ))
 NavigationMenuContent.displayName = NavigationMenuPrimitive.Content.displayName
 
@@ -55,9 +55,9 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <div className={cn("absolute left-0 top-full flex justify-center")}>
-    <navigationmenuprimitive  >
-  </div>
+  <Div className={cn("absolute left-0 top-full flex justify-center")}>
+    <navigationmenuprimitive >
+  </Navigationmenuprimitive>
 ))
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName
@@ -66,8 +66,8 @@ const NavigationMenuIndicator = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>
 >(({ className, ...props }, ref) => (
-  <navigationmenuprimitive  >
-    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
+  <navigationmenuprimitive >
+    <Div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
   </NavigationMenuPrimitive.Indicator>
 ))
 NavigationMenuIndicator.displayName =

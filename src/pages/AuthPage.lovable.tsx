@@ -13,11 +13,11 @@ export default function AuthPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="w-full">
-                <Authform>
-            </div>
-        </div>
+        <Div className="min-h-screen flex items-center justify-center p-4">
+            <Div className="w-full">
+                <Authform></Div>
+            </Div>
+        </Div>
     );
 } 
 

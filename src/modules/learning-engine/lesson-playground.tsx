@@ -69,52 +69,52 @@ export const lovable = {
   const progress = ((currentStep + 1) / lesson.steps.length) * 100;
 
   return (
-    <Card className="theme-card p-6">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
-        <div className="flex items-center gap-4">
+    <Card className="theme-card p-6" />
+      <Div className="mb-6">
+        <H2 className="text-2xl font-bold mb-2">{lesson.title}</LessonPlaygroundProps>
+        <Div className="flex items-center gap-4">
           <progress value={progress} className="flex-1" />
-          <span className="text-sm text-muted-foreground">
+          <Span className="text-sm text-muted-foreground">
             Step {currentStep + 1} of {lesson.steps.length}
-          </span>
-        </div>
-      </div>
+          </Div>
+        </Div>
+      </Div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div>
-          <h3 className="font-semibold mb-3 flex items-center gap-2">
+      <Div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Div>
+          <H3 className="font-semibold mb-3 flex items-center gap-2">
             <HelpCircle className="h-4 w-4" />
             {lesson.steps[currentStep].instruction}
-          </h3>
+          </Div>
           
-          <div className="space-y-4">
-            <div>
-              <label className="text-sm text-muted-foreground">Your Code:</label>
-              <textarea
+          <Div className="space-y-4">
+            <Div>
+              <Label className="text-sm text-muted-foreground">Your Code:</Div>
+              <Textarea
                 className="w-full h-32 p-3 mt-1 bg-secondary/20 rounded-lg font-mono text-sm"
                 value={userCode || lesson.steps[currentStep].starter}
                 onChange={(e) => setUserCode(e.target.value)}
               />
-            </div>
+            </Textarea>
 
-            <div className="flex gap-2">
-              <button onClick={runTests} disabled={isRunning} className="flex-1">
+            <Div className="flex gap-2">
+              <Button onClick={runTests} disabled={isRunning} className="flex-1">
                 <play className="h-4 w-4 mr-2" />
                 {isRunning ? 'Running...' : 'Run Tests'}
-              </Button>
-              <Button variant="outline" onClick={() => setUserCode('')}>
+              </Div>
+              <Button variant="outline" onClick={() = /> setUserCode('')}>
                 <RotateCcw className="h-4 w-4 mr-2" />
                 Reset
               </Button>
-            </div>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
 
-        <div>
-          <h3 className="font-semibold mb-3">Test Results</h3>
+        <Div>
+          <H3 className="font-semibold mb-3">Test Results</Div>
           
           {testResults.length > 0 ? (
-            <div className="space-y-2">
+            <Div className="space-y-2">
               {testResults.map((result, i) => (
                 <Div key={i}
                   className={`p-3 rounded-lg flex items-center gap-2 ${
@@ -122,36 +122,36 @@ export const lovable = {
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-              >
+            >
                   {result.passed ? (
                     <CheckCircle className="h-4 w-4" />
                   ) : (
-                    <XCircle className="h-4 w-4" />
+                    <XCircle className="h-4 w-4" /></Div>
                   )}
-                  <span className="text-sm">{result.name}</span>
-                </div>
+                  <Span className="text-sm">{result.name}</Span>
+                </Div>
               ))}
               
               {testResults.every(r => r.passed) && (
-                <button onClick={nextStep} className="w-full mt-4">
+                <Button onClick={nextStep} className="w-full mt-4">
                   Continue to Next Step
                 </Button>
               )}
-            </div>
+            </Div>
           ) : (
-            <div className="p-8 text-center text-muted-foreground">
-              <p>Run your code to see test results</p>
-            </div>
+            <Div className="p-8 text-center text-muted-foreground">
+              <P>Run your code to see test results</Div>
+            </Div>
           )}
 
-          <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2">Hint</h4>
-            <p className="text-sm text-muted-foreground">
+          <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
+            <H4 className="font-medium mb-2">Hint</Div>
+            <P className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
-            </p>
-          </div>
-        </div>
-      </div>
+            </P>
+          </Div>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

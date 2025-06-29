@@ -50,45 +50,45 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
       animate={{ opacity: 1, y: 0 }}
       className="glass-container p-6 rounded-lg max-w-2xl mx-auto"
     >
-      <h2 className="text-2xl font-bold mb-4 text-center">Payment Verification</h2>
-      <p className="text-gray-400 mb-6 text-center">
+      <H2 className="text-2xl font-bold mb-4 text-center">Payment Verification</H2>
+      <P className="text-gray-400 mb-6 text-center">
         Send your payment to one of the addresses below to activate your account.
-      </p>
+      </P>
 
       <tabs  style={{ width: "100%" }}>
-        <tabslist  style={{ display: "grid" }}>
+        <Tabslist  style={{ display: "grid" }}>
           <Tabstrigger value="eth">
             ETH
-          </Tabstrigger>
+          </Tabslist>
           <Tabstrigger value="usdt" />
             USDT
           </Tabstrigger>
-          <Tabstrigger value="btc" >
+          <Tabstrigger value="btc">
             BTC
           </Tabstrigger>
         </TabsList>
 
         {Object.entries(wallets).map(([key, wallet]) => (
           <Tabscontent >
-            <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
-              <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
-              <div className="flex items-center">
-                <Input  />
-                <Button variant="ghost" size="icon" > handleCopy(wallet.address, key)}
+            <Div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
+              <H3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</Tabscontent>
+              <Div className="flex items-center">
+                <Input  /></Div>
+                <Button variant="ghost" size="icon"> handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <check  > : <copy  >}
+                  {copied === key ? <check > : <copy >}
                 </Button>
-              </div>
-            </div>
+              </Div>
+            </Div>
             
-            <div className="text-center mt-6">
-              <p className="text-sm text-gray-400 mb-4">
+            <Div className="text-center mt-6">
+              <P className="text-sm text-gray-400 mb-4">
                 After sending payment, click the button below to continue.
-              </p>
+              </Div>
               <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
                 I've Sent the Payment
               </Button>
-            </div>
+            </Div>
           </TabsContent>
         ))}
       </Tabs>

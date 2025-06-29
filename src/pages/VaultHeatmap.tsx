@@ -45,91 +45,91 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
   };
 
   return (
-    <Link to={`/vault/${strategy.id}`} className="block">
-      <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 backdrop-blur-sm group h-full">
+    <Link to={`/vault/${strategy.id}`} className="block" />
+      <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 backdrop-blur-sm group h-full" />
         <CardHeader>
-          <div className="flex justify-between items-start mb-2">
-            <div className="flex-1">
-              <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors">
+          <Div className="flex justify-between items-start mb-2">
+            <Div className="flex-1">
+              <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors" />
                 {strategy.name}
-              </CardTitle>
-              <CardDescription className="text-gray-400 line-clamp-2 mt-1">
+              </Link>
+              <CardDescription className="text-gray-400 line-clamp-2 mt-1" />
                 {strategy.description}
               </CardDescription>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap">
-            <Badge variant="secondary">{strategy.category}</Badge>
-            <Badge className={getRiskColor(strategy.riskLevel)}>
+            </Div>
+          </Div>
+          <Div className="flex items-center gap-2 flex-wrap">
+            <Badge variant="secondary" />{strategy.category}</Div>
+            <Badge className={getRiskColor(strategy.riskLevel)} />
               {strategy.riskLevel}
             </Badge>
             {strategy.author.verified && (
-              <Badge variant="outline" className="border-blue-500/50 text-blue-400">
+              <Badge variant="outline" className="border-blue-500/50 text-blue-400" />
                 <Shield className="w-3 h-3 mr-1" />
                 Verified
               </Badge>
             )}
-          </div>
+          </Div>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div>
-              <p className="text-xs text-gray-400">Total Return</p>
-              <p className="text-xl font-bold text-green-400">
+          <Div className="grid grid-cols-2 gap-4 mb-4">
+            <Div>
+              <P className="text-xs text-gray-400">Total Return</CardContent>
+              <P className="text-xl font-bold text-green-400">
                 +{strategy.performance.totalReturn}%
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400">Win Rate</p>
-              <p className="text-xl font-bold text-white">
+              </P>
+            </Div>
+            <Div>
+              <P className="text-xs text-gray-400">Win Rate</Div>
+              <P className="text-xl font-bold text-white">
                 {strategy.performance.winRate}%
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400">Sharpe Ratio</p>
-              <p className="text-lg font-semibold text-white">
+              </P>
+            </Div>
+            <Div>
+              <P className="text-xs text-gray-400">Sharpe Ratio</Div>
+              <P className="text-lg font-semibold text-white">
                 {strategy.performance.sharpeRatio}
-              </p>
-            </div>
-            <div>
-              <p className="text-xs text-gray-400">Max Drawdown</p>
-              <p className="text-lg font-semibold text-red-400">
+              </P>
+            </Div>
+            <Div>
+              <P className="text-xs text-gray-400">Max Drawdown</Div>
+              <P className="text-lg font-semibold text-red-400">
                 -{strategy.performance.maxDrawdown}%
-              </p>
-            </div>
-          </div>
+              </P>
+            </Div>
+          </Div>
           
-          <div className="flex items-center justify-between text-sm text-gray-400">
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1">
+          <Div className="flex items-center justify-between text-sm text-gray-400">
+            <Div className="flex items-center gap-4">
+              <Span className="flex items-center gap-1">
                 <Star className="w-4 h-4 text-yellow-400" />
                 {(strategy.stars / 1000).toFixed(1)}k
-              </span>
-              <span className="flex items-center gap-1">
+              </Div>
+              <Span className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
                 {strategy.users}
-              </span>
-            </div>
-            <span className="flex items-center gap-1">
+              </Span>
+            </Div>
+            <Span className="flex items-center gap-1">
               <Clock className="w-4 h-4" />
               {strategy.timeframe}
-            </span>
-          </div>
+            </Span>
+          </Div>
           
-          <div className="mt-3 pt-3 border-t border-white/10">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold text-white">
+          <Div className="mt-3 pt-3 border-t border-white/10">
+            <Div className="flex items-center justify-between">
+              <Div className="flex items-center gap-2">
+                <Div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold text-white">
                   {strategy.author.name.charAt(0)}
-                </div>
-                <span className="text-sm text-gray-400">{strategy.author.name}</span>
-              </div>
-              <Badge variant="outline" className="text-xs">
+                </Div>
+                <Span className="text-sm text-gray-400">{strategy.author.name}</Span>
+              </Div>
+              <Badge variant="outline" className="text-xs" />
                 <DollarSign className="w-3 h-3 mr-1" />
                 {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
-            </div>
-          </div>
+            </Div>
+          </Div>
         </CardContent>
       </Card>
     </Link>
@@ -181,180 +181,180 @@ export default function VaultPage() {
   }, [filteredStrategies]);
 
   return (
-    <div>
+    <Div>
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+      <Div className="flex justify-between items-center mb-8">
+        <Div>
+          <H1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <Span className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
               <GitCommit className="text-white" />
-            </span>
+            </Div>
             Strategy Vault
-          </h1>
-          <p className="text-gray-400 mt-1">
+          </H1>
+          <P className="text-gray-400 mt-1">
             Discover and analyze {comprehensiveStrategies.length}+ professional trading strategies
-          </p>
-        </div>
-      </div>
+          </P>
+        </Div>
+      </Div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-400">Avg Return</p>
-                <p className="text-2xl font-bold text-green-400">
+      <Div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <Card className="bg-white/5 border-white/10" />
+          <CardContent className="p-6" />
+            <Div className="flex items-center justify-between">
+              <Div>
+                <P className="text-sm text-gray-400">Avg Return</Div>
+                <P className="text-2xl font-bold text-green-400">
                   +{stats.avgReturn.toFixed(1)}%
-                </p>
-              </div>
+                </P>
+              </Div>
               <TrendingUp className="w-8 h-8 text-green-400/20" />
-            </div>
+            </TrendingUp>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-400">Avg Sharpe</p>
-                <p className="text-2xl font-bold text-blue-400">
+        <Card className="bg-white/5 border-white/10" />
+          <CardContent className="p-6" />
+            <Div className="flex items-center justify-between">
+              <Div>
+                <P className="text-sm text-gray-400">Avg Sharpe</Card>
+                <P className="text-2xl font-bold text-blue-400">
                   {stats.avgSharpe.toFixed(2)}
-                </p>
-              </div>
+                </P>
+              </Div>
               <BarChart3 className="w-8 h-8 text-blue-400/20" />
-            </div>
+            </BarChart3>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-400">Total Users</p>
-                <p className="text-2xl font-bold text-purple-400">
+        <Card className="bg-white/5 border-white/10" />
+          <CardContent className="p-6" />
+            <Div className="flex items-center justify-between">
+              <Div>
+                <P className="text-sm text-gray-400">Total Users</Card>
+                <P className="text-2xl font-bold text-purple-400">
                   {(stats.totalUsers / 1000).toFixed(1)}k
-                </p>
-              </div>
+                </P>
+              </Div>
               <Users className="w-8 h-8 text-purple-400/20" />
-            </div>
+            </Users>
           </CardContent>
         </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-400">Avg Win Rate</p>
-                <p className="text-2xl font-bold text-yellow-400">
+        <Card className="bg-white/5 border-white/10" />
+          <CardContent className="p-6" />
+            <Div className="flex items-center justify-between">
+              <Div>
+                <P className="text-sm text-gray-400">Avg Win Rate</Card>
+                <P className="text-2xl font-bold text-yellow-400">
                   {stats.avgWinRate.toFixed(1)}%
-                </p>
-              </div>
+                </P>
+              </Div>
               <Star className="w-8 h-8 text-yellow-400/20" />
-            </div>
+            </Star>
           </CardContent>
         </Card>
-      </div>
+      </Div>
 
       {/* Filters and Search */}
-      <div className="space-y-4 mb-8">
-        <div className="flex flex-col lg:flex-row gap-4">
-          <div className="flex-1">
-            <div className="relative">
+      <Div className="space-y-4 mb-8">
+        <Div className="flex flex-col lg:flex-row gap-4">
+          <Div className="flex-1">
+            <Div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-              <input placeholder="Search strategies, tags, or descriptions..."
+              <Input placeholder="Search strategies, tags, or descriptions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 bg-white/5 border-white/10 text-white"
               />
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+            </Div>
+          </Div>
+          <Div className="flex gap-2">
+            <Select value={selectedCategory} onValueChange={setSelectedCategory} />
+              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
                 <SelectValue placeholder="Category" />
-              </SelectTrigger>
+              </Div>
               <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
+                <SelectItem value="all" />All Categories</SelectContent>
                 {strategyCategories.map(category => (
-                  <SelectItem key={category} value={category}>{category}</SelectItem>
+                  <SelectItem key={category} value={category} />{category}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
             
-            <Select value={selectedRisk} onValueChange={setSelectedRisk}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+            <Select value={selectedRisk} onValueChange={setSelectedRisk} />
+              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
                 <SelectValue placeholder="Risk Level" />
-              </SelectTrigger>
+              </Select>
               <SelectContent>
-                <SelectItem value="all">All Risk Levels</SelectItem>
+                <SelectItem value="all" />All Risk Levels</SelectContent>
                 {riskLevels.map(risk => (
-                  <SelectItem key={risk} value={risk}>{risk}</SelectItem>
+                  <SelectItem key={risk} value={risk} />{risk}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
             
-            <Select value={selectedMarket} onValueChange={setSelectedMarket}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+            <Select value={selectedMarket} onValueChange={setSelectedMarket} />
+              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
                 <SelectValue placeholder="Market" />
-              </SelectTrigger>
+              </Select>
               <SelectContent>
-                <SelectItem value="all">All Markets</SelectItem>
+                <SelectItem value="all" />All Markets</SelectContent>
                 {marketTypes.map(market => (
-                  <SelectItem key={market} value={market}>{market}</SelectItem>
+                  <SelectItem key={market} value={market} />{market}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
             
-            <Select value={sortBy} onValueChange={(value) => setSortBy(value as typeof sortBy)}>
-              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
+            <Select value={sortBy} onValueChange={(value) = /> setSortBy(value as typeof sortBy)}>
+              <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white" />
                 <SelectValue placeholder="Sort By" />
-              </SelectTrigger>
+              </Select>
               <SelectContent>
-                <SelectItem value="returns">Returns</SelectItem>
-                <SelectItem value="sharpe">Sharpe Ratio</SelectItem>
-                <SelectItem value="drawdown">Max Drawdown</SelectItem>
-                <SelectItem value="winRate">Win Rate</SelectItem>
-                <SelectItem value="users">Users</SelectItem>
-                <SelectItem value="stars">Stars</SelectItem>
+                <SelectItem value="returns" />Returns</SelectContent>
+                <SelectItem value="sharpe" />Sharpe Ratio</SelectItem>
+                <SelectItem value="drawdown" />Max Drawdown</SelectItem>
+                <SelectItem value="winRate" />Win Rate</SelectItem>
+                <SelectItem value="users" />Users</SelectItem>
+                <SelectItem value="stars" />Stars</SelectItem>
               </SelectContent>
             </Select>
             
             <Button variant="outline"
               size="icon"
-              onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+              onClick={() = /> setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
               className="border-white/10"
             >
               {sortOrder === 'asc' ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
             </Button>
-          </div>
-        </div>
+          </Div>
+        </Div>
         
-        <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-400">
+        <Div className="flex items-center justify-between">
+          <P className="text-sm text-gray-400">
             Showing {filteredStrategies.length} of {comprehensiveStrategies.length} strategies
-          </p>
-          <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as 'grid' | 'list')}>
+          </Div>
+          <Tabs value={viewMode} onValueChange={(v) = /> setViewMode(v as 'grid' | 'list')}>
             <TabsList>
-              <TabsTrigger value="grid">Grid</TabsTrigger>
-              <TabsTrigger value="list">List</TabsTrigger>
+              <TabsTrigger value="grid" />Grid</Tabs>
+              <TabsTrigger value="list" />List</TabsTrigger>
             </TabsList>
           </Tabs>
-        </div>
-      </div>
+        </Div>
+      </Div>
 
       {/* Strategies Grid */}
-      <div className={viewMode === 'grid' 
+      <Div className={viewMode === 'grid' 
         ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
         : "space-y-4"
       }>
         {filteredStrategies.map(strategy => (
           <StrategyCard key={strategy.id} strategy={strategy} />
         ))}
-      </div>
+      </Div>
       
       {filteredStrategies.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-400">No strategies found matching your criteria.</p>
+        <Div className="text-center py-12">
+          <P className="text-gray-400">No strategies found matching your criteria.</Div>
           <Button variant="ghost" 
-            onClick={() => {
+            onClick={() = /> {
               setSearchTerm('');
               setSelectedCategory('all');
               setSelectedRisk('all');
@@ -364,9 +364,9 @@ export default function VaultPage() {
           >
             Reset Filters
           </Button>
-        </div>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 }
 

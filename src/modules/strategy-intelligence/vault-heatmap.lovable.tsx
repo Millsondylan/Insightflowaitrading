@@ -135,15 +135,15 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center h-64">Loading heatmap data...</div>;
+    return <Div className="flex justify-center items-center h-64">Loading heatmap data...</Vaultheatmapprops>;
   }
 
   if (error) {
-    return <div className="text-red-500 p-4">Error: {error}</div>;
+    return <Div className="text-red-500 p-4">Error: {error}</Div>;
   }
 
   if (!heatmapData || !heatmapData.data.length) {
-    return <div className="p-4">No heatmap data available for this strategy.</div>;
+    return <Div className="p-4">No heatmap data available for this strategy.</Div>;
   }
 
   // Mock strategies for heatmap visualization
@@ -211,44 +211,42 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
   }
 
   return (
-    <card  style={{ width: "100%" }}>
-      <Cardheader  />
-        <cardtitle  style={{ color: "white" }}>Strategy Performance Heatmap</CardTitle>
+    <Card  style={{ width: "100%" }}>
+      <Cardheader  /></Card>
+        <Cardtitle  style={{ color: "white" }}>Strategy Performance Heatmap</Cardtitle>
       </CardHeader>
-      <cardcontent  >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <Cardcontent >
+        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {strategies.map((strategy) => (
-            <div 
-              key={strategy.id} 
+            <Div key={strategy.id} 
               className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
-            >
-              <h3 className="text-lg font-bold">{strategy.name}</h3>
-              <div className="text-xs text-gray-300 mb-2">{strategy.description}</div>
-              <div className="mt-2">
-                <div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</div>
-                <div>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</div>
-                <div>Total Return: {strategy.performance.totalReturn}</div>
-                <div>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</div>
-                <div>Sharpe Ratio: {strategy.performance.sharpeRatio.toFixed(2)}</div>
-              </div>
-              <div className="mt-2 flex space-x-2">
+           >
+              <H3 className="text-lg font-bold">{strategy.name}</Cardcontent>
+              <Div className="text-xs text-gray-300 mb-2">{strategy.description}</Div>
+              <Div className="mt-2">
+                <Div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</Div>
+                <Div>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</Div>
+                <Div>Total Return: {strategy.performance.totalReturn}</Div>
+                <Div>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</Div>
+                <Div>Sharpe Ratio: {strategy.performance.sharpeRatio.toFixed(2)}</Div>
+              </Div>
+              <Div className="mt-2 flex space-x-2">
                 {strategy.tags?.map((tag) => (
-                  <span 
-                    key={tag} 
+                  <Span key={tag} 
                     className="px-2 py-1 bg-black/30 rounded-full text-xs"
-                  >
+                 >
                     {tag}
-                  </span>
+                  </Div>
                 ))}
-              </div>
-              <div className="mt-2 text-xs text-gray-400">
-                <div>Author: {strategy.author}</div>
-                <div>Version: {strategy.version}</div>
-                <div>Created: {strategy.createdAt?.toLocaleDateString()}</div>
-              </div>
-            </div>
+              </Div>
+              <Div className="mt-2 text-xs text-gray-400">
+                <Div>Author: {strategy.author}</Div>
+                <Div>Version: {strategy.version}</Div>
+                <Div>Created: {strategy.createdAt?.toLocaleDateString()}</Div>
+              </Div>
+            </Div>
           ))}
-        </div>
+        </Div>
       </CardContent>
     </Card>
   );

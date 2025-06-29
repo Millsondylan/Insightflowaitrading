@@ -1,8 +1,8 @@
 import Ajv, { ValidateFunction, Options } from 'ajv';
 // Lazy-load ajv-formats to avoid type error if not installed yet
-let addFormatsFn: any;
+let addFormatsFn: any // eslint-disable-line @typescript-eslint/no-explicit-any;
 try {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
+   
   addFormatsFn = require('ajv-formats');
 } catch {
   // no-op in case dependency missing; formats not critical

@@ -77,35 +77,35 @@ const AIReflection: React.FC<aIReflectionProps> = ({
   // Loading state
   if (loading) {
     return (
-      <Card className={cn('ai-reflection-card border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-purple-900/10', className)}>
-        <CardHeader className="pb-3">
-          <div className="flex items-center space-x-2">
+      <Card className={cn('ai-reflection-card border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-purple-900/10', className)} />
+        <CardHeader className="pb-3" />
+          <Div className="flex items-center space-x-2">
             <brain className="h-5 w-5 text-blue-400 animate-pulse" />
-            <CardTitle className="text-lg">AI Analysis</CardTitle>
-            <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </div>
-          </div>
+            <CardTitle className="text-lg" />AI Analysis</Card>
+            <Div className="flex space-x-1">
+              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
+            </Div>
+          </Div>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
+        <CardContent className="space-y-4" />
+          <Div className="space-y-2">
             <Skeleton className="h-4 w-full bg-gray-700/50" />
             <Skeleton className="h-4 w-4/5 bg-gray-700/50" />
             <Skeleton className="h-4 w-3/4 bg-gray-700/50" />
-          </div>
-          <div className="space-y-2">
+          </CardContent>
+          <Div className="space-y-2">
             <Skeleton className="h-6 w-20 bg-gray-700/50" />
-            <div className="flex gap-2">
+            <Div className="flex gap-2">
               <Skeleton className="h-6 w-16 rounded-full bg-gray-700/50" />
               <Skeleton className="h-6 w-20 rounded-full bg-gray-700/50" />
-            </div>
-          </div>
-          <div className="space-y-2">
+            </Div>
+          </Div>
+          <Div className="space-y-2">
             <Skeleton className="h-4 w-full bg-gray-700/50" />
             <Skeleton className="h-4 w-5/6 bg-gray-700/50" />
-          </div>
+          </Div>
         </CardContent>
       </Card>
     );
@@ -114,22 +114,22 @@ const AIReflection: React.FC<aIReflectionProps> = ({
   // Error state
   if (error && !reflection) {
     return (
-      <Card className={cn('ai-reflection-card border-red-500/30 bg-gradient-to-br from-red-900/10 to-orange-900/10', className)}>
-        <CardHeader className="pb-3">
-          <div className="flex items-center space-x-2">
+      <Card className={cn('ai-reflection-card border-red-500/30 bg-gradient-to-br from-red-900/10 to-orange-900/10', className)} />
+        <CardHeader className="pb-3" />
+          <Div className="flex items-center space-x-2">
             <brain className="h-5 w-5 text-red-400" />
-            <CardTitle className="text-lg">AI Analysis</CardTitle>
-          </div>
+            <CardTitle className="text-lg" />AI Analysis</Card>
+          </Div>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="text-red-400 text-sm">
+        <CardContent className="space-y-4" />
+          <Div className="text-red-400 text-sm">
             {error}
-          </div>
+          </CardContent>
           <Button onClick={generateReflection}
             variant="outline"
             size="sm"
             className="border-red-500/30 hover:bg-red-500/10"
-         >
+       >
             Try Again
           </Button>
         </CardContent>
@@ -140,20 +140,20 @@ const AIReflection: React.FC<aIReflectionProps> = ({
   // Not generated state
   if (!reflection && !hasGenerated) {
     return (
-      <Card className={cn('ai-reflection-card border-gray-500/30 bg-gradient-to-br from-gray-900/10 to-slate-900/10', className)}>
-        <CardHeader className="pb-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+      <Card className={cn('ai-reflection-card border-gray-500/30 bg-gradient-to-br from-gray-900/10 to-slate-900/10', className)} />
+        <CardHeader className="pb-3" />
+          <Div className="flex items-center justify-between">
+            <Div className="flex items-center space-x-2">
               <brain className="h-5 w-5 text-gray-400" />
-              <CardTitle className="text-lg">AI Analysis</CardTitle>
-            </div>
+              <CardTitle className="text-lg" />AI Analysis</Card>
+            </Div>
             <Sparkles className="h-4 w-4 text-gray-400" />
-          </div>
+          </Sparkles>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <p className="text-gray-400 text-sm">
+        <CardContent className="space-y-4" />
+          <P className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
-          </p>
+          </CardContent>
           <Button onClick={generateReflection}
             className="w-full bg-blue-600 hover:bg-blue-700"
             disabled={loading}
@@ -168,72 +168,72 @@ const AIReflection: React.FC<aIReflectionProps> = ({
 
   // Generated state
   return (
-    <Card className={cn('ai-reflection-card border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-purple-900/10 animate-fade-in-up', className)}>
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+    <Card className={cn('ai-reflection-card border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-purple-900/10 animate-fade-in-up', className)} />
+      <CardHeader className="pb-3" />
+        <Div className="flex items-center justify-between">
+          <Div className="flex items-center space-x-2">
             <brain className="h-5 w-5 text-blue-400" />
-            <CardTitle className="text-lg">AI Analysis</CardTitle>
-          </div>
-          <div className="flex items-center space-x-2">
-            <span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
+            <CardTitle className="text-lg" />AI Analysis</Card>
+          </Div>
+          <Div className="flex items-center space-x-2">
+            <Span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
               {getConfidenceText(reflection!.confidence)}
-            </span>
-            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
-          </div>
-        </div>
+            </Div>
+            <Div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
+          </Div>
+        </Div>
       </CardHeader>
       
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-6" />
         {/* Summary Section */}
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 mb-2">
+        <Div className="space-y-2">
+          <Div className="flex items-center space-x-2 mb-2">
             <Target className="h-4 w-4 text-blue-400" />
-            <h4 className="text-sm font-medium text-blue-400">Summary</h4>
-          </div>
-          <p className="text-gray-300 leading-relaxed">
+            <H4 className="text-sm font-medium text-blue-400">Summary</CardContent>
+          </Div>
+          <P className="text-gray-300 leading-relaxed">
             {reflection!.summary}
-          </p>
-        </div>
+          </P>
+        </Div>
 
         {/* Behavior Tags Section */}
         {reflection!.tags && reflection!.tags.length > 0 && (
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
-              <h4 className="text-sm font-medium text-purple-400">Behavioral Patterns</h4>
-            </div>
+          <Div className="space-y-3">
+            <Div className="flex items-center space-x-2">
+              <Div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
+              <H4 className="text-sm font-medium text-purple-400">Behavioral Patterns</Div>
+            </Div>
             <behaviorTagGroup 
               tags={reflection!.tags} 
               animated={true}
               className="ai-reflection-tags"
             />
-          </div>
+          </Div>
         )}
 
         {/* Suggestion Section */}
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 mb-2">
+        <Div className="space-y-2">
+          <Div className="flex items-center space-x-2 mb-2">
             <lightbulb className="h-4 w-4 text-yellow-400" />
-            <h4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</h4>
-          </div>
-          <p className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
+            <H4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</Div>
+          </Div>
+          <P className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
             {reflection!.suggestion}
-          </p>
-        </div>
+          </P>
+        </Div>
 
         {/* Regenerate Button */}
-        <div className="pt-2 border-t border-gray-700/50">
-          <Button  onClick={generateReflection}
+        <Div className="pt-2 border-t border-gray-700/50">
+          <Button onClick={generateReflection}
             variant="ghost"
             size="sm"
             className="text-gray-400 hover:text-white"
             disabled={loading}
-          >
+        >
             <brain className="h-3 w-3 mr-2" />
             Regenerate Analysis
-          </Button>
-        </div>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   );

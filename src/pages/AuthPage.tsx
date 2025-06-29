@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AuthForm from '@/components/auth/AuthForm';
+import { Helmet } from 'react-helmet';
 
 export default function AuthPage() {
     const location = useLocation();
@@ -13,11 +14,15 @@ export default function AuthPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-            <div className="w-full">
-                <authForm onSuccess={handleSuccess} />
-            </div>
-        </div>
+        <Div className="min-h-screen flex items-center justify-center p-4">
+            <Helmet>
+                <title>Sign In | InsightFlow AI Trading</title>
+                <meta name="description" content="Sign in to your InsightFlow AI Trading account to access advanced trading tools and analytics." />
+            </Div>
+            <Div className="w-full">
+                <AuthForm onSuccess={handleSuccess} /></Div>
+            </Div>
+        </Div>
     );
 }
 

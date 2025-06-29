@@ -298,99 +298,99 @@ export const LiveEventRoom: React.FC<liveEventRoomProps> = ({
   
   if (loading) {
     return (
-      <div className="p-12 text-center">
-        <div className="text-xl font-semibold mb-2">Joining event...</div>
-        <div className="text-text-muted">Please wait while we connect you to the live event</div>
-      </div>
+      <Div className="p-12 text-center">
+        <Div className="text-xl font-semibold mb-2">Joining event...</EventDetails>
+        <Div className="text-text-muted">Please wait while we connect you to the live event</Div>
+      </Div>
     );
   }
   
   if (error || !event) {
     return (
-      <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
+      <Div className="p-6 bg-status-error/20 text-status-error rounded-lg">
         {error || 'Failed to join the event. Please try again.'}
-      </div>
+      </Div>
     );
   }
   
   return (
-    <div className="live-event-room h-full flex flex-col">
+    <Div className="live-event-room h-full flex flex-col">
       {/* Event Header */}
-      <div className="p-4 bg-background-secondary border-b border-border-primary">
-        <div className="flex justify-between items-start">
-          <div>
-            <h2 className="text-xl font-bold">{event.title}</h2>
-            <div className="flex items-center mt-1">
-              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-status-success/20 text-status-success">
-                <span className="w-2 h-2 rounded-full bg-status-success mr-1"></span>
+      <Div className="p-4 bg-background-secondary border-b border-border-primary">
+        <Div className="flex justify-between items-start">
+          <Div>
+            <H2 className="text-xl font-bold">{event.title}</Div>
+            <Div className="flex items-center mt-1">
+              <Span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-status-success/20 text-status-success">
+                <Span className="w-2 h-2 rounded-full bg-status-success mr-1"></Div>
                 Live
-              </span>
-              <span className="ml-2 text-sm text-text-muted">
+              </Span>
+              <Span className="ml-2 text-sm text-text-muted">
                 {participants.length} participants
-              </span>
-              <span className="ml-2 text-sm text-text-muted">
+              </Span>
+              <Span className="ml-2 text-sm text-text-muted">
                 Host: {event.hostName}
-              </span>
-            </div>
-          </div>
+              </Span>
+            </Div>
+          </Div>
           
           <Button className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}
-        >
+      >
             Leave Event
           </Button>
-        </div>
+        </Div>
         
         {event.description && (
-          <p className="mt-2 text-sm text-text-muted">{event.description}</p>
+          <P className="mt-2 text-sm text-text-muted">{event.description}</P>
         )}
-      </div>
+      </Div>
       
       {/* Main Content Area */}
-      <div className="flex-1 flex overflow-hidden">
+      <Div className="flex-1 flex overflow-hidden">
         {/* Chat Area */}
-        <div className="flex-1 flex flex-col bg-background-primary">
+        <Div className="flex-1 flex flex-col bg-background-primary">
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4">
-            <div className="space-y-3">
+          <Div className="flex-1 overflow-y-auto p-4">
+            <Div className="space-y-3">
               {messages.map(message => (
-                <div key={message.id} className={`max-w-3xl ${message.userId === userId ? 'ml-auto' : ''}`}>
+                <Div key={message.id} className={`max-w-3xl ${message.userId === userId ? 'ml-auto' : ''}`}>
                   {message.type === 'system' ? (
-                    <div className="py-1 px-3 text-xs text-text-muted bg-background-tertiary rounded-md inline-block">
+                    <Div className="py-1 px-3 text-xs text-text-muted bg-background-tertiary rounded-md inline-block">
                       {message.content}
-                    </div>
+                    </Div>
                   ) : (
-                    <div className={`p-3 rounded-lg ${
+                    <Div className={`p-3 rounded-lg ${
                       message.userId === userId
                         ? 'bg-brand-primary/20 text-text-primary'
                         : message.userId === 'host-123'
                           ? 'bg-brand-secondary/20 text-text-primary'
                           : 'bg-background-secondary text-text-primary'
                     }`}>
-                      <div className="flex justify-between items-center mb-1">
-                        <span className={`text-sm font-medium ${
+                      <Div className="flex justify-between items-center mb-1">
+                        <Span className={`text-sm font-medium ${
                           message.userId === 'host-123' ? 'text-brand-secondary' : ''
                         }`}>
                           {message.username}
                           {message.userId === 'host-123' && ' (Host)'}
-                        </span>
-                        <span className="text-xs text-text-muted">
+                        </Div>
+                        <Span className="text-xs text-text-muted">
                           {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </span>
-                      </div>
-                      <p>{message.content}</p>
-                    </div>
+                        </Span>
+                      </Div>
+                      <P>{message.content}</P>
+                    </Div>
                   )}
-                </div>
+                </Div>
               ))}
-              <div ref={messagesEndRef} />
-            </div>
-          </div>
+              <Div ref={messagesEndRef} />
+            </Div>
+          </Div>
           
           {/* Message Input */}
-          <div className="p-3 border-t border-border-primary bg-background-secondary">
-            <div className="flex">
-              <input type="text"
+          <Div className="p-3 border-t border-border-primary bg-background-secondary">
+            <Div className="flex">
+              <Input type="text"
                 className="flex-1 p-2 bg-background-primary border border-border-primary rounded-l-md focus:outline-none focus:ring-1 focus:ring-brand-primary"
                 placeholder="Type a message..."
                 value={messageInput}
@@ -398,90 +398,89 @@ export const LiveEventRoom: React.FC<liveEventRoomProps> = ({
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 disabled={!isConnected}
               />
-              <button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <Button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
                 disabled={!isConnected || !messageInput.trim()}
               />
                 Send
-              </Button>
-            </div>
+              </Div>
+            </Div>
             {!isConnected && (
-              <div className="mt-2 text-sm text-status-error">
+              <Div className="mt-2 text-sm text-status-error">
                 Connecting to chat... Please wait.
-              </div>
+              </Div>
             )}
-          </div>
-        </div>
+          </Div>
+        </Div>
         
         {/* Sidebar */}
-        <div className="w-64 border-l border-border-primary bg-background-secondary overflow-y-auto hidden md:block">
+        <Div className="w-64 border-l border-border-primary bg-background-secondary overflow-y-auto hidden md:block">
           {/* Resources */}
-          <div className="p-3 border-b border-border-primary">
-            <h3 className="font-medium mb-2">Resources</h3>
+          <Div className="p-3 border-b border-border-primary">
+            <H3 className="font-medium mb-2">Resources</Div>
             {event.resources && event.resources.length > 0 ? (
-              <ul className="space-y-2">
+              <Ul className="space-y-2">
                 {event.resources.map((resource, i) => (
-                  <li key={i}>
-                    <a
-                      href={resource.url}
+                  <Li key={i}>
+                    <A href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-brand-primary hover:text-brand-primary/80 flex items-center"
-                    >
+                   >
                       {resource.type === 'document' && (
-                        <span className="mr-1">📄</span>
+                        <Span className="mr-1">📄</Ul>
                       )}
                       {resource.type === 'video' && (
-                        <span className="mr-1">🎥</span>
+                        <Span className="mr-1">🎥</Span>
                       )}
                       {resource.type === 'chart' && (
-                        <span className="mr-1">📊</span>
+                        <Span className="mr-1">📊</Span>
                       )}
                       {resource.type === 'link' && (
-                        <span className="mr-1">🔗</span>
+                        <Span className="mr-1">🔗</Span>
                       )}
                       {resource.title}
-                    </a>
-                  </li>
+                    </A>
+                  </Li>
                 ))}
-              </ul>
+              </Ul>
             ) : (
-              <p className="text-sm text-text-muted">No resources available</p>
+              <P className="text-sm text-text-muted">No resources available</P>
             )}
-          </div>
+          </Div>
           
           {/* Participants */}
-          <div className="p-3">
-            <h3 className="font-medium mb-2">Participants ({participants.length})</h3>
-            <div className="space-y-1 max-h-60 overflow-y-auto">
+          <Div className="p-3">
+            <H3 className="font-medium mb-2">Participants ({participants.length})</Div>
+            <Div className="space-y-1 max-h-60 overflow-y-auto">
               {participants.map(participant => (
                 <Div key={participant.userId}
                   className="flex items-center p-1 rounded hover:bg-background-interactive"
                 />
-                  <div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
+                  <Div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
                     {participant.avatarUrl ? (
-                      <img
+                      <Img
                         src={participant.avatarUrl}
                         alt={participant.username}
                         className="w-6 h-6 rounded-full"
                       />
                     ) : (
-                      <span className="text-xs">{participant.username.charAt(0).toUpperCase()}</span>
+                      <Span className="text-xs">{participant.username.charAt(0).toUpperCase()}</Div>
                     )}
-                  </div>
-                  <span className={`text-sm ${
+                  </Div>
+                  <Span className={`text-sm ${
                     participant.isHost ? 'font-medium text-brand-secondary' : ''
                   } ${!participant.isActive ? 'text-text-muted' : ''}`}>
                     {participant.username}
                     {participant.isHost && ' (Host)'}
-                  </span>
-                </div>
+                  </Span>
+                </Div>
               ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </Div>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 };
 

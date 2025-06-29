@@ -78,44 +78,44 @@ const WalletPanel: React.FC = () => {
   const renderContent = () => {
     if (address) {
       return (
-        <div>
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center space-x-2 text-green-400">
+        <Div>
+          <Div className="flex justify-between items-center mb-6">
+            <Div className="flex items-center space-x-2 text-green-400">
               <Checkcircle  />
-              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
-            </div>
+              <P>Wallet Connected: <Span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</Tokenbalance></P>
+            </Div>
             <Button variant="outline" size="sm">Disconnect</Button>
-          </div>
+          </Div>
           <motion.div 
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             <Animatepresence  />
               {balances.map((token, index) => (
-                <Tokenbalancecard  >
+                <Tokenbalancecard >
               ))}
-            </AnimatePresence>
+            </Animatepresence>
           </motion.div>
-        </div>
+        </Div>
       );
     }
 
     return (
-      <div className="wallet-connect-cta">
-        <wallet  >
-        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
-        <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
-        <div className="flex max-w-md mx-auto">
-          <input type="text" placeholder="Enter any wallet address to simulate..."  /> setInputValue(e.target.value)}
+      <Div className="wallet-connect-cta">
+        <wallet >
+        <H2 className="text-2xl font-bold mb-2">Connect Your Wallet</Div>
+        <P className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</P>
+        <Div className="flex max-w-md mx-auto">
+          <Input type="text" placeholder="Enter any wallet address to simulate..."  /> setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button >Connect</Button>
-        </div>
-      </div>
+          <Button >Connect</Div>
+        </Div>
+      </Div>
     );
   };
 
-  return <div className="wallet-panel">{renderContent()}</div>;
+  return <Div className="wallet-panel">{renderContent()}</Div>;
 };
 
 export default WalletPanel; 

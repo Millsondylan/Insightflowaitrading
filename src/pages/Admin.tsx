@@ -81,36 +81,36 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="theme-admin">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</h1>
-          <p className="text-white/70">
+    <Div className="container mx-auto py-8 px-4">
+      <Div className="theme-admin">
+        <Header className="mb-8">
+          <H1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</Div>
+          <P className="text-white/70">
             Manage users, promo codes, and view system usage logs.
-          </p>
-        </header>
+          </P>
+        </Header>
 
-        <Tabs defaultValue="users">
-          <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1">
-            <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+        <Tabs defaultValue="users" />
+          <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1" />
+            <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
               <ShieldCheck className="h-4 w-4" />
-              <span>Users</span>
+              <Span>Users</Tabs>
             </TabsTrigger>
-            <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+            <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
               <Ticket className="h-4 w-4" />
-              <span>Promo Codes</span>
+              <Span>Promo Codes</TabsTrigger>
             </TabsTrigger>
-            <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+            <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
               <Activity className="h-4 w-4" />
-              <span>Usage Logs</span>
+              <Span>Usage Logs</TabsTrigger>
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="users">
+          <TabsContent value="users" />
             <UserRoleManager users={users} onRoleChange={handleRoleChange} />
           </TabsContent>
 
-          <TabsContent value="promo">
+          <TabsContent value="promo" />
             <PromoCodeEditor 
               codes={promoCodes} 
               onGenerate={handleGeneratePromoCode} 
@@ -118,12 +118,12 @@ export default function AdminPage() {
             />
           </TabsContent>
 
-          <TabsContent value="logs">
-            <UsageLogViewer logs={logs} />
+          <TabsContent value="logs" />
+            <UsageLogViewer logs={logs} /></TabsContent>
           </TabsContent>
         </Tabs>
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 }
 

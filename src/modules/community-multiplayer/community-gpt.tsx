@@ -57,71 +57,71 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6 h-[600px] flex flex-col">
-      <div className="flex items-center gap-2 mb-4">
+    <Card className="theme-card p-6 h-[600px] flex flex-col" />
+      <Div className="flex items-center gap-2 mb-4">
         <bot className="h-6 w-6" />
-        <h2 className="text-2xl font-bold">Community GPT</h2>
-      </div>
+        <H2 className="text-2xl font-bold">Community GPT</CommunityGPTProps>
+      </Div>
 
-      <ScrollArea className="flex-1 mb-4">
-        <div className="space-y-4">
+      <ScrollArea className="flex-1 mb-4" />
+        <Div className="space-y-4">
           {messages.map((message) => (
             <Div key={message.id}
               className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-          >
-              <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
-                <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
+        >
+              <Div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                <Div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
-                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                    <Div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                       <User className="h-4 w-4" />
-                    </div>
+                    </ScrollArea>
                   ) : (
-                    <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+                    <Div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
                       <bot className="h-4 w-4" />
-                    </div>
+                    </Div>
                   )}
-                </div>
-                <div className={`p-3 rounded-lg ${
+                </Div>
+                <Div className={`p-3 rounded-lg ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
                   }`}
                 />
-                  <p className="text-sm">{message.content}</p>
-                  <p className="text-xs opacity-70 mt-1">
+                  <P className="text-sm">{message.content}</Div>
+                  <P className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString()}
-                  </p>
-                </div>
-              </div>
-            </div>
+                  </P>
+                </Div>
+              </Div>
+            </Div>
           ))}
           {isTyping && (
-            <div className="flex gap-3">
-              <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
+            <Div className="flex gap-3">
+              <Div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
                 <bot className="h-4 w-4" />
-              </div>
-              <div className="bg-secondary p-3 rounded-lg">
-                <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce" />
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-100" />
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-200" />
-                </div>
-              </div>
-            </div>
+              </Div>
+              <Div className="bg-secondary p-3 rounded-lg">
+                <Div className="flex gap-1">
+                  <Div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce" />
+                  <Div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-100" />
+                  <Div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-200" />
+                </Div>
+              </Div>
+            </Div>
           )}
-        </div>
+        </Div>
       </ScrollArea>
 
-      <div className="flex gap-2">
-        <input placeholder="Ask about strategies, analysis, or community insights..."
+      <Div className="flex gap-2">
+        <Input placeholder="Ask about strategies, analysis, or community insights..."
           value={input}
           onChange={(e) = /> setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <button onClick={sendMessage} size="icon">
-          <Send className="h-4 w-4" />
+        <Button onClick={sendMessage} size="icon">
+          <Send className="h-4 w-4" /></Div>
         </Button>
-      </div>
+      </Div>
     </Card>
   );
 }; 

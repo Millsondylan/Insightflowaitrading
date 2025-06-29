@@ -187,7 +187,7 @@ export class MarketSentimentAnalyzer {
       async ([source, apiKey]) => {
         try {
           const response = await axios.get(this.getNewsAPIUrl(source, symbol, apiKey));
-          return response.data.articles.map((article: any) => ({
+          return response.data.articles.map((article: any // eslint-disable-line @typescript-eslint/no-explicit-any) => ({
             title: article.title,
             content: article.content,
             source: article.source.name,
@@ -209,7 +209,7 @@ export class MarketSentimentAnalyzer {
       async ([platform, apiKey]) => {
         try {
           const response = await axios.get(this.getSocialAPIUrl(platform, symbol, apiKey));
-          return response.data.data.map((tweet: any) => ({
+          return response.data.data.map((tweet: any // eslint-disable-line @typescript-eslint/no-explicit-any) => ({
             content: tweet.text,
             platform: platform,
             engagement: tweet.public_metrics,
@@ -270,7 +270,7 @@ export class MarketSentimentAnalyzer {
     return 0;
   }
 
-  private calculateEngagementWeight(engagement: any): number {
+  private calculateEngagementWeight(engagement: any // eslint-disable-line @typescript-eslint/no-explicit-any): number {
     // Calculate weight based on likes, retweets, comments, etc.
     return (
       engagement.like_count * 1 +

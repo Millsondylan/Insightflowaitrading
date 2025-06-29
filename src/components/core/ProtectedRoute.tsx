@@ -7,12 +7,12 @@ interface ProtectedRouteProps {
   children?: ReactNode;
 }
 
-export const ProtectedRoute: FC<protectedRouteProps> = ({ accessLevel, children }) => {
+export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel, children }) => {
   const { loading, isAdmin, isSubscribed, hasProAccess } = useAuth();
 
   if (loading) {
     // You can replace this with a loading spinner component
-    return <div>Loading...</div>;
+    return <Div>Loading...</ProtectedRouteProps>;
   }
 
   const checks = {
@@ -27,7 +27,7 @@ export const ProtectedRoute: FC<protectedRouteProps> = ({ accessLevel, children 
   if (!hasAccess) {
     // Redirect them to the wallet page with an upgrade prompt.
     // This is a sensible default for non-authorized access attempts.
-    return <navigate to="/wallet?upgrade=true" replace />;
+    return <Navigate to="/wallet?upgrade=true" replace />;
   }
 
   return (

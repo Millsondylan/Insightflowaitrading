@@ -18,59 +18,59 @@ export const AIStrategyBuilderV2: React.FC = () => {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+    <Card className="w-full bg-black/80 border-zinc-800 text-white" />
       <CardHeader>
-        <CardTitle>AI Strategy Builder V2</CardTitle>
+        <CardTitle>AI Strategy Builder V2</Card>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm mb-2">Strategy Name</label>
-            <input value={strategyName}
+        <Div className="space-y-4">
+          <Div>
+            <Label className="block text-sm mb-2">Strategy Name</CardContent>
+            <Input value={strategyName}
               onChange={(e) = /> setStrategyName(e.target.value)}
               placeholder="Enter strategy name"
               className="bg-zinc-900 border-zinc-700 text-white"
             />
-          </div>
+          </Input>
 
-          <div>
-            <label className="block text-sm mb-2">Market</label>
+          <Div>
+            <Label className="block text-sm mb-2">Market</Div>
             <Select value={selectedMarket} 
               onValueChange={setSelectedMarket}
-           >
+         >
               <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
                 <selectValue placeholder="Select Market" />
-              </SelectTrigger>
+              </Select>
               <selectContent>
                 {markets.map((market) => (
                   <selectItem key={market} value={market}>{market}</SelectItem>
                 ))}
               </SelectContent>
-            </select>
-          </div>
+            </Select>
+          </Div>
 
-          <div>
-            <label className="block text-sm mb-2">Risk Level</label>
+          <Div>
+            <Label className="block text-sm mb-2">Risk Level</Div>
             <Select value={riskLevel} 
               onValueChange={setRiskLevel}
             />
               <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
                 <selectValue placeholder="Select Risk Level" />
-              </SelectTrigger>
+              </Select>
               <selectContent>
                 {riskLevels.map((level) => (
                   <selectItem key={level} value={level}>{level}</SelectItem>
                 ))}
               </SelectContent>
-            </select>
-          </div>
+            </Select>
+          </Div>
 
-          <Button  onClick={handleGenerateStrategy}
+          <Button onClick={handleGenerateStrategy}
             className="w-full bg-blue-600 hover:bg-blue-700"
-          >
+        >
             Generate AI Strategy
           </Button>
-        </div>
+        </Div>
       </CardContent>
     </Card>
   )

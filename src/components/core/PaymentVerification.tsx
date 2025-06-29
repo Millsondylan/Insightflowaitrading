@@ -50,43 +50,39 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
       animate={{ opacity: 1, y: 0 }}
       className="glass-container p-6 rounded-lg max-w-2xl mx-auto"
     >
-      <h2 className="text-2xl font-bold mb-4 text-center">Payment Verification</h2>
-      <p className="text-gray-400 mb-6 text-center">
+      <H2 className="text-2xl font-bold mb-4 text-center">Payment Verification</H2>
+      <P className="text-gray-400 mb-6 text-center">
         Send your payment to one of the addresses below to activate your account.
-      </p>
+      </P>
 
-      <Tabs 
-        value={activeTab} 
+      <Tabs value={activeTab} 
         onValueChange={setActiveTab}
         className="w-full"
-      >
-        <TabsList className="grid grid-cols-3 mb-6 bg-black/30">
-          <TabsTrigger 
-            value="eth" 
+    >
+        <TabsList className="grid grid-cols-3 mb-6 bg-black/30" />
+          <TabsTrigger value="eth" 
             className="data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-400"
-          >
+        >
             ETH
-          </TabsTrigger>
-          <TabsTrigger 
-            value="usdt" 
+          </Tabs>
+          <TabsTrigger value="usdt" 
             className="data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400"
-          >
+        >
             USDT
           </TabsTrigger>
-          <TabsTrigger 
-            value="btc" 
+          <TabsTrigger value="btc" 
             className="data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400"
-          >
+        >
             BTC
           </TabsTrigger>
         </TabsList>
 
         {Object.entries(wallets).map(([key, wallet]) => (
-          <TabsContent key={key} value={key} className="space-y-4">
-            <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
-              <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
-              <div className="flex items-center">
-                <input 
+          <TabsContent key={key} value={key} className="space-y-4" />
+            <Div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
+              <H3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</TabsContent>
+              <Div className="flex items-center">
+                <Input 
                   value={wallet.address} 
                   readOnly 
                   className="bg-black/30 border-gray-700 flex-grow"
@@ -94,23 +90,23 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
                 <Button variant="ghost"
                   size="icon"
                   className="ml-2"
-                  onClick={() => handleCopy(wallet.address, key)}
+                  onClick={() = /> handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                  {copied === key ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" /></Div>}
                 </Button>
-              </div>
-            </div>
+              </Div>
+            </Div>
             
-            <div className="text-center mt-6">
-              <p className="text-sm text-gray-400 mb-4">
+            <Div className="text-center mt-6">
+              <P className="text-sm text-gray-400 mb-4">
                 After sending payment, click the button below to continue.
-              </p>
+              </Div>
               <Button onClick={onVerificationComplete}
                 className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30"
-             >
+           >
                 I've Sent the Payment
               </Button>
-            </div>
+            </Div>
           </TabsContent>
         ))}
       </Tabs>

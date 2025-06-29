@@ -64,42 +64,42 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
   }, [matchedSymbols, strategy, tickers]);
 
   return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-      <div className="flex items-center gap-3">
+    <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+      <Div className="flex items-center gap-3">
         <Sparkles >
-        <h3 className="text-lg font-semibold text-white">
+        <H3 className="text-lg font-semibold text-white">
           Strategy Matches:{" "}
-          <span className="text-cyan-400">{strategy.title}</span>
-        </h3>
-      </div>
+          <Span className="text-cyan-400">{strategy.title}</Div>
+        </H3>
+      </Div>
 
       {matchedTickersWithReason.length > 0 ? (
-        <div className="flex flex-wrap gap-3">
+        <Div className="flex flex-wrap gap-3">
           {matchedTickersWithReason.map((ticker) => (
-            <div key={ticker.symbol}
+            <Div key={ticker.symbol}
               className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
             />
-              <div>
-                <span className="font-semibold text-white">{ticker.symbol}</span>
-                <span className="ml-2 text-xs text-white/70">
+              <Div>
+                <Span className="font-semibold text-white">{ticker.symbol}</Div>
+                <Span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
-                </span>
-              </div>
+                </Span>
+              </Div>
               <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
-                <Eye >
+                <Eye ></Button>
                 View
               </Button>
-            </div>
+            </Div>
           ))}
-        </div>
+        </Div>
       ) : (
-        <div className="text-center py-4">
-          <p className="text-white/50">
+        <Div className="text-center py-4">
+          <P className="text-white/50">
             No tickers currently match this strategy.
-          </p>
-        </div>
+          </Div>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 } 
 

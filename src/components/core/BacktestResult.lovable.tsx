@@ -20,10 +20,10 @@ const formatPercent = (n: number) => `${(n * 100).toFixed(2)}%`;
 const formatCurrency = (n: number) => n.toFixed(2);
 
 const StatCard = ({ label, value, color }: { label: string, value: string | number, color?: string }) => (
-  <div className="glass-section p-4 text-center">
-    <p className="text-gray-400 text-sm">{label}</p>
-    <p className={`text-2xl font-bold ${color || ''}`}>{value}</p>
-  </div>
+  <Div className="glass-section p-4 text-center">
+    <P className="text-gray-400 text-sm">{label}</Div>
+    <P className={`text-2xl font-bold ${color || ''}`}>{value}</P>
+  </Div>
 );
 
 const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestResultDisplayProps) => {
@@ -31,36 +31,36 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   const chartData = toChartSeries(candles, result.trades);
   
   return (
-    <div className="space-y-8 mt-12">
+    <Div className="space-y-8 mt-12">
       <Blockreveal>
-        <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
+        <H2 className="text-3xl font-bold text-center mb-6">Backtest Results</Div>
       </BlockReveal>
       
       <blockreveal  />
         <Kpicards >
-      </BlockReveal>
+      </Kpicards>
       
-      <Blockreveal  />
+      <Blockreveal  /></Blockreveal>
         <tabs  style={{ width: "100%" }}>
-          <tabslist  style={{ width: "100%", display: "grid" }}>
-            <tabstrigger value="overview" >
+          <Tabslist  style={{ width: "100%", display: "grid" }}>
+            <Tabstrigger value="overview">
               Chart View
-            </TabsTrigger>
-            <tabstrigger value="trades" >
+            </Tabslist>
+            <Tabstrigger value="trades">
               Trade Explorer
-            </TabsTrigger>
+            </Tabstrigger>
           </TabsList>
           
-          <tabscontent value="overview" >
-            <backtestchart  >
+          <tabscontent value="overview">
+            <backtestchart >
           </TabsContent>
           
-          <tabscontent value="trades" >
-            <tradeexplorer  >
+          <tabscontent value="trades">
+            <tradeexplorer >
           </TabsContent>
         </Tabs>
       </BlockReveal>
-    </div>
+    </Div>
   );
 };
 

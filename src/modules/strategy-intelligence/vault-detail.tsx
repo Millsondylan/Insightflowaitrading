@@ -31,57 +31,57 @@ export const VaultDetail: React.FC = () => {
   };
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+    <Card className="w-full bg-black/80 border-zinc-800 text-white" />
       <CardHeader>
-        <CardTitle>{strategy.name} - Strategy Details</CardTitle>
+        <CardTitle>{strategy.name} - Strategy Details</Card>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-lg font-bold mb-2">Description</h3>
-            <p className="text-gray-300">{strategy.description}</p>
-          </div>
+        <Div className="space-y-4">
+          <Div>
+            <H3 className="text-lg font-bold mb-2">Description</CardContent>
+            <P className="text-gray-300">{strategy.description}</P>
+          </Div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <h4 className="font-semibold">Performance Metrics</h4>
-              <ul className="space-y-1 text-sm">
-                <li>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</li>
-                <li>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</li>
-                <li>Total Return: {strategy.performance.totalReturn}</li>
-                <li>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</li>
-              </ul>
-            </div>
+          <Div className="grid grid-cols-2 gap-4">
+            <Div>
+              <H4 className="font-semibold">Performance Metrics</Div>
+              <Ul className="space-y-1 text-sm">
+                <Li>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</Ul>
+                <Li>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</Li>
+                <Li>Total Return: {strategy.performance.totalReturn}</Li>
+                <Li>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</Li>
+              </Ul>
+            </Div>
 
-            <div>
-              <h4 className="font-semibold">Strategy Metadata</h4>
-              <ul className="space-y-1 text-sm">
-                <li>Author: {strategy.author}</li>
-                <li>Version: {strategy.version}</li>
-                <li>Created: {strategy.createdAt?.toLocaleDateString()}</li>
-                <li>Risk Level: {strategy.risk}</li>
-              </ul>
-            </div>
-          </div>
+            <Div>
+              <H4 className="font-semibold">Strategy Metadata</Div>
+              <Ul className="space-y-1 text-sm">
+                <Li>Author: {strategy.author}</Ul>
+                <Li>Version: {strategy.version}</Li>
+                <Li>Created: {strategy.createdAt?.toLocaleDateString()}</Li>
+                <Li>Risk Level: {strategy.risk}</Li>
+              </Ul>
+            </Div>
+          </Div>
 
-          <div>
-            <h4 className="font-semibold mb-2">Tags</h4>
-            <div className="flex space-x-2">
+          <Div>
+            <H4 className="font-semibold mb-2">Tags</Div>
+            <Div className="flex space-x-2">
               {strategy.tags?.map((tag) => (
-                <span key={tag} 
+                <Span key={tag} 
                   className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
-                >
+               >
                   {tag}
-                </span>
+                </Div>
               ))}
-            </div>
-          </div>
+            </Div>
+          </Div>
 
-          <div className="flex space-x-4">
-            <Button variant="outline" className="text-white">Edit Strategy</Button>
-            <Button variant="destructive">Delete Strategy</Button>
-          </div>
-        </div>
+          <Div className="flex space-x-4">
+            <Button variant="outline" className="text-white" />Edit Strategy</Div>
+            <Button variant="destructive" />Delete Strategy</Button>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   );

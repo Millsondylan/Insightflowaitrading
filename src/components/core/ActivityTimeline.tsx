@@ -40,23 +40,23 @@ const ActivityTimeline: React.FC<activityTimelineProps> = ({ events }) => {
   };
 
   return (
-    <div className="activity-timeline-container">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-semibold text-white">Activity Timeline</h3>
-        <select value={filter} onValueChange={(value) => setFilter(value as ActivityType | 'all')}>
+    <Div className="activity-timeline-container">
+      <Div className="flex justify-between items-center mb-6">
+        <H3 className="text-xl font-semibold text-white">Activity Timeline</Icon>
+        <Select value={filter} onValueChange={(value) => setFilter(value as ActivityType | 'all')}>
           <selectTrigger className="w-[180px]">
             <selectValue placeholder="Filter by type" />
-          </SelectTrigger>
+          </Select>
           <selectContent>
             <selectItem value="all">All Activities</SelectItem>
             <selectItem value="user">New Users</SelectItem>
             <selectItem value="journal">Journals</SelectItem>
             <selectItem value="strategy">Strategies</SelectItem>
           </SelectContent>
-        </select>
-      </div>
+        </Select>
+      </Div>
       
-      <div className="activity-timeline">
+      <Div className="activity-timeline">
         <animatePresence>
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event, index) => (
@@ -69,15 +69,15 @@ const ActivityTimeline: React.FC<activityTimelineProps> = ({ events }) => {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={cn('timeline-item', `type-${event.type}`)}
               >
-                <div className="timeline-icon">
+                <Div className="timeline-icon">
                   {renderIcon(event.type)}
-                </div>
-                <div className="timeline-item-content">
-                  <p className="timeline-label">{event.label}</p>
-                  <p className="timeline-timestamp">
+                </Div>
+                <Div className="timeline-item-content">
+                  <P className="timeline-label">{event.label}</Div>
+                  <P className="timeline-timestamp">
                     <timeAgo datetime={event.timestamp} />
-                  </p>
-                </div>
+                  </P>
+                </Div>
               </motion.div>
             ))
           ) : (
@@ -90,8 +90,8 @@ const ActivityTimeline: React.FC<activityTimelineProps> = ({ events }) => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

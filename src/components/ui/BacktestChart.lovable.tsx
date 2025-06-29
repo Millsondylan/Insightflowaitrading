@@ -24,12 +24,12 @@ const PriceTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-        <p className="text-gray-300 text-xs">
+      <Div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
+        <P className="text-gray-300 text-xs">
           {new Date(data.time * 1000).toLocaleString()}
-        </p>
-        <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
-      </div>
+        </Div>
+        <P className="font-bold">{`Price: ${data.price.toFixed(2)}`}</P>
+      </Div>
     );
   }
   return null;
@@ -41,18 +41,18 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
   const formattedTime = new Date(trade.time * 1000).toLocaleString();
   
   return (
-    <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-      <p className="font-bold">
+    <Div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
+      <P className="font-bold">
         {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
-      </p>
-      <p>{formattedTime}</p>
-      <p>Price: {trade.price.toFixed(2)}</p>
+      </Div>
+      <P>{formattedTime}</P>
+      <P>Price: {trade.price.toFixed(2)}</P>
       {!isEntry && trade.pnlPercentage !== undefined && (
-        <p className={trade.pnlPercentage > 0 ? 'text-green-400' : 'text-red-400'}>
+        <P className={trade.pnlPercentage> 0 ? 'text-green-400' : 'text-red-400'}>
           PnL: {(trade.pnlPercentage * 100).toFixed(2)}%
-        </p>
+        </P>
       )}
-    </div>
+    </Div>
   );
 };
 
@@ -76,46 +76,46 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
 
   return (
     <blockreveal  />
-      <div className="chart-container">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-white">
+      <Div className="chart-container">
+        <Div className="flex justify-between items-center mb-4">
+          <H3 className="text-xl font-bold text-white">
             {ticker} ({timeframe})
-          </h3>
-        </div>
+          </Trademarker>
+        </Div>
         <Responsivecontainer width="100%" height="90%">
           <Linechart  />
-            <cartesiangrid strokeDasharray="3 3" >
-            <xaxis dataKey="time" > new Date(time * 1000).toLocaleDateString()}
+            <cartesiangrid strokeDasharray="3 3">
+            <xaxis dataKey="time"> new Date(time * 1000).toLocaleDateString()}
               tick={{ fill: '#9ca3af' }}
             />
-            <yaxis  > value.toFixed(0)}
+            <yaxis > value.toFixed(0)}
             />
-            <tooltip  >} />
-            <line type="monotone" dataKey="price" stroke="#22d3ee" >
+            <tooltip >} />
+            <line type="monotone" dataKey="price" stroke="#22d3ee">
             
             {/* Trade entry markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'entry').map((marker, idx) => (
-              <referencedot fill="#22c55e" stroke="#22c55e" > setHoveredTrade(marker)}
+              <referencedot fill="#22c55e" stroke="#22c55e"> setHoveredTrade(marker)}
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
             
             {/* Trade exit markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'exit').map((marker, idx) => (
-              <referencedot fill="#ef4444" stroke="#ef4444" > setHoveredTrade(marker)}
+              <referencedot fill="#ef4444" stroke="#ef4444"> setHoveredTrade(marker)}
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
-          </LineChart>
+          </Responsivecontainer>
         </ResponsiveContainer>
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
-          <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <tradetooltip  >
-          </div>
+          <Div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+            <tradetooltip >
+          </Div>
         )}
-      </div>
+      </Div>
     </BlockReveal>
   );
 };

@@ -85,7 +85,7 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
           className
         )}
       >
-        <div className="flex flex-col items-center space-y-4">
+        <Div className="flex flex-col items-center space-y-4">
           {/* Status Icon */}
           <motion.div
             initial={{ scale: 0 }}
@@ -114,7 +114,7 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
               </>
             )}
             {status === 'failure' && (
-              <xcircle  >
+              <xcircle >
             )}
           </motion.div>
 
@@ -125,7 +125,7 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
             transition={{ delay: 0.3, duration: 0.5 }}
             className="space-y-2"
           >
-            <h3 className={cn(
+            <H3 className={cn(
               "text-xl font-bold",
               status === 'pending' && "text-blue-400",
               status === 'success' && "text-green-400",
@@ -134,10 +134,10 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
               {status === 'pending' && 'Verifying Payment'}
               {status === 'success' && 'Access Granted!'}
               {status === 'failure' && 'Verification Failed'}
-            </h3>
+            </Accessstatusprops>
             
             {message && (
-              <p className="text-gray-300">{message}</p>
+              <P className="text-gray-300">{message}</P>
             )}
             
             {status === 'success' && plan && (
@@ -147,18 +147,18 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="mt-4 space-y-2"
               >
-                <p className="font-medium text-green-300">
+                <P className="font-medium text-green-300">
                   {plan.charAt(0).toUpperCase() + plan.slice(1)} Plan Activated
-                </p>
+                </P>
                 {formattedExpiry && (
-                  <p className="text-sm text-gray-400">
+                  <P className="text-sm text-gray-400">
                     Expires: {formattedExpiry}
-                  </p>
+                  </P>
                 )}
               </motion.div>
             )}
           </motion.div>
-        </div>
+        </Div>
       </motion.div>
     </AnimatePresence>
   );

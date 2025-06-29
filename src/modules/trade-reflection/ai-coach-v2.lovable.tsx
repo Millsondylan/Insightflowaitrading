@@ -9,7 +9,7 @@ interface AICoachV2Props {
   userId?: string;
 }
 
-export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
+export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
   const [analysis, setAnalysis] = React.useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = React.useState(false);
 
@@ -29,74 +29,74 @@ export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
 
   return (
     <Card >
-      <div className="flex items-center gap-2 mb-4">
+      <Div className="flex items-center gap-2 mb-4">
         <brain  />
-        <h2 className="text-2xl font-bold">AI Coach</h2>
-      </div>
+        <H2 className="text-2xl font-bold">AI Coach</Card>
+      </Div>
 
       {!analysis ? (
-        <div className="text-center py-8">
-          <p className="text-muted-foreground mb-4">
+        <Div className="text-center py-8">
+          <P className="text-muted-foreground mb-4">
             Get personalized coaching based on your trading behavior
-          </p>
+          </Div>
           <Button >
             {isAnalyzing ? 'Analyzing...' : 'Analyze My Trading'}
           </Button>
-        </div>
+        </Div>
       ) : (
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Trendingup  />
+        <Div className="space-y-6">
+          <Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2">
+              <Trendingup  /></Div>
               Strengths
-            </h3>
-            <div className="space-y-2">
+            </H3>
+            <Div className="space-y-2">
               {analysis.strengths.map((strength: string, i: number) => (
-                <div key={i} className="flex items-center gap-2">
-                  <badge variant="default" >
+                <Div key={i} className="flex items-center gap-2">
+                  <Badge variant="default">
                     ✓
-                  </Badge>
-                  <span className="text-sm">{strength}</span>
-                </div>
+                  </Div>
+                  <Span className="text-sm">{strength}</Span>
+                </Div>
               ))}
-            </div>
-          </div>
+            </Div>
+          </Div>
 
-          <div>
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <alerttriangle  >
+          <Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2">
+              <alerttriangle >
               Areas to Improve
-            </h3>
-            <div className="space-y-2">
+            </Div>
+            <Div className="space-y-2">
               {analysis.weaknesses.map((weakness: string, i: number) => (
-                <div key={i} className="flex items-center gap-2">
-                  <badge variant="default" >
+                <Div key={i} className="flex items-center gap-2">
+                  <Badge variant="default">
                     !
-                  </Badge>
-                  <span className="text-sm">{weakness}</span>
-                </div>
+                  </Div>
+                  <Span className="text-sm">{weakness}</Span>
+                </Div>
               ))}
-            </div>
-          </div>
+            </Div>
+          </Div>
 
-          <div>
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <target  >
+          <Div>
+            <H3 className="font-semibold mb-3 flex items-center gap-2">
+              <target >
               Action Items
-            </h3>
-            <div className="space-y-2">
+            </Div>
+            <Div className="space-y-2">
               {analysis.suggestions.map((suggestion: string, i: number) => (
-                <div key={i} className="p-3 bg-secondary/20 rounded-lg">
-                  <p className="text-sm">{suggestion}</p>
-                </div>
+                <Div key={i} className="p-3 bg-secondary/20 rounded-lg">
+                  <P className="text-sm">{suggestion}</Div>
+                </Div>
               ))}
-            </div>
-          </div>
+            </Div>
+          </Div>
 
           <Button variant="outline" style={{ width: "100%" }}>
             Schedule Coaching Session
           </Button>
-        </div>
+        </Div>
       )}
     </Card>
   );

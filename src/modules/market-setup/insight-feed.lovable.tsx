@@ -49,44 +49,44 @@ export const InsightFeed: React.FC = () => {
   return (
     <Card style={{ width: "100%", color: "white" }}>
       <CardHeader style={{ display: "flex", alignItems: "center" }}>
-        <CardTitle>Market Insights Feed</CardTitle>
-        <badge variant="outline">LIVE</Badge>
+        <CardTitle>Market Insights Feed</Card>
+        <Badge variant="outline">LIVE</Badge>
       </CardHeader>
       
       <CardContent>
-        <div className="space-y-4">
+        <Div className="space-y-4">
           {insights.map(insight => (
             <Div key={insight.id}
               className={`p-4 border rounded-lg ${insight.sentiment === 'bullish' ? 'border-green-500/30 bg-green-500/5' : insight.sentiment === 'bearish' ? 'border-red-500/30 bg-red-500/5' : 'border-gray-500/30 bg-gray-500/5'}`}
-          >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold">{insight.title}</h3>
-                <badge variant={insight.sentiment === 'bullish' ? 'default' : insight.sentiment === 'bearish' ? 'destructive' : 'secondary'}>
+        ></CardContent>
+              <Div className="flex justify-between items-start mb-2">
+                <H3 className="text-lg font-bold">{insight.title}</Div>
+                <Badge variant={insight.sentiment === 'bullish' ? 'default' : insight.sentiment === 'bearish' ? 'destructive' : 'secondary'}>
                   {insight.sentiment.toUpperCase()}
                 </Badge>
-              </div>
-              <p className="text-sm text-gray-300 mb-2">{insight.content}</p>
-              <div className="flex justify-between items-center">
-                <div className="flex space-x-2">
+              </Div>
+              <P className="text-sm text-gray-300 mb-2">{insight.content}</P>
+              <Div className="flex justify-between items-center">
+                <Div className="flex space-x-2">
                   {insight.tags.map(tag => (
-                    <badge variant="outline" key={tag}>
+                    <Badge variant="outline" key={tag}>
                       {tag}
-                    </Badge>
+                    </Div>
                   ))}
-                </div>
-                <div className="text-xs text-gray-400">
+                </Div>
+                <Div className="text-xs text-gray-400">
                   {insight.timestamp} • {insight.source}
-                </div>
-              </div>
-            </div>
+                </Div>
+              </Div>
+            </Div>
           ))}
           
-          <div className="mt-4 flex justify-center">
+          <Div className="mt-4 flex justify-center">
             <Button variant="outline" style={{ color: "white" }}>
               Load More Insights
-            </Button>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   )

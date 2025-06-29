@@ -115,72 +115,71 @@ export default function WalletConnect({ onVerified }: Props) {
   };
 
   return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
-      <div className="flex flex-col space-y-2">
-        <h2 className="text-xl font-bold">Wallet Connection</h2>
-        <p className="text-white/70 text-sm">
+    <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
+      <Div className="flex flex-col space-y-2">
+        <H2 className="text-xl font-bold">Wallet Connection</Div>
+        <P className="text-white/70 text-sm">
           Connect your wallet to verify ownership and access premium features.
-        </p>
-      </div>
+        </P>
+      </Div>
 
       {!isMetaMaskInstalled && (
-        <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
+        <Div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
           MetaMask is not installed. Please install MetaMask to continue.
-          <div className="mt-2">
-            <a
-              href="https://metamask.io/download/"
+          <Div className="mt-2">
+            <A href="https://metamask.io/download/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-cyan-400 hover:underline"
-            >
+           >
               Download MetaMask
-            </a>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
       )}
 
       {error && (
-        <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
+        <Div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
           {error}
-        </div>
+        </Div>
       )}
 
       {address && (
-        <div className="bg-gray-800/50 rounded-lg p-4 break-all">
-          <div className="text-sm text-gray-400">Connected Address:</div>
-          <div className="font-mono">{address}</div>
-        </div>
+        <Div className="bg-gray-800/50 rounded-lg p-4 break-all">
+          <Div className="text-sm text-gray-400">Connected Address:</Div>
+          <Div className="font-mono">{address}</Div>
+        </Div>
       )}
 
       {status === "verified" && (
-        <div className={`rounded-lg p-4 ${isSubscribed ? "bg-green-900/20 border border-green-500/30" : "bg-yellow-900/20 border border-yellow-500/30"}`}>
-          <div className="flex items-center">
+        <Div className={`rounded-lg p-4 ${isSubscribed ? "bg-green-900/20 border border-green-500/30" : "bg-yellow-900/20 border border-yellow-500/30"}`}>
+          <Div className="flex items-center">
             {isSubscribed ? (
               <>
-                <span className="text-green-400 text-xl mr-2">✓</span>
-                <div>
-                  <div className="font-semibold">Subscription Active</div>
-                  <div className="text-sm text-white/70">You have access to all premium features.</div>
-                </div>
+                <Span className="text-green-400 text-xl mr-2">✓</Div>
+                <Div>
+                  <Div className="font-semibold">Subscription Active</Div>
+                  <Div className="text-sm text-white/70">You have access to all premium features.</Div>
+                </Div>
               </>
             ) : (
               <>
-                <span className="text-yellow-400 text-xl mr-2">⚠</span>
-                <div>
-                  <div className="font-semibold">No Active Subscription</div>
-                  <div className="text-sm text-white/70">Consider upgrading to access premium features.</div>
-                </div>
+                <Span className="text-yellow-400 text-xl mr-2">⚠</Span>
+                <Div>
+                  <Div className="font-semibold">No Active Subscription</Div>
+                  <Div className="text-sm text-white/70">Consider upgrading to access premium features.</Div>
+                </Div>
               </>
             )}
-          </div>
-        </div>
+          </Div>
+        </Div>
       )}
 
-      <div className="pt-2">
+      <Div className="pt-2">
         {!address ? (
           <Button  style={{ width: "100%" }}>
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
-          </Button>
+          </Div>
         ) : status === "verified" ? (
           <Button> window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
@@ -192,8 +191,8 @@ export default function WalletConnect({ onVerified }: Props) {
             {status === "verifying" ? "Verifying..." : "🔑 Verify Ownership"}
           </Button>
         )}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 } 
 

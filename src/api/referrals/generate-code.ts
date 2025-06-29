@@ -16,7 +16,9 @@ export async function POST(req: NextRequest) {
     }
     
     // Generate a new referral code using the database function
-    const { data, error } = await supabase.rpc('generate_unique_referral_code');
+    const { data, error } = await supabase.rpc('generate_unique_referral_code', {
+      user_id: user.id
+    });
     
     if (error) throw error;
     
@@ -25,8 +27,11 @@ export async function POST(req: NextRequest) {
     // Save the code to the user's profile
     const { error: updateError } = await supabase
       .from('profiles')
-      .update({ referral_code: newCode })
-      .eq('id', user.id);
+      .update({ 
+        referral_code: newCode,
+        updated_at: new Date().toISOString()
+      })
+      .eq('user_id', user.id);
     
     if (updateError) throw updateError;
     
@@ -36,10 +41,11 @@ export async function POST(req: NextRequest) {
       .insert({
         user_id: user.id,
         code: newCode,
-        clicks_count: 0,
-        signups_count: 0,
-        is_active: true,
+        uses_count: 0,
+        max_uses: 10,
+        discount_percent: 10,
         created_at: new Date().toISOString(),
+        is_active: true
       });
     
     if (insertError) throw insertError;

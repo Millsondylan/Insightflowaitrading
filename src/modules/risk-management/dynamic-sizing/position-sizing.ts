@@ -102,7 +102,7 @@ export class PositionSizingEngine {
   /**
    * Update risk profile
    */
-  updateRiskProfile(newProfile: Partial<RiskProfile>): void {
+  updateRiskProfile(newProfile: Partial<RiskProfile></RiskProfile>): void {
     this.riskProfile = { ...this.riskProfile, ...newProfile };
   }
 }

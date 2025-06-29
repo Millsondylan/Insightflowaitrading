@@ -53,41 +53,41 @@ export const StrategyVault = ({ strategies }: Props) => {
   }, [strategies, searchTerm, selectedTags, sortBy]);
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="relative flex-1">
+    <Div className="space-y-6">
+      <Div className="flex flex-col md:flex-row gap-4">
+        <Div className="relative flex-1">
           <Search >
-          <input placeholder="Search by title or tag..." /> setSearchTerm(e.target.value)}
+          <Input placeholder="Search by title or tag..." /> setSearchTerm(e.target.value)}
             className="pl-10 bg-black/30 border-white/10"
           />
-        </div>
+        </Div>
         <Select >
           <selecttrigger  style={{ width: "100%" }}>
-            <Selectvalue placeholder="Sort by" />
+            <Selectvalue placeholder="Sort by" /></Select>
           </SelectTrigger>
-          <selectcontent  >
-            <selectitem value="totalPnL" >Sort by PnL</SelectItem>
-            <selectitem value="winRate" >Sort by Win Rate</SelectItem>
+          <selectcontent >
+            <selectitem value="totalPnL">Sort by PnL</SelectItem>
+            <selectitem value="winRate">Sort by Win Rate</SelectItem>
           </SelectContent>
-        </select>
-      </div>
+        </Select>
+      </Div>
 
-      <div className="flex flex-wrap gap-2">
+      <Div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
           <Button > handleTagClick(tag)}
             className="rounded-full"
           >
             {tag}
-          </Button>
+          </Div>
         ))}
-      </div>
+      </Div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <Div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredStrategies.map(strategy => (
-          <strategycard  >
+          <strategycard >
         ))}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 }; 
 

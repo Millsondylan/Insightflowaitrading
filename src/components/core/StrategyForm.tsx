@@ -112,10 +112,10 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
       animate="visible"
       className="glass-container p-6 rounded-lg"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div variants={itemVariants} className="space-y-2">
-          <label htmlFor="strategyName">Strategy Name (Optional)</label>
-          <input
+          <Label htmlFor="strategyName">Strategy Name (Optional)</StrategyFormData>
+          <Input
             id="strategyName"
             name="strategyName"
             placeholder="E.g., Momentum Breakout"
@@ -126,14 +126,14 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
-          <label htmlFor="tradeStyle">Trade Style*</label>
-          <select
+          <Label htmlFor="tradeStyle">Trade Style*</Input>
+          <Select
             value={formData.tradeStyle}
             onValueChange={(value) => handleSelectChange(value, 'tradeStyle')}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
               <selectValue placeholder="Select a trade style" />
-            </SelectTrigger>
+            </Select>
             <selectContent className="bg-black/90 border-gray-700 text-white">
               <selectItem value="Intraday">Intraday</SelectItem>
               <selectItem value="Swing">Swing</SelectItem>
@@ -141,15 +141,15 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
               <selectItem value="Position">Position</SelectItem>
               <selectItem value="Custom">Custom</SelectItem>
             </SelectContent>
-          </select>
+          </Select>
           {formErrors.tradeStyle && (
-            <p className="text-red-500 text-sm">{formErrors.tradeStyle}</p>
+            <P className="text-red-500 text-sm">{formErrors.tradeStyle}</P>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
-          <label htmlFor="instruments">Instruments*</label>
-          <input
+          <Label htmlFor="instruments">Instruments*</Label>
+          <Input
             id="instruments"
             name="instruments"
             placeholder="E.g., BTC, ETH, AAPL"
@@ -158,19 +158,19 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             className="bg-black/30 border-gray-700"
           />
           {formErrors.instruments && (
-            <p className="text-red-500 text-sm">{formErrors.instruments}</p>
+            <P className="text-red-500 text-sm">{formErrors.instruments}</Input>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
-          <label htmlFor="timeframe">Timeframe*</label>
-          <select
+          <Label htmlFor="timeframe">Timeframe*</Label>
+          <Select
             value={formData.timeframe}
             onValueChange={(value) => handleSelectChange(value, 'timeframe')}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
               <selectValue placeholder="Select a timeframe" />
-            </SelectTrigger>
+            </Select>
             <selectContent className="bg-black/90 border-gray-700 text-white">
               <selectItem value="1m">1 minute</SelectItem>
               <selectItem value="5m">5 minutes</SelectItem>
@@ -181,15 +181,15 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
               <selectItem value="1d">Daily</SelectItem>
               <selectItem value="1w">Weekly</SelectItem>
             </SelectContent>
-          </select>
+          </Select>
           {formErrors.timeframe && (
-            <p className="text-red-500 text-sm">{formErrors.timeframe}</p>
+            <P className="text-red-500 text-sm">{formErrors.timeframe}</P>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <label htmlFor="entryConditions">Entry Conditions*</label>
-          <textarea
+          <Label htmlFor="entryConditions">Entry Conditions*</Label>
+          <Textarea
             id="entryConditions"
             name="entryConditions"
             placeholder="Describe your entry conditions..."
@@ -198,13 +198,13 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             className="bg-black/30 border-gray-700 min-h-[100px]"
           />
           {formErrors.entryConditions && (
-            <p className="text-red-500 text-sm">{formErrors.entryConditions}</p>
+            <P className="text-red-500 text-sm">{formErrors.entryConditions}</Textarea>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <label htmlFor="exitConditions">Exit Conditions*</label>
-          <textarea
+          <Label htmlFor="exitConditions">Exit Conditions*</Label>
+          <Textarea
             id="exitConditions"
             name="exitConditions"
             placeholder="Describe your exit conditions..."
@@ -213,13 +213,13 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             className="bg-black/30 border-gray-700 min-h-[100px]"
           />
           {formErrors.exitConditions && (
-            <p className="text-red-500 text-sm">{formErrors.exitConditions}</p>
+            <P className="text-red-500 text-sm">{formErrors.exitConditions}</Textarea>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <label htmlFor="riskManagement">Risk Management*</label>
-          <textarea
+          <Label htmlFor="riskManagement">Risk Management*</Label>
+          <Textarea
             id="riskManagement"
             name="riskManagement"
             placeholder="Describe your risk management approach..."
@@ -228,13 +228,13 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             className="bg-black/30 border-gray-700 min-h-[100px]"
           />
           {formErrors.riskManagement && (
-            <p className="text-red-500 text-sm">{formErrors.riskManagement}</p>
+            <P className="text-red-500 text-sm">{formErrors.riskManagement}</Textarea>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <label htmlFor="extraContext">Extra Context (Optional)</label>
-          <textarea
+          <Label htmlFor="extraContext">Extra Context (Optional)</Label>
+          <Textarea
             id="extraContext"
             name="extraContext"
             placeholder="Any additional information or context..."
@@ -248,7 +248,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Button type="submit"
             className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 hover:scale-105 transition-all duration-300 w-full md:w-auto px-8 py-6"
             disabled={isLoading}
-         >
+       >
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating Strategy...
@@ -256,9 +256,9 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             ) : (
               'Generate Strategy'
             )}
-          </Button>
+          </Textarea>
         </motion.div>
-      </div>
+      </Div>
     </motion.form>
   );
 };

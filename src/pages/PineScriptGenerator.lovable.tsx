@@ -24,9 +24,9 @@ export default function PineScriptGeneratorPage() {
   
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
-      </div>
+      <Div className="flex items-center justify-center min-h-[60vh]">
+        <Div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></Div>
+      </Div>
     );
   }
   
@@ -35,56 +35,56 @@ export default function PineScriptGeneratorPage() {
   }
   
   return (
-    <div className="container mx-auto p-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Pine Script Generator</h1>
+    <Div className="container mx-auto p-4 py-8">
+      <H1 className="text-3xl font-bold mb-8 text-center">Pine Script Generator</Div>
       <pineScriptGenerator />
       
-      <div className="mt-12">
-        <h2 className="text-2xl font-semibold mb-4">About Pine Script Generator</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-card rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-medium mb-3">What is Pine Script?</h3>
-            <p className="text-muted-foreground">
+      <Div className="mt-12">
+        <H2 className="text-2xl font-semibold mb-4">About Pine Script Generator</Div>
+        <Div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Div className="bg-card rounded-lg p-6 shadow-sm">
+            <H3 className="text-xl font-medium mb-3">What is Pine Script?</Div>
+            <P className="text-muted-foreground">
               Pine Script is TradingView's proprietary programming language that allows you to create 
               custom indicators and trading strategies. It's designed specifically for chart analysis 
               and trading automation.
-            </p>
-          </div>
+            </P>
+          </Div>
           
-          <div className="bg-card rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-medium mb-3">How to Use It</h3>
-            <ol className="list-decimal list-inside text-muted-foreground space-y-2 ml-2">
-              <li>Describe what you want to create in natural language</li>
-              <li>Choose the script type (indicator or strategy)</li>
-              <li>Specify additional parameters if needed</li>
-              <li>Click "Generate" and let AI do the work</li>
-              <li>Copy the code and paste it into TradingView's Pine Editor</li>
-            </ol>
-          </div>
+          <Div className="bg-card rounded-lg p-6 shadow-sm">
+            <H3 className="text-xl font-medium mb-3">How to Use It</Div>
+            <Ol className="list-decimal list-inside text-muted-foreground space-y-2 ml-2">
+              <Li>Describe what you want to create in natural language</Ol>
+              <Li>Choose the script type (indicator or strategy)</Li>
+              <Li>Specify additional parameters if needed</Li>
+              <Li>Click "Generate" and let AI do the work</Li>
+              <Li>Copy the code and paste it into TradingView's Pine Editor</Li>
+            </Ol>
+          </Div>
           
-          <div className="bg-card rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-medium mb-3">Example Prompts</h3>
-            <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
-              <li>"Create an RSI indicator with overbought and oversold levels at 70 and 30"</li>
-              <li>"Generate a MACD indicator with custom color coding for bullish/bearish divergence"</li>
-              <li>"Build a mean reversion strategy that enters when price deviates more than 2 standard deviations from the 20-period mean"</li>
-              <li>"Create a volume-weighted moving average indicator with adjustable length"</li>
-            </ul>
-          </div>
+          <Div className="bg-card rounded-lg p-6 shadow-sm">
+            <H3 className="text-xl font-medium mb-3">Example Prompts</Div>
+            <Ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
+              <Li>"Create an RSI indicator with overbought and oversold levels at 70 and 30"</Ul>
+              <Li>"Generate a MACD indicator with custom color coding for bullish/bearish divergence"</Li>
+              <Li>"Build a mean reversion strategy that enters when price deviates more than 2 standard deviations from the 20-period mean"</Li>
+              <Li>"Create a volume-weighted moving average indicator with adjustable length"</Li>
+            </Ul>
+          </Div>
           
-          <div className="bg-card rounded-lg p-6 shadow-sm">
-            <h3 className="text-xl font-medium mb-3">Pro Benefits</h3>
-            <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
-              <li>Unlimited Pine Script generation (Free tier: 1/month)</li>
-              <li>Access to GPT-4 for more complex script generation</li>
-              <li>Priority processing for faster results</li>
-              <li>Save and manage your script collection</li>
-              <li>Share your scripts with the community</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+          <Div className="bg-card rounded-lg p-6 shadow-sm">
+            <H3 className="text-xl font-medium mb-3">Pro Benefits</Div>
+            <Ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
+              <Li>Unlimited Pine Script generation (Free tier: 1/month)</Ul>
+              <Li>Access to GPT-4 for more complex script generation</Li>
+              <Li>Priority processing for faster results</Li>
+              <Li>Save and manage your script collection</Li>
+              <Li>Share your scripts with the community</Li>
+            </Ul>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 }
 export const lovable = { 

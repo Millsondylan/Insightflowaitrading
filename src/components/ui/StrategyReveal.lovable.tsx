@@ -24,63 +24,63 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
   } = result;
 
   return (
-    <div className="strategy-reveal max-w-3xl mx-auto space-y-12">
+    <Div className="strategy-reveal max-w-3xl mx-auto space-y-12">
       <blockreveal variant="fade">
-        <h2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan">
+        <H2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan">
           {strategyName}
-        </h2>
+        </Div>
       </BlockReveal>
 
       <blockreveal  />
-        <p className="text-gray-300 text-lg leading-relaxed text-center max-w-[70ch] mx-auto">
+        <P className="text-gray-300 text-lg leading-relaxed text-center max-w-[70ch] mx-auto">
           {description}
-        </p>
+        </P>
       </BlockReveal>
 
       <Blockreveal >
-        <section className="glass-section">
-          <h3 className="section-heading">Rules</h3>
-          <ol className="space-y-2 list-decimal list-inside">
+        <Section className="glass-section">
+          <H3 className="section-heading">Rules</Blockreveal>
+          <Ol className="space-y-2 list-decimal list-inside">
             {rules.map((r, i) => (
-              <li key={i}>{r}</li>
+              <Li key={i}>{r}</Ol>
             ))}
-          </ol>
-        </section>
+          </Ol>
+        </Section>
       </BlockReveal>
 
-      <Blockreveal  />
-        <section className="glass-section">
-          <h3 className="section-heading">Entry Checklist ✅</h3>
-          <ul className="space-y-2 list-disc list-inside">
+      <Blockreveal  /></Blockreveal>
+        <Section className="glass-section">
+          <H3 className="section-heading">Entry Checklist ✅</Section>
+          <Ul className="space-y-2 list-disc list-inside">
             {entryChecklist.map((c, i) => (
-              <li key={i}>{c}</li>
+              <Li key={i}>{c}</Ul>
             ))}
-          </ul>
-        </section>
+          </Ul>
+        </Section>
       </BlockReveal>
 
-      <blockreveal  >
-        <section className="glass-section border-l-4 border-yellow-400 pl-4">
-          <h3 className="section-heading text-yellow-400">⚠️ Warnings</h3>
-          <ul className="space-y-2 list-disc list-inside">
+      <blockreveal >
+        <Section className="glass-section border-l-4 border-yellow-400 pl-4">
+          <H3 className="section-heading text-yellow-400">⚠️ Warnings</Section>
+          <Ul className="space-y-2 list-disc list-inside">
             {warnings.map((w, i) => (
-              <li key={i}>{w}</li>
+              <Li key={i}>{w}</Ul>
             ))}
-          </ul>
-        </section>
+          </Ul>
+        </Section>
       </BlockReveal>
 
-      <blockreveal  >
-        <section className="glass-section italic">
-          <h3 className="section-heading">Backtest Tips 💡</h3>
-          <ul className="space-y-2 list-disc list-inside">
+      <blockreveal >
+        <Section className="glass-section italic">
+          <H3 className="section-heading">Backtest Tips 💡</Section>
+          <Ul className="space-y-2 list-disc list-inside">
             {backtestTips.map((t, i) => (
-              <li key={i}>{t}</li>
+              <Li key={i}>{t}</Ul>
             ))}
-          </ul>
-        </section>
+          </Ul>
+        </Section>
       </BlockReveal>
-    </div>
+    </Div>
   );
 };
 

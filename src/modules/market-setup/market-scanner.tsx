@@ -224,11 +224,11 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
   };
   
   return (
-    <div className="market-scanner">
-      <div className="flex flex-wrap justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Market Scanner</h2>
+    <Div className="market-scanner">
+      <Div className="flex flex-wrap justify-between items-center mb-6">
+        <H2 className="text-2xl font-bold">Market Scanner</ScanResult>
         
-        <div className="flex space-x-2">
+        <Div className="flex space-x-2">
           {timeframes.map(tf => (
             <Button key={tf}
               className={`px-3 py-1 rounded ${
@@ -237,30 +237,30 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
               onClick={() => setActiveTimeframe(tf)}
             >
               {tf}
-            </Button>
+            </Div>
           ))}
-        </div>
-      </div>
+        </Div>
+      </Div>
       
-      <div className="mb-6 flex flex-wrap gap-4">
-        <div className="flex-1">
-          <input
+      <Div className="mb-6 flex flex-wrap gap-4">
+        <Div className="flex-1">
+          <Input
             type="text"
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             placeholder="Search markets..."
             value={searchQuery}
             onChange={handleSearch}
           />
-        </div>
+        </Div>
         
-        <div className="flex space-x-2">
+        <Div className="flex space-x-2">
           <Button  className={`px-4 py-2 rounded ${
               filterType === 'all' ? 'bg-brand-primary text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('all')}
           >
             All
-          </Button>
+          </Div>
           <Button  className={`px-4 py-2 rounded ${
               filterType === 'bullish' ? 'bg-status-success text-white' : 'bg-background-secondary'
             }`}
@@ -275,61 +275,61 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
           >
             Bearish
           </Button>
-        </div>
-      </div>
+        </Div>
+      </Div>
       
       {loading ? (
-        <div className="p-12 text-center">
-          <div className="text-xl font-semibold mb-2">Scanning markets...</div>
-          <div className="text-text-muted">Please wait while we analyze market conditions</div>
-        </div>
+        <Div className="p-12 text-center">
+          <Div className="text-xl font-semibold mb-2">Scanning markets...</Div>
+          <Div className="text-text-muted">Please wait while we analyze market conditions</Div>
+        </Div>
       ) : error ? (
-        <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
+        <Div className="p-6 bg-status-error/20 text-status-error rounded-lg">
           {error}
-        </div>
+        </Div>
       ) : filteredResults.length === 0 ? (
-        <div className="p-12 text-center">
-          <div className="text-xl font-semibold mb-2">No results found</div>
-          <div className="text-text-muted">Try changing your search criteria</div>
-        </div>
+        <Div className="p-12 text-center">
+          <Div className="text-xl font-semibold mb-2">No results found</Div>
+          <Div className="text-text-muted">Try changing your search criteria</Div>
+        </Div>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border-primary">
-                <th className="px-4 py-3 text-left">Market</th>
-                <th className="px-4 py-3 text-right">Price</th>
-                <th className="px-4 py-3 text-right">24h Change</th>
-                <th className="px-4 py-3 text-right">24h Volume</th>
-                <th className="px-4 py-3 text-center">Signals</th>
-                <th className="px-4 py-3 text-center">Score</th>
-                <th className="px-4 py-3 text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
+        <Div className="overflow-x-auto">
+          <Table className="w-full">
+            <Thead>
+              <Tr className="border-b border-border-primary">
+                <Th className="px-4 py-3 text-left">Market</Div>
+                <Th className="px-4 py-3 text-right">Price</Th>
+                <Th className="px-4 py-3 text-right">24h Change</Th>
+                <Th className="px-4 py-3 text-right">24h Volume</Th>
+                <Th className="px-4 py-3 text-center">Signals</Th>
+                <Th className="px-4 py-3 text-center">Score</Th>
+                <Th className="px-4 py-3 text-center">Action</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
               {filteredResults.map(result => (
                 <Tr key={result.symbol}
                   className="border-b border-border-primary hover:bg-background-interactive"
-              >
-                  <td className="px-4 py-3">
-                    <div className="flex flex-col">
-                      <span className="font-medium">{result.symbol}</span>
-                      <span className="text-sm text-text-muted">{result.name}</span>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-right font-medium">
+            >
+                  <Td className="px-4 py-3">
+                    <Div className="flex flex-col">
+                      <Span className="font-medium">{result.symbol}</Tbody>
+                      <Span className="text-sm text-text-muted">{result.name}</Span>
+                    </Div>
+                  </Td>
+                  <Td className="px-4 py-3 text-right font-medium">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-                  </td>
-                  <td className={`px-4 py-3 text-right font-medium ${
+                  </Td>
+                  <Td className={`px-4 py-3 text-right font-medium ${
                     result.change24h /> 0 ? 'text-status-success' : 'text-status-error'
                   }`}>
                     {result.change24h > 0 ? '+' : ''}{result.change24h.toFixed(2)}%
-                  </td>
-                  <td className="px-4 py-3 text-right">
+                  </Td>
+                  <Td className="px-4 py-3 text-right">
                     ${formatLargeNumber(result.volume24h)}
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex flex-col gap-1">
+                  </Td>
+                  <Td className="px-4 py-3">
+                    <Div className="flex flex-col gap-1">
                       {result.signals.map((signal, i) => (
                         <Div key={i}
                           className={`px-2 py-1 rounded text-xs ${
@@ -337,31 +337,31 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                             signal.type === 'bearish' ? 'bg-status-error/20 text-status-error' :
                             'bg-status-warning/20 text-status-warning'
                           }`}
-                        />
+                        /></Td>
                           {signal.indicator}: {signal.description}
-                        </div>
+                        </Div>
                       ))}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
+                    </Div>
+                  </Td>
+                  <Td className="px-4 py-3 text-center">
+                    <Div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-center">
+                    </Td>
+                  </Td>
+                  <Td className="px-4 py-3 text-center">
                     <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
                       onClick={() => onSelectMarket(result.symbol)}
                     >
                       Select
-                    </Button>
-                  </td>
-                </tr>
+                    </Td>
+                  </Td>
+                </Tr>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </Tbody>
+          </Table>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 };
 

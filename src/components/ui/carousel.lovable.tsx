@@ -84,7 +84,7 @@ const Carousel = React.forwardRef<
     }, [api])
 
     const handleKeyDown = React.useCallback(
-      (event: React.KeyboardEvent<HTMLDivElement  >) => {
+      (event: React.KeyboardEvent<HTMLDivElement >) => {
         if (event.key === "ArrowLeft") {
           event.preventDefault()
           scrollPrev()
@@ -119,16 +119,16 @@ const Carousel = React.forwardRef<
     }, [api, onSelect])
 
     return (
-      <Carouselcontext  >
+      <Carouselcontext >
         <Div ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
           {...props}
-       >
+     >
           {children}
-        </div>
+        </Carouselcontextprops>
       </CarouselContext.Provider>
     )
   }
@@ -142,8 +142,8 @@ const CarouselContent = React.forwardRef<
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    <div ref={carouselRef} className="overflow-hidden">
-      <div
+    <Div ref={carouselRef} className="overflow-hidden">
+      <Div
         ref={ref}
         className={cn(
           "flex",
@@ -152,7 +152,7 @@ const CarouselContent = React.forwardRef<
         )}
         {...props}
       />
-    </div>
+    </HTMLDivElement>
   )
 })
 CarouselContent.displayName = "CarouselContent"
@@ -164,7 +164,7 @@ const CarouselItem = React.forwardRef<
   const { orientation } = useCarousel()
 
   return (
-    <div
+    <Div
       ref={ref}
       role="group"
       aria-roledescription="slide"
@@ -187,8 +187,8 @@ const CarouselPrevious = React.forwardRef<
 
   return (
     <Button />
-      <Arrowleft />
-      <span className="sr-only">Previous slide</span>
+      <Arrowleft /></HTMLDivElement>
+      <Span className="sr-only">Previous slide</Span>
     </Button>
   )
 })
@@ -202,8 +202,8 @@ const CarouselNext = React.forwardRef<
 
   return (
     <Button >
-      <arrowright  >
-      <span className="sr-only">Next slide</span>
+      <arrowright >
+      <Span className="sr-only">Next slide</Button>
     </Button>
   )
 })

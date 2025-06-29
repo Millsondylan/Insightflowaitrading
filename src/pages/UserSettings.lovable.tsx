@@ -25,21 +25,21 @@ interface UserSettings {
 
 // Simple UI Components
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`bg-gray-800/50 border border-gray-700 rounded-lg backdrop-blur-sm ${className}`}>
+  <Div className={`bg-gray-800/50 border border-gray-700 rounded-lg backdrop-blur-sm ${className}`}>
     {children}
-  </div>
+  </Div>
 );
 
 const CardHeader = ({ children }: { children: React.ReactNode }) => (
-  <div className="p-6 pb-4">{children}</div>
+  <Div className="p-6 pb-4">{children}</Div>
 );
 
 const CardTitle = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-lg font-semibold text-white">{children}</h3>
+  <H3 className="text-lg font-semibold text-white">{children}</H3>
 );
 
 const CardContent = ({ children }: { children: React.ReactNode }) => (
-  <div className="p-6 pt-0">{children}</div>
+  <Div className="p-6 pt-0">{children}</Div>
 );
 
 const Button = ({ 
@@ -65,7 +65,7 @@ const Button = ({
     <Button className={`${baseClasses} ${variantClasses} ${disabledClasses} ${className}`}
       onClick={onClick}
       disabled={disabled}
-  >
+>
       {children}
     </Button>
   );
@@ -86,7 +86,7 @@ const Switch = ({
     onClick={() => !disabled && onCheckedChange(!checked)}
     disabled={disabled}
   >
-    <span
+    <Span
       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
         checked ? 'translate-x-6' : 'translate-x-1'
       }`}
@@ -109,8 +109,8 @@ const Slider = ({
   step?: number;
   disabled?: boolean;
 }) => (
-  <div className="w-full">
-    <input type="range"
+  <Div className="w-full">
+    <Input type="range"
       min={min}
       max={max}
       step={step}
@@ -144,11 +144,11 @@ const Slider = ({
          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
        }
      `}</style>
-  </div>
+  </Div>
 );
 
 const Label = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <label className={`text-sm font-medium text-gray-300 ${className}`}>{children}</label>
+  <Label className={`text-sm font-medium text-gray-300 ${className}`}>{children}</Label>
 );
 
 const Tabs = ({ children, defaultValue, className = "" }: { 
@@ -156,11 +156,11 @@ const Tabs = ({ children, defaultValue, className = "" }: {
   defaultValue: string;
   className?: string;
 }) => (
-  <div className={className}>{children}</div>
+  <Div className={className}>{children}</Div>
 );
 
 const TabsList = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <div className={`flex bg-gray-800 rounded-lg p-1 ${className}`}>{children}</div>
+  <Div className={`flex bg-gray-800 rounded-lg p-1 ${className}`}>{children}</Div>
 );
 
 const TabsTrigger = ({ children, value, isActive, onClick }: { 
@@ -169,7 +169,7 @@ const TabsTrigger = ({ children, value, isActive, onClick }: {
   isActive: boolean;
   onClick: () => void;
 }) => (
-  <button className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+  <Button className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
       isActive ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
     }`}
     onClick={onClick}
@@ -183,7 +183,7 @@ const TabsContent = ({ children, value, activeTab }: {
   value: string;
   activeTab: string;
 }) => (
-  activeTab === value ? <div>{children}</div> : null
+  activeTab === value ? <Div>{children}</Div> : null
 );
 
 const RadioGroup = ({ children, value, onValueChange, className = "" }: {
@@ -192,7 +192,7 @@ const RadioGroup = ({ children, value, onValueChange, className = "" }: {
   onValueChange: (value: string) => void;
   className?: string;
 }) => (
-  <div className={className}>{children}</div>
+  <Div className={className}>{children}</Div>
 );
 
 const RadioGroupItem = ({ value, id, checked, onChange }: {
@@ -201,7 +201,7 @@ const RadioGroupItem = ({ value, id, checked, onChange }: {
   checked: boolean;
   onChange: (value: string) => void;
 }) => (
-  <input type="radio"
+  <Input type="radio"
     id={id}
     value={value}
     checked={checked}
@@ -215,20 +215,20 @@ const Select = ({ children, value, onValueChange }: {
   value: string;
   onValueChange: (value: string) => void;
 }) => (
-  <select
+  <Select
     value={value}
     onChange={(e) => onValueChange(e.target.value)}
     className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white"
   >
     {children}
-  </select>
+  </Input>
 );
 
-const SelectTrigger = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
-const SelectValue = ({ placeholder }: { placeholder: string }) => <span>{placeholder}</span>;
+const SelectTrigger = ({ children }: { children: React.ReactNode }) => <Div>{children}</Div>;
+const SelectValue = ({ placeholder }: { placeholder: string }) => <Span>{placeholder}</Span>;
 const SelectContent = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 const SelectItem = ({ children, value }: { children: React.ReactNode; value: string }) => (
-  <option value={value}>{children}</option>
+  <Option value={value}>{children}</Option>
 );
 
 const DEFAULT_SETTINGS: Partial<UserSettings> = {
@@ -330,166 +330,166 @@ export default function UserSettings() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <Div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <Div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+        <Div className="mb-8">
+          <H1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
             ⚙️ User Settings
-          </h1>
-          <p className="text-gray-400">
+          </UserSettings>
+          <P className="text-gray-400">
             Customize your InsightFlow AI Trading experience
-          </p>
-        </div>
+          </P>
+        </Div>
 
-        <div className="space-y-6">
+        <Div className="space-y-6">
           {/* Audio Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>🔊 Audio Settings</CardTitle>
+              <CardTitle>🔊 Audio Settings</Div>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
+              <Div className="space-y-6">
                 {/* Enable Sounds */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-medium">Enable Sounds</h4>
-                    <p className="text-sm text-gray-400">Turn on/off all sound effects</p>
-                  </div>
+                <Div className="flex items-center justify-between">
+                  <Div>
+                    <H4 className="text-white font-medium">Enable Sounds</CardContent>
+                    <P className="text-sm text-gray-400">Turn on/off all sound effects</P>
+                  </Div>
                   <Switch
                     checked={settings.audio_settings.sounds_enabled}
                     onCheckedChange={(checked) => updateAudioSetting('sounds_enabled', checked)}
                   />
-                </div>
+                </Switch>
 
                 {/* Volume Control */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-white font-medium">Volume</h4>
-                    <span className="text-blue-400 font-mono">
+                <Div className="space-y-2">
+                  <Div className="flex items-center justify-between">
+                    <H4 className="text-white font-medium">Volume</Div>
+                    <Span className="text-blue-400 font-mono">
                       {settings.audio_settings.volume}%
-                    </span>
-                  </div>
+                    </Span>
+                  </Div>
                   <Slider
                     value={settings.audio_settings.volume}
                     onValueChange={(value) => updateAudioSetting('volume', value)}
                     disabled={!settings.audio_settings.sounds_enabled}
                   />
-                </div>
+                </Slider>
 
                 {/* Voice Narration */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-medium">Voice Narration</h4>
-                    <p className="text-sm text-gray-400">AI voice for lessons and alerts</p>
-                  </div>
+                <Div className="flex items-center justify-between">
+                  <Div>
+                    <H4 className="text-white font-medium">Voice Narration</Div>
+                    <P className="text-sm text-gray-400">AI voice for lessons and alerts</P>
+                  </Div>
                   <Switch
                     checked={settings.audio_settings.voice_narration}
                     onCheckedChange={(checked) => updateAudioSetting('voice_narration', checked)}
                     disabled={!settings.audio_settings.sounds_enabled}
                   />
-                </div>
+                </Switch>
 
                 {/* Notification Sounds */}
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-medium">Notification Sounds</h4>
-                    <p className="text-sm text-gray-400">Sound alerts for trades and updates</p>
-                  </div>
+                <Div className="flex items-center justify-between">
+                  <Div>
+                    <H4 className="text-white font-medium">Notification Sounds</Div>
+                    <P className="text-sm text-gray-400">Sound alerts for trades and updates</P>
+                  </Div>
                   <Switch
                     checked={settings.audio_settings.notification_sounds}
                     onCheckedChange={(checked) => updateAudioSetting('notification_sounds', checked)}
                     disabled={!settings.audio_settings.sounds_enabled}
                   />
-                </div>
-              </div>
+                </Switch>
+              </Div>
             </CardContent>
           </Card>
 
           {/* Notification Settings */}
           <Card>
             <CardHeader>
-              <CardTitle>📢 Notification Channels</CardTitle>
+              <CardTitle>📢 Notification Channels</Card>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-medium">Email Notifications</h4>
-                    <p className="text-sm text-gray-400">Receive updates via email</p>
-                  </div>
+              <Div className="space-y-6">
+                <Div className="flex items-center justify-between">
+                  <Div>
+                    <H4 className="text-white font-medium">Email Notifications</CardContent>
+                    <P className="text-sm text-gray-400">Receive updates via email</P>
+                  </Div>
                   <Switch
                     checked={settings.notification_channels.email}
                     onCheckedChange={(checked) => updateNotificationSetting('email', checked)}
                   />
-                </div>
+                </Switch>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-medium">Push Notifications</h4>
-                    <p className="text-sm text-gray-400">Browser push notifications</p>
-                  </div>
+                <Div className="flex items-center justify-between">
+                  <Div>
+                    <H4 className="text-white font-medium">Push Notifications</Div>
+                    <P className="text-sm text-gray-400">Browser push notifications</P>
+                  </Div>
                   <Switch
                     checked={settings.notification_channels.push}
                     onCheckedChange={(checked) => updateNotificationSetting('push', checked)}
                   />
-                </div>
+                </Switch>
 
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-white font-medium">In-App Notifications</h4>
-                    <p className="text-sm text-gray-400">Show notifications within the app</p>
-                  </div>
+                <Div className="flex items-center justify-between">
+                  <Div>
+                    <H4 className="text-white font-medium">In-App Notifications</Div>
+                    <P className="text-sm text-gray-400">Show notifications within the app</P>
+                  </Div>
                   <Switch
                     checked={settings.notification_channels.in_app}
                     onCheckedChange={(checked) => updateNotificationSetting('in_app', checked)}
                   />
-                </div>
-              </div>
+                </Switch>
+              </Div>
             </CardContent>
           </Card>
 
           {/* Theme Preview */}
           <Card>
             <CardHeader>
-              <CardTitle>🎨 Theme Preview</CardTitle>
+              <CardTitle>🎨 Theme Preview</Card>
             </CardHeader>
             <CardContent>
-              <div className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
-                <p className="text-white mb-2">Current Theme: <span className="text-blue-400">Dark Mode</span></p>
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full bg-blue-600"></div>
-                  <span className="text-gray-300">Accent Color: Blue</span>
-                </div>
-              </div>
+              <Div className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
+                <P className="text-white mb-2">Current Theme: <Span className="text-blue-400">Dark Mode</CardContent></P>
+                <Div className="flex items-center gap-2">
+                  <Div className="w-4 h-4 rounded-full bg-blue-600"></Div>
+                  <Span className="text-gray-300">Accent Color: Blue</Span>
+                </Div>
+              </Div>
             </CardContent>
           </Card>
 
           {/* Action Buttons */}
-          <div className="flex gap-4 pt-4">
+          <Div className="flex gap-4 pt-4">
             <Button onClick={handleSave}
               disabled={!hasChanges || isSaving}
               className="flex-1"
             />
               {isSaving ? '💾 Saving...' : '💾 Save Changes'}
-            </Button>
-            <Button  onClick={handleReset}
+            </Div>
+            <Button onClick={handleReset}
               variant="outline"
               className="flex-1"
-            >
+          >
               🔄 Reset to Defaults
             </Button>
-          </div>
+          </Div>
 
           {/* Status */}
           {hasChanges && (
-            <div className="text-center">
-              <p className="text-yellow-400 text-sm">⚠️ You have unsaved changes</p>
-            </div>
+            <Div className="text-center">
+              <P className="text-yellow-400 text-sm">⚠️ You have unsaved changes</Div>
+            </Div>
           )}
-        </div>
-      </div>
-    </div>
+        </Div>
+      </Div>
+    </Div>
   );
 }
 

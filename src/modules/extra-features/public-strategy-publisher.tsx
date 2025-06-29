@@ -11,7 +11,7 @@ import { Globe, Lock, Crown, Eye, Download } from 'lucide-react';
 interface PublicStrategyPublisherProps {
   strategyId: string;
   isPro: boolean;
-  onPublish?: (data: any) => void;
+  onPublish?: (data: unknown) => void;
 }
 
 export const PublicStrategyPublisher: React.FC<publicStrategyPublisherProps> = ({ 
@@ -55,157 +55,155 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-6">Publish Strategy</h2>
+    <Card className="theme-card p-6" />
+      <H2 className="text-2xl font-bold mb-6">Publish Strategy</Card>
 
-      <div className="space-y-6">
-        <div>
-          <label className="text-sm font-medium mb-2 block">Strategy Title</label>
-          <input placeholder="e.g., RSI Momentum Strategy"
+      <Div className="space-y-6">
+        <Div>
+          <Label className="text-sm font-medium mb-2 block">Strategy Title</Div>
+          <Input placeholder="e.g., RSI Momentum Strategy"
             value={publishSettings.title}
             onChange={(e) = /> setPublishSettings({ ...publishSettings, title: e.target.value })}
           />
-        </div>
+        </Input>
 
-        <div>
-          <label className="text-sm font-medium mb-2 block">Description</label>
-          <textarea
+        <Div>
+          <Label className="text-sm font-medium mb-2 block">Description</Div>
+          <Textarea
             placeholder="Describe your strategy, its performance, and best use cases..."
             value={publishSettings.description}
             onChange={(e) => setPublishSettings({ ...publishSettings, description: e.target.value })}
             rows={4}
           />
-        </div>
+        </Textarea>
 
-        <div>
-          <label className="text-sm font-medium mb-2 block">Tags</label>
-          <input placeholder="momentum, RSI, scalping (comma separated)"
+        <Div>
+          <Label className="text-sm font-medium mb-2 block">Tags</Div>
+          <Input placeholder="momentum, RSI, scalping (comma separated)"
             value={publishSettings.tags}
             onChange={(e) = /> setPublishSettings({ ...publishSettings, tags: e.target.value })}
           />
-        </div>
+        </Input>
 
-        <div className="space-y-4">
-          <h3 className="font-semibold">Visibility Settings</h3>
+        <Div className="space-y-4">
+          <H3 className="font-semibold">Visibility Settings</Div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Button variant={publishSettings.visibility === 'private' ? 'default' : 'outline'}
               className="flex items-center gap-2"
-              onClick={() => setPublishSettings({ ...publishSettings, visibility: 'private' })}
+              onClick={() = /> setPublishSettings({ ...publishSettings, visibility: 'private' })}
             >
               <Lock className="h-4 w-4" />
               Private
-            </Button>
+            </Div>
             <Button variant={publishSettings.visibility === 'unlisted' ? 'default' : 'outline'}
               className="flex items-center gap-2"
-              onClick={() => setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
+              onClick={() = /> setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
             >
               <Eye className="h-4 w-4" />
               Unlisted
             </Button>
             <Button variant={publishSettings.visibility === 'public' ? 'default' : 'outline'}
               className="flex items-center gap-2"
-              onClick={() => setPublishSettings({ ...publishSettings, visibility: 'public' })}
+              onClick={() = /> setPublishSettings({ ...publishSettings, visibility: 'public' })}
               disabled={!isPro}
             >
               <Globe className="h-4 w-4" />
               Public
               {!isPro && <Crown className="h-3 w-3 ml-1" />}
             </Button>
-          </div>
+          </Div>
 
           {!isPro && publishSettings.visibility === 'public' && (
-            <div className="p-3 bg-yellow-500/10 rounded-lg flex items-center gap-2">
+            <Div className="p-3 bg-yellow-500/10 rounded-lg flex items-center gap-2">
               <Crown className="h-4 w-4 text-yellow-500" />
-              <p className="text-sm text-yellow-600">
+              <P className="text-sm text-yellow-600">
                 Pro subscription required for public publishing
-              </p>
-            </div>
+              </Div>
+            </Div>
           )}
-        </div>
+        </Div>
 
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
-            <label htmlFor="pro-gate" className="text-sm font-medium">
+        <Div className="space-y-3">
+          <Div className="flex items-center justify-between">
+            <Label htmlFor="pro-gate" className="text-sm font-medium">
               Require Pro for Access
-            </label>
-            <Switch
-              id="pro-gate"
+            </Div>
+            <Switch id="pro-gate"
               checked={publishSettings.requiresPro}
-              onCheckedChange={(checked) => 
+              onCheckedChange={(checked) = /> 
                 setPublishSettings({ ...publishSettings, requiresPro: checked })
               }
               disabled={!isPro}
             />
-          </div>
+          </Switch>
 
-          <div className="flex items-center justify-between">
-            <label htmlFor="download" className="text-sm font-medium">
+          <Div className="flex items-center justify-between">
+            <Label htmlFor="download" className="text-sm font-medium">
               Allow Downloads
-            </label>
-            <Switch
-              id="download"
+            </Div>
+            <Switch id="download"
               checked={publishSettings.allowDownload}
-              onCheckedChange={(checked) => 
+              onCheckedChange={(checked) = /> 
                 setPublishSettings({ ...publishSettings, allowDownload: checked })
               }
             />
-          </div>
-        </div>
+          </Switch>
+        </Div>
 
         {publishSettings.visibility === 'public' && isPro && (
-          <div>
-            <label className="text-sm font-medium mb-2 block">
+          <Div>
+            <Label className="text-sm font-medium mb-2 block">
               Price (optional, 0 for free)
-            </label>
-            <input type="number"
+            </Div>
+            <Input type="number"
               placeholder="0"
               value={publishSettings.price}
               onChange={(e) = /> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
             />
-          </div>
+          </Input>
         )}
 
         <Button onClick={handlePublish}
           disabled={isPublishing || !publishSettings.title}
           className="w-full"
-       >
+     >
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
         </Button>
 
         {publishedUrl && (
-          <div className="p-4 bg-green-500/10 rounded-lg">
-            <p className="text-sm font-medium text-green-600 mb-2">
+          <Div className="p-4 bg-green-500/10 rounded-lg">
+            <P className="text-sm font-medium text-green-600 mb-2">
               Strategy published successfully!
-            </p>
-            <div className="flex items-center gap-2">
-              <input
+            </Div>
+            <Div className="flex items-center gap-2">
+              <Input
                 value={publishedUrl}
                 readOnly
                 className="text-xs"
               />
-              <Button size="sm" variant="outline">
+              <Button size="sm" variant="outline" />
                 Copy Link
-              </Button>
-            </div>
-          </div>
+              </Div>
+            </Div>
+          </Div>
         )}
 
-        <div className="grid grid-cols-3 gap-4 text-center">
-          <div className="p-3 bg-secondary/20 rounded-lg">
-            <p className="text-2xl font-bold">0</p>
-            <p className="text-xs text-muted-foreground">Views</p>
-          </div>
-          <div className="p-3 bg-secondary/20 rounded-lg">
-            <p className="text-2xl font-bold">0</p>
-            <p className="text-xs text-muted-foreground">Downloads</p>
-          </div>
-          <div className="p-3 bg-secondary/20 rounded-lg">
-            <p className="text-2xl font-bold">$0</p>
-            <p className="text-xs text-muted-foreground">Earned</p>
-          </div>
-        </div>
-      </div>
+        <Div className="grid grid-cols-3 gap-4 text-center">
+          <Div className="p-3 bg-secondary/20 rounded-lg">
+            <P className="text-2xl font-bold">0</Div>
+            <P className="text-xs text-muted-foreground">Views</P>
+          </Div>
+          <Div className="p-3 bg-secondary/20 rounded-lg">
+            <P className="text-2xl font-bold">0</Div>
+            <P className="text-xs text-muted-foreground">Downloads</P>
+          </Div>
+          <Div className="p-3 bg-secondary/20 rounded-lg">
+            <P className="text-2xl font-bold">$0</Div>
+            <P className="text-xs text-muted-foreground">Earned</P>
+          </Div>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

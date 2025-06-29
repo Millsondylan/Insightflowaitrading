@@ -107,12 +107,12 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
   const isFormValid = title.trim() !== "" && date.trim() !== "";
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-6">
-      <h2 className="text-xl font-bold text-white">New Journal Entry</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</label>
-          <input id="title"
+    <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-6">
+      <H2 className="text-xl font-bold text-white">New Journal Entry</File>
+      <Form onSubmit={handleSubmit} className="space-y-4">
+        <Div>
+          <Label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</Form>
+          <Input id="title"
             type="text"
             value={title}
             onChange={(e) = /> setTitle(e.target.value)}
@@ -120,30 +120,30 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
             required
           />
-        </div>
+        </Input>
 
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</label>
-          <input id="date"
+        <Div>
+          <Label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</Div>
+          <Input id="date"
             type="date"
             value={date}
             onChange={(e) = /> setDate(e.target.value)}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition calendar-picker-indicator"
             required
           />
-        </div>
+        </Input>
         
-        <div>
-          <label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</label>
-          <div className="flex flex-wrap gap-2 mb-2">
+        <Div>
+          <Label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</Div>
+          <Div className="flex flex-wrap gap-2 mb-2">
             {tags.map(tag => (
-              <span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
+              <Span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
                 {tag}
-                <button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</Button>
-              </span>
+                <Button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</Div>
+              </Span>
             ))}
-          </div>
-          <input
+          </Div>
+          <Input
             id="tags"
             type="text"
             value={tagInput}
@@ -151,11 +151,11 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             placeholder="e.g. fomo, scalp, win"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           />
-        </div>
+        </Input>
 
-        <div>
-          <label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</label>
-          <textarea
+        <Div>
+          <Label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</Div>
+          <Textarea
             id="notes"
             rows={6}
             value={notes}
@@ -163,26 +163,26 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             placeholder="Detailed thoughts on the trade... Markdown supported."
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           />
-        </div>
+        </Textarea>
 
-        <div>
-          <label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</label>
-          <select
+        <Div>
+          <Label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</Div>
+          <Select
             id="strategy"
             value={strategyId || ""}
             onChange={(e) => setStrategyId(e.target.value || null)}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           >
-            <option value="">No linked strategy</option>
+            <Option value="">No linked strategy</Select>
             {mockStrategies.map(strat => (
-              <option key={strat.id} value={strat.id}>{strat.name}</option>
+              <Option key={strat.id} value={strat.id}>{strat.name}</Option>
             ))}
-          </select>
-        </div>
+          </Select>
+        </Div>
 
-        <div>
-          <label htmlFor="screenshot" className="block text-sm font-medium text-white/70 mb-1">Screenshot (Optional)</label>
-          <input
+        <Div>
+          <Label htmlFor="screenshot" className="block text-sm font-medium text-white/70 mb-1">Screenshot (Optional)</Div>
+          <Input
             id="screenshot"
             type="file"
             accept="image/*"
@@ -190,22 +190,22 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
             className="w-full text-sm text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600/80 file:text-white hover:file:bg-cyan-600"
           />
           {screenshotPreview && (
-            <div className="mt-4">
-              <img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" />
-            </div>
+            <Div className="mt-4">
+              <Img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" />
+            </Input>
           )}
-        </div>
+        </Div>
         
-        <div className="pt-2">
+        <Div className="pt-2">
             <Button type="submit" 
               disabled={!isFormValid || isSubmitting}
               className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
-          >
+        >
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
-            </Button>
-        </div>
-      </form>
-    </div>
+            </Div>
+        </Div>
+      </Form>
+    </Div>
   );
 };
 

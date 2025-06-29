@@ -25,7 +25,7 @@ const features = [
     borderColor: 'hover:border-blue-400',
   },
   {
-    icon: <Bookopen  />,
+    icon: <Bookopen  /></Braincircuit>,
     title: 'Academy',
     description: 'Learn from a curated knowledge base of trading concepts and strategies.',
     link: '/academy',
@@ -58,8 +58,8 @@ const FeatureCards = () => {
   };
 
   return (
-    <section className="py-20 bg-black text-white">
-      <div className="container mx-auto px-4">
+    <Section className="py-20 bg-black text-white">
+      <Div className="container mx-auto px-4">
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
@@ -69,20 +69,19 @@ const FeatureCards = () => {
         >
           {features.map((feature) => (
             <motion.div key={feature.title} variants={cardVariants}>
-              <link  >
-                <div
-                  className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}
-                >
-                  <div className="mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
-                </div>
+              <Link >
+                <Div className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}
+               >
+                  <Div className="mb-4">{feature.icon}</Section>
+                  <H3 className="text-xl font-bold mb-2">{feature.title}</H3>
+                  <P className="text-gray-400">{feature.description}</P>
+                </Div>
               </Link>
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    </section>
+      </Div>
+    </Section>
   );
 };
 

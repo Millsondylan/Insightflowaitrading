@@ -162,39 +162,39 @@ export const lovable = {
   // If narration is disabled, render toggle only
   if (!enabled) {
     return (
-      <div className="flex items-center justify-between p-4 border rounded-lg border-gray-800 bg-gray-900/50 mb-6">
-        <div className="flex items-center gap-3">
+      <Div className="flex items-center justify-between p-4 border rounded-lg border-gray-800 bg-gray-900/50 mb-6">
+        <Div className="flex items-center gap-3">
           <bot className="h-5 w-5 text-blue-400" />
-          <div>
-            <h3 className="font-medium">AI Narration</h3>
-            <p className="text-sm text-gray-400">Get personalized commentary on this lesson</p>
-          </div>
-        </div>
-        <Switch checked={enabled} onCheckedChange={(checked) => {
+          <Div>
+            <H3 className="font-medium">AI Narration</NarratorOptions>
+            <P className="text-sm text-gray-400">Get personalized commentary on this lesson</P>
+          </Div>
+        </Div>
+        <Switch checked={enabled} onCheckedChange={(checked) = /> {
           setEnabled(checked);
           logClick('ToggleNarration', { enabled: checked });
         }} />
-      </div>
+      </Switch>
     );
   }
 
   return (
-    <Card className="mb-6 border-blue-600/30 bg-blue-900/10 shadow-blue-900/10 shadow-sm">
-      <CardHeader className="pb-2">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center text-lg text-blue-400">
+    <Card className="mb-6 border-blue-600/30 bg-blue-900/10 shadow-blue-900/10 shadow-sm" />
+      <CardHeader className="pb-2" />
+        <Div className="flex items-center justify-between">
+          <CardTitle className="flex items-center text-lg text-blue-400" />
             <bot className="mr-2 h-5 w-5" />
             AI Lesson Narrator
-          </CardTitle>
-          <div className="flex items-center gap-2">
+          </Card>
+          <Div className="flex items-center gap-2">
             {loading ? (
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+              <Div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></Div>
             ) : (
               <Button variant="ghost" 
                 size="icon" 
                 className="h-8 w-8 text-blue-400"
                 onClick={handleRegenerateNarration}
-             >
+           >
                 <RefreshCw className="h-4 w-4" />
               </Button>
             )}
@@ -204,7 +204,7 @@ export const lovable = {
                 <Button variant="ghost" 
                   size="icon"
                   className="h-8 w-8 text-blue-400"
-                  onClick={() => {
+                  onClick={() = /> {
                     setShowSettings(!showSettings);
                     logClick('OpenNarratorSettings');
                   }}
@@ -213,120 +213,116 @@ export const lovable = {
                 </Button>
               </PopoverTrigger>
               <popoverContent className="w-80 p-4">
-                <div className="space-y-4">
-                  <h4 className="font-medium text-sm">Narrator Settings</h4>
+                <Div className="space-y-4">
+                  <H4 className="font-medium text-sm">Narrator Settings</Div>
                   
-                  <div className="space-y-2">
-                    <h5 className="text-sm font-medium">Voice Style</h5>
-                    <RadioGroup 
-                      value={narratorOptions.voice} 
-                      onValueChange={(value) => handleVoiceChange(value as any)}
+                  <Div className="space-y-2">
+                    <H5 className="text-sm font-medium">Voice Style</Div>
+                    <RadioGroup value={narratorOptions.voice} 
+                      onValueChange={(value) = /> handleVoiceChange(value as any)}
                       className="grid grid-cols-2 gap-2"
                     >
-                      <div className="flex items-center space-x-2">
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="friendly" id="friendly" />
-                        <label htmlFor="friendly">Friendly</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="friendly">Friendly</RadioGroup>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="professional" id="professional" />
-                        <label htmlFor="professional">Professional</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="professional">Professional</Div>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="enthusiastic" id="enthusiastic" />
-                        <label htmlFor="enthusiastic">Enthusiastic</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="enthusiastic">Enthusiastic</Div>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="calm" id="calm" />
-                        <label htmlFor="calm">Calm</label>
-                      </div>
+                        <Label htmlFor="calm">Calm</Div>
+                      </Div>
                     </RadioGroup>
-                  </div>
+                  </Div>
                   
                   <Separator />
                   
-                  <div className="space-y-2">
-                    <h5 className="text-sm font-medium">Teaching Style</h5>
-                    <RadioGroup 
-                      value={narratorOptions.style} 
-                      onValueChange={(value) => handleStyleChange(value as any)}
+                  <Div className="space-y-2">
+                    <H5 className="text-sm font-medium">Teaching Style</Separator>
+                    <RadioGroup value={narratorOptions.style} 
+                      onValueChange={(value) = /> handleStyleChange(value as any)}
                     >
-                      <div className="flex items-center space-x-2">
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="conversational" id="conversational" />
-                        <label htmlFor="conversational">Conversational</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="conversational">Conversational</RadioGroup>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="educational" id="educational" />
-                        <label htmlFor="educational">Educational</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="educational">Educational</Div>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="coaching" id="coaching" />
-                        <label htmlFor="coaching">Coaching</label>
-                      </div>
+                        <Label htmlFor="coaching">Coaching</Div>
+                      </Div>
                     </RadioGroup>
-                  </div>
+                  </Div>
                   
                   <Separator />
                   
-                  <div className="space-y-2">
-                    <h5 className="text-sm font-medium">Teaching Pace</h5>
-                    <RadioGroup 
-                      value={narratorOptions.pace} 
-                      onValueChange={(value) => handlePaceChange(value as any)}
+                  <Div className="space-y-2">
+                    <H5 className="text-sm font-medium">Teaching Pace</Separator>
+                    <RadioGroup value={narratorOptions.pace} 
+                      onValueChange={(value) = /> handlePaceChange(value as any)}
                       className="grid grid-cols-3 gap-2"
                     >
-                      <div className="flex items-center space-x-2">
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="slow" id="slow" />
-                        <label htmlFor="slow">Slow</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="slow">Slow</RadioGroup>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="medium" id="medium" />
-                        <label htmlFor="medium">Medium</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
+                        <Label htmlFor="medium">Medium</Div>
+                      </Div>
+                      <Div className="flex items-center space-x-2">
                         <RadioGroupItem value="fast" id="fast" />
-                        <label htmlFor="fast">Fast</label>
-                      </div>
+                        <Label htmlFor="fast">Fast</Div>
+                      </Div>
                     </RadioGroup>
-                  </div>
+                  </Div>
                   
-                  <button onClick={handleSettingsChange} className="w-full">
+                  <Button onClick={handleSettingsChange} className="w-full">
                     Apply Settings
                   </Button>
-                </div>
+                </Div>
               </PopoverContent>
             </Popover>
             
-            <Switch 
-              checked={enabled} 
-              onCheckedChange={(checked) => {
+            <Switch checked={enabled} 
+              onCheckedChange={(checked) = /> {
                 setEnabled(checked);
                 logClick('ToggleNarration', { enabled: checked });
               }} 
             />
-          </div>
-        </div>
+          </Switch>
+        </Div>
       </CardHeader>
       <CardContent>
         {loading ? (
-          <div className="space-y-2 py-2">
+          <Div className="space-y-2 py-2">
             <Skeleton className="h-4 w-full" />
             <Skeleton className="h-4 w-[90%]" />
             <Skeleton className="h-4 w-[95%]" />
             <Skeleton className="h-4 w-[85%]" />
-          </div>
+          </CardContent>
         ) : error ? (
           <alert variant="destructive">
             <alertDescription>{error}</AlertDescription>
           </Alert>
         ) : (
           <>
-            <div className="bg-blue-950/20 rounded-md p-3 mb-3 max-h-60 overflow-y-auto text-gray-200">
-              <div className="space-y-2 text-sm whitespace-pre-line">
+            <Div className="bg-blue-950/20 rounded-md p-3 mb-3 max-h-60 overflow-y-auto text-gray-200">
+              <Div className="space-y-2 text-sm whitespace-pre-line">
                 {narration}
-              </div>
-            </div>
+              </Div>
+            </Div>
             
-            <div className="flex items-center justify-between">
+            <Div className="flex items-center justify-between">
               <Button variant="outline" 
                 size="sm"
                 className={`${playing ? 'bg-blue-600 text-white' : ''} w-24`}
@@ -337,36 +333,35 @@ export const lovable = {
                 ) : (
                   <><play className="h-3 w-3 mr-2" /> Listen</>
                 )}
-              </Button>
+              </Div>
               
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
+              <Div className="flex items-center gap-4">
+                <Div className="flex items-center gap-2">
                   <Button variant="ghost" 
                     size="icon"
                     className="h-8 w-8" 
-                    onClick={() => setVolume(volume === 0 ? 80 : 0)}
+                    onClick={() = /> setVolume(volume === 0 ? 80 : 0)}
                   >
                     {volume === 0 ? (
                       <VolumeX className="h-4 w-4" />
                     ) : (
                       <Volume2 className="h-4 w-4" />
                     )}
-                  </Button>
-                  <Slider
-                    value={[volume]}
+                  </Div>
+                  <Slider value={[volume]}
                     max={100}
                     step={1}
                     className="w-24"
-                    onValueChange={(value) => {
+                    onValueChange={(value) = /> {
                       setVolume(value[0]);
                       logClick('AdjustNarratorVolume', { volume: value[0] });
                     }}
                   />
-                </div>
+                </Slider>
                 
-                <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">Speed:</span>
-                  <select
+                <Div className="flex items-center gap-2">
+                  <Span className="text-xs text-gray-400">Speed:</Div>
+                  <Select
                     className="bg-transparent text-xs border border-gray-700 rounded px-1 py-0.5"
                     value={playbackSpeed}
                     onChange={(e) => {
@@ -374,16 +369,16 @@ export const lovable = {
                       logClick('AdjustNarratorSpeed', { speed: e.target.value });
                     }}
                   >
-                    <option value="0.5">0.5x</option>
-                    <option value="0.75">0.75x</option>
-                    <option value="1">1x</option>
-                    <option value="1.25">1.25x</option>
-                    <option value="1.5">1.5x</option>
-                    <option value="2">2x</option>
-                  </select>
-                </div>
-              </div>
-            </div>
+                    <Option value="0.5">0.5x</Select>
+                    <Option value="0.75">0.75x</Option>
+                    <Option value="1">1x</Option>
+                    <Option value="1.25">1.25x</Option>
+                    <Option value="1.5">1.5x</Option>
+                    <Option value="2">2x</Option>
+                  </Select>
+                </Div>
+              </Div>
+            </Div>
           </>
         )}
       </CardContent>

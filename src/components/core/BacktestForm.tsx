@@ -51,41 +51,41 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
   };
   
   return (
-    <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label htmlFor="ticker">Ticker</label>
-          <select
+    <Form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
+      <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Div>
+          <Label htmlFor="ticker">Ticker</HTMLTextAreaElement>
+          <Select
             value={formState.ticker}
             onValueChange={(value) => handleSelectChange('ticker', value)}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
               <selectValue />
-            </SelectTrigger>
+            </Select>
             <selectContent className="bg-black/90 border-gray-700 text-white">
               {Object.keys(sampleData).map(ticker => (
                 <selectItem key={ticker} value={ticker}>{ticker}</SelectItem>
               ))}
             </SelectContent>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="timeframe">Timeframe</label>
-          <select
+          </Select>
+        </Div>
+        <Div>
+          <Label htmlFor="timeframe">Timeframe</Div>
+          <Select
             value={formState.timeframe}
             onValueChange={(value) => handleSelectChange('timeframe', value)}
           >
             <selectTrigger className="bg-black/30 border-gray-700">
               <selectValue />
-            </SelectTrigger>
+            </Select>
             <selectContent className="bg-black/90 border-gray-700 text-white">
               <selectItem value="1H">1 Hour</SelectItem>
             </SelectContent>
-          </select>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="entryLogic">Entry Logic</label>
+          </Select>
+        </Div>
+      </Div>
+      <Div>
+        <Label htmlFor="entryLogic">Entry Logic</Div>
         <Textarea id="entryLogic"
           name="entryLogic"
           value={formState.entryLogic}
@@ -93,10 +93,10 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
           placeholder="e.g., close> sma(50)"
         />
-      </div>
-      <div>
-        <label htmlFor="exitLogic">Exit Logic</label>
-        <textarea
+      </Textarea>
+      <Div>
+        <Label htmlFor="exitLogic">Exit Logic</Div>
+        <Textarea
           id="exitLogic"
           name="exitLogic"
           value={formState.exitLogic}
@@ -104,16 +104,16 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           className="bg-black/30 border-gray-700 min-h-[80px] font-mono"
           placeholder="e.g., close < sma(50)"
         />
-      </div>
-      <div className="flex justify-center">
+      </Textarea>
+      <Div className="flex justify-center">
         <Button type="submit"
           className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
           disabled={isLoading}
         />
-          {isLoading ? <Loader2 className="animate-spin" /> : 'Run Backtest'}
+          {isLoading ? <Loader2 className="animate-spin" /></Div> : 'Run Backtest'}
         </Button>
-      </div>
-    </form>
+      </Div>
+    </Form>
   );
 };
 

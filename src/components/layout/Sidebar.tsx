@@ -54,19 +54,19 @@ export default function Sidebar() {
     return (
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger asChild>
+          <TooltipTrigger asChild />
             <Link to={item.path}
               className={`flex items-center justify-center w-12 h-12 rounded-lg transition-all duration-200 ${
                 active
                   ? 'bg-blue-600/20 text-blue-400'
                   : 'text-gray-500 hover:text-white hover:bg-gray-800'
               }`}
-           >
+         >
               <Icon size={24} />
-            </Link>
+            </TooltipProvider>
           </TooltipTrigger>
-          <TooltipContent side="right">
-            <p>{item.label}</p>
+          <TooltipContent side="right" />
+            <P>{item.label}</TooltipContent>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -74,72 +74,72 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
-      <div className="flex flex-col items-center gap-10">
-        <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+    <Div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
+      <Div className="flex flex-col items-center gap-10">
+        <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center" />
           <TrendingUp className="w-6 h-6 text-white" />
-        </Link>
-        <nav>
-          <ul className="space-y-4">
+        </Div>
+        <Nav>
+          <Ul className="space-y-4">
             {navItems.map((item) => (
-              <li key={item.path}>
+              <Li key={item.path}>
                 <NavLink item={item} />
-              </li>
+              </Nav>
             ))}
-          </ul>
-        </nav>
-      </div>
+          </Ul>
+        </Nav>
+      </Div>
 
-      <div className="flex flex-col items-center gap-4">
-        <nav>
-          <ul className="space-y-2">
+      <Div className="flex flex-col items-center gap-4">
+        <Nav>
+          <Ul className="space-y-2">
             {bottomNavItems.map((item) => (
-              <li key={item.path}>
+              <Li key={item.path}>
                 <NavLink item={item} />
-              </li>
+              </Div>
             ))}
-          </ul>
-        </nav>
-        <div className="border-t border-gray-800 w-full my-2"></div>
+          </Ul>
+        </Nav>
+        <Div className="border-t border-gray-800 w-full my-2"></Div>
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger asChild>
-              <Link to="/profile">
+            <TooltipTrigger asChild />
+              <Link to="/profile" />
                 <Avatar>
                   <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</TooltipProvider>
                 </Avatar>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="right">
-              <p>{profile?.full_name || 'Profile'}</p>
-              <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start">
+            <TooltipContent side="right" />
+              <P>{profile?.full_name || 'Profile'}</TooltipContent>
+              <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start" />
                 <LogOut className="w-4 h-4 mr-2" />
                 Logout
               </Button>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
-      </div>
+      </Div>
 
-      <div className="space-y-4">
-        <div className="px-3 py-2">
-          <h2 className="mb-2 px-4 text-lg font-semibold">
+      <Div className="space-y-4">
+        <Div className="px-3 py-2">
+          <H2 className="mb-2 px-4 text-lg font-semibold">
             Tools
-          </h2>
-          <div className="space-y-1">
+          </Div>
+          <Div className="space-y-1">
             <Link to="/pine-script-generator"
               className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
                 location.pathname === '/pine-script-generator' ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
               }`}
-            >
-              <FileCode size={16} />
-              <span>Pine Script Generator</span>
+          >
+              <FileCode size={16} /></Div>
+              <Span>Pine Script Generator</Span>
             </Link>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 }
 

@@ -60,28 +60,28 @@ export const lovable = {
   }, [strategies, searchTerm, selectedTags, sortBy]);
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="relative flex-1">
+    <Div className="space-y-6">
+      <Div className="flex flex-col md:flex-row gap-4">
+        <Div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
-          <input placeholder="Search by title or tag..."
+          <Input placeholder="Search by title or tag..."
             value={searchTerm}
             onChange={(e) = /> setSearchTerm(e.target.value)}
             className="pl-10 bg-black/30 border-white/10"
           />
-        </div>
-        <select value={sortBy} onValueChange={setSortBy}>
+        </Div>
+        <Select value={sortBy} onValueChange={setSortBy}>
           <selectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
             <selectValue placeholder="Sort by" />
-          </SelectTrigger>
+          </Select>
           <selectContent>
             <selectItem value="totalPnL">Sort by PnL</SelectItem>
             <selectItem value="winRate">Sort by Win Rate</SelectItem>
           </SelectContent>
-        </select>
-      </div>
+        </Select>
+      </Div>
 
-      <div className="flex flex-wrap gap-2">
+      <Div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
           <Button key={tag}
             variant={selectedTags.includes(tag) ? 'secondary' : 'outline'}
@@ -89,15 +89,15 @@ export const lovable = {
             className="rounded-full"
           >
             {tag}
-          </Button>
+          </Div>
         ))}
-      </div>
+      </Div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <Div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy} />
+          <StrategyCard key={strategy.id} strategy={strategy} /></Div>
         ))}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 }; 

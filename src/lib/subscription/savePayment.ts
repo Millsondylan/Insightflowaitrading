@@ -45,7 +45,7 @@ export const savePayment = async (
   try {
     // Calculate expiry based on plan duration
     const now = new Date();
-    let expiryDate = new Date(now);
+    const expiryDate = new Date(now);
 
     switch (plan) {
       case 'monthly':

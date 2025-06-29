@@ -13,24 +13,24 @@ export const VaultVersioning: React.FC<Vaultversioningprops > = ({ strategyId })
 
   return (
     <Card  />
-      <h2 className="text-2xl font-bold mb-4">Version History</h2>
-      <div className="space-y-4">
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">Compare Versions</Button>
+      <H2 className="text-2xl font-bold mb-4">Version History</Vaultversioningprops>
+      <Div className="space-y-4">
+        <Div className="flex gap-2">
+          <Button variant="outline" size="sm">Compare Versions</Div>
           <Button variant="outline" size="sm" />Restore Version</Button>
-        </div>
-        <div className="space-y-2">
+        </Div>
+        <Div className="space-y-2">
           {versions.map((v, i) => (
-            <div key={i} className="p-3 border rounded hover:bg-accent cursor-pointer">
-              <div className="flex justify-between items-center">
-                <span className="font-medium">v{v.version}</span>
-                <span className="text-sm text-muted-foreground">{v.date}</span>
-              </div>
-              <p className="text-sm text-muted-foreground mt-1">{v.changes}</p>
-            </div>
+            <Div key={i} className="p-3 border rounded hover:bg-accent cursor-pointer">
+              <Div className="flex justify-between items-center">
+                <Span className="font-medium">v{v.version}</Div>
+                <Span className="text-sm text-muted-foreground">{v.date}</Span>
+              </Div>
+              <P className="text-sm text-muted-foreground mt-1">{v.changes}</P>
+            </Div>
           ))}
-        </div>
-      </div>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

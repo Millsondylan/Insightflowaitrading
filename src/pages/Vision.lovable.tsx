@@ -29,16 +29,16 @@ const VisionPage = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <Div className="container mx-auto px-4 py-8">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-8"
       >
-        <h1 className="text-4xl font-bold text-glow-cyan">Chart Vision AI</h1>
-        <p className="text-gray-400">
+        <H1 className="text-4xl font-bold text-glow-cyan">Chart Vision AI</Detectionresult>
+        <P className="text-gray-400">
           Upload a chart image to get AI-powered technical analysis.
-        </p>
+        </P>
       </motion.div>
 
       <animatepresence mode="wait" />
@@ -58,29 +58,29 @@ const VisionPage = () => {
             animate={{ opacity: 1 }}
           >
             {isLoading && !detectionResult && imagePreview && (
-              <div className="text-center p-8 glass-container rounded-lg">
-                <div className="w-full h-64 relative overflow-hidden rounded-md mb-4">
-                  <img src={imagePreview} className="w-full h-full object-cover opacity-30" />
-                  <div className="shimmer-overlay" />
-                </div>
-                <h2 className="text-2xl font-semibold text-white animate-pulse">Analyzing...</h2>
-              </div>
+              <Div className="text-center p-8 glass-container rounded-lg">
+                <Div className="w-full h-64 relative overflow-hidden rounded-md mb-4">
+                  <Img src={imagePreview} className="w-full h-full object-cover opacity-30" />
+                  <Div className="shimmer-overlay" />
+                </Chartuploader>
+                <H2 className="text-2xl font-semibold text-white animate-pulse">Analyzing...</H2>
+              </Div>
             )}
             
             {detectionResult && imagePreview && (
               <>
                 <Fauxdetection  />
-                <div className="text-center mt-8">
-                  <button onClick={handleReset} className="text-cyan-400 hover:underline">
+                <Div className="text-center mt-8">
+                  <Button onClick={handleReset} className="text-cyan-400 hover:underline">
                     Analyze another chart
-                  </Button>
-                </div>
+                  </Fauxdetection>
+                </Div>
               </>
             )}
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </Div>
   );
 };
 

@@ -79,33 +79,33 @@ const AIReflection: React.FC<Aireflectionprops> = ({
     return (
       <Card >
         <Cardheader  />
-          <div className="flex items-center space-x-2">
-            <brain  >
-            <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
-            <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </div>
-          </div>
+          <Div className="flex items-center space-x-2">
+            <brain >
+            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Aireflectionprops>
+            <Div className="flex space-x-1">
+              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
+            </Div>
+          </Div>
         </CardHeader>
-        <cardcontent  >
-          <div className="space-y-2">
+        <Cardcontent >
+          <Div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
-            <skeleton  >
-            <skeleton  >
-          </div>
-          <div className="space-y-2">
-            <skeleton  >
-            <div className="flex gap-2">
-              <skeleton  >
-              <skeleton  >
-            </div>
-          </div>
-          <div className="space-y-2">
+            <skeleton >
+            <skeleton >
+          </Cardcontent>
+          <Div className="space-y-2">
+            <skeleton >
+            <Div className="flex gap-2">
+              <skeleton >
+              <skeleton >
+            </Div>
+          </Div>
+          <Div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
-            <skeleton  >
-          </div>
+            <skeleton >
+          </Div>
         </CardContent>
       </Card>
     );
@@ -114,18 +114,18 @@ const AIReflection: React.FC<Aireflectionprops> = ({
   // Error state
   if (error && !reflection) {
     return (
-      <card  >
-        <cardheader  >
-          <div className="flex items-center space-x-2">
-            <brain  >
-            <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
-          </div>
+      <Card >
+        <Cardheader >
+          <Div className="flex items-center space-x-2">
+            <brain >
+            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+          </Div>
         </CardHeader>
-        <cardcontent  >
-          <div className="text-red-400 text-sm">
+        <Cardcontent >
+          <Div className="text-red-400 text-sm">
             {error}
-          </div>
-          <Button variant="outline" size="sm" >
+          </Cardcontent>
+          <Button variant="outline" size="sm">
             Try Again
           </Button>
         </CardContent>
@@ -136,22 +136,22 @@ const AIReflection: React.FC<Aireflectionprops> = ({
   // Not generated state
   if (!reflection && !hasGenerated) {
     return (
-      <card  >
-        <cardheader  >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <brain  >
-              <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
-            </div>
-            <sparkles  >
-          </div>
+      <Card >
+        <Cardheader >
+          <Div className="flex items-center justify-between">
+            <Div className="flex items-center space-x-2">
+              <brain >
+              <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+            </Div>
+            <sparkles >
+          </Div>
         </CardHeader>
-        <cardcontent  >
-          <p className="text-gray-400 text-sm">
+        <Cardcontent >
+          <P className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
-          </p>
+          </Cardcontent>
           <Button  style={{ width: "100%" }}>
-            <brain  >
+            <brain >
             Analyze Trade
           </Button>
         </CardContent>
@@ -161,63 +161,63 @@ const AIReflection: React.FC<Aireflectionprops> = ({
 
   // Generated state
   return (
-    <card  >
-      <cardheader  >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <brain  >
-            <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
-          </div>
-          <div className="flex items-center space-x-2">
-            <span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
+    <Card >
+      <Cardheader >
+        <Div className="flex items-center justify-between">
+          <Div className="flex items-center space-x-2">
+            <brain >
+            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+          </Div>
+          <Div className="flex items-center space-x-2">
+            <Span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
               {getConfidenceText(reflection!.confidence)}
-            </span>
-            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
-          </div>
-        </div>
+            </Div>
+            <Div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
+          </Div>
+        </Div>
       </CardHeader>
       
-      <cardcontent  >
+      <Cardcontent >
         {/* Summary Section */}
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 mb-2">
-            <target  >
-            <h4 className="text-sm font-medium text-blue-400">Summary</h4>
-          </div>
-          <p className="text-gray-300 leading-relaxed">
+        <Div className="space-y-2">
+          <Div className="flex items-center space-x-2 mb-2">
+            <target >
+            <H4 className="text-sm font-medium text-blue-400">Summary</Cardcontent>
+          </Div>
+          <P className="text-gray-300 leading-relaxed">
             {reflection!.summary}
-          </p>
-        </div>
+          </P>
+        </Div>
 
         {/* Behavior Tags Section */}
         {reflection!.tags && reflection!.tags.length > 0 && (
-          <div className="space-y-3">
-            <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
-              <h4 className="text-sm font-medium text-purple-400">Behavioral Patterns</h4>
-            </div>
-            <behaviortaggroup  >
-          </div>
+          <Div className="space-y-3">
+            <Div className="flex items-center space-x-2">
+              <Div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
+              <H4 className="text-sm font-medium text-purple-400">Behavioral Patterns</Div>
+            </Div>
+            <behaviortaggroup >
+          </Div>
         )}
 
         {/* Suggestion Section */}
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2 mb-2">
-            <lightbulb  >
-            <h4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</h4>
-          </div>
-          <p className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
+        <Div className="space-y-2">
+          <Div className="flex items-center space-x-2 mb-2">
+            <lightbulb >
+            <H4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</Div>
+          </Div>
+          <P className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
             {reflection!.suggestion}
-          </p>
-        </div>
+          </P>
+        </Div>
 
         {/* Regenerate Button */}
-        <div className="pt-2 border-t border-gray-700/50">
-          <Button variant="ghost" size="sm" >
-            <brain  >
+        <Div className="pt-2 border-t border-gray-700/50">
+          <Button variant="ghost" size="sm">
+            <brain >
             Regenerate Analysis
-          </Button>
-        </div>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   );

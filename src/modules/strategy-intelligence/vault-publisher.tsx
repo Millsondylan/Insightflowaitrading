@@ -51,84 +51,84 @@ export const lovable = {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+    <Card className="w-full bg-black/80 border-zinc-800 text-white" />
       <CardHeader>
-        <CardTitle>Strategy Publisher</CardTitle>
+        <CardTitle>Strategy Publisher</Strategy>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <input value={strategy.name}
+        <Div className="space-y-4">
+          <Div>
+            <H3 className="text-lg font-bold mb-2">Strategy Details</CardContent>
+            <Div className="grid grid-cols-2 gap-4">
+              <Input value={strategy.name}
                 onChange={(e) = /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <input value={strategy.version || ''}
+              <Input value={strategy.version || ''}
                 onChange={(e) = /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-            </div>
-            <textarea 
+            </Div>
+            <Textarea 
               value={strategy.description || ''}
               onChange={(e) => setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
             />
-          </div>
+          </Textarea>
 
-          <div>
-            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
-            <div className="space-y-2">
-              <div>
-                <label className="block text-sm mb-1">Visibility</label>
-                <div className="flex space-x-2">
+          <Div>
+            <H3 className="text-lg font-bold mb-2">Publish Settings</Div>
+            <Div className="space-y-2">
+              <Div>
+                <Label className="block text-sm mb-1">Visibility</Div>
+                <Div className="flex space-x-2">
                   <Button variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
-                    onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
+                    onClick={() = /> setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
-                  </Button>
+                  </Div>
                   <Button variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
-                    onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
+                    onClick={() = /> setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
                   </Button>
-                </div>
-              </div>
+                </Div>
+              </Div>
 
-              <input value={publishDetails.communityTags}
+              <Input value={publishDetails.communityTags}
                 onChange={(e) = /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <input value={publishDetails.marketConditions}
+              <Input value={publishDetails.marketConditions}
                 onChange={(e) = /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <textarea 
+              <Textarea 
                 value={publishDetails.disclaimer}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
               />
-            </div>
-          </div>
+            </Input>
+          </Div>
 
           <Button onClick={handlePublish}
             className="w-full bg-blue-600 hover:bg-blue-700"
-         >
+       >
             Publish Strategy
           </Button>
-        </div>
+        </Div>
       </CardContent>
     </Card>
   )

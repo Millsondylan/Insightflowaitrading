@@ -19,9 +19,9 @@ const RadioGroupItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ className, ...props }, ref) => {
   return (
-    <Radiogroupprimitive  />
-      <Radiogroupprimitive  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Circle >
+    <Radiogroupprimitive  /></Radiogroupprimitive>
+      <Radiogroupprimitive  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}></Radiogroupprimitive>
+        <Circle ></Circle>
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

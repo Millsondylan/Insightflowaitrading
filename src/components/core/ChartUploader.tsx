@@ -25,26 +25,26 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   });
 
   return (
-    <div {...getRootProps()}
+    <Div {...getRootProps()}
       className={`chart-uploader ${isDragActive ? 'active' : ''}`}
-    >
-      <input {...getInputProps()} />
-      <div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
+   >
+      <Input {...getInputProps()} />
+      <Div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
         {isDragActive ? (
           <>
             <FileImage className="h-12 w-12 text-cyan-400" />
-            <p className="text-lg font-semibold text-white">Drop the chart here...</p>
+            <P className="text-lg font-semibold text-white">Drop the chart here...</Div>
           </>
         ) : (
           <>
             <UploadCloud className="h-12 w-12 text-gray-500" />
-            <p className="text-lg font-semibold text-white">Drag & drop a chart image, or click to select</p>
-            <p className="text-sm text-gray-400">PNG or JPG supported</p>
+            <P className="text-lg font-semibold text-white">Drag & drop a chart image, or click to select</UploadCloud>
+            <P className="text-sm text-gray-400">PNG or JPG supported</P>
           </>
         )}
-      </div>
-      {isLoading && <div className="shimmer-overlay" />}
-    </div>
+      </Div>
+      {isLoading && <Div className="shimmer-overlay" />}
+    </Div>
   );
 };
 

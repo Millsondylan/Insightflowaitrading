@@ -18,45 +18,45 @@ export default function Wallet() {
   };
 
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-white mb-4">Wallet Verification</h1>
-          <p className="text-white/70">
+    <Div className="container mx-auto py-12 px-4">
+      <Div className="max-w-2xl mx-auto">
+        <Div className="mb-8 text-center">
+          <H1 className="text-3xl font-bold text-white mb-4">Wallet Verification</Div>
+          <P className="text-white/70">
             Connect your crypto wallet to verify ownership and unlock premium features.
-          </p>
-        </div>
+          </P>
+        </Div>
 
-        <Walletconnect >
+        <Walletconnect ></Walletconnect>
 
-        <div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</h2>
+        <Div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
+          <H2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</Div>
           
-          <div className="space-y-4 text-white/80">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔒</div>
-              <p>
-                <span className="font-medium text-white">Secure Verification:</span> We use non-custodial wallet signing to verify ownership without storing your private keys.
-              </p>
-            </div>
+          <Div className="space-y-4 text-white/80">
+            <Div className="flex items-start">
+              <Div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔒</Div>
+              <P>
+                <Span className="font-medium text-white">Secure Verification:</P> We use non-custodial wallet signing to verify ownership without storing your private keys.
+              </P>
+            </Div>
             
-            <div className="flex items-start">
-              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">⚡</div>
-              <p>
-                <span className="font-medium text-white">Unlock Premium Features:</span> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
-              </p>
-            </div>
+            <Div className="flex items-start">
+              <Div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">⚡</Div>
+              <P>
+                <Span className="font-medium text-white">Unlock Premium Features:</P> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
+              </P>
+            </Div>
             
-            <div className="flex items-start">
-              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔄</div>
-              <p>
-                <span className="font-medium text-white">Seamless Experience:</span> Your wallet connects directly to our service without any intermediaries.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            <Div className="flex items-start">
+              <Div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔄</Div>
+              <P>
+                <Span className="font-medium text-white">Seamless Experience:</P> Your wallet connects directly to our service without any intermediaries.
+              </P>
+            </Div>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 } 
 

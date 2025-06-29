@@ -51,15 +51,15 @@ export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
 
   return (
     <Card  />
-      <div className="text-center mb-8">
+      <Div className="text-center mb-8">
         <Crown >
-        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</h2>
-        <p className="text-muted-foreground">
+        <H2 className="text-3xl font-bold mb-2">Unlock Pro Features</Prounlockerprops>
+        <P className="text-muted-foreground">
           Take your trading to the next level with advanced tools and insights
-        </p>
-      </div>
+        </P>
+      </Div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
           <Div key={plan.name}
             className={`relative p-6 rounded-lg border-2 ${
@@ -69,61 +69,61 @@ export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-          />
+          /></Div>
             {plan.recommended && (
-              <badge  >
+              <Badge >
                 Recommended
               </Badge>
             )}
 
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-              <div className="text-3xl font-bold">
+            <Div className="text-center mb-6">
+              <H3 className="text-xl font-bold mb-2">{plan.name}</Div>
+              <Div className="text-3xl font-bold">
                 ${plan.price}
-                <span className="text-sm font-normal text-muted-foreground">/month</span>
-              </div>
-            </div>
+                <Span className="text-sm font-normal text-muted-foreground">/month</Div>
+              </Div>
+            </Div>
 
-            <ul className="space-y-3 mb-6">
+            <Ul className="space-y-3 mb-6">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <check  >
-                  <span className="text-sm">{feature}</span>
-                </li>
+                <Li key={i} className="flex items-start gap-2">
+                  <check >
+                  <Span className="text-sm">{feature}</Ul>
+                </Li>
               ))}
-            </ul>
+            </Ul>
 
             <Button  style={{ width: "100%" }}> onUnlock?.(plan.name)}
             >
               {plan.current ? 'Current Plan' : `Upgrade to ${plan.name}`}
             </Button>
-          </div>
+          </Div>
         ))}
-      </div>
+      </Div>
 
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="text-center p-4">
-          <zap  >
-          <h4 className="font-semibold">Instant Access</h4>
-          <p className="text-sm text-muted-foreground">
+      <Div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Div className="text-center p-4">
+          <zap >
+          <H4 className="font-semibold">Instant Access</Div>
+          <P className="text-sm text-muted-foreground">
             All features unlocked immediately
-          </p>
-        </div>
-        <div className="text-center p-4">
-          <shield  >
-          <h4 className="font-semibold">Secure Payment</h4>
-          <p className="text-sm text-muted-foreground">
+          </P>
+        </Div>
+        <Div className="text-center p-4">
+          <shield >
+          <H4 className="font-semibold">Secure Payment</Div>
+          <P className="text-sm text-muted-foreground">
             256-bit SSL encryption
-          </p>
-        </div>
-        <div className="text-center p-4">
-          <rocket  >
-          <h4 className="font-semibold">Cancel Anytime</h4>
-          <p className="text-sm text-muted-foreground">
+          </P>
+        </Div>
+        <Div className="text-center p-4">
+          <rocket >
+          <H4 className="font-semibold">Cancel Anytime</Div>
+          <P className="text-sm text-muted-foreground">
             No questions asked
-          </p>
-        </div>
-      </div>
+          </P>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

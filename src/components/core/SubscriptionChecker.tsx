@@ -196,8 +196,8 @@ const SubscriptionChecker: React.FC = () => {
   // If we're showing a verification status
   if (verificationStatus) {
     return (
-      <Card className="w-full">
-        <CardContent className="pt-6">
+      <Card className="w-full" />
+        <CardContent className="pt-6" />
           <accessStatus 
             status={verificationStatus} 
             plan={selectedPlan}
@@ -207,9 +207,9 @@ const SubscriptionChecker: React.FC = () => {
           />
 
           {verificationStatus === 'failure' && (
-            <div className="mt-6 text-center">
-              <button onClick={resetVerification}>Try Again</Button>
-            </div>
+            <Div className="mt-6 text-center">
+              <Button onClick={resetVerification}>Try Again</HTMLInputElement>
+            </Div>
           )}
         </CardContent>
       </Card>
@@ -217,22 +217,21 @@ const SubscriptionChecker: React.FC = () => {
   }
 
   return (
-    <Card className="w-full">
+    <Card className="w-full" />
       <CardHeader>
-        <CardTitle>Select Your Subscription Plan</CardTitle>
+        <CardTitle>Select Your Subscription Plan</Card>
         <CardDescription>Choose a plan and payment method to unlock premium features</CardDescription>
       </CardHeader>
       
       <CardContent>
-        <div className="space-y-6">
+        <Div className="space-y-6">
           {/* Plan Selection */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">Step 1: Choose Your Plan</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Div>
+            <H3 className="text-lg font-medium mb-4">Step 1: Choose Your Plan</CardContent>
+            <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {SUBSCRIPTION_PLANS.map(plan => (
-                <Card 
-                  key={plan.id}
-                  onClick={() => handlePlanChange(plan.id)}
+                <Card key={plan.id}
+                  onClick={() = /> handlePlanChange(plan.id)}
                   className={`relative cursor-pointer transition-all duration-200 border-2 ${
                     selectedPlan === plan.id 
                       ? 'border-blue-500 shadow-lg shadow-blue-500/20' 
@@ -240,127 +239,127 @@ const SubscriptionChecker: React.FC = () => {
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs py-1 px-3 rounded-full">
+                    <Div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs py-1 px-3 rounded-full">
                       Popular
-                    </div>
+                    </Div>
                   )}
-                  <CardHeader className="pb-3">
-                    <CardTitle>{plan.name}</CardTitle>
-                    <div className="text-2xl font-bold text-white">${plan.priceUSD}</div>
+                  <CardHeader className="pb-3" />
+                    <CardTitle>{plan.name}</CardHeader>
+                    <Div className="text-2xl font-bold text-white">${plan.priceUSD}</Div>
                   </CardHeader>
-                  <CardContent className="text-sm text-gray-400">
-                    <p className="mb-2">{plan.description}</p>
-                    <ul className="space-y-1">
+                  <CardContent className="text-sm text-gray-400" />
+                    <P className="mb-2">{plan.description}</CardContent>
+                    <Ul className="space-y-1">
                       {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start">
+                        <Li key={idx} className="flex items-start">
                           <arrowRight className="h-4 w-4 mr-2 mt-0.5 text-blue-400" />
                           {feature}
-                        </li>
+                        </Ul>
                       ))}
-                    </ul>
+                    </Ul>
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
+            </Div>
+          </Div>
 
           {/* Payment Selection */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">Step 2: Select Payment Method</h3>
-            <div className="space-y-4">
-              <select value={selectedChain} onValueChange={handleChainChange}>
+          <Div>
+            <H3 className="text-lg font-medium mb-4">Step 2: Select Payment Method</Div>
+            <Div className="space-y-4">
+              <Select value={selectedChain} onValueChange={handleChainChange}>
                 <selectTrigger className="w-full sm:w-[240px]">
                   <selectValue placeholder="Select Chain" />
-                </SelectTrigger>
+                </Div>
                 <selectContent>
                   <selectGroup>
                     <selectLabel>Crypto Network</SelectLabel>
                     <selectItem value="ETH">
-                      <div className="flex items-center">
+                      <Div className="flex items-center">
                         <CircleDollarSign className="mr-2 h-4 w-4" />
-                        <span>Ethereum (ERC20)</span>
-                      </div>
+                        <Span>Ethereum (ERC20)</Div>
+                      </Div>
                     </SelectItem>
                     <selectItem value="BTC">
-                      <div className="flex items-center">
+                      <Div className="flex items-center">
                         <bitcoin className="mr-2 h-4 w-4" />
-                        <span>Bitcoin</span>
-                      </div>
+                        <Span>Bitcoin</Div>
+                      </Div>
                     </SelectItem>
                     <selectItem value="TRX">
-                      <div className="flex items-center">
+                      <Div className="flex items-center">
                         <DollarSign className="mr-2 h-4 w-4" />
-                        <span>TRON (USDT)</span>
-                      </div>
+                        <Span>TRON (USDT)</Div>
+                      </Div>
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </select>
+              </Select>
 
               {/* Payment Instructions */}
-              <div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="font-medium mb-1">Send Payment</h4>
-                    <p className="text-sm text-gray-400">
+              <Div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4">
+                <Div className="flex justify-between items-start mb-4">
+                  <Div>
+                    <H4 className="font-medium mb-1">Send Payment</Div>
+                    <P className="text-sm text-gray-400">
                       Send exactly {cryptoAmount} {chain?.ticker || ''} to the address below
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm text-gray-400">Amount</div>
-                    <div className="font-bold text-lg">
+                    </P>
+                  </Div>
+                  <Div className="text-right">
+                    <Div className="text-sm text-gray-400">Amount</Div>
+                    <Div className="font-bold text-lg">
                       {cryptoAmount} {chain?.ticker || ''}
-                    </div>
-                    <div className="text-sm text-gray-400">(${plan?.priceUSD})</div>
-                  </div>
-                </div>
+                    </Div>
+                    <Div className="text-sm text-gray-400">(${plan?.priceUSD})</Div>
+                  </Div>
+                </Div>
 
                 {/* Address Display */}
-                <div className="p-3 bg-black/30 rounded border border-gray-700/50 flex justify-between items-center">
-                  <div className="font-mono text-sm text-gray-300 truncate">
+                <Div className="p-3 bg-black/30 rounded border border-gray-700/50 flex justify-between items-center">
+                  <Div className="font-mono text-sm text-gray-300 truncate">
                     {walletAddress || 'Select a chain'}
-                  </div>
-                  <div className="flex items-center space-x-2">
+                  </Div>
+                  <Div className="flex items-center space-x-2">
                     <Button onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
-                  >
+                >
                       <Copy className="h-4 w-4" />
-                    </Button>
-                    <Button  onClick={() => toast({
+                    </Div>
+                    <Button onClick={() = /> toast({
                         title: "QR Code",
                         description: "Scan this code to make your payment",
                         action: (
-                          <div className="p-4 bg-white rounded-lg">
+                          <Div className="p-4 bg-white rounded-lg">
                             <QrCodeSVG value={walletAddress || ''} size={150} />
-                          </div>
+                          </Button>
                         )
                       })} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
                     >
                       <QrCode className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                    </QrCode>
+                  </Div>
+                </Div>
+              </Div>
+            </Div>
+          </Div>
 
           {/* Transaction Verification */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">Step 3: Verify Payment</h3>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
+          <Div>
+            <H3 className="text-lg font-medium mb-4">Step 3: Verify Payment</Div>
+            <Div className="space-y-4">
+              <Div>
+                <Label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
                   After payment, paste the transaction hash (TX ID) below to verify
-                </label>
-                <input 
+                </Div>
+                <Input 
                   id="txHash"
                   value={txHash}
                   onChange={handleTxHashChange}
                   placeholder={`Enter ${selectedChain} transaction hash...`}
                   className="bg-gray-800/50 border-gray-700"
                 />
-              </div>
+              </Input>
               
               <Button onClick={handleVerifyTransaction}
                 disabled={!txHash.trim() || loading}
@@ -368,9 +367,9 @@ const SubscriptionChecker: React.FC = () => {
               />
                 {loading ? 'Verifying...' : 'Verify Payment'}
               </Button>
-            </div>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   );

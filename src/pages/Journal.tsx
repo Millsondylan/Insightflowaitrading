@@ -14,18 +14,18 @@ const mockEntries = [
 const JournalEntryCard = ({ entry }: { entry: (typeof mockEntries)[0] }) => {
     const pnlColor = entry.pnl >= 0 ? 'text-green-400' : 'text-red-400';
     return (
-        <div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
-            <div className="flex justify-between items-center">
-                <h4 className="font-semibold text-white">{entry.title}</h4>
-                <p className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</p>
-            </div>
-            <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
-                <p>{entry.sentiment} • {entry.date}</p>
-                <div className="flex gap-2">
-                    {entry.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-                </div>
-            </div>
-        </div>
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
+            <Div className="flex justify-between items-center">
+                <H4 className="font-semibold text-white">{entry.title}</Div>
+                <P className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</P>
+            </Div>
+            <Div className="flex justify-between items-center mt-2 text-sm text-gray-400">
+                <P>{entry.sentiment} • {entry.date}</Div>
+                <Div className="flex gap-2">
+                    {entry.tags.map(tag => <Badge key={tag} variant="secondary" />{tag}</Div>)}
+                </Div>
+            </Div>
+        </Div>
     );
 };
 
@@ -33,61 +33,61 @@ export default function JournalPage() {
   const [newEntryText, setNewEntryText] = useState('');
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+    <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
       {/* Main Content */}
-      <div className="lg:col-span-2 space-y-6">
-        <div className="flex justify-between items-center">
-            <div>
-                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><ScrollText className="text-blue-400" /></span>
+      <Div className="lg:col-span-2 space-y-6">
+        <Div className="flex justify-between items-center">
+            <Div>
+                <H1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <Span className="bg-white/10 p-2 rounded-lg"><ScrollText className="text-blue-400" /></Div>
                     Trading Journal
-                </h1>
-                <p className="text-gray-400 mt-1">Reflect on your trades and mindset.</p>
-            </div>
-        </div>
+                </H1>
+                <P className="text-gray-400 mt-1">Reflect on your trades and mindset.</P>
+            </Div>
+        </Div>
         
         {mockEntries.map(entry => <JournalEntryCard key={entry.id} entry={entry} />)}
-      </div>
+      </JournalEntryCard>
 
       {/* Right Sidebar */}
-      <div className="lg:col-span-1 space-y-6">
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
+      <Div className="lg:col-span-1 space-y-6">
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <H3 className="font-semibold text-white mb-3 flex items-center gap-2">
                 <PlusCircle size={18} />
                 New Journal Entry
-            </h3>
-            <textarea
+            </Div>
+            <Textarea
                 value={newEntryText}
                 onChange={(e) => setNewEntryText(e.target.value)}
                 placeholder="What's on your mind? Capture your thoughts on recent trades..."
                 className="bg-black/20 border-white/10 h-28"
             />
-            <button className="w-full mt-3 bg-blue-600 hover:bg-blue-700">Save Entry</button>
-        </div>
+            <Button className="w-full mt-3 bg-blue-600 hover:bg-blue-700">Save Entry</Textarea>
+        </Div>
 
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <H3 className="font-semibold text-white mb-4 flex items-center gap-2">
                 <Bot size={18} />
                 AI Coach
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</p>
-            <Link to="/coach">
-                <Button variant="outline" className="w-full">Ask for a Review</Button>
+            </Div>
+            <P className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</P>
+            <Link to="/coach" />
+                <Button variant="outline" className="w-full" />Ask for a Review</Link>
             </Link>
-        </div>
+        </Div>
         
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <H3 className="font-semibold text-white mb-4 flex items-center gap-2">
                 <Rss size={18} />
                 Insight Feed
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</p>
-            <Link to="/feed">
-                <Button variant="outline" className="w-full">View Your Feed</Button>
+            </Div>
+            <P className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</P>
+            <Link to="/feed" />
+                <Button variant="outline" className="w-full" />View Your Feed</Link>
             </Link>
-        </div>
-      </div>
-    </div>
+        </Div>
+      </Div>
+    </Div>
   );
 }
 

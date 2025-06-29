@@ -121,11 +121,11 @@ const SelectItem = React.forwardRef<
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
         <Check className="h-4 w-4" />
       </SelectPrimitive.ItemIndicator>
-    </span>
+    </SelectPrimitive>
 
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
@@ -140,7 +140,7 @@ const SelectSeparator = React.forwardRef<
     ref={ref}
     className={cn("-mx-1 my-1 h-px bg-muted", className)}
     {...props}
-  />
+  /></SelectPrimitive>
 ))
 SelectSeparator.displayName = SelectPrimitive.Separator.displayName
 

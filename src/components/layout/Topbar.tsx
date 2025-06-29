@@ -21,37 +21,37 @@ export const lovable = {
   });
 
   return (
-    <header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
-      <div className="flex items-center gap-4">
-        <div className="relative">
+    <Header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
+      <Div className="flex items-center gap-4">
+        <Div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
-          <input
+          <Input
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
           />
-        </div>
-      </div>
-      <div className="flex items-center gap-6">
-        <span className="text-sm text-text-muted">{today}</span>
+        </Header>
+      </Div>
+      <Div className="flex items-center gap-6">
+        <Span className="text-sm text-text-muted">{today}</Div>
         <Button variant="ghost" size="icon">
           <bell className="w-5 h-5" />
         </Button>
-        <div className="flex items-center gap-3">
+        <Div className="flex items-center gap-3">
           <avatar>
             <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-            <avatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+            <AvatarFallback>{profile?.full_name?.[0] || 'U'}</Div>
           </Avatar>
-          <div>
-            <p className="font-semibold">{profile?.full_name || 'Guest'}</p>
+          <Div>
+            <P className="font-semibold">{profile?.full_name || 'Guest'}</Div>
             {hasProAccess && (
-              <badge variant="outline" className="border-brand-primary text-brand-primary">
+              <Badge variant="outline" className="border-brand-primary text-brand-primary">
                 PRO
               </Badge>
             )}
-          </div>
-        </div>
-      </div>
-    </header>
+          </Div>
+        </Div>
+      </Div>
+    </Header>
   );
 } 

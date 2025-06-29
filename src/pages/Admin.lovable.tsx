@@ -142,45 +142,45 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="theme-admin">
-        <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</h1>
-          <p className="text-white/70">
+    <Div className="container mx-auto py-8 px-4">
+      <Div className="theme-admin">
+        <Header className="mb-8">
+          <H1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</Div>
+          <P className="text-white/70">
             Manage users, promo codes, and view system usage logs.
-          </p>
-        </header>
+          </P>
+        </Header>
 
         <Tabs defaultValue="users">
           <Tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
             <Tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
               <Shieldcheck  />
-              <span>Users</span>
+              <Span>Users</Tabs>
             </Tabstrigger>
             <Tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
               <Ticket >
-              <span>Promo Codes</span>
+              <Span>Promo Codes</Tabstrigger>
             </Tabstrigger>
             <Tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <Activity  />
-              <span>Usage Logs</span>
+              <Activity  /></Tabstrigger>
+              <Span>Usage Logs</Span>
             </Tabstrigger>
           </Tabslist>
 
-          <Tabscontent value="users" >
-            <userrolemanager  >
+          <Tabscontent value="users">
+            <userrolemanager >
           </Tabscontent>
 
-          <Tabscontent value="promo" >
-            <promocodeeditor  >
+          <Tabscontent value="promo">
+            <promocodeeditor >
           </Tabscontent>
 
-          <Tabscontent value="logs" >
-            <usagelogviewer  >
+          <Tabscontent value="logs">
+            <usagelogviewer >
           </Tabscontent>
         </Tabs>
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 } 
 

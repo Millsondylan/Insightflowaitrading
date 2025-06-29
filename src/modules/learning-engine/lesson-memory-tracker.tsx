@@ -57,7 +57,7 @@ export const lovable = {
   visualEditing: true
 };
 
-  const [selectedMemory, setSelectedMemory] = React.useState<MemoryItem | null>(null);
+  const [selectedMemory, setSelectedMemory] = React.useState<MemoryItem | null />(null);
 
   const reviewConcept = (memory: MemoryItem) => {
     setSelectedMemory(memory);
@@ -76,92 +76,92 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <div className="flex items-center gap-2 mb-6">
+    <Card className="theme-card p-6" />
+      <Div className="flex items-center gap-2 mb-6">
         <brain className="h-6 w-6" />
-        <h2 className="text-2xl font-bold">Memory Tracker</h2>
-      </div>
+        <H2 className="text-2xl font-bold">Memory Tracker</LessonMemoryTrackerProps>
+      </Div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">{memories.length}</p>
-          <p className="text-sm text-muted-foreground">Concepts Learned</p>
-        </div>
-        <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">
+      <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <Div className="text-center p-4 bg-secondary/20 rounded-lg">
+          <P className="text-3xl font-bold">{memories.length}</Div>
+          <P className="text-sm text-muted-foreground">Concepts Learned</P>
+        </Div>
+        <Div className="text-center p-4 bg-secondary/20 rounded-lg">
+          <P className="text-3xl font-bold">
             {memories.filter(m => getDaysUntilReview(m.nextReview) <= 0).length}
-          </p>
-          <p className="text-sm text-muted-foreground">Due for Review</p>
-        </div>
-        <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">
+          </Div>
+          <P className="text-sm text-muted-foreground">Due for Review</P>
+        </Div>
+        <Div className="text-center p-4 bg-secondary/20 rounded-lg">
+          <P className="text-3xl font-bold">
             {Math.round(memories.reduce((acc, m) => acc + m.strength, 0) / memories.length * 100)}%
-          </p>
-          <p className="text-sm text-muted-foreground">Average Retention</p>
-        </div>
-      </div>
+          </Div>
+          <P className="text-sm text-muted-foreground">Average Retention</P>
+        </Div>
+      </Div>
 
-      <div className="space-y-4">
+      <Div className="space-y-4">
         {memories.map((memory) => {
           const daysUntil = getDaysUntilReview(memory.nextReview);
           const isDue = daysUntil <= 0;
 
           return (
-            <div
+            <Div
               key={memory.id}
               className={`p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer ${
                 isDue ? 'border-yellow-500/50' : ''
               }`}
               onClick={() => reviewConcept(memory)}
             >
-              <div className="flex items-center justify-between mb-2">
-                <div>
-                  <h3 className="font-semibold">{memory.concept}</h3>
-                  <p className="text-sm text-muted-foreground">{memory.category}</p>
-                </div>
-                <div className="text-right">
-                  <div className="flex items-center gap-2 mb-1">
+              <Div className="flex items-center justify-between mb-2">
+                <Div>
+                  <H3 className="font-semibold">{memory.concept}</Div>
+                  <P className="text-sm text-muted-foreground">{memory.category}</P>
+                </Div>
+                <Div className="text-right">
+                  <Div className="flex items-center gap-2 mb-1">
                     <Clock className="h-4 w-4 text-muted-foreground" />
-                    <span className="text-sm">
+                    <Span className="text-sm">
                       {isDue ? (
-                        <span className="text-yellow-500">Review now</span>
+                        <Span className="text-yellow-500">Review now</Div>
                       ) : (
                         `Review in ${daysUntil} days`
                       )}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
+                    </Span>
+                  </Div>
+                  <Div className="flex items-center gap-2">
                     <trendingUp className={`h-4 w-4 ${getStrengthColor(memory.strength)}`} />
-                    <span className={`text-sm font-medium ${getStrengthColor(memory.strength)}`}>
+                    <Span className={`text-sm font-medium ${getStrengthColor(memory.strength)}`}>
                       {Math.round(memory.strength * 100)}% strength
-                    </span>
-                  </div>
-                </div>
-              </div>
+                    </Div>
+                  </Div>
+                </Div>
+              </Div>
               
-              <div className="mt-3">
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                  <span>Memory Strength</span>
-                  <span>{memory.reviews} reviews</span>
-                </div>
+              <Div className="mt-3">
+                <Div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
+                  <Span>Memory Strength</Div>
+                  <Span>{memory.reviews} reviews</Span>
+                </Div>
                 <progress value={memory.strength * 100} className="h-2" />
-              </div>
+              </Div>
 
               {isDue && (
-                <Button size="sm" className="w-full mt-3">
+                <Button size="sm" className="w-full mt-3" />
                   Start Review
                 </Button>
               )}
-            </div>
+            </Div>
           );
         })}
-      </div>
+      </Div>
 
-      <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <p className="text-sm text-muted-foreground">
+      <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
+        <P className="text-sm text-muted-foreground">
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
-        </p>
-      </div>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

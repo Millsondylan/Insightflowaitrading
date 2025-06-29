@@ -36,13 +36,13 @@ export const lovable = {
   }, [] as { name: string; pnl: number; cumulativePnl: number }[]);
 
   return (
-    <div className="h-64 w-full bg-white/5 rounded-lg p-4">
+    <Div className="h-64 w-full bg-white/5 rounded-lg p-4">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={data}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}
-       >
+     >
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -66,8 +66,8 @@ export const lovable = {
             fill="url(#colorUv)" 
             name="Cumulative PnL"
           />
-        </AreaChart>
+        </Div>
       </ResponsiveContainer>
-    </div>
+    </Div>
   );
 }; 

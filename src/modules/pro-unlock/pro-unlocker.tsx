@@ -57,16 +57,16 @@ export const lovable = {
 };
 
   return (
-    <Card className="theme-card p-6">
-      <div className="text-center mb-8">
+    <Card className="theme-card p-6" />
+      <Div className="text-center mb-8">
         <Crown className="h-12 w-12 mx-auto mb-4 text-yellow-500" />
-        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</h2>
-        <p className="text-muted-foreground">
+        <H2 className="text-3xl font-bold mb-2">Unlock Pro Features</Card>
+        <P className="text-muted-foreground">
           Take your trading to the next level with advanced tools and insights
-        </p>
-      </div>
+        </P>
+      </Div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
           <Div key={plan.name}
             className={`relative p-6 rounded-lg border-2 ${
@@ -76,64 +76,64 @@ export const lovable = {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-        >
+      >
             {plan.recommended && (
-              <badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended
-              </Badge>
+              </Div>
             )}
 
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-              <div className="text-3xl font-bold">
+            <Div className="text-center mb-6">
+              <H3 className="text-xl font-bold mb-2">{plan.name}</Div>
+              <Div className="text-3xl font-bold">
                 ${plan.price}
-                <span className="text-sm font-normal text-muted-foreground">/month</span>
-              </div>
-            </div>
+                <Span className="text-sm font-normal text-muted-foreground">/month</Div>
+              </Div>
+            </Div>
 
-            <ul className="space-y-3 mb-6">
+            <Ul className="space-y-3 mb-6">
               {plan.features.map((feature, i) => (
-                <li key={i} className="flex items-start gap-2">
+                <Li key={i} className="flex items-start gap-2">
                   <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0" />
-                  <span className="text-sm">{feature}</span>
-                </li>
+                  <Span className="text-sm">{feature}</Ul>
+                </Li>
               ))}
-            </ul>
+            </Ul>
 
-            <Button  className="w-full"
+            <Button className="w-full"
               variant={plan.recommended ? 'default' : 'outline'}
               disabled={plan.current}
-              onClick={() => onUnlock?.(plan.name)}
+              onClick={() = /> onUnlock?.(plan.name)}
             >
               {plan.current ? 'Current Plan' : `Upgrade to ${plan.name}`}
             </Button>
-          </div>
+          </Div>
         ))}
-      </div>
+      </Div>
 
-      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="text-center p-4">
+      <Div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Div className="text-center p-4">
           <Zap className="h-8 w-8 mx-auto mb-2 text-yellow-500" />
-          <h4 className="font-semibold">Instant Access</h4>
-          <p className="text-sm text-muted-foreground">
+          <H4 className="font-semibold">Instant Access</Div>
+          <P className="text-sm text-muted-foreground">
             All features unlocked immediately
-          </p>
-        </div>
-        <div className="text-center p-4">
+          </P>
+        </Div>
+        <Div className="text-center p-4">
           <Shield className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-          <h4 className="font-semibold">Secure Payment</h4>
-          <p className="text-sm text-muted-foreground">
+          <H4 className="font-semibold">Secure Payment</Div>
+          <P className="text-sm text-muted-foreground">
             256-bit SSL encryption
-          </p>
-        </div>
-        <div className="text-center p-4">
-          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500" />
-          <h4 className="font-semibold">Cancel Anytime</h4>
-          <p className="text-sm text-muted-foreground">
+          </P>
+        </Div>
+        <Div className="text-center p-4">
+          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500" /></Div>
+          <H4 className="font-semibold">Cancel Anytime</H4>
+          <P className="text-sm text-muted-foreground">
             No questions asked
-          </p>
-        </div>
-      </div>
+          </P>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

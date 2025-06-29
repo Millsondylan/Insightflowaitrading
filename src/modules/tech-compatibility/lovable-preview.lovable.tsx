@@ -5,7 +5,7 @@ import { Input } from '../../components/ui/input';
 
 interface LovablePreviewProps {
   sourceCode?: string;
-  onEdit?: (componentId: string, changes: any) => void;
+  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
 }
 
 export const LovablePreview: React.FC<LovablePreviewProps> = ({
@@ -45,14 +45,14 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
     setIsEditing(true);
   };
   
-  const handlePropertyChange = (property: string, value: any) => {
+  const handlePropertyChange = (property: string, value: unknown) => {
     setEditableProperties({
       ...editableProperties,
       [property]: value
     });
   };
   
-  const handleStyleChange = (property: string, value: any) => {
+  const handleStyleChange = (property: string, value: unknown) => {
     setEditableProperties({
       ...editableProperties,
       style: {
@@ -71,140 +71,140 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
   };
   
   return (
-    <div className="lovable-preview">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold">Visual Editor</h2>
-        <div className="flex space-x-2">
+    <Div className="lovable-preview">
+      <Div className="flex justify-between items-center mb-4">
+        <H2 className="text-xl font-bold">Visual Editor</LovablePreviewProps>
+        <Div className="flex space-x-2">
           <Button variant="outline"
-            onClick={() => setIsEditing(false)}
+            onClick={() = /> setIsEditing(false)}
             disabled={!isEditing}
           >
             Cancel
-          </Button>
+          </Div>
           <Button onClick={applyChanges}
             disabled={!isEditing}
-         >
+       >
             Apply Changes
           </Button>
-        </div>
-      </div>
+        </Div>
+      </Div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="md:col-span-2">
-          <Card className="h-full">
-            <div className="p-4 h-full flex items-center justify-center border-2 border-dashed border-border-primary rounded-lg">
+      <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <Div className="md:col-span-2">
+          <Card className="h-full" />
+            <Div className="p-4 h-full flex items-center justify-center border-2 border-dashed border-border-primary rounded-lg">
               {preview ? (
-                <div className="w-full h-full relative">
-                  <div 
+                <Div className="w-full h-full relative">
+                  <Div 
                     className="absolute inset-0 bg-transparent cursor-pointer z-10"
                     onClick={() => handleComponentSelect('sample-component-1')}
                   />
-                  <div className="preview-content">
+                  <Div className="preview-content">
                     {/* This would be replaced with actual rendered preview */}
-                    <div className="p-4 bg-background-secondary rounded">
-                      <h3 className="text-lg font-medium">Preview Component</h3>
-                      <p>Click to edit this component</p>
-                    </div>
-                  </div>
-                </div>
+                    <Div className="p-4 bg-background-secondary rounded">
+                      <H3 className="text-lg font-medium">Preview Component</Div>
+                      <P>Click to edit this component</P>
+                    </Div>
+                  </Div>
+                </Div>
               ) : (
-                <div className="text-center text-text-muted">
+                <Div className="text-center text-text-muted">
                   No preview available
-                </div>
+                </Div>
               )}
-            </div>
+            </Div>
           </Card>
-        </div>
+        </Div>
         
-        <div>
-          <Card className="h-full">
-            <div className="p-4">
+        <Div>
+          <Card className="h-full" />
+            <Div className="p-4">
               {isEditing ? (
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Edit Component</h3>
+                <Div>
+                  <H3 className="text-lg font-medium mb-4">Edit Component</Div>
                   
-                  <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-medium mb-1">Text Content</label>
-                      <input value={editableProperties.textContent}
+                  <Div className="space-y-4">
+                    <Div>
+                      <Label className="block text-sm font-medium mb-1">Text Content</Div>
+                      <Input value={editableProperties.textContent}
                         onChange={(e) => handlePropertyChange('textContent', e.target.value)}
                         className="w-full"
                       />
-                    </div>
+                    </Input>
                     
-                    <div>
-                      <label className="block text-sm font-medium mb-1">CSS Classes</label>
-                      <input value={editableProperties.className}
+                    <Div>
+                      <Label className="block text-sm font-medium mb-1">CSS Classes</Div>
+                      <Input value={editableProperties.className}
                         onChange={(e) => handlePropertyChange('className', e.target.value)}
                         className="w-full"
                       />
-                    </div>
+                    </Input>
                     
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Text Color</label>
-                      <div className="flex items-center space-x-2">
-                        <input type="color"
+                    <Div>
+                      <Label className="block text-sm font-medium mb-2">Text Color</Div>
+                      <Div className="flex items-center space-x-2">
+                        <Input type="color"
                           value={editableProperties.style.color}
                           onChange={(e) => handleStyleChange('color', e.target.value)}
                           className="w-8 h-8 rounded"
                         />
-                        <input value={editableProperties.style.color}
+                        <Input value={editableProperties.style.color}
                           onChange={(e) => handleStyleChange('color', e.target.value)}
                           className="flex-1"
                         />
-                      </div>
-                    </div>
+                      </Div>
+                    </Div>
                     
-                    <div>
-                      <label className="block text-sm font-medium mb-1">Font Size</label>
-                      <div className="flex items-center space-x-2">
-                        <input type="number"
+                    <Div>
+                      <Label className="block text-sm font-medium mb-1">Font Size</Div>
+                      <Div className="flex items-center space-x-2">
+                        <Input type="number"
                           value={parseInt(editableProperties.style.fontSize)}
                           onChange={(e) => handleStyleChange('fontSize', `${e.target.value}px`)}
                           className="w-20"
                           min={8}
                           max={72}
                         />
-                        <span>px</span>
-                        <input type="range"
+                        <Span>px</Div>
+                        <Input type="range"
                           value={parseInt(editableProperties.style.fontSize)}
                           onChange={(e) => handleStyleChange('fontSize', `${e.target.value}px`)}
                           min={8}
                           max={72}
                           className="flex-1"
                         />
-                      </div>
-                    </div>
+                      </Input>
+                    </Div>
                     
-                    <div>
-                      <label className="block text-sm font-medium mb-1">Font Weight</label>
-                      <select
+                    <Div>
+                      <Label className="block text-sm font-medium mb-1">Font Weight</Div>
+                      <Select
                         value={editableProperties.style.fontWeight}
                         onChange={(e) => handleStyleChange('fontWeight', e.target.value)}
                         className="w-full p-2 bg-background-primary border border-border-primary rounded"
                       >
-                        <option value="normal">Normal</option>
-                        <option value="bold">Bold</option>
-                        <option value="lighter">Light</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
+                        <Option value="normal">Normal</Select>
+                        <Option value="bold">Bold</Option>
+                        <Option value="lighter">Light</Option>
+                      </Select>
+                    </Div>
+                  </Div>
+                </Div>
               ) : (
-                <div className="text-center text-text-muted h-full flex items-center justify-center">
-                  <div>
-                    <p className="mb-4">Select a component to edit</p>
-                    <button onClick={() => handleComponentSelect('sample-component-1')}>
+                <Div className="text-center text-text-muted h-full flex items-center justify-center">
+                  <Div>
+                    <P className="mb-4">Select a component to edit</Div>
+                    <Button onClick={() =></Button> handleComponentSelect('sample-component-1')}>
                       Select Component
-                    </button>
-                  </div>
-                </div>
+                    </Button>
+                  </Div>
+                </Div>
               )}
-            </div>
+            </Div>
           </Card>
-        </div>
-      </div>
-    </div>
+        </Div>
+      </Div>
+    </Div>
   );
 };
 

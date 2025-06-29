@@ -27,13 +27,13 @@ export const LineChart: React.FC<linechartprops  /> = ({
   return (
     <Responsivecontainer width="100%">
       <Rechartslinechart  />
-        <cartesiangrid strokeDasharray="3 3" stroke="#374151" >
-        <xaxis stroke="#6b7280" >
-        <yaxis stroke="#6b7280" > `${value.toFixed(2)}`}
+        <cartesiangrid strokeDasharray="3 3" stroke="#374151">
+        <xaxis stroke="#6b7280">
+        <yaxis stroke="#6b7280"> `${value.toFixed(2)}`}
         />
-        <tooltip  >
-        <line type="monotone" >
-      </RechartsLineChart>
+        <tooltip >
+        <line type="monotone">
+      </Record>
     </ResponsiveContainer>
   );
 }; 

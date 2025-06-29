@@ -38,83 +38,82 @@ export const TickerScanningEngine: React.FC = () => {
 
   const filteredTickers = filterMarketTickers(tickers, filter)
 
-  const handleFilterChange = (key: keyof MarketScannerFilter, value: any) => {
+  const handleFilterChange = (key: keyof MarketScannerFilter, value: unknown) => {
     setFilter(prev => ({ ...prev, [key]: value }))
   }
 
   return (
-    <card  style={{ width: "100%", color: "white" }}>
-      <cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <Cardtitle >Ticker Scanning Engine</CardTitle>
+    <Card  style={{ width: "100%", color: "white" }}>
+      <Cardheader  style={{ display: "flex", alignItems: "center" }}>
+        <Cardtitle >Ticker Scanning Engine</Marketticker>
         <Badge variant="default" />
           {filteredTickers.length} Matching Tickers
         </Badge>
       </CardHeader>
-      <cardcontent  >
-        <div className="space-y-4 mb-4">
-          <div className="grid grid-cols-3 gap-4">
-            <div>
-              <label className="block text-sm mb-1">Market Type</label>
-              <select  > handleFilterChange('marketType', value)}
+      <Cardcontent >
+        <Div className="space-y-4 mb-4">
+          <Div className="grid grid-cols-3 gap-4">
+            <Div>
+              <Label className="block text-sm mb-1">Market Type</Cardcontent>
+              <Select > handleFilterChange('marketType', value)}
               >
                 <selecttrigger  style={{ color: "white" }}>
-                  <selectvalue placeholder="Select Market" >
-                </SelectTrigger>
-                <selectcontent  >
+                  <selectvalue placeholder="Select Market">
+                </Select>
+                <selectcontent >
                   {['Stocks', 'Crypto', 'Forex', 'Commodities'].map((type) => (
-                    <selectitem  >{type}</SelectItem>
+                    <selectitem >{type}</SelectItem>
                   ))}
                 </SelectContent>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm mb-1">Min Price</label>
-              <input type="number"  /> handleFilterChange('minPrice', Number(e.target.value))}
+              </Select>
+            </Div>
+            <Div>
+              <Label className="block text-sm mb-1">Min Price</Div>
+              <Input type="number"  /> handleFilterChange('minPrice', Number(e.target.value))}
                 placeholder="Minimum Price"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-            </div>
-            <div>
-              <label className="block text-sm mb-1">Min Volume</label>
-              <input type="number"  /> handleFilterChange('minVolume', Number(e.target.value))}
+            </Input>
+            <Div>
+              <Label className="block text-sm mb-1">Min Volume</Div>
+              <Input type="number"  /> handleFilterChange('minVolume', Number(e.target.value))}
                 placeholder="Minimum Volume"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-            </div>
-          </div>
-        </div>
-        <div className="space-y-4">
+            </Input>
+          </Div>
+        </Div>
+        <Div className="space-y-4">
           {filteredTickers.map((ticker) => (
-            <div 
-              key={ticker.symbol} 
+            <Div key={ticker.symbol} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center"
-            >
-              <div>
-                <div className="flex items-center space-x-2">
-                  <h3 className="text-lg font-bold">{ticker.symbol}</h3>
-                  <badge variant="outline" >{ticker.type}</Badge>
-                </div>
-                <p className="text-sm text-gray-300">{ticker.name}</p>
-              </div>
-              <div className="text-right">
-                <div className="text-lg font-bold">
+           >
+              <Div>
+                <Div className="flex items-center space-x-2">
+                  <H3 className="text-lg font-bold">{ticker.symbol}</Div>
+                  <Badge variant="outline">{ticker.type}</Badge>
+                </Div>
+                <P className="text-sm text-gray-300">{ticker.name}</P>
+              </Div>
+              <Div className="text-right">
+                <Div className="text-lg font-bold">
                   ${ticker.price.toLocaleString()}
-                </div>
-                <div className={`text-sm ${ticker.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                </Div>
+                <Div className={`text-sm ${ticker.changePercent>= 0 ? 'text-green-500' : 'text-red-500'}`}>
                   {ticker.changePercent >= 0 ? '+' : ''}{ticker.changePercent.toFixed(2)}%
-                </div>
-                <div className="text-xs text-gray-400">
+                </Div>
+                <Div className="text-xs text-gray-400">
                   Volume: {(ticker.volume / 1_000_000).toFixed(2)}M
-                </div>
-              </div>
-            </div>
+                </Div>
+              </Div>
+            </Div>
           ))}
-        </div>
-        <div className="mt-4 flex justify-center">
+        </Div>
+        <Div className="mt-4 flex justify-center">
           <Button variant="outline" style={{ color: "white" }}>
             Refresh Tickers
-          </Button>
-        </div>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   )

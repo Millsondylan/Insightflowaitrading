@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -21,6 +21,8 @@ import { useLandingStats } from '@/hooks/useLandingStats';
 import { getMarketData } from '@/services/api/coinGeckoClient';
 import { motion } from 'framer-motion';
 import { supabase } from '@/integrations/supabase/client';
+import { useProfilePersonalization } from '@/hooks/use-profile-personalization';
+import { useOnboardingGate } from '@/hooks/use-onboarding-gate';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -115,6 +117,60 @@ const LandingPage = () => {
     })();
   }, []);
 
+  // Check if onboarding is needed
+  useOnboardingGate();
+  
+  // Get personalized settings from user profile
+  const { 
+    profile, 
+    isLoading: profileLoading,
+    defaultChartSettings 
+  } = useProfilePersonalization();
+  
+  // Use personalized settings for dashboard
+  useEffect(() => {
+    if (profile && !profileLoading) {
+      // Set default chart timeframe
+      if (defaultChartSettings.timeframe) {
+        setSelectedTimeframe(defaultChartSettings.timeframe);
+      }
+      
+      // Set default symbols/markets to watch
+      if (defaultChartSettings.symbols?.length) {
+        setWatchlist(defaultChartSettings.symbols);
+      }
+      
+      // Set default indicators
+      if (defaultChartSettings.indicators?.length) {
+        setActiveIndicators(defaultChartSettings.indicators);
+      }
+    }
+  }, [profile, profileLoading, defaultChartSettings]);
+  
+  // Personalize welcome message
+  const welcomeMessage = useMemo(() => {
+    if (!profile) return 'Welcome to InsightFlow AI Trading';
+    
+    const timeOfDay = new Date().getHours();
+    let greeting = 'Welcome';
+    
+    if (timeOfDay < 12) greeting = 'Good morning';
+    else if (timeOfDay < 18) greeting = 'Good afternoon';
+    else greeting = 'Good evening';
+    
+    // Personalize based on experience level
+    switch (profile.experience) {
+      case 'beginner':
+        return `${greeting}! Ready to learn more about trading today?`;
+      case 'intermediate':
+        return `${greeting}! Your trading dashboard is ready.`;
+      case 'pro':
+        return `${greeting}! Market insights and analysis ready for review.`;
+      default:
+        return `${greeting} to InsightFlow AI Trading!`;
+    }
+  }, [profile]);
+
   const features = [
     {
       icon: TrendingUp,
@@ -167,31 +223,31 @@ const LandingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <Div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
       {/* Navigation Header */}
-      <nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+      <Nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
+        <Div className="flex items-center space-x-3">
+          <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
             <TrendingUp className="w-6 h-6 text-white" />
-          </div>
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+          </HTMLDivElement>
+          <H1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
             InsightFlow AI
-          </h1>
-        </div>
-        <div className="flex space-x-4">
+          </H1>
+        </Div>
+        <Div className="flex space-x-4">
           <Button variant="outline" 
-            onClick={() => navigate('/auth')}
+            onClick={() = /> navigate('/auth')}
             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
-          </Button>
-          <Button  onClick={() => navigate('/auth')}
+          </Div>
+          <Button onClick={() = /> navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
           </Button>
-        </div>
-      </nav>
+        </Div>
+      </Nav>
 
       {/* Hero Section */}
       <motion.div 
@@ -203,127 +259,127 @@ const LandingPage = () => {
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
-        <div className="text-center space-y-8 w-full">
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
+        <Div className="text-center space-y-8 w-full">
+          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2" />
             🚀 Advanced Trading Platform - Now with AI Integration
-          </Badge>
+          </Div>
           
-          <h1 className="text-6xl font-bold leading-tight">
-            <span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <H1 className="text-6xl font-bold leading-tight">
+            <Span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
               Trade Smarter with
-            </span>
+            </H1>
             <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            <Span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
               AI-Powered Insights
-            </span>
-          </h1>
+            </Span>
+          </H1>
           
-          <p className="text-xl text-gray-300 mb-8 w-full leading-relaxed">
+          <P className="text-xl text-gray-300 mb-8 w-full leading-relaxed">
             Experience the future of trading with our ultra-modern platform featuring real-time market data, 
             advanced analytics, and risk-free demo trading. Start your 30-day free trial today.
-          </p>
+          </P>
           
-          <div className="flex justify-center space-x-4 pt-8">
+          <Div className="flex justify-center space-x-4 pt-8">
             <Button size="lg"
-              onClick={() => navigate('/auth')}
+              onClick={() = /> navigate('/auth')}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
             >
               Start Free Trial
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+            </Div>
             <Button size="lg" 
               variant="outline"
-              onClick={() => navigate('/trading')}
+              onClick={() = /> navigate('/trading')}
               className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
             >
               View Demo
             </Button>
-          </div>
+          </Div>
           
-          <div className="flex justify-center items-center space-x-8 pt-12 text-gray-400">
-            <div className="flex items-center space-x-2">
+          <Div className="flex justify-center items-center space-x-8 pt-12 text-gray-400">
+            <Div className="flex items-center space-x-2">
               <CheckCircle className="w-5 h-5 text-green-400" />
-              <span>30-Day Free Trial</span>
-            </div>
-            <div className="flex items-center space-x-2">
+              <Span>30-Day Free Trial</Div>
+            </Div>
+            <Div className="flex items-center space-x-2">
               <CheckCircle className="w-5 h-5 text-green-400" />
-              <span>No Credit Card Required</span>
-            </div>
-            <div className="flex items-center space-x-2">
+              <Span>No Credit Card Required</Div>
+            </Div>
+            <Div className="flex items-center space-x-2">
               <CheckCircle className="w-5 h-5 text-green-400" />
-              <span>Cancel Anytime</span>
-            </div>
-          </div>
-        </div>
+              <Span>Cancel Anytime</Div>
+            </Div>
+          </Div>
+        </Div>
       </motion.div>
 
       {/* Real-time Stats Section */}
-      <div className="container mx-auto px-6 py-10">
+      <Div className="container mx-auto px-6 py-10">
         {loading ? (
-          <div className="text-center text-blue-400">Loading stats...</div>
+          <Div className="text-center text-blue-400">Loading stats...</Div>
         ) : error ? (
-          <div className="text-center text-red-400">{error}</div>
+          <Div className="text-center text-red-400">{error}</Div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-            <Card className="bg-gray-800/50 border-blue-500/30">
+          <Div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
+            <Card className="bg-gray-800/50 border-blue-500/30" />
               <CardHeader>
                 <Users className="w-8 h-8 mx-auto text-blue-400" />
-                <CardTitle className="text-white text-2xl">{userCount.toLocaleString()}</CardTitle>
+                <CardTitle className="text-white text-2xl" />{userCount.toLocaleString()}</Div>
               </CardHeader>
               <CardContent>
-                <span className="text-gray-400">Active Traders</span>
+                <Span className="text-gray-400">Active Traders</CardContent>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-cyan-500/30">
+            <Card className="bg-gray-800/50 border-cyan-500/30" />
               <CardHeader>
                 <TrendingUp className="w-8 h-8 mx-auto text-cyan-400" />
-                <CardTitle className="text-white text-2xl">
+                <CardTitle className="text-white text-2xl" />
                   {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
-                </CardTitle>
+                </Card>
               </CardHeader>
               <CardContent>
-                <span className="text-gray-400">Successful Trades</span>
+                <Span className="text-gray-400">Successful Trades</CardContent>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-green-500/30">
+            <Card className="bg-gray-800/50 border-green-500/30" />
               <CardHeader>
                 <CheckCircle className="w-8 h-8 mx-auto text-green-400" />
-                <CardTitle className="text-white text-2xl">{platformUptime}</CardTitle>
+                <CardTitle className="text-white text-2xl" />{platformUptime}</Card>
               </CardHeader>
               <CardContent>
-                <span className="text-gray-400">Platform Uptime</span>
+                <Span className="text-gray-400">Platform Uptime</CardContent>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-purple-500/30">
+            <Card className="bg-gray-800/50 border-purple-500/30" />
               <CardHeader>
                 <BarChart3 className="w-8 h-8 mx-auto text-purple-400" />
-                <CardTitle className="text-white text-2xl">{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle>
+                <CardTitle className="text-white text-2xl" />{marketsCovered > 0 ? marketsCovered : 'N/A'}</Card>
               </CardHeader>
               <CardContent>
-                <span className="text-gray-400">Markets Covered</span>
+                <Span className="text-gray-400">Markets Covered</CardContent>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-yellow-500/30">
+            <Card className="bg-gray-800/50 border-yellow-500/30" />
               <CardHeader>
                 <DollarSign className="w-8 h-8 mx-auto text-yellow-400" />
-                <CardTitle className="text-white text-2xl">${demoVolume.toLocaleString()}</CardTitle>
+                <CardTitle className="text-white text-2xl" />${demoVolume.toLocaleString()}</Card>
               </CardHeader>
               <CardContent>
-                <span className="text-gray-400">Total Volume</span>
+                <Span className="text-gray-400">Total Volume</CardContent>
               </CardContent>
             </Card>
-            <Card className="bg-gray-800/50 border-blue-400/30">
+            <Card className="bg-gray-800/50 border-blue-400/30" />
               <CardHeader>
                 <Star className="w-8 h-8 mx-auto text-blue-400" />
-                <CardTitle className="text-white text-2xl">{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</CardTitle>
+                <CardTitle className="text-white text-2xl" />{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</Card>
               </CardHeader>
               <CardContent>
-                <span className="text-gray-400">User Rating</span>
+                <Span className="text-gray-400">User Rating</CardContent>
               </CardContent>
             </Card>
-          </div>
+          </Div>
         )}
-      </div>
+      </Div>
 
       {/* Features Section */}
       <motion.div 
@@ -335,30 +391,30 @@ const LandingPage = () => {
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
       >
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-6">
+        <Div className="text-center mb-16">
+          <H2 className="text-4xl font-bold text-white mb-6">
             Powerful Features for Modern Traders
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          </Div>
+          <P className="text-xl text-gray-400 max-w-2xl mx-auto">
             Everything you need to trade successfully in today's markets
-          </p>
-        </div>
+          </P>
+        </Div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300">
-              <CardHeader className="text-center">
-                <div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
+            <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300" />
+              <CardHeader className="text-center" />
+                <Div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
                   <feature.icon className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-white text-xl">{feature.title}</CardTitle>
+                </Div>
+                <CardTitle className="text-white text-xl" />{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-400 text-center">{feature.description}</p>
+                <P className="text-gray-400 text-center">{feature.description}</CardContent>
               </CardContent>
             </Card>
           ))}
-        </div>
+        </Div>
       </motion.div>
 
       {/* Testimonials Section */}
@@ -371,38 +427,38 @@ const LandingPage = () => {
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
       >
-        <div className="text-center mb-16 w-full">
-          <h2 className="text-4xl font-bold text-white mb-6">
+        <Div className="text-center mb-16 w-full">
+          <H2 className="text-4xl font-bold text-white mb-6">
             Trusted by Traders Worldwide
-          </h2>
-          <p className="text-xl text-gray-400 w-full">
+          </Div>
+          <P className="text-xl text-gray-400 w-full">
             See what our users are saying about InsightFlow AI
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+          </P>
+        </Div>
+        <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {loading ? (
-            <div className="col-span-3 text-center text-blue-400">Loading reviews...</div>
+            <Div className="col-span-3 text-center text-blue-400">Loading reviews...</Div>
           ) : reviews.length === 0 ? (
-            <div className="col-span-3 text-center text-gray-400">No reviews yet.</div>
+            <Div className="col-span-3 text-center text-gray-400">No reviews yet.</Div>
           ) : (
             reviews.slice(0, 3).map((testimonial, index) => {
               if (testimonial && typeof testimonial === 'object' && 'content' in testimonial && 'name' in testimonial && 'role' in testimonial) {
                 const t = testimonial as any;
                 return (
-                  <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
+                  <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" />
                     <CardHeader>
-                      <p className="text-gray-300 italic">"{t.content}"</p>
+                      <P className="text-gray-300 italic">"{t.content}"</Card>
                     </CardHeader>
                     <CardContent>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <Div className="flex items-center space-x-3">
+                        <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                           <Users className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <p className="text-white font-semibold">{t.name}</p>
-                          <p className="text-gray-400 text-sm">{t.role}</p>
-                        </div>
-                      </div>
+                        </CardContent>
+                        <Div>
+                          <P className="text-white font-semibold">{t.name}</Div>
+                          <P className="text-gray-400 text-sm">{t.role}</P>
+                        </Div>
+                      </Div>
                     </CardContent>
                   </Card>
                 );
@@ -410,34 +466,34 @@ const LandingPage = () => {
               return null;
             })
           )}
-        </div>
+        </Div>
       </motion.div>
 
       {/* Crypto Payment Section */}
-      <div className="w-full px-0 py-20" id="crypto-payment">
-        <div className="text-center mb-16 w-full">
-          <h2 className="text-4xl font-bold text-white mb-6">
+      <Div className="w-full px-0 py-20" id="crypto-payment">
+        <Div className="text-center mb-16 w-full">
+          <H2 className="text-4xl font-bold text-white mb-6">
             Secure Crypto Payment Integration
-          </h2>
-          <p className="text-xl text-gray-400 w-full">
+          </Div>
+          <P className="text-xl text-gray-400 w-full">
             Pay with your preferred cryptocurrency using our verified wallet addresses
-          </p>
-        </div>
+          </P>
+        </Div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+        <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
-            <Card key={coin} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
-              <CardHeader className="text-center">
-                <div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
+            <Card key={coin} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm" />
+              <CardHeader className="text-center" />
+                <Div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
                   <Bitcoin className="w-8 h-8 text-white" />
-                </div>
-                <CardTitle className="text-white text-xl">{coin}</CardTitle>
+                </Div>
+                <CardTitle className="text-white text-xl" />{coin}</CardTitle>
               </CardHeader>
             </Card>
           ))}
-        </div>
-      </div>
-    </div>
+        </Div>
+      </Div>
+    </Div>
   );
 };
 

@@ -12,7 +12,7 @@ export const ProtectedRoute: FC<Protectedrouteprops> = ({ accessLevel, children 
 
   if (loading) {
     // You can replace this with a loading spinner component
-    return <div>Loading...</div>;
+    return <Div>Loading...</Protectedrouteprops>;
   }
 
   const checks = {

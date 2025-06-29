@@ -50,79 +50,78 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
     return (
       <Button variant="outline" size="sm"> setIsVisible(true)}
       >
-        <Sparkles  />
+        <Sparkles  /></Copilotaiprops>
         Show Copilot
       </Button>
     );
   }
 
   return (
-    <card  style={{ display: "flex" }}>
-      <div className="p-4 border-b flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <sparkles  >
-          <h3 className="font-semibold">AI Copilot</h3>
-        </div>
-        <Button variant="ghost" size="sm" > setIsVisible(false)}
+    <Card  style={{ display: "flex" }}>
+      <Div className="p-4 border-b flex items-center justify-between">
+        <Div className="flex items-center gap-2">
+          <sparkles >
+          <H3 className="font-semibold">AI Copilot</Card>
+        </Div>
+        <Button variant="ghost" size="sm"> setIsVisible(false)}
         >
-          <x  >
+          <x >
         </Button>
-      </div>
+      </Div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <Div className="flex-1 overflow-y-auto p-4 space-y-4">
         {suggestions.map((suggestion) => (
-          <div
-            key={suggestion.id}
+          <Div key={suggestion.id}
             className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
-          >
-            <div className="flex items-start justify-between mb-2">
-              <h4 className="font-medium">{suggestion.title}</h4>
-              <badge variant="outline" style={{ fontSize: "0.75rem" }}>
+         >
+            <Div className="flex items-start justify-between mb-2">
+              <H4 className="font-medium">{suggestion.title}</Div>
+              <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
                 {suggestion.type}
               </Badge>
-            </div>
+            </Div>
             
-            <p className="text-sm text-muted-foreground mb-2">
+            <P className="text-sm text-muted-foreground mb-2">
               {suggestion.content}
-            </p>
+            </P>
             
             {suggestion.code && (
-              <pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
-                <code>{suggestion.code}</code>
-              </pre>
+              <Pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
+                <Code>{suggestion.code}</Pre>
+              </Pre>
             )}
             
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-green-500">
+            <Div className="flex items-center justify-between">
+              <Span className="text-xs font-medium text-green-500">
                 {suggestion.impact}
-              </span>
+              </Div>
               
-              <div className="flex items-center gap-2">
-                <Button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'up')}
+              <Div className="flex items-center gap-2">
+                <Button variant="ghost" size="sm"> handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <thumbsup  >
-                </Button>
-                <Button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'down')}
+                  <thumbsup >
+                </Div>
+                <Button variant="ghost" size="sm"> handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <thumbsdown  >
+                  <thumbsdown >
                 </Button>
-                <Button size="sm" > onSuggestionApply?.(suggestion.code)}
+                <Button size="sm"> onSuggestionApply?.(suggestion.code)}
                 >
                   Apply
                 </Button>
-              </div>
-            </div>
-          </div>
+              </Div>
+            </Div>
+          </Div>
         ))}
-      </div>
+      </Div>
 
-      <div className="p-4 border-t bg-secondary/20">
-        <p className="text-xs text-muted-foreground text-center">
+      <Div className="p-4 border-t bg-secondary/20">
+        <P className="text-xs text-muted-foreground text-center">
           Copilot analyzes your strategy in real-time
-        </p>
-      </div>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

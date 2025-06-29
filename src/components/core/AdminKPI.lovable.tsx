@@ -19,7 +19,7 @@ const kpiItems = [
 
 const AdminKPI: React.FC<Adminkpiprops> = ({ stats }) => {
   return (
-    <div className="kpi-grid">
+    <Div className="kpi-grid">
       {kpiItems.map((item, index) => {
         const Icon = item.icon;
         const value = stats[item.key as keyof DashboardStats];
@@ -32,15 +32,15 @@ const AdminKPI: React.FC<Adminkpiprops> = ({ stats }) => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={cn('kpi-card', `glow-${item.color}`)}
           >
-            <Icon />
-            <div className="kpi-title">{item.title}</div>
-            <div className="kpi-value">
-              <Countup separator=",">
-            </div>
+            <Icon / />
+            <Div className="kpi-title">{item.title}</Adminkpiprops>
+            <Div className="kpi-value">
+              <Countup separator=","></Div>
+            </Div>
           </motion.div>
         );
       })}
-    </div>
+    </Div>
   );
 };
 

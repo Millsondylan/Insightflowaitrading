@@ -109,30 +109,30 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
 
   if (loading) {
     return (
-      <div className="w-full py-8 text-center">
-        <p className="text-gray-500">Loading journal entries...</p>
-      </div>
+      <Div className="w-full py-8 text-center">
+        <P className="text-gray-500">Loading journal entries...</Journaltimelineprops>
+      </Div>
     );
   }
 
   if (error) {
     return (
-      <div className="w-full py-8 text-center">
-        <p className="text-red-500">Error: {error}</p>
-      </div>
+      <Div className="w-full py-8 text-center">
+        <P className="text-red-500">Error: {error}</Div>
+      </Div>
     );
   }
 
   if (entries.length === 0) {
     return (
-      <div className="w-full py-12 text-center">
-        <p className="text-gray-400">No journal entries yet. Create your first trade journal entry above!</p>
-      </div>
+      <Div className="w-full py-12 text-center">
+        <P className="text-gray-400">No journal entries yet. Create your first trade journal entry above!</Div>
+      </Div>
     );
   }
 
   return (
-    <div className="space-y-6 journal-timeline">
+    <Div className="space-y-6 journal-timeline">
       {entries.map((entry, index) => {
         const profitLoss = calculateProfitLoss(entry);
         const isProfitable = profitLoss > 0;
@@ -152,8 +152,8 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
               animationFillMode: "forwards"
             }}
           />
-            <card  >
-              <div
+            <Card >
+              <Div
                 className={cn(
                   "border-t-4 -mt-0.5",
                   entry.sentiment === "Bullish"
@@ -161,100 +161,100 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
                     : "border-red-500"
                 )}
               />
-              <cardheader  style={{ display: "flex", alignItems: "center" }}>
-                <div className="flex items-center space-x-2">
-                  <badge variant="outline" >
+              <Cardheader  style={{ display: "flex", alignItems: "center" }}>
+                <Div className="flex items-center space-x-2">
+                  <Badge variant="outline">
                     {entry.sentiment}
-                  </Badge>
-                  <span className="text-sm text-gray-400">{formatDate(entry.createdAt)}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <badge variant="outline" >
+                  </Div>
+                  <Span className="text-sm text-gray-400">{formatDate(entry.createdAt)}</Span>
+                </Div>
+                <Div className="flex items-center space-x-2">
+                  <Badge variant="outline">
                     {isProfitable ? "+" : ""}{profitLoss.toFixed(2)}%
-                  </Badge>
+                  </Div>
                   
-                  <Button variant="ghost" size="sm" > toggleReflection(entry.id)}
+                  <Button variant="ghost" size="sm"> toggleReflection(entry.id)}
                     className="h-8 w-8 p-0 hover:bg-blue-500/10"
                   >
-                    <brain  >
+                    <brain >
                   </Button>
-                </div>
+                </Div>
               </CardHeader>
-              <cardcontent  >
-                <h3 className="text-xl font-medium mb-2">{entry.title}</h3>
+              <Cardcontent >
+                <H3 className="text-xl font-medium mb-2">{entry.title}</Cardcontent>
                 
-                <div className="flex justify-between mb-4">
-                  <div>
-                    <span className="text-gray-400 text-sm">Pair:</span>
-                    <span className="ml-2 font-medium">{entry.pair}</span>
-                  </div>
-                  <div>
-                    <span className="text-gray-400 text-sm">Timeframe:</span>
-                    <span className="ml-2 font-medium">{entry.timeframe}</span>
-                  </div>
-                </div>
+                <Div className="flex justify-between mb-4">
+                  <Div>
+                    <Span className="text-gray-400 text-sm">Pair:</Div>
+                    <Span className="ml-2 font-medium">{entry.pair}</Span>
+                  </Div>
+                  <Div>
+                    <Span className="text-gray-400 text-sm">Timeframe:</Div>
+                    <Span className="ml-2 font-medium">{entry.timeframe}</Span>
+                  </Div>
+                </Div>
                 
-                <div className="grid grid-cols-2 gap-2 mb-4">
-                  <div className="flex flex-col">
-                    <span className="text-gray-400 text-sm">Entry</span>
-                    <span className="font-medium">{entry.entryPrice}</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-gray-400 text-sm">Exit</span>
-                    <span className="font-medium">{entry.exitPrice}</span>
-                  </div>
-                </div>
+                <Div className="grid grid-cols-2 gap-2 mb-4">
+                  <Div className="flex flex-col">
+                    <Span className="text-gray-400 text-sm">Entry</Div>
+                    <Span className="font-medium">{entry.entryPrice}</Span>
+                  </Div>
+                  <Div className="flex flex-col">
+                    <Span className="text-gray-400 text-sm">Exit</Div>
+                    <Span className="font-medium">{entry.exitPrice}</Span>
+                  </Div>
+                </Div>
                 
                 {entry.reason && (
-                  <div className="mt-4 text-sm text-gray-300">
-                    <p className="line-clamp-2">{entry.reason}</p>
-                  </div>
+                  <Div className="mt-4 text-sm text-gray-300">
+                    <P className="line-clamp-2">{entry.reason}</Div>
+                  </Div>
                 )}
                 
                 {entry.chartUrl && (
-                  <div className="mt-4 rounded-md overflow-hidden h-32 w-full bg-gray-900">
-                    <img 
+                  <Div className="mt-4 rounded-md overflow-hidden h-32 w-full bg-gray-900">
+                    <Img 
                       src={entry.chartUrl} 
                       alt="Trade chart" 
                       className="h-full w-full object-cover"
                     />
-                  </div>
+                  </Div>
                 )}
                 
                 {entry.tags && entry.tags.length > 0 && (
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <Div className="mt-4 flex flex-wrap gap-2">
                     {entry.tags.map((tag) => (
-                      <badge variant="secondary" style={{ fontSize: "0.75rem" }}>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}>
                         {tag}
-                      </Badge>
+                      </Div>
                     ))}
-                  </div>
+                  </Div>
                 )}
 
-                <collapsible  > toggleReflection(entry.id)}>
-                  <collapsibletrigger  >
+                <collapsible > toggleReflection(entry.id)}>
+                  <collapsibletrigger >
                     <Button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
-                      <div className="flex items-center space-x-2">
-                        <brain  >
-                        <span className="text-blue-400">AI Analysis</span>
-                      </div>
+                      <Div className="flex items-center space-x-2">
+                        <brain >
+                        <Span className="text-blue-400">AI Analysis</Button>
+                      </Div>
                       {isReflectionExpanded ? (
-                        <chevronup  >
+                        <chevronup >
                       ) : (
-                        <chevrondown  >
+                        <chevrondown >
                       )}
                     </Button>
                   </CollapsibleTrigger>
-                  <collapsiblecontent  >
-                    <aireflection  >
+                  <collapsiblecontent >
+                    <aireflection >
                   </CollapsibleContent>
                 </Collapsible>
               </CardContent>
             </Card>
-          </div>
+          </Div>
         );
       })}
-    </div>
+    </Div>
   );
 };
 

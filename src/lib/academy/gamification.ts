@@ -64,7 +64,7 @@ export interface TournamentStatistics {
 
 export interface TournamentRule {
   type: string;
-  value: any;
+  value: unknown;
   description: string;
 }
 

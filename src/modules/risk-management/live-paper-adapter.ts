@@ -65,7 +65,7 @@ export abstract class BaseBrokerAdapter {
  * TODO: implement order management
  */
 export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
-  private twsConnection: any; // TODO: replace with actual IB API connection type
+  private twsConnection: any // eslint-disable-line @typescript-eslint/no-explicit-any; // TODO: replace with actual IB API connection type
   private isConnected: boolean = false;
 
   constructor(account: LivePaperAccount, private config: {
@@ -156,7 +156,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
  * TODO: add MQL5 script communication
  */
 export class MT5Adapter extends BaseBrokerAdapter {
-  private socket: any; // TODO: replace with actual socket connection type
+  private socket: any // eslint-disable-line @typescript-eslint/no-explicit-any; // TODO: replace with actual socket connection type
 
   constructor(account: LivePaperAccount, private config: {
     serverUrl: string;
@@ -276,7 +276,7 @@ export class DemoAdapter extends BaseBrokerAdapter {
 export const createBrokerAdapter = (
   type: 'ib' | 'mt5' | 'demo',
   account: LivePaperAccount,
-  config: any
+  config: unknown
 ): BaseBrokerAdapter => {
   switch (type) {
     case 'ib':

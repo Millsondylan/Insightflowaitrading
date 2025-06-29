@@ -224,11 +224,11 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
   };
   
   return (
-    <div className="market-scanner">
-      <div className="flex flex-wrap justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Market Scanner</h2>
+    <Div className="market-scanner">
+      <Div className="flex flex-wrap justify-between items-center mb-6">
+        <H2 className="text-2xl font-bold">Market Scanner</ScanResult>
         
-        <div className="flex space-x-2">
+        <Div className="flex space-x-2">
           {timeframes.map(tf => (
             <Button key={tf}
               className={`px-3 py-1 rounded ${
@@ -237,30 +237,30 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
               onClick={() => setActiveTimeframe(tf)}
             >
               {tf}
-            </Button>
+            </Div>
           ))}
-        </div>
-      </div>
+        </Div>
+      </Div>
       
-      <div className="mb-6 flex flex-wrap gap-4">
-        <div className="flex-1">
-          <input
+      <Div className="mb-6 flex flex-wrap gap-4">
+        <Div className="flex-1">
+          <Input
             type="text"
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             placeholder="Search by symbol or name..."
             value={searchQuery}
             onChange={handleSearch}
           />
-        </div>
+        </Div>
         
-        <div className="flex space-x-2">
+        <Div className="flex space-x-2">
           <Button  className={`px-4 py-2 rounded ${
               filterType === 'all' ? 'bg-brand-primary text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('all')}
           >
             All
-          </Button>
+          </Div>
           <Button  className={`px-4 py-2 rounded ${
               filterType === 'bullish' ? 'bg-green-600 text-white' : 'bg-background-secondary'
             }`}
@@ -277,60 +277,60 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
           </Button>
           <Button className="px-4 py-2 rounded bg-background-secondary"
             onClick={fetchScanResults}
-        >
+      >
             Refresh
           </Button>
-        </div>
-      </div>
+        </Div>
+      </Div>
       
       {loading ? (
-        <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-primary"></div>
-        </div>
+        <Div className="flex justify-center items-center py-12">
+          <Div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-brand-primary"></Div>
+        </Div>
       ) : error ? (
-        <div className="text-status-error p-4 bg-status-error/10 rounded-md">{error}</div>
+        <Div className="text-status-error p-4 bg-status-error/10 rounded-md">{error}</Div>
       ) : filteredResults.length === 0 ? (
-        <div className="text-center py-8">No scan results matched your criteria.</div>
+        <Div className="text-center py-8">No scan results matched your criteria.</Div>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-border-primary">
-                <th className="text-left p-3">Symbol</th>
-                <th className="text-left p-3">Price</th>
-                <th className="text-left p-3">24h Change</th>
-                <th className="text-left p-3 hidden md:table-cell">Volume</th>
-                <th className="text-left p-3 hidden lg:table-cell">Signals</th>
-                <th className="text-left p-3">Score</th>
-                <th className="text-left p-3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
+        <Div className="overflow-x-auto">
+          <Table className="w-full">
+            <Thead>
+              <Tr className="border-b border-border-primary">
+                <Th className="text-left p-3">Symbol</Div>
+                <Th className="text-left p-3">Price</Th>
+                <Th className="text-left p-3">24h Change</Th>
+                <Th className="text-left p-3 hidden md:table-cell">Volume</Th>
+                <Th className="text-left p-3 hidden lg:table-cell">Signals</Th>
+                <Th className="text-left p-3">Score</Th>
+                <Th className="text-left p-3">Action</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
               {filteredResults.map(result => (
-                <tr 
+                <Tr 
                   key={result.symbol} 
                   className="border-b border-border-primary hover:bg-background-secondary transition-colors cursor-pointer"
                   onClick={() => onSelectMarket(result.symbol)}
                 >
-                  <td className="p-3">
-                    <div>
-                      <div className="font-semibold">{result.symbol}</div>
-                      <div className="text-sm text-text-tertiary">{result.name}</div>
-                    </div>
-                  </td>
-                  <td className="p-3">
+                  <Td className="p-3">
+                    <Div>
+                      <Div className="font-semibold">{result.symbol}</Tbody>
+                      <Div className="text-sm text-text-tertiary">{result.name}</Div>
+                    </Div>
+                  </Td>
+                  <Td className="p-3">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-                  </td>
-                  <td className="p-3">
-                    <span className={result.change24h />= 0 ? 'text-status-success' : 'text-status-error'}>
+                  </Td>
+                  <Td className="p-3">
+                    <Span className={result.change24h />= 0 ? 'text-status-success' : 'text-status-error'}>
                       {result.change24h >= 0 ? '+' : ''}{result.change24h.toFixed(2)}%
-                    </span>
-                  </td>
-                  <td className="p-3 hidden md:table-cell">
+                    </Td>
+                  </Td>
+                  <Td className="p-3 hidden md:table-cell">
                     ${formatLargeNumber(result.volume24h)}
-                  </td>
-                  <td className="p-3 hidden lg:table-cell">
-                    <div className="flex flex-col gap-1">
+                  </Td>
+                  <Td className="p-3 hidden lg:table-cell">
+                    <Div className="flex flex-col gap-1">
                       {result.signals.slice(0, 2).map((signal, idx) => (
                         <Div key={idx} 
                           className={`text-xs px-2 py-1 rounded inline-flex items-center
@@ -340,18 +340,18 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                                 ? 'bg-red-500/20 text-red-500' 
                                 : 'bg-gray-500/20 text-gray-500'
                             }`}
-                        />
+                        /></Td>
                           {signal.indicator}
-                        </div>
+                        </Div>
                       ))}
-                    </div>
-                  </td>
-                  <td className="p-3">
-                    <div className={`font-bold ${getScoreColor(result.score)}`}>
+                    </Div>
+                  </Td>
+                  <Td className="p-3">
+                    <Div className={`font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
-                    </div>
-                  </td>
-                  <td className="p-3">
+                    </Td>
+                  </Td>
+                  <Td className="p-3">
                     <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-opacity-90 transition-colors"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -359,15 +359,15 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                       }}
                     >
                       View
-                    </Button>
-                  </td>
-                </tr>
+                    </Td>
+                  </Td>
+                </Tr>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </Tbody>
+          </Table>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 };
 

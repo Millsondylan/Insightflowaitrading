@@ -165,39 +165,39 @@ export const lovable = {
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
-      <Card className="shadow-md border-border">
+    <Div className="w-full max-w-5xl mx-auto">
+      <Card className="shadow-md border-border" />
         <CardHeader>
-          <CardTitle className="text-2xl">Pine Script AI Generator</CardTitle>
+          <CardTitle className="text-2xl" />Pine Script AI Generator</Div>
           <CardDescription>
             Generate TradingView Pine Script code from natural language prompts
           </CardDescription>
           
           {/* Quota display */}
           {quota && (
-            <div className="flex items-center justify-between mt-2">
-              <div className="flex flex-col space-y-1">
-                <span className="text-sm text-muted-foreground">
+            <Div className="flex items-center justify-between mt-2">
+              <Div className="flex flex-col space-y-1">
+                <Span className="text-sm text-muted-foreground">
                   {quota.isLimited ? (
                     <>
                       {quota.remaining}/{quota.limit} generations remaining this month
-                      <Badge variant={quota.remaining> 0 ? "outline" : "destructive"} className="ml-2">
+                      <Badge variant={quota.remaining /> 0 ? "outline" : "destructive"} className="ml-2">
                         {quota.remaining > 0 ? "Free Tier" : "Limit Reached"}
-                      </Badge>
+                      </Div>
                     </>
                   ) : (
                     <>
                       Unlimited generations
-                      <badge variant="secondary" className="ml-2">Pro</Badge>
+                      <Badge variant="secondary" className="ml-2">Pro</Badge>
                     </>
                   )}
-                </span>
+                </Span>
                 {quota.isLimited && quota.resetDate && (
-                  <span className="text-xs text-muted-foreground">
+                  <Span className="text-xs text-muted-foreground">
                     Resets on {quota.resetDate.toLocaleDateString()}
-                  </span>
+                  </Span>
                 )}
-              </div>
+              </Div>
               
               {quota.isLimited && (
                 <Button variant="outline" 
@@ -207,7 +207,7 @@ export const lovable = {
                   Upgrade to Pro
                 </Button>
               )}
-            </div>
+            </Div>
           )}
         </CardHeader>
         
@@ -215,7 +215,7 @@ export const lovable = {
           {error && (
             <alert variant="destructive" className="mb-4">
               <alertCircle className="h-4 w-4" />
-              <alertTitle>Error</AlertTitle>
+              <alertTitle>Error</CardContent>
               <alertDescription>{error}</AlertDescription>
             </Alert>
           )}
@@ -228,47 +228,46 @@ export const lovable = {
                 You've reached your monthly Pine Script generation limit. 
                 Upgrade to Pro for unlimited generations.
               </AlertDescription>
-              <Button  className="mt-2" 
+              <Button className="mt-2" 
                 variant="default" 
                 size="sm"
                 onClick={handleUpgradeClick}
-              >
+            >
                 Upgrade Now
               </Button>
             </Alert>
           )}
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="prompt">Prompt</TabsTrigger>
-              <TabsTrigger value="code" disabled={!generatedCode}>Generated Code</TabsTrigger>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" />
+            <TabsList className="grid w-full grid-cols-2" />
+              <TabsTrigger value="prompt" />Prompt</Tabs>
+              <TabsTrigger value="code" disabled={!generatedCode} />Generated Code</TabsTrigger>
             </TabsList>
             
-            <TabsContent value="prompt">
-              <form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <TabsContent value="prompt" />
+              <Form {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <Div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <formField
                       control={form.control}
                       name="scriptType"
                       render={({ field }) => (
                         <formItem>
-                          <formLabel>Script Type</FormLabel>
-                          <select 
-                            onValueChange={field.onChange} 
+                          <formLabel>Script Type</TabsContent>
+                          <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                          >
+                         >
                             <formControl>
                               <selectTrigger>
                                 <selectValue placeholder="Select script type" />
-                              </SelectTrigger>
+                              </Select>
                             </FormControl>
                             <selectContent>
                               <selectItem value="indicator">Indicator</SelectItem>
                               <selectItem value="strategy">Trading Strategy</SelectItem>
                               <selectItem value="library">Library</SelectItem>
                             </SelectContent>
-                          </select>
+                          </Select>
                           <formMessage />
                         </FormItem>
                       )}
@@ -280,14 +279,13 @@ export const lovable = {
                       render={({ field }) => (
                         <formItem>
                           <formLabel>Default Timeframe</FormLabel>
-                          <select 
-                            onValueChange={field.onChange} 
+                          <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-                          >
+                         >
                             <formControl>
                               <selectTrigger>
                                 <selectValue placeholder="Select timeframe" />
-                              </SelectTrigger>
+                              </Select>
                             </FormControl>
                             <selectContent>
                               <selectItem value="1m">1 Minute</SelectItem>
@@ -300,12 +298,12 @@ export const lovable = {
                               <selectItem value="1W">1 Week</SelectItem>
                               <selectItem value="1M">1 Month</SelectItem>
                             </SelectContent>
-                          </select>
+                          </Select>
                           <formMessage />
                         </FormItem>
                       )}
                     />
-                  </div>
+                  </Div>
 
                   <formField
                     control={form.control}
@@ -314,21 +312,21 @@ export const lovable = {
                       <formItem>
                         <formLabel>Describe what you want to create</FormLabel>
                         <formControl>
-                          <textarea 
+                          <Textarea 
                             placeholder="E.g., Create an RSI indicator with overbought/oversold levels at 70/30 and signal line crossovers" 
                             className="h-32"
                             {...field} 
                           />
-                        </FormControl>
+                        </Textarea>
                         <formMessage />
                         {hints.length > 0 && (
-                          <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                          <Div className="mt-2 flex flex-wrap gap-2 text-xs">
                             {hints.map((h) => (
-                              <Button key={h} variant="secondary" size="sm" type="button" onClick={() => form.setValue('prompt', field.value + ' ' + h)}>
+                              <Button key={h} variant="secondary" size="sm" type="button" onClick={() = /> form.setValue('prompt', field.value + ' ' + h)}>
                                 {h}
-                              </Button>
+                              </Div>
                             ))}
-                          </div>
+                          </Div>
                         )}
                       </FormItem>
                     )}
@@ -341,21 +339,21 @@ export const lovable = {
                       <formItem>
                         <formLabel>Additional Context (Optional)</FormLabel>
                         <formControl>
-                          <textarea 
+                          <Textarea 
                             placeholder="Any additional details or specific requirements" 
                             className="h-24"
                             {...field} 
                           />
-                        </FormControl>
+                        </Textarea>
                         <formMessage />
                       </FormItem>
                     )}
                   />
 
-                  <Button  type="submit" 
+                  <Button type="submit" 
                     className="w-full"
                     disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}
-                  >
+                >
                     {isGenerating ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -363,41 +361,41 @@ export const lovable = {
                       </>
                     ) : "Generate Pine Script"}
                   </Button>
-                </form>
-              </form>
+                </Form>
+              </Form>
             </TabsContent>
             
-            <TabsContent value="code">
+            <TabsContent value="code" />
               {generatedCode && (
                 <>
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <code className="h-4 w-4 mr-2" />
-                      <h3 className="font-medium">Generated Pine Script</h3>
-                    </div>
-                    <div className="flex space-x-2">
+                  <Div className="flex justify-between items-center mb-2">
+                    <Div className="flex items-center">
+                      <Code className="h-4 w-4 mr-2" />
+                      <H3 className="font-medium">Generated Pine Script</TabsContent>
+                    </Div>
+                    <Div className="flex space-x-2">
                       <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
                         onClick={handleCopy}
-                      >
+                    >
                         {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                        <span>{copied ? "Copied!" : "Copy"}</span>
+                        <Span>{copied ? "Copied!" : "Copy"}</Div>
                       </Button>
                       <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
-                        onClick={() => {
+                        onClick={() = /> {
                           if (!generatedCode) return;
                           const encoded = encodeURIComponent(btoa(generatedCode));
                           window.open(`${process.env.TRADINGVIEW_SCRIPT_DEEPLINK || 'https://www.tradingview.com/chart/'}?script=${encoded}`, '_blank');
                         }}
                       >
                         <Share2 className="h-4 w-4" />
-                        <span>Open in TradingView</span>
+                        <Span>Open in TradingView</Button>
                       </Button>
-                    </div>
-                  </div>
+                    </Div>
+                  </Div>
                   
                   {syntaxValid === false && (
                     <alert variant="destructive" className="mb-3">
@@ -405,61 +403,61 @@ export const lovable = {
                       <alertTitle>Syntax Warning</AlertTitle>
                       <alertDescription>
                         The generated code might have syntax issues. {errorDetails && (
-                          <span>
+                          <Span>
                             Line {errorDetails.line}: {errorDetails.message}
                             {errorDetails.suggestion && (
-                              <div className="mt-1 text-xs">
+                              <Div className="mt-1 text-xs">
                                 Suggestion: {errorDetails.suggestion}
-                              </div>
+                              </Span>
                             )}
-                          </span>
+                          </Span>
                         )}
                       </AlertDescription>
                     </Alert>
                   )}
                   
-                  <div className="relative">
-                    <pre className="bg-muted p-4 rounded-md overflow-x-auto max-h-96 text-sm whitespace-pre">
-                      <code>{generatedCode}</code>
-                    </pre>
+                  <Div className="relative">
+                    <Pre className="bg-muted p-4 rounded-md overflow-x-auto max-h-96 text-sm whitespace-pre">
+                      <Code>{generatedCode}</Div>
+                    </Pre>
                     
-                    <div className="absolute top-4 right-4">
+                    <Div className="absolute top-4 right-4">
                       {syntaxValid === true && (
-                        <badge variant="secondary" className="mb-1">Syntax Valid</Badge>
+                        <Badge variant="secondary" className="mb-1">Syntax Valid</Div>
                       )}
-                    </div>
-                  </div>
+                    </Div>
+                  </Div>
                   
-                  <div className="mt-4">
-                    <h4 className="text-sm font-medium mb-2">How to use in TradingView:</h4>
-                    <ol className="list-decimal list-inside text-sm text-muted-foreground ml-2 space-y-1">
-                      <li>Copy the code above</li>
-                      <li>Open TradingView and go to Pine Editor</li>
-                      <li>Paste the code into the editor</li>
-                      <li>Click "Add to Chart" to use your script</li>
-                    </ol>
-                  </div>
+                  <Div className="mt-4">
+                    <H4 className="text-sm font-medium mb-2">How to use in TradingView:</Div>
+                    <Ol className="list-decimal list-inside text-sm text-muted-foreground ml-2 space-y-1">
+                      <Li>Copy the code above</Ol>
+                      <Li>Open TradingView and go to Pine Editor</Li>
+                      <Li>Paste the code into the editor</Li>
+                      <Li>Click "Add to Chart" to use your script</Li>
+                    </Ol>
+                  </Div>
                 </>
               )}
             </TabsContent>
           </Tabs>
         </CardContent>
         
-        <CardFooter className="flex flex-col space-y-2 items-start border-t pt-4">
-          <p className="text-xs text-muted-foreground">
+        <CardFooter className="flex flex-col space-y-2 items-start border-t pt-4" />
+          <P className="text-xs text-muted-foreground">
             Note: Generated code is provided as-is. Always review and test before using in live trading.
-          </p>
+          </CardFooter>
           {quota?.isLimited && (
-            <div className="w-full">
-              <div className="flex justify-between text-xs mb-1">
-                <span>Monthly quota</span>
-                <span>{quota.used}/{quota.limit} used</span>
-              </div>
+            <Div className="w-full">
+              <Div className="flex justify-between text-xs mb-1">
+                <Span>Monthly quota</Div>
+                <Span>{quota.used}/{quota.limit} used</Span>
+              </Div>
               <progress value={(quota.used / quota.limit) * 100} className="h-2" />
-            </div>
+            </Div>
           )}
         </CardFooter>
       </Card>
-    </div>
+    </Div>
   );
 } 

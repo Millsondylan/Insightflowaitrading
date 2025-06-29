@@ -92,7 +92,7 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
   
   const renderContent = () => {
       if (isLoading) {
-          return <div className="text-center text-white/50 animate-pulse">The AI coach is analyzing your entry...</div>;
+          return <Div className="text-center text-white/50 animate-pulse">The AI coach is analyzing your entry...</Aifeedback>;
       }
 
       if (!feedback) {
@@ -100,42 +100,42 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
       }
       
       return (
-        <div className="animate-fade-in space-y-6">
-            <div>
-                <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="brain">🧠</span> AI Summary
-                </h3>
-                <p className="text-white/80 text-sm">{feedback.summary}</p>
-            </div>
-            <div>
-                <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="masks">🎭</span> Dominant Emotion
-                </h3>
-                <div className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getEmotionBadgeStyle(feedback.emotion)}`}>
+        <Div className="animate-fade-in space-y-6">
+            <Div>
+                <H3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
+                    <Span role="img" aria-label="brain">🧠</Div> AI Summary
+                </H3>
+                <P className="text-white/80 text-sm">{feedback.summary}</P>
+            </Div>
+            <Div>
+                <H3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
+                    <Span role="img" aria-label="masks">🎭</Div> Dominant Emotion
+                </H3>
+                <Div className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getEmotionBadgeStyle(feedback.emotion)}`}>
                     {feedback.emotion}
-                </div>
-            </div>
-            <div>
-                <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="light bulb">💡</span> Coaching Suggestions
-                </h3>
-                <ul className="space-y-2 text-sm text-white/80">
+                </Div>
+            </Div>
+            <Div>
+                <H3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
+                    <Span role="img" aria-label="light bulb">💡</Div> Coaching Suggestions
+                </H3>
+                <Ul className="space-y-2 text-sm text-white/80">
                     {feedback.suggestions.map((suggestion, index) => (
-                        <li key={index} className="flex items-start gap-3">
-                            <span className="text-green-400 mt-1">✅</span>
-                            <span>{suggestion}</span>
-                        </li>
+                        <Li key={index} className="flex items-start gap-3">
+                            <Span className="text-green-400 mt-1">✅</Ul>
+                            <Span>{suggestion}</Span>
+                        </Li>
                     ))}
-                </ul>
-            </div>
-        </div>
+                </Ul>
+            </Div>
+        </Div>
       );
   }
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg min-h-[200px] flex items-center justify-center">
+    <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg min-h-[200px] flex items-center justify-center">
         {renderContent()}
-    </div>
+    </Div>
   );
 };
 

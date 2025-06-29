@@ -4,7 +4,7 @@ interface LovableNavProps {
   onNavigate?: (path: string) => void;
 }
 
-export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
+export const LovableNav: React.FC<LovableNavProps></LovableNavProps> = ({ onNavigate }) => {
   const navItems = [
     { label: 'Editor', path: '/lovable/editor', icon: '✏️' },
     { label: 'Components', path: '/lovable/components', icon: '🧩' },
@@ -22,7 +22,7 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div style={{
+    <Div style={{
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       borderRadius: '12px',
       padding: '16px',
@@ -30,24 +30,24 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
       border: '1px solid rgba(255, 255, 255, 0.1)',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
     }}>
-      <div style={{
+      <Div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
         marginBottom: '16px'
       }}>
-        <span style={{ fontSize: '20px' }}>💙</span>
-        <h2 style={{
+        <Span style={{ fontSize: '20px' }}>💙</Div>
+        <H2 style={{
           fontSize: '18px',
           fontWeight: '600',
           margin: 0,
           color: '#60A5FA'
         }}>
           Lovable
-        </h2>
-      </div>
+        </H2>
+      </Div>
 
-      <div style={{
+      <Div style={{
         display: 'flex',
         flexDirection: 'column',
         gap: '8px'
@@ -77,13 +77,13 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
               e.currentTarget.style.backgroundColor = 'transparent';
             }}
           >
-            <span style={{ fontSize: '16px' }}>{item.icon}</span>
+            <Span style={{ fontSize: '16px' }}>{item.icon}</Div>
             {item.label}
           </Button>
         ))}
-      </div>
+      </Div>
 
-      <div style={{
+      <Div style={{
         marginTop: '16px',
         padding: '12px',
         backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -91,20 +91,20 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
         fontSize: '12px',
         color: 'rgba(255, 255, 255, 0.7)'
       }}>
-        <div style={{
+        <Div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '6px',
           marginBottom: '8px'
         }}>
-          <span style={{ fontSize: '14px' }}>💡</span>
-          <span style={{ fontWeight: '500', color: 'white' }}>Pro Tip</span>
-        </div>
-        <p style={{ margin: 0, lineHeight: '1.5' }}>
+          <Span style={{ fontSize: '14px' }}>💡</Div>
+          <Span style={{ fontWeight: '500', color: 'white' }}>Pro Tip</Span>
+        </Div>
+        <P style={{ margin: 0, lineHeight: '1.5' }}>
           Use the Lovable Editor to make changes to your components and see them in real-time. All edits are automatically synced with GitHub.
-        </p>
-      </div>
-    </div>
+        </P>
+      </Div>
+    </Div>
   );
 };
 

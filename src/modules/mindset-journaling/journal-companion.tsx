@@ -318,39 +318,39 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
   };
   
   return (
-    <div className="journal-companion p-4 bg-background-secondary rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Trading Journal</h2>
+    <Div className="journal-companion p-4 bg-background-secondary rounded-lg">
+      <H2 className="text-2xl font-bold mb-4">Trading Journal</JournalCompanionProps>
       
       {/* Journal Entry Form */}
-      <div className="mb-8">
-        <div className="mb-4">
-          <div className="flex justify-between items-center mb-2">
-            <label className="font-medium">Today's Journal Entry</label>
+      <Div className="mb-8">
+        <Div className="mb-4">
+          <Div className="flex justify-between items-center mb-2">
+            <Label className="font-medium">Today's Journal Entry</Div>
             <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
               onClick={getRandomPrompt}
-          >
+        >
               Get Random Prompt
             </Button>
-          </div>
+          </Div>
           
           {selectedPrompt && (
-            <div className="p-3 mb-3 bg-brand-primary/10 border-l-4 border-brand-primary rounded">
-              <p className="text-sm italic">{selectedPrompt.text}</p>
-            </div>
+            <Div className="p-3 mb-3 bg-brand-primary/10 border-l-4 border-brand-primary rounded">
+              <P className="text-sm italic">{selectedPrompt.text}</Div>
+            </Div>
           )}
           
-          <textarea
+          <Textarea
             className="w-full p-3 bg-background-primary border border-border-primary rounded-md min-h-[200px]"
             value={currentEntry.content}
             onChange={handleContentChange}
             placeholder="Write your trading journal entry here..."
           />
-        </div>
+        </Textarea>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="block mb-1 font-medium">How are you feeling?</label>
-            <div className="flex space-x-2">
+        <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <Div>
+            <Label className="block mb-1 font-medium">How are you feeling?</Div>
+            <Div className="flex space-x-2">
               <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'positive' 
                     ? 'bg-status-success text-white' 
@@ -359,7 +359,7 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
                 onClick={() => handleMoodChange('positive')}
               >
                 Positive
-              </Button>
+              </Div>
               <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'neutral' 
                     ? 'bg-status-warning text-white' 
@@ -378,34 +378,34 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
               >
                 Negative
               </Button>
-            </div>
-          </div>
+            </Div>
+          </Div>
           
-          <div>
-            <label className="block mb-1 font-medium">Tags (comma-separated)</label>
-            <input
+          <Div>
+            <Label className="block mb-1 font-medium">Tags (comma-separated)</Div>
+            <Input
               type="text"
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               value={currentEntry.tags?.join(', ')}
               onChange={handleTagsChange}
               placeholder="mindset, discipline, strategy, etc."
             />
-          </div>
-        </div>
+          </Input>
+        </Div>
         
         {error && (
-          <div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
+          <Div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
             {error}
-          </div>
+          </Div>
         )}
         
-        <div className="flex justify-between">
-          <button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
+        <Div className="flex justify-between">
+          <Button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
             onClick={analyzeEntry}
             disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}
           />
             {analyzing ? 'Analyzing...' : 'Analyze with AI'}
-          </Button>
+          </Div>
           
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={saveEntry}
@@ -413,99 +413,99 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
           />
             {saving ? 'Saving...' : 'Save Entry'}
           </Button>
-        </div>
-      </div>
+        </Div>
+      </Div>
       
       {/* AI Analysis Section */}
       {currentEntry.aiAnalysis && (
-        <div className="mb-8 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
-          <h3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</h3>
+        <Div className="mb-8 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
+          <H3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</Div>
           
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-medium mb-1">Summary</h4>
-              <p className="text-sm">{currentEntry.aiAnalysis.summary}</p>
-            </div>
+          <Div className="space-y-4">
+            <Div>
+              <H4 className="font-medium mb-1">Summary</Div>
+              <P className="text-sm">{currentEntry.aiAnalysis.summary}</P>
+            </Div>
             
-            <div>
-              <h4 className="font-medium mb-1">Insights</h4>
-              <ul className="list-disc pl-5 space-y-1">
+            <Div>
+              <H4 className="font-medium mb-1">Insights</Div>
+              <Ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.insights.map((insight, i) => (
-                  <li key={i} className="text-sm">{insight}</li>
+                  <Li key={i} className="text-sm">{insight}</Ul>
                 ))}
-              </ul>
-            </div>
+              </Ul>
+            </Div>
             
-            <div>
-              <h4 className="font-medium mb-1">Patterns</h4>
-              <ul className="list-disc pl-5 space-y-1">
+            <Div>
+              <H4 className="font-medium mb-1">Patterns</Div>
+              <Ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.patterns.map((pattern, i) => (
-                  <li key={i} className="text-sm">{pattern}</li>
+                  <Li key={i} className="text-sm">{pattern}</Ul>
                 ))}
-              </ul>
-            </div>
+              </Ul>
+            </Div>
             
-            <div>
-              <h4 className="font-medium mb-1">Suggestions</h4>
-              <ul className="list-disc pl-5 space-y-1">
+            <Div>
+              <H4 className="font-medium mb-1">Suggestions</Div>
+              <Ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.suggestions.map((suggestion, i) => (
-                  <li key={i} className="text-sm">{suggestion}</li>
+                  <Li key={i} className="text-sm">{suggestion}</Ul>
                 ))}
-              </ul>
-            </div>
-          </div>
-        </div>
+              </Ul>
+            </Div>
+          </Div>
+        </Div>
       )}
       
       {/* Previous Entries */}
-      <div>
-        <h3 className="text-lg font-semibold mb-3">Previous Entries</h3>
+      <Div>
+        <H3 className="text-lg font-semibold mb-3">Previous Entries</Div>
         
         {loading ? (
-          <div className="p-8 text-center">
-            <div className="text-text-muted">Loading entries...</div>
-          </div>
+          <Div className="p-8 text-center">
+            <Div className="text-text-muted">Loading entries...</Div>
+          </Div>
         ) : entries.length === 0 ? (
-          <div className="p-8 text-center">
-            <div className="text-text-muted">No journal entries yet. Start writing your first entry above!</div>
-          </div>
+          <Div className="p-8 text-center">
+            <Div className="text-text-muted">No journal entries yet. Start writing your first entry above!</Div>
+          </Div>
         ) : (
-          <div className="space-y-4">
+          <Div className="space-y-4">
             {entries.map(entry => (
-              <div key={entry.id} className="p-4 bg-background-tertiary rounded-lg">
-                <div className="flex justify-between items-start mb-2">
-                  <div className="flex items-center">
-                    <span className={`w-3 h-3 rounded-full mr-2 ${
+              <Div key={entry.id} className="p-4 bg-background-tertiary rounded-lg">
+                <Div className="flex justify-between items-start mb-2">
+                  <Div className="flex items-center">
+                    <Span className={`w-3 h-3 rounded-full mr-2 ${
                       entry.mood === 'positive' ? 'bg-status-success' :
                       entry.mood === 'negative' ? 'bg-status-error' : 'bg-status-warning'
                     }`} />
-                    <span className="text-sm text-text-muted">
+                    <Span className="text-sm text-text-muted">
                       {new Date(entry.createdAt).toLocaleDateString()}
-                    </span>
-                  </div>
+                    </Div>
+                  </Div>
                   
                   <Button  className="text-sm text-brand-primary hover:text-brand-primary/80"
                     onClick={() => editEntry(entry)}
                   >
                     Edit
                   </Button>
-                </div>
+                </Div>
                 
-                <p className="mb-3 line-clamp-3">{entry.content}</p>
+                <P className="mb-3 line-clamp-3">{entry.content}</P>
                 
-                <div className="flex flex-wrap gap-1">
+                <Div className="flex flex-wrap gap-1">
                   {entry.tags.map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
+                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
                       {tag}
-                    </span>
+                    </Div>
                   ))}
-                </div>
-              </div>
+                </Div>
+              </Div>
             ))}
-          </div>
+          </Div>
         )}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

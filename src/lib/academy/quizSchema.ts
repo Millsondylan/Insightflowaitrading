@@ -136,7 +136,7 @@ export function convertLegacyQuiz(legacyQuiz: LegacyQuiz): Quiz {
 /**
  * Check if a given answer is correct for a question
  */
-export function isAnswerCorrect(question: Question, answer: any): boolean {
+export function isAnswerCorrect(question: Question, answer: any // eslint-disable-line @typescript-eslint/no-explicit-any): boolean {
   switch(question.type) {
     case 'multiple-choice':
       return question.correctAnswer === answer;

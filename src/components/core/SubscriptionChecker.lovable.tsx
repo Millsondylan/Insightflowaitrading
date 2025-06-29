@@ -108,7 +108,7 @@ const SubscriptionChecker: React.FC = () => {
     setSelectedChain(value);
   };
 
-  const handleTxHashChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
+  const handleTxHashChange = (e: React.ChangeEvent<HTMLInputElement >) => {
     setTxHash(e.target.value);
   };
 
@@ -196,14 +196,14 @@ const SubscriptionChecker: React.FC = () => {
   // If we're showing a verification status
   if (verificationStatus) {
     return (
-      <card  style={{ width: "100%" }}>
+      <Card  style={{ width: "100%" }}>
         <Cardcontent  />
           <Accessstatus >
 
           {verificationStatus === 'failure' && (
-            <div className="mt-6 text-center">
-              <Button />Try Again</Button>
-            </div>
+            <Div className="mt-6 text-center">
+              <Button />Try Again</Plantype>
+            </Div>
           )}
         </Cardcontent>
       </Card>
@@ -211,20 +211,20 @@ const SubscriptionChecker: React.FC = () => {
   }
 
   return (
-    <card  style={{ width: "100%" }}>
-      <cardheader  >
-        <cardtitle  >Select Your Subscription Plan</CardTitle>
-        <carddescription  >Choose a plan and payment method to unlock premium features</CardDescription>
+    <Card  style={{ width: "100%" }}>
+      <Cardheader >
+        <Cardtitle >Select Your Subscription Plan</Card>
+        <carddescription >Choose a plan and payment method to unlock premium features</CardDescription>
       </CardHeader>
       
-      <Cardcontent  >
-        <div className="space-y-6">
+      <Cardcontent >
+        <Div className="space-y-6">
           {/* Plan Selection */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">Step 1: Choose Your Plan</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Div>
+            <H3 className="text-lg font-medium mb-4">Step 1: Choose Your Plan</Cardcontent>
+            <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {SUBSCRIPTION_PLANS.map(plan => (
-                <card  > handlePlanChange(plan.id)}
+                <Card > handlePlanChange(plan.id)}
                   className={`relative cursor-pointer transition-all duration-200 border-2 ${
                     selectedPlan === plan.id 
                       ? 'border-blue-500 shadow-lg shadow-blue-500/20' 
@@ -232,128 +232,128 @@ const SubscriptionChecker: React.FC = () => {
                   }`}
                 >
                   {plan.popular && (
-                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs py-1 px-3 rounded-full">
+                    <Div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white text-xs py-1 px-3 rounded-full">
                       Popular
-                    </div>
+                    </Div>
                   )}
-                  <cardheader  >
-                    <cardtitle  >{plan.name}</CardTitle>
-                    <div className="text-2xl font-bold text-white">${plan.priceUSD}</div>
+                  <Cardheader >
+                    <Cardtitle >{plan.name}</Cardheader>
+                    <Div className="text-2xl font-bold text-white">${plan.priceUSD}</Div>
                   </CardHeader>
                   <Cardcontent  style={{ fontSize: "0.875rem" }}>
-                    <p className="mb-2">{plan.description}</p>
-                    <ul className="space-y-1">
+                    <P className="mb-2">{plan.description}</Cardcontent>
+                    <Ul className="space-y-1">
                       {plan.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <arrowright  >
+                        <Li key={idx} className="flex items-start">
+                          <arrowright >
                           {feature}
-                        </li>
+                        </Ul>
                       ))}
-                    </ul>
+                    </Ul>
                   </Cardcontent>
                 </Card>
               ))}
-            </div>
-          </div>
+            </Div>
+          </Div>
 
           {/* Payment Selection */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">Step 2: Select Payment Method</h3>
-            <div className="space-y-4">
-              <select  >
+          <Div>
+            <H3 className="text-lg font-medium mb-4">Step 2: Select Payment Method</Div>
+            <Div className="space-y-4">
+              <Select >
                 <selecttrigger  style={{ width: "100%" }}>
-                  <selectvalue placeholder="Select Chain" >
-                </SelectTrigger>
-                <selectcontent  >
-                  <selectgroup  >
-                    <selectlabel  >Crypto Network</SelectLabel>
-                    <selectitem value="ETH" >
-                      <div className="flex items-center">
-                        <circledollarsign  >
-                        <span>Ethereum (ERC20)</span>
-                      </div>
+                  <selectvalue placeholder="Select Chain">
+                </Div>
+                <selectcontent >
+                  <selectgroup >
+                    <selectlabel >Crypto Network</SelectLabel>
+                    <selectitem value="ETH">
+                      <Div className="flex items-center">
+                        <circledollarsign >
+                        <Span>Ethereum (ERC20)</Div>
+                      </Div>
                     </SelectItem>
-                    <selectitem value="BTC" >
-                      <div className="flex items-center">
-                        <bitcoin  >
-                        <span>Bitcoin</span>
-                      </div>
+                    <selectitem value="BTC">
+                      <Div className="flex items-center">
+                        <bitcoin >
+                        <Span>Bitcoin</Div>
+                      </Div>
                     </SelectItem>
-                    <selectitem value="TRX" >
-                      <div className="flex items-center">
-                        <dollarsign  >
-                        <span>TRON (USDT)</span>
-                      </div>
+                    <selectitem value="TRX">
+                      <Div className="flex items-center">
+                        <dollarsign >
+                        <Span>TRON (USDT)</Div>
+                      </Div>
                     </SelectItem>
                   </SelectGroup>
                 </SelectContent>
-              </select>
+              </Select>
 
               {/* Payment Instructions */}
-              <div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="font-medium mb-1">Send Payment</h4>
-                    <p className="text-sm text-gray-400">
+              <Div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4">
+                <Div className="flex justify-between items-start mb-4">
+                  <Div>
+                    <H4 className="font-medium mb-1">Send Payment</Div>
+                    <P className="text-sm text-gray-400">
                       Send exactly {cryptoAmount} {chain?.ticker || ''} to the address below
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm text-gray-400">Amount</div>
-                    <div className="font-bold text-lg">
+                    </P>
+                  </Div>
+                  <Div className="text-right">
+                    <Div className="text-sm text-gray-400">Amount</Div>
+                    <Div className="font-bold text-lg">
                       {cryptoAmount} {chain?.ticker || ''}
-                    </div>
-                    <div className="text-sm text-gray-400">(${plan?.priceUSD})</div>
-                  </div>
-                </div>
+                    </Div>
+                    <Div className="text-sm text-gray-400">(${plan?.priceUSD})</Div>
+                  </Div>
+                </Div>
 
                 {/* Address Display */}
-                <div className="p-3 bg-black/30 rounded border border-gray-700/50 flex justify-between items-center">
-                  <div className="font-mono text-sm text-gray-300 truncate">
+                <Div className="p-3 bg-black/30 rounded border border-gray-700/50 flex justify-between items-center">
+                  <Div className="font-mono text-sm text-gray-300 truncate">
                     {walletAddress || 'Select a chain'}
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <Button  onClick={handleCopyAddress} 
+                  </Div>
+                  <Div className="flex items-center space-x-2">
+                    <Button onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
-                    >
-                      <copy  >
-                    </Button>
+                  >
+                      <copy >
+                    </Div>
                     <Button  onClick={() => toast({
                         title: "QR Code",
                         description: "Scan this code to make your payment",
                         action: (
-                          <div className="p-4 bg-white rounded-lg">
-                            <qrcodesvg  >
-                          </div>
+                          <Div className="p-4 bg-white rounded-lg">
+                            <qrcodesvg >
+                          </Button>
                         )
                       })} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
                     >
-                      <qrcode  >
+                      <qrcode >
                     </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </Div>
+                </Div>
+              </Div>
+            </Div>
+          </Div>
 
           {/* Transaction Verification */}
-          <div>
-            <h3 className="text-lg font-medium mb-4">Step 3: Verify Payment</h3>
-            <div className="space-y-4">
-              <div>
-                <label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
+          <Div>
+            <H3 className="text-lg font-medium mb-4">Step 3: Verify Payment</Div>
+            <Div className="space-y-4">
+              <Div>
+                <Label htmlFor="txHash" className="text-sm text-gray-400 mb-2 block">
                   After payment, paste the transaction hash (TX ID) below to verify
-                </label>
-                <input id="txHash"  />
-              </div>
+                </Div>
+                <Input id="txHash"  />
+              </Input>
               
               <Button  style={{ width: "100%" }}>
                 {loading ? 'Verifying...' : 'Verify Payment'}
               </Button>
-            </div>
-          </div>
-        </div>
+            </Div>
+          </Div>
+        </Div>
       </Cardcontent>
     </Card>
   );

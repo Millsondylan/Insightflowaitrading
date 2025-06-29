@@ -82,7 +82,7 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
         animationFillMode: animated ? 'forwards' : undefined,
       }}
       onClick={handleClick}
-   >
+ >
       {tag}
     </Badge>
   );
@@ -91,14 +91,14 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>
+        <TooltipTrigger asChild />
           {tagElement}
-        </TooltipTrigger>
-        <TooltipContent side="top" className="max-w-xs">
-          <div className="text-center">
-            <p className="font-medium text-sm">{tag}</p>
-            <p className="text-xs text-gray-300 mt-1">{definition.description}</p>
-          </div>
+        </TooltipProvider>
+        <TooltipContent side="top" className="max-w-xs" />
+          <Div className="text-center">
+            <P className="font-medium text-sm">{tag}</TooltipContent>
+            <P className="text-xs text-gray-300 mt-1">{definition.description}</P>
+          </Div>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -127,7 +127,7 @@ export const BehaviorTagGroup: React.FC<behaviorTagGroupProps> = ({
   const hiddenCount = tags.length - displayTags.length;
   
   return (
-    <div className={cn('flex flex-wrap gap-2', className)}>
+    <Div className={cn('flex flex-wrap gap-2', className)}>
       {displayTags.map((tag, index) => (
         <behaviorTag
           key={tag}
@@ -138,11 +138,11 @@ export const BehaviorTagGroup: React.FC<behaviorTagGroupProps> = ({
         />
       ))}
       {hiddenCount > 0 && (
-        <badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30">
+        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30">
           +{hiddenCount} more
-        </Badge>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 };
 

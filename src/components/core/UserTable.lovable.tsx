@@ -71,7 +71,7 @@ const UserTable: React.FC = () => {
   }, [filterOptions]);
   
   // Handle search input
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement >) => {
     // Debounce implementation would be better in production
     setFilterOptions(prev => ({ ...prev, search: e.target.value, page: 1 }));
   };
@@ -126,8 +126,8 @@ const UserTable: React.FC = () => {
     return (
       <Pagination >
         <Paginationcontent  />
-          <paginationitem  >
-            <paginationprevious href="#" > {
+          <paginationitem >
+            <paginationprevious href="#"> {
                 e.preventDefault();
                 if (currentPage > 1) {
                   handlePageChange(currentPage - 1);
@@ -135,7 +135,7 @@ const UserTable: React.FC = () => {
               }}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
             />
-          </PaginationItem>
+          </User>
           
           {[...Array(pageCount)].map((_, i) => {
             const page = i + 1;
@@ -146,8 +146,8 @@ const UserTable: React.FC = () => {
               (page >= currentPage - 1 && page <= currentPage + 1)
             ) {
               return (
-                <paginationitem  >
-                  <paginationlink href="#" > {
+                <paginationitem >
+                  <paginationlink href="#"> {
                       e.preventDefault();
                       handlePageChange(page);
                     }}
@@ -161,13 +161,13 @@ const UserTable: React.FC = () => {
               page === currentPage - 2 || 
               page === currentPage + 2
             ) {
-              return <paginationellipsis  >;
+              return <paginationellipsis >;
             }
             return null;
           })}
           
-          <paginationitem  >
-            <paginationnext href="#" > {
+          <paginationitem >
+            <paginationnext href="#"> {
                 e.preventDefault();
                 if (currentPage < pageCount) {
                   handlePageChange(currentPage + 1);
@@ -185,157 +185,157 @@ const UserTable: React.FC = () => {
   const renderSkeleton = () => (
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
-        <tr key={i} className="border-b border-gray-800/30">
-          <td className="px-4 py-3"><skeleton  ></td>
-          <td className="px-4 py-3"><skeleton  ></td>
-          <td className="px-4 py-3"><skeleton  ></td>
-          <td className="px-4 py-3"><skeleton  ></td>
-          <td className="px-4 py-3"><skeleton  ></td>
-        </tr>
+        <Tr key={i} className="border-b border-gray-800/30">
+          <Td className="px-4 py-3"><skeleton ></Tr>
+          <Td className="px-4 py-3"><skeleton ></Td>
+          <Td className="px-4 py-3"><skeleton ></Td>
+          <Td className="px-4 py-3"><skeleton ></Td>
+          <Td className="px-4 py-3"><skeleton ></Td>
+        </Tr>
       ))}
     </>
   );
   
   return (
-    <div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
+    <Div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
       {/* Filter and tools bar */}
-      <div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
-        <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
+      <Div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
+        <Div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
-          <div className="relative">
-            <search  >
-            <input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} />
-          </div>
+          <Div className="relative">
+            <search >
+            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} />
+          </Div>
           
           {/* Role filter */}
-          <select  >
-            <selecttrigger  >
-              <selectvalue placeholder="All roles" >
-            </SelectTrigger>
-            <selectcontent  >
-              <selectitem value="" >All roles</SelectItem>
-              <selectitem value="Admin" >
-                <div className="flex items-center gap-2">
-                  <rolebadge role="Admin" > Admin
-                </div>
+          <Select >
+            <selecttrigger >
+              <selectvalue placeholder="All roles">
+            </Select>
+            <selectcontent >
+              <selectitem value="">All roles</SelectItem>
+              <selectitem value="Admin">
+                <Div className="flex items-center gap-2">
+                  <rolebadge role="Admin"> Admin
+                </Div>
               </SelectItem>
-              <selectitem value="User" >
-                <div className="flex items-center gap-2">
-                  <rolebadge role="User" > User
-                </div>
+              <selectitem value="User">
+                <Div className="flex items-center gap-2">
+                  <rolebadge role="User"> User
+                </Div>
               </SelectItem>
-              <selectitem value="Trial" >
-                <div className="flex items-center gap-2">
-                  <rolebadge role="Trial" > Trial
-                </div>
+              <selectitem value="Trial">
+                <Div className="flex items-center gap-2">
+                  <rolebadge role="Trial"> Trial
+                </Div>
               </SelectItem>
-              <selectitem value="Expired" >
-                <div className="flex items-center gap-2">
-                  <rolebadge role="Expired" > Expired
-                </div>
+              <selectitem value="Expired">
+                <Div className="flex items-center gap-2">
+                  <rolebadge role="Expired"> Expired
+                </Div>
               </SelectItem>
             </SelectContent>
-          </select>
+          </Select>
           
           {/* Sort options */}
-          <dropdownmenu  >
-            <dropdownmenutrigger  >
-              <Button variant="outline" size="sm" >
-                <filter  >
+          <dropdownmenu >
+            <dropdownmenutrigger >
+              <Button variant="outline" size="sm">
+                <filter >
                 Sort
               </Button>
             </DropdownMenuTrigger>
             <dropdownmenucontent  style={{ border: "1px solid #E5E7EB" }}>
-              <dropdownmenuitem  > handleSortChange('created_at-desc')} className="cursor-pointer">
+              <dropdownmenuitem > handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
               </DropdownMenuItem>
-              <dropdownmenuitem  > handleSortChange('created_at-asc')} className="cursor-pointer">
+              <dropdownmenuitem > handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
-              <dropdownmenuitem  > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
+              <dropdownmenuitem > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <dropdownmenuitem  > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
+              <dropdownmenuitem > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <dropdownmenuitem  > handleSortChange('role-asc')} className="cursor-pointer">
+              <dropdownmenuitem > handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </div>
+        </Div>
         
-        <div className="flex items-center gap-2">
+        <Div className="flex items-center gap-2">
           {/* Export button */}
           <Button variant="outline" style={{ display: "flex", alignItems: "center" }}>
-            <download  >
+            <download >
             Export CSV
-          </Button>
+          </Div>
           
           {/* Grant admin button */}
           <Button  style={{ display: "flex", alignItems: "center" }}>
-            <plus  >
+            <plus >
             Grant Admin
           </Button>
-        </div>
-      </div>
+        </Div>
+      </Div>
       
       {/* User table */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-900/50">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+      <Div className="overflow-x-auto">
+        <Table className="w-full">
+          <Thead className="bg-gray-900/50">
+            <Tr>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Div>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Th>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Subscription Plan
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Th>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Role
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Th>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
             {loading ? (
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <Userrow  >
+                <Userrow ></Tbody>
               ))
             ) : (
-              <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users  >
-                  <p>No users found</p>
-                  <p className="text-sm">Try adjusting your search or filters</p>
-                </td>
-              </tr>
+              <Tr>
+                <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
+                  <Users ></Tr>
+                  <P>No users found</P>
+                  <P className="text-sm">Try adjusting your search or filters</P>
+                </Td>
+              </Tr>
             )}
-          </tbody>
-        </table>
-      </div>
+          </Tbody>
+        </Table>
+      </Div>
       
       {/* Pagination */}
       {!loading && pageCount > 1 && renderPagination()}
       
       {/* Summary stats */}
-      <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
+      <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <p>
+          <P>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}
-          </p>
+          </Div>
         )}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

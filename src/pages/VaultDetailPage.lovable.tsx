@@ -22,13 +22,13 @@ const strategyDetails = {
 const GlassCard = ({ title, value, icon, unit = '' }: { title: string, value: string | number, icon: React.ElementType, unit?: string }) => {
     const Icon = icon;
     return (
-        <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-            <div className="flex justify-center items-center gap-2 text-gray-400 text-sm mb-2">
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+            <Div className="flex justify-center items-center gap-2 text-gray-400 text-sm mb-2">
                 <Icon>
                 {title}
-            </div>
-            <p className="text-2xl font-bold text-white">{value}{unit}</p>
-        </div>
+            </Div>
+            <P className="text-2xl font-bold text-white">{value}{unit}</P>
+        </Div>
     );
 };
 
@@ -39,43 +39,43 @@ export default function VaultDetailPage() {
   const strategy = strategyDetails;
 
   return (
-    <div>
+    <Div>
       <Link to="/vault" style={{ display: "flex", alignItems: "center" }}>
         <Arrowleft />
         Back to Vault
-      </Link>
+      </Div>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-        <header className="flex justify-between items-start mb-8">
-            <div>
-                <h1 className="text-4xl font-bold text-white flex items-center gap-4">
-                    <span className="bg-white/10 p-3 rounded-lg"><Gitcommit ></span>
+      <Div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+        <Header className="flex justify-between items-start mb-8">
+            <Div>
+                <H1 className="text-4xl font-bold text-white flex items-center gap-4">
+                    <Span className="bg-white/10 p-3 rounded-lg"><Gitcommit ></Div>
                     {strategy.name}
-                </h1>
-                <p className="text-gray-400 mt-2">by {strategy.author}</p>
-            </div>
+                </H1>
+                <P className="text-gray-400 mt-2">by {strategy.author}</P>
+            </Div>
             <Link  />
                 <Button size="lg" style={{ color: "white" }}>
-                    <playcircle  >
+                    <playcircle >
                     Launch Replay
-                </Button>
+                </Link>
             </Link>
-        </header>
+        </Header>
 
-        <p className="text-gray-300 max-w-3xl mb-6">{strategy.description}</p>
+        <P className="text-gray-300 max-w-3xl mb-6">{strategy.description}</P>
         
-        <div className="flex items-center gap-2 mb-8">
-          {strategy.tags.map(tag => <badge variant="secondary" >{tag}</Badge>)}
-        </div>
+        <Div className="flex items-center gap-2 mb-8">
+          {strategy.tags.map(tag => <Badge variant="secondary">{tag}</Div>)}
+        </Div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <glasscard title="Performance" unit="%" >
-            <glasscard title="Win Rate" unit="%" >
-            <glasscard title="Avg PnL/Trade" unit="%" >
-            <glasscard title="Backtests" >
-        </div>
-      </div>
-    </div>
+        <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <glasscard title="Performance" unit="%">
+            <glasscard title="Win Rate" unit="%">
+            <glasscard title="Avg PnL/Trade" unit="%">
+            <glasscard title="Backtests">
+        </Div>
+      </Div>
+    </Div>
   );
 } 
 

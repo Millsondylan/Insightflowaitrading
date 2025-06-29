@@ -31,67 +31,67 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   }, [result.confidence]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <Div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
       <blockreveal  />
-        <div className="glass-container p-4 rounded-lg">
+        <Div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
             <Chartcanvasoverlay >
           ) : (
-            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
+            <Img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
           )}
-          <div className="mt-2 flex justify-end">
+          <Div className="mt-2 flex justify-end">
             <Button  onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </Button>
-          </div>
-        </div>
+            </Patternzone>
+          </Div>
+        </Div>
       </BlockReveal>
       
-      <div className="space-y-6">
+      <Div className="space-y-6">
         <Blockreveal  />
-          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
-          <div className="flex flex-wrap mt-2">
+          <H3 className="text-2xl font-bold text-cyan-400">Detected Patterns</Div>
+          <Div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
-              <patterntag  >
+              <patterntag >
             ))}
-          </div>
+          </Div>
         </BlockReveal>
 
-        <blockreveal  >
-          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
-          <p className="text-gray-300 mt-2">{result.summary}</p>
+        <blockreveal >
+          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</H3>
+          <P className="text-gray-300 mt-2">{result.summary}</P>
         </BlockReveal>
         
-        <blockreveal  >
-          <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
-          <div className="flex items-center gap-4 mt-2">
-            <div className="confidence-meter-bg flex-grow">
-              <div
+        <blockreveal >
+          <H3 className="text-2xl font-bold text-cyan-400">Confidence</H3>
+          <Div className="flex items-center gap-4 mt-2">
+            <Div className="confidence-meter-bg flex-grow">
+              <Div
                 className="confidence-meter-bar"
                 style={{ width: `${confidence}%` }}
               />
-            </div>
-            <span className="text-xl font-bold text-white">{confidence}%</span>
-          </div>
+            </Div>
+            <Span className="text-xl font-bold text-white">{confidence}%</Span>
+          </Div>
         </BlockReveal>
         
-        <blockreveal  >
-          <div className="flex flex-wrap gap-4 mt-4">
+        <blockreveal >
+          <Div className="flex flex-wrap gap-4 mt-4">
             <Button >
-              <Link to="/journal?from=vision" >📓 Save to Journal</Link>
+              <Link to="/journal?from=vision">📓 Save to Journal</Div>
             </Button>
             <Button >
-              <Link to="/academy?topic=patterns" >📘 Learn Pattern</Link>
+              <Link to="/academy?topic=patterns">📘 Learn Pattern</Button>
             </Button>
             <Button >
-              <Link to="/strategy?from=vision" >💡 Find Strategy</Link>
+              <Link to="/strategy?from=vision">💡 Find Strategy</Button>
             </Button>
-          </div>
+          </Div>
         </BlockReveal>
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

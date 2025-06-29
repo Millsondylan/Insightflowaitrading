@@ -9,32 +9,32 @@ import {
 } from "@/components/ui/toast"
 
 export function Toaster() {
-  const { toasts }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; = useToast()
+  const { toasts } = useToast()
 
   return (
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
         return (
           <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
+            <Div className="grid gap-1">
+              {title && <ToastTitle>{title}</ToastProvider>}
               {description && (
                 <ToastDescription>{description}</ToastDescription>
               )}
-            </div>
+            </Div>
             {action}
             <ToastClose />
-          </Toast>
+          </ToastClose>
         )
       })}
-      <ToastViewport />
+      <ToastViewport /></ToastViewport>
     </ToastProvider>
   )
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

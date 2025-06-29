@@ -9,7 +9,7 @@ interface ReplayEngineV2Props {
   tradeId: string;
 }
 
-export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => {
+export const ReplayEngineV2: React.FC<replayenginev2props > = ({ tradeId }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
   const [speed, setSpeed] = React.useState(1);
@@ -33,69 +33,69 @@ export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => 
 
   return (
     <Card >
-      <h2 className="text-2xl font-bold mb-4">Trade Replay</h2>
+      <H2 className="text-2xl font-bold mb-4">Trade Replay</Card>
       
-      <div className="space-y-4">
+      <Div className="space-y-4">
         {/* Chart placeholder */}
-        <div className="bg-secondary/20 rounded-lg h-[400px] flex items-center justify-center">
-          <p className="text-muted-foreground">Chart visualization here</p>
-        </div>
+        <Div className="bg-secondary/20 rounded-lg h-[400px] flex items-center justify-center">
+          <P className="text-muted-foreground">Chart visualization here</Div>
+        </Div>
 
         {/* Playback controls */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
+        <Div className="space-y-4">
+          <Div className="flex items-center gap-2">
             <Button variant="outline" size="icon" /> setCurrentTime(Math.max(0, currentTime - 10))}
             >
               <Skipback >
-            </Button>
+            </Div>
             <Button variant="outline" size="icon" />
-              {isPlaying ? <pause  > : <play  >}
+              {isPlaying ? <pause > : <play >}
             </Button>
-            <Button variant="outline" size="icon" > setCurrentTime(Math.min(totalDuration, currentTime + 10))}
+            <Button variant="outline" size="icon"> setCurrentTime(Math.min(totalDuration, currentTime + 10))}
             >
-              <skipforward  >
+              <skipforward >
             </Button>
-            <div className="flex-1 mx-4">
-              <slider  > setCurrentTime(value[0])}
+            <Div className="flex-1 mx-4">
+              <slider > setCurrentTime(value[0])}
               />
-            </div>
-            <span className="text-sm text-muted-foreground min-w-[60px]">
+            </Div>
+            <Span className="text-sm text-muted-foreground min-w-[60px]">
               {Math.floor(currentTime / 60)}:{(currentTime % 60).toString().padStart(2, '0')}
-            </span>
-          </div>
+            </Span>
+          </Div>
 
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Speed:</span>
+          <Div className="flex items-center justify-between">
+            <Div className="flex items-center gap-2">
+              <Span className="text-sm text-muted-foreground">Speed:</Div>
               {[0.5, 1, 2, 4].map((s) => (
-                <Button size="sm" > setSpeed(s)}
+                <Button size="sm"> setSpeed(s)}
                 >
                   {s}x
                 </Button>
               ))}
-            </div>
-            <Button variant="outline" size="sm" >
-              <tag  >
+            </Div>
+            <Button variant="outline" size="sm">
+              <tag >
               Add Annotation
             </Button>
-          </div>
-        </div>
+          </Div>
+        </Div>
 
         {/* Annotations */}
         {annotations.length > 0 && (
-          <div className="space-y-2">
-            <h3 className="font-semibold">Annotations</h3>
+          <Div className="space-y-2">
+            <H3 className="font-semibold">Annotations</Div>
             {annotations.map((ann) => (
-              <div key={ann.id} className="flex items-center gap-2 text-sm">
-                <span className="text-muted-foreground">
+              <Div key={ann.id} className="flex items-center gap-2 text-sm">
+                <Span className="text-muted-foreground">
                   {Math.floor(ann.time / 60)}:{(ann.time % 60).toString().padStart(2, '0')}
-                </span>
-                <span>{ann.text}</span>
-              </div>
+                </Div>
+                <Span>{ann.text}</Span>
+              </Div>
             ))}
-          </div>
+          </Div>
         )}
-      </div>
+      </Div>
     </Card>
   );
 }; 

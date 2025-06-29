@@ -7,13 +7,13 @@ import { Bot, Sparkles, FileText, Settings, Book, GitCommit } from 'lucide-react
 const ConfigItem = ({ icon, title, children }: { icon: React.ElementType, title: string, children: React.ReactNode }) => {
   const Icon = icon;
   return (
-    <div>
-      <h4 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
+    <Div>
+      <H4 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
         <Icon>
         {title}
-      </h4>
+      </Div>
       {children}
-    </div>
+    </Div>
   );
 };
 
@@ -21,69 +21,69 @@ export default function StrategyBuilderPage() {
   const [prompt, setPrompt] = useState('');
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+    <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
       {/* Main Builder Section */}
-      <div className="lg:col-span-2 space-y-8">
-        <div className="flex justify-between items-center">
-            <div>
-                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><bot  /></span>
+      <Div className="lg:col-span-2 space-y-8">
+        <Div className="flex justify-between items-center">
+            <Div>
+                <H1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <Span className="bg-white/10 p-2 rounded-lg"><bot  /></Div>
                     AI Strategy Builder
-                </h1>
-                <p className="text-gray-400 mt-1">Craft a new strategy using natural language.</p>
-            </div>
-        </div>
+                </H1>
+                <P className="text-gray-400 mt-1">Craft a new strategy using natural language.</P>
+            </Div>
+        </Div>
 
         {/* Prompt Input */}
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-          <h3 className="font-semibold text-white mb-3">Describe your strategy idea</h3>
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+          <H3 className="font-semibold text-white mb-3">Describe your strategy idea</Div>
           <Textarea > setPrompt(e.target.value)}
             placeholder="e.g., A mean-reversion strategy for AAPL on the 5-minute chart using Bollinger Bands and RSI..."
             className="bg-black/20 border-white/10 h-36"
           />
-          <div className="flex justify-end mt-4">
+          <Div className="flex justify-end mt-4">
             <Button  style={{ color: "white" }}>
-                <Sparkles  />
+                <Sparkles  /></Textarea>
                 Generate Strategy
             </Button>
-          </div>
-        </div>
+          </Div>
+        </Div>
 
         {/* Generated Output */}
-        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                <filetext  >
+        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <H3 className="font-semibold text-white mb-3 flex items-center gap-2">
+                <filetext >
                 Generated Pine Script
-            </h3>
-            <div className="bg-black/30 rounded-lg p-4 font-mono text-sm text-gray-300 h-64 overflow-auto">
+            </Div>
+            <Div className="bg-black/30 rounded-lg p-4 font-mono text-sm text-gray-300 h-64 overflow-auto">
                 // Your generated strategy code will appear here...
-            </div>
-        </div>
-      </div>
+            </Div>
+        </Div>
+      </Div>
 
       {/* Configuration Sidebar */}
-      <div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm space-y-6">
-        <h2 className="text-xl font-bold text-white">Configuration</h2>
+      <Div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm space-y-6">
+        <H2 className="text-xl font-bold text-white">Configuration</Div>
         
-        <configitem title="Parameters" >
+        <configitem title="Parameters">
           {/* Placeholder for parameters */}
-          <p className="text-sm text-gray-500">Parameters will be extracted here.</p>
+          <P className="text-sm text-gray-500">Parameters will be extracted here.</P>
         </ConfigItem>
 
-        <div className="border-t border-white/10"></div>
+        <Div className="border-t border-white/10"></Div>
         
-        <configitem title="Next Steps" >
-            <div className="flex flex-col gap-3">
-                <Link to="/planner" >
-                    <Button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Button>
+        <configitem title="Next Steps">
+            <Div className="flex flex-col gap-3">
+                <Link to="/planner">
+                    <Button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Div>
                 </Link>
-                <Link to="/vault" >
-                    <Button variant="outline" style={{ width: "100%" }}>Save to Vault</Button>
+                <Link to="/vault">
+                    <Button variant="outline" style={{ width: "100%" }}>Save to Vault</Link>
                 </Link>
-            </div>
+            </Div>
         </ConfigItem>
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 }
 

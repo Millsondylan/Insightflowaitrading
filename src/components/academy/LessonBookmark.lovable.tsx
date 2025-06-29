@@ -16,14 +16,14 @@ export default function LessonBookmark({
   onBookmark,
 }: Props) {
   return (
-    <div className="flex gap-4 items-center justify-end text-sm text-white/80">
-      <button onClick={onBookmark} className="hover:text-cyan-400 transition">
+    <Div className="flex gap-4 items-center justify-end text-sm text-white/80">
+      <Button onClick={onBookmark} className="hover:text-cyan-400 transition">
         {isBookmarked ? "🔖 Bookmarked" : "📑 Bookmark"}
-      </Button>
-      <button onClick={onComplete} className="hover:text-green-400 transition">
+      </Div>
+      <Button onClick={onComplete} className="hover:text-green-400 transition">
         {isCompleted ? "✅ Completed" : "✔️ Mark as Complete"}
       </Button>
-    </div>
+    </Div>
   );
 } 
 

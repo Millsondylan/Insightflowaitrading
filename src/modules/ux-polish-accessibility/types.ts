@@ -30,7 +30,7 @@ export interface InteractionTrigger {
 export interface InteractionCondition {
   property: string;
   operator: 'equals' | 'not_equals' | 'greater_than' | 'less_than' | 'exists';
-  value: any;
+  value: unknown;
 }
 
 export interface InteractionCallbacks {
@@ -256,10 +256,10 @@ export interface ChartTheme {
     text: string;
   };
   styles: {
-    candlestick: any;
-    line: any;
-    area: any;
-    volume: any;
+    candlestick: any // eslint-disable-line @typescript-eslint/no-explicit-any;
+    line: any // eslint-disable-line @typescript-eslint/no-explicit-any;
+    area: any // eslint-disable-line @typescript-eslint/no-explicit-any;
+    volume: any // eslint-disable-line @typescript-eslint/no-explicit-any;
   };
 }
 
@@ -346,6 +346,6 @@ export type UXEvent =
   | { type: 'VOICE_NOTE_RECORDED'; payload: { noteId: string; duration: number } }
   | { type: 'LOCALE_CHANGED'; payload: { from: string; to: string } }
   | { type: 'THEME_CHANGED'; payload: { themeId: string; themeName: string } }
-  | { type: 'ACCESSIBILITY_SETTING_CHANGED'; payload: { setting: string; value: any } }
+  | { type: 'ACCESSIBILITY_SETTING_CHANGED'; payload: { setting: string; value: unknown } }
   | { type: 'GESTURE_DETECTED'; payload: SwipeGesture }
   | { type: 'PERFORMANCE_MEASURED'; payload: PerformanceMetrics }; 

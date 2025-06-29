@@ -32,7 +32,7 @@ export class WebhookManager {
    * Register a new webhook
    * TODO: implement webhook validation and security
    */
-  async registerWebhook(config: Omit<WebhookConfig, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
+  async registerWebhook(config: Omit<WebhookConfig, 'id' | 'createdAt' | 'updatedAt'></WebhookConfig>): Promise<string> {
     const webhookId = `webhook_${Date.now()}`;
     
     const webhook: WebhookConfig = {
@@ -55,7 +55,7 @@ export class WebhookManager {
    * Execute webhook for given event
    * TODO: implement event filtering and payload transformation
    */
-  async executeWebhook(webhookId: string, eventType: string, payload: any): Promise<void> {
+  async executeWebhook(webhookId: string, eventType: string, payload: unknown): Promise<void> {
     const webhook = this.webhooks.get(webhookId);
     if (!webhook || !webhook.enabled) {
       return;
@@ -311,12 +311,12 @@ export class WebhookManager {
     // TODO: add more validation rules
   }
 
-  private applyFilters(filters: any[], payload: any): boolean {
+  private applyFilters(filters: any // eslint-disable-line @typescript-eslint/no-explicit-any[], payload: unknown): boolean {
     // TODO: implement filter logic
     return true;
   }
 
-  private prepareWebhookRequest(webhook: WebhookConfig, event: any): any {
+  private prepareWebhookRequest(webhook: WebhookConfig, event: unknown): any {
     // TODO: implement payload transformation
     return {
       event: event.type,
@@ -326,7 +326,7 @@ export class WebhookManager {
     };
   }
 
-  private async executeHttpRequest(webhook: WebhookConfig, data: any): Promise<{
+  private async executeHttpRequest(webhook: WebhookConfig, data: unknown): Promise<{
     status: number;
     headers: Record<string, string>;
     body: string;

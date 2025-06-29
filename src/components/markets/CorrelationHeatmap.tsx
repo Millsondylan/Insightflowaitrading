@@ -47,7 +47,7 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
   className = ''
 }) => {
   // State
-  const [correlationMatrix, setCorrelationMatrix] = useState<CorrelationMatrix | null>(null);
+  const [correlationMatrix, setCorrelationMatrix] = useState<CorrelationMatrix | null />(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [colorTheme, setColorTheme] = useState<ColorPaletteTheme>(defaultTheme);
@@ -164,15 +164,15 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
   // Render loading state
   if (loading && !correlationMatrix) {
     return (
-      <Card className={`${className}`}>
+      <Card className={`${className}`} />
         <CardHeader>
-          <CardTitle>Market Correlations</CardTitle>
+          <CardTitle>Market Correlations</CorrelationHeatmapProps>
           <CardDescription>Loading correlation data...</CardDescription>
         </CardHeader>
-        <CardContent className="pt-6">
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-          </div>
+        <CardContent className="pt-6" />
+          <Div className="flex justify-center items-center h-64">
+            <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></CardContent>
+          </Div>
         </CardContent>
       </Card>
     );
@@ -181,20 +181,20 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
   // Render error state
   if (error && !correlationMatrix) {
     return (
-      <Card className={`${className}`}>
+      <Card className={`${className}`} />
         <CardHeader>
-          <CardTitle>Market Correlations</CardTitle>
+          <CardTitle>Market Correlations</Card>
           <CardDescription>An error occurred</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center justify-center h-64">
+          <Div className="flex flex-col items-center justify-center h-64">
             <alertTriangle className="h-12 w-12 text-red-500 mb-4" />
-            <p>{error}</p>
-            <button onClick={() => setLoading(true)} className="mt-4">
+            <P>{error}</CardContent>
+            <Button onClick={() => setLoading(true)} className="mt-4">
               <RefreshCw className="mr-2 h-4 w-4" />
               Retry
             </Button>
-          </div>
+          </Div>
         </CardContent>
       </Card>
     );
@@ -203,51 +203,51 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
   // Render no data state
   if (!correlationMatrix || correlationMatrix.assets.length === 0) {
     return (
-      <Card className={`${className}`}>
+      <Card className={`${className}`} />
         <CardHeader>
-          <CardTitle>Market Correlations</CardTitle>
+          <CardTitle>Market Correlations</Card>
           <CardDescription>No correlation data available</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col items-center justify-center h-64">
+          <Div className="flex flex-col items-center justify-center h-64">
             <info className="h-12 w-12 text-gray-400 mb-4" />
-            <p>No assets available for correlation analysis</p>
+            <P>No assets available for correlation analysis</CardContent>
             {viewMode === 'favorites' && favorites.length === 0 && (
-              <p className="text-sm text-gray-500 mt-2">Add some favorite pairs to view them here</p>
+              <P className="text-sm text-gray-500 mt-2">Add some favorite pairs to view them here</P>
             )}
             {viewMode === 'favorites' && (
               <Button variant="outline" 
-                onClick={() => setViewMode('all')} 
+                onClick={() = /> setViewMode('all')} 
                 className="mt-4"
               >
                 View All Assets
               </Button>
             )}
-          </div>
+          </Div>
         </CardContent>
       </Card>
     );
   }
 
   return (
-    <Card className={`${className} overflow-hidden`}>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <div>
-          <CardTitle>Market Correlations</CardTitle>
+    <Card className={`${className} overflow-hidden`} />
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2" />
+        <Div>
+          <CardTitle>Market Correlations</Card>
           <CardDescription>
             Data from {correlationMatrix.metadata.lastUpdated ? new Date(correlationMatrix.metadata.lastUpdated).toLocaleString() : 'unknown'}
           </CardDescription>
-        </div>
+        </Div>
         
         {showSettings && (
-          <div className="flex items-center space-x-2">
-            <select
+          <Div className="flex items-center space-x-2">
+            <Select
               value={timePeriod}
               onValueChange={(value) => setTimePeriod(value as CorrelationTimePeriod)}
             >
               <selectTrigger className="w-[100px] h-8">
                 <selectValue placeholder="Time Period" />
-              </SelectTrigger>
+              </Div>
               <selectContent>
                 <selectItem value="1d">1 Day</SelectItem>
                 <selectItem value="7d">1 Week</SelectItem>
@@ -255,15 +255,15 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                 <selectItem value="90d">3 Months</SelectItem>
                 <selectItem value="1y">1 Year</SelectItem>
               </SelectContent>
-            </select>
+            </Select>
             
-            <select
+            <Select
               value={colorTheme}
               onValueChange={(value) => setColorTheme(value as ColorPaletteTheme)}
             >
               <selectTrigger className="w-[120px] h-8">
                 <selectValue placeholder="Color Theme" />
-              </SelectTrigger>
+              </Select>
               <selectContent>
                 <selectItem value="blueRed">Blue-Red</SelectItem>
                 <selectItem value="greenRed">Green-Red</SelectItem>
@@ -273,60 +273,57 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                 <selectItem value="highContrast">High Contrast</SelectItem>
                 <selectItem value="pastel">Pastel</SelectItem>
               </SelectContent>
-            </select>
-          </div>
+            </Select>
+          </Div>
         )}
       </CardHeader>
       
-      <CardContent className="p-0">
-        <Tabs value={viewMode} onValueChange={(v) => setViewMode(v as 'all' | 'favorites')}>
-          <div className="border-b px-4">
-            <TabsList className="bg-transparent border-b-0">
-              <TabsTrigger 
-                value="all"
+      <CardContent className="p-0" />
+        <Tabs value={viewMode} onValueChange={(v) = /> setViewMode(v as 'all' | 'favorites')}>
+          <Div className="border-b px-4">
+            <TabsList className="bg-transparent border-b-0" />
+              <TabsTrigger value="all"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
-              >
+            >
                 All Assets
-              </TabsTrigger>
-              <TabsTrigger 
-                value="favorites"
+              </CardContent>
+              <TabsTrigger value="favorites"
                 className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none"
-              >
+            >
                 Favorites
               </TabsTrigger>
             </TabsList>
-            <div className="flex justify-end items-center py-2 gap-2">
-              <Toggle
-                aria-label="Show values"
+            <Div className="flex justify-end items-center py-2 gap-2">
+              <Toggle aria-label="Show values"
                 pressed={showCorrelationValue}
                 onPressedChange={setShowCorrelationValue}
                 size="sm"
                 className="text-xs h-7"
-              >
+            >
                 Show Values
-              </Toggle>
+              </Div>
               <Button variant="ghost" 
                 size="icon" 
-                onClick={() => setLoading(true)}
+                onClick={() = /> setLoading(true)}
                 className="h-7 w-7"
                 title="Refresh data"
               >
                 <RefreshCw className="h-4 w-4" />
               </Button>
-            </div>
-          </div>
+            </Div>
+          </Div>
           
-          <TabsContent value="all" className="m-0">
+          <TabsContent value="all" className="m-0" />
             {renderHeatmap(correlationMatrix)}
           </TabsContent>
           
-          <TabsContent value="favorites" className="m-0">
+          <TabsContent value="favorites" className="m-0" />
             {favorites.length === 0 ? (
-              <div className="flex flex-col items-center justify-center p-8 text-center">
+              <Div className="flex flex-col items-center justify-center p-8 text-center">
                 <StarOff className="h-8 w-8 text-gray-400 mb-4" />
-                <p className="text-gray-500">No favorite correlations yet</p>
-                <p className="text-sm text-gray-400 mt-2">Click on any correlation cell and use the star icon to add favorites</p>
-              </div>
+                <P className="text-gray-500">No favorite correlations yet</TabsContent>
+                <P className="text-sm text-gray-400 mt-2">Click on any correlation cell and use the star icon to add favorites</P>
+              </Div>
             ) : (
               renderHeatmap(correlationMatrix)
             )}
@@ -334,42 +331,42 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
         </Tabs>
         
         {/* Legend */}
-        <div className="p-4 pt-0">
-          <div className="flex items-center justify-center mt-4 space-x-1 text-xs">
-            <span className="text-gray-500">-1</span>
-            <div className="flex h-4">
+        <Div className="p-4 pt-0">
+          <Div className="flex items-center justify-center mt-4 space-x-1 text-xs">
+            <Span className="text-gray-500">-1</Div>
+            <Div className="flex h-4">
               {colorPalette.map((color, i) => (
-                <Tooltip key={i}>
-                  <TooltipTrigger asChild>
-                    <div
+                <Tooltip key={i} />
+                  <TooltipTrigger asChild />
+                    <Div
                       className="w-5 h-4 cursor-help"
                       style={{ backgroundColor: color }}
                     />
-                  </TooltipTrigger>
-                  <TooltipContent side="bottom">
+                  </Div>
+                  <TooltipContent side="bottom" />
                     {-1 + (i * 0.25)}
                   </TooltipContent>
                 </Tooltip>
               ))}
-            </div>
-            <span className="text-gray-500">+1</span>
-          </div>
+            </Div>
+            <Span className="text-gray-500">+1</Span>
+          </Div>
           
           {selectedCell && (
-            <div className="mt-4 pt-4 border-t">
-              <div className="flex justify-between items-center">
-                <h4 className="text-sm font-medium">
+            <Div className="mt-4 pt-4 border-t">
+              <Div className="flex justify-between items-center">
+                <H4 className="text-sm font-medium">
                   {correlationMatrix.assets[selectedCell.row]} / {correlationMatrix.assets[selectedCell.col]}
-                </h4>
+                </Div>
                 
                 <Badge variant={getCorrelationBadgeVariant(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
-               >
+             >
                   {formatCorrelation(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
                 </Badge>
                 
                 <Button variant="ghost"
                   size="icon"
-                  onClick={() => {
+                  onClick={() = /> {
                     const baseAsset = correlationMatrix.assets[selectedCell.row];
                     const quoteAsset = correlationMatrix.assets[selectedCell.col];
                     handleToggleFavorite(baseAsset, quoteAsset);
@@ -384,14 +381,14 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                     <Star className="h-4 w-4" />
                   )}
                 </Button>
-              </div>
+              </Div>
               
-              <p className="text-sm text-gray-500 mt-2">
+              <P className="text-sm text-gray-500 mt-2">
                 {getCorrelationDescription(correlationMatrix.matrix[selectedCell.row][selectedCell.col])}
-              </p>
-            </div>
+              </P>
+            </Div>
           )}
-        </div>
+        </Div>
       </CardContent>
     </Card>
   );
@@ -409,9 +406,9 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
     if (displayedAssets.length === 0) return null;
     
     return (
-      <div className="heatmap-container overflow-auto p-4">
+      <Div className="heatmap-container overflow-auto p-4">
         {/* Column headers */}
-        <div className="flex ml-12">
+        <Div className="flex ml-12">
           {displayedAssets.map((asset, i) => (
             <Div key={`header-${i}`} 
               className="w-12 h-12 flex items-center justify-center font-medium text-sm"
@@ -420,20 +417,20 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
               }}
            />
               {asset}
-            </div>
+            </Div>
           ))}
-        </div>
+        </Div>
         
         {/* Correlation rows */}
         {displayedAssets.map((rowAsset, rowIndex) => {
           const originalRowIndex = assets.indexOf(rowAsset);
           
           return (
-            <div key={`row-${rowIndex}`} className="flex">
+            <Div key={`row-${rowIndex}`} className="flex">
               {/* Row header */}
-              <div className="w-12 h-12 flex items-center justify-center font-medium text-sm">
+              <Div className="w-12 h-12 flex items-center justify-center font-medium text-sm">
                 {rowAsset}
-              </div>
+              </Div>
               
               {/* Correlation cells */}
               {displayedAssets.map((colAsset, colIndex) => {
@@ -445,9 +442,9 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                   assets[selectedCell.col] === colAsset;
                 
                 return (
-                  <Tooltip key={`cell-${rowIndex}-${colIndex}`}>
-                    <TooltipTrigger asChild>
-                      <div
+                  <Tooltip key={`cell-${rowIndex}-${colIndex}`} />
+                    <TooltipTrigger asChild />
+                      <Div
                         className={`
                           w-12 h-12 flex items-center justify-center text-xs font-medium
                           cursor-pointer transition-all duration-200 hover:scale-105
@@ -459,24 +456,24 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
                         onClick={() => handleCellClick(originalRowIndex, originalColIndex)}
                       >
                         {showCorrelationValue && formatCorrelation(correlation)}
-                      </div>
+                      </Tooltip>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <div className="text-center">
-                        <div className="font-bold">{rowAsset} / {colAsset}</div>
-                        <div className="text-sm">{formatCorrelation(correlation)}</div>
-                        <div className="text-xs opacity-80">
+                      <Div className="text-center">
+                        <Div className="font-bold">{rowAsset} / {colAsset}</TooltipContent>
+                        <Div className="text-sm">{formatCorrelation(correlation)}</Div>
+                        <Div className="text-xs opacity-80">
                           {getCorrelationTooltip(correlation)}
-                        </div>
-                      </div>
+                        </Div>
+                      </Div>
                     </TooltipContent>
                   </Tooltip>
                 );
               })}
-            </div>
+            </Div>
           );
         })}
-      </div>
+      </Div>
     );
   }
 };

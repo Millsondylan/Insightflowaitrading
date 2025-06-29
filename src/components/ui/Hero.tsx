@@ -27,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="hero-section text-white">
+    <Section className="hero-section text-white">
       <motion.div
         className="container mx-auto text-center"
         variants={containerVariants}
@@ -47,25 +47,25 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-4"
           variants={itemVariants}
         >
-          <Button asChild className="glow-button bg-cyan-500/10 border border-cyan-500 text-white hover:bg-cyan-500/20">
-            <Link to="/strategy">
+          <Button asChild className="glow-button bg-cyan-500/10 border border-cyan-500 text-white hover:bg-cyan-500/20" />
+            <Link to="/strategy" />
               <brainCircuit className="mr-2 h-4 w-4" /> Launch Builder
-            </Link>
+            </Section>
           </Button>
-          <Button asChild className="glow-button bg-violet-500/10 border border-violet-500 text-white hover:bg-violet-500/20">
-            <Link to="/academy">
+          <Button asChild className="glow-button bg-violet-500/10 border border-violet-500 text-white hover:bg-violet-500/20" />
+            <Link to="/academy" />
               <bookOpen className="mr-2 h-4 w-4" /> Explore Academy
-            </Link>
+            </Button>
           </Button>
-          <Button asChild className="glow-button bg-blue-500/10 border border-blue-500 text-white hover:bg-blue-500/20">
-            <Link to="/vision">
+          <Button asChild className="glow-button bg-blue-500/10 border border-blue-500 text-white hover:bg-blue-500/20" />
+            <Link to="/vision" />
               <barChart className="mr-2 h-4 w-4" /> Upload Chart
-            </Link>
+            </Button>
           </Button>
-          <Button asChild className="glow-button bg-gray-500/10 border border-gray-500 text-white hover:bg-gray-500/20">
-            <Link to="/journal">
+          <Button asChild className="glow-button bg-gray-500/10 border border-gray-500 text-white hover:bg-gray-500/20" />
+            <Link to="/journal" />
               <penSquare className="mr-2 h-4 w-4" /> Journal Trade
-            </Link>
+            </Button>
           </Button>
         </motion.div>
       </motion.div>
@@ -77,7 +77,7 @@ const Hero = () => {
       >
         <arrowRight className="h-6 w-6 -rotate-90" />
       </motion.div>
-    </section>
+    </Section>
   );
 };
 

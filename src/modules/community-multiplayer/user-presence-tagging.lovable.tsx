@@ -52,62 +52,62 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
 
   return (
     <Card  />
-      <h2 className="text-2xl font-bold mb-4">Active Traders</h2>
+      <H2 className="text-2xl font-bold mb-4">Active Traders</Userpresencetaggingprops>
       
-      <div className="space-y-4">
+      <Div className="space-y-4">
         {users.map((user) => (
-          <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-            <div className="flex items-start gap-3">
-              <div className="relative">
+          <Div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+            <Div className="flex items-start gap-3">
+              <Div className="relative">
                 <Avatar >
-                  <Avatarfallback  />
+                  <Avatarfallback  /></Div>
                     {user.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
-                <circle  >
-              </div>
+                <circle >
+              </Div>
               
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">{user.name}</h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <clock  >
+              <Div className="flex-1">
+                <Div className="flex items-center justify-between">
+                  <H3 className="font-semibold">{user.name}</Div>
+                  <Div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <clock >
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
-                  </div>
-                </div>
+                  </Div>
+                </Div>
                 
-                <p className="text-sm text-muted-foreground mt-1">{user.activity}</p>
+                <P className="text-sm text-muted-foreground mt-1">{user.activity}</P>
                 
-                <div className="flex items-center gap-4 mt-2">
-                  <div className="flex gap-1">
+                <Div className="flex items-center gap-4 mt-2">
+                  <Div className="flex gap-1">
                     {user.tags.map((tag) => (
-                      <badge variant="secondary" style={{ fontSize: "0.75rem" }}>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}>
                         {tag}
-                      </Badge>
+                      </Div>
                     ))}
-                  </div>
+                  </Div>
                   
-                  <div className="flex items-center gap-1 text-sm">
-                    <trendingup  >
-                    <span className="font-medium">{user.winRate}%</span>
-                  </div>
-                </div>
-              </div>
+                  <Div className="flex items-center gap-1 text-sm">
+                    <trendingup >
+                    <Span className="font-medium">{user.winRate}%</Div>
+                  </Div>
+                </Div>
+              </Div>
               
-              <Button variant="ghost" size="sm" >
-                <messagesquare  >
+              <Button variant="ghost" size="sm">
+                <messagesquare >
               </Button>
-            </div>
-          </div>
+            </Div>
+          </Div>
         ))}
-      </div>
+      </Div>
       
-      <div className="mt-4 pt-4 border-t">
-        <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>{users.filter(u => u.status === 'online').length} traders online</span>
-          <span>{channelId || 'Global'} channel</span>
-        </div>
-      </div>
+      <Div className="mt-4 pt-4 border-t">
+        <Div className="flex items-center justify-between text-sm text-muted-foreground">
+          <Span>{users.filter(u => u.status === 'online').length} traders online</Div>
+          <Span>{channelId || 'Global'} channel</Span>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

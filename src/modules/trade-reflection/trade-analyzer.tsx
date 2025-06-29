@@ -257,216 +257,216 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
   
   if (loading) {
     return (
-      <div className="p-12 text-center">
-        <div className="text-xl font-semibold mb-2">Loading trade data...</div>
-        <div className="text-text-muted">Please wait while we fetch the trade details</div>
-      </div>
+      <Div className="p-12 text-center">
+        <Div className="text-xl font-semibold mb-2">Loading trade data...</HTMLInputElement>
+        <Div className="text-text-muted">Please wait while we fetch the trade details</Div>
+      </Div>
     );
   }
   
   if (error) {
     return (
-      <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
+      <Div className="p-6 bg-status-error/20 text-status-error rounded-lg">
         {error}
-      </div>
+      </Div>
     );
   }
   
   if (!trade) {
     return (
-      <div className="p-12 text-center">
-        <div className="text-xl font-semibold mb-2">No trade selected</div>
-        <div className="text-text-muted">Please select a trade to analyze</div>
-      </div>
+      <Div className="p-12 text-center">
+        <Div className="text-xl font-semibold mb-2">No trade selected</Div>
+        <Div className="text-text-muted">Please select a trade to analyze</Div>
+      </Div>
     );
   }
   
   return (
-    <div className="trade-analyzer p-4 bg-background-secondary rounded-lg">
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-4">Trade Analysis</h2>
+    <Div className="trade-analyzer p-4 bg-background-secondary rounded-lg">
+      <Div className="mb-6">
+        <H2 className="text-2xl font-bold mb-4">Trade Analysis</Div>
         
         {/* Trade Summary */}
-        <div className="p-4 bg-background-tertiary rounded-lg mb-6">
-          <div className="flex flex-wrap justify-between items-start mb-4">
-            <div>
-              <h3 className="text-xl font-semibold">{trade.symbol}</h3>
-              <div className="flex items-center mt-1">
-                <span className={`px-2 py-1 rounded text-xs mr-2 ${
+        <Div className="p-4 bg-background-tertiary rounded-lg mb-6">
+          <Div className="flex flex-wrap justify-between items-start mb-4">
+            <Div>
+              <H3 className="text-xl font-semibold">{trade.symbol}</Div>
+              <Div className="flex items-center mt-1">
+                <Span className={`px-2 py-1 rounded text-xs mr-2 ${
                   trade.direction === 'long' ? 'bg-status-success/20 text-status-success' : 'bg-status-error/20 text-status-error'
                 }`}>
                   {trade.direction.toUpperCase()}
-                </span>
-                <span className="text-sm text-text-muted">
+                </Div>
+                <Span className="text-sm text-text-muted">
                   {new Date(trade.entryTime).toLocaleString()} - {new Date(trade.exitTime).toLocaleString()}
-                </span>
-              </div>
-            </div>
+                </Span>
+              </Div>
+            </Div>
             
-            <div className={`text-xl font-bold ${trade.pnl>= 0 ? 'text-status-success' : 'text-status-error'}`}>
+            <Div className={`text-xl font-bold ${trade.pnl>= 0 ? 'text-status-success' : 'text-status-error'}`}>
               {trade.pnl >= 0 ? '+' : ''}{trade.pnl.toFixed(2)} ({trade.pnlPercentage.toFixed(2)}%)
-            </div>
-          </div>
+            </Div>
+          </Div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <div>
-              <div className="text-sm text-text-muted">Entry Price</div>
-              <div className="font-medium">${trade.entryPrice.toLocaleString()}</div>
-            </div>
-            <div>
-              <div className="text-sm text-text-muted">Exit Price</div>
-              <div className="font-medium">${trade.exitPrice.toLocaleString()}</div>
-            </div>
-            <div>
-              <div className="text-sm text-text-muted">Position Size</div>
-              <div className="font-medium">{trade.size} {trade.symbol.split('/')[0]}</div>
-            </div>
-          </div>
+          <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <Div>
+              <Div className="text-sm text-text-muted">Entry Price</Div>
+              <Div className="font-medium">${trade.entryPrice.toLocaleString()}</Div>
+            </Div>
+            <Div>
+              <Div className="text-sm text-text-muted">Exit Price</Div>
+              <Div className="font-medium">${trade.exitPrice.toLocaleString()}</Div>
+            </Div>
+            <Div>
+              <Div className="text-sm text-text-muted">Position Size</Div>
+              <Div className="font-medium">{trade.size} {trade.symbol.split('/')[0]}</Div>
+            </Div>
+          </Div>
           
           {trade.notes && (
-            <div>
-              <div className="text-sm text-text-muted mb-1">Notes</div>
-              <div className="p-2 bg-background-primary rounded">{trade.notes}</div>
-            </div>
+            <Div>
+              <Div className="text-sm text-text-muted mb-1">Notes</Div>
+              <Div className="p-2 bg-background-primary rounded">{trade.notes}</Div>
+            </Div>
           )}
-        </div>
+        </Div>
         
         {/* AI Suggestions Button */}
-        <div className="mb-6">
-          <button className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
+        <Div className="mb-6">
+          <Button className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
             onClick={generateAiSuggestions}
             disabled={isGeneratingSuggestions}
           />
             {isGeneratingSuggestions ? 'Generating Suggestions...' : 'Generate AI Suggestions'}
-          </Button>
-        </div>
+          </Div>
+        </Div>
         
         {/* AI Suggestions Panel */}
         {aiSuggestions && (
-          <div className="mb-6 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</h3>
+          <Div className="mb-6 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
+            <Div className="flex justify-between items-center mb-4">
+              <H3 className="text-lg font-semibold text-brand-secondary">AI Suggestions</Div>
               <Button className="px-3 py-1 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80"
                 onClick={applySuggestions}
-             >
+           >
                 Apply All
               </Button>
-            </div>
+            </Div>
             
-            <div className="space-y-4">
-              <div>
-                <div className="text-sm font-medium mb-1">Strengths</div>
-                <ul className="list-disc pl-5 space-y-1">
+            <Div className="space-y-4">
+              <Div>
+                <Div className="text-sm font-medium mb-1">Strengths</Div>
+                <Ul className="list-disc pl-5 space-y-1">
                   {aiSuggestions.strengths?.map((item, i) => (
-                    <li key={i} className="text-sm">{item}</li>
+                    <Li key={i} className="text-sm">{item}</Ul>
                   ))}
-                </ul>
-              </div>
+                </Ul>
+              </Div>
               
-              <div>
-                <div className="text-sm font-medium mb-1">Weaknesses</div>
-                <ul className="list-disc pl-5 space-y-1">
+              <Div>
+                <Div className="text-sm font-medium mb-1">Weaknesses</Div>
+                <Ul className="list-disc pl-5 space-y-1">
                   {aiSuggestions.weaknesses?.map((item, i) => (
-                    <li key={i} className="text-sm">{item}</li>
+                    <Li key={i} className="text-sm">{item}</Ul>
                   ))}
-                </ul>
-              </div>
+                </Ul>
+              </Div>
               
-              <div>
-                <div className="text-sm font-medium mb-1">Lesson Learned</div>
-                <p className="text-sm">{aiSuggestions.lessonLearned}</p>
-              </div>
-            </div>
-          </div>
+              <Div>
+                <Div className="text-sm font-medium mb-1">Lesson Learned</Div>
+                <P className="text-sm">{aiSuggestions.lessonLearned}</P>
+              </Div>
+            </Div>
+          </Div>
         )}
         
         {/* SWOT Analysis */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-          <div>
-            <label className="block mb-1 font-medium">Strengths</label>
-            <textarea
+        <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <Div>
+            <Label className="block mb-1 font-medium">Strengths</Div>
+            <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.strengths?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'strengths')}
               placeholder="What did you do well in this trade?"
             />
-          </div>
+          </Textarea>
           
-          <div>
-            <label className="block mb-1 font-medium">Weaknesses</label>
-            <textarea
+          <Div>
+            <Label className="block mb-1 font-medium">Weaknesses</Div>
+            <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.weaknesses?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'weaknesses')}
               placeholder="What could you have done better?"
             />
-          </div>
+          </Textarea>
           
-          <div>
-            <label className="block mb-1 font-medium">Opportunities</label>
-            <textarea
+          <Div>
+            <Label className="block mb-1 font-medium">Opportunities</Div>
+            <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.opportunities?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'opportunities')}
               placeholder="What opportunities did you see or miss?"
             />
-          </div>
+          </Textarea>
           
-          <div>
-            <label className="block mb-1 font-medium">Threats</label>
-            <textarea
+          <Div>
+            <Label className="block mb-1 font-medium">Threats</Div>
+            <Textarea
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               rows={4}
               value={reflection.threats?.join('\n')}
               onChange={(e) => handleArrayInputChange(e, 'threats')}
               placeholder="What external factors affected this trade?"
             />
-          </div>
-        </div>
+          </Textarea>
+        </Div>
         
         {/* Emotional State */}
-        <div className="mb-6">
-          <label className="block mb-1 font-medium">Emotional State</label>
-          <textarea
+        <Div className="mb-6">
+          <Label className="block mb-1 font-medium">Emotional State</Div>
+          <Textarea
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={2}
             value={reflection.emotionalState}
             onChange={(e) => handleInputChange(e, 'emotionalState')}
             placeholder="How did you feel during this trade?"
           />
-        </div>
+        </Textarea>
         
         {/* Lesson Learned */}
-        <div className="mb-6">
-          <label className="block mb-1 font-medium">Lesson Learned</label>
-          <textarea
+        <Div className="mb-6">
+          <Label className="block mb-1 font-medium">Lesson Learned</Div>
+          <Textarea
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={3}
             value={reflection.lessonLearned}
             onChange={(e) => handleInputChange(e, 'lessonLearned')}
             placeholder="What did you learn from this trade?"
           />
-        </div>
+        </Textarea>
         
         {/* Action Items */}
-        <div className="mb-6">
-          <label className="block mb-1 font-medium">Action Items</label>
-          <textarea
+        <Div className="mb-6">
+          <Label className="block mb-1 font-medium">Action Items</Div>
+          <Textarea
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             rows={3}
             value={reflection.actionItems?.join('\n')}
             onChange={(e) => handleArrayInputChange(e, 'actionItems')}
             placeholder="What specific actions will you take to improve?"
           />
-        </div>
+        </Textarea>
         
         {/* Trade Rating */}
-        <div className="mb-6">
-          <label className="block mb-1 font-medium">Trade Execution Rating (1-5)</label>
-          <div className="flex space-x-2">
+        <Div className="mb-6">
+          <Label className="block mb-1 font-medium">Trade Execution Rating (1-5)</Div>
+          <Div className="flex space-x-2">
             {[1, 2, 3, 4, 5].map((rating) => (
               <Button key={rating}
                 className={`w-10 h-10 rounded-full flex items-center justify-center ${
@@ -475,22 +475,22 @@ export const TradeAnalyzer: React.FC<tradeAnalyzerProps> = ({
                 onClick={() => handleRatingChange(rating)}
               >
                 {rating}
-              </Button>
+              </Div>
             ))}
-          </div>
-        </div>
+          </Div>
+        </Div>
         
         {/* Save Button */}
-        <div className="flex justify-end">
+        <Div className="flex justify-end">
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={handleSaveReflection}
             disabled={isSaving}
           />
             {isSaving ? 'Saving...' : 'Save Reflection'}
-          </Button>
-        </div>
-      </div>
-    </div>
+          </Div>
+        </Div>
+      </Div>
+    </Div>
   );
 };
 

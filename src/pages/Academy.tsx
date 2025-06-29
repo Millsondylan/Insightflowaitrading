@@ -80,83 +80,82 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
   };
   
   return (
-    <Card 
-      className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
+    <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
       onClick={handleCourseClick}
-    >
+  >
       <CardHeader>
-        <div className="flex justify-between items-start mb-4">
-          <div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
+        <Div className="flex justify-between items-start mb-4">
+          <Div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
             <Icon className="w-6 h-6" />
-          </div>
-          <Badge className={categoryColors[course.difficulty || 'beginner']}>
+          </Card>
+          <Badge className={categoryColors[course.difficulty || 'beginner']} />
             {course.difficulty}
           </Badge>
-        </div>
-        <CardTitle className="text-xl text-white">{course.title}</CardTitle>
-        <CardDescription className="text-gray-400">
+        </Div>
+        <CardTitle className="text-xl text-white" />{course.title}</CardTitle>
+        <CardDescription className="text-gray-400" />
           {course.description}
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <Div className="space-y-4">
           {progress && (
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Progress</span>
-                <span className="text-white font-semibold">{Math.round(progress.progress_percentage)}%</span>
-              </div>
+            <Div className="space-y-2">
+              <Div className="flex justify-between text-sm">
+                <Span className="text-gray-400">Progress</CardContent>
+                <Span className="text-white font-semibold">{Math.round(progress.progress_percentage)}%</Span>
+              </Div>
               <progress 
                 value={progress.progress_percentage} 
                 className="h-2 bg-gray-700"
               />
-            </div>
+            </Div>
           )}
           
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div className="flex items-center gap-2 text-gray-400">
+          <Div className="grid grid-cols-2 gap-4 text-sm">
+            <Div className="flex items-center gap-2 text-gray-400">
               <Clock className="w-4 h-4" />
-              <span>{course.duration_hours} hours</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400">
+              <Span>{course.duration_hours} hours</Div>
+            </Div>
+            <Div className="flex items-center gap-2 text-gray-400">
               <Users className="w-4 h-4" />
-              <span>{course.enrolled_count.toLocaleString()} enrolled</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400">
+              <Span>{course.enrolled_count.toLocaleString()} enrolled</Div>
+            </Div>
+            <Div className="flex items-center gap-2 text-gray-400">
               <BookOpen className="w-4 h-4" />
-              <span>{course.modules_count} lessons</span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-400">
+              <Span>{course.modules_count} lessons</Div>
+            </Div>
+            <Div className="flex items-center gap-2 text-gray-400">
               <Star className="w-4 h-4 text-yellow-500" />
-              <span>{course.rating.toFixed(1)}</span>
-            </div>
-          </div>
+              <Span>{course.rating.toFixed(1)}</Div>
+            </Div>
+          </Div>
           
-          <div className="flex flex-wrap gap-2">
+          <Div className="flex flex-wrap gap-2">
             {course.tags.slice(0, 3).map((tag, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
+              <Badge key={index} variant="secondary" className="text-xs" />
                 {tag}
-              </Badge>
+              </Div>
             ))}
-          </div>
-        </div>
+          </Div>
+        </Div>
       </CardContent>
     </Card>
   );
 };
 
 const AchievementCard = ({ icon: Icon, title, value, color }: any) => (
-  <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700">
-    <CardContent className="p-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-gray-400 text-sm">{title}</p>
-          <p className="text-2xl font-bold text-white mt-1">{value}</p>
-        </div>
-        <div className={`p-3 rounded-xl ${color}`}>
+  <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700" />
+    <CardContent className="p-6" />
+      <Div className="flex items-center justify-between">
+        <Div>
+          <P className="text-gray-400 text-sm">{title}</Card>
+          <P className="text-2xl font-bold text-white mt-1">{value}</P>
+        </Div>
+        <Div className={`p-3 rounded-xl ${color}`}>
           <Icon className="w-6 h-6 text-white" />
-        </div>
-      </div>
+        </Div>
+      </Div>
     </CardContent>
   </Card>
 );
@@ -227,23 +226,23 @@ export default function AcademyPage() {
   const categoryOptions = ['all', 'beginner', 'intermediate', 'advanced', 'expert'];
   
   return (
-    <div className="space-y-8">
+    <Div className="space-y-8">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
+      <Div className="text-center mb-8">
+        <H1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+          <Span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
             <BookOpen className="w-8 h-8 text-white" />
-          </span>
+          </AcademyCategory>
           Trading Academy
-        </h1>
-        <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+        </H1>
+        <P className="text-xl text-gray-400 max-w-2xl mx-auto">
           Master the markets with comprehensive courses designed by professional traders. 
           From basics to advanced strategies, we've got you covered.
-        </p>
-      </div>
+        </P>
+      </Div>
       
       {/* Achievement Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <AchievementCard
           icon={Award}
           title="Completed Courses"
@@ -268,46 +267,45 @@ export default function AcademyPage() {
           value={userProgress.length}
           color="bg-orange-500/20"
         />
-      </div>
+      </Div>
       
       {/* Category Tabs */}
-      <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
-        <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto bg-gray-800">
+      <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full" />
+        <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto bg-gray-800" />
           {categoryOptions.map((category) => (
-            <TabsTrigger 
-              key={category} 
+            <TabsTrigger key={category} 
               value={category} 
               className="capitalize data-[state=active]:bg-blue-600 data-[state=active]:text-white"
-            >
+          >
               {category}
-            </TabsTrigger>
+            </Tabs>
           ))}
         </TabsList>
       </Tabs>
       
       {/* Course Grid */}
       {loading ? (
-        <div className="text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-        </div>
+        <Div className="text-center py-12">
+          <Div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></Div>
+        </Div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
             <CourseCard 
               key={course.id} 
               course={course} 
               progress={getProgressForCourse(course.id)}
-            />
+            /></Div>
           ))}
-        </div>
+        </Div>
       )}
       
       {courses.length === 0 && !loading && (
-        <div className="text-center py-12">
-          <p className="text-gray-400 text-lg">No courses found in this category.</p>
-        </div>
+        <Div className="text-center py-12">
+          <P className="text-gray-400 text-lg">No courses found in this category.</Div>
+        </Div>
       )}
-    </div>
+    </Div>
   );
 }
 

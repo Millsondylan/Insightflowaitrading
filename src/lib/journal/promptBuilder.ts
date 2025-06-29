@@ -139,7 +139,7 @@ export function validateAIReflection(response: string): AIReflection {
       : 0.5;
     
     // Limit tags to reasonable amount
-    const tags = parsed.tags.slice(0, 5).map((tag: any) => String(tag));
+    const tags = parsed.tags.slice(0, 5).map((tag: any // eslint-disable-line @typescript-eslint/no-explicit-any) => String(tag));
     
     return {
       summary: parsed.summary.trim(),

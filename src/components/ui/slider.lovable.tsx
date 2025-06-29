@@ -7,11 +7,11 @@ const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <Sliderprimitive >
-    <Sliderprimitive  style={{ width: "100%" }}>
-      <Sliderprimitive  style={{ height: "100%" }}>
+  <Sliderprimitive ></Sliderprimitive>
+    <Sliderprimitive  style={{ width: "100%" }}></Sliderprimitive>
+      <Sliderprimitive  style={{ height: "100%" }}></Sliderprimitive>
     </SliderPrimitive.Track>
-    <Sliderprimitive  style={{ display: "block" }}>
+    <Sliderprimitive  style={{ display: "block" }}></Sliderprimitive>
   </SliderPrimitive.Root>
 ))
 Slider.displayName = SliderPrimitive.Root.displayName

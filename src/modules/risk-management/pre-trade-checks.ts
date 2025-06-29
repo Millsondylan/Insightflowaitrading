@@ -137,7 +137,7 @@ export class PreTradeCheckEngine {
    * Get current risk metrics
    * TODO: implement real-time risk metrics calculation
    */
-  async getCurrentRiskMetrics(): Promise<RiskMetrics> {
+  async getCurrentRiskMetrics(): Promise<RiskMetrics></RiskMetrics> {
     // TODO: calculate current portfolio risk metrics
     return {
       currentDrawdown: 0,
@@ -152,7 +152,7 @@ export class PreTradeCheckEngine {
   /**
    * Update risk profile
    */
-  updateRiskProfile(newProfile: Partial<RiskProfile>): void {
+  updateRiskProfile(newProfile: Partial<RiskProfile></RiskProfile>): void {
     this.riskProfile = { ...this.riskProfile, ...newProfile };
   }
 

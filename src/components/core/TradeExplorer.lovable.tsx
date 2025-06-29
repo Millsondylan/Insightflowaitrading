@@ -52,58 +52,58 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
 
   return (
     <Blockreveal>
-      <div className="trade-table">
-        <table  />
+      <Div className="trade-table">
+        <Table  />
           <Tableheader >
             <Tablerow  />
-              <tablehead  >#</TableHead>
-              <tablehead  >Entry Time</TableHead>
-              <tablehead  >Exit Time</TableHead>
-              <tablehead  >Duration</TableHead>
-              <tablehead  >Entry Price</TableHead>
-              <tablehead  >Exit Price</TableHead>
-              <tablehead  >PnL</TableHead>
-              <tablehead  >PnL %</TableHead>
+              <tablehead >#</Blockreveal>
+              <tablehead >Entry Time</TableHead>
+              <tablehead >Exit Time</TableHead>
+              <tablehead >Duration</TableHead>
+              <tablehead >Entry Price</TableHead>
+              <tablehead >Exit Price</TableHead>
+              <tablehead >PnL</TableHead>
+              <tablehead >PnL %</TableHead>
             </TableRow>
           </TableHeader>
-          <tablebody  >
+          <tablebody >
             {currentTrades.map((trade, index) => {
               const isWin = trade.pnl > 0;
               const tradeIndex = indexOfFirstTrade + index + 1;
               
               return (
-                <tablerow  >
-                  <tablecell  >{tradeIndex}</TableCell>
-                  <tablecell  >{formatTime(trade.entryTime)}</TableCell>
-                  <tablecell  >{formatTime(trade.exitTime)}</TableCell>
-                  <tablecell  >{formatDuration(trade.entryTime, trade.exitTime)}</TableCell>
-                  <tablecell  >{formatCurrency(trade.entryPrice)}</TableCell>
-                  <tablecell  >{formatCurrency(trade.exitPrice)}</TableCell>
-                  <tablecell  >
+                <tablerow >
+                  <tablecell >{tradeIndex}</TableCell>
+                  <tablecell >{formatTime(trade.entryTime)}</TableCell>
+                  <tablecell >{formatTime(trade.exitTime)}</TableCell>
+                  <tablecell >{formatDuration(trade.entryTime, trade.exitTime)}</TableCell>
+                  <tablecell >{formatCurrency(trade.entryPrice)}</TableCell>
+                  <tablecell >{formatCurrency(trade.exitPrice)}</TableCell>
+                  <tablecell >
                     {formatCurrency(trade.pnl)}
                   </TableCell>
-                  <tablecell  >
+                  <tablecell >
                     {formatPercent(trade.pnlPercentage)}
                   </TableCell>
                 </TableRow>
               );
             })}
           </TableBody>
-        </table>
+        </Table>
         
         {totalPages > 1 && (
-          <div className="py-4 flex justify-center">
-            <pagination  >
-              <paginationcontent  >
-                <paginationitem  >
-                  <paginationprevious  > currentPage > 1 && handlePageChange(currentPage - 1)}
+          <Div className="py-4 flex justify-center">
+            <pagination >
+              <paginationcontent >
+                <paginationitem >
+                  <paginationprevious > currentPage > 1 && handlePageChange(currentPage - 1)}
                     className={currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
-                </PaginationItem>
+                </Div>
                 
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <paginationitem  >
-                    <paginationlink  > handlePageChange(page)}
+                  <paginationitem >
+                    <paginationlink > handlePageChange(page)}
                       isActive={page === currentPage}
                       className="cursor-pointer"
                     >
@@ -112,16 +112,16 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                   </PaginationItem>
                 ))}
                 
-                <paginationitem  >
-                  <paginationnext  > currentPage < totalPages && handlePageChange(currentPage + 1)}
+                <paginationitem >
+                  <paginationnext > currentPage < totalPages && handlePageChange(currentPage + 1)}
                     className={currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
-          </div>
+          </Div>
         )}
-      </div>
+      </Div>
     </BlockReveal>
   );
 };

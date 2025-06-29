@@ -52,11 +52,11 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
 
   return (
     <blockReveal>
-      <div className="trade-table">
-        <table>
+      <Div className="trade-table">
+        <Table>
           <tableHeader>
             <tableRow className="trade-table-header">
-              <tableHead className="w-12">#</TableHead>
+              <tableHead className="w-12">#</Div>
               <tableHead>Entry Time</TableHead>
               <tableHead>Exit Time</TableHead>
               <tableHead>Duration</TableHead>
@@ -89,10 +89,10 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
               );
             })}
           </TableBody>
-        </table>
+        </Table>
         
         {totalPages > 1 && (
-          <div className="py-4 flex justify-center">
+          <Div className="py-4 flex justify-center">
             <pagination>
               <paginationContent>
                 <paginationItem>
@@ -100,7 +100,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                     onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
                     className={currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
-                </PaginationItem>
+                </Div>
                 
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                   <paginationItem key={page}>
@@ -122,9 +122,9 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                 </PaginationItem>
               </PaginationContent>
             </Pagination>
-          </div>
+          </Div>
         )}
-      </div>
+      </Div>
     </BlockReveal>
   );
 };

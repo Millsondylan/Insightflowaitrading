@@ -39,20 +39,20 @@ export const TradeTimeline = ({ trades }: Props) => {
   const sortedDates = Object.keys(groupedTrades).sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
 
   return (
-    <div className="space-y-6">
+    <Div className="space-y-6">
       {sortedDates.map(date => (
-        <div key={date}>
-          <h2 className="text-white/60 text-sm uppercase tracking-wide pb-2 border-b border-white/10 mb-4">
+        <Div key={date}>
+          <H2 className="text-white/60 text-sm uppercase tracking-wide pb-2 border-b border-white/10 mb-4">
             {date}
-          </h2>
-          <div className="space-y-4">
+          </Div>
+          <Div className="space-y-4">
             {groupedTrades[date].map(trade => (
-              <Tradereplaycard>
+              <Tradereplaycard></Div>
             ))}
-          </div>
-        </div>
+          </Div>
+        </Div>
       ))}
-    </div>
+    </Div>
   );
 }; 
 

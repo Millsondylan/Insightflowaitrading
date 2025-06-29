@@ -70,59 +70,59 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
   const progress = (candles.length > 0) ? ((currentIndex + 1) / candles.length) * 100 : 0;
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-md space-y-6">
-      <div className="flex justify-between items-center">
-        <h3 className="text-lg font-bold text-white">{strategyName || 'Trade Replay'}</h3>
-        <span className="text-sm font-mono text-white/50">
+    <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-md space-y-6">
+      <Div className="flex justify-between items-center">
+        <H3 className="text-lg font-bold text-white">{strategyName || 'Trade Replay'}</Div>
+        <Span className="text-sm font-mono text-white/50">
           {currentIndex + 1} / {candles.length}
-        </span>
-      </div>
+        </Span>
+      </Div>
 
-      <div className="relative">
-        <div className="h-64 w-full bg-white/5 rounded-lg flex items-center justify-center text-white/40">
+      <Div className="relative">
+        <Div className="h-64 w-full bg-white/5 rounded-lg flex items-center justify-center text-white/40">
           Chart loading...
-        </div>
+        </Div>
         {currentEvent && (
           <Div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
               ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}
-        >
+      >
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
-              <span className="ml-2 font-mono">
+              <Span className="ml-2 font-mono">
                 PnL: ${currentEvent.trade.pnl.toFixed(2)}
-              </span>
+              </Div>
             )}
-          </div>
+          </Div>
         )}
-      </div>
+      </Div>
       
-      <div className="w-full bg-white/10 rounded-full h-1.5">
-          <div 
+      <Div className="w-full bg-white/10 rounded-full h-1.5">
+          <Div 
               className="bg-glow-cyan h-1.5 rounded-full transition-all duration-300 ease-linear"
               style={{ width: `${progress}%` }}
           />
-      </div>
+      </Div>
 
-      <div className="flex justify-between items-center gap-4 mt-4">
+      <Div className="flex justify-between items-center gap-4 mt-4">
         <Button variant="ghost" size="icon" title="Reset" />
           <Repeat  />
+        </Div>
+        <Div className="flex items-center gap-2">
+          <Button variant="outline" size="icon" title="Previous Candle">
+            <rewind >
+          </Div>
+          <Button variant="outline" size="icon">
+            {isPlaying ? <pause > : <play >}
+          </Button>
+          <Button variant="outline" size="icon" title="Next Candle">
+            <Fastforward /></Button>
+          </Button>
+        </Div>
+        <Button variant="ghost" size="icon" title="Toggle Speed">
+          <zap >
         </Button>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="icon" title="Previous Candle" >
-            <rewind  >
-          </Button>
-          <Button variant="outline" size="icon" >
-            {isPlaying ? <pause  > : <play  >}
-          </Button>
-          <Button variant="outline" size="icon" title="Next Candle" >
-            <Fastforward />
-          </Button>
-        </div>
-        <Button variant="ghost" size="icon" title="Toggle Speed" >
-          <zap  >
-        </Button>
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

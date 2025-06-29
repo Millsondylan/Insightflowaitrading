@@ -24,7 +24,7 @@ const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center", className)} {...props} />
+  <Div ref={ref} className={cn("flex items-center", className)} {...props} />
 ))
 InputOTPGroup.displayName = "InputOTPGroup"
 
@@ -43,14 +43,14 @@ const InputOTPSlot = React.forwardRef<
         className
       )}
       {...props}
-  >
+>
       {char}
       {hasFakeCaret && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
-        </div>
+        <Div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <Div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
+        </OTPInput>
       )}
-    </div>
+    </Div>
   )
 })
 InputOTPSlot.displayName = "InputOTPSlot"
@@ -59,9 +59,9 @@ const InputOTPSeparator = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ ...props }, ref) => (
-  <div ref={ref} role="separator" {...props}>
-    <Dot />
-  </div>
+  <Div ref={ref} role="separator" {...props}>
+    <Dot /></Div>
+  </Div>
 ))
 InputOTPSeparator.displayName = "InputOTPSeparator"
 

@@ -146,18 +146,18 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
   };
 
   return (
-    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
+    <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
       {/* Quiz Header */}
-      <div className="flex justify-between items-center">
-        <h2 className="text-white text-xl font-bold">
+      <Div className="flex justify-between items-center">
+        <H2 className="text-white text-xl font-bold">
           {lessonTitle || "Quiz"} 
-          <span className="text-gray-400 ml-2 text-sm">
+          <Span className="text-gray-400 ml-2 text-sm">
             ({currentQuestionIndex + 1} of {mockQuestions.length})
-          </span>
-        </h2>
+          </QuizProps>
+        </H2>
         
         {/* Progress bar */}
-        <div className="w-1/3 h-2 bg-white/10 rounded-full overflow-hidden">
+        <Div className="w-1/3 h-2 bg-white/10 rounded-full overflow-hidden">
           <motion.div 
             className="h-full bg-cyan-600"
             initial={{ width: 0 }}
@@ -166,8 +166,8 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             }}
             transition={{ duration: 0.5 }}
           />
-        </div>
-      </div>
+        </Div>
+      </Div>
 
       {/* Quiz Content */}
       {!quizComplete ? (
@@ -181,12 +181,12 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             className="space-y-6"
           >
             {/* Question */}
-            <h3 className="text-white text-lg font-semibold">
+            <H3 className="text-white text-lg font-semibold">
               {currentQuestion.question}
-            </h3>
+            </H3>
 
             {/* Options */}
-            <div className="space-y-3">
+            <Div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
                 <Button key={index}
                   onClick={() => handleOptionSelect(index)}
@@ -199,7 +199,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                     ${isAnswered && index === selectedOption && index !== currentQuestion.correctIndex ? "bg-red-500" : ""}
                   `}
                 >
-                  <span>{option}</span>
+                  <Span>{option}</Div>
                   
                   {isAnswered && (
                     index === currentQuestion.correctIndex ? (
@@ -208,9 +208,9 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                       index === selectedOption && <XCircle className="h-5 w-5 text-white" />
                     )
                   )}
-                </Button>
+                </CheckCircle2>
               ))}
-            </div>
+            </Div>
 
             {/* Feedback */}
             {isAnswered && currentQuestion.explanation && (
@@ -223,22 +223,22 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                     : "bg-red-500/20 border-l-4 border-red-500"
                 }`}
               >
-                <p className="text-white">
+                <P className="text-white">
                   {selectedOption === currentQuestion.correctIndex ? "✅ " : "❌ "}
                   {currentQuestion.explanation}
-                </p>
+                </P>
               </motion.div>
             )}
 
             {/* Action Buttons */}
-            <div className="flex justify-end space-x-3">
+            <Div className="flex justify-end space-x-3">
               {!isAnswered ? (
                 <Button onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
                   className="bg-white/10 hover:bg-cyan-600 text-white px-6"
-               >
+             >
                   Submit Answer
-                </Button>
+                </Div>
               ) : (
                 <Button onClick={handleNextQuestion}
                   className="bg-white/10 hover:bg-white/20 text-white px-6"
@@ -254,7 +254,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                   }
                 </Button>
               )}
-            </div>
+            </Div>
           </motion.div>
         </AnimatePresence>
       ) : (
@@ -273,12 +273,12 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {calculatePercentage()}%
           </motion.div>
 
-          <p className="text-xl text-white">
-            You got <span className="font-bold">{score}</span> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
-          </p>
+          <P className="text-xl text-white">
+            You got <Span className="font-bold">{score}</P> out of <Span className="font-bold">{mockQuestions.length}</Span> questions correct
+          </P>
           
           {isPassed() ? (
-            <div className="py-4">
+            <Div className="py-4">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -295,24 +295,24 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
               >
                 🏆
               </motion.div>
-            </div>
+            </Div>
           ) : (
-            <p className="text-red-400">
+            <P className="text-red-400">
               You need at least 70% to pass. Try again!
-            </p>
+            </P>
           )}
 
-          <div className="pt-4">
-            <Button  onClick={resetQuiz}
+          <Div className="pt-4">
+            <Button onClick={resetQuiz}
               className="bg-white/10 hover:bg-white/20 text-white px-6"
-            >
-              <RefreshCw className="mr-2 h-4 w-4" />
+          >
+              <RefreshCw className="mr-2 h-4 w-4" /></Div>
               Retry Quiz
             </Button>
-          </div>
+          </Div>
         </motion.div>
       )}
-    </div>
+    </Div>
   );
 };
 

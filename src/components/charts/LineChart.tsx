@@ -60,7 +60,7 @@ export const LineChart: React.FC<lineChartProps> = ({
           dot={false}
           activeDot={{ r: 4, strokeWidth: 0 }}
         />
-      </RechartsLineChart>
+      </Record>
     </ResponsiveContainer>
   );
 

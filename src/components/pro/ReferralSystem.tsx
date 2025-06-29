@@ -234,11 +234,11 @@ export const lovable = {
   if (!user) return null;
 
   return (
-    <Card className="w-full">
+    <Card className="w-full" />
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
-          <span>Referral Program</span>
-          <badge variant="outline" className="text-sm font-normal">
+        <CardTitle className="flex items-center justify-between" />
+          <Span>Referral Program</Referral>
+          <Badge variant="outline" className="text-sm font-normal">
             Earn 10% on Referred Payments
           </Badge>
         </CardTitle>
@@ -247,156 +247,156 @@ export const lovable = {
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="space-y-6">
-        <div className="space-y-3">
-          <label htmlFor="referral-link">Your Referral Link</label>
-          <div className="flex gap-2">
-            <input 
+      <CardContent className="space-y-6" />
+        <Div className="space-y-3">
+          <Label htmlFor="referral-link">Your Referral Link</CardContent>
+          <Div className="flex gap-2">
+            <Input 
               id="referral-link" 
               value={`${config.app.baseUrl}/signup?ref=${referralCode}`}
               readOnly 
               className="font-mono text-sm"
             />
-            <Button variant="outline" size="icon" onClick={copyToClipboard}>
+            <Button variant="outline" size="icon" onClick={copyToClipboard} />
               {isCopied ? <CheckCircle2 className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-            </Button>
-            <Button variant="default" size="icon" onClick={shareReferralLink}>
+            </Div>
+            <Button variant="default" size="icon" onClick={shareReferralLink} />
               <Share2 className="h-4 w-4" />
             </Button>
-          </div>
-          <p className="text-xs text-muted-foreground">
+          </Div>
+          <P className="text-xs text-muted-foreground">
             Share this link to start earning commissions
-          </p>
-        </div>
+          </P>
+        </Div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="bg-muted/50">
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">{referrals.length}</div>
-              <p className="text-sm text-muted-foreground">Total Referrals</p>
+        <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Card className="bg-muted/50" />
+            <CardContent className="pt-6" />
+              <Div className="text-2xl font-bold">{referrals.length}</Div>
+              <P className="text-sm text-muted-foreground">Total Referrals</P>
             </CardContent>
           </Card>
           
-          <Card className="bg-muted/50">
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">${totalEarned.toFixed(2)}</div>
-              <p className="text-sm text-muted-foreground">Total Earned</p>
+          <Card className="bg-muted/50" />
+            <CardContent className="pt-6" />
+              <Div className="text-2xl font-bold">${totalEarned.toFixed(2)}</Card>
+              <P className="text-sm text-muted-foreground">Total Earned</P>
             </CardContent>
           </Card>
           
-          <Card className="bg-muted/50">
-            <CardContent className="pt-6">
-              <div className="text-2xl font-bold">${pendingPayout.toFixed(2)}</div>
-              <p className="text-sm text-muted-foreground">Pending Payout</p>
+          <Card className="bg-muted/50" />
+            <CardContent className="pt-6" />
+              <Div className="text-2xl font-bold">${pendingPayout.toFixed(2)}</Card>
+              <P className="text-sm text-muted-foreground">Pending Payout</P>
             </CardContent>
           </Card>
-        </div>
+        </Div>
         
-        <Tabs defaultValue="referrals" value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="mb-4">
-            <TabsTrigger value="referrals">
+        <Tabs defaultValue="referrals" value={activeTab} onValueChange={setActiveTab} />
+          <TabsList className="mb-4" />
+            <TabsTrigger value="referrals" />
               <Users className="h-4 w-4 mr-2" /> Referrals
-            </TabsTrigger>
-            <TabsTrigger value="earnings">
+            </Tabs>
+            <TabsTrigger value="earnings" />
               <Wallet className="h-4 w-4 mr-2" /> Earnings
             </TabsTrigger>
           </TabsList>
           
-          <TabsContent value="referrals">
+          <TabsContent value="referrals" />
             {referrals.length > 0 ? (
-              <div className="space-y-3">
+              <Div className="space-y-3">
                 {referrals.map((referral) => (
-                  <div key={referral.id} className="flex justify-between items-center p-3 border rounded-md">
-                    <div>
-                      <div className="font-medium">{referral.referred_email}</div>
-                      <div className="text-sm text-muted-foreground">
+                  <Div key={referral.id} className="flex justify-between items-center p-3 border rounded-md">
+                    <Div>
+                      <Div className="font-medium">{referral.referred_email}</TabsContent>
+                      <Div className="text-sm text-muted-foreground">
                         Joined {new Date(referral.signup_date).toLocaleDateString()}
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <badge variant={
+                      </Div>
+                    </Div>
+                    <Div className="flex items-center">
+                      <Badge variant={
                         referral.status === 'confirmed' ? 'default' : 
                         referral.status === 'pending' ? 'outline' : 'destructive'
                       }>
                         {referral.status.charAt(0).toUpperCase() + referral.status.slice(1)}
-                      </Badge>
+                      </Div>
                       <ChevronRight className="h-4 w-4 ml-2" />
-                    </div>
-                  </div>
+                    </ChevronRight>
+                  </Div>
                 ))}
-              </div>
+              </Div>
             ) : (
-              <div className="text-center p-6 border border-dashed rounded-md">
+              <Div className="text-center p-6 border border-dashed rounded-md">
                 <Users className="h-12 w-12 mx-auto text-muted-foreground" />
-                <h3 className="mt-2 text-lg font-medium">No referrals yet</h3>
-                <p className="text-sm text-muted-foreground">
+                <H3 className="mt-2 text-lg font-medium">No referrals yet</Div>
+                <P className="text-sm text-muted-foreground">
                   Share your referral link to start earning commissions
-                </p>
-              </div>
+                </P>
+              </Div>
             )}
           </TabsContent>
           
-          <TabsContent value="earnings">
-            <div className="space-y-5">
-              <div>
-                <label htmlFor="wallet-address">Payout Wallet Address</label>
-                <div className="flex gap-2 mt-1.5">
-                  <input id="wallet-address"
+          <TabsContent value="earnings" />
+            <Div className="space-y-5">
+              <Div>
+                <Label htmlFor="wallet-address">Payout Wallet Address</TabsContent>
+                <Div className="flex gap-2 mt-1.5">
+                  <Input id="wallet-address"
                     placeholder="Enter your crypto wallet address" 
                     value={walletAddress} 
                     onChange={(e) = /> setWalletAddress(e.target.value)}
                   />
-                  <button onClick={saveWalletAddress}>Save</Button>
-                </div>
-                <p className="text-xs text-muted-foreground mt-1">
+                  <Button onClick={saveWalletAddress}>Save</Div>
+                </Div>
+                <P className="text-xs text-muted-foreground mt-1">
                   We pay out in USDT on Ethereum or BNB Smart Chain
-                </p>
-              </div>
+                </P>
+              </Div>
               
               {earnings.length > 0 ? (
-                <div className="space-y-3">
-                  <h3 className="text-sm font-medium">Earning History</h3>
+                <Div className="space-y-3">
+                  <H3 className="text-sm font-medium">Earning History</Div>
                   
-                  <div className="space-y-2">
+                  <Div className="space-y-2">
                     {earnings.map((earning) => (
-                      <div key={earning.id} className="flex justify-between items-center p-3 border rounded-md">
-                        <div>
-                          <div className="font-medium">${earning.amount.toFixed(2)} {earning.currency}</div>
-                          <div className="text-sm text-muted-foreground">
+                      <Div key={earning.id} className="flex justify-between items-center p-3 border rounded-md">
+                        <Div>
+                          <Div className="font-medium">${earning.amount.toFixed(2)} {earning.currency}</Div>
+                          <Div className="text-sm text-muted-foreground">
                             {new Date(earning.payment_date).toLocaleDateString()} • {earning.referred_email}
-                          </div>
-                        </div>
-                        <badge variant={
+                          </Div>
+                        </Div>
+                        <Badge variant={
                           earning.status === 'processed' ? 'default' : 
                           earning.status === 'pending' ? 'outline' : 'destructive'
                         }>
                           {earning.status.charAt(0).toUpperCase() + earning.status.slice(1)}
                         </Badge>
-                      </div>
+                      </Div>
                     ))}
-                  </div>
-                </div>
+                  </Div>
+                </Div>
               ) : (
-                <div className="text-center p-6 border border-dashed rounded-md">
+                <Div className="text-center p-6 border border-dashed rounded-md">
                   <Wallet className="h-12 w-12 mx-auto text-muted-foreground" />
-                  <h3 className="mt-2 text-lg font-medium">No earnings yet</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <H3 className="mt-2 text-lg font-medium">No earnings yet</Div>
+                  <P className="text-sm text-muted-foreground">
                     You'll earn 10% when your referrals subscribe
-                  </p>
-                </div>
+                  </P>
+                </Div>
               )}
-            </div>
+            </Div>
           </TabsContent>
         </Tabs>
       </CardContent>
       
-      <CardFooter className="flex flex-col space-y-4">
-        <div className="text-sm text-muted-foreground">
+      <CardFooter className="flex flex-col space-y-4" />
+        <Div className="text-sm text-muted-foreground">
           For each friend that subscribes using your referral link, you'll receive 10% of their payment.
-        </div>
-        <div className="text-sm text-muted-foreground">
+        </CardFooter>
+        <Div className="text-sm text-muted-foreground">
           You also earn a free month for every 5 Pine Scripts you share publicly with the community.
-        </div>
+        </Div>
       </CardFooter>
     </Card>
   );

@@ -137,7 +137,7 @@ const UserTable: React.FC = () => {
               }}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
             />
-          </PaginationItem>
+          </User>
           
           {[...Array(pageCount)].map((_, i) => {
             const page = i + 1;
@@ -191,101 +191,101 @@ const UserTable: React.FC = () => {
   const renderSkeleton = () => (
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
-        <tr key={i} className="border-b border-gray-800/30">
-          <td className="px-4 py-3"><Skeleton className="h-6 w-24" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-20" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-16" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" /></td>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" /></td>
-        </tr>
+        <Tr key={i} className="border-b border-gray-800/30">
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-24" /></Tr>
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-20" /></Td>
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-16" /></Td>
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" /></Td>
+          <Td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" /></Td>
+        </Tr>
       ))}
     </>
   );
   
   return (
-    <div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
+    <Div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
       {/* Filter and tools bar */}
-      <div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
-        <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
+      <Div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
+        <Div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
-          <div className="relative">
+          <Div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <input 
+            <Input 
               type="text"
               placeholder="Search wallet address..." 
               className="pl-9 w-full min-w-[200px] bg-gray-900/80"
               onChange={handleSearchChange}
             />
-          </div>
+          </Div>
           
           {/* Role filter */}
-          <select onValueChange={handleRoleFilterChange}>
+          <Select onValueChange={handleRoleFilterChange}>
             <selectTrigger className="w-[140px] bg-gray-900/80">
               <selectValue placeholder="All roles" />
-            </SelectTrigger>
+            </Select>
             <selectContent className="bg-gray-900">
               <selectItem value="">All roles</SelectItem>
               <selectItem value="Admin">
-                <div className="flex items-center gap-2">
+                <Div className="flex items-center gap-2">
                   <RoleBadge role="Admin" showTooltip={false} /> Admin
-                </div>
+                </Div>
               </SelectItem>
               <selectItem value="User">
-                <div className="flex items-center gap-2">
+                <Div className="flex items-center gap-2">
                   <RoleBadge role="User" showTooltip={false} /> User
-                </div>
+                </Div>
               </SelectItem>
               <selectItem value="Trial">
-                <div className="flex items-center gap-2">
+                <Div className="flex items-center gap-2">
                   <RoleBadge role="Trial" showTooltip={false} /> Trial
-                </div>
+                </Div>
               </SelectItem>
               <selectItem value="Expired">
-                <div className="flex items-center gap-2">
+                <Div className="flex items-center gap-2">
                   <RoleBadge role="Expired" showTooltip={false} /> Expired
-                </div>
+                </Div>
               </SelectItem>
             </SelectContent>
-          </select>
+          </Select>
           
           {/* Sort options */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="bg-gray-900/80">
+            <DropdownMenuTrigger asChild />
+              <Button variant="outline" size="sm" className="bg-gray-900/80" />
                 <Filter className="h-3.5 w-3.5 mr-2" />
                 Sort
-              </Button>
+              </DropdownMenu>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-gray-900 border border-gray-800">
-              <DropdownMenuItem onClick={() => handleSortChange('created_at-desc')} className="cursor-pointer">
+            <DropdownMenuContent className="bg-gray-900 border border-gray-800" />
+              <DropdownMenuItem onClick={() = /> handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('created_at-asc')} className="cursor-pointer">
+              </DropdownMenuContent>
+              <DropdownMenuItem onClick={() = /> handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-desc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() = /> handleSortChange('subscription_tier-desc')} className="cursor-pointer">
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() = /> handleSortChange('subscription_tier-asc')} className="cursor-pointer">
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleSortChange('role-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() = /> handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-        </div>
+        </Div>
         
-        <div className="flex items-center gap-2">
+        <Div className="flex items-center gap-2">
           {/* Export button */}
           <Button variant="outline" 
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
             disabled={users.length === 0 || loading}
-         >
+       >
             <Download className="h-4 w-4" />
             Export CSV
-          </Button>
+          </Div>
           
           {/* Grant admin button */}
           <Button className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
@@ -294,32 +294,32 @@ const UserTable: React.FC = () => {
             <plus className="h-4 w-4" />
             Grant Admin
           </Button>
-        </div>
-      </div>
+        </Div>
+      </Div>
       
       {/* User table */}
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-900/50">
-            <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+      <Div className="overflow-x-auto">
+        <Table className="w-full">
+          <Thead className="bg-gray-900/50">
+            <Tr>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Div>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Th>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Subscription Plan
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Th>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Role
-              </th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </Th>
+              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+              </Th>
+            </Tr>
+          </Thead>
+          <Tbody>
             {loading ? (
               renderSkeleton()
             ) : users.length > 0 ? (
@@ -331,32 +331,32 @@ const UserTable: React.FC = () => {
                 />
               ))
             ) : (
-              <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" />
-                  <p>No users found</p>
-                  <p className="text-sm">Try adjusting your search or filters</p>
-                </td>
-              </tr>
+              <Tr>
+                <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
+                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" /></Tbody>
+                  <P>No users found</P>
+                  <P className="text-sm">Try adjusting your search or filters</P>
+                </Td>
+              </Tr>
             )}
-          </tbody>
-        </table>
-      </div>
+          </Tbody>
+        </Table>
+      </Div>
       
       {/* Pagination */}
       {!loading && pageCount > 1 && renderPagination()}
       
       {/* Summary stats */}
-      <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
+      <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <p>
+          <P>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}
-          </p>
+          </Div>
         )}
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
 };
 

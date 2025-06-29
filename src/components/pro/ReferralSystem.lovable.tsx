@@ -39,7 +39,7 @@ export function ReferralSystem() {
   // LOVABLE:AI_BLOCK id="referral_system" type="react_component"
   const { user } = useAuth();
   const { toast } = useToast();
-  const [referralData, setReferralData] = useState<ReferralData | null>(null);
+  const [referralData, setReferralData] = useState<ReferralData | null />(null);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [referrals, setReferrals] = useState<Referral[]>([]);
@@ -169,7 +169,7 @@ export function ReferralSystem() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Referral Program</CardTitle>
+          <CardTitle>Referral Program</ReferralData>
           <CardDescription>Sign in to access the referral program</CardDescription>
         </CardHeader>
       </Card>
@@ -177,77 +177,77 @@ export function ReferralSystem() {
   }
 
   return (
-    <Card className="overflow-hidden">
-      <CardHeader className="bg-muted/50">
-        <CardTitle>InsightFlow Referral Program</CardTitle>
+    <Card className="overflow-hidden" />
+      <CardHeader className="bg-muted/50" />
+        <CardTitle>InsightFlow Referral Program</Card>
         <CardDescription>
           Invite friends and earn rewards! You get 10% of their subscription for as long as they remain subscribed.
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="pt-6">
+      <CardContent className="pt-6" />
         {loading ? (
-          <div className="flex justify-center py-8">
-            <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></div>
-          </div>
+          <Div className="flex justify-center py-8">
+            <Div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full"></CardContent>
+          </Div>
         ) : !referralData?.code ? (
-          <div className="text-center py-6">
-            <div className="mb-6 text-muted-foreground">
+          <Div className="text-center py-6">
+            <Div className="mb-6 text-muted-foreground">
               <info className="h-12 w-12 mx-auto mb-2" />
-              <p>You haven't generated your referral code yet.</p>
-            </div>
+              <P>You haven't generated your referral code yet.</Div>
+            </Div>
             
-            <button onClick={generateReferralCode}>
+            <Button onClick={generateReferralCode}>
               Generate My Referral Code
             </Button>
-          </div>
+          </Div>
         ) : (
-          <div className="space-y-6">
-            <div>
-              <div className="text-sm font-medium mb-2">Your Referral Link</div>
-              <div className="flex gap-2">
-                <input 
+          <Div className="space-y-6">
+            <Div>
+              <Div className="text-sm font-medium mb-2">Your Referral Link</Div>
+              <Div className="flex gap-2">
+                <Input 
                   value={`${config.app.baseUrl}/signup?ref=${referralData.code}`}
                   readOnly
                   className="font-mono text-sm bg-muted/50"
                 />
-                <Button variant="outline" size="icon" onClick={copyToClipboard}>
+                <Button variant="outline" size="icon" onClick={copyToClipboard} />
                   {copied ? <CheckCircle2 className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                </Button>
-              </div>
-              <p className="text-xs text-muted-foreground mt-1">
-                Or use code: <span className="font-bold">{referralData.code}</span>
-              </p>
-            </div>
+                </Div>
+              </Div>
+              <P className="text-xs text-muted-foreground mt-1">
+                Or use code: <Span className="font-bold">{referralData.code}</P>
+              </P>
+            </Div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card p-4 rounded-lg border">
-                <div className="text-2xl font-bold">{referralData.usageCount}</div>
-                <div className="text-xs text-muted-foreground">People referred</div>
-              </div>
-              <div className="bg-card p-4 rounded-lg border">
-                <div className="text-2xl font-bold">${referralData.earnings.toFixed(2)}</div>
-                <div className="text-xs text-muted-foreground">Total earnings</div>
-              </div>
-            </div>
+            <Div className="grid grid-cols-2 gap-4">
+              <Div className="bg-card p-4 rounded-lg border">
+                <Div className="text-2xl font-bold">{referralData.usageCount}</Div>
+                <Div className="text-xs text-muted-foreground">People referred</Div>
+              </Div>
+              <Div className="bg-card p-4 rounded-lg border">
+                <Div className="text-2xl font-bold">${referralData.earnings.toFixed(2)}</Div>
+                <Div className="text-xs text-muted-foreground">Total earnings</Div>
+              </Div>
+            </Div>
             
-            <div className="bg-muted/30 rounded-lg p-4">
-              <h4 className="font-medium mb-2">How it works</h4>
-              <ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
-                <li>Share your unique link with friends</li>
-                <li>They get 10% off their first month</li>
-                <li>You earn 10% of their subscription fee for the lifetime of their account</li>
-                <li>Earnings are paid monthly to your wallet address</li>
-              </ul>
-            </div>
-          </div>
+            <Div className="bg-muted/30 rounded-lg p-4">
+              <H4 className="font-medium mb-2">How it works</Div>
+              <Ul className="text-sm space-y-1 text-muted-foreground list-disc pl-4">
+                <Li>Share your unique link with friends</Ul>
+                <Li>They get 10% off their first month</Li>
+                <Li>You earn 10% of their subscription fee for the lifetime of their account</Li>
+                <Li>Earnings are paid monthly to your wallet address</Li>
+              </Ul>
+            </Div>
+          </Div>
         )}
       </CardContent>
       
       {referralData?.code && (
-        <CardFooter className="bg-muted/50 flex gap-2">
-          <button className="w-full" onClick={shareReferral}>
-            <Share2 className="h-4 w-4 mr-2" />
+        <CardFooter className="bg-muted/50 flex gap-2" />
+          <Button className="w-full" onClick={shareReferral}>
+            <Share2 className="h-4 w-4 mr-2" /></CardFooter>
             Share Referral Link
           </Button>
         </CardFooter>

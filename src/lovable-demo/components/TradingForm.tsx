@@ -22,7 +22,7 @@ type TradingFormProps = {
 };
 
 export const TradingForm = ({ onSubmit }: TradingFormProps) => {
-  const [formData, setFormData] = useState<tradeFormData>({
+  const [formData, setFormData] = useState<TradeFormData>({
     symbol: '',
     quantity: 1,
     price: 0,
@@ -30,14 +30,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
     orderType: 'market'
   });
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
-  const [errors, setErrors] = useState<formErrors>({});
+  const [errors, setErrors] = useState<FormErrors>({});
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -116,7 +109,7 @@ export const lovable = {
           <label style={labelStyles}>Symbol</label>
           <input type="text"
             value={formData.symbol}
-            onChange={(e) = /> setFormData({ ...formData, symbol: e.target.value.toUpperCase() })}
+            onChange={(e) => setFormData({ ...formData, symbol: e.target.value.toUpperCase() })}
             placeholder="e.g., AAPL, TSLA, BTC"
             style={{
               ...inputStyles,
@@ -173,7 +166,7 @@ export const lovable = {
           <input type="number"
             min="1"
             value={formData.quantity}
-            onChange={(e) = /> setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })}
+            onChange={(e) => setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })}
             style={{
               ...inputStyles,
               borderColor: errors.quantity ? '#EF4444' : 'rgba(255, 255, 255, 0.1)'
@@ -199,7 +192,7 @@ export const lovable = {
               min="0"
               step="0.01"
               value={formData.price}
-              onChange={(e) = /> setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })}
+              onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) || 0 })}
               style={{
                 ...inputStyles,
                 borderColor: errors.price ? '#EF4444' : 'rgba(255, 255, 255, 0.1)'
@@ -220,7 +213,7 @@ export const lovable = {
         )}
 
         <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-          <Button  type="submit"
+          <Button type="submit"
             style={{
               width: '100%',
               padding: '12px 24px',
@@ -243,4 +236,11 @@ export const lovable = {
       </form>
     </div>
   );
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

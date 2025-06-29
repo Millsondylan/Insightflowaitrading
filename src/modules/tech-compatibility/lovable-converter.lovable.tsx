@@ -47,25 +47,25 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
 
   return (
     <Card  />
-      <div className="flex items-center gap-2 mb-6">
-        <code2  >
-        <h2 className="text-2xl font-bold">Lovable Converter</h2>
-      </div>
+      <Div className="flex items-center gap-2 mb-6">
+        <code2 >
+        <H2 className="text-2xl font-bold">Lovable Converter</Lovableconverterprops>
+      </Div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div>
-          <h3 className="font-semibold mb-2">React/TypeScript Code</h3>
-          <textarea placeholder="Paste your React component or TypeScript code here..." style={{ fontSize: "0.875rem" }}> setInputCode(e.target.value)}
+      <Div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Div>
+          <H3 className="font-semibold mb-2">React/TypeScript Code</Div>
+          <Textarea placeholder="Paste your React component or TypeScript code here..." style={{ fontSize: "0.875rem" }}> setInputCode(e.target.value)}
           />
-        </div>
+        </Textarea>
 
-        <div>
-          <h3 className="font-semibold mb-2">Lovable.dev Output</h3>
-          <textarea placeholder="Converted Lovable.dev code will appear here..." style={{ fontSize: "0.875rem" }}>
-        </div>
-      </div>
+        <Div>
+          <H3 className="font-semibold mb-2">Lovable.dev Output</Div>
+          <Textarea placeholder="Converted Lovable.dev code will appear here..." style={{ fontSize: "0.875rem" }}>
+        </Textarea>
+      </Div>
 
-      <div className="flex justify-center my-6">
+      <Div className="flex justify-center my-6">
         <Button >
           {isConverting ? (
             'Converting...'
@@ -75,66 +75,66 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
               <Arrowright  />
             </>
           )}
-        </Button>
-      </div>
+        </Div>
+      </Div>
 
       {conversionStatus && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2 flex items-center gap-2">
-              <check  >
+        <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <Div className="p-4 bg-secondary/20 rounded-lg">
+            <H4 className="font-medium mb-2 flex items-center gap-2">
+              <check >
               Tables Detected
-            </h4>
-            <ul className="space-y-1">
+            </Div>
+            <Ul className="space-y-1">
               {conversionStatus.tables.map((table) => (
-                <li key={table} className="text-sm text-muted-foreground">
+                <Li key={table} className="text-sm text-muted-foreground">
                   • {table}
-                </li>
+                </Ul>
               ))}
-            </ul>
-          </div>
+            </Ul>
+          </Div>
 
-          <div className="p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2 flex items-center gap-2">
-              <check  >
+          <Div className="p-4 bg-secondary/20 rounded-lg">
+            <H4 className="font-medium mb-2 flex items-center gap-2">
+              <check >
               AI Blocks Created
-            </h4>
-            <ul className="space-y-1">
+            </Div>
+            <Ul className="space-y-1">
               {conversionStatus.aiBlocks.map((block) => (
-                <li key={block} className="text-sm text-muted-foreground">
+                <Li key={block} className="text-sm text-muted-foreground">
                   • {block}
-                </li>
+                </Ul>
               ))}
-            </ul>
-          </div>
+            </Ul>
+          </Div>
 
-          <div className="p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2 flex items-center gap-2">
-              <check  >
+          <Div className="p-4 bg-secondary/20 rounded-lg">
+            <H4 className="font-medium mb-2 flex items-center gap-2">
+              <check >
               Functions Wrapped
-            </h4>
-            <ul className="space-y-1">
+            </Div>
+            <Ul className="space-y-1">
               {conversionStatus.functions.map((func) => (
-                <li key={func} className="text-sm text-muted-foreground">
+                <Li key={func} className="text-sm text-muted-foreground">
                   • {func}
-                </li>
+                </Ul>
               ))}
-            </ul>
-          </div>
-        </div>
+            </Ul>
+          </Div>
+        </Div>
       )}
 
-      <div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
-        <alertcircle  >
-        <div className="text-sm">
-          <p className="font-medium mb-1">Conversion Notes:</p>
-          <ul className="space-y-1 text-muted-foreground">
-            <li>• localStorage → Lovable Tables</li>
-            <li>• API calls → Lovable Functions</li>
-            <li>• AI integrations → Lovable AI Blocks</li>
-          </ul>
-        </div>
-      </div>
+      <Div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
+        <alertcircle >
+        <Div className="text-sm">
+          <P className="font-medium mb-1">Conversion Notes:</Div>
+          <Ul className="space-y-1 text-muted-foreground">
+            <Li>• localStorage → Lovable Tables</Ul>
+            <Li>• API calls → Lovable Functions</Li>
+            <Li>• AI integrations → Lovable AI Blocks</Li>
+          </Ul>
+        </Div>
+      </Div>
     </Card>
   );
 }; 

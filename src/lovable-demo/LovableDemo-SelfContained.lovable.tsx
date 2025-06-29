@@ -38,7 +38,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
         onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.7)'}
         >
           View
-        </Button>
+        </button>
       </div>
       <p style={{
         fontSize: '14px',
@@ -149,7 +149,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
           <input type="text"
             placeholder="Search by title or tag..."
             value={searchTerm}
-            onChange={(e) = /> setSearchTerm(e.target.value)}
+            onChange={(e) => setSearchTerm(e.target.value)}
             style={{
               width: '100%',
               padding: '12px 12px 12px 40px',
@@ -189,7 +189,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
         {allTags.map(tag => (
-          <Button key={tag}
+          <button key={tag}
             onClick={() => handleTagClick(tag)}
             style={{
               padding: '8px 16px',
@@ -216,7 +216,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             }}
           >
             {tag}
-          </Button>
+          </button>
         ))}
       </div>
 
@@ -226,7 +226,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         gap: '24px' 
       }}>
         {filteredStrategies.map(strategy => (
-          <Strategycard >
+          <StrategyCard key={strategy.id} strategy={strategy} />
         ))}
       </div>
 
@@ -427,7 +427,7 @@ export const LovableDemo = () => {
           }}>
             🏦 Strategy Vault
           </h2>
-          <Strategyvault  />
+          <StrategyVault strategies={sampleStrategies} />
         </div>
 
         {/* Footer */}
