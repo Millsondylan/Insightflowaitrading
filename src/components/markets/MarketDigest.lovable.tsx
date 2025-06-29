@@ -79,7 +79,7 @@ export default function MarketDigest({ digest }: Props) {
               )}`}
             />
               {item.change > 0 ? (
-                <Arrowup  /></Div></Div></Div>
+                <Arrowup  /></Div></Div></Div></Div></Div></Div>
               ) : (
                 <arrowdown >
               )}
@@ -102,7 +102,7 @@ export default function MarketDigest({ digest }: Props) {
             </Div>
             <Div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
               <trendingup >
-              <Span></Div></Div>
+              <Span></Div></Div></Div></Div></Div>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
               </Div>

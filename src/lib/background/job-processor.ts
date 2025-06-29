@@ -57,7 +57,7 @@ const JOBS: JobSchedule[] = [
       
       if (!users) return;
       
-      for (const user of users) {
+      for (const user of users as any[]) {
         try {
           await generateLearningPath(user.user_id);
         } catch (error) {
@@ -81,7 +81,7 @@ const JOBS: JobSchedule[] = [
       
       if (!users) return;
       
-      for (const user of users) {
+      for (const user of users as any[]) {
         try {
           await generateTradingSuggestions(user.user_id);
         } catch (error) {
@@ -165,7 +165,7 @@ export async function processJobsOld() {
   
   console.log(`Processing ${jobs.length} jobs...`);
   
-  for (const job of jobs) {
+  for (const job of jobs as any[]) {
     try {
       // Mark job as processing
       await updateJobStatus(job.id, 'processing');
@@ -192,7 +192,7 @@ export async function processJobsOld() {
       
     } catch (error) {
       console.error(`Error processing job ${job.id}:`, error);
-      await updateJobStatus(job.id, 'failed', undefined, error.message);
+      await updateJobStatus(job.id, 'failed', undefined, (error as Error).message);
     }
   }
 }
@@ -235,7 +235,7 @@ async function updateJobStatus(
   
   await supabase
     .from('jobs')
-    .update(updateData)
+    .update(updateData as any)
     .eq('id', jobId);
 }
 
@@ -256,7 +256,7 @@ async function processPaymentVerification(payload: unknown) {
       confirmations: blockchainResponse.confirmations,
       verified_at: new Date().toISOString(),
       verification_details: blockchainResponse
-    })
+    } as any)
     .eq('id', tx_id);
     
   if (error) {
@@ -272,8 +272,8 @@ async function processPaymentVerification(payload: unknown) {
       .eq('id', tx_id)
       .single();
       
-    if (txData?.payment_for === 'subscription') {
-      await activateUserSubscription(txData.user_id);
+    if ((txData as any)?.payment_for === 'subscription') {
+      await activateUserSubscription((txData as any).user_id);
     }
   }
   
@@ -352,7 +352,7 @@ async function processAutoJournaling(payload: unknown) {
       emotions: journalEntry.emotions,
       lessons_learned: journalEntry.lessons_learned,
       auto_generated: true
-    });
+    } as any);
     
   if (saveError) {
     throw new Error(`Failed to save journal entry: ${saveError.message}`);
@@ -362,8 +362,8 @@ async function processAutoJournaling(payload: unknown) {
 }
 
 async function generateTradeJournalEntry(
-  trade: any // eslint-disable-line @typescript-eslint/no-explicit-any, // eslint-disable-line @typescript-eslint/no-explicit-any
-  previousEntries: any // eslint-disable-line @typescript-eslint/no-explicit-any[] // eslint-disable-line @typescript-eslint/no-explicit-any
+  trade: any,
+  previousEntries: any[]
 ) {
   const messages = [
     { 
@@ -442,14 +442,14 @@ async function processPnLInsights(payload: unknown) {
     .insert({
       user_id,
       title: "Your 30-Day Trading Performance Insights",
-      message: insights.summary,
+      message: (insights as any).summary,
       type: 'pnl_insights',
       metadata: {
-        detailed_insights: insights.details,
-        improvement_areas: insights.improvement_areas,
-        strengths: insights.strengths
+        detailed_insights: (insights as any).details,
+        improvement_areas: (insights as any).improvement_areas,
+        strengths: (insights as any).strengths
       }
-    });
+    } as any);
     
   if (saveError) {
     throw new Error(`Failed to save PnL insights: ${saveError.message}`);
@@ -458,7 +458,7 @@ async function processPnLInsights(payload: unknown) {
   return insights;
 }
 
-async function generatePnLInsights(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
+async function generatePnLInsights(trades: any[]) {
   if (trades.length === 0) {
     return {
       summary: "No trades found in the last 30 days. Complete some trades to get performance insights.",
@@ -525,7 +525,7 @@ async function activateUserSubscription(userId: string) {
       start_date: now.toISOString(),
       end_date: oneYearLater.toISOString(),
       payment_method: 'crypto'
-    }, {
+    } as any, {
       onConflict: 'user_id'
     });
 } 

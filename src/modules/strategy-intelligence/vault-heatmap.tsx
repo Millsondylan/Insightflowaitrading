@@ -218,8 +218,7 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
         <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {strategies.map((strategy) => (
             <Div key={strategy.id} 
-              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
-  >
+              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}>
               <H3 className="text-lg font-bold">{strategy.name}</Card>
               <Div className="text-xs text-gray-300 mb-2">{strategy.description}</Div>
               <Div className="mt-2">

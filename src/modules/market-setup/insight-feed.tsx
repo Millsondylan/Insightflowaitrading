@@ -61,7 +61,7 @@ export const lovable = {
                     insight.sentiment === 'Bullish' ? 'default' : 
                     insight.sentiment === 'Bearish' ? 'destructive' : 'secondary'
                   }
-         >
+      >
                   {insight.sentiment}
                 </Badge>
               </Div>

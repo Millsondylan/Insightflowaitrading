@@ -276,8 +276,7 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
             Bearish
           </Button>
           <Button className="px-4 py-2 rounded bg-background-secondary"
-            onClick={fetchScanResults}
->
+            onClick={fetchScanResults}>
             Refresh
           </Button>
         </Div>

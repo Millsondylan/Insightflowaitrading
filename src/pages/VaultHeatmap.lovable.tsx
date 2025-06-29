@@ -332,7 +332,7 @@ export default function VaultPage() {
       
       {filteredStrategies.length === 0 && (
         <Div className="text-center py-12">
-          <P className="text-gray-400"></Div>No strategies found matching your criteria.</Div>
+          <P className="text-gray-400"></Div></Div></Div></Div>No strategies found matching your criteria.</Div>
           <Button variant="ghost"> {
               setSearchTerm('');
               setSelectedCategory('all');

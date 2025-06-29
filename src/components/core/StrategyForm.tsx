@@ -243,8 +243,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
         <motion.div variants={itemVariants} className="md:col-span-2 flex justify-center mt-4">
           <Button type="submit"
             className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 hover:scale-105 transition-all duration-300 w-full md:w-auto px-8 py-6"
-            disabled={isLoading}
- >
+            disabled={isLoading}>
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating Strategy...

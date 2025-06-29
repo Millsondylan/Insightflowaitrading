@@ -146,8 +146,7 @@ export default function UsageLogViewer({ logs }: Props) {
 
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Div ref={containerRef}
-          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
- >
+          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
           <Table>
             <TableHeader className="sticky top-0 bg-black z-10" />
               <TableRow className="hover:bg-transparent border-white/10" />

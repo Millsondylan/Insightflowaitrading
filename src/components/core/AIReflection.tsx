@@ -124,8 +124,7 @@ const AIReflection: React.FC<aIReflectionProps> = ({
           <Button onClick={generateReflection}
             variant="outline"
             size="sm"
-            className="border-red-500/30 hover:bg-red-500/10"
- >
+            className="border-red-500/30 hover:bg-red-500/10">
             Try Again
           </button />
       </Button>
@@ -220,8 +219,7 @@ const AIReflection: React.FC<aIReflectionProps> = ({
             variant="ghost"
             size="sm"
             className="text-gray-400 hover:text-white"
-            disabled={loading}
-  >
+            disabled={loading}>
             <brain className="h-3 w-3 mr-2" />
             Regenerate Analysis
           </Div>

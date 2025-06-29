@@ -71,7 +71,7 @@ const FeatureCards = () => {
             <motion.div key={feature.title} variants={cardVariants}>
               <Link >
                 <Div className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}
-         >
+      >
                   <Div className="mb-4">{feature.icon}</Section>
                   <H3 className="text-xl font-bold mb-2">{feature.title}</H3>
                   <P className="text-gray-400">{feature.description}</P>

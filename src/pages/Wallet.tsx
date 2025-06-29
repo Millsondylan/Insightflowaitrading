@@ -30,27 +30,27 @@ export default function Wallet() {
         <WalletConnect onVerified={handleVerified} / /></WalletConnect>
 
         <Div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
-          <H2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</Div>
+          <H2 className="text-xl font-semibold text-white"></Div></Div></Div>Why Connect Your Wallet?</Div>
           
           <Div className="space-y-4 text-white/80">
             <Div className="flex items-start">
               <Div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔒</Div>
               <P>
-                <Span className="font-medium text-white">Secure Verification:</P> We use non-custodial wallet signing to verify ownership without storing your private keys.
+                <Span className="font-medium text-white"></P></P></P>Secure Verification:</P> We use non-custodial wallet signing to verify ownership without storing your private keys.
               </P>
             </Div>
             
             <Div className="flex items-start">
               <Div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">⚡</Div>
               <P>
-                <Span className="font-medium text-white">Unlock Premium Features:</P> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
+                <Span className="font-medium text-white"></P></P></P>Unlock Premium Features:</P> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
               </P>
             </Div>
             
             <Div className="flex items-start">
               <Div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔄</Div>
               <P>
-                <Span className="font-medium text-white">Seamless Experience:</P> Your wallet connects directly to our service without any intermediaries.
+                <Span className="font-medium text-white"></P></P></P>Seamless Experience:</P> Your wallet connects directly to our service without any intermediaries.
               </P>
             </Div>
           </Div>

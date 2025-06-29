@@ -233,13 +233,11 @@ export default function UserSettingsPage() {
         <Div className="space-x-4">
           <Button variant="outline" 
             onClick={resetToDefaults}
-            disabled={saving}
- >
+            disabled={saving}>
             Reset to Defaults
           </Div>
           <Button onClick={saveSettings} 
-            disabled={!hasChanges() || saving}
-  >
+            disabled={!hasChanges() || saving}>
             {saving ? (
               <>
                 <Div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></Button>

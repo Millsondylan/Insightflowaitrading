@@ -93,7 +93,7 @@ const PaginationEllipsis = ({
   <Span aria-hidden
     className={cn("flex h-9 w-9 items-center justify-center", className)}
     {...props}>
-    <MoreHorizontal className="h-4 w-4" /></ChevronRight></Span></Span></Span></Span></Span></Span>
+    <MoreHorizontal className="h-4 w-4" /></ChevronRight></ChevronRight></ChevronRight></ChevronRight></Span></Span></Span></Span></Span></Span>
     <Span className="sr-only">More pages</Span>
   </Span>
 )

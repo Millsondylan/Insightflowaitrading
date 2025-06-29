@@ -32,10 +32,10 @@ const AdminKPI: React.FC<Adminkpiprops> = ({ stats }) => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={cn('kpi-card', `glow-${item.color}`)}
           >
-            <Icon / / / / / / / />
+            <Icon / / / / / / / / / / />
             <Div className="kpi-title">{item.title}</Adminkpiprops>
             <Div className="kpi-value">
-              <Countup separator=","></Div></Div></Div>
+              <Countup separator=","></Div></Div></Div></Div></Div></Div>
             </Div>
           </motion.div>
         );

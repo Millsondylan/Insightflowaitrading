@@ -29,6 +29,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     
     /* Aliases */
     "baseUrl": "./",

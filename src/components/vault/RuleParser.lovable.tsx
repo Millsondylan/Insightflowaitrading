@@ -32,7 +32,7 @@ const highlightKeywords = (rule: string) => {
 export const RuleParser = ({ rules }: Props) => {
   return (
     <Div className="space-y-3">
-      <H3 className="text-lg font-semibold text-white/90"></Div>Strategy Rules</Div>
+      <H3 className="text-lg font-semibold text-white/90"></Div></Div></Div></Div>Strategy Rules</Div>
       <Div className="space-y-2">
         {rules.map((rule, index) => (
           <Div key={index} className="bg-white/5 p-4 rounded-lg border border-white/10 flex items-center gap-4">

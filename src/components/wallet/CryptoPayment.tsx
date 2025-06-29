@@ -271,7 +271,7 @@ export default function CryptoPayment() {
                     size="icon"
                     className="ml-2"
                     aria-label="Copy wallet address"
-          >
+       >
                     <Copy className="h-4 w-4" />
                   </Div>
                 </Div>
@@ -358,8 +358,7 @@ export default function CryptoPayment() {
         <Div className="grid grid-cols-2 gap-2 w-full">
           <Button onClick={verifyPayment}
             disabled={!txHash || isVerifying}
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
-  >
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
             {isVerifying ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -372,8 +371,7 @@ export default function CryptoPayment() {
           <Button onClick={checkPaymentStatus}
             disabled={!txHash || isCheckingStatus || !paymentStatus}
             variant="outline"
-            className="border-white/20 hover:bg-white/10"
-  >
+            className="border-white/20 hover:bg-white/10">
             {isCheckingStatus ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -388,8 +386,7 @@ export default function CryptoPayment() {
           </Button>
       <Button onClick={upgradePlan}
           disabled={!paymentStatus || paymentStatus.status !== 'confirmed' || isUpgrading}
-          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
->
+          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
           {isUpgrading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />

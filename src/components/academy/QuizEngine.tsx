@@ -236,7 +236,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                 <Button onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
                   className="bg-white/10 hover:bg-cyan-600 text-white px-6"
-       >
+    >
                   Submit Answer
                 </Div>
               ) : (
@@ -304,8 +304,8 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
           <Div className="pt-4">
             <Button onClick={resetQuiz}
               className="bg-white/10 hover:bg-white/20 text-white px-6"
-    >
-              <RefreshCw className="mr-2 h-4 w-4" /></Div></Div></Div>
+ >
+              <RefreshCw className="mr-2 h-4 w-4" /></Div></Div></Div></Div></Div></Div>
               Retry Quiz
             </Button>
           </Div>

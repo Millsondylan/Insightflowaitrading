@@ -265,7 +265,7 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
               {setup?.symbol || symbol}
               <Badge variant={setup?.tradeType === 'LONG' ? 'default' : 'destructive'}
                 className="ml-2"
-      >
+   >
                 {setup?.tradeType === 'LONG' ? (
                   <Span className="flex items-center"><LucideArrowUpRight className="mr-1 h-3 w-3" /> LONG</Card>
                 ) : (

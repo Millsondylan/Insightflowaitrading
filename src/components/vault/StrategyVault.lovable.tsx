@@ -72,7 +72,7 @@ export const StrategyVault = ({ strategies }: Props) => {
 
       <Div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <Button ></Div> handleTagClick(tag)}
+          <Button ></Div></Div></Div></Div> handleTagClick(tag)}
             className="rounded-full"
           >
             {tag}

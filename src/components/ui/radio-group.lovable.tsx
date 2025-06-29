@@ -21,7 +21,7 @@ const RadioGroupItem = React.forwardRef<
   return (
     <Radiogroupprimitive  / />
       <Radiogroupprimitive  style={{ display: "flex", alignItems: "center", justifyContent: "center" }} />
-        <Circle  /></Radiogroupprimitive>
+        <Circle  /></Radiogroupprimitive></Radiogroupprimitive></Radiogroupprimitive></Radiogroupprimitive>
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
   )

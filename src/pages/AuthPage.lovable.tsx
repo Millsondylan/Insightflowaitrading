@@ -15,7 +15,7 @@ export default function AuthPage() {
     return (
         <Div className="min-h-screen flex items-center justify-center p-4">
             <Div className="w-full">
-                <Authform></Div></Div></Div>
+                <Authform></Div></Div></Div></Div></Div></Div>
             </Div>
         </Div>
     );

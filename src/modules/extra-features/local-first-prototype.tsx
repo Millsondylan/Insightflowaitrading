@@ -90,8 +90,7 @@ exit_rules:
           <Button variant="outline"
             size="sm"
             onClick={syncToCloud}
-            disabled={localChanges === 0 || syncStatus === 'offline'}
- >
+            disabled={localChanges === 0 || syncStatus === 'offline'}>
             Sync to Cloud
           </Button>
         </Div>

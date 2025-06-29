@@ -114,8 +114,7 @@ export const Navbar = () => {
           <Link key={route.href}
             to={route.href}
             className="mobile-nav-link"
-            onClick={toggleMobileMenu}
-  >
+            onClick={toggleMobileMenu}>
             {route.label}
           </Div>
         ))}

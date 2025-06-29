@@ -269,8 +269,7 @@ const UserTable: React.FC = () => {
           <Button variant="outline" 
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
-            disabled={users.length === 0 || loading}
- >
+            disabled={users.length === 0 || loading}>
             <Download className="h-4 w-4" />
             Export CSV
           </Div>
@@ -334,7 +333,7 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div>
+          <P></Div></Div></Div></Div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}

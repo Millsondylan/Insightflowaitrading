@@ -125,8 +125,7 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
         <Div className="flex gap-2">
           <Button onClick={syncRepository}
             disabled={isSyncing}
-            className="flex-1"
-  >
+            className="flex-1">
             {isSyncing ? 'Syncing...' : 'Sync Now'}
           </Div>
           <Button variant="outline" />

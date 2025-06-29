@@ -67,8 +67,7 @@ export const lovable = {
         <Div className="space-y-4">
           {messages.map((message) => (
             <Div key={message.id}
-              className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-  >
+              className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               <Div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <Div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (

@@ -75,8 +75,7 @@ export const lovable = {
                 : plan.current
                 ? 'border-muted'
                 : 'border-border'
-            }`}
->
+            }`}>
             {plan.recommended && (
               <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended

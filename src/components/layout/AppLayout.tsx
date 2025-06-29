@@ -3,14 +3,14 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
 import { useDeveloperMode } from '@/hooks/use-developer-mode';
 import { Button } from '@/components/ui/button';
-import NotificationCenter from '@/components/core/NotificationCenter';
-import BottomTabNavigator from '@/components/navigation/BottomTabNavigator';
-import { Div } from '@/components/ui/div';
+// import NotificationCenter from '@/components/core/NotificationCenter';
+import BottomTabNavigator from '@/components/mobile/BottomTabNavigator';
+// import { Div } from '@/components/ui/div';
 import Footer from './Footer';
-import Header from './Header';
-import Main from './Main';
-import Sidebar from './Sidebar';
-import { useMediaQuery } from '@/hooks/use-media-query';
+// import Header from './Header';
+// import Main from './Main';
+// import Sidebar from './Sidebar';
+// import { useMediaQuery } from '@/hooks/use-media-query';
 import { auditLogger } from '@/lib/monitoring/auditLogger';
 import { SystemStatusPanel } from '@/components/core/SystemStatusPanel';
 
@@ -27,7 +27,8 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
   const navigate = useNavigate();
   const { logout, user } = useAuth();
   const { developerMode, toggleDeveloperMode } = useDeveloperMode();
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  // const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = false; // Hardcode for now
 
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
 
@@ -53,22 +54,25 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
   // Show minimalist layout for special pages
   if (location.pathname.includes('/auth/') || location.pathname.includes('/landing')) {
     return (
-      <Div className="min-h-screen flex flex-col">
-        <Main className="flex-1">
-          <Outlet / />
-        <Footer / />
+      <div className="min-h-screen flex flex-col">
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     );
   }
 
   return (
-    <Div className="min-h-screen bg-background flex flex-col">
-      <Header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <Div className="flex h-14 items-center px-4 md:px-6">
-          <Button             variant="ghost"
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex h-14 items-center px-4 md:px-6">
+          <Button 
+            variant="ghost"
             className="mr-2 md:hidden"
             size="icon"
             onClick={() => setSidebarOpen(!sidebarOpen)}>
-            <Span className="sr-only">Toggle Menu</AppLayoutProps>
+            <span className="sr-only">Toggle Menu</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -86,24 +90,28 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
             </svg>
           </Button>
           
-          <Div className="ml-auto flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-2">
             <Button variant="ghost" size="sm" onClick={toggleDeveloperMode}>
               {developerMode ? 'Dev-Mode: ON' : 'Dev-Mode: OFF'}
-            </Div>
-            <NotificationCenter />
-            <Button variant="ghost" onClick={logout}>Logout</NotificationCenter>
-          </Div>
-        </div />
+            </Button>
+            {/* <NotificationCenter /> */}
+            <Button variant="ghost" onClick={logout}>Logout</Button>
+          </div>
+        </div>
+      </header>
       
-      <Div className="flex-1 flex">
-        {sidebarOpen && <Sidebar className="hidden md:block" />}
-        <Main className="flex-1">
+      <div className="flex-1 flex">
+        {/* {sidebarOpen && <Sidebar className="hidden md:block" />} */}
+        <main className="flex-1">
           <Outlet />
-        </Div>
+        </main>
         {/* Add the BottomTabNavigator for mobile view */}
-        {isMobile && <BottomTabNavigator / /></BottomTabNavigator>}
-      </Div>
-    </Div>
+        {isMobile && <BottomTabNavigator />}
+      </div>
+      
+      {/* Developer Mode System Status Panel */}
+      {developerMode && <SystemStatusPanel />}
+    </div>
   );
 };
 

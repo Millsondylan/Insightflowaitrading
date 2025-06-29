@@ -110,8 +110,7 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
       <Div className="flex gap-2">
         <Button onClick={syncData} 
           disabled={isSyncing || !syncStatus.connected}
-          className="flex-1"
->
+          className="flex-1">
           {isSyncing ? (
             <>
               <RefreshCw className="h-4 w-4 mr-2 animate-spin" />

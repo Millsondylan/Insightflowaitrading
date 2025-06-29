@@ -40,8 +40,7 @@ export default function LanguageSelector() {
       {isOpen && (
         <Div className="absolute z-10 right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden"
           role="menu"
-          aria-orientation="vertical"
- >
+          aria-orientation="vertical">
           <Div className="py-1" role="none">
             {languages.map((language) => (
               <Button                 key={language.code}

@@ -81,7 +81,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                     <Button type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-700"
                         disabled={loading}
-           >
+        >
                         {loading ? (
                             <Div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
                         ) : mode === 'signin' ? (

@@ -124,14 +124,14 @@ export default function CommunityPage() {
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-purple-400"
-                            >
+                         >
                                         <MessageSquare className="h-4 w-4 mr-2" />
                                         {post.comments}
                                     </Button>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-green-400"
-                            >
+                         >
                                         <Share2 className="h-4 w-4 mr-2" />
                                         Share
                                     </Button>

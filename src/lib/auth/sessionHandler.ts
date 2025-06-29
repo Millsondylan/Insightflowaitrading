@@ -15,6 +15,8 @@ type NextRequest = Request & {
   };
 };
 
+interface ProfileRow { subscription_tier?: string | null }
+
 /**
  * Gets the authenticated user from a request
  */
@@ -55,9 +57,9 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<Authentica
       .from('profiles')
       .select('*')
       .eq('id', data.user.id)
-      .single();
+      .single<ProfileRow>();
 
-    const tier = (profileData as Database['public']['Tables']['profiles']['Row'] | null)?.subscription_tier ?? 'free';
+    const tier = profileData?.subscription_tier ?? 'free';
 
     return {
       id: data.user.id,

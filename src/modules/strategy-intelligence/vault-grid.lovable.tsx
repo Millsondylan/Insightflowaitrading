@@ -332,8 +332,7 @@ export const VaultGrid: React.FC<Vaultgridprops  /> = ({
           <Div className="text-xl font-semibold mb-2">No strategies found</Div>
           <Div className="text-text-muted mb-6">Create your first strategy to get started</Div>
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md"
-            onClick={onCreateStrategy}
-  >
+            onClick={onCreateStrategy}>
             Create Strategy
           </Button>
         </Div>

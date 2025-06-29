@@ -132,17 +132,17 @@ const LandingPage = () => {
     if (profile && !profileLoading) {
       // Set default chart timeframe
       if (defaultChartSettings.timeframe) {
-        setSelectedTimeframe(defaultChartSettings.timeframe);
+        // setSelectedTimeframe(defaultChartSettings.timeframe);
       }
       
       // Set default symbols/markets to watch
       if (defaultChartSettings.symbols?.length) {
-        setWatchlist(defaultChartSettings.symbols);
+        // setWatchlist(defaultChartSettings.symbols);
       }
       
       // Set default indicators
       if (defaultChartSettings.indicators?.length) {
-        setActiveIndicators(defaultChartSettings.indicators);
+        // setActiveIndicators(defaultChartSettings.indicators);
       }
     }
   }, [profile, profileLoading, defaultChartSettings]);
@@ -223,267 +223,250 @@ const LandingPage = () => {
   ];
 
   return (
-    <Div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
       {/* Navigation Header */}
-      <Nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
-        <Div className="flex items-center space-x-3">
-          <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+      <nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
             <TrendingUp className="w-6 h-6 text-white" />
-          </HTMLDivElement>
-          <H1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+          </div>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
             InsightFlow AI
-          </H1>
-        </Div>
-        <Div className="flex space-x-4">
+          </h1>
+        </div>
+        <div className="flex space-x-4">
           <Button variant="outline" 
             onClick={() => navigate('/auth')}
             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
-          </Div>
+          </Button>
           <Button onClick={() => navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
           </Button>
-        </Div>
-      </Nav>
+        </div>
+      </nav>
 
       {/* Hero Section */}
-      <motion.div 
-        ref={heroRef} 
-        id="hero" 
-        className="w-full px-0 pt-20 pb-32"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7, ease: 'easeOut' }}
-      >
-        <Div className="text-center space-y-8 w-full">
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
-            🚀 Advanced Trading Platform - Now with AI Integration
-          </Div>
-          
-          <H1 className="text-6xl font-bold leading-tight">
-            <Span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Trade Smarter with
-            </H1>
-            <br />
-            <Span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-              AI-Powered Insights
-            </Span>
-          </H1>
-          
-          <P className="text-xl text-gray-300 mb-8 w-full leading-relaxed">
-            Experience the future of trading with our ultra-modern platform featuring real-time market data, 
-            advanced analytics, and risk-free demo trading. Start your 30-day free trial today.
-          </P>
-          
-          <Div className="flex justify-center space-x-4 pt-8">
-            <Button size="lg"
-              onClick={() => navigate('/auth')}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
-            >
-              Start Free Trial
-              <ArrowRight className="ml-2 w-5 h-5" / />
-            <Button size="lg" 
-              variant="outline"
-              onClick={() => navigate('/trading')}
-              className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
-            >
-              View Demo
-            </Div>
-          </Div>
-          
-          <Div className="flex justify-center items-center space-x-8 pt-12 text-gray-400">
-            <Div className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-green-400" />
-              <Span>30-Day Free Trial</Div>
-            </Div>
-            <Div className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-green-400" />
-              <Span>No Credit Card Required</Div>
-            </Div>
-            <Div className="flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-green-400" />
-              <Span>Cancel Anytime</Div>
-            </Div>
-          </Div>
-        </Div>
-      </motion.div>
+      <main ref={heroRef} className="container mx-auto px-6 py-24 text-center">
+        <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
+          🚀 Advanced Trading Platform - Now with AI Integration
+        </Badge>
+        
+        <h1 className="text-6xl font-bold leading-tight mt-4">
+          <span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Trade Smarter with
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            AI-Powered Insights
+          </span>
+        </h1>
+        
+        <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+          Elevate your trading with our institutional-grade platform. Real-time data, advanced analytics, and AI-driven strategies at your fingertips.
+        </p>
 
-      {/* Real-time Stats Section */}
-      <Div className="container mx-auto px-6 py-10">
-        {loading ? (
-          <Div className="text-center text-blue-400">Loading stats...</Div>
-        ) : error ? (
-          <Div className="text-center text-red-400">{error}</Div>
-        ) : (
-          <Div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-            <Card className="bg-gray-800/50 border-blue-500/30">
-              <CardHeader>
-                <Users className="w-8 h-8 mx-auto text-blue-400" />
-                <CardTitle className="text-white text-2xl">{userCount.toLocaleString()}</CardTitle />
-              <CardContent>
-                <Span className="text-gray-400">Active Traders</span />
-            </Div>
-            <Card className="bg-gray-800/50 border-cyan-500/30">
-              <CardHeader>
-                <TrendingUp className="w-8 h-8 mx-auto text-cyan-400" />
-                <CardTitle className="text-white text-2xl">
-                  {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
-                </CardTitle />
-              <CardContent>
-                <Span className="text-gray-400">Successful Trades</span />
-            </Card>
-            <Card className="bg-gray-800/50 border-green-500/30">
-              <CardHeader>
-                <CheckCircle className="w-8 h-8 mx-auto text-green-400" />
-                <CardTitle className="text-white text-2xl">{platformUptime}</CardTitle />
-              <CardContent>
-                <Span className="text-gray-400">Platform Uptime</span />
-            </Card>
-            <Card className="bg-gray-800/50 border-purple-500/30">
-              <CardHeader>
-                <BarChart3 className="w-8 h-8 mx-auto text-purple-400" />
-                <CardTitle className="text-white text-2xl">{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle />
-              <CardContent>
-                <Span className="text-gray-400">Markets Covered</span />
-            </Card>
-            <Card className="bg-gray-800/50 border-yellow-500/30">
-              <CardHeader>
-                <DollarSign className="w-8 h-8 mx-auto text-yellow-400" />
-                <CardTitle className="text-white text-2xl">${demoVolume.toLocaleString()}</CardTitle />
-              <CardContent>
-                <Span className="text-gray-400">Total Volume</span />
-            </Card>
-            <Card className="bg-gray-800/50 border-blue-400/30">
-              <CardHeader>
-                <Star className="w-8 h-8 mx-auto text-blue-400" />
-                <CardTitle className="text-white text-2xl">{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</CardTitle />
-              <CardContent>
-                <Span className="text-gray-400">User Rating</span />
-            </Card>
-          </Div>
-        )}
-      </Div>
+        <div className="mt-8 flex justify-center gap-4">
+          <Button size="lg" 
+            onClick={() => navigate('/auth/register')}
+            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
+          >
+            Start Free Trial
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+          <Button size="lg" 
+            variant="outline"
+            onClick={() => navigate('/features')}
+            className="border-gray-700 text-gray-400 hover:bg-gray-800 hover:text-white"
+          >
+            Explore Features
+          </Button>
+        </div>
+      </main>
+
+      {/* Stats Section */}
+      <section className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="p-4 rounded-lg bg-white/5">
+            <h3 className="text-4xl font-bold text-white">{userCount}+</h3>
+            <p className="text-gray-400">Traders Trust Us</p>
+          </div>
+          <div className="p-4 rounded-lg bg-white/5">
+            <h3 className="text-4xl font-bold text-white">{successfulTrades}</h3>
+            <p className="text-gray-400">Successful Trades</p>
+          </div>
+          <div className="p-4 rounded-lg bg-white/5">
+            <h3 className="text-4xl font-bold text-white">${(demoVolume / 1000000).toFixed(1)}M+</h3>
+            <p className="text-gray-400">Demo Volume</p>
+          </div>
+          <div className="p-4 rounded-lg bg-white/5">
+            <div className="flex items-center justify-center">
+              <h3 className="text-4xl font-bold text-white">{userRating.toFixed(1)}</h3>
+              <Star className="w-8 h-8 text-yellow-400 ml-2" />
+            </div>
+            <p className="text-gray-400">User Rating</p>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
-      <motion.div 
-        ref={featuresRef} 
-        id="features" 
-        className="container mx-auto px-6 py-24"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-      >
-        <Div className="text-center mb-16">
-          <H2 className="text-4xl font-bold text-white mb-6">
-            Powerful Features for Modern Traders
-          </Div>
-          <P className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Everything you need to trade successfully in today's markets
-          </P>
-        </Div>
-        
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section ref={featuresRef} className="container mx-auto px-6 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white">Why InsightFlow AI?</h2>
+          <p className="text-lg text-gray-400 mt-4">Unleash your trading potential with our powerful features</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm hover:border-blue-500/50 transition-all duration-300">
-              <CardHeader className="text-center">
-                <Div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
-                  <feature.icon className="w-8 h-8 text-white" />
-                </Div>
-                <CardTitle className="text-white text-xl">{feature.title}</CardTitle />
-              <CardContent>
-                <P className="text-gray-400 text-center">{feature.description}</p />
-            </CardTitle>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="bg-gray-800/40 border-gray-700/60 text-white h-full">
+                <CardHeader>
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${feature.gradient}`}>
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <CardTitle className="mt-4 text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-400">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </Div>
-      </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section ref={pricingRef} className="container mx-auto px-6 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white">Pricing Plans</h2>
+          <p className="text-lg text-gray-400 mt-4">Choose the plan that fits your trading journey</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          {pricingPlans.map((plan, index) => (
+            <Card key={index} className={`bg-gray-800/40 border-gray-700/60 text-white flex flex-col ${plan.popular ? 'border-blue-500' : ''}`}>
+              <CardHeader>
+                <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                <p className="text-4xl font-bold mt-2">
+                  ${plan.price}
+                  <span className="text-lg font-normal text-gray-400">/ {plan.period}</span>
+                </p>
+              </CardHeader>
+              <CardContent className="flex-grow">
+                <ul className="space-y-3">
+                  {plan.features.map((feature, fIndex) => (
+                    <li key={fIndex} className="flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+              <div className="p-6">
+                <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
+                  {plan.popular ? 'Get Started' : 'Choose Plan'}
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
 
       {/* Testimonials Section */}
-      <motion.div 
-        ref={testimonialsRef} 
-        id="testimonials" 
-        className="w-full px-0 py-24"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
-      >
-        <Div className="text-center mb-16 w-full">
-          <H2 className="text-4xl font-bold text-white mb-6">
-            Trusted by Traders Worldwide
-          </Div>
-          <P className="text-xl text-gray-400 w-full">
-            See what our users are saying about InsightFlow AI
-          </P>
-        </Div>
-        <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          {loading ? (
-            <Div className="col-span-3 text-center text-blue-400">Loading reviews...</Div>
-          ) : reviews.length === 0 ? (
-            <Div className="col-span-3 text-center text-gray-400">No reviews yet.</Div>
-          ) : (
-            reviews.slice(0, 3).map((testimonial, index) => {
-              if (testimonial && typeof testimonial === 'object' && 'content' in testimonial && 'name' in testimonial && 'role' in testimonial) {
-                const t = testimonial as any;
-                return (
-                  <Card key={index} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
-                    <CardHeader>
-                      <P className="text-gray-300 italic">"{t.content}"</p />
-                    <CardContent>
-                      <Div className="flex items-center space-x-3">
-                        <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                          <Users className="w-5 h-5 text-white" />
-                        </Card>
-                        <Div>
-                          <P className="text-white font-semibold">{t.name}</Div>
-                          <P className="text-gray-400 text-sm">{t.role}</P>
-                        </Div>
-                      </div />
-                  </Card>
-                );
-              }
-              return null;
-            })
-          )}
-        </Div>
-      </motion.div>
-
-      {/* Crypto Payment Section */}
-      <Div className="w-full px-0 py-20" id="crypto-payment">
-        <Div className="text-center mb-16 w-full">
-          <H2 className="text-4xl font-bold text-white mb-6">
-            Secure Crypto Payment Integration
-          </Div>
-          <P className="text-xl text-gray-400 w-full">
-            Pay with your preferred cryptocurrency using our verified wallet addresses
-          </P>
-        </Div>
-        
-        <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
-          {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
-            <Card key={coin} className="bg-gray-800/50 border-gray-700/50 backdrop-blur-sm">
-              <CardHeader className="text-center">
-                <Div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
-                  <Bitcoin className="w-8 h-8 text-white" />
-                </Div>
-                <CardTitle className="text-white text-xl">{coin}</CardTitle />
-            </CardTitle>
+      <section ref={testimonialsRef} className="container mx-auto px-6 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white">What Our Traders Say</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {reviews.map((review, index) => (
+            <Card key={index} className="bg-gray-800/40 border-gray-700/60 text-white">
+              <CardContent className="pt-6">
+                <div className="flex items-center mb-4">
+                  <img src={review.avatar} alt={review.name} className="w-12 h-12 rounded-full mr-4" />
+                  <div>
+                    <p className="font-semibold">{review.name}</p>
+                    <p className="text-sm text-gray-400">{review.handle}</p>
+                  </div>
+                </div>
+                <p className="text-gray-300">"{review.text}"</p>
+              </CardContent>
+            </Card>
           ))}
-        </Div>
-      </Div>
-    </Div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-gray-800/50 mt-24">
+        <div className="container mx-auto px-6 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="font-semibold text-white">Platform</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">Features</a></li>
+                <li><a href="#" className="hover:text-white">Pricing</a></li>
+                <li><a href="#" className="hover:text-white">Security</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Company</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">About Us</a></li>
+                <li><a href="#" className="hover:text-white">Careers</a></li>
+                <li><a href="#" className="hover:text-white">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Resources</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">Blog</a></li>
+                <li><a href="#" className="hover:text-white">API Docs</a></li>
+                <li><a href="#" className="hover:text-white">Help Center</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Legal</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-800/50 text-center text-gray-500">
+            <p>&copy; {new Date().getFullYear()} InsightFlow AI. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 
 export default LandingPage;
 
-export const lovable = { 
-  component: true,
+export const lovable = {
+  component: LandingPage,
+  name: 'Landing Page',
+  key: 'landing-page',
   supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
+  visualEditing: true,
+  editableComponents: [
+    {
+      name: 'Hero Title',
+      selector: '.text-6xl',
+    },
+    {
+      name: 'Hero Subtitle',
+      selector: '.text-xl',
+    },
+    {
+      name: 'Feature Card',
+      selector: '.grid > div > .bg-gray-800\\/40',
+    }
+  ]
 };

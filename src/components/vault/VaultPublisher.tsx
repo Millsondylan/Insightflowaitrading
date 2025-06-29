@@ -30,7 +30,7 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
         
         <Div className="flex flex-wrap gap-2 pt-2">
           {strategy.tags.map((t, i) => (
-            <Span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60"></Div>
+            <Span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60"></Div></Div></Div></Div>
               {t}
             </Div>
           ))}

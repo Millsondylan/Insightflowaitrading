@@ -326,14 +326,12 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
         <CardFooter className="flex justify-between" />
           <Button variant="outline" 
             onClick={handleSaveStrategy}
-            disabled={isSaving || isScanning || (!title && !strategyText) || !!strategy}
-  >
+            disabled={isSaving || isScanning || (!title && !strategyText) || !!strategy}>
             {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
             Save Strategy
           </CardFooter>
           <Button onClick={handleScanMarkets}
-            disabled={isScanning || (!strategy && !strategyText)}
-  >
+            disabled={isScanning || (!strategy && !strategyText)}>
             {isScanning ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Scan className="mr-2 h-4 w-4" />}
             Scan Markets
           </button />
@@ -400,7 +398,7 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
                         {setup.symbol}
                         <Badge variant={isLong ? 'default' : 'destructive'}
                           className="ml-2"
-                >
+             >
                           {isLong ? (
                             <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</Div>
                           ) : (

@@ -48,8 +48,7 @@ export const lovable = {
         <Div className="space-y-4">
           {sortedEvents.map((event) => (
             <Div key={event.id} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
-  >
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700">
               <Div className="flex justify-between items-start mb-2">
                 <H3 className="text-lg font-bold">{event.title}</Badge>
                 <Badge variant={

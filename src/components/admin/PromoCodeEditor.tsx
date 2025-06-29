@@ -69,8 +69,7 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
         <H2 className="text-lg font-semibold text-white">Promo Codes</Div>
         
         <Button onClick={generateNewCode}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
->
+          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
           <Plus className="h-4 w-4 mr-2" />
           Generate Code
         </Button>

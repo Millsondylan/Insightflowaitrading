@@ -297,7 +297,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
           )}
 
           <Div className="pt-4">
-            <Button  style={{ color: "white" }}></Div>
+            <Button  style={{ color: "white" }}></Div></Div></Div></Div>
               <refreshcw >
               Retry Quiz
             </Div>

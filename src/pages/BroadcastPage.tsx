@@ -44,7 +44,7 @@ export default function BroadcastPage() {
                 </Div>
                 <Div className="p-4 border-t border-white/10 flex gap-2">
                     <Textarea placeholder="Say something..." className="bg-black/20 border-none text-sm" rows={1}/>
-                    <Button><Send size={16} /></Div></Div></Div></Button>
+                    <Button><Send size={16} /></Div></Div></Div></Div></Div></Div></Button>
                 </Div>
             </Div>
         </Div>

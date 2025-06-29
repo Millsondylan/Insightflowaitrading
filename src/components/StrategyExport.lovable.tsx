@@ -64,8 +64,7 @@ const StrategyExport = ({ result }: Props) => {
         <Div className="flex flex-wrap gap-4">
             <Button onClick={handleExportJSON}
               className="flex items-center gap-2 bg-white/10 hover:bg-cyan-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300"
-              title="Download full backtest result as a JSON file"
-  >
+              title="Download full backtest result as a JSON file">
               🧾 Export JSON
             </Div>
 

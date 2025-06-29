@@ -8,7 +8,7 @@ import { Tag, AlertTriangle, TrendingUp, TrendingDown, Zap } from 'lucide-react'
 
 interface ReplayAnnotationsProps {
   tradeId?: string;
-  onAnnotationAdd?: (annotation: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
+  onAnnotationAdd?: (annotation: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
 }
 
 export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, onAnnotationAdd }) => {

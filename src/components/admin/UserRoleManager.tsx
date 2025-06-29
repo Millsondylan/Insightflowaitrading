@@ -121,7 +121,7 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
                   <TableCell className="text-right" />
                     <Button variant="ghost"
                       className="h-8 w-8 p-0 text-gray-400 hover:text-white"
-            >
+         >
                       <Settings className="h-4 w-4" / />
                   </TableCell />
               ))

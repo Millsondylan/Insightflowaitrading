@@ -29,7 +29,7 @@ export default function FeedPage() {
             <Div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
                 <P className="text-gray-200">{insight.text}</P>
                 <Button variant="ghost" size="icon">
-                    <Eye  /></Button></Button></Button></Button></Button></Button></Button>
+                    <Eye  /></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
                 </Button>
             </Div>
         ))}

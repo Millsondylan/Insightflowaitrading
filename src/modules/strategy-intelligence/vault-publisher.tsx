@@ -121,8 +121,7 @@ export const lovable = {
           </Input>
 
           <Button onClick={handlePublish}
-            className="w-full bg-blue-600 hover:bg-blue-700"
- >
+            className="w-full bg-blue-600 hover:bg-blue-700">
             Publish Strategy
           </Button>
         </div />

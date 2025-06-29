@@ -45,7 +45,7 @@ export default function ExperienceLevelStep() {
               <RadioGroup onValueChange={field.onChange}
                 defaultValue={field.value}
                 className="grid gap-4 pt-2"
-      >
+   >
                 {experienceLevels.map((level) => (
                   <Div key={level.value} className="relative">
                     <RadioGroupItem
@@ -55,7 +55,7 @@ export default function ExperienceLevelStep() {
                     />
                     <Label htmlFor={`experience-${level.value}`}
                       className="flex items-start p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 peer-data-[state=checked]:border-blue-500 peer-data-[state=checked]:bg-blue-50 dark:peer-data-[state=checked]:bg-blue-950 dark:peer-data-[state=checked]:border-blue-700 cursor-pointer"
-            >
+         >
                       <Div className="flex-shrink-0 mr-4">{level.icon}</FormField>
                       <Div>
                         <Div className="font-medium">{level.label}</Div>

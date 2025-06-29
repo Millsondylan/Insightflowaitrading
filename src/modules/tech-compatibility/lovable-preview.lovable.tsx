@@ -5,7 +5,7 @@ import { Input } from '../../components/ui/input';
 
 interface LovablePreviewProps {
   sourceCode?: string;
-  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
+  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
 }
 
 export const LovablePreview: React.FC<LovablePreviewProps> = ({
@@ -82,8 +82,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
             Cancel
           </Div>
           <Button onClick={applyChanges}
-            disabled={!isEditing}
- >
+            disabled={!isEditing}>
             Apply Changes
           </Button>
         </Div>

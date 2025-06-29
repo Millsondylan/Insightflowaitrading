@@ -109,8 +109,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
           <Div className="flex justify-between items-center mb-6">
             <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</LessonBookmark>
             <Button onClick={handleBackToContent}
-              className="text-white/70 hover:text-cyan-400 text-sm"
-  >
+              className="text-white/70 hover:text-cyan-400 text-sm">
               ← Back to lesson content
             </Button>
           </Div>

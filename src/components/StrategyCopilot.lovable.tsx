@@ -170,7 +170,7 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   return (
     <Div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
       <H3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-        <Span></Div></Div>🤖</Div> Strategy Copilot
+        <Span></Div></Div></Div></Div></Div>🤖</Div> Strategy Copilot
       </H3>
 
       {loading && (
@@ -195,9 +195,9 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
             <Div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
               style={{ animationDelay: `${index * 100}ms` }}
-   ></Div>
+></Div>
               <Div className="flex items-start gap-3">
-                <Span className="text-2xl flex-shrink-0"></Div>{suggestion.icon}</Div>
+                <Span className="text-2xl flex-shrink-0"></Div></Div></Div></Div>{suggestion.icon}</Div>
                 <Div className="flex-1">
                   <P className="text-sm text-white/70 leading-relaxed">
                     {suggestion.message}

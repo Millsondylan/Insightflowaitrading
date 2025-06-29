@@ -132,8 +132,7 @@ export const lovable = {
 
         {diffs.map((diff, i) => (
           <Div key={i}
-            className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
->
+            className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}>
             <Div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <Div className="flex-1">

@@ -147,7 +147,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
             {matrix.symbols.map((symbol, index) => (
               <Div key={symbol}
                 className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-    >
+ >
                 {symbol}
               </Div>
             ))}
@@ -273,7 +273,7 @@ const fetchRollingCorrelation = async (
   symbol1: string, 
   symbol2: string, 
   window: number
-): Promise<RollingCorrelation /></CorrelationMatrix> => {
+): Promise<RollingCorrelation /></CorrelationMatrix></CorrelationMatrix></CorrelationMatrix></CorrelationMatrix> => {
   // TODO: implement real rolling correlation calculation
   return {
     symbol1,

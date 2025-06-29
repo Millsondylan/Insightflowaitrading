@@ -94,8 +94,7 @@ export const lovable = {
         <Div className="space-y-4">
           {filteredTickers.map((ticker) => (
             <Div key={ticker.symbol} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center"
-  >
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center">
               <Div>
                 <Div className="flex items-center space-x-2">
                   <H3 className="text-lg font-bold">{ticker.symbol}</Div>

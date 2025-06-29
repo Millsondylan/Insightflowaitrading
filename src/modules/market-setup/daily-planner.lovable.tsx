@@ -77,7 +77,7 @@ export const DailyPlanner: React.FC = () => {
                   {dailyPlan.potentialTrades.map((trade) => (
                     <Div key={trade.symbol}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
-             >
+          >
                       <Div>
                         <Div className="flex items-center space-x-2">
                           <H4 className="font-bold"></Div>{trade.symbol}</Div>
@@ -104,7 +104,7 @@ export const DailyPlanner: React.FC = () => {
                   {dailyPlan.keyEvents.map((event) => (
                     <Div key={event.id}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
-             >
+          >
                       <Div className="flex justify-between items-center mb-2">
                         <H4 className="font-bold"></Div>{event.title}</Div>
                         <Badge >

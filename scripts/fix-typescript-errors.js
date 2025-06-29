@@ -26,14 +26,14 @@ const typescriptFixes = [
     replacement: '$1: unknown',
     description: 'Replace any with unknown for better type safety'
   },
-  
+  /*
   // Add allowance for any in specific cases using ESLint disable comments
   {
     regex: /\b(\w+):\s*any\b/g,
     replacement: '$1: any // eslint-disable-line @typescript-eslint/no-explicit-any',
     description: 'Add ESLint disable comment for any types'
   },
-  
+  */
   // Replace require() with import statements
   {
     regex: /const\s+(\w+)\s*=\s*require\(['"]([^'"]+)['"]\);/g,

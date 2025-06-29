@@ -160,8 +160,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
           <Button variant="ghost" 
             size="sm" 
             onClick={onBack}
-            className="flex items-center gap-2 text-gray-400 hover:text-white"
- >
+            className="flex items-center gap-2 text-gray-400 hover:text-white">
             <ChevronLeft className="h-4 w-4" />
             Back to Markets
           </Div>
@@ -182,8 +181,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
           <Button variant="ghost" 
             size="sm" 
             onClick={onBack}
-            className="flex items-center gap-2 text-gray-400 hover:text-white"
-  >
+            className="flex items-center gap-2 text-gray-400 hover:text-white">
             <ChevronLeft className="h-4 w-4" />
             Back to Markets
           </Div>
@@ -203,8 +201,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         <Button variant="ghost" 
           size="sm" 
           onClick={onBack}
-          className="flex items-center gap-2 text-gray-400 hover:text-white"
->
+          className="flex items-center gap-2 text-gray-400 hover:text-white">
           <ChevronLeft className="h-4 w-4" />
           Back to Markets
         </Div>
@@ -309,7 +306,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
           </Div>
         </Div>
         <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Activity className="h-5 w-5 text-gray-400" /></Div></Div></Div>
+          <Activity className="h-5 w-5 text-gray-400" /></Div></Div></Div></Div></Div></Div>
           <Div></Div>
             <Div className="text-sm text-gray-400">
               {marketData.matchingSetups} matching setups

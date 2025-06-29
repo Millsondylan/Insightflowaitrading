@@ -121,7 +121,7 @@ export const lovable = {
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-      >
+   >
                   {result.passed ? (
                     <CheckCircle className="h-4 w-4" />
                   ) : (

@@ -67,7 +67,7 @@ export const VaultDetail: React.FC = () => {
               {strategy.tags?.map((tag) => (
                 <Span key={tag} 
                   className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
-         >
+      >
                   {tag}
                 </Div>
               ))}
