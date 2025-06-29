@@ -89,7 +89,7 @@ export const Button = ({
     ...getVariantStyles()
   };
 
-  const handleMouseEnter = (e: React.MouseEvent<htmlbuttonelement  >) => {
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!disabled) {
       if (variant === 'outline') {
         e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
@@ -99,7 +99,7 @@ export const Button = ({
     }
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<htmlbuttonelement  >) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!disabled) {
       if (variant === 'outline') {
         e.currentTarget.style.backgroundColor = 'transparent';
