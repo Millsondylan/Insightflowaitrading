@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,7 +30,17 @@ import {
   Target,
   Zap
 } from 'lucide-react';
-import { comprehensiveCourses } from '@/lib/academy/comprehensiveLessonData';
+import { useAuth } from '@/hooks/use-auth';
+import { 
+  getCategories, 
+  getCourses, 
+  getUserProgress,
+  startCourse,
+  AcademyCategory,
+  AcademyCourse,
+  AcademyProgress
+} from '@/lib/db/academy';
+import { useAuditLog } from '@/lib/monitoring/auditLogger';
 
 // Map icon names to components
 const iconMap: { [key: string]: any } = {
@@ -46,9 +56,11 @@ const iconMap: { [key: string]: any } = {
   Building,
 };
 
-const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
-  const Icon = iconMap[course.icon] || BookOpen;
+const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: AcademyProgress }) => {
+  const Icon = iconMap[course.icon || 'BookOpen'] || BookOpen;
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const { logClick } = useAuditLog();
   
   const categoryColors = {
     beginner: 'bg-green-500/20 text-green-400 border-green-500/30',
@@ -57,158 +69,162 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
     expert: 'bg-red-500/20 text-red-400 border-red-500/30',
   };
   
+  const handleCourseClick = async () => {
+    logClick('CourseCard', { courseId: course.id, courseTitle: course.title });
+    
+    if (user && !progress) {
+      await startCourse(user.id, course.id);
+    }
+    
+    navigate(`/academy/course/${course.id}`);
+  };
+  
   return (
-    <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group">
+    <Card 
+      className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
+      onClick={handleCourseClick}
+    >
       <CardHeader>
-        <div className="flex justify-between items-start">
-          <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 transition-colors">
-            <Icon className="w-6 h-6 text-blue-400" />
+        <div className="flex justify-between items-start mb-4">
+          <div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
+            <Icon className="w-6 h-6" />
           </div>
-          <Badge className={categoryColors[course.category]}>
-            {course.category}
+          <Badge className={categoryColors[course.difficulty || 'beginner']}>
+            {course.difficulty}
           </Badge>
         </div>
-        <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors">
-          {course.title}
-        </CardTitle>
+        <CardTitle className="text-xl text-white">{course.title}</CardTitle>
         <CardDescription className="text-gray-400">
           {course.description}
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Duration</span>
-            <span className="text-white font-medium">{course.duration}</span>
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Lessons</span>
-            <span className="text-white font-medium">{course.lessons.length} lessons</span>
-          </div>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-400">Students</span>
-            <span className="text-white font-medium">{course.enrolled.toLocaleString()}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-4 h-4 ${
-                    i < Math.floor(course.rating)
-                      ? 'text-yellow-400 fill-yellow-400'
-                      : 'text-gray-600'
-                  }`}
-                />
-              ))}
+          {progress && (
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-400">Progress</span>
+                <span className="text-white font-semibold">{Math.round(progress.progress_percentage)}%</span>
+              </div>
+              <Progress 
+                value={progress.progress_percentage} 
+                className="h-2 bg-gray-700"
+              />
             </div>
-            <span className="text-sm text-gray-400">({course.rating})</span>
+          )}
+          
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="flex items-center gap-2 text-gray-400">
+              <Clock className="w-4 h-4" />
+              <span>{course.duration_hours} hours</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-400">
+              <Users className="w-4 h-4" />
+              <span>{course.enrolled_count.toLocaleString()} enrolled</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-400">
+              <BookOpen className="w-4 h-4" />
+              <span>{course.modules_count} lessons</span>
+            </div>
+            <div className="flex items-center gap-2 text-gray-400">
+              <Star className="w-4 h-4 text-yellow-500" />
+              <span>{course.rating.toFixed(1)}</span>
+            </div>
           </div>
-          <Button 
-            className="w-full bg-blue-600 hover:bg-blue-700 group-hover:bg-blue-700"
-            onClick={() => navigate(`/academy/${course.id}`)}
-          >
-            Start Learning
-            <ChevronRight className="w-4 h-4 ml-2" />
-          </Button>
+          
+          <div className="flex flex-wrap gap-2">
+            {course.tags.slice(0, 3).map((tag, index) => (
+              <Badge key={index} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
       </CardContent>
     </Card>
   );
 };
 
-const FeaturedSection = () => {
-  return (
-    <div className="mb-8">
-      <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-        <Zap className="w-6 h-6 text-yellow-400" />
-        Featured Courses
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="bg-gradient-to-br from-blue-600/20 to-purple-600/20 border-white/20">
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <Target className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <CardTitle className="text-white">Quick Start Trading</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Get trading in 7 days
-                </CardDescription>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-300 mb-4">
-              Intensive bootcamp covering all essentials to start trading confidently within a week.
-            </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
-              Enroll Now
-            </Button>
-          </CardContent>
-        </Card>
-        
-        <Card className="bg-gradient-to-br from-green-600/20 to-emerald-600/20 border-white/20">
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <Award className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <CardTitle className="text-white">Pro Certification</CardTitle>
-                <CardDescription className="text-gray-300">
-                  Industry recognized cert
-                </CardDescription>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-300 mb-4">
-              Complete comprehensive program and earn your professional trading certification.
-            </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
-              Learn More
-            </Button>
-          </CardContent>
-        </Card>
-        
-        <Card className="bg-gradient-to-br from-orange-600/20 to-red-600/20 border-white/20">
-          <CardHeader>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <CardTitle className="text-white">Live Mentorship</CardTitle>
-                <CardDescription className="text-gray-300">
-                  1-on-1 with experts
-                </CardDescription>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <p className="text-sm text-gray-300 mb-4">
-              Get personalized guidance from professional traders in live sessions.
-            </p>
-            <Button className="w-full bg-white/20 hover:bg-white/30 text-white">
-              Book Session
-            </Button>
-          </CardContent>
-        </Card>
+const AchievementCard = ({ icon: Icon, title, value, color }: any) => (
+  <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700">
+    <CardContent className="p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-gray-400 text-sm">{title}</p>
+          <p className="text-2xl font-bold text-white mt-1">{value}</p>
+        </div>
+        <div className={`p-3 rounded-xl ${color}`}>
+          <Icon className="w-6 h-6 text-white" />
+        </div>
       </div>
-    </div>
-  );
-};
+    </CardContent>
+  </Card>
+);
 
 export default function AcademyPage() {
+  const { user } = useAuth();
+  const { logNavigation } = useAuditLog();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [categories, setCategories] = useState<AcademyCategory[]>([]);
+  const [courses, setCourses] = useState<AcademyCourse[]>([]);
+  const [userProgress, setUserProgress] = useState<AcademyProgress[]>([]);
+  const [loading, setLoading] = useState(true);
   
-  const filteredCourses = selectedCategory === 'all' 
-    ? comprehensiveCourses 
-    : comprehensiveCourses.filter(course => course.category === selectedCategory);
+  useEffect(() => {
+    logNavigation('home', '/academy');
+    loadData();
+  }, [user]);
   
-  const categories = ['all', 'beginner', 'intermediate', 'advanced', 'expert'];
+  useEffect(() => {
+    loadCourses();
+  }, [selectedCategory]);
+  
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const [categoriesData, coursesData] = await Promise.all([
+        getCategories(),
+        getCourses()
+      ]);
+      
+      setCategories(categoriesData);
+      setCourses(coursesData);
+      
+      if (user) {
+        const progressData = await getUserProgress(user.id);
+        setUserProgress(progressData);
+      }
+    } catch (error) {
+      console.error('Error loading academy data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const loadCourses = async () => {
+    try {
+      const coursesData = await getCourses(
+        selectedCategory === 'all' 
+          ? {} 
+          : { difficulty: selectedCategory as any }
+      );
+      setCourses(coursesData);
+    } catch (error) {
+      console.error('Error loading courses:', error);
+    }
+  };
+  
+  const getProgressForCourse = (courseId: string) => {
+    return userProgress.find(p => p.course_id === courseId);
+  };
+  
+  const completedCourses = userProgress.filter(p => p.completed_at).length;
+  const totalTimeSpent = userProgress.reduce((sum, p) => sum + p.time_spent_seconds, 0) / 3600;
+  const averageProgress = userProgress.length > 0 
+    ? userProgress.reduce((sum, p) => sum + p.progress_percentage, 0) / userProgress.length
+    : 0;
+  
+  const categoryOptions = ['all', 'beginner', 'intermediate', 'advanced', 'expert'];
   
   return (
     <div className="space-y-8">
@@ -227,166 +243,72 @@ export default function AcademyPage() {
       </div>
       
       {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
-              {comprehensiveCourses.length}+
-            </div>
-            <div className="text-sm text-gray-400">Courses</div>
-          </CardContent>
-        </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
-              {comprehensiveCourses.reduce((acc, course) => acc + course.enrolled, 0).toLocaleString()}+
-            </div>
-            <div className="text-sm text-gray-400">Students</div>
-          </CardContent>
-        </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
-              {comprehensiveCourses.reduce((acc, course) => acc + course.lessons.length, 0)}+
-            </div>
-            <div className="text-sm text-gray-400">Lessons</div>
-          </CardContent>
-        </Card>
-        <Card className="bg-white/5 border-white/10">
-          <CardContent className="p-6 text-center">
-            <div className="text-3xl font-bold text-white mb-1">
-              4.8
-            </div>
-            <div className="text-sm text-gray-400">Avg Rating</div>
-          </CardContent>
-        </Card>
-      </div>
+      {user && userProgress.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <AchievementCard
+            icon={Award}
+            title="Courses Completed"
+            value={completedCourses}
+            color="bg-green-600"
+          />
+          <AchievementCard
+            icon={Target}
+            title="Average Progress"
+            value={`${Math.round(averageProgress)}%`}
+            color="bg-blue-600"
+          />
+          <AchievementCard
+            icon={Clock}
+            title="Time Invested"
+            value={`${totalTimeSpent.toFixed(1)}h`}
+            color="bg-purple-600"
+          />
+          <AchievementCard
+            icon={Zap}
+            title="Current Streak"
+            value="7 days"
+            color="bg-orange-600"
+          />
+        </div>
+      )}
       
-      {/* Featured Section */}
-      <FeaturedSection />
-      
-      {/* Category Filter */}
-      <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory}>
-        <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto mb-8">
-          {categories.map((category) => (
+      {/* Category Tabs */}
+      <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+        <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto bg-gray-800">
+          {categoryOptions.map((category) => (
             <TabsTrigger 
               key={category} 
-              value={category}
-              className="capitalize"
+              value={category} 
+              className="capitalize data-[state=active]:bg-blue-600 data-[state=active]:text-white"
             >
               {category}
             </TabsTrigger>
           ))}
         </TabsList>
-        
-        <TabsContent value={selectedCategory} className="mt-0">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCourses.map(course => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
-        </TabsContent>
       </Tabs>
       
-      {/* Live Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12">
-        <Card className="lg:col-span-2 bg-white/5 border-white/10">
-          <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
-              <Radio className="w-5 h-5 text-red-500" />
-              Live Trading Sessions
-            </CardTitle>
-            <CardDescription className="text-gray-400">
-              Join professional traders in real-time market analysis
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
-                <div>
-                  <h4 className="font-medium text-white">Forex London Session</h4>
-                  <p className="text-sm text-gray-400">With TraderPro • Starting in 2h</p>
-                </div>
-                <Button size="sm" className="bg-red-600 hover:bg-red-700">
-                  Join Live
-                </Button>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
-                <div>
-                  <h4 className="font-medium text-white">Crypto Market Review</h4>
-                  <p className="text-sm text-gray-400">With CryptoKing • Tomorrow 9 AM</p>
-                </div>
-                <Button size="sm" variant="outline">
-                  Set Reminder
-                </Button>
-              </div>
-              <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
-                <div>
-                  <h4 className="font-medium text-white">Options Strategy Workshop</h4>
-                  <p className="text-sm text-gray-400">With ThetaGang • Friday 2 PM</p>
-                </div>
-                <Button size="sm" variant="outline">
-                  Set Reminder
-                </Button>
-              </div>
-            </div>
-            <Link to="/broadcast" className="block mt-4">
-              <Button variant="ghost" className="w-full">
-                View All Sessions
-                <ChevronRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-        
-        <Card className="bg-white/5 border-white/10">
-          <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
-              <MessageSquare className="w-5 h-5" />
-              Community
-            </CardTitle>
-            <CardDescription className="text-gray-400">
-              Connect with fellow traders
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-blue-600/20 rounded-full flex items-center justify-center">
-                  <Users className="w-4 h-4 text-blue-400" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm text-white">Active Discussions</p>
-                  <p className="text-xs text-gray-400">234 topics today</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-green-600/20 rounded-full flex items-center justify-center">
-                  <Award className="w-4 h-4 text-green-400" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm text-white">Study Groups</p>
-                  <p className="text-xs text-gray-400">45 active groups</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-purple-600/20 rounded-full flex items-center justify-center">
-                  <Target className="w-4 h-4 text-purple-400" />
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm text-white">Trading Challenges</p>
-                  <p className="text-xs text-gray-400">New challenge weekly</p>
-                </div>
-              </div>
-            </div>
-            <Link to="/community">
-              <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                Join Community
-              </Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </div>
+      {/* Course Grid */}
+      {loading ? (
+        <div className="text-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courses.map((course) => (
+            <CourseCard 
+              key={course.id} 
+              course={course} 
+              progress={getProgressForCourse(course.id)}
+            />
+          ))}
+        </div>
+      )}
+      
+      {courses.length === 0 && !loading && (
+        <div className="text-center py-12">
+          <p className="text-gray-400 text-lg">No courses found in this category.</p>
+        </div>
+      )}
     </div>
   );
 }

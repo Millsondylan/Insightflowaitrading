@@ -194,4 +194,171 @@ For issues with the AI reflection system:
 
 ---
 
-*Built with React, TypeScript, Supabase, and multiple AI providers for robust trading psychology analysis.* 
+*Built with React, TypeScript, Supabase, and multiple AI providers for robust trading psychology analysis.*
+
+# Insight Flow AI Trading Platform - Audit Compliance System
+
+This document outlines the comprehensive audit system implemented for the Insight Flow AI trading platform to ensure database persistence, regulatory compliance, and system integrity.
+
+## 1. Database Persistence
+
+All user interactions and system operations are now stored in the Supabase database with these tables:
+
+### Academy & Learning
+- `academy_categories`: Categorization of trading courses
+- `academy_courses`: Course content and metadata
+- `academy_progress`: User progress through educational material
+- `lesson_commentary`: AI-generated personalized narration for lessons
+
+### User Personalization
+- `user_settings`: User preferences for notifications, UI, and system behavior
+- `user_notifications`: Notification history and status
+- `user_correlation_settings`: Custom settings for market correlation analysis
+- `user_states`: User UI state persistence for consistent experiences
+
+### System Monitoring
+- `audit_logs`: Comprehensive tracking of all user interactions
+- `performance_metrics`: System performance measurements
+- `error_logs`: Tracking of errors and exception handling
+
+## 2. Core Components
+
+### Notification Center
+- Real-time notification delivery through in-app, email, and push channels
+- Notification priority management and quiet hours
+- Read/unread status tracking and batch management
+
+### User Settings System
+- Comprehensive preferences management
+- Theme and UI customization
+- Privacy and notification controls
+- Feature toggle management
+
+### Audit Logging
+- User interaction tracking with timestamps and context
+- Navigation path recording
+- Form submission logging (with PII protection)
+- Error boundary integration
+- Performance metric collection
+
+### AI Transparency
+- Lesson narrator with customizable voice and style
+- Personalization based on user preferences and progress
+- Explicit storage of AI-generated content for review
+
+### Market Analysis
+- Correlation tracking between trading assets
+- User favorites and custom correlation pairs
+- Historical correlation data with volatility metrics
+
+## 3. Implementation Details
+
+### Database Migration
+- Added migration script `20250628111807_complete_audit_tables.sql`
+- Updated Supabase types to include new tables
+- Added foreign key constraints for data integrity
+
+### Monitoring Services
+- Added `auditLogger.ts` for comprehensive event tracking
+- Implemented event hooks for React components
+- Created performance tracking system
+
+### Component Integration
+- Added notification center to app layout
+- Integrated lesson narrator with academy content
+- Updated market correlations visualization
+- Added user settings page
+
+### Lovable.dev Compatibility
+- All components have both standard and lovable versions
+- AI-powered features seamlessly integrate with Lovable architecture
+
+## 4. Usage
+
+### Importing Audit Services
+```typescript
+// Import audit services
+import { useAuditLog } from '@/lib/monitoring/auditLogger';
+
+function MyComponent() {
+  // Get audit logging functions
+  const { logClick, logFormSubmit } = useAuditLog();
+  
+  // Log user interactions
+  const handleButtonClick = () => {
+    logClick('SubmitButton', { formId: 'user-settings' });
+    // Rest of handling logic
+  };
+}
+```
+
+### Recording User Settings
+```typescript
+import { getUserSettings, updateUserSettings } from '@/lib/db/userSettings';
+
+// Get user settings
+const settings = await getUserSettings(userId);
+
+// Update user settings
+await updateUserSettings(userId, {
+  notification_preferences: {
+    email: true,
+    push: false
+  }
+});
+```
+
+### Using the AI Narrator
+```typescript
+import { generateLessonNarration, NarratorContext } from '@/lib/academy/generateLessonNarrator';
+
+// Generate personalized narration
+const context: NarratorContext = {
+  lessonSection: 'risk-management-intro',
+  lessonTitle: 'Introduction to Risk Management',
+  difficulty: 'intermediate',
+  topics: ['risk-reward', 'position-sizing']
+};
+
+const narration = await generateLessonNarration(
+  userId,
+  courseId,
+  lessonContent,
+  context,
+  { voice: 'professional', pace: 'medium' }
+);
+```
+
+### Analyzing Market Correlations
+```typescript
+import { getMarketCorrelations, CorrelationTimePeriod } from '@/lib/markets/correlations';
+
+// Get correlations for specific time period
+const correlations = await getMarketCorrelations(
+  'all',
+  '30d' as CorrelationTimePeriod,
+  userId
+);
+
+// Mark favorite pairs
+await toggleFavoritePair(userId, {
+  base_asset: 'BTC',
+  quote_asset: 'ETH'
+});
+```
+
+## 5. Security & Privacy
+
+The audit system has been designed with security and privacy in mind:
+- Sensitive data is redacted in logs
+- User preferences control data collection levels
+- All stored data follows GDPR compliance guidelines
+- Regular automatic pruning of old logs
+
+## 6. Next Steps
+
+Additional planned enhancements:
+- Data export functionality for user data portability
+- Enhanced analytics dashboard for user behavior insights
+- Compliance reporting tools for regulatory requirements
+- Extended test coverage for audit mechanisms 

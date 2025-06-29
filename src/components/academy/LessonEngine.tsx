@@ -1,139 +1,307 @@
-import * as React from "react";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Progress } from '@/components/ui/progress';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { ArrowLeft, ArrowRight, Check, Medal, BookOpen, Code } from 'lucide-react';
+import LessonBookmark from './LessonBookmark';
+import LessonNarrator from './LessonNarrator';
+import { useAuditLog } from '@/lib/monitoring/auditLogger';
+import { updateLessonProgress } from '@/lib/db/academy';
+import { useLessonProgress } from '@/hooks/use-lesson-progress';
 
-export type LessonSection = {
+interface LessonSection {
   id: string;
   title: string;
-  content: string; // Markdown or HTML
-  videoUrl?: string;
-  pdfUrl?: string;
-  quizId?: string;
-};
+  content: string;
+  code_example?: string;
+  quiz?: {
+    question: string;
+    options: string[];
+    correctAnswer: number;
+    explanation: string;
+  };
+}
 
-type Props = {
+interface LessonData {
+  id: string;
+  courseId: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  topics: string[];
   sections: LessonSection[];
-  onProgressUpdate?: (completedIds: string[]) => void;
-  onTakeQuiz?: (quizId: string, sectionId: string) => void;
-};
+}
 
-const getEmbedUrl = (url: string): string | null => {
-  let videoId: string | null = null;
-  if (url.includes('youtube.com/watch?v=')) {
-    videoId = url.split('v=')[1].split('&')[0];
-    return `https://www.youtube.com/embed/${videoId}`;
-  }
-  if (url.includes('youtu.be/')) {
-    videoId = url.split('youtu.be/')[1].split('?')[0];
-    return `https://www.youtube.com/embed/${videoId}`;
-  }
-  if (url.includes('vimeo.com/')) {
-    videoId = url.split('vimeo.com/')[1].split('?')[0];
-    return `https://player.vimeo.com/video/${videoId}`;
-  }
-  return null;
-};
-
-const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
-  const [completedIds, setCompletedIds] = React.useState<Set<string>>(new Set());
-  const [visibleSections, setVisibleSections] = React.useState<Set<string>>(new Set());
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    if (onProgressUpdate) {
-      onProgressUpdate(Array.from(completedIds));
-    }
-  }, [completedIds, onProgressUpdate]);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const id = entry.target.getAttribute('data-section-id');
-          if (id && entry.isIntersecting) {
-            setVisibleSections((prev) => new Set(prev).add(id));
-            setCompletedIds((prev) => {
-              if (prev.has(id)) {
-                return prev;
-              }
-              const newSet = new Set(prev);
-              newSet.add(id);
-              return newSet;
-            });
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const currentRef = containerRef.current;
-    if (currentRef) {
-      const children = Array.from(currentRef.children);
-      children.forEach((child) => observer.observe(child as Element));
-      return () => {
-        children.forEach((child) => observer.unobserve(child as Element));
-      };
-    }
-  }, [sections, onProgressUpdate]);
+export default function LessonEngine({ lesson }: { lesson: LessonData }) {
+  const { lessonId } = useParams<{ lessonId: string }>();
+  const { logClick } = useAuditLog();
+  const navigate = useNavigate();
   
-  return (
-    <div ref={containerRef} className="theme-academy space-y-8">
-      {sections.map((section) => {
-        const isVisible = visibleSections.has(section.id);
-        const embedUrl = section.videoUrl ? getEmbedUrl(section.videoUrl) : null;
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const [quizAnswers, setQuizAnswers] = useState<{[key: string]: number | null}>({});
+  const [showExplanation, setShowExplanation] = useState<{[key: string]: boolean}>({});
+  const [selectedTab, setSelectedTab] = useState<'content' | 'code'>('content');
+  const { markSectionCompleted, getSectionProgress, getOverallProgress } = useLessonProgress();
+  
+  const currentSection = lesson.sections[currentSectionIndex];
+  const progress = getOverallProgress(lessonId || '');
+  
+  useEffect(() => {
+    // Reset quiz state when section changes
+    setShowExplanation({});
+  }, [currentSectionIndex]);
 
-        return (
-          <div
-            key={section.id}
-            data-section-id={section.id}
-            className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}
-          >
-            <h2 className="text-white text-2xl font-bold">{section.title}</h2>
-            
-            <div
-              className="prose prose-invert max-w-none text-white/80"
-              dangerouslySetInnerHTML={{ __html: section.content }}
-            />
+  const handleNextSection = () => {
+    const sectionId = currentSection?.id;
+    if (sectionId) {
+      markSectionCompleted(lessonId || '', sectionId);
+      
+      // Record section completion in the database
+      if (lessonId) {
+        updateLessonProgress(lessonId, sectionId, 'completed');
+      }
+      
+      logClick('NextLessonSection', { 
+        lessonId, 
+        fromSection: currentSectionIndex,
+        toSection: currentSectionIndex + 1
+      });
+    }
+    
+    if (currentSectionIndex < lesson.sections.length - 1) {
+      setCurrentSectionIndex(currentSectionIndex + 1);
+      setSelectedTab('content');
+      window.scrollTo(0, 0);
+    } else {
+      // At the end of the lesson
+      navigate('/academy');
+    }
+  };
+  
+  const handlePrevSection = () => {
+    if (currentSectionIndex > 0) {
+      logClick('PrevLessonSection', { 
+        lessonId, 
+        fromSection: currentSectionIndex,
+        toSection: currentSectionIndex - 1 
+      });
+      
+      setCurrentSectionIndex(currentSectionIndex - 1);
+      setSelectedTab('content');
+      window.scrollTo(0, 0);
+    }
+  };
+  
+  const handleAnswerSelect = (sectionId: string, answerIndex: number) => {
+    setQuizAnswers({ ...quizAnswers, [sectionId]: answerIndex });
+  };
+  
+  const handleCheckAnswer = (sectionId: string, correctAnswer: number) => {
+    setShowExplanation({ ...showExplanation, [sectionId]: true });
+    
+    const isCorrect = quizAnswers[sectionId] === correctAnswer;
+    
+    logClick('QuizAnswerSubmitted', { 
+      lessonId,
+      sectionId,
+      isCorrect 
+    });
+    
+    if (isCorrect) {
+      // Record quiz completion in the database
+      if (lessonId) {
+        updateLessonProgress(lessonId, sectionId, 'quiz_completed');
+      }
+    }
+  };
+  
+  const isLastSection = currentSectionIndex === lesson.sections.length - 1;
 
-            {embedUrl && (
-              <div style={{position: 'relative', paddingBottom: '56.25%', height: 0}}>
-                <iframe
-                  src={embedUrl}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={section.title}
-                  style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
-                  className="rounded-lg"
-                />
+  const renderQuiz = (quiz: LessonSection['quiz'], sectionId: string) => {
+    if (!quiz) return null;
+    
+    const selectedAnswer = quizAnswers[sectionId];
+    const isAnswered = selectedAnswer !== undefined;
+    const isCorrect = selectedAnswer === quiz.correctAnswer;
+    const showAnswer = showExplanation[sectionId];
+    
+    return (
+      <div className="mt-8 space-y-4 border rounded-lg p-6 bg-gray-900">
+        <h3 className="text-xl font-bold">Quiz Time</h3>
+        <p className="text-gray-300 mb-4">{quiz.question}</p>
+        
+        <div className="space-y-3">
+          {quiz.options.map((option, idx) => (
+            <div 
+              key={idx}
+              onClick={() => !showAnswer && handleAnswerSelect(sectionId, idx)}
+              className={`
+                p-4 border rounded-md cursor-pointer transition-colors
+                ${selectedAnswer === idx 
+                  ? showAnswer
+                    ? idx === quiz.correctAnswer 
+                      ? 'bg-green-900/20 border-green-500'
+                      : 'bg-red-900/20 border-red-500'
+                    : 'bg-blue-900/20 border-blue-500'
+                  : showAnswer && idx === quiz.correctAnswer
+                    ? 'bg-green-900/20 border-green-500'
+                    : 'hover:bg-gray-800 border-gray-700'
+                }
+              `}
+            >
+              <div className="flex items-center justify-between">
+                <div>{option}</div>
+                {showAnswer && idx === quiz.correctAnswer && (
+                  <Check className="text-green-500 h-5 w-5" />
+                )}
               </div>
-            )}
-
-            <div className="flex flex-wrap gap-4 pt-4">
-              {section.pdfUrl && (
-                <a
-                  href={section.pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                  className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
-                >
-                  <span>📄</span> Download PDF
-                </a>
-              )}
-
-              {section.quizId && (
-                <button
-                  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
-                  className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
-                >
-                  <span>🧠</span> Take Quiz
-                </button>
-              )}
             </div>
+          ))}
+        </div>
+        
+        {showAnswer ? (
+          <div className="mt-4">
+            <Alert 
+              variant={isCorrect ? "default" : "destructive"} 
+              className={isCorrect ? "border-green-500 bg-green-900/20" : ""}
+            >
+              <AlertTitle>{isCorrect ? "Correct!" : "Not quite right"}</AlertTitle>
+              <AlertDescription>
+                {quiz.explanation}
+              </AlertDescription>
+            </Alert>
           </div>
-        );
-      })}
+        ) : (
+          <Button 
+            className="mt-4" 
+            disabled={selectedAnswer === undefined}
+            onClick={() => handleCheckAnswer(sectionId, quiz.correctAnswer)}
+          >
+            Check Answer
+          </Button>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="container max-w-4xl mx-auto py-8 px-4">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-2xl font-bold">{lesson.title}</h1>
+          <p className="text-gray-400">{lesson.description}</p>
+        </div>
+        
+        <LessonBookmark lessonId={lessonId || ''} />
+      </div>
+      
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <div className="text-sm text-gray-400">
+            Progress: {Math.round(progress)}%
+          </div>
+          <div className="text-sm text-gray-400">
+            Section {currentSectionIndex + 1} of {lesson.sections.length}
+          </div>
+        </div>
+        <Progress value={progress} className="h-2" />
+      </div>
+      
+      {currentSection && (
+        <>
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-xl">{currentSection.title}</CardTitle>
+            </CardHeader>
+            
+            {/* Include the AI lesson narrator */}
+            <CardContent>
+              {/* Only render narrator if we have enough content to narrate */}
+              {currentSection.content && currentSection.content.length > 200 && (
+                <LessonNarrator
+                  lessonId={lesson.id}
+                  courseId={lesson.courseId}
+                  sectionId={currentSection.id}
+                  sectionContent={currentSection.content}
+                  title={currentSection.title}
+                  difficulty={lesson.difficulty}
+                  topics={lesson.topics}
+                />
+              )}
+              
+              {currentSection.code_example ? (
+                <Tabs 
+                  defaultValue="content" 
+                  value={selectedTab}
+                  onValueChange={(v) => setSelectedTab(v as 'content' | 'code')}
+                  className="mt-4"
+                >
+                  <TabsList className="grid grid-cols-2 w-[400px]">
+                    <TabsTrigger value="content" className="flex items-center gap-2">
+                      <BookOpen className="h-4 w-4" /> Content
+                    </TabsTrigger>
+                    <TabsTrigger value="code" className="flex items-center gap-2">
+                      <Code className="h-4 w-4" /> Code Example
+                    </TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="content" className="mt-6">
+                    <div className="prose prose-invert max-w-none">
+                      <div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
+                    </div>
+                    
+                    {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
+                  </TabsContent>
+                  
+                  <TabsContent value="code" className="mt-6">
+                    <div className="bg-gray-900 p-4 rounded-md overflow-auto">
+                      <pre className="text-sm">
+                        <code>{currentSection.code_example}</code>
+                      </pre>
+                    </div>
+                  </TabsContent>
+                </Tabs>
+              ) : (
+                <>
+                  <div className="prose prose-invert max-w-none">
+                    <div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
+                  </div>
+                  
+                  {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
+                </>
+              )}
+            </CardContent>
+            
+            <CardFooter className="flex justify-between pt-6">
+              <Button
+                variant="outline"
+                onClick={handlePrevSection}
+                disabled={currentSectionIndex === 0}
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+              </Button>
+              
+              <Button
+                onClick={handleNextSection}
+                disabled={currentSection.quiz && !showExplanation[currentSection.id]}
+              >
+                {isLastSection ? (
+                  <>
+                    <Medal className="mr-2 h-4 w-4" /> Complete Lesson
+                  </>
+                ) : (
+                  <>
+                    Next <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </CardFooter>
+          </Card>
+        </>
+      )}
     </div>
   );
-};
-
-export default LessonEngine; 
+} 

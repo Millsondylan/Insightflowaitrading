@@ -1475,6 +1475,9 @@ export type Database = {
           end_date: string;
           data_points: number;
           created_at: string;
+          color_palette: Json;
+          correlation_trend: number[];
+          significance_level: number;
         };
         Insert: {
           id?: string;
@@ -1485,6 +1488,9 @@ export type Database = {
           end_date: string;
           data_points: number;
           created_at?: string;
+          color_palette?: Json;
+          correlation_trend?: number[];
+          significance_level?: number;
         };
         Update: {
           id?: string;
@@ -1495,8 +1501,929 @@ export type Database = {
           end_date?: string;
           data_points?: number;
           created_at?: string;
+          color_palette?: Json;
+          correlation_trend?: number[];
+          significance_level?: number;
         };
         Relationships: [];
+      };
+      academy_categories: {
+        Row: {
+          id: string;
+          name: string;
+          description: string | null;
+          icon: string | null;
+          display_order: number;
+          color_scheme: Json;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          description?: string | null;
+          icon?: string | null;
+          display_order?: number;
+          color_scheme?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          description?: string | null;
+          icon?: string | null;
+          display_order?: number;
+          color_scheme?: Json;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      academy_courses: {
+        Row: {
+          id: string;
+          category_id: string | null;
+          title: string;
+          description: string | null;
+          difficulty: string | null;
+          course_type: string[];
+          icon: string | null;
+          duration_hours: number;
+          modules_count: number;
+          enrolled_count: number;
+          rating: number;
+          tags: string[];
+          prerequisites: string[];
+          learning_objectives: Json;
+          author_info: Json;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          category_id?: string | null;
+          title: string;
+          description?: string | null;
+          difficulty?: string | null;
+          course_type?: string[];
+          icon?: string | null;
+          duration_hours?: number;
+          modules_count?: number;
+          enrolled_count?: number;
+          rating?: number;
+          tags?: string[];
+          prerequisites?: string[];
+          learning_objectives?: Json;
+          author_info?: Json;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          category_id?: string | null;
+          title?: string;
+          description?: string | null;
+          difficulty?: string | null;
+          course_type?: string[];
+          icon?: string | null;
+          duration_hours?: number;
+          modules_count?: number;
+          enrolled_count?: number;
+          rating?: number;
+          tags?: string[];
+          prerequisites?: string[];
+          learning_objectives?: Json;
+          author_info?: Json;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "academy_courses_category_id_fkey";
+            columns: ["category_id"];
+            isOneToOne: false;
+            referencedRelation: "academy_categories";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      academy_progress: {
+        Row: {
+          id: string;
+          user_id: string;
+          course_id: string;
+          started_at: string;
+          last_accessed_at: string;
+          completed_at: string | null;
+          progress_percentage: number;
+          module_checkpoints: Json;
+          quiz_answers: Json;
+          time_spent_seconds: number;
+          reflection_timestamps: string[];
+          notes: string[];
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          course_id: string;
+          started_at?: string;
+          last_accessed_at?: string;
+          completed_at?: string | null;
+          progress_percentage?: number;
+          module_checkpoints?: Json;
+          quiz_answers?: Json;
+          time_spent_seconds?: number;
+          reflection_timestamps?: string[];
+          notes?: string[];
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          course_id?: string;
+          started_at?: string;
+          last_accessed_at?: string;
+          completed_at?: string | null;
+          progress_percentage?: number;
+          module_checkpoints?: Json;
+          quiz_answers?: Json;
+          time_spent_seconds?: number;
+          reflection_timestamps?: string[];
+          notes?: string[];
+        };
+        Relationships: [
+          {
+            foreignKeyName: "academy_progress_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "academy_progress_course_id_fkey";
+            columns: ["course_id"];
+            isOneToOne: false;
+            referencedRelation: "academy_courses";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      user_settings: {
+        Row: {
+          id: string;
+          user_id: string;
+          notification_channels: Json;
+          notification_types: Json;
+          quiet_hours: Json;
+          theme_preferences: Json;
+          layout_preferences: Json;
+          chart_settings: Json;
+          feature_toggles: Json;
+          coaching_tone: string;
+          reminder_frequency: string;
+          language: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          notification_channels?: Json;
+          notification_types?: Json;
+          quiet_hours?: Json;
+          theme_preferences?: Json;
+          layout_preferences?: Json;
+          chart_settings?: Json;
+          feature_toggles?: Json;
+          coaching_tone?: string;
+          reminder_frequency?: string;
+          language?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          notification_channels?: Json;
+          notification_types?: Json;
+          quiet_hours?: Json;
+          theme_preferences?: Json;
+          layout_preferences?: Json;
+          chart_settings?: Json;
+          feature_toggles?: Json;
+          coaching_tone?: string;
+          reminder_frequency?: string;
+          language?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_settings_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      user_notifications: {
+        Row: {
+          id: string;
+          user_id: string;
+          notification_type: string;
+          title: string;
+          message: string;
+          data: Json;
+          priority: string;
+          channels: string[];
+          status: string;
+          sent_at: string | null;
+          read_at: string | null;
+          expires_at: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          notification_type: string;
+          title: string;
+          message: string;
+          data?: Json;
+          priority?: string;
+          channels?: string[];
+          status?: string;
+          sent_at?: string | null;
+          read_at?: string | null;
+          expires_at?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          notification_type?: string;
+          title?: string;
+          message?: string;
+          data?: Json;
+          priority?: string;
+          channels?: string[];
+          status?: string;
+          sent_at?: string | null;
+          read_at?: string | null;
+          expires_at?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_notifications_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      audit_logs: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          action_type: string;
+          component_name: string;
+          component_path: string | null;
+          action_details: Json;
+          client_timestamp: string;
+          server_timestamp: string;
+          session_id: string | null;
+          ip_address: string | null;
+          user_agent: string | null;
+          duration_ms: number | null;
+        };
+        Insert: {
+          id?: string;
+          user_id?: string | null;
+          action_type: string;
+          component_name: string;
+          component_path?: string | null;
+          action_details?: Json;
+          client_timestamp: string;
+          server_timestamp?: string;
+          session_id?: string | null;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          duration_ms?: number | null;
+        };
+        Update: {
+          id?: string;
+          user_id?: string | null;
+          action_type?: string;
+          component_name?: string;
+          component_path?: string | null;
+          action_details?: Json;
+          client_timestamp?: string;
+          server_timestamp?: string;
+          session_id?: string | null;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          duration_ms?: number | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "audit_logs_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      market_assets: {
+        Row: {
+          id: string;
+          symbol: string;
+          name: string;
+          asset_class: string | null;
+          exchange: string | null;
+          tags: string[];
+          volatility_profile: string | null;
+          avg_true_range: Json;
+          trading_hours: Json;
+          contract_specs: Json;
+          correlation_pairs: string[];
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          symbol: string;
+          name: string;
+          asset_class?: string | null;
+          exchange?: string | null;
+          tags?: string[];
+          volatility_profile?: string | null;
+          avg_true_range?: Json;
+          trading_hours?: Json;
+          contract_specs?: Json;
+          correlation_pairs?: string[];
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          symbol?: string;
+          name?: string;
+          asset_class?: string | null;
+          exchange?: string | null;
+          tags?: string[];
+          volatility_profile?: string | null;
+          avg_true_range?: Json;
+          trading_hours?: Json;
+          contract_specs?: Json;
+          correlation_pairs?: string[];
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      user_favorite_pairs: {
+        Row: {
+          id: string;
+          user_id: string;
+          symbol_pair: string[];
+          notify_on_inverse_correlation: boolean;
+          correlation_threshold: number;
+          custom_notes: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          symbol_pair: string[];
+          notify_on_inverse_correlation?: boolean;
+          correlation_threshold?: number;
+          custom_notes?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          symbol_pair?: string[];
+          notify_on_inverse_correlation?: boolean;
+          correlation_threshold?: number;
+          custom_notes?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_favorite_pairs_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      copilot_logs: {
+        Row: {
+          id: string;
+          user_id: string;
+          session_id: string;
+          component_context: string;
+          user_query: string | null;
+          copilot_response: string;
+          response_type: string | null;
+          scope_context: Json;
+          user_history_key: string | null;
+          tokens_used: number;
+          response_time_ms: number | null;
+          feedback_rating: number | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          session_id: string;
+          component_context: string;
+          user_query?: string | null;
+          copilot_response: string;
+          response_type?: string | null;
+          scope_context?: Json;
+          user_history_key?: string | null;
+          tokens_used?: number;
+          response_time_ms?: number | null;
+          feedback_rating?: number | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          session_id?: string;
+          component_context?: string;
+          user_query?: string | null;
+          copilot_response?: string;
+          response_type?: string | null;
+          scope_context?: Json;
+          user_history_key?: string | null;
+          tokens_used?: number;
+          response_time_ms?: number | null;
+          feedback_rating?: number | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "copilot_logs_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      coaching_feedback: {
+        Row: {
+          id: string;
+          user_id: string;
+          feedback_type: string | null;
+          context_data: Json;
+          ai_analysis: string;
+          suggestions: Json;
+          urgency: string;
+          user_acknowledged: boolean;
+          acknowledged_at: string | null;
+          follow_up_required: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          feedback_type?: string | null;
+          context_data: Json;
+          ai_analysis: string;
+          suggestions?: Json;
+          urgency?: string;
+          user_acknowledged?: boolean;
+          acknowledged_at?: string | null;
+          follow_up_required?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          feedback_type?: string | null;
+          context_data?: Json;
+          ai_analysis?: string;
+          suggestions?: Json;
+          urgency?: string;
+          user_acknowledged?: boolean;
+          acknowledged_at?: string | null;
+          follow_up_required?: boolean;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "coaching_feedback_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      ui_error_captures: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          error_type: string;
+          error_message: string;
+          stack_trace: string | null;
+          component_stack: string | null;
+          browser_info: Json;
+          gpt_analysis: string | null;
+          user_facing_message: string | null;
+          suggested_actions: Json;
+          severity: string;
+          resolution_status: string;
+          occurred_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id?: string | null;
+          error_type: string;
+          error_message: string;
+          stack_trace?: string | null;
+          component_stack?: string | null;
+          browser_info?: Json;
+          gpt_analysis?: string | null;
+          user_facing_message?: string | null;
+          suggested_actions?: Json;
+          severity?: string;
+          resolution_status?: string;
+          occurred_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string | null;
+          error_type?: string;
+          error_message?: string;
+          stack_trace?: string | null;
+          component_stack?: string | null;
+          browser_info?: Json;
+          gpt_analysis?: string | null;
+          user_facing_message?: string | null;
+          suggested_actions?: Json;
+          severity?: string;
+          resolution_status?: string;
+          occurred_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "ui_error_captures_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      interaction_heatmap: {
+        Row: {
+          id: string;
+          user_id: string;
+          page_path: string;
+          component_id: string;
+          interaction_type: string;
+          x_position: number | null;
+          y_position: number | null;
+          viewport_width: number | null;
+          viewport_height: number | null;
+          time_on_component: number | null;
+          interaction_count: number;
+          device_type: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          page_path: string;
+          component_id: string;
+          interaction_type: string;
+          x_position?: number | null;
+          y_position?: number | null;
+          viewport_width?: number | null;
+          viewport_height?: number | null;
+          time_on_component?: number | null;
+          interaction_count?: number;
+          device_type?: string | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          page_path?: string;
+          component_id?: string;
+          interaction_type?: string;
+          x_position?: number | null;
+          y_position?: number | null;
+          viewport_width?: number | null;
+          viewport_height?: number | null;
+          time_on_component?: number | null;
+          interaction_count?: number;
+          device_type?: string | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "interaction_heatmap_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      user_journey_state: {
+        Row: {
+          id: string;
+          user_id: string;
+          session_id: string;
+          current_path: string;
+          journey_stack: Json;
+          form_states: Json;
+          component_states: Json;
+          feature_interactions: Json;
+          last_activity: string;
+          is_active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          session_id: string;
+          current_path: string;
+          journey_stack?: Json;
+          form_states?: Json;
+          component_states?: Json;
+          feature_interactions?: Json;
+          last_activity?: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          session_id?: string;
+          current_path?: string;
+          journey_stack?: Json;
+          form_states?: Json;
+          component_states?: Json;
+          feature_interactions?: Json;
+          last_activity?: string;
+          is_active?: boolean;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_journey_state_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      lesson_commentary: {
+        Row: {
+          id: string;
+          course_id: string;
+          user_id: string;
+          lesson_section: string;
+          narrator_style: string;
+          generated_commentary: string;
+          user_context: Json;
+          timestamp_in_lesson: number | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          course_id: string;
+          user_id: string;
+          lesson_section: string;
+          narrator_style?: string;
+          generated_commentary: string;
+          user_context?: Json;
+          timestamp_in_lesson?: number | null;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          course_id?: string;
+          user_id?: string;
+          lesson_section?: string;
+          narrator_style?: string;
+          generated_commentary?: string;
+          user_context?: Json;
+          timestamp_in_lesson?: number | null;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "lesson_commentary_course_id_fkey";
+            columns: ["course_id"];
+            isOneToOne: false;
+            referencedRelation: "academy_courses";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "lesson_commentary_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      user_course_feedback: {
+        Row: {
+          id: string;
+          user_id: string;
+          course_id: string;
+          rating: number | null;
+          difficulty_rating: string | null;
+          comment: string | null;
+          helpful_modules: string[];
+          improvement_suggestions: string | null;
+          would_recommend: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          course_id: string;
+          rating?: number | null;
+          difficulty_rating?: string | null;
+          comment?: string | null;
+          helpful_modules?: string[];
+          improvement_suggestions?: string | null;
+          would_recommend?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          course_id?: string;
+          rating?: number | null;
+          difficulty_rating?: string | null;
+          comment?: string | null;
+          helpful_modules?: string[];
+          improvement_suggestions?: string | null;
+          would_recommend?: boolean;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_course_feedback_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "user_course_feedback_course_id_fkey";
+            columns: ["course_id"];
+            isOneToOne: false;
+            referencedRelation: "academy_courses";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      course_challenges: {
+        Row: {
+          id: string;
+          course_id: string;
+          title: string;
+          description: string | null;
+          challenge_type: string | null;
+          requirements: Json;
+          passing_criteria: Json;
+          time_limit_minutes: number | null;
+          points: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          course_id: string;
+          title: string;
+          description?: string | null;
+          challenge_type?: string | null;
+          requirements?: Json;
+          passing_criteria?: Json;
+          time_limit_minutes?: number | null;
+          points?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          course_id?: string;
+          title?: string;
+          description?: string | null;
+          challenge_type?: string | null;
+          requirements?: Json;
+          passing_criteria?: Json;
+          time_limit_minutes?: number | null;
+          points?: number;
+          created_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "course_challenges_course_id_fkey";
+            columns: ["course_id"];
+            isOneToOne: false;
+            referencedRelation: "academy_courses";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
+      market_mood_feed: {
+        Row: {
+          id: string;
+          generated_at: string;
+          market_summary: Json;
+          correlation_shifts: Json;
+          volatility_alerts: Json;
+          sentiment_indicators: Json;
+          ai_brief: string | null;
+          expires_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          generated_at?: string;
+          market_summary: Json;
+          correlation_shifts?: Json;
+          volatility_alerts?: Json;
+          sentiment_indicators?: Json;
+          ai_brief?: string | null;
+          expires_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          generated_at?: string;
+          market_summary?: Json;
+          correlation_shifts?: Json;
+          volatility_alerts?: Json;
+          sentiment_indicators?: Json;
+          ai_brief?: string | null;
+          expires_at?: string | null;
+        };
+        Relationships: [];
+      };
+      user_market_focus: {
+        Row: {
+          id: string;
+          user_id: string;
+          focused_markets: string[];
+          favorite_symbols: string[];
+          trading_hours_preference: Json;
+          news_preferences: Json;
+          technical_indicator_preferences: string[];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          focused_markets?: string[];
+          favorite_symbols?: string[];
+          trading_hours_preference?: Json;
+          news_preferences?: Json;
+          technical_indicator_preferences?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          user_id?: string;
+          focused_markets?: string[];
+          favorite_symbols?: string[];
+          trading_hours_preference?: Json;
+          news_preferences?: Json;
+          technical_indicator_preferences?: string[];
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "user_market_focus_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          }
+        ];
       };
     }
     Views: {
