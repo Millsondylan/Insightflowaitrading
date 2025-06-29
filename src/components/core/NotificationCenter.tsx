@@ -144,10 +144,9 @@ export default function NotificationCenter() {
     const isUnread = notification.status === 'pending' || !notification.read_at;
     
     return (
-      <div
-        key={notification.id}
+      <Div key={notification.id}
         className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}
-      >
+     >
         <div className="flex items-start gap-3">
           <div className="mt-0.5">
             {getNotificationIcon(notification.notification_type, notification.priority)}

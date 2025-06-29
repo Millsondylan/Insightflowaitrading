@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <p>© {currentYear} Insight Flow</p>
         <div className="mt-2">
-          <link to="/support" >
+          <Link to="/support">
             Support
           </Link>
         </div>

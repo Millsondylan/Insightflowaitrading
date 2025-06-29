@@ -10,7 +10,7 @@ interface LocalFirstPrototypeProps {
   onSync?: () => void;
 }
 
-export const LocalFirstPrototype: React.FC<localfirstprototypeprops  > = ({ onSync }) => {
+export const LocalFirstPrototype: React.FC<Localfirstprototypeprops > = ({ onSync }) => {
   const [syncStatus, setSyncStatus] = React.useState<'synced' | 'pending' | 'offline'>('synced');
   const [localChanges, setLocalChanges] = React.useState(0);
   const [prototypeCode, setPrototypeCode] = React.useState(`// Local Strategy Prototype
@@ -55,7 +55,7 @@ exit_rules:
   };
 
   return (
-    <card  >
+    <Card  />
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <harddrive  >

@@ -8,8 +8,8 @@ import { DailyPlan, MarketTicker, BroadcastEvent } from './types'
 import { generateDailyMarketInsight } from './utils'
 
 export const DailyPlanner: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<date  >(new Date())
-  const [dailyPlan, setDailyPlan] = useState<dailyplan  >({
+  const [selectedDate, setSelectedDate] = useState<Date >(new Date())
+  const [dailyPlan, setDailyPlan] = useState<Dailyplan  />({
     id: '1',
     date: new Date(),
     marketOutlook: 'Neutral',

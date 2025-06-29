@@ -19,8 +19,8 @@ interface AccessStatus {
   };
 }
 
-export const AccessCheckers: React.FC<accesscheckersprops  > = ({ userId }) => {
-  const [accessStatus, setAccessStatus] = React.useState<accessstatus  >([
+export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
+  const [accessStatus, setAccessStatus] = React.useState<Accessstatus  />([
     {
       feature: 'AI Strategy Builder',
       isLocked: false,

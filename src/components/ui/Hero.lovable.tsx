@@ -48,8 +48,8 @@ const Hero = () => {
           variants={itemVariants}
         >
           <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/strategy" >
-              <braincircuit  > Launch Builder
+            <Link to="/strategy">
+              <Braincircuit  /> Launch Builder
             </Link>
           </Button>
           <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>

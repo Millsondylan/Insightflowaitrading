@@ -6,10 +6,10 @@ type Props = {
 };
 
 const VisionUpload = ({ onUpload, defaultImage }: Props) => {
-  const [imageFile, setImageFile] = useState<file  >(null);
+  const [imageFile, setImageFile] = useState<File >(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(defaultImage || null);
 
-  const handleFileChange = (event: React.ChangeEvent<htmlinputelement  >) => {
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement  >) => {
     const file = event.target.files?.[0];
     if (file) {
       if (previewUrl) {

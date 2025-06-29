@@ -20,7 +20,7 @@ const LandingBuilderPage: React.FC = () => {
           
           {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <link to="/strategy" >
+            <Link to="/strategy">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="text-4xl mb-4 text-cyan-400">🧠</div>
                 <h3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</h3>
@@ -28,7 +28,7 @@ const LandingBuilderPage: React.FC = () => {
               </div>
             </Link>
             
-            <link to="/journal" >
+            <Link to="/journal" />
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="text-4xl mb-4 text-violet-400">📓</div>
                 <h3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</h3>

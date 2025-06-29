@@ -9,7 +9,7 @@ interface ProUnlockerProps {
   onUnlock?: (plan: string) => void;
 }
 
-export const ProUnlocker: React.FC<prounlockerprops  > = ({ onUnlock }) => {
+export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
   const plans = [
     {
       name: 'Basic',
@@ -50,7 +50,7 @@ export const ProUnlocker: React.FC<prounlockerprops  > = ({ onUnlock }) => {
   ];
 
   return (
-    <card  >
+    <Card  />
       <div className="text-center mb-8">
         <crown  >
         <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</h2>

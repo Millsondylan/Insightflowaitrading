@@ -28,9 +28,9 @@ export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
   };
 
   return (
-    <card  >
+    <Card >
       <div className="flex items-center gap-2 mb-4">
-        <brain  >
+        <Brain  />
         <h2 className="text-2xl font-bold">AI Coach</h2>
       </div>
 

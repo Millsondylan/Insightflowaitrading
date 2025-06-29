@@ -321,10 +321,9 @@ const SubscriptionChecker: React.FC = () => {
                     {walletAddress || 'Select a chain'}
                   </div>
                   <div className="flex items-center space-x-2">
-                    <button 
-                      onClick={handleCopyAddress} 
+                    <Button onClick={handleCopyAddress} 
                       className="p-1 hover:text-white text-gray-400 transition-colors"
-                    >
+                   >
                       <Copy className="h-4 w-4" />
                     </button>
                     <button 

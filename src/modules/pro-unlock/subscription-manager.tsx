@@ -379,14 +379,13 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map(plan => (
-              <div
-                key={plan.id}
+              <Div key={plan.id}
                 className={`p-4 rounded-lg border-2 transition-all ${
                   selectedPlanId === plan.id
                     ? 'border-brand-primary bg-brand-primary/5'
                     : 'border-border-primary bg-background-tertiary hover:border-brand-primary/50'
                 } ${plan.popular ? 'relative' : ''}`}
-              >
+             >
                 {plan.popular && (
                   <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/2 bg-brand-secondary text-white text-xs px-2 py-1 rounded-full">
                     Most Popular
@@ -434,11 +433,10 @@ export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
           
           {selectedPlanId && (
             <div className="mt-6 flex justify-center">
-              <button
-                className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <Button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSubscribe}
                 disabled={processing}
-              >
+              />
                 {processing ? 'Processing...' : 'Subscribe Now'}
               </button>
             </div>

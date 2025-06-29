@@ -24,9 +24,9 @@ type Props = {
 const BacktestResultDisplay = ({ result }: Props) => {
   const { trades, winRate, totalPnL, totalTrades } = result;
 
-  const winRateRef = useRef<htmlheadingelement  >(null);
-  const pnlRef = useRef<htmlheadingelement  >(null);
-  const totalTradesRef = useRef<htmlheadingelement  >(null);
+  const winRateRef = useRef<HTMLHeadingElement  >(null);
+  const pnlRef = useRef<HTMLHeadingElement  >(null);
+  const totalTradesRef = useRef<HTMLHeadingElement  >(null);
 
   useEffect(() => {
     const winRateNode = winRateRef.current;
@@ -113,7 +113,7 @@ const BacktestResultDisplay = ({ result }: Props) => {
               <tr key={i} className={`transition-colors duration-300 ${t.outcome === 'win' ? 'bg-green-900/30 hover:bg-green-900/50' : 'bg-red-900/30 hover:bg-red-900/50'}`}>
                 <td className="p-2">${t.entryPrice.toFixed(2)}</td>
                 <td className="p-2">${t.exitPrice.toFixed(2)}</td>
-                <td className={`p-2 font-semibold ${t.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                <Td className={`p-2 font-semibold ${t.pnl>= 0 ? 'text-green-400' : 'text-red-400'}`}>
                   ${t.pnl.toFixed(2)}
                 </td>
                 <td className="p-2">

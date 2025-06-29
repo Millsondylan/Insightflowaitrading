@@ -10,7 +10,7 @@ interface CopilotAIProps {
   onSuggestionApply?: (suggestion: string) => void;
 }
 
-export const CopilotAI: React.FC<copilotaiprops  > = ({ context, onSuggestionApply }) => {
+export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionApply }) => {
   const [isVisible, setIsVisible] = React.useState(true);
   const [suggestions, setSuggestions] = React.useState([
     {
@@ -39,7 +39,7 @@ export const CopilotAI: React.FC<copilotaiprops  > = ({ context, onSuggestionApp
     }
   ]);
 
-  const [feedback, setFeedback] = React.useState<record  >>({});
+  const [feedback, setFeedback] = React.useState<Record  />>({});
 
   const handleFeedback = (suggestionId: number, type: 'up' | 'down') => {
     setFeedback({ ...feedback, [suggestionId]: type });

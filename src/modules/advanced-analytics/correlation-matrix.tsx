@@ -145,10 +145,9 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
           <div className="flex">
             <div className="w-16 h-8"></div> {/* Empty corner */}
             {matrix.symbols.map((symbol, index) => (
-              <div
-                key={symbol}
+              <Div key={symbol}
                 className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-              >
+             >
                 {symbol}
               </div>
             ))}
@@ -212,12 +211,11 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
           <div className="h-32 flex items-end space-x-1">
             {/* TODO: implement mini chart for rolling correlation */}
             {rollingData.correlations.slice(-30).map((point, index) => (
-              <div
-                key={index}
+              <Div key={index}
                 className="flex-1 bg-blue-500 opacity-70 hover:opacity-100 transition-opacity"
                 style={{
                   height: `${Math.abs(point.correlation) * 100}%`,
-                  backgroundColor: point.correlation >= 0 ? '#3b82f6' : '#ef4444',
+                  backgroundColor: point.correlation />= 0 ? '#3b82f6' : '#ef4444',
                 }}
                 title={`${point.date.toLocaleDateString()}: ${point.correlation.toFixed(3)}`}
               ></div>

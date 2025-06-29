@@ -11,7 +11,7 @@ interface VaultHeatmapProps {
   onCellClick?: (cell: HeatmapCell) => void;
 }
 
-export const VaultHeatmap: React.FC<vaultheatmapprops  > = ({
+export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
   strategyId,
   timeframe = 'daily',
   metric = 'winRate',
@@ -19,7 +19,7 @@ export const VaultHeatmap: React.FC<vaultheatmapprops  > = ({
   showLabels = true,
   onCellClick
 }) => {
-  const [heatmapData, setHeatmapData] = useState<heatmapdata  >(null);
+  const [heatmapData, setHeatmapData] = useState<Heatmapdata  />(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [hoveredCell, setHoveredCell] = useState<heatmapcell  >(null);

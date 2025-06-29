@@ -42,8 +42,8 @@ export default function Sidebar() {
     const Icon = item.icon;
     const active = isActive(item.path);
     return (
-      <tooltipprovider  >
-        <tooltip  >
+      <Tooltipprovider >
+        <Tooltip  />
           <tooltiptrigger  >
             <link  >
               <icon  >

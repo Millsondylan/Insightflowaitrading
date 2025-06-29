@@ -158,7 +158,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       <div className="theme-markets space-y-6">
         {onBack && (
           <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
-            <chevronleft  >
+            <Chevronleft >
             Back to Markets
           </Button>
         )}
@@ -176,7 +176,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       <div className="theme-markets space-y-6">
         {onBack && (
           <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
-            <chevronleft  >
+            <Chevronleft  />
             Back to Markets
           </Button>
         )}

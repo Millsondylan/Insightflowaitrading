@@ -7,12 +7,12 @@ interface VaultVersioningProps {
   strategyId: string;
 }
 
-export const VaultVersioning: React.FC<vaultversioningprops  > = ({ strategyId }) => {
+export const VaultVersioning: React.FC<Vaultversioningprops > = ({ strategyId }) => {
   const [versions, setVersions] = React.useState<any[]>([]);
   const [selectedVersion, setSelectedVersion] = React.useState<string>('');
 
   return (
-    <card  >
+    <Card  />
       <h2 className="text-2xl font-bold mb-4">Version History</h2>
       <div className="space-y-4">
         <div className="flex gap-2">

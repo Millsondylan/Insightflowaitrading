@@ -19,12 +19,11 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
   return (
     <div className="space-y-6 theme-academy">
       {chunks.map((chunk) => (
-        <div
-          key={chunk.id}
+        <Div key={chunk.id}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
-        >
+       >
           {chunk.type === "markdown" && (
-            <reactmarkdown  >{chunk.content}</ReactMarkdown>
+            <Reactmarkdown  />{chunk.content}</ReactMarkdown>
           )}
           {chunk.type === "prompt" && (
             <textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />

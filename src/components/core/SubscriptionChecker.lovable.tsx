@@ -36,7 +36,7 @@ const MOCK_USER_ID = 'current-user-id';
 
 const SubscriptionChecker: React.FC = () => {
   const { toast } = useToast();
-  const [selectedPlan, setSelectedPlan] = useState<plantype  >('monthly');
+  const [selectedPlan, setSelectedPlan] = useState<Plantype >('monthly');
   const [selectedChain, setSelectedChain] = useState<string>('ETH');
   const [txHash, setTxHash] = useState<string>('');
   const [cryptoAmount, setCryptoAmount] = useState<number | null>(null);
@@ -108,7 +108,7 @@ const SubscriptionChecker: React.FC = () => {
     setSelectedChain(value);
   };
 
-  const handleTxHashChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleTxHashChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     setTxHash(e.target.value);
   };
 
@@ -197,7 +197,7 @@ const SubscriptionChecker: React.FC = () => {
   if (verificationStatus) {
     return (
       <card  style={{ width: "100%" }}>
-        <cardcontent  >
+        <Cardcontent  />
           <accessstatus  >
 
           {verificationStatus === 'failure' && (

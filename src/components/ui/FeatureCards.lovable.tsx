@@ -4,14 +4,14 @@ import { BrainCircuit, BarChart, BookOpen, PenSquare } from 'lucide-react';
 
 const features = [
   {
-    icon: <braincircuit  >,
+    icon: <Braincircuit >,
     title: 'Strategy Builder',
     description: 'Design and test your trading strategies with AI-powered insights.',
     link: '/strategy',
     borderColor: 'hover:border-cyan-400',
   },
   {
-    icon: <barchart  >,
+    icon: <Barchart  />,
     title: 'Chart Vision',
     description: 'Upload chart images and get AI-driven technical analysis.',
     link: '/vision',

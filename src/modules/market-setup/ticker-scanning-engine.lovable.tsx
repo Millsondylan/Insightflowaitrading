@@ -9,7 +9,7 @@ import { MarketTicker, MarketType, MarketScannerFilter } from './types'
 import { filterMarketTickers } from './utils'
 
 export const TickerScanningEngine: React.FC = () => {
-  const [tickers, setTickers] = useState<marketticker  >([
+  const [tickers, setTickers] = useState<Marketticker >([
     {
       symbol: 'AAPL',
       name: 'Apple Inc.',
@@ -30,7 +30,7 @@ export const TickerScanningEngine: React.FC = () => {
     }
   ])
 
-  const [filter, setFilter] = useState<marketscannerfilter  >({
+  const [filter, setFilter] = useState<Marketscannerfilter  />({
     marketType: 'Stocks',
     minPrice: 50,
     minVolume: 1_000_000

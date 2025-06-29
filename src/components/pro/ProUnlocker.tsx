@@ -25,10 +25,9 @@ export default function ProUnlocker({ onUnlock }: Props) {
         placeholder="Enter access code or referral"
         className="bg-white/10 px-4 py-2 rounded w-full"
       />
-      <button
-        onClick={handleUnlock}
+      <Button onClick={handleUnlock}
         className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-full"
-      >
+     >
         🚀 Unlock Pro
       </button>
       {status === "invalid" && <p className="text-red-400">❌ Invalid code</p>}

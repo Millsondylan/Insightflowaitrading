@@ -130,8 +130,7 @@ const SidebarProvider = React.forwardRef<
     return (
       <SidebarContext.Provider value={contextValue}>
         <TooltipProvider delayDuration={0}>
-          <div
-            style={
+          <Div style={
               {
                 "--sidebar-width": SIDEBAR_WIDTH,
                 "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
@@ -144,7 +143,7 @@ const SidebarProvider = React.forwardRef<
             )}
             ref={ref}
             {...props}
-          >
+         >
             {children}
           </div>
         </TooltipProvider>
@@ -177,14 +176,13 @@ const Sidebar = React.forwardRef<
 
     if (collapsible === "none") {
       return (
-        <div
-          className={cn(
+        <Div className={cn(
             "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
             className
           )}
           ref={ref}
           {...props}
-        >
+        />
           {children}
         </div>
       )

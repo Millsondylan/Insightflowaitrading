@@ -68,10 +68,9 @@ export const AccessCheckers: React.FC<AccessCheckersProps> = ({ userId }) => {
 
       <div className="space-y-4">
         {accessStatus.map((status) => (
-          <div
-            key={status.feature}
+          <Div key={status.feature}
             className="p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-          >
+         >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 {status.isLocked ? (

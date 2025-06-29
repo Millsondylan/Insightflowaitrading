@@ -55,12 +55,11 @@ const ProgressSidebar: React.FC<ProgressSidebarProps> = ({
                       { "bg-blue-500 border-blue-500 scale-125": isActive }
                     )}
                   />
-                  <span
-                    className={cn(
+                  <Span className={cn(
                       "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
                       { "text-white": isActive }
                     )}
-                  >
+                 >
                     {block.title}
                   </span>
                 </button>

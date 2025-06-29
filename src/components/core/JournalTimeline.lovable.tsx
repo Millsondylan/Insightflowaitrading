@@ -18,11 +18,11 @@ interface JournalTimelineProps {
   limit?: number;
 }
 
-const JournalTimeline: React.FC<journaltimelineprops  > = ({ 
+const JournalTimeline: React.FC<Journaltimelineprops > = ({ 
   refreshTrigger = 0, 
   limit = 10 
 }) => {
-  const [entries, setEntries] = useState<journalentry  >([]);
+  const [entries, setEntries] = useState<Journalentry  />([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [expandedReflections, setExpandedReflections] = useState<set  >>(new Set());

@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Strategy } from './types'
 
 export const VaultPublisher: React.FC = () => {
-  const [strategy, setStrategy] = useState<strategy  >({
+  const [strategy, setStrategy] = useState<Strategy >({
     id: '1', 
     name: 'Momentum Trend', 
     description: 'Trend following strategy targeting strong momentum stocks',
@@ -45,7 +45,7 @@ export const VaultPublisher: React.FC = () => {
 
   return (
     <card  style={{ width: "100%", color: "white" }}>
-      <cardheader  >
+      <Cardheader  />
         <cardtitle  >Strategy Publisher</CardTitle>
       </CardHeader>
       <cardcontent  >

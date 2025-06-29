@@ -19,10 +19,9 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
   return (
     <div className="space-y-6 theme-academy">
       {chunks.map((chunk) => (
-        <div
-          key={chunk.id}
+        <Div key={chunk.id}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
-        >
+       >
           {chunk.type === "markdown" && (
             <ReactMarkdown>{chunk.content}</ReactMarkdown>
           )}

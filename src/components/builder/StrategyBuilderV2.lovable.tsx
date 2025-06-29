@@ -57,7 +57,7 @@ const validateStrategy = (strategy: StrategyOutput): string | null => {
 
 const StrategyBuilderV2 = () => {
   const [prompt, setPrompt] = useState('');
-  const [strategy, setStrategy] = useState<strategyoutput  >(null);
+  const [strategy, setStrategy] = useState<Strategyoutput >(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = () => {
@@ -82,7 +82,7 @@ const StrategyBuilderV2 = () => {
       </div>
 
       <div className="space-y-4">
-        <textarea  > setPrompt(e.target.value)}
+        <Textarea  /> setPrompt(e.target.value)}
           placeholder="e.g., 'A simple RSI strategy that buys on oversold signals and sells on overbought signals. Also look for a breakout with volume confirmation.'"
           className="bg-white/5 p-4 rounded-lg text-white/80 w-full min-h-[120px]"
         />

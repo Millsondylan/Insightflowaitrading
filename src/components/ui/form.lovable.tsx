@@ -17,7 +17,7 @@ const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<tfieldvalues  > = FieldPath<tfieldvalues  >
+  TName extends FieldPath<Tfieldvalues > = FieldPath<Tfieldvalues  />
 > = {
   name: TName
 }
@@ -72,7 +72,7 @@ const FormItemContext = React.createContext<formitemcontextvalue  >(
 
 const FormItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<htmldivelement  >
+  React.HTMLAttributes<HTMLDivElement  >
 >(({ className, ...props }, ref) => {
   const id = React.useId()
 
@@ -110,7 +110,7 @@ FormControl.displayName = "FormControl"
 
 const FormDescription = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<htmlparagraphelement  >
+  React.HTMLAttributes<HTMLParagraphElement  >
 >(({ className, ...props }, ref) => {
   const { formDescriptionId } = useFormField()
 
@@ -127,7 +127,7 @@ FormDescription.displayName = "FormDescription"
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<htmlparagraphelement  >
+  React.HTMLAttributes<HTMLParagraphElement  >
 >(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField()
   const body = error ? String(error?.message) : children

@@ -11,7 +11,7 @@ import '@/styles/wallet.css';
 const WalletPanel: React.FC = () => {
   const { toast } = useToast();
   const [address, setAddress] = useState<string | null>(null);
-  const [balances, setBalances] = useState<tokenbalance  >([]);
+  const [balances, setBalances] = useState<Tokenbalance >([]);
   const [loading, setLoading] = useState(true);
   const [inputValue, setInputValue] = useState('');
 
@@ -81,7 +81,7 @@ const WalletPanel: React.FC = () => {
         <div>
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center space-x-2 text-green-400">
-              <checkcircle  >
+              <Checkcircle  />
               <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
             </div>
             <button variant="outline" size="sm" >Disconnect</Button>

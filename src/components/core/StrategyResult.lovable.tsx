@@ -22,8 +22,8 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
 
   return (
     <div>
-      <strategyreveal  >
-      <strategycta  >
+      <Strategyreveal >
+      <Strategycta  />
     </div>
   );
 };

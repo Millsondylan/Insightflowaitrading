@@ -334,10 +334,9 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
             </div>
           </div>
           
-          <button
-            className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
+          <Button className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}
-          >
+         >
             Leave Event
           </button>
         </div>
@@ -400,11 +399,10 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 disabled={!isConnected}
               />
-              <button
-                className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <Button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
                 disabled={!isConnected || !messageInput.trim()}
-              >
+              />
                 Send
               </button>
             </div>

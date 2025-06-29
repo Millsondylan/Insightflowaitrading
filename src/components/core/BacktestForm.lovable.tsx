@@ -29,7 +29,7 @@ rsi <(14, 60)`;
 const defaultExitLogic = 'close < sma(50)';
 
 const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<backtestformstate  >({
+  const [formState, setFormState] = useState<Backtestformstate >({
     ticker: 'BTC',
     timeframe: '1H',
     entryLogic: defaultEntryLogic,
@@ -45,7 +45,7 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleTextAreaChange = (e: React.ChangeEvent<htmltextareaelement  >) => {
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextareaElement  >) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
   };
@@ -54,7 +54,7 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="ticker" >Ticker</Label>
+          <Label htmlFor="ticker" />Ticker</Label>
           <select  > handleSelectChange('ticker', value)}
           >
             <selecttrigger  >

@@ -32,7 +32,7 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
           {ROUTES.map((route) => (
-            <link  >
+            <Link >
               {route.label}
             </Link>
           ))}
@@ -40,7 +40,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <x  > : <menu  >}
+          {isMobileMenuOpen ? <x  > : <Menu  />}
         </button>
       </div>
 

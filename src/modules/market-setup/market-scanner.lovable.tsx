@@ -279,10 +279,9 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
           >
             Bearish
           </button>
-          <button
-            className="px-4 py-2 rounded bg-background-secondary"
+          <Button className="px-4 py-2 rounded bg-background-secondary"
             onClick={fetchScanResults}
-          >
+         >
             Refresh
           </button>
         </div>
@@ -327,7 +326,7 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
                   <td className="p-3">
-                    <span className={result.change24h >= 0 ? 'text-status-success' : 'text-status-error'}>
+                    <Span className={result.change24h />= 0 ? 'text-status-success' : 'text-status-error'}>
                       {result.change24h >= 0 ? '+' : ''}{result.change24h.toFixed(2)}%
                     </span>
                   </td>

@@ -62,19 +62,17 @@ const StrategyExport = ({ result }: Props) => {
     <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-md space-y-4">
         <h3 className="text-lg font-bold text-white">Export Results</h3>
         <div className="flex flex-wrap gap-4">
-            <button
-              onClick={handleExportJSON}
+            <Button onClick={handleExportJSON}
               className="flex items-center gap-2 bg-white/10 hover:bg-cyan-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300"
               title="Download full backtest result as a JSON file"
-            >
+           >
               🧾 Export JSON
             </button>
 
-            <button
-              onClick={handleExportCSV}
+            <Button onClick={handleExportCSV}
               className="flex items-center gap-2 bg-white/10 hover:bg-green-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300"
               title="Download trade list as a CSV file"
-            >
+            />
               📊 Export CSV
             </button>
         </div>

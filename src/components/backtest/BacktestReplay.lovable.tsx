@@ -83,10 +83,9 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
           Chart loading...
         </div>
         {currentEvent && (
-          <div
-            className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
+          <Div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
               ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}
-          >
+         >
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
               <span className="ml-2 font-mono">
@@ -105,7 +104,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
       </div>
 
       <div className="flex justify-between items-center gap-4 mt-4">
-        <button variant="ghost" size="icon" title="Reset" >
+        <Button variant="ghost" size="icon" title="Reset" />
           <repeat  >
         </Button>
         <div className="flex items-center gap-2">

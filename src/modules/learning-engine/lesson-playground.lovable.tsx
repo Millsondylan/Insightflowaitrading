@@ -9,7 +9,7 @@ interface LessonPlaygroundProps {
   lessonId: string;
 }
 
-export const LessonPlayground: React.FC<lessonplaygroundprops  > = ({ lessonId }) => {
+export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId }) => {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [userCode, setUserCode] = React.useState('');
   const [testResults, setTestResults] = React.useState<any[]>([]);
@@ -62,7 +62,7 @@ export const LessonPlayground: React.FC<lessonplaygroundprops  > = ({ lessonId }
   const progress = ((currentStep + 1) / lesson.steps.length) * 100;
 
   return (
-    <card  >
+    <Card  />
       <div className="mb-6">
         <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
         <div className="flex items-center gap-4">

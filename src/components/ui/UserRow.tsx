@@ -146,15 +146,14 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
     <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
       <td className="px-4 py-3">
         <div className="flex items-center">
-          <span 
-            className={cn(
+          <Span className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
               user.role === 'Admin' && 'text-violet-300',
               user.role === 'Expired' && 'text-gray-400'
             )}
             onClick={handleCopyAddress}
             title="Click to copy"
-          >
+         >
             {formatAddress(user.address)}
           </span>
         </div>

@@ -6,12 +6,12 @@ interface LegacyRouteWrapperProps {
   children: React.ReactNode;
 }
 
-const LegacyRouteWrapper: React.FC<legacyroutewrapperprops  > = ({ 
+const LegacyRouteWrapper: React.FC<Legacyroutewrapperprops > = ({ 
   accessLevel, 
   children 
 }) => {
   return (
-    <oldprotectedroute  >
+    <Oldprotectedroute  />
       {children}
     </OldProtectedRoute>
   );

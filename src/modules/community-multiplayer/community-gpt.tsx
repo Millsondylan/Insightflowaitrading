@@ -59,10 +59,9 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
       <ScrollArea className="flex-1 mb-4">
         <div className="space-y-4">
           {messages.map((message) => (
-            <div
-              key={message.id}
+            <Div key={message.id}
               className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
+           >
               <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
@@ -75,13 +74,12 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
                     </div>
                   )}
                 </div>
-                <div
-                  className={`p-3 rounded-lg ${
+                <Div className={`p-3 rounded-lg ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
                   }`}
-                >
+                />
                   <p className="text-sm">{message.content}</p>
                   <p className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString()}

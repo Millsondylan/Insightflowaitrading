@@ -9,14 +9,14 @@ export default function ReplayPage() {
   return (
     <div>
       <link  style={{ display: "flex", alignItems: "center" }}>
-        <arrowleft  >
+        <Arrowleft >
         Back to Strategy Details
       </Link>
 
       <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
         <header className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</h1>
-            <button variant="ghost" ><settings  > </Button>
+            <Button variant="ghost" /><settings  > </Button>
         </header>
         
         <div className="flex-grow flex items-center justify-center">

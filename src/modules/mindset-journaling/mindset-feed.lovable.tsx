@@ -9,7 +9,7 @@ interface MindsetFeedProps {
   userId?: string;
 }
 
-export const MindsetFeed: React.FC<mindsetfeedprops  > = ({ userId }) => {
+export const MindsetFeed: React.FC<Mindsetfeedprops > = ({ userId }) => {
   const [insights, setInsights] = React.useState([
     {
       id: 1,
@@ -60,7 +60,7 @@ export const MindsetFeed: React.FC<mindsetfeedprops  > = ({ userId }) => {
   };
 
   return (
-    <card  >
+    <Card  />
       <h2 className="text-2xl font-bold mb-4">Mindset Feed</h2>
       
       <scrollarea  >

@@ -86,10 +86,9 @@ export const DailyPlanner: React.FC = () => {
                 <h3 className="text-lg font-bold mb-2">Potential Trades</h3>
                 <div className="space-y-2">
                   {dailyPlan.potentialTrades.map((trade) => (
-                    <div 
-                      key={trade.symbol}
+                    <Div key={trade.symbol}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
-                    >
+                   >
                       <div>
                         <div className="flex items-center space-x-2">
                           <h4 className="font-bold">{trade.symbol}</h4>
@@ -101,7 +100,7 @@ export const DailyPlanner: React.FC = () => {
                         <div className="text-lg font-bold">
                           ${trade.price.toLocaleString()}
                         </div>
-                        <div className={`text-sm ${trade.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        <Div className={`text-sm ${trade.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
                           {trade.changePercent >= 0 ? '+' : ''}{trade.changePercent.toFixed(2)}%
                         </div>
                       </div>

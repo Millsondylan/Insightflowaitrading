@@ -14,7 +14,7 @@ interface PublicStrategyPublisherProps {
   onPublish?: (data: any) => void;
 }
 
-export const PublicStrategyPublisher: React.FC<publicstrategypublisherprops  > = ({ 
+export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops > = ({ 
   strategyId, 
   isPro, 
   onPublish 
@@ -48,7 +48,7 @@ export const PublicStrategyPublisher: React.FC<publicstrategypublisherprops  > =
   };
 
   return (
-    <card  >
+    <Card  />
       <h2 className="text-2xl font-bold mb-6">Publish Strategy</h2>
 
       <div className="space-y-6">

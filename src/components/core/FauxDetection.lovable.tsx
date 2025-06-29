@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<patternzone  >([]);
+  const [patternZones, setPatternZones] = useState<Patternzone >([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <blockreveal  >
+      <Blockreveal  />
         <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
             <chartcanvasoverlay  >

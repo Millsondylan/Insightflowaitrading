@@ -109,14 +109,13 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
           {testResults.length > 0 ? (
             <div className="space-y-2">
               {testResults.map((result, i) => (
-                <div
-                  key={i}
+                <Div key={i}
                   className={`p-3 rounded-lg flex items-center gap-2 ${
                     result.passed
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-                >
+               >
                   {result.passed ? (
                     <CheckCircle className="h-4 w-4" />
                   ) : (

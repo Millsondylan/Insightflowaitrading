@@ -19,14 +19,14 @@ interface QuizBlockProps {
   onQuizComplete?: (result: QuizResult) => void;
 }
 
-const QuizBlock: React.FC<quizblockprops  > = ({ 
+const QuizBlock: React.FC<Quizblockprops > = ({ 
   lessonBlocks, 
   className, 
   onQuizComplete 
 }) => {
   const { toast } = useToast();
   const { hasProAccess, loading: authLoading } = useAuth();
-  const [quiz, setQuiz] = useState<quiz  >(null);
+  const [quiz, setQuiz] = useState<Quiz  />(null);
   const [loading, setLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<record  >>({});

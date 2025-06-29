@@ -10,7 +10,7 @@ interface GitHubSyncProps {
   onSync?: () => void;
 }
 
-export const GitHubSync: React.FC<githubsyncprops  > = ({ onSync }) => {
+export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
   const [repoInfo, setRepoInfo] = React.useState({
     owner: 'insightflow',
     repo: 'trading-strategies',
@@ -48,7 +48,7 @@ export const GitHubSync: React.FC<githubsyncprops  > = ({ onSync }) => {
   };
 
   return (
-    <card  >
+    <Card  />
       <div className="flex items-center gap-2 mb-6">
         <github  >
         <h2 className="text-2xl font-bold">GitHub Sync</h2>

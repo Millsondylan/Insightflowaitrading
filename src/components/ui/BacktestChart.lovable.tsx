@@ -58,7 +58,7 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
 
 const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
   const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<trademarker  >(null);
+  const [hoveredTrade, setHoveredTrade] = useState<Trademarker >(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   
   // Start animation after component mounts
@@ -75,7 +75,7 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   const maxPrice = Math.max(...prices) * 1.005;
 
   return (
-    <blockreveal  >
+    <Blockreveal  />
       <div className="chart-container">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-bold text-white">

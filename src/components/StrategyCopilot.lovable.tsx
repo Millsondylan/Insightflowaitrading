@@ -21,7 +21,7 @@ type StrategyCopilotProps = {
 }
 
 // Mock AI suggestion generator
-async function generateSuggestions(strategy: StrategyOutput): Promise<suggestion  > {
+async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion > {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
@@ -136,7 +136,7 @@ async function generateSuggestions(strategy: StrategyOutput): Promise<suggestion
 }
 
 const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) => {
-  const [suggestions, setSuggestions] = useState<suggestion  >([]);
+  const [suggestions, setSuggestions] = useState<Suggestion  />([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

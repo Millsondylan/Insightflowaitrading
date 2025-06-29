@@ -8,7 +8,7 @@ interface ProgressSidebarProps {
   onBlockClick: (id: string) => void;
 }
 
-const ProgressSidebar: React.FC<progresssidebarprops  > = ({
+const ProgressSidebar: React.FC<Progresssidebarprops > = ({
   blocks,
   activeBlock,
   progress,
@@ -55,12 +55,11 @@ const ProgressSidebar: React.FC<progresssidebarprops  > = ({
                       { "bg-blue-500 border-blue-500 scale-125": isActive }
                     )}
                   />
-                  <span
-                    className={cn(
+                  <Span className={cn(
                       "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
                       { "text-white": isActive }
                     )}
-                  >
+                  />
                     {block.title}
                   </span>
                 </button>

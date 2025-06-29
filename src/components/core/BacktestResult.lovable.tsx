@@ -32,11 +32,11 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   
   return (
     <div className="space-y-8 mt-12">
-      <blockreveal  >
+      <Blockreveal >
         <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
       </BlockReveal>
       
-      <blockreveal  >
+      <Blockreveal  />
         <kpicards  >
       </BlockReveal>
       

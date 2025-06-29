@@ -17,7 +17,7 @@ import { motion } from 'framer-motion';
 import ThemeScrollObserver from '@/components/core/ThemeScrollObserver';
 import { ThemeName } from '@/contexts/ThemeContext';
 
-const SectionWrapper = React.forwardRef<htmldivelement  >(
+const SectionWrapper = React.forwardRef<HTMLDivElement  >(
   ({ children, className, id }, ref) => (
     <section ref={ref} id={id} className={`w-full px-6 py-24 sm:py-32 ${className}`}>
       {children}
@@ -29,10 +29,10 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   // Refs for each section
-  const heroRef = useRef<htmldivelement  >(null);
-  const featuresRef = useRef<htmldivelement  >(null);
-  const portfolioRef = useRef<htmldivelement  >(null);
-  const testimonialsRef = useRef<htmldivelement  >(null);
+  const heroRef = useRef<HTMLDivElement  >(null);
+  const featuresRef = useRef<HTMLDivElement  >(null);
+  const portfolioRef = useRef<HTMLDivElement  >(null);
+  const testimonialsRef = useRef<HTMLDivElement  >(null);
 
   const sections = [
     { ref: heroRef, theme: 'landing' as ThemeName },
@@ -84,7 +84,7 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen text-gray-100 transition-colors duration-500">
-      <themescrollobserver  >
+      <Themescrollobserver >
       
       {/* Navigation Header - Stays consistent */}
       <nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
@@ -95,7 +95,7 @@ const LandingPage = () => {
           <h1 className="text-2xl font-bold text-white">InsightFlow AI</h1>
         </div>
         <div className="flex space-x-2 md:space-x-4">
-          <button variant="ghost" > navigate('/auth')} className="text-white hover:bg-white/10">
+          <Button variant="ghost" /> navigate('/auth')} className="text-white hover:bg-white/10">
             Sign In
           </Button>
           <button  > navigate('/auth')} className="quantum-button text-white">

@@ -16,12 +16,12 @@ interface AchievementsProps {
   className?: string;
 }
 
-export const AchievementsComponent: React.FC<achievementsprops  > = ({
+export const AchievementsComponent: React.FC<Achievementsprops > = ({
   userId,
   onAchievementUnlocked,
   className = '',
 }) => {
-  const [userProfile, setUserProfile] = useState<userprofile  >(null);
+  const [userProfile, setUserProfile] = useState<Userprofile  />(null);
   const [achievements, setAchievements] = useState<achievement  >([]);
   const [userAchievements, setUserAchievements] = useState<userachievement  >([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');

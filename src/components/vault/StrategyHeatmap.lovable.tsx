@@ -26,7 +26,7 @@ const StrategyHeatmap = ({ data }: Props) => {
   const maxCount = Math.max(...data.map(d => d.count), 1);
 
   return (
-    <tooltipprovider  >
+    <Tooltipprovider >
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
         {data.map((item) => {
           // Normalize size between a min and max font size for visual representation
@@ -37,7 +37,7 @@ const StrategyHeatmap = ({ data }: Props) => {
           };
 
           return (
-            <tooltip  >
+            <Tooltip  />
               <tooltiptrigger  >
                 <div 
                   className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"

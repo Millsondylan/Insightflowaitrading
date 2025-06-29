@@ -8,7 +8,7 @@ interface PortfolioDashboardProps {
   userId?: string;
 }
 
-export const PortfolioDashboard: React.FC<portfoliodashboardprops  > = ({ userId }) => {
+export const PortfolioDashboard: React.FC<Portfoliodashboardprops > = ({ userId }) => {
   const [stats, setStats] = React.useState({
     totalValue: 125000,
     dayChange: 2.5,
@@ -21,7 +21,7 @@ export const PortfolioDashboard: React.FC<portfoliodashboardprops  > = ({ userId
 
   return (
     <div className="space-y-6">
-      <card  >
+      <Card  />
         <h2 className="text-2xl font-bold mb-4">Portfolio Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="space-y-2">

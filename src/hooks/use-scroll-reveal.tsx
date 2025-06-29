@@ -57,11 +57,10 @@ export const ScrollSection = ({
   const animationClass = `scroll-${animation}`;
   
   return (
-    <section 
-      ref={elementRef}
+    <Section ref={elementRef}
       className={`${animationClass} scroll-section ${isVisible ? 'visible' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
-    >
+   >
       {children}
     </section>
   );

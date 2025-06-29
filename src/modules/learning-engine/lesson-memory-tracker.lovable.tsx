@@ -19,8 +19,8 @@ interface MemoryItem {
   category: string;
 }
 
-export const LessonMemoryTracker: React.FC<lessonmemorytrackerprops  > = ({ userId }) => {
-  const [memories, setMemories] = React.useState<memoryitem  >([
+export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userId }) => {
+  const [memories, setMemories] = React.useState<Memoryitem  />([
     {
       id: '1',
       concept: 'SMA Crossover Strategy',

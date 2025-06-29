@@ -182,7 +182,7 @@ export default function WalletConnect({ onVerified }: Props) {
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Button>
         ) : status === "verified" ? (
-          <button  > window.location.reload()}
+          <Button > window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect

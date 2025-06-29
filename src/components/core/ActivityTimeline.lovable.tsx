@@ -17,14 +17,14 @@ interface ActivityTimelineProps {
   events: ActivityEvent[];
 }
 
-const iconMap: Record<activitytype  > = {
+const iconMap: Record<Activitytype > = {
   journal: BookOpen,
   strategy: Bot,
   user: UserPlus,
   reflection: Brain,
 };
 
-const ActivityTimeline: React.FC<activitytimelineprops  > = ({ events }) => {
+const ActivityTimeline: React.FC<Activitytimelineprops  /> = ({ events }) => {
   const [filter, setFilter] = useState<activitytype  >('all');
 
   const filteredEvents = useMemo(() => {

@@ -57,10 +57,10 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
 
       <tabs  style={{ width: "100%" }}>
         <tabslist  style={{ display: "grid" }}>
-          <tabstrigger value="eth" >
+          <Tabstrigger value="eth">
             ETH
           </TabsTrigger>
-          <tabstrigger value="usdt" >
+          <Tabstrigger value="usdt" />
             USDT
           </TabsTrigger>
           <tabstrigger value="btc" >

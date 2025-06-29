@@ -417,13 +417,12 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
         {/* Column headers */}
         <div className="flex ml-12">
           {displayedAssets.map((asset, i) => (
-            <div 
-              key={`header-${i}`} 
+            <Div key={`header-${i}`} 
               className="w-12 h-12 flex items-center justify-center font-medium text-sm"
               style={{
                 transform: 'rotate(-45deg)',
               }}
-            >
+           >
               {asset}
             </div>
           ))}

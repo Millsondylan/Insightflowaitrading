@@ -230,8 +230,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
         </div>
       )}
 
-      <button
-        onClick={handlePayment}
+      <Button onClick={handlePayment}
         disabled={loading}
         style={{
           width: '100%',
@@ -244,7 +243,7 @@ export const PaymentForm: React.FC<PaymentFormProps> = ({
           fontWeight: 'bold',
           cursor: loading ? 'not-allowed' : 'pointer'
         }}
-      >
+     >
         {loading ? 'Processing...' : `Pay ${paymentMethod === 'card' ? '$' + selectedTier.price : selectedTier.cryptoPrice + ' ' + selectedTier.cryptoCurrency}`}
       </button>
 

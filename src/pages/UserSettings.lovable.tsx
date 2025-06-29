@@ -62,11 +62,10 @@ const Button = ({
   const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer";
   
   return (
-    <button 
-      className={`${baseClasses} ${variantClasses} ${disabledClasses} ${className}`}
+    <Button className={`${baseClasses} ${variantClasses} ${disabledClasses} ${className}`}
       onClick={onClick}
       disabled={disabled}
-    >
+   >
       {children}
     </button>
   );
@@ -172,12 +171,11 @@ const TabsTrigger = ({ children, value, isActive, onClick }: {
   isActive: boolean;
   onClick: () => void;
 }) => (
-  <button
-    className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+  <Button className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
       isActive ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
     }`}
     onClick={onClick}
-  >
+  />
     {children}
   </button>
 );

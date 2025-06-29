@@ -30,8 +30,8 @@ const CTASection = () => {
           transition={{ duration: 0.7, delay: 0.4 }}
         >
           <button  style={{ border: "1px solid #E5E7EB", color: "white", fontSize: "1.125rem" }}>
-            <link to="/strategy" >
-              Get Started <arrowright  >
+            <Link to="/strategy">
+              Get Started <Arrowright  />
             </Link>
           </Button>
         </motion.div>

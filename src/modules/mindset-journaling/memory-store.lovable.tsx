@@ -8,7 +8,7 @@ interface MemoryStoreProps {
   userId?: string;
 }
 
-export const MemoryStore: React.FC<memorystoreprops  > = ({ userId }) => {
+export const MemoryStore: React.FC<Memorystoreprops > = ({ userId }) => {
   const [memories, setMemories] = React.useState([
     {
       id: 1,
@@ -46,7 +46,7 @@ export const MemoryStore: React.FC<memorystoreprops  > = ({ userId }) => {
   };
 
   return (
-    <card  >
+    <Card  />
       <div className="flex items-center gap-2 mb-4">
         <brain  >
         <h2 className="text-2xl font-bold">Memory Store</h2>

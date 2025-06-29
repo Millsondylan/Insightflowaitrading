@@ -10,7 +10,7 @@ interface CommunityGPTProps {
   channelId?: string;
 }
 
-export const CommunityGPT: React.FC<communitygptprops  > = ({ channelId }) => {
+export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
   const [messages, setMessages] = React.useState([
     {
       id: 1,
@@ -52,7 +52,7 @@ export const CommunityGPT: React.FC<communitygptprops  > = ({ channelId }) => {
   return (
     <card  style={{ display: "flex" }}>
       <div className="flex items-center gap-2 mb-4">
-        <bot  >
+        <Bot  />
         <h2 className="text-2xl font-bold">Community GPT</h2>
       </div>
 

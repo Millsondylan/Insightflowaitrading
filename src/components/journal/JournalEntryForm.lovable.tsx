@@ -26,12 +26,12 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState("");
   const [notes, setNotes] = useState("");
-  const [screenshot, setScreenshot] = useState<file  >(null);
+  const [screenshot, setScreenshot] = useState<File >(null);
   const [screenshotPreview, setScreenshotPreview] = useState<string | null>(null);
   const [strategyId, setStrategyId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleTagInputChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleTagInputChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const value = e.target.value;
     setTagInput(value);
     if (value.includes(',')) {
@@ -49,7 +49,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
     setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const file = e.target.files?.[0];
     if (file) {
       setScreenshot(file);
@@ -199,11 +199,10 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
         </div>
         
         <div className="pt-2">
-            <button 
-              type="submit" 
+            <Button type="submit" 
               disabled={!isFormValid || isSubmitting}
               className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
-            >
+            />
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
             </button>
         </div>

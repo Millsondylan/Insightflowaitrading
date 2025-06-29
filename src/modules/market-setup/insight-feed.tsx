@@ -48,10 +48,9 @@ export const InsightFeed: React.FC = () => {
       <CardContent>
         <div className="space-y-4">
           {insights.map((insight) => (
-            <div 
-              key={insight.id} 
+            <Div key={insight.id} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
-            >
+           >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-bold">{insight.title}</h3>
                 <Badge 

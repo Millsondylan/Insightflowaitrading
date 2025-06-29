@@ -19,8 +19,8 @@ export const AIStrategyBuilderV2: React.FC = () => {
 
   return (
     <card  style={{ width: "100%", color: "white" }}>
-      <cardheader  >
-        <cardtitle  >AI Strategy Builder V2</CardTitle>
+      <Cardheader >
+        <Cardtitle  />AI Strategy Builder V2</CardTitle>
       </CardHeader>
       <cardcontent  >
         <div className="space-y-4">

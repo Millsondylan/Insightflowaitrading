@@ -420,13 +420,12 @@ const CorrelationHeatmap: React.FC<CorrelationHeatmapProps> = ({
         {/* Column headers */}
         <div className="flex ml-12">
           {displayedAssets.map((asset, i) => (
-            <div 
-              key={`header-${i}`} 
+            <Div key={`header-${i}`} 
               className="w-12 h-12 flex items-center justify-center font-medium text-sm"
               style={{
                 transform: 'rotate(-45deg)',
               }}
-            >
+           >
               {asset}
             </div>
           ))}
@@ -523,4 +522,10 @@ function getCorrelationTooltip(value: number): string {
   return "Very Weak / None";
 }
 
-export default CorrelationHeatmap; 
+export default CorrelationHeatmap;
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

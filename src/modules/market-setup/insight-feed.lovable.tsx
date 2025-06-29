@@ -56,10 +56,9 @@ export const InsightFeed: React.FC = () => {
       <CardContent>
         <div className="space-y-4">
           {insights.map(insight => (
-            <div
-              key={insight.id}
+            <Div key={insight.id}
               className={`p-4 border rounded-lg ${insight.sentiment === 'bullish' ? 'border-green-500/30 bg-green-500/5' : insight.sentiment === 'bearish' ? 'border-red-500/30 bg-red-500/5' : 'border-gray-500/30 bg-gray-500/5'}`}
-            >
+           >
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-bold">{insight.title}</h3>
                 <Badge variant={insight.sentiment === 'bullish' ? 'default' : insight.sentiment === 'bearish' ? 'destructive' : 'secondary'}>

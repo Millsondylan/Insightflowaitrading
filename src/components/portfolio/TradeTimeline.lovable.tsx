@@ -47,7 +47,7 @@ export const TradeTimeline = ({ trades }: Props) => {
           </h2>
           <div className="space-y-4">
             {groupedTrades[date].map(trade => (
-              <tradereplaycard  >
+              <Tradereplaycard >
             ))}
           </div>
         </div>

@@ -28,8 +28,8 @@ type Props = {
 
 export default function MarketsTable({ tickers, onSelect }: Props) {
   const [search, setSearch] = useState("");
-  const [sortField, setSortField] = useState<sortfield  >("symbol");
-  const [sortDirection, setSortDirection] = useState<sortdirection  >("asc");
+  const [sortField, setSortField] = useState<Sortfield >("symbol");
+  const [sortDirection, setSortDirection] = useState<Sortdirection  />("asc");
   const [favorites, setFavorites] = useState<set  >>(new Set());
 
   // Filter and sort tickers

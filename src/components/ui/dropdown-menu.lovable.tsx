@@ -22,9 +22,9 @@ const DropdownMenuSubTrigger = React.forwardRef<
     inset?: boolean
   }
 >(({ className, inset, children, ...props }, ref) => (
-  <dropdownmenuprimitive  >
+  <Dropdownmenuprimitive >
     {children}
-    <chevronright  >
+    <Chevronright  />
   </DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName =
@@ -111,7 +111,7 @@ DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName
 const DropdownMenuShortcut = ({
   className,
   ...props
-}: React.HTMLAttributes<htmlspanelement  >) => {
+}: React.HTMLAttributes<HTMLSpanElement  >) => {
   return (
     <span
       className={cn("ml-auto text-xs tracking-widest opacity-60", className)}

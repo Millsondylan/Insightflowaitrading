@@ -20,7 +20,7 @@ interface StrategyFormProps {
 }
 
 const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
-  const [formData, setFormData] = useState<strategyformdata  >({
+  const [formData, setFormData] = useState<Strategyformdata >({
     strategyName: '',
     tradeStyle: '',
     instruments: '',
@@ -31,9 +31,9 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
     extraContext: '',
   });
 
-  const [formErrors, setFormErrors] = useState<record  >>({});
+  const [formErrors, setFormErrors] = useState<Record  />>({});
 
-  const handleChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     

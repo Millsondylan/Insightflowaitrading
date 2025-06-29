@@ -14,15 +14,14 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
   className,
 }) => {
   return (
-    <div
-      className={cn(
+    <Div className={cn(
         "text-center transition-all duration-700 ease-in-out",
         unlocked
           ? "transform scale-100 opacity-100"
           : "transform scale-50 opacity-0",
         className
       )}
-    >
+   >
       <div className="relative inline-block">
         <Award
           className={cn(

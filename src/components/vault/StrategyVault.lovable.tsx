@@ -56,8 +56,8 @@ export const StrategyVault = ({ strategies }: Props) => {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
-          <search  >
-          <input placeholder="Search by title or tag..." > setSearchTerm(e.target.value)}
+          <Search >
+          <Input placeholder="Search by title or tag..." /> setSearchTerm(e.target.value)}
             className="pl-10 bg-black/30 border-white/10"
           />
         </div>

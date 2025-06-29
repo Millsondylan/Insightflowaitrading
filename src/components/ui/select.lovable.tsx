@@ -14,13 +14,13 @@ const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <selectprimitive  >span]:line-clamp-1",
+  <Selectprimitive >span]:line-clamp-1",
       className
     )}
     {...props}
   >
     {children}
-    <selectprimitive  >
+    <Selectprimitive  />
       <chevrondown  >
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>

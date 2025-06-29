@@ -130,11 +130,11 @@ export const LovableDemo = () => {
 
       <div style={{ backgroundColor: 'white', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
         {activeTab === 'sentiment' && (
-          <sentimentdisplay symbol="BTC/USD" apiKey="demo-key" >
+          <Sentimentdisplay symbol="BTC/USD" apiKey="demo-key">
         )}
 
         {activeTab === 'optimizer' && (
-          <mlstrategyoptimizerui  >
+          <Mlstrategyoptimizerui  />
         )}
 
         {activeTab === 'reflection' && (

@@ -41,7 +41,7 @@ interface BehaviorTagProps {
   animationDelay?: number;
 }
 
-const BehaviorTag: React.FC<behaviortagprops  > = ({ 
+const BehaviorTag: React.FC<Behaviortagprops > = ({ 
   tag, 
   className, 
   animated = false, 
@@ -62,7 +62,7 @@ const BehaviorTag: React.FC<behaviortagprops  > = ({
   };
   
   const tagElement = (
-    <badge variant="outline" >
+    <Badge variant="outline" />
       {tag}
     </Badge>
   );

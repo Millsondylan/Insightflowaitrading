@@ -34,10 +34,10 @@ const LandingPage = () => {
   const [platformUptime, setPlatformUptime] = React.useState('N/A');
 
   // Section refs for theme changes
-  const heroRef = useRef<htmldivelement  >(null);
-  const featuresRef = useRef<htmldivelement  >(null);
-  const pricingRef = useRef<htmldivelement  >(null);
-  const testimonialsRef = useRef<htmldivelement  >(null);
+  const heroRef = useRef<HTMLDivElement  >(null);
+  const featuresRef = useRef<HTMLDivElement  >(null);
+  const pricingRef = useRef<HTMLDivElement  >(null);
+  const testimonialsRef = useRef<HTMLDivElement  >(null);
 
   // Theme switching based on scroll position
   useEffect(() => {
@@ -179,12 +179,12 @@ const LandingPage = () => {
           </h1>
         </div>
         <div className="flex space-x-4">
-          <button variant="outline" > navigate('/auth')}
+          <Button variant="outline"> navigate('/auth')}
             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
           </Button>
-          <button  > navigate('/auth')}
+          <Button  /> navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial

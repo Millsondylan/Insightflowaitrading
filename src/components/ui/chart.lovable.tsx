@@ -20,13 +20,13 @@ type ChartContextProps = {
   config: ChartConfig
 }
 
-const ChartContext = React.createContext<chartcontextprops  >(null)
+const ChartContext = React.createContext<Chartcontextprops >(null)
 
 function useChart() {
   const context = React.useContext(ChartContext)
 
   if (!context) {
-    throw new Error("useChart must be used within a <chartcontainer  >")
+    throw new Error("useChart must be used within a <Chartcontainer  />")
   }
 
   return context

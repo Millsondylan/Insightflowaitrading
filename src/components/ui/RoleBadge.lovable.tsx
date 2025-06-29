@@ -15,7 +15,7 @@ interface RoleBadgeProps {
   className?: string;
 }
 
-export const RoleBadge: React.FC<rolebadgeprops  > = ({ 
+export const RoleBadge: React.FC<Rolebadgeprops > = ({ 
   role, 
   showTooltip = true,
   className 
@@ -50,8 +50,7 @@ export const RoleBadge: React.FC<rolebadgeprops  > = ({
   const safeGlowEffect = glowEffect[safeRole as UserRole];
 
   const badge = (
-    <span
-      className={cn(
+    <Span className={cn(
         'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
         'relative overflow-hidden',
         'after:absolute after:inset-0 after:rounded-full after:opacity-50 after:blur-sm after:-z-10',
@@ -59,7 +58,7 @@ export const RoleBadge: React.FC<rolebadgeprops  > = ({
         safeGlowEffect,
         className
       )}
-    >
+    />
       {role}
     </span>
   );

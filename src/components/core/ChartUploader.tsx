@@ -25,10 +25,9 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   });
 
   return (
-    <div
-      {...getRootProps()}
+    <Div {...getRootProps()}
       className={`chart-uploader ${isDragActive ? 'active' : ''}`}
-    >
+   >
       <input {...getInputProps()} />
       <div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
         {isDragActive ? (

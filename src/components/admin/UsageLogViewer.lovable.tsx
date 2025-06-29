@@ -27,10 +27,10 @@ type ActionFilter = "all" | "login" | "api" | "feature";
 
 export default function UsageLogViewer({ logs }: Props) {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [timeFilter, setTimeFilter] = React.useState<timefilter  >("all");
-  const [actionFilter, setActionFilter] = React.useState<actionfilter  >("all");
+  const [timeFilter, setTimeFilter] = React.useState<Timefilter >("all");
+  const [actionFilter, setActionFilter] = React.useState<Actionfilter  />("all");
   const [filteredLogs, setFilteredLogs] = React.useState<usagelog  >(logs);
-  const containerRef = React.useRef<htmldivelement  >(null);
+  const containerRef = React.useRef<HTMLDivElement  >(null);
 
   // Apply filters when any filter changes
   React.useEffect(() => {

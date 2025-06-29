@@ -8,21 +8,20 @@ interface LessonBadgeProps {
   className?: string;
 }
 
-const LessonBadge: React.FC<lessonbadgeprops  > = ({
+const LessonBadge: React.FC<Lessonbadgeprops > = ({
   lessonName,
   unlocked = false,
   className,
 }) => {
   return (
-    <div
-      className={cn(
+    <Div className={cn(
         "text-center transition-all duration-700 ease-in-out",
         unlocked
           ? "transform scale-100 opacity-100"
           : "transform scale-50 opacity-0",
         className
       )}
-    >
+    />
       <div className="relative inline-block">
         <award  >
         {unlocked && (

@@ -17,7 +17,7 @@ interface LessonViewProps {
   lesson: LessonData;
 }
 
-const LessonView: React.FC<lessonviewprops  > = ({ lesson }) => {
+const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
   const { toast } = useToast();
   const [activeQuizId, setActiveQuizId] = React.useState<string | null>(null);
   const [activeSectionId, setActiveSectionId] = React.useState<string | null>(null);
@@ -86,7 +86,7 @@ const LessonView: React.FC<lessonviewprops  > = ({ lesson }) => {
           <p className="text-white/70 mt-2">{lesson.description}</p>
         </div>
         
-        <lessonbookmark  > markComplete(lesson.id)}
+        <Lessonbookmark  /> markComplete(lesson.id)}
           onBookmark={handleToggleBookmark}
         />
       </div>

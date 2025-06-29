@@ -10,7 +10,7 @@ interface TradeTimelineProps {
   limit?: number;
 }
 
-export const TradeTimeline: React.FC<tradetimelineprops  > = ({ userId, limit = 20 }) => {
+export const TradeTimeline: React.FC<Tradetimelineprops > = ({ userId, limit = 20 }) => {
   // Mock data - TODO: Connect to trade_logs table
   const activities = [
     {
@@ -43,7 +43,7 @@ export const TradeTimeline: React.FC<tradetimelineprops  > = ({ userId, limit = 
   ];
 
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <alertcircle  >;
+    if (type === 'alert') return <Alertcircle  />;
     if (pnl && pnl > 0) return <trendingup  >;
     if (pnl && pnl < 0) return <trendingdown  >;
     return <clock  >;

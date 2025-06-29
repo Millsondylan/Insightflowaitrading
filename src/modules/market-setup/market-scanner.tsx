@@ -312,10 +312,9 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
             </thead>
             <tbody>
               {filteredResults.map(result => (
-                <tr
-                  key={result.symbol}
+                <Tr key={result.symbol}
                   className="border-b border-border-primary hover:bg-background-interactive"
-                >
+               >
                   <td className="px-4 py-3">
                     <div className="flex flex-col">
                       <span className="font-medium">{result.symbol}</span>
@@ -325,8 +324,8 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                   <td className="px-4 py-3 text-right font-medium">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
-                  <td className={`px-4 py-3 text-right font-medium ${
-                    result.change24h > 0 ? 'text-status-success' : 'text-status-error'
+                  <Td className={`px-4 py-3 text-right font-medium ${
+                    result.change24h /> 0 ? 'text-status-success' : 'text-status-error'
                   }`}>
                     {result.change24h > 0 ? '+' : ''}{result.change24h.toFixed(2)}%
                   </td>

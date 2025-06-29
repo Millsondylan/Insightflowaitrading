@@ -10,7 +10,7 @@ interface VersionDiffProps {
   versions?: any[];
 }
 
-export const VersionDiff: React.FC<versiondiffprops  > = ({ strategyId, versions = [] }) => {
+export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions = [] }) => {
   const [leftVersion, setLeftVersion] = React.useState('v1.0');
   const [rightVersion, setRightVersion] = React.useState('v1.1');
   
@@ -51,7 +51,7 @@ export const VersionDiff: React.FC<versiondiffprops  > = ({ strategyId, versions
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <plus  >;
+      case 'added': return <Plus  />;
       case 'removed': return <minus  >;
       case 'modified': return <edit  >;
       default: return null;

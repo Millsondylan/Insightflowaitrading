@@ -16,13 +16,13 @@ interface AIReflectionProps {
   autoGenerate?: boolean;
 }
 
-const AIReflection: React.FC<aireflectionprops  > = ({ 
+const AIReflection: React.FC<Aireflectionprops > = ({ 
   entry, 
   className, 
   autoGenerate = false 
 }) => {
   const { toast } = useToast();
-  const [reflection, setReflection] = useState<aireflectiontype  >(null);
+  const [reflection, setReflection] = useState<Aireflectiontype  />(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasGenerated, setHasGenerated] = useState(false);

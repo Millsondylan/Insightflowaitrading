@@ -21,7 +21,7 @@ const JournalBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* New Entry Section */}
-      <scrollsection  >
+      <Scrollsection >
         <div className="max-w-6xl mx-auto">
           <div className="glass-section motion-shadow">
             <div className="text-center mb-8">
@@ -64,7 +64,7 @@ const JournalBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* Recent Entries Timeline */}
-      <scrollsection animation="slide-right" >
+      <Scrollsection animation="slide-right" />
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
             <h3 className="text-3xl md:text-4xl font-semibold text-glow-magenta mb-4">📓 Recent Entries</h3>

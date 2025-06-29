@@ -11,7 +11,7 @@ interface ReplayAnnotationsProps {
   onAnnotationAdd?: (annotation: any) => void;
 }
 
-export const ReplayAnnotations: React.FC<replayannotationsprops  > = ({ tradeId, onAnnotationAdd }) => {
+export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, onAnnotationAdd }) => {
   const annotationTypes = [
     { id: 'volatility-trap', label: 'Volatility Trap', icon: AlertTriangle, color: 'text-red-500' },
     { id: 'reversal', label: 'Reversal', icon: TrendingUp, color: 'text-blue-500' },
@@ -65,7 +65,7 @@ export const ReplayAnnotations: React.FC<replayannotationsprops  > = ({ tradeId,
   };
 
   return (
-    <card  >
+    <Card  />
       <h2 className="text-2xl font-bold mb-4">Replay Annotations</h2>
 
       <div className="space-y-6">

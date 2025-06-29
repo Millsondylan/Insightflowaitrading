@@ -8,7 +8,7 @@ interface LessonBlockProps {
   block: LessonBlockType;
 }
 
-const LessonBlock: React.FC<lessonblockprops  > = ({ block }) => {
+const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
   return (
     <motion.div
       id={block.id}
@@ -18,7 +18,7 @@ const LessonBlock: React.FC<lessonblockprops  > = ({ block }) => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="w-full mb-12"
     >
-      <card  >
+      <Card  />
         <cardheader  >
           <cardtitle  style={{ fontWeight: "700" }}>
             {block.title}

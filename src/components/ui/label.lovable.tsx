@@ -13,7 +13,7 @@ const Label = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
     VariantProps<typeof labelVariants>
 >(({ className, ...props }, ref) => (
-  <labelprimitive  >
+  <Labelprimitive >
 ))
 Label.displayName = LabelPrimitive.Root.displayName
 

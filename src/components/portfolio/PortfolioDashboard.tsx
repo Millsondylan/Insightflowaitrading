@@ -76,7 +76,7 @@ export const PortfolioDashboard = ({ trades }: Props) => {
                     {trades.map(trade => (
                         <tr key={trade.id} className="border-b border-white/10 hover:bg-white/10">
                             <td className="p-4">{trade.symbol}</td>
-                            <td className={`p-4 ${trade.pnl > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            <Td className={`p-4 ${trade.pnl> 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 ${trade.pnl.toFixed(2)}
                             </td>
                             <td className="p-4">{trade.rr.toFixed(2)}</td>

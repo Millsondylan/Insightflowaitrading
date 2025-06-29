@@ -69,19 +69,17 @@ exit_rules:
             />
             {/* Cursor indicators */}
             {activeUsers.filter(u => u.name !== 'You').map((user) => (
-              <div
-                key={user.id}
+              <Div key={user.id}
                 className="absolute w-0.5 h-5 animate-pulse"
                 style={{
                   backgroundColor: user.color,
                   top: `${user.cursor.line * 20}px`,
                   left: `${user.cursor.col * 8}px`
                 }}
-              >
-                <span
-                  className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
+             >
+                <Span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
                   style={{ backgroundColor: user.color, color: 'white' }}
-                >
+                />
                   {user.name}
                 </span>
               </div>

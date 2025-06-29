@@ -10,7 +10,7 @@ interface UserPresenceTaggingProps {
   channelId?: string;
 }
 
-export const UserPresenceTagging: React.FC<userpresencetaggingprops  > = ({ channelId }) => {
+export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ channelId }) => {
   const [users, setUsers] = React.useState([
     {
       id: 1,
@@ -51,7 +51,7 @@ export const UserPresenceTagging: React.FC<userpresencetaggingprops  > = ({ chan
   };
 
   return (
-    <card  >
+    <Card  />
       <h2 className="text-2xl font-bold mb-4">Active Traders</h2>
       
       <div className="space-y-4">

@@ -33,12 +33,12 @@ interface UserSubscription {
   };
 }
 
-export const SubscriptionManager: React.FC<subscriptionmanagerprops  > = ({
+export const SubscriptionManager: React.FC<Subscriptionmanagerprops > = ({
   userId,
   onSubscribe,
   onCancel
 }) => {
-  const [plans, setPlans] = useState<subscriptionplan  >([]);
+  const [plans, setPlans] = useState<Subscriptionplan  />([]);
   const [userSubscription, setUserSubscription] = useState<usersubscription  >(null);
   const [selectedPlanId, setSelectedPlanId] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);

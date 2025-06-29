@@ -17,18 +17,18 @@ interface LiveEventRoomProps {
   className?: string;
 }
 
-export const LiveEventRoomComponent: React.FC<liveeventroomprops  > = ({
+export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
   roomId,
   userId,
   onRoomEvent,
   className = '',
 }) => {
-  const [room, setRoom] = useState<liveeventroom  >(null);
+  const [room, setRoom] = useState<Liveeventroom  />(null);
   const [messages, setMessages] = useState<roommessage  >([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
-  const messagesEndRef = useRef<htmldivelement  >(null);
+  const messagesEndRef = useRef<HTMLDivElement  >(null);
 
   // TODO: implement real-time WebSocket connection
   useEffect(() => {

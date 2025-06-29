@@ -24,7 +24,7 @@ const GlassCard = ({ title, value, icon, unit = '' }: { title: string, value: st
     return (
         <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
             <div className="flex justify-center items-center gap-2 text-gray-400 text-sm mb-2">
-                <icon  >
+                <Icon >
                 {title}
             </div>
             <p className="text-2xl font-bold text-white">{value}{unit}</p>
@@ -41,7 +41,7 @@ export default function VaultDetailPage() {
   return (
     <div>
       <link to="/vault" style={{ display: "flex", alignItems: "center" }}>
-        <arrowleft  >
+        <Arrowleft  />
         Back to Vault
       </Link>
 

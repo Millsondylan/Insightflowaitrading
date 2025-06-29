@@ -43,7 +43,7 @@ const DemoPage = () => {
           </div>
         </div>
 
-        <strategygenerator  >
+        <Strategygenerator >
 
         {generatedStrategy && (
           <div className="mt-12 glass-section p-6 animate-in fade-in slide-up">

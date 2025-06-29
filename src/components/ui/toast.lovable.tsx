@@ -11,7 +11,7 @@ const ToastViewport = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Viewport>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Viewport>
 >(({ className, ...props }, ref) => (
-  <toastprimitives  >
+  <Toastprimitives >
 ))
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName
 
@@ -37,7 +37,7 @@ const Toast = React.forwardRef<
     VariantProps<typeof toastVariants>
 >(({ className, variant, ...props }, ref) => {
   return (
-    <toastprimitives  >
+    <Toastprimitives  />
   )
 })
 Toast.displayName = ToastPrimitives.Root.displayName

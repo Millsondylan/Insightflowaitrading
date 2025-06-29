@@ -9,7 +9,7 @@ interface MultiplayerEditorProps {
   sessionId?: string;
 }
 
-export const MultiplayerEditor: React.FC<multiplayereditorprops  > = ({ sessionId }) => {
+export const MultiplayerEditor: React.FC<Multiplayereditorprops > = ({ sessionId }) => {
   const [content, setContent] = React.useState(`// Collaborative Strategy Editor
 // Multiple users can edit simultaneously
 
@@ -36,7 +36,7 @@ exit_rules:
   ]);
 
   return (
-    <card  >
+    <Card  />
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <users  >

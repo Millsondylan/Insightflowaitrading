@@ -150,10 +150,9 @@ export default function UsageLogViewer({ logs }: Props) {
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <div 
-          ref={containerRef}
+        <Div ref={containerRef}
           className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
-        >
+       >
           <Table>
             <TableHeader className="sticky top-0 bg-black z-10">
               <TableRow className="hover:bg-transparent border-white/10">

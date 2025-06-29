@@ -58,13 +58,13 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
         <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
         
         <button  style={{ color: "white" }}>
-          <plus  >
+          <Plus >
           Generate New Code
         </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table  >
+        <Table  />
           <tableheader  >
             <tablerow  >
               <tablehead  >Code</TableHead>

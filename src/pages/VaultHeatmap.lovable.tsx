@@ -47,13 +47,13 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
   return (
     <link  style={{ display: "block" }}>
       <card  style={{ height: "100%" }}>
-        <cardheader  >
+        <Cardheader >
           <div className="flex justify-between items-start mb-2">
             <div className="flex-1">
               <cardtitle  style={{ fontSize: "1.125rem", color: "white" }}>
                 {strategy.name}
               </CardTitle>
-              <carddescription  >
+              <Carddescription  />
                 {strategy.description}
               </CardDescription>
             </div>

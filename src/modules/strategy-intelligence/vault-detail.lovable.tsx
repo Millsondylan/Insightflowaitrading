@@ -32,8 +32,8 @@ export const VaultDetail: React.FC = () => {
 
   return (
     <card  style={{ width: "100%", color: "white" }}>
-      <cardheader  >
-        <cardtitle  >{strategy.name} - Strategy Details</CardTitle>
+      <Cardheader >
+        <Cardtitle  />{strategy.name} - Strategy Details</CardTitle>
       </CardHeader>
       <cardcontent  >
         <div className="space-y-4">

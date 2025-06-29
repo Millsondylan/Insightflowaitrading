@@ -33,13 +33,13 @@ import { toast } from '@/components/ui/use-toast';
 
 const UserTable: React.FC = () => {
   // State for user data
-  const [users, setUsers] = useState<user  >([]);
+  const [users, setUsers] = useState<User >([]);
   const [totalCount, setTotalCount] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(true);
   
   // State for filtering and pagination
-  const [filterOptions, setFilterOptions] = useState<fetchusersoptions  >({
+  const [filterOptions, setFilterOptions] = useState<Fetchusersoptions  />({
     page: 1,
     perPage: 10,
     sortBy: 'created_at',
@@ -71,7 +71,7 @@ const UserTable: React.FC = () => {
   }, [filterOptions]);
   
   // Handle search input
-  const handleSearchChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     // Debounce implementation would be better in production
     setFilterOptions(prev => ({ ...prev, search: e.target.value, page: 1 }));
   };

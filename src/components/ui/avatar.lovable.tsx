@@ -7,7 +7,7 @@ const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <avatarprimitive  >
+  <Avatarprimitive >
 ))
 Avatar.displayName = AvatarPrimitive.Root.displayName
 
@@ -15,7 +15,7 @@ const AvatarImage = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Image>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
 >(({ className, ...props }, ref) => (
-  <avatarprimitive  >
+  <Avatarprimitive  />
 ))
 AvatarImage.displayName = AvatarPrimitive.Image.displayName
 

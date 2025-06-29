@@ -300,11 +300,10 @@ export const LiveEventRoomComponent: React.FC<LiveEventRoomProps> = ({
                   className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-blue-400"
                   disabled={!isConnected}
                 />
-                <button
-                  onClick={sendMessage}
+                <Button onClick={sendMessage}
                   disabled={!newMessage.trim() || !isConnected}
                   className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"
-                >
+               >
                   Send
                 </button>
               </div>

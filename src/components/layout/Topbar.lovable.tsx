@@ -17,7 +17,7 @@ export default function Topbar() {
     <header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
       <div className="flex items-center gap-4">
         <div className="relative">
-          <search  >
+          <Search >
           <input
             type="text"
             placeholder="Search..."
@@ -27,7 +27,7 @@ export default function Topbar() {
       </div>
       <div className="flex items-center gap-6">
         <span className="text-sm text-text-muted">{today}</span>
-        <button variant="ghost" size="icon" >
+        <Button variant="ghost" size="icon" />
           <bell  >
         </Button>
         <div className="flex items-center gap-3">

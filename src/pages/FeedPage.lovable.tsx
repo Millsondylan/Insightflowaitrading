@@ -13,14 +13,14 @@ export default function FeedPage() {
   return (
     <div>
       <link to="/journal" style={{ display: "flex", alignItems: "center" }}>
-        <arrowleft  >
+        <Arrowleft >
         Back to Journal
       </Link>
       
       <div className="space-y-6">
         <header>
             <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                <span className="bg-white/10 p-2 rounded-lg"><rss  ></span>
+                <span className="bg-white/10 p-2 rounded-lg"><Rss  /></span>
                 Your Insight Feed
             </h1>
             <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>

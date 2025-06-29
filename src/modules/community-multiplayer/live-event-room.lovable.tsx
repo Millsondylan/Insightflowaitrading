@@ -46,14 +46,14 @@ interface EventDetails {
   }[];
 }
 
-export const LiveEventRoom: React.FC<liveeventroomprops  > = ({
+export const LiveEventRoom: React.FC<Liveeventroomprops > = ({
   eventId,
   userId,
   username,
   isHost = false,
   onLeave
 }) => {
-  const [event, setEvent] = useState<eventdetails  >(null);
+  const [event, setEvent] = useState<Eventdetails  />(null);
   const [messages, setMessages] = useState<message  >([]);
   const [participants, setParticipants] = useState<participant  >([]);
   const [messageInput, setMessageInput] = useState<string>('');
@@ -61,7 +61,7 @@ export const LiveEventRoom: React.FC<liveeventroomprops  > = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   
-  const messagesEndRef = useRef<htmldivelement  >(null);
+  const messagesEndRef = useRef<HTMLDivElement  >(null);
   const socketRef = useRef<websocket  >(null);
   
   useEffect(() => {

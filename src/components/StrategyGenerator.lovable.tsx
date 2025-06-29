@@ -10,7 +10,7 @@ type StrategyOutput = {
   warning?: string;
 };
 
-async function generateMockStrategy(input: string): Promise<strategyoutput  > {
+async function generateMockStrategy(input: string): Promise<Strategyoutput > {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1500));
   
@@ -71,11 +71,11 @@ interface StrategyGeneratorProps {
 const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<strategyoutput  >(null);
+  const [result, setResult] = useState<Strategyoutput  />(null);
   const [parsedRules, setParsedRules] = useState<parsedrule  >([]);
   const [showParsed, setShowParsed] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<htmlformelement  >) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement  >) => {
     e.preventDefault();
     if (!input.trim()) return;
     

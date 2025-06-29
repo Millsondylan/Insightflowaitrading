@@ -7,7 +7,7 @@ import { BroadcastEvent } from './types'
 import { sortBroadcastEventsByImpact } from './utils'
 
 export const BroadcastMode: React.FC = () => {
-  const [events, setEvents] = useState<broadcastevent  >([
+  const [events, setEvents] = useState<Broadcastevent >([
     {
       id: '1',
       title: 'Federal Reserve Interest Rate Decision',
@@ -33,7 +33,7 @@ export const BroadcastMode: React.FC = () => {
   return (
     <card  style={{ width: "100%", color: "white" }}>
       <cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <cardtitle  >Market Broadcast Mode</CardTitle>
+        <Cardtitle  />Market Broadcast Mode</CardTitle>
         <badge variant="default" >
           {sortedEvents.length} Active Events
         </Badge>

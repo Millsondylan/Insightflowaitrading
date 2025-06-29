@@ -151,10 +151,10 @@ export default function AdminPage() {
           </p>
         </header>
 
-        <tabs defaultValue="users" >
+        <Tabs defaultValue="users">
           <tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
             <tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
-              <shieldcheck  >
+              <Shieldcheck  />
               <span>Users</span>
             </TabsTrigger>
             <tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>

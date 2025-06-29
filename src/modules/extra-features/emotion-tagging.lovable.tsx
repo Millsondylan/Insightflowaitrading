@@ -9,7 +9,7 @@ interface EmotionTaggingProps {
   onTagSelect?: (emotion: string) => void;
 }
 
-export const EmotionTagging: React.FC<emotiontaggingprops  > = ({ onTagSelect }) => {
+export const EmotionTagging: React.FC<Emotiontaggingprops > = ({ onTagSelect }) => {
   const emotions = [
     { id: 'confident', label: 'Confident', icon: TrendingUp, color: 'text-green-500' },
     { id: 'anxious', label: 'Anxious', icon: Brain, color: 'text-yellow-500' },
@@ -32,7 +32,7 @@ export const EmotionTagging: React.FC<emotiontaggingprops  > = ({ onTagSelect })
   };
 
   return (
-    <card  >
+    <Card  />
       <h2 className="text-2xl font-bold mb-4">Emotion Tagging</h2>
       
       <div className="space-y-6">

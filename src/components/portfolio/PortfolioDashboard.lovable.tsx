@@ -49,8 +49,8 @@ export const PortfolioDashboard = ({ trades }: Props) => {
       <h1 className="text-3xl md:text-4xl font-bold text-white">Portfolio Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <kpicard label="Total PnL" prefix="$" >
-        <kpicard label="Win Rate" suffix="%" >
+        <Kpicard label="Total PnL" prefix="$">
+        <Kpicard label="Win Rate" suffix="%" />
         <kpicard label="Avg R:R" >
       </div>
 

@@ -37,10 +37,9 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
         </div>
       </div>
       
-      <button
-        onClick={onPublish}
+      <Button onClick={onPublish}
         className="w-full mt-2 bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg text-white font-bold transition-colors duration-200"
-      >
+     >
         🚀 Publish to Vault
       </button>
     </div>

@@ -303,7 +303,7 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
               </div>
             </div>
             
-            <div className={`text-xl font-bold ${trade.pnl >= 0 ? 'text-status-success' : 'text-status-error'}`}>
+            <Div className={`text-xl font-bold ${trade.pnl>= 0 ? 'text-status-success' : 'text-status-error'}`}>
               {trade.pnl >= 0 ? '+' : ''}{trade.pnl.toFixed(2)} ({trade.pnlPercentage.toFixed(2)}%)
             </div>
           </div>
@@ -333,11 +333,10 @@ export const TradeAnalyzer: React.FC<TradeAnalyzerProps> = ({
         
         {/* AI Suggestions Button */}
         <div className="mb-6">
-          <button
-            className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
+          <Button className="w-full px-4 py-3 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50 flex justify-center items-center"
             onClick={generateAiSuggestions}
             disabled={isGeneratingSuggestions}
-          >
+          />
             {isGeneratingSuggestions ? 'Generating Suggestions...' : 'Generate AI Suggestions'}
           </button>
         </div>

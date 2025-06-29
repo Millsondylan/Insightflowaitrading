@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const VisionPage = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [detectionResult, setDetectionResult] = useState<detectionresult  >(null);
+  const [detectionResult, setDetectionResult] = useState<Detectionresult >(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleFileUpload = (file: File, previewUrl: string) => {
@@ -41,7 +41,7 @@ const VisionPage = () => {
         </p>
       </motion.div>
 
-      <animatepresence mode="wait" >
+      <Animatepresence mode="wait" />
         {!detectionResult && !imagePreview ? (
           <motion.div
             key="uploader"

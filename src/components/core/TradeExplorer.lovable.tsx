@@ -51,9 +51,9 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
   };
 
   return (
-    <blockreveal  >
+    <Blockreveal >
       <div className="trade-table">
-        <table  >
+        <Table  />
           <tableheader  >
             <tablerow  >
               <tablehead  >#</TableHead>

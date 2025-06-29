@@ -88,11 +88,11 @@ export default function DigestPage() {
 
         <div className="flex justify-center gap-4 mb-8">
           <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <zap  >
+            <Zap >
             <span>Live Scan</span>
           </button>
           <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <filetext  >
+            <Filetext  />
             <span>View Reports</span>
           </button>
         </div>

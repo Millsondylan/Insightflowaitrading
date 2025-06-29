@@ -16,11 +16,10 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
     <div className="theme-vault space-y-6">
       <div className="flex items-center gap-2">
         {users.map((u) => (
-          <span
-            key={u.id}
+          <Span key={u.id}
             className="px-3 py-1 text-xs rounded-full text-white"
             style={{ backgroundColor: u.color }}
-          >
+         >
             🧑‍💻 {u.name}
           </span>
         ))}

@@ -48,7 +48,7 @@ const BreadcrumbLink = React.forwardRef<
   const Comp = asChild ? Slot : "a"
 
   return (
-    <comp  >
+    <Comp >
   )
 })
 BreadcrumbLink.displayName = "BreadcrumbLink"
@@ -79,7 +79,7 @@ const BreadcrumbSeparator = ({
     className={cn("[&>svg]:size-3.5", className)}
     {...props}
   >
-    {children ?? <chevronright  >}
+    {children ?? <Chevronright  />}
   </li>
 )
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator"

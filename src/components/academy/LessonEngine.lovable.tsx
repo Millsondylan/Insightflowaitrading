@@ -33,9 +33,9 @@ const getEmbedUrl = (url: string): string | null => {
 };
 
 const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
-  const [completedIds, setCompletedIds] = React.useState<set  >>(new Set());
-  const [visibleSections, setVisibleSections] = React.useState<set  >>(new Set());
-  const containerRef = React.useRef<htmldivelement  >(null);
+  const [completedIds, setCompletedIds] = React.useState<Set >>(new Set());
+  const [visibleSections, setVisibleSections] = React.useState<Set  />>(new Set());
+  const containerRef = React.useRef<HTMLDivElement  >(null);
 
   React.useEffect(() => {
     if (onProgressUpdate) {

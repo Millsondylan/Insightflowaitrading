@@ -139,8 +139,7 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
         const isReflectionExpanded = expandedReflections.has(entry.id);
 
         return (
-          <div
-            key={entry.id}
+          <Div key={entry.id}
             className={cn(
               "journal-entry-card opacity-0 transform translate-y-4",
               "animate-fade-in-up",
@@ -152,7 +151,7 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
               animationDelay: `${(index % 5) * 100}ms`,
               animationFillMode: "forwards"
             }}
-          >
+         >
             <Card className="overflow-hidden border-t-4 hover:shadow-lg transition-shadow duration-200">
               <div
                 className={cn(

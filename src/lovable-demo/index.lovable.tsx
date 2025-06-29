@@ -6,7 +6,7 @@ const container = document.getElementById('root');
 if (container) {
   const root = createRoot(container);
   root.render(
-    <react  >
+    <React >
       <div style={{
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)',
@@ -14,7 +14,7 @@ if (container) {
         fontFamily: 'system-ui, -apple-system, sans-serif',
         padding: '24px'
       }}>
-        <lovabledemo  >
+        <Lovabledemo  />
       </div>
     </React.StrictMode>
   );

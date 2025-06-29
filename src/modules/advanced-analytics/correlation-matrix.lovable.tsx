@@ -12,14 +12,14 @@ interface CorrelationMatrixProps {
   className?: string;
 }
 
-export const CorrelationMatrixComponent: React.FC<correlationmatrixprops  > = ({
+export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
   symbols,
   timeframe = '1M',
   updateInterval = 60000, // 1 minute
   onCorrelationAlert,
   className = '',
 }) => {
-  const [matrix, setMatrix] = useState<correlationmatrix  >(null);
+  const [matrix, setMatrix] = useState<Correlationmatrix  />(null);
   const [loading, setLoading] = useState(true);
   const [selectedCell, setSelectedCell] = useState<{ row: number; col: number } | null>(null);
   const [rollingData, setRollingData] = useState<rollingcorrelation  >(null);

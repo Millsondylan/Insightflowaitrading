@@ -40,7 +40,7 @@ export default function CommunityPage() {
                 <div className="flex justify-between items-center">
                     <div>
                         <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                            <span className="bg-white/10 p-2 rounded-lg"><messagesquare  ></span>
+                            <span className="bg-white/10 p-2 rounded-lg"><Messagesquare ></span>
                             Community Feed
                         </h1>
                         <p className="text-gray-400 mt-1">Connect with other traders and share insights.</p>
@@ -49,7 +49,7 @@ export default function CommunityPage() {
 
                 {/* Create Post */}
                 <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
-                    <textarea  > setNewPost(e.target.value)}
+                    <Textarea  /> setNewPost(e.target.value)}
                         placeholder="Share your thoughts, charts, or trade ideas..."
                         className="bg-black/20 border-none"
                     />

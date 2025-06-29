@@ -21,7 +21,7 @@ const AcademyBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* Progress Overview */}
-      <scrollsection  >
+      <Scrollsection >
         <div className="max-w-6xl mx-auto">
           <div className="glass-section motion-shadow text-center">
             <div className="inline-block px-4 py-2 bg-blue-500/10 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6">
@@ -50,7 +50,7 @@ const AcademyBuilderPage: React.FC = () => {
       </ScrollSection>
 
       {/* Lesson Blocks Grid */}
-      <scrollsection animation="slide-right" >
+      <Scrollsection animation="slide-right" />
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             

@@ -12,7 +12,7 @@ interface TokenBalanceCardProps {
   index: number;
 }
 
-const TokenBalanceCard: React.FC<tokenbalancecardprops  > = ({ token, index }) => {
+const TokenBalanceCard: React.FC<Tokenbalancecardprops > = ({ token, index }) => {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
   const [showQr, setShowQr] = useState(false);
@@ -68,7 +68,7 @@ const TokenBalanceCard: React.FC<tokenbalancecardprops  > = ({ token, index }) =
             <span className="font-mono text-sm text-gray-300">{shortAddress}</span>
             <div className="flex items-center space-x-2">
               <button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
-                {copied ? <check  > : <copy  >}
+                {copied ? <Check  /> : <copy  >}
               </button>
               <button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
                 <qrcode  >

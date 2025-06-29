@@ -32,7 +32,7 @@ export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => 
   };
 
   return (
-    <card  >
+    <Card >
       <h2 className="text-2xl font-bold mb-4">Trade Replay</h2>
       
       <div className="space-y-4">
@@ -44,7 +44,7 @@ export const ReplayEngineV2: React.FC<replayenginev2props  > = ({ tradeId }) => 
         {/* Playback controls */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <button variant="outline" size="icon" > setCurrentTime(Math.max(0, currentTime - 10))}
+            <Button variant="outline" size="icon" /> setCurrentTime(Math.max(0, currentTime - 10))}
             >
               <skipback  >
             </Button>

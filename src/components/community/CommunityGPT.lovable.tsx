@@ -17,7 +17,7 @@ type Reply = {
 };
 
 // --- Mock Function (to be replaced with actual GPT call) ---
-const generateReply = (post: Post): Promise<reply  > => {
+const generateReply = (post: Post): Promise<Reply > => {
   return new Promise(resolve => {
     setTimeout(() => {
       let text = `Thanks for sharing your thoughts on "${post.title}". `;
@@ -36,7 +36,7 @@ const generateReply = (post: Post): Promise<reply  > => {
 
 
 const CommunityGPT = ({ post }: Props) => {
-  const [reply, setReply] = useState<reply  >(null);
+  const [reply, setReply] = useState<Reply  />(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchReply = () => {

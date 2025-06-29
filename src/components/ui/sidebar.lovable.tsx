@@ -34,7 +34,7 @@ type SidebarContext = {
   toggleSidebar: () => void
 }
 
-const SidebarContext = React.createContext<sidebarcontext  >(null)
+const SidebarContext = React.createContext<Sidebarcontext >(null)
 
 function useSidebar() {
   const context = React.useContext(SidebarContext)
@@ -114,7 +114,7 @@ const SidebarProvider = React.forwardRef<
     // This makes it easier to style the sidebar with Tailwind classes.
     const state = open ? "expanded" : "collapsed"
 
-    const contextValue = React.useMemo<sidebarcontext  >(
+    const contextValue = React.useMemo<Sidebarcontext  />(
       () => ({
         state,
         open,

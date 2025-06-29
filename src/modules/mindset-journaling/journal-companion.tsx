@@ -326,10 +326,9 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
         <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
             <label className="font-medium">Today's Journal Entry</label>
-            <button
-              className="text-sm text-brand-primary hover:text-brand-primary/80"
+            <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
               onClick={getRandomPrompt}
-            >
+           >
               Get Random Prompt
             </button>
           </div>
@@ -404,11 +403,10 @@ export const JournalCompanion: React.FC<JournalCompanionProps> = ({
         )}
         
         <div className="flex justify-between">
-          <button
-            className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
+          <Button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
             onClick={analyzeEntry}
             disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}
-          >
+          />
             {analyzing ? 'Analyzing...' : 'Analyze with AI'}
           </button>
           

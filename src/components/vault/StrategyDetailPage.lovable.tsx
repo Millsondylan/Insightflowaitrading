@@ -46,7 +46,7 @@ export const StrategyDetailPage = ({ strategy }: Props) => {
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-6">
-          <ruleparser  >
+          <Ruleparser >
           <div>
             <h3 className="text-lg font-semibold text-white/90">Pre-Trade Checklist</h3>
             <ul className="space-y-2 mt-2">
@@ -61,7 +61,7 @@ export const StrategyDetailPage = ({ strategy }: Props) => {
             <div>
                 <h3 className="text-lg font-semibold text-white/90 mb-2">Performance</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
-                    <kpicard label="Win Rate" suffix="%" >
+                    <Kpicard label="Win Rate" suffix="%" />
                     <kpicard label="Total PnL" prefix="$" >
                     <kpicard label="Total Trades" >
                 </div>

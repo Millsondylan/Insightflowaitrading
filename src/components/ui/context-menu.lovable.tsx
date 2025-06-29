@@ -22,9 +22,9 @@ const ContextMenuSubTrigger = React.forwardRef<
     inset?: boolean
   }
 >(({ className, inset, children, ...props }, ref) => (
-  <contextmenuprimitive  >
+  <Contextmenuprimitive >
     {children}
-    <chevronright  >
+    <Chevronright  />
   </ContextMenuPrimitive.SubTrigger>
 ))
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
@@ -109,7 +109,7 @@ ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName
 const ContextMenuShortcut = ({
   className,
   ...props
-}: React.HTMLAttributes<htmlspanelement  >) => {
+}: React.HTMLAttributes<HTMLSpanElement  >) => {
   return (
     <span
       className={cn(

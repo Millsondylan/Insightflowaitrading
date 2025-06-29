@@ -9,7 +9,7 @@ const ConfigItem = ({ icon, title, children }: { icon: React.ElementType, title:
   return (
     <div>
       <h4 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
-        <icon  >
+        <Icon >
         {title}
       </h4>
       {children}
@@ -27,7 +27,7 @@ export default function StrategyBuilderPage() {
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><bot  ></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><Bot  /></span>
                     AI Strategy Builder
                 </h1>
                 <p className="text-gray-400 mt-1">Craft a new strategy using natural language.</p>

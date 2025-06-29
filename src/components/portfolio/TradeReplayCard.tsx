@@ -34,7 +34,7 @@ export const TradeReplayCard = ({ trade }: Props) => {
       <div className="flex justify-between items-center">
         <div>
           <span className="font-bold text-white">{trade.symbol}</span>
-          <span className={`ml-4 font-semibold ${trade.pnl > 0 ? 'text-green-400' : 'text-red-400'}`}>
+          <Span className={`ml-4 font-semibold ${trade.pnl> 0 ? 'text-green-400' : 'text-red-400'}`}>
             ${trade.pnl.toFixed(2)}
           </span>
           <span className="ml-4 text-white/60">R:R: {trade.rr.toFixed(2)}</span>

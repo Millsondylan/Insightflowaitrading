@@ -312,10 +312,9 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                         disabled={isSubmitted}
                         className="quiz-option-input"
                       />
-                      <label
-                        htmlFor={`${currentQuestion.id}-${option.id}`}
+                      <Label htmlFor={`${currentQuestion.id}-${option.id}`}
                         className={optionClassName}
-                      >
+                     >
                         <div className="quiz-option-radio" />
                         <span className="text-gray-200">{option.label}</span>
                       </label>

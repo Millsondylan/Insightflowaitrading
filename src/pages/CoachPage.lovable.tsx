@@ -8,7 +8,7 @@ export default function CoachPage() {
   return (
     <div>
       <link to="/journal" style={{ display: "flex", alignItems: "center" }}>
-        <arrowleft  >
+        <Arrowleft >
         Back to Journal
       </Link>
       
@@ -16,7 +16,7 @@ export default function CoachPage() {
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><bot  ></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><Bot  /></span>
                     AI Coach
                 </h1>
                 <p className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</p>

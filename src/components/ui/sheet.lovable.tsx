@@ -17,7 +17,7 @@ const SheetOverlay = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-  <sheetprimitive  >
+  <Sheetprimitive >
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
@@ -48,7 +48,7 @@ const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
 >(({ side = "right", className, children, ...props }, ref) => (
-  <sheetportal  >
+  <Sheetportal  />
     <sheetoverlay  >
     <sheetprimitive  >
       {children}
@@ -64,7 +64,7 @@ SheetContent.displayName = SheetPrimitive.Content.displayName
 const SheetHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<htmldivelement  >) => (
+}: React.HTMLAttributes<HTMLDivElement  >) => (
   <div
     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
@@ -78,7 +78,7 @@ SheetHeader.displayName = "SheetHeader"
 const SheetFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<htmldivelement  >) => (
+}: React.HTMLAttributes<HTMLDivElement  >) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",

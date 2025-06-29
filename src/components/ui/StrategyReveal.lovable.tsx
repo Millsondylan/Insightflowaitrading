@@ -25,13 +25,13 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
   return (
     <div className="strategy-reveal max-w-3xl mx-auto space-y-12">
-      <blockreveal variant="fade" >
+      <Blockreveal variant="fade">
         <h2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan">
           {strategyName}
         </h2>
       </BlockReveal>
 
-      <blockreveal  >
+      <Blockreveal  />
         <p className="text-gray-300 text-lg leading-relaxed text-center max-w-[70ch] mx-auto">
           {description}
         </p>

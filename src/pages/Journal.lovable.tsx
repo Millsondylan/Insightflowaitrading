@@ -22,7 +22,7 @@ const JournalEntryCard = ({ entry }: { entry: (typeof mockEntries)[0] }) => {
             <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
                 <p>{entry.sentiment} • {entry.date}</p>
                 <div className="flex gap-2">
-                    {entry.tags.map(tag => <badge variant="secondary" >{tag}</Badge>)}
+                    {entry.tags.map(tag => <Badge variant="secondary">{tag}</Badge>)}
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@ export default function JournalPage() {
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><scrolltext  ></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><Scrolltext  /></span>
                     Trading Journal
                 </h1>
                 <p className="text-gray-400 mt-1">Reflect on your trades and mindset.</p>

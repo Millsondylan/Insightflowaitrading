@@ -228,7 +228,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         gap: '24px' 
       }}>
         {filteredStrategies.map(strategy => (
-          <strategycard  >
+          <Strategycard >
         ))}
       </div>
 
@@ -429,7 +429,7 @@ export const LovableDemo = () => {
           }}>
             🏦 Strategy Vault
           </h2>
-          <strategyvault  >
+          <Strategyvault  />
         </div>
 
         {/* Footer */}

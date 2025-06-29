@@ -33,13 +33,13 @@ export const StrategyCard = ({ strategy }: Props) => {
       </div>
       <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-4">
         <div className="flex items-center gap-2">
-          <target  >
+          <Target >
           <span className="text-sm font-medium">
             {(strategy.winRate * 100).toFixed(0)}% Win Rate
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <arrowupright  >
+          <Arrowupright  />
           <span className="text-sm font-medium">
             ${strategy.totalPnL.toLocaleString()} PnL
           </span>

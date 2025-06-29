@@ -61,8 +61,7 @@ export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
-          <div
-            key={plan.name}
+          <Div key={plan.name}
             className={`relative p-6 rounded-lg border-2 ${
               plan.recommended
                 ? 'border-primary bg-primary/5'
@@ -70,7 +69,7 @@ export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
                 ? 'border-muted'
                 : 'border-border'
             }`}
-          >
+         >
             {plan.recommended && (
               <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended

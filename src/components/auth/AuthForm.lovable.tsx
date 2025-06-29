@@ -55,14 +55,14 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <input type="email" placeholder="Email" > setEmail(e.target.value)}
+                        <Input type="email" placeholder="Email"> setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                         />
                     </div>
 
                     <div>
-                        <input type="password" placeholder="Password" > setPassword(e.target.value)}
+                        <Input type="password" placeholder="Password" /> setPassword(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                             minLength={8}

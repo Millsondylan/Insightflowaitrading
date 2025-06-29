@@ -7,7 +7,7 @@ export default function PlannerPage() {
   return (
     <div>
       <link to="/strategy-builder" style={{ display: "flex", alignItems: "center" }}>
-        <arrowleft  >
+        <Arrowleft >
         Back to Strategy Builder
       </Link>
       
@@ -15,7 +15,7 @@ export default function PlannerPage() {
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><calendar  ></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><Calendar  /></span>
                     Trading Planner
                 </h1>
                 <p className="text-gray-400 mt-1">Outline your trading plan for the generated strategy.</p>

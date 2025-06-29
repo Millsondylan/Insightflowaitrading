@@ -6,12 +6,12 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 
 interface VaultGridProps {
-  initialOptions?: Partial<vaultgridoptions  >;
+  initialOptions?: Partial<Vaultgridoptions >;
   onStrategySelect: (strategy: Strategy) => void;
   onCreateStrategy: () => void;
 }
 
-export const VaultGrid: React.FC<vaultgridprops  > = ({
+export const VaultGrid: React.FC<Vaultgridprops  /> = ({
   initialOptions,
   onStrategySelect,
   onCreateStrategy

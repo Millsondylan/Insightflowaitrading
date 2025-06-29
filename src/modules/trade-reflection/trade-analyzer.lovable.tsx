@@ -38,11 +38,11 @@ interface TradeReflection {
   updatedAt: string;
 }
 
-export const TradeAnalyzer: React.FC<tradeanalyzerprops  > = ({
+export const TradeAnalyzer: React.FC<Tradeanalyzerprops > = ({
   tradeId,
   onSaveReflection
 }) => {
-  const [trade, setTrade] = useState<trade  >(null);
+  const [trade, setTrade] = useState<Trade  />(null);
   const [reflection, setReflection] = useState<partial  >>({
     strengths: [],
     weaknesses: [],
@@ -124,14 +124,14 @@ export const TradeAnalyzer: React.FC<tradeanalyzerprops  > = ({
   };
   
   const handleInputChange = (
-    e: React.ChangeEvent<htmlinputelement  >,
+    e: React.ChangeEvent<HTMLInputElement  >,
     field: keyof TradeReflection
   ) => {
     setReflection(prev => ({ ...prev, [field]: e.target.value }));
   };
   
   const handleArrayInputChange = (
-    e: React.ChangeEvent<htmltextareaelement  >,
+    e: React.ChangeEvent<HTMLTextareaElement  >,
     field: 'strengths' | 'weaknesses' | 'opportunities' | 'threats' | 'actionItems'
   ) => {
     const items = e.target.value.split('\n').filter(item => item.trim() !== '');

@@ -16,10 +16,10 @@ interface JournalFormProps {
   onEntryAdded?: () => void;
 }
 
-const JournalForm: React.FC<journalformprops  > = ({ onEntryAdded }) => {
+const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<journalformdata  >({
+  const [formData, setFormData] = useState<Journalformdata  />({
     title: "",
     pair: "",
     timeframe: "",
@@ -33,13 +33,13 @@ const JournalForm: React.FC<journalformprops  > = ({ onEntryAdded }) => {
   const [errors, setErrors] = useState<journalformerrors  >({});
   
   // Handle file selection
-  const handleFileChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const file = e.target.files?.[0] || null;
     setFormData(prev => ({ ...prev, chartFile: file }));
   };
   
   // Handle form field changes
-  const handleChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -149,7 +149,7 @@ const JournalForm: React.FC<journalformprops  > = ({ onEntryAdded }) => {
     }
   };
   
-  const fileInputRef = React.createRef<htmlinputelement  >();
+  const fileInputRef = React.createRef<HTMLInputElement  >();
   
   return (
     <card  style={{ width: "100%" }}>

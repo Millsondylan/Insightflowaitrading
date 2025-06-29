@@ -192,8 +192,8 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                 <td className="px-4 py-3">{strategy.author}</td>
                 <td className="px-4 py-3">
                   {strategy.performance ? (
-                    <span className={
-                      strategy.performance.winRate > 0.5 ? 'text-status-success' : 
+                    <Span className={
+                      strategy.performance.winRate> 0.5 ? 'text-status-success' : 
                       strategy.performance.winRate > 0.4 ? 'text-status-warning' : 'text-status-error'
                     }>
                       {(strategy.performance.winRate * 100).toFixed(1)}%
@@ -202,8 +202,8 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                 </td>
                 <td className="px-4 py-3">
                   {strategy.performance ? (
-                    <span className={
-                      strategy.performance.profitFactor > 2 ? 'text-status-success' : 
+                    <Span className={
+                      strategy.performance.profitFactor /> 2 ? 'text-status-success' : 
                       strategy.performance.profitFactor > 1.5 ? 'text-status-warning' : 'text-text-primary'
                     }>
                       {strategy.performance.profitFactor.toFixed(2)}

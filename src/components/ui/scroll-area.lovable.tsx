@@ -7,11 +7,11 @@ const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <scrollareaprimitive  >
+  <Scrollareaprimitive >
     <scrollareaprimitive  style={{ height: "100%", width: "100%" }}>
       {children}
     </ScrollAreaPrimitive.Viewport>
-    <scrollbar  >
+    <Scrollbar  />
     <scrollareaprimitive  >
   </ScrollAreaPrimitive.Root>
 ))

@@ -16,7 +16,7 @@ const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-  <dialogprimitive  >
+  <Dialogprimitive >
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
@@ -24,7 +24,7 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <dialogportal  >
+  <Dialogportal  />
     <dialogoverlay  >
     <dialogprimitive  >
       {children}
@@ -40,7 +40,7 @@ DialogContent.displayName = DialogPrimitive.Content.displayName
 const DialogHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<htmldivelement  >) => (
+}: React.HTMLAttributes<HTMLDivElement  >) => (
   <div
     className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
@@ -54,7 +54,7 @@ DialogHeader.displayName = "DialogHeader"
 const DialogFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<htmldivelement  >) => (
+}: React.HTMLAttributes<HTMLDivElement  >) => (
   <div
     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",

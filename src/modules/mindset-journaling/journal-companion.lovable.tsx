@@ -28,11 +28,11 @@ interface JournalPrompt {
   tags: string[];
 }
 
-export const JournalCompanion: React.FC<journalcompanionprops  > = ({
+export const JournalCompanion: React.FC<Journalcompanionprops > = ({
   userId,
   onSaveEntry
 }) => {
-  const [entries, setEntries] = useState<journalentry  >([]);
+  const [entries, setEntries] = useState<Journalentry  />([]);
   const [currentEntry, setCurrentEntry] = useState<partial  >>({
     content: '',
     mood: 'neutral',
@@ -169,7 +169,7 @@ export const JournalCompanion: React.FC<journalcompanionprops  > = ({
     }
   };
   
-  const handleContentChange = (e: React.ChangeEvent<htmltextareaelement  >) => {
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextareaElement  >) => {
     setCurrentEntry(prev => ({ ...prev, content: e.target.value }));
   };
   
@@ -177,7 +177,7 @@ export const JournalCompanion: React.FC<journalcompanionprops  > = ({
     setCurrentEntry(prev => ({ ...prev, mood }));
   };
   
-  const handleTagsChange = (e: React.ChangeEvent<htmlinputelement  >) => {
+  const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const tagsString = e.target.value;
     const tagsArray = tagsString.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
     setCurrentEntry(prev => ({ ...prev, tags: tagsArray }));

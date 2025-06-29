@@ -9,7 +9,7 @@ interface LovableConverterProps {
   onConvert?: (output: string) => void;
 }
 
-export const LovableConverter: React.FC<lovableconverterprops  > = ({ onConvert }) => {
+export const LovableConverter: React.FC<Lovableconverterprops > = ({ onConvert }) => {
   const [inputCode, setInputCode] = React.useState('');
   const [outputCode, setOutputCode] = React.useState('');
   const [isConverting, setIsConverting] = React.useState(false);
@@ -46,7 +46,7 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
   };
 
   return (
-    <card  >
+    <Card  />
       <div className="flex items-center gap-2 mb-6">
         <code2  >
         <h2 className="text-2xl font-bold">Lovable Converter</h2>

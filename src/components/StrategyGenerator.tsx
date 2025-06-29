@@ -148,11 +148,10 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             className="bg-black/20 text-white w-full p-3 rounded-md outline-none resize-none h-32 placeholder:text-gray-500 focus:ring-2 focus:ring-cyan-500/30 transition-all"
             disabled={loading}
           />
-          <button
-            type="submit"
+          <Button type="submit"
             disabled={!input.trim() || loading}
             className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2"
-          >
+         >
             <span>🧠</span>
             <span>{loading ? "Generating..." : "Generate Strategy"}</span>
           </button>

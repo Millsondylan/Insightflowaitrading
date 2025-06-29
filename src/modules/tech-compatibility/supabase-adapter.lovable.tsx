@@ -10,7 +10,7 @@ interface SupabaseAdapterProps {
   onSync?: () => void;
 }
 
-export const SupabaseAdapter: React.FC<supabaseadapterprops  > = ({ onSync }) => {
+export const SupabaseAdapter: React.FC<Supabaseadapterprops > = ({ onSync }) => {
   const [syncStatus, setSyncStatus] = React.useState({
     connected: true,
     lastSync: new Date('2024-02-12T10:30:00'),
@@ -52,7 +52,7 @@ export const SupabaseAdapter: React.FC<supabaseadapterprops  > = ({ onSync }) =>
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'synced': return <checkcircle  >;
+      case 'synced': return <Checkcircle  />;
       case 'syncing': return <refreshcw  >;
       default: return <alertcircle  >;
     }

@@ -7,7 +7,7 @@ const ResizablePanelGroup = ({
   className,
   ...props
 }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
-  <resizableprimitive  >
+  <Resizableprimitive >
 )
 
 const ResizablePanel = ResizablePrimitive.Panel
@@ -19,7 +19,7 @@ const ResizableHandle = ({
 }: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
   withHandle?: boolean
 }) => (
-  <resizableprimitive  >div]:rotate-90",
+  <Resizableprimitive  />div]:rotate-90",
       className
     )}
     {...props}

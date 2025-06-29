@@ -27,7 +27,7 @@ export default function Wallet() {
           </p>
         </div>
 
-        <walletconnect  >
+        <Walletconnect >
 
         <div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
           <h2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</h2>

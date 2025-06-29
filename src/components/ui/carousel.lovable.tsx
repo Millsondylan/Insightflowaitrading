@@ -28,13 +28,13 @@ type CarouselContextProps = {
   canScrollNext: boolean
 } & CarouselProps
 
-const CarouselContext = React.createContext<carouselcontextprops  >(null)
+const CarouselContext = React.createContext<Carouselcontextprops >(null)
 
 function useCarousel() {
   const context = React.useContext(CarouselContext)
 
   if (!context) {
-    throw new Error("useCarousel must be used within a <carousel  >")
+    throw new Error("useCarousel must be used within a <Carousel  />")
   }
 
   return context
@@ -42,7 +42,7 @@ function useCarousel() {
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<htmldivelement  > & CarouselProps
+  React.HTMLAttributes<HTMLDivElement  > & CarouselProps
 >(
   (
     {
@@ -84,7 +84,7 @@ const Carousel = React.forwardRef<
     }, [api])
 
     const handleKeyDown = React.useCallback(
-      (event: React.KeyboardEvent<htmldivelement  >) => {
+      (event: React.KeyboardEvent<HTMLDivElement  >) => {
         if (event.key === "ArrowLeft") {
           event.preventDefault()
           scrollPrev()
@@ -138,7 +138,7 @@ Carousel.displayName = "Carousel"
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<htmldivelement  >
+  React.HTMLAttributes<HTMLDivElement  >
 >(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel()
 
@@ -160,7 +160,7 @@ CarouselContent.displayName = "CarouselContent"
 
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<htmldivelement  >
+  React.HTMLAttributes<HTMLDivElement  >
 >(({ className, ...props }, ref) => {
   const { orientation } = useCarousel()
 

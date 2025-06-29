@@ -10,14 +10,14 @@ import {
 } from 'recharts';
 
 interface LineChartProps {
-  data: Array<record  >>;
+  data: Array<Record >>;
   xField: string;
   yField: string;
   height?: number;
   color?: string;
 }
 
-export const LineChart: React.FC<linechartprops  > = ({
+export const LineChart: React.FC<Linechartprops  /> = ({
   data,
   xField,
   yField,

@@ -162,10 +162,9 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
 
         {/* Progress bar */}
         <div className="w-full bg-white/10 rounded-full h-2 mb-2">
-          <div 
-            className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+          <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
             style={{ width: `${completionStats.percentage}%` }}
-          ></div>
+         ></div>
         </div>
         <div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
@@ -221,11 +220,10 @@ export const AchievementsComponent: React.FC<AchievementsProps> = ({
           <h3 className="text-lg font-semibold text-white mb-3">Recent Badges</h3>
           <div className="flex flex-wrap gap-2">
             {userProfile.badges.slice(0, 6).map((badge, index) => (
-              <div
-                key={badge.id}
+              <Div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
                 title={badge.description}
-              >
+              />
                 <span className="text-lg">{badge.icon}</span>
                 <span className="text-xs text-white/80">{badge.name}</span>
               </div>

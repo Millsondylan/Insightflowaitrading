@@ -58,13 +58,13 @@ const mockQuestions: QuizQuestion[] = [
   }
 ];
 
-const QuizEngine: React.FC<quizprops  > = ({ quizId, lessonId, lessonTitle, onComplete }) => {
+const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onComplete }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = React.useState<number>(0);
   const [selectedOption, setSelectedOption] = React.useState<number | null>(null);
   const [isAnswered, setIsAnswered] = React.useState<boolean>(false);
   const [score, setScore] = React.useState<number>(0);
   const [quizComplete, setQuizComplete] = React.useState<boolean>(false);
-  const [userAnswers, setUserAnswers] = React.useState<record  >>({});
+  const [userAnswers, setUserAnswers] = React.useState<Record  />>({});
   const [hasPassedQuiz, setHasPassedQuiz] = React.useState<boolean>(false);
 
   // Current question from mock data

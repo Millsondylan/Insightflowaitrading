@@ -93,10 +93,9 @@ export const TickerScanningEngine: React.FC = () => {
         </div>
         <div className="space-y-4">
           {filteredTickers.map((ticker) => (
-            <div 
-              key={ticker.symbol} 
+            <Div key={ticker.symbol} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center"
-            >
+           >
               <div>
                 <div className="flex items-center space-x-2">
                   <h3 className="text-lg font-bold">{ticker.symbol}</h3>
@@ -108,7 +107,7 @@ export const TickerScanningEngine: React.FC = () => {
                 <div className="text-lg font-bold">
                   ${ticker.price.toLocaleString()}
                 </div>
-                <div className={`text-sm ${ticker.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                <Div className={`text-sm ${ticker.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
                   {ticker.changePercent >= 0 ? '+' : ''}{ticker.changePercent.toFixed(2)}%
                 </div>
                 <div className="text-xs text-gray-400">

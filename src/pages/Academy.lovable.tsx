@@ -58,8 +58,8 @@ const CourseCard = ({ course }: { course: typeof comprehensiveCourses[0] }) => {
   };
   
   return (
-    <card  >
-      <cardheader  >
+    <Card >
+      <Cardheader  />
         <div className="flex justify-between items-start">
           <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600/30 transition-colors">
             <icon  >

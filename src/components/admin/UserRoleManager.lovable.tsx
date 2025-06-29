@@ -26,7 +26,7 @@ type Props = {
 
 export default function UserRoleManager({ users, onRoleChange }: Props) {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [filteredUsers, setFilteredUsers] = React.useState<user  >(users);
+  const [filteredUsers, setFilteredUsers] = React.useState<User >(users);
 
   // Filter users when search query changes
   React.useEffect(() => {
@@ -66,7 +66,7 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
         
         {/* Search input */}
         <div className="relative">
-          <search  >
+          <Search  />
           <input
             type="text"
             value={searchQuery}

@@ -128,10 +128,9 @@ export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions =
         </div>
 
         {diffs.map((diff, i) => (
-          <div
-            key={i}
+          <Div key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
-          >
+         >
             <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <div className="flex-1">

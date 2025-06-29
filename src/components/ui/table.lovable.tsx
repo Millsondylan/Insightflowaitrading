@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 const Table = React.forwardRef<
   HTMLTableElement,
-  React.HTMLAttributes<htmltableelement  >
+  React.HTMLAttributes<HTMLTableElement  >
 >(({ className, ...props }, ref) => (
   <div className="relative w-full overflow-auto">
     <table
@@ -18,7 +18,7 @@ Table.displayName = "Table"
 
 const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
-  React.HTMLAttributes<htmltablesectionelement  >
+  React.HTMLAttributes<HTMLTablesectionElement  >
 >(({ className, ...props }, ref) => (
   <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
 ))
@@ -26,7 +26,7 @@ TableHeader.displayName = "TableHeader"
 
 const TableBody = React.forwardRef<
   HTMLTableSectionElement,
-  React.HTMLAttributes<htmltablesectionelement  >
+  React.HTMLAttributes<HTMLTablesectionElement  >
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
@@ -38,7 +38,7 @@ TableBody.displayName = "TableBody"
 
 const TableFooter = React.forwardRef<
   HTMLTableSectionElement,
-  React.HTMLAttributes<htmltablesectionelement  >
+  React.HTMLAttributes<HTMLTablesectionElement  >
 >(({ className, ...props }, ref) => (
   <tfoot
     ref={ref}
@@ -53,7 +53,7 @@ TableFooter.displayName = "TableFooter"
 
 const TableRow = React.forwardRef<
   HTMLTableRowElement,
-  React.HTMLAttributes<htmltablerowelement  >
+  React.HTMLAttributes<HTMLTablerowElement  >
 >(({ className, ...props }, ref) => (
   <tr
     ref={ref}
@@ -68,7 +68,7 @@ TableRow.displayName = "TableRow"
 
 const TableHead = React.forwardRef<
   HTMLTableCellElement,
-  React.ThHTMLAttributes<htmltablecellelement  >
+  React.ThHTMLAttributes<HTMLTablecellElement  >
 >(({ className, ...props }, ref) => (
   <th
     ref={ref}
@@ -83,7 +83,7 @@ TableHead.displayName = "TableHead"
 
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
-  React.TdHTMLAttributes<htmltablecellelement  >
+  React.TdHTMLAttributes<HTMLTablecellElement  >
 >(({ className, ...props }, ref) => (
   <td
     ref={ref}
@@ -95,7 +95,7 @@ TableCell.displayName = "TableCell"
 
 const TableCaption = React.forwardRef<
   HTMLTableCaptionElement,
-  React.HTMLAttributes<htmltablecaptionelement  >
+  React.HTMLAttributes<HTMLTablecaptionElement  >
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}

@@ -10,7 +10,7 @@ interface QuizFeedbackProps {
   className?: string;
 }
 
-const QuizFeedback: React.FC<quizfeedbackprops  > = ({ feedback, className }) => {
+const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => {
   const { isCorrect, explanation, hint, encouragement, confidence } = feedback;
 
   const getConfidenceColor = (confidence: number) => {
@@ -46,7 +46,7 @@ const QuizFeedback: React.FC<quizfeedbackprops  > = ({ feedback, className }) =>
           {isCorrect ? (
             <checkcircle2  >
           ) : (
-            <xcircle  >
+            <Xcircle  />
           )}
         </motion.div>
         
