@@ -182,7 +182,7 @@ const Sidebar = React.forwardRef<
           )}
           ref={ref}
           {...props}
-       >
+      >
           {children}
         </Div>
       )
@@ -212,7 +212,7 @@ const Sidebar = React.forwardRef<
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
         data-side={side}
-     >
+    >
         {/* This is what handles the sidebar gap on desktop */}
         <Div
           className={cn(
@@ -236,10 +236,10 @@ const Sidebar = React.forwardRef<
             className
           )}
           {...props}
-       >
+      >
           <Div data-sidebar="sidebar"
             className="flex h-full w-full flex-col bg-sidebar group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:border-sidebar-border group-data-[variant=floating]:shadow"
-         >
+        >
             {children}
           </Div>
         </Div>
@@ -606,7 +606,7 @@ const SidebarMenuSkeleton = React.forwardRef<
       data-sidebar="menu-skeleton"
       className={cn("rounded-md h-8 flex gap-2 px-2 items-center", className)}
       {...props}
-   >
+  >
       {showIcon && (
         <skeleton sidebar="menu-skeleton-icon" style={{ borderRadius: "0.375rem" }}>
       )}

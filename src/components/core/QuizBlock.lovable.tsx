@@ -313,7 +313,7 @@ const QuizBlock: React.FC<Quizblockprops > = ({
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
                         className={optionClassName}
-                     >
+                    >
                         <Div className="quiz-option-radio" />
                         <Span className="text-gray-200">{option.label}</Div>
                       </Label>

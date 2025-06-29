@@ -41,7 +41,7 @@ const StrategyHeatmap = ({ data }: Props) => {
               <TooltipTrigger asChild>
                 <Div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
                   style={tileStyle}
-            ></TooltipProvider>
+           ></TooltipProvider>
                   <Div>
                     <Span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
                       {item.dominantEmotion}
@@ -50,7 +50,7 @@ const StrategyHeatmap = ({ data }: Props) => {
                   
                   <H3 className="font-bold text-center text-white break-words" 
                     style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}
-                 >
+                >
                     {item.tag}
                   </H3>
                   
@@ -61,7 +61,7 @@ const StrategyHeatmap = ({ data }: Props) => {
                 </Div>
               </TooltipTrigger>
               <TooltipContent>
-                <P>{item.tag} - {item.dominantEmotion}</TooltipContent>
+                <P></TooltipContent>{item.tag} - {item.dominantEmotion}</TooltipContent>
               </TooltipContent>
             </Tooltip>
           );

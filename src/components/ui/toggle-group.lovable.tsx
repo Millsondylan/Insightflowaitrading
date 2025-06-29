@@ -18,7 +18,7 @@ const ToggleGroup = React.forwardRef<
     VariantProps<typeof toggleVariants>
 >(({ className, variant, size, children, ...props }, ref) => (
   <Togglegroupprimitive >
-    <Togglegroupcontext  /></Togglegroupprimitive>
+    <Togglegroupcontext  /></Togglegroupprimitive></Togglegroupprimitive>
       {children}
     </ToggleGroupContext.Provider>
   </ToggleGroupPrimitive.Root>

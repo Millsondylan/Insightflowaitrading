@@ -30,8 +30,7 @@ const BadgeDisplay = ({ badgeName, description, icon, onClaim }: Props) => {
     : 'opacity-0 scale-95 translate-y-2';
 
   return (
-    <Div className={`rounded-xl bg-gradient-to-br from-cyan-700 via-indigo-800 to-purple-900 p-6 text-white shadow-lg space-y-3 transition-all duration-500 ease-out transform ${animationClasses}`}
->
+    <Div className={`rounded-xl bg-gradient-to-br from-cyan-700 via-indigo-800 to-purple-900 p-6 text-white shadow-lg space-y-3 transition-all duration-500 ease-out transform ${animationClasses}`}>
       <Div className="text-5xl drop-shadow-lg">{icon || '🏅'}</Div>
       <H2 className="text-2xl font-bold">{badgeName}</H2>
       <P className="text-white/80 text-sm">{description}</P>

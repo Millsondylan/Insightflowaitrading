@@ -32,7 +32,7 @@ export function StickyActionBar({
         className
       )}
       {...props}
-   >
+  >
       <Div className="flex items-center justify-between gap-2 max-w-screen-xl mx-auto">
         {children}
       </HTMLDivElement>
@@ -62,7 +62,7 @@ export function ActionGroup({ className, ...props }: React.HTMLAttributes<HTMLDi
         className
       )}
       {...props}
-    />
+    /></HTMLButtonElement>
   );
 }
 

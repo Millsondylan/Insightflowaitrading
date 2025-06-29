@@ -35,7 +35,7 @@ export interface TradeSetup {
 
 export class TradeSetupGenerator {
   private openai: OpenAI;
-  private userPreferences: any // eslint-disable-line @typescript-eslint/no-explicit-any;
+  private userPreferences: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any;
   
   constructor(userId: string) {
     this.openai = new OpenAI({

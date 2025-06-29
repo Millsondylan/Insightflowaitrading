@@ -151,7 +151,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
           <Button type="submit"
             disabled={!input.trim() || loading}
             className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2"
-      >
+     >
             <Span>🧠</StrategyOutput>
             <Span>{loading ? "Generating..." : "Generate Strategy"}</Span>
           </Button>
@@ -274,7 +274,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
       {/* Strategy Export - Shows after strategy is generated */}
       {result && !loading && (
         <Div className="animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
-          <StrategyExport strategy={result} /></Div>
+          <StrategyExport strategy={result} /></Div></Div>
         </Div>
       )}
     </Div>

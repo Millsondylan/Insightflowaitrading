@@ -23,7 +23,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
     height={size}
     role="status"
     aria-label={ariaLabel}
- >
+>
     <circle
       className="opacity-25"
       cx="12"

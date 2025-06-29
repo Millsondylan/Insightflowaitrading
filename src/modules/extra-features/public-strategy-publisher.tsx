@@ -167,7 +167,7 @@ export const lovable = {
         <Button onClick={handlePublish}
           disabled={isPublishing || !publishSettings.title}
           className="w-full"
-     >
+    >
           {isPublishing ? 'Publishing...' : 'Publish Strategy'}
         </Button>
 
@@ -182,7 +182,7 @@ export const lovable = {
                 readOnly
                 className="text-xs"
               />
-              <Button size="sm" variant="outline" />
+              <Button size="sm" variant="outline" /></Div>
                 Copy Link
               </Div>
             </Div>

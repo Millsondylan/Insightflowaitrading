@@ -70,7 +70,7 @@ export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
         {accessStatus.map((status) => (
           <Div key={status.feature}
             className="p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-         >
+        >
             <Div className="flex items-center justify-between">
               <Div className="flex items-center gap-3">
                 {status.isLocked ? (
@@ -120,7 +120,7 @@ export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
             {status.usage && status.usage.current >= status.usage.limit && (
               <Div className="mt-3 p-2 bg-yellow-500/10 rounded flex items-center gap-2">
                 <alertcircle >
-                <P className="text-sm text-yellow-600">
+                <P className="text-sm text-yellow-600"></Div>
                   You've reached your monthly limit. Upgrade to Pro for unlimited access.
                 </Div>
               </Div>
@@ -130,7 +130,7 @@ export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
       </Div>
 
       <Div className="mt-6 p-4 bg-primary/5 rounded-lg">
-        <P className="text-sm text-muted-foreground mb-3">
+        <P className="text-sm text-muted-foreground mb-3"></Div>
           Unlock all features with Pro subscription
         </Div>
         <Button  style={{ width: "100%" }}>

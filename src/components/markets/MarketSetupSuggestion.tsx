@@ -272,7 +272,7 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
               {setup?.symbol || symbol}
               <Badge variant={setup?.tradeType === 'LONG' ? 'default' : 'destructive'}
                 className="ml-2"
-            >
+           >
                 {setup?.tradeType === 'LONG' ? (
                   <Span className="flex items-center"><LucideArrowUpRight className="mr-1 h-3 w-3" /> LONG</Card>
                 ) : (
@@ -352,7 +352,7 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
             Share Setup
           </Div>
           <Button onClick={handleSaveSetup} />
-            <LucideSave className="mr-2 h-4 w-4" /></Button>
+            <LucideSave className="mr-2 h-4 w-4" /></Button></Button>
             Save Setup
           </Button>
         </Div>

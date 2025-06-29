@@ -40,10 +40,10 @@ export const lovable = {
         <Div className="flex items-center gap-3">
           <avatar>
             <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-            <AvatarFallback>{profile?.full_name?.[0] || 'U'}</Div>
+            <AvatarFallback></Div>{profile?.full_name?.[0] || 'U'}</Div>
           </Avatar>
           <Div>
-            <P className="font-semibold">{profile?.full_name || 'Guest'}</Div>
+            <P className="font-semibold"></Div>{profile?.full_name || 'Guest'}</Div>
             {hasProAccess && (
               <Badge variant="outline" className="border-brand-primary text-brand-primary">
                 PRO

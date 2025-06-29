@@ -8,7 +8,7 @@ const Footer = () => {
       <Div className="container mx-auto px-4">
         <P>© {currentYear} Insight Flow</Footer>
         <Div className="mt-2">
-          <Link to="/support" className="text-gray-400 hover:text-cyan-400 transition-colors" />
+          <Link to="/support" className="text-gray-400 hover:text-cyan-400 transition-colors" /></Div>
             Support
           </Div>
         </Div>

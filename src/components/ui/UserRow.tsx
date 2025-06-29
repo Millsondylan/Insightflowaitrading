@@ -153,7 +153,7 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
             )}
             onClick={handleCopyAddress}
             title="Click to copy"
-      >
+     >
             {formatAddress(user.address)}
           </UserRowProps>
         </Div>
@@ -227,8 +227,8 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
             
             <DropdownMenuItem onClick={handleRevokeAccess}
               className="cursor-pointer text-red-400 hover:bg-red-900/30"
-          >
-              <XCircle className="mr-2 h-4 w-4" /></DropdownMenuSeparator>
+         >
+              <XCircle className="mr-2 h-4 w-4" /></DropdownMenuSeparator></DropdownMenuSeparator>
               <Span>Revoke Access</Span>
             </DropdownMenuItem>
           </DropdownMenuContent>

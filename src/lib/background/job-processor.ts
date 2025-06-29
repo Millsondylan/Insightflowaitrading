@@ -203,7 +203,16 @@ async function updateJobStatus(
   result?: Record<string, any>, // eslint-disable-line @typescript-eslint/no-explicit-any
   error?: string
 ) {
-  const updateData = {
+  interface UpdateData {
+    status: Job['status'];
+    updated_at: string;
+    started_at?: string;
+    completed_at?: string;
+    result?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+    error?: string;
+  }
+  
+  const updateData: UpdateData = {
     status,
     updated_at: new Date().toISOString()
   };
@@ -352,7 +361,10 @@ async function processAutoJournaling(payload: unknown) {
   return { journalEntry };
 }
 
-async function generateTradeJournalEntry(trade: any // eslint-disable-line @typescript-eslint/no-explicit-any, previousEntries: any // eslint-disable-line @typescript-eslint/no-explicit-any[]) {
+async function generateTradeJournalEntry(
+  trade: any // eslint-disable-line @typescript-eslint/no-explicit-any, // eslint-disable-line @typescript-eslint/no-explicit-any
+  previousEntries: any // eslint-disable-line @typescript-eslint/no-explicit-any[] // eslint-disable-line @typescript-eslint/no-explicit-any
+) {
   const messages = [
     { 
       role: "system", 
@@ -446,7 +458,7 @@ async function processPnLInsights(payload: unknown) {
   return insights;
 }
 
-async function generatePnLInsights(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any[]) {
+async function generatePnLInsights(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]) {
   if (trades.length === 0) {
     return {
       summary: "No trades found in the last 30 days. Complete some trades to get performance insights.",

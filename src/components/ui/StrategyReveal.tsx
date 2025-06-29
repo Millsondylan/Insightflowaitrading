@@ -26,7 +26,7 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
   return (
     <Div className="strategy-reveal max-w-3xl mx-auto space-y-12">
       <blockReveal variant="fade">
-        <H2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan">
+        <H2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan"></Div>
           {strategyName}
         </Div>
       </BlockReveal>
@@ -39,10 +39,10 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
       <blockReveal>
         <Section className="glass-section">
-          <H3 className="section-heading">Rules</Section>
+          <H3 className="section-heading"></Section>Rules</Section>
           <Ol className="space-y-2 list-decimal list-inside">
             {rules.map((r, i) => (
-              <Li key={i}>{r}</Ol>
+              <Li key={i}></Ol>{r}</Ol>
             ))}
           </Ol>
         </Section>
@@ -50,10 +50,10 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
       <blockReveal>
         <Section className="glass-section">
-          <H3 className="section-heading">Entry Checklist ✅</Section>
+          <H3 className="section-heading"></Section>Entry Checklist ✅</Section>
           <Ul className="space-y-2 list-disc list-inside">
             {entryChecklist.map((c, i) => (
-              <Li key={i}>{c}</Ul>
+              <Li key={i}></Ul>{c}</Ul>
             ))}
           </Ul>
         </Section>
@@ -61,10 +61,10 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
       <blockReveal>
         <Section className="glass-section border-l-4 border-yellow-400 pl-4">
-          <H3 className="section-heading text-yellow-400">⚠️ Warnings</Section>
+          <H3 className="section-heading text-yellow-400"></Section>⚠️ Warnings</Section>
           <Ul className="space-y-2 list-disc list-inside">
             {warnings.map((w, i) => (
-              <Li key={i}>{w}</Ul>
+              <Li key={i}></Ul>{w}</Ul>
             ))}
           </Ul>
         </Section>
@@ -72,10 +72,10 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
       <blockReveal>
         <Section className="glass-section italic">
-          <H3 className="section-heading">Backtest Tips 💡</Section>
+          <H3 className="section-heading"></Section>Backtest Tips 💡</Section>
           <Ul className="space-y-2 list-disc list-inside">
             {backtestTips.map((t, i) => (
-              <Li key={i}>{t}</Ul>
+              <Li key={i}></Ul>{t}</Ul>
             ))}
           </Ul>
         </Section>

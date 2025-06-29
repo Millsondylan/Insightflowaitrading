@@ -83,7 +83,7 @@ export const lovable = {
                   top: `${user.cursor.line * 20}px`,
                   left: `${user.cursor.col * 8}px`
                 }}
-          >
+         >
                 <Span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
                   style={{ backgroundColor: user.color, color: 'white' }}
                 />
@@ -111,7 +111,7 @@ export const lovable = {
               {edits.map((edit, i) => (
                 <Div key={i} className="text-sm p-2 bg-secondary/20 rounded">
                   <Div className="flex items-center gap-2">
-                    <Edit3 className="h-3 w-3 text-muted-foreground" /></Div>
+                    <Edit3 className="h-3 w-3 text-muted-foreground" /></Div></Div>
                     <Span className="font-medium">{edit.user}</Span>
                   </Div>
                   <P className="text-xs text-muted-foreground mt-1">
@@ -123,7 +123,7 @@ export const lovable = {
           </Div>
 
           <Div>
-            <H3 className="font-semibold mb-2">Session Info</Div>
+            <H3 className="font-semibold mb-2"></Div>Session Info</Div>
             <P className="text-sm text-muted-foreground">
               Session ID: {sessionId || 'demo-session'}
             </P>

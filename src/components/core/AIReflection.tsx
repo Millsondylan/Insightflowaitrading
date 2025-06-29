@@ -129,7 +129,7 @@ const AIReflection: React.FC<aIReflectionProps> = ({
             variant="outline"
             size="sm"
             className="border-red-500/30 hover:bg-red-500/10"
-       >
+      >
             Try Again
           </Button>
         </CardContent>
@@ -229,7 +229,7 @@ const AIReflection: React.FC<aIReflectionProps> = ({
             size="sm"
             className="text-gray-400 hover:text-white"
             disabled={loading}
-        >
+       >
             <brain className="h-3 w-3 mr-2" />
             Regenerate Analysis
           </Div>

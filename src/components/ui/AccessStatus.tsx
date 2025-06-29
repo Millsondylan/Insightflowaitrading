@@ -114,7 +114,7 @@ const AccessStatus: React.FC<accessStatusProps> = ({
               </>
             )}
             {status === 'failure' && (
-              <XCircle className="h-16 w-16 text-red-400" /></Div>
+              <XCircle className="h-16 w-16 text-red-400" /></Div></Div>
             )}
           </motion.div>
 

@@ -19,7 +19,7 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
           <Span key={u.id}
             className="px-3 py-1 text-xs rounded-full text-white"
             style={{ backgroundColor: u.color }}
-      >
+     >
             🧑‍💻 {u.name}
           </Div>
         ))}

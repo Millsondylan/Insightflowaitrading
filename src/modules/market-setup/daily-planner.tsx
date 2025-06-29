@@ -70,7 +70,7 @@ export const lovable = {
             dailyPlan.marketOutlook === 'Bullish' ? 'default' : 
             dailyPlan.marketOutlook === 'Bearish' ? 'destructive' : 'secondary'
           }
-     >
+    >
           {dailyPlan.marketOutlook} Outlook
         </Badge>
       </CardHeader>
@@ -121,14 +121,14 @@ export const lovable = {
                   {dailyPlan.keyEvents.map((event) => (
                     <Div key={event.id}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
-                   >
+                  >
                       <Div className="flex justify-between items-center mb-2">
                         <H4 className="font-bold">{event.title}</Div>
                         <Badge variant={
                             event.impact === 'High' ? 'destructive' : 
                             event.impact === 'Medium' ? 'default' : 'secondary'
                           }
-                       >
+                      >
                           {event.impact} Impact
                         </Badge>
                       </Div>

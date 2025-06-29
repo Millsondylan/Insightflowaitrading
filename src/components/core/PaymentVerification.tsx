@@ -58,21 +58,21 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
       <Tabs value={activeTab} 
         onValueChange={setActiveTab}
         className="w-full"
-    >
+   >
         <TabsList className="grid grid-cols-3 mb-6 bg-black/30" />
           <TabsTrigger value="eth" 
             className="data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-400"
-        >
+       >
             ETH
           </Tabs>
           <TabsTrigger value="usdt" 
             className="data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400"
-        >
+       >
             USDT
           </TabsTrigger>
           <TabsTrigger value="btc" 
             className="data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400"
-        >
+       >
             BTC
           </TabsTrigger>
         </TabsList>
@@ -92,18 +92,18 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
                   className="ml-2"
                   onClick={() = /> handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" /></Div>}
+                  {copied === key ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" /></Div></Div>}
                 </Button>
               </Div>
             </Div>
             
             <Div className="text-center mt-6">
-              <P className="text-sm text-gray-400 mb-4">
+              <P className="text-sm text-gray-400 mb-4"></Div>
                 After sending payment, click the button below to continue.
               </Div>
               <Button onClick={onVerificationComplete}
                 className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30"
-           >
+          >
                 I've Sent the Payment
               </Button>
             </Div>

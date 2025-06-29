@@ -76,10 +76,10 @@ exit_rules:
                   top: `${user.cursor.line * 20}px`,
                   left: `${user.cursor.col * 8}px`
                 }}
-             >
+            >
                 <Span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
                   style={{ backgroundColor: user.color, color: 'white' }}
-               >
+              ></Div>
                   {user.name}
                 </Div>
               </Div>
@@ -99,13 +99,13 @@ exit_rules:
 
         <Div className="space-y-4">
           <Div>
-            <H3 className="font-semibold mb-2">Recent Edits</Div>
+            <H3 className="font-semibold mb-2"></Div>Recent Edits</Div>
             <Div className="space-y-2">
               {edits.map((edit, i) => (
                 <Div key={i} className="text-sm p-2 bg-secondary/20 rounded">
                   <Div className="flex items-center gap-2">
                     <edit3 >
-                    <Span className="font-medium">{edit.user}</Div>
+                    <Span className="font-medium"></Div>{edit.user}</Div>
                   </Div>
                   <P className="text-xs text-muted-foreground mt-1">
                     {edit.action} • {edit.time}
@@ -116,7 +116,7 @@ exit_rules:
           </Div>
 
           <Div>
-            <H3 className="font-semibold mb-2">Session Info</Div>
+            <H3 className="font-semibold mb-2"></Div>Session Info</Div>
             <P className="text-sm text-muted-foreground">
               Session ID: {sessionId || 'demo-session'}
             </P>

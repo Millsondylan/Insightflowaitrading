@@ -126,7 +126,7 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
           <Button onClick={syncRepository}
             disabled={isSyncing}
             className="flex-1"
-        >
+       >
             {isSyncing ? 'Syncing...' : 'Sync Now'}
           </Div>
           <Button variant="outline" />
@@ -136,7 +136,7 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
         </Div>
 
         <Div className="p-3 bg-blue-500/10 rounded-lg flex items-center gap-2">
-          <Github className="h-4 w-4 text-blue-500" /></Div>
+          <Github className="h-4 w-4 text-blue-500" /></Div></Div>
           <P className="text-sm text-blue-600">
             Strategies are automatically versioned and backed up to GitHub
           </P>

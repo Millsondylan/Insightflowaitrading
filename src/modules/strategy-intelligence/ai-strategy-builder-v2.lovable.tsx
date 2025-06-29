@@ -33,7 +33,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
           </Input>
 
           <Div>
-            <Label className="block text-sm mb-2">Market</Div>
+            <Label className="block text-sm mb-2"></Div>Market</Div>
             <Select >
               <selecttrigger  style={{ color: "white" }}>
                 <selectvalue placeholder="Select Market">
@@ -47,7 +47,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
           </Div>
 
           <Div>
-            <Label className="block text-sm mb-2">Risk Level</Div>
+            <Label className="block text-sm mb-2"></Div>Risk Level</Div>
             <Select >
               <selecttrigger  style={{ color: "white" }}>
                 <selectvalue placeholder="Select Risk Level">

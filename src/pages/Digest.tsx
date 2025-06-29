@@ -101,7 +101,7 @@ export default function DigestPage() {
         <MarketDigest digest={digestItems} /></MarketDigest>
         
         <Div className="mt-8 text-center">
-          <P className="text-white/50 text-sm">
+          <P className="text-white/50 text-sm"></Div>
             Summaries generated automatically based on price action, volume, and strategy matches
           </Div>
         </Div>

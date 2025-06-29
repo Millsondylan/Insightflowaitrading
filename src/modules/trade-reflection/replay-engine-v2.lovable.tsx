@@ -84,7 +84,7 @@ export const ReplayEngineV2: React.FC<replayenginev2props > = ({ tradeId }) => {
         {/* Annotations */}
         {annotations.length > 0 && (
           <Div className="space-y-2">
-            <H3 className="font-semibold">Annotations</Div>
+            <H3 className="font-semibold"></Div>Annotations</Div>
             {annotations.map((ann) => (
               <Div key={ann.id} className="flex items-center gap-2 text-sm">
                 <Span className="text-muted-foreground">

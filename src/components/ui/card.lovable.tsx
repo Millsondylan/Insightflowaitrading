@@ -72,7 +72,7 @@ const CardFooter = React.forwardRef<
     ref={ref}
     className={cn(" flex items-center p-0 pt-6", className)}
     {...props}
-  />
+  /></HTMLDivElement>
 ))
 CardFooter.displayName = "CardFooter"
 

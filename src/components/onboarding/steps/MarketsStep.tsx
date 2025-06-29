@@ -114,7 +114,7 @@ export default function MarketsStep() {
                     return (
                       <FormItem key={market.id}
                         className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"
-                    >
+                   >
                         <FormControl>
                           <Checkbox checked={field.value?.includes(market.id as MarketType)}
                             onCheckedChange={(checked) = /> {

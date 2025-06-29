@@ -46,11 +46,11 @@ export default function Sidebar() {
         <Tooltip  />
           <Tooltiptrigger >
             <Link >
-              <Icon />
+              <Icon / />
             </Tooltipprovider>
           </Tooltiptrigger>
           <Tooltipcontent side="right">
-            <P>{item.label}</Tooltipcontent>
+            <P></Tooltipcontent>{item.label}</Tooltipcontent>
           </Tooltipcontent>
         </Tooltip>
       </Tooltipprovider>
@@ -66,7 +66,7 @@ export default function Sidebar() {
         <Nav>
           <Ul className="space-y-4">
             {navItems.map((item) => (
-              <Li key={item.path}>
+              <Li key={item.path}></Nav>
                 <navlink >
               </Nav>
             ))}
@@ -78,7 +78,7 @@ export default function Sidebar() {
         <Nav>
           <Ul className="space-y-2">
             {bottomNavItems.map((item) => (
-              <Li key={item.path}>
+              <Li key={item.path}></Div>
                 <navlink >
               </Div>
             ))}
@@ -91,12 +91,12 @@ export default function Sidebar() {
               <Link to="/profile">
                 <avatar >
                   <avatarimage >
-                  <Avatarfallback >{profile?.full_name?.[0] || 'U'}</Tooltipprovider>
+                  <Avatarfallback ></Tooltipprovider>{profile?.full_name?.[0] || 'U'}</Tooltipprovider>
                 </Avatar>
               </Link>
             </Tooltiptrigger>
             <Tooltipcontent side="right">
-              <P>{profile?.full_name || 'Profile'}</Tooltipcontent>
+              <P></Tooltipcontent>{profile?.full_name || 'Profile'}</Tooltipcontent>
               <Button variant="ghost" size="sm" style={{ width: "100%" }}>
                 <logout >
                 Logout

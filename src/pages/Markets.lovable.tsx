@@ -447,7 +447,7 @@ export default function Markets() {
       
       {filteredMarkets.length === 0 && (
         <Div className="text-center py-12">
-          <P className="text-gray-400">No markets found matching your criteria.</Div>
+          <P className="text-gray-400"></Div>No markets found matching your criteria.</Div>
           <Button variant="ghost" onClick={() => {
             setSearchTerm('');
             setSelectedCategory('all');

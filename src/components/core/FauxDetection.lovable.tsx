@@ -80,13 +80,13 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
         <blockreveal >
           <Div className="flex flex-wrap gap-4 mt-4">
             <Button >
-              <Link to="/journal?from=vision">📓 Save to Journal</Div>
+              <Link to="/journal?from=vision"></Div>📓 Save to Journal</Div>
             </Button>
             <Button >
-              <Link to="/academy?topic=patterns">📘 Learn Pattern</Button>
+              <Link to="/academy?topic=patterns"></Button>📘 Learn Pattern</Button>
             </Button>
             <Button >
-              <Link to="/strategy?from=vision">💡 Find Strategy</Button>
+              <Link to="/strategy?from=vision"></Button>💡 Find Strategy</Button>
             </Button>
           </Div>
         </BlockReveal>

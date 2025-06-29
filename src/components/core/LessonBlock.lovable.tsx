@@ -20,17 +20,17 @@ const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
     >
       <Card  />
         <Cardheader >
-          <Cardtitle  style={{ fontWeight: "700" }}>
+          <Cardtitle  style={{ fontWeight: "700" }}></Lessonblockprops>
             {block.title}
           </Lessonblockprops>
         </Cardheader>
         <Cardcontent >
-          <P className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
+          <P className="text-gray-300 leading-relaxed whitespace-pre-line text-lg"></Cardcontent>
             {block.content}
           </Cardcontent>
 
           <Div>
-            <H4 className="font-semibold text-xl mb-4 text-gray-200">
+            <H4 className="font-semibold text-xl mb-4 text-gray-200"></Div>
               Key Takeaways
             </Div>
             <Ul className="space-y-3">
@@ -44,7 +44,7 @@ const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
                   className="flex items-start"
                 >
                   <checkcircle2 >
-                  <Span className="text-gray-300 text-base">{takeaway}</Ul>
+                  <Span className="text-gray-300 text-base"></Ul>{takeaway}</Ul>
                 </motion.li>
               ))}
             </Ul>

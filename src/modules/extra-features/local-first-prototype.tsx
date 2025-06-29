@@ -91,7 +91,7 @@ exit_rules:
             size="sm"
             onClick={syncToCloud}
             disabled={localChanges === 0 || syncStatus === 'offline'}
-       >
+      >
             Sync to Cloud
           </Button>
         </Div>
@@ -190,7 +190,7 @@ exit_rules:
       </Tabs>
 
       <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <H4 className="font-medium mb-2">Local-First Benefits</Div>
+        <H4 className="font-medium mb-2"></Div>Local-First Benefits</Div>
         <Ul className="space-y-1 text-sm text-muted-foreground">
           <Li>• Work offline without interruption</Ul>
           <Li>• Instant feedback on changes</Li>

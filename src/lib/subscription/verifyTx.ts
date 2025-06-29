@@ -77,7 +77,7 @@ export const verifyTransaction = async (
         timestamp: txData.timestamp
       }
     };
-  } catch (error: any // eslint-disable-line @typescript-eslint/no-explicit-any) {
+  } catch (error: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
     console.error('Transaction verification error:', error);
     return {
       success: false,

@@ -45,13 +45,13 @@ export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20
   const getIcon = (type: string, pnl?: number | null) => {
     if (type === 'alert') return <alertcircle  />;
     if (pnl && pnl > 0) return <Trendingup >;
-    if (pnl && pnl < 0) return <Trendingdown  /></Tradetimelineprops>;
+    if (pnl && pnl < 0) return <Trendingdown  /></Tradetimelineprops></Tradetimelineprops>;
     return <clock >;
   };
 
   return (
     <Card >
-      <H2 className="text-2xl font-bold mb-4">Trade Timeline</Card>
+      <H2 className="text-2xl font-bold mb-4"></Card>Trade Timeline</Card>
       <scrollarea >
         <Div className="space-y-4">
           {activities.map((activity) => (

@@ -95,7 +95,7 @@ export const lovable = {
 
       <Div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy} /></Div>
+          <StrategyCard key={strategy.id} strategy={strategy} /></Div></Div>
         ))}
       </Div>
     </Div>

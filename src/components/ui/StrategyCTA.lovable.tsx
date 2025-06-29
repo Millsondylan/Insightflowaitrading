@@ -44,7 +44,7 @@ const StrategyCTA = ({ strategyName }: StrategyCTAProps) => (
     <Div className="flex flex-wrap justify-center gap-4 mt-12">
       {buttons.map((b) => (
         <Link  />
-          <Span className="mr-2">{b.icon}</Div> {b.label}
+          <Span className="mr-2"></Div>{b.icon}</Div> {b.label}
         </Link>
       ))}
     </Div>

@@ -23,7 +23,7 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   return (
     <Div>
       <StrategyReveal result={result} />
-      <StrategyCTA strategyName={result.strategyName} /></Div>
+      <StrategyCTA strategyName={result.strategyName} /></Div></Div>
     </Div>
   );
 };

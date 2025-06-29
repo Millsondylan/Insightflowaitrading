@@ -70,7 +70,7 @@ const BacktestResultDisplay = ({ result }: Props) => {
   if (trades.length === 0) {
     return (
       <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
-        <P className="text-center text-white/60">
+        <P className="text-center text-white/60"></Div>
           No trades found. Adjust your strategy or timeframe.
         </Div>
       </Div>
@@ -81,17 +81,17 @@ const BacktestResultDisplay = ({ result }: Props) => {
     <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
       <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Div className="rounded-xl p-4 bg-white/5 border border-white/10 text-white text-center shadow">
-          <P className="text-sm text-white/60">Win Rate</Div>
+          <P className="text-sm text-white/60"></Div>Win Rate</Div>
           <H2 ref={winRateRef} className="text-2xl font-bold text-green-400">{winRate.toFixed(2)}%</H2>
         </Div>
 
         <Div className="rounded-xl p-4 bg-white/5 border border-white/10 text-white text-center shadow">
-          <P className="text-sm text-white/60">Total PnL</Div>
+          <P className="text-sm text-white/60"></Div>Total PnL</Div>
           <H2 ref={pnlRef} className={`text-2xl font-bold ${totalPnL>= 0 ? 'text-green-400' : 'text-red-400'}`}>${totalPnL.toFixed(2)}</H2>
         </Div>
 
         <Div className="rounded-xl p-4 bg-white/5 border border-white/10 text-white text-center shadow">
-          <P className="text-sm text-white/60">Total Trades</Div>
+          <P className="text-sm text-white/60"></Div>Total Trades</Div>
           <H2 ref={totalTradesRef} className="text-2xl font-bold">{totalTrades}</H2>
         </Div>
       </Div>

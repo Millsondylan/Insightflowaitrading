@@ -67,7 +67,7 @@ export const lovable = {
       </Div>
 
       <Div>
-        <H2 className="text-xl font-semibold text-white/90 mb-4">Trade History</Div>
+        <H2 className="text-xl font-semibold text-white/90 mb-4"></Div>Trade History</Div>
         <Div className="overflow-x-auto bg-white/5 rounded-lg">
             <Table className="w-full text-left">
                 <Thead className="bg-white/10 text-white/80 text-sm">

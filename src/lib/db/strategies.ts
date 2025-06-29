@@ -14,7 +14,7 @@ interface Strategy {
   version_count: number;
   is_public: boolean;
   tags: string[];
-  performance_data: any // eslint-disable-line @typescript-eslint/no-explicit-any;
+  performance_data: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any;
 }
 
 interface StrategyVersion {
@@ -25,7 +25,7 @@ interface StrategyVersion {
   code: string;
   description: string;
   changes_summary: string;
-  performance_data: any // eslint-disable-line @typescript-eslint/no-explicit-any;
+  performance_data: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any;
   is_live: boolean;
   created_at: string;
   improvement_reason?: string;

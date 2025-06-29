@@ -226,7 +226,7 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
             size="sm" 
             onClick={saveSetup}
             disabled={saved}
-        >
+       >
             {saved ? (
               <>
                 <Bookmark className="mr-1 h-4 w-4 fill-primary" />
@@ -243,10 +243,10 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
           <Button variant="ghost" 
             size="sm"
             asChild
-        >
+       >
             <A href={`/trade-planner?symbol=${setup.symbol}&entry=${setup.entry_price}&sl=${setup.stop_loss}&tp=${setup.take_profit}&direction=${setup.direction}`}>
               Plan Trade
-              <ChevronRight className="ml-1 h-4 w-4" /></Button>
+              <ChevronRight className="ml-1 h-4 w-4" /></Button></Button>
             </A>
           </Button>
         </CardFooter>

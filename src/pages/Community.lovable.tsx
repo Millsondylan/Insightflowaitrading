@@ -55,7 +55,7 @@ export default function CommunityPage() {
                     />
                     <Div className="flex justify-end mt-3">
                         <Button >
-                            <Send /></Div> Post
+                            <Send /></Div></Div> Post
                         </Button>
                     </Div>
                 </Div>
@@ -64,13 +64,13 @@ export default function CommunityPage() {
                 {mockPosts.map(post => (
                     <Div key={post.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
                         <Div className="flex items-start gap-4">
-                            <avatar ><avatarimage ><Avatarfallback >{post.author.name[0]}</Div></Avatar>
+                            <avatar ><avatarimage ><Avatarfallback ></Div>{post.author.name[0]}</Div></Avatar>
                             <Div className="flex-1">
                                 <P className="font-semibold text-white">{post.author.name}</Div>
                                 <P className="text-gray-300 mt-1">{post.content}</P>
                                 <Div className="flex items-center gap-6 mt-4 text-sm text-gray-400">
                                     <Button className="flex items-center gap-1 hover:text-white"><thumbsup > {post.likes}</Div>
-                                    <Button className="flex items-center gap-1 hover:text-white"><Messagesquare ></Button> {post.comments}</Button>
+                                    <Button className="flex items-center gap-1 hover:text-white"><Messagesquare ></Button></Button> {post.comments}</Button>
                                 </Div>
                             </Div>
                         </Div>
@@ -81,13 +81,13 @@ export default function CommunityPage() {
             {/* Right Sidebar */}
             <Div className="lg:col-span-1 space-y-6">
                 <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <H3 className="font-semibold text-white mb-4">Trending Topics</Div>
+                    <H3 className="font-semibold text-white mb-4"></Div>Trending Topics</Div>
                     <Div className="flex flex-wrap gap-2">
-                        {mockTrending.map(tag => <Badge variant="secondary">{tag}</Div>)}
+                        {mockTrending.map(tag => <Badge variant="secondary"></Div>{tag}</Div>)}
                     </Div>
                 </Div>
                 <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"><trendingup > Leaderboard</Div>
+                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div><trendingup > Leaderboard</Div>
                     <Ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
                             <Li key={user.name} className="flex justify-between items-center text-sm">

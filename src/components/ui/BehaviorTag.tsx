@@ -82,7 +82,7 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
         animationFillMode: animated ? 'forwards' : undefined,
       }}
       onClick={handleClick}
- >
+>
       {tag}
     </Badge>
   );
@@ -138,7 +138,7 @@ export const BehaviorTagGroup: React.FC<behaviorTagGroupProps> = ({
         />
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30">
+        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30"></Div>
           +{hiddenCount} more
         </Div>
       )}

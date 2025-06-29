@@ -85,7 +85,7 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
         <ResponsiveContainer width="100%" height="90%">
           <LineChart data={animationComplete ? priceData : []}
             margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
-       >
+      >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="time"

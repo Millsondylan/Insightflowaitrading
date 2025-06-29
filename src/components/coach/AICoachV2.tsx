@@ -68,7 +68,7 @@ export default function AICoachV2({ trades }: Props) {
         return (
           <Div className="flex flex-col h-full">
             <Div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4">
-              <H3 className="font-medium text-blue-700 dark:text-blue-300">Trading Tips for Beginners</Div>
+              <H3 className="font-medium text-blue-700 dark:text-blue-300"></Div>Trading Tips for Beginners</Div>
               <Ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
                 <Li>• Start with small position sizes to manage risk</Ul>
                 <Li>• Focus on learning chart patterns before trading</Li>
@@ -84,7 +84,7 @@ export default function AICoachV2({ trades }: Props) {
         return (
           <Div className="flex flex-col h-full">
             <Div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-4">
-              <H3 className="font-medium text-purple-700 dark:text-purple-300">Trading Strategy Refinement</Div>
+              <H3 className="font-medium text-purple-700 dark:text-purple-300"></Div>Trading Strategy Refinement</Div>
               <Ul className="mt-2 text-sm text-purple-600 dark:text-purple-300 space-y-1">
                 <Li>• Analyze your win rate and optimize entry points</Ul>
                 <Li>• Consider multiple timeframe analysis for confirmation</Li>
@@ -100,7 +100,7 @@ export default function AICoachV2({ trades }: Props) {
         return (
           <Div className="flex flex-col h-full">
             <Div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
-              <H3 className="font-medium text-green-700 dark:text-green-300">Advanced Trading Analysis</Div>
+              <H3 className="font-medium text-green-700 dark:text-green-300"></Div>Advanced Trading Analysis</Div>
               <Ul className="mt-2 text-sm text-green-600 dark:text-green-300 space-y-1">
                 <Li>• Optimize your strategy with machine learning insights</Ul>
                 <Li>• Analyze market correlation effects on your portfolio</Li>

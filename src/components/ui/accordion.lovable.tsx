@@ -25,7 +25,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <Chevrondown ></Accordionprimitive>
+      <Chevrondown ></Accordionprimitive></Accordionprimitive>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))

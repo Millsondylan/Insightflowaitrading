@@ -61,7 +61,7 @@ const DialogFooter = ({
       className
     )}
     {...props}
-  />
+  /></HTMLDivElement>
 )
 DialogFooter.displayName = "DialogFooter"
 

@@ -78,7 +78,7 @@ const sampleLesson: LessonData = {
 const LessonDemo = () => {
   return (
     <Div className="container mx-auto py-8 px-4">
-      <Lessonview ></Div>
+      <Lessonview ></Div></Div>
     </Div>
   );
 };

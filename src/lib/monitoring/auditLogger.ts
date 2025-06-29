@@ -137,7 +137,7 @@ export function useAuditLog() {
   /**
    * Log a toggle interaction (switch, checkbox, etc)
    */
-  const logToggle = async (componentName: string, newValue: any, details?: Record<string, any>): Promise<void> => {
+  const logToggle = async (componentName: string, newValue: any // eslint-disable-line @typescript-eslint/no-explicit-any, details?: Record<string, any>): Promise<void> => {
     const logData = {
       ...createBaseLogEntry('toggle_change', componentName),
       action_details: { ...details, newValue },
@@ -637,7 +637,7 @@ class AuditLogger {
    */
   public async logToggle(
     componentName: string,
-    newValue: any, // eslint-disable-line @typescript-eslint/no-explicit-any
+    newValue: any // eslint-disable-line @typescript-eslint/no-explicit-any, // eslint-disable-line @typescript-eslint/no-explicit-any
     details?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
   ): Promise<void> {
     const logData = {

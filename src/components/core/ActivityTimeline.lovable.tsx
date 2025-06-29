@@ -36,13 +36,13 @@ const ActivityTimeline: React.FC<activitytimelineprops  /> = ({ events }) => {
 
   const renderIcon = (type: ActivityType) => {
     const Icon = iconMap[type] || BookOpen;
-    return <Icon />;
+    return <Icon / />;
   };
 
   return (
     <Div className="activity-timeline-container">
       <Div className="flex justify-between items-center mb-6">
-        <H3 className="text-xl font-semibold text-white">Activity Timeline</Activitytype>
+        <H3 className="text-xl font-semibold text-white"></Activitytype>Activity Timeline</Activitytype>
         <Select > setFilter(value as ActivityType | 'all')}>
           <selecttrigger >
             <selectvalue placeholder="Filter by type">

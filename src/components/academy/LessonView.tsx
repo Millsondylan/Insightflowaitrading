@@ -111,7 +111,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
             <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</LessonEngine>
             <Button onClick={handleBackToContent}
               className="text-white/70 hover:text-cyan-400 text-sm"
-        >
+       >
               ← Back to lesson content
             </Button>
           </Div>

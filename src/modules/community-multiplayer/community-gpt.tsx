@@ -68,7 +68,7 @@ export const lovable = {
           {messages.map((message) => (
             <Div key={message.id}
               className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-        >
+       >
               <Div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <Div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
@@ -119,7 +119,7 @@ export const lovable = {
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
         <Button onClick={sendMessage} size="icon">
-          <Send className="h-4 w-4" /></Div>
+          <Send className="h-4 w-4" /></Div></Div>
         </Button>
       </Div>
     </Card>

@@ -323,7 +323,7 @@ export default function VaultPage() {
         </Div>
         
         <Div className="flex items-center justify-between">
-          <P className="text-sm text-gray-400">
+          <P className="text-sm text-gray-400"></Div>
             Showing {filteredStrategies.length} of {comprehensiveStrategies.length} strategies
           </Div>
           <tabs > setViewMode(v as 'grid' | 'list')}>
@@ -347,7 +347,7 @@ export default function VaultPage() {
       
       {filteredStrategies.length === 0 && (
         <Div className="text-center py-12">
-          <P className="text-gray-400">No strategies found matching your criteria.</Div>
+          <P className="text-gray-400"></Div>No strategies found matching your criteria.</Div>
           <Button variant="ghost"> {
               setSearchTerm('');
               setSelectedCategory('all');

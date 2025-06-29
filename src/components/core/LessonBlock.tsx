@@ -43,7 +43,7 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start"
                 >
-                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" /></Ul>
+                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" /></Ul></Ul>
                   <Span className="text-gray-300 text-base">{takeaway}</Span>
                 </motion.li>
               ))}

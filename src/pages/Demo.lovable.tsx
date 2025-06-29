@@ -13,7 +13,7 @@ const DemoPage = () => {
     <Div className="theme-strategy min-h-screen px-6 py-20">
       <Div className="max-w-4xl mx-auto">
         <Div className="text-center mb-12">
-          <H1 className="text-4xl md:text-6xl font-bold text-glow-cyan mb-4">
+          <H1 className="text-4xl md:text-6xl font-bold text-glow-cyan mb-4"></Div>
             Strategy Generator + Copilot Demo
           </Div>
           <P className="text-xl text-gray-400">
@@ -22,22 +22,22 @@ const DemoPage = () => {
         </Div>
 
         <Div className="mb-8 glass-section p-4">
-          <H2 className="text-2xl font-semibold text-cyan-300 mb-4">🧪 Try these examples:</Div>
+          <H2 className="text-2xl font-semibold text-cyan-300 mb-4"></Div>🧪 Try these examples:</Div>
           <Div className="grid md:grid-cols-2 gap-4 text-gray-300">
             <Div className="space-y-2">
-              <H3 className="text-white font-medium">Breakout Strategy:</Div>
+              <H3 className="text-white font-medium"></Div>Breakout Strategy:</Div>
               <P className="text-sm">Type "breakout" to see momentum strategy with volume suggestions</P>
             </Div>
             <Div className="space-y-2">
-              <H3 className="text-white font-medium">RSI Strategy:</Div>
+              <H3 className="text-white font-medium"></Div>RSI Strategy:</Div>
               <P className="text-sm">Type "RSI divergence" for oscillator-based strategy</P>
             </Div>
             <Div className="space-y-2">
-              <H3 className="text-white font-medium">EMA Strategy:</Div>
+              <H3 className="text-white font-medium"></Div>EMA Strategy:</Div>
               <P className="text-sm">Type anything else for moving average pullback strategy</P>
             </Div>
             <Div className="space-y-2">
-              <H3 className="text-white font-medium">Risk Warnings:</Div>
+              <H3 className="text-white font-medium"></Div>Risk Warnings:</Div>
               <P className="text-sm">Add "news" or "volatile" to see risk warnings</P>
             </Div>
           </Div>
@@ -47,7 +47,7 @@ const DemoPage = () => {
 
         {generatedStrategy && (
           <Div className="mt-12 glass-section p-6 animate-in fade-in slide-up">
-            <H3 className="text-xl font-semibold text-white mb-4">📊 Generated Strategy Summary</Div>
+            <H3 className="text-xl font-semibold text-white mb-4"></Div>📊 Generated Strategy Summary</Div>
             <Div className="space-y-2 text-gray-300">
               <P><strong>Title:</strong> {generatedStrategy.title}</Div>
               <P><strong>Rules:</strong> {generatedStrategy.rules.length}</P>

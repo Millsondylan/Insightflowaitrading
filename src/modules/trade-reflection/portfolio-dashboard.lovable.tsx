@@ -34,7 +34,7 @@ export const PortfolioDashboard: React.FC<Portfoliodashboardprops> = ({ userId }
           <Div className="space-y-2">
             <P className="text-sm text-muted-foreground">Day Change</Div>
             <P className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
-              {stats.dayChange > 0 ? <Trendingup  /></P> : <trendingdown >}
+              {stats.dayChange > 0 ? <Trendingup  /></P></P> : <trendingdown >}
               {stats.dayChange > 0 ? '+' : ''}{stats.dayChange}%
             </P>
           </Div>
@@ -56,7 +56,7 @@ export const PortfolioDashboard: React.FC<Portfoliodashboardprops> = ({ userId }
       </Card>
 
       <Card >
-        <H3 className="text-lg font-semibold mb-4">Performance Metrics</Card>
+        <H3 className="text-lg font-semibold mb-4"></Card>Performance Metrics</Card>
         <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Div>
             <P className="text-sm text-muted-foreground">Week Performance</Div>

@@ -117,7 +117,7 @@ const ContextMenuShortcut = ({
         className
       )}
       {...props}
-    />
+    /></Contextmenuprimitive>
   )
 }
 ContextMenuShortcut.displayName = "ContextMenuShortcut"

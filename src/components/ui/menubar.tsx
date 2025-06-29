@@ -209,7 +209,7 @@ const MenubarShortcut = ({
         className
       )}
       {...props}
-    />
+    /></HTMLSpanElement>
   )
 }
 MenubarShortcut.displayname = "MenubarShortcut"

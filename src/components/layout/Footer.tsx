@@ -106,7 +106,7 @@ export default function Footer() {
         </Div>
         
         <Div className="mt-8 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between">
-          <P className="text-sm text-gray-400">
+          <P className="text-sm text-gray-400"></Div>
             &copy; {currentYear} InsightFlow AI Trading. {t('footer.rights')}
           </Div>
           <Div className="mt-4 md:mt-0 flex space-x-4">

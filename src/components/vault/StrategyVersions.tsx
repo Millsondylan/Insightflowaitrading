@@ -207,7 +207,7 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                           size="sm"
                           onClick={() = /> handleViewCode(version.id)}
                         >
-                          <Code className="h-4 w-4 mr-1" /></Div>
+                          <Code className="h-4 w-4 mr-1" /></Div></Div>
                           View Code
                         </Button>
                       </Div>

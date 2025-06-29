@@ -83,7 +83,7 @@ export default function PricingPage() {
             className={`bg-black/30 border-white/10 backdrop-blur-md text-white ${
               plan.highlight ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/20' : ''
             }`}
-        >
+       >
             <CardHeader>
               <CardTitle className="text-2xl font-bold" />
                 {plan.name}
@@ -116,7 +116,7 @@ export default function PricingPage() {
                     : 'bg-transparent border border-white/20 hover:bg-white/10'
                 }`}
                 onClick={plan.buttonAction}
-            >
+           >
                 {plan.buttonText}
               </CardFooter>
             </CardFooter>

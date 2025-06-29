@@ -137,7 +137,7 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
               : "bg-gradient-to-r from-blue-500 to-purple-500"
           )}
           style={{ width: `${confidence * 100}%` }}
-        />
+        /></Div>
       </motion.div>
     </motion.div>
   );

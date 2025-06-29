@@ -37,7 +37,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
             <Label className="block text-sm mb-2">Market</Div>
             <Select value={selectedMarket} 
               onValueChange={setSelectedMarket}
-         >
+        >
               <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
                 <selectValue placeholder="Select Market" />
               </Select>
@@ -67,7 +67,7 @@ export const AIStrategyBuilderV2: React.FC = () => {
 
           <Button onClick={handleGenerateStrategy}
             className="w-full bg-blue-600 hover:bg-blue-700"
-        >
+       >
             Generate AI Strategy
           </Button>
         </Div>

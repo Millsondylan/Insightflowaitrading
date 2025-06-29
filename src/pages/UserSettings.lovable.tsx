@@ -64,8 +64,7 @@ const Button = ({
   return (
     <Button className={`${baseClasses} ${variantClasses} ${disabledClasses} ${className}`}
       onClick={onClick}
-      disabled={disabled}
->
+      disabled={disabled}>
       {children}
     </Button>
   );
@@ -476,7 +475,7 @@ export default function UserSettings() {
             <Button onClick={handleReset}
               variant="outline"
               className="flex-1"
-          >
+         >
               🔄 Reset to Defaults
             </Button>
           </Div>
@@ -484,7 +483,7 @@ export default function UserSettings() {
           {/* Status */}
           {hasChanges && (
             <Div className="text-center">
-              <P className="text-yellow-400 text-sm">⚠️ You have unsaved changes</Div>
+              <P className="text-yellow-400 text-sm"></Div>⚠️ You have unsaved changes</Div>
             </Div>
           )}
         </Div>

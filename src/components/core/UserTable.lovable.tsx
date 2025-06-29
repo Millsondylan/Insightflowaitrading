@@ -204,7 +204,7 @@ const UserTable: React.FC = () => {
           {/* Search input */}
           <Div className="relative">
             <search >
-            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} />
+            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} /></Div>
           </Div>
           
           {/* Role filter */}
@@ -307,12 +307,12 @@ const UserTable: React.FC = () => {
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <Userrow ></Tbody>
+                <Userrow ></Tbody></Tbody>
               ))
             ) : (
               <Tr>
                 <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users ></Tr>
+                  <Users ></Tr></Tr>
                   <P>No users found</P>
                   <P className="text-sm">Try adjusting your search or filters</P>
                 </Td>
@@ -328,7 +328,7 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P>
+          <P></Div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}

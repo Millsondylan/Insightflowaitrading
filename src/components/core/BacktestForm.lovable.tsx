@@ -86,11 +86,11 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
         />
       </Textarea>
       <Div>
-        <Label htmlFor="exitLogic">Exit Logic</Div>
+        <Label htmlFor="exitLogic"></Div>Exit Logic</Div>
         <Textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)">
       </Textarea>
       <Div className="flex justify-center">
-        <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}>
+        <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></Div>
           {isLoading ? <loader2 > : 'Run Backtest'}
         </Div>
       </Div>

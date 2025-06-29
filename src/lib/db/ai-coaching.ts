@@ -217,7 +217,7 @@ export async function getAIPreferences(userId: string) {
   };
 }
 
-export async function updateAIPreferences(userId: string, preferences: any // eslint-disable-line @typescript-eslint/no-explicit-any) {
+export async function updateAIPreferences(userId: string, preferences: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
   return await supabase
     .from('user_profiles')
     .update({ ai_preferences: preferences })

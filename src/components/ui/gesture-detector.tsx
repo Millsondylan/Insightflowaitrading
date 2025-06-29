@@ -347,7 +347,7 @@ export const GestureDetector: React.FC<GestureDetectorProps></GestureDetectorPro
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       style={{ touchAction: 'none' }}
-   >
+  >
       {children}
     </Div>
   );

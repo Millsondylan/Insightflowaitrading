@@ -20,8 +20,7 @@ const LessonBadge: React.FC<LessonBadgeProps> = ({
           ? "transform scale-100 opacity-100"
           : "transform scale-50 opacity-0",
         className
-      )}
->
+      )}>
       <Div className="relative inline-block">
         <award
           className={cn(

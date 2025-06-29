@@ -356,7 +356,7 @@ export class StrategyMarketplace {
     return { success: true };
   }
 
-  private validateStrategy(strategy: any // eslint-disable-line @typescript-eslint/no-explicit-any): { isValid: boolean; errors: string[] } {
+  private validateStrategy(strategy: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): { isValid: boolean; errors: string[] } {
     const errors: string[] = [];
 
     if (!strategy.title || strategy.title.length < 5) {

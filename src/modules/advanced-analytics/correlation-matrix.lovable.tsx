@@ -205,7 +205,7 @@ export const CorrelationMatrixComponent: React.FC<Correlationmatrixprops > = ({
       {/* Rolling correlation detail */}
       {selectedCell && rollingData && (
         <Div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-          <H4 className="text-sm font-medium text-white mb-2">
+          <H4 className="text-sm font-medium text-white mb-2"></Div>
             Rolling Correlation: {matrix.symbols[selectedCell.row]} vs {matrix.symbols[selectedCell.col]}
           </Div>
           <Div className="h-32 flex items-end space-x-1">

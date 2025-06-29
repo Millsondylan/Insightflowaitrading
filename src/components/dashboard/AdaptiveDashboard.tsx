@@ -280,7 +280,7 @@ export default function AdaptiveDashboard() {
                   <Div {...provided.droppableProps}
                     ref={provided.innerRef}
                     className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                 >
+                >
                     {filteredWidgets.map((widget, index) => {
                       const WidgetComponent = WIDGET_REGISTRY[widget.widget_id];
                       
@@ -290,11 +290,11 @@ export default function AdaptiveDashboard() {
                             <Div ref={provided.innerRef}
                               {...provided.draggableProps}
                               className="relative"
-                           >
+                          >
                               <Card className="h-full" />
                                 <Div {...provided.dragHandleProps}
                                   className="absolute top-3 right-10 cursor-move p-1 rounded-md hover:bg-muted"
-                               >
+                              >
                                   <GripVertical className="h-4 w-4 text-muted-foreground" />
                                 </DragDropContext>
                                 <Button

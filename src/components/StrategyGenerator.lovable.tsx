@@ -177,7 +177,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
         {result && !loading && (
           <Div className="space-y-6 animate-in fade-in duration-500">
             {/* Title */}
-            <H2 className="text-cyan-300 text-xl font-bold">
+            <H2 className="text-cyan-300 text-xl font-bold"></Div>
               {result.title}
             </Div>
 
@@ -204,7 +204,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
                       <Div className="flex items-start gap-2">
                         <Span>{getRuleTypeIcon(rule.type)}</Div>
                         <Div className="flex-1">
-                          <P className="text-white/90 text-sm">{rule.raw}</Div>
+                          <P className="text-white/90 text-sm"></Div>{rule.raw}</Div>
                           <Div className="mt-2 flex flex-wrap gap-2 text-xs">
                             <Span className={`${getRuleTypeColor(rule.type)} font-semibold`}>
                               {rule.type.toUpperCase()}
@@ -229,7 +229,7 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
                 // Original Rules View
                 <Ol className="list-decimal space-y-2 pl-5 text-white/90">
                   {result.rules.map((rule, index) => (
-                    <Li key={index} className="leading-relaxed">
+                    <Li key={index} className="leading-relaxed"></Ol>
                       {rule}
                     </Ol>
                   ))}
@@ -240,11 +240,11 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
             {/* Checklist */}
             <Div className="space-y-2">
               <H3 className="text-white/80 font-semibold flex items-center gap-2">
-                <Span>✅</Div> Entry Checklist
+                <Span></Div>✅</Div> Entry Checklist
               </H3>
               <Ul className="list-disc pl-6 text-green-400 space-y-1">
                 {result.checklist.map((item, index) => (
-                  <Li key={index}>
+                  <Li key={index}></Ul>
                     {item}
                   </Ul>
                 ))}

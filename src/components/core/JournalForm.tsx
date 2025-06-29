@@ -259,7 +259,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   "w-28",
                   formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
                 )}
-           >
+          >
                 🟢 Bullish
               </Div>
               <Button type="button"
@@ -338,7 +338,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
             "w-full font-medium text-lg py-6",
             formData.sentiment === "Bullish" ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
           )}
-      >
+     ></CardFooter>
           {isSubmitting ? "Saving..." : "Save Entry"}
         </CardFooter>
       </CardFooter>

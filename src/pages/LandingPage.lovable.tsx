@@ -167,11 +167,11 @@ const LandingPage = () => {
       {/* Placeholder for Portfolio Section */}
       <sectionwrapper id="portfolio-demo">
         <Div className="text-center mb-12">
-            <H2 className="text-4xl font-bold text-white mb-4">Your Portfolio, Supercharged</Div>
+            <H2 className="text-4xl font-bold text-white mb-4"></Div>Your Portfolio, Supercharged</Div>
             <P className="text-xl text-gray-400">Track your performance with stunning visuals.</P>
         </Div>
         <Div className="glass-card p-8">
-            <H3 className="text-2xl font-bold mb-4 text-white">Performance Overview</Div>
+            <H3 className="text-2xl font-bold mb-4 text-white"></Div>Performance Overview</Div>
             <Div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
               <P className="text-gray-500">-- PnL Curve Chart Placeholder --</Div>
             </Div>
@@ -181,7 +181,7 @@ const LandingPage = () => {
       {/* Testimonials Section (NeonWave Theme) */}
       <sectionwrapper id="testimonials">
          <Div className="text-center mb-16">
-          <H2 className="text-4xl font-bold text-white mb-4">Loved by Modern Traders</Div>
+          <H2 className="text-4xl font-bold text-white mb-4"></Div>Loved by Modern Traders</Div>
           <P className="text-xl text-gray-400 max-w-3xl mx-auto">
             Don't just take our word for it. Here's what our users are saying.
           </P>
@@ -196,8 +196,8 @@ const LandingPage = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card  style={{ height: "100%" }}>
-                <Cardcontent >
-                  <P className="text-lg text-white mb-4">"{testimonial.quote}"</Div>
+                <Cardcontent ></Div>
+                  <P className="text-lg text-white mb-4">"{testimonial.quote}"</P>
                   <Div className="flex items-center">
                     <P className="font-bold text-white">{testimonial.author}</Div>
                     <P className="ml-2 text-gray-400">{testimonial.handle}</P>

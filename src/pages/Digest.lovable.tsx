@@ -92,7 +92,7 @@ export default function DigestPage() {
             <Span>Live Scan</Div>
           </Button>
           <Button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <Filetext  /></Button>
+            <Filetext  /></Button></Button>
             <Span>View Reports</Span>
           </Button>
         </Div>
@@ -100,7 +100,7 @@ export default function DigestPage() {
         <Marketdigest ></Marketdigest>
         
         <Div className="mt-8 text-center">
-          <P className="text-white/50 text-sm">
+          <P className="text-white/50 text-sm"></Div>
             Summaries generated automatically based on price action, volume, and strategy matches
           </Div>
         </Div>

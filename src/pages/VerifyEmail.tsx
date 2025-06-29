@@ -90,7 +90,7 @@ export default function VerifyEmailPage() {
         {verificationStatus === 'success' && (
           <CardFooter className="flex justify-center" />
             <Button className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
-              onClick={() = /> navigate('/auth')}
+              onClick={() = /></CardFooter> navigate('/auth')}
             >
               Log In Now
             </CardFooter>

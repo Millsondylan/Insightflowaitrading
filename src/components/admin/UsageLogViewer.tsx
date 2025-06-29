@@ -151,7 +151,7 @@ export default function UsageLogViewer({ logs }: Props) {
       <Div className="rounded-lg border border-white/10 overflow-hidden">
         <Div ref={containerRef}
           className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
-       >
+      >
           <Table>
             <TableHeader className="sticky top-0 bg-black z-10" />
               <TableRow className="hover:bg-transparent border-white/10" />
@@ -186,7 +186,7 @@ export default function UsageLogViewer({ logs }: Props) {
                 <TableRow>
                   <TableCell colSpan={3} className="text-center py-12" />
                     <Div className="flex flex-col items-center gap-2 text-gray-500">
-                      <Inbox className="h-10 w-10 text-gray-600/50" /></TableRow>
+                      <Inbox className="h-10 w-10 text-gray-600/50" /></TableRow></TableRow>
                       <P>No logs found</P>
                       <P className="text-xs">Try adjusting your filters</P>
                     </Div>

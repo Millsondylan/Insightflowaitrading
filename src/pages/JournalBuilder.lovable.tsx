@@ -67,7 +67,7 @@ const JournalBuilderPage: React.FC = () => {
       <Scrollsection animation="slide-right" />
         <Div className="max-w-6xl mx-auto">
           <Div className="mb-12 text-center">
-            <H3 className="text-3xl md:text-4xl font-semibold text-glow-magenta mb-4">📓 Recent Entries</Scrollsection>
+            <H3 className="text-3xl md:text-4xl font-semibold text-glow-magenta mb-4"></Scrollsection>📓 Recent Entries</Scrollsection>
             <Div className="threadline-glow w-24 mx-auto"></Div>
           </Div>
           
@@ -76,7 +76,7 @@ const JournalBuilderPage: React.FC = () => {
             <Div className="glass-card hover:bg-black/40 transition-all duration-300 motion-shadow">
               <Div className="flex justify-between items-start mb-4">
                 <Div>
-                  <H4 className="text-xl font-semibold text-white mb-2">TSLA Momentum Play</Div>
+                  <H4 className="text-xl font-semibold text-white mb-2"></Div>TSLA Momentum Play</Div>
                   <P className="text-gray-400 text-sm">January 15, 2024</P>
                 </Div>
                 <Div className="text-right">
@@ -93,7 +93,7 @@ const JournalBuilderPage: React.FC = () => {
             <Div className="glass-card hover:bg-black/40 transition-all duration-300 motion-shadow">
               <Div className="flex justify-between items-start mb-4">
                 <Div>
-                  <H4 className="text-xl font-semibold text-white mb-2">SPY Put Hedge</Div>
+                  <H4 className="text-xl font-semibold text-white mb-2"></Div>SPY Put Hedge</Div>
                   <P className="text-gray-400 text-sm">January 12, 2024</P>
                 </Div>
                 <Div className="text-right">
@@ -110,7 +110,7 @@ const JournalBuilderPage: React.FC = () => {
             <Div className="glass-card hover:bg-black/40 transition-all duration-300 motion-shadow">
               <Div className="flex justify-between items-start mb-4">
                 <Div>
-                  <H4 className="text-xl font-semibold text-white mb-2">NVDA Breakout</Div>
+                  <H4 className="text-xl font-semibold text-white mb-2"></Div>NVDA Breakout</Div>
                   <P className="text-gray-400 text-sm">January 10, 2024</P>
                 </Div>
                 <Div className="text-right">
@@ -130,7 +130,7 @@ const JournalBuilderPage: React.FC = () => {
       <Scrollsection animation="scale-in">
         <Div className="max-w-4xl mx-auto text-center">
           <Div className="glass-section motion-shadow">
-            <H4 className="text-2xl md:text-3xl font-semibold text-glow-violet mb-6">🧠 AI Insights</Scrollsection>
+            <H4 className="text-2xl md:text-3xl font-semibold text-glow-violet mb-6"></Scrollsection>🧠 AI Insights</Scrollsection>
             <P className="text-gray-300 text-lg mb-8">
               Your trading patterns and psychological trends are being analyzed to help you improve
             </P>

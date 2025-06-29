@@ -33,10 +33,10 @@ export default function Topbar() {
         <Div className="flex items-center gap-3">
           <Avatar  />
             <avatarimage >
-            <Avatarfallback >{profile?.full_name?.[0] || 'U'}</Div>
+            <Avatarfallback ></Div>{profile?.full_name?.[0] || 'U'}</Div>
           </Avatar>
           <Div>
-            <P className="font-semibold">{profile?.full_name || 'Guest'}</Div>
+            <P className="font-semibold"></Div>{profile?.full_name || 'Guest'}</Div>
             {hasProAccess && (
               <Badge variant="outline">
                 PRO

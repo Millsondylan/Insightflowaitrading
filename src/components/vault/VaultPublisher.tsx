@@ -16,7 +16,7 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
   return (
     <Div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
       <Div>
-        <H3 className="text-lg font-bold text-white">📢 Publish Strategy</Div>
+        <H3 className="text-lg font-bold text-white"></Div>📢 Publish Strategy</Div>
         <P className="text-sm text-white/60">Ready to share your strategy with the community?</P>
       </Div>
 
@@ -30,7 +30,7 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
         
         <Div className="flex flex-wrap gap-2 pt-2">
           {strategy.tags.map((t, i) => (
-            <Span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60">
+            <Span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60"></Div>
               {t}
             </Div>
           ))}
@@ -39,7 +39,7 @@ export default function VaultPublisher({ strategy, onPublish }: Props) {
       
       <Button onClick={onPublish}
         className="w-full mt-2 bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg text-white font-bold transition-colors duration-200"
-  >
+ >
         🚀 Publish to Vault
       </Button>
     </Div>

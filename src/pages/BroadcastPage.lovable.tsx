@@ -44,7 +44,7 @@ export default function BroadcastPage() {
                 </Div>
                 <Div className="p-4 border-t border-white/10 flex gap-2">
                     <Textarea placeholder="Say something..." style={{ fontSize: "0.875rem" }}>
-                    <Button ><Send /></Div></Button>
+                    <Button ><Send /></Div></Div></Button>
                 </Div>
             </Div>
         </Div>

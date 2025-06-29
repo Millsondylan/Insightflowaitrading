@@ -199,7 +199,7 @@ export default function OnboardingModal() {
                 variant="outline"
                 onClick={handlePrevious}
                 disabled={isFirstStep || isSubmitting}
-            >
+           >
                 <ChevronLeft className="mr-2 h-4 w-4" />
                 Back
               </Div>
@@ -208,7 +208,7 @@ export default function OnboardingModal() {
                 onClick={handleNext}
                 disabled={isSubmitting}
                 className={isCompletionStep ? 'bg-green-600 hover:bg-green-700' : ''}
-            >
+           >
                 {isSubmitting ? (
                   <Span className="flex items-center">
                     <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -225,7 +225,7 @@ export default function OnboardingModal() {
                 ) : (
                   <Span className="flex items-center">
                     Next
-                    <ChevronRight className="ml-2 h-4 w-4" /></Span>
+                    <ChevronRight className="ml-2 h-4 w-4" /></Span></Span>
                   </Span>
                 )}
               </Button>

@@ -63,7 +63,7 @@ export const StrategyDetailPage = ({ strategy }: Props) => {
                 <Div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
                     <KPICard label="Win Rate" value={Math.round(strategy.winRate * 100)} suffix="%" />
                     <KPICard label="Total PnL" value={strategy.totalPnL} prefix="$" />
-                    <KPICard label="Total Trades" value={strategy.trades} /></Div>
+                    <KPICard label="Total Trades" value={strategy.trades} /></Div></Div>
                 </Div>
             </Div>
 

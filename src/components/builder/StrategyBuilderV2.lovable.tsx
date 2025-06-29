@@ -86,7 +86,7 @@ const StrategyBuilderV2 = () => {
           placeholder="e.g., 'A simple RSI strategy that buys on oversold signals and sells on overbought signals. Also look for a breakout with volume confirmation.'"
           className="bg-white/5 p-4 rounded-lg text-white/80 w-full min-h-[120px]"
         />
-        <Button  style={{ color: "white" }}>
+        <Button  style={{ color: "white" }}></Div>
           Generate Strategy
         </Div>
       </Div>
@@ -101,25 +101,25 @@ const StrategyBuilderV2 = () => {
       {strategy && (
         <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-6">
           <Div>
-            <H2 className="text-2xl font-bold text-white">{strategy.title}</Div>
+            <H2 className="text-2xl font-bold text-white"></Div>{strategy.title}</Div>
           </Div>
 
           <Div>
-            <H3 className="text-lg font-semibold text-white/90 mb-2">Parsed Rules</Div>
+            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div>Parsed Rules</Div>
             <Ul className="list-disc pl-6 space-y-1 text-white/80">
-              {strategy.rules.map((rule, i) => <Li key={i}>{rule}</Ul>)}
+              {strategy.rules.map((rule, i) => <Li key={i}></Ul>{rule}</Ul>)}
             </Ul>
           </Div>
 
           <Div>
-            <H3 className="text-lg font-semibold text-white/90 mb-2">Pre-Trade Checklist</Div>
+            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div>Pre-Trade Checklist</Div>
             <Ul className="list-disc pl-6 space-y-1 text-white/80">
-              {strategy.checklist.map((item, i) => <Li key={i}>{item}</Ul>)}
+              {strategy.checklist.map((item, i) => <Li key={i}></Ul>{item}</Ul>)}
             </Ul>
           </Div>
           
           <Div className="pt-4 border-t border-white/20">
-            <H3 className="text-lg font-semibold text-white/90 mb-2">Mock Backtest Preview</Div>
+            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div>Mock Backtest Preview</Div>
             <Div className="flex gap-4 text-center">
                 <Div className="bg-white/10 p-3 rounded-lg flex-1">
                     <P className="text-sm text-white/60">Est. Win Rate</Div>

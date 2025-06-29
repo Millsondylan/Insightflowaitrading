@@ -216,14 +216,14 @@ export const ModalSnap = React.forwardRef<HTMLDivElement, ModalSnapProps>(
           )}
           style={{ height: `${currentHeight}%` }}
           {...props}
-       >
+      >
           {/* Drag handle */}
           {showHandle && (
             <Div ref={dragHandleRef}
               className="flex items-center justify-center h-6 w-full cursor-grab active:cursor-grabbing"
               onMouseDown={handleDragStart}
               onTouchStart={handleDragStart}
-           >
+          >
               <Div className="w-12 h-1.5 bg-muted-foreground/30 rounded-full" />
             </HTMLDivElement>
           )}
@@ -233,7 +233,7 @@ export const ModalSnap = React.forwardRef<HTMLDivElement, ModalSnapProps>(
             <Button onClick={onClose}
               className="absolute top-2 right-2 p-1 rounded-sm opacity-70 hover:opacity-100 focus:outline-none focus:ring-1"
               aria-label="Close"
-           >
+          >
               <X className="w-4 h-4" />
             </Button>
           )}
@@ -241,7 +241,7 @@ export const ModalSnap = React.forwardRef<HTMLDivElement, ModalSnapProps>(
           {/* Content */}
           <Div ref={contentRef}
             className="overflow-y-auto overscroll-contain h-full"
-         >
+        >
             <Div className="p-4">
               {children}
             </Div>

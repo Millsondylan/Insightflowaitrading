@@ -114,7 +114,7 @@ class PushNotificationService {
   /**
    * Handle notification action when user taps
    */
-  private handleNotificationAction(actionData: any // eslint-disable-line @typescript-eslint/no-explicit-any): void {
+  private handleNotificationAction(actionData: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): void {
     const data = actionData.notification.data;
     
     // Navigate based on notification type

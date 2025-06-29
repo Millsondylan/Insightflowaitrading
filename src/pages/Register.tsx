@@ -237,7 +237,7 @@ export default function RegisterPage() {
             <Button type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
               disabled={isLoading}
-          >
+         >
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -255,7 +255,7 @@ export default function RegisterPage() {
         <CardFooter className="flex justify-center border-t border-white/10 pt-6" />
           <P className="text-sm text-gray-400">
             Already have an account?{' '}
-            <A href="/auth" className="text-blue-400 hover:underline">Sign In</CardFooter>
+            <A href="/auth" className="text-blue-400 hover:underline"></CardFooter>Sign In</CardFooter>
           </P>
         </CardFooter>
       </Card>

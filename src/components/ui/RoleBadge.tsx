@@ -57,8 +57,7 @@ export const RoleBadge: React.FC<RoleBadgeProps></RoleBadgeProps> = ({
         safeRoleStyles,
         safeGlowEffect,
         className
-      )}
-></Span>
+      )}></Span>
       {role}
     </Span>
   );
@@ -68,11 +67,11 @@ export const RoleBadge: React.FC<RoleBadgeProps></RoleBadgeProps> = ({
     return (
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger asChild>
+          <TooltipTrigger asChild></TooltipProvider>
             {badge}
           </TooltipProvider>
           <TooltipContent>
-            <P className="text-xs">{tooltipContent[safeRole as UserRole]}</TooltipContent>
+            <P className="text-xs"></TooltipContent>{tooltipContent[safeRole as UserRole]}</TooltipContent>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

@@ -21,7 +21,7 @@ const StrategySummaryAI = ({ summary, emotion, suggestions }: Props) => {
   return (
     <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
       <Div className="flex justify-between items-start">
-        <H3 className="text-lg font-semibold text-white/90">AI Analysis</Div>
+        <H3 className="text-lg font-semibold text-white/90"></Div>AI Analysis</Div>
         <Span className={`px-2 py-1 rounded-full text-xs font-medium ${getEmotionStyle(emotion)}`}>
           {emotion}
         </Span>
@@ -33,7 +33,7 @@ const StrategySummaryAI = ({ summary, emotion, suggestions }: Props) => {
 
       {suggestions && suggestions.length > 0 && (
         <Div>
-          <H4 className="font-semibold text-white/80 mb-2">💡 Suggestions</Div>
+          <H4 className="font-semibold text-white/80 mb-2"></Div>💡 Suggestions</Div>
           <Ul className="space-y-2">
             {suggestions.map((suggestion, index) => (
               <Li key={index} className="flex items-start gap-2 text-white/70">

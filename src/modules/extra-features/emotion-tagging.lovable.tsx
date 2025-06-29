@@ -73,7 +73,7 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
               return (
                 <Div key={i} className="flex items-center justify-between p-3 border rounded-lg">
                   <Div className="flex items-center gap-3">
-                    <Icon />
+                    <Icon / />
                     <Div>
                       <P className="font-medium">{emotion?.label}</Div>
                       <P className="text-sm text-muted-foreground">{tag.context}</P>
@@ -87,7 +87,7 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
         </Div>
 
         <Div className="p-4 bg-primary/5 rounded-lg">
-          <H4 className="font-medium mb-2">Emotion Insights</Div>
+          <H4 className="font-medium mb-2"></Div>Emotion Insights</Div>
           <P className="text-sm text-muted-foreground">
             Your best trades happen when you're feeling <Span className="text-green-500 font-medium">confident</P> and <Span className="text-blue-500 font-medium">calm</Span>.
             Consider meditation before trading to maintain emotional balance.

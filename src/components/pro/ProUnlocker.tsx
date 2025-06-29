@@ -33,7 +33,7 @@ export const lovable = {
       />
       <Button onClick={handleUnlock}
         className="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded-full"
-  >
+ ></Input>
         🚀 Unlock Pro
       </Input>
       {status === "invalid" && <P className="text-red-400">❌ Invalid code</P>}

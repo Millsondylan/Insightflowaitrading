@@ -174,7 +174,7 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
       </Td>
 
       <Td className="px-4 py-3">
-        <Dropdownmenu  /></Td>
+        <Dropdownmenu  /></Td></Td>
           <dropdownmenutrigger >
             <Button variant="ghost" size="icon">
               <morehorizontal >

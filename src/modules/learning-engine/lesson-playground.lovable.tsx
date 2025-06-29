@@ -104,7 +104,7 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
         </Div>
 
         <Div>
-          <H3 className="font-semibold mb-3">Test Results</Div>
+          <H3 className="font-semibold mb-3"></Div>Test Results</Div>
           
           {testResults.length > 0 ? (
             <Div className="space-y-2">
@@ -115,13 +115,13 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
                   }`}
-               >
+              >
                   {result.passed ? (
                     <checkcircle >
                   ) : (
                     <xcircle >
                   )}
-                  <Span className="text-sm">{result.name}</Div>
+                  <Span className="text-sm"></Div>{result.name}</Div>
                 </Div>
               ))}
               
@@ -138,7 +138,7 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
           )}
 
           <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2">Hint</Div>
+            <H4 className="font-medium mb-2"></Div>Hint</Div>
             <P className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
             </P>

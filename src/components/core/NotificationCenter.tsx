@@ -146,7 +146,7 @@ export default function NotificationCenter() {
     return (
       <Div key={notification.id}
         className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}
-    >
+   >
         <Div className="flex items-start gap-3">
           <Div className="mt-0.5">
             {getNotificationIcon(notification.notification_type, notification.priority)}
@@ -198,7 +198,7 @@ export default function NotificationCenter() {
           {unreadCount > 0 && (
             <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
               variant="destructive"
-          >
+         >
               {unreadCount > 9 ? '9+' : unreadCount}
             </Popover>
           )}
@@ -207,7 +207,7 @@ export default function NotificationCenter() {
       <PopoverContent className="w-80 md:w-96 p-0" 
         align="end" 
         sideOffset={5}
-    >
+   >
         <Div className="flex items-center justify-between bg-gray-900 p-4 border-b border-gray-800">
           <H3 className="font-semibold text-lg text-white">Notifications</PopoverContent>
           <Div className="flex items-center gap-2">
@@ -216,7 +216,7 @@ export default function NotificationCenter() {
                 size="sm" 
                 className="text-xs"
                 onClick={handleReadAll}
-            >
+           >
                 Mark all as read
               </Div>
             )}
@@ -229,7 +229,7 @@ export default function NotificationCenter() {
         <Tabs defaultValue="all" 
           value={activeTab} 
           onValueChange={setActiveTab}
-      >
+     >
           <Div className="px-4 pt-2">
             <TabsList className="grid grid-cols-3 w-full" />
               <TabsTrigger value="all" />All</Tabs>
@@ -297,7 +297,7 @@ export default function NotificationCenter() {
           <Button variant="ghost" 
             size="sm" 
             className="w-full text-xs text-gray-400"
-            onClick={() = /> {
+            onClick={() = /></Div> {
               logClick('ViewAllNotifications');
               setOpen(false);
               // Navigate to full notifications page

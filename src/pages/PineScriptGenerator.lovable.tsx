@@ -40,10 +40,10 @@ export default function PineScriptGeneratorPage() {
       <pineScriptGenerator />
       
       <Div className="mt-12">
-        <H2 className="text-2xl font-semibold mb-4">About Pine Script Generator</Div>
+        <H2 className="text-2xl font-semibold mb-4"></Div>About Pine Script Generator</Div>
         <Div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Div className="bg-card rounded-lg p-6 shadow-sm">
-            <H3 className="text-xl font-medium mb-3">What is Pine Script?</Div>
+            <H3 className="text-xl font-medium mb-3"></Div>What is Pine Script?</Div>
             <P className="text-muted-foreground">
               Pine Script is TradingView's proprietary programming language that allows you to create 
               custom indicators and trading strategies. It's designed specifically for chart analysis 
@@ -52,7 +52,7 @@ export default function PineScriptGeneratorPage() {
           </Div>
           
           <Div className="bg-card rounded-lg p-6 shadow-sm">
-            <H3 className="text-xl font-medium mb-3">How to Use It</Div>
+            <H3 className="text-xl font-medium mb-3"></Div>How to Use It</Div>
             <Ol className="list-decimal list-inside text-muted-foreground space-y-2 ml-2">
               <Li>Describe what you want to create in natural language</Ol>
               <Li>Choose the script type (indicator or strategy)</Li>
@@ -63,7 +63,7 @@ export default function PineScriptGeneratorPage() {
           </Div>
           
           <Div className="bg-card rounded-lg p-6 shadow-sm">
-            <H3 className="text-xl font-medium mb-3">Example Prompts</Div>
+            <H3 className="text-xl font-medium mb-3"></Div>Example Prompts</Div>
             <Ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
               <Li>"Create an RSI indicator with overbought and oversold levels at 70 and 30"</Ul>
               <Li>"Generate a MACD indicator with custom color coding for bullish/bearish divergence"</Li>
@@ -73,7 +73,7 @@ export default function PineScriptGeneratorPage() {
           </Div>
           
           <Div className="bg-card rounded-lg p-6 shadow-sm">
-            <H3 className="text-xl font-medium mb-3">Pro Benefits</Div>
+            <H3 className="text-xl font-medium mb-3"></Div>Pro Benefits</Div>
             <Ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
               <Li>Unlimited Pine Script generation (Free tier: 1/month)</Ul>
               <Li>Access to GPT-4 for more complex script generation</Li>

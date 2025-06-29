@@ -71,7 +71,7 @@ export function SystemStatusPanel() {
             size="sm" 
             onClick={fetchSystemStatus}
             disabled={loading}
-       >
+      >
             <RefreshCcw className={`h-4 w-4 mr-1 ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>

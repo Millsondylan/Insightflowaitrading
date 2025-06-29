@@ -158,7 +158,7 @@ export const lovable = {
       </Div>
 
       <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <P className="text-sm text-muted-foreground">
+        <P className="text-sm text-muted-foreground"></Div>
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
         </Div>
       </Div>

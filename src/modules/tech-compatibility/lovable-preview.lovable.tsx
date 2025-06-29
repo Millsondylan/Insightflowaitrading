@@ -5,7 +5,7 @@ import { Input } from '../../components/ui/input';
 
 interface LovablePreviewProps {
   sourceCode?: string;
-  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
+  onEdit?: (componentId: string, changes: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
 }
 
 export const LovablePreview: React.FC<LovablePreviewProps> = ({
@@ -83,7 +83,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
           </Div>
           <Button onClick={applyChanges}
             disabled={!isEditing}
-       >
+      >
             Apply Changes
           </Button>
         </Div>
@@ -177,7 +177,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                     </Div>
                     
                     <Div>
-                      <Label className="block text-sm font-medium mb-1">Font Weight</Div>
+                      <Label className="block text-sm font-medium mb-1"></Div>Font Weight</Div>
                       <Select
                         value={editableProperties.style.fontWeight}
                         onChange={(e) => handleStyleChange('fontWeight', e.target.value)}
@@ -193,7 +193,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
               ) : (
                 <Div className="text-center text-text-muted h-full flex items-center justify-center">
                   <Div>
-                    <P className="mb-4">Select a component to edit</Div>
+                    <P className="mb-4"></Div>Select a component to edit</Div>
                     <Button onClick={() =></Button> handleComponentSelect('sample-component-1')}>
                       Select Component
                     </Button>

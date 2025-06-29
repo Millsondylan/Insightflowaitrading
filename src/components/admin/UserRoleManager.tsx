@@ -124,7 +124,7 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
                   <TableCell className="text-right" />
                     <Button variant="ghost"
                       className="h-8 w-8 p-0 text-gray-400 hover:text-white"
-                  >
+                 >
                       <Settings className="h-4 w-4" />
                     </TableCell>
                   </TableCell>
@@ -134,7 +134,7 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
             
             {filteredUsers.length === 0 && (
               <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-gray-500" />
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500" /></TableRow>
                   No users found matching your search.
                 </TableRow>
               </TableRow>

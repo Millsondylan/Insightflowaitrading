@@ -194,7 +194,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
           <Div className="space-y-3">
             <Div className="flex items-center space-x-2">
               <Div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
-              <H4 className="text-sm font-medium text-purple-400">Behavioral Patterns</Div>
+              <H4 className="text-sm font-medium text-purple-400"></Div>Behavioral Patterns</Div>
             </Div>
             <behaviortaggroup >
           </Div>
@@ -204,7 +204,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
         <Div className="space-y-2">
           <Div className="flex items-center space-x-2 mb-2">
             <lightbulb >
-            <H4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</Div>
+            <H4 className="text-sm font-medium text-yellow-400"></Div>Improvement Suggestion</Div>
           </Div>
           <P className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
             {reflection!.suggestion}
@@ -213,7 +213,7 @@ const AIReflection: React.FC<Aireflectionprops> = ({
 
         {/* Regenerate Button */}
         <Div className="pt-2 border-t border-gray-700/50">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" size="sm"></Div>
             <brain >
             Regenerate Analysis
           </Div>

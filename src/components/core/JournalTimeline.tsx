@@ -151,7 +151,7 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
               animationDelay: `${(index % 5) * 100}ms`,
               animationFillMode: "forwards"
             }}
-      >
+     >
             <Card className="overflow-hidden border-t-4 hover:shadow-lg transition-shadow duration-200" />
               <Div
                 className={cn(
@@ -183,7 +183,7 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
                         ? "bg-green-600/20 text-green-500 border-green-500/30"
                         : "bg-red-600/20 text-red-500 border-red-500/30"
                     )}
-                 >
+                >
                     {isProfitable ? "+" : ""}{profitLoss.toFixed(2)}%
                   </Div>
                   
@@ -251,7 +251,7 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
                   <CollapsibleTrigger asChild />
                     <Button variant="ghost"
                       className="w-full mt-4 flex items-center justify-between hover:bg-blue-500/5 border border-blue-500/20"
-                  >
+                 >
                       <Div className="flex items-center space-x-2">
                         <brain className="h-4 w-4 text-blue-400" />
                         <Span className="text-blue-400">AI Analysis</Collapsible>

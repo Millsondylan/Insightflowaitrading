@@ -11,7 +11,7 @@ const ScrollArea = React.forwardRef<
     <Scrollareaprimitive  style={{ height: "100%", width: "100%" }}>
       {children}
     </ScrollAreaPrimitive.Viewport>
-    <Scrollbar  /></Scrollareaprimitive>
+    <Scrollbar  /></Scrollareaprimitive></Scrollareaprimitive>
     <Scrollareaprimitive ></Scrollareaprimitive>
   </ScrollAreaPrimitive.Root>
 ))

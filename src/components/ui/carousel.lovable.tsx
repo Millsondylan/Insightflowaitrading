@@ -126,7 +126,7 @@ const Carousel = React.forwardRef<
           role="region"
           aria-roledescription="carousel"
           {...props}
-     >
+    >
           {children}
         </Carouselcontextprops>
       </CarouselContext.Provider>
@@ -187,7 +187,7 @@ const CarouselPrevious = React.forwardRef<
 
   return (
     <Button />
-      <Arrowleft /></HTMLDivElement>
+      <Arrowleft /></HTMLDivElement></HTMLDivElement>
       <Span className="sr-only">Previous slide</Span>
     </Button>
   )
@@ -203,7 +203,7 @@ const CarouselNext = React.forwardRef<
   return (
     <Button >
       <arrowright >
-      <Span className="sr-only">Next slide</Button>
+      <Span className="sr-only"></Button>Next slide</Button>
     </Button>
   )
 })

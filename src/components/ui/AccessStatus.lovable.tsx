@@ -130,7 +130,7 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
               status === 'pending' && "text-blue-400",
               status === 'success' && "text-green-400",
               status === 'failure' && "text-red-400",
-            )}>
+            )}></Accessstatusprops>
               {status === 'pending' && 'Verifying Payment'}
               {status === 'success' && 'Access Granted!'}
               {status === 'failure' && 'Verification Failed'}

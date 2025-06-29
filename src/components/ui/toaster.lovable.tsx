@@ -17,7 +17,7 @@ export function Toaster() {
         return (
           <Toast  />
             <Div className="grid gap-1">
-              {title && <Toasttitle >{title}</Toastprovider>}
+              {title && <Toasttitle ></Toastprovider>{title}</Toastprovider>}
               {description && (
                 <Toastdescription >{description}</Toastdescription>
               )}

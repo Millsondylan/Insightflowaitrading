@@ -95,7 +95,7 @@ const CommandShortcut = ({
         className
       )}
       {...props}
-    />
+    /></Commandprimitive>
   )
 }
 CommandShortcut.displayName = "CommandShortcut"
