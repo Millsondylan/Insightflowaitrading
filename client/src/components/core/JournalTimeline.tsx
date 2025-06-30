@@ -1,7 +1,5 @@
-
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { JournalEntry } from "@/lib/journal/schema";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,6 +7,41 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import AIReflection from "./AIReflection";
 import { cn } from "@/lib/utils";
 import { Brain, ChevronDown, ChevronUp } from "lucide-react";
+
+// Journal Entry interface that matches the database structure
+interface DatabaseJournalEntry {
+  id: string;
+  title: string;
+  pair: string;
+  timeframe: string;
+  entryprice: number;
+  exitprice: number;
+  charturl?: string;
+  reason: string;
+  sentiment: "Bullish" | "Bearish";
+  tags?: string[];
+  createdat: string;
+  userid: string;
+}
+
+// Interface for the component's use
+interface JournalEntry {
+  id: string;
+  title: string;
+  pair: string;
+  timeframe: string;
+  entryPrice: number;
+  exitPrice: number;
+  chartUrl?: string;
+  reason: string;
+  sentiment: "Bullish" | "Bearish";
+  tags: string[];
+  createdAt: string;
+  userId: string;
+  timestamp?: string;
+  content?: string;
+  mood?: string;
+}
 
 // Dummy user ID for development until auth is implemented
 const DUMMY_USER_ID = "current-user-id";
@@ -45,8 +78,8 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
           throw new Error(error.message);
         }
 
-        // Map database column names to the expected format
-        const mappedEntries = data?.map(entry => ({
+        // Map database entries to component interface
+        const mappedEntries: JournalEntry[] = (data as DatabaseJournalEntry[] || []).map(entry => ({
           id: entry.id,
           title: entry.title,
           pair: entry.pair,
@@ -55,13 +88,17 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
           exitPrice: entry.exitprice,
           chartUrl: entry.charturl,
           reason: entry.reason,
-          sentiment: entry.sentiment as "Bullish" | "Bearish",
+          sentiment: entry.sentiment,
           tags: entry.tags || [],
           createdAt: entry.createdat,
-          userId: entry.userid
-        })) || [];
+          userId: entry.userid,
+          // Add missing properties with defaults
+          timestamp: entry.createdat,
+          content: entry.reason,
+          mood: entry.sentiment.toLowerCase()
+        }));
 
-        setEntries(mappedEntries as JournalEntry[]);
+        setEntries(mappedEntries);
       } catch (err: any) {
         console.error('Error fetching journal entries:', err);
         setError(err.message || 'Failed to load journal entries');

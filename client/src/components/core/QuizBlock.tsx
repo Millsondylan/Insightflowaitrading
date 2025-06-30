@@ -58,6 +58,7 @@ interface QuizFeedbackType {
   correctAnswer: string;
   points: number;
   isCorrect: boolean;
+  correct: boolean; // Add missing property
   explanation: string;
   hint?: string;
   encouragement: string;
@@ -179,6 +180,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
       correctAnswer: correctOption?.id || '',
       points: isCorrect ? 1 : 0,
       isCorrect,
+      correct: isCorrect, // Add missing property
       explanation: question.explanation,
       hint: !isCorrect ? "Review the lesson content and focus on the key takeaways." : undefined,
       encouragement: isCorrect 
@@ -495,4 +497,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

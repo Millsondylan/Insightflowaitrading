@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2, XCircle, Lightbulb, TrendingUp } from "lucide-react";
@@ -11,7 +12,7 @@ interface QuizFeedbackProps {
 }
 
 const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
-  const { isCorrect, explanation, hint, encouragement, confidence } = feedback;
+  const { isCorrect, explanation, hint, encouragement, confidence = 0.5 } = feedback;
 
   const getConfidenceColor = (confidence: number) => {
     if (confidence >= 0.8) return 'text-green-400';
@@ -105,24 +106,26 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
         )}
 
         {/* Encouragement Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.4 }}
-          className={cn(
-            "p-4 rounded-lg border-l-4",
-            isCorrect 
-              ? "bg-green-500/5 border-green-400/50" 
-              : "bg-blue-500/5 border-blue-400/50"
-          )}
-        >
-          <p className={cn(
-            "font-medium",
-            isCorrect ? "text-green-300" : "text-blue-300"
-          )}>
-            {encouragement}
-          </p>
-        </motion.div>
+        {encouragement && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.4 }}
+            className={cn(
+              "p-4 rounded-lg border-l-4",
+              isCorrect 
+                ? "bg-green-500/5 border-green-400/50" 
+                : "bg-blue-500/5 border-blue-400/50"
+            )}
+          >
+            <p className={cn(
+              "font-medium",
+              isCorrect ? "text-green-300" : "text-blue-300"
+            )}>
+              {encouragement}
+            </p>
+          </motion.div>
+        )}
       </motion.div>
 
       {/* Progress Indicator */}
