@@ -1,100 +1,85 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Copy, Check, QrCode } from "lucide-react";
-import { QRCodeSVG } from "qrcode.react";
-import { useToast } from "@/components/ui/use-toast";
-import { TokenBalance } from "@/lib/wallet/getBalances";
-import { cn } from "@/lib/utils";
-import "@/styles/wallet.css";
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Wallet, TrendingUp, TrendingDown } from 'lucide-react';
+
+interface TokenBalance {
+  symbol: string;
+  name: string;
+  balance: number;
+  value: number;
+  change24h: number;
+  logo?: string;
+}
 
 interface TokenBalanceCardProps {
   token: TokenBalance;
-  index: number;
+  onTrade?: (symbol: string) => void;
 }
 
-const TokenBalanceCard: React.FC<TokenBalanceCardProps> = ({ token, index }) => {
-  const { toast } = useToast();
-  const [copied, setCopied] = useState(false);
-  const [showQr, setShowQr] = useState(false);
-
-  const { chain, address, balance, balanceUSD, hasSufficientBalance } = token;
-
-  const shortAddress = `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(address);
-    setCopied(true);
-    toast({ title: "Address Copied!", description: address });
-    setTimeout(() => setCopied(false), 2000);
-  };
-
+const TokenBalanceCard = ({ token, onTrade }: TokenBalanceCardProps) => {
+  const isPositive = token.change24h >= 0;
+  
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className={cn(
-          "token-balance-card",
-          `theme-${chain.theme.primaryColor}`
-        )}
-      >
-        <div className="relative z-10">
-          {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center space-x-3">
-              <img src={chain.logo} alt={`${chain.name} logo`} className="h-10 w-10"/>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Card className="relative overflow-hidden">
+        <CardHeader className="pb-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {token.logo ? (
+                <img src={token.logo} alt={token.symbol} className="w-8 h-8 rounded-full" />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                  <Wallet className="h-4 w-4 text-white" />
+                </div>
+              )}
               <div>
-                <h3 className="text-xl font-bold text-white">{chain.name}</TokenBalanceCardProps>
-                <p className="text-sm text-gray-400">{chain.ticker}</p>
+                <CardTitle className="text-lg font-semibold">{token.symbol}</CardTitle>
+                <CardDescription className="text-sm text-gray-500">{token.name}</CardDescription>
               </div>
             </div>
-            <div               className={cn(
-                "status-indicator",
-                hasSufficientBalance ? "status-indicator-sufficient" : "status-indicator-insufficient"
-              )}/>
+            
+            <Badge variant={isPositive ? "default" : "destructive"} className="flex items-center gap-1">
+              {isPositive ? <TrendingUp className="h-3 w-3" /> : <TrendingDown className="h-3 w-3" />}
+              {isPositive ? '+' : ''}{token.change24h.toFixed(2)}%
+            </Badge>
           </div>
-
-          {/* Balance */}
-          <div className="my-6 text-center">
-            <p className="text-4xl font-bold tracking-tight text-white">{balance.toLocaleString()}</div>
-            <p className="text-gray-400 text-lg">${balanceUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-          </div>
-
-          {/* Address and Actions */}
-          <div className="flex items-center justify-between p-3 rounded-lg bg-black/30">
-            <span className="font-mono text-sm text-gray-300">{shortAddress}</div>
-            <div className="flex items-center space-x-2">
-              <Button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
-                {copied ? <Check className="h-4 w-4"/> : <Copy className="h-4 w-4"/>}
-              </div>
-              <Button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
-                <QrCode className="h-4 w-4"/>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Shimmer Effect */}
-        <div className="shimmer-overlay"/>
+        </CardHeader>
         
-        {/* Glow Effect */}
-        <div className={cn("card-glow", `glow-${chain.theme.primaryColor}`)}/>
-      </motion.div>
-
-      {/* QR Code Modal */}
-      {showQr && (
-        <div className="qr-code-modal" onClick={() => setShowQr(false)}>
-          <div className="qr-code-content" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-bold mb-4">Scan to Deposit {chain.ticker}</div>
-            <div className="p-4 bg-white rounded-lg inline-block">
-              <QRCodeSVG value={address} size={200}/>
+        <CardContent>
+          <div className="space-y-3">
+            <div>
+              <p className="text-sm text-gray-600">Balance</p>
+              <p className="text-2xl font-bold">{token.balance.toFixed(6)} {token.symbol}</p>
             </div>
-            <p className="font-mono text-sm text-gray-400 mt-4 break-all">{address}</p>
+            
+            <div>
+              <span className="text-sm text-gray-600">Value: </span>
+              <span className="text-lg font-semibold">${token.value.toLocaleString()}</span>
+            </div>
+            
+            {onTrade && (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => onTrade(token.symbol)}
+                className="w-full"
+              >
+                Trade {token.symbol}
+              </Button>
+            )}
           </div>
-        </div>
-      )}
-    </>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
@@ -105,4 +90,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

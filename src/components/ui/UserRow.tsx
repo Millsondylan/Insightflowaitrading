@@ -1,225 +1,151 @@
-import React, { useState } from 'react';
-import { User } from '@/lib/admin/fetchUsers';
-import { updateUserRole, revokeUserAccess, UserRole } from '@/lib/admin/updateUserRole';
-import RoleBadge from './RoleBadge';
-import { MoreHorizontal, Copy, UserCog, XCircle, Eye } from 'lucide-react';
-import { toast } from '@/components/ui/use-toast';
-import {
+
+import React from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { 
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuSub,
-  DropdownMenuSubTrigger,
   DropdownMenuSubContent,
-  DropdownMenuPortal
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Button } from './button';
-import { cn } from '@/lib/utils';
+import { MoreHorizontal, User, Shield, Crown, Mail } from 'lucide-react';
 
-interface UserRowProps {
-  user: User;
-  onUserUpdate?: (updatedUser: User) => void;
+interface UserData {
+  id: string;
+  email: string;
+  role: 'admin' | 'pro' | 'subscribed' | 'free';
+  createdAt: string;
+  lastLogin?: string;
+  isActive: boolean;
 }
 
-const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
-  const [isLoading, setIsLoading] = useState(false);
+interface UserRowProps {
+  user: UserData;
+  onRoleChange?: (userId: string, newRole: string) => void;
+  onToggleStatus?: (userId: string) => void;
+  onSendEmail?: (userId: string) => void;
+}
 
-  // Format address for display (shorten it)
-  const formatAddress = (address: string) => {
-    if (!address) return '';
-    // Keep first 6 and last 4 characters
-    return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
+const UserRow = ({ user, onRoleChange, onToggleStatus, onSendEmail }: UserRowProps) => {
+  const getRoleBadgeVariant = (role: string) => {
+    switch (role) {
+      case 'admin':
+        return 'destructive';
+      case 'pro':
+        return 'default';
+      case 'subscribed':
+        return 'secondary';
+      default:
+        return 'outline';
+    }
   };
 
-  // Format date for display
+  const getRoleIcon = (role: string) => {
+    switch (role) {
+      case 'admin':
+        return <Crown className="h-3 w-3" />;
+      case 'pro':
+        return <Shield className="h-3 w-3" />;
+      default:
+        return <User className="h-3 w-3" />;
+    }
+  };
+
   const formatDate = (dateString: string) => {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    return date.toLocaleDateString();
-  };
-
-  // Handle role change
-  const handleRoleChange = async (newRole: UserRole) => {
-    setIsLoading(true);
-    try {
-      const result = await updateUserRole({
-        userId: user.id,
-        role: newRole
-      });
-
-      if (result.success) {
-        toast({
-          title: 'Role Updated',
-          description: result.message,
-          variant: 'default'
-        });
-
-        // Update the user in the parent component if callback provided
-        if (onUserUpdate) {
-          onUserUpdate({
-            ...user,
-            role: newRole
-          });
-        }
-      } else {
-        toast({
-          title: 'Error',
-          description: result.message,
-          variant: 'destructive'
-        });
-      }
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to update user role',
-        variant: 'destructive'
-      });
-      console.error('Error updating role:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Handle user access revocation
-  const handleRevokeAccess = async () => {
-    setIsLoading(true);
-    try {
-      const result = await revokeUserAccess(user.id);
-
-      if (result.success) {
-        toast({
-          title: 'Access Revoked',
-          description: result.message,
-          variant: 'default'
-        });
-
-        // Update the user in the parent component if callback provided
-        if (onUserUpdate) {
-          onUserUpdate({
-            ...user,
-            role: 'Expired'
-          });
-        }
-      } else {
-        toast({
-          title: 'Error',
-          description: result.message,
-          variant: 'destructive'
-        });
-      }
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Failed to revoke user access',
-        variant: 'destructive'
-      });
-      console.error('Error revoking access:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // Handle copy address to clipboard
-  const handleCopyAddress = () => {
-    navigator.clipboard.writeText(user.address)
-      .then(() => {
-        toast({
-          title: 'Address Copied',
-          description: 'Wallet address copied to clipboard',
-          variant: 'default'
-        });
-      })
-      .catch(err => {
-        console.error('Failed to copy address:', err);
-        toast({
-          title: 'Error',
-          description: 'Failed to copy address',
-          variant: 'destructive'
-        });
-      });
+    return new Date(dateString).toLocaleDateString();
   };
 
   return (
-    <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
+    <tr className="border-b hover:bg-gray-50">
       <td className="px-4 py-3">
-        <div className="flex items-center">
-          <span className={cn(
-              'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
-              user.role === 'Admin' && 'text-violet-300',
-              user.role === 'Expired' && 'text-gray-400'
-            )}
-            onClick={handleCopyAddress}
-            title="Click to copy">
-            {formatAddress(user.address)}
-          </UserRowProps>
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+            <User className="h-4 w-4 text-white" />
+          </div>
+          <div>
+            <p className="font-medium text-sm">{user.email}</p>
+            <p className="text-xs text-gray-500">ID: {user.id.substring(0, 8)}...</p>
+          </div>
         </div>
-
-      <td className="px-4 py-3 text-sm text-gray-400">
-        {formatDate(user.created_at)}
       </td>
-
+      
+      <td className="px-4 py-3">
+        <Badge variant={getRoleBadgeVariant(user.role)} className="flex items-center gap-1 w-fit">
+          {getRoleIcon(user.role)}
+          <span className="capitalize">{user.role}</span>
+        </Badge>
+      </td>
+      
+      <td className="px-4 py-3">
+        <span className="text-sm">{formatDate(user.createdAt)}</span>
+      </td>
+      
       <td className="px-4 py-3">
         <span className="text-sm">
-          {user.subscription_tier || '-'}
-        </td>
-
+          {user.lastLogin ? formatDate(user.lastLogin) : 'Never'}
+        </span>
+      </td>
+      
       <td className="px-4 py-3">
-        <RoleBadge role={user.role as UserRole} //>
-
+        <Badge variant={user.isActive ? 'default' : 'secondary'}>
+          {user.isActive ? 'Active' : 'Inactive'}
+        </Badge>
+      </td>
+      
       <td className="px-4 py-3">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild disabled={isLoading}/>
-            <Button variant="ghost" 
-              size="icon" 
-              className="h-8 w-8 rounded-full p-0"/>
-              <MoreHorizontal className="h-4 w-4" //>
-          </td>
-          <DropdownMenuContent align="end" className="w-48 bg-gray-900 border border-gray-800"/>
-            <DropdownMenuLabel>User Actions</DropdownMenuContent>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="sm">
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
             
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger>
-                <UserCog className="mr-2 h-4 w-4"/>
-                <span>Change Role</DropdownMenuSeparator>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent className="bg-gray-900 border border-gray-800"/>
-                  <DropdownMenuItem onClick={() => handleRoleChange('Admin')}
-                    className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
-                  >
-                    Admin
-                  </DropdownMenuSeparator>
-                  <DropdownMenuItem onClick={() => handleRoleChange('User')}
-                    className="cursor-pointer text-green-300 hover:bg-green-900/30"
-                  >
-                    User
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleRoleChange('Trial')}
-                    className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
-                  >
-                    Trial
-                  </DropdownMenuItem>
-              </DropdownMenuPortal>
+            {onRoleChange && (
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <Shield className="h-4 w-4 mr-2" />
+                  <span>Change Role</span>
+                </DropdownMenuSubTrigger>
+                <DropdownMenuSubContent>
+                  {['admin', 'pro', 'subscribed', 'free'].map((role) => (
+                    <DropdownMenuItem
+                      key={role}
+                      onClick={() => onRoleChange(user.id, role)}
+                      disabled={user.role === role}
+                    >
+                      {getRoleIcon(role)}
+                      <span className="ml-2 capitalize">{role}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+            )}
             
-            <DropdownMenuItem onClick={handleCopyAddress} className="cursor-pointer"/>
-              <Copy className="mr-2 h-4 w-4"/>
-              <span>Copy Address</DropdownMenuItem>
+            {onSendEmail && (
+              <DropdownMenuItem onClick={() => onSendEmail(user.id)}>
+                <Mail className="h-4 w-4 mr-2" />
+                <span>Send Email</span>
+              </DropdownMenuItem>
+            )}
             
-            <DropdownMenuItem className="cursor-pointer"/>
-              <Eye className="mr-2 h-4 w-4"/>
-              <span>View Details</DropdownMenuItem>
-            
-            <DropdownMenuSeparator />
-            
-            <DropdownMenuItem onClick={handleRevokeAccess}
-              className="cursor-pointer text-red-400 hover:bg-red-900/30">
-              <XCircle className="mr-2 h-4 w-4" //></div>
-              <span>Revoke Access</span>
+            {onToggleStatus && (
+              <DropdownMenuItem onClick={() => onToggleStatus(user.id)}>
+                <User className="h-4 w-4 mr-2" />
+                <span>{user.isActive ? 'Deactivate' : 'Activate'}</span>
+              </DropdownMenuItem>
+            )}
           </DropdownMenuContent>
+        </DropdownMenu>
       </td>
+    </tr>
   );
 };
 
@@ -230,4 +156,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
