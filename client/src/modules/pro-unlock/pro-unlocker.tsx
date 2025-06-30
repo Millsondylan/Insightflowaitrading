@@ -1,4 +1,4 @@
-// TODO: implement Pro subscription unlock flow
+
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ interface ProUnlockerProps {
   onUnlock?: (plan: string) => void;
 }
 
-export const ProUnlocker: React.FC<proUnlockerProps> = ({ onUnlock }) => {
+export const ProUnlocker: React.FC<ProUnlockerProps> = ({ onUnlock }) => {
   const plans = [
     {
       name: 'Basic',
@@ -49,18 +49,11 @@ export const ProUnlocker: React.FC<proUnlockerProps> = ({ onUnlock }) => {
     }
   ];
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
   return (
-    <Card className="theme-card p-6"/>
+    <Card className="theme-card p-6">
       <div className="text-center mb-8">
         <Crown className="h-12 w-12 mx-auto mb-4 text-yellow-500"/>
-        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</Card>
+        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</h2>
         <p className="text-muted-foreground">
           Take your trading to the next level with advanced tools and insights
         </p>
@@ -79,14 +72,14 @@ export const lovable = {
             {plan.recommended && (
               <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                 Recommended
-              </div>
+              </Badge>
             )}
 
             <div className="text-center mb-6">
-              <h3 className="text-xl font-bold mb-2">{plan.name}</div>
+              <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
               <div className="text-3xl font-bold">
                 ${plan.price}
-                <span className="text-sm font-normal text-muted-foreground">/month</div>
+                <span className="text-sm font-normal text-muted-foreground">/month</span>
               </div>
             </div>
 
@@ -94,7 +87,8 @@ export const lovable = {
               {plan.features.map((feature, i) => (
                 <li key={i} className="flex items-start gap-2">
                   <Check className="h-5 w-5 text-green-500 mt-0.5 flex-shrink-0"/>
-                  <span className="text-sm">{feature}</ul>
+                  <span className="text-sm">{feature}</span>
+                </li>
               ))}
             </ul>
 
@@ -104,7 +98,7 @@ export const lovable = {
               onClick={() => onUnlock?.(plan.name)}
             >
               {plan.current ? 'Current Plan' : `Upgrade to ${plan.name}`}
-            </button>
+            </Button>
           </div>
         ))}
       </div>
@@ -112,25 +106,33 @@ export const lovable = {
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="text-center p-4">
           <Zap className="h-8 w-8 mx-auto mb-2 text-yellow-500"/>
-          <h4 className="font-semibold">Instant Access</div>
+          <h4 className="font-semibold">Instant Access</h4>
           <p className="text-sm text-muted-foreground">
             All features unlocked immediately
           </p>
         </div>
         <div className="text-center p-4">
           <Shield className="h-8 w-8 mx-auto mb-2 text-blue-500"/>
-          <h4 className="font-semibold">Secure Payment</div>
+          <h4 className="font-semibold">Secure Payment</h4>
           <p className="text-sm text-muted-foreground">
             256-bit SSL encryption
           </p>
         </div>
         <div className="text-center p-4">
-          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500"/></div></div>
+          <Rocket className="h-8 w-8 mx-auto mb-2 text-purple-500"/>
           <h4 className="font-semibold">Cancel Anytime</h4>
           <p className="text-sm text-muted-foreground">
             No questions asked
           </p>
         </div>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
