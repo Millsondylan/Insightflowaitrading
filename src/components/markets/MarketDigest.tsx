@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { ArrowUp, ArrowDown, TrendingUp } from "lucide-react";
 
@@ -69,16 +70,16 @@ export default function MarketDigest({ digest }: Props) {
           {/* Card Header */}
           <div className="flex justify-between items-start">
             <div>
-              <h3 className="text-xl font-bold text-white">{item.symbol}</div>
+              <h3 className="text-xl font-bold text-white">{item.symbol}</h3>
               <p className="text-lg font-semibold text-white/90">
                 ${formatPrice(item.price)}
               </p>
             </div>
             <div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(item.change)}`}>
               {item.change > 0 ? (
-                <arrowUp className="h-5 w-5"/>
+                <ArrowUp className="h-5 w-5"/>
               ) : (
-                <arrowDown className="h-5 w-5"/>
+                <ArrowDown className="h-5 w-5"/>
               )}
               {formatPercent(item.change)}
             </div>
@@ -92,14 +93,14 @@ export default function MarketDigest({ digest }: Props) {
           {/* Card Footer with Stats */}
           <div className="flex justify-between items-center pt-2">
             <div>
-              <span className="text-xs text-white/50">24h Volume:</div>
+              <span className="text-xs text-white/50">24h Volume:</span>
               <p className="font-semibold text-white">
                 {formatVolume(item.volume)}
               </p>
             </div>
             <div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
-              <TrendingUp className="h-4 w-4"/></div></div>
-              <span></span>
+              <TrendingUp className="h-4 w-4"/>
+              <span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
               </span>
@@ -116,4 +117,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

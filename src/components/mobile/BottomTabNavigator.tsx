@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Home, LineChart, BookOpen, BarChart, Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 interface TabItem {
@@ -29,7 +31,7 @@ export default function BottomTabNavigator() {
       key: 'strategy',
       label: t('nav.strategy'),
       path: '/strategy',
-      icon: <lineChart size={24}/>,
+      icon: <LineChart size={24}/>,
       requiresAuth: true,
     },
     {
@@ -73,7 +75,9 @@ export default function BottomTabNavigator() {
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
       <nav className="flex justify-around items-center h-16 bg-gray-900/90 backdrop-blur-lg border-t border-gray-800 px-2">
         {tabs.map((tab) => (
-          <Button             key={tab.key}
+          <Button 
+            key={tab.key}
+            variant="ghost"
             className={cn(
               'flex flex-col items-center justify-center flex-1 h-full transition-colors',
               isActive(tab.path) 
@@ -87,9 +91,9 @@ export default function BottomTabNavigator() {
               {isActive(tab.path) && (
                 <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-400 rounded-full"/>
               )}
-            </Home>
+            </div>
             <span className="text-xs mt-1">{tab.label}</span>
-          </button>
+          </Button>
         ))}
       </nav>
       
@@ -104,4 +108,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { useMemo } from "react";
 import {
@@ -34,13 +35,6 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
       .join(" ")
       .toLowerCase();
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
     if (text.includes("breakout") && Math.abs(ticker.change) > 1)
       return "📈 Breakout";
     if (text.includes("volume") && ticker.volume > 1_000_000)
@@ -76,7 +70,7 @@ export const lovable = {
         <Sparkles className="h-6 w-6 text-cyan-400"/>
         <h3 className="text-lg font-semibold text-white">
           Strategy Matches:{" "}
-          <span className="text-cyan-400">{strategy.title}</div>
+          <span className="text-cyan-400">{strategy.title}</span>
         </h3>
       </div>
 
@@ -86,7 +80,7 @@ export const lovable = {
             <div key={ticker.symbol}
               className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4">
               <div>
-                <span className="font-semibold text-white">{ticker.symbol}</div>
+                <span className="font-semibold text-white">{ticker.symbol}</span>
                 <span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
                 </span>
@@ -94,20 +88,27 @@ export const lovable = {
               <Button size="sm"
                 variant="ghost"
                 className="h-auto px-3 py-1 text-xs bg-cyan-600/30 hover:bg-cyan-600 text-white rounded-full"
- />
-                <Eye className="h-3 w-3 mr-1.5"/></button></div>
+              >
+                <Eye className="h-3 w-3 mr-1.5"/>
                 View
-              </button>
+              </Button>
             </div>
           ))}
         </div>
       ) : (
         <div className="text-center py-4">
-          <p className="text-white/50"></div></div>
+          <p className="text-white/50">
             No tickers currently match this strategy.
-          </div>
+          </p>
         </div>
       )}
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
