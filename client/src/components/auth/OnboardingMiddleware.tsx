@@ -34,6 +34,9 @@ const OnboardingMiddleware = ({ children }: OnboardingMiddlewareProps) => {
         if (error?.code === 'PGRST116' || !userProfile?.onboarding_completed) {
           console.log('User needs onboarding, redirecting...');
           navigate('/onboarding');
+        } else if (location.pathname === '/' || location.pathname === '/index') {
+          // If user is authenticated and onboarding is complete, redirect to dashboard
+          navigate('/dashboard');
         }
       } catch (error) {
         console.error('Error checking onboarding status:', error);

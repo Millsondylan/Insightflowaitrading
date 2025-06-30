@@ -34,14 +34,14 @@ import VerifyEmail from './pages/VerifyEmail';
 import AuthPage from './pages/AuthPage';
 import UserSettings from './pages/UserSettings';
 import ProfilePage from './pages/ProfilePage';
+import Dashboard from './pages/Dashboard';
+import OnboardingPage from './pages/OnboardingPage';
+import MarketsPage from './pages/MarketsPage';
 
 // Import our new AI Strategy pages
 import MarketSetupPage from './pages/MarketSetupPage';
 import SetupFinderPage from './pages/SetupFinderPage';
 import BestSetupsPage from './pages/BestSetupsPage';
-
-// Import Onboarding Page
-import OnboardingPage from './pages/OnboardingPage';
 
 const queryClient = new QueryClient();
 
@@ -92,7 +92,11 @@ function App() {
                       <Route path="/onboarding" element={<OnboardingPage/>} />
 
                       {/* Protected Routes - wrapped in layout */}
-                      <Route path="/dashboard" element={<AppLayout><Index/></AppLayout>} />
+                      <Route path="/dashboard" element={
+                        <AppLayout>
+                          <Dashboard/>
+                        </AppLayout>
+                      } />
                       <Route path="/strategy" element={<AppLayout><Strategy/></AppLayout>} />
                       <Route path="/journal" element={<AppLayout><Journal/></AppLayout>} />
                       <Route path="/vision" element={<AppLayout><Vision/></AppLayout>} />
@@ -106,6 +110,18 @@ function App() {
                       <Route path="/market-setup" element={<AppLayout><MarketSetupPage/></AppLayout>} />
                       <Route path="/setup-finder" element={<AppLayout><SetupFinderPage/></AppLayout>} />
                       <Route path="/best-setups" element={<AppLayout><BestSetupsPage/></AppLayout>} />
+
+                      {/* Markets Route */}
+                      <Route path="markets" element={
+                        <AppLayout>
+                          <MarketsPage/>
+                        </AppLayout>
+                      } />
+                      <Route path="markets/:symbol" element={
+                        <AppLayout>
+                          <MarketsPage/>
+                        </AppLayout>
+                      } />
 
                       {/* 404 Route */}
                       <Route path="*" element={<NotFound/>} />
