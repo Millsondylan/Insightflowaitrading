@@ -1,42 +1,40 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Calendar, CheckSquare } from 'lucide-react';
 
-export default function PlannerPage() {
+const PlannerPage: React.FC = () => {
   return (
-    <div>
-      <Link to="/strategy-builder" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors"/>
-        <arrowLeft size={16}/>
-        Back to Strategy Builder
+    <div className="min-h-screen px-6 py-16 space-y-12">
+      {/* Hero Section */}
+      <div className="text-center space-y-4 animate-in fade-in slide-up">
+        <header>
+          <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8">
+            Trading Planner
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-300 font-light">
+            Plan your trades, <span className="text-glow-cyan">trade your plan</span>
+          </p>
+        </header>
       </div>
-      
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-        <header className="flex justify-between items-start mb-8">
-            <div>
-                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Calendar className="text-blue-400"/></div>
-                    Trading Planner
-                </h1>
-                <p className="text-gray-400 mt-1">Outline your trading plan for the generated strategy.</p>
-            </div>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white"/>
-                Save Plan
-            </button>
 
-        <div className="space-y-6">
-            <div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500"></button></button>Checklist and planning components will be here.</div>
-            </div>
+      {/* Planner Content */}
+      <div className="glass-section motion-shadow">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold text-white mb-6">Daily Trading Plan</h2>
+          <p className="text-gray-400 mb-8">Your personalized trading roadmap</p>
+          <div className="bg-blue-500/10 border border-blue-400/20 rounded-xl p-8">
+            <p className="text-blue-300">Feature coming soon...</p>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default PlannerPage;
 
 export const lovable = { 
   component: true,
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

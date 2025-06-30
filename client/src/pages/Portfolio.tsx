@@ -3,66 +3,37 @@ import React from 'react';
 
 const PortfolioPage: React.FC = () => {
   return (
-    <section className="theme-portfolio min-h-screen px-6 py-16 space-y-12">
+    <div className="min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"/></section></section>
-          Portfolio Vision
-        </section>
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-green mb-8">
+          Portfolio
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
-          Your investments at a glance
+          Track your trading performance
         </p>
       </div>
 
-      {/* Portfolio Overview */}
+      {/* Portfolio Stats */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8"></div>📊 Overview</div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass-card text-center">
-            <div className="text-2xl font-bold text-indigo-400 mb-2">$125,430</div>
-            <div className="text-gray-400">Total Value</div>
-          </div>
-          <div className="glass-card text-center">
-            <div className="text-2xl font-bold text-emerald-400 mb-2">+12.5%</div>
-            <div className="text-gray-400">Daily Change</div>
-          </div>
-          <div className="glass-card text-center">
-            <div className="text-2xl font-bold text-violet-400 mb-2">8</div>
-            <div className="text-gray-400">Positions</div>
+        <h2 className="text-3xl font-bold text-white mb-6">📊 Performance Overview</h2>
+        <div className="text-center">
+          <div className="bg-green-500/10 border border-green-400/20 rounded-xl p-8">
+            <p className="text-green-300">Portfolio analytics coming soon...</p>
           </div>
         </div>
       </div>
 
-      {/* Holdings */}
+      {/* Recent Trades */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-6"></div>💼 Holdings</div>
-        <div className="space-y-4">
-          <div className="glass-card hover-glow">
-            <div className="flex justify-between items-center">
-              <div>
-                <div className="font-semibold text-white">TSLA</div>
-                <div className="text-gray-400 text-sm">50 shares</div>
-              </div>
-              <div className="text-right">
-                <div className="font-semibold text-emerald-400">+5.2%</div>
-                <div className="text-gray-300">$12,450</div>
-              </div>
-            </div>
-          </div>
-          <div className="glass-card hover-glow">
-            <div className="flex justify-between items-center">
-              <div>
-                <div className="font-semibold text-white">NVDA</div>
-                <div className="text-gray-400 text-sm">25 shares</div>
-              </div>
-              <div className="text-right">
-                <div className="font-semibold text-red-400">-2.1%</div>
-                <div className="text-gray-300">$8,750</div>
-              </div>
-            </div>
+        <h2 className="text-3xl font-bold text-white mb-6">🔄 Recent Trades</h2>
+        <div className="text-center">
+          <div className="bg-purple-500/10 border border-purple-400/20 rounded-xl p-8">
+            <p className="text-purple-300">Trade history coming soon...</p>
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

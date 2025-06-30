@@ -3,80 +3,66 @@ import React from 'react';
 
 const ProfileRiskMapPage: React.FC = () => {
   return (
-    <section className="theme-portfolio min-h-screen px-6 py-16 space-y-12">
+    <div className="min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"/></section></section>
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-red mb-8">
           Risk Profile Map
-        </section>
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
-          Visualize your risk distribution
+          Understand your risk tolerance
         </p>
       </div>
 
-      {/* Radial Risk Map */}
+      {/* Risk Assessment */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8 text-center"></div>🎯 Risk Quadrants</div>
-        <div className="max-w-2xl mx-auto">
-          <div className="relative w-96 h-96 mx-auto">
-            {/* Center Circle */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-indigo-500/20 border border-indigo-400/30 rounded-full flex items-center justify-center">
-              <span className="text-indigo-400 font-semibold"></div>Core</div>
-            </div>
-
-            {/* Quadrant 1 - High Return, High Risk */}
-            <div className="absolute top-0 right-0 w-44 h-44 bg-red-500/10 border border-red-400/20 rounded-tl-full flex items-start justify-end p-6">
-              <div className="text-right">
-                <div className="text-red-400 font-semibold text-sm">High Risk</div>
-                <div className="text-red-300 text-xs">High Return</div>
-              </div>
-            </div>
-
-            {/* Quadrant 2 - High Return, Low Risk */}
-            <div className="absolute top-0 left-0 w-44 h-44 bg-emerald-500/10 border border-emerald-400/20 rounded-tr-full flex items-start justify-start p-6">
-              <div className="text-left">
-                <div className="text-emerald-400 font-semibold text-sm">Low Risk</div>
-                <div className="text-emerald-300 text-xs">High Return</div>
-              </div>
-            </div>
-
-            {/* Quadrant 3 - Low Return, Low Risk */}
-            <div className="absolute bottom-0 left-0 w-44 h-44 bg-blue-500/10 border border-blue-400/20 rounded-br-full flex items-end justify-start p-6">
-              <div className="text-left">
-                <div className="text-blue-400 font-semibold text-sm">Low Risk</div>
-                <div className="text-blue-300 text-xs">Low Return</div>
-              </div>
-            </div>
-
-            {/* Quadrant 4 - Low Return, High Risk */}
-            <div className="absolute bottom-0 right-0 w-44 h-44 bg-orange-500/10 border border-orange-400/20 rounded-bl-full flex items-end justify-end p-6">
-              <div className="text-right">
-                <div className="text-orange-400 font-semibold text-sm">High Risk</div>
-                <div className="text-orange-300 text-xs">Low Return</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Risk Metrics */}
-      <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-6"></div>📊 Risk Metrics</div>
+        <h2 className="text-3xl font-bold text-white mb-6">⚡ Risk Assessment</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="glass-card text-center">
-            <div className="text-2xl font-bold text-violet-400 mb-2">2.4</div>
-            <div className="text-gray-400">Sharpe Ratio</div>
+            <div className="text-4xl mb-4">🛡️</div>
+            <h3 className="text-xl font-semibold text-white mb-2">Conservative</h3>
+            <p className="text-gray-400">Low risk, steady returns</p>
           </div>
+          
           <div className="glass-card text-center">
-            <div className="text-2xl font-bold text-red-400 mb-2">-8.5%</div>
-            <div className="text-gray-400">Max Drawdown</div>
+            <div className="text-4xl mb-4">⚖️</div>
+            <h3 className="text-xl font-semibold text-white mb-2">Moderate</h3>
+            <p className="text-gray-400">Balanced risk-reward</p>
           </div>
+          
           <div className="glass-card text-center">
-            <div className="text-2xl font-bold text-blue-400 mb-2">0.65</div>
-            <div className="text-gray-400">Beta</div>
+            <div className="text-4xl mb-4">🚀</div>
+            <h3 className="text-xl font-semibold text-white mb-2">Aggressive</h3>
+            <p className="text-gray-400">High risk, high reward</p>
           </div>
         </div>
       </div>
+
+      {/* Risk Factors */}
+      <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
+        <h2 className="text-3xl font-bold text-white mb-6">🎯 Risk Factors</h2>
+        <div className="space-y-4">
+          <div className="glass-card">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-300">Position Size</span>
+              <span className="text-yellow-400">Medium</span>
+            </div>
+          </div>
+          <div className="glass-card">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-300">Market Exposure</span>
+              <span className="text-green-400">Low</span>
+            </div>
+          </div>
+          <div className="glass-card">
+            <div className="flex justify-between items-center">
+              <span className="text-gray-300">Volatility Tolerance</span>
+              <span className="text-red-400">High</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
