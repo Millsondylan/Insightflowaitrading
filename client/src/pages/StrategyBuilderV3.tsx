@@ -27,7 +27,13 @@ import {
 } from 'lucide-react';
 import DocumentHead from '@/components/core/DocumentHead';
 import { toast } from '@/components/ui/use-toast';
-import LineChart from '@/components/charts/LineChart';
+
+// Mock LineChart component for demonstration
+const LineChart = ({ data, color }: { data: any[], color: string }) => (
+  <div className="w-full h-full bg-black/20 rounded flex items-center justify-center">
+    <p className="text-gray-400">Chart visualization ({data.length} data points)</p>
+  </div>
+);
 
 interface StrategyParameter {
   name: string;

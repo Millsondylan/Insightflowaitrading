@@ -32,8 +32,8 @@ const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps
   const [isLoading, setIsLoading] = useState(false);
   const [onboardingData, setOnboardingData] = useState<OnboardingData>({
     experience: 'beginner',
-    favorite_markets: [],
-    favorite_timeframes: [],
+      favorite_markets: [],
+      favorite_timeframes: [],
     trading_style: [],
     ai_goals: [],
     risk_profile: 'moderate'
@@ -48,7 +48,7 @@ const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps
       setIsOpen(true);
       return;
     }
-
+    
     const checkOnboardingStatus = async () => {
       if (!user) return;
 
@@ -204,7 +204,7 @@ const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        return (
+  return (
           <div className="space-y-6">
             <div className="text-center">
               <User className="mx-auto h-12 w-12 text-blue-400 mb-4" />
@@ -413,8 +413,8 @@ const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps
 
           <div className="flex justify-between mt-8">
             <Button
-              variant="outline"
-              onClick={handlePrevious}
+                variant="outline"
+                onClick={handlePrevious}
               disabled={currentStep === 1}
               className="flex items-center"
             >
@@ -447,7 +447,7 @@ const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps
               </Button>
             )}
           </div>
-        </div>
+            </div>
       </DialogContent>
     </Dialog>
   );

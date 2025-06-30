@@ -47,6 +47,8 @@ import JournalV2 from './pages/JournalV2';
 import ChatPage from './pages/ChatPage';
 import PortfolioV2 from './pages/PortfolioV2';
 import AcademyV2 from './pages/AcademyV2';
+import IntegrationsPage from './pages/IntegrationsPage';
+import AdvancedFeaturesPage from './pages/AdvancedFeaturesPage';
 
 const queryClient = new QueryClient();
 
@@ -164,6 +166,20 @@ function App() {
                       <Route path="academy" element={
                         <AppLayout>
                           <AcademyV2/>
+                        </AppLayout>
+                      } />
+
+                      {/* Integrations Page */}
+                      <Route path="integrations" element={
+                        <AppLayout>
+                          <IntegrationsPage/>
+                        </AppLayout>
+                      } />
+
+                      {/* Advanced Features Page */}
+                      <Route path="advanced" element={
+                        <AppLayout>
+                          <AdvancedFeaturesPage/>
                         </AppLayout>
                       } />
 
