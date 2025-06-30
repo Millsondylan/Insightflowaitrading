@@ -58,7 +58,7 @@ export abstract class InsightFlowPlugin {
     this.context.logger[level](`[${this.manifest.name}] ${message}`, data);
   }
 
-  protected async getConfig<T = any></T>(key?: string): Promise<T></T> {
+  protected async getConfig<T = any>(key?: string): Promise<T> {
     const instance = await this.getPluginInstance();
     if (key) {
       return instance.configuration[key];
@@ -72,7 +72,7 @@ export abstract class InsightFlowPlugin {
     // TODO: persist configuration changes
   }
 
-  protected async getPluginInstance(): Promise<pluginInstance> {
+  protected async getPluginInstance(): Promise<PluginInstance> {
     // TODO: implement plugin instance retrieval
     throw new Error('Plugin instance retrieval not implemented');
   }
@@ -237,7 +237,7 @@ export class PluginLoader {
    * Execute plugin hook
    * TODO: implement hook execution system
    */
-  async executeHook(hookName: string, ...args: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): Promise<any> {
+  async executeHook(hookName: string, ...args: any[]): Promise<any> {
     // TODO: find plugins that register this hook
     // TODO: execute hooks in correct order
     // TODO: handle hook return values
@@ -390,12 +390,12 @@ export const createPluginLoader = (): PluginLoader => {
 };
 
 export const createPluginContext = (
-  user: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, 
-  platform: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, 
-  api: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, 
-  ui: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, 
-  storage: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, 
-  logger: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any
+  user: any, 
+  platform: any, 
+  api: any, 
+  ui: any, 
+  storage: any, 
+  logger: any
 ): PluginContext => {
   return {
     user,
@@ -424,4 +424,4 @@ export const PLUGIN_MARKETPLACE_CONFIG = {
     allowedDomains: ['insightflow.ai', 'github.com'],
     maxFileSize: '10MB',
   },
-} as const; 
+} as const;
