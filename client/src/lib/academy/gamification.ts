@@ -90,6 +90,14 @@ export interface Reward {
   rarity: RewardRarity;
 }
 
+export interface AchievementRequirement {
+  type: RequirementType;
+  value: number;
+  progress: number;
+  timeframe?: string;
+  conditions?: Record<string, any>;
+}
+
 export interface QuestRequirement {
   type: RequirementType;
   value: number;

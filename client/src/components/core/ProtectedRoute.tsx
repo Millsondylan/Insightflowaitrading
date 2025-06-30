@@ -7,7 +7,7 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ requireAdmin = false }) => {
-  const { session, loading, isAdmin } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
 
   if (loading) {
     return (
@@ -18,7 +18,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ requireAdmin = false }) => {
   }
 
   // Not authenticated
-  if (!session) {
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
 
