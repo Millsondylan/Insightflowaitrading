@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
@@ -58,7 +59,6 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
       setActivating(true);
       await activateStrategyVersion(versionId);
       
-      // Update the local state to reflect the change
       setVersions(prevVersions => 
         prevVersions.map(v => ({
           ...v,
@@ -77,46 +77,48 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
   };
 
   if (loading) {
-    return <div className="flex justify-center p-8">Loading versions...</StrategyVersion>;
+    return <div className="flex justify-center p-8">Loading versions...</div>;
   }
 
   return (
-    <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white"/>
+    <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white">
       <CardHeader>
-        <CardTitle className="text-xl flex items-center gap-2"/>
+        <CardTitle className="text-xl flex items-center gap-2">
           <GitBranch className="h-5 w-5 text-blue-400"/>
           Strategy Versions
-        </Card>
-        <CardDescription className="text-white/70"/>
+        </CardTitle>
+        <CardDescription className="text-white/70">
           View and manage different versions of this strategy
         </CardDescription>
+      </CardHeader>
       
-      <Tabs value={activeTab} onValueChange={setActiveTab}/>
+      <Tabs value={activeTab} onValueChange={setActiveTab}>
         <div className="px-6">
-          <TabsList className="bg-gray-800/50"/>
-            <TabsTrigger value="versions" className="data-[state=active]:bg-blue-600"/>
+          <TabsList className="bg-gray-800/50">
+            <TabsTrigger value="versions" className="data-[state=active]:bg-blue-600">
               Versions ({versions.length})
-            </CardDescription>
-            <TabsTrigger value="changelog" className="data-[state=active]:bg-blue-600"/>
+            </TabsTrigger>
+            <TabsTrigger value="changelog" className="data-[state=active]:bg-blue-600">
               Changelog
             </TabsTrigger>
-        </TabsTrigger>
+          </TabsList>
+        </div>
         
-        <TabsContent value="versions" className="pt-2"/>
+        <TabsContent value="versions" className="pt-2">
           <div className="space-y-4 p-6">
             {versions.length === 0 ? (
               <div className="text-center py-8 text-white/60">
                 No versions available for this strategy yet.
-              </TabsContent>
+              </div>
             ) : (
               versions.map((version) => (
                 <div key={version.id} className="bg-gray-800/40 rounded-lg p-4">
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold">Version {version.version}</div>
+                        <span className="font-semibold">Version {version.version}</span>
                         {version.is_active && (
-                          <Badge className="bg-green-600 text-xs"/>Active</Badge>
+                          <Badge className="bg-green-600 text-xs">Active</Badge>
                         )}
                       </div>
                       <div className="text-sm text-gray-400 flex items-center mt-1">
@@ -132,7 +134,7 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                       >
                         <Code className="h-4 w-4 mr-1"/>
                         View Code
-                      </div>
+                      </Button>
                       
                       {!version.is_active && user?.id === version.user_id && (
                         <Button variant="default" 
@@ -142,7 +144,7 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                         >
                           <Check className="h-4 w-4 mr-1"/>
                           Activate
-                        </button>
+                        </Button>
                       )}
                     </div>
                   </div>
@@ -155,7 +157,7 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                   
                   {version.improvement_reason && (
                     <div className="mt-2 text-sm">
-                      <span className="text-blue-400">Improvement: </div>
+                      <span className="text-blue-400">Improvement: </span>
                       <span className="text-white/80">{version.improvement_reason}</span>
                     </div>
                   )}
@@ -163,13 +165,14 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
               ))
             )}
           </div>
+        </TabsContent>
         
-        <TabsContent value="changelog" className="pt-2"/>
+        <TabsContent value="changelog" className="pt-2">
           <div className="p-6 space-y-6">
             {versions.length === 0 ? (
               <div className="text-center py-8 text-white/60">
                 No changelog available yet.
-              </TabsContent>
+              </div>
             ) : (
               versions.slice().reverse().map((version, index) => (
                 <div key={version.id} className="relative">
@@ -184,12 +187,12 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                     
                     <div className="flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="font-semibold">Version {version.version}</div>
+                        <span className="font-semibold">Version {version.version}</span>
                         <span className="text-sm text-gray-400">
                           {new Date(version.created_at).toLocaleDateString()}
                         </span>
                         {version.is_active && (
-                          <Badge className="bg-green-600 text-xs"/>Active</Badge>
+                          <Badge className="bg-green-600 text-xs">Active</Badge>
                         )}
                       </div>
                       
@@ -204,9 +207,9 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
                           size="sm"
                           onClick={() => handleViewCode(version.id)}
                         >
-                          <Code className="h-4 w-4 mr-1"/></div></div>
+                          <Code className="h-4 w-4 mr-1"/>
                           View Code
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -214,7 +217,9 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
               ))
             )}
           </div>
+        </TabsContent>
       </Tabs>
+    </Card>
   );
 }
 
@@ -223,4 +228,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
