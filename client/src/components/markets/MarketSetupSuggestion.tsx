@@ -129,7 +129,7 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
       // Save the setup to user's favorites or personal collection
       const { error } = await supabase
         .from('market_setups')
-        .update({ is_public: true })
+        .update({ is_public: true } as any)
         .eq('id', setup.id);
         
       if (error) throw error;
@@ -208,26 +208,26 @@ export function MarketSetupSuggestion({ symbol, timeframe, onSaveSetup }: Market
   // Chart overlays for entry, SL, TP
   const chartOverlays = setup ? [
     {
-      type: 'price',
+      type: 'price' as const,
       price: setup.entry,
       color: '#3b82f6',
-      lineStyle: 'solid',
+      lineStyle: 'solid' as const,
       lineWidth: 2,
       label: 'Entry'
     },
     {
-      type: 'price',
+      type: 'price' as const,
       price: setup.sl,
       color: '#ef4444',
-      lineStyle: 'dashed',
+      lineStyle: 'dashed' as const,
       lineWidth: 1,
       label: 'SL'
     },
     {
-      type: 'price',
+      type: 'price' as const,
       price: setup.tp,
       color: '#22c55e',
-      lineStyle: 'dashed',
+      lineStyle: 'dashed' as const,
       lineWidth: 1,
       label: 'TP'
     }
@@ -342,4 +342,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-

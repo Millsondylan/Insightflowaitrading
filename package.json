@@ -27,7 +27,7 @@
   "dependencies": {
     "@capacitor/cli": "^7.4.0",
     "@capacitor/core": "^7.4.0",
-    "@hello-pangea/dnd": "^16.5.0",
+    "@hello-pangea/dnd": "^16.6.0",
     "@hookform/resolvers": "^3.10.0",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@neondatabase/serverless": "^0.10.4",
@@ -98,7 +98,7 @@
     "react-hook-form": "^7.55.0",
     "react-i18next": "^15.5.3",
     "react-icons": "^5.4.0",
-    "react-markdown": "^9.0.1",
+    "react-markdown": "^9.1.0",
     "react-resizable-panels": "^2.1.7",
     "react-router-dom": "^7.6.3",
     "recharts": "^2.15.2",
