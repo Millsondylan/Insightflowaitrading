@@ -1,148 +1,129 @@
-import { useState, useEffect } from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  ReferenceDot,
-} from 'recharts';
-import { ChartSeries, TradeMarker } from '@/lib/backtest/toChartSeries';
+
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import BlockReveal from './BlockReveal';
-import '@/styles/backtest.css';
 
 interface BacktestChartProps {
-  chartData: ChartSeries;
-  ticker: string;
-  timeframe: string;
+  data: Array<{
+    date: string;
+    equity: number;
+    drawdown: number;
+  }>;
+  title?: string;
 }
 
-// Custom tooltip component for price data
-const PriceTooltip = ({ active, payload, label }: any) => {
-  if (active && payload && payload.length) {
-    const data = payload[0].payload;
+const BacktestChart = ({ data, title = "Backtest Results" }: BacktestChartProps) => {
+  if (!data || data.length === 0) {
     return (
-      <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-        <p className="text-gray-300 text-xs">
-          {new Date(data.time * 1000).toLocaleString()}
-        </div>
-        <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
-      </div>
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>{title}</CardTitle>
+          <CardDescription>
+            <p>No data available for charting</p>
+          </CardDescription>
+        </CardHeader>
+      </Card>
     );
   }
-  return null;
-};
 
-// Custom tooltip component for trade markers
-const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
-  const isEntry = trade.type === 'entry';
-  const formattedTime = new Date(trade.time * 1000).toLocaleString();
-  
-  return (
-    <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-      <p className="font-bold">
-        {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
-      </div>
-      <p>{formattedTime}</p>
-      <p>Price: {trade.price.toFixed(2)}</p>
-      {!isEntry && trade.pnlPercentage !== undefined && (
-        <p className={trade.pnlPercentage> 0 ? 'text-green-400' : 'text-red-400'}>
-          PnL: {(trade.pnlPercentage * 100).toFixed(2)}%
-        </p>
-      )}
-    </div>
-  );
-};
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString();
+  };
 
-const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
-  const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<tradeMarker | null>(null);
-  const [animationComplete, setAnimationComplete] = useState(false);
-  
-  // Start animation after component mounts
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setAnimationComplete(true);
-    }, 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Calculate price domain with some padding
-  const prices = priceData.map(d => d.price);
-  const minPrice = Math.min(...prices) * 0.995;
-  const maxPrice = Math.max(...prices) * 1.005;
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(value);
+  };
 
   return (
-    <blockReveal>
-      <div className="chart-container">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-xl font-bold text-white">
-            {ticker} ({timeframe})
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>
+          <p>Performance over time showing equity curve and drawdowns</p>
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <BlockReveal delay={0.2}>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Equity Curve</h3>
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+                    <XAxis 
+                      dataKey="date" 
+                      tickFormatter={formatDate}
+                      stroke="rgba(255, 255, 255, 0.5)"
+                    />
+                    <YAxis 
+                      tickFormatter={formatCurrency}
+                      stroke="rgba(255, 255, 255, 0.5)"
+                    />
+                    <Tooltip 
+                      labelFormatter={formatDate}
+                      formatter={[formatCurrency, 'Equity']}
+                      contentStyle={{ 
+                        backgroundColor: 'rgba(20, 20, 20, 0.8)', 
+                        borderColor: 'rgba(255, 255, 255, 0.2)' 
+                      }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="equity" 
+                      stroke="#8884d8" 
+                      strokeWidth={2}
+                      dot={false}
+                      name="Equity"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Drawdown</h3>
+              <div className="h-64">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={data}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+                    <XAxis 
+                      dataKey="date" 
+                      tickFormatter={formatDate}
+                      stroke="rgba(255, 255, 255, 0.5)"
+                    />
+                    <YAxis 
+                      tickFormatter={(value) => `${(value * 100).toFixed(1)}%`}
+                      stroke="rgba(255, 255, 255, 0.5)"
+                    />
+                    <Tooltip 
+                      labelFormatter={formatDate}
+                      formatter={[(value: number) => `${(value * 100).toFixed(2)}%`, 'Drawdown']}
+                      contentStyle={{ 
+                        backgroundColor: 'rgba(20, 20, 20, 0.8)', 
+                        borderColor: 'rgba(255, 255, 255, 0.2)' 
+                      }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="drawdown" 
+                      stroke="#ff6b6b" 
+                      strokeWidth={2}
+                      dot={false}
+                      name="Drawdown"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </div>
-        </div>
-        <ResponsiveContainer width="100%" height="90%">
-          <lineChart data={animationComplete ? priceData : []}
-            margin={{ top: 10, right: 30, left: 10, bottom: 10 }}>
-            <CartesianGrid strokeDasharray="3 3"/>
-            <XAxis
-              dataKey="time"
-              tickFormatter={(time) => new Date(time * 1000).toLocaleDateString()}
-              tick={{ fill: '#9ca3af' }}
-            />
-            <YAxis
-              domain={[minPrice, maxPrice]}
-              tick={{ fill: '#9ca3af' }}
-              tickFormatter={(value) => value.toFixed(0)}
-            />
-            <Tooltip content={<priceTooltip/>} />
-            <line
-              type="monotone"
-              dataKey="price"
-              stroke="#22d3ee"
-              strokeWidth={2}
-              dot={false}
-              animationDuration={1500}/>
-            
-            {/* Trade entry markers */}
-            {animationComplete && tradeMarkers.filter(m => m.type === 'entry').map((marker, idx) => (
-              <ReferenceDot
-                key={`entry-${idx}`}
-                x={marker.time}
-                y={marker.price}
-                r={6}
-                fill="#22c55e"
-                stroke="#22c55e"
-                strokeWidth={2}
-                onMouseOver={() => setHoveredTrade(marker)}
-                onMouseOut={() => setHoveredTrade(null)}
-              />
-            ))}
-            
-            {/* Trade exit markers */}
-            {animationComplete && tradeMarkers.filter(m => m.type === 'exit').map((marker, idx) => (
-              <ReferenceDot
-                key={`exit-${idx}`}
-                x={marker.time}
-                y={marker.price}
-                r={6}
-                fill="#ef4444"
-                stroke="#ef4444"
-                strokeWidth={2}
-                onMouseOver={() => setHoveredTrade(marker)}
-                onMouseOut={() => setHoveredTrade(null)}
-              />
-            ))}
-          </ResponsiveContainer>
-        
-        {/* Hover tooltip for trade markers */}
-        {hoveredTrade && (
-          <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <tradeTooltip trade={hoveredTrade}/>
-          </ResponsiveContainer>
-        )}
-      </div>
+        </BlockReveal>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -153,4 +134,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

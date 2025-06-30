@@ -1,51 +1,117 @@
-import React, { useState, useEffect } from 'react';
 
-type Props = {
-  badgeName: string;
+import React from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Trophy, Star, Award, Target } from 'lucide-react';
+
+interface BadgeData {
+  id: string;
+  name: string;
   description: string;
-  icon?: string;
-  onClaim?: () => void;
-};
+  type: 'achievement' | 'skill' | 'milestone' | 'special';
+  earned: boolean;
+  earnedDate?: string;
+  progress?: number;
+  maxProgress?: number;
+}
 
-const BadgeDisplay = ({ badgeName, description, icon, onClaim }: Props) => {
-  const [isClaimed, setIsClaimed] = useState(false);
-  const [isRendered, setIsRendered] = useState(false);
-  
-  useEffect(() => {
-    // Trigger animation shortly after component mounts
-    const timer = setTimeout(() => setIsRendered(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
+interface BadgeDisplayProps {
+  badges: BadgeData[];
+  title?: string;
+  showProgress?: boolean;
+}
 
-  const handleClaim = () => {
-    if (onClaim) {
-      onClaim();
+const BadgeDisplay = ({ badges, title = "Achievements", showProgress = true }: BadgeDisplayProps) => {
+  const getBadgeIcon = (type: BadgeData['type']) => {
+    switch (type) {
+      case 'achievement':
+        return <Trophy className="h-4 w-4" />;
+      case 'skill':
+        return <Star className="h-4 w-4" />;
+      case 'milestone':
+        return <Target className="h-4 w-4" />;
+      case 'special':
+        return <Award className="h-4 w-4" />;
+      default:
+        return <Trophy className="h-4 w-4" />;
     }
-    setIsClaimed(true);
-    // You could trigger confetti here
   };
 
-  const animationClasses = isRendered 
-    ? 'opacity-100 scale-100 translate-y-0' 
-    : 'opacity-0 scale-95 translate-y-2';
+  const getBadgeVariant = (type: BadgeData['type'], earned: boolean) => {
+    if (!earned) return 'outline';
+    
+    switch (type) {
+      case 'achievement':
+        return 'default';
+      case 'skill':
+        return 'secondary';
+      case 'milestone':
+        return 'outline';
+      case 'special':
+        return 'destructive';
+      default:
+        return 'default';
+    }
+  };
 
   return (
-    <div className={`rounded-xl bg-gradient-to-br from-cyan-700 via-indigo-800 to-purple-900 p-6 text-white shadow-lg space-y-3 transition-all duration-500 ease-out transform ${animationClasses}`}>
-      <div className="text-5xl drop-shadow-lg">{icon || '🏅'}</div>
-      <h2 className="text-2xl font-bold">{badgeName}</h2>
-      <p className="text-white/80 text-sm">{description}</p>
-      {onClaim && !isClaimed && (
-        <Button onClick={handleClaim} 
-          className="mt-2 bg-white/10 hover:bg-white/20 px-6 py-2 rounded-full font-semibold transition-transform transform hover:scale-105"/></button></div>
-          🎉 Claim Badge
-        </button>
-      )}
-      {isClaimed && (
-        <div className="mt-2 text-green-300 font-bold px-6 py-2">
-            ✅ Claimed!
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>
+          Your earned badges and achievements
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {badges.map((badge) => (
+            <div 
+              key={badge.id}
+              className={`p-4 rounded-lg border transition-all ${
+                badge.earned 
+                  ? 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200' 
+                  : 'bg-gray-50 border-gray-200 opacity-60'
+              }`}
+            >
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  {getBadgeIcon(badge.type)}
+                  <h3 className="font-semibold text-sm">{badge.name}</h3>
+                </div>
+                <Badge variant={getBadgeVariant(badge.type, badge.earned)}>
+                  {badge.earned ? 'Earned' : 'Locked'}
+                </Badge>
+              </div>
+              
+              <p className="text-xs text-gray-600 mb-2">
+                {badge.description}
+              </p>
+              
+              {badge.earned && badge.earnedDate && (
+                <p className="text-xs text-green-600">
+                  Earned: {new Date(badge.earnedDate).toLocaleDateString()}
+                </p>
+              )}
+              
+              {showProgress && badge.progress !== undefined && badge.maxProgress && (
+                <div className="mt-2">
+                  <div className="flex justify-between text-xs text-gray-500 mb-1">
+                    <span>Progress</span>
+                    <span>{badge.progress}/{badge.maxProgress}</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className="bg-blue-600 h-2 rounded-full transition-all"
+                      style={{ width: `${(badge.progress / badge.maxProgress) * 100}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
         </div>
-      )}
-    </div>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -56,4 +122,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

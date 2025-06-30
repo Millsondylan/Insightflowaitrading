@@ -1,23 +1,78 @@
-import { useState } from "react";
 
-// /components/replay/ReplayPlayer.tsx
+import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { Play, Pause, SkipBack, SkipForward } from 'lucide-react';
 
-type Candle = {
-  time: string; // ISO
-  open: number;
-  high: number;
-  low: number;
-  close: number;
+interface ReplayPlayerProps {
+  data: any[];
+  onPositionChange?: (position: number) => void;
+}
+
+const ReplayPlayer = ({ data, onPositionChange }: ReplayPlayerProps) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [position, setPosition] = useState(0);
+  const [speed, setSpeed] = useState(1);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlaying && position < data.length - 1) {
+      interval = setInterval(() => {
+        setPosition(prev => {
+          const newPos = prev + 1;
+          onPositionChange?.(newPos);
+          return newPos;
+        });
+      }, 1000 / speed);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying, position, speed, data.length, onPositionChange]);
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const handleReset = () => {
+    setPosition(0);
+    setIsPlaying(false);
+    onPositionChange?.(0);
+  };
+
+  return (
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>Trade Replay</CardTitle>
+        <CardDescription>
+          <p>Replay your trades step by step to analyze your decisions</p>
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm text-gray-600">
+            <span>Progress: {position + 1} / {data.length}</span>
+            <span>Speed: {speed}x</span>
+          </div>
+          <Progress value={(position / (data.length - 1)) * 100} className="w-full" />
+        </div>
+        
+        <div className="flex items-center justify-center space-x-2">
+          <Button variant="outline" size="sm" onClick={handleReset}>
+            <SkipBack className="h-4 w-4" />
+          </Button>
+          <Button onClick={handlePlayPause}>
+            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => setSpeed(speed === 1 ? 2 : speed === 2 ? 0.5 : 1)}>
+            <SkipForward className="h-4 w-4" />
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
 };
 
-type Props = {
-  candles: Candle[];
-  entryTime: string;
-  exitTime: string;
-};
-
-export default function ReplayPlayer({ candles, entryTime, exitTime }: Props) {
-  const [step, setStep] = useState(0);
+export default ReplayPlayer;
 
 export const lovable = { 
   component: true,
@@ -25,36 +80,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-
-  // The slice of candles to be rendered based on the current step
-  const visibleCandles = candles.slice(0, step + 1);
-
-  return (
-    <div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
-      {/* Chart placeholder with a relative container for future annotations */}
-      <div className="relative">
-        <div className="h-64 w-full bg-white/5 rounded-lg flex items-center justify-center">
-          <p className="text-white/30">Chart for {visibleCandles.length} candle(s)</div>
-        </div>
-        {/* Future overlay for AI-generated annotations */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-          {/* Annotations will be rendered here */}
-        </div>
-      </div>
-
-      {/* Slider and step counter */}
-      <div className="flex items-center gap-4">
-        <Input type="range"
-          min={0}
-          max={candles.length/> 0 ? candles.length - 1 : 0}
-          value={step}
-          onChange={(e) => setStep(Number(e.target.value))}
-          className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-        />
-        <span className="text-sm font-mono text-white/60 w-28 text-right"></div></div>
-          {step + 1} / {candles.length}
-        </div>
-      </div>
-    </div>
-  );
-} 
