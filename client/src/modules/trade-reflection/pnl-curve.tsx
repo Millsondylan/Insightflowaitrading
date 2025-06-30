@@ -1,3 +1,4 @@
+
 // TODO: implement PnL curve visualization
 import React from 'react';
 import { Card } from '@/components/ui/card';
@@ -8,15 +9,8 @@ interface PnLCurveProps {
   timeframe?: '1D' | '1W' | '1M' | '3M' | '1Y' | 'ALL';
 }
 
-export const PnLCurve: React.FC<pnLCurveProps> = ({ timeframe = '1M' }) => {
+export const PnLCurve: React.FC<PnLCurveProps> = ({ timeframe = '1M' }) => {
   const [selectedTimeframe, setSelectedTimeframe] = React.useState(timeframe);
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   
   // Mock data - TODO: Connect to generatePnLCurve function
   const data = [
@@ -32,9 +26,9 @@ export const lovable = {
   const timeframes = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
 
   return (
-    <Card className="theme-card p-6"/>
+    <Card className="theme-card p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold">P&L Curve</Card>
+        <h2 className="text-2xl font-bold">P&L Curve</h2>
         <div className="flex gap-1">
           {timeframes.map((tf) => (
             <Button key={tf}
@@ -43,19 +37,20 @@ export const lovable = {
               onClick={() => setSelectedTimeframe(tf as any)}
             >
               {tf}
-            </div>
+            </Button>
           ))}
         </div>
       </div>
       
       <div className="h-[400px] w-full">
-        <ResponsiveContainer width="100%" height="100%"/>
-          <lineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333"/>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
             <XAxis 
               dataKey="date" 
               stroke="#666"
-              tick={{ fill: '#999' }}/>
+              tick={{ fill: '#999' }}
+            />
             <YAxis stroke="#666"
               tick={{ fill: '#999' }}
               tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
@@ -66,31 +61,41 @@ export const lovable = {
                 borderRadius: '8px'
               }}
               labelStyle={{ color: '#999' }}
-              formatter={(value: unknown) => [`$${value.toLocaleString()}`, 'Balance']}
+              formatter={(value: any) => [`$${value.toLocaleString()}`, 'Balance']}
             />
-            <line
+            <Line
               type="monotone"
               dataKey="value"
               stroke="#00ff88"
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 6, fill: '#00ff88' }}/>
-          </div>
+              activeDot={{ r: 6, fill: '#00ff88' }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </div>
       
       <div className="grid grid-cols-3 gap-4 mt-4">
         <div>
-          <p className="text-sm text-muted-foreground">Total Return</div>
+          <p className="text-sm text-muted-foreground">Total Return</p>
           <p className="text-lg font-bold text-green-500">+12.0%</p>
         </div>
         <div>
-          <p className="text-sm text-muted-foreground">Max Drawdown</div>
+          <p className="text-sm text-muted-foreground">Max Drawdown</p>
           <p className="text-lg font-bold text-red-500">-2.1%</p>
         </div>
         <div>
-          <p className="text-sm text-muted-foreground">Sharpe Ratio</div>
+          <p className="text-sm text-muted-foreground">Sharpe Ratio</p>
           <p className="text-lg font-bold">1.42</p>
         </div>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
