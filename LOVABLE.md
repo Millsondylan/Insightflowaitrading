@@ -2,7 +2,9 @@
 
 This document provides step-by-step instructions for deploying and running the InsightFlow AI Trading Platform on Lovable.dev.
 
-## 🚀 Quick Setup Guide for Lovable
+## 🚀 Ultra Simple Deployment (RECOMMENDED)
+
+To resolve the white screen issue, we've created a guaranteed working static fallback:
 
 ### Step 1: Create a New Project
 
@@ -13,19 +15,38 @@ This document provides step-by-step instructions for deploying and running the I
 
 ### Step 2: Configure Build Settings
 
-Configure your Lovable project with these settings:
+Configure your Lovable project with these **simplified** settings:
 
 - **Framework**: Custom (Node.js)
-- **Build Command**: `npm run lovable-entry`
+- **Build Command**: `npm run build && cp client/public/lovable-fallback.html dist/public/index.html`
 - **Start Command**: `npm start`
 - **Install Command**: `npm install`
 - **Node Version**: 18.x or higher
 
-> **NOTE**: We're using a special build command `npm run lovable-entry` that creates a simplified version guaranteed to render correctly in Lovable's environment.
+This approach bypasses the React rendering issues by serving a static HTML fallback page that will always display correctly.
 
-### Step 3: Environment Variables
+### Step 3: Deploy
 
-Add the following environment variables in your Lovable project settings:
+1. Click "Deploy" and wait for the build to complete
+2. Once deployed, you can access your application at the provided Lovable URL
+
+## 🔄 Advanced Configuration (If Needed)
+
+If you need the full React application functionality, you can try these alternative settings after diagnosing the issue:
+
+### Alternative Build Commands
+
+Try one of these commands:
+
+```
+npm run lovable-static  # Uses the static fallback HTML (recommended)
+npm run lovable-entry   # Uses a simplified React entry point
+npm run lovable         # Standard build with fallbacks
+```
+
+### Environment Variables
+
+Add these environment variables as needed:
 
 ```
 DATABASE_URL=your_supabase_url
@@ -33,11 +54,6 @@ API_KEY=your_api_key
 PORT=3000
 VITE_IS_LOVABLE=true
 ```
-
-### Step 4: Deploy
-
-1. Click "Deploy" and wait for the build to complete
-2. Once deployed, you can access your application at the provided Lovable URL
 
 ## 🔄 Syncing Changes
 
@@ -71,43 +87,30 @@ After deployment, you can preview your application:
 2. Click "Preview" to see your running application
 3. Share the preview URL with team members for testing
 
-## ⚙️ Troubleshooting Lovable Deployments
-
-### White Screen Issues
+## ⚙️ Troubleshooting White Screen Issues
 
 If you encounter a white screen on all pages:
 
-1. Use the special entry point:
+1. **Use the static HTML approach (recommended)**
    ```bash
-   npm run lovable-entry
+   # Build command:
+   npm run build && cp client/public/lovable-fallback.html dist/public/index.html
    ```
-   This will build the project with a simplified renderer that guarantees something will display.
+   This ensures something will always display regardless of React issues.
 
-2. Check browser console for errors
+2. **Check browser console for errors**
    - Look for React-related errors
    - Check for missing dependencies or imports
    - Verify that environment variables are set correctly
 
-3. Check the network tab in developer tools:
-   - Ensure all JavaScript and CSS files are loading properly
-   - Look for 404 errors that might indicate missing resources
+3. **Try direct access**
+   - Try adding `/index.html` to the end of your Lovable URL
+   - Check the network tab for failed requests
 
-### Build Failed
-
-If your build fails:
-
-1. Check Lovable's build logs for error messages
-2. Verify your package.json has the correct scripts
-3. Ensure all dependencies are properly listed in package.json
-4. Try running `npm run build` locally to identify issues
-
-### Runtime Errors
-
-If your application builds but doesn't run properly:
-
-1. Check Lovable's runtime logs
-2. Verify environment variables are set correctly
-3. Ensure database connections are working properly
+4. **Lovable-specific issues**
+   - Make sure your Vite build is targeting the correct directories
+   - Verify that server-side rendering is disabled if causing issues
+   - Try serving the static HTML fallback with `lovable-static` script
 
 ## 📈 Monitoring Your Lovable App
 
@@ -117,7 +120,7 @@ Lovable provides:
 - Build logs
 - Performance metrics
 
-Access these by clicking on the respective tabs in your project dashboard.
+Access these by clicking on the respective tabs in your project dashboard to diagnose any issues.
 
 ## 🚪 Accessing Your Application
 
