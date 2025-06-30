@@ -8,13 +8,14 @@ export default function AboutPage() {
       <DocumentHead 
         title="About Us" 
         description="Learn about InsightFlow AI's mission to democratize advanced trading intelligence and make institutional-grade tools accessible to individual traders."
-        ogImage="/images/about-us-banner.jpg"/>
+        ogImage="/images/about-us-banner.jpg"
+      />
       
       <h1 className="text-4xl font-bold mb-8 text-white">About InsightFlow AI</h1>
       
-      <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8"/>
-        <CardContent className="pt-6"/>
-          <h2 className="text-2xl font-bold mb-4 text-cyan-400">Our Mission</Card>
+      <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8">
+        <CardContent className="pt-6">
+          <h2 className="text-2xl font-bold mb-4 text-cyan-400">Our Mission</h2>
           <p className="mb-6 text-gray-300">
             InsightFlow AI was founded with a clear mission: to democratize advanced trading intelligence 
             and make institutional-grade tools accessible to individual traders. We believe that by 
@@ -59,10 +60,11 @@ export default function AboutPage() {
             alongside sophisticated technical analysis capabilities. This holistic approach helps traders 
             develop complete skills rather than just focusing on indicators or entry points.
           </p>
-      </p>
+        </CardContent>
+      </Card>
       
       <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-lg border border-blue-500/20 text-center">
-        <h2 className="text-2xl font-bold mb-4 text-white"></div></div>Join Our Community</div>
+        <h2 className="text-2xl font-bold mb-4 text-white">Join Our Community</h2>
         <p className="mb-6 text-gray-300">
           Become part of a growing community of traders who use AI to enhance their trading decisions.
         </p>

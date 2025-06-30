@@ -4,12 +4,12 @@ import { Card, CardContent } from '@/components/ui/card';
 export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8 text-white">Privacy Policy</div>
+      <h1 className="text-4xl font-bold mb-8 text-white">Privacy Policy</h1>
       
       <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8">
         <CardContent className="pt-6 space-y-6">
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">1. Introduction</Card>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">1. Introduction</h2>
             <p className="text-gray-300">
               At InsightFlow AI Trading ("we," "our," or "us"), we respect your privacy and are committed 
               to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, 
@@ -18,14 +18,14 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">2. Information We Collect</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">2. Information We Collect</h2>
             <p className="text-gray-300 mb-4">
               We may collect several types of information from and about users of our services, including:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-300">
               <li>
                 <strong>Personal Information:</strong> Name, email address, telephone number, and payment information.
-              </ul>
+              </li>
               <li>
                 <strong>Account Information:</strong> Login credentials and preferences.
               </li>
@@ -42,12 +42,12 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">3. How We Use Your Information</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">3. How We Use Your Information</h2>
             <p className="text-gray-300 mb-4">
               We use the information we collect to:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-300">
-              <li>Provide, maintain, and improve our services</ul>
+              <li>Provide, maintain, and improve our services</li>
               <li>Process transactions and manage your account</li>
               <li>Personalize your experience and deliver tailored content</li>
               <li>Analyze usage patterns and optimize our platform</li>
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">4. Data Security</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">4. Data Security</h2>
             <p className="text-gray-300">
               We implement appropriate technical and organizational measures to protect your personal 
               data against unauthorized or unlawful processing, accidental loss, destruction, or damage. 
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">5. Cookies and Tracking Technologies</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">5. Cookies and Tracking Technologies</h2>
             <p className="text-gray-300">
               We use cookies and similar tracking technologies to track activity on our platform and 
               hold certain information. You can instruct your browser to refuse all cookies or to 
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">6. Third-Party Services</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">6. Third-Party Services</h2>
             <p className="text-gray-300">
               Our services may include integrations with third-party services, such as market data 
               providers, payment processors, and AI models. These third parties may collect information 
@@ -88,12 +88,12 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">7. Your Privacy Rights</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">7. Your Privacy Rights</h2>
             <p className="text-gray-300 mb-4">
               Depending on your location, you may have rights regarding your personal data, including:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-300">
-              <li>The right to access your personal data</ul>
+              <li>The right to access your personal data</li>
               <li>The right to rectify inaccurate personal data</li>
               <li>The right to delete your personal data</li>
               <li>The right to restrict processing of your personal data</li>
@@ -106,7 +106,7 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">8. Children's Privacy</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">8. Children's Privacy</h2>
             <p className="text-gray-300">
               Our services are not intended for individuals under the age of 18. We do not knowingly 
               collect personal information from children under 18. If you are a parent or guardian and 
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">9. Changes to this Privacy Policy</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">9. Changes to this Privacy Policy</h2>
             <p className="text-gray-300">
               We may update our Privacy Policy from time to time. We will notify you of any changes by 
               posting the new Privacy Policy on this page and updating the "Last Updated" date.
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">10. Contact Us</section>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">10. Contact Us</h2>
             <p className="text-gray-300">
               If you have any questions about this Privacy Policy, please contact us at:
               <br />
@@ -132,9 +132,9 @@ export default function PrivacyPage() {
           </section>
           
           <section>
-            <p className="text-gray-400 text-sm"></section>
+            <p className="text-gray-400 text-sm">
               Last updated: June 28, 2025
-            </section>
+            </p>
           </section>
         </CardContent>
       </Card>
