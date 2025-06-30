@@ -1,4 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
 
 type Props = {
   onUpload?: (file: File) => void;
@@ -45,25 +48,27 @@ const VisionUpload = ({ onUpload, defaultImage }: Props) => {
     <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4">
       <div className="flex flex-col items-center gap-4">
         <Label className="cursor-pointer bg-white/10 hover:bg-cyan-600/80 text-white font-semibold px-6 py-3 rounded-full transition-colors duration-300 flex items-center gap-2">
-          <span>📷</File>
+          <span>📷</span>
           <span>{previewUrl ? 'Change Screenshot' : 'Upload Screenshot'}</span>
           <Input
             type="file"
             accept=".png, .jpg, .jpeg, .webp"
             className="hidden"
             onChange={handleFileChange}
-          //>
+          />
+        </Label>
         
         {previewUrl && (
           <div className="w-full mt-4">
-            <p className="text-sm text-white/60 text-center mb-2">Chart Preview</Input>
+            <p className="text-sm text-white/60 text-center mb-2">Chart Preview</p>
             <img 
               src={previewUrl} 
               alt="Chart preview" 
               className="rounded-lg border border-white/10 max-h-96 w-full object-contain" 
-            ///>
+            />
+          </div>
         )}
-      </img>
+      </div>
     </div>
   );
 };
@@ -75,4 +80,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

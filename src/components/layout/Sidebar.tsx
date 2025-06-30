@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
@@ -7,21 +8,10 @@ import {
   MessageSquare,
   BookOpen,
   Radio,
-  BarChart2,
   Settings,
   LogOut,
   TrendingUp,
   LifeBuoy,
-  LineChart,
-  BarChart3,
-  Building2,
-  MessagesSquare,
-  Users,
-  Wallet,
-  GanttChart,
-  Activity,
-  Layers,
-  FileCode
 } from 'lucide-react';
 import { useAuth } from '@/hooks/use-auth';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -61,12 +51,12 @@ export default function Sidebar() {
                   ? 'bg-blue-600/20 text-blue-400'
                   : 'text-gray-500 hover:text-white hover:bg-gray-800'
               }`}
-   >
+            >
               <Icon size={24}/>
-            </TooltipProvider>
+            </Link>
           </TooltipTrigger>
           <TooltipContent side="right">
-            <p>{item.label}</TooltipContent>
+            <p>{item.label}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -78,13 +68,13 @@ export default function Sidebar() {
       <div className="flex flex-col items-center gap-10">
         <Link to="/" className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
           <TrendingUp className="w-6 h-6 text-white"/>
-        </div>
+        </Link>
         <nav>
           <ul className="space-y-4">
             {navItems.map((item) => (
               <li key={item.path}>
-                <navLink item={item}/>
-              </nav>
+                <NavLink item={item}/>
+              </li>
             ))}
           </ul>
         </nav>
@@ -95,8 +85,8 @@ export default function Sidebar() {
           <ul className="space-y-2">
             {bottomNavItems.map((item) => (
               <li key={item.path}>
-                <navLink item={item}/>
-              </div>
+                <NavLink item={item}/>
+              </li>
             ))}
           </ul>
         </nav>
@@ -105,21 +95,21 @@ export default function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link to="/profile">
-                <avatar>
-                  <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'}/>
-                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</TooltipProvider>
+                <Avatar>
+                  <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'}/>
+                  <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
                 </Avatar>
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">
-              <p>{profile?.full_name || 'Profile'}</TooltipContent>
+              <p>{profile?.full_name || 'Profile'}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>
         <Button variant="ghost" size="sm" className="w-full mt-2 text-left justify-start">
-          <LogOut className="w-4 h-4 mr-2"/></div>
+          <LogOut className="w-4 h-4 mr-2"/>
           Logout
-        </button>
+        </Button>
       </div>
     </div>
   );

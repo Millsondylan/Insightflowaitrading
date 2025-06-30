@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 
 type JournalEntry = {
@@ -30,7 +31,7 @@ const mockAIFeedback: AIFeedback = {
 };
 
 // Mock function to simulate an API call to an AI model
-const getAIFeedback = (entry: JournalEntry): Promise<aIFeedback> => {
+const getAIFeedback = (entry: JournalEntry): Promise<AIFeedback> => {
   console.log("Analyzing entry:", entry.title);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -58,16 +59,15 @@ const getEmotionBadgeStyle = (emotion: string): string => {
     }
 };
 
-
 const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
-  const [feedback, setFeedback] = useState<aIFeedback | null>(null);
+  const [feedback, setFeedback] = useState<AIFeedback | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!entry?.notes) {
         setFeedback(null);
         return;
-    };
+    }
 
     setIsLoading(true);
     setFeedback(null);
@@ -103,13 +103,13 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
         <div className="animate-fade-in space-y-6">
             <div>
                 <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="brain">🧠</div> AI Summary
+                    <span role="img" aria-label="brain">🧠</span> AI Summary
                 </h3>
                 <p className="text-white/80 text-sm">{feedback.summary}</p>
             </div>
             <div>
                 <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="masks">🎭</div> Dominant Emotion
+                    <span role="img" aria-label="masks">🎭</span> Dominant Emotion
                 </h3>
                 <div className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getEmotionBadgeStyle(feedback.emotion)}`}>
                     {feedback.emotion}
@@ -117,19 +117,20 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
             </div>
             <div>
                 <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="light bulb">💡</div> Coaching Suggestions
+                    <span role="img" aria-label="light bulb">💡</span> Coaching Suggestions
                 </h3>
                 <ul className="space-y-2 text-sm text-white/80">
                     {feedback.suggestions.map((suggestion, index) => (
                         <li key={index} className="flex items-start gap-3">
-                            <span className="text-green-400 mt-1">✅</ul>
+                            <span className="text-green-400 mt-1">✅</span>
                             <span>{suggestion}</span>
+                        </li>
                     ))}
-                </span>
+                </ul>
             </div>
         </div>
       );
-  }
+  };
 
   return (
     <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg min-h-[200px] flex items-center justify-center">
@@ -145,4 +146,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
