@@ -2,10 +2,66 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/supabase';
 
-const SUPABASE_URL = "https://ikreglaqlileqlmlgsao.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrcmVnbGFxbGlsZXFsbWxnc2FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA1MDA4MTUsImV4cCI6MjA2NjA3NjgxNX0.j9-is9odQop9HCjIKa_UqyWFGWl8fSOmWObh0WZV3s0";
+// Check if we're in a Lovable environment
+const isLovable = import.meta.env.VITE_IS_LOVABLE === 'true' || 
+                  window.location.hostname.includes('lovable.dev');
 
-// Import the supabase client like this:
-// import { supabase } from "@/integrations/supabase/client";
+// Set up the Supabase URL and API key
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://ikreglaqlileqlmlgsao.supabase.co'
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY || '';
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+let supabase: ReturnType<typeof createClient<Database>>;
+
+try {
+  // Create the Supabase client
+  supabase = createClient<Database>(supabaseUrl, supabaseKey, {
+    auth: {
+      autoRefreshToken: true,
+      persistSession: true,
+      detectSessionInUrl: true
+    }
+  });
+  
+  console.log('Supabase client initialized successfully');
+  
+  // Add event listeners for Lovable environment
+  if (isLovable) {
+    console.log('Lovable environment detected. Adding error handlers...');
+    window.addEventListener('unhandledrejection', (event) => {
+      if (event.reason?.message?.includes('supabase') || 
+          event.reason?.message?.includes('network') ||
+          event.reason?.message?.includes('database')) {
+        console.error('Supabase error caught:', event.reason);
+        event.preventDefault(); // Prevent the default error handling
+      }
+    });
+  }
+} catch (error) {
+  console.error('Failed to initialize Supabase client:', error);
+  
+  // Create a minimal mock client for Lovable
+  if (isLovable) {
+    console.warn('Creating fallback Supabase client');
+    // @ts-ignore - Using any type for fallback
+    supabase = {
+      from: () => ({
+        select: () => Promise.resolve({ data: [], error: null })
+      }),
+      auth: {
+        getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+        signIn: () => Promise.resolve({ data: { user: null }, error: null }),
+        signOut: () => Promise.resolve({ error: null })
+      }
+    };
+  } else {
+    // For non-Lovable environments, create an empty client but log the error
+    // @ts-ignore - Using any type for fallback
+    supabase = createClient<Database>(supabaseUrl, '');
+  }
+}
+
+// Export the client
+export { supabase };
+
+// Export convenience auth hooks
+export const auth = supabase.auth;

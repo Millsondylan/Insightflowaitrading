@@ -4,179 +4,349 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InsightFlow AI Trading</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="description" content="InsightFlow AI Trading - Advanced trading platform with AI-powered insights">
+  <meta name="theme-color" content="#111111">
+  
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #111;
-      color: white;
+    :root {
+      --primary: #0ea5e9;
+      --primary-dark: #0284c7;
+      --background: #111111;
+      --text: #f1f5f9;
+      --border: #262626;
+      --card: #1c1c1c;
+      --accent: #06b6d4;
+    }
+    
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    #app {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    header {
+      padding: 1.5rem;
+      background-color: rgba(0,0,0,0.3);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo svg {
+      height: 2rem;
+      width: 2rem;
+    }
+    
+    main {
+      flex: 1;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
-      line-height: 1.5;
-    }
-    
-    .container {
-      max-width: 800px;
+      max-width: 1200px;
+      margin: 0 auto;
       width: 100%;
     }
     
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #00b4db, #0083b0);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-align: center;
     }
     
-    .card {
-      background-color: rgba(30, 30, 30, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-    
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #00b4db;
-    }
-    
-    .box {
-      background-color: #222;
-      border-radius: 8px;
-      padding: 1rem;
-      margin: 1rem 0;
+    p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
     }
     
     .button {
       display: inline-block;
-      background: linear-gradient(135deg, #00b4db, #0083b0);
+      background-color: var(--primary);
       color: white;
-      padding: 12px 24px;
+      padding: 0.75rem 1.5rem;
       border-radius: 6px;
+      font-weight: 500;
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
+      transition: all 0.2s ease;
       border: none;
       cursor: pointer;
     }
     
     .button:hover {
-      opacity: 0.9;
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
     }
     
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
+    .button.secondary {
+      background-color: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      margin-left: 1rem;
+    }
+    
+    .button.secondary:hover {
+      background-color: rgba(14, 165, 233, 0.1);
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      width: 100%;
       margin-top: 2rem;
     }
     
-    a {
-      color: #00b4db;
-      text-decoration: none;
+    .feature-card {
+      background-color: var(--card);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+      border: 1px solid var(--border);
     }
     
-    a:hover {
-      text-decoration: underline;
+    .feature-card:hover {
+      transform: translateY(-5px);
     }
     
-    code {
-      font-family: monospace;
-      background-color: #000;
-      padding: 2px 6px;
-      border-radius: 4px;
+    .feature-icon {
+      background-color: rgba(14, 165, 233, 0.1);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
     }
     
-    ul {
-      padding-left: 20px;
+    .feature-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
     }
     
-    li {
-      margin-bottom: 8px;
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    footer {
+      padding: 2rem;
+      text-align: center;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: rgba(22, 163, 74, 0.1);
+      border: 1px solid rgba(22, 163, 74, 0.3);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      color: #4ade80;
+      margin-top: 2rem;
+    }
+    
+    .status.waiting {
+      background-color: rgba(251, 191, 36, 0.1);
+      border-color: rgba(251, 191, 36, 0.3);
+      color: #fbbf24;
+    }
+    
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+    
+    .loading-message {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+      opacity: 0.7;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>InsightFlow AI Trading</h1>
+  <div id="app">
+    <header>
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12h10"></path>
+          <path d="M5 15l-3-3 3-3"></path>
+          <path d="M12 19l6-6-6-6"></path>
+        </svg>
+        InsightFlow AI
+      </div>
+    </header>
     
-    <div class="card">
-      <h2>Lovable Deployment Status</h2>
-      <p>Your application has been deployed to Lovable, but there appears to be a rendering issue with the React application.</p>
-      
-      <div class="box">
-        <p><strong>Status:</strong> This is a static HTML fallback page</p>
-        <p>The main application is experiencing a white screen issue that needs troubleshooting.</p>
+    <main>
+      <div class="hero">
+        <h1>Welcome to InsightFlow AI Trading</h1>
+        <p>The comprehensive platform for AI-powered trading insights, analysis, and strategy development. Enhance your trading with advanced machine learning.</p>
+        <div>
+          <a href="/dashboard" class="button">Open Dashboard</a>
+          <a href="/docs" class="button secondary">Documentation</a>
+        </div>
       </div>
       
-      <h2>Troubleshooting Steps</h2>
-      <ul>
-        <li>Check Lovable logs for any JavaScript errors</li>
-        <li>Verify that all environment variables are correctly set</li>
-        <li>Make sure the build command is set to <code>npm run build</code></li>
-        <li>Try accessing the app directly at <code>/index.html</code></li>
-      </ul>
-      
-      <h2>Direct Entry Points</h2>
-      <p>Try accessing these specific entry points:</p>
-      <ul>
-        <li><a href="./index.html">Main Application</a></li>
-        <li><a href="./src/lovable-entry.tsx">Lovable Entry (Source)</a></li>
-      </ul>
-    </div>
-    
-    <div class="card">
-      <h2>Complete Workflow Guide</h2>
-      <ol>
-        <li>Open Lovable dashboard and check for build errors</li>
-        <li>Verify that all required npm dependencies are installed</li>
-        <li>Ensure the proper build command is being used</li>
-        <li>Check browser console for JavaScript errors</li>
-        <li>Look at network requests to see if any resources failed to load</li>
-      </ol>
-      
-      <div class="box">
-        <p><strong>Recommended Build Command:</strong></p>
-        <code>npm install && npm run build && npm start</code>
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+            </svg>
+          </div>
+          <h2>Market Analysis</h2>
+          <p>Real-time market data analysis with AI-powered insights and pattern recognition.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 19V5"></path>
+              <path d="M5 12l7-7 7 7"></path>
+            </svg>
+          </div>
+          <h2>Strategy Builder</h2>
+          <p>Create and test sophisticated trading strategies with our visual builder.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 6H3"></path>
+              <path d="M10 12H3"></path>
+              <path d="M10 18H3"></path>
+              <path d="M17 12h4"></path>
+              <path d="M17 9v6"></path>
+            </svg>
+          </div>
+          <h2>Trading Journal</h2>
+          <p>Record, review, and improve your trades with AI-assisted journaling.</p>
+        </div>
       </div>
-    </div>
+      
+      <div class="status">
+        <div class="status-dot"></div>
+        <span>Lovable Static Fallback Active</span>
+      </div>
+      <p class="loading-message">The main application is loading or unavailable. Please wait...</p>
+    </main>
+    
+    <footer>
+      &copy; 2024 InsightFlow AI Trading. All rights reserved.
+    </footer>
   </div>
   
-  <div class="links">
-    <a href="https://github.com/Millsondylan/Insightflowaitrading">GitHub Repository</a>
-    <span>|</span>
-    <a href="#" onclick="showVersion()">Show Version Info</a>
-  </div>
-  
+  <!-- Add this script to try loading the main app -->
   <script>
-    // Simple JavaScript to ensure something is working
-    function showVersion() {
-      alert('InsightFlow AI Trading Platform\nVersion: 1.0.0\nDeployment: Lovable\nTimestamp: ' + new Date().toString());
-    }
-    
-    // Log information to help with debugging
-    console.log('Fallback page loaded successfully at ' + new Date().toString());
-    console.log('User Agent: ' + navigator.userAgent);
-    
-    // Track page rendering
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOM fully loaded');
-      
+    // Attempt to load the main application
+    function attemptLoadMainApp() {
       // Check if we're on Lovable
       const isLovable = window.location.hostname.includes('lovable.dev');
-      console.log('Is Lovable environment: ' + isLovable);
-    });
+      
+      // If we're on Lovable, let's not try to redirect to avoid loops
+      if (isLovable) {
+        document.querySelector('.status').classList.add('waiting');
+        document.querySelector('.status span').textContent = 'Waiting for App Server';
+      }
+      
+      // Show a nice message
+      console.log('InsightFlow AI Trading - Fallback page loaded successfully');
+      
+      // Periodically check app status
+      let attempts = 0;
+      const checkInterval = setInterval(() => {
+        attempts++;
+        
+        // Only make 5 attempts (stop after ~25 seconds)
+        if (attempts > 5) {
+          clearInterval(checkInterval);
+          document.querySelector('.status').style.backgroundColor = 'rgba(220, 38, 38, 0.1)';
+          document.querySelector('.status').style.borderColor = 'rgba(220, 38, 38, 0.3)';
+          document.querySelector('.status').style.color = '#ef4444';
+          document.querySelector('.status span').textContent = 'Application Unavailable';
+          document.querySelector('.loading-message').textContent = 
+            'The main application could not be loaded. Please try again later.';
+          return;
+        }
+        
+        // Try to fetch the health endpoint
+        fetch('/health')
+          .then(response => response.json())
+          .then(data => {
+            // If we got a response, update the status
+            document.querySelector('.status').style.backgroundColor = 'rgba(22, 163, 74, 0.1)';
+            document.querySelector('.status').style.borderColor = 'rgba(22, 163, 74, 0.3)';
+            document.querySelector('.status').style.color = '#4ade80';
+            document.querySelector('.status span').textContent = 'Application Ready';
+            document.querySelector('.loading-message').textContent = 
+              'The application is ready. You can now navigate to the dashboard.';
+              
+            // Stop checking
+            clearInterval(checkInterval);
+          })
+          .catch(err => {
+            console.log('Health check failed attempt ' + attempts, err);
+          });
+      }, 5000); // Check every 5 seconds
+    }
+    
+    // Run when the page is loaded
+    document.addEventListener('DOMContentLoaded', attemptLoadMainApp);
   </script>
 </body>
 </html> 

@@ -1,90 +1,84 @@
 # InsightFlow AI Trading Platform
 
-A full-stack AI-powered trading platform built with React, TypeScript, and Vite, fully compatible with Lovable.dev.
+Advanced AI-powered trading platform for market analysis, strategy development, and AI-enhanced trading.
 
-## ⚠️ LOVABLE DEPLOYMENT - READ THIS FIRST
+## Quick Start
 
-If you're experiencing white screens on Lovable, use this ultra-simple approach:
-
-### Lovable Setup (Guaranteed to Work)
-
-1. Configure your Lovable project with these exact settings:
-
-```
-Framework: Node.js
-Build Command: echo 'Skipping build process for Lovable deployment'
-Start Command: node lovable-minimal-server.js
-Install Command: npm install express
-```
-
-2. That's it! This will bypass the React build process entirely and serve a simple static page.
-
-The `lovable-minimal-server.js` will:
-- Set up a simple Express server
-- Create the minimal HTML page
-- Handle all routes automatically
-
-This approach requires no build step and will always work, even when React has issues.
-
-## 🚀 Standard Setup (For Local Development)
-
-### Prerequisites
-
-- Node.js 16+ and npm
-- Git
-
-### Installation
-
-1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/insightflowaitrading.git
-cd insightflowaitrading
-```
-
-2. Install dependencies:
-```bash
+# Install dependencies
 npm install
-```
 
-### Development
-
-Run the development server:
-```bash
+# Start development server
 npm run dev
-```
 
-This will start both the frontend and backend services.
-
-### Building for Production
-
-```bash
+# Build for production
 npm run build
 ```
 
-## 📚 Project Structure
+## Lovable Deployment
 
-```
-insightflowaitrading/
-├── client/               # Frontend React code
-├── server/               # Backend code
-├── public/               # Static assets
-├── minimal-server.js     # Simple Express server
-└── lovable-minimal-server.js  # Self-contained server for Lovable
-```
+This project is configured for deployment on Lovable.dev with multiple deployment options:
 
-## ⚠️ Troubleshooting
+### Option 1: Ultra-Minimal Server (Recommended)
 
-### White Screen Issues
+For the most reliable Lovable deployment, use the minimal server approach:
 
-If you encounter white screens or rendering issues:
+1. Set up environment variables in the Lovable dashboard (see [LOVABLE-DEPLOYMENT.md](./LOVABLE-DEPLOYMENT.md))
+2. Use the following deployment settings in Lovable:
+   - **Start Command**: `node lovable-minimal-server.js`
+   - **Build Command**: Skip or use `echo 'Skipping build'`
 
-1. For local testing:
+This approach creates a self-contained Express server that handles static file serving and API endpoints.
+
+### Option 2: Full Application
+
+For the complete application with all features:
+
+1. Set the required environment variables (DATABASE_URL, SUPABASE_KEY, etc.)
+2. Set Lovable's deployment settings:
+   - **Start Command**: `npm run lovable:full`
+   - **Build Command**: `npm run build`
+
+## Features
+
+- AI-powered trading strategy development
+- Real-time market analysis with ML insights
+- Trading journal with AI reflection
+- Strategy backtesting
+- Portfolio analytics
+- Community features and multiplayer
+- Extensive learning resources
+- Customizable dashboard
+
+## Environment Setup
+
+Copy the example environment file:
+
 ```bash
-npm run minimal-start
+cp lovable.env .env
 ```
 
-2. For Lovable, follow the ultra-simple approach at the top of this README.
+Update with your own credentials:
 
-## 🛠️ Need More Help?
+```
+DATABASE_URL=your_supabase_connection_string
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
+```
 
-See `LOVABLE.md` or `ULTRA-MINIMAL-SETUP.md` for additional deployment options. 
+## Project Structure
+
+- `/client` - Frontend (React, Vite)
+- `/server` - Backend API
+- `/shared` - Shared types and utilities
+- `/supabase` - Database migrations and schemas
+
+## Documentation
+
+- [Lovable Deployment Guide](./LOVABLE-DEPLOYMENT.md)
+- [API Documentation](./API.md)
+- [Development Guide](./DEVELOPMENT.md)
+
+## License
+
+Copyright (c) 2024 InsightFlow AI. All rights reserved. 
