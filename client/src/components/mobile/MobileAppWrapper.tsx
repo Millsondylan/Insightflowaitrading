@@ -1,8 +1,7 @@
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useMobileDetector } from '@/hooks/use-mobile-detector';
-import { useAuth } from '@/hooks/use-auth';
-import { supabase } from '@/lib/db/supabase-client';
+import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/components/ui/use-toast';
 
 // This component would use @capacitor/app and @capacitor/push-notifications in a real implementation
@@ -14,8 +13,6 @@ interface MobileAppWrapperProps {
 }
 
 export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
-  const { isMobile, isCapacitor } = useMobileDetector();
-  const { user, login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [initialized, setInitialized] = useState(false);
@@ -24,8 +21,6 @@ export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
     if (initialized) return;
     
     const setupCapacitorApp = async () => {
-      if (!isCapacitor) return;
-      
       try {
         // In a real implementation, we would use:
         // App.addListener('appUrlOpen', (data: { url: string }) => {
@@ -41,35 +36,6 @@ export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
         
         window.addEventListener('mockDeepLink', mockDeepLinkHandler as EventListener);
         
-        // Initialize push notifications (mock implementation)
-        const setupPushNotifications = async () => {
-          if (!user) return;
-          
-          try {
-            // In real implementation:
-            // await PushNotifications.requestPermissions();
-            // await PushNotifications.register();
-            
-            // Store device token
-            // PushNotifications.addListener('registration', (token) => {
-            //   registerDeviceForPushNotifications(user.id, token.value);
-            // });
-            
-            // Handle notification received
-            // PushNotifications.addListener('pushNotificationReceived', (notification) => {
-            //   handlePushNotification(notification);
-            // });
-            
-            console.log('Push notifications initialized');
-          } catch (err) {
-            console.error('Failed to initialize push notifications:', err);
-          }
-        };
-        
-        if (user) {
-          setupPushNotifications();
-        }
-        
         setInitialized(true);
         return () => {
           window.removeEventListener('mockDeepLink', mockDeepLinkHandler as EventListener);
@@ -80,7 +46,7 @@ export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
     };
     
     setupCapacitorApp();
-  }, [isCapacitor, user, initialized]);
+  }, [initialized]);
   
   // Handle deep links
   const handleDeepLink = async (url: string) => {
@@ -94,7 +60,7 @@ export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
         
         if (sessionId && userId) {
           const { data, error } = await supabase
-            .from('qr_login_sessions')
+            .from('user_auth_sessions')
             .select('*')
             .eq('session_id', sessionId)
             .eq('user_id', userId)
@@ -107,7 +73,7 @@ export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
           
           // Update session status
           await supabase
-            .from('qr_login_sessions')
+            .from('user_auth_sessions')
             .update({ 
               status: 'authenticated',
               authenticated_at: new Date().toISOString(),
@@ -116,21 +82,13 @@ export default function MobileAppWrapper({ children }: MobileAppWrapperProps) {
                 platform: navigator.platform
               }
             })
-            .eq('session_id', sessionId);
+            .eq('id', data.id);
             
-          // Get user with this ID and log them in
-          // This is a simplified version - in reality you would need a secure token exchange
-          const authResponse = await supabase.auth.getUser();
-          
-          if (authResponse.data?.user) {
-            toast({
-              title: "Success",
-              description: "Logged in successfully via QR code",
-            });
-            navigate('/dashboard');
-          } else {
-            throw new Error('Authentication failed');
-          }
+          toast({
+            title: "Success",
+            description: "Logged in successfully via QR code",
+          });
+          navigate('/dashboard');
         }
       }
     } catch (err) {
@@ -152,4 +110,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-
