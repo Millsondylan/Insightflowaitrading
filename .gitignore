@@ -29,7 +29,7 @@ dist-ssr
 !.env.example
 lovable.env
 lovable.env.*
-!lovable.env.example
+# lovable.env.example # Commenting this out to completely exclude the file
 
 # API keys and secrets
 **/apikeys.json
