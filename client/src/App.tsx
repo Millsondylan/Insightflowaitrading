@@ -44,6 +44,8 @@ import SetupFinderPage from './pages/SetupFinderPage';
 import BestSetupsPage from './pages/BestSetupsPage';
 import StrategyBuilderV3 from './pages/StrategyBuilderV3';
 import JournalV2 from './pages/JournalV2';
+import ChatPage from './pages/ChatPage';
+import PortfolioV2 from './pages/PortfolioV2';
 
 const queryClient = new QueryClient();
 
@@ -135,6 +137,25 @@ function App() {
                       <Route path="markets/:symbol" element={
                         <AppLayout>
                           <MarketsPage/>
+                        </AppLayout>
+                      } />
+
+                      {/* Chat Page */}
+                      <Route path="chat" element={
+                        <AppLayout>
+                          <ChatPage/>
+                        </AppLayout>
+                      } />
+                      <Route path="voice" element={
+                        <AppLayout>
+                          <ChatPage/>
+                        </AppLayout>
+                      } />
+
+                      {/* PortfolioV2 Route */}
+                      <Route path="portfolio" element={
+                        <AppLayout>
+                          <PortfolioV2/>
                         </AppLayout>
                       } />
 
