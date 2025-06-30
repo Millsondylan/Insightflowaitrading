@@ -2,7 +2,31 @@
 
 A full-stack AI-powered trading platform built with React, TypeScript, and Vite, fully compatible with Lovable.dev.
 
-## 🚀 Quick Start
+## ⚠️ LOVABLE DEPLOYMENT - READ THIS FIRST
+
+If you're experiencing white screens on Lovable, use this ultra-simple approach:
+
+### Lovable Setup (Guaranteed to Work)
+
+1. Configure your Lovable project with these exact settings:
+
+```
+Framework: Node.js
+Build Command: echo 'Skipping build process for Lovable deployment'
+Start Command: node lovable-minimal-server.js
+Install Command: npm install express
+```
+
+2. That's it! This will bypass the React build process entirely and serve a simple static page.
+
+The `lovable-minimal-server.js` will:
+- Set up a simple Express server
+- Create the minimal HTML page
+- Handle all routes automatically
+
+This approach requires no build step and will always work, even when React has issues.
+
+## 🚀 Standard Setup (For Local Development)
 
 ### Prerequisites
 
@@ -37,113 +61,30 @@ This will start both the frontend and backend services.
 npm run build
 ```
 
-This will:
-- Build the frontend with Vite
-- Bundle the server-side code with esbuild
-
-### Running Production Build
-
-After building:
-```bash
-npm start
-```
-
-## 📱 Lovable.dev Integration
-
-### Setting Up on Lovable
-
-1. Log in to your Lovable.dev account
-2. Create a new project or select an existing one
-3. Connect to your GitHub repository with the following URL: `https://github.com/yourusername/insightflowaitrading.git`
-
-### Build Configuration
-
-Ensure your Lovable.dev project uses the following build commands:
-
-- **Build Command:** `npm run build`
-- **Start Command:** `npm start`
-- **Install Command:** `npm install`
-
-### Lovable Preview URL
-
-Once deployed, your project will be available at:
-`https://[your-project-name].lovable.dev`
-
-### Syncing Changes with Lovable.dev
-
-1. After making local changes, commit and push to GitHub:
-```bash
-git add .
-git commit -m "Your commit message"
-git push origin main
-```
-
-2. Lovable will automatically detect changes and rebuild your project. To force a sync:
-   - Go to your project on Lovable.dev
-   - Click "Settings"
-   - Click "Sync Now" button
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```
-DATABASE_URL=your_database_url
-API_KEY=your_api_key
-PORT=3000
-```
-
-### Database Setup
-
-This project uses Supabase. To set up:
-
-1. Create a Supabase project
-2. Run migrations:
-```bash
-npm run migrate
-```
-
 ## 📚 Project Structure
 
 ```
 insightflowaitrading/
 ├── client/               # Frontend React code
-│   ├── public/           # Static assets
-│   └── src/              # Source code
-│       ├── components/   # React components
-│       ├── pages/        # Page components
-│       ├── lib/          # Utility functions
-│       └── modules/      # Feature modules
 ├── server/               # Backend code
-├── supabase/             # Database migrations
-└── shared/               # Shared types and utilities
+├── public/               # Static assets
+├── minimal-server.js     # Simple Express server
+└── lovable-minimal-server.js  # Self-contained server for Lovable
 ```
 
 ## ⚠️ Troubleshooting
 
-### Common Issues
+### White Screen Issues
 
-1. **TypeScript Errors**: If you encounter TypeScript errors, ensure all modules are properly imported:
+If you encounter white screens or rendering issues:
+
+1. For local testing:
 ```bash
-npx tsc --noEmit
+npm run minimal-start
 ```
 
-2. **Build Failures**: Make sure you have the latest dependencies:
-```bash
-npm update
-```
+2. For Lovable, follow the ultra-simple approach at the top of this README.
 
-3. **Lovable Sync Issues**: Verify your GitHub repository is correctly connected and your build commands match the ones in this README.
+## 🛠️ Need More Help?
 
-## 🛠️ Testing
-
-Run the test suite:
-```bash
-npm test
-```
-
-## 🚀 Deployment
-
-For deployment beyond Lovable.dev, build the project and deploy the `dist` directory to your preferred hosting service. 
+See `LOVABLE.md` or `ULTRA-MINIMAL-SETUP.md` for additional deployment options. 
