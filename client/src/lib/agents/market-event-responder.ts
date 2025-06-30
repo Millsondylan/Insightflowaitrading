@@ -19,7 +19,7 @@ export class MarketEventResponder {
   constructor(userId: string) {
     this.userId = userId;
     this.openai = new OpenAI({
-      apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
+      apiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
       dangerouslyAllowBrowser: true
     });
   }

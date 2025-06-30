@@ -1,0 +1,164 @@
+{
+  "app": {
+    "name": "InsightFlow AI Trading",
+    "tagline": "Advanced AI trading insights",
+    "loading": "Loading..."
+  },
+  "auth": {
+    "login": "Log In",
+    "logout": "Log Out",
+    "register": "Create Account",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "resetPassword": "Reset Password"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "strategy": "Strategy",
+    "backtest": "Backtest",
+    "journal": "Journal",
+    "vision": "Vision",
+    "academy": "Academy",
+    "wallet": "Wallet",
+    "admin": "Admin",
+    "settings": "Settings"
+  },
+  "pages": {
+    "notFound": {
+      "title": "Page Not Found",
+      "message": "The page you are looking for doesn't exist",
+      "action": "Return to Home"
+    },
+    "landing": {
+      "hero": "The Future of Trading is Here",
+      "cta": "Get Started",
+      "features": "Platform Features"
+    },
+    "strategy": {
+      "title": "Strategy Builder",
+      "create": "Create Strategy",
+      "indicators": "Indicators",
+      "rules": "Rules",
+      "filters": "Filters"
+    },
+    "journal": {
+      "title": "Trading Journal",
+      "entries": "Entries",
+      "analytics": "Analytics",
+      "reflection": "Reflection"
+    },
+    "wallet": {
+      "balance": "Balance",
+      "transactions": "Transactions", 
+      "depositAddress": "Deposit Address",
+      "copyAddress": "Copy Address",
+      "verifyPayment": "Verify Payment",
+      "checkStatus": "Check Status"
+    }
+  },
+  "ui": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "success": "Success!",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Information"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": "General",
+    "appearance": "Appearance",
+    "language": "Language",
+    "notifications": "Notifications",
+    "privacy": "Privacy",
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+  "wallet": {
+    "cryptoPayment": "Crypto Payment",
+    "sendPayment": "Send payment to this address",
+    "minimumAmount": "Minimum amount",
+    "transactionHash": "Transaction Hash",
+    "verifyingPayment": "Verifying payment...",
+    "paymentConfirmed": "Payment Confirmed",
+    "paymentPending": "Payment Pending",
+    "confirmations": "Confirmations",
+    "planUpgraded": "Your plan has been upgraded!",
+    "copySuccess": "Address copied to clipboard"
+  },
+  "errors": {
+    "general": "Something went wrong. Please try again.",
+    "auth": {
+      "invalidCredentials": "Invalid email or password.",
+      "emailAlreadyInUse": "Email is already in use.",
+      "weakPassword": "Password is too weak.",
+      "invalidEmail": "Invalid email format."
+    },
+    "network": {
+      "offline": "You are offline. Some features may be limited.",
+      "reconnecting": "Reconnecting...",
+      "serverError": "Server error. Please try again later."
+    }
+  },
+  "download": {
+    "title": "Download InsightFlow",
+    "description": "Download InsightFlow AI Trading application for mobile, desktop and install as a PWA",
+    "subtitle": "Access your trading insights anywhere with our native apps and offline support",
+    "android": "Android",
+    "androidDescription": "Get our native Android app for the best mobile experience with push notifications and offline support",
+    "desktop": "Desktop",
+    "desktopDescription": "Download our macOS desktop app for a full-featured trading experience on your laptop or desktop",
+    "pwa": "Web App",
+    "pwaDescription": "Install InsightFlow as a Progressive Web App directly from your browser",
+    "pwaInstructions": "Scan this QR code with your mobile device or click the button below to install",
+    "downloadAndroid": "Download APK",
+    "downloadMacOS": "Download for macOS",
+    "installPWA": "Install Web App",
+    "scanQRCode": "Scan this QR code with your device's camera",
+    "requirements": "Requirements",
+    "version": "Version",
+    "pwaRequirements": "Works on any modern browser (Chrome, Safari, Firefox, Edge)",
+    "offlineSupport": "Supports offline functionality and automatic sync",
+    "whyDownload": "Why download our app?",
+    "feature1": "Full offline support with automatic sync when you're back online",
+    "feature2": "Push notifications for alerts, market events, and trade signals",
+    "feature3": "Faster performance and optimized UI for your device",
+    "feature4": "Secure local storage for sensitive trading data",
+    "copyLink": "Copy Link",
+    "alreadyInstalled": "You're already using the installed app!"
+  },
+  "footer": {
+    "company": "Company",
+    "about": "About Us",
+    "pricing": "Pricing",
+    "download": "Download Apps",
+    "resources": "Resources",
+    "academy": "Academy",
+    "documentation": "Documentation",
+    "legal": "Legal",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "refund": "Refund Policy",
+    "cookies": "Cookies",
+    "connect": "Connect",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  }
+} 

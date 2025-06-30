@@ -1,20 +1,14 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import DocumentHead from '@/components/core/DocumentHead';
 
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl">
-      <DocumentHead 
-        title="About Us" 
-        description="Learn about InsightFlow AI's mission to democratize advanced trading intelligence and make institutional-grade tools accessible to individual traders."
-        ogImage="/images/about-us-banner.jpg"/>
-      
       <h1 className="text-4xl font-bold mb-8 text-white">About InsightFlow AI</h1>
       
-      <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8"/>
-        <CardContent className="pt-6"/>
-          <h2 className="text-2xl font-bold mb-4 text-cyan-400">Our Mission</Card>
+      <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8">
+        <CardContent className="pt-6">
+          <h2 className="text-2xl font-bold mb-4 text-cyan-400">Our Mission</h2>
           <p className="mb-6 text-gray-300">
             InsightFlow AI was founded with a clear mission: to democratize advanced trading intelligence 
             and make institutional-grade tools accessible to individual traders. We believe that by 
@@ -26,8 +20,8 @@ export default function AboutPage() {
           <p className="mb-6 text-gray-300">
             Our platform integrates multiple AI models including OpenAI, Groq, Gemini, FinGPT, 
             YOLOv8, and Whisper to provide comprehensive trading insights. Our infrastructure 
-            is built on Supabase for the backend with robust security through Row-Level Security 
-            policies, ensuring your data remains protected and personalized.
+            is built on modern cloud technology with robust security ensuring your data remains 
+            protected and personalized.
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-12">
@@ -59,25 +53,20 @@ export default function AboutPage() {
             alongside sophisticated technical analysis capabilities. This holistic approach helps traders 
             develop complete skills rather than just focusing on indicators or entry points.
           </p>
-      </p>
+        </CardContent>
+      </Card>
       
       <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-8 rounded-lg border border-blue-500/20 text-center">
-        <h2 className="text-2xl font-bold mb-4 text-white"></div></div>Join Our Community</div>
-        <p className="mb-6 text-gray-300">
-          Become part of a growing community of traders who use AI to enhance their trading decisions.
+        <h2 className="text-2xl font-bold mb-4 text-white">Join Our Community</h2>
+        <p className="text-gray-300 mb-6">
+          Be part of a growing community of traders who are transforming their approach to the markets 
+          with AI-powered insights and proven strategies.
         </p>
-        <a href="/register" 
-          className="inline-block px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-medium rounded-lg">
-          Start Your Journey
-        </a>
       </div>
     </div>
   );
 }
 
 export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+  component: AboutPage 
+};

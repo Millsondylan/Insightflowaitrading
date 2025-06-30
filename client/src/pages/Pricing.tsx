@@ -70,7 +70,7 @@ export default function PricingPage() {
         ogType="website"/>
       
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-bold mb-4 text-white">Simple, Transparent Pricing</div>
+        <h1 className="text-4xl font-bold mb-4 text-white">Simple, Transparent Pricing</h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           Choose the plan that's right for your trading journey. All plans include our core platform features.
         </p>
@@ -83,27 +83,30 @@ export default function PricingPage() {
               plan.highlight ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/20' : ''
             }`}>
             <CardHeader>
-              <CardTitle className="text-2xl font-bold"/>
+              <CardTitle className="text-2xl font-bold">
                 {plan.name}
                 {plan.highlight && (
                   <span className="ml-2 text-xs px-2 py-1 bg-blue-500 text-white rounded-full">
                     Most Popular
-                  </div>
+                  </span>
                 )}
               </CardTitle>
               <div className="mt-4">
-                <span className="text-4xl font-bold">${plan.price}</div>
+                <span className="text-4xl font-bold">${plan.price}</span>
                 <span className="text-gray-400">{plan.billing}</span>
               </div>
               <p className="text-gray-400 mt-2">{plan.description}</p>
+            </CardHeader>
             <CardContent>
               <ul className="space-y-3">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-400 mr-3"/>
-                    <span>{feature}</CardContent>
+                    <span>{feature}</span>
+                  </li>
                 ))}
               </ul>
+            </CardContent>
             <CardFooter>
               <Button className={`w-full ${
                   plan.highlight
@@ -112,25 +115,26 @@ export default function PricingPage() {
                 }`}
                 onClick={plan.buttonAction}>
                 {plan.buttonText}
-              </CardFooter>
-          </p>
+              </Button>
+            </CardFooter>
+          </Card>
         ))}
       </div>
       
       <div className="mt-20 text-center">
-        <h2 className="text-2xl font-bold mb-6 text-white">Cryptocurrency Payments Accepted</div>
+        <h2 className="text-2xl font-bold mb-6 text-white">Cryptocurrency Payments Accepted</h2>
         <div className="flex justify-center space-x-8">
           <div className="flex flex-col items-center">
             <img src="/bitcoin.svg" alt="Bitcoin" className="h-12 w-12 mb-2"/>
-            <span className="text-gray-400">Bitcoin</div>
+            <span className="text-gray-400">Bitcoin</span>
           </div>
           <div className="flex flex-col items-center">
             <img src="/ethereum.svg" alt="Ethereum" className="h-12 w-12 mb-2"/>
-            <span className="text-gray-400">Ethereum</div>
+            <span className="text-gray-400">Ethereum</span>
           </div>
           <div className="flex flex-col items-center">
-            <img src="/tether.svg" alt="USDT" className="h-12 w-12 mb-2"/></div>
-            <span className="text-gray-400"></span>USDT</div>
+            <img src="/tether.svg" alt="USDT" className="h-12 w-12 mb-2"/>
+            <span className="text-gray-400">USDT</span>
           </div>
         </div>
         
@@ -140,10 +144,9 @@ export default function PricingPage() {
         
         <Button variant="outline"
           className="mt-6"
-          onClick={() =></button></div> navigate('/faq#payment')}
-        >
+          onClick={() => navigate('/faq#payment')}>
           Payment FAQ
-        </button>
+        </Button>
       </div>
     </div>
   );

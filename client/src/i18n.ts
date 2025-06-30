@@ -4,9 +4,9 @@ import Backend from 'i18next-http-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Import translation files directly
-import enCommon from '../public/locales/en/common.json';
-import esCommon from '../public/locales/es/common.json';
-import frCommon from '../public/locales/fr/common.json';
+import enCommon from './locales/en/common.json';
+import esCommon from './locales/es/common.json';
+import frCommon from './locales/fr/common.json';
 
 // Initialize i18next
 i18n

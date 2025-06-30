@@ -19,15 +19,15 @@ export interface AgentSuggestion {
 
 // Initialize AI clients
 const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
   dangerouslyAllowBrowser: true,
 });
 
 const anthropic = new Anthropic({
-  apiKey: process.env.NEXT_PUBLIC_ANTHROPIC_API_KEY || '',
+  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || '',
 });
 
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY || '');
 
 // AI Model providers
 export type ModelProvider = 'openai' | 'anthropic' | 'google' | 'groq';
