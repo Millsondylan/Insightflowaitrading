@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect } from 'react';
 import { Strategy, VaultGridOptions } from './types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 
 interface VaultGridProps {
   initialOptions?: Partial<VaultGridOptions>;
@@ -40,16 +43,6 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
     setError(null);
     
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/strategies?${new URLSearchParams({
-      //   sortBy: options.sortBy,
-      //   sortDirection: options.sortDirection,
-      //   page: options.page.toString(),
-      //   pageSize: options.pageSize.toString(),
-      //   ...options.filter
-      // })}`);
-      // const data = await response.json();
-      
       // Mock response for development
       await new Promise(resolve => setTimeout(resolve, 800));
       
@@ -68,9 +61,11 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           i % 3 === 0 ? 'macd' : i % 3 === 1 ? 'rsi' : 'bollinger',
           i % 4 === 0 ? 'btc' : i % 4 === 1 ? 'eth' : i % 4 === 2 ? 'forex' : 'stocks'
         ],
+        risk: i % 3 === 0 ? 'Low' : i % 3 === 1 ? 'Medium' : 'High',
         performance: {
           winRate: 0.4 + Math.random() * 0.4,
           profitFactor: 1 + Math.random() * 2,
+          totalReturn: `${(Math.random() * 50 - 10).toFixed(1)}%`,
           maxDrawdown: Math.random() * 0.3,
           sharpeRatio: 0.5 + Math.random() * 2,
           totalTrades: 50 + Math.floor(Math.random() * 200),
@@ -127,30 +122,38 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
   
   const renderGridView = () => {
     return (
-      <Card className="w-full h-[600px] bg-black/80 border-zinc-800"/>
+      <Card className="w-full h-[600px] bg-black/80 border-zinc-800">
         <CardHeader>
-          <CardTitle className="text-white"/>Strategy Vault Grid</VaultGridOptions>
+          <CardTitle className="text-white">Strategy Vault Grid</CardTitle>
+        </CardHeader>
         <CardContent>
-          <ScrollArea className="h-[500px] w-full"/>
+          <ScrollArea className="h-[500px] w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {strategies.map((strategy) => (
-                <Card key={strategy.id} className="bg-zinc-900 border-zinc-700 text-white"/>
-                  <CardContent className="p-4"/>
+                <Card key={strategy.id} className="bg-zinc-900 border-zinc-700 text-white">
+                  <CardContent className="p-4">
                     <div className="flex justify-between items-center">
-                      <h3 className="text-lg font-bold">{strategy.name}</VaultGridOptions>
+                      <h3 className="text-lg font-bold">{strategy.name}</h3>
                       <Badge variant="secondary">{strategy.risk}</Badge>
                     </div>
                     <div className="mt-2 text-green-400 font-semibold">
-                      Performance: {strategy.performance}
+                      Performance: {strategy.performance.totalReturn}
                     </div>
                     <div className="mt-4 flex space-x-2">
-                      <Button variant="outline" size="sm" className="text-white" onClick={() => onStrategySelect(strategy)}>View</div>
-                      <Button variant="destructive" size="sm"/>Delete</button>
+                      <Button variant="outline" size="sm" className="text-white" onClick={() => onStrategySelect(strategy)}>
+                        View
+                      </Button>
+                      <Button variant="destructive" size="sm">
+                        Delete
+                      </Button>
                     </div>
+                  </CardContent>
                 </Card>
               ))}
             </div>
+          </ScrollArea>
         </CardContent>
+      </Card>
     );
   };
   
@@ -159,50 +162,48 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-border-primary">
-              <th className="px-4 py-3 text-left">Name</div>
+            <tr className="border-b border-zinc-700">
+              <th className="px-4 py-3 text-left">Name</th>
               <th className="px-4 py-3 text-left">Author</th>
               <th className="px-4 py-3 text-left">Win Rate</th>
               <th className="px-4 py-3 text-left">Profit Factor</th>
               <th className="px-4 py-3 text-left">Updated</th>
               <th className="px-4 py-3 text-left">Tags</th>
-          </th>
+            </tr>
+          </thead>
           <tbody>
             {strategies.map(strategy => (
               <tr
                 key={strategy.id}
-                className="border-b border-border-primary hover:bg-background-interactive cursor-pointer"
+                className="border-b border-zinc-700 hover:bg-zinc-800 cursor-pointer"
                 onClick={() => onStrategySelect(strategy)}
               >
                 <td className="px-4 py-3">
                   <div className="flex items-center">
-                    <span className="font-medium">{strategy.name}</tbody>
+                    <span className="font-medium">{strategy.name}</span>
                     {strategy.isPublished && (
-                      <span className="ml-2 px-2 py-0.5 bg-status-success/20 text-status-success text-xs rounded">
+                      <span className="ml-2 px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded">
                         Published
                       </span>
                     )}
                   </div>
+                </td>
                 <td className="px-4 py-3">{strategy.author}</td>
                 <td className="px-4 py-3">
-                  {strategy.performance ? (
-                    <span className={
-                      strategy.performance.winRate> 0.5 ? 'text-status-success' : 
-                      strategy.performance.winRate > 0.4 ? 'text-status-warning' : 'text-status-error'
-                    }>
-                      {(strategy.performance.winRate * 100).toFixed(1)}%
-                    </td>
-                  ) : '-'}
+                  <span className={
+                    strategy.performance.winRate > 0.5 ? 'text-green-400' : 
+                    strategy.performance.winRate > 0.4 ? 'text-yellow-400' : 'text-red-400'
+                  }>
+                    {(strategy.performance.winRate * 100).toFixed(1)}%
+                  </span>
                 </td>
                 <td className="px-4 py-3">
-                  {strategy.performance ? (
-                    <span className={
-                      strategy.performance.profitFactor/> 2 ? 'text-status-success' : 
-                      strategy.performance.profitFactor > 1.5 ? 'text-status-warning' : 'text-text-primary'
-                    }>
-                      {strategy.performance.profitFactor.toFixed(2)}
-                    </td>
-                  ) : '-'}
+                  <span className={
+                    strategy.performance.profitFactor > 2 ? 'text-green-400' : 
+                    strategy.performance.profitFactor > 1.5 ? 'text-yellow-400' : 'text-white'
+                  }>
+                    {strategy.performance.profitFactor.toFixed(2)}
+                  </span>
                 </td>
                 <td className="px-4 py-3">
                   {new Date(strategy.updatedAt).toLocaleDateString()}
@@ -210,14 +211,16 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
                 <td className="px-4 py-3">
                   <div className="flex flex-wrap gap-1">
                     {strategy.tags.map((tag, i) => (
-                      <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
+                      <span key={i} className="px-2 py-0.5 text-xs bg-zinc-700 rounded-full">
                         {tag}
-                      </td>
+                      </span>
                     ))}
                   </div>
+                </td>
               </tr>
             ))}
           </tbody>
+        </table>
       </div>
     );
   };
@@ -227,93 +230,111 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
       {/* Toolbar */}
       <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
         <div className="flex items-center space-x-2">
-          <Button className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          <Button 
+            className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-blue-600 text-white' : 'bg-zinc-800'}`}
             onClick={() => handleViewChange('grid')}
           >
             Grid
-          </div>
-          <Button className={`px-3 py-1 rounded ${options.view === 'list' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          </Button>
+          <Button 
+            className={`px-3 py-1 rounded ${options.view === 'list' ? 'bg-blue-600 text-white' : 'bg-zinc-800'}`}
             onClick={() => handleViewChange('list')}
           >
             List
-          </button>
-          <Button className={`px-3 py-1 rounded ${options.view === 'compact' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          </Button>
+          <Button 
+            className={`px-3 py-1 rounded ${options.view === 'compact' ? 'bg-blue-600 text-white' : 'bg-zinc-800'}`}
             onClick={() => handleViewChange('compact')}
           >
             Compact
-          </button>
+          </Button>
         </div>
         
         <div className="flex items-center space-x-2">
-          <Select
-            className="p-2 bg-background-secondary border border-border-primary rounded"
-            value={options.sortBy}
-            onChange={(e) => handleSortChange(e.target.value as VaultGridOptions['sortBy'])}
-          >
-            <Option value="name">Name</div>
-            <Option value="updatedAt">Last Updated</Option>
-            <Option value="performance.winRate">Win Rate</Option>
-            <Option value="performance.profitFactor">Profit Factor</Option>
-          
-          <Button className="p-2 bg-background-secondary border border-border-primary rounded"
+          <Select value={options.sortBy} onValueChange={(value) => handleSortChange(value as VaultGridOptions['sortBy'])}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="name">Name</SelectItem>
+              <SelectItem value="updatedAt">Last Updated</SelectItem>
+              <SelectItem value="performance.winRate">Win Rate</SelectItem>
+              <SelectItem value="performance.profitFactor">Profit Factor</SelectItem>
+            </SelectContent>
+          </Select>
+          <Button
             onClick={() => setOptions(prev => ({
               ...prev,
               sortDirection: prev.sortDirection === 'asc' ? 'desc' : 'asc'
             }))}
           >
             {options.sortDirection === 'asc' ? '↑' : '↓'}
-          </Option>
+          </Button>
         </div>
       </div>
       
       {/* Filter Section */}
-      <div className="mb-6 p-4 bg-background-secondary rounded-lg">
+      <div className="mb-6 p-4 bg-zinc-900 rounded-lg">
         <div className="flex flex-wrap gap-4">
           <div>
-            <Label className="block text-sm mb-1">Tags</div>
+            <Label className="block text-sm mb-1">Tags</Label>
             <Select
-              className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.tags?.[0] || ''}
-              onChange={(e) => handleFilterChange('tags', e.target.value ? [e.target.value] : undefined)}
+              onValueChange={(value) => handleFilterChange('tags', value ? [value] : undefined)}
             >
-              <Option value="">All Tags</Select>
-              {availableTags.map(tag => (
-                <Option key={tag} value={tag}>{tag}</Option>
-              ))}
+              <SelectTrigger>
+                <SelectValue placeholder="All Tags" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="">All Tags</SelectItem>
+                {availableTags.map(tag => (
+                  <SelectItem key={tag} value={tag}>{tag}</SelectItem>
+                ))}
+              </SelectContent>
             </Select>
           </div>
           
           <div>
-            <Label className="block text-sm mb-1">Min Win Rate</div>
+            <Label className="block text-sm mb-1">Min Win Rate</Label>
             <Select
-              className="p-2 bg-background-primary border border-border-primary rounded"
-              value={options.filter.minWinRate || ''}
-              onChange={(e) => handleFilterChange('minWinRate', e.target.value ? Number(e.target.value) : undefined)}
+              value={options.filter.minWinRate?.toString() || ''}
+              onValueChange={(value) => handleFilterChange('minWinRate', value ? Number(value) : undefined)}
             >
-              <Option value="">Any</Select>
-              <Option value="0.4">40%+</Option>
-              <Option value="0.5">50%+</Option>
-              <Option value="0.6">60%+</Option>
-              <Option value="0.7">70%+</Option>
-          </Option>
+              <SelectTrigger>
+                <SelectValue placeholder="Any" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="">Any</SelectItem>
+                <SelectItem value="0.4">40%+</SelectItem>
+                <SelectItem value="0.5">50%+</SelectItem>
+                <SelectItem value="0.6">60%+</SelectItem>
+                <SelectItem value="0.7">70%+</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           
           <div>
-            <Label className="block text-sm mb-1">Published</div>
+            <Label className="block text-sm mb-1">Published</Label>
             <Select
-              className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.isPublished === undefined ? '' : options.filter.isPublished ? 'true' : 'false'}
-              onChange={(e) => handleFilterChange('isPublished', e.target.value === '' ? undefined : e.target.value === 'true')}
+              onValueChange={(value) => handleFilterChange('isPublished', value === '' ? undefined : value === 'true')}
             >
-              <Option value="">All</Select>
-              <Option value="true">Published</Option>
-              <Option value="false">Drafts</Option>
-          </Option>
+              <SelectTrigger>
+                <SelectValue placeholder="All" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="">All</SelectItem>
+                <SelectItem value="true">Published</SelectItem>
+                <SelectItem value="false">Drafts</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
           
-          <Button className="self-end px-4 py-2 bg-background-tertiary rounded"
+          <Button
             onClick={() => setOptions(prev => ({ ...prev, filter: {} }))}
           >
             Clear Filters
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -321,20 +342,21 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
       {loading ? (
         <div className="p-12 text-center">
           <div className="text-xl font-semibold mb-2">Loading strategies...</div>
-          <div className="text-text-muted">Please wait while we fetch your strategies</div>
+          <div className="text-gray-400">Please wait while we fetch your strategies</div>
         </div>
       ) : error ? (
-        <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
+        <div className="p-6 bg-red-500/20 text-red-400 rounded-lg">
           {error}
         </div>
       ) : strategies.length === 0 ? (
         <div className="p-12 text-center">
           <div className="text-xl font-semibold mb-2">No strategies found</div>
-          <div className="text-text-muted mb-6">Create your first strategy to get started</div>
-          <Button className="px-4 py-2 bg-brand-primary text-white rounded-md"
-            onClick={onCreateStrategy}>
+          <div className="text-gray-400 mb-6">Create your first strategy to get started</div>
+          <Button
+            onClick={onCreateStrategy}
+          >
             Create Strategy
-          </button>
+          </Button>
         </div>
       ) : (
         <>
@@ -349,34 +371,33 @@ export const VaultGrid: React.FC<VaultGridProps> = ({
           {/* Pagination */}
           <div className="flex justify-center mt-6">
             <div className="flex space-x-1">
-              <Button className="px-3 py-1 rounded bg-background-secondary disabled:opacity-50"
+              <Button
                 disabled={options.page === 1}
                 onClick={() => handlePageChange(options.page - 1)}
               >
                 Prev
-              </div>
+              </Button>
               
               {[...Array(3)].map((_, i) => {
                 const pageNum = options.page - 1 + i;
                 if (pageNum < 1) return null;
                 
                 return (
-                  <Button key={pageNum}
-                    className={`px-3 py-1 rounded ${
-                      pageNum === options.page ? 'bg-brand-primary text-white' : 'bg-background-secondary'
-                    }`}
+                  <Button
+                    key={pageNum}
+                    className={pageNum === options.page ? 'bg-blue-600 text-white' : 'bg-zinc-800'}
                     onClick={() => handlePageChange(pageNum)}
                   >
                     {pageNum}
-                  </button>
+                  </Button>
                 );
               })}
               
-              <Button className="px-3 py-1 rounded bg-background-secondary"
+              <Button
                 onClick={() => handlePageChange(options.page + 1)}
               >
                 Next
-              </button>
+              </Button>
             </div>
           </div>
         </>
@@ -390,4 +411,4 @@ export const lovable = {
   tables: ['strategies'],
   aiBlocks: ['strategyAnalysis'],
   functions: ['getStrategies', 'filterStrategies']
-}; 
+};
