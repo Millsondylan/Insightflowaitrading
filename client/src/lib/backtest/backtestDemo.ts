@@ -1,3 +1,4 @@
+
 import { 
   runBacktest, 
   calculateMaxDrawdown, 
@@ -166,7 +167,7 @@ export function runBacktestDemo() {
 }
 
 // Export function to format backtest results for display
-export function formatBacktestResults(result: unknown, candles: Candle[]) {
+export function formatBacktestResults(result: any, candles: Candle[]) {
   const stats = getTradeStatistics(result);
   const maxDrawdown = calculateMaxDrawdown(result.trades);
   const sharpeRatio = calculateSharpeRatio(result.trades);
@@ -187,7 +188,7 @@ export function formatBacktestResults(result: unknown, candles: Candle[]) {
       maxConsecutiveLosses: stats.maxConsecutiveLosses,
       avgTradeDuration: `${stats.avgTradeDuration.toFixed(1)} candles`
     },
-    trades: result.trades.map((trade: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => ({
+    trades: result.trades.map((trade: any) => ({
       outcome: trade.outcome,
       entry: {
         price: trade.entryPrice,
@@ -201,4 +202,4 @@ export function formatBacktestResults(result: unknown, candles: Candle[]) {
       duration: trade.exitIndex - trade.entryIndex
     }))
   };
-} 
+}

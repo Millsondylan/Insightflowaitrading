@@ -1,3 +1,4 @@
+
 import { RealtimeChannel } from '@supabase/supabase-js';
 import { OpenAI } from 'openai';
 import { supabase } from '@/lib/db/supabase-client';
@@ -62,7 +63,7 @@ export class MarketEventResponder {
       .subscribe();
   }
   
-  private async handleMarketEvent(payload: unknown) {
+  private async handleMarketEvent(payload: any) {
     if (!this.isActive) return;
     
     try {
@@ -112,9 +113,9 @@ export class MarketEventResponder {
   }
   
   private async generateResponse(
-    event: MarketEvent, 
-    positions: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[],
-    strategies: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]
+    event: MarketEvent,
+    positions: any[],
+    strategies: any[]
   ): Promise<string> {
     const messages = [
       { 
@@ -184,4 +185,4 @@ Generate a brief, insightful response to this market event.`
         return `${symbol} Alert`;
     }
   }
-} 
+}
