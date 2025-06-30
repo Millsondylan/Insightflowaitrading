@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { BacktestStats } from '@/lib/backtest/runBacktest';
 import BlockReveal from './BlockReveal';
@@ -63,7 +64,7 @@ const KPICard = ({
   return (
     <div className={`kpi-card ${type}`}>
       <div className="flex justify-between items-center mb-2">
-        <span className="kpi-label">{label}</div>
+        <span className="kpi-label">{label}</span>
         <span className="text-xl">{icon}</span>
       </div>
       <div className={`kpi-value ${type}`}>
@@ -137,8 +138,9 @@ const KPICards = ({ stats }: KPICardsProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
-        <blockReveal key={card.label} delay={index * 0.1}>
-          <KPICard {...card}/></div></div>
+        <BlockReveal key={card.label} delay={index * 0.1}>
+          <KPICard {...card}/>
+        </BlockReveal>
       ))}
     </div>
   );
@@ -151,4 +153,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

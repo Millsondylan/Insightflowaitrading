@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, TrendingUp, Scan, Trophy } from 'lucide-react';
@@ -67,35 +68,36 @@ export const Navbar = () => {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/" className="flex items-center"/>
+          <Link to="/" className="flex items-center">
             <img src="/placeholder.svg" alt="Logo" className="h-8 w-8 mr-2"/>
-            <span className="text-lg font-bold">InsightFlow</nav>
-        </nav>
+            <span className="text-lg font-bold">InsightFlow</span>
+          </Link>
+        </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6 items-center">
           {navigationItems.map((route) => (
-            <Link key={route.href} to={route.href} className="nav-link font-medium"/>
+            <Link key={route.href} to={route.href} className="nav-link font-medium">
               {route.label}
-            </div>
+            </Link>
           ))}
         </div>
         
         <div className="hidden md:flex items-center space-x-4">
           {!isAuthenticated ? (
             <>
-              <Link to="/auth" className="nav-link"/>Log In</div>
-              <Link to="/register" className="btn-primary"/>Sign Up</Link>
+              <Link to="/auth" className="nav-link">Log In</Link>
+              <Link to="/register" className="btn-primary">Sign Up</Link>
             </>
           ) : (
             <>
-              <Link to="/profile" className="nav-link"/>Profile</Link>
+              <Link to="/profile" className="nav-link">Profile</Link>
               <Button className="btn-secondary" onClick={() => {
                 localStorage.removeItem('authToken');
                 setIsAuthenticated(false);
               }}>
                 Logout
-              </button>
+              </Button>
             </>
           )}
         </div>
@@ -104,7 +106,7 @@ export const Navbar = () => {
         <div className="md:hidden">
           <Button onClick={toggleMobileMenu} className="text-gray-600">
             {isMobileMenuOpen ? <X /> : <Menu />}
-          </div>
+          </Button>
         </div>
       </div>
       
@@ -116,25 +118,26 @@ export const Navbar = () => {
             className="mobile-nav-link"
             onClick={toggleMobileMenu}>
             {route.label}
-          </div>
+          </Link>
         ))}
         
         <div className="mobile-auth">
           {!isAuthenticated ? (
             <>
-              <Link to="/auth" className="mobile-nav-link" onClick={toggleMobileMenu}/>
+              <Link to="/auth" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 Log In
-              </div>
-              <Link to="/register" className="btn-primary w-full text-center" onClick={toggleMobileMenu}/>
+              </Link>
+              <Link to="/register" className="btn-primary w-full text-center" onClick={toggleMobileMenu}>
                 Sign Up
               </Link>
             </>
           ) : (
             <>
-              <Link to="/profile" className="mobile-nav-link" onClick={toggleMobileMenu}/>
+              <Link to="/profile" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 Profile
               </Link>
-              <Button                 className="btn-secondary w-full"
+              <Button                 
+                className="btn-secondary w-full"
                 onClick={() => {
                   localStorage.removeItem('authToken');
                   setIsAuthenticated(false);
@@ -142,11 +145,12 @@ export const Navbar = () => {
                 }}
               >
                 Logout
-              </button>
+              </Button>
             </>
           )}
         </div>
       </div>
+    </nav>
   );
 };
 
@@ -157,4 +161,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
