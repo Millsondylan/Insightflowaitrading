@@ -71,74 +71,74 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
   };
   
   return (
-    <Div className="lovable-preview">
-      <Div className="flex justify-between items-center mb-4">
-        <H2 className="text-xl font-bold">Visual Editor</LovablePreviewProps>
-        <Div className="flex space-x-2">
+    <div className="lovable-preview">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-bold">Visual Editor</LovablePreviewProps>
+        <div className="flex space-x-2">
           <Button variant="outline"
-            onClick={() = /> setIsEditing(false)}
+            onClick={() => setIsEditing(false)}
             disabled={!isEditing}
           >
             Cancel
-          </Div>
+          </div>
           <Button onClick={applyChanges}
             disabled={!isEditing}>
             Apply Changes
-          </Button>
-        </Div>
-      </Div>
+          </button>
+        </div>
+      </div>
       
-      <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Div className="md:col-span-2">
-          <Card className="h-full" />
-            <Div className="p-4 h-full flex items-center justify-center border-2 border-dashed border-border-primary rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="md:col-span-2">
+          <Card className="h-full"/>
+            <div className="p-4 h-full flex items-center justify-center border-2 border-dashed border-border-primary rounded-lg">
               {preview ? (
-                <Div className="w-full h-full relative">
-                  <Div 
+                <div className="w-full h-full relative">
+                  <div 
                     className="absolute inset-0 bg-transparent cursor-pointer z-10"
                     onClick={() => handleComponentSelect('sample-component-1')}
                   />
-                  <Div className="preview-content">
+                  <div className="preview-content">
                     {/* This would be replaced with actual rendered preview */}
-                    <Div className="p-4 bg-background-secondary rounded">
-                      <H3 className="text-lg font-medium">Preview Component</Div>
-                      <P>Click to edit this component</P>
-                    </Div>
-                  </Div>
-                </Div>
+                    <div className="p-4 bg-background-secondary rounded">
+                      <h3 className="text-lg font-medium">Preview Component</div>
+                      <p>Click to edit this component</p>
+                    </div>
+                  </div>
+                </div>
               ) : (
-                <Div className="text-center text-text-muted">
+                <div className="text-center text-text-muted">
                   No preview available
-                </Div>
+                </div>
               )}
             </div />
-        </Div>
+        </div>
         
-        <Div>
-          <Card className="h-full" />
-            <Div className="p-4">
+        <div>
+          <Card className="h-full"/>
+            <div className="p-4">
               {isEditing ? (
-                <Div>
-                  <H3 className="text-lg font-medium mb-4">Edit Component</Div>
+                <div>
+                  <h3 className="text-lg font-medium mb-4">Edit Component</div>
                   
-                  <Div className="space-y-4">
-                    <Div>
-                      <Label className="block text-sm font-medium mb-1">Text Content</Div>
+                  <div className="space-y-4">
+                    <div>
+                      <Label className="block text-sm font-medium mb-1">Text Content</div>
                       <Input value={editableProperties.textContent}
                         onChange={(e) => handlePropertyChange('textContent', e.target.value)}
                         className="w-full"
                       / />
                     
-                    <Div>
+                    <div>
                       <Label className="block text-sm font-medium mb-1">CSS Classes</Input>
                       <Input value={editableProperties.className}
                         onChange={(e) => handlePropertyChange('className', e.target.value)}
                         className="w-full"
                       / />
                     
-                    <Div>
+                    <div>
                       <Label className="block text-sm font-medium mb-2">Text Color</Input>
-                      <Div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2">
                         <Input type="color"
                           value={editableProperties.style.color}
                           onChange={(e) => handleStyleChange('color', e.target.value)}
@@ -148,12 +148,12 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                           onChange={(e) => handleStyleChange('color', e.target.value)}
                           className="flex-1"
                         />
-                      </Div>
-                    </Div>
+                      </div>
+                    </div>
                     
-                    <Div>
-                      <Label className="block text-sm font-medium mb-1">Font Size</Div>
-                      <Div className="flex items-center space-x-2">
+                    <div>
+                      <Label className="block text-sm font-medium mb-1">Font Size</div>
+                      <div className="flex items-center space-x-2">
                         <Input type="number"
                           value={parseInt(editableProperties.style.fontSize)}
                           onChange={(e) => handleStyleChange('fontSize', `${e.target.value}px`)}
@@ -161,7 +161,7 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                           min={8}
                           max={72}
                         />
-                        <Span>px</Div>
+                        <span>px</div>
                         <Input type="range"
                           value={parseInt(editableProperties.style.fontSize)}
                           onChange={(e) => handleStyleChange('fontSize', `${e.target.value}px`)}
@@ -171,8 +171,8 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                         / />
                     </Input>
                     
-                    <Div>
-                      <Label className="block text-sm font-medium mb-1"></Div>Font Weight</Div>
+                    <div>
+                      <Label className="block text-sm font-medium mb-1"></div>Font Weight</div>
                       <Select
                         value={editableProperties.style.fontWeight}
                         onChange={(e) => handleStyleChange('fontWeight', e.target.value)}
@@ -182,22 +182,22 @@ export const LovablePreview: React.FC<LovablePreviewProps> = ({
                         <Option value="bold">Bold</Option>
                         <Option value="lighter">Light</Option />
                     </Option>
-                  </Div>
-                </Div>
+                  </div>
+                </div>
               ) : (
-                <Div className="text-center text-text-muted h-full flex items-center justify-center">
-                  <Div>
-                    <P className="mb-4"></Div>Select a component to edit</Div>
-                    <Button onClick={() =></Button> handleComponentSelect('sample-component-1')}>
+                <div className="text-center text-text-muted h-full flex items-center justify-center">
+                  <div>
+                    <p className="mb-4"></div>Select a component to edit</div>
+                    <Button onClick={() =></button> handleComponentSelect('sample-component-1')}>
                       Select Component
-                    </Button>
-                  </Div>
-                </Div>
+                    </button>
+                  </div>
+                </div>
               )}
             </div />
-        </Div>
-      </Div>
-    </Div>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -39,7 +39,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   };
   
   // Handle form field changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement />) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement/>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -152,30 +152,30 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   const fileInputRef = React.createRef<HTMLInputElement>();
   
   return (
-    <Card className="w-full max-w-2xl mx-auto journal-form-card" />
+    <Card className="w-full max-w-2xl mx-auto journal-form-card">
       <CardHeader>
-        <CardTitle className="text-xl font-bold" />New Trade Journal Entry</JournalFormProps />
+        <CardTitle className="text-xl font-bold">New Trade Journal Entry</CardTitle>
+      </CardHeader>
       
       <CardContent>
-        <Form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
-          <Div className="space-y-2">
-            <Label htmlFor="title">Trade Title</JournalFormProps>
+          <div className="space-y-2">
+            <Label htmlFor="title">Trade Title</Label>
             <Input
               id="title"
               name="title"
               value={formData.title}
               onChange={handleChange}
               placeholder="E.g., ETH Breakout Trade"
-              className={cn(errors.title && "border-red-500")}
-            />
-            {errors.title && <P className="text-sm text-red-500">{errors.title}</Input>}
-          </Div>
+              className={cn(errors.title && "border-red-500")}/>
+            {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
+          </div>
           
           {/* Pair and Timeframe - 2 columns */}
-          <Div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Div className="space-y-2">
-              <Label htmlFor="pair">Instrument/Pair</Div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="pair">Instrument/Pair</Label>
               <Input
                 id="pair"
                 name="pair"
@@ -184,11 +184,11 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="E.g., ETH/USD"
                 className={cn(errors.pair && "border-red-500")}
               />
-              {errors.pair && <P className="text-sm text-red-500">{errors.pair}</Input>}
-            </Div>
+              {errors.pair && <p className="text-sm text-red-500">{errors.pair}</p>}
+            </div>
             
-            <Div className="space-y-2">
-              <Label htmlFor="timeframe">Timeframe</Div>
+            <div className="space-y-2">
+              <Label htmlFor="timeframe">Timeframe</Label>
               <Input
                 id="timeframe"
                 name="timeframe"
@@ -197,14 +197,14 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="E.g., 4H"
                 className={cn(errors.timeframe && "border-red-500")}
               />
-              {errors.timeframe && <P className="text-sm text-red-500">{errors.timeframe}</Input>}
-            </Div>
-          </Div>
+              {errors.timeframe && <p className="text-sm text-red-500">{errors.timeframe}</p>}
+            </div>
+          </div>
           
           {/* Entry and Exit Prices - 2 columns */}
-          <Div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Div className="space-y-2">
-              <Label htmlFor="entryPrice">Entry Price</Div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="entryPrice">Entry Price</Label>
               <Input
                 id="entryPrice"
                 name="entryPrice"
@@ -214,11 +214,11 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="0.00"
                 className={cn(errors.entryPrice && "border-red-500")}
               />
-              {errors.entryPrice && <P className="text-sm text-red-500">{errors.entryPrice}</Input>}
-            </Div>
+              {errors.entryPrice && <p className="text-sm text-red-500">{errors.entryPrice}</p>}
+            </div>
             
-            <Div className="space-y-2">
-              <Label htmlFor="exitPrice">Exit Price</Div>
+            <div className="space-y-2">
+              <Label htmlFor="exitPrice">Exit Price</Label>
               <Input
                 id="exitPrice"
                 name="exitPrice"
@@ -228,13 +228,13 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 placeholder="0.00"
                 className={cn(errors.exitPrice && "border-red-500")}
               />
-              {errors.exitPrice && <P className="text-sm text-red-500">{errors.exitPrice}</Input>}
-            </Div>
-          </Div>
+              {errors.exitPrice && <p className="text-sm text-red-500">{errors.exitPrice}</p>}
+            </div>
+          </div>
           
           {/* Reason/Notes */}
-          <Div className="space-y-2">
-            <Label htmlFor="reason">Reason for Trade</Div>
+          <div className="space-y-2">
+            <Label htmlFor="reason">Reason for Trade</Label>
             <Textarea
               id="reason"
               name="reason"
@@ -242,79 +242,77 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
               onChange={handleChange}
               placeholder="Describe your trade setup, strategy, and observations..."
               rows={4}
-              className={cn(errors.reason && "border-red-500")}
-            />
-            {errors.reason && <P className="text-sm text-red-500">{errors.reason}</Textarea>}
-          </Div>
+              className={cn(errors.reason && "border-red-500")}/>
+            {errors.reason && <p className="text-sm text-red-500">{errors.reason}</p>}
+          </div>
           
           {/* Sentiment Toggle */}
-          <Div className="space-y-2">
-            <Label>Trade Sentiment</Div>
-            <Div className="flex items-center space-x-2">
+          <div className="space-y-2">
+            <Label>Trade Sentiment</Label>
+            <div className="flex items-center space-x-2">
               <Button type="button"
                 variant={formData.sentiment === "Bullish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
                 className={cn(
                   "w-28",
                   formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
-                )}
- >
+                )}>
                 🟢 Bullish
-              </Div>
+              </Button>
               <Button type="button"
                 variant={formData.sentiment === "Bearish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
                 className={cn(
                   "w-28",
                   formData.sentiment === "Bearish" && "bg-red-600 hover:bg-red-700"
-                )}
-              />
+                )}>
                 🔴 Bearish
               </Button>
-            </Div>
-          </Div>
+            </div>
+          </div>
           
           {/* Tags */}
-          <Div className="space-y-2">
-            <Label htmlFor="tags">Tags (comma-separated)</Div>
+          <div className="space-y-2">
+            <Label htmlFor="tags">Tags (comma-separated)</Label>
             <Input
               id="tags"
               name="tags"
               value={formData.tags}
               onChange={handleChange}
               placeholder="E.g., breakout, trend-following, support"
-            / />
+            />
+          </div>
           
           {/* Chart Upload */}
-          <Div className="space-y-2">
-            <Label>Attach Chart Image (Optional)</Input>
-            <Div 
+          <div className="space-y-2">
+            <Label>Attach Chart Image (Optional)</Label>
+            <div 
               className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors file-upload-zone"
               onClick={() => fileInputRef.current?.click()}
             >
               {formData.chartFile ? (
-                <Div className="flex flex-col items-center">
-                  <P className="text-sm font-medium">{formData.chartFile.name}</Div>
-                  <P className="text-xs text-gray-400">
+                <div className="flex flex-col items-center">
+                  <p className="text-sm font-medium">{formData.chartFile.name}</p>
+                  <p className="text-xs text-gray-400">
                     {(formData.chartFile.size / 1024 / 1024).toFixed(2)} MB
-                  </P>
+                  </p>
                   <Button type="button" 
                     variant="ghost" 
                     size="sm"
-                    onClick={(e) = /> {
+                    onClick={(e) => {
                       e.stopPropagation();
                       setFormData(prev => ({ ...prev, chartFile: null }));
                     }}
                   >
                     Remove
                   </Button>
-                </Div>
+                </div>
               ) : (
-                <Div className="flex flex-col items-center">
-                  <P>Drag and drop your chart image here,</Div>
-                  <P>or click to select</P>
-                  <P className="text-xs text-gray-400 mt-2">PNG, JPG (max 5MB)</P>
-                </Div>
+                <div className="flex flex-col items-center">
+                  <p>Drag and drop your chart image here,</p>
+                  <p>or click to select</p>
+                  <p className="text-xs text-gray-400 mt-2">PNG, JPG (max 5MB)</p>
+                </div>
               )}
               <Input
                 ref={fileInputRef}
@@ -322,9 +320,11 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                 className="hidden"
                 accept="image/png,image/jpeg"
                 onChange={handleFileChange}
-              / />
-          </div />
-      </Input>
+              />
+            </div>
+          </div>
+        </form>
+      </CardContent>
       
       <CardFooter>
         <Button type="button" 
@@ -333,11 +333,11 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           className={cn(
             "w-full font-medium text-lg py-6",
             formData.sentiment === "Bullish" ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
-          )}
-  /></CardFooter /></CardFooter />
+          )}>
           {isSubmitting ? "Saving..." : "Save Entry"}
-        </CardFooter />
-    </CardFooter>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

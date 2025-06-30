@@ -23,40 +23,40 @@ export default function DownloadPage() {
     <>
       <Helmet>
         <title>{t('download.title')} | InsightFlow AI Trading</title>
-        <meta name="description" content={t('download.description')} / />
+        <meta name="description" content={t('download.description')} //>
       
-      <Div className="container mx-auto px-4 py-12">
-        <Div className="max-w-4xl mx-auto">
-          <Div className="text-center mb-12">
-            <H1 className="text-4xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500">
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-extrabold tracking-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500">
               {t('download.title')}
             </Helmet>
-            <P className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
               {t('download.subtitle')}
-            </P>
-          </Div>
+            </p>
+          </div>
           
-          <Tabs defaultValue="mobile" className="w-full" />
-            <TabsList className="grid grid-cols-3 mb-8" />
-              <TabsTrigger value="mobile" />
-                <Phone className="mr-2 h-4 w-4" />
-                <Span>{t('download.android')}</Tabs />
-              <TabsTrigger value="desktop" />
-                <Laptop className="mr-2 h-4 w-4" />
-                <Span>{t('download.desktop')}</TabsTrigger />
-              <TabsTrigger value="pwa" />
-                <TabletSmartphone className="mr-2 h-4 w-4" />
-                <Span>{t('download.pwa')}</TabsTrigger />
+          <Tabs defaultValue="mobile" className="w-full"/>
+            <TabsList className="grid grid-cols-3 mb-8"/>
+              <TabsTrigger value="mobile"/>
+                <Phone className="mr-2 h-4 w-4"/>
+                <span>{t('download.android')}</Tabs>
+              <TabsTrigger value="desktop"/>
+                <Laptop className="mr-2 h-4 w-4"/>
+                <span>{t('download.desktop')}</TabsTrigger>
+              <TabsTrigger value="pwa"/>
+                <TabletSmartphone className="mr-2 h-4 w-4"/>
+                <span>{t('download.pwa')}</TabsTrigger>
             </Tabs>
             
             {/* Android Tab */}
-            <TabsContent value="mobile" />
-              <Card className="border-white/10 bg-black/20 backdrop-blur-sm" />
+            <TabsContent value="mobile"/>
+              <Card className="border-white/10 bg-black/20 backdrop-blur-sm"/>
                 <CardHeader>
                   <CardTitle>{t('download.android')}</TabsContent>
-                  <CardDescription>{t('download.androidDescription')}</CardDescription />
-                <CardContent className="flex flex-col items-center" />
-                  <Div className="bg-white p-4 rounded-lg mb-6">
+                  <CardDescription>{t('download.androidDescription')}</CardDescription>
+                <CardContent className="flex flex-col items-center"/>
+                  <div className="bg-white p-4 rounded-lg mb-6">
                     <QRCodeReact 
                       value={downloadUrls.android}
                       size={200}
@@ -64,27 +64,27 @@ export default function DownloadPage() {
                       fgColor="#000000"
                       level="H"
                       includeMargin
-                    / />
-                  <Div className="text-sm text-center mb-6 text-gray-300">
+                    //>
+                  <div className="text-sm text-center mb-6 text-gray-300">
                     {t('download.scanQRCode')}
                   </CardDescription>
-                  <Button className="w-full sm:w-auto bg-gradient-to-r from-green-600 to-emerald-600 text-white" />
-                    <Download className="mr-2 h-4 w-4" />
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-green-600 to-emerald-600 text-white"/>
+                    <Download className="mr-2 h-4 w-4"/>
                     {t('download.downloadAndroid')}
-                  </button />
-                <CardFooter className="flex flex-col text-sm text-gray-400" />
-                  <P className="mb-2">{t('download.requirements')}: Android 7.0+</Button>
-                  <P>{t('download.version')}: 1.0.0</p />
-              </Card />
+                  </button>
+                <CardFooter className="flex flex-col text-sm text-gray-400"/>
+                  <p className="mb-2">{t('download.requirements')}: Android 7.0+</button>
+                  <p>{t('download.version')}: 1.0.0</p>
+              </Card>
             
             {/* Desktop Tab */}
-            <TabsContent value="desktop" />
-              <Card className="border-white/10 bg-black/20 backdrop-blur-sm" />
+            <TabsContent value="desktop"/>
+              <Card className="border-white/10 bg-black/20 backdrop-blur-sm"/>
                 <CardHeader>
-                  <CardTitle>{t('download.desktop')}</P>
-                  <CardDescription>{t('download.desktopDescription')}</CardDescription />
-                <CardContent className="flex flex-col items-center" />
-                  <Div className="bg-white p-4 rounded-lg mb-6">
+                  <CardTitle>{t('download.desktop')}</p>
+                  <CardDescription>{t('download.desktopDescription')}</CardDescription>
+                <CardContent className="flex flex-col items-center"/>
+                  <div className="bg-white p-4 rounded-lg mb-6">
                     <QRCodeReact 
                       value={downloadUrls.macos}
                       size={200}
@@ -92,27 +92,27 @@ export default function DownloadPage() {
                       fgColor="#000000"
                       level="H"
                       includeMargin
-                    / />
-                  <Div className="text-sm text-center mb-6 text-gray-300">
+                    //>
+                  <div className="text-sm text-center mb-6 text-gray-300">
                     {t('download.scanQRCode')}
                   </CardDescription>
-                  <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white" />
-                    <Download className="mr-2 h-4 w-4" />
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white"/>
+                    <Download className="mr-2 h-4 w-4"/>
                     {t('download.downloadMacOS')}
-                  </button />
-                <CardFooter className="flex flex-col text-sm text-gray-400" />
-                  <P className="mb-2">{t('download.requirements')}: macOS 10.15+</Button>
-                  <P>{t('download.version')}: 1.0.0</p />
-              </Card />
+                  </button>
+                <CardFooter className="flex flex-col text-sm text-gray-400"/>
+                  <p className="mb-2">{t('download.requirements')}: macOS 10.15+</button>
+                  <p>{t('download.version')}: 1.0.0</p>
+              </Card>
             
             {/* PWA Tab */}
-            <TabsContent value="pwa" />
-              <Card className="border-white/10 bg-black/20 backdrop-blur-sm" />
+            <TabsContent value="pwa"/>
+              <Card className="border-white/10 bg-black/20 backdrop-blur-sm"/>
                 <CardHeader>
-                  <CardTitle>{t('download.pwa')}</P>
-                  <CardDescription>{t('download.pwaDescription')}</CardDescription />
-                <CardContent className="flex flex-col items-center" />
-                  <Div className="bg-white p-4 rounded-lg mb-6">
+                  <CardTitle>{t('download.pwa')}</p>
+                  <CardDescription>{t('download.pwaDescription')}</CardDescription>
+                <CardContent className="flex flex-col items-center"/>
+                  <div className="bg-white p-4 rounded-lg mb-6">
                     <QRCodeReact 
                       value={downloadUrls.pwa}
                       size={200}
@@ -120,65 +120,65 @@ export default function DownloadPage() {
                       fgColor="#000000"
                       level="H"
                       includeMargin
-                    / />
-                  <Div className="text-sm text-center mb-6 text-gray-300">
+                    //>
+                  <div className="text-sm text-center mb-6 text-gray-300">
                     {t('download.pwaInstructions')}
                   </CardDescription>
                   {!isNative && (
-                    <Div className="flex gap-3 justify-center flex-wrap">
-                      <Button variant="outline" className="gap-2" onClick={() = /> navigator.clipboard.writeText(window.location.origin)}>
-                        <QrCode size={16} />
+                    <div className="flex gap-3 justify-center flex-wrap">
+                      <Button variant="outline" className="gap-2" onClick={() => navigator.clipboard.writeText(window.location.origin)}>
+                        <QrCode size={16}/>
                         {t('download.copyLink')}
-                      </Div>
-                      <Button className="gap-2 bg-gradient-to-r from-purple-600 to-blue-600" />
-                        <Download size={16} />
+                      </div>
+                      <Button className="gap-2 bg-gradient-to-r from-purple-600 to-blue-600"/>
+                        <Download size={16}/>
                         {t('download.installPWA')}
-                      </Button>
-                    </Div>
+                      </button>
+                    </div>
                   )}
                   {isNative && (
-                    <Div className="p-4 bg-green-900/20 border border-green-500/30 rounded-md text-green-300">
+                    <div className="p-4 bg-green-900/20 border border-green-500/30 rounded-md text-green-300">
                       {t('download.alreadyInstalled')}
-                    </Div>
+                    </div>
                   )}
                 </CardContent>
-                <CardFooter className="flex flex-col text-sm text-gray-400" />
-                  <P className="mb-2">{t('download.pwaRequirements')}</CardFooter>
-                  <P>{t('download.offlineSupport')}</p />
-              </Card />
-          </P>
+                <CardFooter className="flex flex-col text-sm text-gray-400"/>
+                  <p className="mb-2">{t('download.pwaRequirements')}</CardFooter>
+                  <p>{t('download.offlineSupport')}</p>
+              </Card>
+          </p>
           
-          <Div className="mt-12 p-6 border border-white/10 rounded-lg bg-gray-900/50">
-            <H2 className="text-xl font-bold mb-4">{t('download.whyDownload')}</Div>
-            <Ul className="grid gap-3 md:grid-cols-2">
-              <Li className="flex items-start gap-2">
-                <Div className="mt-1 bg-blue-500/20 p-1 rounded-full">
+          <div className="mt-12 p-6 border border-white/10 rounded-lg bg-gray-900/50">
+            <h2 className="text-xl font-bold mb-4">{t('download.whyDownload')}</div>
+            <ul className="grid gap-3 md:grid-cols-2">
+              <li className="flex items-start gap-2">
+                <div className="mt-1 bg-blue-500/20 p-1 rounded-full">
                   <svg className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg />
-                <Span>{t('download.feature1')}</span />
-              <Li className="flex items-start gap-2">
-                <Div className="mt-1 bg-blue-500/20 p-1 rounded-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                  </svg>
+                <span>{t('download.feature1')}</span>
+              <li className="flex items-start gap-2">
+                <div className="mt-1 bg-blue-500/20 p-1 rounded-full">
                   <svg className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg />
-                <Span>{t('download.feature2')}</span />
-              <Li className="flex items-start gap-2">
-                <Div className="mt-1 bg-blue-500/20 p-1 rounded-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                  </svg>
+                <span>{t('download.feature2')}</span>
+              <li className="flex items-start gap-2">
+                <div className="mt-1 bg-blue-500/20 p-1 rounded-full">
                   <svg className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg />
-                <Span>{t('download.feature3')}</span />
-              <Li className="flex items-start gap-2">
-                <Div className="mt-1 bg-blue-500/20 p-1 rounded-full">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                  </svg>
+                <span>{t('download.feature3')}</span>
+              <li className="flex items-start gap-2">
+                <div className="mt-1 bg-blue-500/20 p-1 rounded-full">
                   <svg className="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg />
-                <Span>{t('download.feature4')}</span />
-            </Ul>
-          </Div>
-        </Div>
-      </Div>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/>
+                  </svg>
+                <span>{t('download.feature4')}</span>
+            </ul>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

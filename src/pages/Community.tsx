@@ -45,7 +45,7 @@ const mockLeaderboard = [
 ];
 
 export default function CommunityPage() {
-    const [posts, setPosts] = useState<Post[]>(mockPosts);
+    const [posts, setPosts] = useState<post[]>(mockPosts);
     const [newPost, setNewPost] = useState('');
 
     const handlePostSubmit = () => {
@@ -71,96 +71,96 @@ export default function CommunityPage() {
     };
 
     return (
-        <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Main Feed */}
-            <Div className="lg:col-span-2 space-y-6">
-                <Div className="flex justify-between items-center">
-                    <Div>
-                        <H1 className="text-3xl font-bold text-white flex items-center gap-3">
-                            <Span className="bg-white/10 p-2 rounded-lg"><MessageSquare className="text-blue-400" / />
+            <div className="lg:col-span-2 space-y-6">
+                <div className="flex justify-between items-center">
+                    <div>
+                        <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                            <span className="bg-white/10 p-2 rounded-lg"><MessageSquare className="text-blue-400" //>
                             Community Feed
-                        </Post>
-                        <P className="text-gray-400 mt-1">Connect with other traders and share insights.</P>
-                    </Div>
-                </Div>
+                        </div>
+                        <p className="text-gray-400 mt-1">Connect with other traders and share insights.</p>
+                    </div>
+                </div>
 
                 {/* Create Post */}
-                <Card className="mb-6" />
-                    <CardContent className="pt-6" />
-                        <Div className="flex gap-4">
+                <Card className="mb-6"/>
+                    <CardContent className="pt-6"/>
+                        <div className="flex gap-4">
                             <Input value={newPost}
-                                onChange={(e) = /> setNewPost(e.target.value)}
+                                onChange={(e) => setNewPost(e.target.value)}
                                 placeholder="Share your trading insights..."
                                 className="flex-1"
                             />
-                            <Button onClick={handlePostSubmit} />Post</Card>
-                        </div />
+                            <Button onClick={handlePostSubmit}/>Post</Card>
+                        </div>
                 </Card>
 
                 {/* Posts */}
-                <Div className="space-y-4">
+                <div className="space-y-4">
                     {posts.map((post) => (
-                        <Card key={post.id} />
+                        <Card key={post.id}/>
                             <CardHeader>
-                                <Div className="flex justify-between items-start">
-                                    <Div>
-                                        <CardTitle className="text-lg" />{post.author}</Div>
-                                        <P className="text-sm text-gray-400">
+                                <div className="flex justify-between items-start">
+                                    <div>
+                                        <CardTitle className="text-lg"/>{post.author}</div>
+                                        <p className="text-sm text-gray-400">
                                             {new Date(post.timestamp).toLocaleDateString()}
-                                        </P>
-                                    </Div>
-                                </div />
+                                        </p>
+                                    </div>
+                                </div>
                             <CardContent>
-                                <P className="text-gray-200 mb-4">{post.content}</CardContent>
-                                <Div className="flex gap-4">
+                                <p className="text-gray-200 mb-4">{post.content}</CardContent>
+                                <div className="flex gap-4">
                                     <Button variant="ghost"
                                         size="sm"
-                                        onClick={() = /> handleLike(post.id)}
+                                        onClick={() => handleLike(post.id)}
                                         className="text-gray-400 hover:text-blue-400"
                                     >
-                                        <ThumbsUp className="h-4 w-4 mr-2" />
+                                        <ThumbsUp className="h-4 w-4 mr-2"/>
                                         {post.likes}
-                                    </Div>
+                                    </div>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-purple-400"
-                        >
-                                        <MessageSquare className="h-4 w-4 mr-2" />
+             >
+                                        <MessageSquare className="h-4 w-4 mr-2"/>
                                         {post.comments}
-                                    </Button>
+                                    </button>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-green-400"
-                        >
-                                        <Share2 className="h-4 w-4 mr-2" />
+             >
+                                        <Share2 className="h-4 w-4 mr-2"/>
                                         Share
-                                    </Button>
-                                </div />
+                                    </button>
+                                </div>
                         </Card>
                     ))}
-                </Div>
-            </Div>
+                </div>
+            </div>
 
             {/* Right Sidebar */}
-            <Div className="lg:col-span-1 space-y-6">
-                <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <H3 className="font-semibold text-white mb-4">Trending Topics</Div>
-                    <Div className="flex flex-wrap gap-2">
-                        {mockTrending.map(tag => <Badge key={tag} variant="secondary" />{tag}</Div>)}
-                    </Div>
-                </Div>
-                <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <H3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></Div></Div> Leaderboard</H3>
-                    <Ul className="space-y-3">
+            <div className="lg:col-span-1 space-y-6">
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 className="font-semibold text-white mb-4">Trending Topics</div>
+                    <div className="flex flex-wrap gap-2">
+                        {mockTrending.map(tag => <Badge key={tag} variant="secondary"/>{tag}</div>)}
+                    </div>
+                </div>
+                <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></div></div> Leaderboard</h3>
+                    <ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
-                            <Li key={user.name} className="flex justify-between items-center text-sm">
-                                <Span className="text-gray-300">{index + 1}. {user.name}</Ul>
-                                <Span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span />
+                            <li key={user.name} className="flex justify-between items-center text-sm">
+                                <span className="text-gray-300">{index + 1}. {user.name}</ul>
+                                <span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span>
                         ))}
-                    </Span>
-                </Div>
-            </Div>
-        </Div>
+                    </span>
+                </div>
+            </div>
+        </div>
     );
 }
 

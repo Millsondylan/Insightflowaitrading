@@ -63,29 +63,29 @@ export function SwipeableCard({
   };
 
   return (
-    <Div className={cn('relative w-full overflow-hidden', className)}>
+    <div className={cn('relative w-full overflow-hidden', className)}>
       {/* Left action indicator */}
       {leftAction && !disableSwipe && isMobile && (
-        <Div className="absolute left-4 top-0 bottom-0 flex items-center justify-center z-0">
+        <div className="absolute left-4 top-0 bottom-0 flex items-center justify-center z-0">
           <motion.div style={{ opacity: rightActionOpacity }} className="flex flex-col items-center">
             {leftAction.icon}
-            <Span className={`text-xs font-medium text-${leftAction.color}-500`}></Div></Div></Div></Div></Div>
+            <span className={`text-xs font-medium text-${leftAction.color}-500`}></div></div>
               {leftAction.label}
-            </Div>
+            </div>
           </motion.div>
-        </Div>
+        </div>
       )}
       
       {/* Right action indicator */}
       {rightAction && !disableSwipe && isMobile && (
-        <Div className="absolute right-4 top-0 bottom-0 flex items-center justify-center z-0">
+        <div className="absolute right-4 top-0 bottom-0 flex items-center justify-center z-0">
           <motion.div style={{ opacity: leftActionOpacity }} className="flex flex-col items-center">
             {rightAction.icon}
-            <Span className={`text-xs font-medium text-${rightAction.color}-500`}></Div></Div></Div></Div></Div>
+            <span className={`text-xs font-medium text-${rightAction.color}-500`}></div></div>
               {rightAction.label}
-            </Div>
+            </div>
           </motion.div>
-        </Div>
+        </div>
       )}
       
       {/* Swipeable card */}
@@ -105,7 +105,7 @@ export function SwipeableCard({
           {children}
         </Card>
       </motion.div>
-    </Div>
+    </div>
   );
 }
 

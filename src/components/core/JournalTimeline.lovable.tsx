@@ -22,7 +22,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
   refreshTrigger = 0, 
   limit = 10 
 }) => {
-  const [entries, setEntries] = useState<Journalentry  />([]);
+  const [entries, setEntries] = useState<Journalentry />([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [expandedReflections, setExpandedReflections] = useState<Set >>(new Set());
@@ -109,37 +109,37 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
 
   if (loading) {
     return (
-      <Div className="w-full py-8 text-center">
-        <P className="text-gray-500">Loading journal entries...</Journaltimelineprops>
-      </Div>
+      <div className="w-full py-8 text-center">
+        <p className="text-gray-500">Loading journal entries...</Journaltimelineprops>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <Div className="w-full py-8 text-center">
-        <P className="text-red-500">Error: {error}</Div>
-      </Div>
+      <div className="w-full py-8 text-center">
+        <p className="text-red-500">Error: {error}</div>
+      </div>
     );
   }
 
   if (entries.length === 0) {
     return (
-      <Div className="w-full py-12 text-center">
-        <P className="text-gray-400">No journal entries yet. Create your first trade journal entry above!</Div>
-      </Div>
+      <div className="w-full py-12 text-center">
+        <p className="text-gray-400">No journal entries yet. Create your first trade journal entry above!</div>
+      </div>
     );
   }
 
   return (
-    <Div className="space-y-6 journal-timeline">
+    <div className="space-y-6 journal-timeline">
       {entries.map((entry, index) => {
         const profitLoss = calculateProfitLoss(entry);
         const isProfitable = profitLoss > 0;
         const isReflectionExpanded = expandedReflections.has(entry.id);
 
         return (
-          <Div key={entry.id}
+          <div key={entry.id}
             className={cn(
               "journal-entry-card opacity-0 transform translate-y-4",
               "animate-fade-in-up",
@@ -150,106 +150,105 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
             style={{
               animationDelay: `${(index % 5) * 100}ms`,
               animationFillMode: "forwards"
-            }}
-          />
+            }}/>
             <Card >
-              <Div                 className={cn(
+              <div                 className={cn(
                   "border-t-4 -mt-0.5",
                   entry.sentiment === "Bullish"
                     ? "border-green-500"
                     : "border-red-500"
                 )}
-              />
+ />
               <Cardheader  style={{ display: "flex", alignItems: "center" }}>
-                <Div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2">
                   <Badge variant="outline">
                     {entry.sentiment}
-                  </Div>
-                  <Span className="text-sm text-gray-400">{formatDate(entry.createdAt)}</Span>
-                </Div>
-                <Div className="flex items-center space-x-2">
+                  </div>
+                  <span className="text-sm text-gray-400">{formatDate(entry.createdAt)}</span>
+                </div>
+                <div className="flex items-center space-x-2">
                   <Badge variant="outline">
                     {isProfitable ? "+" : ""}{profitLoss.toFixed(2)}%
-                  </Div>
+                  </div>
                   
                   <Button variant="ghost" size="sm"> toggleReflection(entry.id)}
                     className="h-8 w-8 p-0 hover:bg-blue-500/10"
                   >
                     <brain >
-                  </Button>
+                  </button>
                 </div />
               <Cardcontent >
-                <H3 className="text-xl font-medium mb-2">{entry.title}</Cardcontent>
+                <h3 className="text-xl font-medium mb-2">{entry.title}</Cardcontent>
                 
-                <Div className="flex justify-between mb-4">
-                  <Div>
-                    <Span className="text-gray-400 text-sm">Pair:</Div>
-                    <Span className="ml-2 font-medium">{entry.pair}</Span>
-                  </Div>
-                  <Div>
-                    <Span className="text-gray-400 text-sm">Timeframe:</Div>
-                    <Span className="ml-2 font-medium">{entry.timeframe}</Span>
-                  </Div>
-                </Div>
+                <div className="flex justify-between mb-4">
+                  <div>
+                    <span className="text-gray-400 text-sm">Pair:</div>
+                    <span className="ml-2 font-medium">{entry.pair}</span>
+                  </div>
+                  <div>
+                    <span className="text-gray-400 text-sm">Timeframe:</div>
+                    <span className="ml-2 font-medium">{entry.timeframe}</span>
+                  </div>
+                </div>
                 
-                <Div className="grid grid-cols-2 gap-2 mb-4">
-                  <Div className="flex flex-col">
-                    <Span className="text-gray-400 text-sm">Entry</Div>
-                    <Span className="font-medium">{entry.entryPrice}</Span>
-                  </Div>
-                  <Div className="flex flex-col">
-                    <Span className="text-gray-400 text-sm">Exit</Div>
-                    <Span className="font-medium">{entry.exitPrice}</Span>
-                  </Div>
-                </Div>
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="flex flex-col">
+                    <span className="text-gray-400 text-sm">Entry</div>
+                    <span className="font-medium">{entry.entryPrice}</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-gray-400 text-sm">Exit</div>
+                    <span className="font-medium">{entry.exitPrice}</span>
+                  </div>
+                </div>
                 
                 {entry.reason && (
-                  <Div className="mt-4 text-sm text-gray-300">
-                    <P className="line-clamp-2">{entry.reason}</Div>
-                  </Div>
+                  <div className="mt-4 text-sm text-gray-300">
+                    <p className="line-clamp-2">{entry.reason}</div>
+                  </div>
                 )}
                 
                 {entry.chartUrl && (
-                  <Div className="mt-4 rounded-md overflow-hidden h-32 w-full bg-gray-900">
-                    <Img 
+                  <div className="mt-4 rounded-md overflow-hidden h-32 w-full bg-gray-900">
+                    <img 
                       src={entry.chartUrl} 
                       alt="Trade chart" 
                       className="h-full w-full object-cover"
-                    /></Div>
-                  </Div>
+       /></div>
+                  </div>
                 )}
                 
                 {entry.tags && entry.tags.length > 0 && (
-                  <Div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     {entry.tags.map((tag) => (
-                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></Div>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></div>
                         {tag}
-                      </Div>
+                      </div>
                     ))}
-                  </Div>
+                  </div>
                 )}
 
                 <collapsible > toggleReflection(entry.id)}>
                   <collapsibletrigger >
                     <Button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
-                      <Div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2">
                         <brain >
-                        <Span className="text-blue-400"></Button></Button></Button></Button></Button>AI Analysis</Button>
-                      </Div>
+                        <span className="text-blue-400"></button>AI Analysis</button>
+                      </div>
                       {isReflectionExpanded ? (
-                        <chevronup >
+                        <ChevronUp >
                       ) : (
-                        <chevrondown >
+                        <ChevronDown >
                       )}
                     </button />
                   <collapsiblecontent >
-                    <aireflection  />
+                    <aireflection />
                 </Collapsible />
-            </Card>
-          </Div>
+            </ChevronUp>
+          </div>
         );
       })}
-    </Div>
+    </div>
   );
 };
 

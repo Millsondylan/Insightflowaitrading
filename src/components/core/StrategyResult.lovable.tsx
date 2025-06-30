@@ -11,20 +11,20 @@ interface StrategyResultProps {
 const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   if (isLoading) {
     return (
-      <Div className="glass-container p-8 rounded-lg flex flex-col items-center justify-center min-h-[300px]">
+      <div className="glass-container p-8 rounded-lg flex flex-col items-center justify-center min-h-[300px]">
         <loader2 >
-        <P className="text-lg text-gray-300">Generating your trading strategy...</Div>
-      </Div>
+        <p className="text-lg text-gray-300">Generating your trading strategy...</div>
+      </div>
     );
   }
 
   if (!result) return null;
 
   return (
-    <Div>
+    <div>
       <Strategyreveal >
-      <Strategycta  /></Div></Div></Div></Div></Div></Div></Div>
-    </Div>
+      <Strategycta /></div></div>
+    </div>
   );
 };
 

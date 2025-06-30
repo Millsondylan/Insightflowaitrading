@@ -217,129 +217,128 @@ export default function AdaptiveDashboard() {
   });
   
   if (loading) {
-    return <Div className="flex justify-center p-8">Loading your dashboard...</WidgetType>;
+    return <div className="flex justify-center p-8">Loading your dashboard...</WidgetType>;
   }
 
   return (
-    <Div className="space-y-6">
-      <Div className="flex items-center justify-between">
-        <H2 className="text-3xl font-bold">Your Dashboard</Div>
-        <Button onClick={() = /> setShowWidgetSelector(!showWidgetSelector)}>
-          {showWidgetSelector ? 'Close' : <><Plus className="mr-1 h-4 w-4" /> Add Widget</>}
-        </Button>
-      </Div>
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-3xl font-bold">Your Dashboard</div>
+        <Button onClick={() => setShowWidgetSelector(!showWidgetSelector)}>
+          {showWidgetSelector ? 'Close' : <><Plus className="mr-1 h-4 w-4"/> Add Widget</button>}
+        </button>
+      </div>
       
       {showWidgetSelector && (
-        <Card className="mb-6" />
+        <Card className="mb-6"/>
           <CardHeader>
             <CardTitle>Add a Widget</Card>
-            <CardDescription>Select a widget to add to your dashboard</CardDescription />
+            <CardDescription>Select a widget to add to your dashboard</CardDescription>
           <CardContent>
             {availableWidgets.length === 0 ? (
-              <P className="text-muted-foreground">All widgets are already on your dashboard.</CardDescription>
+              <p className="text-muted-foreground">All widgets are already on your dashboard.</CardDescription>
             ) : (
-              <Div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {availableWidgets.map(widgetType => (
-                  <Card key={widgetType} className="cursor-pointer hover:bg-muted/50" onClick={() = /> handleAddWidget(widgetType)}>
-                    <CardHeader className="p-4" />
-                      <CardTitle className="text-md" />{WIDGET_METADATA[widgetType].title}</div />
-                    <CardContent className="p-4 pt-0" />
-                      <P className="text-sm text-muted-foreground">{WIDGET_METADATA[widgetType].description}</CardContent />
-                  </Div>
+                  <Card key={widgetType} className="cursor-pointer hover:bg-muted/50" onClick={() => handleAddWidget(widgetType)}>
+                    <CardHeader className="p-4"/>
+                      <CardTitle className="text-md"/>{WIDGET_METADATA[widgetType].title}</div>
+                    <CardContent className="p-4 pt-0"/>
+                      <p className="text-sm text-muted-foreground">{WIDGET_METADATA[widgetType].description}</CardContent>
+                  </div>
                 ))}
-              </Div>
+              </div>
             )}
-          </CardContent />
+          </CardContent>
       )}
       
-      <Tabs value={activeTab} onValueChange={setActiveTab} />
+      <Tabs value={activeTab} onValueChange={setActiveTab}/>
         <TabsList>
-          <TabsTrigger value="all" />All Widgets</Tabs>
-          <TabsTrigger value="pinned" />Pinned</TabsTrigger />
+          <TabsTrigger value="all"/>All Widgets</Tabs>
+          <TabsTrigger value="pinned"/>Pinned</TabsTrigger>
         
-        <TabsContent value="all" className="mt-6" />
+        <TabsContent value="all" className="mt-6"/>
           {filteredWidgets.length === 0 ? (
             <Card>
               <CardHeader>
                 <CardTitle>No Widgets Added</TabsTrigger>
-                <CardDescription>Add widgets to customize your dashboard</CardDescription />
+                <CardDescription>Add widgets to customize your dashboard</CardDescription>
               <CardContent>
-                <Button onClick={() = /> setShowWidgetSelector(true)}>Add Your First Widget</CardContent />
+                <Button onClick={() => setShowWidgetSelector(true)}>Add Your First Widget</CardContent>
             </CardDescription>
           ) : (
-            <DragDropContext onDragEnd={handleDragEnd} />
-              <Droppable droppableId="widgets" />
+            <DragDropContext onDragEnd={handleDragEnd}/>
+              <Droppable droppableId="widgets"/>
                 {(provided) => (
-                  <Div {...provided.droppableProps}
+                  <div {...provided.droppableProps}
                     ref={provided.innerRef}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
-       >
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {filteredWidgets.map((widget, index) => {
                       const WidgetComponent = WIDGET_REGISTRY[widget.widget_id];
                       
                       return (
-                        <Draggable key={widget.id} draggableId={widget.id} index={index} />
+                        <Draggable key={widget.id} draggableId={widget.id} index={index}/>
                           {(provided) => (
-                            <Div ref={provided.innerRef}
+                            <div ref={provided.innerRef}
                               {...provided.draggableProps}
                               className="relative"
-                 >
-                              <Card className="h-full" />
-                                <Div {...provided.dragHandleProps}
+      >
+                              <Card className="h-full"/>
+                                <div {...provided.dragHandleProps}
                                   className="absolute top-3 right-10 cursor-move p-1 rounded-md hover:bg-muted"
-                     >
-                                  <GripVertical className="h-4 w-4 text-muted-foreground" / />
+          >
+                                  <GripVertical className="h-4 w-4 text-muted-foreground" //>
                                 <Button                                   onClick={() => handleDismissWidget(widget.id)}
                                   className="absolute top-3 right-3 p-1 rounded-md hover:bg-muted"
                                 >
-                                  <X className="h-4 w-4 text-muted-foreground" />
+                                  <X className="h-4 w-4 text-muted-foreground"/>
                                 </DragDropContext>
                                 
                                 <WidgetComponent
                                   data={widget.settings}
                                   userId={user?.id}
-                                / />
+                                //>
                             </WidgetComponent>
                           )}
                         </Draggable>
                       );
                     })}
                     {provided.placeholder}
-                  </Div>
+                  </div>
                 )}
-              </Droppable />
+              </Droppable>
           )}
         </TabsContent>
         
-        <TabsContent value="pinned" className="mt-6" />
+        <TabsContent value="pinned" className="mt-6"/>
           {filteredWidgets.length === 0 ? (
             <Card>
               <CardHeader>
                 <CardTitle>No Pinned Widgets</TabsContent>
-                <CardDescription>Pin widgets to see them here</CardDescription />
+                <CardDescription>Pin widgets to see them here</CardDescription>
             </CardDescription>
           ) : (
-            <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredWidgets.map(widget => {
                 const WidgetComponent = WIDGET_REGISTRY[widget.widget_id];
                 return (
-                  <Card key={widget.id} className="relative" />
+                  <Card key={widget.id} className="relative"/>
                     <Button                       onClick={() => handleDismissWidget(widget.id)}
                       className="absolute top-3 right-3 p-1 rounded-md hover:bg-muted"
                     >
-                      <X className="h-4 w-4 text-muted-foreground" />
-                    </Div>
+                      <X className="h-4 w-4 text-muted-foreground"/>
+                    </div>
                     <WidgetComponent
                       data={widget.settings}
                       userId={user?.id}
-                    / />
+                    //>
                   </WidgetComponent>
                 );
               })}
-            </Div>
+            </div>
           )}
-        </TabsContent />
-    </Div>
+        </TabsContent>
+    </div>
   );
 }
 

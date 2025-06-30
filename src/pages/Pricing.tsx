@@ -63,91 +63,89 @@ export default function PricingPage() {
   ];
 
   return (
-    <Div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-12">
       <DocumentHead 
         title="Pricing Plans" 
         description="Choose the perfect plan for your trading needs. Unlock advanced AI tools, unlimited backtesting, and more."
-        ogType="website"
-      />
+        ogType="website"/>
       
-      <Div className="text-center mb-16">
-        <H1 className="text-4xl font-bold mb-4 text-white">Simple, Transparent Pricing</Div>
-        <P className="text-xl text-gray-400 max-w-3xl mx-auto">
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-bold mb-4 text-white">Simple, Transparent Pricing</div>
+        <p className="text-xl text-gray-400 max-w-3xl mx-auto">
           Choose the plan that's right for your trading journey. All plans include our core platform features.
-        </P>
-      </Div>
+        </p>
+      </div>
       
-      <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {pricingPlans.map((plan, index) => (
           <Card key={index} 
             className={`bg-black/30 border-white/10 backdrop-blur-md text-white ${
               plan.highlight ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-500/20' : ''
             }`}>
             <CardHeader>
-              <CardTitle className="text-2xl font-bold" />
+              <CardTitle className="text-2xl font-bold"/>
                 {plan.name}
                 {plan.highlight && (
-                  <Span className="ml-2 text-xs px-2 py-1 bg-blue-500 text-white rounded-full">
+                  <span className="ml-2 text-xs px-2 py-1 bg-blue-500 text-white rounded-full">
                     Most Popular
-                  </Div>
+                  </div>
                 )}
               </CardTitle>
-              <Div className="mt-4">
-                <Span className="text-4xl font-bold">${plan.price}</Div>
-                <Span className="text-gray-400">{plan.billing}</Span>
-              </Div>
-              <P className="text-gray-400 mt-2">{plan.description}</p />
+              <div className="mt-4">
+                <span className="text-4xl font-bold">${plan.price}</div>
+                <span className="text-gray-400">{plan.billing}</span>
+              </div>
+              <p className="text-gray-400 mt-2">{plan.description}</p>
             <CardContent>
-              <Ul className="space-y-3">
+              <ul className="space-y-3">
                 {plan.features.map((feature, i) => (
-                  <Li key={i} className="flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-400 mr-3" />
-                    <Span>{feature}</CardContent />
+                  <li key={i} className="flex items-center">
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-3"/>
+                    <span>{feature}</CardContent>
                 ))}
-              </Ul />
+              </ul>
             <CardFooter>
               <Button className={`w-full ${
                   plan.highlight
                     ? 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700'
                     : 'bg-transparent border border-white/20 hover:bg-white/10'
                 }`}
-                onClick={plan.buttonAction}
-  >
+                onClick={plan.buttonAction}>
                 {plan.buttonText}
-              </CardFooter />
-          </P>
+              </CardFooter>
+          </p>
         ))}
-      </Div>
+      </div>
       
-      <Div className="mt-20 text-center">
-        <H2 className="text-2xl font-bold mb-6 text-white">Cryptocurrency Payments Accepted</Div>
-        <Div className="flex justify-center space-x-8">
-          <Div className="flex flex-col items-center">
-            <Img src="/bitcoin.svg" alt="Bitcoin" className="h-12 w-12 mb-2" />
-            <Span className="text-gray-400">Bitcoin</Div>
-          </Div>
-          <Div className="flex flex-col items-center">
-            <Img src="/ethereum.svg" alt="Ethereum" className="h-12 w-12 mb-2" />
-            <Span className="text-gray-400">Ethereum</Div>
-          </Div>
-          <Div className="flex flex-col items-center">
-            <Img src="/tether.svg" alt="USDT" className="h-12 w-12 mb-2" />
-            <Span className="text-gray-400">USDT</Div>
-          </Div>
-        </Div>
+      <div className="mt-20 text-center">
+        <h2 className="text-2xl font-bold mb-6 text-white">Cryptocurrency Payments Accepted</div>
+        <div className="flex justify-center space-x-8">
+          <div className="flex flex-col items-center">
+            <img src="/bitcoin.svg" alt="Bitcoin" className="h-12 w-12 mb-2"/>
+            <span className="text-gray-400">Bitcoin</div>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="/ethereum.svg" alt="Ethereum" className="h-12 w-12 mb-2"/>
+            <span className="text-gray-400">Ethereum</div>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="/tether.svg" alt="USDT" className="h-12 w-12 mb-2"/></div>
+            <span className="text-gray-400"></span>USDT</div>
+          </div>
+        </div>
         
-        <P className="mt-8 text-gray-400 max-w-xl mx-auto">
+        <p className="mt-8 text-gray-400 max-w-xl mx-auto">
           Secure transactions verified on the blockchain. All subscriptions are automatically activated upon payment confirmation.
-        </P>
+        </p>
         
         <Button variant="outline"
           className="mt-6"
-          onClick={() = /> navigate('/faq#payment')}
+          onClick={() =></button></div> navigate('/faq#payment')}
         >
           Payment FAQ
-        </Button>
-      </Div>
-    </Div>
+        </button>
+      </div>
+    </div>
   );
 }
 

@@ -52,10 +52,10 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
 
   return (
     <Blockreveal>
-      <Div className="trade-table">
-        <Table  />
+      <div className="trade-table">
+        <table />
           <Tableheader >
-            <Tablerow  />
+            <Tablerow />
               <tablehead >#</Blockreveal>
               <tablehead >Entry Time</TableHead>
               <tablehead >Exit Time</TableHead>
@@ -89,14 +89,14 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
           </TableBody />
         
         {totalPages > 1 && (
-          <Div className="py-4 flex justify-center">
+          <div className="py-4 flex justify-center">
             <pagination >
               <paginationcontent >
                 <paginationitem >
                   <paginationprevious > currentPage > 1 && handlePageChange(currentPage - 1)}
                     className={currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
-                </Div>
+                </div>
                 
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                   <paginationitem >
@@ -113,7 +113,7 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                     className={currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   / />
               </PaginationContent />
-          </Div>
+          </div>
         )}
       </div />
   );

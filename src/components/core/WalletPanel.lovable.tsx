@@ -78,44 +78,44 @@ const WalletPanel: React.FC = () => {
   const renderContent = () => {
     if (address) {
       return (
-        <Div>
-          <Div className="flex justify-between items-center mb-6">
-            <Div className="flex items-center space-x-2 text-green-400">
-              <Checkcircle  />
-              <P>Wallet Connected: <Span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</Tokenbalance></P>
-            </Div>
-            <Button variant="outline" size="sm">Disconnect</Button>
-          </Div>
+        <div>
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center space-x-2 text-green-400">
+              <Checkcircle />
+              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</Tokenbalance></p>
+            </div>
+            <Button variant="outline" size="sm">Disconnect</button>
+          </div>
           <motion.div 
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <Animatepresence  />
+            <animatepresence />
               {balances.map((token, index) => (
                 <Tokenbalancecard >
               ))}
-            </Animatepresence>
+            </Tokenbalancecard>
           </motion.div>
-        </Div>
+        </div>
       );
     }
 
     return (
-      <Div className="wallet-connect-cta">
+      <div className="wallet-connect-cta">
         <wallet >
-        <H2 className="text-2xl font-bold mb-2">Connect Your Wallet</Div>
-        <P className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</P>
-        <Div className="flex max-w-md mx-auto">
-          <Input type="text" placeholder="Enter any wallet address to simulate..."  /> setInputValue(e.target.value)}
+        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</div>
+        <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
+        <div className="flex max-w-md mx-auto">
+          <Input type="text" placeholder="Enter any wallet address to simulate..."/> setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button ></Div></Div></Div></Div></Div>Connect</Div>
-        </Div>
-      </Div>
+          <Button ></div></div>Connect</div>
+        </div>
+      </div>
     );
   };
 
-  return <Div className="wallet-panel">{renderContent()}</Div>;
+  return <div className="wallet-panel">{renderContent()}</div>;
 };
 
 export default WalletPanel; 

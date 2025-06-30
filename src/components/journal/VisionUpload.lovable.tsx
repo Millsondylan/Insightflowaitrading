@@ -42,29 +42,29 @@ const VisionUpload = ({ onUpload, defaultImage }: Props) => {
   }, [previewUrl, defaultImage]);
 
   return (
-    <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4">
-      <Div className="flex flex-col items-center gap-4">
+    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4">
+      <div className="flex flex-col items-center gap-4">
         <Label className="cursor-pointer bg-white/10 hover:bg-cyan-600/80 text-white font-semibold px-6 py-3 rounded-full transition-colors duration-300 flex items-center gap-2">
-          <Span>📷</File>
-          <Span>{previewUrl ? 'Change Screenshot' : 'Upload Screenshot'}</Span>
+          <span>📷</File>
+          <span>{previewUrl ? 'Change Screenshot' : 'Upload Screenshot'}</span>
           <Input
             type="file"
             accept=".png, .jpg, .jpeg, .webp"
             className="hidden"
             onChange={handleFileChange}
-          / />
+          //>
         
         {previewUrl && (
-          <Div className="w-full mt-4">
-            <P className="text-sm text-white/60 text-center mb-2">Chart Preview</Input>
-            <Img 
+          <div className="w-full mt-4">
+            <p className="text-sm text-white/60 text-center mb-2">Chart Preview</Input>
+            <img 
               src={previewUrl} 
               alt="Chart preview" 
               className="rounded-lg border border-white/10 max-h-96 w-full object-contain" 
-            / /></Img>
+            ///>
         )}
-      </Div>
-    </Div>
+      </img>
+    </div>
   );
 };
 

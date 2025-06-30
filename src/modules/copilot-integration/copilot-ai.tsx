@@ -58,84 +58,84 @@ export const lovable = {
       <Button variant="outline"
         size="sm"
         className="fixed bottom-4 right-4"
-        onClick={() = /> setIsVisible(true)}
+        onClick={() => setIsVisible(true)}
       >
-        <Sparkles className="h-4 w-4 mr-2" />
+        <Sparkles className="h-4 w-4 mr-2"/>
         Show Copilot
       </CopilotAIProps>
     );
   }
 
   return (
-    <Card className="fixed bottom-4 right-4 w-96 max-h-[600px] overflow-hidden flex flex-col theme-card" />
-      <Div className="p-4 border-b flex items-center justify-between">
-        <Div className="flex items-center gap-2">
-          <Sparkles className="h-5 w-5 text-primary" />
-          <H3 className="font-semibold">AI Copilot</Card>
-        </Div>
+    <Card className="fixed bottom-4 right-4 w-96 max-h-[600px] overflow-hidden flex flex-col theme-card"/>
+      <div className="p-4 border-b flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-5 w-5 text-primary"/>
+          <h3 className="font-semibold">AI Copilot</Card>
+        </div>
         <Button variant="ghost"
           size="sm"
-          onClick={() = /> setIsVisible(false)}
+          onClick={() => setIsVisible(false)}
         >
-          <X className="h-4 w-4" />
-        </Button>
-      </Div>
+          <X className="h-4 w-4"/>
+        </button>
+      </div>
 
-      <Div className="flex-1 overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {suggestions.map((suggestion) => (
-          <Div key={suggestion.id}
+          <div key={suggestion.id}
             className="p-3 border rounded-lg hover:bg-accent/50 transition-colors">
-            <Div className="flex items-start justify-between mb-2">
-              <H4 className="font-medium">{suggestion.title}</Div>
+            <div className="flex items-start justify-between mb-2">
+              <h4 className="font-medium">{suggestion.title}</div>
               <Badge variant="outline" className="text-xs">
                 {suggestion.type}
               </Badge>
-            </Div>
+            </div>
             
-            <P className="text-sm text-muted-foreground mb-2">
+            <p className="text-sm text-muted-foreground mb-2">
               {suggestion.content}
-            </P>
+            </p>
             
             {suggestion.code && (
-              <Pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
-                <Code>{suggestion.code}</Pre />
+              <pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
+                <Code>{suggestion.code}</pre>
             )}
             
-            <Div className="flex items-center justify-between">
-              <Span className="text-xs font-medium text-green-500">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-green-500">
                 {suggestion.impact}
-              </Pre>
+              </pre>
               
-              <Div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 <Button variant="ghost"
                   size="sm"
-                  onClick={() = /> handleFeedback(suggestion.id, 'up')}
+                  onClick={() => handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <thumbsUp className="h-3 w-3" />
-                </Div>
+                  <thumbsUp className="h-3 w-3"/>
+                </div>
                 <Button variant="ghost"
                   size="sm"
-                  onClick={() = /> handleFeedback(suggestion.id, 'down')}
+                  onClick={() => handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <thumbsDown className="h-3 w-3" />
-                </Button>
+                  <thumbsDown className="h-3 w-3"/>
+                </button>
                 <Button size="sm"
-                  onClick={() = /> onSuggestionApply?.(suggestion.code)}
+                  onClick={() => onSuggestionApply?.(suggestion.code)}
                 >
                   Apply
-                </Button>
-              </Div>
-            </Div>
-          </Div>
+                </button>
+              </div>
+            </div>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="p-4 border-t bg-secondary/20">
-        <P className="text-xs text-muted-foreground text-center"></Div>
+      <div className="p-4 border-t bg-secondary/20">
+        <p className="text-xs text-muted-foreground text-center"></div>
           Copilot analyzes your strategy in real-time
-        </Div>
-      </div />
+        </div>
+      </div>
   );
 }; 

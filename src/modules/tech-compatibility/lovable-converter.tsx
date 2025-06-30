@@ -53,15 +53,15 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <Div className="flex items-center gap-2 mb-6">
-        <Code2 className="h-6 w-6" />
-        <H2 className="text-2xl font-bold">Lovable Converter</LovableConverterProps>
-      </Div>
+    <Card className="theme-card p-6"/>
+      <div className="flex items-center gap-2 mb-6">
+        <Code2 className="h-6 w-6"/>
+        <h2 className="text-2xl font-bold">Lovable Converter</LovableConverterProps>
+      </div>
 
-      <Div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Div>
-          <H3 className="font-semibold mb-2">React/TypeScript Code</Div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div>
+          <h3 className="font-semibold mb-2">React/TypeScript Code</div>
           <Textarea
             className="h-[400px] font-mono text-sm"
             placeholder="Paste your React component or TypeScript code here..."
@@ -69,84 +69,84 @@ export const lovable = {
             onChange={(e) => setInputCode(e.target.value)}
           / />
 
-        <Div>
-          <H3 className="font-semibold mb-2">Lovable.dev Output</Textarea>
+        <div>
+          <h3 className="font-semibold mb-2">Lovable.dev Output</Textarea>
           <Textarea
             className="h-[400px] font-mono text-sm"
             placeholder="Converted Lovable.dev code will appear here..."
             value={outputCode}
             readOnly
-          / />
+          //>
       </Textarea>
 
-      <Div className="flex justify-center my-6">
+      <div className="flex justify-center my-6">
         <Button onClick={convertToLovable} disabled={!inputCode || isConverting}>
           {isConverting ? (
             'Converting...'
           ) : (
             <>
               Convert to Lovable
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </>
+              <arrowRight className="h-4 w-4 ml-2"/>
+            </arrowRight>
           )}
-        </Div>
-      </Div>
+        </div>
+      </div>
 
       {conversionStatus && (
-        <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <Div className="p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2 flex items-center gap-2">
-              <Check className="h-4 w-4 text-green-500" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+          <div className="p-4 bg-secondary/20 rounded-lg">
+            <h4 className="font-medium mb-2 flex items-center gap-2">
+              <Check className="h-4 w-4 text-green-500"/>
               Tables Detected
-            </Div>
-            <Ul className="space-y-1">
+            </div>
+            <ul className="space-y-1">
               {conversionStatus.tables.map((table) => (
-                <Li key={table} className="text-sm text-muted-foreground">
+                <li key={table} className="text-sm text-muted-foreground">
                   • {table}
-                </Ul>
+                </ul>
               ))}
-            </Ul>
-          </Div>
+            </ul>
+          </div>
 
-          <Div className="p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2 flex items-center gap-2">
-              <Check className="h-4 w-4 text-green-500" />
+          <div className="p-4 bg-secondary/20 rounded-lg">
+            <h4 className="font-medium mb-2 flex items-center gap-2">
+              <Check className="h-4 w-4 text-green-500"/>
               AI Blocks Created
-            </Div>
-            <Ul className="space-y-1">
+            </div>
+            <ul className="space-y-1">
               {conversionStatus.aiBlocks.map((block) => (
-                <Li key={block} className="text-sm text-muted-foreground">
+                <li key={block} className="text-sm text-muted-foreground">
                   • {block}
-                </Ul>
+                </ul>
               ))}
-            </Ul>
-          </Div>
+            </ul>
+          </div>
 
-          <Div className="p-4 bg-secondary/20 rounded-lg">
-            <H4 className="font-medium mb-2 flex items-center gap-2">
-              <Check className="h-4 w-4 text-green-500" />
+          <div className="p-4 bg-secondary/20 rounded-lg">
+            <h4 className="font-medium mb-2 flex items-center gap-2">
+              <Check className="h-4 w-4 text-green-500"/>
               Functions Wrapped
-            </Div>
-            <Ul className="space-y-1">
+            </div>
+            <ul className="space-y-1">
               {conversionStatus.functions.map((func) => (
-                <Li key={func} className="text-sm text-muted-foreground">
+                <li key={func} className="text-sm text-muted-foreground">
                   • {func}
-                </Ul>
+                </ul>
               ))}
-            </Ul>
-          </Div>
-        </Div>
+            </ul>
+          </div>
+        </div>
       )}
 
-      <Div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
-        <AlertCircle className="h-4 w-4 text-yellow-500 mt-0.5" /></Div></Div>
-        <Div className="text-sm">
-          <P className="font-medium mb-1"></Div>Conversion Notes:</Div>
-          <Ul className="space-y-1 text-muted-foreground">
-            <Li>• localStorage → Lovable Tables</Ul>
-            <Li>• API calls → Lovable Functions</Li>
-            <Li>• AI integrations → Lovable AI Blocks</Li />
-        </Li>
-      </div />
+      <div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
+        <alertCircle className="h-4 w-4 text-yellow-500 mt-0.5"/></div></div>
+        <div className="text-sm">
+          <p className="font-medium mb-1"></div>Conversion Notes:</div>
+          <ul className="space-y-1 text-muted-foreground">
+            <li>• localStorage → Lovable Tables</ul>
+            <li>• API calls → Lovable Functions</li>
+            <li>• AI integrations → Lovable AI Blocks</li>
+        </li>
+      </div>
   );
 }; 

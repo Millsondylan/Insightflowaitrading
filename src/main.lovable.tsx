@@ -21,8 +21,8 @@ console.info('Available AI providers:',
 )
 
 createRoot(document.getElementById("root")!).render(
-  <Authprovider>
-    <app  / />
+  <authprovider>
+    <app  //>
 );
 
 

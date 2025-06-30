@@ -57,21 +57,22 @@ export default function IndicatorsStep() {
   };
   
   return (
-    <Div className="space-y-6">
-      <P className="text-gray-500 dark:text-gray-400">
+    <div className="space-y-6">
+      <p className="text-gray-500 dark:text-gray-400">
         Select the indicators you use in your trading analysis
-      </Div>
+      </p>
       
       <FormField
         control={control}
         name="indicators"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Common Indicators</FormField>
+            <FormLabel>Common Indicators</FormLabel>
             <FormControl>
-              <Div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {commonIndicators.map((indicator) => (
-                  <Div                     key={indicator}
+                  <div
+                    key={indicator}
                     className={`
                       flex items-center justify-center p-2 border rounded-md cursor-pointer
                       transition-colors text-center
@@ -84,16 +85,18 @@ export default function IndicatorsStep() {
                     onClick={() => toggleIndicator(indicator)}
                   >
                     {indicator}
-                  </FormControl>
+                  </div>
                 ))}
-              </div />
-            <FormMessage / />
+              </div>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
         )}
       />
       
-      <Div>
-        <FormLabel>Custom Indicators</FormMessage>
-        <Div className="flex gap-2 mt-2">
+      <div>
+        <FormLabel>Custom Indicators</FormLabel>
+        <div className="flex gap-2 mt-2">
           <Input
             placeholder="Add custom indicator"
             value={customIndicator}
@@ -106,38 +109,41 @@ export default function IndicatorsStep() {
             }}
           />
           <Button type="button" onClick={addCustomIndicator} size="sm">
-            <Plus className="h-4 w-4" />
+            <Plus className="h-4 w-4"/>
             Add
-          </Div>
-        </Div>
-      </Div>
+          </Button>
+        </div>
+      </div>
       
       <FormField
         control={control}
         name="indicators"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Selected Indicators</FormField>
-            <Div className="flex flex-wrap gap-2 mt-2">
+            <FormLabel>Selected Indicators</FormLabel>
+            <div className="flex flex-wrap gap-2 mt-2">
               {field.value?.map((indicator: string) => (
                 <Badge key={indicator} variant="secondary" className="flex items-center gap-1">
                   {indicator}
-                  <Button                     type="button"
+                  <Button
+                    type="button"
                     onClick={() => removeIndicator(indicator)}
                     className="text-gray-500 hover:text-gray-700 focus:outline-none"
                   >
-                    <X className="h-3 w-3" />
-                    <Span className="sr-only">Remove</Div>
-                  </button />
+                    <X className="h-3 w-3"/>
+                    <span className="sr-only">Remove</span>
+                  </Button>
+                </Badge>
               ))}
               {(!field.value || field.value.length === 0) && (
-                <P className="text-sm text-gray-500 italic">No indicators selected</P>
+                <p className="text-sm text-gray-500 italic">No indicators selected</p>
               )}
-            </Div>
-            <FormMessage / />
+            </div>
+            <FormMessage />
+          </FormItem>
         )}
       />
-    </FormMessage>
+    </div>
   );
 }
 

@@ -14,7 +14,7 @@ interface AccessStatusProps {
   onAnimationComplete?: () => void;
 }
 
-const AccessStatus: React.FC<Accessstatusprops> = ({
+const AccessStatus: React.FC<accessstatusprops> = ({
   status,
   plan,
   expiryDate,
@@ -70,7 +70,7 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
   const formattedExpiry = expiryDate ? new Date(expiryDate).toLocaleDateString() : '';
 
   return (
-    <animatepresence mode="wait" />
+    <animatepresence mode="wait"/>
       <motion.div
         key={status}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -85,7 +85,7 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
           className
         )}
       >
-        <Div className="flex flex-col items-center space-y-4">
+        <div className="flex flex-col items-center space-y-4">
           {/* Status Icon */}
           <motion.div
             initial={{ scale: 0 }}
@@ -110,8 +110,8 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
                     repeatDelay: 1,
                   }}
                 />
-                <Lockopen  />
-              </>
+                <Lockopen />
+              </div>
             )}
             {status === 'failure' && (
               <xcircle >
@@ -125,19 +125,19 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
             transition={{ delay: 0.3, duration: 0.5 }}
             className="space-y-2"
           >
-            <H3 className={cn(
+            <h3 className={cn(
               "text-xl font-bold",
               status === 'pending' && "text-blue-400",
               status === 'success' && "text-green-400",
               status === 'failure' && "text-red-400",
-            )} /></Accessstatusprops /></Accessstatusprops />
+            )}/></Accessstatusprops /></Accessstatusprops />
               {status === 'pending' && 'Verifying Payment'}
               {status === 'success' && 'Access Granted!'}
               {status === 'failure' && 'Verification Failed'}
-            </Accessstatusprops>
+            </h3>
             
             {message && (
-              <P className="text-gray-300">{message}</P>
+              <p className="text-gray-300">{message}</p>
             )}
             
             {status === 'success' && plan && (
@@ -147,18 +147,18 @@ const AccessStatus: React.FC<Accessstatusprops> = ({
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="mt-4 space-y-2"
               >
-                <P className="font-medium text-green-300">
+                <p className="font-medium text-green-300">
                   {plan.charAt(0).toUpperCase() + plan.slice(1)} Plan Activated
-                </P>
+                </p>
                 {formattedExpiry && (
-                  <P className="text-sm text-gray-400">
+                  <p className="text-sm text-gray-400">
                     Expires: {formattedExpiry}
-                  </P>
+                  </p>
                 )}
               </motion.div>
             )}
           </motion.div>
-        </Div>
+        </div>
       </motion.div />
   );
 };

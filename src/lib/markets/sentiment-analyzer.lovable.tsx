@@ -196,7 +196,7 @@ export const SentimentDisplay: React.FC<SentimentDisplayProps> = ({
                   backgroundColor: getTrendColor(sentiment.trend),
                   borderRadius: '2px',
                   marginTop: '8px'
-                }} />
+                }}/>
               </div>
               <div style={{ fontSize: '14px', fontWeight: 'bold' }}>
                 {(score * 100).toFixed(1)}%

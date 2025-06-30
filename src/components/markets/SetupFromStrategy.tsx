@@ -21,7 +21,7 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
   const [strategyText, setStrategyText] = useState<string>('');
   const [isScanning, setIsScanning] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
-  const [strategy, setStrategy] = useState<UserStrategy | null />(null);
+  const [strategy, setStrategy] = useState<UserStrategy | null>(null);
   const [matchingSetups, setMatchingSetups] = useState<StrategySetup[]>([]);
   const [marketsToScan, setMarketsToScan] = useState<string[]>([]);
   const { toast } = useToast();
@@ -241,121 +241,131 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
   };
 
   return (
-    <Div className="space-y-6">
+    <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Strategy Setup Finder</UserStrategy>
-          <CardDescription>Define your trading strategy and scan markets for current setups</CardDescription />
-        <CardContent className="space-y-4" />
-          <Div>
+          <CardTitle>Strategy Setup Finder</CardTitle>
+          <CardDescription>Define your trading strategy and scan markets for current setups</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div>
             <Label htmlFor="title" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
               Strategy Name
-            </CardDescription>
+            </Label>
             <Input id="title"
               className="mt-1"
               placeholder="My Breakout Strategy" 
               value={title} 
-              onChange={e = /> setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
               disabled={!!strategy || isSaving}
-            / />
-          <Div>
+            />
+          </div>
+          <div>
             <Label htmlFor="strategyText" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
               Define Your Strategy Rules
-            </Input>
+            </Label>
             <Textarea id="strategyText"
               className="mt-1 min-h-32"
               placeholder="Example: When RSI(14) is below 30 and there's a bullish engulfing candle on the 1H timeframe, go long with a stop loss at the recent low and take profit at 2x the stop distance."
               value={strategyText}
-              onChange={e = /> setStrategyText(e.target.value)}
+              onChange={e => setStrategyText(e.target.value)}
               disabled={!!strategy || isSaving}
-            / />
-          
-          <Div>
-            <H3 className="text-sm font-medium mb-2">Markets to Scan</Textarea>
-            <Div className="flex flex-wrap gap-2 mb-4">
-              <Tabs defaultValue="all" />
+            />
+          </div>
+          <div>
+            <h3 className="text-sm font-medium mb-2">Markets to Scan</h3>
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Tabs defaultValue="all">
                 <TabsList>
-                  <TabsTrigger value="all" />All</Div>
-                  <TabsTrigger value="crypto" />Crypto</TabsTrigger>
-                  <TabsTrigger value="forex" />Forex</TabsTrigger>
-                  <TabsTrigger value="stocks" />Stocks</TabsTrigger>
-                  <TabsTrigger value="commodities" />Commodities</TabsTrigger />
-                <TabsContent value="all" className="mt-2" />
-                  <Div className="flex flex-wrap gap-2">
+                  <TabsTrigger value="all">All</TabsTrigger>
+                  <TabsTrigger value="crypto">Crypto</TabsTrigger>
+                  <TabsTrigger value="forex">Forex</TabsTrigger>
+                  <TabsTrigger value="stocks">Stocks</TabsTrigger>
+                  <TabsTrigger value="commodities">Commodities</TabsTrigger>
+                </TabsList>
+                <TabsContent value="all" className="mt-2">
+                  <div className="flex flex-wrap gap-2">
                     {availableMarkets.map((market) => (
                       <Badge key={market.symbol}
                         variant={marketsToScan.includes(market.symbol) ? "default" : "outline"}
                         className="cursor-pointer"
-                        onClick={() = /> handleMarketToggle(market.symbol)}
+                        onClick={() => handleMarketToggle(market.symbol)}
                       >
-                        {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3" /> : null}
+                        {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3"/> : null}
                         {market.symbol}
-                      </TabsTrigger>
+                      </Badge>
                     ))}
-                  </div />
-                <TabsContent value="crypto" className="mt-2" />
-                  <Div className="flex flex-wrap gap-2">
+                  </div>
+                </TabsContent>
+                <TabsContent value="crypto" className="mt-2">
+                  <div className="flex flex-wrap gap-2">
                     {availableMarkets.filter(m => m.type === 'crypto').map((market) => (
                       <Badge key={market.symbol}
                         variant={marketsToScan.includes(market.symbol) ? "default" : "outline"}
                         className="cursor-pointer"
-                        onClick={() = /> handleMarketToggle(market.symbol)}
+                        onClick={() => handleMarketToggle(market.symbol)}
                       >
-                        {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3" /> : null}
+                        {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3"/> : null}
                         {market.symbol}
-                      </TabsContent>
+                      </Badge>
                     ))}
-                  </div />
-                <TabsContent value="forex" className="mt-2" />
-                  <Div className="flex flex-wrap gap-2">
+                  </div>
+                </TabsContent>
+                <TabsContent value="forex" className="mt-2">
+                  <div className="flex flex-wrap gap-2">
                     {availableMarkets.filter(m => m.type === 'forex').map((market) => (
                       <Badge key={market.symbol}
                         variant={marketsToScan.includes(market.symbol) ? "default" : "outline"}
                         className="cursor-pointer"
-                        onClick={() = /> handleMarketToggle(market.symbol)}
+                        onClick={() => handleMarketToggle(market.symbol)}
                       >
-                        {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3" /> : null}
+                        {marketsToScan.includes(market.symbol) ? <Check className="mr-1 h-3 w-3"/> : null}
                         {market.symbol}
-                      </TabsContent>
+                      </Badge>
                     ))}
-                  </div />
+                  </div>
+                </TabsContent>
                 {/* Similar TabsContent for other market types */}
               </Tabs>
-            </Div>
-          </div />
-        <CardFooter className="flex justify-between" />
+            </div>
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-between">
           <Button variant="outline" 
             onClick={handleSaveStrategy}
             disabled={isSaving || isScanning || (!title && !strategyText) || !!strategy}>
-            {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
+            {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Save className="mr-2 h-4 w-4"/>}
             Save Strategy
-          </CardFooter>
+          </Button>
           <Button onClick={handleScanMarkets}
             disabled={isScanning || (!strategy && !strategyText)}>
-            {isScanning ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Scan className="mr-2 h-4 w-4" />}
+            {isScanning ? <Loader2 className="mr-2 h-4 w-4 animate-spin"/> : <Scan className="mr-2 h-4 w-4"/>}
             Scan Markets
-          </button />
-      </Button>
+          </Button>
+        </CardFooter>
+      </Card>
 
       {isScanning ? (
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {[1, 2, 3].map((i) => (
-            <Card key={i} className="overflow-hidden" />
-              <CardHeader className="pb-2" />
-                <Skeleton className="h-6 w-32" />
-              </Div>
-              <Skeleton className="h-[200px] w-full" />
-              <CardContent className="pt-4" />
-                <Div className="space-y-2">
-                  <Skeleton className="h-4 w-full" />
-                  <Skeleton className="h-4 w-3/4" / />
-              </CardContent />
+            <Card key={i} className="overflow-hidden">
+              <CardHeader className="pb-2">
+                <Skeleton className="h-6 w-32"/>
+              </CardHeader>
+              <Skeleton className="h-[200px] w-full"/>
+              <CardContent className="pt-4">
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-full"/>
+                  <Skeleton className="h-4 w-3/4"/>
+                </div>
+              </CardContent>
+            </Card>
           ))}
-        </Skeleton>
+        </div>
       ) : matchingSetups.length > 0 ? (
-        <Div>
-          <H2 className="text-2xl font-bold mb-4">Matching Setups ({matchingSetups.length})</Div>
-          <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div>
+          <h2 className="text-2xl font-bold mb-4">Matching Setups ({matchingSetups.length})</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {matchingSetups.map((setup) => {
               const chartData = generateChartData(setup.symbol, setup.entry);
               
@@ -391,73 +401,76 @@ export function SetupFromStrategy({ onStrategyCreated }: SetupFromStrategyProps)
               ];
               
               return (
-                <Card key={`${setup.symbol}-${setup.timeframe}`} className="overflow-hidden" />
-                  <CardHeader className="pb-2" />
-                    <Div className="flex justify-between items-center">
-                      <CardTitle className="flex items-center" />
+                <Card key={`${setup.symbol}-${setup.timeframe}`} className="overflow-hidden">
+                  <CardHeader className="pb-2">
+                    <div className="flex justify-between items-center">
+                      <CardTitle className="flex items-center">
                         {setup.symbol}
                         <Badge variant={isLong ? 'default' : 'destructive'}
                           className="ml-2"
-            >
+                        >
                           {isLong ? (
-                            <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</Div>
+                            <span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3"/> LONG</span>
                           ) : (
-                            <Span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3" /> SHORT</Span>
+                            <span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3"/> SHORT</span>
                           )}
-                        </Badge />
-                      <Badge variant="outline" />{setup.timeframe}</Badge>
-                    </Div>
-                    <CardDescription className="flex items-center" />
-                      Confidence: <Span className="text-amber-500 ml-1">{setup.confidence}%</CardDescription />
+                        </Badge>
+                      </CardTitle>
+                      <Badge variant="outline">{setup.timeframe}</Badge>
+                    </div>
+                  </CardHeader>
+                  <CardDescription className="flex items-center">
+                    Confidence: <span className="text-amber-500 ml-1">{setup.confidence}%</span>
                   </CardDescription>
-                  <Div className="h-[200px]">
+                  <div className="h-[200px]">
                     <TradingViewChart
                       data={chartData}
                       overlays={overlays}
                       height={200}
-                    />
-                  </Div>
-                  <CardContent className="pt-4" />
-                    <Div className="grid grid-cols-3 gap-2 text-xs mb-3">
-                      <Div>
-                        <Div className="text-muted-foreground">Entry</CardContent>
-                        <Div className="font-semibold">{setup.entry.toFixed(5)}</Div>
-                      </Div>
-                      <Div>
-                        <Div className="text-muted-foreground">Stop Loss</Div>
-                        <Div className="font-semibold text-red-500">{setup.sl.toFixed(5)}</Div>
-                      </Div>
-                      <Div>
-                        <Div className="text-muted-foreground">Take Profit</Div>
-                        <Div className="font-semibold text-green-500">{setup.tp.toFixed(5)}</Div>
-                      </Div>
-                    </Div>
+                   />
+                  </div>
+                  <CardContent className="pt-4">
+                    <div className="grid grid-cols-3 gap-2 text-xs mb-3">
+                      <div>
+                        <div className="text-muted-foreground">Entry</div>
+                        <div className="font-semibold">{setup.entry.toFixed(5)}</div>
+                      </div>
+                      <div>
+                        <div className="text-muted-foreground">Stop Loss</div>
+                        <div className="font-semibold text-red-500">{setup.sl.toFixed(5)}</div>
+                      </div>
+                      <div>
+                        <div className="text-muted-foreground">Take Profit</div>
+                        <div className="font-semibold text-green-500">{setup.tp.toFixed(5)}</div>
+                      </div>
+                    </div>
                     {setup.reasons && setup.reasons.length > 0 && (
-                      <Div className="text-xs text-muted-foreground">
-                        <Div className="font-medium text-foreground">Reasons:</Div>
-                        <Ul className="list-disc pl-4 mt-1 space-y-1">
+                      <div className="text-xs text-muted-foreground">
+                        <div className="font-medium text-foreground">Reasons:</div>
+                        <ul className="list-disc pl-4 mt-1 space-y-1">
                           {setup.reasons.slice(0, 2).map((reason, i) => (
-                            <Li key={i}>{reason}</Ul>
+                            <li key={i}>{reason}</li>
                           ))}
                           {setup.reasons.length > 2 && (
-                            <Li>+ {setup.reasons.length - 2} more</Li>
+                            <li>+ {setup.reasons.length - 2} more</li>
                           )}
-                        </Ul>
-                      </Div>
+                        </ul>
+                      </div>
                     )}
                   </CardContent>
-                  <CardFooter className="pt-0" />
-                    <Button variant="outline" size="sm" className="w-full" />
-                      <Edit className="mr-2 h-3 w-3" / /></CardFooter /></CardFooter /></CardFooter>
+                  <CardFooter className="pt-0">
+                    <Button variant="outline" size="sm" className="w-full">
+                      <Edit className="mr-2 h-3 w-3"/>
                       Create Trade
-                    </button />
+                    </Button>
+                  </CardFooter>
                 </Card>
               );
             })}
-          </Div>
-        </Div>
+          </div>
+        </div>
       ) : null}
-    </Div>
+    </div>
   );
 }
 

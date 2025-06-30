@@ -24,7 +24,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <Dropdownmenuprimitive >
     {children}
-    <Chevronright  />
+    <Chevronright />
   </DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName =
@@ -64,7 +64,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
   <Dropdownmenuprimitive >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <Dropdownmenuprimitive >
         <Check >
       </DropdownMenuPrimitive.ItemIndicator />
@@ -79,9 +79,9 @@ const DropdownMenuRadioItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
   <Dropdownmenuprimitive >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <Dropdownmenuprimitive >
-        <Circle  />
+        <Circle />
       </DropdownMenuPrimitive.ItemIndicator />
     {children}
   </DropdownMenuPrimitive.RadioItem>
@@ -111,9 +111,9 @@ const DropdownMenuShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span       className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
+    <span       className={cn("ml-auto text-xs tracking-widest opacity-60", className)}
       {...props}
-    / /></Dropdownmenuprimitive /></Dropdownmenuprimitive />
+    //></Dropdownmenuprimitive /></Dropdownmenuprimitive />
   )
 }
 DropdownMenuShortcut.displayName = "DropdownMenuShortcut"

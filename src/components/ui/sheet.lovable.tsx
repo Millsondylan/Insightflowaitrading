@@ -48,13 +48,13 @@ const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
 >(({ side = "right", className, children, ...props }, ref) => (
-  <Sheetportal  />
+  <Sheetportal />
     <Sheetoverlay >
     <Sheetprimitive >
       {children}
       <Sheetprimitive >
-        <x >
-        <Span className="sr-only">Close</Sheetprimitive>
+        <X >
+        <span className="sr-only">Close</Sheetprimitive>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content />
 ))
@@ -64,12 +64,11 @@ const SheetHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div     className={cn(
+  <div     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
       className
     )}
-    {...props}
-  />
+    {...props}/>
 )
 SheetHeader.displayName = "SheetHeader"
 
@@ -77,12 +76,12 @@ const SheetFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div     className={cn(
+  <div     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
-  / /></HTMLDivElement /></HTMLDivElement />
+  //></HTMLDivElement /></HTMLDivElement />
 )
 SheetFooter.displayName = "SheetFooter"
 
@@ -90,7 +89,7 @@ const SheetTitle = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <Sheetprimitive  />
+  <Sheetprimitive />
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
@@ -98,7 +97,7 @@ const SheetDescription = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <Sheetprimitive  /></HTMLDivElement></HTMLDivElement></HTMLDivElement></HTMLDivElement></HTMLDivElement>
+  <Sheetprimitive /></HTMLDivElement></div>
 ))
 SheetDescription.displayName = SheetPrimitive.Description.displayName
 

@@ -78,159 +78,159 @@ export default function DownloadApp() {
   
   if (isAlreadyInstalled) {
     return (
-      <Div className="container max-w-4xl mx-auto py-12">
+      <div className="container max-w-4xl mx-auto py-12">
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl" />{t('download.title')}</Div>
-            <CardDescription>{t('download.alreadyInstalled')}</CardDescription />
+            <CardTitle className="text-2xl"/>{t('download.title')}</div>
+            <CardDescription>{t('download.alreadyInstalled')}</CardDescription>
           <CardContent>
-            <P className="text-center py-8 text-xl">{t('download.alreadyInstalled')}</CardContent />
-          <CardFooter className="flex justify-center" />
-            <Button variant="outline" onClick={() = /> window.history.back()}>
+            <p className="text-center py-8 text-xl">{t('download.alreadyInstalled')}</CardContent>
+          <CardFooter className="flex justify-center"/>
+            <Button variant="outline" onClick={() => window.history.back()}>
               {t('ui.back')}
-            </CardFooter />
+            </CardFooter>
         </CardDescription>
-      </Div>
+      </div>
     );
   }
   
   return (
-    <Div className="container max-w-4xl mx-auto py-8">
-      <H1 className="text-3xl font-bold mb-2">{t('download.title')}</Div>
-      <P className="text-lg mb-8">{t('download.description')}</P>
+    <div className="container max-w-4xl mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-2">{t('download.title')}</div>
+      <p className="text-lg mb-8">{t('download.description')}</p>
       
-      <Tabs defaultValue="android" className="w-full" />
-        <TabsList className="grid grid-cols-3 mb-8" />
-          <TabsTrigger value="android" />Android</Tabs>
-          <TabsTrigger value="macos" />macOS</TabsTrigger>
-          <TabsTrigger value="pwa" />Web App</TabsTrigger />
+      <Tabs defaultValue="android" className="w-full"/>
+        <TabsList className="grid grid-cols-3 mb-8"/>
+          <TabsTrigger value="android"/>Android</Tabs>
+          <TabsTrigger value="macos"/>macOS</TabsTrigger>
+          <TabsTrigger value="pwa"/>Web App</TabsTrigger>
         
         {/* Android Tab */}
-        <TabsContent value="android" />
+        <TabsContent value="android"/>
           <Card>
             <CardHeader>
               <CardTitle>
-                <Div className="flex items-center">
-                  <Span className="text-2xl mr-2">📱</TabsTrigger> 
+                <div className="flex items-center">
+                  <span className="text-2xl mr-2">📱</TabsTrigger> 
                   {t('download.android')}
-                </div />
-              <CardDescription>{t('download.androidDescription')}</CardDescription />
-            <CardContent className="space-y-4" />
-              <Div className="flex justify-center">
+                </div>
+              <CardDescription>{t('download.androidDescription')}</CardDescription>
+            <CardContent className="space-y-4"/>
+              <div className="flex justify-center">
                 {/* In a real app, you would use:
                 <QRCode 
                   value={ANDROID_APK_URL}
                   size={200}
                   level="H"
                   includeMargin={true}
-                /> */}
-                <Div className="w-48 h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
+   /> */}
+                <div className="w-48 h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
                   QR Code Placeholder for {ANDROID_APK_URL}
                 </CardDescription>
-              </Div>
+              </div>
               
-              <Div className="text-center mt-4">
-                <P>{t('download.scanQRCode')}</Div>
-              </div />
-            <CardFooter className="flex justify-center gap-4" />
-              <Button onClick={downloadAndroid} />{t('download.downloadAndroid')}</CardFooter>
-              <Button variant="outline" onClick={() = /> handleCopyLink(ANDROID_APK_URL)}>
+              <div className="text-center mt-4">
+                <p>{t('download.scanQRCode')}</div>
+              </div>
+            <CardFooter className="flex justify-center gap-4"/>
+              <Button onClick={downloadAndroid}/>{t('download.downloadAndroid')}</CardFooter>
+              <Button variant="outline" onClick={() => handleCopyLink(ANDROID_APK_URL)}>
                 {t('download.copyLink')}
-              </button />
-          </Card />
+              </button>
+          </Card>
         
         {/* macOS Tab */}
-        <TabsContent value="macos" />
+        <TabsContent value="macos"/>
           <Card>
             <CardHeader>
               <CardTitle>
-                <Div className="flex items-center">
-                  <Span className="text-2xl mr-2">💻</Button>
+                <div className="flex items-center">
+                  <span className="text-2xl mr-2">💻</button>
                   {t('download.desktop')}
-                </div />
-              <CardDescription>{t('download.desktopDescription')}</CardDescription />
+                </div>
+              <CardDescription>{t('download.desktopDescription')}</CardDescription>
             <CardContent>
-              <Div className="space-y-4">
-                <Div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-                  <H3 className="font-semibold mb-2">{t('download.requirements')}</CardDescription>
-                  <Ul className="list-disc list-inside space-y-1 text-sm">
-                    <Li>macOS 10.13 High Sierra or later</Ul>
-                    <Li>Apple Silicon or Intel Processor</Li>
-                    <Li>4GB RAM minimum</Li>
-                    <Li>500MB disk space</Li />
-                </Li>
+              <div className="space-y-4">
+                <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                  <h3 className="font-semibold mb-2">{t('download.requirements')}</CardDescription>
+                  <ul className="list-disc list-inside space-y-1 text-sm">
+                    <li>macOS 10.13 High Sierra or later</ul>
+                    <li>Apple Silicon or Intel Processor</li>
+                    <li>4GB RAM minimum</li>
+                    <li>500MB disk space</li>
+                </li>
                 
-                <Div className="text-center py-4">
-                  <P className="text-sm text-gray-500">{t('download.version')}: {APP_VERSION}</Div>
-                </Div>
-              </div />
-            <CardFooter className="flex justify-center gap-4" />
-              <Button onClick={downloadMacOS} />{t('download.downloadMacOS')}</CardFooter>
-              <Button variant="outline" onClick={() = /> handleCopyLink(MACOS_APP_URL)}>
+                <div className="text-center py-4">
+                  <p className="text-sm text-gray-500">{t('download.version')}: {APP_VERSION}</div>
+                </div>
+              </div>
+            <CardFooter className="flex justify-center gap-4"/>
+              <Button onClick={downloadMacOS}/>{t('download.downloadMacOS')}</CardFooter>
+              <Button variant="outline" onClick={() => handleCopyLink(MACOS_APP_URL)}>
                 {t('download.copyLink')}
-              </button />
-          </Card />
+              </button>
+          </Card>
         
         {/* PWA Tab */}
-        <TabsContent value="pwa" />
+        <TabsContent value="pwa"/>
           <Card>
             <CardHeader>
               <CardTitle>
-                <Div className="flex items-center">
-                  <Span className="text-2xl mr-2">🌐</Button>
+                <div className="flex items-center">
+                  <span className="text-2xl mr-2">🌐</button>
                   {t('download.pwa')}
-                </div />
-              <CardDescription>{t('download.pwaDescription')}</CardDescription />
-            <CardContent className="space-y-6" />
-              <Div className="flex justify-center">
+                </div>
+              <CardDescription>{t('download.pwaDescription')}</CardDescription>
+            <CardContent className="space-y-6"/>
+              <div className="flex justify-center">
                 {/* In a real app, you would use:
                 <QRCode 
                   value={WEB_APP_URL}
                   size={200}
                   level="H"
                   includeMargin={true}
-                /> */}
-                <Div className="w-48 h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
+   /> */}
+                <div className="w-48 h-48 bg-gray-300 dark:bg-gray-700 flex items-center justify-center">
                   QR Code Placeholder for {WEB_APP_URL}
                 </CardDescription>
-              </Div>
+              </div>
               
-              <Div className="text-center">
-                <P>{t('download.pwaInstructions')}</Div>
-              </Div>
+              <div className="text-center">
+                <p>{t('download.pwaInstructions')}</div>
+              </div>
               
               <Separator />
               
-              <Div>
-                <H3 className="font-semibold mb-2">{t('download.whyDownload')}</Separator>
-                <Ul className="space-y-2">
-                  <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Ul>
-                    <Span>{t('download.feature1')}</span />
-                  <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Span>
-                    <Span>{t('download.feature2')}</span />
-                  <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Span>
-                    <Span>{t('download.feature3')}</span />
-                  <Li className="flex items-start">
-                    <Span className="text-green-500 mr-2">✓</Span>
-                    <Span>{t('download.feature4')}</span />
-                </Span>
-              </Div>
+              <div>
+                <h3 className="font-semibold mb-2">{t('download.whyDownload')}</Separator>
+                <ul className="space-y-2">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</ul>
+                    <span>{t('download.feature1')}</span>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>{t('download.feature2')}</span>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>{t('download.feature3')}</span>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>{t('download.feature4')}</span>
+                </span>
+              </div>
               
-              <Div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
-                <H3 className="font-semibold mb-2">{t('download.pwaRequirements')}</Div>
-                <P className="text-sm">{t('download.offlineSupport')}</P>
-              </div />
-            <CardFooter className="flex justify-center gap-4" />
-              <Button onClick={handlePWAInstall} />{t('download.installPWA')}</CardFooter>
-              <Button variant="outline" onClick={() = /> handleCopyLink(WEB_APP_URL)}>
+              <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+                <h3 className="font-semibold mb-2">{t('download.pwaRequirements')}</div>
+                <p className="text-sm">{t('download.offlineSupport')}</p>
+              </div>
+            <CardFooter className="flex justify-center gap-4"/>
+              <Button onClick={handlePWAInstall}/>{t('download.installPWA')}</CardFooter>
+              <Button variant="outline" onClick={() => handleCopyLink(WEB_APP_URL)}>
                 {t('download.copyLink')}
-              </button />
-          </Card />
-      </Button>
-    </Div>
+              </button>
+          </Card>
+      </button>
+    </div>
   );
 }
 

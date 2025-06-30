@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { UploadCloud, FileImage } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import '@/styles/vision.css';
 
 interface ChartUploaderProps {
@@ -10,8 +11,8 @@ interface ChartUploaderProps {
 
 const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      const file = acceptedFiles[0];
+    const file = acceptedFiles[0];
+    if (file) {
       const previewUrl = URL.createObjectURL(file);
       onFileUpload(file, previewUrl);
     }
@@ -25,25 +26,25 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   });
 
   return (
-    <Div {...getRootProps()}
+    <div {...getRootProps()}
       className={`chart-uploader ${isDragActive ? 'active' : ''}`}>
-      <Input {...getInputProps()} />
-      <Div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
+      <Input {...getInputProps()}/>
+      <div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
         {isDragActive ? (
           <>
-            <FileImage className="h-12 w-12 text-cyan-400" />
-            <P className="text-lg font-semibold text-white">Drop the chart here...</Div>
+            <FileImage className="h-12 w-12 text-cyan-400"/>
+            <p className="text-lg font-semibold text-white">Drop the chart here...</p>
           </>
         ) : (
           <>
-            <UploadCloud className="h-12 w-12 text-gray-500" />
-            <P className="text-lg font-semibold text-white">Drag & drop a chart image, or click to select</UploadCloud>
-            <P className="text-sm text-gray-400">PNG or JPG supported</P>
+            <UploadCloud className="h-12 w-12 text-gray-500"/>
+            <p className="text-lg font-semibold text-white">Drag & drop a chart image, or click to select</p>
+            <p className="text-sm text-gray-400">PNG or JPG supported</p>
           </>
         )}
-      </Div>
-      {isLoading && <Div className="shimmer-overlay" />}
-    </Div>
+      </div>
+      {isLoading && <div className="shimmer-overlay"/>}
+    </div>
   );
 };
 

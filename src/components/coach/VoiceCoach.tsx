@@ -35,7 +35,7 @@ export default function VoiceCoach({ marketContext, strategyId }: VoiceCoachProp
   const [transcript, setTranscript] = useState<TranscriptMessage[]>([]);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const mediaRecorderRef = useRef<MediaRecorder | null />(null);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
   const { user } = useAuth();
@@ -249,73 +249,77 @@ export default function VoiceCoach({ marketContext, strategyId }: VoiceCoachProp
   }
 
   return (
-    <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen} />
-      <DrawerTrigger asChild />
+    <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+      <DrawerTrigger asChild>
         <Button variant="outline" 
           size="icon" 
           className="rounded-full h-12 w-12 fixed bottom-6 right-6 bg-primary text-primary-foreground shadow-lg hover:shadow-xl z-50">
-          <Mic className="h-6 w-6" / />
-      </TranscriptMessage>
-      <DrawerContent className="max-h-[85vh]" />
+          <Mic className="h-6 w-6"/>
+        </button>
+      </DrawerTrigger>
+      <DrawerContent className="max-h-[85vh]">
         <DrawerHeader>
-          <DrawerTitle className="flex items-center justify-between" />
-            <Div>
+          <DrawerTitle className="flex items-center justify-between">
+            <div>
               AI Voice Coach
               {marketContext?.symbol && (
-                <Badge variant="outline" className="ml-2" />
+                <Badge variant="outline" className="ml-2">
                   {marketContext.symbol} {marketContext.timeframe}
-                </DrawerContent>
+                </Badge>
               )}
-            </Div>
-            <Div className="flex items-center space-x-2">
+            </div>
+            <div className="flex items-center space-x-2">
               <Switch
                 id="auto-speak"
                 checked={autoSpeak}
                 onCheckedChange={setAutoSpeak}
-              />
-              <Label htmlFor="auto-speak" />Auto-speak</Div>
-            </div />
+             />
+              <Label htmlFor="auto-speak">Auto-speak</Label>
+            </div>
+          </DrawerTitle>
         </DrawerHeader>
         <CardContent>
-          <Card className="border-none shadow-none" />
+          <Card className="border-none shadow-none">
             <CardContent>
-              <ScrollArea className="h-[50vh] pr-4" />
-                <Div className="space-y-4">
+              <ScrollArea className="h-[50vh] pr-4">
+                <div className="space-y-4">
                   {transcript.map((message, index) => (
-                    <Div key={index} 
-                      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-         >
-                      <Div className={`max-w-[80%] p-3 rounded-lg ${
+                    <div key={index} 
+                      className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <div className={`max-w-[80%] p-3 rounded-lg ${
                           message.role === 'user' 
                             ? 'bg-primary text-primary-foreground' 
                             : 'bg-muted'
                         }`}
-           >
-                        <P>{message.content}</CardContent>
-                        <Div className="text-xs opacity-70 mt-1">
+                      >
+                        <p>{message.content}</p>
+                        <div className="text-xs opacity-70 mt-1">
                           {new Date(message.timestamp).toLocaleTimeString()}
-                        </Div>
-                      </Div>
-                    </Div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </div />
+                </div>
+              </ScrollArea>
             </CardContent>
-            <CardFooter className="flex justify-between" />
-              <Button variant="outline"
-                onClick={handleEndSession}
-  >
+            <CardFooter className="flex justify-between">
+              <Button variant="outline" onClick={handleEndSession}>
                 End Session
-              </CardFooter>
-              <Button variant={isRecording ? "destructive" : "default"}
+              </button>
+              <Button 
+                variant={isRecording ? "destructive" : "default"}
                 onClick={isRecording ? stopRecording : startRecording}
                 disabled={isProcessing || !sessionId}
                 className="w-20"
-  >
-                {isRecording ? <MicOff className="mr-2 h-4 w-4" /> : <Mic className="mr-2 h-4 w-4" /></Button></Button></Button></Button></Button></Button>}
+              >
+                {isRecording ? <MicOff className="mr-2 h-4 w-4"/> : <Mic className="mr-2 h-4 w-4"/>}
                 {isRecording ? "Stop" : "Talk"}
-              </button />
-          </Card />
-      </DrawerContent />
+              </button>
+            </CardFooter>
+          </Card>
+        </CardContent>
+      </DrawerContent>
+    </Drawer>
   );
 }
 

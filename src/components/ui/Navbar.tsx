@@ -64,74 +64,74 @@ export const Navbar = () => {
   ];
 
   return (
-    <Nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <Div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Div className="flex items-center">
-          <Link to="/" className="flex items-center" />
-            <Img src="/placeholder.svg" alt="Logo" className="h-8 w-8 mr-2" />
-            <Span className="text-lg font-bold">InsightFlow</Nav />
-        </Nav>
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="flex items-center">
+          <Link to="/" className="flex items-center"/>
+            <img src="/placeholder.svg" alt="Logo" className="h-8 w-8 mr-2"/>
+            <span className="text-lg font-bold">InsightFlow</nav>
+        </nav>
         
         {/* Desktop Navigation */}
-        <Div className="hidden md:flex space-x-6 items-center">
+        <div className="hidden md:flex space-x-6 items-center">
           {navigationItems.map((route) => (
-            <Link key={route.href} to={route.href} className="nav-link font-medium" />
+            <Link key={route.href} to={route.href} className="nav-link font-medium"/>
               {route.label}
-            </Div>
+            </div>
           ))}
-        </Div>
+        </div>
         
-        <Div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-4">
           {!isAuthenticated ? (
             <>
-              <Link to="/auth" className="nav-link" />Log In</Div>
-              <Link to="/register" className="btn-primary" />Sign Up</Link>
+              <Link to="/auth" className="nav-link"/>Log In</div>
+              <Link to="/register" className="btn-primary"/>Sign Up</Link>
             </>
           ) : (
             <>
-              <Link to="/profile" className="nav-link" />Profile</Link>
+              <Link to="/profile" className="nav-link"/>Profile</Link>
               <Button className="btn-secondary" onClick={() => {
                 localStorage.removeItem('authToken');
                 setIsAuthenticated(false);
               }}>
                 Logout
-              </Button>
+              </button>
             </>
           )}
-        </Div>
+        </div>
         
         {/* Mobile Menu Button */}
-        <Div className="md:hidden">
+        <div className="md:hidden">
           <Button onClick={toggleMobileMenu} className="text-gray-600">
             {isMobileMenuOpen ? <X /> : <Menu />}
-          </Div>
-        </Div>
-      </Div>
+          </div>
+        </div>
+      </div>
       
       {/* Mobile Menu */}
-      <Div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {navigationItems.map((route) => (
           <Link key={route.href}
             to={route.href}
             className="mobile-nav-link"
             onClick={toggleMobileMenu}>
             {route.label}
-          </Div>
+          </div>
         ))}
         
-        <Div className="mobile-auth">
+        <div className="mobile-auth">
           {!isAuthenticated ? (
             <>
-              <Link to="/auth" className="mobile-nav-link" onClick={toggleMobileMenu} />
+              <Link to="/auth" className="mobile-nav-link" onClick={toggleMobileMenu}/>
                 Log In
-              </Div>
-              <Link to="/register" className="btn-primary w-full text-center" onClick={toggleMobileMenu} />
+              </div>
+              <Link to="/register" className="btn-primary w-full text-center" onClick={toggleMobileMenu}/>
                 Sign Up
               </Link>
             </>
           ) : (
             <>
-              <Link to="/profile" className="mobile-nav-link" onClick={toggleMobileMenu} />
+              <Link to="/profile" className="mobile-nav-link" onClick={toggleMobileMenu}/>
                 Profile
               </Link>
               <Button                 className="btn-secondary w-full"
@@ -142,11 +142,11 @@ export const Navbar = () => {
                 }}
               >
                 Logout
-              </Button>
+              </button>
             </>
           )}
-        </Div>
-      </div />
+        </div>
+      </div>
   );
 };
 

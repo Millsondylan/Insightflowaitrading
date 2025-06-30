@@ -4,129 +4,129 @@ import { Link } from 'react-router-dom';
 
 const LandingBuilderPage: React.FC = () => {
   return (
-    <Div className="scroll-container min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+    <div className="scroll-container min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Hero Section */}
-      <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0} />
-        <Div className="text-center max-w-6xl mx-auto">
-          <H1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight">
-            <Span className="text-glow-cyan">Insight</Div>{' '}
-            <Span className="text-glow-violet">Flow</Span>
-          </H1>
-          <P className="text-2xl md:text-4xl text-gray-300 leading-relaxed font-light mb-12">
+      <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}/>
+        <div className="text-center max-w-6xl mx-auto">
+          <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight">
+            <span className="text-glow-cyan">Insight</div>{' '}
+            <span className="text-glow-violet">Flow</span>
+          </h1>
+          <p className="text-2xl md:text-4xl text-gray-300 leading-relaxed font-light mb-12">
             Where Trading Intelligence Meets Intuition
-          </P>
-          <Div className="threadline-glow w-48 mx-auto mb-16"></Div>
+          </p>
+          <div className="threadline-glow w-48 mx-auto mb-16"></div>
           
           {/* Navigation Cards */}
-          <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Link to="/strategy" className="group" />
-              <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <Div className="text-4xl mb-4 text-cyan-400">🧠</Div>
-                <H3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</H3>
-                <P className="text-gray-400">AI-powered strategy generation from your trading intuition</P>
-              </div />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Link to="/strategy" className="group"/>
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-4xl mb-4 text-cyan-400">🧠</div>
+                <h3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</h3>
+                <p className="text-gray-400">AI-powered strategy generation from your trading intuition</p>
+              </div>
             
-            <Link to="/journal" className="group" />
-              <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <Div className="text-4xl mb-4 text-violet-400">📓</Link>
-                <H3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</H3>
-                <P className="text-gray-400">Capture and reflect on your trading psychology</P>
-              </div />
+            <Link to="/journal" className="group"/>
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-4xl mb-4 text-violet-400">📓</Link>
+                <h3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</h3>
+                <p className="text-gray-400">Capture and reflect on your trading psychology</p>
+              </div>
             
-            <Link to="/academy" className="group" />
-              <Div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <Div className="text-4xl mb-4 text-blue-400">📘</Link>
-                <H3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</H3>
-                <P className="text-gray-400">Structured learning for trading mastery</P>
-              </div />
-          </Div>
-        </div />
+            <Link to="/academy" className="group"/>
+              <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
+                <div className="text-4xl mb-4 text-blue-400">📘</Link>
+                <h3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</h3>
+                <p className="text-gray-400">Structured learning for trading mastery</p>
+              </div>
+          </div>
+        </div>
 
       {/* Features Preview */}
-      <ScrollSection className="px-6 py-32" delay={200} animation="slide-right" />
-        <Div className="max-w-7xl mx-auto">
-          <Div className="text-center mb-16">
-            <H2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+      <ScrollSection className="px-6 py-32" delay={200} animation="slide-right"/>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Built for Modern Traders
             </ScrollSection>
-            <P className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Combining cutting-edge AI with deep market psychology insights
-            </P>
-          </Div>
+            </p>
+          </div>
           
-          <Div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <Div className="space-y-8">
-              <Div className="glass-card">
-                <Div className="flex items-start space-x-4">
-                  <Div className="w-8 h-8 bg-cyan-500/20 border border-cyan-400/30 rounded-full flex items-center justify-center text-cyan-300 flex-shrink-0 mt-1">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="glass-card">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-cyan-500/20 border border-cyan-400/30 rounded-full flex items-center justify-center text-cyan-300 flex-shrink-0 mt-1">
                     ✨
-                  </Div>
-                  <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2">AI Strategy Generation</Div>
-                    <P className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</P>
-                  </Div>
-                </Div>
-              </Div>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-2">AI Strategy Generation</div>
+                    <p className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</p>
+                  </div>
+                </div>
+              </div>
               
-              <Div className="glass-card">
-                <Div className="flex items-start space-x-4">
-                  <Div className="w-8 h-8 bg-violet-500/20 border border-violet-400/30 rounded-full flex items-center justify-center text-violet-300 flex-shrink-0 mt-1">
+              <div className="glass-card">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-violet-500/20 border border-violet-400/30 rounded-full flex items-center justify-center text-violet-300 flex-shrink-0 mt-1">
                     🧠
-                  </Div>
-                  <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2">Psychology Tracking</Div>
-                    <P className="text-gray-400">Identify patterns in your decision-making and emotional responses</P>
-                  </Div>
-                </Div>
-              </Div>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-2">Psychology Tracking</div>
+                    <p className="text-gray-400">Identify patterns in your decision-making and emotional responses</p>
+                  </div>
+                </div>
+              </div>
               
-              <Div className="glass-card">
-                <Div className="flex items-start space-x-4">
-                  <Div className="w-8 h-8 bg-blue-500/20 border border-blue-400/30 rounded-full flex items-center justify-center text-blue-300 flex-shrink-0 mt-1">
+              <div className="glass-card">
+                <div className="flex items-start space-x-4">
+                  <div className="w-8 h-8 bg-blue-500/20 border border-blue-400/30 rounded-full flex items-center justify-center text-blue-300 flex-shrink-0 mt-1">
                     📈
-                  </Div>
-                  <Div>
-                    <H4 className="text-lg font-semibold text-white mb-2">Adaptive Learning</Div>
-                    <P className="text-gray-400">Personalized education that evolves with your trading journey</P>
-                  </Div>
-                </Div>
-              </Div>
-            </Div>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-white mb-2">Adaptive Learning</div>
+                    <p className="text-gray-400">Personalized education that evolves with your trading journey</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             
-            <Div className="glass-section">
-              <Div className="h-80 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 rounded-xl border border-white/10 flex items-center justify-center">
-                <Div className="text-center">
-                  <Div className="text-6xl mb-4">📊</Div>
-                  <P className="text-gray-400">Interactive Demo Placeholder</P>
-                </Div>
-              </Div>
-            </Div>
-          </Div>
-        </div />
+            <div className="glass-section">
+              <div className="h-80 bg-gradient-to-br from-cyan-500/10 to-violet-500/10 rounded-xl border border-white/10 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">📊</div>
+                  <p className="text-gray-400">Interactive Demo Placeholder</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       {/* Call to Action */}
-      <ScrollSection className="px-6 py-32" delay={400} animation="scale-in" />
-        <Div className="max-w-4xl mx-auto text-center">
-          <Div className="glass-section motion-shadow">
-            <H3 className="text-3xl md:text-5xl font-bold text-white mb-6">
+      <ScrollSection className="px-6 py-32" delay={400} animation="scale-in"/>
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="glass-section motion-shadow">
+            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Elevate Your Trading?
             </ScrollSection>
-            <P className="text-xl text-gray-400 mb-12">
+            <p className="text-xl text-gray-400 mb-12">
               Join thousands of traders who've transformed their approach with Insight Flow
-            </P>
-            <Div className="flex flex-wrap justify-center gap-6">
-              <Link to="/strategy" />
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Link to="/strategy"/>
                 <Button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </div />
-              <Link to="/academy" />
-                <Button className="glow-button glow-blue text-lg px-8 py-4" />
+                </div>
+              <Link to="/academy"/>
+                <Button className="glow-button glow-blue text-lg px-8 py-4"/>
                   Begin Learning
-                </button />
-            </Div>
-          </Div>
-        </div />
-    </Div>
+                </button>
+            </div>
+          </div>
+        </div>
+    </div>
   );
 };
 

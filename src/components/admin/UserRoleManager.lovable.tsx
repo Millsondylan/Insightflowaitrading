@@ -60,25 +60,25 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
   };
 
   return (
-    <Div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
-      <Div className="flex justify-between items-center">
-        <H2 className="text-lg font-semibold text-white">User Management</User>
+    <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold text-white">User Management</User>
         
         {/* Search input */}
-        <Div className="relative">
-          <Search  />
+        <div className="relative">
+          <Search />
           <Input type="text"
             value={searchQuery}
-            onChange={(e) = /> setSearchQuery(e.target.value)}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
             className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
           />
-        </Div>
-      </Div>
+        </div>
+      </div>
 
-      <Div className="rounded-lg border border-white/10 overflow-hidden">
-        <Table >
-          <Tableheader  /></Div></Div>
+      <div className="rounded-lg border border-white/10 overflow-hidden">
+        <table >
+          <Tableheader /></div></div>
             <tablerow >
               <tablehead >ID</TableHead>
               <tablehead >Email</TableHead>
@@ -99,20 +99,20 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
                 <tablecell >
                   <Select > onRoleChange(user.id, value as User["role"])}
                   >
-                    <selecttrigger  style={{ color: "white" }}>
-                      <selectvalue  />
-                    <selectcontent  style={{ color: "white" }}>
-                      <selectitem value="user">
+                    <SelectTrigger  style={{ color: "white" }}>
+                      <SelectValue />
+                    <SelectContent  style={{ color: "white" }}>
+                      <SelectItem value="user">
                         User
                       </Badge>
-                      <selectitem value="mod">
+                      <SelectItem value="mod">
                         Moderator
                       </SelectItem>
-                      <selectitem value="admin">
+                      <SelectItem value="admin">
                         Admin
                       </SelectItem />
                   </Select />
-              </TableRow>
+              </SelectItem>
             ))}
             
             {filteredUsers.length === 0 && (
@@ -122,12 +122,12 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
                 </TableCell />
             )}
           </TableBody />
-      </Div>
+      </div>
       
-      <Div className="text-xs text-gray-500">
+      <div className="text-xs text-gray-500">
         Showing {filteredUsers.length} of {users.length} users
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 } 
 

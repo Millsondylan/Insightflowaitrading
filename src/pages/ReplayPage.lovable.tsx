@@ -7,29 +7,29 @@ export default function ReplayPage() {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <Div>
+    <div>
       <Link  style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft>
+        <ArrowLeft>
         Back to Strategy Details
-      </Div>
+      </div>
 
-      <Div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
-        <Header className="flex justify-between items-center">
-            <H1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</Div>
-            <Button variant="ghost" /><Settings > </button />
+      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
+        <header className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</div>
+            <Button variant="ghost"/><Settings > </button />
         
-        <Div className="flex-grow flex items-center justify-center">
-            <P className="text-gray-500 text-lg">Chart and replay visualization would be here.</Button>
-        </Div>
+        <div className="flex-grow flex items-center justify-center">
+            <p className="text-gray-500 text-lg">Chart and replay visualization would be here.</button>
+        </div>
 
-        <Footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
-            <Button variant="ghost" /><Fastforward / />
+        <footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
+            <Button variant="ghost"/><Fastforward //>
             <Button size="lg">
-                <play >
-            </Footer>
-            <Button variant="ghost"><Fastforward /></Button></Button></Button></Button></Button></Button></button />
-      </Div>
-    </Div>
+                <Play >
+            </footer>
+            <Button variant="ghost"><Fastforward /></button></button></button />
+      </div>
+    </div>
   );
 } 
 

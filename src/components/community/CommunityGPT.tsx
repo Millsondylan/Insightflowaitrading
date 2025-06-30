@@ -17,7 +17,7 @@ type Reply = {
 };
 
 // --- Mock Function (to be replaced with actual GPT call) ---
-const generateReply = (post: Post): Promise<Reply /> => {
+const generateReply = (post: Post): Promise<Reply> => {
   return new Promise(resolve => {
     setTimeout(() => {
       let text = `Thanks for sharing your thoughts on "${post.title}". `;
@@ -34,9 +34,8 @@ const generateReply = (post: Post): Promise<Reply /> => {
   });
 };
 
-
 const CommunityGPT = ({ post }: Props) => {
-  const [reply, setReply] = useState<Reply | null /></Reply>(null);
+  const [reply, setReply] = useState<Reply | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchReply = () => {
@@ -53,38 +52,38 @@ const CommunityGPT = ({ post }: Props) => {
   }, [post]);
 
   return (
-    <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-      <Div className="flex items-center justify-between">
-          <Div className="flex items-center gap-3">
-            <Div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
-                🧠
-            </Div>
-            <Div></Div>
-                <P className="font-bold text-white">Community AI</P>
-                {reply && !isLoading && (
-                    <Span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
-                        {reply.tone}
-                    </Span>
-                )}
-            </Div>
-          </Div>
-          <Button variant="ghost" size="sm" onClick={fetchReply} disabled={isLoading}>
-            Regenerate
-          </Button>
-      </Div>
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
+            🧠
+          </div>
+          <div>
+            <p className="font-bold text-white">Community AI</p>
+            {reply && !isLoading && (
+              <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
+                {reply.tone}
+              </span>
+            )}
+          </div>
+        </div>
+        <Button variant="ghost" size="sm" onClick={fetchReply} disabled={isLoading}>
+          Regenerate
+        </button>
+      </div>
 
       {isLoading && (
-        <Div className="text-white/70 animate-pulse">
-            Generating AI analysis...
-        </Div>
+        <div className="text-white/70 animate-pulse">
+          Generating AI analysis...
+        </div>
       )}
 
       {reply && !isLoading && (
-        <P className="text-white/80 text-sm leading-relaxed pt-2">
-            {reply.text}
-        </P>
+        <p className="text-white/80 text-sm leading-relaxed pt-2">
+          {reply.text}
+        </p>
       )}
-    </Div>
+    </div>
   );
 };
 

@@ -23,7 +23,7 @@ type StrategyCopilotProps = {
 }
 
 // Mock AI suggestion generator
-async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion[] /> {
+async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion[]> {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 1000));
   
@@ -138,7 +138,7 @@ async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion
 }
 
 const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) => {
-  const [suggestions, setSuggestions] = useState<Suggestion[] /></Suggestion>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -170,60 +170,60 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   }
 
   return (
-    <Div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
-      <H3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-        <Span>🤖</Div> Strategy Copilot
-      </H3>
+    <div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
+      <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <span>🤖</span> Strategy Copilot
+      </h3>
 
       {loading && (
-        <Div className="space-y-3">
+        <div className="space-y-3">
           {[...Array(3)].map((_, i) => (
-            <Div key={i} className="animate-pulse">
-              <Div className="bg-white/10 h-20 rounded-lg"></Div>
-            </Div>
+            <div key={i} className="animate-pulse">
+              <div className="bg-white/10 h-20 rounded-lg"></div>
+            </div>
           ))}
-        </Div>
+        </div>
       )}
 
       {error && (
-        <Div className="text-red-400 text-sm">
+        <div className="text-red-400 text-sm">
           {error}
-        </Div>
+        </div>
       )}
 
       {!loading && suggestions.length > 0 && (
-        <Div className="space-y-4">
+        <div className="space-y-4">
           {suggestions.map((suggestion, index) => (
-            <Div key={suggestion.id}
+            <div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
               style={{ animationDelay: `${index * 100}ms` }}
-           >
-              <Div className="flex items-start gap-3">
-                <Span className="text-2xl flex-shrink-0">{suggestion.icon}</Div>
-                <Div className="flex-1">
-                  <P className="text-sm text-white/70 leading-relaxed">
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-2xl flex-shrink-0">{suggestion.icon}</span>
+                <div className="flex-1">
+                  <p className="text-sm text-white/70 leading-relaxed">
                     {suggestion.message}
-                  </Div>
+                  </p>
                   {onSuggestionApply && suggestion.ruleToAdd && (
-                    <Button  onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
+                    <Button onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
                       className="bg-cyan-600 hover:bg-cyan-700 rounded px-4 py-1 mt-2 text-sm text-white transition-colors"
                     >
                       Apply Suggestion
                     </Button>
                   )}
-                </Div>
-              </Div>
-            </Div>
+                </div>
+              </div>
+            </div>
           ))}
-        </Div>
+        </div>
       )}
 
       {!loading && suggestions.length === 0 && !error && (
-        <P className="text-white/50 text-sm">
+        <p className="text-white/50 text-sm">
           Analyzing your strategy...
-        </P>
+        </p>
       )}
-    </Div>
+    </div>
   );
 };
 

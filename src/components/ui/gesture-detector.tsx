@@ -65,7 +65,7 @@ export const GestureDetector: React.FC<GestureDetectorProps /> = ({
   const touchStartRef = useRef<{ x: number; y: number; time: number }>({ x: 0, y: 0, time: 0 });
   const touchesRef = useRef<Touch[] />([]);
   const lastTapTimeRef = useRef<number>(0);
-  const longPressTimeoutRef = useRef<NodeJS.Timeout | null /></GestureDetectorProps></GestureDetectorProps></GestureDetectorProps></GestureDetectorProps></GestureDetectorProps>(null);
+  const longPressTimeoutRef = useRef<NodeJS.Timeout | null /></GestureDetectorProps></div>(null);
   const [isPanning, setIsPanning] = useState(false);
 
   const clearLongPressTimeout = () => {
@@ -341,14 +341,14 @@ export const GestureDetector: React.FC<GestureDetectorProps /> = ({
   }, []);
 
   return (
-    <Div ref={containerRef}
+    <div ref={containerRef}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
       style={{ touchAction: 'none' }}>
       {children}
-    </Div>
+    </div>
   );
 };
 

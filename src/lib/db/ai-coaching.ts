@@ -8,7 +8,7 @@ export async function logStrategyPerformance(strategyId: string, userId: string,
   execution_success_rate: number;
   changes?: any;
 }) {
-  return await supabase
+  return await (supabase as any)
     .from('strategy_performance_log')
     .insert({
       strategy_id: strategyId,
@@ -22,7 +22,7 @@ export async function logStrategyPerformance(strategyId: string, userId: string,
 }
 
 export async function createStrategyVersion(strategyId: string, userId: string, code: string, reason: string) {
-  return await supabase
+  return await (supabase as any)
     .from('strategy_versions')
     .insert({
       strategy_id: strategyId,
@@ -34,7 +34,7 @@ export async function createStrategyVersion(strategyId: string, userId: string, 
 }
 
 export async function getStrategyVersions(strategyId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('strategy_versions')
     .select('*')
     .eq('strategy_id', strategyId)
@@ -43,13 +43,13 @@ export async function getStrategyVersions(strategyId: string) {
 
 export async function activateStrategyVersion(versionId: string, strategyId: string) {
   // First deactivate all versions
-  await supabase
+  await (supabase as any)
     .from('strategy_versions')
     .update({ is_active: false })
     .eq('strategy_id', strategyId);
   
   // Then activate the selected one
-  return await supabase
+  return await (supabase as any)
     .from('strategy_versions')
     .update({ is_active: true })
     .eq('id', versionId);
@@ -60,7 +60,7 @@ export async function createCoachSession(userId: string, data: {
   market_context?: any;
   strategy_id?: string;
 }) {
-  return await supabase
+  return await (supabase as any)
     .from('coach_sessions')
     .insert({
       user_id: userId,
@@ -77,7 +77,7 @@ export async function updateCoachSessionTranscript(sessionId: string, message: {
   timestamp: string;
 }) {
   // First get the current transcript
-  const { data: session } = await supabase
+  const { data: session } = await (supabase as any)
     .from('coach_sessions')
     .select('transcript')
     .eq('id', sessionId)
@@ -87,14 +87,14 @@ export async function updateCoachSessionTranscript(sessionId: string, message: {
   transcript.push(message);
 
   // Update with the new message
-  return await supabase
+  return await (supabase as any)
     .from('coach_sessions')
     .update({ transcript })
     .eq('id', sessionId);
 }
 
 export async function endCoachSession(sessionId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('coach_sessions')
     .update({ end_time: new Date().toISOString() })
     .eq('id', sessionId);
@@ -102,7 +102,7 @@ export async function endCoachSession(sessionId: string) {
 
 // Dashboard Widgets
 export async function getUserDashboardWidgets(userId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('user_dashboard_widgets')
     .select('*')
     .eq('user_id', userId)
@@ -114,7 +114,7 @@ export async function saveWidget(userId: string, data: {
   position: number;
   settings?: any;
 }) {
-  return await supabase
+  return await (supabase as any)
     .from('user_dashboard_widgets')
     .upsert({
       user_id: userId,
@@ -126,7 +126,7 @@ export async function saveWidget(userId: string, data: {
 }
 
 export async function dismissWidget(userId: string, widgetId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('user_dashboard_widgets')
     .update({ dismissed: true })
     .eq('user_id', userId)
@@ -135,7 +135,7 @@ export async function dismissWidget(userId: string, widgetId: string) {
 
 // Learning Path
 export async function createLearningPathItem(userId: string, lessonId: string, reason: string) {
-  return await supabase
+  return await (supabase as any)
     .from('user_learning_path')
     .insert({
       user_id: userId,
@@ -145,7 +145,7 @@ export async function createLearningPathItem(userId: string, lessonId: string, r
 }
 
 export async function getUserLearningPath(userId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('user_learning_path')
     .select(`
       *,
@@ -156,7 +156,7 @@ export async function getUserLearningPath(userId: string) {
 }
 
 export async function completePathItem(itemId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('user_learning_path')
     .update({
       status: 'completed',
@@ -171,7 +171,7 @@ export async function createSuggestion(userId: string, data: {
   action_button?: string;
   action_target?: string;
 }) {
-  return await supabase
+  return await (supabase as any)
     .from('user_suggestions')
     .insert({
       user_id: userId,
@@ -182,7 +182,7 @@ export async function createSuggestion(userId: string, data: {
 }
 
 export async function getUserSuggestions(userId: string) {
-  return await supabase
+  return await (supabase as any)
     .from('user_suggestions')
     .select('*')
     .eq('user_id', userId)
@@ -191,7 +191,7 @@ export async function getUserSuggestions(userId: string) {
 }
 
 export async function markSuggestionStatus(suggestionId: string, status: 'applied' | 'ignored') {
-  return await supabase
+  return await (supabase as any)
     .from('user_suggestions')
     .update({
       status,
@@ -202,7 +202,7 @@ export async function markSuggestionStatus(suggestionId: string, status: 'applie
 
 // User AI Preferences
 export async function getAIPreferences(userId: string) {
-  const { data } = await supabase
+  const { data } = await (supabase as any)
     .from('user_profiles')
     .select('ai_preferences')
     .eq('user_id', userId)
@@ -217,8 +217,9 @@ export async function getAIPreferences(userId: string) {
   };
 }
 
-export async function updateAIPreferences(userId: string, preferences: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
-  return await supabase
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function updateAIPreferences(userId: string, preferences: any) {
+  return await (supabase as any)
     .from('user_profiles')
     .update({ ai_preferences: preferences })
     .eq('user_id', userId);

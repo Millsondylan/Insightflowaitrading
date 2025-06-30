@@ -88,81 +88,95 @@ export default function ProfilePage() {
   
   if (profileLoading) {
     return (
-      <Div className="flex items-center justify-center h-[60vh]">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" / />
+      <div className="flex items-center justify-center h-[60vh]">
+        <Loader2 className="h-8 w-8 animate-spin text-primary"/>
+      </OnboardingFormData>
     );
   }
   
   return (
     <>
       <Helmet>
-        <title>Trading Profile | InsightFlow AI</title />
+        <title>Trading Profile | InsightFlow AI</title>
+      </Helmet>
       
-      <Div className="container mx-auto px-4 py-8">
-        <Div className="max-w-4xl mx-auto">
-          <H1 className="text-3xl font-bold mb-6">Trading Profile</OnboardingFormData>
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto">
+          <h1 className="text-3xl font-bold mb-6">Trading Profile</div>
           
-          <FormProvider {...methods} />
-            <Form onSubmit={methods.handleSubmit(onSubmit)}>
-              <Tabs defaultValue="experience" className="w-full" />
-                <Div className="mb-6 overflow-auto pb-2">
-                  <TabsList className="inline-flex min-w-max" />
-                    <TabsTrigger value="experience" />Experience</FormProvider>
-                    <TabsTrigger value="style" />Trading Style</TabsTrigger>
-                    <TabsTrigger value="markets" />Markets</TabsTrigger>
-                    <TabsTrigger value="timeframes" />Timeframes</TabsTrigger>
-                    <TabsTrigger value="indicators" />Indicators</TabsTrigger>
-                    <TabsTrigger value="risk" />Risk Profile</TabsTrigger>
-                    <TabsTrigger value="ai" />AI Preferences</TabsTrigger />
-                </TabsTrigger>
+          <formProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <Tabs defaultValue="experience" className="w-full">
+                <div className="mb-6 overflow-auto pb-2">
+                  <TabsList className="inline-flex min-w-max">
+                    <TabsTrigger value="experience">Experience</form>
+                    <TabsTrigger value="style">Trading Style</TabsTrigger>
+                    <TabsTrigger value="markets">Markets</TabsTrigger>
+                    <TabsTrigger value="timeframes">Timeframes</TabsTrigger>
+                    <TabsTrigger value="indicators">Indicators</TabsTrigger>
+                    <TabsTrigger value="risk">Risk Profile</TabsTrigger>
+                    <TabsTrigger value="ai">AI Preferences</TabsTrigger>
+                  </TabsList>
+                </div>
                 
                 <Card>
                   <CardHeader>
                     <CardTitle>Trading Preferences</Card>
                     <CardDescription>
                       Customize your trading profile to get personalized recommendations
-                    </CardDescription />
-                  <CardContent className="pt-6" />
-                    <TabsContent value="experience" className="mt-0" />
-                      <ExperienceLevelStep / />
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-6">
+                    <TabsContent value="experience" className="mt-0">
+                      <ExperienceLevelStep />
+                    </CardContent>
                     
-                    <TabsContent value="style" className="mt-0" />
-                      <TradingStyleStep / />
+                    <TabsContent value="style" className="mt-0">
+                      <TradingStyleStep />
+                    </TabsContent>
                     
-                    <TabsContent value="markets" className="mt-0" />
-                      <MarketsStep / />
+                    <TabsContent value="markets" className="mt-0">
+                      <MarketsStep />
+                    </TabsContent>
                     
-                    <TabsContent value="timeframes" className="mt-0" />
-                      <TimeframesStep / />
+                    <TabsContent value="timeframes" className="mt-0">
+                      <TimeframesStep />
+                    </TabsContent>
                     
-                    <TabsContent value="indicators" className="mt-0" />
-                      <IndicatorsStep / />
+                    <TabsContent value="indicators" className="mt-0">
+                      <IndicatorsStep />
+                    </TabsContent>
                     
-                    <TabsContent value="risk" className="mt-0" />
-                      <RiskProfileStep / />
+                    <TabsContent value="risk" className="mt-0">
+                      <RiskProfileStep />
+                    </TabsContent>
                     
-                    <TabsContent value="ai" className="mt-0" />
-                      <AIPreferencesStep / />
-                  </CardContent />
+                    <TabsContent value="ai" className="mt-0">
+                      <aIPreferencesStep />
+                    </TabsContent>
+                  </CardContent>
+                </Card>
                 
-                <Div className="mt-6 flex justify-end">
-                  <Button type="submit" disabled={isSubmitting} className="min-w-[120px]" />
+                <div className="mt-6 flex justify-end">
+                  <Button type="submit" disabled={isSubmitting} className="min-w-[120px]">
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                         Saving...
-                      </>
+                      </div>
                     ) : (
                       <>
-                        <Save className="mr-2 h-4 w-4" />
+                        <Save className="mr-2 h-4 w-4"/>
                         Save Profile
-                      </>
+                      </Save>
                     )}
-                  </CardDescription>
-                </div />
-            </Form />
-        </Div>
-      </Div>
+                  </button>
+                </div>
+              </Tabs>
+            </form>
+          </FormProvider>
+        </div>
+      </div>
     </>
   );
 }

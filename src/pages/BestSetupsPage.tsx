@@ -18,7 +18,7 @@ interface PublicSetupWithUser extends PublicSetup {
 }
 
 export default function BestSetupsPage() {
-  const [selectedSetup, setSelectedSetup] = useState<PublicSetupWithUser | null />(null);
+  const [selectedSetup, setSelectedSetup] = useState<PublicSetupWithUser | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [chartData, setChartData] = useState<any[]>([]);
 
@@ -62,39 +62,39 @@ export default function BestSetupsPage() {
   };
 
   return (
-    <Div className="container py-6">
-      <BestSetupsList onSetupSelect={handleSetupSelect} />
+    <div className="container py-6">
+      <BestSetupsList onSetupSelect={handleSetupSelect}/>
       
       {selectedSetup && (
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
-          <DialogContent className="max-w-4xl" />
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="max-w-4xl">
             <DialogHeader>
-              <Div className="flex justify-between items-center">
-                <Div>
-                  <DialogTitle className="flex items-center" />
+              <div className="flex justify-between items-center">
+                <div>
+                  <DialogTitle className="flex items-center">
                     {selectedSetup.symbol}
-                    <Badge variant={selectedSetup.tp /> selectedSetup.entry ? 'default' : 'destructive'}
-                      className="ml-2"
-                    >
+                    <Badge variant={selectedSetup.tp > selectedSetup.entry ? 'default' : 'destructive'} className="ml-2">
                       {selectedSetup.tp > selectedSetup.entry ? (
-                        <Span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3" /> LONG</PublicSetupWithUser>
+                        <span className="flex items-center"><ArrowUpRight className="mr-1 h-3 w-3"/> LONG</span>
                       ) : (
-                        <Span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3" /> SHORT</Span>
+                        <span className="flex items-center"><ArrowDownRight className="mr-1 h-3 w-3"/> SHORT</span>
                       )}
-                    </Badge />
+                    </Badge>
+                  </DialogTitle>
                   <DialogDescription>
                     {selectedSetup.timeframe} Setup • Posted {new Date(selectedSetup.sharedAt).toLocaleDateString()}
                   </DialogDescription>
-                </Div>
-                
-                <Div className="flex items-center">
-                  <Avatar className="h-8 w-8" />
-                    <AvatarImage src={selectedSetup.user?.avatarUrl} alt={selectedSetup.user?.displayName} />
-                    <AvatarFallback>{selectedSetup.user?.displayName?.[0] || '?'}</div />
-                </Div>
-              </div />
+                </div>
+                <div className="flex items-center">
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage src={selectedSetup.user?.avatarUrl} alt={selectedSetup.user?.displayName}/>
+                    <AvatarFallback>{selectedSetup.user?.displayName?.[0] || '?'}</AvatarFallback>
+                  </Avatar>
+                </div>
+              </div>
+            </DialogHeader>
             
-            <Div className="h-[300px] mb-4">
+            <div className="h-[300px] mb-4">
               {chartData.length > 0 && (
                 <TradingViewChart 
                   data={chartData}
@@ -125,77 +125,78 @@ export default function BestSetupsPage() {
                     }
                   ]}
                   height={300}
-                />
+               />
               )}
-            </Div>
+            </div>
             
-            <Div className="grid grid-cols-3 gap-4 mb-4">
-              <Div className="bg-muted/30 p-3 rounded-md">
-                <Div className="text-xs text-muted-foreground">Entry</Div>
-                <Div className="font-semibold">{selectedSetup.entry.toFixed(5)}</Div>
-              </Div>
-              <Div className="bg-red-500/10 p-3 rounded-md">
-                <Div className="text-xs text-muted-foreground">Stop Loss</Div>
-                <Div className="font-semibold">{selectedSetup.sl.toFixed(5)}</Div>
-              </Div>
-              <Div className="bg-green-500/10 p-3 rounded-md">
-                <Div className="text-xs text-muted-foreground">Take Profit</Div>
-                <Div className="font-semibold">{selectedSetup.tp.toFixed(5)}</Div>
-              </Div>
-            </Div>
+            <div className="grid grid-cols-3 gap-4 mb-4">
+              <div className="bg-muted/30 p-3 rounded-md">
+                <div className="text-xs text-muted-foreground">Entry</div>
+                <div className="font-semibold">{selectedSetup.entry.toFixed(5)}</div>
+              </div>
+              <div className="bg-red-500/10 p-3 rounded-md">
+                <div className="text-xs text-muted-foreground">Stop Loss</div>
+                <div className="font-semibold">{selectedSetup.sl.toFixed(5)}</div>
+              </div>
+              <div className="bg-green-500/10 p-3 rounded-md">
+                <div className="text-xs text-muted-foreground">Take Profit</div>
+                <div className="font-semibold">{selectedSetup.tp.toFixed(5)}</div>
+              </div>
+            </div>
             
             {selectedSetup.stats?.patternDescription && (
-              <Div className="bg-muted/30 p-3 rounded-md mb-4">
-                <Div className="text-sm font-medium mb-1">Pattern</Div>
-                <Div className="text-sm">{selectedSetup.stats.patternDescription}</Div>
-              </Div>
+              <div className="bg-muted/30 p-3 rounded-md mb-4">
+                <div className="text-sm font-medium mb-1">Pattern</div>
+                <div className="text-sm">{selectedSetup.stats.patternDescription}</div>
+              </div>
             )}
             
             {selectedSetup.stats?.backtestResults && (
-              <Div className="bg-muted/30 p-3 rounded-md mb-4">
-                <Div className="text-sm font-medium mb-2">Backtest Results</Div>
-                <Div className="grid grid-cols-4 gap-2 text-sm">
-                  <Div>
-                    <Div className="text-xs text-muted-foreground">Win Rate</Div>
-                    <Div>{Math.round((selectedSetup.stats.backtestResults.winRate || 0) * 100)}%</Div>
-                  </Div>
-                  <Div>
-                    <Div className="text-xs text-muted-foreground">Profit Factor</Div>
-                    <Div>{(selectedSetup.stats.backtestResults.profitFactor || 0).toFixed(2)}</Div>
-                  </Div>
-                  <Div>
-                    <Div className="text-xs text-muted-foreground">Avg. R</Div>
-                    <Div>{(selectedSetup.stats.backtestResults.averageR || 0).toFixed(1)}R</Div>
-                  </Div>
-                  <Div>
-                    <Div className="text-xs text-muted-foreground">Sample Size</Div>
-                    <Div>{selectedSetup.stats.backtestResults.totalTrades || 0}</Div>
-                  </Div>
-                </Div>
-              </Div>
+              <div className="bg-muted/30 p-3 rounded-md mb-4">
+                <div className="text-sm font-medium mb-2">Backtest Results</div>
+                <div className="grid grid-cols-4 gap-2 text-sm">
+                  <div>
+                    <div className="text-xs text-muted-foreground">Win Rate</div>
+                    <div>{Math.round((selectedSetup.stats.backtestResults.winRate || 0) * 100)}%</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Profit Factor</div>
+                    <div>{(selectedSetup.stats.backtestResults.profitFactor || 0).toFixed(2)}</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Avg. R</div>
+                    <div>{(selectedSetup.stats.backtestResults.averageR || 0).toFixed(1)}R</div>
+                  </div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Sample Size</div>
+                    <div>{selectedSetup.stats.backtestResults.totalTrades || 0}</div>
+                  </div>
+                </div>
+              </div>
             )}
             
-            <Div className="flex justify-between">
-              <Div className="space-x-2">
-                <Button size="sm" variant="outline" />
-                  <Heart className="mr-2 h-4 w-4" /> Like
-                </Div>
-                <Button size="sm" variant="outline" />
-                  <Bookmark className="mr-2 h-4 w-4" /> Save
+            <div className="flex justify-between">
+              <div className="space-x-2">
+                <Button size="sm" variant="outline">
+                  <Heart className="mr-2 h-4 w-4"/> Like
                 </Button>
-              </Div>
-              <Div className="space-x-2">
-                <Button size="sm" variant="outline" />
-                  <Copy className="mr-2 h-4 w-4" /> Copy
-                </Div>
-                <Button size="sm" />
-                  <Share2 className="mr-2 h-4 w-4" /></Button></Button></Button></Button></Button></Button> Share
+                <Button size="sm" variant="outline">
+                  <Bookmark className="mr-2 h-4 w-4"/> Save
                 </Button>
-              </Div>
-            </div />
+              </div>
+              <div className="space-x-2">
+                <Button size="sm" variant="outline">
+                  <Copy className="mr-2 h-4 w-4"/> Copy
+                </Button>
+                <Button size="sm">
+                  <Share2 className="mr-2 h-4 w-4"/> Share
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
         </Dialog>
       )}
-    </Div>
+    </div>
   );
 }
 

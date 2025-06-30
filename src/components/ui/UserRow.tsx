@@ -143,10 +143,10 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
   };
 
   return (
-    <Tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
-      <Td className="px-4 py-3">
-        <Div className="flex items-center">
-          <Span className={cn(
+    <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
+      <td className="px-4 py-3">
+        <div className="flex items-center">
+          <span className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
               user.role === 'Admin' && 'text-violet-300',
               user.role === 'Expired' && 'text-gray-400'
@@ -155,73 +155,71 @@ const UserRow: React.FC<UserRowProps> = ({ user, onUserUpdate }) => {
             title="Click to copy">
             {formatAddress(user.address)}
           </UserRowProps>
-        </div />
+        </div>
 
-      <Td className="px-4 py-3 text-sm text-gray-400">
+      <td className="px-4 py-3 text-sm text-gray-400">
         {formatDate(user.created_at)}
-      </Td>
+      </td>
 
-      <Td className="px-4 py-3">
-        <Span className="text-sm">
+      <td className="px-4 py-3">
+        <span className="text-sm">
           {user.subscription_tier || '-'}
-        </Td />
+        </td>
 
-      <Td className="px-4 py-3">
-        <RoleBadge role={user.role as UserRole} / />
+      <td className="px-4 py-3">
+        <RoleBadge role={user.role as UserRole} //>
 
-      <Td className="px-4 py-3">
+      <td className="px-4 py-3">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild disabled={isLoading} />
+          <DropdownMenuTrigger asChild disabled={isLoading}/>
             <Button variant="ghost" 
               size="icon" 
-              className="h-8 w-8 rounded-full p-0"
-            />
-              <MoreHorizontal className="h-4 w-4" / />
-          </Td>
-          <DropdownMenuContent align="end" className="w-48 bg-gray-900 border border-gray-800" />
+              className="h-8 w-8 rounded-full p-0"/>
+              <MoreHorizontal className="h-4 w-4" //>
+          </td>
+          <DropdownMenuContent align="end" className="w-48 bg-gray-900 border border-gray-800"/>
             <DropdownMenuLabel>User Actions</DropdownMenuContent>
             <DropdownMenuSeparator />
             
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
-                <UserCog className="mr-2 h-4 w-4" />
-                <Span>Change Role</DropdownMenuSeparator />
+                <UserCog className="mr-2 h-4 w-4"/>
+                <span>Change Role</DropdownMenuSeparator>
               <DropdownMenuPortal>
-                <DropdownMenuSubContent className="bg-gray-900 border border-gray-800" />
-                  <DropdownMenuItem onClick={() = /> handleRoleChange('Admin')}
+                <DropdownMenuSubContent className="bg-gray-900 border border-gray-800"/>
+                  <DropdownMenuItem onClick={() => handleRoleChange('Admin')}
                     className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
                   >
                     Admin
                   </DropdownMenuSeparator>
-                  <DropdownMenuItem onClick={() = /> handleRoleChange('User')}
+                  <DropdownMenuItem onClick={() => handleRoleChange('User')}
                     className="cursor-pointer text-green-300 hover:bg-green-900/30"
                   >
                     User
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() = /> handleRoleChange('Trial')}
+                  <DropdownMenuItem onClick={() => handleRoleChange('Trial')}
                     className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
                   >
                     Trial
-                  </DropdownMenuItem />
-              </DropdownMenuPortal />
+                  </DropdownMenuItem>
+              </DropdownMenuPortal>
             
-            <DropdownMenuItem onClick={handleCopyAddress} className="cursor-pointer" />
-              <Copy className="mr-2 h-4 w-4" />
-              <Span>Copy Address</DropdownMenuItem />
+            <DropdownMenuItem onClick={handleCopyAddress} className="cursor-pointer"/>
+              <Copy className="mr-2 h-4 w-4"/>
+              <span>Copy Address</DropdownMenuItem>
             
-            <DropdownMenuItem className="cursor-pointer" />
-              <Eye className="mr-2 h-4 w-4" />
-              <Span>View Details</DropdownMenuItem />
+            <DropdownMenuItem className="cursor-pointer"/>
+              <Eye className="mr-2 h-4 w-4"/>
+              <span>View Details</DropdownMenuItem>
             
             <DropdownMenuSeparator />
             
             <DropdownMenuItem onClick={handleRevokeAccess}
-              className="cursor-pointer text-red-400 hover:bg-red-900/30"
->
-              <XCircle className="mr-2 h-4 w-4" / /></DropdownMenuSeparator /></DropdownMenuSeparator /></DropdownMenuItem>
-              <Span>Revoke Access</span />
-          </DropdownMenuContent />
-      </Td />
+              className="cursor-pointer text-red-400 hover:bg-red-900/30">
+              <XCircle className="mr-2 h-4 w-4" //></div>
+              <span>Revoke Access</span>
+          </DropdownMenuContent>
+      </td>
   );
 };
 

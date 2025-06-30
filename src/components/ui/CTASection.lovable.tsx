@@ -13,7 +13,7 @@ const CTASection = () => {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1 }}
     >
-      <Div className="container mx-auto text-center">
+      <div className="container mx-auto text-center">
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-6"
           initial={{ y: 20, opacity: 0 }}
@@ -31,11 +31,11 @@ const CTASection = () => {
         >
           <Button  style={{ border: "1px solid #E5E7EB", color: "white", fontSize: "1.125rem" }}>
             <Link to="/strategy">
-              Get Started <arrowright  />
-            </Div>
-          </Button>
+              Get Started <ArrowRight /></div>
+            </div>
+          </button>
         </motion.div>
-      </Div>
+      </div>
     </motion.section>
   );
 };

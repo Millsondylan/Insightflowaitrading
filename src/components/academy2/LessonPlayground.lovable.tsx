@@ -17,22 +17,22 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
   const [completed, setCompleted] = useState<string[]>([]);
 
   return (
-    <Div className="space-y-6 theme-academy">
+    <div className="space-y-6 theme-academy">
       {chunks.map((chunk) => (
-        <Div key={chunk.id}
+        <div key={chunk.id}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2">
           {chunk.type === "markdown" && (
-            <Reactmarkdown  />{chunk.content}</Div>
+            <Reactmarkdown />{chunk.content}</div>
           )}
           {chunk.type === "prompt" && (
-            <Textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />
+            <Textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded"/>
           )}
           {chunk.aiCommentary && (
-            <P className="italic text-white/70" /></Textarea /></Textarea />🧠 {chunk.aiCommentary}</Textarea>
+            <p className="italic text-white/70"/></Textarea /></Textarea />🧠 {chunk.aiCommentary}</Textarea>
           )}
-        </Div>
+        </div>
       ))}
-    </Div>
+    </div>
   );
 } 
 

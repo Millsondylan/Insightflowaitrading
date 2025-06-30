@@ -4,28 +4,28 @@ import { BrainCircuit, BarChart, BookOpen, PenSquare } from 'lucide-react';
 
 const features = [
   {
-    icon: <brainCircuit className="h-10 w-10 text-cyan-400" />,
+    icon: <brainCircuit className="h-10 w-10 text-cyan-400"/>,
     title: 'Strategy Builder',
     description: 'Design and test your trading strategies with AI-powered insights.',
     link: '/strategy',
     borderColor: 'hover:border-cyan-400',
   },
   {
-    icon: <barChart className="h-10 w-10 text-violet-400" />,
+    icon: <barChart className="h-10 w-10 text-violet-400"/>,
     title: 'Chart Vision',
     description: 'Upload chart images and get AI-driven technical analysis.',
     link: '/vision',
     borderColor: 'hover:border-violet-400',
   },
   {
-    icon: <penSquare className="h-10 w-10 text-blue-400" />,
+    icon: <penSquare className="h-10 w-10 text-blue-400"/>,
     title: 'Trade Journal',
     description: 'Log and analyze your trades to discover patterns and improve.',
     link: '/journal',
     borderColor: 'hover:border-blue-400',
   },
   {
-    icon: <bookOpen className="h-10 w-10 text-gray-400" />,
+    icon: <bookOpen className="h-10 w-10 text-gray-400"/>,
     title: 'Academy',
     description: 'Learn from a curated knowledge base of trading concepts and strategies.',
     link: '/academy',
@@ -58,8 +58,8 @@ const FeatureCards = () => {
   };
 
   return (
-    <Section className="py-20 bg-black text-white">
-      <Div className="container mx-auto px-4">
+    <section className="py-20 bg-black text-white">
+      <div className="container mx-auto px-4">
         <motion.div
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
@@ -70,16 +70,15 @@ const FeatureCards = () => {
           {features.map((feature) => (
             <motion.div key={feature.title} variants={cardVariants}>
               <Link to={feature.link}>
-                <Div className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}
-        />
-                  <Div className="mb-4">{feature.icon}</Section>
-                  <H3 className="text-xl font-bold mb-2">{feature.title}</H3>
-                  <P className="text-gray-400">{feature.description}</P>
-                </div />
+                <div className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}/>
+                  <div className="mb-4">{feature.icon}</section>
+                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </div>
             </motion.div>
           ))}
         </motion.div>
-      </div />
+      </div>
   );
 };
 

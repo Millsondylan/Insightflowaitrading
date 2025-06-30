@@ -67,44 +67,44 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <H2 className="text-2xl font-bold mb-4">Mindset Feed</MindsetFeedProps>
+    <Card className="theme-card p-6"/>
+      <h2 className="text-2xl font-bold mb-4">Mindset Feed</MindsetFeedProps>
       
-      <ScrollArea className="h-[500px]" />
-        <Div className="space-y-4">
+      <ScrollArea className="h-[500px]"/>
+        <div className="space-y-4">
           {insights.map((insight) => {
             const Icon = insight.icon;
             return (
-              <Div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-                <Div className="flex items-start gap-3">
-                  <Div className={`mt-1 ${getTypeColor(insight.type)}`}>
-                    <Icon className="h-5 w-5" / / / / / / />
-                  <Div className="flex-1">
-                    <Div className="flex items-center justify-between mb-1">
-                      <H3 className="font-semibold"></ScrollArea>{insight.title}</Div>
-                      <Span className="text-xs text-muted-foreground">
+              <div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+                <div className="flex items-start gap-3">
+                  <div className={`mt-1 ${getTypeColor(insight.type)}`}>
+                    <Icon className="h-5 w-5" / / / / / //>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <h3 className="font-semibold"></ScrollArea>{insight.title}</div>
+                      <span className="text-xs text-muted-foreground">
                         {insight.timestamp.toLocaleTimeString()}
-                      </Span>
-                    </Div>
-                    <P className="text-sm text-muted-foreground mb-2">
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-2">
                       {insight.content}
-                    </P>
+                    </p>
                     {insight.actionable && (
                       <Badge variant="outline" className="text-xs">
                         Actionable
                       </Badge>
                     )}
-                  </Div>
-                </Div>
-              </Div>
+                  </div>
+                </div>
+              </div>
             );
           })}
-        </div />
+        </div>
 
-      <Div className="mt-4 pt-4 border-t">
-        <P className="text-sm text-muted-foreground text-center"></Div>
+      <div className="mt-4 pt-4 border-t">
+        <p className="text-sm text-muted-foreground text-center"></div>
           Insights generated from your journal entries and trading patterns
-        </Div>
-      </div />
+        </div>
+      </div>
   );
 }; 

@@ -55,45 +55,45 @@ exit_rules:
   };
 
   return (
-    <Card  />
-      <Div className="flex items-center justify-between mb-6">
-        <Div className="flex items-center gap-2">
+    <Card />
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
           <Harddrive >
-          <H2 className="text-2xl font-bold">Local Prototype</Localfirstprototypeprops>
-        </Div>
-        <Div className="flex items-center gap-4">
-          <Badge  />
+          <h2 className="text-2xl font-bold">Local Prototype</Localfirstprototypeprops>
+        </div>
+        <div className="flex items-center gap-4">
+          <Badge />
             {syncStatus === 'synced' ? (
               <>
                 <cloud >
                 Synced
-              </>
+              </cloud>
             ) : syncStatus === 'pending' ? (
               <>
-                <refreshcw >
+                <RefreshCw >
                 {localChanges} pending
-              </>
+              </div>
             ) : (
               <>
                 <harddrive >
                 Offline
-              </>
+              </harddrive>
             )}
-          </Div>
+          </div>
           <Button variant="outline" size="sm">
             Sync to Cloud
-          </Button>
-        </Div>
-      </Div>
+          </button>
+        </div>
+      </div>
 
-      <tabs defaultValue="editor">
+      <Tabs defaultValue="editor">
         <Tabslist  style={{ display: "grid", width: "100%" }}>
-          <Tabstrigger value="editor">Editor</Tabslist>
+          <Tabstrigger value="editor">Editor</Tabs>
           <Tabstrigger value="results">Results</Tabstrigger>
           <Tabstrigger value="history">History</Tabstrigger />
 
-        <tabscontent value="editor">
-          <Div className="relative">
+        <TabsContent value="editor">
+          <div className="relative">
             <Textarea
               className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm"
               value={prototypeCode}
@@ -103,84 +103,84 @@ exit_rules:
                 setSyncStatus('pending');
               }}
             />
-            <Div className="absolute top-2 right-2 flex items-center gap-2">
+            <div className="absolute top-2 right-2 flex items-center gap-2">
               <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
                 <harddrive >
                 Local Only
               </Tabstrigger>
-            </Div>
-          </Div>
+            </div>
+          </div>
           
-          <Div className="flex gap-2">
+          <div className="flex gap-2">
             <Button >
-              <play >
+              <Play >
               Run Local Test
-            </Div>
+            </div>
             <Button variant="outline">
-              <save >
+              <Save >
               Save Draft
-            </Button>
+            </button>
           </div />
 
-        <tabscontent value="results">
-          <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold text-green-500">{testResults.winRate}%</Div>
-              <P className="text-sm text-muted-foreground">Win Rate</P>
-            </Div>
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold">{testResults.profitFactor}</Div>
-              <P className="text-sm text-muted-foreground">Profit Factor</P>
-            </Div>
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</Div>
-              <P className="text-sm text-muted-foreground">Max Drawdown</P>
-            </Div>
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold">{testResults.trades}</Div>
-              <P className="text-sm text-muted-foreground">Total Trades</P>
-            </Div>
-          </Div>
+        <TabsContent value="results">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</TabsContent>
+              <p className="text-sm text-muted-foreground">Win Rate</p>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold">{testResults.profitFactor}</div>
+              <p className="text-sm text-muted-foreground">Profit Factor</p>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</div>
+              <p className="text-sm text-muted-foreground">Max Drawdown</p>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold">{testResults.trades}</div>
+              <p className="text-sm text-muted-foreground">Total Trades</p>
+            </div>
+          </div>
 
-          <Div className="p-4 bg-blue-500/10 rounded-lg">
-            <P className="text-sm text-blue-600">
+          <div className="p-4 bg-blue-500/10 rounded-lg">
+            <p className="text-sm text-blue-600">
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
-            </Div>
+            </div>
           </div />
 
-        <tabscontent value="history">
-          <Div className="space-y-2">
-            <Div className="p-3 border rounded-lg flex items-center justify-between">
-              <Div>
-                <P className="font-medium">Current Draft</Div>
-                <P className="text-sm text-muted-foreground">Modified 2 minutes ago</P>
-              </Div>
+        <TabsContent value="history">
+          <div className="space-y-2">
+            <div className="p-3 border rounded-lg flex items-center justify-between">
+              <div>
+                <p className="font-medium">Current Draft</TabsContent>
+                <p className="text-sm text-muted-foreground">Modified 2 minutes ago</p>
+              </div>
               <Badge variant="secondary">Unsaved</Badge>
-            </Div>
-            <Div className="p-3 border rounded-lg flex items-center justify-between">
-              <Div>
-                <P className="font-medium">v1.2 - Risk Update</Div>
-                <P className="text-sm text-muted-foreground">Saved locally 1 hour ago</P>
-              </Div>
+            </div>
+            <div className="p-3 border rounded-lg flex items-center justify-between">
+              <div>
+                <p className="font-medium">v1.2 - Risk Update</div>
+                <p className="text-sm text-muted-foreground">Saved locally 1 hour ago</p>
+              </div>
               <Badge >Synced</Badge>
-            </Div>
-            <Div className="p-3 border rounded-lg flex items-center justify-between">
-              <Div>
-                <P className="font-medium">v1.1 - Initial Strategy</Div>
-                <P className="text-sm text-muted-foreground">Created yesterday</P>
-              </Div>
+            </div>
+            <div className="p-3 border rounded-lg flex items-center justify-between">
+              <div>
+                <p className="font-medium">v1.1 - Initial Strategy</div>
+                <p className="text-sm text-muted-foreground">Created yesterday</p>
+              </div>
               <Badge >Synced</Badge>
-            </Div>
+            </div>
           </div />
       </Tabs>
 
-      <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <H4 className="font-medium mb-2"></Div>Local-First Benefits</Div>
-        <Ul className="space-y-1 text-sm text-muted-foreground">
-          <Li>• Work offline without interruption</Ul>
-          <Li>• Instant feedback on changes</Li>
-          <Li>• Automatic conflict resolution</Li>
-          <Li>• Version history preserved locally</Li />
+      <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
+        <h4 className="font-medium mb-2"></div>Local-First Benefits</div>
+        <ul className="space-y-1 text-sm text-muted-foreground">
+          <li>• Work offline without interruption</ul>
+          <li>• Instant feedback on changes</li>
+          <li>• Automatic conflict resolution</li>
+          <li>• Version history preserved locally</Li />
       </div />
   );
 }; 

@@ -12,7 +12,7 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel, children 
 
   if (loading) {
     // You can replace this with a loading spinner component
-    return <Div>Loading...</ProtectedRouteProps>;
+    return <div>Loading...</div>;
   }
 
   const checks = {
@@ -27,7 +27,7 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel, children 
   if (!hasAccess) {
     // Redirect them to the wallet page with an upgrade prompt.
     // This is a sensible default for non-authorized access attempts.
-    return <Navigate to="/wallet?upgrade=true" replace />;
+    return <Navigate to="/wallet?upgrade=true" replace/>;
   }
 
   return (

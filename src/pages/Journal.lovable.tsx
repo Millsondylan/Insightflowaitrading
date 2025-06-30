@@ -14,18 +14,18 @@ const mockEntries = [
 const JournalEntryCard = ({ entry }: { entry: (typeof mockEntries)[0] }) => {
     const pnlColor = entry.pnl >= 0 ? 'text-green-400' : 'text-red-400';
     return (
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
-            <Div className="flex justify-between items-center">
-                <H4 className="font-semibold text-white">{entry.title}</Div>
-                <P className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</P>
-            </Div>
-            <Div className="flex justify-between items-center mt-2 text-sm text-gray-400">
-                <P>{entry.sentiment} • {entry.date}</Div>
-                <Div className="flex gap-2">
-                    {entry.tags.map(tag => <Badge variant="secondary">{tag}</Div>)}
-                </Div>
-            </Div>
-        </Div>
+        <div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
+            <div className="flex justify-between items-center">
+                <h4 className="font-semibold text-white">{entry.title}</div>
+                <p className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</p>
+            </div>
+            <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
+                <p>{entry.sentiment} • {entry.date}</div>
+                <div className="flex gap-2">
+                    {entry.tags.map(tag => <Badge variant="secondary">{tag}</div>)}
+                </div>
+            </div>
+        </div>
     );
 };
 
@@ -33,57 +33,57 @@ export default function JournalPage() {
   const [newEntryText, setNewEntryText] = useState('');
 
   return (
-    <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
       {/* Main Content */}
-      <Div className="lg:col-span-2 space-y-6">
-        <Div className="flex justify-between items-center">
-            <Div>
-                <H1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <Span className="bg-white/10 p-2 rounded-lg"><Scrolltext  /></Div>
+      <div className="lg:col-span-2 space-y-6">
+        <div className="flex justify-between items-center">
+            <div>
+                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <span className="bg-white/10 p-2 rounded-lg"><Scrolltext /></div>
                     Trading Journal
-                </H1>
-                <P className="text-gray-400 mt-1">Reflect on your trades and mindset.</P>
-            </Div>
-        </Div>
+                </h1>
+                <p className="text-gray-400 mt-1">Reflect on your trades and mindset.</p>
+            </div>
+        </div>
         
         {mockEntries.map(entry => <Journalentrycard >)}
       </Journalentrycard>
 
       {/* Right Sidebar */}
-      <Div className="lg:col-span-1 space-y-6">
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                <Pluscircle  />
+      <div className="lg:col-span-1 space-y-6">
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
+                <pluscircle />
                 New Journal Entry
-            </Div>
+            </div>
             <Textarea > setNewEntryText(e.target.value)}
                 placeholder="What's on your mind? Capture your thoughts on recent trades..."
                 className="bg-black/20 border-white/10 h-28"
             />
-            <Button  style={{ width: "100%" }} /></Textarea /></Textarea />Save Entry</Textarea>
-        </Div>
+            <Button  style={{ width: "100%" }}/></Textarea /></Textarea />Save Entry</Textarea>
+        </div>
 
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div>
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2"></div>
                 <bot >
                 AI Coach
-            </Div>
-            <P className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</P>
+            </div>
+            <p className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</p>
             <Link to="/coach">
-                <Button variant="outline" style={{ width: "100%" }} /></Link /></Link />Ask for a Review</Link />
+                <Button variant="outline" style={{ width: "100%" }}/></Link /></Link />Ask for a Review</Link />
         </Link>
         
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-4 flex items-center gap-2"></Div>
+        <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2"></div>
                 <rss >
                 Insight Feed
-            </Div>
-            <P className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</P>
+            </div>
+            <p className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</p>
             <Link to="/feed">
-                <Button variant="outline" style={{ width: "100%" }} /></Link /></Link />View Your Feed</Link />
+                <Button variant="outline" style={{ width: "100%" }}/></Link /></Link />View Your Feed</Link />
         </Link>
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 }
 

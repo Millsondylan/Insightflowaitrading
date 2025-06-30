@@ -14,61 +14,61 @@ const LovableEditorPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('visual-editor');
 
   return (
-    <Div className="container mx-auto py-6">
-      <Div className="mb-6">
-        <H1 className="text-3xl font-bold mb-2">Lovable.dev Editor Suite</Div>
-        <P className="text-text-muted">Powerful visual editing and tech integration tools for Lovable.dev</P>
-      </Div>
+    <div className="container mx-auto py-6">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">Lovable.dev Editor Suite</div>
+        <p className="text-text-muted">Powerful visual editing and tech integration tools for Lovable.dev</p>
+      </div>
       
-      <Tabs defaultValue="visual-editor" className="w-full" onValueChange={setActiveTab} />
-        <Div className="flex justify-between items-center mb-4">
+      <Tabs defaultValue="visual-editor" className="w-full" onValueChange={setActiveTab}/>
+        <div className="flex justify-between items-center mb-4">
           <TabsList>
-            <TabsTrigger value="visual-editor" />Visual Editor</Tabs>
-            <TabsTrigger value="converter" />Convert Components</TabsTrigger>
-            <TabsTrigger value="next-converter" />Next.js Migration</TabsTrigger>
-            <TabsTrigger value="github" />GitHub Integration</TabsTrigger>
-            <TabsTrigger value="supabase" />Supabase</TabsTrigger />
+            <TabsTrigger value="visual-editor"/>Visual Editor</Tabs>
+            <TabsTrigger value="converter"/>Convert Components</TabsTrigger>
+            <TabsTrigger value="next-converter"/>Next.js Migration</TabsTrigger>
+            <TabsTrigger value="github"/>GitHub Integration</TabsTrigger>
+            <TabsTrigger value="supabase"/>Supabase</TabsTrigger />
           
-          <Button size="sm" variant="outline" />
+          <Button size="sm" variant="outline"/>
             Documentation
           </TabsTrigger>
-        </Div>
+        </div>
         
-        <Card className="mb-6" />
-          <TabsContent value="visual-editor" className="p-0 m-0" />
-            <Div className="p-6">
-              <LovablePreview sourceCode={`<Div className="sample-component" />
-  <H2>Sample Component</Card>
-  <P>Edit this component using the visual editor</P>
-</Div>`}
+        <Card className="mb-6"/>
+          <TabsContent value="visual-editor" className="p-0 m-0"/>
+            <div className="p-6">
+              <LovablePreview sourceCode={`<div className="sample-component"/>
+  <h2>Sample Component</Card>
+  <p>Edit this component using the visual editor</p>
+</div>`}
                 onEdit={(id, changes) => {
                   console.log('Edit component', id, changes);
                 }}
               />
             </div />
           
-          <TabsContent value="converter" className="p-0 m-0" />
-            <Div className="p-6">
-              <LovableConverter / />
+          <TabsContent value="converter" className="p-0 m-0"/>
+            <div className="p-6">
+              <LovableConverter //>
           </TabsContent>
           
-          <TabsContent value="next-converter" className="p-0 m-0" />
-            <Div className="p-6">
-              <LovableNextConverter / />
+          <TabsContent value="next-converter" className="p-0 m-0"/>
+            <div className="p-6">
+              <LovableNextConverter //>
           </TabsContent>
           
-          <TabsContent value="github" className="p-0 m-0" />
-            <Div className="p-6">
-              <GitHubSync / />
+          <TabsContent value="github" className="p-0 m-0"/>
+            <div className="p-6">
+              <GitHubSync //>
           </TabsContent>
           
-          <TabsContent value="supabase" className="p-0 m-0" />
-            <Div className="p-6">
-              <supabaseAdapter / />
+          <TabsContent value="supabase" className="p-0 m-0"/>
+            <div className="p-6">
+              <supabaseAdapter //>
           </TabsContent />
         
-        <Card className="p-6" />
-          <H2 className="text-xl font-bold mb-4">About {activeTab === 'visual-editor' ? 'Visual Editor' : 
+        <Card className="p-6"/>
+          <h2 className="text-xl font-bold mb-4">About {activeTab === 'visual-editor' ? 'Visual Editor' : 
             activeTab === 'converter' ? 'Component Converter' : 
             activeTab === 'next-converter' ? 'Next.js Migration' :
             activeTab === 'github' ? 'GitHub Integration' : 
@@ -76,78 +76,78 @@ const LovableEditorPage: React.FC = () => {
           </TabsContent>
           
           {activeTab === 'visual-editor' && (
-            <Div className="text-text-muted space-y-4">
-              <P>The Visual Editor allows you to make precise modifications to your components directly in the browser, 
-              without having to modify code manually. This feature is powered by Lovable.dev's Visual Edits system.</Div>
+            <div className="text-text-muted space-y-4">
+              <p>The Visual Editor allows you to make precise modifications to your components directly in the browser, 
+              without having to modify code manually. This feature is powered by Lovable.dev's Visual Edits system.</div>
               
-              <P>You can edit text content, styling properties, and component structure with intuitive controls. 
-              All changes are instantly previewed and can be saved as clean, production-ready code.</P>
+              <p>You can edit text content, styling properties, and component structure with intuitive controls. 
+              All changes are instantly previewed and can be saved as clean, production-ready code.</p>
               
-              <Div className="flex gap-2">
-                <Button variant="outline" size="sm" />Learn More</Div>
-                <Button size="sm" />Try Visual Editing</Button>
-              </Div>
-            </Div>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm"/>Learn More</div>
+                <Button size="sm"/>Try Visual Editing</button>
+              </div>
+            </div>
           )}
           
           {activeTab === 'converter' && (
-            <Div className="text-text-muted space-y-4">
-              <P>The Component Converter transforms your regular React components into Lovable.dev compatible components.
-              This tool automatically adds the necessary metadata and structure for visual editing capabilities.</Div>
+            <div className="text-text-muted space-y-4">
+              <p>The Component Converter transforms your regular React components into Lovable.dev compatible components.
+              This tool automatically adds the necessary metadata and structure for visual editing capabilities.</div>
               
-              <P>You can convert individual components or entire directories at once, making it easy to migrate
-              existing projects to the Lovable ecosystem.</P>
+              <p>You can convert individual components or entire directories at once, making it easy to migrate
+              existing projects to the Lovable ecosystem.</p>
               
-              <Div className="flex gap-2">
-                <Button variant="outline" size="sm" />View Docs</Div>
-                <Button size="sm" />Convert Components</Button>
-              </Div>
-            </Div>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm"/>View Docs</div>
+                <Button size="sm"/>Convert Components</button>
+              </div>
+            </div>
           )}
           
           {activeTab === 'next-converter' && (
-            <Div className="text-text-muted space-y-4">
-              <P>The Next.js Migration tool allows you to transform your Lovable React app into a fully-featured Next.js application.
-              This unlocks benefits like server-side rendering, improved SEO, and enhanced performance.</Div>
+            <div className="text-text-muted space-y-4">
+              <p>The Next.js Migration tool allows you to transform your Lovable React app into a fully-featured Next.js application.
+              This unlocks benefits like server-side rendering, improved SEO, and enhanced performance.</div>
               
-              <P>The migration process preserves your component structure while adding Next.js specific features like App Router.</P>
+              <p>The migration process preserves your component structure while adding Next.js specific features like App Router.</p>
               
-              <Div className="flex gap-2">
-                <Button variant="outline" size="sm" />Migration Guide</Div>
-                <Button size="sm" />Start Migration</Button>
-              </Div>
-            </Div>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm"/>Migration Guide</div>
+                <Button size="sm"/>Start Migration</button>
+              </div>
+            </div>
           )}
           
           {activeTab === 'github' && (
-            <Div className="text-text-muted space-y-4">
-              <P>The GitHub Integration enables seamless version control for your Lovable projects. You can sync your components
-              with GitHub repositories, track changes, and collaborate with team members.</Div>
+            <div className="text-text-muted space-y-4">
+              <p>The GitHub Integration enables seamless version control for your Lovable projects. You can sync your components
+              with GitHub repositories, track changes, and collaborate with team members.</div>
               
-              <P>This integration supports GitHub workflows, pull requests, and branch management, making it perfect for team collaboration.</P>
+              <p>This integration supports GitHub workflows, pull requests, and branch management, making it perfect for team collaboration.</p>
               
-              <Div className="flex gap-2">
-                <Button variant="outline" size="sm" />GitHub Setup Guide</Div>
-                <Button size="sm" />Connect Repository</Button>
-              </Div>
-            </Div>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm"/>GitHub Setup Guide</div>
+                <Button size="sm"/>Connect Repository</button>
+              </div>
+            </div>
           )}
           
           {activeTab === 'supabase' && (
-            <Div className="text-text-muted space-y-4">
-              <P>The Supabase Integration provides a complete backend solution for your Lovable applications. Connect your project
-              to Supabase for database, authentication, and serverless functions.</Div>
+            <div className="text-text-muted space-y-4">
+              <p>The Supabase Integration provides a complete backend solution for your Lovable applications. Connect your project
+              to Supabase for database, authentication, and serverless functions.</div>
               
-              <P>This integration automatically sets up the necessary tables, functions, and authentication providers for your application.</P>
+              <p>This integration automatically sets up the necessary tables, functions, and authentication providers for your application.</p>
               
-              <Div className="flex gap-2">
-                <Button variant="outline" size="sm" />Supabase Guide</Div>
-                <Button size="sm" />Connect Database</Button>
-              </Div>
-            </Div>
+              <div className="flex gap-2">
+                <Button variant="outline" size="sm"/>Supabase Guide</div>
+                <Button size="sm"/>Connect Database</button>
+              </div>
+            </div>
           )}
         </Card />
-    </Div>
+    </div>
   );
 };
 

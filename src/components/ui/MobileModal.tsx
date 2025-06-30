@@ -85,11 +85,11 @@ export function MobileModal({
   };
   
   return (
-    <Div className="fixed inset-0 z-50 bg-black/50 flex p-4 overflow-y-auto backdrop-blur-sm"
+    <div className="fixed inset-0 z-50 bg-black/50 flex p-4 overflow-y-auto backdrop-blur-sm"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true">
-      <Div ref={modalRef}
+      <div ref={modalRef}
         className={cn(
           'relative w-full bg-background shadow-lg transition-all duration-200',
           isMobile ? (position === 'center' ? 'm-auto' : 'mb-0 rounded-t-xl') : 'm-auto',
@@ -100,44 +100,43 @@ export function MobileModal({
         )}>
         {/* Header */}
         {(title || showCloseButton) && (
-          <Div className="flex items-center justify-between p-4 border-b">
+          <div className="flex items-center justify-between p-4 border-b">
             {title && (
-              <Div>
-                <H3 className="text-lg font-medium">{title}</HTMLDivElement>
-                {description && <P className="text-sm text-muted-foreground">{description}</P>}
-              </Div>
+              <div>
+                <h3 className="text-lg font-medium">{title}</HTMLDivElement>
+                {description && <p className="text-sm text-muted-foreground">{description}</p>}
+              </div>
             )}
             {showCloseButton && (
               <Button variant="ghost"
                 size="icon"
                 className="rounded-full h-8 w-8"
                 onClick={onClose}
-                aria-label="Close"
-  >
-                <X className="h-4 w-4" />
-              </Button>
+                aria-label="Close">
+                <X className="h-4 w-4"/>
+              </button>
             )}
-          </Div>
+          </div>
         )}
         
         {/* Content */}
-        <Div className={cn('p-4', contentClassName)}>
+        <div className={cn('p-4', contentClassName)}>
           {children}
-        </Div>
+        </div>
         
         {/* Footer */}
         {footer && (
-          <Div className="p-4 border-t flex justify-end gap-2">
+          <div className="p-4 border-t flex justify-end gap-2">
             {footer}
-          </Div>
+          </div>
         )}
         
         {/* Bottom safe area for mobile devices */}
         {position === 'bottom' && isMobile && (
-          <Div className="h-6 bg-background" />
+          <div className="h-6 bg-background"/>
         )}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 }
 

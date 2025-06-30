@@ -17,7 +17,7 @@ interface LineChartProps {
   color?: string;
 }
 
-export const LineChart: React.FC<lineChartProps> = ({
+export const LineChart: React.FC<LineChartProps> = ({
   data,
   xField,
   yField,
@@ -27,14 +27,14 @@ export const LineChart: React.FC<lineChartProps> = ({
   return (
     <ResponsiveContainer width="100%" height={height}>
       <RechartsLineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.1} />
+        <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.1}/>
         <XAxis
           dataKey={xField}
           stroke="#6b7280"
           fontSize={12}
           tickLine={false}
           axisLine={false}
-        />
+       />
         <YAxis
           stroke="#6b7280"
           fontSize={12}
@@ -51,22 +51,23 @@ export const LineChart: React.FC<lineChartProps> = ({
           }}
           itemStyle={{ color: '#e5e7eb' }}
           labelStyle={{ color: '#9ca3af' }}
-        />
-        <line
+       />
+        <Line
           type="monotone"
           dataKey={yField}
           stroke={color}
           strokeWidth={2}
           dot={false}
           activeDot={{ r: 4, strokeWidth: 0 }}
-        / />
-    </Record>
+       />
+      </RechartsLineChart>
+    </ResponsiveContainer>
   );
+};
 
 export const lovable = { 
   component: true,
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-};
 }; 

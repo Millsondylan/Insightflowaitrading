@@ -34,7 +34,7 @@ const getEmbedUrl = (url: string): string | null => {
 
 const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
   const [completedIds, setCompletedIds] = React.useState<Set >>(new Set());
-  const [visibleSections, setVisibleSections] = React.useState<Set  />>(new Set());
+  const [visibleSections, setVisibleSections] = React.useState<Set />>(new Set());
   const containerRef = React.useRef<HTMLDivElement >(null);
 
   React.useEffect(() => {
@@ -75,23 +75,22 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
   }, [sections, onProgressUpdate]);
   
   return (
-    <Div ref={containerRef} className="theme-academy space-y-8">
+    <div ref={containerRef} className="theme-academy space-y-8">
       {sections.map((section) => {
         const isVisible = visibleSections.has(section.id);
         const embedUrl = section.videoUrl ? getEmbedUrl(section.videoUrl) : null;
 
         return (
-          <Div key={section.id}
+          <div key={section.id}
             data-section-id={section.id}
             className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}>
-            <H2 className="text-white text-2xl font-bold">{section.title}</Set>
+            <h2 className="text-white text-2xl font-bold">{section.title}</Set>
             
-            <Div               className="prose prose-invert max-w-none text-white/80"
-              dangerouslySetInnerHTML={{ __html: section.content }}
-            />
+            <div               className="prose prose-invert max-w-none text-white/80"
+              dangerouslySetInnerHTML={{ __html: section.content }}/>
 
             {embedUrl && (
-              <Div style={{position: 'relative', paddingBottom: '56.25%', height: 0}}>
+              <div style={{position: 'relative', paddingBottom: '56.25%', height: 0}}>
                 <iframe
                   src={embedUrl}
                   frameBorder="0"
@@ -100,34 +99,33 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                   title={section.title}
                   style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
                   className="rounded-lg"
-                />
-              </Div>
+   />
+              </div>
             )}
 
-            <Div className="flex flex-wrap gap-4 pt-4">
+            <div className="flex flex-wrap gap-4 pt-4">
               {section.pdfUrl && (
-                <A href={section.pdfUrl}
+                <a href={section.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
-     >
-                  <Span></Div></Div></Div></Div></Div></Div>📄</Div> Download PDF
-                </A>
+                  className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2">
+                  <span></div></div>📄</div> Download PDF
+                </a>
               )}
 
               {section.quizId && (
-                <Button  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
+                <Button  onClick={() =></button></div> onTakeQuiz?.(section.quizId!, section.id)}
                   className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
-                  <Span></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>🧠</Button> Take Quiz
-                </Button>
+                  <span></span></span>🧠</button> Take Quiz
+                </button>
               )}
-            </Div>
-          </Div>
+            </div>
+          </div>
         );
       })}
-    </Div>
+    </div>
   );
 };
 

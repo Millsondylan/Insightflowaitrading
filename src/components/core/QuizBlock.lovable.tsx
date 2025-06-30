@@ -26,11 +26,11 @@ const QuizBlock: React.FC<Quizblockprops > = ({
 }) => {
   const { toast } = useToast();
   const { hasProAccess, loading: authLoading } = useAuth();
-  const [quiz, setQuiz] = useState<Quiz  />(null);
+  const [quiz, setQuiz] = useState<Quiz />(null);
   const [loading, setLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record >>({});
-  const [submittedAnswers, setSubmittedAnswers] = useState<Record  />>({});
+  const [submittedAnswers, setSubmittedAnswers] = useState<Record />>({});
   const [feedbacks, setFeedbacks] = useState<record >>({});
   const [quizResult, setQuizResult] = useState<Quizresult >(null);
   const [showCompletion, setShowCompletion] = useState(false);
@@ -169,7 +169,7 @@ const QuizBlock: React.FC<Quizblockprops > = ({
   };
 
   if (authLoading) {
-    return <Div className="text-center p-8">Checking access...</Quizblockprops>;
+    return <div className="text-center p-8">Checking access...</Quizblockprops>;
   }
 
   if (!hasProAccess) {
@@ -181,19 +181,19 @@ const QuizBlock: React.FC<Quizblockprops > = ({
       >
         <Card >
           <Cardcontent >
-            <lock >
-            <Div>
-              <H3 className="text-xl font-semibold text-gray-200 mb-2">
+            <Lock >
+            <div>
+              <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Unlock AI-Powered Quizzes
               </Card>
-              <P className="text-gray-400">
+              <p className="text-gray-400">
                 Upgrade to a Pro plan to test your knowledge with quizzes tailored to each lesson.
-              </P>
-            </Div>
+              </p>
+            </div>
             <Button >
               Upgrade to Pro
             </button />
-        </Button>
+        </button>
       </motion.div>
     );
   }
@@ -208,20 +208,20 @@ const QuizBlock: React.FC<Quizblockprops > = ({
         <Card >
           <Cardcontent >
             <brain >
-            <Div>
-              <H3 className="text-xl font-semibold text-gray-200 mb-2">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Generating Quiz Questions
               </Card>
-              <P className="text-gray-400">
+              <p className="text-gray-400">
                 AI is creating personalized questions based on the lesson content...
-              </P>
-            </Div>
-            <Div className="flex space-x-1 justify-center">
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
+              </p>
+            </div>
+            <div className="flex space-x-1 justify-center">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}/>
             </div />
-        </Div>
+        </div>
       </motion.div>
     );
   }
@@ -230,11 +230,11 @@ const QuizBlock: React.FC<Quizblockprops > = ({
     return (
       <Card >
         <Cardcontent >
-          <P className="text-gray-400">Ready to test your knowledge?</Card>
+          <p className="text-gray-400">Ready to test your knowledge?</Card>
           <Button >
             Generate Quiz
           </button />
-      </Button>
+      </button>
     );
   }
 
@@ -248,33 +248,32 @@ const QuizBlock: React.FC<Quizblockprops > = ({
     >
       <Card >
         <Cardheader >
-          <Div className="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <Cardtitle  style={{ display: "flex", alignItems: "center" }}>
               <brain >
-              <Span>{quiz.title}</Card />
-            <Div className="text-sm text-gray-400">
+              <span>{quiz.title}</Card />
+            <div className="text-sm text-gray-400">
               {currentQuestionIndex + 1} of {quiz.questions.length}
             </Card>
-          </Div>
+          </div>
           
           {/* Progress Bar */}
-          <Div className="quiz-progress">
-            <Div 
+          <div className="quiz-progress">
+            <div 
               className="quiz-progress-fill"
-              style={{ width: `${calculateProgress()}%` }}
-            />
+              style={{ width: `${calculateProgress()}%` }}/>
           </div />
 
         <Cardcontent >
           {currentQuestion && (
             <>
               {/* Question */}
-              <Div className="quiz-question">
+              <div className="quiz-question">
                 {currentQuestion.question}
-              </Div>
+              </div>
 
               {/* Options */}
-              <Div className="quiz-options">
+              <div className="quiz-options">
                 {currentQuestion.options.map((option) => {
                   const isSelected = selectedAnswers[currentQuestion.id] === option.id;
                   const isSubmitted = submittedAnswers[currentQuestion.id];
@@ -302,57 +301,57 @@ const QuizBlock: React.FC<Quizblockprops > = ({
                         name={currentQuestion.id}
                         value={option.id}
                         checked={isSelected}
-                        onChange={() = /> handleAnswerSelect(currentQuestion.id, option.id)}
+                        onChange={() =/> handleAnswerSelect(currentQuestion.id, option.id)}
                         disabled={isSubmitted}
                         className="quiz-option-input"
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
                         className={optionClassName}
-           >
-                        <Div className="quiz-option-radio" />
-                        <Span className="text-gray-200">{option.label}</div />
+>
+                        <div className="quiz-option-radio"/>
+                        <span className="text-gray-200">{option.label}</div />
                     </motion.div>
                   );
                 })}
-              </Div>
+              </div>
 
               {/* Submit/Next Button */}
-              <Div className="flex justify-between items-center">
-                <Div />
+              <div className="flex justify-between items-center">
+                <div />
                 {!isQuestionAnswered ? (
                   <Button >
                     Submit Answer
-                  </Div>
+                  </div>
                 ) : (
-                  <Div className="flex space-x-3">
+                  <div className="flex space-x-3">
                     {canProceed && (
                       <Button >
                         Next Question
-                        <chevrondown >
-                      </Div>
+                        <ChevronDown >
+                      </div>
                     )}
                     {isQuizComplete && quizResult && (
-                      <Div className="text-center">
-                        <P className="text-lg font-semibold text-gray-200">
+                      <div className="text-center">
+                        <p className="text-lg font-semibold text-gray-200">
                           Score: {quizResult.score.toFixed(0)}%
-                        </Div>
-                        <P className={cn(
+                        </div>
+                        <p className={cn(
                           "text-sm font-medium",
                           quizResult.passed ? "text-green-400" : "text-red-400"
                         )}>
                           {quizResult.passed ? "Passed!" : "Keep Learning"}
-                        </P>
-                      </Div>
+                        </p>
+                      </div>
                     )}
-                  </Div>
+                  </div>
                 )}
-              </Div>
+              </div>
 
               {/* Feedback */}
               {feedbacks[currentQuestion.id] && (
                 <Quizfeedback >
               )}
-            </>
+            </Quizfeedback>
           )}
         </Quizfeedback />
 
@@ -364,25 +363,25 @@ const QuizBlock: React.FC<Quizblockprops > = ({
           className="quiz-completion-badge"
           onClick={() => setShowCompletion(false)}
         >
-          <Div className="badge-content">
-            <Div className="badge-icon">
+          <div className="badge-content">
+            <div className="badge-icon">
               <trophy >
-            </Quizfeedback>
-            <H2 className="text-2xl font-bold text-yellow-400 mb-2">
+            </div>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-2">
               Quiz Complete!
-            </H2>
-            <P className="text-gray-300 mb-4">
+            </h2>
+            <p className="text-gray-300 mb-4">
               You've mastered: {lessonBlocks[0]?.topic}
-            </P>
-            <P className="text-lg font-semibold text-green-400">
+            </p>
+            <p className="text-lg font-semibold text-green-400">
               Score: {quizResult.score.toFixed(0)}%
-            </P>
-            <Button > setShowCompletion(false)}
+            </p>
+            <Button ></button></div> setShowCompletion(false)}
               className="mt-4 bg-yellow-600 hover:bg-yellow-700"
             >
               Continue Learning
-            </Button>
-          </Div>
+            </button>
+          </div>
         </motion.div>
       )}
     </motion.div>

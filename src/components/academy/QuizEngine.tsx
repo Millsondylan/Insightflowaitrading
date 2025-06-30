@@ -146,18 +146,18 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
   };
 
   return (
-    <Div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
+    <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow space-y-6">
       {/* Quiz Header */}
-      <Div className="flex justify-between items-center">
-        <H2 className="text-white text-xl font-bold">
+      <div className="flex justify-between items-center">
+        <h2 className="text-white text-xl font-bold">
           {lessonTitle || "Quiz"} 
-          <Span className="text-gray-400 ml-2 text-sm">
+          <span className="text-gray-400 ml-2 text-sm">
             ({currentQuestionIndex + 1} of {mockQuestions.length})
-          </QuizProps>
-        </H2>
+          </span>
+        </h2>
         
         {/* Progress bar */}
-        <Div className="w-1/3 h-2 bg-white/10 rounded-full overflow-hidden">
+        <div className="w-1/3 h-2 bg-white/10 rounded-full overflow-hidden">
           <motion.div 
             className="h-full bg-cyan-600"
             initial={{ width: 0 }}
@@ -166,12 +166,12 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             }}
             transition={{ duration: 0.5 }}
           />
-        </Div>
-      </Div>
+        </div>
+      </div>
 
       {/* Quiz Content */}
-      {!quizComplete ? (
-        <animatePresence mode="wait">
+      {!quizComplete && currentQuestion ? (
+        <AnimatePresence mode="wait">
           <motion.div
             key={currentQuestion.id}
             initial="hidden"
@@ -181,12 +181,12 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             className="space-y-6"
           >
             {/* Question */}
-            <H3 className="text-white text-lg font-semibold">
+            <h3 className="text-white text-lg font-semibold">
               {currentQuestion.question}
-            </H3>
+            </h3>
 
             {/* Options */}
-            <Div className="space-y-3">
+            <div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
                 <Button key={index}
                   onClick={() => handleOptionSelect(index)}
@@ -199,18 +199,18 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                     ${isAnswered && index === selectedOption && index !== currentQuestion.correctIndex ? "bg-red-500" : ""}
                   `}
                 >
-                  <Span>{option}</Div>
+                  <span>{option}</span>
                   
                   {isAnswered && (
                     index === currentQuestion.correctIndex ? (
-                      <CheckCircle2 className="h-5 w-5 text-white" />
+                      <CheckCircle2 className="h-5 w-5 text-white"/>
                     ) : (
-                      index === selectedOption && <XCircle className="h-5 w-5 text-white" />
+                      index === selectedOption && <XCircle className="h-5 w-5 text-white"/>
                     )
                   )}
-                </CheckCircle2>
+                </button>
               ))}
-            </Div>
+            </div>
 
             {/* Feedback */}
             {isAnswered && currentQuestion.explanation && (
@@ -223,40 +223,39 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                     : "bg-red-500/20 border-l-4 border-red-500"
                 }`}
               >
-                <P className="text-white">
+                <p className="text-white">
                   {selectedOption === currentQuestion.correctIndex ? "✅ " : "❌ "}
                   {currentQuestion.explanation}
-                </P>
+                </p>
               </motion.div>
             )}
 
             {/* Action Buttons */}
-            <Div className="flex justify-end space-x-3">
+            <div className="flex justify-end space-x-3">
               {!isAnswered ? (
                 <Button onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
-                  className="bg-white/10 hover:bg-cyan-600 text-white px-6"
-   >
+                  className="bg-white/10 hover:bg-cyan-600 text-white px-6">
                   Submit Answer
-                </Div>
+                </button>
               ) : (
                 <Button onClick={handleNextQuestion}
-                  className="bg-white/10 hover:bg-white/20 text-white px-6"
-                />
+                  className="bg-white/10 hover:bg-white/20 text-white px-6">
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
-                        <ChevronRight className="ml-2 h-4 w-4" />
-                      </>
+                        <ChevronRight className="ml-2 h-4 w-4"/>
+                      </ChevronRight>
                     )
                   }
-                </Button>
+                </button>
               )}
-            </Div>
-          </motion.div />
-      ) : (
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      ) : quizComplete ? (
         // Quiz Summary
         <motion.div
           initial={{ opacity: 0 }}
@@ -272,12 +271,12 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {calculatePercentage()}%
           </motion.div>
 
-          <P className="text-xl text-white">
-            You got <Span className="font-bold">{score}</P> out of <Span className="font-bold">{mockQuestions.length}</Span> questions correct
-          </P>
+          <p className="text-xl text-white">
+            You got <span className="font-bold">{score}</span> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
+          </p>
           
           {isPassed() ? (
-            <Div className="py-4">
+            <div className="py-4">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -294,24 +293,27 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
               >
                 🏆
               </motion.div>
-            </Div>
+            </div>
           ) : (
-            <P className="text-red-400">
+            <p className="text-red-400">
               You need at least 70% to pass. Try again!
-            </P>
+            </p>
           )}
 
-          <Div className="pt-4">
+          <div className="pt-4">
             <Button onClick={resetQuiz}
-              className="bg-white/10 hover:bg-white/20 text-white px-6"
->
-              <RefreshCw className="mr-2 h-4 w-4" /></Div></Div></Div></Div></Div></Div></Div>
+              className="bg-white/10 hover:bg-white/20 text-white px-6">
+              <RefreshCw className="mr-2 h-4 w-4"/>
               Retry Quiz
-            </Button>
-          </Div>
+            </button>
+          </div>
         </motion.div>
+      ) : (
+        <div className="text-center text-white">
+          <p>Loading quiz...</p>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 

@@ -32,34 +32,33 @@ export const lovable = {
   const timeframes = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
 
   return (
-    <Card className="theme-card p-6" />
-      <Div className="flex items-center justify-between mb-4">
-        <H2 className="text-2xl font-bold">P&L Curve</Card>
-        <Div className="flex gap-1">
+    <Card className="theme-card p-6"/>
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-2xl font-bold">P&L Curve</Card>
+        <div className="flex gap-1">
           {timeframes.map((tf) => (
             <Button key={tf}
               variant={selectedTimeframe === tf ? 'default' : 'outline'}
               size="sm"
-              onClick={() = /> setSelectedTimeframe(tf as any)}
+              onClick={() => setSelectedTimeframe(tf as any)}
             >
               {tf}
-            </Div>
+            </div>
           ))}
-        </Div>
-      </Div>
+        </div>
+      </div>
       
-      <Div className="h-[400px] w-full">
-        <ResponsiveContainer width="100%" height="100%" />
+      <div className="h-[400px] w-full">
+        <ResponsiveContainer width="100%" height="100%"/>
           <lineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#333"/>
             <XAxis 
               dataKey="date" 
               stroke="#666"
-              tick={{ fill: '#999' }}
-            />
+              tick={{ fill: '#999' }}/>
             <YAxis stroke="#666"
               tick={{ fill: '#999' }}
-              tickFormatter={(value) = /> `$${(value / 1000).toFixed(0)}k`}
+              tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
             />
             <Tooltip contentStyle={{
                 backgroundColor: '#1a1a1a',
@@ -67,7 +66,7 @@ export const lovable = {
                 borderRadius: '8px'
               }}
               labelStyle={{ color: '#999' }}
-              formatter={(value: unknown) = /> [`$${value.toLocaleString()}`, 'Balance']}
+              formatter={(value: unknown) => [`$${value.toLocaleString()}`, 'Balance']}
             />
             <line
               type="monotone"
@@ -75,24 +74,23 @@ export const lovable = {
               stroke="#00ff88"
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 6, fill: '#00ff88' }}
-            />
-          </div />
-      </Div>
+              activeDot={{ r: 6, fill: '#00ff88' }}/>
+          </div>
+      </div>
       
-      <Div className="grid grid-cols-3 gap-4 mt-4">
-        <Div>
-          <P className="text-sm text-muted-foreground">Total Return</Div>
-          <P className="text-lg font-bold text-green-500">+12.0%</P>
-        </Div>
-        <Div>
-          <P className="text-sm text-muted-foreground">Max Drawdown</Div>
-          <P className="text-lg font-bold text-red-500">-2.1%</P>
-        </Div>
-        <Div>
-          <P className="text-sm text-muted-foreground">Sharpe Ratio</Div>
-          <P className="text-lg font-bold">1.42</P>
-        </Div>
-      </div />
+      <div className="grid grid-cols-3 gap-4 mt-4">
+        <div>
+          <p className="text-sm text-muted-foreground">Total Return</div>
+          <p className="text-lg font-bold text-green-500">+12.0%</p>
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground">Max Drawdown</div>
+          <p className="text-lg font-bold text-red-500">-2.1%</p>
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground">Sharpe Ratio</div>
+          <p className="text-lg font-bold">1.42</p>
+        </div>
+      </div>
   );
 }; 

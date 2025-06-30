@@ -223,60 +223,63 @@ const LandingPage = () => {
   ];
 
   return (
-    <Div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900">
       {/* Navigation Header */}
-      <Nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
-        <Div className="flex items-center space-x-3">
-          <Div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white" />
-          </HTMLDivElement>
-          <H1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
-            InsightFlow AI
-          </H1>
-        </Div>
-        <Div className="flex space-x-4">
-          <Button variant="outline" 
-            onClick={() => navigate('/auth')}
-            className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
-          >
-            Sign In
-          </Div>
-          <Button onClick={() => navigate('/auth')}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
-          >
-            Start Free Trial
-          </Button>
-        </Div>
-      </Nav>
+      <nav className="fixed top-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-white"/>
+              </div>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
+                InsightFlow AI
+              </h1>
+            </div>
+            <Button
+              onClick={() => navigate('/auth')}
+              variant="ghost" 
+              className="text-white hover:text-blue-400"
+            >
+              Sign In
+            </Button>
+            <Button onClick={() => navigate('/auth')}
+              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+            >
+              Start Free Trial
+            </Button>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
-      <Main ref={heroRef} className="container mx-auto px-6 py-24 text-center">
+      <main ref={heroRef} className="container mx-auto px-6 py-24 text-center">
         <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
           🚀 Advanced Trading Platform - Now with AI Integration
-        </Main>
+        </Badge>
         
-        <H1 className="text-6xl font-bold leading-tight mt-4">
-          <Span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <h1 className="text-6xl font-bold leading-tight mt-4">
+          <span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
             Trade Smarter with
-          </H1>
+          </span>
           <br />
-          <Span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
             AI-Powered Insights
-          </Span>
-        </H1>
+          </span>
+        </h1>
         
-        <P className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
+        <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
           Elevate your trading with our institutional-grade platform. Real-time data, advanced analytics, and AI-driven strategies at your fingertips.
-        </P>
+        </p>
 
-        <Div className="mt-8 flex justify-center gap-4">
+        <div className="mt-8 flex justify-center gap-4">
           <Button size="lg" 
             onClick={() => navigate('/auth/register')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white"
           >
             Start Free Trial
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Div>
+            <ArrowRight className="ml-2 w-5 h-5"/>
+          </Button>
           <Button size="lg" 
             variant="outline"
             onClick={() => navigate('/features')}
@@ -284,41 +287,41 @@ const LandingPage = () => {
           >
             Explore Features
           </Button>
-        </Div>
-      </Main>
+        </div>
+      </main>
 
       {/* Stats Section */}
-      <Section className="container mx-auto px-6 py-12">
-        <Div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <Div className="p-4 rounded-lg bg-white/5">
-            <H3 className="text-4xl font-bold text-white">{userCount}+</Section>
-            <P className="text-gray-400">Traders Trust Us</P>
-          </Div>
-          <Div className="p-4 rounded-lg bg-white/5">
-            <H3 className="text-4xl font-bold text-white">{successfulTrades}</Div>
-            <P className="text-gray-400">Successful Trades</P>
-          </Div>
-          <Div className="p-4 rounded-lg bg-white/5">
-            <H3 className="text-4xl font-bold text-white">${(demoVolume / 1000000).toFixed(1)}M+</Div>
-            <P className="text-gray-400">Demo Volume</P>
-          </Div>
-          <Div className="p-4 rounded-lg bg-white/5">
-            <Div className="flex items-center justify-center">
-              <H3 className="text-4xl font-bold text-white">{userRating.toFixed(1)}</Div>
-              <Star className="w-8 h-8 text-yellow-400 ml-2" />
-            </Star>
-            <P className="text-gray-400">User Rating</P>
-          </Div>
-        </Div>
-      </Section>
+      <section className="container mx-auto px-6 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="p-4 rounded-lg bg-white/5">
+            <h3 className="text-4xl font-bold text-white">{userCount}+</h3>
+            <p className="text-gray-400">Traders Trust Us</p>
+          </div>
+          <div className="p-4 rounded-lg bg-white/5">
+            <h3 className="text-4xl font-bold text-white">{successfulTrades}</h3>
+            <p className="text-gray-400">Successful Trades</p>
+          </div>
+          <div className="p-4 rounded-lg bg-white/5">
+            <h3 className="text-4xl font-bold text-white">${(demoVolume / 1000000).toFixed(1)}M+</h3>
+            <p className="text-gray-400">Demo Volume</p>
+          </div>
+          <div className="p-4 rounded-lg bg-white/5">
+            <div className="flex items-center justify-center">
+              <h3 className="text-4xl font-bold text-white">{userRating.toFixed(1)}</h3>
+              <Star className="w-8 h-8 text-yellow-400 ml-2"/>
+            </div>
+            <p className="text-gray-400">User Rating</p>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
-      <Section ref={featuresRef} className="container mx-auto px-6 py-24">
-        <Div className="text-center mb-12">
-          <H2 className="text-4xl font-bold text-white">Why InsightFlow AI?</Section>
-          <P className="text-lg text-gray-400 mt-4">Unleash your trading potential with our powerful features</P>
-        </Div>
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section ref={featuresRef} className="container mx-auto px-6 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white">Why InsightFlow AI?</h2>
+          <p className="text-lg text-gray-400 mt-4">Unleash your trading potential with our powerful features</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -329,121 +332,119 @@ const LandingPage = () => {
             >
               <Card className="bg-gray-800/40 border-gray-700/60 text-white h-full">
                 <CardHeader>
-                  <Div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${feature.gradient}`}>
+                  <div className={`w-12 h-12 rounded-lg flex items-center justify-center bg-gradient-to-br ${feature.gradient}`}>
                     <feature.icon className="w-6 h-6 text-white" />
-                  </Div>
+                  </div>
                   <CardTitle className="mt-4 text-xl">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <P className="text-gray-400">{feature.description}</CardContent>
+                  <p className="text-gray-400">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
-        </Div>
-      </Section>
+        </div>
+      </section>
 
       {/* Pricing Section */}
-      <Section ref={pricingRef} className="container mx-auto px-6 py-24">
-        <Div className="text-center mb-12">
-          <H2 className="text-4xl font-bold text-white">Pricing Plans</Section>
-          <P className="text-lg text-gray-400 mt-4">Choose the plan that fits your trading journey</P>
-        </Div>
-        <Div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <section ref={pricingRef} className="container mx-auto px-6 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white">Pricing Plans</h2>
+          <p className="text-lg text-gray-400 mt-4">Choose the plan that fits your trading journey</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {pricingPlans.map((plan, index) => (
             <Card key={index} className={`bg-gray-800/40 border-gray-700/60 text-white flex flex-col ${plan.popular ? 'border-blue-500' : ''}`}>
               <CardHeader>
-                <CardTitle className="text-2xl">{plan.name}</Div>
-                <P className="text-4xl font-bold mt-2">
-                  ${plan.price}
-                  <Span className="text-lg font-normal text-gray-400">/ {plan.period}</P>
-                </P>
+                <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                                 <p className="text-4xl font-bold mt-2">
+                   ${plan.price}
+                   <span className="text-lg font-normal text-gray-400">/ {plan.period}</span>
+                 </p>
               </CardHeader>
               <CardContent className="flex-grow">
-                <Ul className="space-y-3">
+                <ul className="space-y-3">
                   {plan.features.map((feature, fIndex) => (
-                    <Li key={fIndex} className="flex items-center">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-                      <Span>{feature}</CardContent>
-                    </Li>
+                    <li key={fIndex} className="flex items-center">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2"/>
+                      <span>{feature}</span>
+                    </li>
                   ))}
-                </Ul>
+                </ul>
               </CardContent>
-              <Div className="p-6">
+              <div className="p-6">
                 <Button className="w-full" variant={plan.popular ? 'default' : 'outline'}>
                   {plan.popular ? 'Get Started' : 'Choose Plan'}
-                </Div>
-              </Div>
+                </Button>
+              </div>
             </Card>
           ))}
-        </Div>
-      </Section>
+        </div>
+      </section>
 
       {/* Testimonials Section */}
-      <Section ref={testimonialsRef} className="container mx-auto px-6 py-24">
-        <Div className="text-center mb-12">
-          <H2 className="text-4xl font-bold text-white">What Our Traders Say</Section>
-        </Div>
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section ref={testimonialsRef} className="container mx-auto px-6 py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-white">What Our Traders Say</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviews.map((review, index) => (
             <Card key={index} className="bg-gray-800/40 border-gray-700/60 text-white">
               <CardContent className="pt-6">
-                <Div className="flex items-center mb-4">
-                  <Img src={review.avatar} alt={review.name} className="w-12 h-12 rounded-full mr-4" />
-                  <Div>
-                    <P className="font-semibold">{review.name}</Div>
-                    <P className="text-sm text-gray-400">{review.handle}</P>
-                  </Div>
-                </Div>
-                <P className="text-gray-300">"{review.text}"</P>
+                <div className="flex items-center mb-4">
+                  <img src={review.avatar} alt={review.name} className="w-12 h-12 rounded-full mr-4"/>
+                </div>
+                <p className="font-semibold">{review.name}</p>
+                <p className="text-sm text-gray-400">{review.handle}</p>
+                <p className="text-gray-300">"{review.text}"</p>
               </CardContent>
             </Card>
           ))}
-        </Div>
-      </Section>
+        </div>
+      </section>
 
       {/* Footer */}
-      <Footer className="border-t border-gray-800/50 mt-24">
-        <Div className="container mx-auto px-6 py-8">
-          <Div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <Div>
-              <H3 className="font-semibold text-white">Platform</Footer>
-              <Ul className="space-y-2 mt-4 text-gray-400">
-                <Li><A href="#" className="hover:text-white">Features</Ul></Li>
-                <Li><A href="#" className="hover:text-white">Pricing</Li></Li>
-                <Li><A href="#" className="hover:text-white">Security</Li></Li>
-              </Ul>
-            </Div>
-            <Div>
-              <H3 className="font-semibold text-white">Company</Div>
-              <Ul className="space-y-2 mt-4 text-gray-400">
-                <Li><A href="#" className="hover:text-white">About Us</Ul></Li>
-                <Li><A href="#" className="hover:text-white">Careers</Li></Li>
-                <Li><A href="#" className="hover:text-white">Contact</Li></Li>
-              </Ul>
-            </Div>
-            <Div>
-              <H3 className="font-semibold text-white">Resources</Div>
-              <Ul className="space-y-2 mt-4 text-gray-400">
-                <Li><A href="#" className="hover:text-white">Blog</Ul></Li>
-                <Li><A href="#" className="hover:text-white">API Docs</Li></Li>
-                <Li><A href="#" className="hover:text-white">Help Center</Li></Li>
-              </Ul>
-            </Div>
-            <Div>
-              <H3 className="font-semibold text-white">Legal</Div>
-              <Ul className="space-y-2 mt-4 text-gray-400">
-                <Li><A href="#" className="hover:text-white">Terms of Service</Ul></Li>
-                <Li><A href="#" className="hover:text-white">Privacy Policy</Li></Li>
-              </Ul>
-            </Div>
-          </Div>
-          <Div className="mt-8 pt-8 border-t border-gray-800/50 text-center text-gray-500">
-            <P>&copy; {new Date().getFullYear()} InsightFlow AI. All rights reserved.</Div>
-          </Div>
-        </Div>
-      </Footer>
-    </Div>
+      <footer className="border-t border-gray-800/50 mt-24">
+        <div className="container mx-auto px-6 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="font-semibold text-white">Platform</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">Features</a></li>
+                <li><a href="#" className="hover:text-white">Pricing</a></li>
+                <li><a href="#" className="hover:text-white">Security</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Company</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">About Us</a></li>
+                <li><a href="#" className="hover:text-white">Careers</a></li>
+                <li><a href="#" className="hover:text-white">Contact</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Resources</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">Blog</a></li>
+                <li><a href="#" className="hover:text-white">API Docs</a></li>
+                <li><a href="#" className="hover:text-white">Help Center</a></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-semibold text-white">Legal</h3>
+              <ul className="space-y-2 mt-4 text-gray-400">
+                <li><a href="#" className="hover:text-white">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-800/50 text-center text-gray-500">
+            <p>&copy; {new Date().getFullYear()} InsightFlow AI. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 };
 

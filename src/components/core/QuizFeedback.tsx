@@ -37,38 +37,38 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
       )}
     >
       {/* Header with Icon and Status */}
-      <Div className="flex items-center space-x-3 mb-4">
+      <div className="flex items-center space-x-3 mb-4">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
         >
           {isCorrect ? (
-            <CheckCircle2 className="h-8 w-8 text-green-400" />
+            <CheckCircle2 className="h-8 w-8 text-green-400"/>
           ) : (
-            <XCircle className="h-8 w-8 text-red-400" />
+            <XCircle className="h-8 w-8 text-red-400"/>
           )}
         </motion.div>
         
-        <Div>
-          <H3 className={cn(
+        <div>
+          <h3 className={cn(
             "text-xl font-bold",
             isCorrect ? "text-green-400" : "text-red-400"
           )}>
             {isCorrect ? "Correct!" : "Not Quite"}
-          </QuizFeedbackProps>
+          </h3>
           
-          <Div className="flex items-center space-x-2 mt-1">
-            <Span className={cn('text-xs font-medium', getConfidenceColor(confidence))}>
+          <div className="flex items-center space-x-2 mt-1">
+            <span className={cn('text-xs font-medium', getConfidenceColor(confidence))}>
               {getConfidenceText(confidence)}
-            </Div>
-            <Div className={cn(
+            </span>
+            <div className={cn(
               'w-2 h-2 rounded-full',
               getConfidenceColor(confidence).replace('text-', 'bg-')
-            )} />
-          </Div>
-        </Div>
-      </Div>
+            )}/>
+          </div>
+        </div>
+      </div>
 
       {/* Explanation Section */}
       <motion.div
@@ -77,16 +77,16 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
         transition={{ delay: 0.3, duration: 0.4 }}
         className="space-y-4"
       >
-        <Div className="flex items-start space-x-3">
-          <lightbulb className={cn(
+        <div className="flex items-start space-x-3">
+          <Lightbulb className={cn(
             "h-5 w-5 mt-0.5 flex-shrink-0",
             isCorrect ? "text-green-400" : "text-red-400"
-          )} />
-          <Div>
-            <H4 className="font-semibold text-gray-200 mb-2">Explanation</Div>
-            <P className="text-gray-300 leading-relaxed">{explanation}</P>
-          </Div>
-        </Div>
+          )}/>
+          <div>
+            <h4 className="font-semibold text-gray-200 mb-2">Explanation</h4>
+            <p className="text-gray-300 leading-relaxed">{explanation}</p>
+          </div>
+        </div>
 
         {/* Hint Section (for incorrect answers) */}
         {!isCorrect && hint && (
@@ -96,11 +96,11 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="flex items-start space-x-3 pt-4 border-t border-gray-600/30"
           >
-            <trendingUp className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-            <Div>
-              <H4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</Div>
-              <P className="text-gray-300 leading-relaxed">{hint}</P>
-            </Div>
+            <TrendingUp className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0"/>
+            <div>
+              <h4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</h4>
+              <p className="text-gray-300 leading-relaxed">{hint}</p>
+            </div>
           </motion.div>
         )}
 
@@ -116,12 +116,12 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
               : "bg-blue-500/5 border-blue-400/50"
           )}
         >
-          <P className={cn(
+          <p className={cn(
             "font-medium",
             isCorrect ? "text-green-300" : "text-blue-300"
           )}>
             {encouragement}
-          </P>
+          </p>
         </motion.div>
       </motion.div>
 
@@ -132,15 +132,14 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
         transition={{ delay: 0.9, duration: 0.6, ease: "easeOut" }}
         className="mt-6 h-1 bg-gray-700 rounded-full overflow-hidden"
       >
-        <Div 
+        <div 
           className={cn(
             "h-full transition-all duration-1000",
             isCorrect 
               ? "bg-gradient-to-r from-green-500 to-emerald-400" 
               : "bg-gradient-to-r from-blue-500 to-purple-500"
           )}
-          style={{ width: `${confidence * 100}%` }}
-        /></Div>
+          style={{ width: `${confidence * 100}%` }}/>
       </motion.div>
     </motion.div>
   );

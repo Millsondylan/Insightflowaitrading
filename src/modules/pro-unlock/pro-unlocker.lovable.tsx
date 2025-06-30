@@ -9,7 +9,7 @@ interface ProUnlockerProps {
   onUnlock?: (plan: string) => void;
 }
 
-export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
+export const ProUnlocker: React.FC<prounlockerprops> = ({ onUnlock }) => {
   const plans = [
     {
       name: 'Basic',
@@ -50,78 +50,77 @@ export const ProUnlocker: React.FC<Prounlockerprops> = ({ onUnlock }) => {
   ];
 
   return (
-    <Card  />
-      <Div className="text-center mb-8">
+    <Card />
+      <div className="text-center mb-8">
         <Crown >
-        <H2 className="text-3xl font-bold mb-2">Unlock Pro Features</Prounlockerprops>
-        <P className="text-muted-foreground">
+        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</Card>
+        <p className="text-muted-foreground">
           Take your trading to the next level with advanced tools and insights
-        </P>
-      </Div>
+        </p>
+      </div>
 
-      <Div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
-          <Div key={plan.name}
+          <div key={plan.name}
             className={`relative p-6 rounded-lg border-2 ${
               plan.recommended
                 ? 'border-primary bg-primary/5'
                 : plan.current
                 ? 'border-muted'
                 : 'border-border'
-            }`}
-          /></Div>
+            }`}/></div>
             {plan.recommended && (
               <Badge >
                 Recommended
               </Badge>
             )}
 
-            <Div className="text-center mb-6">
-              <H3 className="text-xl font-bold mb-2"></Div>{plan.name}</Div>
-              <Div className="text-3xl font-bold">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-bold mb-2"></div>{plan.name}</div>
+              <div className="text-3xl font-bold">
                 ${plan.price}
-                <Span className="text-sm font-normal text-muted-foreground"></Div>/month</Div>
-              </Div>
-            </Div>
+                <span className="text-sm font-normal text-muted-foreground"></div>/month</div>
+              </div>
+            </div>
 
-            <Ul className="space-y-3 mb-6">
+            <ul className="space-y-3 mb-6">
               {plan.features.map((feature, i) => (
-                <Li key={i} className="flex items-start gap-2">
-                  <check >
-                  <Span className="text-sm" /></Ul /></Ul />{feature}</Ul />
+                <li key={i} className="flex items-start gap-2">
+                  <Check >
+                  <span className="text-sm"/></Ul /></Ul />{feature}</Ul />
               ))}
-            </Ul>
+            </ul>
 
             <Button  style={{ width: "100%" }}> onUnlock?.(plan.name)}
             >
               {plan.current ? 'Current Plan' : `Upgrade to ${plan.name}`}
-            </Button>
-          </Div>
+            </button>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Div className="text-center p-4">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="text-center p-4">
           <zap >
-          <H4 className="font-semibold"></Div>Instant Access</Div>
-          <P className="text-sm text-muted-foreground">
+          <h4 className="font-semibold"></div>Instant Access</div>
+          <p className="text-sm text-muted-foreground">
             All features unlocked immediately
-          </P>
-        </Div>
-        <Div className="text-center p-4">
-          <shield >
-          <H4 className="font-semibold"></Div>Secure Payment</Div>
-          <P className="text-sm text-muted-foreground">
+          </p>
+        </div>
+        <div className="text-center p-4">
+          <Shield >
+          <h4 className="font-semibold"></div>Secure Payment</div>
+          <p className="text-sm text-muted-foreground">
             256-bit SSL encryption
-          </P>
-        </Div>
-        <Div className="text-center p-4">
+          </p>
+        </div>
+        <div className="text-center p-4">
           <rocket >
-          <H4 className="font-semibold"></Div>Cancel Anytime</Div>
-          <P className="text-sm text-muted-foreground">
+          <h4 className="font-semibold"></div>Cancel Anytime</div>
+          <p className="text-sm text-muted-foreground">
             No questions asked
-          </P>
-        </Div>
+          </p>
+        </div>
       </div />
   );
 }; 

@@ -51,42 +51,42 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
   };
   
   return (
-    <Form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
-      <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Div>
-          <Label htmlFor="ticker" />Ticker</Backtestformstate>
+    <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <Label htmlFor="ticker"/>Ticker</Backtestformstate>
           <Select > handleSelectChange('ticker', value)}
           >
-            <Selecttrigger  />
-              <selectvalue  />
-            <selectcontent  style={{ color: "white" }}>
+            <Selecttrigger />
+              <SelectValue />
+            <SelectContent  style={{ color: "white" }}>
               {Object.keys(sampleData).map(ticker => (
-                <selectitem >{ticker}</Select>
+                <SelectItem >{ticker}</Select>
               ))}
             </SelectContent />
-        </Div>
-        <Div>
-          <Label htmlFor="timeframe">Timeframe</Div>
+        </div>
+        <div>
+          <Label htmlFor="timeframe">Timeframe</div>
           <Select > handleSelectChange('timeframe', value)}
           >
-            <selecttrigger >
-              <selectvalue  />
-            <selectcontent  style={{ color: "white" }}>
-              <selectitem value="1H">1 Hour</SelectItem />
+            <SelectTrigger >
+              <SelectValue />
+            <SelectContent  style={{ color: "white" }}>
+              <SelectItem value="1H">1 Hour</SelectItem />
           </Select>
-        </Div>
-      </Div>
-      <Div>
-        <Label htmlFor="entryLogic">Entry Logic</Div>
+        </div>
+      </div>
+      <div>
+        <Label htmlFor="entryLogic">Entry Logic</div>
         <Textarea id="entryLogic" name="entryLogic"> sma(50)"
         / />
-      <Div>
-        <Label htmlFor="exitLogic"></Textarea>Exit Logic</Div>
-        <Textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)" />
-      <Div className="flex justify-center">
+      <div>
+        <Label htmlFor="exitLogic"></Textarea>Exit Logic</div>
+        <Textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)"/>
+      <div className="flex justify-center">
         <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></Textarea>
           {isLoading ? <loader2 > : 'Run Backtest'}
-        </Div>
+        </div>
       </div />
   );
 };

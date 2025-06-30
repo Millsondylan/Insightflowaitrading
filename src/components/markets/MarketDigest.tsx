@@ -62,52 +62,52 @@ export default function MarketDigest({ digest }: Props) {
   };
 
   return (
-    <Div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {digest.map((item) => (
-        <Div key={item.symbol}
+        <div key={item.symbol}
           className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10">
           {/* Card Header */}
-          <Div className="flex justify-between items-start">
-            <Div>
-              <H3 className="text-xl font-bold text-white">{item.symbol}</Div>
-              <P className="text-lg font-semibold text-white/90">
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="text-xl font-bold text-white">{item.symbol}</div>
+              <p className="text-lg font-semibold text-white/90">
                 ${formatPrice(item.price)}
-              </P>
-            </Div>
-            <Div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(item.change)}`}>
+              </p>
+            </div>
+            <div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(item.change)}`}>
               {item.change > 0 ? (
-                <ArrowUp className="h-5 w-5" />
+                <arrowUp className="h-5 w-5"/>
               ) : (
-                <ArrowDown className="h-5 w-5" />
+                <arrowDown className="h-5 w-5"/>
               )}
               {formatPercent(item.change)}
-            </Div>
-          </Div>
+            </div>
+          </div>
 
           {/* AI Summary */}
-          <P className="text-white/70 text-sm italic border-l-2 border-cyan-400/50 pl-4">
+          <p className="text-white/70 text-sm italic border-l-2 border-cyan-400/50 pl-4">
             "{item.summary}"
-          </P>
+          </p>
 
           {/* Card Footer with Stats */}
-          <Div className="flex justify-between items-center pt-2">
-            <Div>
-              <Span className="text-xs text-white/50">24h Volume:</Div>
-              <P className="font-semibold text-white">
+          <div className="flex justify-between items-center pt-2">
+            <div>
+              <span className="text-xs text-white/50">24h Volume:</div>
+              <p className="font-semibold text-white">
                 {formatVolume(item.volume)}
-              </P>
-            </Div>
-            <Div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
-              <TrendingUp className="h-4 w-4" /></Div></Div></Div></Div></Div></Div></Div>
-              <Span></Span>
+              </p>
+            </div>
+            <div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
+              <TrendingUp className="h-4 w-4"/></div></div>
+              <span></span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
-              </Span>
-            </Div>
-          </Div>
-        </Div>
+              </span>
+            </div>
+          </div>
+        </div>
       ))}
-    </Div>
+    </div>
   );
 }
 

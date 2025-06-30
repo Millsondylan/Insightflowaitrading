@@ -34,25 +34,25 @@ export default function DocumentHead({
     <Helmet>
       {/* Basic metadata */}
       <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      {canonicalUrl && <Link rel="canonical" href={url} />}
+      <meta name="description" content={description}/>
+      {canonicalUrl && <Link rel="canonical" href={url}/>}
       
       {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={ogType} />
-      {url && <meta property="og:url" content={url} />}
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:title" content={fullTitle}/>
+      <meta property="og:description" content={description}/>
+      <meta property="og:type" content={ogType}/>
+      {url && <meta property="og:url" content={url}/>}
+      <meta property="og:image" content={ogImage}/>
       
       {/* Twitter */}
-      <meta name="twitter:card" content={twitterCard} />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:card" content={twitterCard}/>
+      <meta name="twitter:title" content={fullTitle}/>
+      <meta name="twitter:description" content={description}/>
+      <meta name="twitter:image" content={ogImage}/>
       
       {/* Additional metadata */}
-      <meta name="application-name" content="InsightFlow AI" />
-      <meta name="theme-color" content="#1A1A2E" / />
+      <meta name="application-name" content="InsightFlow AI"/>
+      <meta name="theme-color" content="#1A1A2E" //>
   );
 }
 

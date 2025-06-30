@@ -45,53 +45,53 @@ export const VaultPublisher: React.FC = () => {
 
   return (
     <Card  style={{ width: "100%", color: "white" }}>
-      <Cardheader  />
+      <Cardheader />
         <Cardtitle >Strategy Publisher</Strategy />
-      <Cardcontent  />
-        <Div className="space-y-4">
-          <Div>
-            <H3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
-            <Div className="grid grid-cols-2 gap-4">
-              <Input   /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
+      <Cardcontent />
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
+            <div className="grid grid-cols-2 gap-4">
+              <Input /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <Input   /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
+              <Input /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-            </Div>
+            </div>
             <Textarea > setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
             / />
 
-          <Div>
-            <H3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
-            <Div className="space-y-2">
-              <Div>
-                <Label className="block text-sm mb-1">Visibility</Div>
-                <Div className="flex space-x-2">
+          <div>
+            <h3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
+            <div className="space-y-2">
+              <div>
+                <Label className="block text-sm mb-1">Visibility</div>
+                <div className="flex space-x-2">
                   <Button > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
-                  </Div>
+                  </div>
                   <Button > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
-                  </Button>
-                </Div>
-              </Div>
+                  </button>
+                </div>
+              </div>
 
-              <Input   /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
+              <Input /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Input   /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
+              <Input /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
@@ -105,7 +105,7 @@ export const VaultPublisher: React.FC = () => {
 
           <Button  style={{ width: "100%" }}>
             Publish Strategy
-          </Button>
+          </button>
         </div />
     </Card>
   )

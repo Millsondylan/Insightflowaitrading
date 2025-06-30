@@ -135,20 +135,20 @@ export const lovable = {
   };
 
   return (
-    <Div className="space-y-4">
+    <div className="space-y-4">
       {/* Search Bar */}
-      <Div className="relative">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+      <div className="relative">
+        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"/>
         <Input placeholder="Search by symbol..."
           value={search}
-          onChange={(e) = /> setSearch(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
           className="pl-10 bg-black/30 border-white/10 text-white"
         / />
       
       {/* Tickers Table */}
-      <Div className="rounded-xl border border-white/10 overflow-hidden">
-        <Div className="overflow-x-auto">
-          <Table>
+      <div className="rounded-xl border border-white/10 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table>
             <tableHeader>
               <tableRow className="hover:bg-white/5 bg-black/40">
                 <tableHead className="w-10"></SortField>
@@ -156,51 +156,51 @@ export const lovable = {
                   onClick={() => handleSort("symbol")} 
                   className="cursor-pointer hover:text-cyan-400"
                 >
-                  <Div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     Symbol
                     {sortField === "symbol" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp className="h-4 w-4"/> :
+                      <ChevronDown className="h-4 w-4"/>
                     )}
-                  </div />
+                  </div>
                 <tableHead 
                   onClick={() => handleSort("price")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
-                  <Div className="flex items-center justify-end gap-2">
+                  <div className="flex items-center justify-end gap-2">
                     Price
                     {sortField === "price" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp className="h-4 w-4"/> :
+                      <ChevronDown className="h-4 w-4"/>
                     )}
-                  </div />
+                  </div>
                 <tableHead 
                   onClick={() => handleSort("change")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
-                  <Div className="flex items-center justify-end gap-2">
+                  <div className="flex items-center justify-end gap-2">
                     Change 24h
                     {sortField === "change" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp className="h-4 w-4"/> :
+                      <ChevronDown className="h-4 w-4"/>
                     )}
-                  </div />
+                  </div>
                 <tableHead 
                   onClick={() => handleSort("volume")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
-                  <Div className="flex items-center justify-end gap-2">
+                  <div className="flex items-center justify-end gap-2">
                     Volume
                     {sortField === "volume" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4" /> :
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronUp className="h-4 w-4"/> :
+                      <ChevronDown className="h-4 w-4"/>
                     )}
-                  </div />
-              </TableRow />
+                  </div>
+              </TableRow>
             <tableBody>
               {filteredTickers.map((ticker) => (
                 <tableRow
@@ -220,8 +220,8 @@ export const lovable = {
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-500"
                         }`}
-                      /></Div></Button></Button></Button></Button></Button>
-                    </button />
+         /></div></button>
+                    </button>
                   <tableCell className="font-medium">{ticker.symbol}</TableCell>
                   <tableCell className="text-right">${formatPrice(ticker.price)}</TableCell>
                   <TableCell className={`text-right ${
@@ -230,23 +230,23 @@ export const lovable = {
                   }`}>
                     {formatPercent(ticker.change)}
                   </TableCell>
-                  <tableCell className="text-right">{formatVolume(ticker.volume)}</TableCell />
+                  <tableCell className="text-right">{formatVolume(ticker.volume)}</TableCell>
               ))}
               
               {filteredTickers.length === 0 && (
                 <tableRow>
                   <tableCell colSpan={5} className="text-center py-8 text-gray-500">
                     No markets found matching "{search}"
-                  </TableCell />
+                  </TableCell>
               )}
-            </TableBody />
-        </Div>
-      </Div>
+            </TableBody>
+        </div>
+      </div>
       
-      <Div className="text-xs text-gray-500 flex justify-between">
-        <Span></Div>Showing {filteredTickers.length} of {tickers.length} markets</Div>
-        <Span></Span>{favorites.size} favorites</Span>
-      </Div>
-    </Div>
+      <div className="text-xs text-gray-500 flex justify-between">
+        <span></div>Showing {filteredTickers.length} of {tickers.length} markets</div>
+        <span></span>{favorites.size} favorites</span>
+      </div>
+    </div>
   );
 } 

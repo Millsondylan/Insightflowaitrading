@@ -12,64 +12,67 @@ export default function AIPreferencesStep() {
       id: 'wants_ai_trading',
       label: 'AI Trade Recommendations',
       description: 'Receive personalized trade ideas based on your profile and market conditions',
-      icon: <BrainCircuit className="h-5 w-5 text-indigo-500" />,
+      icon: <BrainCircuit className="h-5 w-5 text-indigo-500"/>,
     },
     {
       id: 'wants_voice_coach',
       label: 'Voice Trading Coach',
       description: 'Get spoken feedback and guidance during your trading sessions',
-      icon: <Volume2 className="h-5 w-5 text-blue-500" />,
+      icon: <Volume2 className="h-5 w-5 text-blue-500"/>,
     },
     {
       id: 'wants_alerts',
       label: 'Smart Alerts',
       description: 'Receive alerts when your strategies detect trading opportunities',
-      icon: <Bell className="h-5 w-5 text-amber-500" />,
+      icon: <Bell className="h-5 w-5 text-amber-500"/>,
     },
   ];
   
   return (
-    <Div className="space-y-6">
-      <P className="text-gray-500 dark:text-gray-400">
+    <div className="space-y-6">
+      <p className="text-gray-500 dark:text-gray-400">
         Customize how AI assists you with your trading (all settings can be changed later)
-      </BrainCircuit>
+      </p>
       
-      <Div className="space-y-4">
+      <div className="space-y-4">
         {aiPreferences.map((preference) => (
-          <FormField key={preference.id}
+          <FormField 
+            key={preference.id}
             control={control}
             name={preference.id as any}
-            render={({ field }) = /> (
-              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4" />
-                <Div className="flex items-start space-x-3 space-y-0">
-                  <Div className="mt-0.5">{preference.icon}</Div>
-                  <Div className="space-y-1 leading-none">
-                    <FormLabel className="font-medium" />{preference.label}</Div>
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <div className="flex items-start space-x-3 space-y-0">
+                  <div className="mt-0.5">{preference.icon}</div>
+                  <div className="space-y-1 leading-none">
+                    <FormLabel className="font-medium">{preference.label}</FormLabel>
                     <FormDescription>
                       {preference.description}
                     </FormDescription>
-                  </Div>
-                </Div>
+                  </div>
+                </div>
                 <FormControl>
                   <Switch
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                  / />
-              </FormControl>
+                 />
+                </FormControl>
+              </FormItem>
             )}
           />
         ))}
-      </Div>
+      </div>
       
-      <Div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-md">
-        <H4 className="font-medium text-indigo-700 dark:text-indigo-300"></Div>AI Assistant Benefits</Div>
-        <Ul className="mt-2 text-sm text-indigo-600 dark:text-indigo-300 space-y-1">
-          <Li>• Personalized trade ideas based on your preferences</Ul>
-          <Li>• Real-time market analysis and pattern recognition</Li>
-          <Li>• Automated alerts for your favorite symbols</Li>
-          <Li>• Trading psychology coaching and feedback</Li />
-      </Li>
-    </Div>
+      <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-md">
+        <h4 className="font-medium text-indigo-700 dark:text-indigo-300">AI Assistant Benefits</h4>
+        <ul className="mt-2 text-sm text-indigo-600 dark:text-indigo-300 space-y-1">
+          <li>• Personalized trade ideas based on your preferences</li>
+          <li>• Real-time market analysis and pattern recognition</li>
+          <li>• Automated alerts for your favorite symbols</li>
+          <li>• Trading psychology coaching and feedback</li>
+        </ul>
+      </div>
+    </div>
   );
 }
 

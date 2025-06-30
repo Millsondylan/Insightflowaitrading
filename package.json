@@ -18,6 +18,7 @@
     "lovable:dev": "vite --config vite.lovable.config.ts",
     "lovable:build": "vite build --config vite.lovable.config.ts",
     "lovable:check": "node scripts/fix-lovable-compatibility.js",
+    "lovable:fix-jsx": "node --experimental-modules scripts/fix-all-jsx-issues.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "cypress": "cypress open",

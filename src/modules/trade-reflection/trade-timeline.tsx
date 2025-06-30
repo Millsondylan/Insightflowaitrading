@@ -50,61 +50,61 @@ export const lovable = {
 };
 
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <alertCircle className="h-4 w-4 text-yellow-500" />;
-    if (pnl && pnl > 0) return <trendingUp className="h-4 w-4 text-green-500" />;
-    if (pnl && pnl < 0) return <trendingDown className="h-4 w-4 text-red-500" />;
-    return <Clock className="h-4 w-4 text-blue-500" />;
+    if (type === 'alert') return <alertCircle className="h-4 w-4 text-yellow-500"/>;
+    if (pnl && pnl > 0) return <trendingUp className="h-4 w-4 text-green-500"/>;
+    if (pnl && pnl < 0) return <trendingDown className="h-4 w-4 text-red-500"/>;
+    return <Clock className="h-4 w-4 text-blue-500"/>;
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <H2 className="text-2xl font-bold mb-4">Trade Timeline</Clock>
-      <ScrollArea className="h-[500px]" />
-        <Div className="space-y-4">
+    <Card className="theme-card p-6"/>
+      <h2 className="text-2xl font-bold mb-4">Trade Timeline</Clock>
+      <ScrollArea className="h-[500px]"/>
+        <div className="space-y-4">
           {activities.map((activity) => (
-            <Div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
-              <Div className="absolute left-0 top-1">
+            <div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
+              <div className="absolute left-0 top-1">
                 {getIcon(activity.type, activity.pnl)}
               </ScrollArea>
-              <Div className="border-l-2 border-gray-700 pl-6 -ml-2">
-                <Div className="flex items-center justify-between mb-1">
-                  <Div className="flex items-center gap-2">
-                    <Span className="font-semibold">{activity.symbol}</Div>
+              <div className="border-l-2 border-gray-700 pl-6 -ml-2">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">{activity.symbol}</div>
                     {activity.action && (
                       <Badge variant={activity.action === 'BUY' ? 'default' : 'secondary'}>
                         {activity.action}
                       </Badge>
                     )}
-                  </Div>
-                  <Span className="text-xs text-muted-foreground">
+                  </div>
+                  <span className="text-xs text-muted-foreground">
                     {activity.timestamp.toLocaleTimeString()}
-                  </Span>
-                </Div>
+                  </span>
+                </div>
                 
                 {activity.type === 'trade_open' && (
-                  <P className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     Opened {activity.size} units at ${activity.price}
-                  </P>
+                  </p>
                 )}
                 
                 {activity.type === 'trade_close' && (
-                  <Div>
-                    <P className="text-sm text-muted-foreground">
+                  <div>
+                    <p className="text-sm text-muted-foreground">
                       Closed {activity.size} units at ${activity.price}
-                    </Div>
-                    <P className={`text-sm font-medium ${activity.pnl!> 0 ? 'text-green-500' : 'text-red-500'}`}>
+                    </div>
+                    <p className={`text-sm font-medium ${activity.pnl!> 0 ? 'text-green-500' : 'text-red-500'}`}>
                       P&L: {activity.pnl! > 0 ? '+' : ''}${activity.pnl?.toFixed(2)}
-                    </P>
-                  </Div>
+                    </p>
+                  </div>
                 )}
                 
                 {activity.type === 'alert' && (
-                  <P className="text-sm text-muted-foreground">{activity.message}</P>
+                  <p className="text-sm text-muted-foreground">{activity.message}</p>
                 )}
-              </Div>
-            </Div>
+              </div>
+            </div>
           ))}
-        </div />
+        </div>
     </Card>
   );
 }; 

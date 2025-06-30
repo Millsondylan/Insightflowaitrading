@@ -41,7 +41,7 @@ export default function AICoachV2({ trades }: Props) {
         },
         body: JSON.stringify({
           prompt: enhancedPrompt,
-          userId: userId,
+          userId: profile?.id,
         }),
       });
       
@@ -55,10 +55,10 @@ export default function AICoachV2({ trades }: Props) {
   const renderCoachUI = () => {
     if (!profile) {
       return (
-        <Div className="flex flex-col h-full">
+        <div className="flex flex-col h-full">
           {/* Default coach UI */}
           {/* ... existing UI ... */}
-        </Div>
+        </div>
       );
     }
     
@@ -66,63 +66,66 @@ export default function AICoachV2({ trades }: Props) {
     switch (profile.experience) {
       case 'beginner':
         return (
-          <Div className="flex flex-col h-full">
-            <Div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4">
-              <H3 className="font-medium text-blue-700 dark:text-blue-300"></Div>Trading Tips for Beginners</Div>
-              <Ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
-                <Li>• Start with small position sizes to manage risk</Ul>
-                <Li>• Focus on learning chart patterns before trading</Li>
-                <Li>• Always use stop losses to protect your capital</Li />
-            </Li>
+          <div className="flex flex-col h-full">
+            <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-4">
+              <h3 className="font-medium text-blue-700 dark:text-blue-300">Trading Tips for Beginners</h3>
+              <ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
+                <li>• Start with small position sizes to manage risk</li>
+                <li>• Focus on learning chart patterns before trading</li>
+                <li>• Always use stop losses to protect your capital</li>
+              </ul>
+            </div>
             {/* Rest of coach UI */}
             {/* ... existing UI ... */}
-          </Div>
+          </div>
         );
       
       case 'intermediate':
         return (
-          <Div className="flex flex-col h-full">
-            <Div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-4">
-              <H3 className="font-medium text-purple-700 dark:text-purple-300"></Div>Trading Strategy Refinement</Div>
-              <Ul className="mt-2 text-sm text-purple-600 dark:text-purple-300 space-y-1">
-                <Li>• Analyze your win rate and optimize entry points</Ul>
-                <Li>• Consider multiple timeframe analysis for confirmation</Li>
-                <Li>• Track your emotional state during trades</Li />
-            </Li>
+          <div className="flex flex-col h-full">
+            <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg mb-4">
+              <h3 className="font-medium text-purple-700 dark:text-purple-300">Trading Strategy Refinement</h3>
+              <ul className="mt-2 text-sm text-purple-600 dark:text-purple-300 space-y-1">
+                <li>• Analyze your win rate and optimize entry points</li>
+                <li>• Consider multiple timeframe analysis for confirmation</li>
+                <li>• Track your emotional state during trades</li>
+              </ul>
+            </div>
             {/* Rest of coach UI */}
             {/* ... existing UI ... */}
-          </Div>
+          </div>
         );
       
       case 'pro':
         return (
-          <Div className="flex flex-col h-full">
-            <Div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
-              <H3 className="font-medium text-green-700 dark:text-green-300"></Div>Advanced Trading Analysis</Div>
-              <Ul className="mt-2 text-sm text-green-600 dark:text-green-300 space-y-1">
-                <Li>• Optimize your strategy with machine learning insights</Ul>
-                <Li>• Analyze market correlation effects on your portfolio</Li>
-                <Li>• Review your risk-adjusted returns and sharpe ratio</Li />
-            </Li>
+          <div className="flex flex-col h-full">
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg mb-4">
+              <h3 className="font-medium text-green-700 dark:text-green-300">Advanced Trading Analysis</h3>
+              <ul className="mt-2 text-sm text-green-600 dark:text-green-300 space-y-1">
+                <li>• Optimize your strategy with machine learning insights</li>
+                <li>• Analyze market correlation effects on your portfolio</li>
+                <li>• Review your risk-adjusted returns and sharpe ratio</li>
+              </ul>
+            </div>
             {/* Rest of coach UI */}
             {/* ... existing UI ... */}
-          </Div>
+          </div>
         );
       
       default:
         return (
-          <Div className="flex flex-col h-full">
+          <div className="flex flex-col h-full">
             {/* Default coach UI */}
             {/* ... existing UI ... */}
-          </Div>
+          </div>
         );
     }
   };
   
   return (
-    <Div className="h-full flex flex-col">
+    <div className="h-full flex flex-col">
       {renderCoachUI()}
-    </Div>
+    </div>
   );
 }
 

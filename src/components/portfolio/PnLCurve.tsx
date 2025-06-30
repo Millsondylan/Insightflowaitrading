@@ -36,9 +36,9 @@ export const lovable = {
   }, [] as { name: string; pnl: number; cumulativePnl: number }[]);
 
   return (
-    <Div className="h-64 w-full bg-white/5 rounded-lg p-4">
+    <div className="h-64 w-full bg-white/5 rounded-lg p-4">
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}
+        <areaChart data={data}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}>
@@ -48,24 +48,22 @@ export const lovable = {
               <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
             </linearGradient>
           </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
-          <XAxis dataKey="name" stroke="rgba(255, 255, 255, 0.5)" />
-          <YAxis stroke="rgba(255, 255, 255, 0.5)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)"/>
+          <XAxis dataKey="name" stroke="rgba(255, 255, 255, 0.5)"/>
+          <YAxis stroke="rgba(255, 255, 255, 0.5)"/>
           <Tooltip 
             contentStyle={{ 
               backgroundColor: 'rgba(20, 20, 20, 0.8)', 
               borderColor: 'rgba(255, 255, 255, 0.2)' 
-            }}
-          />
+            }}/>
           <area 
             type="monotone" 
             dataKey="cumulativePnl" 
             stroke="#8884d8" 
             fillOpacity={1} 
             fill="url(#colorUv)" 
-            name="Cumulative PnL"
-          />
-        </div />
-    </Div>
+            name="Cumulative PnL"/>
+        </div>
+    </div>
   );
 }; 

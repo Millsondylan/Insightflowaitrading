@@ -69,37 +69,37 @@ function App() {
             <Router>
               <MobileAppWrapper>
                 <Routes>
-                <Route path="/" element={<AppLayout />}>
+                <Route path="/" element={<appLayout/>}>
                   {/* Public Landing Pages */}
-                  <Route index element={<LandingPage />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="privacy" element={<Privacy />} />
-                  <Route path="terms" element={<Terms />} />
-                  <Route path="pricing" element={<Pricing />} />
+                  <Route index element={<LandingPage/>} />
+                  <Route path="about" element={<about/>} />
+                  <Route path="privacy" element={<privacy/>} />
+                  <Route path="terms" element={<Terms/>} />
+                  <Route path="pricing" element={<pricing/>} />
                   
                   {/* Auth Pages */}
-                  <Route path="auth" element={<AuthPage />} />
-                  <Route path="register" element={<Register />} />
-                  <Route path="verify" element={<VerifyEmail />} />
+                  <Route path="auth" element={<authPage/>} />
+                  <Route path="register" element={<Register/>} />
+                  <Route path="verify" element={<VerifyEmail/>} />
 
                   {/* Protected Routes */}
-                  <Route path="/dashboard" element={<Index />} />
-                  <Route path="/strategy" element={<Strategy />} />
-                  <Route path="/journal" element={<Journal />} />
-                  <Route path="/vision" element={<Vision />} />
-                  <Route path="/academy" element={<Academy />} />
-                  <Route path="/wallet" element={<Wallet />} />
-                  <Route path="/admin" element={<Admin />} />
-                  <Route path="/profile" element={<ProfilePage />} />
-                  <Route path="/settings" element={<UserSettings />} />
+                  <Route path="/dashboard" element={<Index/>} />
+                  <Route path="/strategy" element={<Strategy/>} />
+                  <Route path="/journal" element={<Journal/>} />
+                  <Route path="/vision" element={<Vision/>} />
+                  <Route path="/academy" element={<academy/>} />
+                  <Route path="/wallet" element={<Wallet/>} />
+                  <Route path="/admin" element={<admin/>} />
+                  <Route path="/profile" element={<profilePage/>} />
+                  <Route path="/settings" element={<UserSettings/>} />
 
                   {/* New AI Trading Setup Routes */}
-                  <Route path="/market-setup" element={<MarketSetupPage />} />
-                  <Route path="/setup-finder" element={<SetupFinderPage />} />
-                  <Route path="/best-setups" element={<BestSetupsPage />} />
+                  <Route path="/market-setup" element={<MarketSetupPage/>} />
+                  <Route path="/setup-finder" element={<SetupFinderPage/>} />
+                  <Route path="/best-setups" element={<BestSetupsPage/>} />
 
                   {/* 404 Route */}
-                  <Route path="*" element={<NotFound />} />
+                  <Route path="*" element={<NotFound/>} />
                 </Route>
               </Routes>
               <OnboardingModal />

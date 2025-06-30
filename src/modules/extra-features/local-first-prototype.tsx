@@ -62,48 +62,48 @@ exit_rules:
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <Div className="flex items-center justify-between mb-6">
-        <Div className="flex items-center gap-2">
-          <HardDrive className="h-6 w-6" />
-          <H2 className="text-2xl font-bold">Local Prototype</LocalFirstPrototypeProps>
-        </Div>
-        <Div className="flex items-center gap-4">
+    <Card className="theme-card p-6"/>
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
+          <HardDrive className="h-6 w-6"/>
+          <h2 className="text-2xl font-bold">Local Prototype</LocalFirstPrototypeProps>
+        </div>
+        <div className="flex items-center gap-4">
           <Badge variant={syncStatus === 'synced' ? 'default' : syncStatus === 'pending' ? 'secondary' : 'destructive'}>
             {syncStatus === 'synced' ? (
               <>
-                <Cloud className="h-3 w-3 mr-1" />
+                <Cloud className="h-3 w-3 mr-1"/>
                 Synced
-              </>
+              </div>
             ) : syncStatus === 'pending' ? (
               <>
-                <RefreshCw className="h-3 w-3 mr-1 animate-spin" />
+                <RefreshCw className="h-3 w-3 mr-1 animate-spin"/>
                 {localChanges} pending
-              </>
+              </RefreshCw>
             ) : (
               <>
-                <HardDrive className="h-3 w-3 mr-1" />
+                <HardDrive className="h-3 w-3 mr-1"/>
                 Offline
-              </>
+              </HardDrive>
             )}
-          </Div>
+          </div>
           <Button variant="outline"
             size="sm"
             onClick={syncToCloud}
             disabled={localChanges === 0 || syncStatus === 'offline'}>
             Sync to Cloud
-          </Button>
-        </Div>
-      </Div>
+          </button>
+        </div>
+      </div>
 
-      <Tabs defaultValue="editor" className="space-y-4" />
-        <TabsList className="grid w-full grid-cols-3" />
-          <TabsTrigger value="editor" />Editor</Tabs>
-          <TabsTrigger value="results" />Results</TabsTrigger>
-          <TabsTrigger value="history" />History</TabsTrigger />
+      <Tabs defaultValue="editor" className="space-y-4"/>
+        <TabsList className="grid w-full grid-cols-3"/>
+          <TabsTrigger value="editor"/>Editor</Tabs>
+          <TabsTrigger value="results"/>Results</TabsTrigger>
+          <TabsTrigger value="history"/>History</TabsTrigger>
 
-        <TabsContent value="editor" className="space-y-4" />
-          <Div className="relative">
+        <TabsContent value="editor" className="space-y-4"/>
+          <div className="relative">
             <Textarea
               className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm"
               value={prototypeCode}
@@ -113,84 +113,84 @@ exit_rules:
                 setSyncStatus('pending');
               }}
             />
-            <Div className="absolute top-2 right-2 flex items-center gap-2">
+            <div className="absolute top-2 right-2 flex items-center gap-2">
               <Badge variant="outline" className="text-xs">
-                <HardDrive className="h-3 w-3 mr-1" />
+                <HardDrive className="h-3 w-3 mr-1"/>
                 Local Only
               </TabsTrigger>
-            </Div>
-          </Div>
+            </div>
+          </div>
           
-          <Div className="flex gap-2">
+          <div className="flex gap-2">
             <Button onClick={runLocalBacktest} className="flex-1">
-              <play className="h-4 w-4 mr-2" />
+              <Play className="h-4 w-4 mr-2"/>
               Run Local Test
-            </Div>
-            <Button variant="outline" />
-              <Save className="h-4 w-4 mr-2" />
+            </div>
+            <Button variant="outline"/>
+              <Save className="h-4 w-4 mr-2"/>
               Save Draft
-            </Button>
-          </div />
+            </button>
+          </div>
 
-        <TabsContent value="results" className="space-y-4" />
-          <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold text-green-500">{testResults.winRate}%</TabsContent>
-              <P className="text-sm text-muted-foreground">Win Rate</P>
-            </Div>
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold">{testResults.profitFactor}</Div>
-              <P className="text-sm text-muted-foreground">Profit Factor</P>
-            </Div>
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</Div>
-              <P className="text-sm text-muted-foreground">Max Drawdown</P>
-            </Div>
-            <Div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <P className="text-2xl font-bold">{testResults.trades}</Div>
-              <P className="text-sm text-muted-foreground">Total Trades</P>
-            </Div>
-          </Div>
+        <TabsContent value="results" className="space-y-4"/>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</TabsContent>
+              <p className="text-sm text-muted-foreground">Win Rate</p>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold">{testResults.profitFactor}</div>
+              <p className="text-sm text-muted-foreground">Profit Factor</p>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</div>
+              <p className="text-sm text-muted-foreground">Max Drawdown</p>
+            </div>
+            <div className="p-4 bg-secondary/20 rounded-lg text-center">
+              <p className="text-2xl font-bold">{testResults.trades}</div>
+              <p className="text-sm text-muted-foreground">Total Trades</p>
+            </div>
+          </div>
 
-          <Div className="p-4 bg-blue-500/10 rounded-lg">
-            <P className="text-sm text-blue-600">
+          <div className="p-4 bg-blue-500/10 rounded-lg">
+            <p className="text-sm text-blue-600">
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
-            </Div>
-          </div />
+            </div>
+          </div>
 
-        <TabsContent value="history" className="space-y-4" />
-          <Div className="space-y-2">
-            <Div className="p-3 border rounded-lg flex items-center justify-between">
-              <Div>
-                <P className="font-medium">Current Draft</TabsContent>
-                <P className="text-sm text-muted-foreground">Modified 2 minutes ago</P>
-              </Div>
+        <TabsContent value="history" className="space-y-4"/>
+          <div className="space-y-2">
+            <div className="p-3 border rounded-lg flex items-center justify-between">
+              <div>
+                <p className="font-medium">Current Draft</TabsContent>
+                <p className="text-sm text-muted-foreground">Modified 2 minutes ago</p>
+              </div>
               <Badge variant="secondary">Unsaved</Badge>
-            </Div>
-            <Div className="p-3 border rounded-lg flex items-center justify-between">
-              <Div>
-                <P className="font-medium">v1.2 - Risk Update</Div>
-                <P className="text-sm text-muted-foreground">Saved locally 1 hour ago</P>
-              </Div>
+            </div>
+            <div className="p-3 border rounded-lg flex items-center justify-between">
+              <div>
+                <p className="font-medium">v1.2 - Risk Update</div>
+                <p className="text-sm text-muted-foreground">Saved locally 1 hour ago</p>
+              </div>
               <Badge>Synced</Badge>
-            </Div>
-            <Div className="p-3 border rounded-lg flex items-center justify-between">
-              <Div>
-                <P className="font-medium">v1.1 - Initial Strategy</Div>
-                <P className="text-sm text-muted-foreground">Created yesterday</P>
-              </Div>
+            </div>
+            <div className="p-3 border rounded-lg flex items-center justify-between">
+              <div>
+                <p className="font-medium">v1.1 - Initial Strategy</div>
+                <p className="text-sm text-muted-foreground">Created yesterday</p>
+              </div>
               <Badge>Synced</Badge>
-            </Div>
-          </div />
+            </div>
+          </div>
       </Tabs>
 
-      <Div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <H4 className="font-medium mb-2"></Div>Local-First Benefits</Div>
-        <Ul className="space-y-1 text-sm text-muted-foreground">
-          <Li>• Work offline without interruption</Ul>
-          <Li>• Instant feedback on changes</Li>
-          <Li>• Automatic conflict resolution</Li>
-          <Li>• Version history preserved locally</Li />
-      </div />
+      <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
+        <h4 className="font-medium mb-2"></div>Local-First Benefits</div>
+        <ul className="space-y-1 text-sm text-muted-foreground">
+          <li>• Work offline without interruption</ul>
+          <li>• Instant feedback on changes</li>
+          <li>• Automatic conflict resolution</li>
+          <li>• Version history preserved locally</li>
+      </div>
   );
 }; 

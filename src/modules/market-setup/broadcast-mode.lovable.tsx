@@ -33,44 +33,43 @@ export const BroadcastMode: React.FC = () => {
   return (
     <Card  style={{ width: "100%", color: "white" }}>
       <Cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <Cardtitle  />Market Broadcast Mode</Broadcastevent>
+        <Cardtitle />Market Broadcast Mode</Broadcastevent>
         <Badge variant="default">
           {sortedEvents.length} Active Events
         </Badge />
-      <Cardcontent  / />
-        <Div className="space-y-4">
+      <Cardcontent  //>
+        <div className="space-y-4">
           {sortedEvents.map((event) => (
-            <Div key={event.id} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
- >
-              <Div className="flex justify-between items-start mb-2">
-                <H3 className="text-lg font-bold"></Badge>{event.title}</Div>
+            <div key={event.id} 
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-lg font-bold"></Badge>{event.title}</div>
                 <Badge >
                   {event.impact} Impact
                 </Badge>
-              </Div>
-              <P className="text-sm text-gray-300 mb-2">{event.description}</P>
-              <Div className="flex justify-between items-center">
-                <Div className="flex space-x-2">
+              </div>
+              <p className="text-sm text-gray-300 mb-2">{event.description}</p>
+              <div className="flex justify-between items-center">
+                <div className="flex space-x-2">
                   {event.relatedAssets?.map((asset) => (
-                    <Badge variant="outline"></Div>
+                    <Badge variant="outline"></div>
                       {asset}
-                    </Div>
+                    </div>
                   ))}
-                </Div>
-                <Div className="text-xs text-gray-400 flex items-center space-x-2">
-                  <Span>{event.source}</Div>
-                  <Span>•</Span>
-                  <Span>{event.timestamp.toLocaleString()}</Span>
-                </Div>
-              </Div>
-            </Div>
+                </div>
+                <div className="text-xs text-gray-400 flex items-center space-x-2">
+                  <span>{event.source}</div>
+                  <span>•</span>
+                  <span>{event.timestamp.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
           ))}
-        </Div>
-        <Div className="mt-4 flex justify-center">
-          <Button variant="outline" style={{ color: "white" }}></Div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <Button variant="outline" style={{ color: "white" }}></div>
             Subscribe to Updates
-          </Div>
+          </div>
         </div />
     </Card>
   )

@@ -8,7 +8,7 @@ interface PortfolioDashboardProps {
   userId?: string;
 }
 
-export const PortfolioDashboard: React.FC<Portfoliodashboardprops> = ({ userId }) => {
+export const PortfolioDashboard: React.FC<portfoliodashboardprops> = ({ userId }) => {
   const [stats, setStats] = React.useState({
     totalValue: 125000,
     dayChange: 2.5,
@@ -20,61 +20,61 @@ export const PortfolioDashboard: React.FC<Portfoliodashboardprops> = ({ userId }
   });
 
   return (
-    <Div className="space-y-6">
-      <Card  />
-        <H2 className="text-2xl font-bold mb-4">Portfolio Overview</Portfoliodashboardprops>
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Total Value</Div>
-            <P className="text-2xl font-bold flex items-center gap-2">
+    <div className="space-y-6">
+      <Card />
+        <h2 className="text-2xl font-bold mb-4">Portfolio Overview</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Total Value</div>
+            <p className="text-2xl font-bold flex items-center gap-2">
               <Dollarsign >
               {stats.totalValue.toLocaleString()}
-            </P>
-          </Div>
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Day Change</Div>
-            <P className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
-              {stats.dayChange > 0 ? <Trendingup  /></P></P></P></P></P></P> : <trendingdown >}
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Day Change</div>
+            <p className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
+              {stats.dayChange > 0 ? <Trendingup /></p></p> : <TrendingDown >}
               {stats.dayChange > 0 ? '+' : ''}{stats.dayChange}%
-            </P>
-          </Div>
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Win Rate</Div>
-            <Div className="space-y-1">
-              <P className="text-2xl font-bold">{stats.winRate}%</Div>
+            </TrendingDown>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Win Rate</div>
+            <div className="space-y-1">
+              <p className="text-2xl font-bold">{stats.winRate}%</div>
               <progress >
-            </Div>
-          </Div>
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Sharpe Ratio</Div>
-            <P className="text-2xl font-bold flex items-center gap-2">
-              <activity >
+            </div>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Sharpe Ratio</div>
+            <p className="text-2xl font-bold flex items-center gap-2">
+              <Activity >
               {stats.sharpeRatio}
-            </P>
-          </Div>
+            </p>
+          </div>
         </div />
 
       <Card >
-        <H3 className="text-lg font-semibold mb-4" /></Card /></Card />Performance Metrics</Card>
-        <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Div>
-            <P className="text-sm text-muted-foreground">Week Performance</Div>
-            <P className={`font-bold ${stats.weekChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
+        <h3 className="text-lg font-semibold mb-4"/></Card /></Card />Performance Metrics</Card>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p className="text-sm text-muted-foreground">Week Performance</div>
+            <p className={`font-bold ${stats.weekChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
               {stats.weekChange > 0 ? '+' : ''}{stats.weekChange}%
-            </P>
-          </Div>
-          <Div>
-            <P className="text-sm text-muted-foreground">Month Performance</Div>
-            <P className={`font-bold ${stats.monthChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
+            </p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Month Performance</div>
+            <p className={`font-bold ${stats.monthChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
               {stats.monthChange > 0 ? '+' : ''}{stats.monthChange}%
-            </P>
-          </Div>
-          <Div>
-            <P className="text-sm text-muted-foreground">Profit Factor</Div>
-            <P className="font-bold">{stats.profitFactor}</P>
-          </Div>
+            </p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Profit Factor</div>
+            <p className="font-bold">{stats.profitFactor}</p>
+          </div>
         </div />
-    </Div>
+    </div>
   );
 }; 
 

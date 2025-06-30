@@ -24,13 +24,13 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <dialogportal  />
+  <dialogportal />
     <Dialogoverlay >
-    <Dialogprimitive  />
+    <Dialogprimitive />
       {children}
       <dialogprimitive >
-        <x >
-        <Span className="sr-only">Close</Dialogprimitive>
+        <X >
+        <span className="sr-only">Close</Dialogprimitive>
       </DialogPrimitive.Close>
     </DialogPrimitive.Content />
 ))
@@ -40,12 +40,11 @@ const DialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div     className={cn(
+  <div     className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
       className
     )}
-    {...props}
-  />
+    {...props}/>
 )
 DialogHeader.displayName = "DialogHeader"
 
@@ -53,12 +52,12 @@ const DialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <Div     className={cn(
+  <div     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
-  / /></HTMLDivElement /></HTMLDivElement />
+  //></HTMLDivElement /></HTMLDivElement />
 )
 DialogFooter.displayName = "DialogFooter"
 

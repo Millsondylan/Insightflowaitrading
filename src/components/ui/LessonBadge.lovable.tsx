@@ -14,25 +14,24 @@ const LessonBadge: React.FC<Lessonbadgeprops > = ({
   className,
 }) => {
   return (
-    <Div className={cn(
+    <div className={cn(
         "text-center transition-all duration-700 ease-in-out",
         unlocked
           ? "transform scale-100 opacity-100"
           : "transform scale-50 opacity-0",
         className
-      )}
-    />
-      <Div className="relative inline-block">
-        <Award >
+      )}/>
+      <div className="relative inline-block">
+        <award >
         {unlocked && (
-          <Div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
-            <Award  / /></Lessonbadgeprops /></Lessonbadgeprops /></Lessonbadgeprops>
-          </Div>
+          <div className="absolute top-0 left-0 w-full h-full animate-ping-slow">
+            <award  //></Lessonbadgeprops /></Lessonbadgeprops /></Lessonbadgeprops>
+          </div>
         )}
-      </Div>
-      <P className="mt-2 text-lg font-semibold">{lessonName}</P>
-      <P className="text-sm text-gray-400">Lesson Complete!</P>
-    </Div>
+      </div>
+      <p className="mt-2 text-lg font-semibold">{lessonName}</p>
+      <p className="text-sm text-gray-400">Lesson Complete!</p>
+    </div>
   );
 };
 

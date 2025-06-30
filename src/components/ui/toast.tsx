@@ -81,7 +81,7 @@ const ToastClose = React.forwardRef<
     toast-close=""
     {...props}
   >
-    <X className="h-4 w-4" />
+    <X className="h-4 w-4"/>
   </ToastPrimitives.Close>
 ))
 ToastClose.displayName = ToastPrimitives.Close.displayName
@@ -106,7 +106,7 @@ const ToastDescription = React.forwardRef<
     ref={ref}
     className={cn("text-sm opacity-90", className)}
     {...props}
-  / /></ToastPrimitives>
+  />
 ))
 ToastDescription.displayName = ToastPrimitives.Description.displayName
 

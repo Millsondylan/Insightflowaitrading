@@ -5,9 +5,9 @@ export interface DivProps extends React.HTMLAttributes<HTMLDivElement /> {}
 
 export const Div = React.forwardRef<HTMLDivElement, DivProps /></HTMLDivElement>(({ className, children, ...props }, ref) => {
   return (
-    <Div ref={ref} className={cn(className)} {...props}>
+    <div ref={ref} className={cn(className)} {...props}>
       {children}
-    </Div>
+    </div>
   );
 });
 

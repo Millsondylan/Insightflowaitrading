@@ -97,7 +97,7 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
         <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: 0 }}>
           Strategy Optimizer
         </h2>
-        <button onClick={handleStartOptimization}
+        <Button onClick={handleStartOptimization}
           disabled={status === 'running'}
           style={{
             padding: '10px 20px',
@@ -127,8 +127,7 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
                 height: '100%',
                 backgroundColor: '#2563eb',
                 transition: 'width 0.5s ease-in-out'
-              }}
-            />
+              }}/>
           </div>
           <div style={{
             display: 'flex',

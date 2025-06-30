@@ -37,13 +37,6 @@ interface LessonData {
 
 export default function LessonEngine({ lesson }: { lesson: LessonData }) {
   const { lessonId } = useParams<{ lessonId: string }>();
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const { logClick } = useAuditLog();
   const navigate = useNavigate();
   
@@ -136,13 +129,13 @@ export const lovable = {
     const showAnswer = showExplanation[sectionId];
     
     return (
-      <Div className="mt-8 space-y-4 border rounded-lg p-6 bg-gray-900">
-        <H3 className="text-xl font-bold">Quiz Time</Div>
-        <P className="text-gray-300 mb-4">{quiz.question}</P>
+      <div className="mt-8 space-y-4 border rounded-lg p-6 bg-gray-900">
+        <h3 className="text-xl font-bold">Quiz Time</h3>
+        <p className="text-gray-300 mb-4">{quiz.question}</p>
         
-        <Div className="space-y-3">
+        <div className="space-y-3">
           {quiz.options.map((option, idx) => (
-            <Div 
+            <div 
               key={idx}
               onClick={() => !showAnswer && handleAnswerSelect(sectionId, idx)}
               className={`
@@ -159,68 +152,76 @@ export const lovable = {
                 }
               `}
             >
-              <Div className="flex items-center justify-between">
-                <Div>{option}</Div>
+              <div className="flex items-center justify-between">
+                <div>{option}</div>
                 {showAnswer && idx === quiz.correctAnswer && (
-                  <Check className="text-green-500 h-5 w-5" />
+                  <Check className="text-green-500 h-5 w-5"/>
                 )}
-              </Check>
-            </Div>
+              </div>
+            </div>
           ))}
-        </Div>
+        </div>
         
         {showAnswer ? (
-          <Div className="mt-4">
+          <div className="mt-4">
             <Alert variant={isCorrect ? "default" : "destructive"} 
               className={isCorrect ? "border-green-500 bg-green-900/20" : ""}>
-              <alertTitle>{isCorrect ? "Correct!" : "Not quite right"}</Div>
-              <alertDescription>
+              <AlertTitle>{isCorrect ? "Correct!" : "Not quite right"}</AlertTitle>
+              <AlertDescription>
                 {quiz.explanation}
-              </AlertDescription />
-          </Div>
+              </AlertDescription>
+            </Alert>
+          </div>
         ) : (
           <Button className="mt-4" 
             disabled={selectedAnswer === undefined}
-            onClick={() = /> handleCheckAnswer(sectionId, quiz.correctAnswer)}
+            onClick={() => handleCheckAnswer(sectionId, quiz.correctAnswer)}
           >
             Check Answer
           </Button>
         )}
-      </Div>
+      </div>
     );
   };
 
   return (
-    <Div className="container max-w-4xl mx-auto py-8 px-4">
-      <Div className="flex items-center justify-between mb-6">
-        <Div>
-          <H1 className="text-2xl font-bold">{lesson.title}</Div>
-          <P className="text-gray-400">{lesson.description}</P>
-        </Div>
+    <div className="container max-w-4xl mx-auto py-8 px-4">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-2xl font-bold">{lesson.title}</h1>
+          <p className="text-gray-400">{lesson.description}</p>
+        </div>
         
-        <LessonBookmark lessonId={lessonId || ''} / />
+        <LessonBookmark 
+          lessonId={lessonId || ''} 
+          isBookmarked={false}
+          isCompleted={false}
+          onBookmark={() => {}}
+          onComplete={() => {}}
+        />
+      </div>
       
-      <Div className="mb-8">
-        <Div className="flex items-center justify-between mb-2">
-          <Div className="text-sm text-gray-400">
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-2">
+          <div className="text-sm text-gray-400">
             Progress: {Math.round(progress)}%
-          </LessonBookmark>
-          <Div className="text-sm text-gray-400">
+          </div>
+          <div className="text-sm text-gray-400">
             Section {currentSectionIndex + 1} of {lesson.sections.length}
-          </Div>
-        </Div>
-        <progress value={progress} className="h-2" />
-      </Div>
+          </div>
+        </div>
+        <Progress value={progress} className="h-2"/>
+      </div>
       
       {currentSection && (
         <>
-          <Card className="mb-8" />
+          <Card className="mb-8">
             <CardHeader>
-              <CardTitle className="text-xl" />{currentSection.title}</Card />
+              <CardTitle className="text-xl">{currentSection.title}</CardTitle>
+            </CardHeader>
             
-            {/* Include the AI lesson narrator */}
             <CardContent>
-              {/* Only render narrator if we have enough content to narrate */}
+              {/* Include the AI lesson narrator */}
               {currentSection.content && currentSection.content.length > 200 && (
                 <LessonNarrator
                   lessonId={lesson.id}
@@ -230,71 +231,83 @@ export const lovable = {
                   title={currentSection.title}
                   difficulty={lesson.difficulty}
                   topics={lesson.topics}
-                />
+              />
               )}
               
               {currentSection.code_example ? (
-                <Tabs defaultValue="content" 
+                <Tabs 
+                  defaultValue="content" 
                   value={selectedTab}
-                  onValueChange={(v) = /> setSelectedTab(v as 'content' | 'code')}
+                  onValueChange={(v) => setSelectedTab(v as 'content' | 'code')}
                   className="mt-4"
                 >
-                  <TabsList className="grid grid-cols-2 w-[400px]" />
-                    <TabsTrigger value="content" className="flex items-center gap-2" />
-                      <bookOpen className="h-4 w-4" /> Content
-                    </Card>
-                    <TabsTrigger value="code" className="flex items-center gap-2" />
-                      <Code className="h-4 w-4" /> Code Example
-                    </TabsTrigger />
+                  <TabsList className="grid grid-cols-2 w-[400px]">
+                    <TabsTrigger value="content" className="flex items-center gap-2">
+                      <BookOpen className="h-4 w-4"/> Content
+                    </TabsTrigger>
+                    <TabsTrigger value="code" className="flex items-center gap-2">
+                      <Code className="h-4 w-4"/> Code Example
+                    </TabsTrigger>
+                  </TabsList>
                   
-                  <TabsContent value="content" className="mt-6" />
-                    <Div className="prose prose-invert max-w-none">
-                      <Div dangerouslySetInnerHTML={{ __html: currentSection.content }} / />
+                  <TabsContent value="content" className="mt-6">
+                    <div className="prose prose-invert max-w-none">
+                      <div dangerouslySetInnerHTML={{ __html: currentSection.content }}/>
+                    </div>
                     
                     {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
-                  </TabsTrigger>
+                  </TabsContent>
                   
-                  <TabsContent value="code" className="mt-6" />
-                    <Div className="bg-gray-900 p-4 rounded-md overflow-auto">
-                      <Pre className="text-sm">
-                        <Code>{currentSection.code_example}</TabsContent />
-                    </div />
-                </TabsContent>
+                  <TabsContent value="code" className="mt-6">
+                    <div className="bg-gray-900 p-4 rounded-md overflow-auto">
+                      <pre className="text-sm">
+                        <Code>{currentSection.code_example}</Code>
+                      </pre>
+                    </div>
+                  </TabsContent>
+                </Tabs>
               ) : (
                 <>
-                  <Div className="prose prose-invert max-w-none">
-                    <Div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
-                  </Div>
+                  <div className="prose prose-invert max-w-none">
+                    <div dangerouslySetInnerHTML={{ __html: currentSection.content }}/>
+                  </div>
                   
                   {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
                 </>
               )}
             </CardContent>
             
-            <CardFooter className="flex justify-between pt-6" />
+            <CardFooter className="flex justify-between pt-6">
               <Button variant="outline"
                 onClick={handlePrevSection}
                 disabled={currentSectionIndex === 0}
-              />
-                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
-              </CardFooter>
+              >
+                <ArrowLeft className="mr-2 h-4 w-4"/> Previous
+              </Button>
               
               <Button onClick={handleNextSection}
-                disabled={currentSection.quiz && !showExplanation[currentSection.id]}
-  >
+                disabled={currentSection.quiz && !showExplanation[currentSection.id]}>
                 {isLastSection ? (
                   <>
-                    <Medal className="mr-2 h-4 w-4" /> Complete Lesson
+                    <Medal className="mr-2 h-4 w-4"/> Complete Lesson
                   </>
                 ) : (
                   <>
-                    Next <arrowRight className="ml-2 h-4 w-4" />
+                    Next <ArrowRight className="ml-2 h-4 w-4"/>
                   </>
                 )}
-              </button />
-          </Button>
+              </Button>
+            </CardFooter>
+          </Card>
         </>
       )}
-    </Div>
+    </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

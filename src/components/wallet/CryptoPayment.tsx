@@ -42,7 +42,7 @@ export default function CryptoPayment() {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isCheckingStatus, setIsCheckingStatus] = useState(false);
   const [isUpgrading, setIsUpgrading] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus | null />(null);
+  const [paymentStatus, setPaymentStatus] = useState<paymentStatus | null/>(null);
   const [subscriptionTier, setSubscriptionTier] = useState<string>("pro");
 
   // Function to copy wallet address to clipboard
@@ -242,128 +242,127 @@ export default function CryptoPayment() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-black/30 border-white/10 backdrop-blur-md text-white" />
+    <Card className="w-full max-w-md mx-auto bg-black/30 border-white/10 backdrop-blur-md text-white"/>
       <CardHeader>
-        <CardTitle>Crypto Payment</PaymentStatus>
-        <CardDescription className="text-white/70" />
+        <CardTitle>Crypto Payment</HTMLInputElement>
+        <CardDescription className="text-white/70"/>
           Pay with cryptocurrency to upgrade your account
-        </CardDescription />
-      <CardContent className="space-y-6" />
-        <Tabs defaultValue="ETH" onValueChange={(value) = /> setSelectedCrypto(value as keyof typeof WALLET_ADDRESSES)}>
-          <TabsList className="grid grid-cols-4 mb-4" />
-            <TabsTrigger value="BTC" />BTC</CardDescription>
-            <TabsTrigger value="ETH" />ETH</TabsTrigger>
-            <TabsTrigger value="USDT_ERC20" />USDT-ERC20</TabsTrigger>
-            <TabsTrigger value="USDT_TRC20" />USDT-TRC20</TabsTrigger />
+        </CardDescription>
+      <CardContent className="space-y-6"/>
+        <Tabs defaultValue="ETH" onValueChange={(value) => setSelectedCrypto(value as keyof typeof WALLET_ADDRESSES)}>
+          <TabsList className="grid grid-cols-4 mb-4"/>
+            <TabsTrigger value="BTC"/>BTC</CardDescription>
+            <TabsTrigger value="ETH"/>ETH</TabsTrigger>
+            <TabsTrigger value="USDT_ERC20"/>USDT-ERC20</TabsTrigger>
+            <TabsTrigger value="USDT_TRC20"/>USDT-TRC20</TabsTrigger>
 
           {Object.entries(WALLET_ADDRESSES).map(([crypto, address]) => (
-            <TabsContent key={crypto} value={crypto} className="space-y-4" />
-              <Div className="space-y-2">
+            <TabsContent key={crypto} value={crypto} className="space-y-4"/>
+              <div className="space-y-2">
                 <Label>Send payment to this address:</TabsTrigger>
-                <Div className="flex">
+                <div className="flex">
                   <Input 
                     value={address}
                     readOnly
                     className="font-mono text-sm bg-black/50 border-white/20 flex-1"
-                  />
+     />
                   <Button onClick={copyWalletAddress} 
                     variant="outline" 
                     size="icon"
                     className="ml-2"
-                    aria-label="Copy wallet address"
-      >
-                    <Copy className="h-4 w-4" />
-                  </Div>
-                </Div>
-                <P className="text-xs text-white/60">
+                    aria-label="Copy wallet address">
+                    <Copy className="h-4 w-4"/>
+                  </div>
+                </div>
+                <p className="text-xs text-white/60">
                   {crypto === 'BTC' && 'Send BTC (Bitcoin) to this address. Minimum amount: 0.001 BTC'}
                   {crypto === 'ETH' && 'Send ETH (Ethereum) to this address. Minimum amount: 0.01 ETH'}
                   {crypto === 'USDT_ERC20' && 'Send USDT (ERC-20) to this address. Minimum amount: 50 USDT'}
                   {crypto === 'USDT_TRC20' && 'Send USDT (TRC-20) to this address. Minimum amount: 50 USDT'}
-                </P>
-              </Div>
+                </p>
+              </div>
 
-              <Div className="space-y-2">
-                <Label>Transaction Hash:</Div>
+              <div className="space-y-2">
+                <Label>Transaction Hash:</div>
                 <Input
                   value={txHash}
                   onChange={handleTxHashChange}
                   placeholder={`Enter ${crypto.replace('_', ' ')} transaction hash`}
                   className="bg-black/50 border-white/20"
-                />
+   />
                 {txHashError && (
-                  <P className="text-xs text-red-400">{txHashError}</Input>
+                  <p className="text-xs text-red-400">{txHashError}</Input>
                 )}
-              </div />
+              </div>
           ))}
         </Tabs>
 
         {paymentStatus && (
-          <Alert className={`
+          <alert className={`
             ${paymentStatus.status === 'confirmed' ? 'bg-green-900/20 border-green-500/30' : 
               paymentStatus.status === 'pending' ? 'bg-yellow-900/20 border-yellow-500/30' : 
               'bg-red-900/20 border-red-500/30'}
-          `} />
-            <Div className="flex items-start">
+          `}/>
+            <div className="flex items-start">
               {paymentStatus.status === 'confirmed' ? (
-                <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
+                <CheckCircle className="h-5 w-5 text-green-400 mr-2"/>
               ) : paymentStatus.status === 'pending' ? (
-                <AlertCircle className="h-5 w-5 text-yellow-400 mr-2" />
+                <alertCircle className="h-5 w-5 text-yellow-400 mr-2"/>
               ) : (
-                <AlertCircle className="h-5 w-5 text-red-400 mr-2" />
+                <alertCircle className="h-5 w-5 text-red-400 mr-2"/>
               )}
-              <Div>
-                <AlertTitle>
+              <div>
+                <alertTitle>
                   {paymentStatus.status === 'confirmed' ? 'Payment Confirmed' : 
                    paymentStatus.status === 'pending' ? 'Payment Pending' : 'Payment Failed'}
-                </Alert>
-                <AlertDescription className="text-sm" />
+                </div>
+                <alertDescription className="text-sm"/>
                   {paymentStatus.status === 'confirmed' ? (
                     <>Transaction confirmed. Amount: {paymentStatus.amount}</>
                   ) : paymentStatus.status === 'pending' ? (
                     <>
                       Confirmations: {paymentStatus.confirmations}/{paymentStatus.required_confirmations}
-                      <Div className="w-full bg-gray-700 rounded-full h-1.5 mt-2">
-                        <Div className="bg-yellow-400 h-1.5 rounded-full" 
+                      <div className="w-full bg-gray-700 rounded-full h-1.5 mt-2">
+                        <div className="bg-yellow-400 h-1.5 rounded-full" 
                           style={{ width: `${(paymentStatus.confirmations / paymentStatus.required_confirmations) * 100}%` }}
-                   />
-                      </AlertDescription>
+      />
+                      </div>
                     </>
                   ) : (
                     <>Transaction verification failed. Please check the hash and try again.</>
                   )}
                 </AlertDescription>
-              </Div>
-            </div />
+              </div>
+            </div>
         )}
 
-        <Div className="space-y-2">
-          <Label>Select Plan:</Div>
-          <Div className="grid grid-cols-2 gap-2">
+        <div className="space-y-2">
+          <Label>Select Plan:</div>
+          <div className="grid grid-cols-2 gap-2">
             <Button variant={subscriptionTier === 'pro' ? 'default' : 'outline'}
-              onClick={() = /> setSubscriptionTier('pro')}
+              onClick={() => setSubscriptionTier('pro')}
               className={subscriptionTier === 'pro' ? 'bg-blue-600 hover:bg-blue-700' : ''}
             >
               Pro
-            </Div>
+            </div>
             <Button variant={subscriptionTier === 'premium' ? 'default' : 'outline'}
-              onClick={() = /> setSubscriptionTier('premium')}
+              onClick={() => setSubscriptionTier('premium')}
               className={subscriptionTier === 'premium' ? 'bg-purple-600 hover:bg-purple-700' : ''}
             >
               Premium
-            </Button>
-          </Div>
-        </div />
-      <CardFooter className="flex flex-col space-y-2" />
-        <Div className="grid grid-cols-2 gap-2 w-full">
+            </button>
+          </div>
+        </div>
+      <CardFooter className="flex flex-col space-y-2"/>
+        <div className="grid grid-cols-2 gap-2 w-full">
           <Button onClick={verifyPayment}
             disabled={!txHash || isVerifying}
             className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
             {isVerifying ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                 Verifying...
-              </>
+              </CardFooter>
             ) : (
               "Verify Payment"
             )}
@@ -374,29 +373,29 @@ export default function CryptoPayment() {
             className="border-white/20 hover:bg-white/10">
             {isCheckingStatus ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                 Checking...
-              </>
+              </button>
             ) : (
               <>
-                <RefreshCw className="mr-2 h-4 w-4" />
+                <RefreshCw className="mr-2 h-4 w-4"/>
                 Check Status
-              </>
+              </RefreshCw>
             )}
-          </Button>
+          </button>
       <Button onClick={upgradePlan}
           disabled={!paymentStatus || paymentStatus.status !== 'confirmed' || isUpgrading}
           className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
           {isUpgrading ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
               Upgrading...
-            </>
+            </button>
           ) : (
             "Upgrade Plan"
           )}
-        </button />
-    </Button>
+        </button>
+    </button>
   );
 }
 

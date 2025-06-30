@@ -26,9 +26,9 @@ export const PnLCurve: React.FC<pnLCurveProps> = ({ timeframe = '1M' }) => {
 
   return (
     <Card>
-      <Div className="flex items-center justify-between mb-4">
-        <H2 className="text-2xl font-bold">P&L Curve</Card>
-        <Div className="flex gap-1">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-2xl font-bold">P&L Curve</Card>
+        <div className="flex gap-1">
           {timeframes.map((tf) => (
             <Button key={tf} 
               size="sm" 
@@ -36,35 +36,35 @@ export const PnLCurve: React.FC<pnLCurveProps> = ({ timeframe = '1M' }) => {
               onClick={() => setSelectedTimeframe(tf as any)}
             >
               {tf}
-            </Div>
+            </div>
           ))}
-        </Div>
-      </Div>
+        </div>
+      </div>
       
-      <Div className="h-[400px] w-full">
+      <div className="h-[400px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <lineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#333" />
-            <XAxis dataKey="date" stroke="#666" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#333"/>
+            <XAxis dataKey="date" stroke="#666"/>
             <YAxis stroke="#666" tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`} />
             <Tooltip formatter={(value: unknown) => [`$${value.toLocaleString()}`, 'Balance']} />
-            <line type="monotone" dataKey="value" stroke="#00ff88" strokeWidth={2} dot={false} />
+            <line type="monotone" dataKey="value" stroke="#00ff88" strokeWidth={2} dot={false}/>
           </div />
-      </Div>
+      </div>
       
-      <Div className="grid grid-cols-3 gap-4 mt-4">
-        <Div>
-          <P className="text-sm text-muted-foreground">Total Return</Div>
-          <P className="text-lg font-bold text-green-500">+12.0%</P>
-        </Div>
-        <Div>
-          <P className="text-sm text-muted-foreground">Max Drawdown</Div>
-          <P className="text-lg font-bold text-red-500">-2.1%</P>
-        </Div>
-        <Div>
-          <P className="text-sm text-muted-foreground">Sharpe Ratio</Div>
-          <P className="text-lg font-bold">1.42</P>
-        </Div>
+      <div className="grid grid-cols-3 gap-4 mt-4">
+        <div>
+          <p className="text-sm text-muted-foreground">Total Return</div>
+          <p className="text-lg font-bold text-green-500">+12.0%</p>
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground">Max Drawdown</div>
+          <p className="text-lg font-bold text-red-500">-2.1%</p>
+        </div>
+        <div>
+          <p className="text-sm text-muted-foreground">Sharpe Ratio</div>
+          <p className="text-lg font-bold">1.42</p>
+        </div>
       </div />
   );
 }; 

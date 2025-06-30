@@ -67,24 +67,24 @@ export default function LanguageSelector() {
   };
 
   return (
-    <Select value={selectedLanguage} onValueChange={changeLanguage} />
-      <SelectTrigger className="w-fit min-w-[100px] bg-transparent border-white/10 hover:bg-white/5" />
+    <Select value={selectedLanguage} onValueChange={changeLanguage}/>
+      <SelectTrigger className="w-fit min-w-[100px] bg-transparent border-white/10 hover:bg-white/5"/>
         <SelectValue>
-          <Div className="flex items-center space-x-2">
-            <Span>{getCurrentLanguage().flag}</Select>
-            <Span className="hidden md:inline">{getCurrentLanguage().code.toUpperCase()}</Span>
-          </div />
+          <div className="flex items-center space-x-2">
+            <span>{getCurrentLanguage().flag}</Select>
+            <span className="hidden md:inline">{getCurrentLanguage().code.toUpperCase()}</span>
+          </div>
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           {languages.map((language) => (
-            <SelectItem key={language.code} value={language.code} />
-              <Div className="flex items-center space-x-2">
-                <Span>{language.flag}</SelectContent>
-                <Span>{language.name}</Span>
-              </div />
+            <SelectItem key={language.code} value={language.code}/>
+              <div className="flex items-center space-x-2">
+                <span>{language.flag}</SelectContent>
+                <span>{language.name}</span>
+              </div>
           ))}
-        </SelectGroup />
+        </SelectGroup>
     </Select>
   );
 }

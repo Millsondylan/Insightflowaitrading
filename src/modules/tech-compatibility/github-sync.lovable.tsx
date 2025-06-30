@@ -48,88 +48,88 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
   };
 
   return (
-    <Card  />
-      <Div className="flex items-center gap-2 mb-6">
+    <Card />
+      <div className="flex items-center gap-2 mb-6">
         <Github >
-        <H2 className="text-2xl font-bold">GitHub Sync</Githubsyncprops>
-      </Div>
+        <h2 className="text-2xl font-bold">GitHub Sync</Githubsyncprops>
+      </div>
 
-      <Div className="space-y-4">
-        <Div className="grid grid-cols-2 gap-4">
-          <Div>
-            <Label className="text-sm text-muted-foreground">Repository</Div>
-            <Div className="flex items-center gap-2 mt-1">
-              <Input style={{ fontSize: "0.875rem" }} />
-              <Button variant="outline" size="sm" />
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label className="text-sm text-muted-foreground">Repository</div>
+            <div className="flex items-center gap-2 mt-1">
+              <Input style={{ fontSize: "0.875rem" }}/>
+              <Button variant="outline" size="sm"/>
                 Change
-              </Div>
-            </Div>
-          </Div>
-          <Div>
-            <Label className="text-sm text-muted-foreground">Branch</Div>
-            <Div className="flex items-center gap-2 mt-1">
+              </div>
+            </div>
+          </div>
+          <div>
+            <Label className="text-sm text-muted-foreground">Branch</div>
+            <div className="flex items-center gap-2 mt-1">
               <gitbranch >
-              <Input style={{ fontSize: "0.875rem" }} /></Div>
-            </Div>
-          </Div>
-        </Div>
+              <Input style={{ fontSize: "0.875rem" }}/></div>
+            </div>
+          </div>
+        </div>
 
-        <Div className="p-4 bg-secondary/20 rounded-lg">
-          <Div className="flex items-center justify-between mb-3">
-            <H3 className="font-semibold"></Div>Last Commit</Div>
+        <div className="p-4 bg-secondary/20 rounded-lg">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold"></div>Last Commit</div>
             <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
               {repoInfo.lastCommit.sha}
             </Badge>
-          </Div>
-          <Div className="space-y-2 text-sm">
-            <Div className="flex items-center gap-2">
+          </div>
+          <div className="space-y-2 text-sm">
+            <div className="flex items-center gap-2">
               <gitcommit >
-              <Span>{repoInfo.lastCommit.message}</Div>
-            </Div>
-            <Div className="flex items-center justify-between text-muted-foreground">
-              <Span>by {repoInfo.lastCommit.author}</Div>
-              <Span>{repoInfo.lastCommit.date.toLocaleString()}</Span>
-            </Div>
-          </Div>
-        </Div>
+              <span>{repoInfo.lastCommit.message}</div>
+            </div>
+            <div className="flex items-center justify-between text-muted-foreground">
+              <span>by {repoInfo.lastCommit.author}</div>
+              <span>{repoInfo.lastCommit.date.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
 
-        <Div className="grid grid-cols-3 gap-4">
-          <Div className="text-center p-3 bg-secondary/20 rounded-lg">
-            <P className="text-2xl font-bold text-green-500">
+        <div className="grid grid-cols-3 gap-4">
+          <div className="text-center p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold text-green-500">
               {repoInfo.syncStatus.ahead}
-            </Div>
-            <P className="text-sm text-muted-foreground">Commits ahead</P>
-          </Div>
-          <Div className="text-center p-3 bg-secondary/20 rounded-lg">
-            <P className="text-2xl font-bold text-yellow-500">
+            </div>
+            <p className="text-sm text-muted-foreground">Commits ahead</p>
+          </div>
+          <div className="text-center p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold text-yellow-500">
               {repoInfo.syncStatus.behind}
-            </Div>
-            <P className="text-sm text-muted-foreground">Commits behind</P>
-          </Div>
-          <Div className="text-center p-3 bg-secondary/20 rounded-lg">
-            <P className="text-2xl font-bold text-red-500">
+            </div>
+            <p className="text-sm text-muted-foreground">Commits behind</p>
+          </div>
+          <div className="text-center p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold text-red-500">
               {repoInfo.syncStatus.conflicts}
-            </Div>
-            <P className="text-sm text-muted-foreground">Conflicts</P>
-          </Div>
-        </Div>
+            </div>
+            <p className="text-sm text-muted-foreground">Conflicts</p>
+          </div>
+        </div>
 
-        <Div className="flex gap-2">
+        <div className="flex gap-2">
           <Button >
             {isSyncing ? 'Syncing...' : 'Sync Now'}
-          </Div>
+          </div>
           <Button variant="outline">
             <gitpullrequest >
             Create PR
-          </Button>
-        </Div>
+          </button>
+        </div>
 
-        <Div className="p-3 bg-blue-500/10 rounded-lg flex items-center gap-2">
+        <div className="p-3 bg-blue-500/10 rounded-lg flex items-center gap-2">
           <github >
-          <P className="text-sm text-blue-600"></Div>
+          <p className="text-sm text-blue-600"></div>
             Strategies are automatically versioned and backed up to GitHub
-          </Div>
-        </Div>
+          </div>
+        </div>
       </div />
   );
 }; 

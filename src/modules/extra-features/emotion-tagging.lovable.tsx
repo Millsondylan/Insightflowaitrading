@@ -32,67 +32,67 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
   };
 
   return (
-    <Card  />
-      <H2 className="text-2xl font-bold mb-4">Emotion Tagging</Emotiontaggingprops>
+    <Card />
+      <h2 className="text-2xl font-bold mb-4">Emotion Tagging</Emotiontaggingprops>
       
-      <Div className="space-y-6">
-        <Div>
-          <P className="text-sm text-muted-foreground mb-3">
+      <div className="space-y-6">
+        <div>
+          <p className="text-sm text-muted-foreground mb-3">
             How are you feeling about your trading?
-          </Div>
-          <Div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {emotions.map((emotion) => {
               const Icon = emotion.icon;
               return (
                 <Button  style={{ display: "flex", alignItems: "center" }}> handleEmotionSelect(emotion.id)}
                 >
                   <Icon >
-                  <Span className="text-xs">{emotion.label}</Div>
-                </Button>
+                  <span className="text-xs">{emotion.label}</div>
+                </button>
               );
             })}
-          </Div>
-        </Div>
+          </div>
+        </div>
 
         {selectedEmotion && (
-          <Div className="p-4 bg-secondary/20 rounded-lg">
-            <P className="text-sm">
+          <div className="p-4 bg-secondary/20 rounded-lg">
+            <p className="text-sm">
               You're feeling <strong>{emotions.find(e => e.id === selectedEmotion)?.label}</strong>.
               This emotion will be tagged with your current trading activity.
-            </Div>
-          </Div>
+            </div>
+          </div>
         )}
 
-        <Div>
-          <H3 className="font-semibold mb-3">Recent Emotion Tags</Div>
-          <Div className="space-y-2">
+        <div>
+          <h3 className="font-semibold mb-3">Recent Emotion Tags</div>
+          <div className="space-y-2">
             {recentTags.map((tag, i) => {
               const emotion = emotions.find(e => e.id === tag.emotion);
               const Icon = emotion?.icon || Heart;
               
               return (
-                <Div key={i} className="flex items-center justify-between p-3 border rounded-lg">
-                  <Div className="flex items-center gap-3">
-                    <Icon / / / / / />
-                    <Div>
-                      <P className="font-medium">{emotion?.label}</Div>
-                      <P className="text-sm text-muted-foreground">{tag.context}</P>
-                    </Div>
-                  </Div>
-                  <Span className="text-xs text-muted-foreground">{tag.time}</Span>
-                </Div>
+                <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <Icon / / / / //>
+                    <div>
+                      <p className="font-medium">{emotion?.label}</div>
+                      <p className="text-sm text-muted-foreground">{tag.context}</p>
+                    </div>
+                  </div>
+                  <span className="text-xs text-muted-foreground">{tag.time}</span>
+                </div>
               );
             })}
-          </Div>
-        </Div>
+          </div>
+        </div>
 
-        <Div className="p-4 bg-primary/5 rounded-lg">
-          <H4 className="font-medium mb-2"></Div>Emotion Insights</Div>
-          <P className="text-sm text-muted-foreground">
-            Your best trades happen when you're feeling <Span className="text-green-500 font-medium">confident</P> and <Span className="text-blue-500 font-medium">calm</Span>.
+        <div className="p-4 bg-primary/5 rounded-lg">
+          <h4 className="font-medium mb-2"></div>Emotion Insights</div>
+          <p className="text-sm text-muted-foreground">
+            Your best trades happen when you're feeling <span className="text-green-500 font-medium">confident</p> and <span className="text-blue-500 font-medium">calm</span>.
             Consider meditation before trading to maintain emotional balance.
-          </P>
-        </Div>
+          </p>
+        </div>
       </div />
   );
 }; 

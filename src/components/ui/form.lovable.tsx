@@ -17,12 +17,12 @@ const Form = FormProvider
 
 type FormFieldContextValue<
   TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<Tfieldvalues > = FieldPath<Tfieldvalues  />
+  TName extends FieldPath<Tfieldvalues > = FieldPath<Tfieldvalues />
 > = {
   name: TName
 }
 
-const FormFieldContext = React.createContext<Formfieldcontextvalue >(
+const FormFieldContext = React.createContext<formfieldcontextvalue >(
   {} as FormFieldContextValue
 )
 
@@ -33,7 +33,7 @@ const FormField = <
   ...props
 }: ControllerProps<Tfieldvalues >) => {
   return (
-    <Formfieldcontext  />
+    <formfieldcontext />
       <controller >
     </FormFieldContext.Provider>
   )
@@ -78,7 +78,7 @@ const FormItem = React.forwardRef<
 
   return (
     <formitemcontext >
-      <Div ref={ref} className={cn("space-y-2", className)} {...props} />
+      <div ref={ref} className={cn("space-y-2", className)} {...props}/>
     </FormItemContext.Provider>
   )
 })
@@ -115,18 +115,17 @@ const FormDescription = React.forwardRef<
   const { formDescriptionId } = useFormField()
 
   return (
-    <P       ref={ref}
+    <p       ref={ref}
       id={formDescriptionId}
       className={cn("text-sm text-muted-foreground", className)}
-      {...props}
-    />
+      {...props}/>
   )
 })
 FormDescription.displayName = "FormDescription"
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement  /></Tfieldvalues /></Tfieldvalues /></Tfieldvalues>
+  React.HTMLAttributes<HTMLParagraphElement /></Tfieldvalues /></Tfieldvalues /></Tfieldvalues>
 >(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField()
   const body = error ? String(error?.message) : children
@@ -136,12 +135,12 @@ const FormMessage = React.forwardRef<
   }
 
   return (
-    <P ref={ref}
+    <p ref={ref}
       id={formMessageId}
       className={cn("text-sm font-medium text-destructive", className)}
       {...props}>
       {body}
-    </P>
+    </p>
   )
 })
 FormMessage.displayName = "FormMessage"

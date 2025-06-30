@@ -20,7 +20,7 @@ const SelectTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <selectprimitive  />
+    <selectprimitive />
       <Chevrondown >
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
@@ -31,8 +31,8 @@ const SelectScrollUpButton = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.ScrollUpButton>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton>
 >(({ className, ...props }, ref) => (
-  <Selectprimitive  / /></Selectprimitive>
-    <chevronup >
+  <Selectprimitive  //></Selectprimitive>
+    <ChevronUp ></ChevronUp>
   </SelectPrimitive.ScrollUpButton>
 ))
 SelectScrollUpButton.displayName = SelectPrimitive.ScrollUpButton.displayName
@@ -42,7 +42,7 @@ const SelectScrollDownButton = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton>
 >(({ className, ...props }, ref) => (
   <selectprimitive >
-    <chevrondown >
+    <ChevronDown ></ChevronDown>
   </SelectPrimitive.ScrollDownButton>
 ))
 SelectScrollDownButton.displayName =
@@ -77,11 +77,11 @@ const SelectItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ className, children, ...props }, ref) => (
   <selectprimitive >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <selectprimitive >
-        <check >
+        <Check ></div>
       </SelectPrimitive.ItemIndicator>
-    </Span>
+    </span>
 
     <selectprimitive >{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>

@@ -13,18 +13,18 @@ type Props = {
 
 export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) {
   return (
-    <Div className="theme-vault space-y-6">
-      <Div className="flex items-center gap-2">
+    <div className="theme-vault space-y-6">
+      <div className="flex items-center gap-2">
         {users.map((u) => (
-          <Span key={u.id}
+          <span key={u.id}
             className="px-3 py-1 text-xs rounded-full text-white"
             style={{ backgroundColor: u.color }}>
             🧑‍💻 {u.name}
-          </Div>
+          </div>
         ))}
-      </Div>
+      </div>
       <Input value={strategy.title}
-        onChange={(e) = /> onUpdate({ ...strategy, title: e.target.value })}
+        onChange={(e) => onUpdate({ ...strategy, title: e.target.value })}
         className="bg-white/10 p-2 rounded w-full text-white text-lg font-bold"
       />
       <Textarea
@@ -33,11 +33,11 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
         placeholder="Strategy notes..."
         className="bg-white/5 p-4 rounded w-full text-white/80"
       />
-      <Div className="space-y-2">
+      <div className="space-y-2">
         {strategy.rules.map((rule, i) => (
           <Input key={i}
             value={rule}
-            onChange={(e) = /> {
+            onChange={(e) => {
               const newRules = [...strategy.rules];
               newRules[i] = e.target.value;
               onUpdate({ ...strategy, rules: newRules });
@@ -46,7 +46,7 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
           />
         ))}
       </Input>
-    </Div>
+    </div>
   );
 } 
 

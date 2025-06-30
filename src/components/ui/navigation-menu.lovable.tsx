@@ -9,9 +9,9 @@ const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 >(({ className, children, ...props }, ref) => (
-  <Navigationmenuprimitive>
+  <navigationmenuprimitive>
     {children}
-    <navigationmenuviewport  />
+    <navigationmenuviewport />
   </NavigationMenuPrimitive.Root>
 ))
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
@@ -20,7 +20,7 @@ const NavigationMenuList = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
 >(({ className, ...props }, ref) => (
-  <Navigationmenuprimitive >
+  <navigationmenuprimitive >
 ))
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
@@ -34,9 +34,9 @@ const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
-  <Navigationmenuprimitive  />
+  <navigationmenuprimitive />
     {children}{" "}
-    <chevrondown hidden="true">
+    <ChevronDown hidden="true">
   </NavigationMenuPrimitive.Trigger>
 ))
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName
@@ -55,8 +55,8 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-  <Div className={cn("absolute left-0 top-full flex justify-center")}>
-    <navigationmenuprimitive  />
+  <div className={cn("absolute left-0 top-full flex justify-center")}>
+    <navigationmenuprimitive />
 ))
 NavigationMenuViewport.displayName =
   NavigationMenuPrimitive.Viewport.displayName
@@ -66,7 +66,7 @@ const NavigationMenuIndicator = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>
 >(({ className, ...props }, ref) => (
   <navigationmenuprimitive >
-    <Div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" /></Navigationmenuprimitive></Navigationmenuprimitive></Navigationmenuprimitive></Navigationmenuprimitive></Navigationmenuprimitive>
+    <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md"/></ChevronDown></ChevronDown>
   </NavigationMenuPrimitive.Indicator>
 ))
 NavigationMenuIndicator.displayName =

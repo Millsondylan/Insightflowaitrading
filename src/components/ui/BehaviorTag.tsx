@@ -90,15 +90,15 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild />
+        <TooltipTrigger asChild/>
           {tagElement}
         </TooltipProvider>
-        <TooltipContent side="top" className="max-w-xs" />
-          <Div className="text-center">
-            <P className="font-medium text-sm">{tag}</TooltipContent>
-            <P className="text-xs text-gray-300 mt-1">{definition.description}</P>
-          </div />
-      </Tooltip />
+        <TooltipContent side="top" className="max-w-xs"/>
+          <div className="text-center">
+            <p className="font-medium text-sm">{tag}</TooltipContent>
+            <p className="text-xs text-gray-300 mt-1">{definition.description}</p>
+          </div>
+      </Tooltip>
   );
 };
 
@@ -124,22 +124,21 @@ export const BehaviorTagGroup: React.FC<behaviorTagGroupProps> = ({
   const hiddenCount = tags.length - displayTags.length;
   
   return (
-    <Div className={cn('flex flex-wrap gap-2', className)}>
+    <div className={cn('flex flex-wrap gap-2', className)}>
       {displayTags.map((tag, index) => (
         <behaviorTag
           key={tag}
           tag={tag}
           animated={animated}
           animationDelay={index * 100} // Stagger the animations
-          onClick={onTagClick}
-        />
+          onClick={onTagClick}/>
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30"></Div></Div></Div></Div></Div></Div>
+        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30"></div>
           +{hiddenCount} more
-        </Div>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 

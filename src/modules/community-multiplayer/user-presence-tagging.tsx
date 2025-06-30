@@ -58,62 +58,62 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <H2 className="text-2xl font-bold mb-4">Active Traders</UserPresenceTaggingProps>
+    <Card className="theme-card p-6"/>
+      <h2 className="text-2xl font-bold mb-4">Active Traders</UserPresenceTaggingProps>
       
-      <Div className="space-y-4">
+      <div className="space-y-4">
         {users.map((user) => (
-          <Div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-            <Div className="flex items-start gap-3">
-              <Div className="relative">
+          <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+            <div className="flex items-start gap-3">
+              <div className="relative">
                 <avatar className="h-10 w-10">
                   <AvatarFallback>
                     {user.name.split(' ').map(n => n[0]).join('')}
-                  </div />
+                  </div>
                 <Circle
                   className={`absolute bottom-0 right-0 h-3 w-3 ${getStatusColor(user.status)} fill-current`}
-                / />
+                //>
               
-              <Div className="flex-1">
-                <Div className="flex items-center justify-between">
-                  <H3 className="font-semibold">{user.name}</Div>
-                  <Div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock className="h-3 w-3" />
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-semibold">{user.name}</div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Clock className="h-3 w-3"/>
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
-                  </Div>
-                </Div>
+                  </div>
+                </div>
                 
-                <P className="text-sm text-muted-foreground mt-1">{user.activity}</P>
+                <p className="text-sm text-muted-foreground mt-1">{user.activity}</p>
                 
-                <Div className="flex items-center gap-4 mt-2">
-                  <Div className="flex gap-1">
+                <div className="flex items-center gap-4 mt-2">
+                  <div className="flex gap-1">
                     {user.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="text-xs">
                         {tag}
-                      </Div>
+                      </div>
                     ))}
-                  </Div>
+                  </div>
                   
-                  <Div className="flex items-center gap-1 text-sm">
-                    <trendingUp className="h-3 w-3 text-green-500" />
-                    <Span className="font-medium">{user.winRate}%</Div>
-                  </Div>
-                </Div>
-              </Div>
+                  <div className="flex items-center gap-1 text-sm">
+                    <trendingUp className="h-3 w-3 text-green-500"/>
+                    <span className="font-medium">{user.winRate}%</div>
+                  </div>
+                </div>
+              </div>
               
-              <Button variant="ghost" size="sm" />
-                <MessageSquare className="h-4 w-4" /></Button></Button></Button></Button></Button></Button>
-              </Button>
-            </Div>
-          </Div>
+              <Button variant="ghost" size="sm"/>
+                <MessageSquare className="h-4 w-4"/></button></button>
+              </button>
+            </div>
+          </div>
         ))}
-      </Div>
+      </div>
       
-      <Div className="mt-4 pt-4 border-t">
-        <Div className="flex items-center justify-between text-sm text-muted-foreground">
-          <Span>{users.filter(u => u.status === 'online').length} traders online</Div>
-          <Span>{channelId || 'Global'} channel</Span>
-        </Div>
-      </div />
+      <div className="mt-4 pt-4 border-t">
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <span>{users.filter(u => u.status === 'online').length} traders online</div>
+          <span>{channelId || 'Global'} channel</span>
+        </div>
+      </div>
   );
 }; 

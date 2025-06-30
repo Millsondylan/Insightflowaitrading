@@ -128,14 +128,15 @@ export default function RegisterPage() {
   };
 
   return (
-    <Div className="container mx-auto px-4 py-12 max-w-md">
-      <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white" />
+    <div className="container mx-auto px-4 py-12 max-w-md">
+      <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center" />Create Your Account</HTMLInputElement />
+          <CardTitle className="text-2xl font-bold text-center">Create Your Account</CardTitle>
+        </CardHeader>
         <CardContent>
-          <Form onSubmit={handleSubmit} className="space-y-6">
-            <Div className="space-y-2">
-              <Label htmlFor="name" />Full Name</HTMLInputElement>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="name">Full Name</Label>
               <Input
                 id="name"
                 name="name"
@@ -145,12 +146,11 @@ export default function RegisterPage() {
                 className="bg-black/50 border-white/20"
                 placeholder="John Doe"
                 autoComplete="name"
-              />
-              {errors.name && <P className="text-xs text-red-400">{errors.name}</Input>}
-            </Div>
-            
-            <Div className="space-y-2">
-              <Label htmlFor="email" />Email</Div>
+             />
+              {errors.name && <p className="text-xs text-red-400">{errors.name}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 name="email"
@@ -160,13 +160,12 @@ export default function RegisterPage() {
                 className="bg-black/50 border-white/20"
                 placeholder="you@example.com"
                 autoComplete="email"
-              />
-              {errors.email && <P className="text-xs text-red-400">{errors.email}</Input>}
-            </Div>
-            
-            <Div className="space-y-2">
-              <Label htmlFor="password" />Password</Div>
-              <Div className="relative">
+             />
+              {errors.email && <p className="text-xs text-red-400">{errors.email}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="password">Password</Label>
+              <div className="relative">
                 <Input
                   id="password"
                   name="password"
@@ -176,21 +175,21 @@ export default function RegisterPage() {
                   className="bg-black/50 border-white/20 pr-10"
                   placeholder="••••••••"
                   autoComplete="new-password"
-                />
-                <Button type="button"
+               />
+                <Button 
+                  type="button"
                   variant="ghost"
                   size="sm"
                   className="absolute right-0 top-0 h-full px-3"
-                  onClick={() = /> setShowPassword(!showPassword)}
+                  onClick={() => setShowPassword(!showPassword)}
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                </Div>
-              </Div>
-              {errors.password && <P className="text-xs text-red-400">{errors.password}</P>}
-            </Div>
-            
-            <Div className="space-y-2">
-              <Label htmlFor="confirmPassword" />Confirm Password</Div>
+                  {showPassword ? <EyeOff className="h-4 w-4"/> : <Eye className="h-4 w-4"/>}
+                </Button>
+              </div>
+              {errors.password && <p className="text-xs text-red-400">{errors.password}</p>}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -200,62 +199,64 @@ export default function RegisterPage() {
                 className="bg-black/50 border-white/20"
                 placeholder="••••••••"
                 autoComplete="new-password"
-              />
-              {errors.confirmPassword && <P className="text-xs text-red-400">{errors.confirmPassword}</Input>}
-            </Div>
-            
-            <Div className="space-y-4">
-              <Div className="flex items-center space-x-2">
-                <Checkbox id="acceptTerms" 
+             />
+              {errors.confirmPassword && <p className="text-xs text-red-400">{errors.confirmPassword}</p>}
+            </div>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <Checkbox 
+                  id="acceptTerms" 
                   name="acceptTerms"
                   checked={formData.acceptTerms}
-                  onCheckedChange={(checked) = /> 
+                  onCheckedChange={(checked) => 
                     setFormData({...formData, acceptTerms: checked as boolean})
                   }
                 />
-                <Label htmlFor="acceptTerms" className="text-sm" />
-                  I agree to the <A href="/terms" className="text-blue-400 hover:underline">Terms of Service</Div> and <A href="/privacy" className="text-blue-400 hover:underline">Privacy Policy</A />
-              </A>
-              {errors.acceptTerms && <P className="text-xs text-red-400">{errors.acceptTerms}</P>}
-              
-              <Div className="flex items-center space-x-2">
-                <Checkbox id="receiveUpdates" 
+                <Label htmlFor="acceptTerms" className="text-sm">
+                  I agree to the <a href="/terms" className="text-blue-400 hover:underline">Terms of Service</a> and <a href="/privacy" className="text-blue-400 hover:underline">Privacy Policy</a>
+                </Label>
+              </div>
+              {errors.acceptTerms && <p className="text-xs text-red-400">{errors.acceptTerms}</p>}
+              <div className="flex items-center space-x-2">
+                <Checkbox 
+                  id="receiveUpdates" 
                   name="receiveUpdates"
                   checked={formData.receiveUpdates}
-                  onCheckedChange={(checked) = /> 
+                  onCheckedChange={(checked) => 
                     setFormData({...formData, receiveUpdates: checked as boolean})
                   }
                 />
-                <Label htmlFor="receiveUpdates" className="text-sm" />
+                <Label htmlFor="receiveUpdates" className="text-sm">
                   I want to receive trading insights and platform updates
-                </Div>
-              </Div>
-            </Div>
-            
+                </Label>
+              </div>
+            </div>
             <Button type="submit"
               className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
               disabled={isLoading}
->
+            >
               {isLoading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                   Creating Account...
                 </>
               ) : (
                 <>
                   Create Account
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4"/>
                 </>
               )}
-            </button />
-        </Button>
-        <CardFooter className="flex justify-center border-t border-white/10 pt-6" />
-          <P className="text-sm text-gray-400">
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-center border-t border-white/10 pt-6">
+          <p className="text-sm text-gray-400">
             Already have an account?{' '}
-            <A href="/auth" className="text-blue-400 hover:underline" /></CardFooter /></CardFooter />Sign In</CardFooter>
-          </p />
+            <a href="/auth" className="text-blue-400 hover:underline">Sign In</a>
+          </p>
+        </CardFooter>
       </Card>
-    </Div>
+    </div>
   );
 }
 

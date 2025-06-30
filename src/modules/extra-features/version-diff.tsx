@@ -58,9 +58,9 @@ export const lovable = {
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <plus className="h-4 w-4 text-green-500" />;
-      case 'removed': return <Minus className="h-4 w-4 text-red-500" />;
-      case 'modified': return <Edit className="h-4 w-4 text-yellow-500" />;
+      case 'added': return <Plus className="h-4 w-4 text-green-500"/>;
+      case 'removed': return <Minus className="h-4 w-4 text-red-500"/>;
+      case 'modified': return <Edit className="h-4 w-4 text-yellow-500"/>;
       default: return null;
     }
   };
@@ -75,105 +75,105 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <Div className="flex items-center gap-2 mb-6">
-        <GitCompare className="h-6 w-6" />
-        <H2 className="text-2xl font-bold">Version Comparison</VersionDiffProps>
-      </Div>
+    <Card className="theme-card p-6"/>
+      <div className="flex items-center gap-2 mb-6">
+        <GitCompare className="h-6 w-6"/>
+        <h2 className="text-2xl font-bold">Version Comparison</VersionDiffProps>
+      </div>
 
-      <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <Div>
-          <Label className="text-sm text-muted-foreground mb-2 block">Compare</Div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div>
+          <Label className="text-sm text-muted-foreground mb-2 block">Compare</div>
           <Select value={leftVersion} onValueChange={setLeftVersion}>
             <selectTrigger>
-              <selectValue / />
+              <selectValue //>
             <selectContent>
               {mockVersions.map((v) => (
                 <selectItem key={v.id} value={v.id}>
                   {v.label}
                 </Select>
               ))}
-            </SelectContent />
-        </Div>
+            </SelectContent>
+        </div>
         
-        <Div>
-          <Label className="text-sm text-muted-foreground mb-2 block">With</Div>
+        <div>
+          <Label className="text-sm text-muted-foreground mb-2 block">With</div>
           <Select value={rightVersion} onValueChange={setRightVersion}>
             <selectTrigger>
-              <selectValue / />
+              <selectValue //>
             <selectContent>
               {mockVersions.map((v) => (
                 <selectItem key={v.id} value={v.id}>
                   {v.label}
                 </Select>
               ))}
-            </SelectContent />
-        </Div>
-      </Div>
+            </SelectContent>
+        </div>
+      </div>
 
-      <Div className="space-y-4">
-        <Div className="flex items-center justify-between">
-          <H3 className="font-semibold">Changes</Div>
-          <Div className="flex items-center gap-4 text-sm">
-            <Span className="flex items-center gap-1">
-              <plus className="h-3 w-3 text-green-500" />
-              <Span className="text-green-500">2 added</Div>
-            </Span>
-            <Span className="flex items-center gap-1">
-              <Minus className="h-3 w-3 text-red-500" />
-              <Span className="text-red-500">1 removed</Span>
-            </Span>
-            <Span className="flex items-center gap-1">
-              <Edit className="h-3 w-3 text-yellow-500" />
-              <Span className="text-yellow-500">1 modified</Span>
-            </Span>
-          </Div>
-        </Div>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold">Changes</div>
+          <div className="flex items-center gap-4 text-sm">
+            <span className="flex items-center gap-1">
+              <Plus className="h-3 w-3 text-green-500"/>
+              <span className="text-green-500">2 added</div>
+            </span>
+            <span className="flex items-center gap-1">
+              <Minus className="h-3 w-3 text-red-500"/>
+              <span className="text-red-500">1 removed</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <Edit className="h-3 w-3 text-yellow-500"/>
+              <span className="text-yellow-500">1 modified</span>
+            </span>
+          </div>
+        </div>
 
         {diffs.map((diff, i) => (
-          <Div key={i}
+          <div key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}>
-            <Div className="flex items-start gap-3">
+            <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
-              <Div className="flex-1">
-                <Div className="flex items-center justify-between mb-2">
-                  <Span className="font-medium">{diff.section}</Div>
-                  <Span className="text-xs text-muted-foreground">Line {diff.line}</Span>
-                </Div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium">{diff.section}</div>
+                  <span className="text-xs text-muted-foreground">Line {diff.line}</span>
+                </div>
                 
                 {diff.type === 'modified' ? (
-                  <Div className="space-y-2">
-                    <Div className="flex items-start gap-2">
-                      <Minus className="h-3 w-3 text-red-500 mt-1" />
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <Minus className="h-3 w-3 text-red-500 mt-1"/>
                       <Code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
                         {diff.oldContent}
-                      </Div>
-                    </Div>
-                    <Div className="flex items-start gap-2">
-                      <plus className="h-3 w-3 text-green-500 mt-1" />
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Plus className="h-3 w-3 text-green-500 mt-1"/>
                       <Code className="text-sm bg-green-500/20 px-2 py-1 rounded">
                         {diff.newContent}
-                      </Div>
-                    </Div>
-                  </Div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <Code className="text-sm bg-secondary/50 px-2 py-1 rounded">
                     {diff.content}
                   </Code>
                 )}
-              </Div>
-            </Div>
-          </Div>
+              </div>
+            </div>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="mt-6 flex gap-2">
-        <Button variant="outline" className="flex-1" />
+      <div className="mt-6 flex gap-2">
+        <Button variant="outline" className="flex-1"/>
           Export Diff
-        </Div>
+        </div>
         <Button className="flex-1">
           Apply Changes
-        </Button>
-      </div />
+        </button>
+      </div>
   );
 }; 

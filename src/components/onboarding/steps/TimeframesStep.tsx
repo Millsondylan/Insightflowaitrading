@@ -34,21 +34,22 @@ export default function TimeframesStep() {
   };
   
   return (
-    <Div className="space-y-6">
-      <P className="text-gray-500 dark:text-gray-400">
+    <div className="space-y-6">
+      <p className="text-gray-500 dark:text-gray-400">
         Select the timeframes you prefer to trade on
-      </Div>
+      </p>
       
       <FormField
         control={control}
         name="favorite_timeframes"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Timeframes</FormField>
+            <FormLabel>Timeframes</FormLabel>
             <FormControl>
-              <Div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-2">
                 {timeframes.map((timeframe) => (
-                  <Div                     key={timeframe.value}
+                  <div
+                    key={timeframe.value}
                     className={`
                       flex flex-col items-center justify-center p-3 border rounded-md cursor-pointer
                       transition-colors
@@ -60,26 +61,29 @@ export default function TimeframesStep() {
                     `}
                     onClick={() => handleTimeframeToggle(timeframe.value)}
                   >
-                    <Span className="font-medium">{timeframe.label}</FormControl>
-                    <Span className="text-xs text-gray-500 dark:text-gray-400">
+                    <span className="font-medium">{timeframe.label}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
                       {timeframe.description}
-                    </Span>
-                  </Div>
+                    </span>
+                  </div>
                 ))}
-              </div />
-            <FormMessage / />
+              </div>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
         )}
       />
       
-      <Div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
-        <H4 className="font-medium text-blue-700 dark:text-blue-300"></FormMessage>Timeframe Tips</Div>
-        <Ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
-          <Li>• Lower timeframes (M1-M15) are best for scalping</Ul>
-          <Li>• H1-H4 are ideal for day trading and swing trading</Li>
-          <Li>• D1 and above are better for position trading</Li>
-          <Li>• Consider using multiple timeframes for confirmation</Li />
-      </Li>
-    </Div>
+      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-md">
+        <h4 className="font-medium text-blue-700 dark:text-blue-300">Timeframe Tips</h4>
+        <ul className="mt-2 text-sm text-blue-600 dark:text-blue-300 space-y-1">
+          <li>• Lower timeframes (M1-M15) are best for scalping</li>
+          <li>• H1-H4 are ideal for day trading and swing trading</li>
+          <li>• D1 and above are better for position trading</li>
+          <li>• Consider using multiple timeframes for confirmation</li>
+        </ul>
+      </div>
+    </div>
   );
 }
 

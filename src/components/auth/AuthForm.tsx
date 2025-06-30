@@ -47,24 +47,27 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
     };
 
     return (
-        <Div className="w-full max-w-md mx-auto">
-            <Div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-                <H2 className="text-2xl font-bold text-white mb-6">
+        <div className="w-full max-w-md mx-auto">
+            <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-bold text-white mb-6">
                     {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
-                </Div>
+                </h2>
 
-                <Form onSubmit={handleSubmit} className="space-y-4">
-                    <Div>
-                        <Input type="email"
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                        <Input 
+                            type="email"
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
-                        / />
+                        />
+                    </div>
 
-                    <Div>
-                        <Input type="password"
+                    <div>
+                        <Input 
+                            type="password"
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -72,54 +75,56 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             required
                             minLength={8}
                         />
-                    </Form>
+                    </div>
 
                     {error && (
-                        <Div className="text-red-400 text-sm">{error}</Div>
+                        <div className="text-red-400 text-sm">{error}</div>
                     )}
 
-                    <Button type="submit"
+                    <Button 
+                        type="submit"
                         className="w-full bg-blue-600 hover:bg-blue-700"
                         disabled={loading}
-       >
+                    >
                         {loading ? (
-                            <Div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
+                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white"/>
                         ) : mode === 'signin' ? (
                             <>
-                                <LogIn className="w-4 h-4 mr-2" />
+                                <LogIn className="w-4 h-4 mr-2"/>
                                 Sign In
                             </>
                         ) : (
                             <>
-                                <UserPlus className="w-4 h-4 mr-2" />
+                                <UserPlus className="w-4 h-4 mr-2"/>
                                 Sign Up
                             </>
                         )}
                     </Button>
 
-                    <Div className="relative my-6">
-                        <Div className="absolute inset-0 flex items-center">
-                            <Div className="w-full border-t border-white/10"></Div>
-                        </Div>
-                        <Div className="relative flex justify-center text-xs uppercase">
-                            <Span className="bg-background-primary px-2 text-gray-500">Or continue with</Div>
-                        </Div>
-                    </Div>
+                    <div className="relative my-6">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-white/10"></div>
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="bg-background-primary px-2 text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
 
-                    <Div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" className="w-full" />
-                            <Github className="w-4 h-4 mr-2" />
+                    <div className="grid grid-cols-2 gap-4">
+                        <Button variant="outline" className="w-full">
+                            <Github className="w-4 h-4 mr-2"/>
                             GitHub
-                        </Div>
-                        <Button variant="outline" className="w-full" />
-                            <Mail className="w-4 h-4 mr-2" />
+                        </Button>
+                        <Button variant="outline" className="w-full">
+                            <Mail className="w-4 h-4 mr-2"/>
                             Google
                         </Button>
-                    </Div>
+                    </div>
 
-                    <Div className="text-center mt-6">
-                        <Button type="button"
-                            onClick={() = /></Div> setMode(mode === 'signin' ? 'signup' : 'signin')}
+                    <div className="text-center mt-6">
+                        <Button 
+                            type="button"
+                            onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {mode === 'signin' ? (
@@ -127,10 +132,11 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             ) : (
                                 "Already have an account? Sign in"
                             )}
-                        </Div>
-                    </div />
-            </Div>
-        </Div>
+                        </Button>
+                    </div>
+                </form>
+            </div>
+        </div>
     );
 }
 

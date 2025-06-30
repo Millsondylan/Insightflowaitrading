@@ -39,7 +39,7 @@ const UserTable: React.FC = () => {
   const [loading, setLoading] = useState(true);
   
   // State for filtering and pagination
-  const [filterOptions, setFilterOptions] = useState<Fetchusersoptions  />({
+  const [filterOptions, setFilterOptions] = useState<Fetchusersoptions />({
     page: 1,
     perPage: 10,
     sortBy: 'created_at',
@@ -124,8 +124,8 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <Pagination >
-        <Paginationcontent  />
+      <pagination >
+        <paginationcontent />
           <paginationitem >
             <paginationprevious href="#"> {
                 e.preventDefault();
@@ -181,146 +181,146 @@ const UserTable: React.FC = () => {
   const renderSkeleton = () => (
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
-        <Tr key={i} className="border-b border-gray-800/30">
-          <Td className="px-4 py-3"><skeleton  />
-          <Td className="px-4 py-3"><skeleton  />
-          <Td className="px-4 py-3"><skeleton  />
-          <Td className="px-4 py-3"><skeleton  />
-          <Td className="px-4 py-3"><skeleton  />
+        <tr key={i} className="border-b border-gray-800/30">
+          <td className="px-4 py-3"><skeleton />
+          <td className="px-4 py-3"><skeleton />
+          <td className="px-4 py-3"><skeleton />
+          <td className="px-4 py-3"><skeleton />
+          <td className="px-4 py-3"><skeleton />
         </User>
       ))}
     </>
   );
   
   return (
-    <Div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
+    <div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
       {/* Filter and tools bar */}
-      <Div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
-        <Div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
+      <div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
+        <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
-          <Div className="relative">
-            <search >
-            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }} /></Div>
-          </Div>
+          <div className="relative">
+            <Search >
+            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }}/></div>
+          </div>
           
           {/* Role filter */}
           <Select >
-            <selecttrigger >
-              <selectvalue placeholder="All roles" />
-            <selectcontent >
-              <selectitem value="">All roles</Select>
-              <selectitem value="Admin">
-                <Div className="flex items-center gap-2">
+            <SelectTrigger >
+              <SelectValue placeholder="All roles"/>
+            <SelectContent >
+              <SelectItem value="">All roles</Select>
+              <SelectItem value="Admin">
+                <div className="flex items-center gap-2">
                   <rolebadge role="Admin"> Admin
                 </div />
-              <selectitem value="User">
-                <Div className="flex items-center gap-2">
+              <SelectItem value="User">
+                <div className="flex items-center gap-2">
                   <rolebadge role="User"> User
                 </div />
-              <selectitem value="Trial">
-                <Div className="flex items-center gap-2">
+              <SelectItem value="Trial">
+                <div className="flex items-center gap-2">
                   <rolebadge role="Trial"> Trial
                 </div />
-              <selectitem value="Expired">
-                <Div className="flex items-center gap-2">
+              <SelectItem value="Expired">
+                <div className="flex items-center gap-2">
                   <rolebadge role="Expired"> Expired
                 </div />
             </SelectContent />
           
           {/* Sort options */}
-          <dropdownmenu >
-            <dropdownmenutrigger >
+          <DropdownMenu >
+            <DropdownMenuTrigger >
               <Button variant="outline" size="sm">
-                <filter >
+                <Filter >
                 Sort
               </button />
-            <dropdownmenucontent  style={{ border: "1px solid #E5E7EB" }}>
-              <dropdownmenuitem > handleSortChange('created_at-desc')} className="cursor-pointer">
+            <DropdownMenuContent  style={{ border: "1px solid #E5E7EB" }}>
+              <DropdownMenuItem > handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </Div>
-              <dropdownmenuitem > handleSortChange('created_at-asc')} className="cursor-pointer">
+              </SelectItem>
+              <DropdownMenuItem > handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
-              <dropdownmenuitem > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
+              <DropdownMenuItem > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <dropdownmenuitem > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
+              <DropdownMenuItem > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <dropdownmenuitem > handleSortChange('role-asc')} className="cursor-pointer">
+              <DropdownMenuItem > handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
               </DropdownMenuItem />
-          </DropdownMenu>
-        </Div>
+          </DropdownMenuItem>
+        </div>
         
-        <Div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           {/* Export button */}
           <Button variant="outline" style={{ display: "flex", alignItems: "center" }}>
-            <download >
+            <Download >
             Export CSV
-          </Div>
+          </div>
           
           {/* Grant admin button */}
           <Button  style={{ display: "flex", alignItems: "center" }}>
-            <plus >
+            <Plus >
             Grant Admin
-          </Button>
-        </Div>
-      </Div>
+          </button>
+        </div>
+      </div>
       
       {/* User table */}
-      <Div className="overflow-x-auto">
-        <Table className="w-full">
-          <Thead className="bg-gray-900/50">
-            <Tr>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-gray-900/50">
+            <tr>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
-              </Div>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </div>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
-              </Th>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Subscription Plan
-              </Th>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Role
-              </Th>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
               </Th />
-          </Th>
-          <Tbody>
+          </th>
+          <tbody>
             {loading ? (
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <Userrow  /></Tbody /></Tbody /></Tbody>
+                <Userrow /></Tbody /></Tbody /></tbody>
               ))
             ) : (
-              <Tr>
-                <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users  /></Tr /></Tr /></Tr>
-                  <P>No users found</P>
-                  <P className="text-sm">Try adjusting your search or filters</p />
-              </P>
+              <tr>
+                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
+                  <Users /></Tr /></Tr /></tr>
+                  <p>No users found</p>
+                  <p className="text-sm">Try adjusting your search or filters</p />
+              </p>
             )}
           </Tbody />
-      </Div>
+      </div>
       
       {/* Pagination */}
       {!loading && pageCount > 1 && renderPagination()}
       
       {/* Summary stats */}
-      <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
+      <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div></Div></Div></Div></Div>
+          <p></div></div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}
-          </Div>
+          </div>
         )}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 };
 

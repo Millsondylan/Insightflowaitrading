@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<patternZone[]>([]);
+  const [patternZones, setPatternZones] = useState<PatternZone[]>([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -31,61 +31,64 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   }, [result.confidence]);
 
   return (
-    <Div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
       <BlockReveal>
-        <Div className="glass-container p-4 rounded-lg">
+        <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
-            <ChartCanvasOverlay imageUrl={imagePreview} patternZones={patternZones} />
+            <ChartCanvasOverlay imageUrl={imagePreview} patternZones={patternZones}/>
           ) : (
-            <Img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
+            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full"/>
           )}
-          <Div className="mt-2 flex justify-end">
-            <Button onClick={() = /> setShowOverlays(!showOverlays)} 
+          <div className="mt-2 flex justify-end">
+            <Button onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </Div>
-          </Div>
-        </div />
+            </Button>
+          </div>
+        </div>
+      </BlockReveal>
       
-      <Div className="space-y-6">
-        <BlockReveal delay={0.1} />
-          <H3 className="text-2xl font-bold text-cyan-400">Detected Patterns</Div>
-          <Div className="flex flex-wrap mt-2">
+      <div className="space-y-6">
+        <BlockReveal delay={0.1}>
+          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
+          <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
-              <patternTag key={pattern} label={pattern} />
+              <PatternTag key={pattern} label={pattern}/>
             ))}
-          </div />
+          </div>
+        </BlockReveal>
 
-        <BlockReveal delay={0.2} />
-          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</Div>
-          <P className="text-gray-300 mt-2">{result.summary}</p />
+        <BlockReveal delay={0.2}>
+          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
+          <p className="text-gray-300 mt-2">{result.summary}</p>
+        </BlockReveal>
         
-        <BlockReveal delay={0.3} />
-          <H3 className="text-2xl font-bold text-cyan-400">Confidence</P>
-          <Div className="flex items-center gap-4 mt-2">
-            <Div className="confidence-meter-bg flex-grow">
-              <Div                 className="confidence-meter-bar"
-                style={{ width: `${confidence}%` }}
-              />
-            </Div>
-            <Span className="text-xl font-bold text-white">{confidence}%</Span>
-          </div />
+        <BlockReveal delay={0.3}>
+          <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
+          <div className="flex items-center gap-4 mt-2">
+            <div className="confidence-meter-bg flex-grow">
+              <div className="confidence-meter-bar" style={{ width: `${confidence}%` }}/>
+            </div>
+            <span className="text-xl font-bold text-white">{confidence}%</span>
+          </div>
+        </BlockReveal>
         
-        <BlockReveal delay={0.4} />
-          <Div className="flex flex-wrap gap-4 mt-4">
-            <Button asChild className="glow-button bg-violet-500/20 border-violet-500 hover:bg-violet-500/30" />
-              <Link to="/journal?from=vision" />📓 Save to Journal</BlockReveal>
+        <BlockReveal delay={0.4}>
+          <div className="flex flex-wrap gap-4 mt-4">
+            <Button asChild className="glow-button bg-violet-500/20 border-violet-500 hover:bg-violet-500/30">
+              <Link to="/journal?from=vision">📓 Save to Journal</Link>
             </Button>
-            <Button asChild className="glow-button bg-blue-500/20 border-blue-500 hover:bg-blue-500/30" />
-              <Link to="/academy?topic=patterns" />📘 Learn Pattern</Button>
+            <Button asChild className="glow-button bg-blue-500/20 border-blue-500 hover:bg-blue-500/30">
+              <Link to="/academy?topic=patterns">📘 Learn Pattern</Link>
             </Button>
-            <Button asChild className="glow-button bg-green-500/20 border-green-500 hover:bg-green-500/30" />
-              <Link to="/strategy?from=vision" /></Button></Button></Button></Button></Button>💡 Find Strategy</Button>
+            <Button asChild className="glow-button bg-green-500/20 border-green-500 hover:bg-green-500/30">
+              <Link to="/strategy?from=vision">💡 Find Strategy</Link>
             </Button>
-          </div />
-      </Div>
-    </Div>
+          </div>
+        </BlockReveal>
+      </div>
+    </div>
   );
 };
 

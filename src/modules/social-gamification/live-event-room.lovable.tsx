@@ -17,13 +17,13 @@ interface LiveEventRoomProps {
   className?: string;
 }
 
-export const LiveEventRoomComponent: React.FC<Liveeventroomprops> = ({
+export const LiveEventRoomComponent: React.FC<liveeventroomprops> = ({
   roomId,
   userId,
   onRoomEvent,
   className = '',
 }) => {
-  const [room, setRoom] = useState<liveeventroom  />(null);
+  const [room, setRoom] = useState<liveeventroom />(null);
   const [messages, setMessages] = useState<Roommessage >([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -109,7 +109,7 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops> = ({
    * Create chart annotation
    * TODO: implement chart annotation system
    */
-  const createAnnotation = async (annotation: Omit<Chartannotation  />) => {
+  const createAnnotation = async (annotation: Omit<Chartannotation />) => {
     const fullAnnotation: ChartAnnotation = {
       ...annotation,
       id: `annotation_${Date.now()}`,
@@ -149,150 +149,150 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops> = ({
 
   if (loading) {
     return (
-      <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <Div className="flex items-center justify-center h-96">
-          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400" />
-          <Span className="ml-2 text-white/60">Connecting to room...</Liveeventroomprops>
-        </Div>
-      </Div>
+      <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+        <div className="flex items-center justify-center h-96">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"/>
+          <span className="ml-2 text-white/60">Connecting to room...</Roommessage>
+        </div>
+      </div>
     );
   }
 
   if (!room) {
     return (
-      <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <P className="text-center text-white/60">Room not found or access denied</Div>
-      </Div>
+      <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+        <p className="text-center text-white/60">Room not found or access denied</div>
+      </div>
     );
   }
 
   const stats = getParticipantStats();
 
   return (
-    <Div className={`rounded-xl bg-black/30 border border-white/10 backdrop-blur-md overflow-hidden ${className}`}>
+    <div className={`rounded-xl bg-black/30 border border-white/10 backdrop-blur-md overflow-hidden ${className}`}>
       {/* Room header */}
-      <Div className="p-4 border-b border-white/10 bg-white/5">
-        <Div className="flex items-center justify-between mb-2">
-          <Div>
-            <H2 className="text-lg font-bold text-white">{room.name}</Div>
-            <P className="text-sm text-white/60">{room.description}</P>
-          </Div>
-          <Div className="flex items-center space-x-2">
-            <Div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'}`}></Div>
-            <Span className="text-xs text-white/60">
+      <div className="p-4 border-b border-white/10 bg-white/5">
+        <div className="flex items-center justify-between mb-2">
+          <div>
+            <h2 className="text-lg font-bold text-white">{room.name}</div>
+            <p className="text-sm text-white/60">{room.description}</p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-400' : 'bg-red-400'}`}></div>
+            <span className="text-xs text-white/60">
               {isConnected ? 'Connected' : 'Disconnected'}
-            </Span>
-          </Div>
-        </Div>
+            </span>
+          </div>
+        </div>
         
-        <Div className="flex items-center justify-between text-xs text-white/60">
-          <Div className="flex items-center space-x-4">
-            <Span>Host: {room.hostName}</Div>
-            <Span>Symbol: {room.symbol}</Span>
-            <Span>Type: {room.type.replace('_', ' ')}</Span>
-          </Div>
-          <Div className="flex items-center space-x-2">
-            <Span>{stats.total}/{room.maxParticipants} participants</Div>
-            <Span className={`w-2 h-2 rounded-full ${room.status === 'live' ? 'bg-red-400' : 'bg-yellow-400'}`}></Span>
-            <Span>{room.status.toUpperCase()}</Span>
-          </Div>
-        </Div>
-      </Div>
+        <div className="flex items-center justify-between text-xs text-white/60">
+          <div className="flex items-center space-x-4">
+            <span>Host: {room.hostName}</div>
+            <span>Symbol: {room.symbol}</span>
+            <span>Type: {room.type.replace('_', ' ')}</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span>{stats.total}/{room.maxParticipants} participants</div>
+            <span className={`w-2 h-2 rounded-full ${room.status === 'live' ? 'bg-red-400' : 'bg-yellow-400'}`}></span>
+            <span>{room.status.toUpperCase()}</span>
+          </div>
+        </div>
+      </div>
 
-      <Div className="flex h-96">
+      <div className="flex h-96">
         {/* Chart area (placeholder) */}
-        <Div className="flex-1 p-4 bg-black/20">
-          <Div className="w-full h-full border border-white/10 rounded-lg flex items-center justify-center">
+        <div className="flex-1 p-4 bg-black/20">
+          <div className="w-full h-full border border-white/10 rounded-lg flex items-center justify-center">
             {/* TODO: integrate with chart component */}
-            <Div className="text-center">
-              <Div className="text-4xl mb-2">📈</Div>
-              <P className="text-white/60">Chart for {room.symbol}</P>
-              <P className="text-xs text-white/40 mt-2">Chart integration pending</P>
-            </Div>
-          </Div>
-        </Div>
+            <div className="text-center">
+              <div className="text-4xl mb-2">📈</div>
+              <p className="text-white/60">Chart for {room.symbol}</p>
+              <p className="text-xs text-white/40 mt-2">Chart integration pending</p>
+            </div>
+          </div>
+        </div>
 
         {/* Chat sidebar */}
-        <Div className="w-80 border-l border-white/10 bg-white/5 flex flex-col">
+        <div className="w-80 border-l border-white/10 bg-white/5 flex flex-col">
           {/* Participants header */}
-          <Div className="p-3 border-b border-white/10">
-            <H3 className="text-sm font-medium text-white mb-2">
+          <div className="p-3 border-b border-white/10">
+            <h3 className="text-sm font-medium text-white mb-2">
               Participants ({stats.total})
-            </Div>
-            <Div className="max-h-24 overflow-y-auto space-y-1">
+            </div>
+            <div className="max-h-24 overflow-y-auto space-y-1">
               {room.participants.slice(0, 8).map((participant) => (
-                <Div key={participant.userId} className="flex items-center space-x-2 text-xs">
-                  <Img 
+                <div key={participant.userId} className="flex items-center space-x-2 text-xs">
+                  <img 
                     src={participant.avatar} 
                     alt={participant.username}
                     className="w-4 h-4 rounded-full"
-                  />
-                  <Span className={getRoleColor(participant.role)}>
+     />
+                  <span className={getRoleColor(participant.role)}>
                     {participant.username}
-                  </Div>
+                  </div>
                   {participant.role !== 'participant' && (
-                    <Span className="text-white/40">({participant.role})</Span>
+                    <span className="text-white/40">({participant.role})</span>
                   )}
-                  <Div className={`w-1 h-1 rounded-full ${participant.isActive ? 'bg-green-400' : 'bg-gray-400'}`}></Div>
-                </Div>
+                  <div className={`w-1 h-1 rounded-full ${participant.isActive ? 'bg-green-400' : 'bg-gray-400'}`}></div>
+                </div>
               ))}
               {room.participants.length > 8 && (
-                <Div className="text-xs text-white/40">
+                <div className="text-xs text-white/40">
                   +{room.participants.length - 8} more...
-                </Div>
+                </div>
               )}
-            </Div>
-          </Div>
+            </div>
+          </div>
 
           {/* Messages */}
-          <Div className="flex-1 overflow-y-auto p-3 space-y-2">
+          <div className="flex-1 overflow-y-auto p-3 space-y-2">
             {messages.map((message) => (
-              <Div key={message.id} className="group">
-                <Div className="flex items-start space-x-2">
-                  <Span className="text-xs text-white/60 mt-0.5">
+              <div key={message.id} className="group">
+                <div className="flex items-start space-x-2">
+                  <span className="text-xs text-white/60 mt-0.5">
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </Div>
-                  <Div className="flex-1">
-                    <Div className="flex items-center space-x-1">
-                      <Span className="text-xs font-medium text-blue-400">
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-1">
+                      <span className="text-xs font-medium text-blue-400">
                         {message.username}
-                      </Div>
+                      </div>
                       {message.type === 'system' && (
-                        <Span className="text-xs text-white/40">(system)</Span>
+                        <span className="text-xs text-white/40">(system)</span>
                       )}
-                    </Div>
-                    <P className="text-sm text-white/80 mt-0.5 break-words">
+                    </div>
+                    <p className="text-sm text-white/80 mt-0.5 break-words">
                       {message.content}
-                    </P>
+                    </p>
                     
                     {/* Reactions */}
                     {message.reactions.length > 0 && (
-                      <Div className="flex flex-wrap gap-1 mt-1">
+                      <div className="flex flex-wrap gap-1 mt-1">
                         {message.reactions.map((reaction, index) => (
                           <Button key={index}
                             onClick={() => addReaction(message.id, reaction.emoji)}
                             className="flex items-center space-x-1 bg-white/10 hover:bg-white/20 rounded px-1 py-0.5 text-xs transition-colors"
                           >
-                            <Span>{reaction.emoji}</Div>
-                            <Span className="text-white/60">{reaction.count}</Span>
-                          </Button>
+                            <span>{reaction.emoji}</div>
+                            <span className="text-white/60">{reaction.count}</span>
+                          </button>
                         ))}
-                      </Div>
+                      </div>
                     )}
-                  </Div>
-                </Div>
-              </Div>
+                  </div>
+                </div>
+              </div>
             ))}
-            <Div ref={messagesEndRef} />
-          </Div>
+            <div ref={messagesEndRef}/>
+          </div>
 
           {/* Message input */}
           {room.settings.allowChat && (
-            <Div className="p-3 border-t border-white/10">
-              <Div className="flex space-x-2">
+            <div className="p-3 border-t border-white/10">
+              <div className="flex space-x-2">
                 <Input type="text"
                   value={newMessage}
-                  onChange={(e) = /> setNewMessage(e.target.value)}
+                  onChange={(e) => setNewMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                   placeholder="Type a message..."
                   className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-blue-400"
@@ -300,40 +300,39 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops> = ({
                 />
                 <Button onClick={sendMessage}
                   disabled={!newMessage.trim() || !isConnected}
-                  className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"
-    >
+                  className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"></div></div>
                   Send
-                </Div>
-              </Div>
-            </Div>
+                </div>
+              </div>
+            </div>
           )}
-        </Div>
-      </Div>
+        </div>
+      </div>
 
       {/* Room controls */}
-      <Div className="p-3 border-t border-white/10 bg-white/5">
-        <Div className="flex items-center justify-between">
-          <Div className="flex items-center space-x-2 text-xs text-white/60">
-            <Span></Div>🔴 LIVE</Div>
-            <Span></Span>•</Span>
-            <Span></Span>Started: {room.startTime.toLocaleTimeString()}</Span>
-          </Div>
+      <div className="p-3 border-t border-white/10 bg-white/5">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2 text-xs text-white/60">
+            <span></div>🔴 LIVE</div>
+            <span></span>•</span>
+            <span></span>Started: {room.startTime.toLocaleTimeString()}</span>
+          </div>
           
-          <Div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2">
             {/* TODO: Add room control buttons */}
-            <Button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
+            <Button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors"></div></div>
               📋 Annotations
-            </Div>
-            <Button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
+            </div>
+            <Button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors"></button></div>
               📊 Share Chart
-            </Button>
-            <Button className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded text-xs transition-colors">
+            </button>
+            <Button className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded text-xs transition-colors"></button></div>
               🚪 Leave
-            </Button>
-          </Div>
-        </Div>
-      </Div>
-    </Div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

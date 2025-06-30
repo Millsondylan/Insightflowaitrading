@@ -14,34 +14,34 @@ export default function Topbar() {
   });
 
   return (
-    <Header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
-      <Div className="flex items-center gap-4">
-        <Div className="relative">
+    <header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
+      <div className="flex items-center gap-4">
+        <div className="relative">
           <Search >
           <Input
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
-          / />
-      </Header>
-      <Div className="flex items-center gap-6">
-        <Span className="text-sm text-text-muted">{today}</Div>
-        <Button variant="ghost" size="icon" />
+          //>
+      </header>
+      <div className="flex items-center gap-6">
+        <span className="text-sm text-text-muted">{today}</div>
+        <Button variant="ghost" size="icon"/>
           <Bell >
-        </Button>
-        <Div className="flex items-center gap-3">
-          <Avatar  />
+        </button>
+        <div className="flex items-center gap-3">
+          <avatar />
             <avatarimage >
-            <Avatarfallback ></Div>{profile?.full_name?.[0] || 'U'}</div />
-          <Div>
-            <P className="font-semibold"></Div>{profile?.full_name || 'Guest'}</Div>
+            <Avatarfallback ></div>{profile?.full_name?.[0] || 'U'}</div />
+          <div>
+            <p className="font-semibold"></div>{profile?.full_name || 'Guest'}</div>
             {hasProAccess && (
               <Badge variant="outline">
                 PRO
               </Badge>
             )}
-          </Div>
-        </Div>
+          </div>
+        </div>
       </div />
   );
 } 

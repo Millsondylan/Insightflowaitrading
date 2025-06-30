@@ -74,72 +74,68 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
   };
 
   return (
-    <Div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
-      <Div className="flex justify-between items-center">
-        <H2 className="text-lg font-semibold text-white">User Management</User>
-        
+    <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold text-white">User Management</h2>
         {/* Search input */}
-        <Div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"/>
           <Input type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
             className="pl-10 pr-4 py-2 bg-black/30 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500"
           />
-        </Div>
-      </Div>
+        </div>
+      </div>
 
-      <Div className="rounded-lg border border-white/10 overflow-hidden">
-        <Table>
+      <div className="rounded-lg border border-white/10 overflow-hidden">
+        <table>
           <TableHeader>
             <TableRow>
-              <TableHead>Email</Div>
+              <TableHead>Email</TableHead>
               <TableHead>Role</TableHead>
-              <TableHead className="text-right" />Actions</TableHead />
-          </TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
           <TableBody>
-            {users.length === 0 ? (
+            {filteredUsers.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={3} className="text-center py-8 text-gray-500" />
-                  No users found.
-                </TableBody />
+                <TableCell colSpan={3} className="text-center py-8 text-gray-500">
+                  No users found matching your search.
+                </TableCell>
+              </TableRow>
             ) : (
-              users.map((user) => (
-                <TableRow key={user.id} />
-                  <TableCell>{user.email}</TableBody>
+              filteredUsers.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell>{user.email}</TableCell>
                   <TableCell>
                     <Select
                       value={user.role}
-                      onChange={(e) => handleRoleChange(user.id, e)}
-                      className="bg-transparent border border-white/10 rounded px-2 py-1"
+                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleRoleChange(user.id, e)}
+                      className="bg-transparent border border-white/10 rounded px-2 py-1 text-white"
                     >
-                      <Option value="user">User</TableCell>
-                      <Option value="mod">Moderator</Option>
-                      <Option value="admin">Admin</Option />
-                  </Option>
-                  <TableCell className="text-right" />
+                      <option value="user">User</option>
+                      <option value="mod">Moderator</option>
+                      <option value="admin">Admin</option>
+                    </Select>
+                  </TableCell>
+                  <TableCell className="text-right">
                     <Button variant="ghost"
-                      className="h-8 w-8 p-0 text-gray-400 hover:text-white"
-        >
-                      <Settings className="h-4 w-4" / />
-                  </TableCell />
+                      className="h-8 w-8 p-0 text-gray-400 hover:text-white">
+                      <Settings className="h-4 w-4"/>
+                    </button>
+                  </TableCell>
+                </TableRow>
               ))
             )}
-            
-            {filteredUsers.length === 0 && (
-              <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-gray-500" / /></TableRow /></TableRow />
-                  No users found matching your search.
-                </TableRow />
-            )}
-          </TableBody />
-      </TableCell>
-      
-      <Div className="text-xs text-gray-500">
+          </TableBody>
+        </table>
+      </div>
+      <div className="text-xs text-gray-500">
         Showing {filteredUsers.length} of {users.length} users
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 };
 

@@ -176,25 +176,25 @@ export default function PineScriptGenerator() {
   };
 
   return (
-    <Div className="w-full max-w-5xl mx-auto">
-      <Card className="shadow-md border-border" />
+    <div className="w-full max-w-5xl mx-auto">
+      <Card className="shadow-md border-border"/>
         <CardHeader>
-          <CardTitle className="text-2xl" />Pine Script AI Generator</Div>
+          <CardTitle className="text-2xl"/>Pine Script AI Generator</div>
           <CardDescription>
             Generate TradingView Pine Script code from natural language prompts
           </CardDescription>
           
           {/* Quota display */}
           {quota && (
-            <Div className="flex items-center justify-between mt-2">
-              <Div className="flex flex-col space-y-1">
-                <Span className="text-sm text-muted-foreground">
+            <div className="flex items-center justify-between mt-2">
+              <div className="flex flex-col space-y-1">
+                <span className="text-sm text-muted-foreground">
                   {quota.isLimited ? (
                     <>
                       {quota.remaining}/{quota.limit} generations remaining this month
-                      <Badge variant={quota.remaining /> 0 ? "outline" : "destructive"} className="ml-2">
+                      <Badge variant={quota.remaining/> 0 ? "outline" : "destructive"} className="ml-2">
                         {quota.remaining > 0 ? "Free Tier" : "Limit Reached"}
-                      </Div>
+                      </div>
                     </>
                   ) : (
                     <>
@@ -202,38 +202,38 @@ export default function PineScriptGenerator() {
                       <Badge variant="secondary" className="ml-2">Pro</Badge>
                     </>
                   )}
-                </Span>
+                </span>
                 {quota.isLimited && quota.resetDate && (
-                  <Span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-muted-foreground">
                     Resets on {quota.resetDate.toLocaleDateString()}
-                  </Span>
+                  </span>
                 )}
-              </Div>
+              </div>
               
               {quota.isLimited && (
                 <Button variant="outline" 
                   size="sm"
                   onClick={handleUpgradeClick}
-                />
+   />
                   Upgrade to Pro
-                </Button>
+                </button>
               )}
-            </Div>
+            </div>
           )}
         </CardHeader>
         
         <CardContent>
           {error && (
             <alert variant="destructive" className="mb-4">
-              <alertCircle className="h-4 w-4" />
+              <alertCircle className="h-4 w-4"/>
               <alertTitle>Error</CardContent>
               <alertDescription>{error}</AlertDescription />
           )}
           
           {showUpgradePrompt && (
             <alert className="mb-4 bg-muted">
-              <info className="h-4 w-4" />
-              <alertTitle>Upgrade to Pro</AlertTitle>
+              <Info className="h-4 w-4"/>
+              <alertTitle>Upgrade to Pro</Info>
               <alertDescription>
                 You've reached your monthly Pine Script generation limit. 
                 Upgrade to Pro for unlimited generations.
@@ -241,21 +241,20 @@ export default function PineScriptGenerator() {
               <Button className="mt-2" 
                 variant="default" 
                 size="sm"
-                onClick={handleUpgradeClick}
-  >
+                onClick={handleUpgradeClick}>
                 Upgrade Now
               </button />
           )}
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full" />
-            <TabsList className="grid w-full grid-cols-2" />
-              <TabsTrigger value="prompt" />Prompt</Button>
-              <TabsTrigger value="code" disabled={!generatedCode} />Generated Code</TabsTrigger />
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full"/>
+            <TabsList className="grid w-full grid-cols-2"/>
+              <TabsTrigger value="prompt"/>Prompt</button>
+              <TabsTrigger value="code" disabled={!generatedCode}/>Generated Code</TabsTrigger />
             
-            <TabsContent value="prompt" />
-              <Form {...form}>
-                <Form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <Div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <TabsContent value="prompt"/>
+              <form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <formField
                       control={form.control}
                       name="scriptType"
@@ -264,17 +263,17 @@ export default function PineScriptGenerator() {
                           <formLabel>Script Type</TabsTrigger>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-               >
+    >
                             <formControl>
                               <selectTrigger>
-                                <selectValue placeholder="Select script type" / />
+                                <selectValue placeholder="Select script type" //>
                             </Select>
                             <selectContent>
                               <selectItem value="indicator">Indicator</SelectItem>
                               <selectItem value="strategy">Trading Strategy</SelectItem>
                               <selectItem value="library">Library</SelectItem />
                           </Select>
-                          <formMessage / />
+                          <formMessage //>
                       )}
                     />
                     
@@ -286,10 +285,10 @@ export default function PineScriptGenerator() {
                           <formLabel>Default Timeframe</FormLabel>
                           <Select onValueChange={field.onChange} 
                             defaultValue={field.value}
-               >
+    >
                             <formControl>
                               <selectTrigger>
-                                <selectValue placeholder="Select timeframe" / />
+                                <selectValue placeholder="Select timeframe" //>
                             </Select>
                             <selectContent>
                               <selectItem value="1m">1 Minute</SelectItem>
@@ -302,10 +301,10 @@ export default function PineScriptGenerator() {
                               <selectItem value="1W">1 Week</SelectItem>
                               <selectItem value="1M">1 Month</SelectItem />
                           </Select>
-                          <formMessage / />
+                          <formMessage //>
                       )}
                     />
-                  </Div>
+                  </div>
 
                   <formField
                     control={form.control}
@@ -318,8 +317,8 @@ export default function PineScriptGenerator() {
                             placeholder="E.g., Create an RSI indicator with overbought/oversold levels at 70/30 and signal line crossovers" 
                             className="h-32"
                             {...field} 
-                          / />
-                        <formMessage / />
+                          //>
+                        <formMessage //>
                     )}
                   />
                   
@@ -334,111 +333,108 @@ export default function PineScriptGenerator() {
                             placeholder="Any additional details or specific requirements" 
                             className="h-24"
                             {...field} 
-                          / />
-                        <formMessage / />
+                          //>
+                        <formMessage //>
                     )}
                   />
 
                   <Button type="submit" 
                     className="w-full"
-                    disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}
-      >
+                    disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}>
                     {isGenerating ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                         Generating...
-                      </>
+                      </Textarea>
                     ) : "Generate Pine Script"}
                   </button />
               </Form />
             
-            <TabsContent value="code" />
+            <TabsContent value="code"/>
               {generatedCode && (
                 <>
-                  <Div className="flex justify-between items-center mb-2">
-                    <Div className="flex items-center">
-                      <Code className="h-4 w-4 mr-2" />
-                      <H3 className="font-medium">Generated Pine Script</Textarea>
-                    </Div>
-                    <Div className="flex space-x-2">
+                  <div className="flex justify-between items-center mb-2">
+                    <div className="flex items-center">
+                      <Code className="h-4 w-4 mr-2"/>
+                      <h3 className="font-medium">Generated Pine Script</TabsContent>
+                    </div>
+                    <div className="flex space-x-2">
                       <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
-                        onClick={handleCopy}
-          >
-                        {copied ? <CheckCircle className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-                        <Span>{copied ? "Copied!" : "Copy"}</Div>
-                      </Button>
+                        onClick={handleCopy}>
+                        {copied ? <CheckCircle className="h-4 w-4"/> : <Copy className="h-4 w-4"/>}
+                        <span>{copied ? "Copied!" : "Copy"}</div>
+                      </button>
                       <Button variant="outline" 
                         size="sm" 
                         className="flex items-center space-x-1"
-                        onClick={handleShare}
-          >
-                        <Share2 className="h-4 w-4" />
-                        <Span>Share</Button>
-                      </Button>
-                    </Div>
-                  </Div>
+                        onClick={handleShare}>
+                        <Share2 className="h-4 w-4"/>
+                        <span>Share</button>
+                      </button>
+                    </div>
+                  </div>
                   
                   {syntaxValid === false && (
                     <alert className="mb-3">
-                      <alertCircle className="h-4 w-4" />
+                      <alertCircle className="h-4 w-4"/>
                       <alertTitle>Syntax Warning</AlertTitle>
                       <alertDescription>
                         The generated code might have syntax issues. {errorDetails && (
-                          <Span>
+                          <span>
                             Line {errorDetails.line}: {errorDetails.message}
                             {errorDetails.suggestion && (
-                              <Div className="mt-1 text-xs">
+                              <div className="mt-1 text-xs">
                                 Suggestion: {errorDetails.suggestion}
-                              </Span>
+                              </span>
                             )}
-                          </Span>
+                          </span>
                         )}
                       </AlertDescription />
                   )}
                   
-                  <Div className="relative">
-                    <Pre className="bg-muted p-4 rounded-md overflow-x-auto max-h-96 text-sm whitespace-pre">
+                  <div className="relative">
+                    <pre className="bg-muted p-4 rounded-md overflow-x-auto max-h-96 text-sm whitespace-pre">
                       <Code>{generatedCode}</div />
                     
-                    <Div className="absolute top-4 right-4">
+                    <div className="absolute top-4 right-4">
                       {syntaxValid === true && (
-                        <Badge className="mb-1 bg-green-500 text-white">Syntax Valid</Div>
+                        <Badge className="mb-1 bg-green-500 text-white">Syntax Valid</div>
                       )}
-                    </Div>
-                  </Div>
+                    </div>
+                  </div>
                   
-                  <Div className="mt-4">
-                    <H4 className="text-sm font-medium mb-2">How to use in TradingView:</Div>
-                    <Ol className="list-decimal list-inside text-sm text-muted-foreground ml-2 space-y-1">
-                      <Li>Copy the code above</Ol>
-                      <Li>Open TradingView and go to Pine Editor</Li>
-                      <Li>Paste the code into the editor</Li>
-                      <Li>Click "Add to Chart" to use your script</Li />
-                  </Li>
+                  <div className="mt-4">
+                    <h4 className="text-sm font-medium mb-2">How to use in TradingView:</div>
+                    <ol className="list-decimal list-inside text-sm text-muted-foreground ml-2 space-y-1">
+                      <li>Copy the code above</ol>
+                      <li>Open TradingView and go to Pine Editor</li>
+                      <li>Paste the code into the editor</li>
+                      <li>Click "Add to Chart" to use your script</Li />
+                  </li>
                 </>
               )}
             </TabsContent />
         </CardContent>
         
-        <CardFooter className="flex flex-col space-y-2 items-start border-t pt-4" />
-          <P className="text-xs text-muted-foreground">
+        <CardFooter className="flex flex-col space-y-2 items-start border-t pt-4"/>
+          <p className="text-xs text-muted-foreground">
             Note: Generated code is provided as-is. Always review and test before using in live trading.
           </CardFooter>
           {quota?.isLimited && (
-            <Div className="w-full">
-              <Div className="flex justify-between text-xs mb-1">
-                <Span>Monthly quota</Div>
-                <Span>{quota.used}/{quota.limit} used</Span>
-              </Div>
+            <div className="w-full">
+              <div className="flex justify-between text-xs mb-1">
+                <span>Monthly quota</div>
+                <span>{quota.used}/{quota.limit} used</span>
+              </div>
               <progress value={(quota.used / quota.limit) * 100} 
                 className={quota.remaining> 0 ? "bg-primary h-2" : "bg-destructive h-2"}
               />
-            </Div>
+            </div>
           )}
         </CardFooter />
-    </Div>
+    </div>
   );
 }
 

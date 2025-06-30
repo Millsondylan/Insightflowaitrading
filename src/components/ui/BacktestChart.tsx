@@ -24,12 +24,12 @@ const PriceTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     const data = payload[0].payload;
     return (
-      <Div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-        <P className="text-gray-300 text-xs">
+      <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
+        <p className="text-gray-300 text-xs">
           {new Date(data.time * 1000).toLocaleString()}
-        </Div>
-        <P className="font-bold">{`Price: ${data.price.toFixed(2)}`}</P>
-      </Div>
+        </div>
+        <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
+      </div>
     );
   }
   return null;
@@ -41,18 +41,18 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
   const formattedTime = new Date(trade.time * 1000).toLocaleString();
   
   return (
-    <Div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
-      <P className="font-bold">
+    <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
+      <p className="font-bold">
         {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
-      </Div>
-      <P>{formattedTime}</P>
-      <P>Price: {trade.price.toFixed(2)}</P>
+      </div>
+      <p>{formattedTime}</p>
+      <p>Price: {trade.price.toFixed(2)}</p>
       {!isEntry && trade.pnlPercentage !== undefined && (
-        <P className={trade.pnlPercentage> 0 ? 'text-green-400' : 'text-red-400'}>
+        <p className={trade.pnlPercentage> 0 ? 'text-green-400' : 'text-red-400'}>
           PnL: {(trade.pnlPercentage * 100).toFixed(2)}%
-        </P>
+        </p>
       )}
-    </Div>
+    </div>
   );
 };
 
@@ -76,16 +76,16 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
 
   return (
     <blockReveal>
-      <Div className="chart-container">
-        <Div className="flex justify-between items-center mb-4">
-          <H3 className="text-xl font-bold text-white">
+      <div className="chart-container">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-white">
             {ticker} ({timeframe})
-          </Div>
-        </Div>
+          </div>
+        </div>
         <ResponsiveContainer width="100%" height="90%">
-          <LineChart data={animationComplete ? priceData : []}
+          <lineChart data={animationComplete ? priceData : []}
             margin={{ top: 10, right: 30, left: 10, bottom: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3"/>
             <XAxis
               dataKey="time"
               tickFormatter={(time) => new Date(time * 1000).toLocaleDateString()}
@@ -96,15 +96,14 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
               tick={{ fill: '#9ca3af' }}
               tickFormatter={(value) => value.toFixed(0)}
             />
-            <Tooltip content={<priceTooltip />} />
+            <Tooltip content={<priceTooltip/>} />
             <line
               type="monotone"
               dataKey="price"
               stroke="#22d3ee"
               strokeWidth={2}
               dot={false}
-              animationDuration={1500}
-            />
+              animationDuration={1500}/>
             
             {/* Trade entry markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'entry').map((marker, idx) => (
@@ -135,15 +134,15 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
-          </ResponsiveContainer />
+          </ResponsiveContainer>
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
-          <Div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <tradeTooltip trade={hoveredTrade} />
+          <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+            <tradeTooltip trade={hoveredTrade}/>
           </ResponsiveContainer>
         )}
-      </div />
+      </div>
   );
 };
 

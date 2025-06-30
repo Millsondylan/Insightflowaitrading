@@ -14,78 +14,85 @@ export default function RiskProfileStep() {
       value: 'conservative',
       label: 'Conservative',
       description: 'Focus on capital preservation with lower risk and returns',
-      icon: <Shield className="h-6 w-6 text-blue-500" />,
+      icon: <Shield className="h-6 w-6 text-blue-500"/>,
       details: 'Typically 1-2% risk per trade, higher win rate, lower reward/risk ratio'
     },
     {
       value: 'moderate',
       label: 'Moderate',
       description: 'Balanced approach between risk and reward',
-      icon: <Gauge className="h-6 w-6 text-purple-500" />,
+      icon: <Gauge className="h-6 w-6 text-purple-500"/>,
       details: 'Typically 2-3% risk per trade, balanced win rate and reward/risk ratio'
     },
     {
       value: 'aggressive',
       label: 'Aggressive',
       description: 'Higher risk tolerance for potentially higher returns',
-      icon: <Flame className="h-6 w-6 text-red-500" />,
+      icon: <Flame className="h-6 w-6 text-red-500"/>,
       details: 'Typically 3-5% risk per trade, lower win rate, higher reward/risk ratio'
     },
   ];
   
   return (
-    <Div className="space-y-6">
-      <P className="text-gray-500 dark:text-gray-400">
+    <div className="space-y-6">
+      <p className="text-gray-500 dark:text-gray-400">
         Select your risk tolerance level for trading
-      </Shield>
+      </p>
       
-      <FormField control={control}
+      <FormField 
+        control={control}
         name="risk_profile"
-        render={({ field }) = /> (
-          <FormItem className="space-y-3" />
+        render={({ field }) => (
+          <FormItem className="space-y-3">
             <FormControl>
-              <RadioGroup onValueChange={field.onChange}
+              <RadioGroup 
+                onValueChange={field.onChange}
                 defaultValue={field.value}
                 className="grid gap-4 pt-2"
-  >
+              >
                 {riskProfiles.map((profile) => (
-                  <Div key={profile.value} className="relative">
+                  <div key={profile.value} className="relative">
                     <RadioGroupItem
                       value={profile.value as RiskProfile}
                       id={`risk-${profile.value}`}
                       className="peer sr-only"
-                    />
-                    <Label htmlFor={`risk-${profile.value}`}
+                   />
+                    <Label 
+                      htmlFor={`risk-${profile.value}`}
                       className="flex flex-col p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-700 peer-data-[state=checked]:border-blue-500 peer-data-[state=checked]:bg-blue-50 dark:peer-data-[state=checked]:bg-blue-950 dark:peer-data-[state=checked]:border-blue-700 cursor-pointer"
-        >
-                      <Div className="flex items-start gap-4">
-                        <Div className="flex-shrink-0 mt-1">{profile.icon}</FormField>
-                        <Div>
-                          <Div className="font-medium">{profile.label}</Div>
-                          <Div className="text-sm text-gray-500 dark:text-gray-400">
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 mt-1">{profile.icon}</div>
+                        <div>
+                          <div className="font-medium">{profile.label}</div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400">
                             {profile.description}
-                          </Div>
-                        </Div>
-                      </Div>
-                      <Div className="mt-4 text-sm bg-gray-50 dark:bg-gray-800 p-3 rounded-md">
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-4 text-sm bg-gray-50 dark:bg-gray-800 p-3 rounded-md">
                         {profile.details}
-                      </div />
-                  </Div>
+                      </div>
+                    </Label>
+                  </div>
                 ))}
-              </RadioGroup />
-            <FormMessage / />
+              </RadioGroup>
+            </FormControl>
+            <FormMessage />
+          </FormItem>
         )}
       />
       
-      <Div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-md">
-        <H4 className="font-medium text-amber-700 dark:text-amber-300"></FormMessage>Risk Management Tips</Div>
-        <Ul className="mt-2 text-sm text-amber-600 dark:text-amber-300 space-y-1">
-          <Li>• Always use stop losses to protect your capital</Ul>
-          <Li>• Consider position sizing based on your risk tolerance</Li>
-          <Li>• Avoid risking more than 1-2% of your account on a single trade</Li>
-          <Li>• Your risk profile will influence AI recommendations</Li />
-      </Li>
-    </Div>
+      <div className="p-4 bg-amber-50 dark:bg-amber-900/20 rounded-md">
+        <h4 className="font-medium text-amber-700 dark:text-amber-300">Risk Management Tips</h4>
+        <ul className="mt-2 text-sm text-amber-600 dark:text-amber-300 space-y-1">
+          <li>• Always use stop losses to protect your capital</li>
+          <li>• Consider position sizing based on your risk tolerance</li>
+          <li>• Avoid risking more than 1-2% of your account on a single trade</li>
+          <li>• Your risk profile will influence AI recommendations</li>
+        </ul>
+      </div>
+    </div>
   );
 }
 

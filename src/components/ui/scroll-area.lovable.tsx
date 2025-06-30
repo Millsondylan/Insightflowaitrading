@@ -11,8 +11,8 @@ const ScrollArea = React.forwardRef<
     <Scrollareaprimitive  style={{ height: "100%", width: "100%" }}>
       {children}
     </ScrollAreaPrimitive.Viewport>
-    <Scrollbar  / /></Scrollareaprimitive /></Scrollareaprimitive /></Scrollareaprimitive>
-    <Scrollareaprimitive  />
+    <Scrollbar  //></Scrollareaprimitive /></Scrollareaprimitive /></Scrollareaprimitive>
+    <Scrollareaprimitive />
   </ScrollAreaPrimitive.Root>
 ))
 ScrollArea.displayName = ScrollAreaPrimitive.Root.displayName
@@ -21,8 +21,8 @@ const ScrollBar = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
   React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
 >(({ className, orientation = "vertical", ...props }, ref) => (
-  <Scrollareaprimitive  />
-    <Scrollareaprimitive  /></Scrollareaprimitive>
+  <Scrollareaprimitive />
+    <Scrollareaprimitive /></Scrollareaprimitive>
   </ScrollAreaPrimitive.ScrollAreaScrollbar>
 ))
 ScrollBar.displayName = ScrollAreaPrimitive.ScrollAreaScrollbar.displayName

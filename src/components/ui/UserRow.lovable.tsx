@@ -143,79 +143,78 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
   };
 
   return (
-    <Tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
-      <Td className="px-4 py-3">
-        <Div className="flex items-center">
-          <Span className={cn(
+    <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
+      <td className="px-4 py-3">
+        <div className="flex items-center">
+          <span className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
               user.role === 'Admin' && 'text-violet-300',
               user.role === 'Expired' && 'text-gray-400'
             )}
             onClick={handleCopyAddress}
-            title="Click to copy"
-          />
+            title="Click to copy"/>
             {formatAddress(user.address)}
           </Userrowprops>
         </div />
 
-      <Td className="px-4 py-3 text-sm text-gray-400">
+      <td className="px-4 py-3 text-sm text-gray-400">
         {formatDate(user.created_at)}
-      </Td>
+      </td>
 
-      <Td className="px-4 py-3">
-        <Span className="text-sm">
+      <td className="px-4 py-3">
+        <span className="text-sm">
           {user.subscription_tier || '-'}
         </Td />
 
-      <Td className="px-4 py-3">
-        <Rolebadge  />
+      <td className="px-4 py-3">
+        <Rolebadge />
 
-      <Td className="px-4 py-3">
-        <Dropdownmenu  / /></Td /></Td /></Td>
-          <dropdownmenutrigger >
+      <td className="px-4 py-3">
+        <Dropdownmenu  //></Td /></Td /></td>
+          <DropdownMenuTrigger >
             <Button variant="ghost" size="icon">
-              <morehorizontal >
+              <MoreHorizontal >
             </button />
-          <dropdownmenucontent align="end" style={{ border: "1px solid #E5E7EB" }}>
-            <dropdownmenulabel >User Actions</Button>
+          <DropdownMenuContent align="end" style={{ border: "1px solid #E5E7EB" }}>
+            <dropdownmenulabel >User Actions</DropdownMenuTrigger>
             <dropdownmenuseparator >
             
             <dropdownmenusub >
               <dropdownmenusubtrigger >
                 <usercog >
-                <Span>Change Role</span />
+                <span>Change Role</span />
               <dropdownmenuportal >
                 <dropdownmenusubcontent  style={{ border: "1px solid #E5E7EB" }}>
-                  <dropdownmenuitem > handleRoleChange('Admin')}
+                  <DropdownMenuItem > handleRoleChange('Admin')}
                     className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
                   >
                     Admin
-                  </Span>
-                  <dropdownmenuitem > handleRoleChange('User')}
+                  </span>
+                  <DropdownMenuItem > handleRoleChange('User')}
                     className="cursor-pointer text-green-300 hover:bg-green-900/30"
                   >
                     User
                   </DropdownMenuItem>
-                  <dropdownmenuitem > handleRoleChange('Trial')}
+                  <DropdownMenuItem > handleRoleChange('Trial')}
                     className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
                   >
                     Trial
                   </DropdownMenuItem />
               </DropdownMenuPortal />
             
-            <dropdownmenuitem >
-              <copy >
-              <Span>Copy Address</span />
+            <DropdownMenuItem >
+              <Copy >
+              <span>Copy Address</span />
             
-            <dropdownmenuitem >
-              <eye >
-              <Span>View Details</span />
+            <DropdownMenuItem >
+              <Eye >
+              <span>View Details</span />
             
             <dropdownmenuseparator >
             
-            <dropdownmenuitem >
+            <DropdownMenuItem >
               <xcircle >
-              <Span>Revoke Access</span />
+              <span>Revoke Access</span />
           </DropdownMenuContent />
       </Td />
   );

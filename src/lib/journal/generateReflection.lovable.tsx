@@ -98,7 +98,7 @@ Next Steps:
         <h2 style={{ fontSize: '24px', fontWeight: 'bold', margin: 0 }}>
           Trade Reflection
         </h2>
-        <button onClick={generateReflection}
+        <Button onClick={generateReflection}
           disabled={loading}
           style={{
             padding: '10px 20px',

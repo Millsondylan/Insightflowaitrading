@@ -20,10 +20,10 @@ const formatPercent = (n: number) => `${(n * 100).toFixed(2)}%`;
 const formatCurrency = (n: number) => n.toFixed(2);
 
 const StatCard = ({ label, value, color }: { label: string, value: string | number, color?: string }) => (
-  <Div className="glass-section p-4 text-center">
-    <P className="text-gray-400 text-sm">{label}</Div>
-    <P className={`text-2xl font-bold ${color || ''}`}>{value}</P>
-  </Div>
+  <div className="glass-section p-4 text-center">
+    <p className="text-gray-400 text-sm">{label}</div>
+    <p className={`text-2xl font-bold ${color || ''}`}>{value}</p>
+  </div>
 );
 
 const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestResultDisplayProps) => {
@@ -31,28 +31,28 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   const chartData = toChartSeries(candles, result.trades);
   
   return (
-    <Div className="space-y-8 mt-12">
+    <div className="space-y-8 mt-12">
       <Blockreveal>
-        <H2 className="text-3xl font-bold text-center mb-6">Backtest Results</div />
+        <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</div />
       
-      <blockreveal  />
-        <Kpicards  />
+      <blockreveal />
+        <Kpicards />
       
-      <Blockreveal  / />
-        <tabs  style={{ width: "100%" }}>
+      <Blockreveal  //>
+        <Tabs  style={{ width: "100%" }}>
           <Tabslist  style={{ width: "100%", display: "grid" }}>
             <Tabstrigger value="overview">
               Chart View
-            </Div>
+            </div>
             <Tabstrigger value="trades">
               Trade Explorer
             </Tabstrigger />
           
-          <tabscontent value="overview">
-            <backtestchart  />
+          <TabsContent value="overview">
+            <backtestchart />
           
-          <tabscontent value="trades">
-            <tradeexplorer  />
+          <TabsContent value="trades">
+            <tradeexplorer />
         </Tabs />
     </Tabstrigger>
   );

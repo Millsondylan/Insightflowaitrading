@@ -31,7 +31,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
     extraContext: '',
   });
 
-  const [formErrors, setFormErrors] = useState<Record  />>({});
+  const [formErrors, setFormErrors] = useState<Record />>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement >) => {
     const { name, value } = e.target;
@@ -112,35 +112,35 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
       animate="visible"
       className="glass-container p-6 rounded-lg"
     >
-      <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div variants={itemVariants} className="space-y-2">
           <Label htmlFor="strategyName">Strategy Name (Optional)</Strategyformdata>
-          <Input id="strategyName" name="strategyName" placeholder="E.g., Momentum Breakout" />
+          <Input id="strategyName" name="strategyName" placeholder="E.g., Momentum Breakout"/>
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
           <Label htmlFor="tradeStyle">Trade Style*</Input>
           <Select > handleSelectChange(value, 'tradeStyle')}
           >
-            <selecttrigger >
-              <selectvalue placeholder="Select a trade style" />
-            <selectcontent  style={{ color: "white" }}>
-              <selectitem value="Intraday">Intraday</Select>
-              <selectitem value="Swing">Swing</SelectItem>
-              <selectitem value="Scalping">Scalping</SelectItem>
-              <selectitem value="Position">Position</SelectItem>
-              <selectitem value="Custom">Custom</SelectItem />
-          </Select>
+            <SelectTrigger >
+              <SelectValue placeholder="Select a trade style"/>
+            <SelectContent  style={{ color: "white" }}>
+              <SelectItem value="Intraday">Intraday</Select>
+              <SelectItem value="Swing">Swing</SelectItem>
+              <SelectItem value="Scalping">Scalping</SelectItem>
+              <SelectItem value="Position">Position</SelectItem>
+              <SelectItem value="Custom">Custom</SelectItem />
+          </SelectItem>
           {formErrors.tradeStyle && (
-            <P className="text-red-500 text-sm">{formErrors.tradeStyle}</P>
+            <p className="text-red-500 text-sm">{formErrors.tradeStyle}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
           <Label htmlFor="instruments">Instruments*</Label>
-          <Input id="instruments" name="instruments" placeholder="E.g., BTC, ETH, AAPL"  />
+          <Input id="instruments" name="instruments" placeholder="E.g., BTC, ETH, AAPL"/>
           {formErrors.instruments && (
-            <P className="text-red-500 text-sm">{formErrors.instruments}</Input>
+            <p className="text-red-500 text-sm">{formErrors.instruments}</Input>
           )}
         </motion.div>
 
@@ -148,20 +148,20 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Label htmlFor="timeframe">Timeframe*</Label>
           <Select > handleSelectChange(value, 'timeframe')}
           >
-            <selecttrigger >
-              <selectvalue placeholder="Select a timeframe" />
-            <selectcontent  style={{ color: "white" }}>
-              <selectitem value="1m">1 minute</Select>
-              <selectitem value="5m">5 minutes</SelectItem>
-              <selectitem value="15m">15 minutes</SelectItem>
-              <selectitem value="30m">30 minutes</SelectItem>
-              <selectitem value="1h">1 hour</SelectItem>
-              <selectitem value="4h">4 hours</SelectItem>
-              <selectitem value="1d">Daily</SelectItem>
-              <selectitem value="1w">Weekly</SelectItem />
-          </Select>
+            <SelectTrigger >
+              <SelectValue placeholder="Select a timeframe"/>
+            <SelectContent  style={{ color: "white" }}>
+              <SelectItem value="1m">1 minute</Select>
+              <SelectItem value="5m">5 minutes</SelectItem>
+              <SelectItem value="15m">15 minutes</SelectItem>
+              <SelectItem value="30m">30 minutes</SelectItem>
+              <SelectItem value="1h">1 hour</SelectItem>
+              <SelectItem value="4h">4 hours</SelectItem>
+              <SelectItem value="1d">Daily</SelectItem>
+              <SelectItem value="1w">Weekly</SelectItem />
+          </SelectItem>
           {formErrors.timeframe && (
-            <P className="text-red-500 text-sm">{formErrors.timeframe}</P>
+            <p className="text-red-500 text-sm">{formErrors.timeframe}</p>
           )}
         </motion.div>
 
@@ -169,7 +169,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Label htmlFor="entryConditions">Entry Conditions*</Label>
           <Textarea id="entryConditions" name="entryConditions" placeholder="Describe your entry conditions...">
           {formErrors.entryConditions && (
-            <P className="text-red-500 text-sm">{formErrors.entryConditions}</Textarea>
+            <p className="text-red-500 text-sm"></Textarea>{formErrors.entryConditions}</Textarea>
           )}
         </motion.div>
 
@@ -177,7 +177,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Label htmlFor="exitConditions">Exit Conditions*</Label>
           <Textarea id="exitConditions" name="exitConditions" placeholder="Describe your exit conditions...">
           {formErrors.exitConditions && (
-            <P className="text-red-500 text-sm">{formErrors.exitConditions}</Textarea>
+            <p className="text-red-500 text-sm"></Textarea>{formErrors.exitConditions}</Textarea>
           )}
         </motion.div>
 
@@ -185,7 +185,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
           <Label htmlFor="riskManagement">Risk Management*</Label>
           <Textarea id="riskManagement" name="riskManagement" placeholder="Describe your risk management approach...">
           {formErrors.riskManagement && (
-            <P className="text-red-500 text-sm">{formErrors.riskManagement}</Textarea>
+            <p className="text-red-500 text-sm"></Textarea>{formErrors.riskManagement}</Textarea>
           )}
         </motion.div>
 
@@ -195,17 +195,17 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="md:col-span-2 flex justify-center mt-4">
-          <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}>
+          <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></div>
             {isLoading ? (
               <>
                 <loader2 > Generating Strategy...
-              </>
+              </loader2>
             ) : (
               'Generate Strategy'
             )}
           </Textarea>
         </motion.div>
-      </Div>
+      </div>
     </motion.form>
   );
 };

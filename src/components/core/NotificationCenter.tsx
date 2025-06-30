@@ -112,17 +112,17 @@ export default function NotificationCenter() {
   const getNotificationIcon = (type: string, priority: string) => {
     switch (type) {
       case 'trade_alert':
-        return <AlertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />;
+        return <AlertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`}/>;
       case 'market_update':
-        return <RefreshCw className="w-5 h-5 text-blue-500" />;
+        return <RefreshCw className="w-5 h-5 text-blue-500"/>;
       case 'journal_reminder':
-        return <Clock className="w-5 h-5 text-purple-500" />;
+        return <Clock className="w-5 h-5 text-purple-500"/>;
       case 'system':
-        return <Settings className="w-5 h-5 text-gray-500" />;
+        return <Settings className="w-5 h-5 text-gray-500"/>;
       case 'message':
-        return <Mail className="w-5 h-5 text-green-500" />;
+        return <Mail className="w-5 h-5 text-green-500"/>;
       default:
-        return <Info className="w-5 h-5 text-blue-500" />;
+        return <Info className="w-5 h-5 text-blue-500"/>;
     }
   };
 
@@ -145,27 +145,27 @@ export default function NotificationCenter() {
     const isUnread = notification.status === 'pending' || !notification.read_at;
     
     return (
-      <Div key={notification.id}
+      <div key={notification.id}
         className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}>
-        <Div className="flex items-start gap-3">
-          <Div className="mt-0.5">
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5">
             {getNotificationIcon(notification.notification_type, notification.priority)}
-          </UserNotification>
-          <Div className="flex-1 min-w-0">
-            <Div className="flex justify-between items-start">
-              <H4 className={`font-medium ${isUnread ? 'text-white' : 'text-gray-300'} mb-1`}>
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="flex justify-between items-start">
+              <h4 className={`font-medium ${isUnread ? 'text-white' : 'text-gray-300'} mb-1`}>
                 {notification.title}
-              </Div>
-              <Span className="text-xs text-gray-500">
+              </h4>
+              <span className="text-xs text-gray-500">
                 {notification.created_at ? formatDistanceToNow(new Date(notification.created_at), { addSuffix: true }) : ''}
-              </Span>
-            </Div>
-            <P className="text-sm text-gray-400 mb-2">{notification.message}</P>
-            <Div className="flex items-center justify-between">
+              </span>
+            </div>
+            <p className="text-sm text-gray-400 mb-2">{notification.message}</p>
+            <div className="flex items-center justify-between">
               {notification.data?.action && (
                 <Button size="sm" variant="ghost" className="h-8 text-xs">
                   {notification.data.action}
-                </Div>
+                </Button>
               )}
               {isUnread && (
                 <Button size="sm"
@@ -176,13 +176,13 @@ export default function NotificationCenter() {
                     handleRead(notification.id);
                   }}
                 >
-                  <Check className="w-3 h-3 mr-1" /> Mark as read
+                  <Check className="w-3 h-3 mr-1"/> Mark as read
                 </Button>
               )}
-            </Div>
-          </Div>
-        </Div>
-      </Div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   };
 
@@ -194,95 +194,93 @@ export default function NotificationCenter() {
           className="relative"
           onClick={() => logClick('OpenNotifications')}
         >
-          <Bell className="h-5 w-5" />
+          <Bell className="h-5 w-5"/>
           {unreadCount > 0 && (
             <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
-              variant="destructive"
-           >
+              variant="destructive">
               {unreadCount > 9 ? '9+' : unreadCount}
-            </Popover>
+            </Badge>
           )}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-80 md:w-96 p-0" 
         align="end" 
         sideOffset={5}>
-        <Div className="flex items-center justify-between bg-gray-900 p-4 border-b border-gray-800">
-          <H3 className="font-semibold text-lg text-white">Notifications</PopoverContent>
-          <Div className="flex items-center gap-2">
+        <div className="flex items-center justify-between bg-gray-900 p-4 border-b border-gray-800">
+          <h3 className="font-semibold text-lg text-white">Notifications</h3>
+          <div className="flex items-center gap-2">
             {unreadCount > 0 && (
               <Button variant="ghost" 
                 size="sm" 
                 className="text-xs"
-                onClick={handleReadAll}
-             >
+                onClick={handleReadAll}>
                 Mark all as read
-              </Div>
+              </Button>
             )}
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setOpen(false)}>
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4"/>
             </Button>
-          </Div>
-        </Div>
+          </div>
+        </div>
 
         <Tabs defaultValue="all" 
           value={activeTab} 
           onValueChange={setActiveTab}>
-          <Div className="px-4 pt-2">
+          <div className="px-4 pt-2">
             <TabsList className="grid grid-cols-3 w-full">
-              <TabsTrigger value="all">All</Tabs>
+              <TabsTrigger value="all">All</TabsTrigger>
               <TabsTrigger value="unread" className="relative">
                 Unread
                 {unreadCount > 0 && (
                   <Badge className="ml-1 bg-blue-600 text-xs" variant="secondary">
                     {unreadCount}
-                  </TabsTrigger>
+                  </Badge>
                 )}
               </TabsTrigger>
               <TabsTrigger value="read">Read</TabsTrigger>
             </TabsList>
-          </Div>
+          </div>
 
           <ScrollArea className="h-[400px] p-4">
             <TabsContent value="all" className="m-0">
               {loading ? (
-                <Div className="flex items-center justify-center h-32">
-                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
-                </ScrollArea>
+                <div className="flex items-center justify-center h-32">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"/>
+                </div>
               ) : notifications.length > 0 ? (
                 notifications.map(renderNotification)
               ) : (
-                <Div className="text-center py-12 text-gray-500">
-                  <Bell className="mx-auto h-10 w-10 mb-2" />
-                  <P>You're all caught up!</Div>
-                </Div>
+                <div className="text-center py-12 text-gray-500">
+                  <Bell className="mx-auto h-10 w-10 mb-2"/>
+                  <p>You're all caught up!</p>
+                </div>
               )}
             </TabsContent>
             <TabsContent value="unread" className="m-0">
               {loading ? (
-                <Div className="flex items-center justify-center h-32">
-                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
-                </TabsContent>
+                <div className="flex items-center justify-center h-32">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"/>
+                </div>
               ) : notifications.filter(n => !n.read_at).length > 0 ? (
                 notifications.filter(n => !n.read_at).map(renderNotification)
               ) : (
-                <Div className="text-center py-12 text-gray-500">
-                  <Check className="mx-auto h-10 w-10 mb-2" />
-                  <P>No unread notifications.</Div>
-                </Div>
+                <div className="text-center py-12 text-gray-500">
+                  <Check className="mx-auto h-10 w-10 mb-2"/>
+                  <p>No unread notifications.</p>
+                </div>
               )}
             </TabsContent>
             <TabsContent value="read" className="m-0">
               {loading ? (
-                <Div className="flex items-center justify-center h-32">
-                  <Div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
-                </TabsContent>
+                <div className="flex items-center justify-center h-32">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"/>
+                </div>
               ) : notifications.filter(n => !!n.read_at).length > 0 ? (
                 notifications.filter(n => !!n.read_at).map(renderNotification)
               ) : (
-                <Div className="text-center py-12 text-gray-500">
-                  <P>No read notifications yet.</Div>
-                </Div>
+                <div className="text-center py-12 text-gray-500">
+                  <p>No read notifications yet.</p>
+                </div>
               )}
             </TabsContent>
           </ScrollArea>

@@ -63,110 +63,109 @@ export const lovable = {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white" />
-      <CardHeader className="flex flex-row items-center justify-between" />
+    <Card className="w-full bg-black/80 border-zinc-800 text-white"/>
+      <CardHeader className="flex flex-row items-center justify-between"/>
         <CardTitle>Daily Market Planner</Date>
         <Badge variant={
             dailyPlan.marketOutlook === 'Bullish' ? 'default' : 
             dailyPlan.marketOutlook === 'Bearish' ? 'destructive' : 'secondary'
           }>
           {dailyPlan.marketOutlook} Outlook
-        </Badge />
+        </Badge>
       <CardContent>
-        <Div className="grid grid-cols-3 gap-4">
-          <Div>
-            <H3 className="text-lg font-bold mb-2">Calendar</Badge>
+        <div className="grid grid-cols-3 gap-4">
+          <div>
+            <h3 className="text-lg font-bold mb-2">Calendar</Badge>
             <Calendar
               mode="single"
               selected={selectedDate}
               onSelect={setSelectedDate}
               className="rounded-md border border-zinc-700"
-            / />
+            //>
           
-          <Div className="col-span-2">
-            <Div className="space-y-4">
-              <Div>
-                <H3 className="text-lg font-bold mb-2">Potential Trades</Calendar>
-                <Div className="space-y-2">
+          <div className="col-span-2">
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-lg font-bold mb-2">Potential Trades</Calendar>
+                <div className="space-y-2">
                   {dailyPlan.potentialTrades.map((trade) => (
-                    <Div key={trade.symbol}
+                    <div key={trade.symbol}
                       className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
-                   />
-                      <Div>
-                        <Div className="flex items-center space-x-2">
-                          <H4 className="font-bold">{trade.symbol}</Div>
+      />
+                      <div>
+                        <div className="flex items-center space-x-2">
+                          <h4 className="font-bold">{trade.symbol}</div>
                           <Badge variant="outline">{trade.type}</Badge>
-                        </Div>
-                        <P className="text-sm text-gray-300">{trade.name}</P>
-                      </Div>
-                      <Div className="text-right">
-                        <Div className="text-lg font-bold">
+                        </div>
+                        <p className="text-sm text-gray-300">{trade.name}</p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-lg font-bold">
                           ${trade.price.toLocaleString()}
-                        </Div>
-                        <Div className={`text-sm ${trade.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        </div>
+                        <div className={`text-sm ${trade.changePercent/>= 0 ? 'text-green-500' : 'text-red-500'}`}>
                           {trade.changePercent >= 0 ? '+' : ''}{trade.changePercent.toFixed(2)}%
-                        </Div>
-                      </Div>
-                    </Div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
-                </Div>
-              </Div>
+                </div>
+              </div>
 
-              <Div>
-                <H3 className="text-lg font-bold mb-2">Key Events</Div>
-                <Div className="space-y-2">
+              <div>
+                <h3 className="text-lg font-bold mb-2">Key Events</div>
+                <div className="space-y-2">
                   {dailyPlan.keyEvents.map((event) => (
-                    <Div key={event.id}
-                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
-         >
-                      <Div className="flex justify-between items-center mb-2">
-                        <H4 className="font-bold">{event.title}</Div>
+                    <div key={event.id}
+                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
+                      <div className="flex justify-between items-center mb-2">
+                        <h4 className="font-bold">{event.title}</div>
                         <Badge variant={
                             event.impact === 'High' ? 'destructive' : 
                             event.impact === 'Medium' ? 'default' : 'secondary'
                           }
-             >
+  >
                           {event.impact} Impact
                         </Badge>
-                      </Div>
-                      <P className="text-sm text-gray-300 mb-2">{event.description}</P>
-                      <Div className="flex space-x-2">
+                      </div>
+                      <p className="text-sm text-gray-300 mb-2">{event.description}</p>
+                      <div className="flex space-x-2">
                         {event.relatedAssets?.map((asset) => (
-                          <Badge key={asset} variant="outline">{asset}</Div>
+                          <Badge key={asset} variant="outline">{asset}</div>
                         ))}
-                      </Div>
-                    </Div>
+                      </div>
+                    </div>
                   ))}
-                </Div>
-              </Div>
+                </div>
+              </div>
 
-              <Div>
-                <H3 className="text-lg font-bold mb-2">Risk Management</Div>
-                <Div className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
-                  <Div className="grid grid-cols-2 gap-2">
-                    <Div>
-                      <P className="text-sm text-gray-400">Total Risk</Div>
-                      <P className="font-bold">{(dailyPlan.riskManagement.totalRisk * 100).toFixed(1)}%</P>
-                    </Div>
-                    <Div>
-                      <P className="text-sm text-gray-400">Max Drawdown</Div>
-                      <P className="font-bold">{(dailyPlan.riskManagement.maxDrawdown * 100).toFixed(1)}%</P>
-                    </Div>
-                  </Div>
-                </Div>
-              </Div>
-            </Div>
-          </Div>
-        </Div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">Risk Management</div>
+                <div className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
+                  <div className="grid grid-cols-2 gap-2">
+                    <div>
+                      <p className="text-sm text-gray-400">Total Risk</div>
+                      <p className="font-bold">{(dailyPlan.riskManagement.totalRisk * 100).toFixed(1)}%</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-400">Max Drawdown</div>
+                      <p className="font-bold">{(dailyPlan.riskManagement.maxDrawdown * 100).toFixed(1)}%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <Div className="mt-4 flex justify-center space-x-4">
-          <Button variant="outline" className="text-white" onClick={generateInsight} />
+        <div className="mt-4 flex justify-center space-x-4">
+          <Button variant="outline" className="text-white" onClick={generateInsight}/>
             Generate Market Insight
-          </Div>
-          <Button variant="default" />
+          </div>
+          <Button variant="default"/>
             Start Trading Session
-          </Button>
-        </div />
+          </button>
+        </div>
     </Card>
   )
 } 

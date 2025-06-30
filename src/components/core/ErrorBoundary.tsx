@@ -54,27 +54,29 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <Div className="min-h-screen flex items-center justify-center p-4">
+        <div className="min-h-screen flex items-center justify-center p-4">
           <Card className="max-w-md w-full">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-destructive">
-                <AlertTriangle className="h-5 w-5" / /></Props>
+                <AlertTriangle className="h-5 w-5"/>
                 Something went wrong
-              </CardTitle />
+              </CardTitle>
+            </CardHeader>
             <CardContent className="space-y-4">
-              <P className="text-sm text-muted-foreground" />
+              <p className="text-sm text-muted-foreground">
                 We encountered an unexpected error. The error has been logged and we'll look into it.
-              </CardContent>
+              </p>
               {import.meta.env.DEV && this.state.error && (
-                <Pre className="text-xs bg-muted p-2 rounded overflow-auto max-h-32">
+                <pre className="text-xs bg-muted p-2 rounded overflow-auto max-h-32">
                   {this.state.error.message}
-                </Pre>
+                </pre>
               )}
               <Button onClick={this.handleReset} className="w-full">
                 Reload Page
-              </button />
-          </Button>
-        </Div>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
       );
     }
 

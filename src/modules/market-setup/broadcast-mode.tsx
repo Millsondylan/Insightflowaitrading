@@ -38,50 +38,50 @@ export const lovable = {
   const sortedEvents = sortBroadcastEventsByImpact(events)
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white" />
-      <CardHeader className="flex flex-row items-center justify-between" />
+    <Card className="w-full bg-black/80 border-zinc-800 text-white"/>
+      <CardHeader className="flex flex-row items-center justify-between"/>
         <CardTitle>Market Broadcast Mode</Card>
         <Badge variant="default">
           {sortedEvents.length} Active Events
-        </Badge />
+        </Badge>
       <CardContent>
-        <Div className="space-y-4">
+        <div className="space-y-4">
           {sortedEvents.map((event) => (
-            <Div key={event.id} 
+            <div key={event.id} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700">
-              <Div className="flex justify-between items-start mb-2">
-                <H3 className="text-lg font-bold">{event.title}</Badge>
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-lg font-bold">{event.title}</Badge>
                 <Badge variant={
                     event.impact === 'High' ? 'destructive' : 
                     event.impact === 'Medium' ? 'default' : 'secondary'
                   }
-                />
+   />
                   {event.impact} Impact
                 </Badge>
-              </Div>
-              <P className="text-sm text-gray-300 mb-2">{event.description}</P>
-              <Div className="flex justify-between items-center">
-                <Div className="flex space-x-2">
+              </div>
+              <p className="text-sm text-gray-300 mb-2">{event.description}</p>
+              <div className="flex justify-between items-center">
+                <div className="flex space-x-2">
                   {event.relatedAssets?.map((asset) => (
                     <Badge key={asset} variant="outline">
                       {asset}
-                    </Div>
+                    </div>
                   ))}
-                </Div>
-                <Div className="text-xs text-gray-400 flex items-center space-x-2">
-                  <Span>{event.source}</Div>
-                  <Span>•</Span>
-                  <Span>{event.timestamp.toLocaleString()}</Span>
-                </Div>
-              </Div>
-            </Div>
+                </div>
+                <div className="text-xs text-gray-400 flex items-center space-x-2">
+                  <span>{event.source}</div>
+                  <span>•</span>
+                  <span>{event.timestamp.toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
           ))}
-        </Div>
-        <Div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white" /></Div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <Button variant="outline" className="text-white"/></div>
             Subscribe to Updates
-          </Div>
-        </div />
+          </div>
+        </div>
     </Card>
   )
 } 

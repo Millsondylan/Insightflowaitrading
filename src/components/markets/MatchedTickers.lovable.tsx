@@ -64,42 +64,41 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
   }, [matchedSymbols, strategy, tickers]);
 
   return (
-    <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-      <Div className="flex items-center gap-3">
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+      <div className="flex items-center gap-3">
         <Sparkles >
-        <H3 className="text-lg font-semibold text-white">
+        <h3 className="text-lg font-semibold text-white">
           Strategy Matches:{" "}
-          <Span className="text-cyan-400">{strategy.title}</Div>
-        </H3>
-      </Div>
+          <span className="text-cyan-400">{strategy.title}</div>
+        </h3>
+      </div>
 
       {matchedTickersWithReason.length > 0 ? (
-        <Div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3">
           {matchedTickersWithReason.map((ticker) => (
-            <Div key={ticker.symbol}
-              className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
-            />
-              <Div></Div>
-                <Span className="font-semibold text-white">{ticker.symbol}</Span>
-                <Span className="ml-2 text-xs text-white/70">
+            <div key={ticker.symbol}
+              className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"/>
+              <div></div>
+                <span className="font-semibold text-white">{ticker.symbol}</span>
+                <span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
-                </Span>
-              </Div>
-              <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
-                <Eye ></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button></Button>
+                </span>
+              </div>
+              <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}></button></div>
+                <Eye ></Eye></div>
                 View
-              </Button>
-            </Div>
+              </button>
+            </div>
           ))}
-        </Div>
+        </div>
       ) : (
-        <Div className="text-center py-4">
-          <P className="text-white/50"></Div></Div></Div></Div></Div>
+        <div className="text-center py-4">
+          <p className="text-white/50"></div></div>
             No tickers currently match this strategy.
-          </Div>
-        </Div>
+          </div>
+        </div>
       )}
-    </Div>
+    </div>
   );
 } 
 

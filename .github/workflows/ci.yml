@@ -3,7 +3,7 @@ name: Build + Typecheck
 on: [push, pull_request]
 
 jobs:
-  build:
+  verify-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -64,7 +64,7 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: test
+    needs: [test, verify-build]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

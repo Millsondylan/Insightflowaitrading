@@ -20,43 +20,43 @@ export const AIStrategyBuilderV2: React.FC = () => {
   return (
     <Card  style={{ width: "100%", color: "white" }}>
       <Cardheader >
-        <Cardtitle  />AI Strategy Builder V2</Card />
+        <Cardtitle />AI Strategy Builder V2</Card />
       <Cardcontent >
-        <Div className="space-y-4">
-          <Div>
+        <div className="space-y-4">
+          <div>
             <Label className="block text-sm mb-2">Strategy Name</Card>
-            <Input  /> setStrategyName(e.target.value)}
+            <Input /> setStrategyName(e.target.value)}
               placeholder="Enter strategy name"
               className="bg-zinc-900 border-zinc-700 text-white"
             / />
 
-          <Div>
-            <Label className="block text-sm mb-2"></Input>Market</Div>
+          <div>
+            <Label className="block text-sm mb-2"></Input>Market</div>
             <Select >
-              <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Select Market" />
-              <selectcontent >
+              <SelectTrigger  style={{ color: "white" }}>
+                <SelectValue placeholder="Select Market"/>
+              <SelectContent >
                 {markets.map((market) => (
-                  <selectitem >{market}</Select>
+                  <SelectItem >{market}</Select>
                 ))}
               </SelectContent />
-          </Div>
+          </div>
 
-          <Div>
-            <Label className="block text-sm mb-2"></Div>Risk Level</Div>
+          <div>
+            <Label className="block text-sm mb-2"></div>Risk Level</div>
             <Select >
-              <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Select Risk Level" />
-              <selectcontent >
+              <SelectTrigger  style={{ color: "white" }}>
+                <SelectValue placeholder="Select Risk Level"/>
+              <SelectContent >
                 {riskLevels.map((level) => (
-                  <selectitem >{level}</Select>
+                  <SelectItem >{level}</Select>
                 ))}
               </SelectContent />
-          </Div>
+          </div>
 
           <Button  style={{ width: "100%" }}>
             Generate AI Strategy
-          </Button>
+          </button>
         </div />
     </Card>
   )

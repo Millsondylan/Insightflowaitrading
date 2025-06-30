@@ -155,166 +155,166 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
   // Display loading state
   if (loading) {
     return (
-      <Div className="theme-markets space-y-6">
+      <div className="theme-markets space-y-6">
         {onBack && (
           <Button variant="ghost" 
             size="sm" 
             onClick={onBack}
             className="flex items-center gap-2 text-gray-400 hover:text-white">
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4"/>
             Back to Markets
-          </Div>
+          </div>
         )}
-        <Div className="flex flex-col items-center justify-center min-h-[40vh]">
-          <Loader2 className="h-8 w-8 text-cyan-500 animate-spin mb-4" />
-          <P className="text-gray-400">Loading market data for {symbol}...</Div>
-        </Div>
-      </Div>
+        <div className="flex flex-col items-center justify-center min-h-[40vh]">
+          <Loader2 className="h-8 w-8 text-cyan-500 animate-spin mb-4"/>
+          <p className="text-gray-400">Loading market data for {symbol}...</div>
+        </div>
+      </div>
     );
   }
 
   // Display error state
   if (error) {
     return (
-      <Div className="theme-markets space-y-6">
+      <div className="theme-markets space-y-6">
         {onBack && (
           <Button variant="ghost" 
             size="sm" 
             onClick={onBack}
             className="flex items-center gap-2 text-gray-400 hover:text-white">
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-4 w-4"/>
             Back to Markets
-          </Div>
+          </div>
         )}
-        <Div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6 text-center">
-          <P className="text-red-400 mb-2">Error</Div>
-          <P className="text-white">{error}</P>
-        </Div>
-      </Div>
+        <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6 text-center">
+          <p className="text-red-400 mb-2">Error</div>
+          <p className="text-white">{error}</p>
+        </div>
+      </div>
     );
   }
 
   return (
-    <Div className="theme-markets space-y-6">
+    <div className="theme-markets space-y-6">
       {/* Back button */}
       {onBack && (
         <Button variant="ghost" 
           size="sm" 
           onClick={onBack}
           className="flex items-center gap-2 text-gray-400 hover:text-white">
-          <ChevronLeft className="h-4 w-4" />
+          <ChevronLeft className="h-4 w-4"/>
           Back to Markets
-        </Div>
+        </div>
       )}
       
       {/* Header with symbol, price, and change */}
-      <Div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-white/10 pb-6">
-        <Div className="space-y-1">
-          <Div className="flex items-center gap-3">
-            <H1 className="text-3xl font-bold text-white">{symbol}</Div>
+      <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-white/10 pb-6">
+        <div className="space-y-1">
+          <div className="flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white">{symbol}</div>
             <Badge variant="outline" className={getVolatilityBadgeClass(marketData.volatility)}>
               {marketData.volatility.charAt(0).toUpperCase() + marketData.volatility.slice(1)} Volatility
             </Badge>
-          </Div>
+          </div>
           
-          <Div className="flex items-center gap-2 text-2xl font-semibold">
-            <Span>${formatPrice(marketData.price)}</Div>
-            <Div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-2xl font-semibold">
+            <span>${formatPrice(marketData.price)}</div>
+            <div className="flex items-center gap-2">
               {marketData.change > 0 ? (
-                <ArrowUp className="h-4 w-4" />
+                <arrowUp className="h-4 w-4"/>
               ) : (
-                <ArrowDown className="h-4 w-4" />
+                <arrowDown className="h-4 w-4"/>
               )}
-              <Span className={getPriceChangeColorClass(marketData.change)}>
+              <span className={getPriceChangeColorClass(marketData.change)}>
                 {formatPercent(marketData.changePercent)}
-              </Div>
-            </Div>
-          </Div>
-        </Div>
+              </div>
+            </div>
+          </div>
+        </div>
         
         {/* Matching Strategies */}
         {marketData.matchingSetups > 0 && (
-          <Div className="bg-green-900/20 border border-green-400/30 rounded-lg px-4 py-3 flex items-center gap-3">
-            <TrendingUp className="h-5 w-5 text-green-400" />
-            <Div>
-              <Div className="font-semibold text-green-400">
+          <div className="bg-green-900/20 border border-green-400/30 rounded-lg px-4 py-3 flex items-center gap-3">
+            <TrendingUp className="h-5 w-5 text-green-400"/>
+            <div>
+              <div className="font-semibold text-green-400">
                 {marketData.matchingSetups} {marketData.matchingSetups === 1 ? 'setup matches' : 'setups match'} {symbol} conditions
-              </Div>
-              <Div className="text-sm text-gray-400">
+              </div>
+              <div className="text-sm text-gray-400">
                 View setups →
-              </Div>
-            </Div>
-          </Div>
+              </div>
+            </div>
+          </div>
         )}
-      </Div>
+      </div>
       
       {/* OHLC Summary */}
-      <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10">
-          <Div className="text-xs text-gray-400 mb-1">Open</Div>
-          <Div className="text-lg font-medium">${formatPrice(marketData.ohlc.open)}</Div>
-        </Div>
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10">
-          <Div className="text-xs text-gray-400 mb-1">High</Div>
-          <Div className="text-lg font-medium text-green-400">${formatPrice(marketData.ohlc.high)}</Div>
-        </Div>
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10">
-          <Div className="text-xs text-gray-400 mb-1">Low</Div>
-          <Div className="text-lg font-medium text-red-400">${formatPrice(marketData.ohlc.low)}</Div>
-        </Div>
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10">
-          <Div className="text-xs text-gray-400 mb-1">Volume (24h)</Div>
-          <Div className="text-lg font-medium">{formatLargeNumber(marketData.ohlc.volume)}</Div>
-        </Div>
-      </Div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">Open</div>
+          <div className="text-lg font-medium">${formatPrice(marketData.ohlc.open)}</div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">High</div>
+          <div className="text-lg font-medium text-green-400">${formatPrice(marketData.ohlc.high)}</div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">Low</div>
+          <div className="text-lg font-medium text-red-400">${formatPrice(marketData.ohlc.low)}</div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10">
+          <div className="text-xs text-gray-400 mb-1">Volume (24h)</div>
+          <div className="text-lg font-medium">{formatLargeNumber(marketData.ohlc.volume)}</div>
+        </div>
+      </div>
       
       {/* Chart Placeholder */}
-      <Div className="bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden">
-        <Div className="absolute inset-0 market-glow opacity-10" />
-        <Div className="text-center">
-          <Activity className="h-10 w-10 mx-auto mb-4 text-cyan-500/50" />
-          <H3 className="text-xl font-medium text-white mb-2">Chart will appear here</Div>
-          <P className="text-gray-400 max-w-md mx-auto">
+      <div className="bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 market-glow opacity-10"/>
+        <div className="text-center">
+          <Activity className="h-10 w-10 mx-auto mb-4 text-cyan-500/50"/>
+          <h3 className="text-xl font-medium text-white mb-2">Chart will appear here</div>
+          <p className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
-          </P>
-        </Div>
-      </Div>
+          </p>
+        </div>
+      </div>
       
       {/* Market Stats */}
-      <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Activity className="h-5 w-5 text-gray-400" />
-          <Div>
-            <Div className="text-sm text-gray-400">24h Range</Div>
-            <Div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</Div>
-          </Div>
-        </Div>
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <TrendingUp className="h-5 w-5 text-gray-400" />
-          <Div>
-            <Div className="text-sm text-gray-400">Price Change</Div>
-            <Div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <Activity className="h-5 w-5 text-gray-400"/>
+          <div>
+            <div className="text-sm text-gray-400">24h Range</div>
+            <div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</div>
+          </div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <TrendingUp className="h-5 w-5 text-gray-400"/>
+          <div>
+            <div className="text-sm text-gray-400">Price Change</div>
+            <div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {formatPercent(marketData.changePercent)} (${formatPrice(Math.abs(marketData.change))})
-            </Div>
-          </Div>
-        </Div>
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Activity className="h-5 w-5 text-gray-400" />
-          <Div>
-            <Div className="text-sm text-gray-400">Volume</Div>
-            <Div className="font-medium">{formatLargeNumber(marketData.ohlc.volume)}</Div>
-          </Div>
-        </Div>
-        <Div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <Activity className="h-5 w-5 text-gray-400" /></Div></Div></Div></Div></Div></Div></Div>
-          <Div></Div>
-            <Div className="text-sm text-gray-400">
+            </div>
+          </div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <Activity className="h-5 w-5 text-gray-400"/>
+          <div>
+            <div className="text-sm text-gray-400">Volume</div>
+            <div className="font-medium">{formatLargeNumber(marketData.ohlc.volume)}</div>
+          </div>
+        </div>
+        <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
+          <Activity className="h-5 w-5 text-gray-400"/></div></div>
+          <div></div>
+            <div className="text-sm text-gray-400">
               {marketData.matchingSetups} matching setups
-            </Div>
-          </Div>
-        </Div>
-      </Div>
-    </Div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

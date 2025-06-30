@@ -23,34 +23,34 @@ const Navbar = () => {
   };
 
   return (
-    <Nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
-      <Div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to="/" style={{ fontWeight: "700" }}>
           Insight Flow
-        </Nav>
+        </nav>
 
         {/* Desktop Navigation */}
-        <Div className="hidden md:flex space-x-6">
+        <div className="hidden md:flex space-x-6">
           {ROUTES.map((route) => (
             <Link>
               {route.label}
-            </Div>
+            </div>
           ))}
-        </Div>
+        </div>
 
         {/* Mobile Menu Toggle */}
         <Button className="md:hidden text-white focus:outline-none" onClick={toggleMobileMenu}>
-          {isMobileMenuOpen ? <x > : <menu  />}
-        </Button>
-      </Div>
+          {isMobileMenuOpen ? <X > : <Menu />}
+        </button>
+      </div>
 
       {/* Mobile Menu */}
-      <Div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {ROUTES.map((route) => (
-          <Link ></Div> setIsMobileMenuOpen(false)}
+          <Link ></div> setIsMobileMenuOpen(false)}
           >
             {route.label}
-          </Div>
+          </div>
         ))}
       </div />
   );

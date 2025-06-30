@@ -39,6 +39,14 @@
       "@/lib/*": ["src/lib/*"]
     }
   },
-  "include": ["src", "expo-app"],
+  "include": ["src"],
+  "exclude": [
+    "**/*.lovable.tsx",
+    "**/*.lovable.ts",
+    "node_modules",
+    "dist",
+    "src/lovable-demo/**/*",
+    "src/modules/**/*.lovable.*"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

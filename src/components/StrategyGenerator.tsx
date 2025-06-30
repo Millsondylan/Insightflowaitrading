@@ -139,10 +139,10 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
   };
 
   return (
-    <Div className="space-y-6">
-      <Div className="rounded-xl p-6 border border-white/10 backdrop-blur-md bg-black/30 space-y-6 shadow-md">
+    <div className="space-y-6">
+      <div className="rounded-xl p-6 border border-white/10 backdrop-blur-md bg-black/30 space-y-6 shadow-md">
         {/* Input Section */}
-        <Form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -153,143 +153,143 @@ const StrategyGenerator = ({ onComplete }: StrategyGeneratorProps) => {
           <Button type="submit"
             disabled={!input.trim() || loading}
             className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-40 px-4 py-2 rounded-full text-white transition-all duration-200 flex items-center gap-2">
-            <Span>🧠</StrategyOutput>
-            <Span>{loading ? "Generating..." : "Generate Strategy"}</Span>
+            <span>🧠</span>
+            <span>{loading ? "Generating..." : "Generate Strategy"}</span>
           </Button>
 
-        {/* Loading State */}
-        {loading && (
-          <Div className="space-y-4">
-            <Div className="bg-white/10 h-8 rounded animate-pulse" />
-            <Div className="space-y-2">
-              <Div className="bg-white/10 h-4 rounded animate-pulse" />
-              <Div className="bg-white/10 h-4 rounded animate-pulse w-5/6" />
-              <Div className="bg-white/10 h-4 rounded animate-pulse w-4/6" />
-            </Div>
-            <Div className="space-y-2">
-              <Div className="bg-white/10 h-4 rounded animate-pulse w-4/6" />
-              <Div className="bg-white/10 h-4 rounded animate-pulse w-3/6" />
-            </Div>
-          </Div>
-        )}
+          {/* Loading State */}
+          {loading && (
+            <div className="space-y-4">
+              <div className="bg-white/10 h-8 rounded animate-pulse"/>
+              <div className="space-y-2">
+                <div className="bg-white/10 h-4 rounded animate-pulse"/>
+                <div className="bg-white/10 h-4 rounded animate-pulse w-5/6"/>
+                <div className="bg-white/10 h-4 rounded animate-pulse w-4/6"/>
+              </div>
+              <div className="space-y-2">
+                <div className="bg-white/10 h-4 rounded animate-pulse w-4/6"/>
+                <div className="bg-white/10 h-4 rounded animate-pulse w-3/6"/>
+              </div>
+            </div>
+          )}
 
-        {/* Result Display */}
-        {result && !loading && (
-          <Div className="space-y-6 animate-in fade-in duration-500">
-            {/* Title */}
-            <H2 className="text-cyan-300 text-xl font-bold">
-              {result.title}
-            </Div>
+          {/* Result Display */}
+          {result && !loading && (
+            <div className="space-y-6 animate-in fade-in duration-500">
+              {/* Title */}
+              <h2 className="text-cyan-300 text-xl font-bold">
+                {result.title}
+              </h2>
 
-            {/* Toggle Parsed View */}
-            {parsedRules.length > 0 && (
-              <Button  onClick={() => setShowParsed(!showParsed)}
-                className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
-              >
-                {showParsed ? '📝 Show Original' : '🔍 Show Parsed Analysis'}
-              </Button>
-            )}
-
-            {/* Rules Display */}
-            <Div className="space-y-2">
-              <H3 className="text-white/80 font-semibold flex items-center gap-2">
-                <Span>📌</Div> Strategy Rules
-              </H3>
-              
-              {showParsed ? (
-                // Parsed Rules View
-                <Div className="space-y-3">
-                  {parsedRules.map((rule, index) => (
-                    <Div key={index} className="bg-black/20 p-3 rounded-lg space-y-2">
-                      <Div className="flex items-start gap-2">
-                        <Span>{getRuleTypeIcon(rule.type)}</Div>
-                        <Div className="flex-1">
-                          <P className="text-white/90 text-sm">{rule.raw}</Div>
-                          <Div className="mt-2 flex flex-wrap gap-2 text-xs">
-                            <Span className={`${getRuleTypeColor(rule.type)} font-semibold`}>
-                              {rule.type.toUpperCase()}
-                            </Div>
-                            {rule.timeframe && (
-                              <Span className="text-yellow-400">
-                                ⏱ {rule.timeframe}
-                              </Span>
-                            )}
-                            {rule.indicators.length > 0 && (
-                              <Span className="text-purple-400">
-                                📊 {rule.indicators.join(', ')}
-                              </Span>
-                            )}
-                          </Div>
-                        </Div>
-                      </Div>
-                    </Div>
-                  ))}
-                </Div>
-              ) : (
-                // Original Rules View
-                <Ol className="list-decimal space-y-2 pl-5 text-white/90">
-                  {result.rules.map((rule, index) => (
-                    <Li key={index} className="leading-relaxed">
-                      {rule}
-                    </Ol>
-                  ))}
-                </Ol>
+              {/* Toggle Parsed View */}
+              {parsedRules.length > 0 && (
+                <Button  onClick={() => setShowParsed(!showParsed)}
+                  className="text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
+                >
+                  {showParsed ? '📝 Show Original' : '🔍 Show Parsed Analysis'}
+                </Button>
               )}
-            </Div>
 
-            {/* Checklist */}
-            <Div className="space-y-2">
-              <H3 className="text-white/80 font-semibold flex items-center gap-2">
-                <Span>✅</Div> Entry Checklist
-              </H3>
-              <Ul className="list-disc pl-6 text-green-400 space-y-1">
-                {result.checklist.map((item, index) => (
-                  <Li key={index}>
-                    {item}
-                  </Ul>
-                ))}
-              </Ul>
-            </Div>
+              {/* Rules Display */}
+              <div className="space-y-2">
+                <h3 className="text-white/80 font-semibold flex items-center gap-2">
+                  <span>📌</span> Strategy Rules
+                </h3>
 
-            {/* Warning */}
-            {result.warning && (
-              <Div className="bg-yellow-800/40 border border-yellow-400/20 p-4 rounded text-yellow-200 mt-4">
-                {result.warning}
-              </Div>
-            )}
-          </Div>
-        )}
-        </Form>
-      </Div>
+                {showParsed ? (
+                  // Parsed Rules View
+                  <div className="space-y-3">
+                    {parsedRules.map((rule, index) => (
+                      <div key={index} className="bg-black/20 p-3 rounded-lg space-y-2">
+                        <div className="flex items-start gap-2">
+                          <span>{getRuleTypeIcon(rule.type)}</span>
+                          <div className="flex-1">
+                            <p className="text-white/90 text-sm">{rule.raw}</p>
+                            <div className="mt-2 flex flex-wrap gap-2 text-xs">
+                              <span className={`${getRuleTypeColor(rule.type)} font-semibold`}>
+                                {rule.type.toUpperCase()}
+                              </span>
+                              {rule.timeframe && (
+                                <span className="text-yellow-400">
+                                  ⏱ {rule.timeframe}
+                                </span>
+                              )}
+                              {rule.indicators.length > 0 && (
+                                <span className="text-purple-400">
+                                  📊 {rule.indicators.join(', ')}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // Original Rules View
+                  <ol className="list-decimal space-y-2 pl-5 text-white/90">
+                    {result.rules.map((rule, index) => (
+                      <li key={index} className="leading-relaxed">
+                        {rule}
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </div>
+
+              {/* Checklist */}
+              <div className="space-y-2">
+                <h3 className="text-white/80 font-semibold flex items-center gap-2">
+                  <span>✅</span> Entry Checklist
+                </h3>
+                <ul className="list-disc pl-6 text-green-400 space-y-1">
+                  {result.checklist.map((item, index) => (
+                    <li key={index}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Warning */}
+              {result.warning && (
+                <div className="bg-yellow-800/40 border border-yellow-400/20 p-4 rounded text-yellow-200 mt-4">
+                  {result.warning}
+                </div>
+              )}
+            </div>
+          )}
+        </form>
+      </div>
 
       {/* Strategy Copilot - Shows after strategy is generated */}
       {result && !loading && (
-        <Div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <StrategyCopilot 
-            strategy={result} 
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <StrategyCopilot
+            strategy={result}
             onSuggestionApply={handleSuggestionApply}
-          />
-        </Div>
+         />
+        </div>
       )}
 
       {/* Strategy Export - Shows after strategy is generated */}
       {result && !loading && (
-        <Div className="animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700" style={{ animationDelay: '200ms' }}>
           <StrategyExport result={{
             winRate: 0,
             totalPnL: 0,
             totalTrades: 0,
             trades: [],
-          }} /></Div>
-        </Div>
+          }}/>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 
 export default StrategyGenerator;
 
-export const lovable = { 
+export const lovable = {
   component: true,
   supportsTailwind: true,
   editableComponents: true,

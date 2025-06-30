@@ -27,60 +27,60 @@ export const lovable = {
 };
 
   return (
-    <Div className="space-y-6">
-      <Card className="theme-card p-6" />
-        <H2 className="text-2xl font-bold mb-4">Portfolio Overview</Div>
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Total Value</Div>
-            <P className="text-2xl font-bold flex items-center gap-2">
-              <DollarSign className="h-5 w-5" />
+    <div className="space-y-6">
+      <Card className="theme-card p-6"/>
+        <h2 className="text-2xl font-bold mb-4">Portfolio Overview</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Total Value</div>
+            <p className="text-2xl font-bold flex items-center gap-2">
+              <DollarSign className="h-5 w-5"/>
               {stats.totalValue.toLocaleString()}
-            </P>
-          </Div>
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Day Change</Div>
-            <P className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
-              {stats.dayChange > 0 ? <trendingUp className="h-5 w-5" /> : <trendingDown className="h-5 w-5" />}
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Day Change</div>
+            <p className={`text-2xl font-bold flex items-center gap-2 ${stats.dayChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
+              {stats.dayChange > 0 ? <trendingUp className="h-5 w-5"/> : <trendingDown className="h-5 w-5"/>}
               {stats.dayChange > 0 ? '+' : ''}{stats.dayChange}%
-            </P>
-          </Div>
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Win Rate</Div>
-            <Div className="space-y-1">
-              <P className="text-2xl font-bold">{stats.winRate}%</Div>
-              <progress value={stats.winRate} className="h-2" />
-            </Div>
-          </Div>
-          <Div className="space-y-2">
-            <P className="text-sm text-muted-foreground">Sharpe Ratio</Div>
-            <P className="text-2xl font-bold flex items-center gap-2">
-              <activity className="h-5 w-5" />
+            </p>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Win Rate</div>
+            <div className="space-y-1">
+              <p className="text-2xl font-bold">{stats.winRate}%</div>
+              <progress value={stats.winRate} className="h-2"/>
+            </div>
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">Sharpe Ratio</div>
+            <p className="text-2xl font-bold flex items-center gap-2">
+              <Activity className="h-5 w-5"/>
               {stats.sharpeRatio}
-            </P>
-          </Div>
-        </div />
+            </p>
+          </div>
+        </div>
 
-      <Card className="theme-card p-6" />
-        <H3 className="text-lg font-semibold mb-4" /></Card /></Card />Performance Metrics</Card>
-        <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Div>
-            <P className="text-sm text-muted-foreground">Week Performance</Div>
-            <P className={`font-bold ${stats.weekChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
+      <Card className="theme-card p-6"/>
+        <h3 className="text-lg font-semibold mb-4"/></Card></Card>Performance Metrics</Card>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p className="text-sm text-muted-foreground">Week Performance</div>
+            <p className={`font-bold ${stats.weekChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
               {stats.weekChange > 0 ? '+' : ''}{stats.weekChange}%
-            </P>
-          </Div>
-          <Div>
-            <P className="text-sm text-muted-foreground">Month Performance</Div>
-            <P className={`font-bold ${stats.monthChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
+            </p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Month Performance</div>
+            <p className={`font-bold ${stats.monthChange> 0 ? 'text-green-500' : 'text-red-500'}`}>
               {stats.monthChange > 0 ? '+' : ''}{stats.monthChange}%
-            </P>
-          </Div>
-          <Div>
-            <P className="text-sm text-muted-foreground">Profit Factor</Div>
-            <P className="font-bold">{stats.profitFactor}</P>
-          </Div>
-        </div />
-    </Div>
+            </p>
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Profit Factor</div>
+            <p className="font-bold">{stats.profitFactor}</p>
+          </div>
+        </div>
+    </div>
   );
 }; 

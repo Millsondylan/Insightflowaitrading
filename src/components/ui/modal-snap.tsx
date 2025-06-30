@@ -196,18 +196,17 @@ export const ModalSnap = React.forwardRef<HTMLDivElement, ModalSnapProps>(
       <>
         {/* Backdrop */}
         {backdrop && (
-          <Div 
+          <div 
             className={cn(
               "fixed inset-0 bg-background/80 z-40 transition-opacity",
               backdropBlur && "backdrop-blur-sm",
               !isOpen && "opacity-0 pointer-events-none"
             )}
-            onClick={allowClose ? onClose : undefined}
-          />
+            onClick={allowClose ? onClose : undefined}/>
         )}
         
         {/* Modal */}
-        <Div ref={ref}
+        <div ref={ref}
           className={cn(
             modalSnapVariants({ position, size, fullWidth }),
             "transform",
@@ -218,32 +217,30 @@ export const ModalSnap = React.forwardRef<HTMLDivElement, ModalSnapProps>(
           {...props}>
           {/* Drag handle */}
           {showHandle && (
-            <Div ref={dragHandleRef}
+            <div ref={dragHandleRef}
               className="flex items-center justify-center h-6 w-full cursor-grab active:cursor-grabbing"
               onMouseDown={handleDragStart}
-              onTouchStart={handleDragStart}
- >
-              <Div className="w-12 h-1.5 bg-muted-foreground/30 rounded-full" / />
+              onTouchStart={handleDragStart}>
+              <div className="w-12 h-1.5 bg-muted-foreground/30 rounded-full" //>
           )}
           
           {/* Close button */}
           {allowClose && (
             <Button onClick={onClose}
               className="absolute top-2 right-2 p-1 rounded-sm opacity-70 hover:opacity-100 focus:outline-none focus:ring-1"
-              aria-label="Close"
- >
-              <X className="w-4 h-4" />
+              aria-label="Close">
+              <X className="w-4 h-4"/>
             </HTMLDivElement>
           )}
           
           {/* Content */}
-          <Div ref={contentRef}
+          <div ref={contentRef}
             className="overflow-y-auto overscroll-contain h-full">
-            <Div className="p-4">
+            <div className="p-4">
               {children}
-            </Div>
-          </Div>
-        </Div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

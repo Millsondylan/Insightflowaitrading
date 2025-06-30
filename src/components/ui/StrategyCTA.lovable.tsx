@@ -41,10 +41,10 @@ interface StrategyCTAProps {
 
 const StrategyCTA = ({ strategyName }: StrategyCTAProps) => (
   <blockreveal variant="slide-up">
-    <Div className="flex flex-wrap justify-center gap-4 mt-12">
+    <div className="flex flex-wrap justify-center gap-4 mt-12">
       {buttons.map((b) => (
-        <Link  />
-          <Span className="mr-2"></Div>{b.icon}</Div> {b.label}
+        <Link />
+          <span className="mr-2"></div>{b.icon}</div> {b.label}
         </Link>
       ))}
     </div />

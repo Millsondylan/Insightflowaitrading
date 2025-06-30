@@ -81,48 +81,53 @@ export default function AdminPage() {
   };
 
   return (
-    <Div className="container mx-auto py-8 px-4">
-      <Div className="theme-admin">
-        <Header className="mb-8">
-          <H1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</Div>
-          <P className="text-white/70">
+    <div className="container mx-auto py-8 px-4">
+      <div className="theme-admin">
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</div>
+          <p className="text-white/70">
             Manage users, promo codes, and view system usage logs.
-          </p />
+          </p>
+        </header>
 
-        <Tabs defaultValue="users" />
-          <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1" />
-            <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
-              <ShieldCheck className="h-4 w-4" />
-              <Span>Users</Tabs />
-            <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
-              <Ticket className="h-4 w-4" />
-              <Span>Promo Codes</TabsTrigger />
-            <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600" />
-              <Activity className="h-4 w-4" />
-              <Span>Usage Logs</TabsTrigger />
-          </P>
+        <Tabs defaultValue="users">
+          <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1">
+            <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+              <ShieldCheck className="h-4 w-4"/>
+              <span>Users</Tabs>
+            </TabsTrigger>
+            <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+              <Ticket className="h-4 w-4"/>
+              <span>Promo Codes</TabsTrigger>
+            </TabsTrigger>
+            <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
+              <Activity className="h-4 w-4"/>
+              <span>Usage Logs</TabsTrigger>
+            </TabsTrigger>
+          </TabsList>
 
-          <TabsContent value="users" />
-            <UserRoleManager users={users} onRoleChange={handleRoleChange} / />
-
-          <TabsContent value="promo" />
-            <PromoCodeEditor 
-              codes={promoCodes} 
-              onGenerate={handleGeneratePromoCode} 
-              onRevoke={handleRevokePromoCode} 
-            / />
-
-          <TabsContent value="logs" />
-            <UsageLogViewer logs={logs} / /></TabsContent /></TabsContent /></TabsContent />
-        </TabsContent>
-      </Div>
-    </Div>
+          <TabsContent value="users">
+            <UserRoleManager users={users} onRoleChange={handleRoleChange}/>
+          </TabsContent>
+          <TabsContent value="promo">
+            <promoCodeEditor
+              codes={promoCodes}
+              onGenerate={handleGeneratePromoCode}
+              onRevoke={handleRevokePromoCode}
+ />
+          </TabsContent>
+          <TabsContent value="logs">
+            <UsageLogViewer logs={logs}/></div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
   );
 }
 
-export const lovable = { 
+export const lovable = {
   component: true,
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

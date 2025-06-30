@@ -29,7 +29,7 @@ rsi <(14, 60)`;
 const defaultExitLogic = 'close < sma(50)';
 
 const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<backtestFormState>({
+  const [formState, setFormState] = useState<BacktestFormState>({
     ticker: 'BTC',
     timeframe: '1H',
     entryLogic: defaultEntryLogic,
@@ -51,46 +51,52 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
   };
   
   return (
-    <Form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
-      <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Div>
-          <Label htmlFor="ticker">Ticker</HTMLTextAreaElement>
+    <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <Label htmlFor="ticker">Ticker</Label>
           <Select
             value={formState.ticker}
             onValueChange={(value) => handleSelectChange('ticker', value)}
           >
-            <selectTrigger className="bg-black/30 border-gray-700">
-              <selectValue / />
-            <selectContent className="bg-black/90 border-gray-700 text-white">
+            <SelectTrigger className="bg-black/30 border-gray-700">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="bg-black/90 border-gray-700 text-white">
               {Object.keys(sampleData).map(ticker => (
-                <selectItem key={ticker} value={ticker}>{ticker}</Select>
+                <SelectItem key={ticker} value={ticker}>{ticker}</SelectItem>
               ))}
-            </SelectContent />
-        </Div>
-        <Div>
-          <Label htmlFor="timeframe">Timeframe</Div>
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label htmlFor="timeframe">Timeframe</Label>
           <Select
             value={formState.timeframe}
             onValueChange={(value) => handleSelectChange('timeframe', value)}
           >
-            <selectTrigger className="bg-black/30 border-gray-700">
-              <selectValue / />
-            <selectContent className="bg-black/90 border-gray-700 text-white">
-              <selectItem value="1H">1 Hour</SelectItem />
+            <SelectTrigger className="bg-black/30 border-gray-700">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="bg-black/90 border-gray-700 text-white">
+              <SelectItem value="1H">1 Hour</SelectItem>
+              {/* Add more timeframes as needed */}
+            </SelectContent>
           </Select>
-        </Div>
-      </Div>
-      <Div>
-        <Label htmlFor="entryLogic">Entry Logic</Div>
+        </div>
+      </div>
+      <div>
+        <Label htmlFor="entryLogic">Entry Logic</Label>
         <Textarea id="entryLogic"
           name="entryLogic"
           value={formState.entryLogic}
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
           placeholder="e.g., close> sma(50)"
-        / />
-      <Div>
-        <Label htmlFor="exitLogic">Exit Logic</Textarea>
+        />
+      </div>
+      <div>
+        <Label htmlFor="exitLogic">Exit Logic</Label>
         <Textarea
           id="exitLogic"
           name="exitLogic"
@@ -98,15 +104,17 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[80px] font-mono"
           placeholder="e.g., close < sma(50)"
-        / />
-      <Div className="flex justify-center">
+       />
+      </div>
+      <div className="flex justify-center">
         <Button type="submit"
           className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
           disabled={isLoading}
-        />
-          {isLoading ? <Loader2 className="animate-spin" /></Textarea></Div> : 'Run Backtest'}
-        </Button>
-      </div />
+        >
+          {isLoading ? <Loader2 className="animate-spin"/> : 'Run Backtest'}
+        </button>
+      </div>
+    </form>
   );
 };
 

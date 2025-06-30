@@ -77,144 +77,144 @@ export default function StrategyVersions({ strategyId }: { strategyId: string })
   };
 
   if (loading) {
-    return <Div className="flex justify-center p-8">Loading versions...</StrategyVersion>;
+    return <div className="flex justify-center p-8">Loading versions...</StrategyVersion>;
   }
 
   return (
-    <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white" />
+    <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white"/>
       <CardHeader>
-        <CardTitle className="text-xl flex items-center gap-2" />
-          <GitBranch className="h-5 w-5 text-blue-400" />
+        <CardTitle className="text-xl flex items-center gap-2"/>
+          <GitBranch className="h-5 w-5 text-blue-400"/>
           Strategy Versions
         </Card>
-        <CardDescription className="text-white/70" />
+        <CardDescription className="text-white/70"/>
           View and manage different versions of this strategy
-        </CardDescription />
+        </CardDescription>
       
-      <Tabs value={activeTab} onValueChange={setActiveTab} />
-        <Div className="px-6">
-          <TabsList className="bg-gray-800/50" />
-            <TabsTrigger value="versions" className="data-[state=active]:bg-blue-600" />
+      <Tabs value={activeTab} onValueChange={setActiveTab}/>
+        <div className="px-6">
+          <TabsList className="bg-gray-800/50"/>
+            <TabsTrigger value="versions" className="data-[state=active]:bg-blue-600"/>
               Versions ({versions.length})
             </CardDescription>
-            <TabsTrigger value="changelog" className="data-[state=active]:bg-blue-600" />
+            <TabsTrigger value="changelog" className="data-[state=active]:bg-blue-600"/>
               Changelog
-            </TabsTrigger />
+            </TabsTrigger>
         </TabsTrigger>
         
-        <TabsContent value="versions" className="pt-2" />
-          <Div className="space-y-4 p-6">
+        <TabsContent value="versions" className="pt-2"/>
+          <div className="space-y-4 p-6">
             {versions.length === 0 ? (
-              <Div className="text-center py-8 text-white/60">
+              <div className="text-center py-8 text-white/60">
                 No versions available for this strategy yet.
               </TabsContent>
             ) : (
               versions.map((version) => (
-                <Div key={version.id} className="bg-gray-800/40 rounded-lg p-4">
-                  <Div className="flex justify-between items-start">
-                    <Div>
-                      <Div className="flex items-center gap-2">
-                        <Span className="font-semibold">Version {version.version}</Div>
+                <div key={version.id} className="bg-gray-800/40 rounded-lg p-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold">Version {version.version}</div>
                         {version.is_active && (
-                          <Badge className="bg-green-600 text-xs" />Active</Badge>
+                          <Badge className="bg-green-600 text-xs"/>Active</Badge>
                         )}
-                      </Div>
-                      <Div className="text-sm text-gray-400 flex items-center mt-1">
-                        <Clock className="h-3 w-3 mr-1" />
+                      </div>
+                      <div className="text-sm text-gray-400 flex items-center mt-1">
+                        <Clock className="h-3 w-3 mr-1"/>
                         {formatDistanceToNow(new Date(version.created_at), { addSuffix: true })}
-                      </Div>
-                    </Div>
+                      </div>
+                    </div>
                     
-                    <Div className="flex gap-2">
+                    <div className="flex gap-2">
                       <Button variant="outline" 
                         size="sm"
-                        onClick={() = /> handleViewCode(version.id)}
+                        onClick={() => handleViewCode(version.id)}
                       >
-                        <Code className="h-4 w-4 mr-1" />
+                        <Code className="h-4 w-4 mr-1"/>
                         View Code
-                      </Div>
+                      </div>
                       
                       {!version.is_active && user?.id === version.user_id && (
                         <Button variant="default" 
                           size="sm"
-                          onClick={() = /> handleActivateVersion(version.id)}
+                          onClick={() => handleActivateVersion(version.id)}
                           disabled={activating}
                         >
-                          <Check className="h-4 w-4 mr-1" />
+                          <Check className="h-4 w-4 mr-1"/>
                           Activate
-                        </Button>
+                        </button>
                       )}
-                    </Div>
-                  </Div>
+                    </div>
+                  </div>
                   
                   {version.description && (
-                    <Div className="mt-3 text-sm text-white/80">
+                    <div className="mt-3 text-sm text-white/80">
                       {version.description}
-                    </Div>
+                    </div>
                   )}
                   
                   {version.improvement_reason && (
-                    <Div className="mt-2 text-sm">
-                      <Span className="text-blue-400">Improvement: </Div>
-                      <Span className="text-white/80">{version.improvement_reason}</Span>
-                    </Div>
+                    <div className="mt-2 text-sm">
+                      <span className="text-blue-400">Improvement: </div>
+                      <span className="text-white/80">{version.improvement_reason}</span>
+                    </div>
                   )}
-                </Div>
+                </div>
               ))
             )}
-          </div />
+          </div>
         
-        <TabsContent value="changelog" className="pt-2" />
-          <Div className="p-6 space-y-6">
+        <TabsContent value="changelog" className="pt-2"/>
+          <div className="p-6 space-y-6">
             {versions.length === 0 ? (
-              <Div className="text-center py-8 text-white/60">
+              <div className="text-center py-8 text-white/60">
                 No changelog available yet.
               </TabsContent>
             ) : (
               versions.slice().reverse().map((version, index) => (
-                <Div key={version.id} className="relative">
+                <div key={version.id} className="relative">
                   {index !== versions.length - 1 && (
-                    <Div className="absolute top-6 bottom-0 left-3 w-0.5 bg-gray-700/50" />
+                    <div className="absolute top-6 bottom-0 left-3 w-0.5 bg-gray-700/50"/>
                   )}
                   
-                  <Div className="flex gap-4">
-                    <Div className="bg-blue-600 rounded-full h-6 w-6 flex items-center justify-center z-10">
-                      <GitMerge className="h-3 w-3" />
-                    </Div>
+                  <div className="flex gap-4">
+                    <div className="bg-blue-600 rounded-full h-6 w-6 flex items-center justify-center z-10">
+                      <GitMerge className="h-3 w-3"/>
+                    </div>
                     
-                    <Div className="flex-1">
-                      <Div className="flex items-center gap-2">
-                        <Span className="font-semibold">Version {version.version}</Div>
-                        <Span className="text-sm text-gray-400">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold">Version {version.version}</div>
+                        <span className="text-sm text-gray-400">
                           {new Date(version.created_at).toLocaleDateString()}
-                        </Span>
+                        </span>
                         {version.is_active && (
-                          <Badge className="bg-green-600 text-xs" />Active</Badge>
+                          <Badge className="bg-green-600 text-xs"/>Active</Badge>
                         )}
-                      </Div>
+                      </div>
                       
                       {version.changes_summary && (
-                        <Div className="mt-2 text-sm text-white/80">
+                        <div className="mt-2 text-sm text-white/80">
                           {version.changes_summary}
-                        </Div>
+                        </div>
                       )}
                       
-                      <Div className="mt-4 mb-8">
+                      <div className="mt-4 mb-8">
                         <Button variant="outline" 
                           size="sm"
-                          onClick={() = /> handleViewCode(version.id)}
+                          onClick={() => handleViewCode(version.id)}
                         >
-                          <Code className="h-4 w-4 mr-1" /></Div></Div>
+                          <Code className="h-4 w-4 mr-1"/></div></div>
                           View Code
-                        </Button>
-                      </Div>
-                    </Div>
-                  </Div>
-                </Div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               ))
             )}
-          </div />
-      </Tabs />
+          </div>
+      </Tabs>
   );
 }
 

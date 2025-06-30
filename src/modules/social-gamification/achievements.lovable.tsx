@@ -16,14 +16,14 @@ interface AchievementsProps {
   className?: string;
 }
 
-export const AchievementsComponent: React.FC<Achievementsprops> = ({
+export const AchievementsComponent: React.FC<achievementsprops> = ({
   userId,
   onAchievementUnlocked,
   className = '',
 }) => {
-  const [userProfile, setUserProfile] = useState<Userprofile  />(null);
-  const [achievements, setAchievements] = useState<Achievement >([]);
-  const [userAchievements, setUserAchievements] = useState<Userachievement  />([]);
+  const [userProfile, setUserProfile] = useState<Userprofile />(null);
+  const [achievements, setAchievements] = useState<achievement >([]);
+  const [userAchievements, setUserAchievements] = useState<Userachievement />([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
 
@@ -119,86 +119,85 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
 
   if (loading) {
     return (
-      <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <Div className="flex items-center justify-center h-64">
-          <Div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400" />
-          <Span className="ml-2 text-white/60">Loading achievements...</Achievementsprops>
-        </Div>
-      </Div>
+      <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+        <div className="flex items-center justify-center h-64">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"/>
+          <span className="ml-2 text-white/60">Loading achievements...</Userprofile>
+        </div>
+      </div>
     );
   }
 
   if (!userProfile) {
     return (
-      <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <P className="text-center text-white/60">Failed to load user profile</Div>
-      </Div>
+      <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+        <p className="text-center text-white/60">Failed to load user profile</div>
+      </div>
     );
   }
 
   return (
-    <Div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
+    <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
       {/* Header with user stats */}
-      <Div className="mb-6">
-        <Div className="flex items-center justify-between mb-4">
-          <Div className="flex items-center space-x-3">
-            <Img 
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <img 
               src={userProfile.avatar} 
               alt={userProfile.displayName}
-              className="w-12 h-12 rounded-full border-2 border-white/20"
-            /></Div>
-            <Div>
-              <H2 className="text-xl font-bold text-white"></Div>{userProfile.displayName}</Div>
-              <P className="text-sm text-white/60">Level {userProfile.level}</P>
-            </Div>
-          </Div>
-          <Div className="text-right">
-            <Div className="text-lg font-bold text-blue-400">{userProfile.experience} XP</Div>
-            <Div className="text-xs text-white/60">
+              className="w-12 h-12 rounded-full border-2 border-white/20"/></div>
+            <div>
+              <h2 className="text-xl font-bold text-white"></div>{userProfile.displayName}</div>
+              <p className="text-sm text-white/60">Level {userProfile.level}</p>
+            </div>
+          </div>
+          <div className="text-right">
+            <div className="text-lg font-bold text-blue-400">{userProfile.experience} XP</div>
+            <div className="text-xs text-white/60">
               {completionStats.completed}/{completionStats.total} achievements
-            </Div>
-          </Div>
-        </Div>
+            </div>
+          </div>
+        </div>
 
         {/* Progress bar */}
-        <Div className="w-full bg-white/10 rounded-full h-2 mb-2">
-          <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
-            style={{ width: `${completionStats.percentage}%` }}></Div>
-        </Div>
-        <Div className="text-xs text-white/60 text-center">
+        <div className="w-full bg-white/10 rounded-full h-2 mb-2">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+            style={{ width: `${completionStats.percentage}%` }}></div>
+        </div>
+        <div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
-        </Div>
-      </Div>
+        </div>
+      </div>
 
       {/* Streak indicators */}
-      <Div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <Div className="p-3 bg-white/5 rounded-lg text-center">
-          <Div className="text-lg font-bold text-orange-400">🔥</Div>
-          <Div className="text-sm text-white/80">{userProfile.streaks.currentTradingStreak}</Div>
-          <Div className="text-xs text-white/60">Trading Streak</Div>
-        </Div>
-        <Div className="p-3 bg-white/5 rounded-lg text-center">
-          <Div className="text-lg font-bold text-blue-400">📚</Div>
-          <Div className="text-sm text-white/80">{userProfile.streaks.currentLearningStreak}</Div>
-          <Div className="text-xs text-white/60">Learning Streak</Div>
-        </Div>
-        <Div className="p-3 bg-white/5 rounded-lg text-center">
-          <Div className="text-lg font-bold text-green-400">🎯</Div>
-          <Div className="text-sm text-white/80">{userProfile.stats.totalTrades}</Div>
-          <Div className="text-xs text-white/60">Total Trades</Div>
-        </Div>
-        <Div className="p-3 bg-white/5 rounded-lg text-center">
-          <Div className="text-lg font-bold text-purple-400">💎</Div>
-          <Div className="text-sm text-white/80">{userProfile.badges.length}</Div>
-          <Div className="text-xs text-white/60">Badges Earned</Div>
-        </Div>
-      </Div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 bg-white/5 rounded-lg text-center">
+          <div className="text-lg font-bold text-orange-400">🔥</div>
+          <div className="text-sm text-white/80">{userProfile.streaks.currentTradingStreak}</div>
+          <div className="text-xs text-white/60">Trading Streak</div>
+        </div>
+        <div className="p-3 bg-white/5 rounded-lg text-center">
+          <div className="text-lg font-bold text-blue-400">📚</div>
+          <div className="text-sm text-white/80">{userProfile.streaks.currentLearningStreak}</div>
+          <div className="text-xs text-white/60">Learning Streak</div>
+        </div>
+        <div className="p-3 bg-white/5 rounded-lg text-center">
+          <div className="text-lg font-bold text-green-400">🎯</div>
+          <div className="text-sm text-white/80">{userProfile.stats.totalTrades}</div>
+          <div className="text-xs text-white/60">Total Trades</div>
+        </div>
+        <div className="p-3 bg-white/5 rounded-lg text-center">
+          <div className="text-lg font-bold text-purple-400">💎</div>
+          <div className="text-sm text-white/80">{userProfile.badges.length}</div>
+          <div className="text-xs text-white/60">Badges Earned</div>
+        </div>
+      </div>
 
       {/* Category filters */}
-      <Div className="flex flex-wrap gap-2 mb-6">
+      <div className="flex flex-wrap gap-2 mb-6">
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
           <Button key={category}
-            onClick={() =></Div> setSelectedCategory(category)}
+            onClick={() =></div> setSelectedCategory(category)}
             className={`
               px-3 py-1 rounded-full text-xs font-medium transition-all duration-200
               ${selectedCategory === category 
@@ -208,97 +207,95 @@ export const AchievementsComponent: React.FC<Achievementsprops> = ({
             `}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
-          </Div>
+          </div>
         ))}
-      </Div>
+      </div>
 
       {/* Recent badges */}
       {userProfile.badges.length > 0 && (
-        <Div className="mb-6">
-          <H3 className="text-lg font-semibold text-white mb-3"></Div>Recent Badges</Div>
-          <Div className="flex flex-wrap gap-2">
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-white mb-3"></div>Recent Badges</div>
+          <div className="flex flex-wrap gap-2">
             {userProfile.badges.slice(0, 6).map((badge, index) => (
-              <Div key={badge.id}
+              <div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
-                title={badge.description}
-   >
-                <Span className="text-lg">{badge.icon}</Div>
-                <Span className="text-xs text-white/80">{badge.name}</Span>
-              </Div>
+                title={badge.description}>
+                <span className="text-lg">{badge.icon}</div>
+                <span className="text-xs text-white/80">{badge.name}</span>
+              </div>
             ))}
-          </Div>
-        </Div>
+          </div>
+        </div>
       )}
 
       {/* Achievements grid */}
-      <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredAchievements.map((achievement) => {
           const isUnlocked = isAchievementUnlocked(achievement.id);
           const progress = getProgressPercentage(achievement.id);
           
           return (
-            <Div key={achievement.id}
+            <div key={achievement.id}
               className={`
                 p-4 rounded-lg border transition-all duration-200 hover:scale-105
                 ${isUnlocked 
                   ? `bg-gradient-to-br ${getDifficultyColor(achievement.difficulty)} border-white/20` 
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
                 }
-              `}
- >
-              <Div className="flex items-start space-x-3">
-                <Div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
+              `}>
+              <div className="flex items-start space-x-3">
+                <div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
-                </Div>
-                <Div className="flex-1">
-                  <H4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></Div>
+                </div>
+                <div className="flex-1">
+                  <h4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></div>
                     {achievement.name}
-                  </Div>
-                  <P className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
+                  </div>
+                  <p className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
                     {achievement.description}
-                  </P>
+                  </p>
                   
                   {/* Progress bar for locked achievements */}
                   {!isUnlocked && progress > 0 && (
-                    <Div className="mb-2">
-                      <Div className="w-full bg-white/20 rounded-full h-1">
-                        <Div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
+                    <div className="mb-2">
+                      <div className="w-full bg-white/20 rounded-full h-1">
+                        <div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-             ></Div>
-                      </Div>
-                      <Div className="text-xs text-white/60 mt-1">{progress}% complete</Div>
-                    </Div>
+  ></div>
+                      </div>
+                      <div className="text-xs text-white/60 mt-1">{progress}% complete</div>
+                    </div>
                   )}
 
                   {/* Achievement rewards */}
-                  <Div className="flex items-center justify-between text-xs">
-                    <Span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       {achievement.difficulty.toUpperCase()}
-                    </Div>
-                    <Span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
+                    </div>
+                    <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       +{achievement.rewards.points} XP
-                    </Span>
-                  </Div>
-                </Div>
-              </Div>
-            </Div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           );
         })}
-      </Div>
+      </div>
 
       {/* Empty state */}
       {filteredAchievements.length === 0 && (
-        <Div className="text-center py-8">
-          <Div className="text-4xl mb-4">🎯</Div>
-          <P className="text-white/60">No achievements found for this category</P>
-        </Div>
+        <div className="text-center py-8">
+          <div className="text-4xl mb-4">🎯</div>
+          <p className="text-white/60">No achievements found for this category</p>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 
 // Mock data functions (TODO: replace with real API calls)
-const fetchUserProfile = async (userId: string): Promise<Userprofile  /></Userprofile> => {
+const fetchUserProfile = async (userId: string): Promise<Userprofile /></Userprofile> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 500));
   

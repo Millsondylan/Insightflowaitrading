@@ -34,7 +34,7 @@ function useCarousel() {
   const context = React.useContext(CarouselContext)
 
   if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel  />")
+    throw new Error("useCarousel must be used within a <Carousel />")
   }
 
   return context
@@ -120,7 +120,7 @@ const Carousel = React.forwardRef<
 
     return (
       <Carouselcontext >
-        <Div ref={ref}
+        <div ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
@@ -141,15 +141,15 @@ const CarouselContent = React.forwardRef<
   const { carouselRef, orientation } = useCarousel()
 
   return (
-    <Div ref={carouselRef} className="overflow-hidden">
-      <Div         ref={ref}
+    <div ref={carouselRef} className="overflow-hidden">
+      <div         ref={ref}
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
         {...props}
-      / />
+      //>
   )
 })
 CarouselContent.displayName = "CarouselContent"
@@ -161,7 +161,7 @@ const CarouselItem = React.forwardRef<
   const { orientation } = useCarousel()
 
   return (
-    <Div       ref={ref}
+    <div       ref={ref}
       role="group"
       aria-roledescription="slide"
       className={cn(
@@ -169,8 +169,7 @@ const CarouselItem = React.forwardRef<
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
-      {...props}
-    />
+      {...props}/>
   )
 })
 CarouselItem.displayName = "CarouselItem"
@@ -183,9 +182,9 @@ const CarouselPrevious = React.forwardRef<
 
   return (
     <Button />
-      <Arrowleft / /></HTMLDivElement /></HTMLDivElement /></HTMLDivElement>
-      <Span className="sr-only">Previous slide</Span>
-    </Button>
+      <ArrowLeft //></HTMLDivElement /></HTMLDivElement /></HTMLDivElement>
+      <span className="sr-only">Previous slide</span>
+    </button>
   )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
@@ -197,10 +196,10 @@ const CarouselNext = React.forwardRef<
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button >
-      <arrowright >
-      <Span className="sr-only"></Button></Button></Button></Button></Button></Button></Button></Button></Button>Next slide</Button>
-    </Button>
+    <Button ></button></div>
+      <ArrowRight ></ArrowRight>
+      <span className="sr-only"></span>Next slide</button>
+    </button>
   )
 })
 CarouselNext.displayName = "CarouselNext"

@@ -6,44 +6,44 @@ import { Textarea } from '@/components/ui/textarea';
 
 export default function CoachPage() {
   return (
-    <Div>
+    <div>
       <Link to="/journal" style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft>
+        <ArrowLeft>
         Back to Journal
-      </Div>
+      </div>
       
-      <Div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-        <Header className="flex justify-between items-start mb-8">
-            <Div>
-                <H1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <Span className="bg-white/10 p-2 rounded-lg"><bot  /></Div>
+      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
+        <header className="flex justify-between items-start mb-8">
+            <div>
+                <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                    <span className="bg-white/10 p-2 rounded-lg"><bot /></div>
                     AI Coach
-                </H1>
-                <P className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</P>
+                </h1>
+                <p className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</p>
             </div />
 
-        <Div className="space-y-6">
-            <Div className="bg-black/20 rounded-lg p-6 min-h-[200px] flex flex-col gap-4">
+        <div className="space-y-6">
+            <div className="bg-black/20 rounded-lg p-6 min-h-[200px] flex flex-col gap-4">
                 {/* Mock chat messages */}
-                <Div className="flex justify-end">
-                    <Div className="bg-blue-600 text-white p-3 rounded-lg max-w-lg">
+                <div className="flex justify-end">
+                    <div className="bg-blue-600 text-white p-3 rounded-lg max-w-lg">
                         I took a loss on NVDA and I'm feeling anxious about my strategy.
-                    </Div>
-                </Div>
-                <Div className="flex justify-start">
-                    <Div className="bg-gray-700 text-white p-3 rounded-lg max-w-lg">
+                    </div>
+                </div>
+                <div className="flex justify-start">
+                    <div className="bg-gray-700 text-white p-3 rounded-lg max-w-lg">
                         <sparkles  style={{ display: "inline-block" }}>
                         It's understandable to feel that way. Let's break down the trade. What were the entry conditions?
-                    </Div>
-                </Div>
-            </Div>
-            <Div className="flex gap-4">
+                    </div>
+                </div>
+            </div>
+            <div className="flex gap-4">
                 <Textarea placeholder="Ask your coach anything...">
-                <Button /></Div></Div></Div></Div></Div>Send</Div>
-            </Div>
-        </Div>
-      </Div>
-    </Div>
+                <Button /></div></div>Send</div>
+            </div>
+        </div>
+      </div>
+    </div>
   );
 } 
 

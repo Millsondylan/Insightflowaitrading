@@ -14,7 +14,7 @@ interface PublicStrategyPublisherProps {
   onPublish?: (data: unknown) => void;
 }
 
-export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = ({ 
+export const PublicStrategyPublisher: React.FC<publicstrategypublisherprops> = ({ 
   strategyId, 
   isPro, 
   onPublish 
@@ -48,88 +48,88 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
   };
 
   return (
-    <Card  />
-      <H2 className="text-2xl font-bold mb-6">Publish Strategy</Publicstrategypublisherprops>
+    <Card />
+      <h2 className="text-2xl font-bold mb-6">Publish Strategy</Card>
 
-      <Div className="space-y-6">
-        <Div>
-          <Label className="text-sm font-medium mb-2 block">Strategy Title</Div>
-          <Input placeholder="e.g., RSI Momentum Strategy" /> setPublishSettings({ ...publishSettings, title: e.target.value })}
+      <div className="space-y-6">
+        <div>
+          <Label className="text-sm font-medium mb-2 block">Strategy Title</div>
+          <Input placeholder="e.g., RSI Momentum Strategy"/> setPublishSettings({ ...publishSettings, title: e.target.value })}
           / />
 
-        <Div>
+        <div>
           <Label className="text-sm font-medium mb-2 block">Description</Input>
-          <Textarea placeholder="Describe your strategy, its performance, and best use cases..." /> setPublishSettings({ ...publishSettings, description: e.target.value })}
+          <Textarea placeholder="Describe your strategy, its performance, and best use cases..."/> setPublishSettings({ ...publishSettings, description: e.target.value })}
             rows={4}
           / />
 
-        <Div>
+        <div>
           <Label className="text-sm font-medium mb-2 block">Tags</Textarea>
-          <Input placeholder="momentum, RSI, scalping (comma separated)"  /> setPublishSettings({ ...publishSettings, tags: e.target.value })}
+          <Input placeholder="momentum, RSI, scalping (comma separated)"/> setPublishSettings({ ...publishSettings, tags: e.target.value })}
           / />
 
-        <Div className="space-y-4">
-          <H3 className="font-semibold">Visibility Settings</Input>
+        <div className="space-y-4">
+          <h3 className="font-semibold">Visibility Settings</Input>
           
-          <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'private' })}
             >
-              <lock >
+              <Lock >
               Private
-            </Div>
+            </div>
             <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'unlisted' })}
             >
-              <eye >
+              <Eye >
               Unlisted
-            </Button>
+            </button>
             <Button  style={{ display: "flex", alignItems: "center" }}> setPublishSettings({ ...publishSettings, visibility: 'public' })}
               disabled={!isPro}
             >
-              <globe >
+              <Globe >
               Public
               {!isPro && <crown >}
-            </Button>
-          </Div>
+            </button>
+          </div>
 
           {!isPro && publishSettings.visibility === 'public' && (
-            <Div className="p-3 bg-yellow-500/10 rounded-lg flex items-center gap-2">
+            <div className="p-3 bg-yellow-500/10 rounded-lg flex items-center gap-2">
               <crown >
-              <P className="text-sm text-yellow-600">
+              <p className="text-sm text-yellow-600">
                 Pro subscription required for public publishing
-              </Div>
-            </Div>
+              </div>
+            </div>
           )}
-        </Div>
+        </div>
 
-        <Div className="space-y-3">
-          <Div className="flex items-center justify-between">
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
             <Label htmlFor="pro-gate" className="text-sm font-medium">
               Require Pro for Access
-            </Div>
-            <switch id="pro-gate"> 
+            </div>
+            <Switch id="pro-gate"> 
                 setPublishSettings({ ...publishSettings, requiresPro: checked })
               }
               disabled={!isPro}
             />
-          </Div>
+          </Switch>
 
-          <Div className="flex items-center justify-between">
+          <div className="flex items-center justify-between">
             <Label htmlFor="download" className="text-sm font-medium">
               Allow Downloads
-            </Div>
-            <switch id="download"> 
+            </div>
+            <Switch id="download"> 
                 setPublishSettings({ ...publishSettings, allowDownload: checked })
               }
             />
-          </Div>
-        </Div>
+          </Switch>
+        </div>
 
         {publishSettings.visibility === 'public' && isPro && (
-          <Div>
+          <div>
             <Label className="text-sm font-medium mb-2 block">
               Price (optional, 0 for free)
-            </Div>
-            <Input type="number" placeholder="0"  /> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
+            </div>
+            <Input type="number" placeholder="0"/> setPublishSettings({ ...publishSettings, price: Number(e.target.value) })}
             / />
         )}
 
@@ -138,33 +138,33 @@ export const PublicStrategyPublisher: React.FC<Publicstrategypublisherprops> = (
         </Input>
 
         {publishedUrl && (
-          <Div className="p-4 bg-green-500/10 rounded-lg">
-            <P className="text-sm font-medium text-green-600 mb-2">
+          <div className="p-4 bg-green-500/10 rounded-lg">
+            <p className="text-sm font-medium text-green-600 mb-2">
               Strategy published successfully!
-            </Div>
-            <Div className="flex items-center gap-2">
-              <Input style={{ fontSize: "0.75rem" }} /></Div>
-              <Button size="sm" variant="outline"></Button>
+            </div>
+            <div className="flex items-center gap-2">
+              <Input style={{ fontSize: "0.75rem" }}/></div>
+              <Button size="sm" variant="outline"></button>
                 Copy Link
-              </Div>
-            </Div>
-          </Div>
+              </div>
+            </div>
+          </div>
         )}
 
-        <Div className="grid grid-cols-3 gap-4 text-center">
-          <Div className="p-3 bg-secondary/20 rounded-lg">
-            <P className="text-2xl font-bold">0</Div>
-            <P className="text-xs text-muted-foreground">Views</P>
-          </Div>
-          <Div className="p-3 bg-secondary/20 rounded-lg">
-            <P className="text-2xl font-bold">0</Div>
-            <P className="text-xs text-muted-foreground">Downloads</P>
-          </Div>
-          <Div className="p-3 bg-secondary/20 rounded-lg">
-            <P className="text-2xl font-bold">$0</Div>
-            <P className="text-xs text-muted-foreground">Earned</P>
-          </Div>
-        </Div>
+        <div className="grid grid-cols-3 gap-4 text-center">
+          <div className="p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold">0</div>
+            <p className="text-xs text-muted-foreground">Views</p>
+          </div>
+          <div className="p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold">0</div>
+            <p className="text-xs text-muted-foreground">Downloads</p>
+          </div>
+          <div className="p-3 bg-secondary/20 rounded-lg">
+            <p className="text-2xl font-bold">$0</div>
+            <p className="text-xs text-muted-foreground">Earned</p>
+          </div>
+        </div>
       </div />
   );
 }; 

@@ -19,7 +19,7 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
   showLabels = true,
   onCellClick
 }) => {
-  const [heatmapData, setHeatmapData] = useState<Heatmapdata  />(null);
+  const [heatmapData, setHeatmapData] = useState<Heatmapdata />(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [hoveredCell, setHoveredCell] = useState<Heatmapcell >(null);
@@ -135,15 +135,15 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
   };
 
   if (loading) {
-    return <Div className="flex justify-center items-center h-64">Loading heatmap data...</Vaultheatmapprops>;
+    return <div className="flex justify-center items-center h-64">Loading heatmap data...</Vaultheatmapprops>;
   }
 
   if (error) {
-    return <Div className="text-red-500 p-4">Error: {error}</Div>;
+    return <div className="text-red-500 p-4">Error: {error}</div>;
   }
 
   if (!heatmapData || !heatmapData.data.length) {
-    return <Div className="p-4">No heatmap data available for this strategy.</Div>;
+    return <div className="p-4">No heatmap data available for this strategy.</div>;
   }
 
   // Mock strategies for heatmap visualization
@@ -212,38 +212,36 @@ export const VaultHeatmap: React.FC<Vaultheatmapprops > = ({
 
   return (
     <Card  style={{ width: "100%" }}>
-      <Cardheader  / /></Card /></Card /></Card>
+      <Cardheader  //></Card /></Card /></Card>
         <Cardtitle  style={{ color: "white" }}>Strategy Performance Heatmap</Cardtitle />
       <Cardcontent >
-        <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {strategies.map((strategy) => (
-            <Div key={strategy.id} 
-              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
- >
-              <H3 className="text-lg font-bold" /></Cardcontent /></Cardcontent />{strategy.name}</Cardtitle>
-              <Div className="text-xs text-gray-300 mb-2">{strategy.description}</Div>
-              <Div className="mt-2">
-                <Div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</Div>
-                <Div>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</Div>
-                <Div>Total Return: {strategy.performance.totalReturn}</Div>
-                <Div>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</Div>
-                <Div>Sharpe Ratio: {strategy.performance.sharpeRatio.toFixed(2)}</Div>
-              </Div>
-              <Div className="mt-2 flex space-x-2">
+            <div key={strategy.id} 
+              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}>
+              <h3 className="text-lg font-bold"/></Cardcontent /></Cardcontent />{strategy.name}</Cardtitle>
+              <div className="text-xs text-gray-300 mb-2">{strategy.description}</div>
+              <div className="mt-2">
+                <div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</div>
+                <div>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</div>
+                <div>Total Return: {strategy.performance.totalReturn}</div>
+                <div>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</div>
+                <div>Sharpe Ratio: {strategy.performance.sharpeRatio.toFixed(2)}</div>
+              </div>
+              <div className="mt-2 flex space-x-2">
                 {strategy.tags?.map((tag) => (
-                  <Span key={tag} 
-                    className="px-2 py-1 bg-black/30 rounded-full text-xs"
-       ></Div>
+                  <span key={tag} 
+                    className="px-2 py-1 bg-black/30 rounded-full text-xs"></div>
                     {tag}
-                  </Div>
+                  </div>
                 ))}
-              </Div>
-              <Div className="mt-2 text-xs text-gray-400">
-                <Div>Author: {strategy.author}</Div>
-                <Div>Version: {strategy.version}</Div>
-                <Div>Created: {strategy.createdAt?.toLocaleDateString()}</Div>
-              </Div>
-            </Div>
+              </div>
+              <div className="mt-2 text-xs text-gray-400">
+                <div>Author: {strategy.author}</div>
+                <div>Version: {strategy.version}</div>
+                <div>Created: {strategy.createdAt?.toLocaleDateString()}</div>
+              </div>
+            </div>
           ))}
         </div />
     </Card>

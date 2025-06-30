@@ -119,18 +119,18 @@ export const RealtimeIndicator = React.forwardRef<HTMLDivElement, RealtimeIndica
     if (!visible && !inactiveText) return null;
     
     const iconMap = {
-      realtime: <Wifi className="w-3 h-3" />,
-      voice: <Mic className="w-3 h-3" />,
-      ai: <BrainCircuit className="w-3 h-3" />,
-      loading: <Loader2 className="w-3 h-3 animate-spin" />,
-      error: <Wifi className="w-3 h-3" />,
-      default: <Wifi className="w-3 h-3" />
+      realtime: <Wifi className="w-3 h-3"/>,
+      voice: <Mic className="w-3 h-3"/>,
+      ai: <BrainCircuit className="w-3 h-3"/>,
+      loading: <Loader2 className="w-3 h-3 animate-spin"/>,
+      error: <Wifi className="w-3 h-3"/>,
+      default: <Wifi className="w-3 h-3"/>
     };
     
     const displayIcon = iconMap[variant as keyof typeof iconMap] || iconMap.default;
     
     return (
-      <Div ref={ref}
+      <div ref={ref}
         className={cn(
           indicatorVariants({
             variant: isActive ? variant : "default",
@@ -144,12 +144,12 @@ export const RealtimeIndicator = React.forwardRef<HTMLDivElement, RealtimeIndica
         )}
         {...props}>
         {showIcon && displayIcon}
-        <Span>
+        <span>
           {isActive 
             ? (showCountdown && autoHide ? `${activeText} (${countdown}s)` : activeText) 
             : (inactiveText || "")}
         </HTMLDivElement>
-      </Div>
+      </div>
     );
   }
 );
@@ -158,15 +158,15 @@ RealtimeIndicator.displayName = "RealtimeIndicator";
 
 // Specialized Indicators
 export const VoiceIndicator = (props: Omit<RealtimeIndicatorProps, 'variant'>) => (
-  <RealtimeIndicator variant="voice" activeText="Voice active" {...props} />
+  <RealtimeIndicator variant="voice" activeText="Voice active" {...props}/>
 );
 
 export const AIIndicator = (props: Omit<RealtimeIndicatorProps, 'variant'>) => (
-  <RealtimeIndicator variant="ai" activeText="AI processing" {...props} />
+  <RealtimeIndicator variant="ai" activeText="AI processing" {...props}/>
 );
 
 export const LoadingIndicator = (props: Omit<RealtimeIndicatorProps, 'variant'>) => (
-  <RealtimeIndicator variant="loading" activeText="Loading" {...props} / /></RealtimeIndicatorProps /></RealtimeIndicatorProps /></RealtimeIndicatorProps>
+  <RealtimeIndicator variant="loading" activeText="Loading" {...props} //></div>
 );
 
 export const lovable = { 

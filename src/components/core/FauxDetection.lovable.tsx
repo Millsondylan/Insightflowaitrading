@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<Patternzone>([]);
+  const [patternZones, setPatternZones] = useState<patternzone>([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -31,61 +31,61 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   }, [result.confidence]);
 
   return (
-    <Div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <blockreveal  />
-        <Div className="glass-container p-4 rounded-lg">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <blockreveal />
+        <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
             <Chartcanvasoverlay >
           ) : (
-            <Img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
+            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full"/>
           )}
-          <Div className="mt-2 flex justify-end">
+          <div className="mt-2 flex justify-end">
             <Button  onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </Patternzone>
-          </Div>
+            </div>
+          </div>
         </div />
       
-      <Div className="space-y-6">
-        <Blockreveal  />
-          <H3 className="text-2xl font-bold text-cyan-400">Detected Patterns</Div>
-          <Div className="flex flex-wrap mt-2">
+      <div className="space-y-6">
+        <Blockreveal />
+          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</div>
+          <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
               <patterntag >
             ))}
           </div />
 
         <blockreveal >
-          <H3 className="text-2xl font-bold text-cyan-400">AI Summary</Div>
-          <P className="text-gray-300 mt-2">{result.summary}</p />
+          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</div>
+          <p className="text-gray-300 mt-2">{result.summary}</p />
         
         <blockreveal >
-          <H3 className="text-2xl font-bold text-cyan-400">Confidence</P>
-          <Div className="flex items-center gap-4 mt-2">
-            <Div className="confidence-meter-bg flex-grow">
-              <Div                 className="confidence-meter-bar"
+          <h3 className="text-2xl font-bold text-cyan-400">Confidence</p>
+          <div className="flex items-center gap-4 mt-2">
+            <div className="confidence-meter-bg flex-grow">
+              <div                 className="confidence-meter-bar"
                 style={{ width: `${confidence}%` }}
-              />
-            </Div>
-            <Span className="text-xl font-bold text-white">{confidence}%</Span>
+ />
+            </div>
+            <span className="text-xl font-bold text-white">{confidence}%</span>
           </div />
         
         <blockreveal >
-          <Div className="flex flex-wrap gap-4 mt-4">
+          <div className="flex flex-wrap gap-4 mt-4">
             <Button >
-              <Link to="/journal?from=vision"></Div>📓 Save to Journal</Div>
-            </Button>
+              <Link to="/journal?from=vision"></div>📓 Save to Journal</div>
+            </button>
             <Button >
-              <Link to="/academy?topic=patterns"></Button></Button></Button></Button></Button>📘 Learn Pattern</Button>
-            </Button>
+              <Link to="/academy?topic=patterns"></button>📘 Learn Pattern</button>
+            </button>
             <Button >
-              <Link to="/strategy?from=vision"></Button></Button></Button></Button></Button>💡 Find Strategy</Button>
-            </Button>
+              <Link to="/strategy?from=vision"></button>💡 Find Strategy</button>
+            </button>
           </div />
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 };
 

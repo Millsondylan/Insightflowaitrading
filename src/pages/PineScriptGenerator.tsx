@@ -55,21 +55,22 @@ plot(slowMA, "Slow MA", color.red)`);
   };
 
   return (
-    <Div className="container mx-auto p-6">
-      <Div className="flex items-center justify-between mb-8">
-        <Div>
-          <H1 className="text-3xl font-bold text-white">PineScript Generator</Div>
-          <P className="text-gray-400">Generate TradingView indicators and strategies</P>
-        </Div>
-      </Div>
+    <div className="container mx-auto p-6">
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white">PineScript Generator</div>
+          <p className="text-gray-400">Generate TradingView indicators and strategies</p>
+        </div>
+      </div>
 
-      <Div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <Div className="flex items-center gap-2">
-              <Code2 className="h-5 w-5 text-blue-400" />
-              <CardTitle>Strategy Description</Div>
-            </div />
+            <div className="flex items-center gap-2">
+              <Code2 className="h-5 w-5 text-blue-400"/>
+              <CardTitle>Strategy Description</div>
+            </div>
+          </CardHeader>
           <CardContent>
             <Textarea
               value={prompt}
@@ -80,52 +81,56 @@ plot(slowMA, "Slow MA", color.red)`);
             <Button onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
               className="w-full bg-blue-600 hover:bg-blue-700"
->
+ >
               {isGenerating ? 'Generating...' : 'Generate PineScript'}
-            </CardContent />
-        </CardContent>
+            </CardContent>
+          </CardContent>
+        </Card>
 
         <Card>
           <CardHeader>
-            <Div className="flex items-center justify-between">
-              <Div className="flex items-center gap-2">
-                <Code2 className="h-5 w-5 text-purple-400" />
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Code2 className="h-5 w-5 text-purple-400"/>
                 <CardTitle>Generated Code</Card>
-              </Div>
-              <Div className="flex gap-2">
+              </div>
+              <div className="flex gap-2">
                 <Button variant="outline"
                   size="icon"
                   onClick={handleCopy}
                   disabled={!generatedCode}
-    >
-                  <Copy className="h-4 w-4" />
-                </Div>
+     >
+                  <Copy className="h-4 w-4"/>
+                </div>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-    >
-                  <Share2 className="h-4 w-4" />
-                </Button>
+     >
+                  <Share2 className="h-4 w-4"/>
+                </button>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-    >
-                  <Download className="h-4 w-4" /></Button></Button></Button></Button></Button></Button>
-                </Button>
-              </Div>
-            </div />
+     >
+                  <Download className="h-4 w-4"/></div>
+                </button>
+              </div>
+            </div>
+          </CardHeader>
           <CardContent>
             {generatedCode ? (
-              <Pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-                <Code className="text-sm text-gray-300" /></CardContent /></CardContent />{generatedCode}</CardContent />
+              <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
+                <Code className="text-sm text-gray-300"></CardContent></div>{generatedCode}</CardContent>
+              </pre>
             ) : (
-              <Div className="text-center py-16 text-gray-400">
+              <div className="text-center py-16 text-gray-400">
                 Generated code will appear here
-              </CardContent>
+              </div>
             )}
-          </CardContent />
-      </Div>
-    </Div>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
   );
 }
 

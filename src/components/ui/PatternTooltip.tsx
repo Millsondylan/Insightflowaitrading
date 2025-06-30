@@ -16,15 +16,15 @@ const PatternTooltip = ({
   style,
 }: PatternTooltipProps) => {
   return (
-    <Div className={`pattern-tooltip ${type}`} style={style}>
-      <Div className="pattern-name">{label}</Div>
-      <Div className="pattern-description">{description}</Div>
+    <div className={`pattern-tooltip ${type}`} style={style}>
+      <div className="pattern-name">{label}</div>
+      <div className="pattern-description">{description}</div>
       {confidence && (
-        <Div className="pattern-confidence">
+        <div className="pattern-confidence">
           Confidence: {confidence}%
-        </Div>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 

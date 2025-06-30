@@ -50,77 +50,77 @@ export const lovable = {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white" />
-      <CardHeader className="flex flex-row items-center justify-between" />
+    <Card className="w-full bg-black/80 border-zinc-800 text-white"/>
+      <CardHeader className="flex flex-row items-center justify-between"/>
         <CardTitle>Ticker Scanning Engine</Card>
         <Badge variant="default">
           {filteredTickers.length} Matching Tickers
-        </Badge />
+        </Badge>
       <CardContent>
-        <Div className="space-y-4 mb-4">
-          <Div className="grid grid-cols-3 gap-4">
-            <Div>
+        <div className="space-y-4 mb-4">
+          <div className="grid grid-cols-3 gap-4">
+            <div>
               <Label className="block text-sm mb-1">Market Type</Badge>
               <Select 
                 value={filter.marketType} 
                 onValueChange={(value: MarketType) => handleFilterChange('marketType', value)}
               >
                 <selectTrigger className="bg-zinc-900 border-zinc-700 text-white">
-                  <selectValue placeholder="Select Market" / />
+                  <selectValue placeholder="Select Market" //>
                 <selectContent>
                   {['Stocks', 'Crypto', 'Forex', 'Commodities'].map((type) => (
                     <selectItem key={type} value={type}>{type}</Select>
                   ))}
-                </SelectContent />
-            </Div>
-            <Div>
-              <Label className="block text-sm mb-1">Min Price</Div>
+                </SelectContent>
+            </div>
+            <div>
+              <Label className="block text-sm mb-1">Min Price</div>
               <Input type="number"
                 value={filter.minPrice || ''}
-                onChange={(e) = /> handleFilterChange('minPrice', Number(e.target.value))}
+                onChange={(e) => handleFilterChange('minPrice', Number(e.target.value))}
                 placeholder="Minimum Price"
                 className="bg-zinc-900 border-zinc-700 text-white"
               / />
-            <Div>
+            <div>
               <Label className="block text-sm mb-1">Min Volume</Input>
               <Input type="number"
                 value={filter.minVolume || ''}
-                onChange={(e) = /> handleFilterChange('minVolume', Number(e.target.value))}
+                onChange={(e) => handleFilterChange('minVolume', Number(e.target.value))}
                 placeholder="Minimum Volume"
                 className="bg-zinc-900 border-zinc-700 text-white"
               / />
           </Input>
-        </Div>
-        <Div className="space-y-4">
+        </div>
+        <div className="space-y-4">
           {filteredTickers.map((ticker) => (
-            <Div key={ticker.symbol} 
+            <div key={ticker.symbol} 
               className="bg-zinc-900 p-4 rounded-lg border border-zinc-700 flex justify-between items-center">
-              <Div>
-                <Div className="flex items-center space-x-2">
-                  <H3 className="text-lg font-bold">{ticker.symbol}</Div>
+              <div>
+                <div className="flex items-center space-x-2">
+                  <h3 className="text-lg font-bold">{ticker.symbol}</div>
                   <Badge variant="outline">{ticker.type}</Badge>
-                </Div>
-                <P className="text-sm text-gray-300">{ticker.name}</P>
-              </Div>
-              <Div className="text-right">
-                <Div className="text-lg font-bold">
+                </div>
+                <p className="text-sm text-gray-300">{ticker.name}</p>
+              </div>
+              <div className="text-right">
+                <div className="text-lg font-bold">
                   ${ticker.price.toLocaleString()}
-                </Div>
-                <Div className={`text-sm ${ticker.changePercent />= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                </div>
+                <div className={`text-sm ${ticker.changePercent/>= 0 ? 'text-green-500' : 'text-red-500'}`}>
                   {ticker.changePercent >= 0 ? '+' : ''}{ticker.changePercent.toFixed(2)}%
-                </Div>
-                <Div className="text-xs text-gray-400">
+                </div>
+                <div className="text-xs text-gray-400">
                   Volume: {(ticker.volume / 1_000_000).toFixed(2)}M
-                </Div>
-              </Div>
-            </Div>
+                </div>
+              </div>
+            </div>
           ))}
-        </Div>
-        <Div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white" /></Div>
+        </div>
+        <div className="mt-4 flex justify-center">
+          <Button variant="outline" className="text-white"/></div>
             Refresh Tickers
-          </Div>
-        </div />
+          </div>
+        </div>
     </Card>
   )
 } 

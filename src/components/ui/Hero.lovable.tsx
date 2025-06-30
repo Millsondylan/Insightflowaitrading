@@ -27,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <Section className="hero-section text-white">
+    <section className="hero-section text-white">
       <motion.div
         className="container mx-auto text-center"
         variants={containerVariants}
@@ -49,24 +49,24 @@ const Hero = () => {
         >
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/strategy">
-              <braincircuit  /> Launch Builder
-            </Section>
-          </Button>
+              <braincircuit /> Launch Builder
+            </section>
+          </button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/academy">
-              <Bookopen  /></Button></Button></Button></Button></Button></Button> Explore Academy
+              <Bookopen /></button></button> Explore Academy
             </Link>
-          </Button>
+          </button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <Link to="/vision"></Button></Button></Button></Button></Button>
-              <barchart > Upload Chart
-            </Button>
-          </Button>
+            <Link to="/vision"></button>
+              <BarChart > Upload Chart
+            </BarChart>
+          </button>
           <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <Link to="/journal"></Button></Button></Button></Button></Button>
+            <Link to="/journal"></button>
               <pensquare > Journal Trade
-            </Button>
-          </Button>
+            </button>
+          </button>
         </motion.div>
       </motion.div>
       <motion.div
@@ -75,7 +75,7 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <arrowright >
+        <ArrowRight >
       </motion.div />
   );
 };

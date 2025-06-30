@@ -18,90 +18,90 @@ export default function CryptoPaymentPage() {
 
   if (isLoading) {
     return (
-      <Div className="flex items-center justify-center min-h-screen">
-        <Div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></Div>
-      </Div>
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
     );
   }
 
   if (!user) {
-    return <Navigate to="/login" />;
+    return <navigate to="/login"/>;
   }
 
   return (
-    <Div className="container mx-auto px-4 py-8">
-      <Div className="max-w-4xl mx-auto">
-        <H1 className="text-3xl font-bold mb-8 text-white">Upgrade Your Account</Navigate>
+    <div className="container mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl font-bold mb-8 text-white">Upgrade Your Account</div>
         
-        <Div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Div>
-            <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
-              <H2 className="text-xl font-bold">Pro Plan Benefits</Div>
-              <Ul className="space-y-2">
-                <Li className="flex items-center">
-                  <Span className="text-green-400 mr-2">✓</Ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
+              <h2 className="text-xl font-bold">Pro Plan Benefits</div>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</ul>
                   Advanced strategy builder
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-green-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</li>
                   Unlimited backtests
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-green-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</li>
                   AI trade analysis
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-green-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</li>
                   Premium indicators
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-green-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-green-400 mr-2">✓</li>
                   Priority support
                 </Li />
               
-              <Div className="mt-4 pt-4 border-t border-white/10">
-                <Div className="text-2xl font-bold">$99 / year</Div>
-                <Div className="text-sm text-white/70">or crypto equivalent</Div>
-              </Div>
-            </Div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <div className="text-2xl font-bold">$99 / year</div>
+                <div className="text-sm text-white/70">or crypto equivalent</div>
+              </div>
+            </div>
             
-            <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4 mt-6">
-              <H2 className="text-xl font-bold">Premium Plan Benefits</Div>
-              <Ul className="space-y-2">
-                <Li className="flex items-center">
-                  <Span className="text-purple-400 mr-2">✓</Ul>
+            <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4 mt-6">
+              <h2 className="text-xl font-bold">Premium Plan Benefits</div>
+              <ul className="space-y-2">
+                <li className="flex items-center">
+                  <span className="text-purple-400 mr-2">✓</ul>
                   All Pro features
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-purple-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-purple-400 mr-2">✓</li>
                   Advanced AI coaching
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-purple-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-purple-400 mr-2">✓</li>
                   Custom strategy development
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-purple-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-purple-400 mr-2">✓</li>
                   Real-time market alerts
-                </Li>
-                <Li className="flex items-center">
-                  <Span className="text-purple-400 mr-2">✓</Li>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-purple-400 mr-2">✓</li>
                   1-on-1 strategy consultation
                 </Li />
               
-              <Div className="mt-4 pt-4 border-t border-white/10">
-                <Div className="text-2xl font-bold">$199 / year</Div>
-                <Div className="text-sm text-white/70">or crypto equivalent</Div>
-              </Div>
-            </Div>
-          </Div>
+              <div className="mt-4 pt-4 border-t border-white/10">
+                <div className="text-2xl font-bold">$199 / year</div>
+                <div className="text-sm text-white/70">or crypto equivalent</div>
+              </div>
+            </div>
+          </div>
           
-          <Div>
-            <CryptoPayment /></Div></Div></Div></Div></Div></Div></Div>
-          </Div>
-        </Div>
-      </Div>
-    </Div>
+          <div>
+            <CryptoPayment /></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

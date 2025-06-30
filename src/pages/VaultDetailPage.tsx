@@ -1,111 +1,117 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Share2, ArrowLeft } from 'lucide-react';
-
-interface Strategy {
-  id: string;
-  name: string;
-  description: string;
-  author: string;
-  rating: number;
-  tags: string[];
-  createdAt: string;
-  updatedAt: string;
-}
-
-const mockStrategy: Strategy = {
-  id: '1',
-  name: 'Golden Cross Strategy',
-  description: 'A trend-following strategy that uses moving average crossovers to identify potential entry and exit points.',
-  author: 'TradingPro',
-  rating: 4.5,
-  tags: ['Trend Following', 'Moving Averages', 'Technical'],
-  createdAt: '2024-01-01T00:00:00Z',
-  updatedAt: '2024-01-15T00:00:00Z'
-};
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Star, Users, TrendingUp } from 'lucide-react';
 
 export default function VaultDetailPage() {
-  const { id } = useParams<{ id: string }>();
-  const strategy = mockStrategy; // In a real app, fetch based on id
+  const { id } = useParams();
+
+  // Mock strategy data - in real app this would come from API
+  const strategy = {
+    id: id || '1',
+    name: 'Advanced Momentum Strategy',
+    description: 'A sophisticated momentum-based trading strategy that combines multiple technical indicators for optimal entry and exit points.',
+    tags: ['Momentum', 'Technical Analysis', 'Day Trading'],
+    performance: {
+      totalReturn: 24.5,
+      sharpeRatio: 1.8,
+      maxDrawdown: 15.2,
+      winRate: 68
+    }
+  };
 
   return (
-    <Div className="container mx-auto p-6">
-      <Div className="flex items-center gap-4 mb-8">
-        <Button variant="ghost" className="text-gray-400 hover:text-white" />
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Vault
-        </Div>
-      </Div>
+    <div className="container mx-auto p-6">
+      <div className="flex items-center gap-4 mb-8">
+        <Button variant="ghost" size="icon">
+          <ArrowLeft className="w-4 h-4"/>
+        </Button>
+        <div>
+          <h1 className="text-3xl font-bold text-white">{strategy.name}</h1>
+          <p className="text-gray-400 mt-1">{strategy.description}</p>
+        </div>
+      </div>
 
-      <Card>
+      <Card className="bg-white/5 border-white/10">
         <CardHeader>
-          <Div className="flex justify-between items-start">
-            <Div>
-              <CardTitle className="text-2xl" />{strategy.name}</Card>
-              <P className="text-sm text-gray-400">
-                By {strategy.author} • Last updated {new Date(strategy.updatedAt).toLocaleDateString()}
-              </P>
-            </Div>
-            <Div className="flex gap-2">
-              <Button variant="ghost" className="text-yellow-400 hover:text-yellow-500" />
-                <Star className="h-4 w-4 mr-2" />
-                {strategy.rating}
-              </Div>
-              <Button variant="ghost" className="text-gray-400 hover:text-white" />
-                <Share2 className="h-4 w-4" />
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-2xl">{strategy.name}</CardTitle>
+              <p className="text-gray-400 mt-2">{strategy.description}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button variant="outline">
+                <Star className="w-4 h-4 mr-2"/>
+                Favorite
               </Button>
-            </Div>
-          </div />
+              <Button>
+                Copy Strategy
+              </Button>
+            </div>
+          </div>
+        </CardHeader>
+        
         <CardContent>
-          <Div className="space-y-6">
-            <Div>
-              <H3 className="text-lg font-semibold mb-2">Description</CardContent>
-              <P className="text-gray-300">{strategy.description}</P>
-            </Div>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Description</h3>
+              <p className="text-gray-300">{strategy.description}</p>
+            </div>
 
-            <Div>
-              <H3 className="text-lg font-semibold mb-2">Tags</Div>
-              <Div className="flex flex-wrap gap-2">
-                {strategy.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" />
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Tags</h3>
+              <div className="flex gap-2">
+                {strategy.tags.map((tag, index) => (
+                  <Badge key={index} variant="secondary">
                     {tag}
-                  </Div>
+                  </Badge>
                 ))}
-              </Div>
-            </Div>
+              </div>
+            </div>
 
-            <Div>
-              <H3 className="text-lg font-semibold mb-2">Performance</Div>
-              <Div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Performance</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <Card>
-                  <CardContent className="pt-6" />
-                    <Div className="text-center">
-                      <P className="text-2xl font-bold text-green-400">+24.5%</Div>
-                      <P className="text-sm text-gray-400">Annual Return</P>
-                    </div />
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-green-400">+{strategy.performance.totalReturn}%</p>
+                      <p className="text-sm text-gray-400">Annual Return</p>
+                    </div>
+                  </CardContent>
                 </Card>
                 <Card>
-                  <CardContent className="pt-6" />
-                    <Div className="text-center">
-                      <P className="text-2xl font-bold text-blue-400">1.8</Card>
-                      <P className="text-sm text-gray-400">Sharpe Ratio</P>
-                    </div />
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-blue-400">{strategy.performance.sharpeRatio}</p>
+                      <p className="text-sm text-gray-400">Sharpe Ratio</p>
+                    </div>
+                  </CardContent>
                 </Card>
                 <Card>
-                  <CardContent className="pt-6" />
-                    <Div className="text-center">
-                      <P className="text-2xl font-bold text-purple-400">15.2%</Card>
-                      <P className="text-sm text-gray-400">Max Drawdown</P>
-                    </div />
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-purple-400">{strategy.performance.maxDrawdown}%</p>
+                      <p className="text-sm text-gray-400">Max Drawdown</p>
+                    </div>
+                  </CardContent>
                 </Card>
-              </Div>
-            </Div>
-          </div />
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-yellow-400">{strategy.performance.winRate}%</p>
+                      <p className="text-sm text-gray-400">Win Rate</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </CardContent>
       </Card>
-    </Div>
+    </div>
   );
 }
 

@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { ScrollText, PlusCircle, Bot, Rss } from 'lucide-react';
+import JournalEntryForm from '@/components/journal/JournalEntryForm';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const mockEntries = [
     { id: '1', title: "NVDA Earnings Play", pnl: 450.75, sentiment: 'Confident', date: '2 days ago', tags: ['NVDA', 'Earnings'] },
@@ -14,80 +16,89 @@ const mockEntries = [
 const JournalEntryCard = ({ entry }: { entry: (typeof mockEntries)[0] }) => {
     const pnlColor = entry.pnl >= 0 ? 'text-green-400' : 'text-red-400';
     return (
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
-            <Div className="flex justify-between items-center">
-                <H4 className="font-semibold text-white">{entry.title}</Div>
-                <P className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</P>
-            </Div>
-            <Div className="flex justify-between items-center mt-2 text-sm text-gray-400">
-                <P>{entry.sentiment} • {entry.date}</Div>
-                <Div className="flex gap-2">
-                    {entry.tags.map(tag => <Badge key={tag} variant="secondary" />{tag}</Div>)}
-                </Div>
-            </Div>
-        </Div>
+        <div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
+            <div className="flex justify-between items-center">
+                <h4 className="font-semibold text-white">{entry.title}</h4>
+                <p className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</p>
+            </div>
+            <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
+                <p>{entry.sentiment} • {entry.date}</p>
+                <div className="flex gap-2">
+                    {entry.tags.map(tag => (
+                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                    ))}
+                </div>
+            </div>
+        </div>
     );
 };
 
-export default function JournalPage() {
-  const [newEntryText, setNewEntryText] = useState('');
+const Journal = () => {
+  const handleSubmit = (entry: any) => {
+    console.log('Journal entry submitted:', entry);
+    // In a real app, this would save to the database
+  };
 
   return (
-    <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-      {/* Main Content */}
-      <Div className="lg:col-span-2 space-y-6">
-        <Div className="flex justify-between items-center">
-            <Div>
-                <H1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <Span className="bg-white/10 p-2 rounded-lg"><ScrollText className="text-blue-400" /></Div>
-                    Trading Journal
-                </H1>
-                <P className="text-gray-400 mt-1">Reflect on your trades and mindset.</P>
-            </Div>
-        </Div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 p-8">
+      <div className="container mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-6xl md:text-8xl font-bold text-glow-cyan mb-8 leading-tight">
+            Trading Journal
+          </h1>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Track your trades, analyze your performance, and learn from your experiences 
+            with our AI-powered trading journal.
+          </p>
+        </div>
         
-        {mockEntries.map(entry => <JournalEntryCard key={entry.id} entry={entry} />)}
-      </JournalEntryCard>
-
-      {/* Right Sidebar */}
-      <Div className="lg:col-span-1 space-y-6">
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                <PlusCircle size={18} />
-                New Journal Entry
-            </Div>
-            <Textarea
-                value={newEntryText}
-                onChange={(e) => setNewEntryText(e.target.value)}
-                placeholder="What's on your mind? Capture your thoughts on recent trades..."
-                className="bg-black/20 border-white/10 h-28"
-            />
-            <Button className="w-full mt-3 bg-blue-600 hover:bg-blue-700">Save Entry</Textarea>
-        </Div>
-
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-4 flex items-center gap-2">
-                <Bot size={18} />
-                AI Coach
-            </Div>
-            <P className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</P>
-            <Link to="/coach" />
-                <Button variant="outline" className="w-full" />Ask for a Review</Link />
-        </Link>
-        
-        <Div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <H3 className="font-semibold text-white mb-4 flex items-center gap-2">
-                <Rss size={18} />
-                Insight Feed
-            </Div>
-            <P className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</P>
-            <Link to="/feed" />
-                <Button variant="outline" className="w-full" / /></Link /></Link />View Your Feed</Link />
-        </Link>
-      </Div>
-    </Div>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Journal Entry Form */}
+            <div className="bg-black/20 backdrop-blur-sm rounded-2xl border border-white/10 p-8">
+              <h2 className="text-2xl font-bold text-white mb-6">New Journal Entry</h2>
+              <JournalEntryForm onSubmit={handleSubmit}/>
+            </div>
+            
+            {/* Recent Entries */}
+            <div className="bg-black/20 backdrop-blur-sm rounded-2xl border border-white/10 p-8">
+              <h2 className="text-2xl font-bold text-white mb-6">Recent Entries</h2>
+              <div className="space-y-4">
+                <Card className="bg-white/5 border-white/10">
+                  <CardHeader>
+                    <CardTitle className="text-white">EUR/USD Long Position</CardTitle>
+                    <Badge className="w-fit bg-green-500/20 text-green-400">Profitable</Badge>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-300">
+                      Entered long position based on bullish divergence on 4H chart. 
+                      Exit was clean with 2:1 RR ratio.
+                    </p>
+                  </CardContent>
+                </Card>
+                
+                <Card className="bg-white/5 border-white/10">
+                  <CardHeader>
+                    <CardTitle className="text-white">GBP/JPY Short Position</CardTitle>
+                    <Badge className="w-fit bg-red-500/20 text-red-400">Loss</Badge>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-gray-300">
+                      Stopped out due to unexpected news event. 
+                      Need to check economic calendar more carefully.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-}
+};
+
+export default Journal;
 
 export const lovable = { 
   component: true,

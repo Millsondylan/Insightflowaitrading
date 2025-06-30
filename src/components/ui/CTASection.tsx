@@ -13,7 +13,7 @@ const CTASection = () => {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 1 }}
     >
-      <Div className="container mx-auto text-center">
+      <div className="container mx-auto text-center">
         <motion.h2
           className="text-4xl md:text-5xl font-bold mb-6"
           initial={{ y: 20, opacity: 0 }}
@@ -32,11 +32,11 @@ const CTASection = () => {
           <Button asChild
             className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 text-lg px-8 py-6">
             <Link to="/strategy">
-              Get Started <arrowRight className="ml-2 h-5 w-5" />
-            </Div>
-          </Button>
+              Get Started <arrowRight className="ml-2 h-5 w-5"/>
+            </div>
+          </button>
         </motion.div>
-      </Div>
+      </div>
     </motion.section>
   );
 };

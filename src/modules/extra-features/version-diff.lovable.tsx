@@ -51,9 +51,9 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <plus  />;
+      case 'added': return <Plus />;
       case 'removed': return <Minus >;
-      case 'modified': return <Edit  / /></Versiondiffprops /></Versiondiffprops /></Versiondiffprops>;
+      case 'modified': return <Edit  //></Versiondiffprops /></Versiondiffprops /></Versiondiffprops>;
       default: return null;
     }
   };
@@ -69,104 +69,104 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
 
   return (
     <Card >
-      <Div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2 mb-6">
         <gitcompare >
-        <H2 className="text-2xl font-bold" /></Card /></Card />Version Comparison</Card>
-      </Div>
+        <h2 className="text-2xl font-bold"/></Card /></Card />Version Comparison</Card>
+      </div>
 
-      <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        <Div>
-          <Label className="text-sm text-muted-foreground mb-2 block"></Div>Compare</Div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        <div>
+          <Label className="text-sm text-muted-foreground mb-2 block"></div>Compare</div>
           <Select >
-            <selecttrigger >
-              <selectvalue  />
-            <selectcontent >
+            <SelectTrigger >
+              <SelectValue />
+            <SelectContent >
               {mockVersions.map((v) => (
-                <selectitem >
+                <SelectItem >
                   {v.label}
                 </Select>
               ))}
             </SelectContent />
-        </Div>
+        </div>
         
-        <Div>
-          <Label className="text-sm text-muted-foreground mb-2 block"></Div>With</Div>
+        <div>
+          <Label className="text-sm text-muted-foreground mb-2 block"></div>With</div>
           <Select >
-            <selecttrigger >
-              <selectvalue  />
-            <selectcontent >
+            <SelectTrigger >
+              <SelectValue />
+            <SelectContent >
               {mockVersions.map((v) => (
-                <selectitem >
+                <SelectItem >
                   {v.label}
                 </Select>
               ))}
             </SelectContent />
-        </Div>
-      </Div>
+        </div>
+      </div>
 
-      <Div className="space-y-4">
-        <Div className="flex items-center justify-between">
-          <H3 className="font-semibold"></Div>Changes</Div>
-          <Div className="flex items-center gap-4 text-sm">
-            <Span className="flex items-center gap-1">
-              <plus >
-              <Span className="text-green-500">2 added</Div>
-            </Span>
-            <Span className="flex items-center gap-1">
-              <minus >
-              <Span className="text-red-500">1 removed</Span>
-            </Span>
-            <Span className="flex items-center gap-1">
-              <edit >
-              <Span className="text-yellow-500">1 modified</Span>
-            </Span>
-          </Div>
-        </Div>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h3 className="font-semibold"></div>Changes</div>
+          <div className="flex items-center gap-4 text-sm">
+            <span className="flex items-center gap-1">
+              <Plus >
+              <span className="text-green-500">2 added</div>
+            </span>
+            <span className="flex items-center gap-1">
+              <Minus >
+              <span className="text-red-500">1 removed</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <Edit >
+              <span className="text-yellow-500">1 modified</span>
+            </span>
+          </div>
+        </div>
 
         {diffs.map((diff, i) => (
-          <Div key={i}
+          <div key={i}
             className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}>
-            <Div className="flex items-start gap-3">
+            <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
-              <Div className="flex-1">
-                <Div className="flex items-center justify-between mb-2">
-                  <Span className="font-medium">{diff.section}</Div>
-                  <Span className="text-xs text-muted-foreground">Line {diff.line}</Span>
-                </Div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium">{diff.section}</div>
+                  <span className="text-xs text-muted-foreground">Line {diff.line}</span>
+                </div>
                 
                 {diff.type === 'modified' ? (
-                  <Div className="space-y-2">
-                    <Div className="flex items-start gap-2">
-                      <minus >
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <Minus >
                       <Code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
                         {diff.oldContent}
-                      </Div>
-                    </Div>
-                    <Div className="flex items-start gap-2">
-                      <plus >
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Plus >
                       <Code className="text-sm bg-green-500/20 px-2 py-1 rounded">
                         {diff.newContent}
-                      </Div>
-                    </Div>
-                  </Div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <Code className="text-sm bg-secondary/50 px-2 py-1 rounded">
                     {diff.content}
                   </Code>
                 )}
-              </Div>
-            </Div>
-          </Div>
+              </div>
+            </div>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="mt-6 flex gap-2">
+      <div className="mt-6 flex gap-2">
         <Button variant="outline">
           Export Diff
-        </Div>
+        </div>
         <Button >
           Apply Changes
-        </Button>
+        </button>
       </div />
   );
 }; 

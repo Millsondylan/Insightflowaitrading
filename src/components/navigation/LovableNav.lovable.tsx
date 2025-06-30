@@ -22,7 +22,7 @@ export const LovableNav: React.FC<LovableNavProps /></LovableNavProps> = ({ onNa
   };
 
   return (
-    <Div style={{
+    <div style={{
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
       borderRadius: '12px',
       padding: '16px',
@@ -30,31 +30,31 @@ export const LovableNav: React.FC<LovableNavProps /></LovableNavProps> = ({ onNa
       border: '1px solid rgba(255, 255, 255, 0.1)',
       boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
     }}>
-      <Div style={{
+      <div style={{
         display: 'flex',
         alignItems: 'center',
         gap: '8px',
         marginBottom: '16px'
       }}>
-        <Span style={{ fontSize: '20px' }}>💙</Div>
-        <H2 style={{
+        <span style={{ fontSize: '20px' }}>💙</div>
+        <h2 style={{
           fontSize: '18px',
           fontWeight: '600',
           margin: 0,
           color: '#60A5FA'
         }}>
           Lovable
-        </H2>
-      </Div>
+        </h2>
+      </div>
 
-      <Div style={{
+      <div style={{
         display: 'flex',
         flexDirection: 'column',
         gap: '8px'
       }}>
         {navItems.map((item) => (
           <Button key={item.path}
-            onClick={() => handleNavClick(item.path)}
+            onClick={() =></div></div> handleNavClick(item.path)}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -77,13 +77,13 @@ export const LovableNav: React.FC<LovableNavProps /></LovableNavProps> = ({ onNa
               e.currentTarget.style.backgroundColor = 'transparent';
             }}
           >
-            <Span style={{ fontSize: '16px' }}>{item.icon}</Div>
+            <span style={{ fontSize: '16px' }}>{item.icon}</span>
             {item.label}
-          </Button>
+          </button>
         ))}
-      </Div>
+      </div>
 
-      <Div style={{
+      <div style={{
         marginTop: '16px',
         padding: '12px',
         backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -91,20 +91,20 @@ export const LovableNav: React.FC<LovableNavProps /></LovableNavProps> = ({ onNa
         fontSize: '12px',
         color: 'rgba(255, 255, 255, 0.7)'
       }}>
-        <Div style={{
+        <div style={{
           display: 'flex',
           alignItems: 'center',
           gap: '6px',
           marginBottom: '8px'
         }}>
-          <Span style={{ fontSize: '14px' }}>💡</Div>
-          <Span style={{ fontWeight: '500', color: 'white' }}>Pro Tip</Span>
-        </Div>
-        <P style={{ margin: 0, lineHeight: '1.5' }}>
+          <span style={{ fontSize: '14px' }}>💡</div>
+          <span style={{ fontWeight: '500', color: 'white' }}>Pro Tip</span>
+        </div>
+        <p style={{ margin: 0, lineHeight: '1.5' }}>
           Use the Lovable Editor to make changes to your components and see them in real-time. All edits are automatically synced with GitHub.
-        </P>
-      </Div>
-    </Div>
+        </p>
+      </div>
+    </div>
   );
 };
 

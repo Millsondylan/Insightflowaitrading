@@ -8,12 +8,12 @@ export const LovableNextConverter: React.FC = () => {
   const [isDryRun, setIsDryRun] = useState<boolean>(true);
   
   return (
-    <Div className="p-4">
-      <H1 className="text-2xl font-bold mb-4">Next.js Migration Tool</Div>
-      <P className="mb-4">Convert your Lovable React app to Next.js</P>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Next.js Migration Tool</div>
+      <p className="mb-4">Convert your Lovable React app to Next.js</p>
       
-      <Card className="p-4" />
-        <Div className="mb-4">
+      <Card className="p-4"/>
+        <div className="mb-4">
           <Label className="block mb-2">Project Path:</Card>
           <Input value={projectPath}
             onChange={(e) => setProjectPath(e.target.value)}

@@ -19,8 +19,8 @@ interface AccessStatus {
   };
 }
 
-export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
-  const [accessStatus, setAccessStatus] = React.useState<accessstatus  />([
+export const AccessCheckers: React.FC<accesscheckersprops> = ({ userId }) => {
+  const [accessStatus, setAccessStatus] = React.useState<accessstatus />([
     {
       feature: 'AI Strategy Builder',
       isLocked: false,
@@ -61,49 +61,49 @@ export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
 
   return (
     <Card >
-      <Div className="flex items-center gap-2 mb-6">
-        <Crown  />
-        <H2 className="text-2xl font-bold">Feature Access</Accesscheckersprops>
-      </Div>
+      <div className="flex items-center gap-2 mb-6">
+        <Crown />
+        <h2 className="text-2xl font-bold">Feature Access</Card>
+      </div>
 
-      <Div className="space-y-4">
+      <div className="space-y-4">
         {accessStatus.map((status) => (
-          <Div key={status.feature}
+          <div key={status.feature}
             className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-            <Div className="flex items-center justify-between">
-              <Div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
                 {status.isLocked ? (
-                  <lock >
+                  <Lock >
                 ) : (
                   <unlock >
                 )}
-                <Div>
-                  <H3 className="font-semibold">{status.feature}</Div>
-                  <P className="text-sm text-muted-foreground">
+                <div>
+                  <h3 className="font-semibold">{status.feature}</div>
+                  <p className="text-sm text-muted-foreground">
                     Requires {status.requiredPlan} plan
-                  </P>
-                </Div>
-              </Div>
+                  </p>
+                </div>
+              </div>
 
-              <Div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
                 {status.usage && !status.isLocked && (
-                  <Div className="text-right mr-4">
-                    <P className="text-sm font-medium">
+                  <div className="text-right mr-4">
+                    <p className="text-sm font-medium">
                       {status.usage.current} / {status.usage.limit}
-                    </Div>
-                    <Div className="w-24 h-2 bg-secondary rounded-full overflow-hidden mt-1">
-                      <Div                         className="h-full bg-primary transition-all duration-300"
+                    </div>
+                    <div className="w-24 h-2 bg-secondary rounded-full overflow-hidden mt-1">
+                      <div                         className="h-full bg-primary transition-all duration-300"
                         style={{
                           width: `${(status.usage.current / status.usage.limit) * 100}%`
                         }}
-                      />
-                    </Div>
-                  </Div>
+         />
+                    </div>
+                  </div>
                 )}
                 
                 {status.isLocked ? (
                   <Badge variant="secondary">
-                    <lock >
+                    <Lock >
                     Locked
                   </Badge>
                 ) : (
@@ -112,28 +112,28 @@ export const AccessCheckers: React.FC<Accesscheckersprops> = ({ userId }) => {
                     Active
                   </Badge>
                 )}
-              </Div>
-            </Div>
+              </div>
+            </div>
 
             {status.usage && status.usage.current >= status.usage.limit && (
-              <Div className="mt-3 p-2 bg-yellow-500/10 rounded flex items-center gap-2">
-                <alertcircle >
-                <P className="text-sm text-yellow-600"></Div>
+              <div className="mt-3 p-2 bg-yellow-500/10 rounded flex items-center gap-2">
+                <AlertCircle >
+                <p className="text-sm text-yellow-600"></div>
                   You've reached your monthly limit. Upgrade to Pro for unlimited access.
-                </Div>
-              </Div>
+                </div>
+              </div>
             )}
-          </Div>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="mt-6 p-4 bg-primary/5 rounded-lg">
-        <P className="text-sm text-muted-foreground mb-3"></Div>
+      <div className="mt-6 p-4 bg-primary/5 rounded-lg">
+        <p className="text-sm text-muted-foreground mb-3"></div>
           Unlock all features with Pro subscription
-        </Div>
+        </div>
         <Button  style={{ width: "100%" }}>
           Upgrade to Pro
-        </Button>
+        </button>
       </div />
   );
 }; 

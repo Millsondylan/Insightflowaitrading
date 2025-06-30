@@ -5,9 +5,9 @@ import { useAuth } from '@/hooks/use-auth';
 
 // We would normally import QRCode from 'qrcode.react' but we'll simulate it with a div
 // const QRCode = ({ value }: { value: string }) => (
-//   <Div className="qr-code">
+//   <div className="qr-code">
 //     {value}
-//   </Div>
+//   </div>
 // );
 
 const QRCodeLogin = () => {
@@ -28,7 +28,7 @@ const QRCodeLogin = () => {
         setSessionId(newSessionId);
         
         // Store session in Supabase for cross-device auth
-        const { error } = await supabase
+        const { error } = await (supabase as any)
           .from('qr_login_sessions')
           .insert([
             { 
@@ -82,36 +82,40 @@ const QRCodeLogin = () => {
   if (loading) {
     return (
       <Card>
-        <CardContent className="pt-6 flex justify-center items-center min-h-[200px]" />
-          <Div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary" />
-        </CardContent />
+        <CardContent className="pt-6 flex justify-center items-center min-h-[200px]">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"/>
+        </CardContent>
+      </Card>
     );
   }
   
   if (error) {
     return (
       <Card>
-        <CardContent className="pt-6 text-center text-red-500" />
+        <CardContent className="pt-6 text-center text-red-500">
           {error}
-        </Card />
+        </CardContent>
+      </Card>
     );
   }
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Mobile Login</Card>
-        <CardDescription>Scan to log in on your mobile device</CardDescription />
-      <CardContent className="flex flex-col items-center" />
+        <CardTitle>Mobile Login</CardTitle>
+        <CardDescription>Scan to log in on your mobile device</CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-col items-center">
         {/* This would be a QR code in production */}
-        <Div className="border-4 border-dashed border-gray-400 w-[200px] h-[200px] flex items-center justify-center p-4 text-center bg-white text-black" /></CardContent /></CardContent />
+        <div className="border-4 border-dashed border-gray-400 w-[200px] h-[200px] flex items-center justify-center p-4 text-center bg-white text-black">
           QR Code for: {qrCodeValue}
-        </CardDescription>
+        </div>
         
-        <P className="text-sm mt-4 text-center text-gray-400">
+        <p className="text-sm mt-4 text-center text-gray-400">
           Open the Insight Flow app on your mobile device and scan this code to log in automatically
-        </p />
-    </P>
+        </p>
+      </CardContent>
+    </Card>
   );
 };
 

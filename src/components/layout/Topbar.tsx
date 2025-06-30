@@ -21,34 +21,34 @@ export const lovable = {
   });
 
   return (
-    <Header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
-      <Div className="flex items-center gap-4">
-        <Div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+    <header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
+      <div className="flex items-center gap-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted"/>
           <Input
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
-          / />
-      </Header>
-      <Div className="flex items-center gap-6">
-        <Span className="text-sm text-text-muted">{today}</Div>
+          //>
+      </header>
+      <div className="flex items-center gap-6">
+        <span className="text-sm text-text-muted">{today}</div>
         <Button variant="ghost" size="icon">
-          <bell className="w-5 h-5" />
-        </Button>
-        <Div className="flex items-center gap-3">
+          <Bell className="w-5 h-5"/>
+        </button>
+        <div className="flex items-center gap-3">
           <avatar>
-            <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-            <AvatarFallback></Div>{profile?.full_name?.[0] || 'U'}</div />
-          <Div>
-            <P className="font-semibold"></Div>{profile?.full_name || 'Guest'}</Div>
+            <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'}/>
+            <AvatarFallback></div>{profile?.full_name?.[0] || 'U'}</div>
+          <div>
+            <p className="font-semibold"></div>{profile?.full_name || 'Guest'}</div>
             {hasProAccess && (
               <Badge variant="outline" className="border-brand-primary text-brand-primary">
                 PRO
               </Badge>
             )}
-          </Div>
-        </Div>
-      </div />
+          </div>
+        </div>
+      </div>
   );
 } 

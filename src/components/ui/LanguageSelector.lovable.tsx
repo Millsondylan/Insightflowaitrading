@@ -27,38 +27,38 @@ export default function LanguageSelector() {
   const currentLanguage = languages.find(lang => lang.code === preferences.language) || languages[0];
 
   return (
-    <Div className="relative">
-      <Button         onClick={() =></Div> setIsOpen(!isOpen)}
+    <div className="relative">
+      <Button         onClick={() =></div> setIsOpen(!isOpen)}
         className="flex items-center gap-1 px-2 py-1 rounded-full bg-blue-50 dark:bg-blue-950 hover:bg-blue-100 dark:hover:bg-blue-900 focus:outline-none transition-colors"
         aria-haspopup="true"
         aria-expanded={isOpen}
       >
-        <Span className="text-lg" aria-hidden="true">{currentLanguage.flag}</Span>
-        <Span className="hidden md:inline text-sm font-medium">{currentLanguage.name}</Span>
-      </Button>
+        <span className="text-lg" aria-hidden="true">{currentLanguage.flag}</span>
+        <span className="hidden md:inline text-sm font-medium">{currentLanguage.name}</span>
+      </button>
 
       {isOpen && (
-        <Div className="absolute z-10 right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden"
+        <div className="absolute z-10 right-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden"
           role="menu"
           aria-orientation="vertical">
-          <Div className="py-1" role="none">
+          <div className="py-1" role="none">
             {languages.map((language) => (
               <Button                 key={language.code}
-                onClick={() =></Div> handleLanguageChange(language.code)}
+                onClick={() =></div> handleLanguageChange(language.code)}
                 className={`
                   w-full text-left px-4 py-3 text-sm hover:bg-blue-50 dark:hover:bg-blue-900 flex items-center gap-3 transition-colors
                   ${language.code === preferences.language ? 'bg-blue-100 dark:bg-blue-800 font-medium' : ''}
                 `}
                 role="menuitem"
               >
-                <Span className="text-lg" aria-hidden="true">{language.flag}</Span>
+                <span className="text-lg" aria-hidden="true">{language.flag}</span>
                 {language.name}
-              </Button>
+              </button>
             ))}
-          </Div>
-        </Div>
+          </div>
+        </div>
       )}
-    </Div>
+    </div>
   );
 }
 

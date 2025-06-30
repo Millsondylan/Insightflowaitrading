@@ -213,7 +213,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = (props) => {
   if (isSymbolBased) {
     const { width = '100%', height = 500, container = 'tradingview-widget-container', theme = 'dark' } = props;
     return (
-      <Div 
+      <div 
         ref={containerRef}
         id={container}
         style={{ 
@@ -222,8 +222,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = (props) => {
           backgroundColor: theme === 'dark' ? '#1E1E2D' : '#FFFFFF',
           borderRadius: '8px',
           overflow: 'hidden'
-        }}
-      />
+        }}/>
     );
   } else {
     const { width, height = 300 } = props;
@@ -232,8 +231,7 @@ const TradingViewChart: React.FC<TradingViewChartProps> = (props) => {
         ref={canvasRef}
         width={width}
         height={height}
-        style={{ width: '100%', height }}
-      />
+        style={{ width: '100%', height }}/>
     );
   }
 };

@@ -48,86 +48,86 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
     <Link  style={{ display: "block" }}>
       <Card  style={{ height: "100%" }}>
         <Cardheader >
-          <Div className="flex justify-between items-start mb-2">
-            <Div className="flex-1">
+          <div className="flex justify-between items-start mb-2">
+            <div className="flex-1">
               <Cardtitle  style={{ fontSize: "1.125rem", color: "white" }}>
                 {strategy.name}
               </Link>
-              <Carddescription  />
+              <Carddescription />
                 {strategy.description}
               </Carddescription>
-            </Div>
-          </Div>
-          <Div className="flex items-center gap-2 flex-wrap">
-            <Badge variant="secondary">{strategy.category}</Div>
-            <Badge  />
+            </div>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Badge variant="secondary">{strategy.category}</div>
+            <Badge />
               {strategy.riskLevel}
             </Badge>
             {strategy.author.verified && (
               <Badge variant="outline">
-                <shield >
+                <Shield >
                 Verified
               </Badge>
             )}
           </div />
         <Cardcontent >
-          <Div className="grid grid-cols-2 gap-4 mb-4">
-            <Div>
-              <P className="text-xs text-gray-400">Total Return</Cardcontent>
-              <P className="text-xl font-bold text-green-400">
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <p className="text-xs text-gray-400">Total Return</Cardcontent>
+              <p className="text-xl font-bold text-green-400">
                 +{strategy.performance.totalReturn}%
-              </P>
-            </Div>
-            <Div>
-              <P className="text-xs text-gray-400">Win Rate</Div>
-              <P className="text-xl font-bold text-white">
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Win Rate</div>
+              <p className="text-xl font-bold text-white">
                 {strategy.performance.winRate}%
-              </P>
-            </Div>
-            <Div>
-              <P className="text-xs text-gray-400">Sharpe Ratio</Div>
-              <P className="text-lg font-semibold text-white">
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Sharpe Ratio</div>
+              <p className="text-lg font-semibold text-white">
                 {strategy.performance.sharpeRatio}
-              </P>
-            </Div>
-            <Div>
-              <P className="text-xs text-gray-400">Max Drawdown</Div>
-              <P className="text-lg font-semibold text-red-400">
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Max Drawdown</div>
+              <p className="text-lg font-semibold text-red-400">
                 -{strategy.performance.maxDrawdown}%
-              </P>
-            </Div>
-          </Div>
+              </p>
+            </div>
+          </div>
           
-          <Div className="flex items-center justify-between text-sm text-gray-400">
-            <Div className="flex items-center gap-4">
-              <Span className="flex items-center gap-1">
-                <star >
+          <div className="flex items-center justify-between text-sm text-gray-400">
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-1">
+                <Star >
                 {(strategy.stars / 1000).toFixed(1)}k
-              </Div>
-              <Span className="flex items-center gap-1">
-                <users >
+              </div>
+              <span className="flex items-center gap-1">
+                <Users >
                 {strategy.users}
-              </Span>
-            </Div>
-            <Span className="flex items-center gap-1">
-              <clock >
+              </span>
+            </div>
+            <span className="flex items-center gap-1">
+              <Clock >
               {strategy.timeframe}
-            </Span>
-          </Div>
+            </span>
+          </div>
           
-          <Div className="mt-3 pt-3 border-t border-white/10">
-            <Div className="flex items-center justify-between">
-              <Div className="flex items-center gap-2">
-                <Div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold text-white">
+          <div className="mt-3 pt-3 border-t border-white/10">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold text-white">
                   {strategy.author.name.charAt(0)}
-                </Div>
-                <Span className="text-sm text-gray-400">{strategy.author.name}</Span>
-              </Div>
+                </div>
+                <span className="text-sm text-gray-400">{strategy.author.name}</span>
+              </div>
               <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
-                <dollarsign >
+                <DollarSign >
                 {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
-            </Div>
+            </div>
           </div />
       </Card />
   );
@@ -177,163 +177,163 @@ export default function VaultPage() {
   }, [filteredStrategies]);
 
   return (
-    <Div>
+    <div>
       {/* Header */}
-      <Div className="flex justify-between items-center mb-8">
-        <Div>
-          <H1 className="text-3xl font-bold text-white flex items-center gap-3">
-            <Span className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
               <gitcommit  style={{ color: "white" }}>
-            </Div>
+            </div>
             Strategy Vault
-          </H1>
-          <P className="text-gray-400 mt-1">
+          </h1>
+          <p className="text-gray-400 mt-1">
             Discover and analyze {comprehensiveStrategies.length}+ professional trading strategies
-          </P>
-        </Div>
-      </Div>
+          </p>
+        </div>
+      </div>
 
       {/* Stats Cards */}
-      <Div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         <Card >
           <Cardcontent >
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Avg Return</Div>
-                <P className="text-2xl font-bold text-green-400">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Avg Return</div>
+                <p className="text-2xl font-bold text-green-400">
                   +{stats.avgReturn.toFixed(1)}%
-                </P>
-              </Div>
-              <trendingup >
+                </p>
+              </div>
+              <TrendingUp >
             </div />
-        </Card>
+        </TrendingUp>
         <Card >
           <Cardcontent >
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Avg Sharpe</Card>
-                <P className="text-2xl font-bold text-blue-400">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Avg Sharpe</Card>
+                <p className="text-2xl font-bold text-blue-400">
                   {stats.avgSharpe.toFixed(2)}
-                </P>
-              </Div>
-              <barchart3 >
+                </p>
+              </div>
+              <BarChart3 >
             </div />
-        </Card>
+        </BarChart3>
         <Card >
           <Cardcontent >
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Total Users</Card>
-                <P className="text-2xl font-bold text-purple-400">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Total Users</Card>
+                <p className="text-2xl font-bold text-purple-400">
                   {(stats.totalUsers / 1000).toFixed(1)}k
-                </P>
-              </Div>
-              <users >
+                </p>
+              </div>
+              <Users >
             </div />
-        </Card>
+        </Users>
         <Card >
           <Cardcontent >
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Avg Win Rate</Card>
-                <P className="text-2xl font-bold text-yellow-400">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Avg Win Rate</Card>
+                <p className="text-2xl font-bold text-yellow-400">
                   {stats.avgWinRate.toFixed(1)}%
-                </P>
-              </Div>
-              <star >
+                </p>
+              </div>
+              <Star >
             </div />
-        </Card>
-      </Div>
+        </Star>
+      </div>
 
       {/* Filters and Search */}
-      <Div className="space-y-4 mb-8">
-        <Div className="flex flex-col lg:flex-row gap-4">
-          <Div className="flex-1">
-            <Div className="relative">
-              <search >
-              <Input placeholder="Search strategies, tags, or descriptions..."  /> setSearchTerm(e.target.value)}
+      <div className="space-y-4 mb-8">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="flex-1">
+            <div className="relative">
+              <Search >
+              <Input placeholder="Search strategies, tags, or descriptions..."/> setSearchTerm(e.target.value)}
                 className="pl-10 bg-white/5 border-white/10 text-white"
               />
-            </Div>
-          </Div>
-          <Div className="flex gap-2">
+            </div>
+          </div>
+          <div className="flex gap-2">
             <Select >
-              <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Category">
-              </Div>
-              <selectcontent >
-                <selectitem value="all">All Categories</SelectItem>
+              <SelectTrigger  style={{ color: "white" }}>
+                <SelectValue placeholder="Category">
+              </div>
+              <SelectContent >
+                <SelectItem value="all">All Categories</SelectContent>
                 {strategyCategories.map(cat => (
-                  <selectitem >{cat}</SelectItem>
+                  <SelectItem >{cat}</SelectItem>
                 ))}
               </SelectContent />
             
             <Select >
-              <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Risk Level" />
-              <selectcontent >
-                <selectitem value="all">All Risk Levels</Select>
+              <SelectTrigger  style={{ color: "white" }}>
+                <SelectValue placeholder="Risk Level"/>
+              <SelectContent >
+                <SelectItem value="all">All Risk Levels</Select>
                 {riskLevels.map(risk => (
-                  <selectitem >{risk}</SelectItem>
+                  <SelectItem >{risk}</SelectItem>
                 ))}
               </SelectContent />
             
             <Select >
-              <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Market" />
-              <selectcontent >
-                <selectitem value="all">All Markets</Select>
+              <SelectTrigger  style={{ color: "white" }}>
+                <SelectValue placeholder="Market"/>
+              <SelectContent >
+                <SelectItem value="all">All Markets</Select>
                 {marketTypes.map(market => (
-                  <selectitem >{market}</SelectItem>
+                  <SelectItem >{market}</SelectItem>
                 ))}
               </SelectContent />
             
             <Select > setSortBy(v as any)}>
-              <selecttrigger  style={{ color: "white" }}>
-                <selectvalue placeholder="Sort by" />
-              <selectcontent >
-                <selectitem value="returns">Returns</Select>
-                <selectitem value="sharpe">Sharpe Ratio</SelectItem>
-                <selectitem value="drawdown">Drawdown</SelectItem>
-                <selectitem value="winRate">Win Rate</SelectItem>
-                <selectitem value="users">Users</SelectItem>
-                <selectitem value="stars">Stars</SelectItem />
-            </Select>
+              <SelectTrigger  style={{ color: "white" }}>
+                <SelectValue placeholder="Sort by"/>
+              <SelectContent >
+                <SelectItem value="returns">Returns</Select>
+                <SelectItem value="sharpe">Sharpe Ratio</SelectItem>
+                <SelectItem value="drawdown">Drawdown</SelectItem>
+                <SelectItem value="winRate">Win Rate</SelectItem>
+                <SelectItem value="users">Users</SelectItem>
+                <SelectItem value="stars">Stars</SelectItem />
+            </SelectItem>
             
             <Button variant="outline" size="icon"> setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
               className="border-white/10"
             >
               {sortOrder === 'asc' ? <sortasc > : <sortdesc >}
-            </Button>
-          </Div>
-        </Div>
+            </button>
+          </div>
+        </div>
         
-        <Div className="flex items-center justify-between">
-          <P className="text-sm text-gray-400"></Div>
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-gray-400"></div>
             Showing {filteredStrategies.length} of {comprehensiveStrategies.length} strategies
-          </Div>
-          <tabs > setViewMode(v as 'grid' | 'list')}>
+          </div>
+          <Tabs > setViewMode(v as 'grid' | 'list')}>
             <Tabslist >
-              <Tabstrigger value="grid">Grid</Tabslist>
+              <Tabstrigger value="grid">Grid</Tabs>
               <Tabstrigger value="list">List</Tabstrigger />
           </Tabstrigger>
-        </Div>
-      </Div>
+        </div>
+      </div>
 
       {/* Strategies Grid */}
-      <Div className={viewMode === 'grid' 
+      <div className={viewMode === 'grid' 
         ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
         : "space-y-4"
       }>
         {filteredStrategies.map(strategy => (
           <strategycard >
         ))}
-      </Div>
+      </div>
       
       {filteredStrategies.length === 0 && (
-        <Div className="text-center py-12">
-          <P className="text-gray-400"></Div></Div></Div></Div></Div>No strategies found matching your criteria.</Div>
-          <Button variant="ghost"> {
+        <div className="text-center py-12">
+          <p className="text-gray-400"></div></div>No strategies found matching your criteria.</div>
+          <Button variant="ghost"></button></div> {
               setSearchTerm('');
               setSelectedCategory('all');
               setSelectedRisk('all');
@@ -342,10 +342,10 @@ export default function VaultPage() {
             className="mt-4"
           >
             Reset Filters
-          </Button>
-        </Div>
+          </button>
+        </div>
       )}
-    </Div>
+    </div>
   );
 }
 

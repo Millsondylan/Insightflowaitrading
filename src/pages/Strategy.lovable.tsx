@@ -12,62 +12,62 @@ export interface StrategyResponse {
 
 const StrategyPage = () => {
   return (
-    <Div className="theme-strategy scroll-container min-h-screen">
+    <div className="theme-strategy scroll-container min-h-screen">
       {/* Hero Section */}
       <Scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Div className="text-center max-w-5xl mx-auto">
-          <H1 className="text-6xl md:text-8xl font-bold text-glow-cyan mb-8 leading-tight">
+        <div className="text-center max-w-5xl mx-auto">
+          <h1 className="text-6xl md:text-8xl font-bold text-glow-cyan mb-8 leading-tight">
             Visualize Your Edge
-          </Div>
-          <P className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">
+          </div>
+          <p className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">
             AI-crafted strategies from your own intuition
-          </P>
-          <Div className="mt-12">
-            <Div className="threadline-glow w-32 mx-auto"></Div>
-          </Div>
+          </p>
+          <div className="mt-12">
+            <div className="threadline-glow w-32 mx-auto"></div>
+          </div>
         </div />
 
       {/* Strategy Generator Section */}
       <Scrollsection >
-        <Div className="max-w-3xl mx-auto">
-          <Div className="text-center mb-8">
-            <Div className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 rounded-full text-cyan-300 text-sm font-medium mb-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-400/30 rounded-full text-cyan-300 text-sm font-medium mb-6">
               ✏️ Strategy Generator
             </Scrollsection>
-            <H2 className="text-3xl md:text-4xl font-bold text-glow-cyan mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-glow-cyan mb-4">
               Describe Your Trading Idea
-            </H2>
-            <P className="text-gray-400 text-lg">
+            </h2>
+            <p className="text-gray-400 text-lg">
               Enter your trading setup and let AI transform it into a complete strategy
-            </P>
-          </Div>
+            </p>
+          </div>
           
-          <Strategygenerator  / />
+          <Strategygenerator  //>
         </div />
 
       {/* CTA Footer */}
       <Scrollsection >
-        <Div className="max-w-5xl mx-auto text-center">
-          <Div className="mb-12">
-            <H4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4" /></Scrollsection /></Scrollsection />Ready to Execute?</Strategygenerator>
-            <P className="text-gray-400 text-lg">Take your strategy to the next level</P>
-          </Div>
-          <Div className="flex flex-wrap justify-center gap-6">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="mb-12">
+            <h4 className="text-2xl md:text-3xl font-semibold text-glow-cyan mb-4"/></Scrollsection /></Scrollsection />Ready to Execute?</Strategygenerator>
+            <p className="text-gray-400 text-lg">Take your strategy to the next level</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-6">
             <Button className="glow-button glow-cyan text-lg px-8 py-4">
               🔁 Backtest Strategy
-            </Div>
+            </div>
             <Button className="glow-button glow-cyan text-lg px-8 py-4">
               📓 Save to Journal
-            </Button>
+            </button>
             <Button className="glow-button glow-cyan text-lg px-8 py-4">
               📘 Learn in Academy
-            </Button>
+            </button>
             <Button className="glow-button glow-cyan text-lg px-8 py-4">
               💬 Share Strategy
-            </Button>
-          </Div>
+            </button>
+          </div>
         </div />
-    </Div>
+    </div>
   );
 };
 

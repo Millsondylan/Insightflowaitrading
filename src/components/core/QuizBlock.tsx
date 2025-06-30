@@ -2,16 +2,68 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import QuizFeedback from "./QuizFeedback";
-import LessonBadge from "@/components/ui/LessonBadge";
-import { Quiz, QuizQuestion, QuizAnswer, QuizResult, QuizFeedback as QuizFeedbackType, calculateQuizScore, getCorrectAnswer } from "@/lib/academy/quizSchema";
-import { requestQuiz } from "@/api/academy/quiz";
-import { LessonBlock } from "@/lib/academy/lessonSchema";
 import { cn } from "@/lib/utils";
 import { Brain, Trophy, ChevronDown, Lock } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import "@/styles/quiz.css";
+
+// Legacy quiz types for backward compatibility
+interface QuizOption {
+  id: string;
+  label: string;
+  correct: boolean;
+}
+
+interface QuizQuestion {
+  id: string;
+  question: string;
+  options: QuizOption[];
+  explanation: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
+interface Quiz {
+  id: string;
+  lessonTopic: string;
+  title: string;
+  questions: QuizQuestion[];
+  passingScore: number;
+}
+
+interface QuizAnswer {
+  questionId: string;
+  selectedOptionId: string;
+  isCorrect: boolean;
+  timestamp: Date;
+}
+
+interface QuizResult {
+  quizId: string;
+  answers: QuizAnswer[];
+  score: number;
+  totalQuestions: number;
+  correctAnswers: number;
+  passed: boolean;
+  completedAt: Date;
+  timeSpent: number;
+}
+
+interface QuizFeedbackType {
+  isCorrect: boolean;
+  explanation: string;
+  hint?: string;
+  encouragement: string;
+  confidence: number;
+}
+
+interface LessonBlock {
+  topic: string;
+  content: string;
+}
 
 interface QuizBlockProps {
   lessonBlocks: LessonBlock[];
@@ -26,13 +78,13 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
 }) => {
   const { toast } = useToast();
   const { hasProAccess, loading: authLoading } = useAuth();
-  const [quiz, setQuiz] = useState<Quiz | null />(null);
+  const [quiz, setQuiz] = useState<Quiz | null>(null);
   const [loading, setLoading] = useState(false);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [submittedAnswers, setSubmittedAnswers] = useState<Record<string, boolean>>({});
   const [feedbacks, setFeedbacks] = useState<Record<string, QuizFeedbackType>>({});
-  const [quizResult, setQuizResult] = useState<QuizResult | null />(null);
+  const [quizResult, setQuizResult] = useState<QuizResult | null>(null);
   const [showCompletion, setShowCompletion] = useState(false);
 
   const currentQuestion = quiz?.questions[currentQuestionIndex];
@@ -59,13 +111,28 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
     
     setLoading(true);
     try {
-      const generatedQuiz = await requestQuiz({
-        lessonBlocks,
-        questionCount: 4,
-        difficulty: 'medium'
-      });
+      // Mock quiz generation for now
+      const mockQuiz: Quiz = {
+        id: 'mock-quiz-1',
+        lessonTopic: lessonBlocks[0]?.topic || 'Trading',
+        title: 'Trading Knowledge Quiz',
+        passingScore: 70,
+        questions: [
+          {
+            id: 'q1',
+            question: 'What is a stop loss?',
+            options: [
+              { id: 'q1-a', label: 'A price level to exit a losing trade', correct: true },
+              { id: 'q1-b', label: 'A price level to enter a trade', correct: false },
+              { id: 'q1-c', label: 'A type of chart pattern', correct: false },
+              { id: 'q1-d', label: 'A trading strategy', correct: false }
+            ],
+            explanation: 'A stop loss is a predetermined price level at which a trader exits a losing position to limit potential losses.'
+          }
+        ]
+      };
       
-      setQuiz(generatedQuiz);
+      setQuiz(mockQuiz);
       setCurrentQuestionIndex(0);
       setSelectedAnswers({});
       setSubmittedAnswers({});
@@ -98,9 +165,9 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   };
 
   const generateFeedback = (question: QuizQuestion, selectedOptionId: string): QuizFeedbackType => {
-    const correctAnswer = getCorrectAnswer(question);
-    const isCorrect = selectedOptionId === correctAnswer.id;
+    const correctOption = question.options.find(opt => opt.correct);
     const selectedOption = question.options.find(opt => opt.id === selectedOptionId);
+    const isCorrect = selectedOptionId === correctOption?.id;
     
     return {
       isCorrect,
@@ -110,6 +177,23 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         ? "Great job! You've understood this concept well." 
         : "Don't worry, learning takes practice. Keep going!",
       confidence: 0.85
+    };
+  };
+
+  const calculateQuizScore = (quiz: Quiz, answers: QuizAnswer[]): QuizResult => {
+    const correctAnswers = answers.filter(answer => answer.isCorrect).length;
+    const score = (correctAnswers / quiz.questions.length) * 100;
+    const passed = score >= quiz.passingScore;
+
+    return {
+      quizId: quiz.id,
+      answers,
+      score,
+      totalQuestions: quiz.questions.length,
+      correctAnswers,
+      passed,
+      completedAt: new Date(),
+      timeSpent: 0
     };
   };
 
@@ -135,12 +219,12 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         const selectedId = q.id === currentQuestion.id 
           ? selectedOptionId 
           : selectedAnswers[q.id];
-        const correctAnswer = getCorrectAnswer(q);
+        const correctOption = q.options.find(opt => opt.correct);
         
         return {
           questionId: q.id,
-          selectedOptionId: selectedId,
-          isCorrect: selectedId === correctAnswer.id,
+          selectedOptionId: selectedId || '',
+          isCorrect: selectedId === correctOption?.id,
           timestamp: new Date()
         };
       });
@@ -169,7 +253,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   };
 
   if (authLoading) {
-    return <Div className="text-center p-8">Checking access...</QuizBlockProps>;
+    return <div className="text-center p-8">Checking access...</div>;
   }
 
   if (!hasProAccess) {
@@ -179,21 +263,22 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         animate={{ opacity: 1, y: 0 }}
         className={cn("quiz-container", className)}
       >
-        <Card className="quiz-block" />
-          <CardContent className="p-8 text-center space-y-6" />
-            <Lock className="h-12 w-12 text-yellow-400 mx-auto" />
-            <Div>
-              <H3 className="text-xl font-semibold text-gray-200 mb-2">
+        <Card className="quiz-block">
+          <CardContent className="p-8 text-center space-y-6">
+            <Lock className="h-12 w-12 text-yellow-400 mx-auto"/>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Unlock AI-Powered Quizzes
-              </Card>
-              <P className="text-gray-400">
+              </h3>
+              <p className="text-gray-400">
                 Upgrade to a Pro plan to test your knowledge with quizzes tailored to each lesson.
-              </P>
-            </Div>
+              </p>
+            </div>
             <Button onClick={generateQuiz} className="mt-4">
               Upgrade to Pro
-            </button />
-        </Button>
+            </Button>
+          </CardContent>
+        </Card>
       </motion.div>
     );
   }
@@ -205,36 +290,38 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         animate={{ opacity: 1, y: 0 }}
         className={cn("quiz-container", className)}
       >
-        <Card className="quiz-block" />
-          <CardContent className="p-8 text-center space-y-6" />
-            <brain className="h-12 w-12 text-blue-400 mx-auto animate-pulse" />
-            <Div>
-              <H3 className="text-xl font-semibold text-gray-200 mb-2">
+        <Card className="quiz-block">
+          <CardContent className="p-8 text-center space-y-6">
+            <Brain className="h-12 w-12 text-blue-400 mx-auto animate-pulse"/>
+            <div>
+              <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Generating Quiz Questions
-              </Card>
-              <P className="text-gray-400">
+              </h3>
+              <p className="text-gray-400">
                 AI is creating personalized questions based on the lesson content...
-              </P>
-            </Div>
-            <Div className="flex space-x-1 justify-center">
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </div />
-        </Div>
+              </p>
+            </div>
+            <div className="flex space-x-1 justify-center">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}/>
+            </div>
+          </CardContent>
+        </Card>
       </motion.div>
     );
   }
 
   if (!quiz) {
     return (
-      <Card className="quiz-block" />
-        <CardContent className="p-8 text-center" />
-          <P className="text-gray-400">Ready to test your knowledge?</Card>
+      <Card className="quiz-block">
+        <CardContent className="p-8 text-center">
+          <p className="text-gray-400">Ready to test your knowledge?</p>
           <Button onClick={generateQuiz} className="mt-4">
             Generate Quiz
-          </button />
-      </Button>
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 
@@ -246,35 +333,36 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn("quiz-container", className)}
     >
-      <Card className="quiz-block" />
+      <Card className="quiz-block">
         <CardHeader>
-          <Div className="flex items-center justify-between">
-            <CardTitle className="flex items-center space-x-3" />
-              <brain className="h-6 w-6 text-blue-400" />
-              <Span>{quiz.title}</Card />
-            <Div className="text-sm text-gray-400">
+          <div className="flex items-center justify-between">
+            <CardTitle className="flex items-center space-x-3">
+              <Brain className="h-6 w-6 text-blue-400"/>
+              <span>{quiz.title}</span>
+            </CardTitle>
+            <div className="text-sm text-gray-400">
               {currentQuestionIndex + 1} of {quiz.questions.length}
-            </Card>
-          </Div>
+            </div>
+          </div>
           
           {/* Progress Bar */}
-          <Div className="quiz-progress">
-            <Div 
+          <div className="quiz-progress">
+            <div 
               className="quiz-progress-fill"
-              style={{ width: `${calculateProgress()}%` }}
-            />
-          </div />
+              style={{ width: `${calculateProgress()}%` }}/>
+          </div>
+        </CardHeader>
 
-        <CardContent className="space-y-6" />
+        <CardContent className="space-y-6">
           {currentQuestion && (
             <>
               {/* Question */}
-              <Div className="quiz-question">
+              <div className="quiz-question">
                 {currentQuestion.question}
-              </Div>
+              </div>
 
               {/* Options */}
-              <Div className="quiz-options">
+              <div className="quiz-options">
                 {currentQuestion.options.map((option) => {
                   const isSelected = selectedAnswers[currentQuestion.id] === option.id;
                   const isSubmitted = submittedAnswers[currentQuestion.id];
@@ -302,64 +390,63 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                         name={currentQuestion.id}
                         value={option.id}
                         checked={isSelected}
-                        onChange={() = /> handleAnswerSelect(currentQuestion.id, option.id)}
+                        onChange={() => handleAnswerSelect(currentQuestion.id, option.id)}
                         disabled={isSubmitted}
                         className="quiz-option-input"
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
-                        className={optionClassName}
-        >
-                        <Div className="quiz-option-radio" />
-                        <Span className="text-gray-200">{option.label}</div />
+                        className={optionClassName}>
+                        <div className="quiz-option-radio"/>
+                        <span className="text-gray-200">{option.label}</span>
+                      </Label>
                     </motion.div>
                   );
                 })}
-              </Div>
+              </div>
 
               {/* Submit/Next Button */}
-              <Div className="flex justify-between items-center">
-                <Div />
+              <div className="flex justify-between items-center">
+                <div />
                 {!isQuestionAnswered ? (
                   <Button onClick={handleSubmitAnswer}
                     disabled={!selectedAnswers[currentQuestion.id]}
-                    className="quiz-submit-btn"
-                  />
+                    className="quiz-submit-btn">
                     Submit Answer
-                  </Div>
+                  </Button>
                 ) : (
-                  <Div className="flex space-x-3">
+                  <div className="flex space-x-3">
                     {canProceed && (
                       <Button onClick={handleNextQuestion}
-                        className="quiz-submit-btn"
-          >
+                        className="quiz-submit-btn">
                         Next Question
-                        <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
-                      </Div>
+                        <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]"/>
+                      </Button>
                     )}
                     {isQuizComplete && quizResult && (
-                      <Div className="text-center">
-                        <P className="text-lg font-semibold text-gray-200">
+                      <div className="text-center">
+                        <p className="text-lg font-semibold text-gray-200">
                           Score: {quizResult.score.toFixed(0)}%
-                        </Div>
-                        <P className={cn(
+                        </p>
+                        <p className={cn(
                           "text-sm font-medium",
                           quizResult.passed ? "text-green-400" : "text-red-400"
                         )}>
                           {quizResult.passed ? "Passed!" : "Keep Learning"}
-                        </P>
-                      </Div>
+                        </p>
+                      </div>
                     )}
-                  </Div>
+                  </div>
                 )}
-              </Div>
+              </div>
 
               {/* Feedback */}
               {feedbacks[currentQuestion.id] && (
-                <QuizFeedback feedback={feedbacks[currentQuestion.id]} />
+                <QuizFeedback feedback={feedbacks[currentQuestion.id]}/>
               )}
             </>
           )}
-        </QuizFeedback />
+        </CardContent>
+      </Card>
 
       {/* Completion Badge */}
       {showCompletion && quizResult?.passed && (
@@ -369,25 +456,24 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
           className="quiz-completion-badge"
           onClick={() => setShowCompletion(false)}
         >
-          <Div className="badge-content">
-            <Div className="badge-icon">
-              <trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
-            </QuizFeedback>
-            <H2 className="text-2xl font-bold text-yellow-400 mb-2">
+          <div className="badge-content">
+            <div className="badge-icon">
+              <Trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4"/>
+            </div>
+            <h2 className="text-2xl font-bold text-yellow-400 mb-2">
               Quiz Complete!
-            </H2>
-            <P className="text-gray-300 mb-4">
+            </h2>
+            <p className="text-gray-300 mb-4">
               You've mastered: {lessonBlocks[0]?.topic}
-            </P>
-            <P className="text-lg font-semibold text-green-400">
+            </p>
+            <p className="text-lg font-semibold text-green-400">
               Score: {quizResult.score.toFixed(0)}%
-            </P>
-            <Button onClick={() = /> setShowCompletion(false)}
-              className="mt-4 bg-yellow-600 hover:bg-yellow-700"
-            >
+            </p>
+            <Button onClick={() => setShowCompletion(false)}
+              className="mt-4 bg-yellow-600 hover:bg-yellow-700">
               Continue Learning
             </Button>
-          </Div>
+          </div>
         </motion.div>
       )}
     </motion.div>

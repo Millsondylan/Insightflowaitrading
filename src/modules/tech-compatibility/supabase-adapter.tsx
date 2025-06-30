@@ -52,95 +52,95 @@ export const SupabaseAdapter: React.FC<SupabaseAdapterProps> = ({ onSync }) => {
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'synced': return <CheckCircle className="h-4 w-4" />;
-      case 'syncing': return <RefreshCw className="h-4 w-4 animate-spin" />;
-      default: return <AlertCircle className="h-4 w-4" />;
+      case 'synced': return <CheckCircle className="h-4 w-4"/>;
+      case 'syncing': return <RefreshCw className="h-4 w-4 animate-spin"/>;
+      default: return <alertCircle className="h-4 w-4"/>;
     }
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <Div className="flex items-center justify-between mb-6">
-        <Div className="flex items-center gap-2">
-          <Database className="h-6 w-6" />
-          <H2 className="text-2xl font-bold">Supabase Adapter</SupabaseAdapterProps>
-        </Div>
-        <Badge variant={syncStatus.connected ? 'default' : 'destructive'} />
+    <Card className="theme-card p-6"/>
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-2">
+          <Database className="h-6 w-6"/>
+          <h2 className="text-2xl font-bold">Supabase Adapter</SupabaseAdapterProps>
+        </div>
+        <Badge variant={syncStatus.connected ? 'default' : 'destructive'}/>
           {syncStatus.connected ? 'Connected' : 'Disconnected'}
         </Badge>
-      </Div>
+      </div>
 
-      <Div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <Div className="p-4 bg-secondary/20 rounded-lg">
-          <P className="text-sm text-muted-foreground">Last Sync</Div>
-          <P className="font-medium">{syncStatus.lastSync.toLocaleString()}</P>
-        </Div>
-        <Div className="p-4 bg-secondary/20 rounded-lg">
-          <P className="text-sm text-muted-foreground">Pending Changes</Div>
-          <P className="font-medium">{syncStatus.pendingChanges}</P>
-        </Div>
-        <Div className="p-4 bg-secondary/20 rounded-lg">
-          <P className="text-sm text-muted-foreground">Total Records</Div>
-          <P className="font-medium">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="p-4 bg-secondary/20 rounded-lg">
+          <p className="text-sm text-muted-foreground">Last Sync</div>
+          <p className="font-medium">{syncStatus.lastSync.toLocaleString()}</p>
+        </div>
+        <div className="p-4 bg-secondary/20 rounded-lg">
+          <p className="text-sm text-muted-foreground">Pending Changes</div>
+          <p className="font-medium">{syncStatus.pendingChanges}</p>
+        </div>
+        <div className="p-4 bg-secondary/20 rounded-lg">
+          <p className="text-sm text-muted-foreground">Total Records</div>
+          <p className="font-medium">
             {syncStatus.tables.reduce((acc, t) => acc + t.records, 0).toLocaleString()}
-          </P>
-        </Div>
-      </Div>
+          </p>
+        </div>
+      </div>
 
-      <Div className="space-y-4 mb-6">
-        <H3 className="font-semibold">Table Status</Div>
+      <div className="space-y-4 mb-6">
+        <h3 className="font-semibold">Table Status</div>
         {syncStatus.tables.map((table) => (
-          <Div key={table.name} className="flex items-center justify-between p-3 border rounded-lg">
-            <Div className="flex items-center gap-3">
-              <Div className={getStatusColor(table.status)}>
+          <div key={table.name} className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center gap-3">
+              <div className={getStatusColor(table.status)}>
                 {getStatusIcon(table.status)}
-              </Div>
-              <Div>
-                <P className="font-medium">{table.name}</Div>
-                <P className="text-sm text-muted-foreground">{table.records} records</P>
-              </Div>
-            </Div>
-            <Badge variant="outline" className={getStatusColor(table.status)} />
+              </div>
+              <div>
+                <p className="font-medium">{table.name}</div>
+                <p className="text-sm text-muted-foreground">{table.records} records</p>
+              </div>
+            </div>
+            <Badge variant="outline" className={getStatusColor(table.status)}/>
               {table.status}
             </Badge>
-          </Div>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="flex gap-2">
+      <div className="flex gap-2">
         <Button onClick={syncData} 
           disabled={isSyncing || !syncStatus.connected}
           className="flex-1">
           {isSyncing ? (
             <>
-              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+              <RefreshCw className="h-4 w-4 mr-2 animate-spin"/>
               Syncing...
-            </>
+            </div>
           ) : (
             <>
-              <RefreshCw className="h-4 w-4 mr-2" />
+              <RefreshCw className="h-4 w-4 mr-2"/>
               Sync Now
-            </>
+            </RefreshCw>
           )}
-        </Div>
-        <Button variant="outline" />
+        </div>
+        <Button variant="outline"/>
           Configure
-        </Button>
-      </Div>
+        </button>
+      </div>
 
-      <Div className="mt-6 p-4 bg-primary/5 rounded-lg">
-        <H4 className="font-medium mb-2"></Div>Connection Details</Div>
-        <Div className="space-y-2 text-sm text-muted-foreground">
-          <Div className="flex items-center justify-between">
-            <Span>Project URL:</Div>
+      <div className="mt-6 p-4 bg-primary/5 rounded-lg">
+        <h4 className="font-medium mb-2"></div>Connection Details</div>
+        <div className="space-y-2 text-sm text-muted-foreground">
+          <div className="flex items-center justify-between">
+            <span>Project URL:</div>
             <Code className="bg-secondary px-2 py-1 rounded">your-project.supabase.co</Code>
-          </Div>
-          <Div className="flex items-center justify-between">
-            <Span>Region:</Div>
-            <Span>us-east-1</Span>
-          </Div>
-        </Div>
-      </div />
+          </div>
+          <div className="flex items-center justify-between">
+            <span>Region:</div>
+            <span>us-east-1</span>
+          </div>
+        </div>
+      </div>
   );
 };
 

@@ -26,7 +26,7 @@ const MenubarTrigger = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
-  <menubarprimitive  />
+  <menubarprimitive />
 ))
 MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName
 
@@ -38,7 +38,7 @@ const MenubarSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <Menubarprimitive >
     {children}
-    <Chevronright  />
+    <Chevronright />
   </MenubarPrimitive.SubTrigger>
 ))
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
@@ -81,9 +81,9 @@ const MenubarCheckboxItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
   <menubarprimitive >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <menubarprimitive >
-        <check >
+        <Check >
       </MenubarPrimitive.ItemIndicator />
     {children}
   </MenubarPrimitive.CheckboxItem>
@@ -95,7 +95,7 @@ const MenubarRadioItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
   <menubarprimitive >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <menubarprimitive >
         <circle >
       </MenubarPrimitive.ItemIndicator>
@@ -128,12 +128,12 @@ const MenubarShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span       className={cn(
+    <span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    / /></HTMLSpanElement /></HTMLSpanElement />
+    //></HTMLSpanElement /></HTMLSpanElement />
   )
 }
 MenubarShortcut.displayname = "MenubarShortcut"

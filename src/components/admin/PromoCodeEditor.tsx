@@ -64,74 +64,79 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
   };
 
   return (
-    <Div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
-      <Div className="flex justify-between items-center">
-        <H2 className="text-lg font-semibold text-white">Promo Codes</Div>
-        
+    <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
+      <div className="flex justify-between items-center">
+        <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
+
         <Button onClick={generateNewCode}
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
-          <Plus className="h-4 w-4 mr-2" />
+          <Plus className="h-4 w-4 mr-2"/>
           Generate Code
-        </Button>
-      </Div>
+        </button>
+      </div>
 
-      <Div className="rounded-lg border border-white/10 overflow-hidden">
-        <Table>
+      <div className="rounded-lg border border-white/10 overflow-hidden">
+        <table>
           <TableHeader>
             <TableRow>
-              <TableHead>Code</Div>
+              <TableHead>Code</TableHead>
               <TableHead>Expires</TableHead>
               <TableHead>Uses Left</TableHead>
-              <TableHead className="text-right" />Actions</TableHead />
-          </TableHead>
+              <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+          </TableHeader>
           <TableBody>
             {codes.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={4} className="text-center py-8 text-gray-500" />
+                <TableCell colSpan={4} className="text-center py-8 text-gray-500">
                   No active promo codes. Generate a new code to get started.
-                </TableBody />
+                </TableCell>
+              </TableRow>
             ) : (
               codes.map((code) => {
                 const isExpired = new Date(code.expiresAt) < new Date();
                 const isLowUses = code.usesLeft < 5;
 
                 return (
-                  <TableRow key={code.id} className="hover:bg-white/5 border-white/10" />
-                    <TableCell className="font-mono" />
-                      <Div className="flex items-center gap-2">
-                        <Span className={cn(
+                  <TableRow key={code.id} className="hover:bg-white/5 border-white/10">
+                    <TableCell className="font-mono">
+                      <div className="flex items-center gap-2">
+                        <span className={cn(
                           "text-sm",
                           isExpired ? "text-red-400" : isLowUses ? "text-yellow-400" : "text-green-400"
                         )}>
                           {code.code}
-                        </TableBody>
-                      </div />
+                        </span>
+                      </div>
+                    </TableCell>
                     <TableCell>
                       {new Date(code.expiresAt).toLocaleDateString()}
                     </TableCell>
                     <TableCell>
                       {code.usesLeft}
                     </TableCell>
-                    <TableCell className="text-right" />
-                      <Button onClick={() = /> onRevoke(code.id)}
+                    <TableCell className="text-right">
+                      <Button onClick={() => onRevoke(code.id)}
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
-                        <Trash2 className="h-4 w-4" / /></TableCell /></TableCell /></TableCell>
-                      </button />
+                        <Trash2 className="h-4 w-4"/>
+                      </button>
+                    </TableCell>
                   </TableRow>
                 );
               })
             )}
-          </TableBody />
-      </Div>
-      
-      <Div className="text-xs text-gray-500">
+          </TableBody>
+        </table>
+      </div>
+
+      <div className="text-xs text-gray-500">
         {codes.length > 0
           ? `${codes.length} active promo code${codes.length !== 1 ? "s" : ""}`
           : "No active promo codes"}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 }
 

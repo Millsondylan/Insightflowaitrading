@@ -16,13 +16,13 @@ interface AIReflectionProps {
   autoGenerate?: boolean;
 }
 
-const AIReflection: React.FC<Aireflectionprops> = ({ 
+const AIReflection: React.FC<aireflectionprops> = ({ 
   entry, 
   className, 
   autoGenerate = false 
 }) => {
   const { toast } = useToast();
-  const [reflection, setReflection] = useState<aireflectiontype  />(null);
+  const [reflection, setReflection] = useState<aireflectiontype />(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasGenerated, setHasGenerated] = useState(false);
@@ -78,33 +78,33 @@ const AIReflection: React.FC<Aireflectionprops> = ({
   if (loading) {
     return (
       <Card >
-        <Cardheader  />
-          <Div className="flex items-center space-x-2">
+        <Cardheader />
+          <div className="flex items-center space-x-2">
             <brain >
-            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Aireflectionprops>
-            <Div className="flex space-x-1">
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <Div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </Div>
+            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+            <div className="flex space-x-1">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}/>
+            </div>
           </div />
         <Cardcontent >
-          <Div className="space-y-2">
+          <div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
             <skeleton >
-            <skeleton  />
-          <Div className="space-y-2">
+            <skeleton />
+          <div className="space-y-2">
             <skeleton >
-            <Div className="flex gap-2">
+            <div className="flex gap-2">
               <skeleton >
               <skeleton >
             </Cardcontent>
-          </Div>
-          <Div className="space-y-2">
+          </div>
+          <div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
             <skeleton >
           </div />
-      </Div>
+      </div>
     );
   }
 
@@ -113,18 +113,18 @@ const AIReflection: React.FC<Aireflectionprops> = ({
     return (
       <Card >
         <Cardheader >
-          <Div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2">
             <brain >
             <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
           </div />
         <Cardcontent >
-          <Div className="text-red-400 text-sm">
+          <div className="text-red-400 text-sm">
             {error}
           </Cardcontent>
           <Button variant="outline" size="sm">
             Try Again
           </button />
-      </Button>
+      </button>
     );
   }
 
@@ -133,22 +133,22 @@ const AIReflection: React.FC<Aireflectionprops> = ({
     return (
       <Card >
         <Cardheader >
-          <Div className="flex items-center justify-between">
-            <Div className="flex items-center space-x-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
               <brain >
               <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
-            </Div>
+            </div>
             <sparkles >
           </div />
         <Cardcontent >
-          <P className="text-gray-400 text-sm">
+          <p className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
           </Cardcontent>
           <Button  style={{ width: "100%" }}>
             <brain >
             Analyze Trade
           </button />
-      </Button>
+      </button>
     );
   }
 
@@ -156,59 +156,59 @@ const AIReflection: React.FC<Aireflectionprops> = ({
   return (
     <Card >
       <Cardheader >
-        <Div className="flex items-center justify-between">
-          <Div className="flex items-center space-x-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
             <brain >
             <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
-          </Div>
-          <Div className="flex items-center space-x-2">
-            <Span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
+          </div>
+          <div className="flex items-center space-x-2">
+            <span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
               {getConfidenceText(reflection!.confidence)}
-            </Div>
-            <Div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
-          </Div>
+            </div>
+            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))}/>
+          </div>
         </div />
       
       <Cardcontent >
         {/* Summary Section */}
-        <Div className="space-y-2">
-          <Div className="flex items-center space-x-2 mb-2">
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2 mb-2">
             <target >
-            <H4 className="text-sm font-medium text-blue-400">Summary</Cardcontent>
-          </Div>
-          <P className="text-gray-300 leading-relaxed">
+            <h4 className="text-sm font-medium text-blue-400">Summary</Cardcontent>
+          </div>
+          <p className="text-gray-300 leading-relaxed">
             {reflection!.summary}
-          </P>
-        </Div>
+          </p>
+        </div>
 
         {/* Behavior Tags Section */}
         {reflection!.tags && reflection!.tags.length > 0 && (
-          <Div className="space-y-3">
-            <Div className="flex items-center space-x-2">
-              <Div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
-              <H4 className="text-sm font-medium text-purple-400"></Div>Behavioral Patterns</Div>
-            </Div>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"/>
+              <h4 className="text-sm font-medium text-purple-400"></div>Behavioral Patterns</div>
+            </div>
             <behaviortaggroup >
-          </Div>
+          </div>
         )}
 
         {/* Suggestion Section */}
-        <Div className="space-y-2">
-          <Div className="flex items-center space-x-2 mb-2">
+        <div className="space-y-2">
+          <div className="flex items-center space-x-2 mb-2">
             <lightbulb >
-            <H4 className="text-sm font-medium text-yellow-400"></Div>Improvement Suggestion</Div>
-          </Div>
-          <P className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
+            <h4 className="text-sm font-medium text-yellow-400"></div>Improvement Suggestion</div>
+          </div>
+          <p className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
             {reflection!.suggestion}
-          </P>
-        </Div>
+          </p>
+        </div>
 
         {/* Regenerate Button */}
-        <Div className="pt-2 border-t border-gray-700/50">
-          <Button variant="ghost" size="sm"></Div>
+        <div className="pt-2 border-t border-gray-700/50">
+          <Button variant="ghost" size="sm"></div>
             <brain >
             Regenerate Analysis
-          </Div>
+          </div>
         </div />
     </Card>
   );

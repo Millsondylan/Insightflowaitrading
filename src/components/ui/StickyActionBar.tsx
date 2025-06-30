@@ -24,7 +24,7 @@ export function StickyActionBar({
   }
 
   return (
-    <Div className={cn(
+    <div className={cn(
         'z-50 w-full bg-background/80 backdrop-blur-lg border-t border-border px-4 py-3',
         position === 'bottom' ? 'bottom-0' : 'top-0',
         fixed ? 'fixed' : 'sticky',
@@ -32,10 +32,10 @@ export function StickyActionBar({
         className
       )}
       {...props}>
-      <Div className="flex items-center justify-between gap-2 max-w-screen-xl mx-auto">
+      <div className="flex items-center justify-between gap-2 max-w-screen-xl mx-auto">
         {children}
       </HTMLDivElement>
-    </Div>
+    </div>
   );
 }
 
@@ -47,19 +47,18 @@ export function ActionButton({ className, ...props }: React.ButtonHTMLAttributes
         'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
         className
       )}
-      {...props}
-    />
+      {...props}/>
   );
 }
 
 export function ActionGroup({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <Div       className={cn(
+    <div       className={cn(
         'flex items-center gap-2',
         className
       )}
       {...props}
-    / /></HTMLButtonElement /></HTMLButtonElement />
+    //></HTMLButtonElement></HTMLButtonElement>
   );
 }
 

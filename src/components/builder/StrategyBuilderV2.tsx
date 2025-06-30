@@ -81,7 +81,7 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
     defaultChartSettings, 
     strategyTemplate, 
     riskParameters 
-  } = useProfilePersonalization();
+  } = useProfilePersonalization() || {};
   
   // Initialize with personalized defaults if no initial data
   useEffect(() => {
@@ -89,17 +89,17 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
       // Apply personalized defaults if no initial data was provided
       setStrategy(prev => ({
         ...prev || { title: '', rules: [], checklist: [] },
-        name: strategyTemplate.name,
-        description: strategyTemplate.description,
-        timeframe: defaultChartSettings.timeframe,
-        indicators: strategyTemplate.indicators,
-        riskPerTrade: riskParameters.riskPerTrade,
-        stopLossPercent: riskParameters.stopLossPercent,
-        takeProfitRatio: riskParameters.takeProfitRatio
+        name: strategyTemplate?.name,
+        description: strategyTemplate?.description,
+        timeframe: defaultChartSettings?.timeframe,
+        indicators: strategyTemplate?.indicators,
+        riskPerTrade: riskParameters?.riskPerTrade,
+        stopLossPercent: riskParameters?.stopLossPercent,
+        takeProfitRatio: riskParameters?.takeProfitRatio
       }));
       
       // Set favorite symbols if available
-      if (defaultChartSettings.symbols?.length) {
+      if (defaultChartSettings?.symbols?.length) {
         setSymbols(defaultChartSettings.symbols);
       }
       
@@ -125,10 +125,10 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
   const generateAIPrompt = useCallback(() => {
     if (!strategy) return '';
     
-    const { aiPromptContext } = useProfilePersonalization();
+    const { aiPromptContext } = useProfilePersonalization() || {};
     
     return `
-      ${aiPromptContext}
+      ${aiPromptContext || ''}
       
       Based on the user's profile and preferences, generate a trading strategy with the following details:
       
@@ -144,67 +144,67 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
   }, [strategy, symbols]);
 
   return (
-    <Div className="theme-builder p-4 md:p-6 space-y-8">
-      <Div>
-        <H1 className="text-3xl md:text-4xl font-bold text-white">AI Strategy Builder V2</StrategyOutput>
-        <P className="text-white/70 mt-2">Describe your trading strategy in plain English.</P>
-      </Div>
+    <div className="theme-builder p-4 md:p-6 space-y-8">
+      <div>
+        <h1 className="text-3xl md:text-4xl font-bold text-white">AI Strategy Builder V2</h1>
+        <p className="text-white/70 mt-2">Describe your trading strategy in plain English.</p>
+      </div>
 
-      <Div className="space-y-4">
+      <div className="space-y-4">
         <Textarea
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="e.g., 'A simple RSI strategy that buys on oversold signals and sells on overbought signals. Also look for a breakout with volume confirmation.'"
           className="bg-white/5 p-4 rounded-lg text-white/80 w-full min-h-[120px]"
         />
-        <Button onClick={handleSubmit} className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-full text-white font-semibold"></Div>
+        <Button onClick={handleSubmit} className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-full text-white font-semibold">
           Generate Strategy
-        </Div>
-      </Div>
+        </button>
+      </div>
 
       {error && (
-        <Div className="bg-red-900/50 p-4 rounded-lg border border-red-700 text-red-300">
-          <P className="font-bold">Validation Error</Div>
-          <P>{error}</P>
-        </Div>
+        <div className="bg-red-900/50 p-4 rounded-lg border border-red-700 text-red-300">
+          <p className="font-bold">Validation Error</p>
+          <p>{error}</p>
+        </div>
       )}
 
       {strategy && (
-        <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-6">
-          <Div>
-            <H2 className="text-2xl font-bold text-white"></Div>{strategy.title}</Div>
-          </Div>
+        <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-6">
+          <div>
+            <h2 className="text-2xl font-bold text-white">{strategy.title}</h2>
+          </div>
 
-          <Div>
-            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div>Parsed Rules</Div>
-            <Ul className="list-disc pl-6 space-y-1 text-white/80">
-              {strategy.rules.map((rule, i) => <Li key={i} /></Ul /></Ul />{rule}</Ul>)}
-            </Ul>
-          </Div>
+          <div>
+            <h3 className="text-lg font-semibold text-white/90 mb-2">Parsed Rules</h3>
+            <ul className="list-disc pl-6 space-y-1 text-white/80">
+              {strategy.rules.map((rule, i) => <li key={i}>{rule}</li>)}
+            </ul>
+          </div>
 
-          <Div>
-            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div>Pre-Trade Checklist</Div>
-            <Ul className="list-disc pl-6 space-y-1 text-white/80">
-              {strategy.checklist.map((item, i) => <Li key={i} /></Ul /></Ul />{item}</Ul>)}
-            </Ul>
-          </Div>
+          <div>
+            <h3 className="text-lg font-semibold text-white/90 mb-2">Pre-Trade Checklist</h3>
+            <ul className="list-disc pl-6 space-y-1 text-white/80">
+              {strategy.checklist.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+          </div>
           
-          <Div className="pt-4 border-t border-white/20">
-            <H3 className="text-lg font-semibold text-white/90 mb-2"></Div></Div></Div></Div></Div>Mock Backtest Preview</Div>
-            <Div className="flex gap-4 text-center">
-                <Div className="bg-white/10 p-3 rounded-lg flex-1">
-                    <P className="text-sm text-white/60">Est. Win Rate</Div>
-                    <P className="text-xl font-bold text-green-400">62%</P>
-                </Div>
-                <Div className="bg-white/10 p-3 rounded-lg flex-1">
-                    <P className="text-sm text-white/60">Est. PnL</Div>
-                    <P className="text-xl font-bold text-green-400">$12,450</P>
-                </Div>
-            </Div>
-          </Div>
-        </Div>
+          <div className="pt-4 border-t border-white/20">
+            <h3 className="text-lg font-semibold text-white/90 mb-2">Mock Backtest Preview</h3>
+            <div className="flex gap-4 text-center">
+                <div className="bg-white/10 p-3 rounded-lg flex-1">
+                    <p className="text-sm text-white/60">Est. Win Rate</p>
+                    <p className="text-xl font-bold text-green-400">62%</p>
+                </div>
+                <div className="bg-white/10 p-3 rounded-lg flex-1">
+                    <p className="text-sm text-white/60">Est. PnL</p>
+                    <p className="text-xl font-bold text-green-400">$12,450</p>
+                </div>
+            </div>
+          </div>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 

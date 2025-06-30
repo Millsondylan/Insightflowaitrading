@@ -61,15 +61,15 @@ const KPICard = ({
   }, [value, delay]);
   
   return (
-    <Div className={`kpi-card ${type}`}>
-      <Div className="flex justify-between items-center mb-2">
-        <Span className="kpi-label">{label}</Div>
-        <Span className="text-xl">{icon}</Span>
-      </Div>
-      <Div className={`kpi-value ${type}`}>
+    <div className={`kpi-card ${type}`}>
+      <div className="flex justify-between items-center mb-2">
+        <span className="kpi-label">{label}</div>
+        <span className="text-xl">{icon}</span>
+      </div>
+      <div className={`kpi-value ${type}`}>
         {format(displayValue)}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 };
 
@@ -135,12 +135,12 @@ const KPICards = ({ stats }: KPICardsProps) => {
   ];
 
   return (
-    <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
         <blockReveal key={card.label} delay={index * 0.1}>
-          <KPICard {...card} /></Div></div />
+          <KPICard {...card}/></div></div>
       ))}
-    </Div>
+    </div>
   );
 };
 

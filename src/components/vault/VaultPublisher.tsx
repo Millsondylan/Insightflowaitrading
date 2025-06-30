@@ -14,34 +14,34 @@ type Props = {
 
 export default function VaultPublisher({ strategy, onPublish }: Props) {
   return (
-    <Div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
-      <Div></Div>
-        <H3 className="text-lg font-bold text-white"></H3>📢 Publish Strategy</Div>
-        <P className="text-sm text-white/60">Ready to share your strategy with the community?</P>
-      </Div>
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 text-white space-y-4">
+      <div></div>
+        <h3 className="text-lg font-bold text-white"></h3>📢 Publish Strategy</div>
+        <p className="text-sm text-white/60">Ready to share your strategy with the community?</p>
+      </div>
 
-      <Div className="bg-white/5 p-4 rounded-lg border border-white/10 space-y-2">
-        <Div className="flex justify-between items-center">
-          <P className="font-semibold text-white">{strategy.title}</Div>
-          <Span className="text-xs bg-cyan-800 text-cyan-200 px-2 py-0.5 rounded-full">v{strategy.version}</Span>
-        </Div>
+      <div className="bg-white/5 p-4 rounded-lg border border-white/10 space-y-2">
+        <div className="flex justify-between items-center">
+          <p className="font-semibold text-white">{strategy.title}</div>
+          <span className="text-xs bg-cyan-800 text-cyan-200 px-2 py-0.5 rounded-full">v{strategy.version}</span>
+        </div>
         
-        <P className="text-white/70 italic text-sm">"{strategy.summary}"</P>
+        <p className="text-white/70 italic text-sm">"{strategy.summary}"</p>
         
-        <Div className="flex flex-wrap gap-2 pt-2">
+        <div className="flex flex-wrap gap-2 pt-2">
           {strategy.tags.map((t, i) => (
-            <Span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60"></Div></Div></Div></Div></Div>
+            <span key={i} className="bg-white/10 px-3 py-1 rounded-full text-xs text-white/60"></div></div>
               {t}
-            </Div>
+            </div>
           ))}
-        </Div>
-      </Div>
+        </div>
+      </div>
       
       <Button onClick={onPublish}
-        className="w-full mt-2 bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg text-white font-bold transition-colors duration-200">
+        className="w-full mt-2 bg-cyan-600 hover:bg-cyan-700 px-4 py-2 rounded-lg text-white font-bold transition-colors duration-200"></button></div>
         🚀 Publish to Vault
-      </Button>
-    </Div>
+      </button>
+    </div>
   );
 
 export const lovable = { 

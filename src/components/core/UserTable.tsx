@@ -157,13 +157,13 @@ const UserTable: React.FC = () => {
                     isActive={page === currentPage}
                   >
                     {page}
-                  </PaginationLink />
+                  </PaginationLink>
               );
             } else if (
               page === currentPage - 2 || 
               page === currentPage + 2
             ) {
-              return <paginationEllipsis key={page} />;
+              return <paginationEllipsis key={page}/>;
             }
             return null;
           })}
@@ -179,7 +179,7 @@ const UserTable: React.FC = () => {
               }}
               className={currentPage >= pageCount ? 'pointer-events-none opacity-50' : ''}
             / />
-        </PaginationContent />
+        </PaginationContent>
     );
   };
   
@@ -187,125 +187,123 @@ const UserTable: React.FC = () => {
   const renderSkeleton = () => (
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
-        <Tr key={i} className="border-b border-gray-800/30">
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-24" / />
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-20" / />
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-16" / />
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" / />
-          <Td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" / />
+        <tr key={i} className="border-b border-gray-800/30">
+          <td className="px-4 py-3"><Skeleton className="h-6 w-24" //>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-20" //>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-16" //>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" //>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" //>
         </User>
       ))}
     </>
   );
   
   return (
-    <Div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
+    <div className="bg-gray-950/70 backdrop-blur-md rounded-xl border border-gray-800/50 overflow-hidden">
       {/* Filter and tools bar */}
-      <Div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
-        <Div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
+      <div className="p-4 border-b border-gray-800/50 flex flex-wrap justify-between items-center gap-4">
+        <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
-          <Div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"/>
             <Input 
               type="text"
               placeholder="Search wallet address..." 
               className="pl-9 w-full min-w-[200px] bg-gray-900/80"
-              onChange={handleSearchChange}
-            />
-          </Div>
+              onChange={handleSearchChange}/>
+          </div>
           
           {/* Role filter */}
           <Select onValueChange={handleRoleFilterChange}>
             <selectTrigger className="w-[140px] bg-gray-900/80">
-              <selectValue placeholder="All roles" / />
+              <selectValue placeholder="All roles" //>
             <selectContent className="bg-gray-900">
               <selectItem value="">All roles</Select>
               <selectItem value="Admin">
-                <Div className="flex items-center gap-2">
-                  <RoleBadge role="Admin" showTooltip={false} /> Admin
-                </div />
+                <div className="flex items-center gap-2">
+                  <RoleBadge role="Admin" showTooltip={false}/> Admin
+                </div>
               <selectItem value="User">
-                <Div className="flex items-center gap-2">
-                  <RoleBadge role="User" showTooltip={false} /> User
-                </div />
+                <div className="flex items-center gap-2">
+                  <RoleBadge role="User" showTooltip={false}/> User
+                </div>
               <selectItem value="Trial">
-                <Div className="flex items-center gap-2">
-                  <RoleBadge role="Trial" showTooltip={false} /> Trial
-                </div />
+                <div className="flex items-center gap-2">
+                  <RoleBadge role="Trial" showTooltip={false}/> Trial
+                </div>
               <selectItem value="Expired">
-                <Div className="flex items-center gap-2">
-                  <RoleBadge role="Expired" showTooltip={false} /> Expired
-                </div />
-            </SelectContent />
+                <div className="flex items-center gap-2">
+                  <RoleBadge role="Expired" showTooltip={false}/> Expired
+                </div>
+            </SelectContent>
           
           {/* Sort options */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild />
-              <Button variant="outline" size="sm" className="bg-gray-900/80" />
-                <Filter className="h-3.5 w-3.5 mr-2" />
+            <DropdownMenuTrigger asChild/>
+              <Button variant="outline" size="sm" className="bg-gray-900/80"/>
+                <Filter className="h-3.5 w-3.5 mr-2"/>
                 Sort
-              </DropdownMenu />
-            <DropdownMenuContent className="bg-gray-900 border border-gray-800" />
-              <DropdownMenuItem onClick={() = /> handleSortChange('created_at-desc')} className="cursor-pointer">
+              </DropdownMenu>
+            <DropdownMenuContent className="bg-gray-900 border border-gray-800"/>
+              <DropdownMenuItem onClick={() => handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </Div>
-              <DropdownMenuItem onClick={() = /> handleSortChange('created_at-asc')} className="cursor-pointer">
+              </div>
+              <DropdownMenuItem onClick={() => handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() = /> handleSortChange('subscription_tier-desc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-desc')} className="cursor-pointer">
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() = /> handleSortChange('subscription_tier-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('subscription_tier-asc')} className="cursor-pointer">
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() = /> handleSortChange('role-asc')} className="cursor-pointer">
+              <DropdownMenuItem onClick={() => handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
-              </DropdownMenuItem />
+              </DropdownMenuItem>
           </DropdownMenuItem>
-        </Div>
+        </div>
         
-        <Div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           {/* Export button */}
           <Button variant="outline" 
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
             disabled={users.length === 0 || loading}>
-            <Download className="h-4 w-4" />
+            <Download className="h-4 w-4"/>
             Export CSV
-          </Div>
+          </div>
           
           {/* Grant admin button */}
           <Button className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
-            onClick={handleGrantAdmin}
-          />
-            <plus className="h-4 w-4" />
+            onClick={handleGrantAdmin}/>
+            <Plus className="h-4 w-4"/>
             Grant Admin
-          </Button>
-        </Div>
-      </Div>
+          </button>
+        </div>
+      </div>
       
       {/* User table */}
-      <Div className="overflow-x-auto">
-        <Table className="w-full">
-          <Thead className="bg-gray-900/50">
-            <Tr>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead className="bg-gray-900/50">
+            <tr>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
-              </Div>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </div>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
-              </Th>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Subscription Plan
-              </Th>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Role
-              </Th>
-              <Th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
-              </Th />
-          </Th>
-          <Tbody>
+              </th>
+          </th>
+          <tbody>
             {loading ? (
               renderSkeleton()
             ) : users.length > 0 ? (
@@ -314,33 +312,33 @@ const UserTable: React.FC = () => {
                   key={user.id} 
                   user={user} 
                   onUserUpdate={handleUserUpdate}
-                />
+   />
               ))
             ) : (
-              <Tr>
-                <Td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" / /></Tbody /></Tbody /></Tbody>
-                  <P>No users found</P>
-                  <P className="text-sm">Try adjusting your search or filters</p />
-              </P>
+              <tr>
+                <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
+                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" //></div>
+                  <p>No users found</p>
+                  <p className="text-sm">Try adjusting your search or filters</p>
+              </p>
             )}
-          </Tbody />
-      </Div>
+          </tbody>
+      </div>
       
       {/* Pagination */}
       {!loading && pageCount > 1 && renderPagination()}
       
       {/* Summary stats */}
-      <Div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
+      <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <P></Div></Div></Div></Div></Div>
+          <p></div></div>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}
-          </Div>
+          </div>
         )}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 };
 

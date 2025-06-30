@@ -53,51 +53,51 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6" />
-      <Div className="flex items-center gap-2 mb-4">
-        <brain className="h-6 w-6" />
-        <H2 className="text-2xl font-bold">Memory Store</MemoryStoreProps>
-      </Div>
+    <Card className="theme-card p-6"/>
+      <div className="flex items-center gap-2 mb-4">
+        <brain className="h-6 w-6"/>
+        <h2 className="text-2xl font-bold">Memory Store</MemoryStoreProps>
+      </div>
 
-      <Div className="space-y-4">
+      <div className="space-y-4">
         {memories.map((memory) => (
-          <Div key={memory.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-            <Div className="flex items-start justify-between mb-2">
+          <div key={memory.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+            <div className="flex items-start justify-between mb-2">
               <Badge variant="default" className={getTypeColor(memory.type)}>
                 {memory.type}
-              </Div>
-              <Div className="flex items-center gap-4 text-sm text-muted-foreground">
-                <Span className="flex items-center gap-1">
-                  <Hash className="h-3 w-3" />
+              </div>
+              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1">
+                  <Hash className="h-3 w-3"/>
                   {memory.occurrences}
-                </Div>
-                <Span className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
+                </div>
+                <span className="flex items-center gap-1">
+                  <Calendar className="h-3 w-3"/>
                   {memory.lastSeen.toLocaleDateString()}
-                </Span>
-              </Div>
-            </Div>
+                </span>
+              </div>
+            </div>
             
-            <P className="text-sm mb-2">{memory.content}</P>
+            <p className="text-sm mb-2">{memory.content}</p>
             
-            <Div className="flex items-center gap-2">
-              <Span className="text-xs text-muted-foreground">Strength:</Div>
-              <Div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
-                <Div 
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-muted-foreground">Strength:</div>
+              <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
+                <div 
                   className="h-full bg-primary transition-all duration-300"
                   style={{ width: `${memory.strength * 100}%` }}
-                />
-              </Div>
-              <Span className="text-xs font-medium">{(memory.strength * 100).toFixed(0)}%</Span>
-            </Div>
-          </Div>
+   />
+              </div>
+              <span className="text-xs font-medium">{(memory.strength * 100).toFixed(0)}%</span>
+            </div>
+          </div>
         ))}
-      </Div>
+      </div>
 
-      <Div className="mt-4 pt-4 border-t">
-        <P className="text-sm text-muted-foreground"></Div>
+      <div className="mt-4 pt-4 border-t">
+        <p className="text-sm text-muted-foreground"></div>
           Memories are extracted from your journal entries and strengthen with repetition
-        </Div>
-      </div />
+        </div>
+      </div>
   );
 }; 

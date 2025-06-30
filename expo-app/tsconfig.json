@@ -10,7 +10,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-native",
-    "typeRoots": ["./node_modules/@types", "./types"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
@@ -20,7 +19,8 @@
       "@assets/*": ["./assets/*"],
       "@hooks/*": ["./hooks/*"],
       "@utils/*": ["./utils/*"]
-    }
+    },
+    "types": ["react", "react-native"]
   },
   "include": [
     "**/*.ts",

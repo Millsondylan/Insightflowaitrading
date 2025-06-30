@@ -32,7 +32,7 @@ const ContextMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <ChevronRight className="ml-auto h-4 w-4"/>
   </ContextMenuPrimitive.SubTrigger>
 ))
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
@@ -100,10 +100,10 @@ const ContextMenuCheckboxItem = React.forwardRef<
     checked={checked}
     {...props}
   >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
-      </ContextMenuPrimitive.ItemIndicator />
+        <Check className="h-4 w-4"/>
+      </ContextMenuPrimitive.ItemIndicator>
     {children}
   </ContextMenuPrimitive.CheckboxItem>
 ))
@@ -122,10 +122,10 @@ const ContextMenuRadioItem = React.forwardRef<
     )}
     {...props}
   >
-    <Span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <ContextMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current" />
-      </ContextMenuPrimitive.ItemIndicator />
+        <Circle className="h-2 w-2 fill-current"/>
+      </ContextMenuPrimitive.ItemIndicator>
     {children}
   </ContextMenuPrimitive.RadioItem>
 ))
@@ -166,12 +166,12 @@ const ContextMenuShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span       className={cn(
+    <span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    / /></ContextMenuPrimitive /></ContextMenuPrimitive />
+    //></ContextMenuPrimitive></ContextMenuPrimitive>
   )
 }
 ContextMenuShortcut.displayName = "ContextMenuShortcut"

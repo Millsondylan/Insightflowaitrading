@@ -73,7 +73,7 @@ export async function analyzeTradingPatterns(userId: string): Promise<TradingPat
 /**
  * Analyzes performance in different trading sessions
  */
-function analyzeSessionPerformance(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): TradingPattern | null {
+function analyzeSessionPerformance(trades: any[]): TradingPattern | null {
   try {
     // Group trades by session (using hour as a simple proxy)
     const sessionTrades: Record<string, any[]> = {};
@@ -156,7 +156,7 @@ function analyzeSessionPerformance(trades: any // eslint-disable-line @typescrip
 /**
  * Analyzes performance across different symbols
  */
-function analyzeSymbolPerformance(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): TradingPattern[] {
+function analyzeSymbolPerformance(trades: any[]): TradingPattern[] {
   const patterns: TradingPattern[] = [];
   
   try {
@@ -261,7 +261,7 @@ function analyzeSymbolPerformance(trades: any // eslint-disable-line @typescript
 /**
  * Analyzes stop loss placement
  */
-function analyzeStopLosses(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): TradingPattern | null {
+function analyzeStopLosses(trades: any[]): TradingPattern | null {
   try {
     // Filter trades with stop loss data
     const tradesWithStops = trades.filter(t => 
@@ -314,7 +314,7 @@ function analyzeStopLosses(trades: any // eslint-disable-line @typescript-eslint
 /**
  * Analyzes performance across different timeframes
  */
-function analyzeTimeframePerformance(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[], preferredTimeframes: string[]): TradingPattern | null {
+function analyzeTimeframePerformance(trades: any[], preferredTimeframes: string[]): TradingPattern | null {
   try {
     // Group trades by timeframe
     const timeframeTrades: Record<string, any[]> = {};
@@ -387,7 +387,7 @@ function analyzeTimeframePerformance(trades: any // eslint-disable-line @typescr
 /**
  * Analyzes patterns in consecutive wins/losses
  */
-function analyzeConsecutiveTrades(trades: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]): TradingPattern | null {
+function analyzeConsecutiveTrades(trades: any[]): TradingPattern | null {
   try {
     // Find streaks of wins and losses
     let currentStreak = 1;
@@ -470,50 +470,52 @@ export async function createSuggestionFromPattern(userId: string, pattern: Tradi
     
     // Format suggestion based on pattern type
     switch (pattern.pattern) {
-      case 'session-preference':
-        { const bestSession = pattern.evidence[0].split(': ')[0].split('in ')[1];
+      case 'session-preference': {
+        const bestSession = pattern.evidence[0].split(': ')[0].split('in ')[1];
         suggestion = `You perform better during the ${bestSession} session. ${pattern.evidence[2]}`;
         actionButton = 'Set Reminder';
         actionTarget = '/settings/notifications';
         break;
-      
-      case 'top-symbol':
-        { const symbol = pattern.evidence[0].split('is ')[1];
+      }
+      case 'top-symbol': {
+        const symbol = pattern.evidence[0].split('is ')[1];
         suggestion = `Your best performing symbol is ${symbol}. Consider creating alerts for it.`;
         actionButton = 'Set Alert';
         actionTarget = `/markets/alerts?symbol=${symbol}`;
         break;
-        
-      case 'avoid-symbol':
-        { const badSymbol = pattern.evidence[0].split('is ')[1];
+      }
+      case 'avoid-symbol': {
+        const badSymbol = pattern.evidence[0].split('is ')[1];
         suggestion = `You've had poor results with ${badSymbol}. Consider avoiding it or adjusting your strategy.`;
         actionButton = 'Review Trades';
         actionTarget = `/journal/trades?symbol=${badSymbol}`;
         break;
-        
-      case 'tight-stops':
+      }
+      case 'tight-stops': {
         suggestion = pattern.evidence[1];
         actionButton = 'Risk Calculator';
         actionTarget = '/tools/position-calculator';
         break;
-        
-      case 'timeframe-preference':
-        { const bestTimeframe = pattern.evidence[0].split('on ')[1].split(' timeframe')[0];
+      }
+      case 'timeframe-preference': {
+        const bestTimeframe = pattern.evidence[0].split('on ')[1].split(' timeframe')[0];
         suggestion = `Your strategy works best on the ${bestTimeframe} timeframe. Consider focusing more on it.`;
         actionButton = 'View Timeframe';
         actionTarget = `/charts?tf=${bestTimeframe}`;
         break;
-        
-      case 'loss-recovery':
+      }
+      case 'loss-recovery': {
         suggestion = 'Consider taking a break after consecutive losses to reset mentally.';
         actionButton = 'Read Article';
         actionTarget = '/academy/trading-psychology';
         break;
-        
-      default:
+      }
+      default: {
         suggestion = pattern.evidence.join(' ');
         actionButton = 'Learn More';
         actionTarget = '/dashboard';
+        break;
+      }
     }
     
     // Save suggestion to database

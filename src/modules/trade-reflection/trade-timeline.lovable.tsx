@@ -43,59 +43,59 @@ export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20
   ];
 
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <alertcircle  />;
+    if (type === 'alert') return <AlertCircle />;
     if (pnl && pnl > 0) return <Trendingup >;
-    if (pnl && pnl < 0) return <Trendingdown  / /></Tradetimelineprops /></Tradetimelineprops /></Tradetimelineprops>;
-    return <clock >;
+    if (pnl && pnl < 0) return <Trendingdown  //></Tradetimelineprops /></Tradetimelineprops /></Tradetimelineprops>;
+    return <Clock >;
   };
 
   return (
     <Card >
-      <H2 className="text-2xl font-bold mb-4" /></Card /></Card />Trade Timeline</Card>
+      <h2 className="text-2xl font-bold mb-4"/></Card /></Card />Trade Timeline</Clock>
       <scrollarea >
-        <Div className="space-y-4">
+        <div className="space-y-4">
           {activities.map((activity) => (
-            <Div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
-              <Div className="absolute left-0 top-1">
+            <div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
+              <div className="absolute left-0 top-1">
                 {getIcon(activity.type, activity.pnl)}
-              </Div>
-              <Div className="border-l-2 border-gray-700 pl-6 -ml-2">
-                <Div className="flex items-center justify-between mb-1">
-                  <Div className="flex items-center gap-2">
-                    <Span className="font-semibold">{activity.symbol}</Div>
+              </div>
+              <div className="border-l-2 border-gray-700 pl-6 -ml-2">
+                <div className="flex items-center justify-between mb-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold">{activity.symbol}</div>
                     {activity.action && (
                       <Badge >
                         {activity.action}
                       </Badge>
                     )}
-                  </Div>
-                  <Span className="text-xs text-muted-foreground">
+                  </div>
+                  <span className="text-xs text-muted-foreground">
                     {activity.timestamp.toLocaleTimeString()}
-                  </Span>
-                </Div>
+                  </span>
+                </div>
                 
                 {activity.type === 'trade_open' && (
-                  <P className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     Opened {activity.size} units at ${activity.price}
-                  </P>
+                  </p>
                 )}
                 
                 {activity.type === 'trade_close' && (
-                  <Div>
-                    <P className="text-sm text-muted-foreground">
+                  <div>
+                    <p className="text-sm text-muted-foreground">
                       Closed {activity.size} units at ${activity.price}
-                    </Div>
-                    <P className={`text-sm font-medium ${activity.pnl!> 0 ? 'text-green-500' : 'text-red-500'}`}>
+                    </div>
+                    <p className={`text-sm font-medium ${activity.pnl!> 0 ? 'text-green-500' : 'text-red-500'}`}>
                       P&L: {activity.pnl! > 0 ? '+' : ''}${activity.pnl?.toFixed(2)}
-                    </P>
-                  </Div>
+                    </p>
+                  </div>
                 )}
                 
                 {activity.type === 'alert' && (
-                  <P className="text-sm text-muted-foreground">{activity.message}</P>
+                  <p className="text-sm text-muted-foreground">{activity.message}</p>
                 )}
-              </Div>
-            </Div>
+              </div>
+            </div>
           ))}
         </div />
     </Card>

@@ -9,11 +9,11 @@ const KEYWORDS = ['RSI', 'MACD', 'Moving Average', 'Support', 'Resistance', 'Bre
 
 const getIconForRule = (rule: string) => {
   const lowerRule = rule.toLowerCase();
-  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <trendingUp className="w-5 h-5 text-cyan-400" />;
-  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat className="w-5 h-5 text-purple-400" />;
-  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <barChart3 className="w-5 h-5 text-yellow-400" />;
-  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <activity className="w-5 h-5 text-orange-400" />;
-  return <ChevronRight className="w-5 h-5 text-white/50" / /></Repeat /></Repeat /></Repeat>;
+  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <trendingUp className="w-5 h-5 text-cyan-400"/>;
+  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat className="w-5 h-5 text-purple-400"/>;
+  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <barChart3 className="w-5 h-5 text-yellow-400"/>;
+  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <Activity className="w-5 h-5 text-orange-400"/>;
+  return <ChevronRight className="w-5 h-5 text-white/50" //></div>;
 };
 
 const highlightKeywords = (rule: string) => {
@@ -31,21 +31,21 @@ const highlightKeywords = (rule: string) => {
 
 export const RuleParser = ({ rules }: Props) => {
   return (
-    <Div className="space-y-3">
-      <H3 className="text-lg font-semibold text-white/90"></Div></Div></Div></Div></Div>Strategy Rules</Div>
-      <Div className="space-y-2">
+    <div className="space-y-3">
+      <h3 className="text-lg font-semibold text-white/90"></div></div>Strategy Rules</div>
+      <div className="space-y-2">
         {rules.map((rule, index) => (
-          <Div key={index} className="bg-white/5 p-4 rounded-lg border border-white/10 flex items-center gap-4">
-            <Div className="flex-shrink-0">
+          <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/10 flex items-center gap-4">
+            <div className="flex-shrink-0">
               {getIconForRule(rule)}
-            </Div>
-            <P className="text-white/80">
+            </div>
+            <p className="text-white/80">
               {highlightKeywords(rule)}
-            </P>
-          </Div>
+            </p>
+          </div>
         ))}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 
 export const lovable = { 

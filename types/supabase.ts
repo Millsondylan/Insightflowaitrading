@@ -161,12 +161,162 @@ export interface Database {
           updated_at?: string
         }
       }
+      public_setups: {
+        Row: {
+          id: string
+          user_id: string
+          strategy_id: string | null
+          symbol: string
+          entry: number
+          sl: number
+          tp: number
+          timeframe: string
+          stats: Json
+          likes: number
+          views: number
+          shared_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          strategy_id?: string | null
+          symbol: string
+          entry: number
+          sl: number
+          tp: number
+          timeframe: string
+          stats?: Json
+          likes?: number
+          views?: number
+          shared_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          strategy_id?: string | null
+          symbol?: string
+          entry?: number
+          sl?: number
+          tp?: number
+          timeframe?: string
+          stats?: Json
+          likes?: number
+          views?: number
+          shared_at?: string
+        }
+      }
+      setup_leaderboard: {
+        Row: {
+          id: string
+          setup_id: string
+          rank: number
+          score: number
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          setup_id: string
+          rank: number
+          score: number
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          setup_id?: string
+          rank?: number
+          score?: number
+          updated_at?: string
+        }
+      }
+      setup_likes: {
+        Row: {
+          id: string
+          setup_id: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          setup_id: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          setup_id?: string
+          user_id?: string
+          created_at?: string
+        }
+      }
+      setup_views: {
+        Row: {
+          id: string
+          setup_id: string
+          user_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          setup_id: string
+          user_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          setup_id?: string
+          user_id?: string
+          created_at?: string
+        }
+      }
+      qr_login_sessions: {
+        Row: {
+          id: string
+          session_id: string
+          user_id: string
+          created_at: string
+          expires_at: string
+          status: string
+        }
+        Insert: {
+          id?: string
+          session_id: string
+          user_id: string
+          created_at?: string
+          expires_at: string
+          status?: string
+        }
+        Update: {
+          id?: string
+          session_id?: string
+          user_id?: string
+          created_at?: string
+          expires_at?: string
+          status?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_setup_views: {
+        Args: {
+          setup_id: string
+        }
+        Returns: void
+      }
+      increment_setup_likes: {
+        Args: {
+          setup_id: string
+        }
+        Returns: void
+      }
+      decrement_setup_likes: {
+        Args: {
+          setup_id: string
+        }
+        Returns: void
+      }
     }
     Enums: {
       [_ in never]: never

@@ -61,18 +61,18 @@ export function App() {
         <Router>
           <AppLayout>
             <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/" element={<LandingPage/>} />
+              <Route path="/auth" element={<AuthPage/>} />
 
               {/* Strategy Routes */}
-              <Route path="/strategy/copilot" element={<StrategyCopilot />} />
-              <Route path="/strategy/export" element={<StrategyExport />} />
+              <Route path="/strategy/copilot" element={<StrategyCopilot/>} />
+              <Route path="/strategy/export" element={<StrategyExport/>} />
 
               {/* Backtest Routes */}
-              <Route path="/backtest/replay" element={<BacktestReplay />} />
+              <Route path="/backtest/replay" element={<BacktestReplay/>} />
 
               {/* Profile Routes */}
-              <Route path="/profile/risk-map" element={<ProfileRiskMap />} />
+              <Route path="/profile/risk-map" element={<ProfileRiskMap/>} />
 
               {/* Protected Routes */}
               <Route path="/vault" element={<ProtectedRoute><VaultPage /></ProtectedRoute>} />
@@ -85,14 +85,14 @@ export function App() {
               <Route path="/broadcast" element={<ProtectedRoute><BroadcastPage /></ProtectedRoute>} />
 
               {/* New Themed Builder Routes */}
-              <Route path="/landing" element={<LandingBuilder />} />
-              <Route path="/strategy-builder" element={<StrategyBuilder />} />
-              <Route path="/journal-builder" element={<JournalBuilder />} />
-              <Route path="/academy-builder" element={<AcademyBuilder />} />
+              <Route path="/landing" element={<LandingBuilder/>} />
+              <Route path="/strategy-builder" element={<StrategyBuilder/>} />
+              <Route path="/journal-builder" element={<JournalBuilder/>} />
+              <Route path="/academy-builder" element={<AcademyBuilder/>} />
 
               {/* Lovable Routes */}
-              <Route path="/lovable/editor" element={<LovableEditorPage />} />
-              <Route path="/lovable/demo" element={<Demo />} />
+              <Route path="/lovable/editor" element={<LovableEditorPage/>} />
+              <Route path="/lovable/demo" element={<Demo/>} />
 
               {/* Legacy Routes */}
               <Route path="/legacy" element={<OldProtectedRoute accessLevel="subscribed"><Index /></OldProtectedRoute>} />
@@ -103,20 +103,20 @@ export function App() {
               <Route path="/legacy/admin" element={<OldProtectedRoute accessLevel="admin"><Admin /></OldProtectedRoute>} />
 
               {/* Public Routes */}
-              <Route path="/markets" element={<Markets />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/digest" element={<Digest />} />
-              <Route path="/demo" element={<Demo />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/settings/notifications" element={<SettingsNotifications />} />
-              <Route path="/help" element={<Help />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/docs" element={<Docs />} />
-              <Route path="/chat" element={<Chat />} />
+              <Route path="/markets" element={<Markets/>} />
+              <Route path="/portfolio" element={<Portfolio/>} />
+              <Route path="/community" element={<Community/>} />
+              <Route path="/digest" element={<Digest/>} />
+              <Route path="/demo" element={<Demo/>} />
+              <Route path="/notifications" element={<Notifications/>} />
+              <Route path="/settings/notifications" element={<SettingsNotifications/>} />
+              <Route path="/help" element={<Help/>} />
+              <Route path="/faq" element={<FAQ/>} />
+              <Route path="/docs" element={<Docs/>} />
+              <Route path="/chat" element={<Chat/>} />
 
               {/* 404 Route */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="*" element={<NotFound/>} />
             </Routes>
           </AppLayout>
         </Router>

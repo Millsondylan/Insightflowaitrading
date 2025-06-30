@@ -31,11 +31,11 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
   };
 
   return (
-    <Div className="chart-overlay-container">
-      <Img src={imageUrl} alt="Chart with pattern overlays" />
+    <div className="chart-overlay-container">
+      <img src={imageUrl} alt="Chart with pattern overlays"/>
       
       {patternZones.map((zone) => (
-        <Div           key={zone.id}
+        <div           key={zone.id}
           className={`pattern-zone ${zone.type || 'neutral'}`}
           style={{
             left: `${zone.x}%`,
@@ -60,10 +60,9 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
             left: tooltipPosition.x,
             top: tooltipPosition.y,
             transform: 'translate(-50%, -100%) translateY(-10px)',
-          }}
-        />
+          }}/>
       )}
-    </Div>
+    </div>
   );
 };
 

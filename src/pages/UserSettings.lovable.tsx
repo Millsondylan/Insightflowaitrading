@@ -25,21 +25,21 @@ interface UserSettings {
 
 // Simple UI Components
 const Card = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <Div className={`bg-gray-800/50 border border-gray-700 rounded-lg backdrop-blur-sm ${className}`}>
+  <div className={`bg-gray-800/50 border border-gray-700 rounded-lg backdrop-blur-sm ${className}`}>
     {children}
-  </Div>
+  </div>
 );
 
 const CardHeader = ({ children }: { children: React.ReactNode }) => (
-  <Div className="p-6 pb-4">{children}</Div>
+  <div className="p-6 pb-4">{children}</div>
 );
 
 const CardTitle = ({ children }: { children: React.ReactNode }) => (
-  <H3 className="text-lg font-semibold text-white">{children}</H3>
+  <h3 className="text-lg font-semibold text-white">{children}</h3>
 );
 
 const CardContent = ({ children }: { children: React.ReactNode }) => (
-  <Div className="p-6 pt-0">{children}</Div>
+  <div className="p-6 pt-0">{children}</div>
 );
 
 const Button = ({ 
@@ -66,7 +66,7 @@ const Button = ({
       onClick={onClick}
       disabled={disabled}>
       {children}
-    </Button>
+    </button>
   );
 };
 
@@ -85,11 +85,10 @@ const Switch = ({
     onClick={() => !disabled && onCheckedChange(!checked)}
     disabled={disabled}
   >
-    <Span       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
+    <span       className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform duration-200 ${
         checked ? 'translate-x-6' : 'translate-x-1'
-      }`}
-    />
-  </Button>
+      }`}/>
+  </button>
 );
 
 const Slider = ({ 
@@ -107,13 +106,13 @@ const Slider = ({
   step?: number;
   disabled?: boolean;
 }) => (
-  <Div className="w-full">
+  <div className="w-full">
     <Input type="range"
       min={min}
       max={max}
       step={step}
       value={value}
-      onChange={(e) = /> onValueChange(Number(e.target.value))}
+      onChange={(e) => onValueChange(Number(e.target.value))}
       disabled={disabled}
       className={`w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider ${
         disabled ? 'opacity-50 cursor-not-allowed' : ''
@@ -142,7 +141,7 @@ const Slider = ({
          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
        }
      `}</style>
-  </Div>
+  </div>
 );
 
 const Label = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -154,11 +153,11 @@ const Tabs = ({ children, defaultValue, className = "" }: {
   defaultValue: string;
   className?: string;
 }) => (
-  <Div className={className}>{children}</Div>
+  <div className={className}>{children}</div>
 );
 
 const TabsList = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <Div className={`flex bg-gray-800 rounded-lg p-1 ${className}`}>{children}</Div>
+  <div className={`flex bg-gray-800 rounded-lg p-1 ${className}`}>{children}</div>
 );
 
 const TabsTrigger = ({ children, value, isActive, onClick }: { 
@@ -170,10 +169,9 @@ const TabsTrigger = ({ children, value, isActive, onClick }: {
   <Button className={`flex-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
       isActive ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'
     }`}
-    onClick={onClick}
-  />
+    onClick={onClick}/>
     {children}
-  </Button>
+  </button>
 );
 
 const TabsContent = ({ children, value, activeTab }: { 
@@ -181,7 +179,7 @@ const TabsContent = ({ children, value, activeTab }: {
   value: string;
   activeTab: string;
 }) => (
-  activeTab === value ? <Div>{children}</Div> : null
+  activeTab === value ? <div>{children}</div> : null
 );
 
 const RadioGroup = ({ children, value, onValueChange, className = "" }: {
@@ -190,7 +188,7 @@ const RadioGroup = ({ children, value, onValueChange, className = "" }: {
   onValueChange: (value: string) => void;
   className?: string;
 }) => (
-  <Div className={className}>{children}</Div>
+  <div className={className}>{children}</div>
 );
 
 const RadioGroupItem = ({ value, id, checked, onChange }: {
@@ -203,7 +201,7 @@ const RadioGroupItem = ({ value, id, checked, onChange }: {
     id={id}
     value={value}
     checked={checked}
-    onChange={() = /> onChange(value)}
+    onChange={() =/> onChange(value)}
     className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600"
   />
 );
@@ -222,8 +220,8 @@ const Select = ({ children, value, onValueChange }: {
   </Input>
 );
 
-const SelectTrigger = ({ children }: { children: React.ReactNode }) => <Div>{children}</Div>;
-const SelectValue = ({ placeholder }: { placeholder: string }) => <Span>{placeholder}</Span>;
+const SelectTrigger = ({ children }: { children: React.ReactNode }) => <div>{children}</div>;
+const SelectValue = ({ placeholder }: { placeholder: string }) => <span>{placeholder}</span>;
 const SelectContent = ({ children }: { children: React.ReactNode }) => <>{children}</>;
 const SelectItem = ({ children, value }: { children: React.ReactNode; value: string }) => (
   <Option value={value}>{children}</Option>
@@ -328,44 +326,44 @@ export default function UserSettings() {
   };
 
   return (
-    <Div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
-      <Div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         {/* Header */}
-        <Div className="mb-8">
-          <H1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
             ⚙️ User Settings
           </UserSettings>
-          <P className="text-gray-400">
+          <p className="text-gray-400">
             Customize your InsightFlow AI Trading experience
-          </P>
-        </Div>
+          </p>
+        </div>
 
-        <Div className="space-y-6">
+        <div className="space-y-6">
           {/* Audio Settings */}
           <Card>
             <CardHeader>
               <CardTitle>🔊 Audio Settings</div />
             <CardContent>
-              <Div className="space-y-6">
+              <div className="space-y-6">
                 {/* Enable Sounds */}
-                <Div className="flex items-center justify-between">
-                  <Div>
-                    <H4 className="text-white font-medium">Enable Sounds</Div>
-                    <P className="text-sm text-gray-400">Turn on/off all sound effects</P>
-                  </Div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Enable Sounds</div>
+                    <p className="text-sm text-gray-400">Turn on/off all sound effects</p>
+                  </div>
                   <Switch
                     checked={settings.audio_settings.sounds_enabled}
                     onCheckedChange={(checked) => updateAudioSetting('sounds_enabled', checked)}
                   / />
 
                 {/* Volume Control */}
-                <Div className="space-y-2">
-                  <Div className="flex items-center justify-between">
-                    <H4 className="text-white font-medium">Volume</Switch>
-                    <Span className="text-blue-400 font-mono">
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-white font-medium">Volume</Switch>
+                    <span className="text-blue-400 font-mono">
                       {settings.audio_settings.volume}%
-                    </Span>
-                  </Div>
+                    </span>
+                  </div>
                   <Slider
                     value={settings.audio_settings.volume}
                     onValueChange={(value) => updateAudioSetting('volume', value)}
@@ -373,11 +371,11 @@ export default function UserSettings() {
                   / />
 
                 {/* Voice Narration */}
-                <Div className="flex items-center justify-between">
-                  <Div>
-                    <H4 className="text-white font-medium">Voice Narration</Slider>
-                    <P className="text-sm text-gray-400">AI voice for lessons and alerts</P>
-                  </Div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Voice Narration</Slider>
+                    <p className="text-sm text-gray-400">AI voice for lessons and alerts</p>
+                  </div>
                   <Switch
                     checked={settings.audio_settings.voice_narration}
                     onCheckedChange={(checked) => updateAudioSetting('voice_narration', checked)}
@@ -385,11 +383,11 @@ export default function UserSettings() {
                   / />
 
                 {/* Notification Sounds */}
-                <Div className="flex items-center justify-between">
-                  <Div>
-                    <H4 className="text-white font-medium">Notification Sounds</Switch>
-                    <P className="text-sm text-gray-400">Sound alerts for trades and updates</P>
-                  </Div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Notification Sounds</Switch>
+                    <p className="text-sm text-gray-400">Sound alerts for trades and updates</p>
+                  </div>
                   <Switch
                     checked={settings.audio_settings.notification_sounds}
                     onCheckedChange={(checked) => updateAudioSetting('notification_sounds', checked)}
@@ -403,32 +401,32 @@ export default function UserSettings() {
             <CardHeader>
               <CardTitle>📢 Notification Channels</Card />
             <CardContent>
-              <Div className="space-y-6">
-                <Div className="flex items-center justify-between">
-                  <Div>
-                    <H4 className="text-white font-medium">Email Notifications</Card>
-                    <P className="text-sm text-gray-400">Receive updates via email</P>
-                  </Div>
+              <div className="space-y-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Email Notifications</Card>
+                    <p className="text-sm text-gray-400">Receive updates via email</p>
+                  </div>
                   <Switch
                     checked={settings.notification_channels.email}
                     onCheckedChange={(checked) => updateNotificationSetting('email', checked)}
                   / />
 
-                <Div className="flex items-center justify-between">
-                  <Div>
-                    <H4 className="text-white font-medium">Push Notifications</Switch>
-                    <P className="text-sm text-gray-400">Browser push notifications</P>
-                  </Div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">Push Notifications</Switch>
+                    <p className="text-sm text-gray-400">Browser push notifications</p>
+                  </div>
                   <Switch
                     checked={settings.notification_channels.push}
                     onCheckedChange={(checked) => updateNotificationSetting('push', checked)}
                   / />
 
-                <Div className="flex items-center justify-between">
-                  <Div>
-                    <H4 className="text-white font-medium">In-App Notifications</Switch>
-                    <P className="text-sm text-gray-400">Show notifications within the app</P>
-                  </Div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h4 className="text-white font-medium">In-App Notifications</Switch>
+                    <p className="text-sm text-gray-400">Show notifications within the app</p>
+                  </div>
                   <Switch
                     checked={settings.notification_channels.in_app}
                     onCheckedChange={(checked) => updateNotificationSetting('in_app', checked)}
@@ -441,40 +439,38 @@ export default function UserSettings() {
             <CardHeader>
               <CardTitle>🎨 Theme Preview</Card />
             <CardContent>
-              <Div className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
-                <P className="text-white mb-2">Current Theme: <Span className="text-blue-400">Dark Mode</Card></P>
-                <Div className="flex items-center gap-2">
-                  <Div className="w-4 h-4 rounded-full bg-blue-600"></Div>
-                  <Span className="text-gray-300">Accent Color: Blue</Span>
-                </Div>
+              <div className="p-4 bg-gray-700/50 rounded-lg border border-gray-600">
+                <p className="text-white mb-2">Current Theme: <span className="text-blue-400">Dark Mode</Card></p>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full bg-blue-600"></div>
+                  <span className="text-gray-300">Accent Color: Blue</span>
+                </div>
               </div />
           </Card>
 
           {/* Action Buttons */}
-          <Div className="flex gap-4 pt-4">
+          <div className="flex gap-4 pt-4">
             <Button onClick={handleSave}
               disabled={!hasChanges || isSaving}
-              className="flex-1"
-            />
+              className="flex-1"/></div></div>
               {isSaving ? '💾 Saving...' : '💾 Save Changes'}
-            </Div>
+            </div>
             <Button onClick={handleReset}
               variant="outline"
-              className="flex-1"
->
+              className="flex-1"></button></div>
               🔄 Reset to Defaults
-            </Button>
-          </Div>
+            </button>
+          </div>
 
           {/* Status */}
           {hasChanges && (
-            <Div className="text-center">
-              <P className="text-yellow-400 text-sm"></Div></Div></Div></Div></Div>⚠️ You have unsaved changes</Div>
-            </Div>
+            <div className="text-center">
+              <p className="text-yellow-400 text-sm"></div></div>⚠️ You have unsaved changes</div>
+            </div>
           )}
-        </Div>
-      </Div>
-    </Div>
+        </div>
+      </div>
+    </div>
   );
 }
 

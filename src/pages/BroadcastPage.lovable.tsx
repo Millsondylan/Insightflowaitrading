@@ -12,43 +12,43 @@ const mockChat = [
 
 export default function BroadcastPage() {
   return (
-    <Div>
+    <div>
         <Link to="/academy" style={{ display: "flex", alignItems: "center" }}>
-            <Arrowleft>
+            <ArrowLeft>
             Back to Academy
-        </Div>
-        <Div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             {/* Main Video Player */}
-            <Div className="lg:col-span-2 space-y-4">
-                <Div className="bg-black border border-white/10 rounded-xl aspect-video flex items-center justify-center">
-                    <P className="text-gray-500">Live video stream would be here.</Div>
-                </Div>
-                <Div>
-                    <H1 className="text-2xl font-bold text-white">Live Market Analysis with TraderPro</Div>
-                    <P className="text-gray-400">Discussing Q3 earnings and macro trends.</P>
-                </Div>
-            </Div>
+            <div className="lg:col-span-2 space-y-4">
+                <div className="bg-black border border-white/10 rounded-xl aspect-video flex items-center justify-center">
+                    <p className="text-gray-500">Live video stream would be here.</div>
+                </div>
+                <div>
+                    <h1 className="text-2xl font-bold text-white">Live Market Analysis with TraderPro</div>
+                    <p className="text-gray-400">Discussing Q3 earnings and macro trends.</p>
+                </div>
+            </div>
 
             {/* Chat Sidebar */}
-            <Div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm h-full flex flex-col">
-                <Div className="p-4 border-b border-white/10">
-                    <H3 className="font-semibold text-white flex items-center gap-2"><Radio  /> Live Chat</Div>
-                </Div>
-                <Div className="flex-grow p-4 space-y-4 overflow-y-auto">
+            <div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm h-full flex flex-col">
+                <div className="p-4 border-b border-white/10">
+                    <h3 className="font-semibold text-white flex items-center gap-2"><Radio /> Live Chat</div>
+                </div>
+                <div className="flex-grow p-4 space-y-4 overflow-y-auto">
                     {mockChat.map((chat, index) => (
-                        <Div key={index} className="text-sm">
-                            <Span className="font-semibold text-blue-400">{chat.user}: </Div>
-                            <Span className="text-gray-300">{chat.message}</Span>
-                        </Div>
+                        <div key={index} className="text-sm">
+                            <span className="font-semibold text-blue-400">{chat.user}: </div>
+                            <span className="text-gray-300">{chat.message}</span>
+                        </div>
                     ))}
-                </Div>
-                <Div className="p-4 border-t border-white/10 flex gap-2">
+                </div>
+                <div className="p-4 border-t border-white/10 flex gap-2">
                     <Textarea placeholder="Say something..." style={{ fontSize: "0.875rem" }}>
-                    <Button ><Send /></Div></Div></Div></Div></Div></Div></Div></Button>
-                </Div>
-            </Div>
-        </Div>
-    </Div>
+                    <Button ><Send /></div>
+                </div>
+            </div>
+        </div>
+    </div>
   );
 } 
 

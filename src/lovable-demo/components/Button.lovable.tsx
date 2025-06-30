@@ -110,7 +110,7 @@ export const Button = ({
   };
 
   return (
-    <button style={baseStyles}
+    <Button style={baseStyles}
       onClick={disabled ? undefined : onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

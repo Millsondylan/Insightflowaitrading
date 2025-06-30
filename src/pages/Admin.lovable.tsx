@@ -142,38 +142,38 @@ export default function AdminPage() {
   };
 
   return (
-    <Div className="container mx-auto py-8 px-4">
-      <Div className="theme-admin">
-        <Header className="mb-8">
-          <H1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</Div>
-          <P className="text-white/70">
+    <div className="container mx-auto py-8 px-4">
+      <div className="theme-admin">
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</div>
+          <p className="text-white/70">
             Manage users, promo codes, and view system usage logs.
           </p />
 
         <Tabs defaultValue="users">
           <Tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
             <Tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
-              <Shieldcheck  />
-              <Span>Users</Tabs />
+              <Shieldcheck />
+              <span>Users</Tabs />
             <Tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
               <Ticket >
-              <Span>Promo Codes</Tabstrigger />
+              <span>Promo Codes</Tabstrigger />
             <Tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <Activity  / /></Tabstrigger /></Tabstrigger /></P>
-              <Span>Usage Logs</span />
-          </Span>
+              <Activity  //></Tabstrigger /></Tabstrigger /></p>
+              <span>Usage Logs</span />
+          </span>
 
           <Tabscontent value="users">
-            <userrolemanager  />
+            <userrolemanager />
 
           <Tabscontent value="promo">
-            <promocodeeditor  />
+            <promocodeeditor />
 
           <Tabscontent value="logs">
-            <usagelogviewer  />
+            <usagelogviewer />
         </Tabscontent>
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 } 
 

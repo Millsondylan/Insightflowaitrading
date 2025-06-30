@@ -32,13 +32,13 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
   userId,
   onSaveEntry
 }) => {
-  const [entries, setEntries] = useState<Journalentry  />([]);
-  const [currentEntry, setCurrentEntry] = useState<Partial >>({
+  const [entries, setEntries] = useState<Journalentry />([]);
+  const [currentEntry, setCurrentEntry] = useState<partial >>({
     content: '',
     mood: 'neutral',
     tags: []
   });
-  const [prompts, setPrompts] = useState<Journalprompt  />([]);
+  const [prompts, setPrompts] = useState<Journalprompt />([]);
   const [selectedPrompt, setSelectedPrompt] = useState<journalprompt >(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [analyzing, setAnalyzing] = useState<boolean>(false);
@@ -318,25 +318,24 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
   };
   
   return (
-    <Div className="journal-companion p-4 bg-background-secondary rounded-lg">
-      <H2 className="text-2xl font-bold mb-4">Trading Journal</Journalcompanionprops>
+    <div className="journal-companion p-4 bg-background-secondary rounded-lg">
+      <h2 className="text-2xl font-bold mb-4">Trading Journal</Journalcompanionprops>
       
       {/* Journal Entry Form */}
-      <Div className="mb-8">
-        <Div className="mb-4">
-          <Div className="flex justify-between items-center mb-2">
-            <Label className="font-medium">Today's Journal Entry</Div>
+      <div className="mb-8">
+        <div className="mb-4">
+          <div className="flex justify-between items-center mb-2">
+            <Label className="font-medium">Today's Journal Entry</div>
             <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
-              onClick={getRandomPrompt}
->
+              onClick={getRandomPrompt}>
               Get Random Prompt
-            </Button>
-          </Div>
+            </button>
+          </div>
           
           {selectedPrompt && (
-            <Div className="p-3 mb-3 bg-brand-primary/10 border-l-4 border-brand-primary rounded">
-              <P className="text-sm italic">{selectedPrompt.text}</Div>
-            </Div>
+            <div className="p-3 mb-3 bg-brand-primary/10 border-l-4 border-brand-primary rounded">
+              <p className="text-sm italic">{selectedPrompt.text}</div>
+            </div>
           )}
           
           <Textarea
@@ -344,12 +343,12 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
             value={currentEntry.content}
             onChange={handleContentChange}
             placeholder="Write your trading journal entry here..."
-          / />
+          //>
         
-        <Div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          <Div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
             <Label className="block mb-1 font-medium">How are you feeling?</Textarea>
-            <Div className="flex space-x-2">
+            <div className="flex space-x-2">
               <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'positive' 
                     ? 'bg-status-success text-white' 
@@ -358,7 +357,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                 onClick={() => handleMoodChange('positive')}
               >
                 Positive
-              </Div>
+              </div>
               <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'neutral' 
                     ? 'bg-status-warning text-white' 
@@ -367,7 +366,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                 onClick={() => handleMoodChange('neutral')}
               >
                 Neutral
-              </Button>
+              </button>
               <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'negative' 
                     ? 'bg-status-error text-white' 
@@ -376,132 +375,132 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                 onClick={() => handleMoodChange('negative')}
               >
                 Negative
-              </Button>
-            </Div>
-          </Div>
+              </button>
+            </div>
+          </div>
           
-          <Div>
-            <Label className="block mb-1 font-medium">Tags (comma-separated)</Div>
+          <div>
+            <Label className="block mb-1 font-medium">Tags (comma-separated)</div>
             <Input
               type="text"
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               value={currentEntry.tags?.join(', ')}
               onChange={handleTagsChange}
               placeholder="mindset, discipline, strategy, etc."
-            / />
+            //>
         </Input>
         
         {error && (
-          <Div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
+          <div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
             {error}
-          </Div>
+          </div>
         )}
         
-        <Div className="flex justify-between">
+        <div className="flex justify-between">
           <Button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
             onClick={analyzeEntry}
             disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}>
             {analyzing ? 'Analyzing...' : 'Analyze with AI'}
-          </Div>
+          </div>
           
           <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={saveEntry}
             disabled={saving || !currentEntry.content || currentEntry.content.trim().length < 10}>
             {saving ? 'Saving...' : 'Save Entry'}
-          </Button>
-        </Div>
-      </Div>
+          </button>
+        </div>
+      </div>
       
       {/* AI Analysis Section */}
       {currentEntry.aiAnalysis && (
-        <Div className="mb-8 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
-          <H3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</Div>
+        <div className="mb-8 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
+          <h3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</div>
           
-          <Div className="space-y-4">
-            <Div>
-              <H4 className="font-medium mb-1">Summary</Div>
-              <P className="text-sm">{currentEntry.aiAnalysis.summary}</P>
-            </Div>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-medium mb-1">Summary</div>
+              <p className="text-sm">{currentEntry.aiAnalysis.summary}</p>
+            </div>
             
-            <Div>
-              <H4 className="font-medium mb-1">Insights</Div>
-              <Ul className="list-disc pl-5 space-y-1">
+            <div>
+              <h4 className="font-medium mb-1">Insights</div>
+              <ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.insights.map((insight, i) => (
-                  <Li key={i} className="text-sm">{insight}</Ul>
+                  <li key={i} className="text-sm">{insight}</ul>
                 ))}
-              </Ul>
-            </Div>
+              </ul>
+            </div>
             
-            <Div>
-              <H4 className="font-medium mb-1">Patterns</Div>
-              <Ul className="list-disc pl-5 space-y-1">
+            <div>
+              <h4 className="font-medium mb-1">Patterns</div>
+              <ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.patterns.map((pattern, i) => (
-                  <Li key={i} className="text-sm">{pattern}</Ul>
+                  <li key={i} className="text-sm">{pattern}</ul>
                 ))}
-              </Ul>
-            </Div>
+              </ul>
+            </div>
             
-            <Div>
-              <H4 className="font-medium mb-1">Suggestions</Div>
-              <Ul className="list-disc pl-5 space-y-1">
+            <div>
+              <h4 className="font-medium mb-1">Suggestions</div>
+              <ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.suggestions.map((suggestion, i) => (
-                  <Li key={i} className="text-sm">{suggestion}</Ul>
+                  <li key={i} className="text-sm">{suggestion}</ul>
                 ))}
-              </Ul>
-            </Div>
-          </Div>
-        </Div>
+              </ul>
+            </div>
+          </div>
+        </div>
       )}
       
       {/* Previous Entries */}
-      <Div>
-        <H3 className="text-lg font-semibold mb-3">Previous Entries</Div>
+      <div>
+        <h3 className="text-lg font-semibold mb-3">Previous Entries</div>
         
         {loading ? (
-          <Div className="p-8 text-center">
-            <Div className="text-text-muted">Loading entries...</Div>
-          </Div>
+          <div className="p-8 text-center">
+            <div className="text-text-muted">Loading entries...</div>
+          </div>
         ) : entries.length === 0 ? (
-          <Div className="p-8 text-center">
-            <Div className="text-text-muted">No journal entries yet. Start writing your first entry above!</Div>
-          </Div>
+          <div className="p-8 text-center">
+            <div className="text-text-muted">No journal entries yet. Start writing your first entry above!</div>
+          </div>
         ) : (
-          <Div className="space-y-4">
+          <div className="space-y-4">
             {entries.map(entry => (
-              <Div key={entry.id} className="p-4 bg-background-tertiary rounded-lg">
-                <Div className="flex justify-between items-start mb-2">
-                  <Div className="flex items-center">
-                    <Span className={`w-3 h-3 rounded-full mr-2 ${
+              <div key={entry.id} className="p-4 bg-background-tertiary rounded-lg">
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex items-center">
+                    <span className={`w-3 h-3 rounded-full mr-2 ${
                       entry.mood === 'positive' ? 'bg-status-success' :
                       entry.mood === 'negative' ? 'bg-status-error' : 'bg-status-warning'
-                    }`} /></Div>
-                    <Span className="text-sm text-text-muted"></Span>
+                    }`}/></div>
+                    <span className="text-sm text-text-muted"></span>
                       {new Date(entry.createdAt).toLocaleDateString()}
-                    </Div>
-                  </Div>
+                    </div>
+                  </div>
                   
                   <Button  className="text-sm text-brand-primary hover:text-brand-primary/80"
-                    onClick={() => editEntry(entry)}
+                    onClick={() =></button></div> editEntry(entry)}
                   >
                     Edit
-                  </Button>
-                </Div>
+                  </button>
+                </div>
                 
-                <P className="mb-3 line-clamp-3">{entry.content}</P>
+                <p className="mb-3 line-clamp-3">{entry.content}</p>
                 
-                <Div className="flex flex-wrap gap-1">
+                <div className="flex flex-wrap gap-1">
                   {entry.tags.map((tag, i) => (
-                    <Span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></Div></Div></Div></Div></Div>
+                    <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></div></div>
                       {tag}
-                    </Div>
+                    </div>
                   ))}
-                </Div>
-              </Div>
+                </div>
+              </div>
             ))}
-          </Div>
+          </div>
         )}
-      </Div>
-    </Div>
+      </div>
+    </div>
   );
 };
 

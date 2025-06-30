@@ -46,109 +46,120 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
   return (
     <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group"
       onClick={onClick}>
-      <CardContent className="p-4" />
-        <Div className="flex items-center justify-between mb-2">
-          <Div className="flex items-center gap-2">
-            <Div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-              {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400" />}
-              {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
-              {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400" />}
-              {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400" />}
+      <CardContent className="p-4">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
+              {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400"/>}
+              {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
+              {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400"/>}
+              {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400"/>}
             </Card>
-            <Div>
-              <H3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+            <div>
+              <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
                 {item.symbol}
-              </Div>
-              <P className="text-xs text-gray-400">{item.name}</P>
-            </Div>
-          </Div>
-          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" / />
+              </div>
+              <p className="text-xs text-gray-400">{item.name}</p>
+            </div>
+          </div>
+          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors"/>
+        </ChevronRight>
         
-        <Div className="flex items-end justify-between">
-          <Div>
-            <P className="text-xl font-bold text-white">
+        <div className="flex items-end justify-between">
+          <div>
+            <p className="text-xl font-bold text-white">
               {item.type === 'forex' ? item.price.toFixed(4) : 
                item.type === 'commodity' ? `$${item.price.toFixed(2)}` :
                `$${item.price.toLocaleString()}`}
-            </ChevronRight>
+            </div>
             {item.volume && (
-              <P className="text-xs text-gray-400">
+              <p className="text-xs text-gray-400">
                 Vol: {(item.volume / 1000000).toFixed(1)}M
-              </P>
+              </p>
             )}
-          </Div>
-          <Div className={`flex items-center gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-            {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-            <Span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</Div>
-          </Div>
-        </div />
+          </div>
+          <div className={`flex items-center gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
+            {isPositive ? <TrendingUp className="w-4 h-4"/> : <TrendingDown className="w-4 h-4"/>}
+            <span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</div>
+          </div>
+        </div>
+      </CardContent>
     </Card>
   );
 };
 
 const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symbol: string) => void }) => {
   return (
-    <Div className="overflow-x-auto">
-      <Table className="w-full">
-        <Thead>
-          <Tr className="border-b border-white/10">
-            <Th className="text-left py-3 px-4 text-sm font-medium text-gray-400">Asset</Div>
-            <Th className="text-right py-3 px-4 text-sm font-medium text-gray-400">Price</Th>
-            <Th className="text-right py-3 px-4 text-sm font-medium text-gray-400">24h Change</Th>
-            <Th className="text-right py-3 px-4 text-sm font-medium text-gray-400 hidden md:table-cell">Volume</Th>
-            <Th className="text-right py-3 px-4 text-sm font-medium text-gray-400 hidden lg:table-cell">Market Cap</Th>
-            <Th className="text-right py-3 px-4 text-sm font-medium text-gray-400">Action</Th />
-        </Th>
-        <Tbody>
+    <div className="overflow-x-auto">
+      <table className="w-full">
+        <thead>
+          <tr className="border-b border-white/10">
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-400">Asset</div>
+            <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">Price</th>
+            <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">24h Change</th>
+            <th className="text-right py-3 px-4 text-sm font-medium text-gray-400 hidden md:table-cell">Volume</th>
+            <th className="text-right py-3 px-4 text-sm font-medium text-gray-400 hidden lg:table-cell">Market Cap</th>
+            <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">Action</th>
+          </tr>
+        </thead>
+        <tbody>
           {items.map((item) => {
             const isPositive = item.change >= 0;
             return (
-              <Tr key={item.symbol} className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                <Td className="py-3 px-4">
-                  <Div className="flex items-center gap-3">
-                    <Div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                      {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400" />}
-                      {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
-                      {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400" />}
-                      {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400" />}
-                    </Tbody>
-                    <Div>
-                      <P className="font-medium text-white">{item.symbol}</Div>
-                      <P className="text-sm text-gray-400">{item.name}</P>
-                    </Div>
-                  </div />
-                <Td className="text-right py-3 px-4">
-                  <P className="font-medium text-white">
+              <tr key={item.symbol} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                <td className="py-3 px-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
+                      {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400"/>}
+                      {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
+                      {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400"/>}
+                      {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400"/>}
+                    </tbody>
+                    <div>
+                      <p className="font-medium text-white">{item.symbol}</div>
+                      <p className="text-sm text-gray-400">{item.name}</p>
+                    </div>
+                  </div>
+                </td>
+                <td className="text-right py-3 px-4">
+                  <p className="font-medium text-white">
                     {item.type === 'forex' ? item.price.toFixed(4) : 
                      item.type === 'commodity' ? `$${item.price.toFixed(2)}` :
                      `$${item.price.toLocaleString()}`}
-                  </Td />
-                <Td className="text-right py-3 px-4">
-                  <Div className={`flex items-center justify-end gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-                    {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-                    <Span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</Td>
-                  </div />
-                <Td className="text-right py-3 px-4 hidden md:table-cell">
-                  <P className="text-gray-400">
+                  </td>
+                </td>
+                <td className="text-right py-3 px-4">
+                  <div className={`flex items-center justify-end gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
+                    {isPositive ? <TrendingUp className="w-4 h-4"/> : <TrendingDown className="w-4 h-4"/>}
+                    <span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</td>
+                  </div>
+                </td>
+                <td className="text-right py-3 px-4 hidden md:table-cell">
+                  <p className="text-gray-400">
                     {item.volume ? `${(item.volume / 1000000).toFixed(1)}M` : '-'}
-                  </Td />
-                <Td className="text-right py-3 px-4 hidden lg:table-cell">
-                  <P className="text-gray-400">
+                  </td>
+                </td>
+                <td className="text-right py-3 px-4 hidden lg:table-cell">
+                  <p className="text-gray-400">
                     {item.marketCap ? `$${(item.marketCap / 1000000000).toFixed(1)}B` : '-'}
-                  </Td />
-                <Td className="text-right py-3 px-4">
+                  </td>
+                </td>
+                <td className="text-right py-3 px-4">
                   <Button size="sm" 
                     variant="ghost" 
-                    onClick={() = /> onSelect(item.symbol)}
+                    onClick={() => onSelect(item.symbol)}
                     className="hover:text-blue-400"
                   >
                     View
-                    <ChevronRight className="w-4 h-4 ml-1" / />
-                </Td />
+                    <ChevronRight className="w-4 h-4 ml-1"/>
+                  </td>
+                </td>
+              </tr>
             );
           })}
-        </Tbody />
-    </Td>
+        </tbody>
+      </table>
+    </div>
   );
 };
 
@@ -251,202 +262,217 @@ export default function Markets() {
   };
   
   if (selectedSymbol) {
-    return <MarketDetailPage symbol={selectedSymbol} onBack={() = /> setSelectedSymbol(null)} />;
+    return <MarketDetailPage symbol={selectedSymbol} onBack={() => setSelectedSymbol(null)} />;
   }
   
   return (
-    <Div className="space-y-8">
+    <div className="space-y-8">
       {/* Header */}
-      <Div>
-        <H1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <Activity className="w-8 h-8 text-blue-400" />
+      <div>
+        <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+          <Activity className="w-8 h-8 text-blue-400"/>
           Markets Overview
         </MarketDetailPage>
-        <P className="text-gray-400">
+        <p className="text-gray-400">
           Real-time market data across cryptocurrencies, forex, stocks, and commodities
-        </P>
-      </Div>
+        </p>
+      </div>
       
       {/* Market Stats */}
-      <Div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card className="bg-white/5 border-white/10" />
-          <CardContent className="p-4" />
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Total Markets</Div>
-                <P className="text-2xl font-bold text-white">{allMarkets.length}</P>
-              </Div>
-              <BarChart3 className="w-8 h-8 text-blue-400/20" />
-            </BarChart3 />
-        </BarChart3>
-        <Card className="bg-white/5 border-white/10" />
-          <CardContent className="p-4" />
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">24h Volume</Card>
-                <P className="text-2xl font-bold text-white">$2.3T</P>
-              </Div>
-              <Volume2 className="w-8 h-8 text-green-400/20" />
-            </Volume2 />
-        </Volume2>
-        <Card className="bg-white/5 border-white/10" />
-          <CardContent className="p-4" />
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Gainers</Card>
-                <P className="text-2xl font-bold text-green-400">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Total Markets</div>
+                <p className="text-2xl font-bold text-white">{allMarkets.length}</p>
+              </div>
+              <BarChart3 className="w-8 h-8 text-blue-400/20"/>
+            </BarChart3>
+          </CardContent>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">24h Volume</Card>
+                <p className="text-2xl font-bold text-white">$2.3T</p>
+              </div>
+              <Volume2 className="w-8 h-8 text-green-400/20"/>
+            </Volume2>
+          </CardContent>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Gainers</Card>
+                <p className="text-2xl font-bold text-green-400">
                   {allMarkets.filter(m => m.change > 0).length}
-                </P>
-              </Div>
-              <TrendingUp className="w-8 h-8 text-green-400/20" / />
-          </CardContent />
-        <Card className="bg-white/5 border-white/10" />
-          <CardContent className="p-4" />
-            <Div className="flex items-center justify-between">
-              <Div>
-                <P className="text-sm text-gray-400">Losers</TrendingUp>
-                <P className="text-2xl font-bold text-red-400">
+                </p>
+              </div>
+              <TrendingUp className="w-8 h-8 text-green-400/20"/>
+            </TrendingUp>
+          </CardContent>
+        </Card>
+        <Card className="bg-white/5 border-white/10">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-400">Losers</Card>
+                <p className="text-2xl font-bold text-red-400">
                   {allMarkets.filter(m => m.change < 0).length}
-                </P>
-              </Div>
-              <TrendingDown className="w-8 h-8 text-red-400/20" / />
-          </CardContent />
-      </TrendingDown>
+                </p>
+              </div>
+              <TrendingDown className="w-8 h-8 text-red-400/20"/>
+            </TrendingDown>
+          </CardContent>
+        </Card>
+      </div>
       
       {/* Top Movers */}
-      <Div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="bg-white/5 border-white/10" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card className="bg-white/5 border-white/10">
           <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2" />
-              <TrendingUp className="w-5 h-5 text-green-400" />
+            <CardTitle className="text-white flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-green-400"/>
               Top Gainers
-            </div />
+            </div>
+          </CardHeader>
           <CardContent>
-            <Div className="space-y-3">
+            <div className="space-y-3">
               {topGainers.map((market) => (
-                <Div 
+                <div 
                   key={market.symbol} 
                   className="flex items-center justify-between p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
                   onClick={() => setSelectedSymbol(market.symbol)}
                 >
-                  <Div className="flex items-center gap-3">
-                    <Div className="w-8 h-8 bg-green-400/20 rounded-full flex items-center justify-center">
-                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-green-400" />}
-                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
-                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-green-400" />}
-                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-green-400" />}
-                    </Div>
-                    <Div>
-                      <P className="font-medium text-white">{market.symbol}</Div>
-                      <P className="text-xs text-gray-400">{market.name}</P>
-                    </Div>
-                  </Div>
-                  <Div className="text-right">
-                    <P className="font-medium text-white">${market.price.toFixed(2)}</Div>
-                    <P className="text-sm text-green-400">+{market.change.toFixed(2)}%</P>
-                  </Div>
-                </Div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-green-400/20 rounded-full flex items-center justify-center">
+                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-green-400"/>}
+                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
+                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-green-400"/>}
+                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-green-400"/>}
+                    </CardContent>
+                    <div>
+                      <p className="font-medium text-white">{market.symbol}</div>
+                      <p className="text-xs text-gray-400">{market.name}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-medium text-white">${market.price.toFixed(2)}</div>
+                    <p className="text-sm text-green-400">+{market.change.toFixed(2)}%</p>
+                  </div>
+                </div>
               ))}
-            </div />
+            </div>
+          </CardContent>
         </Card>
         
-        <Card className="bg-white/5 border-white/10" />
+        <Card className="bg-white/5 border-white/10">
           <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2" />
-              <TrendingDown className="w-5 h-5 text-red-400" />
+            <CardTitle className="text-white flex items-center gap-2">
+              <TrendingDown className="w-5 h-5 text-red-400"/>
               Top Losers
-            </Card />
+            </Card>
+          </CardHeader>
           <CardContent>
-            <Div className="space-y-3">
+            <div className="space-y-3">
               {topLosers.map((market) => (
-                <Div 
+                <div 
                   key={market.symbol} 
                   className="flex items-center justify-between p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
                   onClick={() => setSelectedSymbol(market.symbol)}
                 >
-                  <Div className="flex items-center gap-3">
-                    <Div className="w-8 h-8 bg-red-400/20 rounded-full flex items-center justify-center">
-                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-red-400" />}
-                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-red-400" />}
-                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-red-400" />}
-                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-red-400" />}
-                    </Card>
-                    <Div>
-                      <P className="font-medium text-white">{market.symbol}</Div>
-                      <P className="text-xs text-gray-400">{market.name}</P>
-                    </Div>
-                  </Div>
-                  <Div className="text-right">
-                    <P className="font-medium text-white">${market.price.toFixed(2)}</Div>
-                    <P className="text-sm text-red-400">{market.change.toFixed(2)}%</P>
-                  </Div>
-                </Div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-red-400/20 rounded-full flex items-center justify-center">
+                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-red-400"/>}
+                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-red-400"/>}
+                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-red-400"/>}
+                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-red-400"/>}
+                    </CardContent>
+                    <div>
+                      <p className="font-medium text-white">{market.symbol}</div>
+                      <p className="text-xs text-gray-400">{market.name}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-medium text-white">${market.price.toFixed(2)}</div>
+                    <p className="text-sm text-red-400">{market.change.toFixed(2)}%</p>
+                  </div>
+                </div>
               ))}
-            </div />
+            </div>
+          </CardContent>
         </Card>
-      </Div>
+      </div>
       
       {/* Search and Filters */}
-      <Div className="flex flex-col md:flex-row gap-4">
-        <Div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex-1 relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"/>
           <Input placeholder="Search markets..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 bg-white/5 border-white/10 text-white"
           />
-        </Div>
-        <Tabs value={selectedCategory} onValueChange={setSelectedCategory} />
-          <TabsList className="bg-white/5" />
-            <TabsTrigger value="all" />All</Tabs>
-            <TabsTrigger value="crypto" />Crypto</TabsTrigger>
-            <TabsTrigger value="forex" />Forex</TabsTrigger>
-            <TabsTrigger value="stock" />Stocks</TabsTrigger>
-            <TabsTrigger value="commodity" />Commodities</TabsTrigger />
-        </TabsTrigger>
-      </Div>
+        </div>
+        <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
+          <TabsList className="bg-white/5">
+            <TabsTrigger value="all">All</Tabs>
+            <TabsTrigger value="crypto">Crypto</TabsTrigger>
+            <TabsTrigger value="forex">Forex</TabsTrigger>
+            <TabsTrigger value="stock">Stocks</TabsTrigger>
+            <TabsTrigger value="commodity">Commodities</TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
       
       {/* Markets Grid/Table */}
-      <Tabs defaultValue="grid" className="w-full" />
-        <TabsList className="mb-4" />
-          <TabsTrigger value="grid" />Grid View</Tabs>
-          <TabsTrigger value="table" />Table View</TabsTrigger />
+      <Tabs defaultValue="grid" className="w-full">
+        <TabsList className="mb-4">
+          <TabsTrigger value="grid">Grid View</Tabs>
+          <TabsTrigger value="table">Table View</TabsTrigger>
+        </TabsList>
         
-        <TabsContent value="grid" />
-          <Div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <TabsContent value="grid">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filteredMarkets.map((market) => (
               <MarketCard key={market.symbol} 
                 item={market} 
-                onClick={() = /> setSelectedSymbol(market.symbol)}
+                onClick={() => setSelectedSymbol(market.symbol)}
               />
             ))}
-          </TabsContent />
+          </TabsContent>
+        </TabsContent>
         
-        <TabsContent value="table" />
-          <Card className="bg-white/5 border-white/10" />
-            <CardContent className="p-0" />
+        <TabsContent value="table">
+          <Card className="bg-white/5 border-white/10">
+            <CardContent className="p-0">
               <MarketTable 
                 items={filteredMarkets} 
                 onSelect={setSelectedSymbol}
-              / />
-          </Card />
-      </TabsTrigger>
+ /></div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
       
       {filteredMarkets.length === 0 && (
-        <Div className="text-center py-12">
-          <P className="text-gray-400">No markets found matching your criteria.</Div>
+        <div className="text-center py-12">
+          <p className="text-gray-400"></div>No markets found matching your criteria.</div>
           <Button variant="ghost" 
-            onClick={() = /> {
+            onClick={() =></button></div> {
               setSearchTerm('');
               setSelectedCategory('all');
             }}
             className="mt-4"
           >
             Reset Filters
-          </Button>
-        </Div>
+          </button>
+        </div>
       )}
-    </Div>
+    </div>
   );
 }
 

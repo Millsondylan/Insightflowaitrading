@@ -27,7 +27,7 @@ const StrategyHeatmap = ({ data }: Props) => {
 
   return (
     <TooltipProvider>
-      <Div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
         {data.map((item) => {
           // Normalize size between a min and max font size for visual representation
           const fontSize = 1 + (item.count / maxCount) * 1.5; // From 1rem to 2.5rem
@@ -39,32 +39,30 @@ const StrategyHeatmap = ({ data }: Props) => {
           return (
             <Tooltip key={item.tag}>
               <TooltipTrigger asChild>
-                <Div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
-                  style={tileStyle}
-        />
-                  <Div>
-                    <Span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
+                <div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
+                  style={tileStyle}/>
+                  <div>
+                    <span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
                       {item.dominantEmotion}
                     </TooltipProvider>
-                  </Div>
+                  </div>
                   
-                  <H3 className="font-bold text-center text-white break-words" 
-                    style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}
-       >
+                  <h3 className="font-bold text-center text-white break-words" 
+                    style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}>
                     {item.tag}
-                  </H3>
+                  </h3>
                   
-                  <Div className="flex justify-between text-xs text-white/70">
-                    <Span>{item.count} Uses</Div>
-                    <Span>{(item.avgWinRate * 100).toFixed(0)}% Win Rate</Span>
-                  </Div>
-                </div />
+                  <div className="flex justify-between text-xs text-white/70">
+                    <span>{item.count} Uses</div>
+                    <span>{(item.avgWinRate * 100).toFixed(0)}% Win Rate</span>
+                  </div>
+                </div>
               <TooltipContent>
-                <P /></TooltipContent /></TooltipContent />{item.tag} - {item.dominantEmotion}</TooltipContent />
+                <p /></TooltipContent></TooltipContent>{item.tag} - {item.dominantEmotion}</TooltipContent>
             </TooltipContent>
           );
         })}
-      </div />
+      </div>
   );
 };
 

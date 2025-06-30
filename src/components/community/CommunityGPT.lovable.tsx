@@ -36,7 +36,7 @@ const generateReply = (post: Post): Promise<Reply > => {
 
 
 const CommunityGPT = ({ post }: Props) => {
-  const [reply, setReply] = useState<Reply  / /></Reply>(null);
+  const [reply, setReply] = useState<Reply  //></Reply>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchReply = () => {
@@ -53,38 +53,38 @@ const CommunityGPT = ({ post }: Props) => {
   }, [post]);
 
   return (
-    <Div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
-      <Div className="flex items-center justify-between">
-          <Div className="flex items-center gap-3">
-            <Div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
+    <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
+      <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
                 🧠
-            </Div>
-            <Div></Div>
-                <P className="font-bold text-white">Community AI</P>
+            </div>
+            <div></div>
+                <p className="font-bold text-white">Community AI</p>
                 {reply && !isLoading && (
-                    <Span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
+                    <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
                         {reply.tone}
-                    </Span>
+                    </span>
                 )}
-            </Div>
-          </Div>
-          <Button variant="ghost" size="sm">
+            </div>
+          </div>
+          <Button variant="ghost" size="sm"></button></div>
             Regenerate
-          </Button>
-      </Div>
+          </button>
+      </div>
 
       {isLoading && (
-        <Div className="text-white/70 animate-pulse">
+        <div className="text-white/70 animate-pulse">
             Generating AI analysis...
-        </Div>
+        </div>
       )}
 
       {reply && !isLoading && (
-        <P className="text-white/80 text-sm leading-relaxed pt-2">
+        <p className="text-white/80 text-sm leading-relaxed pt-2">
             {reply.text}
-        </P>
+        </p>
       )}
-    </Div>
+    </div>
   );
 };
 

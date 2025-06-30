@@ -29,7 +29,7 @@ interface TradingSetup {
 }
 
 export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupProps) {
-  const [setup, setSetup] = useState<TradingSetup | null />(null);
+  const [setup, setSetup] = useState<TradingSetup | null/>(null);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -143,108 +143,108 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
     : "0";
 
   return (
-    <Card className="h-full" />
-      <CardHeader className="pb-2" />
-        <Div className="flex justify-between items-center">
-          <CardTitle className="text-lg" />Today's Suggested Setup</TradingSetup>
-          <Button variant="ghost" size="icon" onClick={generateSetup} disabled={generating} />
-            <RefreshCcw className={`h-4 w-4 ${generating ? 'animate-spin' : ''}`} />
-          </Button>
-        </Div>
+    <Card className="h-full"/>
+      <CardHeader className="pb-2"/>
+        <div className="flex justify-between items-center">
+          <CardTitle className="text-lg"/>Today's Suggested Setup</TradingSetup>
+          <Button variant="ghost" size="icon" onClick={generateSetup} disabled={generating}/>
+            <RefreshCcw className={`h-4 w-4 ${generating ? 'animate-spin' : ''}`}/>
+          </button>
+        </div>
         <CardDescription>
           AI-generated setup based on your trading profile
-        </CardDescription />
+        </CardDescription>
       
-      <CardContent className="pb-2" />
+      <CardContent className="pb-2"/>
         {loading || generating ? (
           <>
-            <Skeleton className="w-full h-12 mb-4" />
-            <Skeleton className="w-full h-32 mb-4" />
-            <Skeleton className="w-full h-20" />
-          </>
+            <Skeleton className="w-full h-12 mb-4"/>
+            <Skeleton className="w-full h-32 mb-4"/>
+            <Skeleton className="w-full h-20"/>
+          </CardDescription>
         ) : setup ? (
           <>
-            <Div className="flex items-center justify-between mb-3">
-              <Div>
-                <Badge variant={setup.direction === 'long' ? 'default' : 'destructive'} className="mb-1" />
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <Badge variant={setup.direction === 'long' ? 'default' : 'destructive'} className="mb-1"/>
                   {setup.direction.toUpperCase()}
-                </CardDescription>
-                <H3 className="text-xl font-bold">{setup.symbol}</H3>
-                <P className="text-sm text-muted-foreground">{setup.timeframe} Timeframe</P>
-              </Div>
-              <Div className="text-right">
-                <P className="text-sm text-muted-foreground">Risk/Reward</Div>
-                <P className="text-xl font-bold">1:{riskRewardRatio}</P>
-              </Div>
-            </Div>
+                </div>
+                <h3 className="text-xl font-bold">{setup.symbol}</h3>
+                <p className="text-sm text-muted-foreground">{setup.timeframe} Timeframe</p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm text-muted-foreground">Risk/Reward</div>
+                <p className="text-xl font-bold">1:{riskRewardRatio}</p>
+              </div>
+            </div>
             
             {setup.image_url ? (
-              <Div className="rounded-md overflow-hidden mb-3 h-40 bg-muted">
-                <Img 
+              <div className="rounded-md overflow-hidden mb-3 h-40 bg-muted">
+                <img 
                   src={setup.image_url} 
                   alt={`${setup.symbol} chart`}
                   className="w-full h-full object-cover"
-                />
-              </Div>
+   />
+              </div>
             ) : (
-              <Div className="rounded-md overflow-hidden mb-3 h-40 bg-muted flex items-center justify-center">
-                <Span className="text-muted-foreground">No chart image available</Div>
-              </Div>
+              <div className="rounded-md overflow-hidden mb-3 h-40 bg-muted flex items-center justify-center">
+                <span className="text-muted-foreground">No chart image available</div>
+              </div>
             )}
             
-            <Div className="grid grid-cols-3 gap-1 mb-3 text-center">
-              <Div className="p-2 bg-muted rounded-md">
-                <P className="text-xs text-muted-foreground">Entry</Div>
-                <P className="font-medium">{setup.entry_price}</P>
-              </Div>
-              <Div className="p-2 bg-red-100 dark:bg-red-900/20 rounded-md">
-                <P className="text-xs text-muted-foreground">Stop Loss</Div>
-                <P className="font-medium">{setup.stop_loss}</P>
-              </Div>
-              <Div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-md">
-                <P className="text-xs text-muted-foreground">Take Profit</Div>
-                <P className="font-medium">{setup.take_profit}</P>
-              </Div>
-            </Div>
+            <div className="grid grid-cols-3 gap-1 mb-3 text-center">
+              <div className="p-2 bg-muted rounded-md">
+                <p className="text-xs text-muted-foreground">Entry</div>
+                <p className="font-medium">{setup.entry_price}</p>
+              </div>
+              <div className="p-2 bg-red-100 dark:bg-red-900/20 rounded-md">
+                <p className="text-xs text-muted-foreground">Stop Loss</div>
+                <p className="font-medium">{setup.stop_loss}</p>
+              </div>
+              <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-md">
+                <p className="text-xs text-muted-foreground">Take Profit</div>
+                <p className="font-medium">{setup.take_profit}</p>
+              </div>
+            </div>
             
-            <P className="text-sm mt-2">{setup.rationale}</P>
+            <p className="text-sm mt-2">{setup.rationale}</p>
           </>
         ) : (
-          <Div className="text-center p-4">
-            <P className="text-muted-foreground">No setup available. Click Generate to create one.</Div>
-            <Button onClick={generateSetup} className="mt-4" disabled={generating} />
+          <div className="text-center p-4">
+            <p className="text-muted-foreground">No setup available. Click Generate to create one.</div>
+            <Button onClick={generateSetup} className="mt-4" disabled={generating}/>
               Generate Setup
-            </Button>
-          </Div>
+            </button>
+          </div>
         )}
       </CardContent>
       
       {setup && (
-        <CardFooter className="pt-2 flex justify-between" />
+        <CardFooter className="pt-2 flex justify-between"/>
           <Button variant="outline" 
             size="sm" 
             onClick={saveSetup}
             disabled={saved}>
             {saved ? (
               <>
-                <Bookmark className="mr-1 h-4 w-4 fill-primary" />
+                <Bookmark className="mr-1 h-4 w-4 fill-primary"/>
                 Saved
-              </>
+              </CardFooter>
             ) : (
               <>
-                <Bookmark className="mr-1 h-4 w-4" />
+                <Bookmark className="mr-1 h-4 w-4"/>
                 Save Setup
-              </>
+              </Bookmark>
             )}
           </CardFooter>
           
           <Button variant="ghost" 
             size="sm"
             asChild>
-            <A href={`/trade-planner?symbol=${setup.symbol}&entry=${setup.entry_price}&sl=${setup.stop_loss}&tp=${setup.take_profit}&direction=${setup.direction}`}>
+            <a href={`/trade-planner?symbol=${setup.symbol}&entry=${setup.entry_price}&sl=${setup.stop_loss}&tp=${setup.take_profit}&direction=${setup.direction}`}>
               Plan Trade
-              <ChevronRight className="ml-1 h-4 w-4" /></Button></Button></Button></Button></Button></button />
-          </button />
+              <ChevronRight className="ml-1 h-4 w-4"/></button></button>
+          </button>
       )}
     </Card>
   );

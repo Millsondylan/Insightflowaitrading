@@ -18,21 +18,21 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="w-full mb-12"
     >
-      <Card className="border-l-4 border-blue-500 bg-gray-900/30 overflow-hidden" />
+      <Card className="border-l-4 border-blue-500 bg-gray-900/30 overflow-hidden"/>
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-gray-100" />
+          <CardTitle className="text-3xl font-bold text-gray-100"/>
             {block.title}
-          </LessonBlockProps />
-        <CardContent className="space-y-8" />
-          <P className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
+          </LessonBlockProps>
+        <CardContent className="space-y-8"/>
+          <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
             {block.content}
           </LessonBlockProps>
 
-          <Div>
-            <H4 className="font-semibold text-xl mb-4 text-gray-200">
+          <div>
+            <h4 className="font-semibold text-xl mb-4 text-gray-200">
               Key Takeaways
-            </Div>
-            <Ul className="space-y-3">
+            </div>
+            <ul className="space-y-3">
               {block.keyTakeaways.map((takeaway, index) => (
                 <motion.li
                   key={index}
@@ -42,12 +42,12 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start"
                 >
-                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" / /></Ul /></Ul /></Ul>
-                  <Span className="text-gray-300 text-base">{takeaway}</Span>
+                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" //></div>
+                  <span className="text-gray-300 text-base">{takeaway}</span>
                 </motion.li>
               ))}
-            </Ul>
-          </div />
+            </ul>
+          </div>
       </Card>
     </motion.div>
   );

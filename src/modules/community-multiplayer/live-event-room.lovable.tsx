@@ -46,16 +46,16 @@ interface EventDetails {
   }[];
 }
 
-export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
+export const LiveEventRoom: React.FC<liveeventroomprops> = ({
   eventId,
   userId,
   username,
   isHost = false,
   onLeave
 }) => {
-  const [event, setEvent] = useState<Eventdetails  />(null);
+  const [event, setEvent] = useState<Eventdetails />(null);
   const [messages, setMessages] = useState<Message >([]);
-  const [participants, setParticipants] = useState<Participant  />([]);
+  const [participants, setParticipants] = useState<participant />([]);
   const [messageInput, setMessageInput] = useState<string>('');
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
@@ -298,187 +298,184 @@ export const LiveEventRoom: React.FC<Liveeventroomprops> = ({
   
   if (loading) {
     return (
-      <Div className="p-12 text-center">
-        <Div className="text-xl font-semibold mb-2">Joining event...</Liveeventroomprops>
-        <Div className="text-text-muted">Please wait while we connect you to the live event</Div>
-      </Div>
+      <div className="p-12 text-center">
+        <div className="text-xl font-semibold mb-2">Joining event...</Eventdetails>
+        <div className="text-text-muted">Please wait while we connect you to the live event</div>
+      </div>
     );
   }
   
   if (error || !event) {
     return (
-      <Div className="p-6 bg-status-error/20 text-status-error rounded-lg">
+      <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
         {error || 'Failed to join the event. Please try again.'}
-      </Div>
+      </div>
     );
   }
   
   return (
-    <Div className="live-event-room h-full flex flex-col">
+    <div className="live-event-room h-full flex flex-col">
       {/* Event Header */}
-      <Div className="p-4 bg-background-secondary border-b border-border-primary">
-        <Div className="flex justify-between items-start">
-          <Div>
-            <H2 className="text-xl font-bold">{event.title}</Div>
-            <Div className="flex items-center mt-1">
-              <Span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-status-success/20 text-status-success">
-                <Span className="w-2 h-2 rounded-full bg-status-success mr-1"></Div>
+      <div className="p-4 bg-background-secondary border-b border-border-primary">
+        <div className="flex justify-between items-start">
+          <div>
+            <h2 className="text-xl font-bold">{event.title}</div>
+            <div className="flex items-center mt-1">
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-status-success/20 text-status-success">
+                <span className="w-2 h-2 rounded-full bg-status-success mr-1"></div>
                 Live
-              </Span>
-              <Span className="ml-2 text-sm text-text-muted">
+              </span>
+              <span className="ml-2 text-sm text-text-muted">
                 {participants.length} participants
-              </Span>
-              <Span className="ml-2 text-sm text-text-muted">
+              </span>
+              <span className="ml-2 text-sm text-text-muted">
                 Host: {event.hostName}
-              </Span>
-            </Div>
-          </Div>
+              </span>
+            </div>
+          </div>
           
           <Button className="px-3 py-1 bg-status-error/20 text-status-error rounded hover:bg-status-error/30"
             onClick={handleLeaveEvent}>
             Leave Event
-          </Button>
-        </Div>
+          </button>
+        </div>
         
         {event.description && (
-          <P className="mt-2 text-sm text-text-muted">{event.description}</P>
+          <p className="mt-2 text-sm text-text-muted">{event.description}</p>
         )}
-      </Div>
+      </div>
       
       {/* Main Content Area */}
-      <Div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden">
         {/* Chat Area */}
-        <Div className="flex-1 flex flex-col bg-background-primary">
+        <div className="flex-1 flex flex-col bg-background-primary">
           {/* Messages */}
-          <Div className="flex-1 overflow-y-auto p-4">
-            <Div className="space-y-3">
+          <div className="flex-1 overflow-y-auto p-4">
+            <div className="space-y-3">
               {messages.map(message => (
-                <Div key={message.id} className={`max-w-3xl ${message.userId === userId ? 'ml-auto' : ''}`}>
+                <div key={message.id} className={`max-w-3xl ${message.userId === userId ? 'ml-auto' : ''}`}>
                   {message.type === 'system' ? (
-                    <Div className="py-1 px-3 text-xs text-text-muted bg-background-tertiary rounded-md inline-block">
+                    <div className="py-1 px-3 text-xs text-text-muted bg-background-tertiary rounded-md inline-block">
                       {message.content}
-                    </Div>
+                    </div>
                   ) : (
-                    <Div className={`p-3 rounded-lg ${
+                    <div className={`p-3 rounded-lg ${
                       message.userId === userId
                         ? 'bg-brand-primary/20 text-text-primary'
                         : message.userId === 'host-123'
                           ? 'bg-brand-secondary/20 text-text-primary'
                           : 'bg-background-secondary text-text-primary'
                     }`}>
-                      <Div className="flex justify-between items-center mb-1">
-                        <Span className={`text-sm font-medium ${
+                      <div className="flex justify-between items-center mb-1">
+                        <span className={`text-sm font-medium ${
                           message.userId === 'host-123' ? 'text-brand-secondary' : ''
                         }`}>
                           {message.username}
                           {message.userId === 'host-123' && ' (Host)'}
-                        </Div>
-                        <Span className="text-xs text-text-muted">
+                        </div>
+                        <span className="text-xs text-text-muted">
                           {new Date(message.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                        </Span>
-                      </Div>
-                      <P>{message.content}</P>
-                    </Div>
+                        </span>
+                      </div>
+                      <p>{message.content}</p>
+                    </div>
                   )}
-                </Div>
+                </div>
               ))}
-              <Div ref={messagesEndRef} />
-            </Div>
-          </Div>
+              <div ref={messagesEndRef}/>
+            </div>
+          </div>
           
           {/* Message Input */}
-          <Div className="p-3 border-t border-border-primary bg-background-secondary">
-            <Div className="flex">
+          <div className="p-3 border-t border-border-primary bg-background-secondary">
+            <div className="flex">
               <Input type="text"
                 className="flex-1 p-2 bg-background-primary border border-border-primary rounded-l-md focus:outline-none focus:ring-1 focus:ring-brand-primary"
                 placeholder="Type a message..."
                 value={messageInput}
-                onChange={(e) = /> setMessageInput(e.target.value)}
+                onChange={(e) => setMessageInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 disabled={!isConnected}
               />
               <Button className="px-4 py-2 bg-brand-primary text-white rounded-r-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSendMessage}
-                disabled={!isConnected || !messageInput.trim()}
-  >
+                disabled={!isConnected || !messageInput.trim()}>
                 Send
-              </Div>
-            </Div>
+              </div>
+            </div>
             {!isConnected && (
-              <Div className="mt-2 text-sm text-status-error">
+              <div className="mt-2 text-sm text-status-error">
                 Connecting to chat... Please wait.
-              </Div>
+              </div>
             )}
-          </Div>
-        </Div>
+          </div>
+        </div>
         
         {/* Sidebar */}
-        <Div className="w-64 border-l border-border-primary bg-background-secondary overflow-y-auto hidden md:block">
+        <div className="w-64 border-l border-border-primary bg-background-secondary overflow-y-auto hidden md:block">
           {/* Resources */}
-          <Div className="p-3 border-b border-border-primary">
-            <H3 className="font-medium mb-2">Resources</Div>
+          <div className="p-3 border-b border-border-primary">
+            <h3 className="font-medium mb-2">Resources</div>
             {event.resources && event.resources.length > 0 ? (
-              <Ul className="space-y-2">
+              <ul className="space-y-2">
                 {event.resources.map((resource, i) => (
-                  <Li key={i}>
-                    <A href={resource.url}
+                  <li key={i}>
+                    <a href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-brand-primary hover:text-brand-primary/80 flex items-center"
-         >
+                      className="text-sm text-brand-primary hover:text-brand-primary/80 flex items-center">
                       {resource.type === 'document' && (
-                        <Span className="mr-1">📄</Ul>
+                        <span className="mr-1">📄</ul>
                       )}
                       {resource.type === 'video' && (
-                        <Span className="mr-1">🎥</Span>
+                        <span className="mr-1">🎥</span>
                       )}
                       {resource.type === 'chart' && (
-                        <Span className="mr-1">📊</Span>
+                        <span className="mr-1">📊</span>
                       )}
                       {resource.type === 'link' && (
-                        <Span className="mr-1">🔗</Span>
+                        <span className="mr-1">🔗</span>
                       )}
                       {resource.title}
                     </A />
                 ))}
-              </Ul>
+              </ul>
             ) : (
-              <P className="text-sm text-text-muted">No resources available</P>
+              <p className="text-sm text-text-muted">No resources available</p>
             )}
-          </Div>
+          </div>
           
           {/* Participants */}
-          <Div className="p-3">
-            <H3 className="font-medium mb-2">Participants ({participants.length})</Div>
-            <Div className="space-y-1 max-h-60 overflow-y-auto">
+          <div className="p-3">
+            <h3 className="font-medium mb-2">Participants ({participants.length})</div>
+            <div className="space-y-1 max-h-60 overflow-y-auto">
               {participants.map(participant => (
-                <Div key={participant.userId}
-                  className="flex items-center p-1 rounded hover:bg-background-interactive"
-     >
-                  <Div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
+                <div key={participant.userId}
+                  className="flex items-center p-1 rounded hover:bg-background-interactive">
+                  <div className="w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center mr-2">
                     {participant.avatarUrl ? (
-                      <Img
+                      <img
                         src={participant.avatarUrl}
                         alt={participant.username}
                         className="w-6 h-6 rounded-full"
-                      /></Div></Div></Div></Div></Div></Div>
+         /></div>
                     ) : (
-                      <Span className="text-xs">{participant.username.charAt(0).toUpperCase()}</Span>
+                      <span className="text-xs">{participant.username.charAt(0).toUpperCase()}</span>
                     )}
-                  </Div>
-                  <Span className={`text-sm ${
+                  </div>
+                  <span className={`text-sm ${
                     participant.isHost ? 'font-medium text-brand-secondary' : ''
                   } ${!participant.isActive ? 'text-text-muted' : ''}`}>
                     {participant.username}
                     {participant.isHost && ' (Host)'}
-                  </Span>
-                </Div>
+                  </span>
+                </div>
               ))}
-            </Div>
-          </Div>
-        </Div>
-      </Div>
-    </Div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

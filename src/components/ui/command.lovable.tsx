@@ -18,12 +18,12 @@ interface CommandDialogProps extends DialogProps {}
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
-    <dialog  />
+    <Dialog />
       <Dialogcontent >
-        <Command  />
+        <Command />
           {children}
         </Commandprimitive />
-    </dialog>
+    </Commandprimitive>
   )
 }
 
@@ -31,10 +31,10 @@ const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <Div className="flex items-center border-b px-3" cmdk-input-wrapper="">
-    <search >
+  <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
+    <Search >
     <Commandprimitive >
-  </Commandprimitive>
+  </div>
 ))
 
 CommandInput.displayName = CommandPrimitive.Input.displayName
@@ -88,12 +88,12 @@ const CommandShortcut = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <Span       className={cn(
+    <span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    / /></Commandprimitive /></Commandprimitive />
+    //></Commandprimitive /></Commandprimitive />
   )
 }
 CommandShortcut.displayName = "CommandShortcut"

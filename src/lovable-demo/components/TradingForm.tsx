@@ -30,7 +30,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
     orderType: 'market'
   });
 
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<formErrors>({});
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -106,8 +106,8 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <div>
-          <label style={labelStyles}>Symbol</label>
-          <input type="text"
+          <Label style={labelStyles}>Symbol</Label>
+          <Input type="text"
             value={formData.symbol}
             onChange={(e) => setFormData({ ...formData, symbol: e.target.value.toUpperCase() })}
             placeholder="e.g., AAPL, TSLA, BTC"
@@ -131,8 +131,8 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
           <div>
-            <label style={labelStyles}>Trade Type</label>
-            <select
+            <Label style={labelStyles}>Trade Type</Label>
+            <Select
               value={formData.type}
               onChange={(e) => setFormData({ ...formData, type: e.target.value as 'buy' | 'sell' })}
               style={{
@@ -142,12 +142,12 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
             >
               <option value="buy" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Buy</option>
               <option value="sell" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sell</option>
-            </select>
+            </Select>
           </div>
 
           <div>
-            <label style={labelStyles}>Order Type</label>
-            <select
+            <Label style={labelStyles}>Order Type</Label>
+            <Select
               value={formData.orderType}
               onChange={(e) => setFormData({ ...formData, orderType: e.target.value as 'market' | 'limit' })}
               style={{
@@ -157,13 +157,13 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
             >
               <option value="market" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Market</option>
               <option value="limit" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Limit</option>
-            </select>
+            </Select>
           </div>
         </div>
 
         <div>
-          <label style={labelStyles}>Quantity</label>
-          <input type="number"
+          <Label style={labelStyles}>Quantity</Label>
+          <Input type="number"
             min="1"
             value={formData.quantity}
             onChange={(e) => setFormData({ ...formData, quantity: parseInt(e.target.value) || 0 })}
@@ -187,8 +187,8 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
 
         {formData.orderType === 'limit' && (
           <div>
-            <label style={labelStyles}>Limit Price</label>
-            <input type="number"
+            <Label style={labelStyles}>Limit Price</Label>
+            <Input type="number"
               min="0"
               step="0.01"
               value={formData.price}
@@ -213,7 +213,7 @@ export const TradingForm = ({ onSubmit }: TradingFormProps) => {
         )}
 
         <div style={{ display: 'flex', gap: '12px', marginTop: '8px' }}>
-          <button type="submit"
+          <Button type="submit"
             style={{
               width: '100%',
               padding: '12px 24px',

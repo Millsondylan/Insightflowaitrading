@@ -78,15 +78,15 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
   };
 
   return (
-    <Div className="space-y-8">
+    <div className="space-y-8">
       {/* Lesson Header */}
-      <Div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
-        <Div>
-          <H1 className="text-3xl font-bold text-white">{lesson.title}</Lessonviewprops>
-          <P className="text-white/70 mt-2">{lesson.description}</P>
-        </Div>
+      <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-white">{lesson.title}</Lessonviewprops>
+          <p className="text-white/70 mt-2">{lesson.description}</p>
+        </div>
         
-        <Lessonbookmark  /> markComplete(lesson.id)}
+        <Lessonbookmark /> markComplete(lesson.id)}
           onBookmark={handleToggleBookmark}
         / />
 
@@ -97,24 +97,23 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
       
       {/* Quiz Section */}
       {showQuiz && activeQuizId && (
-        <Div id="lesson-quiz" className="mt-10">
-          <Div className="flex justify-between items-center mb-6">
-            <H2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</Lessonbookmark>
+        <div id="lesson-quiz" className="mt-10">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</Lessonbookmark>
             <Button onClick={handleBackToContent}
-              className="text-white/70 hover:text-cyan-400 text-sm"
-            />
+              className="text-white/70 hover:text-cyan-400 text-sm"/>
               ← Back to lesson content
-            </Button>
-          </Div>
+            </button>
+          </div>
           
           <quizengine > s.id === activeSectionId)?.title : 
               lesson.title
             }
             onComplete={handleQuizComplete}
           />
-        </Div>
+        </div>
       )}
-    </Div>
+    </div>
   );
 };
 

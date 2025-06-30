@@ -65,80 +65,80 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
   };
 
   return (
-    <Card  />
-      <H2 className="text-2xl font-bold mb-4">Replay Annotations</Replayannotationsprops>
+    <Card />
+      <h2 className="text-2xl font-bold mb-4">Replay Annotations</Replayannotationsprops>
 
-      <Div className="space-y-6">
-        <Div>
-          <H3 className="font-semibold mb-3">Add Annotation</Div>
-          <Div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+      <div className="space-y-6">
+        <div>
+          <h3 className="font-semibold mb-3">Add Annotation</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
             {annotationTypes.map((type) => {
               const Icon = type.icon;
               return (
                 <Button size="sm" style={{ display: "flex", alignItems: "center" }}> setSelectedType(type.id)}
                 >
                   <Icon >
-                  <Span className="text-xs">{type.label}</Div>
-                </Button>
+                  <span className="text-xs">{type.label}</div>
+                </button>
               );
             })}
-          </Div>
+          </div>
           
-          <Div className="flex gap-2">
-            <Input placeholder="Add a note about this moment..." /> setCustomNote(e.target.value)}
+          <div className="flex gap-2">
+            <Input placeholder="Add a note about this moment..."/> setCustomNote(e.target.value)}
             />
-            <Button ></Div>
+            <Button ></div>
               <tag >
               Add
-            </Div>
-          </Div>
-        </Div>
+            </div>
+          </div>
+        </div>
 
-        <Div>
-          <H3 className="font-semibold mb-3"></Div>Annotations Timeline</Div>
-          <Div className="space-y-3">
+        <div>
+          <h3 className="font-semibold mb-3"></div>Annotations Timeline</div>
+          <div className="space-y-3">
             {annotations.map((annotation) => {
               const type = annotationTypes.find(t => t.id === annotation.type);
               const Icon = type?.icon || Tag;
 
               return (
-                <Div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
-                  <Div className={`mt-1 ${type?.color}`}>
-                    <Icon  / / / / />
-                  </Div>
-                  <Div className="flex-1">
-                    <Div className="flex items-center justify-between mb-1">
-                      <Badge variant="outline"></Div>{type?.label}</Div>
-                      <Div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Span>{annotation.timestamp}</Div>
-                        <Span>•</Span>
-                        <Span>${annotation.price}</Span>
-                      </Div>
-                    </Div>
-                    <P className="text-sm">{annotation.note}</P>
-                  </Div>
-                </Div>
+                <div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
+                  <div className={`mt-1 ${type?.color}`}>
+                    <Icon  / / / //>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <Badge variant="outline"></div>{type?.label}</div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <span>{annotation.timestamp}</div>
+                        <span>•</span>
+                        <span>${annotation.price}</span>
+                      </div>
+                    </div>
+                    <p className="text-sm">{annotation.note}</p>
+                  </div>
+                </div>
               );
             })}
-          </Div>
-        </Div>
+          </div>
+        </div>
 
-        <Div className="p-4 bg-secondary/20 rounded-lg">
-          <H4 className="font-medium mb-2"></Div>Pattern Recognition</Div>
-          <P className="text-sm text-muted-foreground mb-3">
+        <div className="p-4 bg-secondary/20 rounded-lg">
+          <h4 className="font-medium mb-2"></div>Pattern Recognition</div>
+          <p className="text-sm text-muted-foreground mb-3">
             Based on your annotations, we've identified recurring patterns:
-          </P>
-          <Div className="grid grid-cols-2 gap-2">
-            <Div className="text-center p-2 bg-background rounded">
-              <P className="text-lg font-bold text-red-500">3</Div>
-              <P className="text-xs text-muted-foreground">Volatility Traps/Week</P>
-            </Div>
-            <Div className="text-center p-2 bg-background rounded">
-              <P className="text-lg font-bold text-green-500">78%</Div>
-              <P className="text-xs text-muted-foreground">Exit Signal Accuracy</P>
-            </Div>
-          </Div>
-        </Div>
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            <div className="text-center p-2 bg-background rounded">
+              <p className="text-lg font-bold text-red-500">3</div>
+              <p className="text-xs text-muted-foreground">Volatility Traps/Week</p>
+            </div>
+            <div className="text-center p-2 bg-background rounded">
+              <p className="text-lg font-bold text-green-500">78%</div>
+              <p className="text-xs text-muted-foreground">Exit Signal Accuracy</p>
+            </div>
+          </div>
+        </div>
       </div />
   );
 }; 
