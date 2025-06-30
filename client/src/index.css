@@ -104,6 +104,12 @@
   }
 }
 
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+}
+
 /* Ensure themes are working */
 .theme-strategy,
 .theme-journal,
