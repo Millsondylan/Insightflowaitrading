@@ -1,3 +1,4 @@
+
 // TODO: implement AI coaching with behavior analysis
 import React from 'react';
 import { Card } from '@/components/ui/card';
@@ -9,15 +10,8 @@ interface AICoachV2Props {
   userId?: string;
 }
 
-export const AICoachV2: React.FC<aICoachV2Props> = ({ userId }) => {
+export const AICoachV2: React.FC<AICoachV2Props> = ({ userId }) => {
   const [analysis, setAnalysis] = React.useState<any>(null);
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [isAnalyzing, setIsAnalyzing] = React.useState(false);
 
   const runAnalysis = async () => {
@@ -35,34 +29,34 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6"/>
+    <Card className="theme-card p-6">
       <div className="flex items-center gap-2 mb-4">
-        <brain className="h-6 w-6"/>
-        <h2 className="text-2xl font-bold">AI Coach</Card>
+        <Brain className="h-6 w-6" />
+        <h2 className="text-2xl font-bold">AI Coach</h2>
       </div>
 
       {!analysis ? (
         <div className="text-center py-8">
           <p className="text-muted-foreground mb-4">
             Get personalized coaching based on your trading behavior
-          </div>
+          </p>
           <Button onClick={runAnalysis} disabled={isAnalyzing}>
             {isAnalyzing ? 'Analyzing...' : 'Analyze My Trading'}
-          </button>
+          </Button>
         </div>
       ) : (
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <trendingUp className="h-4 w-4 text-green-500"/>
+              <TrendingUp className="h-4 w-4 text-green-500" />
               Strengths
-            </div>
+            </h3>
             <div className="space-y-2">
               {analysis.strengths.map((strength: string, i: number) => (
                 <div key={i} className="flex items-center gap-2">
                   <Badge variant="default" className="bg-green-500/20 text-green-500">
                     ✓
-                  </div>
+                  </Badge>
                   <span className="text-sm">{strength}</span>
                 </div>
               ))}
@@ -71,15 +65,15 @@ export const lovable = {
 
           <div>
             <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <alertTriangle className="h-4 w-4 text-yellow-500"/>
+              <AlertTriangle className="h-4 w-4 text-yellow-500" />
               Areas to Improve
-            </div>
+            </h3>
             <div className="space-y-2">
               {analysis.weaknesses.map((weakness: string, i: number) => (
                 <div key={i} className="flex items-center gap-2">
                   <Badge variant="default" className="bg-yellow-500/20 text-yellow-500">
                     !
-                  </div>
+                  </Badge>
                   <span className="text-sm">{weakness}</span>
                 </div>
               ))}
@@ -88,23 +82,30 @@ export const lovable = {
 
           <div>
             <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Target className="h-4 w-4"/>
+              <Target className="h-4 w-4" />
               Action Items
-            </div>
+            </h3>
             <div className="space-y-2">
               {analysis.suggestions.map((suggestion: string, i: number) => (
                 <div key={i} className="p-3 bg-secondary/20 rounded-lg">
-                  <p className="text-sm">{suggestion}</div>
+                  <p className="text-sm">{suggestion}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <Button variant="outline" className="w-full"/></button></div>
+          <Button variant="outline" className="w-full">
             Schedule Coaching Session
-          </button>
+          </Button>
         </div>
       )}
     </Card>
   );
-}; 
+};
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
