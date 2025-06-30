@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import verifyCryptoPayment from "./api/verify-crypto-payment";
+import handleAnalyzeMarketSetup from "./api/analyze-market-setup";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // put application routes here
@@ -19,6 +20,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     // In production, you might want to store and retrieve payment status from database
     return verifyCryptoPayment(req, res);
   });
+
+  // Market analysis route
+  app.post('/api/analyze-market-setup', handleAnalyzeMarketSetup);
 
   const httpServer = createServer(app);
 
