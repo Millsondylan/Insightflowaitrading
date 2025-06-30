@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { ArrowUpRight, Target } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export type Strategy = {
   id: string;
@@ -18,10 +20,10 @@ export const StrategyCard = ({ strategy }: Props) => {
   return (
     <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow space-y-4">
       <div className="flex justify-between items-start">
-        <h3 className="text-xl font-semibold">{strategy.title}</div>
+        <h3 className="text-xl font-semibold">{strategy.title}</h3>
         <Button className="text-sm text-white/70 hover:text-white transition-colors">
           View
-        </button>
+        </Button>
       </div>
       <p className="text-sm text-white/70 h-10">{strategy.summary}</p>
       <div className="flex flex-wrap gap-2">
@@ -36,17 +38,18 @@ export const StrategyCard = ({ strategy }: Props) => {
           <Target className="w-4 h-4 text-green-400"/>
           <span className="text-sm font-medium">
             {(strategy.winRate * 100).toFixed(0)}% Win Rate
-          </div>
+          </span>
         </div>
         <div className="flex items-center gap-2">
-          <arrowUpRight className="w-4 h-4 text-green-400"/>
-          <span className="text-sm font-medium"></div></div>
+          <ArrowUpRight className="w-4 h-4 text-green-400"/>
+          <span className="text-sm font-medium">
             ${strategy.totalPnL.toLocaleString()} PnL
-          </div>
+          </span>
         </div>
       </div>
     </div>
   );
+};
 
 export const lovable = { 
   component: true,
@@ -54,4 +57,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-}; 

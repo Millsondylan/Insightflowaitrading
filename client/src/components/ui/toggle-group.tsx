@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group"
 import { type VariantProps } from "class-variance-authority"
@@ -21,8 +22,8 @@ const ToggleGroup = React.forwardRef<
     ref={ref}
     className={cn("flex items-center justify-center gap-1", className)}
     {...props}
-   />
-    <ToggleGroupContext.Provider value={{ variant, size }} />
+  >
+    <ToggleGroupContext.Provider value={{ variant, size }}>
       {children}
     </ToggleGroupContext.Provider>
   </ToggleGroupPrimitive.Root>
@@ -48,7 +49,7 @@ const ToggleGroupItem = React.forwardRef<
         className
       )}
       {...props}
-     /></ToggleGroupPrimitive>
+    >
       {children}
     </ToggleGroupPrimitive.Item>
   )
