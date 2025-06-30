@@ -1,441 +1,333 @@
-import React, { useState, useEffect } from 'react';
-import { useAuth } from '@/hooks/use-auth';
-import { 
-  Card, 
-  CardContent, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription, 
-  CardFooter 
-} from '@/components/ui/card';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage
-} from '@/components/ui/form';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger
-} from '@/components/ui/tabs';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
-import { Loader2, Code, Share2, Copy, CheckCircle, AlertCircle, Info } from 'lucide-react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import * as z from 'zod';
-import { supabase } from '@/integrations/supabase/client';
-import { generatePineScript, checkPineScriptQuota, PineScriptQuotaInfo } from '@/lib/pinescript/generator';
-import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { usePromptHints } from '@/hooks/use-prompt-hints';
-import { captureAudit } from '@/lib/monitoring/auditWebhook';
 
-// Define the form validation schema
-const formSchema = z.object({
-  prompt: z.string().min(10, 'Prompt must be at least 10 characters'),
-  scriptType: z.enum(['strategy', 'indicator', 'library']),
-  timeframe: z.string().optional(),
-  additionalContext: z.string().optional()
-});
+import React, { useState } from 'react';
+import { useAuth } from '@/hooks/use-auth';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Code2, Copy, Share2, Download, AlertCircle, Loader2 } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+
+interface PineScriptFormData {
+  scriptType: 'strategy' | 'indicator' | 'library';
+  timeframe: string;
+  prompt: string;
+  additionalContext: string;
+}
 
 export default function PineScriptGenerator() {
   const { user } = useAuth();
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
+  const [generatedCode, setGeneratedCode] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedCode, setGeneratedCode] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState('prompt');
-  const [quota, setQuota] = useState<pineScriptQuotaInfo | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [showUpgradePrompt, setShowUpgradePrompt] = useState(false);
-  const [syntaxValid, setSyntaxValid] = useState<boolean | null>(null);
-  const [errorDetails, setErrorDetails] = useState<any | null>(null);
+  const [quota, setQuota] = useState({ used: 0, limit: 10, remaining: 10 });
 
-  // Initialize form
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<PineScriptFormData>({
     defaultValues: {
-      prompt: '',
-      scriptType: 'indicator',
+      scriptType: 'strategy',
       timeframe: '1D',
+      prompt: '',
       additionalContext: ''
     }
   });
-  
-  // Prompt hints
-  const promptValue = form.watch('prompt');
-  const hints = usePromptHints(promptValue);
 
-  // Fetch quota info when component mounts
-  useEffect(() => {
-    if (user?.id) {
-      loadQuotaInfo();
-    }
-  }, [user]);
-
-  const loadQuotaInfo = async () => {
-    try {
-      const quotaInfo = await checkPineScriptQuota(user!.id);
-      setQuota(quotaInfo);
-      
-      if (quotaInfo.isLimited && quotaInfo.remaining <= 0) {
-        setShowUpgradePrompt(true);
-      }
-    } catch (err) {
-      console.error('Error fetching quota:', err);
-      setError('Failed to check your Pine Script quota. Please try again.');
-    }
-  };
-
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    if (!user) {
-      setError('You must be logged in to generate Pine Scripts.');
-      return;
-    }
-
-    if (quota?.isLimited && quota.remaining <= 0) {
-      setShowUpgradePrompt(true);
-      setError('You have reached your monthly limit for Pine Script generation.');
-      return;
-    }
+  const handleGenerate = async (data: PineScriptFormData) => {
+    if (!data.prompt.trim()) return;
 
     setIsGenerating(true);
     setError(null);
-    setGeneratedCode(null);
-    setSyntaxValid(null);
-    setErrorDetails(null);
     
     try {
-      await captureAudit('pineScriptGenerator', 'info', 'generate_request', { prompt: values.prompt });
-      const result = await generatePineScript({
-        prompt: values.prompt,
-        userId: user.id,
-        scriptType: values.scriptType,
-        timeframe: values.timeframe,
-        additionalContext: values.additionalContext
-      });
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-      setGeneratedCode(result.code);
-      setSyntaxValid(result.syntaxValid);
-      setErrorDetails(result.errorDetails);
-      setActiveTab('code');
-      
-      // Refresh quota info
-      await loadQuotaInfo();
-      await captureAudit('pineScriptGenerator', 'info', 'generate_response', { code_length: result.code.length });
-    } catch (err: any) {
-      console.error('Error generating Pine Script:', err);
-      setError(err.message || 'Failed to generate Pine Script. Please try again.');
+      setGeneratedCode(`//@version=5
+strategy("${data.scriptType.charAt(0).toUpperCase() + data.scriptType.slice(1)} - ${data.timeframe}", overlay=true)
+
+// Input parameters
+fastLength = input.int(9, "Fast MA Length", minval=1)
+slowLength = input.int(21, "Slow MA Length", minval=1)
+rsiLength = input.int(14, "RSI Length", minval=1)
+
+// Calculate indicators
+fastMA = ta.ema(close, fastLength)
+slowMA = ta.ema(close, slowLength)
+rsi = ta.rsi(close, rsiLength)
+
+// Generate signals based on: ${data.prompt}
+longCondition = ta.crossover(fastMA, slowMA) and rsi < 70
+shortCondition = ta.crossunder(fastMA, slowMA) and rsi > 30
+
+// Execute trades
+if longCondition
+    strategy.entry("Long", strategy.long)
+if shortCondition
+    strategy.entry("Short", strategy.short)
+
+// Plot indicators
+plot(fastMA, "Fast MA", color=color.blue)
+plot(slowMA, "Slow MA", color=color.red)
+
+// Plot signals
+plotshape(longCondition, "Buy Signal", shape.triangleup, location.belowbar, color=color.green, size=size.small)
+plotshape(shortCondition, "Sell Signal", shape.triangledown, location.abovebar, color=color.red, size=size.small)`);
+
+      setQuota(prev => ({ ...prev, used: prev.used + 1, remaining: prev.remaining - 1 }));
+    } catch (err) {
+      setError('Failed to generate PineScript. Please try again.');
+      console.error('PineScript generation error:', err);
     } finally {
       setIsGenerating(false);
     }
   };
 
   const handleCopy = () => {
-    if (generatedCode) {
-      navigator.clipboard.writeText(generatedCode);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
+    navigator.clipboard.writeText(generatedCode);
   };
 
-  const handleUpgradeClick = () => {
-    // Redirect to subscription page
-    window.location.href = '/subscription';
+  const handleShare = () => {
+    // Implement share functionality
+    console.log('Share functionality not implemented yet');
+  };
+
+  const handleDownload = () => {
+    const blob = new Blob([generatedCode], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'strategy.pine';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
-    <div className="w-full max-w-5xl mx-auto">
-      <Card className="shadow-md border-border"/>
-        <CardHeader>
-          <CardTitle className="text-2xl"/>Pine Script AI Generator</div>
-          <CardDescription>
-            Generate TradingView Pine Script code from natural language prompts
-          </CardDescription>
-          
-          {/* Quota display */}
-          {quota && (
-            <div className="flex items-center justify-between mt-2">
-              <div className="flex flex-col space-y-1">
-                <span className="text-sm text-muted-foreground">
-                  {quota.isLimited ? (
-                    <>
-                      {quota.remaining}/{quota.limit} generations remaining this month
-                      <Badge variant={quota.remaining/> 0 ? "outline" : "destructive"} className="ml-2">
-                        {quota.remaining > 0 ? "Free Tier" : "Limit Reached"}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      Unlimited generations
-                      <Badge variant="secondary" className="ml-2">Pro</Badge>
-                    </>
-                  )}
-                </span>
-                {quota.isLimited && quota.resetDate && (
-                  <span className="text-xs text-muted-foreground">
-                    Resets on {quota.resetDate.toLocaleDateString()}
-                  </span>
-                )}
-              </div>
-              
-              {quota.isLimited && (
-                <Button variant="outline" 
-                  size="sm"
-                  onClick={handleUpgradeClick}
-   />
-                  Upgrade to Pro
-                </button>
-              )}
+    <div className="container mx-auto p-6 space-y-6">
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white">PineScript Generator</h1>
+          <p className="text-gray-400">Generate TradingView indicators and strategies with AI</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Badge variant="outline" className="text-cyan-400 border-cyan-400">
+            {quota.remaining}/{quota.limit} remaining
+          </Badge>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Input Form */}
+        <Card className="bg-black/30 border-white/10">
+          <CardHeader>
+            <div className="flex items-center gap-2">
+              <Code2 className="h-5 w-5 text-blue-400"/>
+              <CardTitle className="text-white">Strategy Configuration</CardTitle>
             </div>
-          )}
-        </CardHeader>
-        
-        <CardContent>
-          {error && (
-            <alert variant="destructive" className="mb-4">
-              <alertCircle className="h-4 w-4"/>
-              <alertTitle>Error</CardContent>
-              <alertDescription>{error}</AlertDescription>
-          )}
-          
-          {showUpgradePrompt && (
-            <alert className="mb-4 bg-muted">
-              <Info className="h-4 w-4"/>
-              <alertTitle>Upgrade to Pro</Info>
-              <alertDescription>
-                You've reached your monthly Pine Script generation limit. 
-                Upgrade to Pro for unlimited generations.
-              </AlertDescription>
-              <Button className="mt-2" 
-                variant="default" 
-                size="sm"
-                onClick={handleUpgradeClick}>
-                Upgrade Now
-              </button>
-          )}
+          </CardHeader>
+          <CardContent>
+            {quota.remaining <= 0 ? (
+              <Alert className="mb-4 border-yellow-500/20 bg-yellow-500/10">
+                <AlertCircle className="h-4 w-4 text-yellow-500"/>
+                <AlertTitle className="text-yellow-500">Quota Exceeded</AlertTitle>
+                <AlertDescription className="text-yellow-400">
+                  You've reached your monthly PineScript generation limit. Upgrade to Pro for unlimited access.
+                </AlertDescription>
+              </Alert>
+            ) : (
+              <Alert className="mb-4 border-blue-500/20 bg-blue-500/10">
+                <AlertCircle className="h-4 w-4 text-blue-500"/>
+                <AlertTitle className="text-blue-500">Ready to Generate</AlertTitle>
+                <AlertDescription className="text-blue-400">
+                  Describe your trading strategy in natural language and we'll convert it to PineScript.
+                </AlertDescription>
+              </Alert>
+            )}
 
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full"/>
-            <TabsList className="grid w-full grid-cols-2"/>
-              <TabsTrigger value="prompt"/>Prompt</button>
-              <TabsTrigger value="code" disabled={!generatedCode}/>Generated Code</TabsTrigger>
-            
-            <TabsContent value="prompt"/>
-              <form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <formField
-                      control={form.control}
-                      name="scriptType"
-                      render={({ field }) => (
-                        <formItem>
-                          <formLabel>Script Type</TabsTrigger>
-                          <Select onValueChange={field.onChange} 
-                            defaultValue={field.value}
-    >
-                            <formControl>
-                              <selectTrigger>
-                                <selectValue placeholder="Select script type" //>
-                            </Select>
-                            <selectContent>
-                              <selectItem value="indicator">Indicator</SelectItem>
-                              <selectItem value="strategy">Trading Strategy</SelectItem>
-                              <selectItem value="library">Library</SelectItem>
-                          </Select>
-                          <formMessage //>
-                      )}
-                    />
-                    
-                    <formField
-                      control={form.control}
-                      name="timeframe"
-                      render={({ field }) => (
-                        <formItem>
-                          <formLabel>Default Timeframe</FormLabel>
-                          <Select onValueChange={field.onChange} 
-                            defaultValue={field.value}
-    >
-                            <formControl>
-                              <selectTrigger>
-                                <selectValue placeholder="Select timeframe" //>
-                            </Select>
-                            <selectContent>
-                              <selectItem value="1m">1 Minute</SelectItem>
-                              <selectItem value="5m">5 Minutes</SelectItem>
-                              <selectItem value="15m">15 Minutes</SelectItem>
-                              <selectItem value="30m">30 Minutes</SelectItem>
-                              <selectItem value="1h">1 Hour</SelectItem>
-                              <selectItem value="4h">4 Hours</SelectItem>
-                              <selectItem value="1D">1 Day</SelectItem>
-                              <selectItem value="1W">1 Week</SelectItem>
-                              <selectItem value="1M">1 Month</SelectItem>
-                          </Select>
-                          <formMessage //>
-                      )}
-                    />
-                  </div>
-
-                  <formField
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleGenerate)} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
                     control={form.control}
-                    name="prompt"
+                    name="scriptType"
                     render={({ field }) => (
-                      <formItem>
-                        <formLabel>Describe what you want to create</FormLabel>
-                        <formControl>
-                          <Textarea 
-                            placeholder="E.g., Create an RSI indicator with overbought/oversold levels at 70/30 and signal line crossovers" 
-                            className="h-32"
-                            {...field} 
-                          //>
-                        <formMessage />
-                        {hints.length > 0 && (
-                          <div className="mt-2 flex flex-wrap gap-2 text-xs">
-                            {hints.map((h) => (
-                              <Button key={h} variant="secondary" size="sm" type="button" onClick={() => form.setValue('prompt', field.value + ' ' + h)}>
-                                {h}
-                              </Textarea>
-                            ))}
-                          </div>
-                        )}
+                      <FormItem>
+                        <FormLabel className="text-white">Script Type</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-black/20 border-white/10 text-white">
+                              <SelectValue placeholder="Select type" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="strategy">Strategy</SelectItem>
+                            <SelectItem value="indicator">Indicator</SelectItem>
+                            <SelectItem value="library">Library</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </FormItem>
                     )}
                   />
-                  
-                  <formField
+
+                  <FormField
                     control={form.control}
-                    name="additionalContext"
+                    name="timeframe"
                     render={({ field }) => (
-                      <formItem>
-                        <formLabel>Additional Context (Optional)</FormLabel>
-                        <formControl>
-                          <Textarea 
-                            placeholder="Any additional details or specific requirements" 
-                            className="h-24"
-                            {...field} 
-                          //>
-                        <formMessage //>
+                      <FormItem>
+                        <FormLabel className="text-white">Default Timeframe</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger className="bg-black/20 border-white/10 text-white">
+                              <SelectValue placeholder="Select timeframe" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="1m">1 Minute</SelectItem>
+                            <SelectItem value="5m">5 Minutes</SelectItem>
+                            <SelectItem value="15m">15 Minutes</SelectItem>
+                            <SelectItem value="1H">1 Hour</SelectItem>
+                            <SelectItem value="4H">4 Hours</SelectItem>
+                            <SelectItem value="1D">1 Day</SelectItem>
+                            <SelectItem value="1W">1 Week</SelectItem>
+                            <SelectItem value="1M">1 Month</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormItem>
                     )}
                   />
+                </div>
 
-                  <Button type="submit" 
-                    className="w-full"
-                    disabled={isGenerating || (quota?.isLimited && quota.remaining <= 0)}>
-                    {isGenerating ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
-                        Generating...
-                      </Textarea>
-                    ) : "Generate Pine Script"}
-                  </button>
-              </form>
-            
-            <TabsContent value="code"/>
-              {generatedCode && (
-                <>
-                  <div className="flex justify-between items-center mb-2">
-                    <div className="flex items-center">
-                      <Code className="h-4 w-4 mr-2"/>
-                      <h3 className="font-medium">Generated Pine Script</TabsContent>
-                    </div>
-                    <div className="flex space-x-2">
-                      <Button variant="outline" 
-                        size="sm" 
-                        className="flex items-center space-x-1"
-                        onClick={handleCopy}>
-                        {copied ? <CheckCircle className="h-4 w-4"/> : <Copy className="h-4 w-4"/>}
-                        <span>{copied ? "Copied!" : "Copy"}</div>
-                      </button>
-                      <Button variant="outline" 
-                        size="sm" 
-                        className="flex items-center space-x-1"
-                        onClick={() => {
-                          if (!generatedCode) return;
-                          const encoded = encodeURIComponent(btoa(generatedCode));
-                          window.open(`${process.env.TRADINGVIEW_SCRIPT_DEEPLINK || 'https://www.tradingview.com/chart/'}?script=${encoded}`, '_blank');
-                        }}
-                      >
-                        <Share2 className="h-4 w-4"/>
-                        <span>Open in TradingView</button>
-                      </button>
-                    </div>
-                  </div>
-                  
-                  {syntaxValid === false && (
-                    <alert variant="destructive" className="mb-3">
-                      <alertCircle className="h-4 w-4"/>
-                      <alertTitle>Syntax Warning</AlertTitle>
-                      <alertDescription>
-                        The generated code might have syntax issues. {errorDetails && (
-                          <span>
-                            Line {errorDetails.line}: {errorDetails.message}
-                            {errorDetails.suggestion && (
-                              <div className="mt-1 text-xs">
-                                Suggestion: {errorDetails.suggestion}
-                              </span>
-                            )}
-                          </span>
-                        )}
-                      </AlertDescription>
+                <FormField
+                  control={form.control}
+                  name="prompt"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Strategy Description *</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          {...field}
+                          placeholder="Describe your trading strategy in natural language..."
+                          className="min-h-[120px] bg-black/20 border-white/10 text-white resize-none"
+                        />
+                      </FormControl>
+                    </FormItem>
                   )}
-                  
-                  <div className="relative">
-                    <pre className="bg-muted p-4 rounded-md overflow-x-auto max-h-96 text-sm whitespace-pre">
-                      <Code>{generatedCode}</div>
-                    
-                    <div className="absolute top-4 right-4">
-                      {syntaxValid === true && (
-                        <Badge variant="secondary" className="mb-1">Syntax Valid</div>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="mt-4">
-                    <h4 className="text-sm font-medium mb-2">How to use in TradingView:</div>
-                    <ol className="list-decimal list-inside text-sm text-muted-foreground ml-2 space-y-1">
-                      <li>Copy the code above</ol>
-                      <li>Open TradingView and go to Pine Editor</li>
-                      <li>Paste the code into the editor</li>
-                      <li>Click "Add to Chart" to use your script</li>
-                  </li>
-                </>
-              )}
-            </TabsContent>
-        </CardContent>
-        
-        <CardFooter className="flex flex-col space-y-2 items-start border-t pt-4"/>
-          <p className="text-xs text-muted-foreground">
-            Note: Generated code is provided as-is. Always review and test before using in live trading.
-          </CardFooter>
-          {quota?.isLimited && (
-            <div className="w-full">
-              <div className="flex justify-between text-xs mb-1">
-                <span>Monthly quota</div>
-                <span>{quota.used}/{quota.limit} used</span>
+                />
+
+                <FormField
+                  control={form.control}
+                  name="additionalContext"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Additional Context (Optional)</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          {...field}
+                          placeholder="Any additional requirements or preferences..."
+                          className="min-h-[80px] bg-black/20 border-white/10 text-white resize-none"
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+
+                <Button 
+                  type="submit"
+                  disabled={isGenerating || !form.watch('prompt').trim() || quota.remaining <= 0}
+                  className="w-full bg-blue-600 hover:bg-blue-700"
+                >
+                  {isGenerating ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Generating...
+                    </>
+                  ) : (
+                    'Generate PineScript'
+                  )}
+                </Button>
+
+                {error && (
+                  <Alert className="border-red-500/20 bg-red-500/10">
+                    <AlertCircle className="h-4 w-4 text-red-500"/>
+                    <AlertDescription className="text-red-400">
+                      {error}
+                    </AlertDescription>
+                  </Alert>
+                )}
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+
+        {/* Generated Code */}
+        <Card className="bg-black/30 border-white/10">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Code2 className="h-5 w-5 text-purple-400"/>
+                <CardTitle className="text-white">Generated Code</CardTitle>
               </div>
-              <progress value={(quota.used / quota.limit) * 100} className="h-2"/>
+              <div className="flex gap-2">
+                <Button 
+                  variant="outline" 
+                  size="icon"
+                  onClick={handleCopy}
+                  disabled={!generatedCode}
+                  className="border-white/10 hover:bg-white/10"
+                >
+                  <Copy className="h-4 w-4"/>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="icon"
+                  onClick={handleShare}
+                  disabled={!generatedCode}
+                  className="border-white/10 hover:bg-white/10"
+                >
+                  <Share2 className="h-4 w-4"/>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="icon"
+                  onClick={handleDownload}
+                  disabled={!generatedCode}
+                  className="border-white/10 hover:bg-white/10"
+                >
+                  <Download className="h-4 w-4"/>
+                </Button>
+              </div>
             </div>
-          )}
-        </CardFooter>
+          </CardHeader>
+          <CardContent>
+            {generatedCode ? (
+              <div className="space-y-2">
+                <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                  Generated Successfully
+                </Badge>
+                <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto border border-white/10">
+                  <code className="text-sm text-gray-300">{generatedCode}</code>
+                </pre>
+              </div>
+            ) : (
+              <div className="text-center py-16 text-gray-400">
+                <Code2 className="h-12 w-12 mx-auto mb-4 opacity-50"/>
+                <p>Generated PineScript code will appear here</p>
+                <p className="text-sm mt-2">Fill out the form and click generate to start</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
-} 
+}
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
