@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 
 interface SubscriptionManagerProps {
@@ -33,12 +34,12 @@ interface UserSubscription {
   };
 }
 
-export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
+export const SubscriptionManager: React.FC<SubscriptionManagerProps> = ({
   userId,
   onSubscribe,
   onCancel
 }) => {
-  const [plans, setPlans] = useState<subscriptionPlan[]>([]);
+  const [plans, setPlans] = useState<SubscriptionPlan[]>([]);
   const [userSubscription, setUserSubscription] = useState<UserSubscription | null>(null);
   const [selectedPlanId, setSelectedPlanId] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -55,12 +56,6 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
     setError(null);
     
     try {
-      // TODO: Replace with actual API calls
-      // const plansResponse = await fetch('/api/subscription/plans');
-      // const plansData = await plansResponse.json();
-      // const userSubResponse = await fetch(`/api/subscription/user/${userId}`);
-      // const userSubData = await userSubResponse.json();
-      
       // Mock response for development
       await new Promise(resolve => setTimeout(resolve, 800));
       
@@ -140,7 +135,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
       setUserSubscription(mockSubscription);
       
       if (!mockSubscription) {
-        setSelectedPlanId('plan-annual'); // Default to annual plan
+        setSelectedPlanId('plan-annual');
       }
       
       setLoading(false);
@@ -165,18 +160,9 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
     setError(null);
     
     try {
-      // TODO: Replace with actual payment processing
-      // const response = await fetch('/api/subscription/subscribe', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ userId, planId: selectedPlanId })
-      // });
-      // const data = await response.json();
-      
       // Mock API response
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // Mock success response
       const selectedPlan = plans.find(p => p.id === selectedPlanId);
       if (!selectedPlan) {
         throw new Error('Selected plan not found.');
@@ -221,13 +207,6 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
     setError(null);
     
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/subscription/${userSubscription?.id}/cancel`, {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' }
-      // });
-      // const data = await response.json();
-      
       // Mock API response
       await new Promise(resolve => setTimeout(resolve, 1000));
       
@@ -270,7 +249,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
   if (loading) {
     return (
       <div className="p-12 text-center">
-        <div className="text-xl font-semibold mb-2">Loading subscription data...</UserSubscription>
+        <div className="text-xl font-semibold mb-2">Loading subscription data...</div>
         <div className="text-text-muted">Please wait</div>
       </div>
     );
@@ -280,7 +259,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
   
   return (
     <div className="subscription-manager p-4 bg-background-secondary rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">InsightFlow Pro</div>
+      <h2 className="text-2xl font-bold mb-6">InsightFlow Pro</h2>
       
       {error && (
         <div className="mb-6 p-3 bg-status-error/20 text-status-error rounded-lg">
@@ -291,7 +270,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
       {/* Current Subscription */}
       {userSubscription && (
         <div className="mb-8 p-4 bg-background-tertiary rounded-lg">
-          <h3 className="text-xl font-semibold mb-3">Your Subscription</div>
+          <h3 className="text-xl font-semibold mb-3">Your Subscription</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
@@ -343,7 +322,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
           </div>
           
           {userSubscription.status === 'active' && (
-            <Button  className="px-4 py-2 bg-status-error/20 text-status-error rounded-md hover:bg-status-error/30"
+            <button className="px-4 py-2 bg-status-error/20 text-status-error rounded-md hover:bg-status-error/30"
               onClick={() => setShowCancelModal(true)}
             >
               Cancel Subscription
@@ -352,12 +331,12 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
           
           {userSubscription.status === 'canceled' && (
             <div className="flex space-x-4">
-              <Button  className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80"
+              <button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80"
                 onClick={() => setSelectedPlanId(userSubscription.planId)}
               >
                 Renew Subscription
-              </div>
-              <Button  className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
+              </button>
+              <button className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
                 onClick={() => setSelectedPlanId('')}
               >
                 Change Plan
@@ -372,7 +351,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
         <div className="mb-8">
           <h3 className="text-xl font-semibold mb-4">
             {!userSubscription ? 'Choose a Plan' : 'Change Your Plan'}
-          </div>
+          </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {plans.map(plan => (
@@ -392,7 +371,7 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
                 <p className="text-sm text-text-muted mb-3">{plan.description}</p>
                 
                 <div className="mb-4">
-                  <span className="text-2xl font-bold">{formatPrice(plan.price, plan.currency)}</div>
+                  <span className="text-2xl font-bold">{formatPrice(plan.price, plan.currency)}</span>
                   <span className="text-text-muted">
                     /{plan.interval === 'monthly' ? 'month' : plan.interval === 'quarterly' ? 'quarter' : 'year'}
                   </span>
@@ -407,12 +386,13 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
                 <ul className="mb-4 space-y-2">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
-                      <span className="text-status-success mr-2">✓</ul>
+                      <span className="text-status-success mr-2">✓</span>
                       <span className="text-sm">{feature}</span>
+                    </li>
                   ))}
-                </span>
+                </ul>
                 
-                <Button  className={`w-full py-2 rounded-md ${
+                <button className={`w-full py-2 rounded-md ${
                     selectedPlanId === plan.id
                       ? 'bg-brand-primary text-white'
                       : 'bg-background-interactive hover:bg-brand-primary/20'
@@ -427,12 +407,12 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
           
           {selectedPlanId && (
             <div className="mt-6 flex justify-center">
-              <Button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+              <button className="px-6 py-3 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
                 onClick={handleSubscribe}
                 disabled={processing}
- />
+              >
                 {processing ? 'Processing...' : 'Subscribe Now'}
-              </div>
+              </button>
             </div>
           )}
         </div>
@@ -442,23 +422,23 @@ export const SubscriptionManager: React.FC<subscriptionManagerProps> = ({
       {showCancelModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-background-primary rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-semibold mb-4">Cancel Subscription</div>
+            <h3 className="text-xl font-semibold mb-4">Cancel Subscription</h3>
             
             <p className="mb-4">
               Are you sure you want to cancel your subscription? You'll continue to have access until {userSubscription ? formatDate(userSubscription.endDate) : 'the end of your billing period'}.
             </p>
             
             <div className="flex justify-end space-x-3">
-              <Button  className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
+              <button className="px-4 py-2 border border-border-primary rounded-md hover:bg-background-interactive"
                 onClick={() => setShowCancelModal(false)}
                 disabled={processing}
               >
                 Keep Subscription
-              </div>
-              <Button className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
+              </button>
+              <button className="px-4 py-2 bg-status-error text-white rounded-md hover:bg-status-error/80 disabled:opacity-50"
                 onClick={handleCancelSubscription}
                 disabled={processing}
- /></button></div>
+              >
                 {processing ? 'Processing...' : 'Confirm Cancellation'}
               </button>
             </div>
@@ -474,4 +454,4 @@ export const lovable = {
   tables: ['subscriptions', 'subscriptionPlans', 'users'],
   aiBlocks: ['paymentProcessor', 'subscriptionManager'],
   functions: ['subscribe', 'cancelSubscription', 'updateSubscription', 'getSubscriptionDetails']
-}; 
+};
