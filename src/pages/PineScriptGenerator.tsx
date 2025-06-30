@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '@/hooks/use-auth';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
@@ -58,7 +59,7 @@ plot(slowMA, "Slow MA", color.red)`);
     <div className="container mx-auto p-6">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white">PineScript Generator</div>
+          <h1 className="text-3xl font-bold text-white">PineScript Generator</h1>
           <p className="text-gray-400">Generate TradingView indicators and strategies</p>
         </div>
       </div>
@@ -68,7 +69,7 @@ plot(slowMA, "Slow MA", color.red)`);
           <CardHeader>
             <div className="flex items-center gap-2">
               <Code2 className="h-5 w-5 text-blue-400"/>
-              <CardTitle>Strategy Description</div>
+              <CardTitle>Strategy Description</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -81,9 +82,9 @@ plot(slowMA, "Slow MA", color.red)`);
             <Button onClick={handleGenerate}
               disabled={isGenerating || !prompt.trim()}
               className="w-full bg-blue-600 hover:bg-blue-700"
- >
+            >
               {isGenerating ? 'Generating...' : 'Generate PineScript'}
-            </CardContent>
+            </Button>
           </CardContent>
         </Card>
 
@@ -92,35 +93,35 @@ plot(slowMA, "Slow MA", color.red)`);
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Code2 className="h-5 w-5 text-purple-400"/>
-                <CardTitle>Generated Code</Card>
+                <CardTitle>Generated Code</CardTitle>
               </div>
               <div className="flex gap-2">
                 <Button variant="outline"
                   size="icon"
                   onClick={handleCopy}
                   disabled={!generatedCode}
-     >
+                >
                   <Copy className="h-4 w-4"/>
-                </div>
+                </Button>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-     >
+                >
                   <Share2 className="h-4 w-4"/>
-                </button>
+                </Button>
                 <Button variant="outline"
                   size="icon"
                   disabled={!generatedCode}
-     >
-                  <Download className="h-4 w-4"/></div>
-                </button>
+                >
+                  <Download className="h-4 w-4"/>
+                </Button>
               </div>
             </div>
           </CardHeader>
           <CardContent>
             {generatedCode ? (
               <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-                <Code className="text-sm text-gray-300"></CardContent></div>{generatedCode}</CardContent>
+                <code className="text-sm text-gray-300">{generatedCode}</code>
               </pre>
             ) : (
               <div className="text-center py-16 text-gray-400">
@@ -139,4 +140,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
