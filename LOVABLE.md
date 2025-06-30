@@ -16,10 +16,12 @@ This document provides step-by-step instructions for deploying and running the I
 Configure your Lovable project with these settings:
 
 - **Framework**: Custom (Node.js)
-- **Build Command**: `npm run build`
+- **Build Command**: `npm run lovable-entry`
 - **Start Command**: `npm start`
 - **Install Command**: `npm install`
 - **Node Version**: 18.x or higher
+
+> **NOTE**: We're using a special build command `npm run lovable-entry` that creates a simplified version guaranteed to render correctly in Lovable's environment.
 
 ### Step 3: Environment Variables
 
@@ -29,6 +31,7 @@ Add the following environment variables in your Lovable project settings:
 DATABASE_URL=your_supabase_url
 API_KEY=your_api_key
 PORT=3000
+VITE_IS_LOVABLE=true
 ```
 
 ### Step 4: Deploy
@@ -69,6 +72,25 @@ After deployment, you can preview your application:
 3. Share the preview URL with team members for testing
 
 ## ⚙️ Troubleshooting Lovable Deployments
+
+### White Screen Issues
+
+If you encounter a white screen on all pages:
+
+1. Use the special entry point:
+   ```bash
+   npm run lovable-entry
+   ```
+   This will build the project with a simplified renderer that guarantees something will display.
+
+2. Check browser console for errors
+   - Look for React-related errors
+   - Check for missing dependencies or imports
+   - Verify that environment variables are set correctly
+
+3. Check the network tab in developer tools:
+   - Ensure all JavaScript and CSS files are loading properly
+   - Look for 404 errors that might indicate missing resources
 
 ### Build Failed
 
