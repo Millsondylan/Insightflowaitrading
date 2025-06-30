@@ -84,7 +84,7 @@ export default function AdminPage() {
     <div className="container mx-auto py-8 px-4">
       <div className="theme-admin">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</div>
+          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</h1>
           <p className="text-white/70">
             Manage users, promo codes, and view system usage logs.
           </p>
@@ -94,15 +94,15 @@ export default function AdminPage() {
           <TabsList className="mb-8 grid grid-cols-3 bg-black/30 border border-white/10 p-1">
             <TabsTrigger value="users" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
               <ShieldCheck className="h-4 w-4"/>
-              <span>Users</Tabs>
+              <span>Users</span>
             </TabsTrigger>
             <TabsTrigger value="promo" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
               <Ticket className="h-4 w-4"/>
-              <span>Promo Codes</TabsTrigger>
+              <span>Promo Codes</span>
             </TabsTrigger>
             <TabsTrigger value="logs" className="flex items-center gap-2 data-[state=active]:bg-cyan-600">
               <Activity className="h-4 w-4"/>
-              <span>Usage Logs</TabsTrigger>
+              <span>Usage Logs</span>
             </TabsTrigger>
           </TabsList>
 
@@ -110,14 +110,16 @@ export default function AdminPage() {
             <UserRoleManager users={users} onRoleChange={handleRoleChange}/>
           </TabsContent>
           <TabsContent value="promo">
-            <promoCodeEditor
-              codes={promoCodes}
-              onGenerate={handleGeneratePromoCode}
-              onRevoke={handleRevokePromoCode}
- />
+            <div className="bg-black/20 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-white mb-4">Promotional Codes</h3>
+              <p className="text-white/70">Promo code management coming soon...</p>
+            </div>
           </TabsContent>
           <TabsContent value="logs">
-            <UsageLogViewer logs={logs}/></div>
+            <div className="bg-black/20 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-white mb-4">Usage Logs</h3>
+              <p className="text-white/70">Usage log viewer coming soon...</p>
+            </div>
           </TabsContent>
         </Tabs>
       </div>

@@ -10,7 +10,7 @@ export default function AboutPage() {
         description="Learn about InsightFlow AI's mission to democratize advanced trading intelligence and make institutional-grade tools accessible to individual traders."
         ogImage="/images/about-us-banner.jpg"/>
       
-      <h1 className="text-4xl font-bold mb-8 text-white">About InsightFlow AI</div>
+      <h1 className="text-4xl font-bold mb-8 text-white">About InsightFlow AI</h1>
       
       <Card className="bg-black/30 border-white/10 backdrop-blur-md text-white mb-8"/>
         <CardContent className="pt-6"/>

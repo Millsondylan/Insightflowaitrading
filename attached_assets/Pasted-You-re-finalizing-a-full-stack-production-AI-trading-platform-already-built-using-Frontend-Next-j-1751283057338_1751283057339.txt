@@ -1,0 +1,160 @@
+You’re finalizing a full-stack production AI trading platform already built using:
+
+Frontend: Next.js (TSX), Tailwind CSS
+Backend: Supabase (Postgres, RLS, Realtime, Auth, Storage)
+Hosting: Netlify
+Mobile: Expo (React Native)
+AI: GPT-4, Claude Opus, Gemini, FinGPT, Whisper, YOLOv8
+Payments: Crypto wallet payments (BTC, ETH, TRC20)
+CI/CD: Lovable.dev with GitHub sync
+✅ TASK
+
+Cursor must ensure everything is fully implemented, tested, live, and commit-ready.
+
+Fix:
+
+All build/TS/tailwind/runtime errors (4,000+ reported)
+All missing logic, broken links, and untyped code
+All incomplete or missing pages or screens
+All missing or broken hooks or context logic
+All invalid queries, SSR/ISR mismatches, or improper Supabase calls
+📄 REQUIRED PAGES — EXPLAINED IN FULL DETAIL
+
+1. / – Marketing Homepage
+Reuse landing page styling
+Features carousel, pricing comparison, "Get Started" CTA
+Pull real stats (active users, trades, badges earned) from Supabase
+CTA links to /register
+2. /login, /register, /onboarding
+Fully styled auth form using Supabase Auth
+Social login options (Google, Apple if configured)
+After sign-up, redirect to /onboarding
+Onboarding asks:
+Trading experience (newbie, intermediate, pro)
+Favorite markets (BTC, EUR/USD, etc.)
+Favorite timeframes (M1, M15, H1, D1)
+Store to user_preferences table and apply across all UI
+3. /dashboard – AI-Personalized Trading Hub
+Welcome banner ("Good morning, Alex 👋")
+Drag-and-drop widget layout using react-grid-layout
+Widgets:
+Portfolio overview (live PnL from trades table)
+Recent alerts (Realtime-pushed)
+Academy progress
+Upcoming economic news
+Market sentiment gauge
+Pull all data from Supabase, using RLS and user preferences
+4. /markets – Live Market Explorer
+Table of all user-selected assets
+Price feed using Polygon.io / Yahoo Finance
+When clicking an asset:
+Show chart with TradingView widget
+Show AI-generated setup idea using GPT prompt:
+“Based on current BTC/USDT price action and user’s preferred strategy, suggest a possible trade idea.”
+Let users favorite symbols or set alerts (store in Supabase)
+Add to Watchlist with RLS filtering
+5. /strategy-builder – GPT-Powered Builder
+2-panel layout:
+Left: Prompt input ("build me a 5EMA breakout strategy")
+Right: Auto-generated code + adjustable parameter sliders
+Use GPT-4 Turbo or Claude to generate logic
+Clicking "Backtest" calls serverless API → /api/backtest
+Users can name + save to strategies table (stored with JSON logic + metadata)
+Auto-suggest best current setups using user’s strategy logic + live markets
+6. /backtest – Visual Backtester
+Load any saved strategy
+Let user pick asset + time range
+Run serverless compute job
+Show equity curve, stats, table of trades
+Support pause/resume via backtest_jobs table
+Save reports to Supabase and load on demand
+7. /journal – Trade Log & Chart Annotator
+Upload CSV from MT4/MT5 or insert demo trades manually
+Table grid with:
+Trade details (symbol, entry, exit, pnl)
+“Add Note” toggle
+“Attach Chart” opens chart image picker (from Supabase Storage)
+Show stats + filters (biggest win, most traded asset, etc.)
+Personalize tag suggestions using user history
+8. /academy – LMS-Style Training
+Show “lesson cards” with thumbnails
+Each lesson has markdown content + 5-question quiz
+Track progress via user_progress table
+On quiz completion:
+Award badge
+Suggest next lesson based on weak score
+Show progress bar + time left to complete certification
+9. /chat, /voice – Realtime Community
+Chat rooms backed by chat_messages + Supabase Realtime
+DMs (RLS scoped)
+Attach files (stored in Supabase Storage)
+Voice rooms:
+Use WebRTC or SimplePeer
+Auto-transcribe via Whisper serverless function
+Show roles (speaker, listener) from voice_room_members table
+10. /notifications
+Bell dropdown or full-page table
+Supabase Realtime subscribed to notifications table
+In-app + email alerts for:
+Backtest complete
+Strategy hits condition
+New pattern detected
+Market alerts
+Let user “Mark all read”, “Mute this type”
+11. /settings – Profile & Preferences
+Tabs:
+Profile info (avatar, email, name)
+API keys
+Risk settings (%), timeframes
+Theme (dark/light), layout preferences
+Update Supabase user_preferences table in real-time
+Toggle email alerts, notification types
+12. /admin – Admin Panel
+Route protected by Supabase Auth + is_admin = true
+Show stats:
+Total users
+Revenue by plan
+Active vs inactive
+Extend trials, suspend users
+View error logs from admin_logs table
+Re-trigger webhook sync for failed payments
+💸 CRYPTO WALLET BILLING — CONFIRM FULL FLOW
+
+Convert USD → ETH, BTC, TRC20 via CoinGecko API
+Show live QR and wallet address
+Accept hash input
+Serverless endpoint confirms hash using Etherscan, Tronscan, BlockCypher
+Confirmed? → activate subscription, store to wallet_transactions, subscriptions
+Realtime broadcast to update dashboard
+🧪 VALIDATION & CLEANUP (MUST DO ALL)
+
+✅ next build passes
+✅ tsc, eslint, prettier all clean
+✅ lovable test:web, lovable test:mobile = PASS
+✅ Supabase DB matches expected schema
+✅ Auth works + all pages scoped by RLS
+✅ Mobile Expo build successful
+✅ GitHub repo synced (all commits pushed)
+✅ Cursor file search shows no // TODO or broken useEffect, undefined errors
+✅ All dynamic data loads as expected (watchlists, trades, setups)
+🧠 MODEL TO USE
+
+Use GPT-4 Turbo, Claude 3 Opus, or Cursor Native Code Model with full project access to:
+
+Parse and fix 4,000+ TS/tailwind/JS/import problems
+Ensure complete routing, page generation, and SSR
+Connect all Supabase queries with proper typing
+Validate and commit working version to GitHub
+Make it fully deployable on Netlify and testable on Lovable.dev
+✅ END RESULT MUST BE:
+
+✅ 100% typed and linted
+✅ 100% of pages present and live
+✅ Crypto billing system functional
+✅ Realtime AI setup suggestions working
+✅ User personalization applied site-wide
+✅ Chat, voice, LMS, journal all active
+✅ Mobile build clean
+✅ Lovable.dev CI green
+✅ GitHub up-to-date
+✅ No broken imports, queries, or runtime bugs

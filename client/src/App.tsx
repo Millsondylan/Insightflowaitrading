@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation, Outlet } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { OnboardingProvider } from '@/contexts/OnboardingContext';
@@ -56,7 +56,7 @@ const AuthMiddleware = ({ children }: { children: React.ReactNode }) => {
 function App() {
   // Initialize background jobs
   useEffect(() => {
-    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+    if (typeof window !== 'undefined' && import.meta.env.MODE === 'production') {
       initJobProcessor();
     }
   }, []);
@@ -69,39 +69,37 @@ function App() {
             <Router>
               <MobileAppWrapper>
                 <Routes>
-                <Route path="/" element={<appLayout/>}>
                   {/* Public Landing Pages */}
                   <Route index element={<LandingPage/>} />
-                  <Route path="about" element={<about/>} />
-                  <Route path="privacy" element={<privacy/>} />
+                  <Route path="about" element={<About/>} />
+                  <Route path="privacy" element={<Privacy/>} />
                   <Route path="terms" element={<Terms/>} />
-                  <Route path="pricing" element={<pricing/>} />
+                  <Route path="pricing" element={<Pricing/>} />
                   
                   {/* Auth Pages */}
-                  <Route path="auth" element={<authPage/>} />
+                  <Route path="auth" element={<AuthPage/>} />
                   <Route path="register" element={<Register/>} />
                   <Route path="verify" element={<VerifyEmail/>} />
 
-                  {/* Protected Routes */}
-                  <Route path="/dashboard" element={<Index/>} />
-                  <Route path="/strategy" element={<Strategy/>} />
-                  <Route path="/journal" element={<Journal/>} />
-                  <Route path="/vision" element={<Vision/>} />
-                  <Route path="/academy" element={<academy/>} />
-                  <Route path="/wallet" element={<Wallet/>} />
-                  <Route path="/admin" element={<admin/>} />
-                  <Route path="/profile" element={<profilePage/>} />
-                  <Route path="/settings" element={<UserSettings/>} />
+                  {/* Protected Routes - wrapped in layout */}
+                  <Route path="/dashboard" element={<AppLayout><Index/></AppLayout>} />
+                  <Route path="/strategy" element={<AppLayout><Strategy/></AppLayout>} />
+                  <Route path="/journal" element={<AppLayout><Journal/></AppLayout>} />
+                  <Route path="/vision" element={<AppLayout><Vision/></AppLayout>} />
+                  <Route path="/academy" element={<AppLayout><Academy/></AppLayout>} />
+                  <Route path="/wallet" element={<AppLayout><Wallet/></AppLayout>} />
+                  <Route path="/admin" element={<AppLayout><Admin/></AppLayout>} />
+                  <Route path="/profile" element={<AppLayout><ProfilePage/></AppLayout>} />
+                  <Route path="/settings" element={<AppLayout><UserSettings/></AppLayout>} />
 
                   {/* New AI Trading Setup Routes */}
-                  <Route path="/market-setup" element={<MarketSetupPage/>} />
-                  <Route path="/setup-finder" element={<SetupFinderPage/>} />
-                  <Route path="/best-setups" element={<BestSetupsPage/>} />
+                  <Route path="/market-setup" element={<AppLayout><MarketSetupPage/></AppLayout>} />
+                  <Route path="/setup-finder" element={<AppLayout><SetupFinderPage/></AppLayout>} />
+                  <Route path="/best-setups" element={<AppLayout><BestSetupsPage/></AppLayout>} />
 
                   {/* 404 Route */}
                   <Route path="*" element={<NotFound/>} />
-                </Route>
-              </Routes>
+                </Routes>
               <OnboardingModal />
               <Toaster />
               </MobileAppWrapper>
