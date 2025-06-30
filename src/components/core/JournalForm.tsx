@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
@@ -39,7 +40,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   };
   
   // Handle form field changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement/>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -152,7 +153,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   const fileInputRef = React.createRef<HTMLInputElement>();
   
   return (
-    <Card className="w-full max-w-2xl mx-auto journal-form-card">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-xl font-bold">New Trade Journal Entry</CardTitle>
       </CardHeader>
@@ -162,13 +163,13 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           {/* Title */}
           <div className="space-y-2">
             <Label htmlFor="title">Trade Title</Label>
-            <Input
-              id="title"
-              name="title"
+            <Input 
+              id="title" 
+              name="title" 
               value={formData.title}
               onChange={handleChange}
               placeholder="E.g., ETH Breakout Trade"
-              className={cn(errors.title && "border-red-500")}/>
+            />
             {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
           </div>
           
@@ -176,26 +177,24 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="pair">Instrument/Pair</Label>
-              <Input
-                id="pair"
-                name="pair"
+              <Input 
+                id="pair" 
+                name="pair" 
                 value={formData.pair}
                 onChange={handleChange}
                 placeholder="E.g., ETH/USD"
-                className={cn(errors.pair && "border-red-500")}
               />
               {errors.pair && <p className="text-sm text-red-500">{errors.pair}</p>}
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="timeframe">Timeframe</Label>
-              <Input
-                id="timeframe"
-                name="timeframe"
+              <Input 
+                id="timeframe" 
+                name="timeframe" 
                 value={formData.timeframe}
                 onChange={handleChange}
                 placeholder="E.g., 4H"
-                className={cn(errors.timeframe && "border-red-500")}
               />
               {errors.timeframe && <p className="text-sm text-red-500">{errors.timeframe}</p>}
             </div>
@@ -205,28 +204,26 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="entryPrice">Entry Price</Label>
-              <Input
-                id="entryPrice"
-                name="entryPrice"
-                type="number"
+              <Input 
+                id="entryPrice" 
+                name="entryPrice" 
+                type="number" 
                 value={formData.entryPrice}
                 onChange={handleChange}
                 placeholder="0.00"
-                className={cn(errors.entryPrice && "border-red-500")}
               />
               {errors.entryPrice && <p className="text-sm text-red-500">{errors.entryPrice}</p>}
             </div>
             
             <div className="space-y-2">
               <Label htmlFor="exitPrice">Exit Price</Label>
-              <Input
-                id="exitPrice"
-                name="exitPrice"
-                type="number"
+              <Input 
+                id="exitPrice" 
+                name="exitPrice" 
+                type="number" 
                 value={formData.exitPrice}
                 onChange={handleChange}
                 placeholder="0.00"
-                className={cn(errors.exitPrice && "border-red-500")}
               />
               {errors.exitPrice && <p className="text-sm text-red-500">{errors.exitPrice}</p>}
             </div>
@@ -235,14 +232,13 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           {/* Reason/Notes */}
           <div className="space-y-2">
             <Label htmlFor="reason">Reason for Trade</Label>
-            <Textarea
-              id="reason"
-              name="reason"
+            <Textarea 
+              id="reason" 
+              name="reason" 
               value={formData.reason}
               onChange={handleChange}
               placeholder="Describe your trade setup, strategy, and observations..."
-              rows={4}
-              className={cn(errors.reason && "border-red-500")}/>
+            />
             {errors.reason && <p className="text-sm text-red-500">{errors.reason}</p>}
           </div>
           
@@ -250,22 +246,18 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           <div className="space-y-2">
             <Label>Trade Sentiment</Label>
             <div className="flex items-center space-x-2">
-              <Button type="button"
+              <Button 
+                type="button" 
                 variant={formData.sentiment === "Bullish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
-                className={cn(
-                  "w-28",
-                  formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
-                )}>
+              >
                 🟢 Bullish
               </Button>
-              <Button type="button"
+              <Button 
+                type="button" 
                 variant={formData.sentiment === "Bearish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
-                className={cn(
-                  "w-28",
-                  formData.sentiment === "Bearish" && "bg-red-600 hover:bg-red-700"
-                )}>
+              >
                 🔴 Bearish
               </Button>
             </div>
@@ -274,9 +266,9 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           {/* Tags */}
           <div className="space-y-2">
             <Label htmlFor="tags">Tags (comma-separated)</Label>
-            <Input
-              id="tags"
-              name="tags"
+            <Input 
+              id="tags" 
+              name="tags" 
               value={formData.tags}
               onChange={handleChange}
               placeholder="E.g., breakout, trend-following, support"
@@ -296,9 +288,10 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   <p className="text-xs text-gray-400">
                     {(formData.chartFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
-                  <Button type="button" 
+                  <Button 
+                    type="button" 
                     variant="ghost" 
-                    size="sm"
+                    size="sm" 
                     onClick={(e) => {
                       e.stopPropagation();
                       setFormData(prev => ({ ...prev, chartFile: null }));
@@ -327,13 +320,12 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
       </CardContent>
       
       <CardFooter>
-        <Button type="button" 
-          onClick={handleSubmit} 
-          disabled={isSubmitting} 
-          className={cn(
-            "w-full font-medium text-lg py-6",
-            formData.sentiment === "Bullish" ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
-          )}>
+        <Button 
+          type="submit" 
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+          className="w-full"
+        >
           {isSubmitting ? "Saving..." : "Save Entry"}
         </Button>
       </CardFooter>
@@ -348,4 +340,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

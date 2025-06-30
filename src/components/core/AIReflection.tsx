@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Brain, Target, Lightbulb, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -73,31 +74,31 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
       <Card className={cn('ai-reflection-card border-blue-500/30 bg-gradient-to-br from-blue-900/10 to-purple-900/10', className)}>
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <Brain className="h-5 w-5 text-blue-400 animate-pulse"/>
+            <Brain className="h-5 w-5 text-blue-400 animate-pulse" />
             <CardTitle className="text-lg">AI Analysis</CardTitle>
             <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"/>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}/>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Skeleton className="h-4 w-full bg-gray-700/50"/>
-            <Skeleton className="h-4 w-4/5 bg-gray-700/50"/>
-            <Skeleton className="h-4 w-3/4 bg-gray-700/50"/>
+            <Skeleton className="h-4 w-full bg-gray-700/50" />
+            <Skeleton className="h-4 w-4/5 bg-gray-700/50" />
+            <Skeleton className="h-4 w-3/4 bg-gray-700/50" />
           </div>
           <div className="space-y-2">
-            <Skeleton className="h-6 w-20 bg-gray-700/50"/>
+            <Skeleton className="h-6 w-20 bg-gray-700/50" />
             <div className="flex gap-2">
-              <Skeleton className="h-6 w-16 rounded-full bg-gray-700/50"/>
-              <Skeleton className="h-6 w-20 rounded-full bg-gray-700/50"/>
+              <Skeleton className="h-6 w-16 rounded-full bg-gray-700/50" />
+              <Skeleton className="h-6 w-20 rounded-full bg-gray-700/50" />
             </div>
           </div>
           <div className="space-y-2">
-            <Skeleton className="h-4 w-full bg-gray-700/50"/>
-            <Skeleton className="h-4 w-5/6 bg-gray-700/50"/>
+            <Skeleton className="h-4 w-full bg-gray-700/50" />
+            <Skeleton className="h-4 w-5/6 bg-gray-700/50" />
           </div>
         </CardContent>
       </Card>
@@ -110,7 +111,7 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
       <Card className={cn('ai-reflection-card border-red-500/30 bg-gradient-to-br from-red-900/10 to-orange-900/10', className)}>
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <Brain className="h-5 w-5 text-red-400"/>
+            <Brain className="h-5 w-5 text-red-400" />
             <CardTitle className="text-lg">AI Analysis</CardTitle>
           </div>
         </CardHeader>
@@ -124,7 +125,7 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
             size="sm"
             className="border-red-500/30 hover:bg-red-500/10">
             Try Again
-          </button>
+          </Button>
         </CardContent>
       </Card>
     );
@@ -137,10 +138,10 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Brain className="h-5 w-5 text-gray-400"/>
+              <Brain className="h-5 w-5 text-gray-400" />
               <CardTitle className="text-lg">AI Analysis</CardTitle>
             </div>
-            <Sparkles className="h-4 w-4 text-gray-400"/>
+            <Sparkles className="h-4 w-4 text-gray-400" />
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -151,9 +152,9 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
             onClick={generateReflection}
             className="w-full bg-blue-600 hover:bg-blue-700"
             disabled={loading}>
-            <Brain className="h-4 w-4 mr-2"/>
+            <Brain className="h-4 w-4 mr-2" />
             Analyze Trade
-          </button>
+          </Button>
         </CardContent>
       </Card>
     );
@@ -165,14 +166,14 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <Brain className="h-5 w-5 text-blue-400"/>
+            <Brain className="h-5 w-5 text-blue-400" />
             <CardTitle className="text-lg">AI Analysis</CardTitle>
           </div>
           <div className="flex items-center space-x-2">
             <span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
               {getConfidenceText(reflection!.confidence)}
             </span>
-            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))}/>
+            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
           </div>
         </div>
       </CardHeader>
@@ -181,7 +182,7 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
         {/* Summary Section */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2 mb-2">
-            <Target className="h-4 w-4 text-blue-400"/>
+            <Target className="h-4 w-4 text-blue-400" />
             <h4 className="text-sm font-medium text-blue-400">Summary</h4>
           </div>
           <p className="text-gray-300 leading-relaxed">
@@ -193,7 +194,7 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
         {reflection!.tags && reflection!.tags.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"/>
+              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
               <h4 className="text-sm font-medium text-purple-400">Behavioral Patterns</h4>
             </div>
             <BehaviorTagGroup 
@@ -207,7 +208,7 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
         {/* Suggestion Section */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2 mb-2">
-            <Lightbulb className="h-4 w-4 text-yellow-400"/>
+            <Lightbulb className="h-4 w-4 text-yellow-400" />
             <h4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</h4>
           </div>
           <p className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
@@ -223,9 +224,9 @@ export default function AIReflection({ entry, className, autoGenerate = false }:
             size="sm"
             className="text-gray-400 hover:text-white"
             disabled={loading}>
-            <Brain className="h-3 w-3 mr-2"/>
+            <Brain className="h-3 w-3 mr-2" />
             Regenerate Analysis
-          </button>
+          </Button>
         </div>
       </CardContent>
     </Card>
@@ -237,4 +238,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
