@@ -531,11 +531,11 @@ const JournalV2 = () => {
                             <div>
                               <p className="text-xs text-gray-400">Trend Direction</p>
                               <Badge className={`text-xs ${
-                                trade.vision_analysis.trend === 'bullish' ? 'bg-green-500/20 text-green-300' :
-                                trade.vision_analysis.trend === 'bearish' ? 'bg-red-500/20 text-red-300' :
+                                trade.vision_analysis.trend_direction === 'bullish' ? 'bg-green-500/20 text-green-300' :
+                                trade.vision_analysis.trend_direction === 'bearish' ? 'bg-red-500/20 text-red-300' :
                                 'bg-yellow-500/20 text-yellow-300'
                               }`}>
-                                {trade.vision_analysis.trend.toUpperCase()}
+                                {trade.vision_analysis.trend_direction.toUpperCase()}
                               </Badge>
                             </div>
                             
