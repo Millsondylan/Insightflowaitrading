@@ -1,3 +1,4 @@
+
 type Insight = {
   type: "market" | "strategy" | "mindset";
   title: string;
@@ -14,7 +15,7 @@ export default function InsightFeed({ insights }: Props) {
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 theme-feed">
       {insights.map((insight, i) => (
         <div key={i}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-2"></div>
+          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-2">
           <h3 className="text-lg font-semibold">{insight.title}</h3>
           <p className="text-white/70 text-sm italic">{insight.summary}</p>
           {insight.tone && (
@@ -26,6 +27,7 @@ export default function InsightFeed({ insights }: Props) {
       ))}
     </div>
   );
+}
 
 export const lovable = { 
   component: true,
@@ -33,4 +35,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-} 

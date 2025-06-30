@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ProtectedRoute as OldProtectedRoute } from '../core/ProtectedRoute';
 
@@ -24,4 +25,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

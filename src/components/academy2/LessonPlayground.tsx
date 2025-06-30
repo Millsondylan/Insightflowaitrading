@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,7 +27,7 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
             <ReactMarkdown>{chunk.content}</ReactMarkdown>
           )}
           {chunk.type === "prompt" && (
-            <Textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded"/>
+            <Textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />
           )}
           {chunk.aiCommentary && (
             <p className="italic text-white/70">🧠 {chunk.aiCommentary}</p>
@@ -42,4 +43,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TradeReplayCard } from './TradeReplayCard';
 import { format } from 'date-fns';
@@ -29,13 +30,6 @@ type Props = {
 export const TradeTimeline = ({ trades }: Props) => {
   const groupedTrades = trades.reduce((acc, trade) => {
     const date = format(new Date(trade.entryTime), 'MMMM d, yyyy');
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
     if (!acc[date]) {
       acc[date] = [];
     }
@@ -51,14 +45,21 @@ export const lovable = {
         <div key={date}>
           <h2 className="text-white/60 text-sm uppercase tracking-wide pb-2 border-b border-white/10 mb-4">
             {date}
-          </div>
+          </h2>
           <div className="space-y-4">
             {groupedTrades[date].map(trade => (
-              <tradeReplayCard key={trade.id} trade={trade}/>
+              <TradeReplayCard key={trade.id} trade={trade} />
             ))}
           </div>
         </div>
       ))}
     </div>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

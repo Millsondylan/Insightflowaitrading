@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-export interface DivProps extends React.HTMLAttributes<HTMLDivElement /> {}
+export interface DivProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export const Div = React.forwardRef<HTMLDivElement, DivProps /></HTMLDivElement>(({ className, children, ...props }, ref) => {
+export const Div = React.forwardRef<HTMLDivElement, DivProps>(({ className, children, ...props }, ref) => {
   return (
     <div ref={ref} className={cn(className)} {...props}>
       {children}
@@ -20,4 +21,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

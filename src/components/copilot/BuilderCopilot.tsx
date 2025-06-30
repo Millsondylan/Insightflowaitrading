@@ -1,3 +1,4 @@
+
 type Props = {
   input: string;
   insights: { summary: string; alert?: string; suggestion?: string }[];
@@ -25,4 +26,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

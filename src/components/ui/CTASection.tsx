@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -29,12 +30,11 @@ const CTASection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <Button asChild
-            className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 text-lg px-8 py-6">
-            <Link to="/strategy">
-              Get Started <arrowRight className="ml-2 h-5 w-5"/>
-            </div>
-          </button>
+          <Button size="lg" className="text-lg px-8 py-4" style={{ border: "1px solid #E5E7EB", color: "white", fontSize: "1.125rem" }}>
+            <Link to="/strategy" className="flex items-center">
+              Get Started <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </motion.section>
@@ -48,4 +48,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

@@ -1,3 +1,4 @@
+
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
@@ -10,11 +11,6 @@ import i18n from './i18n'
 
 // Import Capacitor plugins initialization
 import './capacitor-plugins'
-
-// Import our new pages
-import MarketSetupPage from '@/pages/MarketSetupPage';
-import SetupFinderPage from '@/pages/SetupFinderPage';
-import BestSetupsPage from '@/pages/BestSetupsPage';
 
 // Check if critical environment variables are set
 if (!checkCriticalEnvVars()) {

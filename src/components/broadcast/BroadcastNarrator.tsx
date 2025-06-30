@@ -1,3 +1,4 @@
+
 type BroadcastSegment = {
   type: "vault" | "market" | "replay";
   title: string;
@@ -26,4 +27,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
