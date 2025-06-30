@@ -25,6 +25,16 @@ Set the following environment variables in the Lovable dashboard:
 | PORT | `3000` | No | Default is 3000 |
 | VITE_IS_LOVABLE | `true` | No | Enables Lovable-specific features |
 
+#### API Keys and Sensitive Data
+
+For security, add these additional environment variables in the Lovable dashboard:
+
+- **AI Providers**: `OPENAI_API_KEY`, `GROQ_API_KEY`, `GEMINI_API_KEY`
+- **Market Data**: `YFINANCE_API_KEY`, `COINGECKO_API_KEY`, etc.
+- **Messaging/Email**: `TELEGRAM_BOT_TOKEN`, `SENDGRID_API_KEY`, etc.
+
+⚠️ **IMPORTANT**: Never commit API keys or sensitive data to your repository. Use the `lovable.env.example` template as a reference and add actual values only in the Lovable dashboard.
+
 ### 3. Deployment Configuration
 
 Use these exact settings in the Lovable deployment panel:

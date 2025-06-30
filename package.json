@@ -18,7 +18,11 @@
     "minimal-start": "node minimal-server.js",
     "setup:lovable": "node -e \"require('fs').copyFileSync('lovable.env', '.env'); console.log('✅ Lovable environment variables copied')\"",
     "predeploy": "node -e \"console.log('🚀 Starting deployment process...')\"",
-    "postdeploy": "node -e \"console.log('✅ Deployment complete! Server is now running.')\""
+    "postdeploy": "node -e \"console.log('✅ Deployment complete! Server is now running.')\"",
+    "check:sensitive": "node scripts/secure-env.js check .",
+    "env:template": "node scripts/secure-env.js template .env .env.example",
+    "env:validate": "node scripts/secure-env.js validate .env .env.example",
+    "precommit": "npm run check:sensitive"
   },
   "dependencies": {
     "@capacitor/cli": "^7.4.0",
