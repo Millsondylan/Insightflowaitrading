@@ -12,7 +12,7 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   if (isLoading) {
     return (
       <div className="glass-container p-8 rounded-lg flex flex-col items-center justify-center min-h-[300px]">
-        <Loader2 className="h-12 w-12 animate-spin text-cyan-400 mb-4"/>
+        <Loader2 className="h-12 w-12 animate-spin text-cyan-400 mb-4" />
         <p className="text-lg text-gray-300">Generating your trading strategy...</p>
       </div>
     );
@@ -22,17 +22,10 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
 
   return (
     <div>
-      <StrategyReveal result={result}/>
-      <StrategyCTA strategyName={result.strategyName}/>
+      <StrategyReveal result={result} />
+      <StrategyCTA strategyName={result.strategyName} />
     </div>
   );
 };
 
-export default StrategyResult;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default StrategyResult; 

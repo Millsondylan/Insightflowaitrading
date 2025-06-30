@@ -16,13 +16,13 @@ const JournalEntryCard = ({ entry }: { entry: (typeof mockEntries)[0] }) => {
     return (
         <div className="bg-white/5 border border-white/10 rounded-xl p-4 hover:bg-white/10 transition-all duration-200">
             <div className="flex justify-between items-center">
-                <h4 className="font-semibold text-white">{entry.title}</div>
+                <h4 className="font-semibold text-white">{entry.title}</h4>
                 <p className={`font-bold ${pnlColor}`}>{entry.pnl >= 0 ? '+' : ''}${entry.pnl.toFixed(2)}</p>
             </div>
             <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
-                <p>{entry.sentiment} • {entry.date}</div>
+                <p>{entry.sentiment} • {entry.date}</p>
                 <div className="flex gap-2">
-                    {entry.tags.map(tag => <Badge variant="secondary">{tag}</div>)}
+                    {entry.tags.map(tag => <Badge variant="secondary">{tag}</Badge>)}
                 </div>
             </div>
         </div>
@@ -39,49 +39,51 @@ export default function JournalPage() {
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Scrolltext /></div>
+                    <span className="bg-white/10 p-2 rounded-lg"><Scrolltext  /></span>
                     Trading Journal
                 </h1>
                 <p className="text-gray-400 mt-1">Reflect on your trades and mindset.</p>
             </div>
         </div>
         
-        {mockEntries.map(entry => <Journalentrycard >)}
-      </Journalentrycard>
+        {mockEntries.map(entry => <journalentrycard  >)}
+      </div>
 
       {/* Right Sidebar */}
       <div className="lg:col-span-1 space-y-6">
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
             <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                <pluscircle />
+                <pluscircle  >
                 New Journal Entry
-            </div>
-            <Textarea > setNewEntryText(e.target.value)}
+            </h3>
+            <textarea  > setNewEntryText(e.target.value)}
                 placeholder="What's on your mind? Capture your thoughts on recent trades..."
                 className="bg-black/20 border-white/10 h-28"
             />
-            <Button  style={{ width: "100%" }}/></Textarea /></Textarea />Save Entry</Textarea>
+            <button  style={{ width: "100%" }}>Save Entry</Button>
         </div>
 
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-4 flex items-center gap-2"></div>
-                <bot >
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                <bot  >
                 AI Coach
-            </div>
+            </h3>
             <p className="text-sm text-gray-400 mb-4">Get personalized feedback on your journal entries.</p>
-            <Link to="/coach">
-                <Button variant="outline" style={{ width: "100%" }}/></Link /></Link />Ask for a Review</Link />
-        </Link>
+            <link to="/coach" >
+                <button variant="outline" style={{ width: "100%" }}>Ask for a Review</Button>
+            </Link>
+        </div>
         
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-4 flex items-center gap-2"></div>
-                <rss >
+            <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                <rss  >
                 Insight Feed
-            </div>
+            </h3>
             <p className="text-sm text-gray-400 mb-4">Discover insights based on your trading patterns.</p>
-            <Link to="/feed">
-                <Button variant="outline" style={{ width: "100%" }}/></Link /></Link />View Your Feed</Link />
-        </Link>
+            <link to="/feed" >
+                <button variant="outline" style={{ width: "100%" }}>View Your Feed</Button>
+            </Link>
+        </div>
       </div>
     </div>
   );

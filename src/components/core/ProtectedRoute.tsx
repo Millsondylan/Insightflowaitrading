@@ -27,7 +27,7 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel, children 
   if (!hasAccess) {
     // Redirect them to the wallet page with an upgrade prompt.
     // This is a sensible default for non-authorized access attempts.
-    return <Navigate to="/wallet?upgrade=true" replace/>;
+    return <Navigate to="/wallet?upgrade=true" replace />;
   }
 
   return (
@@ -36,11 +36,4 @@ export const ProtectedRoute: FC<ProtectedRouteProps> = ({ accessLevel, children 
       <Outlet />
     </>
   );
-};
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
 }; 

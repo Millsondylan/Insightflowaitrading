@@ -55,24 +55,25 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-white">Promo Codes</div>
+        <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
         
-        <Button  style={{ color: "white" }}>
-          <Plus>
+        <button  style={{ color: "white" }}>
+          <Plus >
           Generate New Code
-        </button>
+        </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table />
-          <Tableheader >
-            <Tablerow /></div></div>
-              <tablehead >Code</TableHead>
-              <tablehead >Expires</TableHead>
-              <tablehead >Uses Left</TableHead>
-              <tablehead >Actions</TableHead />
+        <Table  />
+          <tableheader  >
+            <tablerow  >
+              <tablehead  >Code</TableHead>
+              <tablehead  >Expires</TableHead>
+              <tablehead  >Uses Left</TableHead>
+              <tablehead  >Actions</TableHead>
+            </TableRow>
           </TableHeader>
-          <tablebody >
+          <tablebody  >
             {codes.length > 0 ? (
               codes.map((code) => {
                 const daysRemaining = getDaysRemaining(code.expiresAt);
@@ -80,21 +81,23 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                 const isExpired = daysRemaining <= 0;
 
                 return (
-                  <tablerow >
-                    <tablecell >
+                  <tablerow  >
+                    <tablecell  >
                       <div className="flex items-center gap-2">
                         {code.code}
-                        <Button  onClick={() => handleCopyCode(code.code)}
+                        <button
+                          onClick={() => handleCopyCode(code.code)}
                           className="text-gray-400 hover:text-cyan-400 transition-colors"
                         >
-                          <Copy >
-                        </div>
-                      </div />
-                    <tablecell >
+                          <copy  >
+                        </button>
+                      </div>
+                    </TableCell>
+                    <tablecell  >
                       <div className="flex flex-col">
                         <span className={isExpired ? "text-red-400" : isExpiringSoon ? "text-yellow-400" : ""}>
                           {formatDate(code.expiresAt)}
-                        </div>
+                        </span>
                         <span className="text-xs text-gray-500">
                           {isExpired ? (
                             "Expired"
@@ -102,28 +105,33 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                             `${daysRemaining} ${daysRemaining === 1 ? "day" : "days"} left`
                           )}
                         </span>
-                      </div />
-                    <tablecell >
+                      </div>
+                    </TableCell>
+                    <tablecell  >
                       <span className={code.usesLeft <= 3 ? "text-amber-400" : "text-white"}>
                         {code.usesLeft}
-                      </span />
-                    <tablecell >
-                      <Button > onRevoke(code.code)}
+                      </span>
+                    </TableCell>
+                    <tablecell  >
+                      <button  > onRevoke(code.code)}
                         variant="ghost"
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
-                        <Trash2 >
-                      </button />
-                  </span>
+                        <trash2  >
+                      </Button>
+                    </TableCell>
+                  </TableRow>
                 );
               })
             ) : (
-              <tablerow >
-                <tablecell >
+              <tablerow  >
+                <tablecell  >
                   No active promo codes. Generate a new code to get started.
-                </TableCell />
+                </TableCell>
+              </TableRow>
             )}
-          </TableBody />
+          </TableBody>
+        </Table>
       </div>
       
       <div className="text-xs text-gray-500">

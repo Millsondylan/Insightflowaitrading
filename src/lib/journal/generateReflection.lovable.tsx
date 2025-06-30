@@ -108,7 +108,7 @@ Next Steps:
             borderRadius: '8px',
             cursor: loading ? 'not-allowed' : 'pointer'
           }}
-      >
+       >
           {loading ? 'Analyzing...' : 'Generate Reflection'}
         </button>
       </div>

@@ -80,55 +80,63 @@ const CourseCard = ({ course, progress }: { course: AcademyCourse; progress?: Ac
   };
   
   return (
-    <Card className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
-      onClick={handleCourseClick}>
+    <Card 
+      className="h-full transition-all duration-300 hover:shadow-lg hover:scale-[1.02] cursor-pointer bg-gradient-to-br from-gray-900 to-gray-800 border-gray-700"
+      onClick={handleCourseClick}
+    >
       <CardHeader>
         <div className="flex justify-between items-start mb-4">
           <div className={`p-3 rounded-xl ${categoryColors[course.difficulty || 'beginner']}`}>
-            <Icon className="w-6 h-6"/>
-            <Badge className={categoryColors[course.difficulty || 'beginner']}>{course.difficulty}</Card>
+            <Icon className="w-6 h-6" />
           </div>
+          <Badge className={categoryColors[course.difficulty || 'beginner']}>
+            {course.difficulty}
+          </Badge>
         </div>
         <CardTitle className="text-xl text-white">{course.title}</CardTitle>
-        <CardDescription className="text-gray-400">{course.description}</CardDescription>
+        <CardDescription className="text-gray-400">
+          {course.description}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {progress && (
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">Progress</CardContent>
+                <span className="text-gray-400">Progress</span>
                 <span className="text-white font-semibold">{Math.round(progress.progress_percentage)}%</span>
               </div>
-              <progress 
+              <Progress 
                 value={progress.progress_percentage} 
                 className="h-2 bg-gray-700"
-   />
+              />
             </div>
           )}
           
           <div className="grid grid-cols-2 gap-4 text-sm">
             <div className="flex items-center gap-2 text-gray-400">
-              <Clock className="w-4 h-4"/>
-              <span>{course.duration_hours} hours</div>
+              <Clock className="w-4 h-4" />
+              <span>{course.duration_hours} hours</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <Users className="w-4 h-4"/>
-              <span>{course.enrolled_count.toLocaleString()} enrolled</div>
+              <Users className="w-4 h-4" />
+              <span>{course.enrolled_count.toLocaleString()} enrolled</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <BookOpen className="w-4 h-4"/>
-              <span>{course.modules_count} lessons</div>
+              <BookOpen className="w-4 h-4" />
+              <span>{course.modules_count} lessons</span>
             </div>
             <div className="flex items-center gap-2 text-gray-400">
-              <Star className="w-4 h-4 text-yellow-500"/>
-              <span>{course.rating.toFixed(1)}</div>
+              <Star className="w-4 h-4 text-yellow-500" />
+              <span>{course.rating.toFixed(1)}</span>
             </div>
           </div>
           
           <div className="flex flex-wrap gap-2">
             {course.tags.slice(0, 3).map((tag, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">{tag}</div>
+              <Badge key={index} variant="secondary" className="text-xs">
+                {tag}
+              </Badge>
             ))}
           </div>
         </div>
@@ -142,11 +150,11 @@ const AchievementCard = ({ icon: Icon, title, value, color }: any) => (
     <CardContent className="p-6">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-gray-400 text-sm">{title}</Card>
+          <p className="text-gray-400 text-sm">{title}</p>
           <p className="text-2xl font-bold text-white mt-1">{value}</p>
         </div>
         <div className={`p-3 rounded-xl ${color}`}>
-          <Icon className="w-6 h-6 text-white"/>
+          <Icon className="w-6 h-6 text-white" />
         </div>
       </div>
     </CardContent>
@@ -157,9 +165,9 @@ export default function AcademyPage() {
   const { user } = useAuth();
   const { logNavigation } = useAuditLog();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [categories, setCategories] = useState<academyCategory[]>([]);
-  const [courses, setCourses] = useState<academyCourse[]>([]);
-  const [userProgress, setUserProgress] = useState<academyProgress[]>([]);
+  const [categories, setCategories] = useState<AcademyCategory[]>([]);
+  const [courses, setCourses] = useState<AcademyCourse[]>([]);
+  const [userProgress, setUserProgress] = useState<AcademyProgress[]>([]);
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -224,50 +232,57 @@ export default function AcademyPage() {
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center gap-3">
           <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-3 rounded-xl">
-            <BookOpen className="w-8 h-8 text-white"/>
-          </div>
+            <BookOpen className="w-8 h-8 text-white" />
+          </span>
           Trading Academy
         </h1>
         <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-          Master the markets with comprehensive courses designed by professional traders.
+          Master the markets with comprehensive courses designed by professional traders. 
           From basics to advanced strategies, we've got you covered.
         </p>
       </div>
       
-      {/* Achievement Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <achievementCard
-          icon={Award}
-          title="Completed Courses"
-          value={completedCourses}
-          color="bg-green-500/20"/>
-        <achievementCard
-          icon={Clock}
-          title="Hours Spent Learning"
-          value={totalTimeSpent.toFixed(1)}
-          color="bg-blue-500/20"/>
-        <achievementCard
-          icon={Target}
-          title="Average Progress"
-          value={`${Math.round(averageProgress)}%`}
-          color="bg-purple-500/20"/>
-        <achievementCard
-          icon={Zap}
-          title="Active Courses"
-          value={userProgress.length}
-          color="bg-orange-500/20"/>
-      </div>
+      {/* Stats */}
+      {user && userProgress.length > 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <AchievementCard
+            icon={Award}
+            title="Courses Completed"
+            value={completedCourses}
+            color="bg-green-600"
+          />
+          <AchievementCard
+            icon={Target}
+            title="Average Progress"
+            value={`${Math.round(averageProgress)}%`}
+            color="bg-blue-600"
+          />
+          <AchievementCard
+            icon={Clock}
+            title="Time Invested"
+            value={`${totalTimeSpent.toFixed(1)}h`}
+            color="bg-purple-600"
+          />
+          <AchievementCard
+            icon={Zap}
+            title="Current Streak"
+            value="7 days"
+            color="bg-orange-600"
+          />
+        </div>
+      )}
       
       {/* Category Tabs */}
       <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
         <TabsList className="grid grid-cols-5 w-full max-w-2xl mx-auto bg-gray-800">
           {categoryOptions.map((category) => (
-            <TabsTrigger key={category}
-              value={category}
+            <TabsTrigger 
+              key={category} 
+              value={category} 
               className="capitalize data-[state=active]:bg-blue-600 data-[state=active]:text-white"
-   >
+            >
               {category}
-            </Tabs>
+            </TabsTrigger>
           ))}
         </TabsList>
       </Tabs>
@@ -280,27 +295,20 @@ export default function AcademyPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
+            <CourseCard 
+              key={course.id} 
+              course={course} 
               progress={getProgressForCourse(course.id)}
- /></div>
+            />
           ))}
         </div>
       )}
       
       {courses.length === 0 && !loading && (
         <div className="text-center py-12">
-          <p className="text-gray-400 text-lg"></div></div>No courses found in this category.</div>
+          <p className="text-gray-400 text-lg">No courses found in this category.</p>
         </div>
       )}
     </div>
   );
 }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};

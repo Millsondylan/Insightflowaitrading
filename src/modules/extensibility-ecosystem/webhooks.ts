@@ -32,7 +32,7 @@ export class WebhookManager {
    * Register a new webhook
    * TODO: implement webhook validation and security
    */
-  async registerWebhook(config: Omit<WebhookConfig, 'id' | 'createdAt' | 'updatedAt'></WebhookConfig>): Promise<string> {
+  async registerWebhook(config: Omit<WebhookConfig, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
     const webhookId = `webhook_${Date.now()}`;
     
     const webhook: WebhookConfig = {
@@ -55,7 +55,7 @@ export class WebhookManager {
    * Execute webhook for given event
    * TODO: implement event filtering and payload transformation
    */
-  async executeWebhook(webhookId: string, eventType: string, payload: unknown): Promise<void> {
+  async executeWebhook(webhookId: string, eventType: string, payload: any): Promise<void> {
     const webhook = this.webhooks.get(webhookId);
     if (!webhook || !webhook.enabled) {
       return;
@@ -248,7 +248,7 @@ export class WebhookManager {
    * Configure integration
    * TODO: implement secure credential storage
    */
-  async configureIntegration(type: string, config: Omit<integrationConfig, 'id' | 'type'>): Promise<void> {
+  async configureIntegration(type: string, config: Omit<IntegrationConfig, 'id' | 'type'>): Promise<void> {
     const integrationId = `${type}_${Date.now()}`;
     
     const integration: IntegrationConfig = {
@@ -311,12 +311,12 @@ export class WebhookManager {
     // TODO: add more validation rules
   }
 
-  private applyFilters(filters: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[], payload: unknown): boolean {
+  private applyFilters(filters: any[], payload: any): boolean {
     // TODO: implement filter logic
     return true;
   }
 
-  private prepareWebhookRequest(webhook: WebhookConfig, event: unknown): any {
+  private prepareWebhookRequest(webhook: WebhookConfig, event: any): any {
     // TODO: implement payload transformation
     return {
       event: event.type,
@@ -326,7 +326,7 @@ export class WebhookManager {
     };
   }
 
-  private async executeHttpRequest(webhook: WebhookConfig, data: unknown): Promise<{
+  private async executeHttpRequest(webhook: WebhookConfig, data: any): Promise<{
     status: number;
     headers: Record<string, string>;
     body: string;

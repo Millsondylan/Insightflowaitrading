@@ -31,9 +31,9 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
     extraContext: '',
   });
 
-  const [formErrors, setFormErrors] = useState<Record />>({});
+  const [formErrors, setFormErrors] = useState<Record  />>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement >) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -114,96 +114,100 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <motion.div variants={itemVariants} className="space-y-2">
-          <Label htmlFor="strategyName">Strategy Name (Optional)</Strategyformdata>
-          <Input id="strategyName" name="strategyName" placeholder="E.g., Momentum Breakout"/>
+          <label htmlFor="strategyName" >Strategy Name (Optional)</Label>
+          <input id="strategyName" name="strategyName" placeholder="E.g., Momentum Breakout" >
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
-          <Label htmlFor="tradeStyle">Trade Style*</Input>
-          <Select > handleSelectChange(value, 'tradeStyle')}
+          <label htmlFor="tradeStyle" >Trade Style*</Label>
+          <select  > handleSelectChange(value, 'tradeStyle')}
           >
-            <SelectTrigger >
-              <SelectValue placeholder="Select a trade style"/>
-            <SelectContent  style={{ color: "white" }}>
-              <SelectItem value="Intraday">Intraday</Select>
-              <SelectItem value="Swing">Swing</SelectItem>
-              <SelectItem value="Scalping">Scalping</SelectItem>
-              <SelectItem value="Position">Position</SelectItem>
-              <SelectItem value="Custom">Custom</SelectItem />
-          </SelectItem>
+            <selecttrigger  >
+              <selectvalue placeholder="Select a trade style" >
+            </SelectTrigger>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="Intraday" >Intraday</SelectItem>
+              <selectitem value="Swing" >Swing</SelectItem>
+              <selectitem value="Scalping" >Scalping</SelectItem>
+              <selectitem value="Position" >Position</SelectItem>
+              <selectitem value="Custom" >Custom</SelectItem>
+            </SelectContent>
+          </Select>
           {formErrors.tradeStyle && (
             <p className="text-red-500 text-sm">{formErrors.tradeStyle}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
-          <Label htmlFor="instruments">Instruments*</Label>
-          <Input id="instruments" name="instruments" placeholder="E.g., BTC, ETH, AAPL"/>
+          <label htmlFor="instruments" >Instruments*</Label>
+          <input id="instruments" name="instruments" placeholder="E.g., BTC, ETH, AAPL" >
           {formErrors.instruments && (
-            <p className="text-red-500 text-sm">{formErrors.instruments}</Input>
+            <p className="text-red-500 text-sm">{formErrors.instruments}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
-          <Label htmlFor="timeframe">Timeframe*</Label>
-          <Select > handleSelectChange(value, 'timeframe')}
+          <label htmlFor="timeframe" >Timeframe*</Label>
+          <select  > handleSelectChange(value, 'timeframe')}
           >
-            <SelectTrigger >
-              <SelectValue placeholder="Select a timeframe"/>
-            <SelectContent  style={{ color: "white" }}>
-              <SelectItem value="1m">1 minute</Select>
-              <SelectItem value="5m">5 minutes</SelectItem>
-              <SelectItem value="15m">15 minutes</SelectItem>
-              <SelectItem value="30m">30 minutes</SelectItem>
-              <SelectItem value="1h">1 hour</SelectItem>
-              <SelectItem value="4h">4 hours</SelectItem>
-              <SelectItem value="1d">Daily</SelectItem>
-              <SelectItem value="1w">Weekly</SelectItem />
-          </SelectItem>
+            <selecttrigger  >
+              <selectvalue placeholder="Select a timeframe" >
+            </SelectTrigger>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="1m" >1 minute</SelectItem>
+              <selectitem value="5m" >5 minutes</SelectItem>
+              <selectitem value="15m" >15 minutes</SelectItem>
+              <selectitem value="30m" >30 minutes</SelectItem>
+              <selectitem value="1h" >1 hour</SelectItem>
+              <selectitem value="4h" >4 hours</SelectItem>
+              <selectitem value="1d" >Daily</SelectItem>
+              <selectitem value="1w" >Weekly</SelectItem>
+            </SelectContent>
+          </Select>
           {formErrors.timeframe && (
             <p className="text-red-500 text-sm">{formErrors.timeframe}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <Label htmlFor="entryConditions">Entry Conditions*</Label>
-          <Textarea id="entryConditions" name="entryConditions" placeholder="Describe your entry conditions...">
+          <label htmlFor="entryConditions" >Entry Conditions*</Label>
+          <textarea id="entryConditions" name="entryConditions" placeholder="Describe your entry conditions..." >
           {formErrors.entryConditions && (
-            <p className="text-red-500 text-sm"></Textarea>{formErrors.entryConditions}</Textarea>
+            <p className="text-red-500 text-sm">{formErrors.entryConditions}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <Label htmlFor="exitConditions">Exit Conditions*</Label>
-          <Textarea id="exitConditions" name="exitConditions" placeholder="Describe your exit conditions...">
+          <label htmlFor="exitConditions" >Exit Conditions*</Label>
+          <textarea id="exitConditions" name="exitConditions" placeholder="Describe your exit conditions..." >
           {formErrors.exitConditions && (
-            <p className="text-red-500 text-sm"></Textarea>{formErrors.exitConditions}</Textarea>
+            <p className="text-red-500 text-sm">{formErrors.exitConditions}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <Label htmlFor="riskManagement">Risk Management*</Label>
-          <Textarea id="riskManagement" name="riskManagement" placeholder="Describe your risk management approach...">
+          <label htmlFor="riskManagement" >Risk Management*</Label>
+          <textarea id="riskManagement" name="riskManagement" placeholder="Describe your risk management approach..." >
           {formErrors.riskManagement && (
-            <p className="text-red-500 text-sm"></Textarea>{formErrors.riskManagement}</Textarea>
+            <p className="text-red-500 text-sm">{formErrors.riskManagement}</p>
           )}
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2 md:col-span-2">
-          <Label htmlFor="extraContext">Extra Context (Optional)</Label>
-          <Textarea id="extraContext" name="extraContext" placeholder="Any additional information or context...">
+          <label htmlFor="extraContext" >Extra Context (Optional)</Label>
+          <textarea id="extraContext" name="extraContext" placeholder="Any additional information or context..." >
         </motion.div>
 
         <motion.div variants={itemVariants} className="md:col-span-2 flex justify-center mt-4">
-          <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></div>
+          <button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}>
             {isLoading ? (
               <>
-                <loader2 > Generating Strategy...
-              </loader2>
+                <loader2  > Generating Strategy...
+              </>
             ) : (
               'Generate Strategy'
             )}
-          </Textarea>
+          </Button>
         </motion.div>
       </div>
     </motion.form>

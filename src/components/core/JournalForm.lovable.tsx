@@ -19,7 +19,7 @@ interface JournalFormProps {
 const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState<Journalformdata />({
+  const [formData, setFormData] = useState<Journalformdata  />({
     title: "",
     pair: "",
     timeframe: "",
@@ -30,16 +30,16 @@ const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
     tags: "",
     chartFile: null
   });
-  const [errors, setErrors] = useState<Journalformerrors >({});
+  const [errors, setErrors] = useState<journalformerrors  >({});
   
   // Handle file selection
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement >) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const file = e.target.files?.[0] || null;
     setFormData(prev => ({ ...prev, chartFile: file }));
   };
   
   // Handle form field changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement >) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -149,120 +149,125 @@ const JournalForm: React.FC<Journalformprops > = ({ onEntryAdded }) => {
     }
   };
   
-  const fileInputRef = React.createRef<HTMLInputElement >();
+  const fileInputRef = React.createRef<HTMLInputElement  >();
   
   return (
-    <Card  style={{ width: "100%" }}>
-      <Cardheader />
-        <Cardtitle  style={{ fontSize: "1.25rem", fontWeight: "700" }}>New Trade Journal Entry</Journalformprops />
+    <card  style={{ width: "100%" }}>
+      <cardheader  >
+        <cardtitle  style={{ fontSize: "1.25rem", fontWeight: "700" }}>New Trade Journal Entry</CardTitle>
+      </CardHeader>
       
-      <Cardcontent >
+      <cardcontent  >
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <div className="space-y-2">
-            <Label htmlFor="title">Trade Title</Journalformprops>
-            <Input id="title" name="title" placeholder="E.g., ETH Breakout Trade"/>
-            {errors.title && <p className="text-sm text-red-500">{errors.title}</Input>}
+            <label htmlFor="title" >Trade Title</Label>
+            <input id="title" name="title" placeholder="E.g., ETH Breakout Trade" >
+            {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
           </div>
           
           {/* Pair and Timeframe - 2 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="pair">Instrument/Pair</div>
-              <Input id="pair" name="pair" placeholder="E.g., ETH/USD"/>
-              {errors.pair && <p className="text-sm text-red-500">{errors.pair}</Input>}
+              <label htmlFor="pair" >Instrument/Pair</Label>
+              <input id="pair" name="pair" placeholder="E.g., ETH/USD" >
+              {errors.pair && <p className="text-sm text-red-500">{errors.pair}</p>}
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="timeframe">Timeframe</div>
-              <Input id="timeframe" name="timeframe" placeholder="E.g., 4H"/>
-              {errors.timeframe && <p className="text-sm text-red-500">{errors.timeframe}</Input>}
+              <label htmlFor="timeframe" >Timeframe</Label>
+              <input id="timeframe" name="timeframe" placeholder="E.g., 4H" >
+              {errors.timeframe && <p className="text-sm text-red-500">{errors.timeframe}</p>}
             </div>
           </div>
           
           {/* Entry and Exit Prices - 2 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="entryPrice">Entry Price</div>
-              <Input id="entryPrice" name="entryPrice" type="number" placeholder="0.00"/>
-              {errors.entryPrice && <p className="text-sm text-red-500">{errors.entryPrice}</Input>}
+              <label htmlFor="entryPrice" >Entry Price</Label>
+              <input id="entryPrice" name="entryPrice" type="number" placeholder="0.00" >
+              {errors.entryPrice && <p className="text-sm text-red-500">{errors.entryPrice}</p>}
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="exitPrice">Exit Price</div>
-              <Input id="exitPrice" name="exitPrice" type="number" placeholder="0.00"/>
-              {errors.exitPrice && <p className="text-sm text-red-500">{errors.exitPrice}</Input>}
+              <label htmlFor="exitPrice" >Exit Price</Label>
+              <input id="exitPrice" name="exitPrice" type="number" placeholder="0.00" >
+              {errors.exitPrice && <p className="text-sm text-red-500">{errors.exitPrice}</p>}
             </div>
           </div>
           
           {/* Reason/Notes */}
           <div className="space-y-2">
-            <Label htmlFor="reason">Reason for Trade</div>
-            <Textarea id="reason" name="reason" placeholder="Describe your trade setup, strategy, and observations...">
-            {errors.reason && <p className="text-sm text-red-500">{errors.reason}</Textarea>}
+            <label htmlFor="reason" >Reason for Trade</Label>
+            <textarea id="reason" name="reason" placeholder="Describe your trade setup, strategy, and observations..." >
+            {errors.reason && <p className="text-sm text-red-500">{errors.reason}</p>}
           </div>
           
           {/* Sentiment Toggle */}
           <div className="space-y-2">
-            <Label >Trade Sentiment</div>
+            <label  >Trade Sentiment</Label>
             <div className="flex items-center space-x-2">
-              <Button type="button">
+              <button type="button" >
                 🟢 Bullish
-              </div>
-              <Button type="button">
+              </Button>
+              <button type="button" >
                 🔴 Bearish
-              </button>
+              </Button>
             </div>
           </div>
           
           {/* Tags */}
           <div className="space-y-2">
-            <Label htmlFor="tags">Tags (comma-separated)</div>
-            <Input id="tags" name="tags" placeholder="E.g., breakout, trend-following, support"  //>
+            <label htmlFor="tags" >Tags (comma-separated)</Label>
+            <input id="tags" name="tags" placeholder="E.g., breakout, trend-following, support" >
+          </div>
           
           {/* Chart Upload */}
           <div className="space-y-2">
-            <Label >Attach Chart Image (Optional)</Input>
+            <label  >Attach Chart Image (Optional)</Label>
             <div 
               className="border-2 border-dashed border-gray-500 rounded-lg p-6 text-center cursor-pointer hover:border-blue-500 transition-colors file-upload-zone"
               onClick={() => fileInputRef.current?.click()}
             >
               {formData.chartFile ? (
                 <div className="flex flex-col items-center">
-                  <p className="text-sm font-medium">{formData.chartFile.name}</div>
+                  <p className="text-sm font-medium">{formData.chartFile.name}</p>
                   <p className="text-xs text-gray-400">
                     {(formData.chartFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
-                  <Button type="button" variant="ghost" size="sm"> {
+                  <button type="button" variant="ghost" size="sm" > {
                       e.stopPropagation();
                       setFormData(prev => ({ ...prev, chartFile: null }));
                     }}
                   >
                     Remove
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
-                  <p>Drag and drop your chart image here,</div>
+                  <p>Drag and drop your chart image here,</p>
                   <p>or click to select</p>
                   <p className="text-xs text-gray-400 mt-2">PNG, JPG (max 5MB)</p>
                 </div>
               )}
-              <Input
+              <input
                 ref={fileInputRef}
                 type="file"
                 className="hidden"
                 accept="image/png,image/jpeg"
                 onChange={handleFileChange}
-              //>
-          </div />
-      </Input>
+              />
+            </div>
+          </div>
+        </form>
+      </CardContent>
       
-      <CardFooter >
-        <Button type="button">
+      <cardfooter  >
+        <button type="button" >
           {isSubmitting ? "Saving..." : "Save Entry"}
-        </button />
-    </CardFooter>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

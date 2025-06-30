@@ -113,7 +113,7 @@ const BacktestResultDisplay = ({ result }: Props) => {
               <tr key={i} className={`transition-colors duration-300 ${t.outcome === 'win' ? 'bg-green-900/30 hover:bg-green-900/50' : 'bg-red-900/30 hover:bg-red-900/50'}`}>
                 <td className="p-2">${t.entryPrice.toFixed(2)}</td>
                 <td className="p-2">${t.exitPrice.toFixed(2)}</td>
-                <td className={`p-2 font-semibold ${t.pnl >= 0 ? 'text-green-400' : 'text-red-400'}`}>
+                <Td className={`p-2 font-semibold ${t.pnl>= 0 ? 'text-green-400' : 'text-red-400'}`}>
                   ${t.pnl.toFixed(2)}
                 </td>
                 <td className="p-2">
@@ -130,11 +130,4 @@ const BacktestResultDisplay = ({ result }: Props) => {
   );
 };
 
-export default BacktestResultDisplay;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default BacktestResultDisplay; 

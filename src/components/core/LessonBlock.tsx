@@ -18,20 +18,21 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="w-full mb-12"
     >
-      <Card className="border-l-4 border-blue-500 bg-gray-900/30 overflow-hidden"/>
+      <Card className="border-l-4 border-blue-500 bg-gray-900/30 overflow-hidden">
         <CardHeader>
-          <CardTitle className="text-3xl font-bold text-gray-100"/>
+          <CardTitle className="text-3xl font-bold text-gray-100">
             {block.title}
-          </LessonBlockProps>
-        <CardContent className="space-y-8"/>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-8">
           <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
             {block.content}
-          </LessonBlockProps>
+          </p>
 
           <div>
             <h4 className="font-semibold text-xl mb-4 text-gray-200">
               Key Takeaways
-            </div>
+            </h4>
             <ul className="space-y-3">
               {block.keyTakeaways.map((takeaway, index) => (
                 <motion.li
@@ -42,22 +43,16 @@ const LessonBlock: React.FC<LessonBlockProps> = ({ block }) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start"
                 >
-                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" //></div>
+                  <CheckCircle2 className="h-6 w-6 text-green-500 mr-4 mt-1 flex-shrink-0" />
                   <span className="text-gray-300 text-base">{takeaway}</span>
                 </motion.li>
               ))}
             </ul>
           </div>
+        </CardContent>
       </Card>
     </motion.div>
   );
 };
 
-export default LessonBlock;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default LessonBlock; 

@@ -41,7 +41,7 @@ interface BehaviorTagProps {
   animationDelay?: number;
 }
 
-const BehaviorTag: React.FC<behaviorTagProps> = ({ 
+const BehaviorTag: React.FC<BehaviorTagProps> = ({ 
   tag, 
   className, 
   animated = false, 
@@ -62,7 +62,8 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
   };
   
   const tagElement = (
-    <Badge variant="outline"
+    <Badge
+      variant="outline"
       className={cn(
         'cursor-default transition-all duration-200',
         definition.color,
@@ -81,7 +82,8 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
         animationDelay: animated ? `${animationDelay}ms` : undefined,
         animationFillMode: animated ? 'forwards' : undefined,
       }}
-      onClick={handleClick}>
+      onClick={handleClick}
+    >
       {tag}
     </Badge>
   );
@@ -90,15 +92,17 @@ const BehaviorTag: React.FC<behaviorTagProps> = ({
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild/>
+        <TooltipTrigger asChild>
           {tagElement}
-        </TooltipProvider>
-        <TooltipContent side="top" className="max-w-xs"/>
+        </TooltipTrigger>
+        <TooltipContent side="top" className="max-w-xs">
           <div className="text-center">
-            <p className="font-medium text-sm">{tag}</TooltipContent>
+            <p className="font-medium text-sm">{tag}</p>
             <p className="text-xs text-gray-300 mt-1">{definition.description}</p>
           </div>
+        </TooltipContent>
       </Tooltip>
+    </TooltipProvider>
   );
 };
 
@@ -113,7 +117,7 @@ interface BehaviorTagGroupProps {
   maxTags?: number;
 }
 
-export const BehaviorTagGroup: React.FC<behaviorTagGroupProps> = ({
+export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({
   tags,
   className,
   animated = false,
@@ -126,27 +130,21 @@ export const BehaviorTagGroup: React.FC<behaviorTagGroupProps> = ({
   return (
     <div className={cn('flex flex-wrap gap-2', className)}>
       {displayTags.map((tag, index) => (
-        <behaviorTag
+        <BehaviorTag
           key={tag}
           tag={tag}
           animated={animated}
           animationDelay={index * 100} // Stagger the animations
-          onClick={onTagClick}/>
+          onClick={onTagClick}
+        />
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30"></div>
+        <Badge variant="outline" className="bg-gray-600/20 text-gray-400 border-gray-500/30">
           +{hiddenCount} more
-        </div>
+        </Badge>
       )}
     </div>
   );
 };
 
-export default BehaviorTag;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default BehaviorTag; 

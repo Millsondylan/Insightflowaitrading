@@ -44,11 +44,8 @@ export async function POST(req: NextRequest) {
     // Update user's wallet address
     const { error } = await supabase
       .from('profiles')
-      .update({
-        wallet_address: wallet_address,
-        updated_at: new Date().toISOString()
-      })
-      .eq('user_id', user.id);
+      .update({ referral_payout_wallet: wallet_address })
+      .eq('id', user.id);
     
     if (error) {
       return NextResponse.json(

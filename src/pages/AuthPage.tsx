@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import AuthForm from '@/components/auth/AuthForm';
-import { Helmet } from 'react-helmet';
 
 export default function AuthPage() {
     const location = useLocation();
@@ -15,20 +14,9 @@ export default function AuthPage() {
 
     return (
         <div className="min-h-screen flex items-center justify-center p-4">
-            <Helmet>
-                <title>Sign In | InsightFlow AI Trading</title>
-                <meta name="description" content="Sign in to your InsightFlow AI Trading account to access advanced trading tools and analytics."/>
-            </div>
-            <div className="w-full max-w-md">
-                <authForm onSuccess={handleSuccess}/>
+            <div className="w-full">
+                <AuthForm onSuccess={handleSuccess} />
             </div>
         </div>
     );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

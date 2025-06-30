@@ -12,25 +12,26 @@ const mockInsights = [
 export default function FeedPage() {
   return (
     <div>
-      <Link to="/journal" style={{ display: "flex", alignItems: "center" }}>
-        <ArrowLeft>
+      <link to="/journal" style={{ display: "flex", alignItems: "center" }}>
+        <Arrowleft >
         Back to Journal
-      </div>
+      </Link>
       
       <div className="space-y-6">
         <header>
             <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                <span className="bg-white/10 p-2 rounded-lg"><Rss /></div>
+                <span className="bg-white/10 p-2 rounded-lg"><Rss  /></span>
                 Your Insight Feed
             </h1>
-            <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p />
+            <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>
+        </header>
 
         {mockInsights.map(insight => (
             <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
                 <p className="text-gray-200">{insight.text}</p>
-                <Button variant="ghost" size="icon">
-                    <Eye /></button></div>
-                </button>
+                <button variant="ghost" size="icon" >
+                    <eye  >
+                </Button>
             </div>
         ))}
       </div>

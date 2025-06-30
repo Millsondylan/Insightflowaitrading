@@ -8,7 +8,7 @@ interface ProgressSidebarProps {
   onBlockClick: (id: string) => void;
 }
 
-const ProgressSidebar: React.FC<progresssidebarprops> = ({
+const ProgressSidebar: React.FC<Progresssidebarprops > = ({
   blocks,
   activeBlock,
   progress,
@@ -24,12 +24,14 @@ const ProgressSidebar: React.FC<progresssidebarprops> = ({
   let currentTopic = blocks.find((b) => b.id === activeBlock)?.topic;
 
   return (
-    <Aside className="sticky top-24 h-full">
+    <aside className="sticky top-24 h-full">
       <div className="relative pl-8">
         {/* Progress Bar */}
-        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700"/>
-        <div           className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
-          style={{ height: `calc(${progress}% - 1rem)` }}/>
+        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700" />
+        <div
+          className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
+          style={{ height: `calc(${progress}% - 1rem)` }}
+        />
 
         <nav className="flex flex-col items-start">
           {blocks.map((block) => {
@@ -41,29 +43,32 @@ const ProgressSidebar: React.FC<progresssidebarprops> = ({
                 {isTopicHeader && (
                   <h3 className="text-lg font-bold mt-6 mb-3 text-blue-400">
                     {block.topic}
-                  </Aside>
+                  </h3>
                 )}
-                <Button  onClick={() => onBlockClick(block.id)}
+                <button
+                  onClick={() => onBlockClick(block.id)}
                   className="flex items-center w-full text-left py-1.5 group"
                 >
-                  <div                     className={cn(
+                  <div
+                    className={cn(
                       "absolute left-[11px] h-3 w-3 rounded-full border-2 border-gray-600 bg-gray-900 transition-all duration-300",
                       { "bg-blue-500 border-blue-500 scale-125": isActive }
                     )}
-     />
-                  <span className={cn(
+                  />
+                  <Span className={cn(
                       "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
                       { "text-white": isActive }
                     )}
-     /></button>
+                  />
                     {block.title}
-                  </button>
+                  </span>
                 </button>
               </div>
             );
           })}
         </nav>
-      </div />
+      </div>
+    </aside>
   );
 };
 

@@ -28,13 +28,6 @@ type Props = {
 
 export default function MarketsTable({ tickers, onSelect }: Props) {
   const [search, setSearch] = useState("");
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [sortField, setSortField] = useState<SortField>("symbol");
   const [sortDirection, setSortDirection] = useState<SortDirection>("asc");
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
@@ -138,21 +131,23 @@ export const lovable = {
     <div className="space-y-4">
       {/* Search Bar */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"/>
-        <Input placeholder="Search by symbol..."
+        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+        <Input
+          placeholder="Search by symbol..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="pl-10 bg-black/30 border-white/10 text-white"
-        / />
+        />
+      </div>
       
       {/* Tickers Table */}
       <div className="rounded-xl border border-white/10 overflow-hidden">
         <div className="overflow-x-auto">
-          <table>
-            <tableHeader>
-              <tableRow className="hover:bg-white/5 bg-black/40">
-                <tableHead className="w-10"></SortField>
-                <tableHead 
+          <Table>
+            <TableHeader>
+              <TableRow className="hover:bg-white/5 bg-black/40">
+                <TableHead className="w-10"></TableHead>
+                <TableHead 
                   onClick={() => handleSort("symbol")} 
                   className="cursor-pointer hover:text-cyan-400"
                 >
@@ -160,11 +155,12 @@ export const lovable = {
                     Symbol
                     {sortField === "symbol" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4"/> :
-                      <ChevronDown className="h-4 w-4"/>
+                      <ChevronUp className="h-4 w-4" /> :
+                      <ChevronDown className="h-4 w-4" />
                     )}
                   </div>
-                <tableHead 
+                </TableHead>
+                <TableHead 
                   onClick={() => handleSort("price")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
@@ -172,11 +168,12 @@ export const lovable = {
                     Price
                     {sortField === "price" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4"/> :
-                      <ChevronDown className="h-4 w-4"/>
+                      <ChevronUp className="h-4 w-4" /> :
+                      <ChevronDown className="h-4 w-4" />
                     )}
                   </div>
-                <tableHead 
+                </TableHead>
+                <TableHead 
                   onClick={() => handleSort("change")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
@@ -184,11 +181,12 @@ export const lovable = {
                     Change 24h
                     {sortField === "change" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4"/> :
-                      <ChevronDown className="h-4 w-4"/>
+                      <ChevronUp className="h-4 w-4" /> :
+                      <ChevronDown className="h-4 w-4" />
                     )}
                   </div>
-                <tableHead 
+                </TableHead>
+                <TableHead 
                   onClick={() => handleSort("volume")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
@@ -196,22 +194,25 @@ export const lovable = {
                     Volume
                     {sortField === "volume" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp className="h-4 w-4"/> :
-                      <ChevronDown className="h-4 w-4"/>
+                      <ChevronUp className="h-4 w-4" /> :
+                      <ChevronDown className="h-4 w-4" />
                     )}
                   </div>
+                </TableHead>
               </TableRow>
-            <tableBody>
+            </TableHeader>
+            <TableBody>
               {filteredTickers.map((ticker) => (
-                <tableRow
+                <TableRow
                   key={ticker.symbol}
                   onClick={() => onSelect?.(ticker.symbol)}
                   className={`hover:bg-white/10 cursor-pointer transition-colors ${
                     favorites.has(ticker.symbol) ? "bg-cyan-950/20" : ""
                   }`}
                 >
-                  <tableCell className="w-10">
-                    <Button  onClick={(e) => toggleFavorite(ticker.symbol, e)}
+                  <TableCell className="w-10">
+                    <button 
+                      onClick={(e) => toggleFavorite(ticker.symbol, e)}
                       className="focus:outline-none"
                     >
                       <Star
@@ -220,32 +221,36 @@ export const lovable = {
                             ? "fill-yellow-400 text-yellow-400"
                             : "text-gray-500"
                         }`}
-         /></div></button>
+                      />
                     </button>
-                  <tableCell className="font-medium">{ticker.symbol}</TableCell>
-                  <tableCell className="text-right">${formatPrice(ticker.price)}</TableCell>
+                  </TableCell>
+                  <TableCell className="font-medium">{ticker.symbol}</TableCell>
+                  <TableCell className="text-right">${formatPrice(ticker.price)}</TableCell>
                   <TableCell className={`text-right ${
-                    ticker.change> 0 ? "text-green-400" : 
+                    ticker.change > 0 ? "text-green-400" : 
                     ticker.change < 0 ? "text-red-400" : "text-gray-400"
                   }`}>
                     {formatPercent(ticker.change)}
                   </TableCell>
-                  <tableCell className="text-right">{formatVolume(ticker.volume)}</TableCell>
+                  <TableCell className="text-right">{formatVolume(ticker.volume)}</TableCell>
+                </TableRow>
               ))}
               
               {filteredTickers.length === 0 && (
-                <tableRow>
-                  <tableCell colSpan={5} className="text-center py-8 text-gray-500">
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center py-8 text-gray-500">
                     No markets found matching "{search}"
                   </TableCell>
+                </TableRow>
               )}
             </TableBody>
+          </Table>
         </div>
       </div>
       
       <div className="text-xs text-gray-500 flex justify-between">
-        <span></div>Showing {filteredTickers.length} of {tickers.length} markets</div>
-        <span></span>{favorites.size} favorites</span>
+        <span>Showing {filteredTickers.length} of {tickers.length} markets</span>
+        <span>{favorites.size} favorites</span>
       </div>
     </div>
   );

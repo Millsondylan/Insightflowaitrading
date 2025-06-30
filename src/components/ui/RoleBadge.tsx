@@ -15,7 +15,7 @@ interface RoleBadgeProps {
   className?: string;
 }
 
-export const RoleBadge: React.FC<RoleBadgeProps /> = ({ 
+export const RoleBadge: React.FC<RoleBadgeProps> = ({ 
   role, 
   showTooltip = true,
   className 
@@ -50,14 +50,15 @@ export const RoleBadge: React.FC<RoleBadgeProps /> = ({
   const safeGlowEffect = glowEffect[safeRole as UserRole];
 
   const badge = (
-    <span className={cn(
+    <Span className={cn(
         'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
         'relative overflow-hidden',
         'after:absolute after:inset-0 after:rounded-full after:opacity-50 after:blur-sm after:-z-10',
         safeRoleStyles,
         safeGlowEffect,
         className
-      )}></RoleBadgeProps>
+      )}
+   >
       {role}
     </span>
   );
@@ -67,12 +68,14 @@ export const RoleBadge: React.FC<RoleBadgeProps /> = ({
     return (
       <TooltipProvider>
         <Tooltip>
-          <TooltipTrigger asChild/></TooltipProvider></TooltipProvider>
+          <TooltipTrigger asChild>
             {badge}
-          </TooltipProvider>
+          </TooltipTrigger>
           <TooltipContent>
-            <p className="text-xs"/></TooltipContent></TooltipContent>{tooltipContent[safeRole as UserRole]}</TooltipContent>
+            <p className="text-xs">{tooltipContent[safeRole as UserRole]}</p>
+          </TooltipContent>
         </Tooltip>
+      </TooltipProvider>
     );
   }
 
@@ -80,11 +83,4 @@ export const RoleBadge: React.FC<RoleBadgeProps /> = ({
   return badge;
 };
 
-export default RoleBadge;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default RoleBadge; 

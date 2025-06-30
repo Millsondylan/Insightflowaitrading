@@ -9,7 +9,7 @@ interface EmotionTaggingProps {
   onTagSelect?: (emotion: string) => void;
 }
 
-export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) => {
+export const EmotionTagging: React.FC<Emotiontaggingprops > = ({ onTagSelect }) => {
   const emotions = [
     { id: 'confident', label: 'Confident', icon: TrendingUp, color: 'text-green-500' },
     { id: 'anxious', label: 'Anxious', icon: Brain, color: 'text-yellow-500' },
@@ -32,23 +32,23 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
   };
 
   return (
-    <Card />
-      <h2 className="text-2xl font-bold mb-4">Emotion Tagging</Emotiontaggingprops>
+    <Card  />
+      <h2 className="text-2xl font-bold mb-4">Emotion Tagging</h2>
       
       <div className="space-y-6">
         <div>
           <p className="text-sm text-muted-foreground mb-3">
             How are you feeling about your trading?
-          </div>
+          </p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {emotions.map((emotion) => {
               const Icon = emotion.icon;
               return (
-                <Button  style={{ display: "flex", alignItems: "center" }}> handleEmotionSelect(emotion.id)}
+                <button  style={{ display: "flex", alignItems: "center" }}> handleEmotionSelect(emotion.id)}
                 >
-                  <Icon >
-                  <span className="text-xs">{emotion.label}</div>
-                </button>
+                  <icon  >
+                  <span className="text-xs">{emotion.label}</span>
+                </Button>
               );
             })}
           </div>
@@ -59,12 +59,12 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
             <p className="text-sm">
               You're feeling <strong>{emotions.find(e => e.id === selectedEmotion)?.label}</strong>.
               This emotion will be tagged with your current trading activity.
-            </div>
+            </p>
           </div>
         )}
 
         <div>
-          <h3 className="font-semibold mb-3">Recent Emotion Tags</div>
+          <h3 className="font-semibold mb-3">Recent Emotion Tags</h3>
           <div className="space-y-2">
             {recentTags.map((tag, i) => {
               const emotion = emotions.find(e => e.id === tag.emotion);
@@ -73,9 +73,9 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
               return (
                 <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex items-center gap-3">
-                    <Icon / / / / //>
+                    <icon  >
                     <div>
-                      <p className="font-medium">{emotion?.label}</div>
+                      <p className="font-medium">{emotion?.label}</p>
                       <p className="text-sm text-muted-foreground">{tag.context}</p>
                     </div>
                   </div>
@@ -87,13 +87,14 @@ export const EmotionTagging: React.FC<Emotiontaggingprops> = ({ onTagSelect }) =
         </div>
 
         <div className="p-4 bg-primary/5 rounded-lg">
-          <h4 className="font-medium mb-2"></div>Emotion Insights</div>
+          <h4 className="font-medium mb-2">Emotion Insights</h4>
           <p className="text-sm text-muted-foreground">
-            Your best trades happen when you're feeling <span className="text-green-500 font-medium">confident</p> and <span className="text-blue-500 font-medium">calm</span>.
+            Your best trades happen when you're feeling <span className="text-green-500 font-medium">confident</span> and <span className="text-blue-500 font-medium">calm</span>.
             Consider meditation before trading to maintain emotional balance.
           </p>
         </div>
-      </div />
+      </div>
+    </Card>
   );
 }; 
 

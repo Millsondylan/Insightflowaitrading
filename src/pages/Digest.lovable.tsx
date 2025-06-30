@@ -79,29 +79,30 @@ export default function DigestPage() {
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-2">
             AI Market Digest
-          </div>
+          </h1>
           <p className="text-lg text-white/70">
             A real-time feed of markets matching your active strategies, powered
             by AI.
-          </p />
+          </p>
+        </header>
 
         <div className="flex justify-center gap-4 mb-8">
-          <Button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
+          <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
             <Zap >
-            <span>Live Scan</p>
+            <span>Live Scan</span>
           </button>
-          <Button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <Filetext /></button></button>
+          <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
+            <Filetext  />
             <span>View Reports</span>
           </button>
         </div>
 
-        <Marketdigest /></Marketdigest>
+        <marketdigest  >
         
         <div className="mt-8 text-center">
-          <p className="text-white/50 text-sm"></div></div>
+          <p className="text-white/50 text-sm">
             Summaries generated automatically based on price action, volume, and strategy matches
-          </div>
+          </p>
         </div>
       </div>
     </div>

@@ -63,7 +63,7 @@ const KPICard = ({
   return (
     <div className={`kpi-card ${type}`}>
       <div className="flex justify-between items-center mb-2">
-        <span className="kpi-label">{label}</div>
+        <span className="kpi-label">{label}</span>
         <span className="text-xl">{icon}</span>
       </div>
       <div className={`kpi-value ${type}`}>
@@ -137,8 +137,9 @@ const KPICards = ({ stats }: KPICardsProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {cards.map((card, index) => (
-        <Blockreveal>
-          <Kpicard /></div></div />
+        <Blockreveal >
+          <Kpicard  />
+        </BlockReveal>
       ))}
     </div>
   );

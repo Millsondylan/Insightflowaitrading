@@ -16,7 +16,7 @@ interface AuthContextType {
   hasProAccess: boolean;
 }
 
-const AuthContext = createContext<authcontexttype>({
+const AuthContext = createContext<Authcontexttype >({
   session: null,
   user: null,
   profile: null,
@@ -28,8 +28,8 @@ const AuthContext = createContext<authcontexttype>({
 });
 
 export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [session, setSession] = useState<Session />(null);
-  const [profile, setProfile] = useState<Userprofile >(null);
+  const [session, setSession] = useState<Session  />(null);
+  const [profile, setProfile] = useState<userprofile  >(null);
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -99,7 +99,7 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
     hasProAccess,
   };
 
-  return <authcontext />{children}</AuthContext.Provider>;
+  return <authcontext  >{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {

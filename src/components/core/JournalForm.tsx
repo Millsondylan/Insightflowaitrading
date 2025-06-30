@@ -39,7 +39,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   };
   
   // Handle form field changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement/>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
     
@@ -168,7 +168,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
               value={formData.title}
               onChange={handleChange}
               placeholder="E.g., ETH Breakout Trade"
-              className={cn(errors.title && "border-red-500")}/>
+              className={cn(errors.title && "border-red-500")}
+            />
             {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
           </div>
           
@@ -242,7 +243,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
               onChange={handleChange}
               placeholder="Describe your trade setup, strategy, and observations..."
               rows={4}
-              className={cn(errors.reason && "border-red-500")}/>
+              className={cn(errors.reason && "border-red-500")}
+            />
             {errors.reason && <p className="text-sm text-red-500">{errors.reason}</p>}
           </div>
           
@@ -250,22 +252,26 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
           <div className="space-y-2">
             <Label>Trade Sentiment</Label>
             <div className="flex items-center space-x-2">
-              <Button type="button"
+              <Button
+                type="button"
                 variant={formData.sentiment === "Bullish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
                 className={cn(
                   "w-28",
                   formData.sentiment === "Bullish" && "bg-green-600 hover:bg-green-700"
-                )}>
+                )}
+              >
                 🟢 Bullish
               </Button>
-              <Button type="button"
+              <Button
+                type="button"
                 variant={formData.sentiment === "Bearish" ? "default" : "outline"}
                 onClick={handleSentimentToggle}
                 className={cn(
                   "w-28",
                   formData.sentiment === "Bearish" && "bg-red-600 hover:bg-red-700"
-                )}>
+                )}
+              >
                 🔴 Bearish
               </Button>
             </div>
@@ -296,7 +302,8 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   <p className="text-xs text-gray-400">
                     {(formData.chartFile.size / 1024 / 1024).toFixed(2)} MB
                   </p>
-                  <Button type="button" 
+                  <Button 
+                    type="button" 
                     variant="ghost" 
                     size="sm"
                     onClick={(e) => {
@@ -314,7 +321,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
                   <p className="text-xs text-gray-400 mt-2">PNG, JPG (max 5MB)</p>
                 </div>
               )}
-              <Input
+              <input
                 ref={fileInputRef}
                 type="file"
                 className="hidden"
@@ -327,13 +334,15 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
       </CardContent>
       
       <CardFooter>
-        <Button type="button" 
+        <Button 
+          type="button" 
           onClick={handleSubmit} 
           disabled={isSubmitting} 
           className={cn(
             "w-full font-medium text-lg py-6",
             formData.sentiment === "Bullish" ? "bg-green-600 hover:bg-green-700" : "bg-red-600 hover:bg-red-700"
-          )}>
+          )}
+        >
           {isSubmitting ? "Saving..." : "Save Entry"}
         </Button>
       </CardFooter>
@@ -341,11 +350,4 @@ const JournalForm: React.FC<JournalFormProps> = ({ onEntryAdded }) => {
   );
 };
 
-export default JournalForm;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default JournalForm; 

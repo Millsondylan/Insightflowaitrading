@@ -80,19 +80,19 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
             </SelectTrigger>
             <SelectContent className="bg-black/90 border-gray-700 text-white">
               <SelectItem value="1H">1 Hour</SelectItem>
-              {/* Add more timeframes as needed */}
             </SelectContent>
           </Select>
         </div>
       </div>
       <div>
         <Label htmlFor="entryLogic">Entry Logic</Label>
-        <Textarea id="entryLogic"
+        <Textarea
+          id="entryLogic"
           name="entryLogic"
           value={formState.entryLogic}
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
-          placeholder="e.g., close> sma(50)"
+          placeholder="e.g., close > sma(50)"
         />
       </div>
       <div>
@@ -104,25 +104,19 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
           onChange={handleTextAreaChange}
           className="bg-black/30 border-gray-700 min-h-[80px] font-mono"
           placeholder="e.g., close < sma(50)"
-       />
+        />
       </div>
       <div className="flex justify-center">
-        <Button type="submit"
+        <Button
+          type="submit"
           className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
           disabled={isLoading}
         >
-          {isLoading ? <Loader2 className="animate-spin"/> : 'Run Backtest'}
-        </button>
+          {isLoading ? <Loader2 className="animate-spin" /> : 'Run Backtest'}
+        </Button>
       </div>
     </form>
   );
 };
 
-export default BacktestForm;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default BacktestForm; 

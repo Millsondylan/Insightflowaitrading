@@ -39,7 +39,7 @@ const UserTable: React.FC = () => {
   const [loading, setLoading] = useState(true);
   
   // State for filtering and pagination
-  const [filterOptions, setFilterOptions] = useState<Fetchusersoptions />({
+  const [filterOptions, setFilterOptions] = useState<Fetchusersoptions  />({
     page: 1,
     perPage: 10,
     sortBy: 'created_at',
@@ -71,7 +71,7 @@ const UserTable: React.FC = () => {
   }, [filterOptions]);
   
   // Handle search input
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement >) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     // Debounce implementation would be better in production
     setFilterOptions(prev => ({ ...prev, search: e.target.value, page: 1 }));
   };
@@ -124,17 +124,18 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <pagination >
-        <paginationcontent />
-          <paginationitem >
-            <paginationprevious href="#"> {
+      <pagination  >
+        <paginationcontent  >
+          <paginationitem  >
+            <paginationprevious href="#" > {
                 e.preventDefault();
                 if (currentPage > 1) {
                   handlePageChange(currentPage - 1);
                 }
               }}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
-            / />
+            />
+          </PaginationItem>
           
           {[...Array(pageCount)].map((_, i) => {
             const page = i + 1;
@@ -145,35 +146,38 @@ const UserTable: React.FC = () => {
               (page >= currentPage - 1 && page <= currentPage + 1)
             ) {
               return (
-                <paginationitem >
-                  <paginationlink href="#"> {
+                <paginationitem  >
+                  <paginationlink href="#" > {
                       e.preventDefault();
                       handlePageChange(page);
                     }}
                     isActive={page === currentPage}
                   >
                     {page}
-                  </PaginationLink />
+                  </PaginationLink>
+                </PaginationItem>
               );
             } else if (
               page === currentPage - 2 || 
               page === currentPage + 2
             ) {
-              return <paginationellipsis >;
+              return <paginationellipsis  >;
             }
             return null;
           })}
           
-          <paginationitem >
-            <paginationnext href="#"> {
+          <paginationitem  >
+            <paginationnext href="#" > {
                 e.preventDefault();
                 if (currentPage < pageCount) {
                   handlePageChange(currentPage + 1);
                 }
               }}
               className={currentPage >= pageCount ? 'pointer-events-none opacity-50' : ''}
-            / />
-        </PaginationContent />
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     );
   };
   
@@ -182,12 +186,12 @@ const UserTable: React.FC = () => {
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
         <tr key={i} className="border-b border-gray-800/30">
-          <td className="px-4 py-3"><skeleton />
-          <td className="px-4 py-3"><skeleton />
-          <td className="px-4 py-3"><skeleton />
-          <td className="px-4 py-3"><skeleton />
-          <td className="px-4 py-3"><skeleton />
-        </User>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+          <td className="px-4 py-3"><skeleton  ></td>
+        </tr>
       ))}
     </>
   );
@@ -199,72 +203,80 @@ const UserTable: React.FC = () => {
         <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
           <div className="relative">
-            <Search >
-            <Input type="text" placeholder="Search wallet address..." style={{ width: "100%" }}/></div>
+            <search  >
+            <input type="text" placeholder="Search wallet address..." style={{ width: "100%" }}>
           </div>
           
           {/* Role filter */}
-          <Select >
-            <SelectTrigger >
-              <SelectValue placeholder="All roles"/>
-            <SelectContent >
-              <SelectItem value="">All roles</Select>
-              <SelectItem value="Admin">
+          <select  >
+            <selecttrigger  >
+              <selectvalue placeholder="All roles" >
+            </SelectTrigger>
+            <selectcontent  >
+              <selectitem value="" >All roles</SelectItem>
+              <selectitem value="Admin" >
                 <div className="flex items-center gap-2">
-                  <rolebadge role="Admin"> Admin
-                </div />
-              <SelectItem value="User">
+                  <rolebadge role="Admin" > Admin
+                </div>
+              </SelectItem>
+              <selectitem value="User" >
                 <div className="flex items-center gap-2">
-                  <rolebadge role="User"> User
-                </div />
-              <SelectItem value="Trial">
+                  <rolebadge role="User" > User
+                </div>
+              </SelectItem>
+              <selectitem value="Trial" >
                 <div className="flex items-center gap-2">
-                  <rolebadge role="Trial"> Trial
-                </div />
-              <SelectItem value="Expired">
+                  <rolebadge role="Trial" > Trial
+                </div>
+              </SelectItem>
+              <selectitem value="Expired" >
                 <div className="flex items-center gap-2">
-                  <rolebadge role="Expired"> Expired
-                </div />
-            </SelectContent />
+                  <rolebadge role="Expired" > Expired
+                </div>
+              </SelectItem>
+            </SelectContent>
+          </Select>
           
           {/* Sort options */}
-          <DropdownMenu >
-            <DropdownMenuTrigger >
-              <Button variant="outline" size="sm">
-                <Filter >
+          <dropdownmenu  >
+            <dropdownmenutrigger  >
+              <button variant="outline" size="sm" >
+                <filter  >
                 Sort
-              </button />
-            <DropdownMenuContent  style={{ border: "1px solid #E5E7EB" }}>
-              <DropdownMenuItem > handleSortChange('created_at-desc')} className="cursor-pointer">
+              </Button>
+            </DropdownMenuTrigger>
+            <dropdownmenucontent  style={{ border: "1px solid #E5E7EB" }}>
+              <dropdownmenuitem  > handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </SelectItem>
-              <DropdownMenuItem > handleSortChange('created_at-asc')} className="cursor-pointer">
+              </DropdownMenuItem>
+              <dropdownmenuitem  > handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
-              <DropdownMenuItem > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
+              <dropdownmenuitem  > handleSortChange('subscription_tier-desc')} className="cursor-pointer">
                 By Plan (Z-A)
               </DropdownMenuItem>
-              <DropdownMenuItem > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
+              <dropdownmenuitem  > handleSortChange('subscription_tier-asc')} className="cursor-pointer">
                 By Plan (A-Z)
               </DropdownMenuItem>
-              <DropdownMenuItem > handleSortChange('role-asc')} className="cursor-pointer">
+              <dropdownmenuitem  > handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
-              </DropdownMenuItem />
-          </DropdownMenuItem>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         
         <div className="flex items-center gap-2">
           {/* Export button */}
-          <Button variant="outline" style={{ display: "flex", alignItems: "center" }}>
-            <Download >
+          <button variant="outline" style={{ display: "flex", alignItems: "center" }}>
+            <download  >
             Export CSV
-          </div>
+          </Button>
           
           {/* Grant admin button */}
-          <Button  style={{ display: "flex", alignItems: "center" }}>
-            <Plus >
+          <button  style={{ display: "flex", alignItems: "center" }}>
+            <plus  >
             Grant Admin
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -275,7 +287,7 @@ const UserTable: React.FC = () => {
             <tr>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
-              </div>
+              </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
               </th>
@@ -287,24 +299,27 @@ const UserTable: React.FC = () => {
               </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
-              </Th />
-          </th>
+              </th>
+            </tr>
+          </thead>
           <tbody>
             {loading ? (
               renderSkeleton()
             ) : users.length > 0 ? (
               users.map(user => (
-                <Userrow /></Tbody /></Tbody /></tbody>
+                <userrow  >
               ))
             ) : (
               <tr>
                 <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users /></Tr /></Tr /></tr>
+                  <users  >
                   <p>No users found</p>
-                  <p className="text-sm">Try adjusting your search or filters</p />
-              </p>
+                  <p className="text-sm">Try adjusting your search or filters</p>
+                </td>
+              </tr>
             )}
-          </Tbody />
+          </tbody>
+        </table>
       </div>
       
       {/* Pagination */}
@@ -313,11 +328,11 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <p></div></div>
+          <p>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}
-          </div>
+          </p>
         )}
       </div>
     </div>

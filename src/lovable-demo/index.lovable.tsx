@@ -14,7 +14,7 @@ if (container) {
         fontFamily: 'system-ui, -apple-system, sans-serif',
         padding: '24px'
       }}>
-        <Lovabledemo />
+        <Lovabledemo  />
       </div>
     </React.StrictMode>
   );

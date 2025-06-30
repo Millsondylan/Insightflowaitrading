@@ -10,7 +10,6 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Slider } from '@/components/ui/slider';
 import { Separator } from '@/components/ui/separator';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useAuth } from '@/hooks/use-auth';
 import { useAuditLog } from '@/lib/monitoring/auditLogger';
 import { generateLessonNarration, NarratorContext, NarratorOptions } from '@/lib/academy/generateLessonNarrator';
@@ -133,17 +132,17 @@ export default function LessonNarrator({
   };
   
   const handleVoiceChange = (voice: 'friendly' | 'professional' | 'enthusiastic' | 'calm') => {
-    setNarratorOptions((prev: Partial<NarratorOptions>) => ({ ...prev, voice }));
+    setNarratorOptions(prev => ({ ...prev, voice }));
     logClick('ChangeNarratorVoice', { voice });
   };
   
   const handleStyleChange = (style: 'conversational' | 'educational' | 'coaching') => {
-    setNarratorOptions((prev: Partial<NarratorOptions>) => ({ ...prev, style }));
+    setNarratorOptions(prev => ({ ...prev, style }));
     logClick('ChangeNarratorStyle', { style });
   };
   
   const handlePaceChange = (pace: 'slow' | 'medium' | 'fast') => {
-    setNarratorOptions((prev: Partial<NarratorOptions>) => ({ ...prev, pace }));
+    setNarratorOptions(prev => ({ ...prev, pace }));
     logClick('ChangeNarratorPace', { pace });
   };
 
@@ -158,7 +157,7 @@ export default function LessonNarrator({
     return (
       <div className="flex items-center justify-between p-4 border rounded-lg border-gray-800 bg-gray-900/50 mb-6">
         <div className="flex items-center gap-3">
-          <Bot className="h-5 w-5 text-blue-400"/>
+          <Bot className="h-5 w-5 text-blue-400" />
           <div>
             <h3 className="font-medium">AI Narration</h3>
             <p className="text-sm text-gray-400">Get personalized commentary on this lesson</p>
@@ -177,24 +176,27 @@ export default function LessonNarrator({
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center text-lg text-blue-400">
-            <Bot className="mr-2 h-5 w-5"/>
+            <Bot className="mr-2 h-5 w-5" />
             AI Lesson Narrator
           </CardTitle>
           <div className="flex items-center gap-2">
             {loading ? (
               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
             ) : (
-              <Button variant="ghost" 
+              <Button 
+                variant="ghost" 
                 size="icon" 
                 className="h-8 w-8 text-blue-400"
-                onClick={handleRegenerateNarration}>
-                <RefreshCw className="h-4 w-4"/>
-              </button>
+                onClick={handleRegenerateNarration}
+              >
+                <RefreshCw className="h-4 w-4" />
+              </Button>
             )}
             
             <Popover open={showSettings} onOpenChange={setShowSettings}>
               <PopoverTrigger asChild>
-                <Button variant="ghost" 
+                <Button 
+                  variant="ghost" 
                   size="icon"
                   className="h-8 w-8 text-blue-400"
                   onClick={() => {
@@ -202,8 +204,8 @@ export default function LessonNarrator({
                     logClick('OpenNarratorSettings');
                   }}
                 >
-                  <Settings className="h-4 w-4"/>
-                </button>
+                  <Settings className="h-4 w-4" />
+                </Button>
               </PopoverTrigger>
               <PopoverContent className="w-80 p-4">
                 <div className="space-y-4">
@@ -211,24 +213,25 @@ export default function LessonNarrator({
                   
                   <div className="space-y-2">
                     <h5 className="text-sm font-medium">Voice Style</h5>
-                    <RadioGroup value={narratorOptions.voice} 
+                    <RadioGroup 
+                      value={narratorOptions.voice} 
                       onValueChange={(value) => handleVoiceChange(value as any)}
                       className="grid grid-cols-2 gap-2"
                     >
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="friendly" id="friendly"/>
+                        <RadioGroupItem value="friendly" id="friendly" />
                         <Label htmlFor="friendly">Friendly</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="professional" id="professional"/>
+                        <RadioGroupItem value="professional" id="professional" />
                         <Label htmlFor="professional">Professional</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="enthusiastic" id="enthusiastic"/>
+                        <RadioGroupItem value="enthusiastic" id="enthusiastic" />
                         <Label htmlFor="enthusiastic">Enthusiastic</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="calm" id="calm"/>
+                        <RadioGroupItem value="calm" id="calm" />
                         <Label htmlFor="calm">Calm</Label>
                       </div>
                     </RadioGroup>
@@ -238,19 +241,20 @@ export default function LessonNarrator({
                   
                   <div className="space-y-2">
                     <h5 className="text-sm font-medium">Teaching Style</h5>
-                    <RadioGroup value={narratorOptions.style} 
+                    <RadioGroup 
+                      value={narratorOptions.style} 
                       onValueChange={(value) => handleStyleChange(value as any)}
                     >
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="conversational" id="conversational"/>
+                        <RadioGroupItem value="conversational" id="conversational" />
                         <Label htmlFor="conversational">Conversational</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="educational" id="educational"/>
+                        <RadioGroupItem value="educational" id="educational" />
                         <Label htmlFor="educational">Educational</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="coaching" id="coaching"/>
+                        <RadioGroupItem value="coaching" id="coaching" />
                         <Label htmlFor="coaching">Coaching</Label>
                       </div>
                     </RadioGroup>
@@ -260,20 +264,21 @@ export default function LessonNarrator({
                   
                   <div className="space-y-2">
                     <h5 className="text-sm font-medium">Teaching Pace</h5>
-                    <RadioGroup value={narratorOptions.pace} 
+                    <RadioGroup 
+                      value={narratorOptions.pace} 
                       onValueChange={(value) => handlePaceChange(value as any)}
                       className="grid grid-cols-3 gap-2"
                     >
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="slow" id="slow"/>
+                        <RadioGroupItem value="slow" id="slow" />
                         <Label htmlFor="slow">Slow</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="medium" id="medium"/>
+                        <RadioGroupItem value="medium" id="medium" />
                         <Label htmlFor="medium">Medium</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="fast" id="fast"/>
+                        <RadioGroupItem value="fast" id="fast" />
                         <Label htmlFor="fast">Fast</Label>
                       </div>
                     </RadioGroup>
@@ -281,12 +286,13 @@ export default function LessonNarrator({
                   
                   <Button onClick={handleSettingsChange} className="w-full">
                     Apply Settings
-                  </button>
+                  </Button>
                 </div>
               </PopoverContent>
             </Popover>
             
-            <Switch checked={enabled} 
+            <Switch 
+              checked={enabled} 
               onCheckedChange={(checked) => {
                 setEnabled(checked);
                 logClick('ToggleNarration', { enabled: checked });
@@ -298,10 +304,10 @@ export default function LessonNarrator({
       <CardContent>
         {loading ? (
           <div className="space-y-2 py-2">
-            <Skeleton className="h-4 w-full"/>
-            <Skeleton className="h-4 w-[90%]"/>
-            <Skeleton className="h-4 w-[95%]"/>
-            <Skeleton className="h-4 w-[85%]"/>
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-[90%]" />
+            <Skeleton className="h-4 w-[95%]" />
+            <Skeleton className="h-4 w-[85%]" />
           </div>
         ) : error ? (
           <Alert variant="destructive">
@@ -316,63 +322,62 @@ export default function LessonNarrator({
             </div>
             
             <div className="flex items-center justify-between">
-              <Button variant="outline" 
+              <Button
+                variant="outline" 
                 size="sm"
                 className={`${playing ? 'bg-blue-600 text-white' : ''} w-24`}
                 onClick={handlePlayPause}
               >
                 {playing ? (
-                  <><Pause className="h-3 w-3 mr-2"/> Pause</Pause>
+                  <><Pause className="h-3 w-3 mr-2" /> Pause</>
                 ) : (
-                  <><Play className="h-3 w-3 mr-2"/> Listen</Play>
+                  <><Play className="h-3 w-3 mr-2" /> Listen</>
                 )}
-              </button>
+              </Button>
               
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-2">
-                  <Button variant="ghost" 
+                  <Button 
+                    variant="ghost" 
                     size="icon"
                     className="h-8 w-8" 
                     onClick={() => setVolume(volume === 0 ? 80 : 0)}
                   >
                     {volume === 0 ? (
-                      <VolumeX className="h-4 w-4"/>
+                      <VolumeX className="h-4 w-4" />
                     ) : (
-                      <Volume2 className="h-4 w-4"/>
+                      <Volume2 className="h-4 w-4" />
                     )}
-                  </button>
-                  <Slider value={[volume]}
+                  </Button>
+                  <Slider
+                    value={[volume]}
                     max={100}
                     step={1}
                     className="w-24"
                     onValueChange={(value) => {
-                      setVolume(value[0] || 0);
-                      logClick('AdjustNarratorVolume', { volume: value[0] || 0 });
+                      setVolume(value[0]);
+                      logClick('AdjustNarratorVolume', { volume: value[0] });
                     }}
                   />
                 </div>
                 
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-gray-400">Speed:</span>
-                  <Select
-                    value={playbackSpeed.toString()}
-                    onValueChange={(value) => {
-                      setPlaybackSpeed(parseFloat(value));
-                      logClick('AdjustNarratorSpeed', { speed: value });
+                  <select
+                    className="bg-transparent text-xs border border-gray-700 rounded px-1 py-0.5"
+                    value={playbackSpeed}
+                    onChange={(e) => {
+                      setPlaybackSpeed(parseFloat(e.target.value));
+                      logClick('AdjustNarratorSpeed', { speed: e.target.value });
                     }}
                   >
-                    <SelectTrigger className="bg-transparent text-xs border border-gray-700 rounded px-1 py-0.5 h-6">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="0.5">0.5x</SelectItem>
-                      <SelectItem value="0.75">0.75x</SelectItem>
-                      <SelectItem value="1">1x</SelectItem>
-                      <SelectItem value="1.25">1.25x</SelectItem>
-                      <SelectItem value="1.5">1.5x</SelectItem>
-                      <SelectItem value="2">2x</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    <option value="0.5">0.5x</option>
+                    <option value="0.75">0.75x</option>
+                    <option value="1">1x</option>
+                    <option value="1.25">1.25x</option>
+                    <option value="1.5">1.5x</option>
+                    <option value="2">2x</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -381,11 +386,4 @@ export default function LessonNarrator({
       </CardContent>
     </Card>
   );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

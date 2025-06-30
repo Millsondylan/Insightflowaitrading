@@ -29,11 +29,11 @@ const CTASection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          <Button  style={{ border: "1px solid #E5E7EB", color: "white", fontSize: "1.125rem" }}>
+          <button  style={{ border: "1px solid #E5E7EB", color: "white", fontSize: "1.125rem" }}>
             <Link to="/strategy">
-              Get Started <ArrowRight /></div>
-            </div>
-          </button>
+              Get Started <Arrowright  />
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </motion.section>

@@ -27,7 +27,7 @@ const PriceTooltip = ({ active, payload, label }: any) => {
       <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
         <p className="text-gray-300 text-xs">
           {new Date(data.time * 1000).toLocaleString()}
-        </div>
+        </p>
         <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
       </div>
     );
@@ -44,11 +44,11 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
     <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
       <p className="font-bold">
         {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
-      </div>
+      </p>
       <p>{formattedTime}</p>
       <p>Price: {trade.price.toFixed(2)}</p>
       {!isEntry && trade.pnlPercentage !== undefined && (
-        <p className={trade.pnlPercentage> 0 ? 'text-green-400' : 'text-red-400'}>
+        <p className={trade.pnlPercentage > 0 ? 'text-green-400' : 'text-red-400'}>
           PnL: {(trade.pnlPercentage * 100).toFixed(2)}%
         </p>
       )}
@@ -58,7 +58,7 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
 
 const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
   const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<tradeMarker | null>(null);
+  const [hoveredTrade, setHoveredTrade] = useState<TradeMarker | null>(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   
   // Start animation after component mounts
@@ -75,17 +75,19 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   const maxPrice = Math.max(...prices) * 1.005;
 
   return (
-    <blockReveal>
+    <BlockReveal>
       <div className="chart-container">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-bold text-white">
             {ticker} ({timeframe})
-          </div>
+          </h3>
         </div>
         <ResponsiveContainer width="100%" height="90%">
-          <lineChart data={animationComplete ? priceData : []}
-            margin={{ top: 10, right: 30, left: 10, bottom: 10 }}>
-            <CartesianGrid strokeDasharray="3 3"/>
+          <LineChart
+            data={animationComplete ? priceData : []}
+            margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="time"
               tickFormatter={(time) => new Date(time * 1000).toLocaleDateString()}
@@ -96,14 +98,15 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
               tick={{ fill: '#9ca3af' }}
               tickFormatter={(value) => value.toFixed(0)}
             />
-            <Tooltip content={<priceTooltip/>} />
-            <line
+            <Tooltip content={<PriceTooltip />} />
+            <Line
               type="monotone"
               dataKey="price"
               stroke="#22d3ee"
               strokeWidth={2}
               dot={false}
-              animationDuration={1500}/>
+              animationDuration={1500}
+            />
             
             {/* Trade entry markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'entry').map((marker, idx) => (
@@ -134,23 +137,18 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
-          </ResponsiveContainer>
+          </LineChart>
+        </ResponsiveContainer>
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
           <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <tradeTooltip trade={hoveredTrade}/>
-          </ResponsiveContainer>
+            <TradeTooltip trade={hoveredTrade} />
+          </div>
         )}
       </div>
+    </BlockReveal>
   );
 };
 
-export default BacktestChart;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default BacktestChart; 

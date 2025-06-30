@@ -19,16 +19,4 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  esbuild: {
-    logOverride: {
-      'jsx-syntax': 'silent',
-      'jsx-tag-mismatch': 'silent',
-      'jsx-no-self-closing': 'silent',
-      'unterminated-regexp': 'silent',
-    },
-  },
-  build: {
-    minify: mode === 'production',
-    sourcemap: mode === 'development',
-  },
 }));

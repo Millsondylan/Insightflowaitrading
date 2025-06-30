@@ -19,10 +19,10 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
   showLabels = true,
   onCellClick
 }) => {
-  const [heatmapData, setHeatmapData] = useState<HeatmapData | null/>(null);
+  const [heatmapData, setHeatmapData] = useState<HeatmapData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [hoveredCell, setHoveredCell] = useState<HeatmapCell | null/>(null);
+  const [hoveredCell, setHoveredCell] = useState<HeatmapCell | null>(null);
 
   // Generate color based on value and selected color scale
   const getColor = (value: number): string => {
@@ -135,7 +135,7 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
   };
 
   if (loading) {
-    return <div className="flex justify-center items-center h-64">Loading heatmap data...</VaultHeatmapProps>;
+    return <div className="flex justify-center items-center h-64">Loading heatmap data...</div>;
   }
 
   if (error) {
@@ -211,15 +211,17 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
   }
 
   return (
-    <Card className="w-full h-[600px] bg-black/80 border-zinc-800"/>
+    <Card className="w-full h-[600px] bg-black/80 border-zinc-800">
       <CardHeader>
-        <CardTitle className="text-white"/>Strategy Performance Heatmap</Card>
+        <CardTitle className="text-white">Strategy Performance Heatmap</CardTitle>
+      </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {strategies.map((strategy) => (
-            <div key={strategy.id} 
-              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}>
-              <h3 className="text-lg font-bold">{strategy.name}</Card>
+            <Div key={strategy.id} 
+              className={`p-4 rounded-lg ${getHeatmapColor(strategy.performance.winRate)} text-white`}
+           >
+              <h3 className="text-lg font-bold">{strategy.name}</h3>
               <div className="text-xs text-gray-300 mb-2">{strategy.description}</div>
               <div className="mt-2">
                 <div>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</div>
@@ -230,11 +232,11 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
               </div>
               <div className="mt-2 flex space-x-2">
                 {strategy.tags?.map((tag) => (
-                  <span key={tag} 
+                  <Span key={tag} 
                     className="px-2 py-1 bg-black/30 rounded-full text-xs"
-     /></div>
+                  />
                     {tag}
-                  </div>
+                  </span>
                 ))}
               </div>
               <div className="mt-2 text-xs text-gray-400">
@@ -245,6 +247,7 @@ export const VaultHeatmap: React.FC<VaultHeatmapProps> = ({
             </div>
           ))}
         </div>
+      </CardContent>
     </Card>
   );
 };

@@ -7,9 +7,14 @@ import { checkSubscription } from "@/lib/wallet/checkSubscription";
 // Define Ethereum provider interface
 interface EthereumProvider {
   request: (args: { method: string; params?: any[] }) => Promise<any>;
-  on: (event: string, callback: (...args: any[]) => void) => void;
-  removeListener: (event: string, callback: (...args: any[]) => void) => void;
-  isMetaMask?: boolean;
+  on: (event: string, callback: (accounts: string[]) => void) => void;
+  removeListener: (event: string, callback: (accounts: string[]) => void) => void;
+}
+
+declare global {
+  interface Window {
+    ethereum?: EthereumProvider;
+  }
 }
 
 type Props = {
@@ -35,18 +40,18 @@ export default function WalletConnect({ onVerified }: Props) {
         setError(null);
       } else if (accounts[0] !== address) {
         // New account selected
-        setAddress(accounts[0] ?? null);
+        setAddress(accounts[0]);
         setStatus("idle");
       }
     };
 
-    if (isMetaMaskInstalled && window.ethereum) {
-      (window.ethereum as EthereumProvider).on("accountsChanged", handleAccountsChanged);
+    if (isMetaMaskInstalled) {
+      window.ethereum?.on("accountsChanged", handleAccountsChanged);
     }
 
     return () => {
-      if (isMetaMaskInstalled && window.ethereum) {
-        (window.ethereum as EthereumProvider).removeListener("accountsChanged", handleAccountsChanged);
+      if (isMetaMaskInstalled) {
+        window.ethereum?.removeListener("accountsChanged", handleAccountsChanged);
       }
     };
   }, [address, isMetaMaskInstalled]);
@@ -66,7 +71,7 @@ export default function WalletConnect({ onVerified }: Props) {
       });
 
       if (accounts && accounts.length > 0) {
-        setAddress(accounts[0] ?? null);
+        setAddress(accounts[0]);
         setStatus("idle");
       } else {
         throw new Error("No accounts found");
@@ -122,10 +127,12 @@ export default function WalletConnect({ onVerified }: Props) {
         <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
           MetaMask is not installed. Please install MetaMask to continue.
           <div className="mt-2">
-            <a href="https://metamask.io/download/"
+            <a
+              href="https://metamask.io/download/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-400 hover:underline">
+              className="text-cyan-400 hover:underline"
+            >
               Download MetaMask
             </a>
           </div>
@@ -171,20 +178,23 @@ export default function WalletConnect({ onVerified }: Props) {
 
       <div className="pt-2">
         {!address ? (
-          <Button onClick={connectWallet}
+          <Button
+            onClick={connectWallet}
             disabled={status === "connecting" || !isMetaMaskInstalled}
             className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
           >
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
           </Button>
         ) : status === "verified" ? (
-          <Button onClick={() => window.location.reload()}
+          <Button
+            onClick={() => window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect
           </Button>
         ) : (
-          <Button onClick={verifyWallet}
+          <Button
+            onClick={verifyWallet}
             disabled={status === "verifying"}
             className="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700"
           >
@@ -194,11 +204,4 @@ export default function WalletConnect({ onVerified }: Props) {
       </div>
     </div>
   );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

@@ -16,7 +16,7 @@ const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
-  <Dialogprimitive>
+  <Dialogprimitive >
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
@@ -24,40 +24,44 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
-  <dialogportal />
-    <Dialogoverlay >
-    <Dialogprimitive />
+  <Dialogportal  />
+    <dialogoverlay  >
+    <dialogprimitive  >
       {children}
-      <dialogprimitive >
-        <X >
-        <span className="sr-only">Close</Dialogprimitive>
+      <dialogprimitive  >
+        <x  >
+        <span className="sr-only">Close</span>
       </DialogPrimitive.Close>
-    </DialogPrimitive.Content />
+    </DialogPrimitive.Content>
+  </DialogPortal>
 ))
 DialogContent.displayName = DialogPrimitive.Content.displayName
 
 const DialogHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div     className={cn(
+}: React.HTMLAttributes<HTMLDivElement  >) => (
+  <div
+    className={cn(
       "flex flex-col space-y-1.5 text-center sm:text-left",
       className
     )}
-    {...props}/>
+    {...props}
+  />
 )
 DialogHeader.displayName = "DialogHeader"
 
 const DialogFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div     className={cn(
+}: React.HTMLAttributes<HTMLDivElement  >) => (
+  <div
+    className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
-  //></HTMLDivElement /></HTMLDivElement />
+  />
 )
 DialogFooter.displayName = "DialogFooter"
 
@@ -65,7 +69,7 @@ const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <dialogprimitive >
+  <dialogprimitive  >
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
@@ -73,7 +77,7 @@ const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <dialogprimitive >
+  <dialogprimitive  >
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
 

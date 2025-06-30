@@ -16,13 +16,13 @@ interface AIReflectionProps {
   autoGenerate?: boolean;
 }
 
-const AIReflection: React.FC<aireflectionprops> = ({ 
+const AIReflection: React.FC<Aireflectionprops > = ({ 
   entry, 
   className, 
   autoGenerate = false 
 }) => {
   const { toast } = useToast();
-  const [reflection, setReflection] = useState<aireflectiontype />(null);
+  const [reflection, setReflection] = useState<Aireflectiontype  />(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasGenerated, setHasGenerated] = useState(false);
@@ -77,104 +77,112 @@ const AIReflection: React.FC<aireflectionprops> = ({
   // Loading state
   if (loading) {
     return (
-      <Card >
-        <Cardheader />
+      <card  >
+        <cardheader  >
           <div className="flex items-center space-x-2">
-            <brain >
-            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+            <brain  >
+            <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
             <div className="flex space-x-1">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"/>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}/>
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
             </div>
-          </div />
-        <Cardcontent >
+          </div>
+        </CardHeader>
+        <cardcontent  >
           <div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
-            <skeleton >
-            <skeleton />
+            <skeleton  >
+            <skeleton  >
+          </div>
           <div className="space-y-2">
-            <skeleton >
+            <skeleton  >
             <div className="flex gap-2">
-              <skeleton >
-              <skeleton >
-            </Cardcontent>
+              <skeleton  >
+              <skeleton  >
+            </div>
           </div>
           <div className="space-y-2">
             <skeleton  style={{ width: "100%" }}>
-            <skeleton >
-          </div />
-      </div>
+            <skeleton  >
+          </div>
+        </CardContent>
+      </Card>
     );
   }
 
   // Error state
   if (error && !reflection) {
     return (
-      <Card >
-        <Cardheader >
+      <card  >
+        <cardheader  >
           <div className="flex items-center space-x-2">
-            <brain >
-            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
-          </div />
-        <Cardcontent >
+            <brain  >
+            <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
+          </div>
+        </CardHeader>
+        <cardcontent  >
           <div className="text-red-400 text-sm">
             {error}
-          </Cardcontent>
-          <Button variant="outline" size="sm">
+          </div>
+          <button variant="outline" size="sm" >
             Try Again
-          </button />
-      </button>
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 
   // Not generated state
   if (!reflection && !hasGenerated) {
     return (
-      <Card >
-        <Cardheader >
+      <card  >
+        <cardheader  >
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <brain >
-              <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+              <brain  >
+              <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
             </div>
-            <sparkles >
-          </div />
-        <Cardcontent >
+            <sparkles  >
+          </div>
+        </CardHeader>
+        <cardcontent  >
           <p className="text-gray-400 text-sm">
             Get AI-powered insights on your trading psychology and decision-making patterns.
-          </Cardcontent>
-          <Button  style={{ width: "100%" }}>
-            <brain >
+          </p>
+          <button  style={{ width: "100%" }}>
+            <brain  >
             Analyze Trade
-          </button />
-      </button>
+          </Button>
+        </CardContent>
+      </Card>
     );
   }
 
   // Generated state
   return (
-    <Card >
-      <Cardheader >
+    <card  >
+      <cardheader  >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <brain >
-            <Cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</Card>
+            <brain  >
+            <cardtitle  style={{ fontSize: "1.125rem" }}>AI Analysis</CardTitle>
           </div>
           <div className="flex items-center space-x-2">
             <span className={cn('text-xs font-medium', getConfidenceColor(reflection!.confidence))}>
               {getConfidenceText(reflection!.confidence)}
-            </div>
-            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))}/>
+            </span>
+            <div className={cn('w-2 h-2 rounded-full', getConfidenceColor(reflection!.confidence).replace('text-', 'bg-'))} />
           </div>
-        </div />
+        </div>
+      </CardHeader>
       
-      <Cardcontent >
+      <cardcontent  >
         {/* Summary Section */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2 mb-2">
-            <target >
-            <h4 className="text-sm font-medium text-blue-400">Summary</Cardcontent>
+            <target  >
+            <h4 className="text-sm font-medium text-blue-400">Summary</h4>
           </div>
           <p className="text-gray-300 leading-relaxed">
             {reflection!.summary}
@@ -185,18 +193,18 @@ const AIReflection: React.FC<aireflectionprops> = ({
         {reflection!.tags && reflection!.tags.length > 0 && (
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full"/>
-              <h4 className="text-sm font-medium text-purple-400"></div>Behavioral Patterns</div>
+              <div className="w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full" />
+              <h4 className="text-sm font-medium text-purple-400">Behavioral Patterns</h4>
             </div>
-            <behaviortaggroup >
+            <behaviortaggroup  >
           </div>
         )}
 
         {/* Suggestion Section */}
         <div className="space-y-2">
           <div className="flex items-center space-x-2 mb-2">
-            <lightbulb >
-            <h4 className="text-sm font-medium text-yellow-400"></div>Improvement Suggestion</div>
+            <lightbulb  >
+            <h4 className="text-sm font-medium text-yellow-400">Improvement Suggestion</h4>
           </div>
           <p className="text-gray-300 leading-relaxed bg-yellow-500/5 border border-yellow-500/20 rounded-lg p-3">
             {reflection!.suggestion}
@@ -205,11 +213,12 @@ const AIReflection: React.FC<aireflectionprops> = ({
 
         {/* Regenerate Button */}
         <div className="pt-2 border-t border-gray-700/50">
-          <Button variant="ghost" size="sm"></div>
-            <brain >
+          <button variant="ghost" size="sm" >
+            <brain  >
             Regenerate Analysis
-          </div>
-        </div />
+          </Button>
+        </div>
+      </CardContent>
     </Card>
   );
 };

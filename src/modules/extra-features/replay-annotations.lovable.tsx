@@ -8,7 +8,7 @@ import { Tag, AlertTriangle, TrendingUp, TrendingDown, Zap } from 'lucide-react'
 
 interface ReplayAnnotationsProps {
   tradeId?: string;
-  onAnnotationAdd?: (annotation: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => void;
+  onAnnotationAdd?: (annotation: any) => void;
 }
 
 export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, onAnnotationAdd }) => {
@@ -65,37 +65,37 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
   };
 
   return (
-    <Card />
-      <h2 className="text-2xl font-bold mb-4">Replay Annotations</Replayannotationsprops>
+    <Card  />
+      <h2 className="text-2xl font-bold mb-4">Replay Annotations</h2>
 
       <div className="space-y-6">
         <div>
-          <h3 className="font-semibold mb-3">Add Annotation</div>
+          <h3 className="font-semibold mb-3">Add Annotation</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
             {annotationTypes.map((type) => {
               const Icon = type.icon;
               return (
-                <Button size="sm" style={{ display: "flex", alignItems: "center" }}> setSelectedType(type.id)}
+                <button size="sm" style={{ display: "flex", alignItems: "center" }}> setSelectedType(type.id)}
                 >
-                  <Icon >
-                  <span className="text-xs">{type.label}</div>
-                </button>
+                  <icon  >
+                  <span className="text-xs">{type.label}</span>
+                </Button>
               );
             })}
           </div>
           
           <div className="flex gap-2">
-            <Input placeholder="Add a note about this moment..."/> setCustomNote(e.target.value)}
+            <input placeholder="Add a note about this moment..." > setCustomNote(e.target.value)}
             />
-            <Button ></div>
-              <tag >
+            <button  >
+              <tag  >
               Add
-            </div>
+            </Button>
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold mb-3"></div>Annotations Timeline</div>
+          <h3 className="font-semibold mb-3">Annotations Timeline</h3>
           <div className="space-y-3">
             {annotations.map((annotation) => {
               const type = annotationTypes.find(t => t.id === annotation.type);
@@ -104,13 +104,13 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
               return (
                 <div key={annotation.id} className="flex items-start gap-3 p-3 border rounded-lg hover:bg-accent/50">
                   <div className={`mt-1 ${type?.color}`}>
-                    <Icon  / / / //>
+                    <icon  >
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <Badge variant="outline"></div>{type?.label}</div>
+                      <badge variant="outline" >{type?.label}</Badge>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <span>{annotation.timestamp}</div>
+                        <span>{annotation.timestamp}</span>
                         <span>•</span>
                         <span>${annotation.price}</span>
                       </div>
@@ -124,22 +124,23 @@ export const ReplayAnnotations: React.FC<Replayannotationsprops > = ({ tradeId, 
         </div>
 
         <div className="p-4 bg-secondary/20 rounded-lg">
-          <h4 className="font-medium mb-2"></div>Pattern Recognition</div>
+          <h4 className="font-medium mb-2">Pattern Recognition</h4>
           <p className="text-sm text-muted-foreground mb-3">
             Based on your annotations, we've identified recurring patterns:
           </p>
           <div className="grid grid-cols-2 gap-2">
             <div className="text-center p-2 bg-background rounded">
-              <p className="text-lg font-bold text-red-500">3</div>
+              <p className="text-lg font-bold text-red-500">3</p>
               <p className="text-xs text-muted-foreground">Volatility Traps/Week</p>
             </div>
             <div className="text-center p-2 bg-background rounded">
-              <p className="text-lg font-bold text-green-500">78%</div>
+              <p className="text-lg font-bold text-green-500">78%</p>
               <p className="text-xs text-muted-foreground">Exit Signal Accuracy</p>
             </div>
           </div>
         </div>
-      </div />
+      </div>
+    </Card>
   );
 }; 
 

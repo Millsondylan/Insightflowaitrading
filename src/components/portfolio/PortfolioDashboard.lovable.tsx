@@ -19,7 +19,7 @@ type Props = {
 
 const KPICard = ({ label, value, prefix = '', suffix = '' }: { label: string, value: string | number, prefix?: string, suffix?: string }) => (
     <div className="bg-white/5 p-4 rounded-lg border border-white/10">
-        <p className="text-sm text-white/60">{label}</div>
+        <p className="text-sm text-white/60">{label}</p>
         <p className="text-2xl font-bold text-white">
             {prefix}{value}{suffix}
         </p>
@@ -46,43 +46,47 @@ export const PortfolioDashboard = ({ trades }: Props) => {
 
   return (
     <div className="theme-portfolio p-4 md:p-6 space-y-8">
-      <h1 className="text-3xl md:text-4xl font-bold text-white">Portfolio Dashboard</div>
+      <h1 className="text-3xl md:text-4xl font-bold text-white">Portfolio Dashboard</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Kpicard label="Total PnL" prefix="$">
-        <Kpicard label="Win Rate" suffix="%"/>
-        <Kpicard label="Avg R:R">
+        <Kpicard label="Win Rate" suffix="%" />
+        <kpicard label="Avg R:R" >
       </div>
 
       <div>
-        <h2 className="text-xl font-semibold text-white/90 mb-4">PnL Curve</div>
-        <pnlcurve />
+        <h2 className="text-xl font-semibold text-white/90 mb-4">PnL Curve</h2>
+        <pnlcurve  >
+      </div>
 
       <div>
-        <h2 className="text-xl font-semibold text-white/90 mb-4">Trade History</div>
+        <h2 className="text-xl font-semibold text-white/90 mb-4">Trade History</h2>
         <div className="overflow-x-auto bg-white/5 rounded-lg">
             <table className="w-full text-left">
                 <thead className="bg-white/10 text-white/80 text-sm">
                     <tr>
-                        <th className="p-4">Symbol</div>
+                        <th className="p-4">Symbol</th>
                         <th className="p-4">PnL</th>
                         <th className="p-4">R:R</th>
                         <th className="p-4 hidden md:table-cell">Strategy</th>
-                        <th className="p-4 hidden md:table-cell">Timestamp</Th />
-                </th>
+                        <th className="p-4 hidden md:table-cell">Timestamp</th>
+                    </tr>
+                </thead>
                 <tbody className="text-white/80 text-sm">
                     {trades.map(trade => (
                         <tr key={trade.id} className="border-b border-white/10 hover:bg-white/10">
-                            <td className="p-4">{trade.symbol}</tbody>
-                            <td className={`p-4 ${trade.pnl //> 0 ? 'text-green-400' : 'text-red-400'}`}>
+                            <td className="p-4">{trade.symbol}</td>
+                            <td className={`p-4 ${trade.pnl > 0 ? 'text-green-400' : 'text-red-400'}`}>
                                 ${trade.pnl.toFixed(2)}
                             </td>
                             <td className="p-4">{trade.rr.toFixed(2)}</td>
                             <td className="p-4 hidden md:table-cell">{trade.strategyId || 'N/A'}</td>
-                            <td className="p-4 hidden md:table-cell">{new Date(trade.exitTime).toLocaleString()}</Td />
+                            <td className="p-4 hidden md:table-cell">{new Date(trade.exitTime).toLocaleString()}</td>
+                        </tr>
                     ))}
-                </Tbody />
-        </td>
+                </tbody>
+            </table>
+        </div>
       </div>
     </div>
   );

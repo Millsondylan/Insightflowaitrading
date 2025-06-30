@@ -6,9 +6,9 @@ const ProfileRiskMapPage: React.FC = () => {
     <section className="theme-portfolio min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"/></Section /></Section />
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8">
           Risk Profile Map
-        </section>
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
           Visualize your risk distribution
         </p>
@@ -16,12 +16,12 @@ const ProfileRiskMapPage: React.FC = () => {
 
       {/* Radial Risk Map */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8 text-center"></div>🎯 Risk Quadrants</div>
+        <h2 className="text-3xl font-bold text-white mb-8 text-center">🎯 Risk Quadrants</h2>
         <div className="max-w-2xl mx-auto">
           <div className="relative w-96 h-96 mx-auto">
             {/* Center Circle */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-indigo-500/20 border border-indigo-400/30 rounded-full flex items-center justify-center">
-              <span className="text-indigo-400 font-semibold"></div>Core</div>
+              <span className="text-indigo-400 font-semibold">Core</span>
             </div>
 
             {/* Quadrant 1 - High Return, High Risk */}
@@ -61,7 +61,7 @@ const ProfileRiskMapPage: React.FC = () => {
 
       {/* Risk Metrics */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-6"></div>📊 Risk Metrics</div>
+        <h2 className="text-3xl font-bold text-white mb-6">📊 Risk Metrics</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="glass-card text-center">
             <div className="text-2xl font-bold text-violet-400 mb-2">2.4</div>
@@ -76,7 +76,8 @@ const ProfileRiskMapPage: React.FC = () => {
             <div className="text-gray-400">Beta</div>
           </div>
         </div>
-      </div />
+      </div>
+    </section>
   );
 };
 

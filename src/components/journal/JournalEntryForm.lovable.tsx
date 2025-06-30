@@ -31,7 +31,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
   const [strategyId, setStrategyId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleTagInputChange = (e: React.ChangeEvent<HTMLInputElement >) => {
+  const handleTagInputChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const value = e.target.value;
     setTagInput(value);
     if (value.includes(',')) {
@@ -49,7 +49,7 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
     setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement >) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
     const file = e.target.files?.[0];
     if (file) {
       setScreenshot(file);
@@ -108,95 +108,105 @@ const JournalEntryForm = ({ onSubmit }: JournalEntryFormProps) => {
 
   return (
     <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-6">
-      <h2 className="text-xl font-bold text-white">New Journal Entry</File>
+      <h2 className="text-xl font-bold text-white">New Journal Entry</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <Label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</form>
-          <Input id="title"
+          <label htmlFor="title" className="block text-sm font-medium text-white/70 mb-1">Title</label>
+          <input
+            id="title"
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="e.g. Breakout scalp on BTC"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
             required
-          / />
+          />
+        </div>
 
         <div>
-          <Label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</Input>
-          <Input id="date"
+          <label htmlFor="date" className="block text-sm font-medium text-white/70 mb-1">Date</label>
+          <input
+            id="date"
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition calendar-picker-indicator"
             required
-          / />
+          />
+        </div>
         
         <div>
-          <Label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</Input>
+          <label htmlFor="tags" className="block text-sm font-medium text-white/70 mb-1">Tags (comma-separated)</label>
           <div className="flex flex-wrap gap-2 mb-2">
             {tags.map(tag => (
               <span key={tag} className="bg-cyan-800/50 text-cyan-300 text-xs font-medium px-2.5 py-1 rounded-full flex items-center gap-1">
                 {tag}
-                <Button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</div>
+                <button type="button" onClick={() => removeTag(tag)} className="text-cyan-400 hover:text-white">&times;</button>
               </span>
             ))}
           </div>
-          <Input
+          <input
             id="tags"
             type="text"
             value={tagInput}
             onChange={handleTagInputChange}
             placeholder="e.g. fomo, scalp, win"
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
-          //>
+          />
+        </div>
 
         <div>
-          <Label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</Input>
-          <Textarea
+          <label htmlFor="notes" className="block text-sm font-medium text-white/70 mb-1">Notes</label>
+          <textarea
             id="notes"
             rows={6}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Detailed thoughts on the trade... Markdown supported."
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
-          / />
+          />
+        </div>
 
         <div>
-          <Label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</Textarea>
-          <Select
+          <label htmlFor="strategy" className="block text-sm font-medium text-white/70 mb-1">Link to Strategy (Optional)</label>
+          <select
             id="strategy"
             value={strategyId || ""}
             onChange={(e) => setStrategyId(e.target.value || null)}
             className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-cyan-500 focus:outline-none transition"
           >
-            <Option value="">No linked strategy</Select>
+            <option value="">No linked strategy</option>
             {mockStrategies.map(strat => (
-              <Option key={strat.id} value={strat.id}>{strat.name}</Option>
+              <option key={strat.id} value={strat.id}>{strat.name}</option>
             ))}
-          </Select>
+          </select>
         </div>
 
         <div>
-          <Label htmlFor="screenshot" className="block text-sm font-medium text-white/70 mb-1">Screenshot (Optional)</div>
-          <Input
+          <label htmlFor="screenshot" className="block text-sm font-medium text-white/70 mb-1">Screenshot (Optional)</label>
+          <input
             id="screenshot"
             type="file"
             accept="image/*"
             onChange={handleFileChange}
-            className="w-full text-sm text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600/80 file:text-white hover:file:bg-cyan-600"/>
+            className="w-full text-sm text-white/60 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-cyan-600/80 file:text-white hover:file:bg-cyan-600"
+          />
           {screenshotPreview && (
             <div className="mt-4">
-              <img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" //>
+              <img src={screenshotPreview} alt="Screenshot preview" className="rounded-lg max-h-48 w-auto border border-white/10" />
+            </div>
           )}
-        </Input>
+        </div>
         
         <div className="pt-2">
             <Button type="submit" 
               disabled={!isFormValid || isSubmitting}
-              className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"/></div>
+              className="w-full bg-cyan-600 hover:bg-cyan-700 px-4 py-3 rounded-full text-white font-bold transition disabled:opacity-40 disabled:cursor-not-allowed"
+            />
               {isSubmitting ? 'Saving...' : '📓 Save Entry'}
-            </div>
-        </div />
+            </button>
+        </div>
+      </form>
     </div>
   );
 };

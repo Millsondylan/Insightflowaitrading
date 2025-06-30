@@ -62,87 +62,91 @@ export const LessonPlayground: React.FC<Lessonplaygroundprops > = ({ lessonId })
   const progress = ((currentStep + 1) / lesson.steps.length) * 100;
 
   return (
-    <Card />
+    <Card  />
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">{lesson.title}</Lessonplaygroundprops>
+        <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
         <div className="flex items-center gap-4">
-          <progress >
+          <progress  >
           <span className="text-sm text-muted-foreground">
             Step {currentStep + 1} of {lesson.steps.length}
-          </div>
+          </span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
           <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <Helpcircle />
+            <helpcircle  >
             {lesson.steps[currentStep].instruction}
-          </div>
+          </h3>
           
           <div className="space-y-4">
             <div>
-              <Label className="text-sm text-muted-foreground">Your Code:</div>
-              <Textarea
+              <label className="text-sm text-muted-foreground">Your Code:</label>
+              <textarea
                 className="w-full h-32 p-3 mt-1 bg-secondary/20 rounded-lg font-mono text-sm"
                 value={userCode || lesson.steps[currentStep].starter}
                 onChange={(e) => setUserCode(e.target.value)}
-              / />
+              />
+            </div>
 
             <div className="flex gap-2">
-              <Button >
-                <Play >
+              <button  >
+                <play  >
                 {isRunning ? 'Running...' : 'Run Tests'}
-              </Textarea>
-              <Button variant="outline"> setUserCode('')}>
-                <rotateccw >
+              </Button>
+              <button variant="outline" > setUserCode('')}>
+                <rotateccw  >
                 Reset
-              </button>
+              </Button>
             </div>
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold mb-3"></div>Test Results</div>
+          <h3 className="font-semibold mb-3">Test Results</h3>
           
           {testResults.length > 0 ? (
             <div className="space-y-2">
               {testResults.map((result, i) => (
-                <div key={i}
+                <div
+                  key={i}
                   className={`p-3 rounded-lg flex items-center gap-2 ${
                     result.passed
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
-                  }`}>
+                  }`}
+                >
                   {result.passed ? (
-                    <checkcircle >
+                    <checkcircle  >
                   ) : (
-                    <xcircle >
+                    <xcircle  >
                   )}
-                  <span className="text-sm"></div>{result.name}</div>
+                  <span className="text-sm">{result.name}</span>
                 </div>
               ))}
               
               {testResults.every(r => r.passed) && (
-                <Button  style={{ width: "100%" }}>
+                <button  style={{ width: "100%" }}>
                   Continue to Next Step
-                </button>
+                </Button>
               )}
             </div>
           ) : (
             <div className="p-8 text-center text-muted-foreground">
-              <p>Run your code to see test results</div>
+              <p>Run your code to see test results</p>
             </div>
           )}
 
           <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2"></div>Hint</div>
+            <h4 className="font-medium mb-2">Hint</h4>
             <p className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
             </p>
           </div>
         </div>
-      </div />
+      </div>
+    </Card>
   );
 }; 
 

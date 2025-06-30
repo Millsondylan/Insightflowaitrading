@@ -43,7 +43,7 @@ export class InsightFlowAPI {
     return this.request('GET', endpoint);
   }
 
-  async createOrder(order: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async createOrder(order: any): Promise<any> {
     const endpoint = this.buildEndpoint('/trading/orders');
     return this.request('POST', endpoint, order);
   }
@@ -61,12 +61,12 @@ export class InsightFlowAPI {
     return this.request('GET', endpoint);
   }
 
-  async createStrategy(strategy: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async createStrategy(strategy: any): Promise<any> {
     const endpoint = this.buildEndpoint('/strategies');
     return this.request('POST', endpoint, strategy);
   }
 
-  async updateStrategy(strategyId: string, updates: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async updateStrategy(strategyId: string, updates: any): Promise<any> {
     const endpoint = this.buildEndpoint(`/strategies/${strategyId}`);
     return this.request('PUT', endpoint, updates);
   }
@@ -80,7 +80,7 @@ export class InsightFlowAPI {
    * Backtest Endpoints
    * TODO: implement backtesting API
    */
-  async runBacktest(config: unknown): Promise<any> {
+  async runBacktest(config: any): Promise<any> {
     const endpoint = this.buildEndpoint('/backtest/run');
     return this.request('POST', endpoint, config);
   }
@@ -103,7 +103,7 @@ export class InsightFlowAPI {
     return this.request('GET', endpoint);
   }
 
-  async createJournalEntry(entry: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async createJournalEntry(entry: any): Promise<any> {
     const endpoint = this.buildEndpoint('/journal/entries');
     return this.request('POST', endpoint, entry);
   }
@@ -156,7 +156,7 @@ export class InsightFlowAPI {
     return this.request('GET', endpoint);
   }
 
-  async createCommunityPost(post: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async createCommunityPost(post: any): Promise<any> {
     const endpoint = this.buildEndpoint('/community/posts');
     return this.request('POST', endpoint, post);
   }
@@ -175,12 +175,12 @@ export class InsightFlowAPI {
     return this.request('GET', endpoint);
   }
 
-  async createWebhook(webhook: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async createWebhook(webhook: any): Promise<any> {
     const endpoint = this.buildEndpoint('/webhooks');
     return this.request('POST', endpoint, webhook);
   }
 
-  async updateWebhook(webhookId: string, updates: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): Promise<any> {
+  async updateWebhook(webhookId: string, updates: any): Promise<any> {
     const endpoint = this.buildEndpoint(`/webhooks/${webhookId}`);
     return this.request('PUT', endpoint, updates);
   }
@@ -289,7 +289,7 @@ export class InsightFlowGraphQLAPI {
     const result = await response.json();
     
     if (result.errors) {
-      throw new Error(`GraphQL Error: ${result.errors.map((e: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => e.message).join(', ')}`);
+      throw new Error(`GraphQL Error: ${result.errors.map((e: any) => e.message).join(', ')}`);
     }
 
     return result.data;

@@ -55,46 +55,47 @@ exit_rules:
   };
 
   return (
-    <Card />
+    <Card  />
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
-          <Harddrive >
-          <h2 className="text-2xl font-bold">Local Prototype</Localfirstprototypeprops>
+          <harddrive  >
+          <h2 className="text-2xl font-bold">Local Prototype</h2>
         </div>
         <div className="flex items-center gap-4">
-          <Badge />
+          <badge  >
             {syncStatus === 'synced' ? (
               <>
-                <cloud >
+                <cloud  >
                 Synced
-              </cloud>
+              </>
             ) : syncStatus === 'pending' ? (
               <>
-                <RefreshCw >
+                <refreshcw  >
                 {localChanges} pending
-              </div>
+              </>
             ) : (
               <>
-                <harddrive >
+                <harddrive  >
                 Offline
-              </harddrive>
+              </>
             )}
-          </div>
-          <Button variant="outline" size="sm">
+          </Badge>
+          <button variant="outline" size="sm" >
             Sync to Cloud
-          </button>
+          </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="editor">
-        <Tabslist  style={{ display: "grid", width: "100%" }}>
-          <Tabstrigger value="editor">Editor</Tabs>
-          <Tabstrigger value="results">Results</Tabstrigger>
-          <Tabstrigger value="history">History</Tabstrigger />
+      <tabs defaultValue="editor" >
+        <tabslist  style={{ display: "grid", width: "100%" }}>
+          <tabstrigger value="editor" >Editor</TabsTrigger>
+          <tabstrigger value="results" >Results</TabsTrigger>
+          <tabstrigger value="history" >History</TabsTrigger>
+        </TabsList>
 
-        <TabsContent value="editor">
+        <tabscontent value="editor" >
           <div className="relative">
-            <Textarea
+            <textarea
               className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm"
               value={prototypeCode}
               onChange={(e) => {
@@ -104,40 +105,41 @@ exit_rules:
               }}
             />
             <div className="absolute top-2 right-2 flex items-center gap-2">
-              <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
-                <harddrive >
+              <badge variant="outline" style={{ fontSize: "0.75rem" }}>
+                <harddrive  >
                 Local Only
-              </Tabstrigger>
+              </Badge>
             </div>
           </div>
           
           <div className="flex gap-2">
-            <Button >
-              <Play >
+            <button  >
+              <play  >
               Run Local Test
-            </div>
-            <Button variant="outline">
-              <Save >
+            </Button>
+            <button variant="outline" >
+              <save  >
               Save Draft
-            </button>
-          </div />
+            </Button>
+          </div>
+        </TabsContent>
 
-        <TabsContent value="results">
+        <tabscontent value="results" >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</TabsContent>
+              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</p>
               <p className="text-sm text-muted-foreground">Win Rate</p>
             </div>
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold">{testResults.profitFactor}</div>
+              <p className="text-2xl font-bold">{testResults.profitFactor}</p>
               <p className="text-sm text-muted-foreground">Profit Factor</p>
             </div>
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</div>
+              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</p>
               <p className="text-sm text-muted-foreground">Max Drawdown</p>
             </div>
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold">{testResults.trades}</div>
+              <p className="text-2xl font-bold">{testResults.trades}</p>
               <p className="text-sm text-muted-foreground">Total Trades</p>
             </div>
           </div>
@@ -145,43 +147,47 @@ exit_rules:
           <div className="p-4 bg-blue-500/10 rounded-lg">
             <p className="text-sm text-blue-600">
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
-            </div>
-          </div />
+            </p>
+          </div>
+        </TabsContent>
 
-        <TabsContent value="history">
+        <tabscontent value="history" >
           <div className="space-y-2">
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
-                <p className="font-medium">Current Draft</TabsContent>
+                <p className="font-medium">Current Draft</p>
                 <p className="text-sm text-muted-foreground">Modified 2 minutes ago</p>
               </div>
-              <Badge variant="secondary">Unsaved</Badge>
+              <badge variant="secondary" >Unsaved</Badge>
             </div>
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
-                <p className="font-medium">v1.2 - Risk Update</div>
+                <p className="font-medium">v1.2 - Risk Update</p>
                 <p className="text-sm text-muted-foreground">Saved locally 1 hour ago</p>
               </div>
-              <Badge >Synced</Badge>
+              <badge  >Synced</Badge>
             </div>
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
-                <p className="font-medium">v1.1 - Initial Strategy</div>
+                <p className="font-medium">v1.1 - Initial Strategy</p>
                 <p className="text-sm text-muted-foreground">Created yesterday</p>
               </div>
-              <Badge >Synced</Badge>
+              <badge  >Synced</Badge>
             </div>
-          </div />
+          </div>
+        </TabsContent>
       </Tabs>
 
       <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <h4 className="font-medium mb-2"></div>Local-First Benefits</div>
+        <h4 className="font-medium mb-2">Local-First Benefits</h4>
         <ul className="space-y-1 text-sm text-muted-foreground">
-          <li>• Work offline without interruption</ul>
+          <li>• Work offline without interruption</li>
           <li>• Instant feedback on changes</li>
           <li>• Automatic conflict resolution</li>
-          <li>• Version history preserved locally</Li />
-      </div />
+          <li>• Version history preserved locally</li>
+        </ul>
+      </div>
+    </Card>
   );
 }; 
 

@@ -29,8 +29,8 @@ type Props = {
 export default function MarketsTable({ tickers, onSelect }: Props) {
   const [search, setSearch] = useState("");
   const [sortField, setSortField] = useState<Sortfield >("symbol");
-  const [sortDirection, setSortDirection] = useState<Sortdirection />("asc");
-  const [favorites, setFavorites] = useState<Set >>(new Set());
+  const [sortDirection, setSortDirection] = useState<Sortdirection  />("asc");
+  const [favorites, setFavorites] = useState<set  >>(new Set());
 
   // Filter and sort tickers
   const filteredTickers = useMemo(() => {
@@ -131,99 +131,110 @@ export default function MarketsTable({ tickers, onSelect }: Props) {
     <div className="space-y-4">
       {/* Search Bar */}
       <div className="relative">
-        <Search />
-        <Input placeholder="Search by symbol..."/> setSearch(e.target.value)}
+        <search  >
+        <input placeholder="Search by symbol..." > setSearch(e.target.value)}
           className="pl-10 bg-black/30 border-white/10 text-white"
-        / />
+        />
+      </div>
       
       {/* Tickers Table */}
       <div className="rounded-xl border border-white/10 overflow-hidden">
         <div className="overflow-x-auto">
-          <table >
-            <tableheader >
-              <tablerow >
-                <tablehead ></Sortfield>
-                <tablehead > handleSort("symbol")} 
+          <table  >
+            <tableheader  >
+              <tablerow  >
+                <tablehead  ></TableHead>
+                <tablehead  > handleSort("symbol")} 
                   className="cursor-pointer hover:text-cyan-400"
                 >
                   <div className="flex items-center gap-2">
                     Symbol
                     {sortField === "symbol" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp > :
-                      <ChevronDown >
+                      <chevronup  > :
+                      <chevrondown  >
                     )}
-                  </div />
-                <tablehead > handleSort("price")}
+                  </div>
+                </TableHead>
+                <tablehead  > handleSort("price")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
                   <div className="flex items-center justify-end gap-2">
                     Price
                     {sortField === "price" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp > :
-                      <ChevronDown >
+                      <chevronup  > :
+                      <chevrondown  >
                     )}
-                  </div />
-                <tablehead > handleSort("change")}
+                  </div>
+                </TableHead>
+                <tablehead  > handleSort("change")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
                   <div className="flex items-center justify-end gap-2">
                     Change 24h
                     {sortField === "change" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp > :
-                      <ChevronDown >
+                      <chevronup  > :
+                      <chevrondown  >
                     )}
-                  </div />
-                <tablehead > handleSort("volume")}
+                  </div>
+                </TableHead>
+                <tablehead  > handleSort("volume")}
                   className="cursor-pointer hover:text-cyan-400 text-right"
                 >
                   <div className="flex items-center justify-end gap-2">
                     Volume
                     {sortField === "volume" && (
                       sortDirection === "asc" ? 
-                      <ChevronUp > :
-                      <ChevronDown >
+                      <chevronup  > :
+                      <chevrondown  >
                     )}
-                  </div />
-              </TableRow />
-            <tablebody >
+                  </div>
+                </TableHead>
+              </TableRow>
+            </TableHeader>
+            <tablebody  >
               {filteredTickers.map((ticker) => (
-                <tablerow > onSelect?.(ticker.symbol)}
+                <tablerow  > onSelect?.(ticker.symbol)}
                   className={`hover:bg-white/10 cursor-pointer transition-colors ${
                     favorites.has(ticker.symbol) ? "bg-cyan-950/20" : ""
                   }`}
                 >
-                  <tablecell >
-                    <Button  onClick={(e) => toggleFavorite(ticker.symbol, e)}
+                  <tablecell  >
+                    <button 
+                      onClick={(e) => toggleFavorite(ticker.symbol, e)}
                       className="focus:outline-none"
                     >
-                      <Star >
-                    </button />
-                  <tablecell >{ticker.symbol}</div>
-                  <tablecell >${formatPrice(ticker.price)}</TableCell>
-                  <tablecell > 0 ? "text-green-400" : 
+                      <star  >
+                    </button>
+                  </TableCell>
+                  <tablecell  >{ticker.symbol}</TableCell>
+                  <tablecell  >${formatPrice(ticker.price)}</TableCell>
+                  <tablecell  > 0 ? "text-green-400" : 
                     ticker.change < 0 ? "text-red-400" : "text-gray-400"
                   }`}>
                     {formatPercent(ticker.change)}
                   </TableCell>
-                  <tablecell >{formatVolume(ticker.volume)}</TableCell />
+                  <tablecell  >{formatVolume(ticker.volume)}</TableCell>
+                </TableRow>
               ))}
               
               {filteredTickers.length === 0 && (
-                <tablerow >
-                  <tablecell >
+                <tablerow  >
+                  <tablecell  >
                     No markets found matching "{search}"
-                  </TableCell />
+                  </TableCell>
+                </TableRow>
               )}
-            </TableBody />
+            </TableBody>
+          </Table>
         </div>
       </div>
       
       <div className="text-xs text-gray-500 flex justify-between">
-        <span></div>Showing {filteredTickers.length} of {tickers.length} markets</div>
-        <span></span>{favorites.size} favorites</span>
+        <span>Showing {filteredTickers.length} of {tickers.length} markets</span>
+        <span>{favorites.size} favorites</span>
       </div>
     </div>
   );

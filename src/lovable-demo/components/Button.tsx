@@ -25,13 +25,6 @@ export const Button = ({
           color: 'white',
           border: '1px solid #3B82F6'
         };
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
       case 'secondary':
         return {
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -122,7 +115,7 @@ export const lovable = {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       disabled={disabled}
-  >
+   >
       {children}
     </button>
   );

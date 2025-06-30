@@ -44,26 +44,28 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
   const isPositive = item.change >= 0;
   
   return (
-    <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group"
-      onClick={onClick}>
+    <Card 
+      className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer group"
+      onClick={onClick}
+    >
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-              {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400"/>}
-              {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
-              {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400"/>}
-              {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400"/>}
-            </Card>
+              {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400" />}
+              {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
+              {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400" />}
+              {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400" />}
+            </div>
             <div>
               <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
                 {item.symbol}
-              </div>
+              </h3>
               <p className="text-xs text-gray-400">{item.name}</p>
             </div>
           </div>
-          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors"/>
-        </ChevronRight>
+          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+        </div>
         
         <div className="flex items-end justify-between">
           <div>
@@ -71,7 +73,7 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
               {item.type === 'forex' ? item.price.toFixed(4) : 
                item.type === 'commodity' ? `$${item.price.toFixed(2)}` :
                `$${item.price.toLocaleString()}`}
-            </div>
+            </p>
             {item.volume && (
               <p className="text-xs text-gray-400">
                 Vol: {(item.volume / 1000000).toFixed(1)}M
@@ -79,8 +81,8 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
             )}
           </div>
           <div className={`flex items-center gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-            {isPositive ? <TrendingUp className="w-4 h-4"/> : <TrendingDown className="w-4 h-4"/>}
-            <span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</div>
+            {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+            <span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</span>
           </div>
         </div>
       </CardContent>
@@ -94,7 +96,7 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
       <table className="w-full">
         <thead>
           <tr className="border-b border-white/10">
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-400">Asset</div>
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-400">Asset</th>
             <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">Price</th>
             <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">24h Change</th>
             <th className="text-right py-3 px-4 text-sm font-medium text-gray-400 hidden md:table-cell">Volume</th>
@@ -110,13 +112,13 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                 <td className="py-3 px-4">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                      {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400"/>}
-                      {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
-                      {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400"/>}
-                      {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400"/>}
-                    </tbody>
+                      {item.type === 'crypto' && <Bitcoin className="w-4 h-4 text-orange-400" />}
+                      {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
+                      {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400" />}
+                      {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400" />}
+                    </div>
                     <div>
-                      <p className="font-medium text-white">{item.symbol}</div>
+                      <p className="font-medium text-white">{item.symbol}</p>
                       <p className="text-sm text-gray-400">{item.name}</p>
                     </div>
                   </div>
@@ -126,33 +128,34 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                     {item.type === 'forex' ? item.price.toFixed(4) : 
                      item.type === 'commodity' ? `$${item.price.toFixed(2)}` :
                      `$${item.price.toLocaleString()}`}
-                  </td>
+                  </p>
                 </td>
                 <td className="text-right py-3 px-4">
                   <div className={`flex items-center justify-end gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
-                    {isPositive ? <TrendingUp className="w-4 h-4"/> : <TrendingDown className="w-4 h-4"/>}
-                    <span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</td>
+                    {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+                    <span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</span>
                   </div>
                 </td>
                 <td className="text-right py-3 px-4 hidden md:table-cell">
                   <p className="text-gray-400">
                     {item.volume ? `${(item.volume / 1000000).toFixed(1)}M` : '-'}
-                  </td>
+                  </p>
                 </td>
                 <td className="text-right py-3 px-4 hidden lg:table-cell">
                   <p className="text-gray-400">
                     {item.marketCap ? `$${(item.marketCap / 1000000000).toFixed(1)}B` : '-'}
-                  </td>
+                  </p>
                 </td>
                 <td className="text-right py-3 px-4">
-                  <Button size="sm" 
+                  <Button 
+                    size="sm" 
                     variant="ghost" 
                     onClick={() => onSelect(item.symbol)}
                     className="hover:text-blue-400"
                   >
                     View
-                    <ChevronRight className="w-4 h-4 ml-1"/>
-                  </td>
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </Button>
                 </td>
               </tr>
             );
@@ -270,9 +273,9 @@ export default function Markets() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <Activity className="w-8 h-8 text-blue-400"/>
+          <Activity className="w-8 h-8 text-blue-400" />
           Markets Overview
-        </MarketDetailPage>
+        </h1>
         <p className="text-gray-400">
           Real-time market data across cryptocurrencies, forex, stocks, and commodities
         </p>
@@ -284,48 +287,48 @@ export default function Markets() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">Total Markets</div>
+                <p className="text-sm text-gray-400">Total Markets</p>
                 <p className="text-2xl font-bold text-white">{allMarkets.length}</p>
               </div>
-              <BarChart3 className="w-8 h-8 text-blue-400/20"/>
-            </BarChart3>
+              <BarChart3 className="w-8 h-8 text-blue-400/20" />
+            </div>
           </CardContent>
         </Card>
         <Card className="bg-white/5 border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">24h Volume</Card>
+                <p className="text-sm text-gray-400">24h Volume</p>
                 <p className="text-2xl font-bold text-white">$2.3T</p>
               </div>
-              <Volume2 className="w-8 h-8 text-green-400/20"/>
-            </Volume2>
+              <Volume2 className="w-8 h-8 text-green-400/20" />
+            </div>
           </CardContent>
         </Card>
         <Card className="bg-white/5 border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">Gainers</Card>
+                <p className="text-sm text-gray-400">Gainers</p>
                 <p className="text-2xl font-bold text-green-400">
                   {allMarkets.filter(m => m.change > 0).length}
                 </p>
               </div>
-              <TrendingUp className="w-8 h-8 text-green-400/20"/>
-            </TrendingUp>
+              <TrendingUp className="w-8 h-8 text-green-400/20" />
+            </div>
           </CardContent>
         </Card>
         <Card className="bg-white/5 border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">Losers</Card>
+                <p className="text-sm text-gray-400">Losers</p>
                 <p className="text-2xl font-bold text-red-400">
                   {allMarkets.filter(m => m.change < 0).length}
                 </p>
               </div>
-              <TrendingDown className="w-8 h-8 text-red-400/20"/>
-            </TrendingDown>
+              <TrendingDown className="w-8 h-8 text-red-400/20" />
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -335,9 +338,9 @@ export default function Markets() {
         <Card className="bg-white/5 border-white/10">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-green-400"/>
+              <TrendingUp className="w-5 h-5 text-green-400" />
               Top Gainers
-            </div>
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -349,18 +352,18 @@ export default function Markets() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-green-400/20 rounded-full flex items-center justify-center">
-                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-green-400"/>}
-                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
-                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-green-400"/>}
-                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-green-400"/>}
-                    </CardContent>
+                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-green-400" />}
+                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400" />}
+                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-green-400" />}
+                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-green-400" />}
+                    </div>
                     <div>
-                      <p className="font-medium text-white">{market.symbol}</div>
+                      <p className="font-medium text-white">{market.symbol}</p>
                       <p className="text-xs text-gray-400">{market.name}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium text-white">${market.price.toFixed(2)}</div>
+                    <p className="font-medium text-white">${market.price.toFixed(2)}</p>
                     <p className="text-sm text-green-400">+{market.change.toFixed(2)}%</p>
                   </div>
                 </div>
@@ -372,9 +375,9 @@ export default function Markets() {
         <Card className="bg-white/5 border-white/10">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
-              <TrendingDown className="w-5 h-5 text-red-400"/>
+              <TrendingDown className="w-5 h-5 text-red-400" />
               Top Losers
-            </Card>
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -386,18 +389,18 @@ export default function Markets() {
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-red-400/20 rounded-full flex items-center justify-center">
-                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-red-400"/>}
-                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-red-400"/>}
-                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-red-400"/>}
-                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-red-400"/>}
-                    </CardContent>
+                      {market.type === 'crypto' && <Bitcoin className="w-4 h-4 text-red-400" />}
+                      {market.type === 'forex' && <DollarSign className="w-4 h-4 text-red-400" />}
+                      {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-red-400" />}
+                      {market.type === 'commodity' && <Coins className="w-4 h-4 text-red-400" />}
+                    </div>
                     <div>
-                      <p className="font-medium text-white">{market.symbol}</div>
+                      <p className="font-medium text-white">{market.symbol}</p>
                       <p className="text-xs text-gray-400">{market.name}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium text-white">${market.price.toFixed(2)}</div>
+                    <p className="font-medium text-white">${market.price.toFixed(2)}</p>
                     <p className="text-sm text-red-400">{market.change.toFixed(2)}%</p>
                   </div>
                 </div>
@@ -410,8 +413,9 @@ export default function Markets() {
       {/* Search and Filters */}
       <div className="flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"/>
-          <Input placeholder="Search markets..."
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Input
+            placeholder="Search markets..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 bg-white/5 border-white/10 text-white"
@@ -419,7 +423,7 @@ export default function Markets() {
         </div>
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
           <TabsList className="bg-white/5">
-            <TabsTrigger value="all">All</Tabs>
+            <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="crypto">Crypto</TabsTrigger>
             <TabsTrigger value="forex">Forex</TabsTrigger>
             <TabsTrigger value="stock">Stocks</TabsTrigger>
@@ -431,19 +435,20 @@ export default function Markets() {
       {/* Markets Grid/Table */}
       <Tabs defaultValue="grid" className="w-full">
         <TabsList className="mb-4">
-          <TabsTrigger value="grid">Grid View</Tabs>
+          <TabsTrigger value="grid">Grid View</TabsTrigger>
           <TabsTrigger value="table">Table View</TabsTrigger>
         </TabsList>
         
         <TabsContent value="grid">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {filteredMarkets.map((market) => (
-              <MarketCard key={market.symbol} 
+              <MarketCard 
+                key={market.symbol} 
                 item={market} 
                 onClick={() => setSelectedSymbol(market.symbol)}
               />
             ))}
-          </TabsContent>
+          </div>
         </TabsContent>
         
         <TabsContent value="table">
@@ -452,7 +457,7 @@ export default function Markets() {
               <MarketTable 
                 items={filteredMarkets} 
                 onSelect={setSelectedSymbol}
- /></div>
+              />
             </CardContent>
           </Card>
         </TabsContent>
@@ -460,25 +465,19 @@ export default function Markets() {
       
       {filteredMarkets.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-400"></div>No markets found matching your criteria.</div>
-          <Button variant="ghost" 
-            onClick={() =></button></div> {
+          <p className="text-gray-400">No markets found matching your criteria.</p>
+          <Button 
+            variant="ghost" 
+            onClick={() => {
               setSearchTerm('');
               setSelectedCategory('all');
             }}
             className="mt-4"
           >
             Reset Filters
-          </button>
+          </Button>
         </div>
       )}
     </div>
   );
 }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};

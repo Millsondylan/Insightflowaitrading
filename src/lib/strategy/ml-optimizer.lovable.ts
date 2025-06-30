@@ -17,12 +17,12 @@ export class MLStrategyOptimizer {
     return [];
   }
 
-  private async evaluatePopulation(population: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[]) {
+  private async evaluatePopulation(population: any[]) {
     // Implementation details...
     return [];
   }
 
-  private selectBestSolution(population: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[], fitness: number[]) {
+  private selectBestSolution(population: any[], fitness: number[]) {
     // Implementation details...
     return null;
   }
@@ -32,12 +32,12 @@ export class MLStrategyOptimizer {
     return false;
   }
 
-  private evolvePopulation(population: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[], fitness: number[]) {
+  private evolvePopulation(population: any[], fitness: number[]) {
     // Implementation details...
     return [];
   }
 
-  private async calculatePerformanceMetrics(solution: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
+  private async calculatePerformanceMetrics(solution: any) {
     // Implementation details...
     return {};
   }
@@ -52,12 +52,12 @@ export class MLStrategyOptimizer {
     return {};
   }
 
-  private acquireNextPoint(gpModel: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
+  private acquireNextPoint(gpModel: any) {
     // Implementation details...
     return {};
   }
 
-  private async evaluateStrategy(point: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
+  private async evaluateStrategy(point: any) {
     // Implementation details...
     return 0;
   }
@@ -296,28 +296,28 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
         </p>
         
         <div className="flex space-x-4">
-          <button
+          <Button
             onClick={() => handleOptimize('genetic')}
             disabled={optimizing}
             variant="default"
           >
             Genetic Algorithm
-          </button>
+          </Button>
           
-          <button
+          <Button
             onClick={() => handleOptimize('bayesian')}
             disabled={optimizing}
             variant="default"
           >
             Bayesian Optimization
-          </button>
+          </Button>
         </div>
       </div>
 
       {status === 'running' && (
         <div className="space-y-2">
           <p className="text-sm font-medium">{currentPhase}</p>
-          <progress value={progress} className="w-full" />
+          <Progress value={progress} className="w-full" />
           <p className="text-xs text-muted-foreground">
             Progress: {Math.round(progress)}%
           </p>

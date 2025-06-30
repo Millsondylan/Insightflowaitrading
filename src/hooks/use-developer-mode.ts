@@ -26,9 +26,3 @@ export function useDeveloperMode() {
 
   return { developerMode, setDeveloperMode, toggleDeveloperMode } as const;
 } 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 

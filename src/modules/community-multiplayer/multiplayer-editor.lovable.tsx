@@ -36,19 +36,20 @@ exit_rules:
   ]);
 
   return (
-    <Card />
+    <Card  />
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Users >
-          <h2 className="text-2xl font-bold">Multiplayer Editor</Multiplayereditorprops>
+          <users  >
+          <h2 className="text-2xl font-bold">Multiplayer Editor</h2>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex -space-x-2">
             {activeUsers.map((user) => (
-              <avatar />
-                <Avatarfallback >
+              <avatar  >
+                <avatarfallback  >
                   {user.name.split(' ').map(n => n[0]).join('')}
-                </div />
+                </AvatarFallback>
+              </Avatar>
             ))}
           </div>
           <span className="text-sm text-muted-foreground ml-2">
@@ -60,7 +61,7 @@ exit_rules:
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2">
           <div className="relative">
-            <Textarea
+            <textarea
               className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm resize-none"
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -68,41 +69,45 @@ exit_rules:
             />
             {/* Cursor indicators */}
             {activeUsers.filter(u => u.name !== 'You').map((user) => (
-              <div key={user.id}
+              <div
+                key={user.id}
                 className="absolute w-0.5 h-5 animate-pulse"
                 style={{
                   backgroundColor: user.color,
                   top: `${user.cursor.line * 20}px`,
                   left: `${user.cursor.col * 8}px`
-                }}>
-                <span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
-                  style={{ backgroundColor: user.color, color: 'white' }}></div>
+                }}
+              >
+                <span
+                  className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
+                  style={{ backgroundColor: user.color, color: 'white' }}
+                >
                   {user.name}
-                </div>
+                </span>
               </div>
             ))}
           </div>
           <div className="flex gap-2 mt-4">
-            <Button >
-              <Save >
+            <button  >
+              <save  >
               Save Strategy
-            </div>
-            <Button variant="outline">
-              <Share2 >
+            </Button>
+            <button variant="outline" >
+              <share2  >
               Share
-            </button>
+            </Button>
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
-            <h3 className="font-semibold mb-2"></div>Recent Edits</div>
+            <h3 className="font-semibold mb-2">Recent Edits</h3>
             <div className="space-y-2">
               {edits.map((edit, i) => (
                 <div key={i} className="text-sm p-2 bg-secondary/20 rounded">
                   <div className="flex items-center gap-2">
-                    <edit3 >
-                    <span className="font-medium"></div>{edit.user}</div>
+                    <edit3  >
+                    <span className="font-medium">{edit.user}</span>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
                     {edit.action} • {edit.time}
@@ -113,7 +118,7 @@ exit_rules:
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2"></div>Session Info</div>
+            <h3 className="font-semibold mb-2">Session Info</h3>
             <p className="text-sm text-muted-foreground">
               Session ID: {sessionId || 'demo-session'}
             </p>
@@ -122,7 +127,8 @@ exit_rules:
             </p>
           </div>
         </div>
-      </div />
+      </div>
+    </Card>
   );
 }; 
 

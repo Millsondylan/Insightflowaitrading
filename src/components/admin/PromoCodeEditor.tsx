@@ -8,22 +8,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Trash2, Plus } from "lucide-react";
+import { Trash2, Plus, Copy } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
-import { cn } from "@/lib/utils";
 
-interface PromoCode {
-  id: string;
-  code: string;
-  expiresAt: string;
-  usesLeft: number;
-}
+type PromoCode = { code: string; expiresAt: string; usesLeft: number };
 
-interface Props {
+type Props = {
   codes: PromoCode[];
-  onGenerate: (code: string) => void;
-  onRevoke: (codeId: string) => void;
-}
+  onGenerate: () => void;
+  onRevoke: (code: string) => void;
+};
 
 export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) {
   const { toast } = useToast();
@@ -58,79 +52,92 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
     });
   };
 
-  const generateNewCode = () => {
-    const code = "NEW" + Math.random().toString(36).substring(7).toUpperCase();
-    onGenerate(code);
-  };
-
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex justify-between items-center">
         <h2 className="text-lg font-semibold text-white">Promo Codes</h2>
-
-        <Button onClick={generateNewCode}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
-          <Plus className="h-4 w-4 mr-2"/>
-          Generate Code
-        </button>
+        
+        <Button
+          onClick={onGenerate}
+          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700"
+        >
+          <Plus className="h-4 w-4 mr-2" />
+          Generate New Code
+        </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table>
+        <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>Code</TableHead>
-              <TableHead>Expires</TableHead>
-              <TableHead>Uses Left</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+            <TableRow className="hover:bg-white/5">
+              <TableHead className="text-white/70 font-medium">Code</TableHead>
+              <TableHead className="text-white/70 font-medium">Expires</TableHead>
+              <TableHead className="text-white/70 font-medium">Uses Left</TableHead>
+              <TableHead className="text-white/70 font-medium text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {codes.length === 0 ? (
+            {codes.length > 0 ? (
+              codes.map((code) => {
+                const daysRemaining = getDaysRemaining(code.expiresAt);
+                const isExpiringSoon = daysRemaining <= 5 && daysRemaining > 0;
+                const isExpired = daysRemaining <= 0;
+
+                return (
+                  <TableRow key={code.code} className="hover:bg-white/5 border-white/10">
+                    <TableCell className="font-mono">
+                      <div className="flex items-center gap-2">
+                        {code.code}
+                        <button
+                          onClick={() => handleCopyCode(code.code)}
+                          className="text-gray-400 hover:text-cyan-400 transition-colors"
+                        >
+                          <Copy className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex flex-col">
+                        <span className={isExpired ? "text-red-400" : isExpiringSoon ? "text-yellow-400" : ""}>
+                          {formatDate(code.expiresAt)}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          {isExpired ? (
+                            "Expired"
+                          ) : (
+                            `${daysRemaining} ${daysRemaining === 1 ? "day" : "days"} left`
+                          )}
+                        </span>
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <span className={code.usesLeft <= 3 ? "text-amber-400" : "text-white"}>
+                        {code.usesLeft}
+                      </span>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <Button
+                        onClick={() => onRevoke(code.code)}
+                        variant="ghost"
+                        className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                );
+              })
+            ) : (
               <TableRow>
                 <TableCell colSpan={4} className="text-center py-8 text-gray-500">
                   No active promo codes. Generate a new code to get started.
                 </TableCell>
               </TableRow>
-            ) : (
-              codes.map((code) => {
-                const isExpired = new Date(code.expiresAt) < new Date();
-                const isLowUses = code.usesLeft < 5;
-
-                return (
-                  <TableRow key={code.id} className="hover:bg-white/5 border-white/10">
-                    <TableCell className="font-mono">
-                      <div className="flex items-center gap-2">
-                        <span className={cn(
-                          "text-sm",
-                          isExpired ? "text-red-400" : isLowUses ? "text-yellow-400" : "text-green-400"
-                        )}>
-                          {code.code}
-                        </span>
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      {new Date(code.expiresAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell>
-                      {code.usesLeft}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <Button onClick={() => onRevoke(code.id)}
-                        variant="ghost"
-                        className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
-                      >
-                        <Trash2 className="h-4 w-4"/>
-                      </button>
-                    </TableCell>
-                  </TableRow>
-                );
-              })
             )}
           </TableBody>
-        </table>
+        </Table>
       </div>
-
+      
       <div className="text-xs text-gray-500">
         {codes.length > 0
           ? `${codes.length} active promo code${codes.length !== 1 ? "s" : ""}`
@@ -138,11 +145,4 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
       </div>
     </div>
   );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

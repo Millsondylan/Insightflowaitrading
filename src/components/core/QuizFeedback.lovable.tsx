@@ -44,9 +44,9 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
           transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
         >
           {isCorrect ? (
-            <checkcircle2 >
+            <checkcircle2  >
           ) : (
-            <Xcircle />
+            <Xcircle  />
           )}
         </motion.div>
         
@@ -56,16 +56,16 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
             isCorrect ? "text-green-400" : "text-red-400"
           )}>
             {isCorrect ? "Correct!" : "Not Quite"}
-          </Quizfeedbackprops>
+          </h3>
           
           <div className="flex items-center space-x-2 mt-1">
             <span className={cn('text-xs font-medium', getConfidenceColor(confidence))}>
               {getConfidenceText(confidence)}
-            </div>
+            </span>
             <div className={cn(
               'w-2 h-2 rounded-full',
               getConfidenceColor(confidence).replace('text-', 'bg-')
-            )}/>
+            )} />
           </div>
         </div>
       </div>
@@ -78,9 +78,9 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
         className="space-y-4"
       >
         <div className="flex items-start space-x-3">
-          <lightbulb >
+          <lightbulb  >
           <div>
-            <h4 className="font-semibold text-gray-200 mb-2">Explanation</div>
+            <h4 className="font-semibold text-gray-200 mb-2">Explanation</h4>
             <p className="text-gray-300 leading-relaxed">{explanation}</p>
           </div>
         </div>
@@ -93,9 +93,9 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
             transition={{ delay: 0.5, duration: 0.4 }}
             className="flex items-start space-x-3 pt-4 border-t border-gray-600/30"
           >
-            <Trendingup />
+            <trendingup  >
             <div>
-              <h4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</Trendingup>
+              <h4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</h4>
               <p className="text-gray-300 leading-relaxed">{hint}</p>
             </div>
           </motion.div>
@@ -136,7 +136,8 @@ const QuizFeedback: React.FC<Quizfeedbackprops > = ({ feedback, className }) => 
               ? "bg-gradient-to-r from-green-500 to-emerald-400" 
               : "bg-gradient-to-r from-blue-500 to-purple-500"
           )}
-          style={{ width: `${confidence * 100}%` }}/></div>
+          style={{ width: `${confidence * 100}%` }}
+        />
       </motion.div>
     </motion.div>
   );

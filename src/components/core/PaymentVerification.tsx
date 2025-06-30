@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { config } from '../../lib/config';
+import { WALLET_ADDRESSES } from '../../lib/config';
 import { Button } from '../ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { Input } from '../ui/input';
@@ -23,21 +23,21 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
   const wallets = {
     eth: {
       name: 'Ethereum',
-      address: config.walletAddresses.eth,
+      address: WALLET_ADDRESSES.eth,
       color: 'text-blue-400',
       bgColor: 'bg-blue-500/20',
       borderColor: 'border-blue-500/30',
     },
     usdt: {
       name: 'USDT (Tron)',
-      address: config.walletAddresses.usdt,
+      address: WALLET_ADDRESSES.usdt,
       color: 'text-green-400',
       bgColor: 'bg-green-500/20',
       borderColor: 'border-green-500/30',
     },
     btc: {
       name: 'Bitcoin',
-      address: config.walletAddresses.btc,
+      address: WALLET_ADDRESSES.btc,
       color: 'text-orange-400',
       bgColor: 'bg-orange-500/20',
       borderColor: 'border-orange-500/30',
@@ -55,20 +55,28 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
         Send your payment to one of the addresses below to activate your account.
       </p>
 
-      <Tabs value={activeTab} 
+      <Tabs 
+        value={activeTab} 
         onValueChange={setActiveTab}
-        className="w-full">
+        className="w-full"
+      >
         <TabsList className="grid grid-cols-3 mb-6 bg-black/30">
-          <TabsTrigger value="eth" 
-            className="data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-400">
+          <TabsTrigger 
+            value="eth" 
+            className="data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-400"
+          >
             ETH
           </TabsTrigger>
-          <TabsTrigger value="usdt" 
-            className="data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400">
+          <TabsTrigger 
+            value="usdt" 
+            className="data-[state=active]:bg-green-500/20 data-[state=active]:text-green-400"
+          >
             USDT
           </TabsTrigger>
-          <TabsTrigger value="btc" 
-            className="data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400">
+          <TabsTrigger 
+            value="btc" 
+            className="data-[state=active]:bg-orange-500/20 data-[state=active]:text-orange-400"
+          >
             BTC
           </TabsTrigger>
         </TabsList>
@@ -83,12 +91,13 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
                   readOnly 
                   className="bg-black/30 border-gray-700 flex-grow"
                 />
-                <Button variant="ghost"
+                <Button
+                  variant="ghost"
                   size="icon"
                   className="ml-2"
                   onClick={() => handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <Check className="h-4 w-4"/> : <Copy className="h-4 w-4"/>}
+                  {copied === key ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
             </div>
@@ -97,8 +106,10 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
               <p className="text-sm text-gray-400 mb-4">
                 After sending payment, click the button below to continue.
               </p>
-              <Button onClick={onVerificationComplete}
-                className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30">
+              <Button 
+                onClick={onVerificationComplete}
+                className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30"
+              >
                 I've Sent the Payment
               </Button>
             </div>
@@ -109,11 +120,4 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
   );
 };
 
-export default PaymentVerification;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default PaymentVerification; 

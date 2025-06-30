@@ -125,7 +125,7 @@ async function callAIProvider(provider: AIProvider, prompt: string): Promise<str
  * @param promptData Journal entry data for reflection
  * @returns AI reflection analysis
  */
-export async function generateReflection(promptData: AIPromptData): Promise<aIReflection> {
+export async function generateReflection(promptData: AIPromptData): Promise<AIReflection> {
   const provider = getAvailableProvider();
   
   if (!provider) {
@@ -190,7 +190,7 @@ export async function handleReflectionRequest(requestData: any): Promise<{ succe
 export async function requestReflection(
   entry: any, 
   additionalContext?: string
-): Promise<aIReflection> {
+): Promise<AIReflection> {
   try {
     // For now, call the AI directly from client side
     // In production, you'd want to route this through your backend

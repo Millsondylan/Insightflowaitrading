@@ -9,7 +9,7 @@ interface ProUnlockerProps {
   onUnlock?: (plan: string) => void;
 }
 
-export const ProUnlocker: React.FC<prounlockerprops> = ({ onUnlock }) => {
+export const ProUnlocker: React.FC<Prounlockerprops > = ({ onUnlock }) => {
   const plans = [
     {
       name: 'Basic',
@@ -50,10 +50,10 @@ export const ProUnlocker: React.FC<prounlockerprops> = ({ onUnlock }) => {
   ];
 
   return (
-    <Card />
+    <Card  />
       <div className="text-center mb-8">
-        <Crown >
-        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</Card>
+        <crown  >
+        <h2 className="text-3xl font-bold mb-2">Unlock Pro Features</h2>
         <p className="text-muted-foreground">
           Take your trading to the next level with advanced tools and insights
         </p>
@@ -61,67 +61,71 @@ export const ProUnlocker: React.FC<prounlockerprops> = ({ onUnlock }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {plans.map((plan) => (
-          <div key={plan.name}
+          <div
+            key={plan.name}
             className={`relative p-6 rounded-lg border-2 ${
               plan.recommended
                 ? 'border-primary bg-primary/5'
                 : plan.current
                 ? 'border-muted'
                 : 'border-border'
-            }`}/></div>
+            }`}
+          >
             {plan.recommended && (
-              <Badge >
+              <badge  >
                 Recommended
               </Badge>
             )}
 
             <div className="text-center mb-6">
-              <h3 className="text-xl font-bold mb-2"></div>{plan.name}</div>
+              <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
               <div className="text-3xl font-bold">
                 ${plan.price}
-                <span className="text-sm font-normal text-muted-foreground"></div>/month</div>
+                <span className="text-sm font-normal text-muted-foreground">/month</span>
               </div>
             </div>
 
             <ul className="space-y-3 mb-6">
               {plan.features.map((feature, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <Check >
-                  <span className="text-sm"/></Ul /></Ul />{feature}</Ul />
+                  <check  >
+                  <span className="text-sm">{feature}</span>
+                </li>
               ))}
             </ul>
 
-            <Button  style={{ width: "100%" }}> onUnlock?.(plan.name)}
+            <button  style={{ width: "100%" }}> onUnlock?.(plan.name)}
             >
               {plan.current ? 'Current Plan' : `Upgrade to ${plan.name}`}
-            </button>
+            </Button>
           </div>
         ))}
       </div>
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="text-center p-4">
-          <zap >
-          <h4 className="font-semibold"></div>Instant Access</div>
+          <zap  >
+          <h4 className="font-semibold">Instant Access</h4>
           <p className="text-sm text-muted-foreground">
             All features unlocked immediately
           </p>
         </div>
         <div className="text-center p-4">
-          <Shield >
-          <h4 className="font-semibold"></div>Secure Payment</div>
+          <shield  >
+          <h4 className="font-semibold">Secure Payment</h4>
           <p className="text-sm text-muted-foreground">
             256-bit SSL encryption
           </p>
         </div>
         <div className="text-center p-4">
-          <rocket >
-          <h4 className="font-semibold"></div>Cancel Anytime</div>
+          <rocket  >
+          <h4 className="font-semibold">Cancel Anytime</h4>
           <p className="text-sm text-muted-foreground">
             No questions asked
           </p>
         </div>
-      </div />
+      </div>
+    </Card>
   );
 }; 
 

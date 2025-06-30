@@ -14,7 +14,7 @@ interface AccessStatusProps {
   onAnimationComplete?: () => void;
 }
 
-const AccessStatus: React.FC<accessstatusprops> = ({
+const AccessStatus: React.FC<Accessstatusprops > = ({
   status,
   plan,
   expiryDate,
@@ -70,7 +70,7 @@ const AccessStatus: React.FC<accessstatusprops> = ({
   const formattedExpiry = expiryDate ? new Date(expiryDate).toLocaleDateString() : '';
 
   return (
-    <animatepresence mode="wait"/>
+    <Animatepresence mode="wait" />
       <motion.div
         key={status}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -94,7 +94,7 @@ const AccessStatus: React.FC<accessstatusprops> = ({
             className="relative"
           >
             {status === 'pending' && (
-              <Clock >
+              <clock  >
             )}
             {status === 'success' && (
               <>
@@ -110,11 +110,11 @@ const AccessStatus: React.FC<accessstatusprops> = ({
                     repeatDelay: 1,
                   }}
                 />
-                <Lockopen />
-              </div>
+                <lockopen  >
+              </>
             )}
             {status === 'failure' && (
-              <xcircle >
+              <xcircle  >
             )}
           </motion.div>
 
@@ -130,7 +130,7 @@ const AccessStatus: React.FC<accessstatusprops> = ({
               status === 'pending' && "text-blue-400",
               status === 'success' && "text-green-400",
               status === 'failure' && "text-red-400",
-            )}/></Accessstatusprops /></Accessstatusprops />
+            )}>
               {status === 'pending' && 'Verifying Payment'}
               {status === 'success' && 'Access Granted!'}
               {status === 'failure' && 'Verification Failed'}
@@ -159,7 +159,8 @@ const AccessStatus: React.FC<accessstatusprops> = ({
             )}
           </motion.div>
         </div>
-      </motion.div />
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

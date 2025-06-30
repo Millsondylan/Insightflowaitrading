@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ScrollSection } from '../hooks/use-scroll-reveal';
 
@@ -7,9 +8,9 @@ const JournalBuilderPage: React.FC = () => {
       {/* Hero Section */}
       <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
         <div className="text-center max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-glow-violet mb-8 leading-tight"></div>
+          <h1 className="text-6xl md:text-8xl font-bold text-glow-violet mb-8 leading-tight">
             Your Trading Mind, Captured
-          </div>
+          </h1>
           <p className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">
             Record, reflect, and evolve your trading psychology
           </p>
@@ -17,6 +18,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="threadline-glow w-40 mx-auto"></div>
           </div>
         </div>
+      </ScrollSection>
 
       {/* New Entry Section */}
       <ScrollSection className="px-6 py-20" delay={100}>
@@ -25,7 +27,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="text-center mb-8">
               <div className="inline-block px-4 py-2 bg-violet-500/10 border border-violet-400/30 rounded-full text-violet-300 text-sm font-medium mb-6">
                 📝 New Journal Entry
-              </ScrollSection>
+              </div>
               <h2 className="text-3xl md:text-4xl font-semibold text-glow-magenta mb-4">
                 Document Your Journey
               </h2>
@@ -34,37 +36,38 @@ const JournalBuilderPage: React.FC = () => {
             {/* Form Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="space-y-3">
-                <Label className="block text-sm font-medium text-gray-300"></div>Trade Symbol</div>
+                <label className="block text-sm font-medium text-gray-300">Trade Symbol</label>
                 <div className="bg-white/5 h-12 rounded-xl border border-white/10"></div>
               </div>
               <div className="space-y-3">
-                <Label className="block text-sm font-medium text-gray-300"></div>Entry Price</div>
+                <label className="block text-sm font-medium text-gray-300">Entry Price</label>
                 <div className="bg-white/5 h-12 rounded-xl border border-white/10"></div>
               </div>
               <div className="space-y-3">
-                <Label className="block text-sm font-medium text-gray-300"></div>Exit Price</div>
+                <label className="block text-sm font-medium text-gray-300">Exit Price</label>
                 <div className="bg-white/5 h-12 rounded-xl border border-white/10"></div>
               </div>
             </div>
             
             <div className="mt-8">
-              <Label className="block text-sm font-medium text-gray-300 mb-3"></div>Trade Reflection</div>
+              <label className="block text-sm font-medium text-gray-300 mb-3">Trade Reflection</label>
               <div className="bg-white/5 h-32 rounded-xl border border-white/10"></div>
             </div>
             
             <div className="mt-8 text-center">
-              <Button className="glow-button glow-violet text-lg px-8 py-4"></div>
+              <button className="glow-button glow-violet text-lg px-8 py-4">
                 Save Entry
               </button>
             </div>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Recent Entries Timeline */}
       <ScrollSection className="px-6 py-20" delay={200} animation="slide-right">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
-            <h3 className="text-3xl md:text-4xl font-semibold text-glow-magenta mb-4"/></ScrollSection></ScrollSection>📓 Recent Entries</ScrollSection>
+            <h3 className="text-3xl md:text-4xl font-semibold text-glow-magenta mb-4">📓 Recent Entries</h3>
             <div className="threadline-glow w-24 mx-auto"></div>
           </div>
           
@@ -73,7 +76,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="glass-card hover:bg-black/40 transition-all duration-300 motion-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-2"></div>TSLA Momentum Play</div>
+                  <h4 className="text-xl font-semibold text-white mb-2">TSLA Momentum Play</h4>
                   <p className="text-gray-400 text-sm">January 15, 2024</p>
                 </div>
                 <div className="text-right">
@@ -90,7 +93,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="glass-card hover:bg-black/40 transition-all duration-300 motion-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-2"></div>SPY Put Hedge</div>
+                  <h4 className="text-xl font-semibold text-white mb-2">SPY Put Hedge</h4>
                   <p className="text-gray-400 text-sm">January 12, 2024</p>
                 </div>
                 <div className="text-right">
@@ -107,7 +110,7 @@ const JournalBuilderPage: React.FC = () => {
             <div className="glass-card hover:bg-black/40 transition-all duration-300 motion-shadow">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h4 className="text-xl font-semibold text-white mb-2"></div>NVDA Breakout</div>
+                  <h4 className="text-xl font-semibold text-white mb-2">NVDA Breakout</h4>
                   <p className="text-gray-400 text-sm">January 10, 2024</p>
                 </div>
                 <div className="text-right">
@@ -121,12 +124,13 @@ const JournalBuilderPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Insights Section */}
       <ScrollSection className="px-6 py-32" delay={300} animation="scale-in">
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-section motion-shadow">
-            <h4 className="text-2xl md:text-3xl font-semibold text-glow-violet mb-6"/></ScrollSection></ScrollSection>🧠 AI Insights</ScrollSection>
+            <h4 className="text-2xl md:text-3xl font-semibold text-glow-violet mb-6">🧠 AI Insights</h4>
             <p className="text-gray-300 text-lg mb-8">
               Your trading patterns and psychological trends are being analyzed to help you improve
             </p>
@@ -143,15 +147,9 @@ const JournalBuilderPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </ScrollSection>
     </div>
   );
 };
 
 export default JournalBuilderPage;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};

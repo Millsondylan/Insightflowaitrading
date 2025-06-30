@@ -19,14 +19,14 @@ const ResizableHandle = ({
 }: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
   withHandle?: boolean
 }) => (
-  <Resizableprimitive  //></Resizableprimitive>div]:rotate-90",
+  <Resizableprimitive  />div]:rotate-90",
       className
     )}
     {...props}
   >
     {withHandle && (
       <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
-        <Gripvertical ></div></div>
+        <gripvertical  >
       </div>
     )}
   </ResizablePrimitive.PanelResizeHandle>

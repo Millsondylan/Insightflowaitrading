@@ -46,7 +46,7 @@ export async function getInsight(
 export async function updateInsight(
   insightId: string,
   userId: string,
-  updates: Partial<tradingInsight>
+  updates: Partial<TradingInsight>
 ): Promise<{ insight: TradingInsight | null; error: Error | null }> {
   const { data: insight, error } = await supabase
     .from('trading_insights')

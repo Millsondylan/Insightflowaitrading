@@ -43,58 +43,68 @@ export default function Sidebar() {
     const active = isActive(item.path);
     return (
       <Tooltipprovider >
-        <Tooltip />
-          <Tooltiptrigger >
-            <Link >
-              <Icon / / / / / //>
-          </Tooltipprovider>
-          <Tooltipcontent side="right">
-            <p /></Tooltipcontent /></Tooltipcontent />{item.label}</Tooltipcontent />
-        </Tooltip />
+        <Tooltip  />
+          <tooltiptrigger  >
+            <link  >
+              <icon  >
+            </Link>
+          </TooltipTrigger>
+          <tooltipcontent side="right" >
+            <p>{item.label}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
   };
 
   return (
     <div className="w-20 bg-[#0D1117] h-screen flex flex-col items-center justify-between p-4 border-r border-gray-800">
       <div className="flex flex-col items-center gap-10">
-        <Link to="/" style={{ borderRadius: "0.5rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <TrendingUp  style={{ color: "white" }}>
-        </Tooltipcontent>
+        <link to="/" style={{ borderRadius: "0.5rem", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <trendingup  style={{ color: "white" }}>
+        </Link>
         <nav>
           <ul className="space-y-4">
             {navItems.map((item) => (
-              <li key={item.path}/></Nav /></Nav />
-                <navlink />
+              <li key={item.path}>
+                <navlink  >
+              </li>
             ))}
-          </Ul />
-      </nav>
+          </ul>
+        </nav>
+      </div>
 
       <div className="flex flex-col items-center gap-4">
         <nav>
           <ul className="space-y-2">
             {bottomNavItems.map((item) => (
-              <li key={item.path}></div>
-                <navlink >
-              </div>
+              <li key={item.path}>
+                <navlink  >
+              </li>
             ))}
-          </Ul />
+          </ul>
+        </nav>
         <div className="border-t border-gray-800 w-full my-2"></div>
-        <Tooltipprovider >
-          <Tooltip >
-            <Tooltiptrigger >
-              <Link to="/profile">
-                <avatar >
-                  <avatarimage >
-                  <Avatarfallback /></Tooltipprovider /></Tooltipprovider />{profile?.full_name?.[0] || 'U'}</Tooltipprovider />
-              </Link />
-            <Tooltipcontent side="right">
-              <p /></Tooltipcontent /></Tooltipcontent />{profile?.full_name || 'Profile'}</Tooltipprovider>
-              <Button variant="ghost" size="sm" style={{ width: "100%" }}>
-                <LogOut >
+        <tooltipprovider  >
+          <tooltip  >
+            <tooltiptrigger  >
+              <link to="/profile" >
+                <avatar  >
+                  <avatarimage  >
+                  <avatarfallback  >{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+                </Avatar>
+              </Link>
+            </TooltipTrigger>
+            <tooltipcontent side="right" >
+              <p>{profile?.full_name || 'Profile'}</p>
+              <button variant="ghost" size="sm" style={{ width: "100%" }}>
+                <logout  >
                 Logout
-              </button />
-          </Tooltip />
-      </button>
+              </Button>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     </div>
   );
 }

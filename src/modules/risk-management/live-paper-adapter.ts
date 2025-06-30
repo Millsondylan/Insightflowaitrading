@@ -35,11 +35,11 @@ export abstract class BaseBrokerAdapter {
   // Abstract methods to be implemented by specific broker adapters
   abstract connect(): Promise<boolean>;
   abstract disconnect(): Promise<void>;
-  abstract getAccountInfo(): Promise<livePaperAccount>;
-  abstract getPositions(): Promise<position[]>;
-  abstract placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder>;
+  abstract getAccountInfo(): Promise<LivePaperAccount>;
+  abstract getPositions(): Promise<Position[]>;
+  abstract placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder>;
   abstract cancelOrder(orderId: string): Promise<boolean>;
-  abstract getOrderStatus(orderId: string): Promise<tradeOrder>;
+  abstract getOrderStatus(orderId: string): Promise<TradeOrder>;
 
   /**
    * Set event callback for risk events
@@ -65,7 +65,7 @@ export abstract class BaseBrokerAdapter {
  * TODO: implement order management
  */
 export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
-  private twsConnection: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any; // TODO: replace with actual IB API connection type
+  private twsConnection: any; // TODO: replace with actual IB API connection type
   private isConnected: boolean = false;
 
   constructor(account: LivePaperAccount, private config: {
@@ -103,7 +103,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     this.isConnected = false;
   }
 
-  async getAccountInfo(): Promise<livePaperAccount> {
+  async getAccountInfo(): Promise<LivePaperAccount> {
     if (!this.isConnected) {
       throw new Error('Not connected to IB TWS');
     }
@@ -115,7 +115,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     };
   }
 
-  async getPositions(): Promise<position[]> {
+  async getPositions(): Promise<Position[]> {
     if (!this.isConnected) {
       throw new Error('Not connected to IB TWS');
     }
@@ -124,7 +124,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     return [];
   }
 
-  async placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder> {
+  async placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder> {
     if (!this.isConnected) {
       throw new Error('Not connected to IB TWS');
     }
@@ -144,7 +144,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
     return true;
   }
 
-  async getOrderStatus(orderId: string): Promise<tradeOrder> {
+  async getOrderStatus(orderId: string): Promise<TradeOrder> {
     // TODO: implement order status retrieval
     throw new Error('Order not found');
   }
@@ -156,7 +156,7 @@ export class InteractiveBrokersAdapter extends BaseBrokerAdapter {
  * TODO: add MQL5 script communication
  */
 export class MT5Adapter extends BaseBrokerAdapter {
-  private socket: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any; // TODO: replace with actual socket connection type
+  private socket: any; // TODO: replace with actual socket connection type
 
   constructor(account: LivePaperAccount, private config: {
     serverUrl: string;
@@ -181,17 +181,17 @@ export class MT5Adapter extends BaseBrokerAdapter {
     // TODO: implement MT5 disconnection
   }
 
-  async getAccountInfo(): Promise<livePaperAccount> {
+  async getAccountInfo(): Promise<LivePaperAccount> {
     // TODO: fetch MT5 account information
     return this.account;
   }
 
-  async getPositions(): Promise<position[]> {
+  async getPositions(): Promise<Position[]> {
     // TODO: fetch MT5 positions
     return [];
   }
 
-  async placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder> {
+  async placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder> {
     // TODO: implement MT5 order placement
     return {
       id: `mt5_${Date.now()}`,
@@ -205,7 +205,7 @@ export class MT5Adapter extends BaseBrokerAdapter {
     return true;
   }
 
-  async getOrderStatus(orderId: string): Promise<tradeOrder> {
+  async getOrderStatus(orderId: string): Promise<TradeOrder> {
     // TODO: implement MT5 order status retrieval
     throw new Error('Order not found');
   }
@@ -228,18 +228,18 @@ export class DemoAdapter extends BaseBrokerAdapter {
     // Demo disconnection
   }
 
-  async getAccountInfo(): Promise<livePaperAccount> {
+  async getAccountInfo(): Promise<LivePaperAccount> {
     return {
       ...this.account,
       lastSync: new Date(),
     };
   }
 
-  async getPositions(): Promise<position[]> {
+  async getPositions(): Promise<Position[]> {
     return [...this.positions];
   }
 
-  async placeOrder(order: Omit<tradeOrder, 'id' | 'status'>): Promise<tradeOrder> {
+  async placeOrder(order: Omit<TradeOrder, 'id' | 'status'>): Promise<TradeOrder> {
     const tradeOrder: TradeOrder = {
       id: `demo_${Date.now()}`,
       status: 'filled', // Demo orders fill immediately
@@ -263,7 +263,7 @@ export class DemoAdapter extends BaseBrokerAdapter {
     return false;
   }
 
-  async getOrderStatus(orderId: string): Promise<tradeOrder> {
+  async getOrderStatus(orderId: string): Promise<TradeOrder> {
     const order = this.orders.find(o => o.id === orderId);
     if (!order) {
       throw new Error('Order not found');
@@ -276,7 +276,7 @@ export class DemoAdapter extends BaseBrokerAdapter {
 export const createBrokerAdapter = (
   type: 'ib' | 'mt5' | 'demo',
   account: LivePaperAccount,
-  config: unknown
+  config: any
 ): BaseBrokerAdapter => {
   switch (type) {
     case 'ib':

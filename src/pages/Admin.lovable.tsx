@@ -145,33 +145,40 @@ export default function AdminPage() {
     <div className="container mx-auto py-8 px-4">
       <div className="theme-admin">
         <header className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</div>
+          <h1 className="text-3xl font-bold text-white mb-4">Admin Dashboard</h1>
           <p className="text-white/70">
             Manage users, promo codes, and view system usage logs.
-          </p />
+          </p>
+        </header>
 
         <Tabs defaultValue="users">
-          <Tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
-            <Tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
-              <Shieldcheck />
-              <span>Users</Tabs />
-            <Tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
-              <Ticket >
-              <span>Promo Codes</Tabstrigger />
-            <Tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
-              <Activity  //></Tabstrigger /></Tabstrigger /></p>
-              <span>Usage Logs</span />
-          </span>
+          <tabslist  style={{ display: "grid", border: "1px solid #E5E7EB" }}>
+            <tabstrigger value="users" style={{ display: "flex", alignItems: "center" }}>
+              <Shieldcheck  />
+              <span>Users</span>
+            </TabsTrigger>
+            <tabstrigger value="promo" style={{ display: "flex", alignItems: "center" }}>
+              <ticket  >
+              <span>Promo Codes</span>
+            </TabsTrigger>
+            <tabstrigger value="logs" style={{ display: "flex", alignItems: "center" }}>
+              <activity  >
+              <span>Usage Logs</span>
+            </TabsTrigger>
+          </TabsList>
 
-          <Tabscontent value="users">
-            <userrolemanager />
+          <tabscontent value="users" >
+            <userrolemanager  >
+          </TabsContent>
 
-          <Tabscontent value="promo">
-            <promocodeeditor />
+          <tabscontent value="promo" >
+            <promocodeeditor  >
+          </TabsContent>
 
-          <Tabscontent value="logs">
-            <usagelogviewer />
-        </Tabscontent>
+          <tabscontent value="logs" >
+            <usagelogviewer  >
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

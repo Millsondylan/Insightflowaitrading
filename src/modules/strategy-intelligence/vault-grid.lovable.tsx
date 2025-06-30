@@ -11,16 +11,16 @@ interface VaultGridProps {
   onCreateStrategy: () => void;
 }
 
-export const VaultGrid: React.FC<Vaultgridprops /> = ({
+export const VaultGrid: React.FC<Vaultgridprops  /> = ({
   initialOptions,
   onStrategySelect,
   onCreateStrategy
 }) => {
-  const [strategies, setStrategies] = useState<Strategy >([]);
+  const [strategies, setStrategies] = useState<strategy  >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   
-  const [options, setOptions] = useState<Vaultgridoptions >({
+  const [options, setOptions] = useState<vaultgridoptions  >({
     sortBy: initialOptions?.sortBy || 'updatedAt',
     sortDirection: initialOptions?.sortDirection || 'desc',
     filter: initialOptions?.filter || {},
@@ -114,7 +114,7 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
     setOptions(prev => ({ ...prev, view }));
   };
   
-  const handleFilterChange = (filterKey: string, value: unknown) => {
+  const handleFilterChange = (filterKey: string, value: any) => {
     setOptions(prev => ({
       ...prev,
       filter: { ...prev.filter, [filterKey]: value }
@@ -127,30 +127,34 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
   
   const renderGridView = () => {
     return (
-      <Card  style={{ width: "100%" }}>
-        <Cardheader />
-          <Cardtitle  style={{ color: "white" }}>Strategy Vault Grid</Vaultgridoptions />
-        <Cardcontent >
+      <card  style={{ width: "100%" }}>
+        <cardheader  >
+          <cardtitle  style={{ color: "white" }}>Strategy Vault Grid</CardTitle>
+        </CardHeader>
+        <cardcontent  >
           <scrollarea  style={{ width: "100%" }}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {strategies.map((strategy) => (
-                <Card  style={{ color: "white" }}>
-                  <Cardcontent  style={{ padding: "1rem" }}>
+                <card  style={{ color: "white" }}>
+                  <cardcontent  style={{ padding: "1rem" }}>
                     <div className="flex justify-between items-center">
-                      <h3 className="text-lg font-bold">{strategy.name}</Vaultgridoptions>
-                      <Badge variant="secondary">{strategy.risk}</Badge>
+                      <h3 className="text-lg font-bold">{strategy.name}</h3>
+                      <badge variant="secondary" >{strategy.risk}</Badge>
                     </div>
                     <div className="mt-2 text-green-400 font-semibold">
                       Performance: {strategy.performance}
                     </div>
                     <div className="mt-4 flex space-x-2">
-                      <Button variant="outline" size="sm" style={{ color: "white" }}> onStrategySelect(strategy)}>View</div>
-                      <Button variant="destructive" size="sm">Delete</button>
-                    </div />
+                      <button variant="outline" size="sm" style={{ color: "white" }}> onStrategySelect(strategy)}>View</Button>
+                      <button variant="destructive" size="sm" >Delete</Button>
+                    </div>
+                  </CardContent>
                 </Card>
               ))}
-            </div />
-        </CardContent />
+            </div>
+          </ScrollArea>
+        </CardContent>
+      </Card>
     );
   };
   
@@ -160,13 +164,14 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
         <table className="w-full">
           <thead>
             <tr className="border-b border-border-primary">
-              <th className="px-4 py-3 text-left">Name</div>
+              <th className="px-4 py-3 text-left">Name</th>
               <th className="px-4 py-3 text-left">Author</th>
               <th className="px-4 py-3 text-left">Win Rate</th>
               <th className="px-4 py-3 text-left">Profit Factor</th>
               <th className="px-4 py-3 text-left">Updated</th>
-              <th className="px-4 py-3 text-left">Tags</Th />
-          </th>
+              <th className="px-4 py-3 text-left">Tags</th>
+            </tr>
+          </thead>
           <tbody>
             {strategies.map(strategy => (
               <tr
@@ -176,32 +181,33 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
               >
                 <td className="px-4 py-3">
                   <div className="flex items-center">
-                    <span className="font-medium">{strategy.name}</tbody>
+                    <span className="font-medium">{strategy.name}</span>
                     {strategy.isPublished && (
                       <span className="ml-2 px-2 py-0.5 bg-status-success/20 text-status-success text-xs rounded">
                         Published
                       </span>
                     )}
-                  </div />
+                  </div>
+                </td>
                 <td className="px-4 py-3">{strategy.author}</td>
                 <td className="px-4 py-3">
                   {strategy.performance ? (
                     <span className={
-                      strategy.performance.winRate> 0.5 ? 'text-status-success' : 
+                      strategy.performance.winRate > 0.5 ? 'text-status-success' : 
                       strategy.performance.winRate > 0.4 ? 'text-status-warning' : 'text-status-error'
                     }>
                       {(strategy.performance.winRate * 100).toFixed(1)}%
-                    </td>
+                    </span>
                   ) : '-'}
                 </td>
                 <td className="px-4 py-3">
                   {strategy.performance ? (
                     <span className={
-                      strategy.performance.profitFactor> 2 ? 'text-status-success' : 
+                      strategy.performance.profitFactor > 2 ? 'text-status-success' : 
                       strategy.performance.profitFactor > 1.5 ? 'text-status-warning' : 'text-text-primary'
                     }>
                       {strategy.performance.profitFactor.toFixed(2)}
-                    </td>
+                    </span>
                   ) : '-'}
                 </td>
                 <td className="px-4 py-3">
@@ -212,12 +218,14 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
                     {strategy.tags.map((tag, i) => (
                       <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
                         {tag}
-                      </td>
+                      </span>
                     ))}
-                  </div />
+                  </div>
+                </td>
               </tr>
             ))}
-          </Tbody />
+          </tbody>
+        </table>
       </div>
     );
   };
@@ -227,17 +235,20 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
       {/* Toolbar */}
       <div className="flex flex-wrap justify-between items-center mb-6 gap-4">
         <div className="flex items-center space-x-2">
-          <Button  className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          <button
+            className={`px-3 py-1 rounded ${options.view === 'grid' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('grid')}
           >
             Grid
-          </div>
-          <Button  className={`px-3 py-1 rounded ${options.view === 'list' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          </button>
+          <button
+            className={`px-3 py-1 rounded ${options.view === 'list' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('list')}
           >
             List
           </button>
-          <Button  className={`px-3 py-1 rounded ${options.view === 'compact' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
+          <button
+            className={`px-3 py-1 rounded ${options.view === 'compact' ? 'bg-brand-primary text-white' : 'bg-background-secondary'}`}
             onClick={() => handleViewChange('compact')}
           >
             Compact
@@ -245,24 +256,26 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
         </div>
         
         <div className="flex items-center space-x-2">
-          <Select
+          <select
             className="p-2 bg-background-secondary border border-border-primary rounded"
             value={options.sortBy}
             onChange={(e) => handleSortChange(e.target.value as VaultGridOptions['sortBy'])}
           >
-            <Option value="name">Name</div>
-            <Option value="updatedAt">Last Updated</Option>
-            <Option value="performance.winRate">Win Rate</Option>
-            <Option value="performance.profitFactor">Profit Factor</Option />
+            <option value="name">Name</option>
+            <option value="updatedAt">Last Updated</option>
+            <option value="performance.winRate">Win Rate</option>
+            <option value="performance.profitFactor">Profit Factor</option>
+          </select>
           
-          <Button  className="p-2 bg-background-secondary border border-border-primary rounded"
+          <button
+            className="p-2 bg-background-secondary border border-border-primary rounded"
             onClick={() => setOptions(prev => ({
               ...prev,
               sortDirection: prev.sortDirection === 'asc' ? 'desc' : 'asc'
             }))}
           >
             {options.sortDirection === 'asc' ? '↑' : '↓'}
-          </Option>
+          </button>
         </div>
       </div>
       
@@ -270,46 +283,49 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
       <div className="mb-6 p-4 bg-background-secondary rounded-lg">
         <div className="flex flex-wrap gap-4">
           <div>
-            <Label className="block text-sm mb-1">Tags</div>
-            <Select
+            <label className="block text-sm mb-1">Tags</label>
+            <select
               className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.tags?.[0] || ''}
               onChange={(e) => handleFilterChange('tags', e.target.value ? [e.target.value] : undefined)}
             >
-              <Option value="">All Tags</Select>
+              <option value="">All Tags</option>
               {availableTags.map(tag => (
-                <Option key={tag} value={tag}>{tag}</Option>
+                <option key={tag} value={tag}>{tag}</option>
               ))}
-            </Select>
+            </select>
           </div>
           
           <div>
-            <Label className="block text-sm mb-1">Min Win Rate</div>
-            <Select
+            <label className="block text-sm mb-1">Min Win Rate</label>
+            <select
               className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.minWinRate || ''}
               onChange={(e) => handleFilterChange('minWinRate', e.target.value ? Number(e.target.value) : undefined)}
             >
-              <Option value="">Any</Select>
-              <Option value="0.4">40%+</Option>
-              <Option value="0.5">50%+</Option>
-              <Option value="0.6">60%+</Option>
-              <Option value="0.7">70%+</Option />
-          </Option>
+              <option value="">Any</option>
+              <option value="0.4">40%+</option>
+              <option value="0.5">50%+</option>
+              <option value="0.6">60%+</option>
+              <option value="0.7">70%+</option>
+            </select>
+          </div>
           
           <div>
-            <Label className="block text-sm mb-1">Published</div>
-            <Select
+            <label className="block text-sm mb-1">Published</label>
+            <select
               className="p-2 bg-background-primary border border-border-primary rounded"
               value={options.filter.isPublished === undefined ? '' : options.filter.isPublished ? 'true' : 'false'}
               onChange={(e) => handleFilterChange('isPublished', e.target.value === '' ? undefined : e.target.value === 'true')}
             >
-              <Option value="">All</Select>
-              <Option value="true">Published</Option>
-              <Option value="false">Drafts</Option />
-          </Option>
+              <option value="">All</option>
+              <option value="true">Published</option>
+              <option value="false">Drafts</option>
+            </select>
+          </div>
           
-          <Button  className="self-end px-4 py-2 bg-background-tertiary rounded"
+          <button
+            className="self-end px-4 py-2 bg-background-tertiary rounded"
             onClick={() => setOptions(prev => ({ ...prev, filter: {} }))}
           >
             Clear Filters
@@ -331,8 +347,10 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
         <div className="p-12 text-center">
           <div className="text-xl font-semibold mb-2">No strategies found</div>
           <div className="text-text-muted mb-6">Create your first strategy to get started</div>
-          <Button className="px-4 py-2 bg-brand-primary text-white rounded-md"
-            onClick={onCreateStrategy}>
+          <button
+            className="px-4 py-2 bg-brand-primary text-white rounded-md"
+            onClick={onCreateStrategy}
+          >
             Create Strategy
           </button>
         </div>
@@ -349,19 +367,21 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
           {/* Pagination */}
           <div className="flex justify-center mt-6">
             <div className="flex space-x-1">
-              <Button  className="px-3 py-1 rounded bg-background-secondary disabled:opacity-50"
+              <button
+                className="px-3 py-1 rounded bg-background-secondary disabled:opacity-50"
                 disabled={options.page === 1}
                 onClick={() => handlePageChange(options.page - 1)}
               >
                 Prev
-              </div>
+              </button>
               
               {[...Array(3)].map((_, i) => {
                 const pageNum = options.page - 1 + i;
                 if (pageNum < 1) return null;
                 
                 return (
-                  <Button key={pageNum}
+                  <button
+                    key={pageNum}
                     className={`px-3 py-1 rounded ${
                       pageNum === options.page ? 'bg-brand-primary text-white' : 'bg-background-secondary'
                     }`}
@@ -372,7 +392,8 @@ export const VaultGrid: React.FC<Vaultgridprops /> = ({
                 );
               })}
               
-              <Button  className="px-3 py-1 rounded bg-background-secondary"
+              <button
+                className="px-3 py-1 rounded bg-background-secondary"
                 onClick={() => handlePageChange(options.page + 1)}
               >
                 Next

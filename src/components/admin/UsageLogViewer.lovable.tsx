@@ -27,10 +27,10 @@ type ActionFilter = "all" | "login" | "api" | "feature";
 
 export default function UsageLogViewer({ logs }: Props) {
   const [searchQuery, setSearchQuery] = React.useState("");
-  const [timeFilter, setTimeFilter] = React.useState<Timefilter>("all");
-  const [actionFilter, setActionFilter] = React.useState<actionfilter />("all");
-  const [filteredLogs, setFilteredLogs] = React.useState<Usagelog >(logs);
-  const containerRef = React.useRef<HTMLDivElement >(null);
+  const [timeFilter, setTimeFilter] = React.useState<Timefilter >("all");
+  const [actionFilter, setActionFilter] = React.useState<Actionfilter  />("all");
+  const [filteredLogs, setFilteredLogs] = React.useState<usagelog  >(logs);
+  const containerRef = React.useRef<HTMLDivElement  >(null);
 
   // Apply filters when any filter changes
   React.useEffect(() => {
@@ -100,13 +100,14 @@ export default function UsageLogViewer({ logs }: Props) {
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-white">Usage Logs</Timefilter>
+        <h2 className="text-lg font-semibold text-white">Usage Logs</h2>
         
         <div className="flex items-center space-x-2">
           {/* Search input */}
           <div className="relative">
-            <Search />
-            <Input type="text"
+            <search  >
+            <input
+              type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search logs..."
@@ -115,81 +116,92 @@ export default function UsageLogViewer({ logs }: Props) {
           </div>
           
           {/* Time filter */}
-          <Select > setTimeFilter(value as TimeFilter)}>
-            <SelectTrigger  style={{ color: "white" }}>
+          <select  > setTimeFilter(value as TimeFilter)}>
+            <selecttrigger  style={{ color: "white" }}>
               <div className="flex items-center">
-                <Clock >
-                <SelectValue />
-            </Select>
-            <SelectContent  style={{ color: "white" }}>
-              <SelectItem value="all">All Time</SelectContent>
-              <SelectItem value="today">Today</SelectItem>
-              <SelectItem value="week">This Week</SelectItem>
-              <SelectItem value="month">This Month</SelectItem />
-          </SelectItem>
+                <clock  >
+                <selectvalue  >
+              </div>
+            </SelectTrigger>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="all" >All Time</SelectItem>
+              <selectitem value="today" >Today</SelectItem>
+              <selectitem value="week" >This Week</SelectItem>
+              <selectitem value="month" >This Month</SelectItem>
+            </SelectContent>
+          </Select>
           
           {/* Action filter */}
-          <Select > setActionFilter(value as ActionFilter)}>
-            <SelectTrigger  style={{ color: "white" }}>
+          <select  > setActionFilter(value as ActionFilter)}>
+            <selecttrigger  style={{ color: "white" }}>
               <div className="flex items-center">
-                <Filter >
-                <SelectValue />
-            </Select>
-            <SelectContent  style={{ color: "white" }}>
-              <SelectItem value="all">All Actions</SelectContent>
-              <SelectItem value="login">Login</SelectItem>
-              <SelectItem value="api">API Usage</SelectItem>
-              <SelectItem value="feature">Feature Access</SelectItem />
-          </SelectItem>
+                <filter  >
+                <selectvalue  >
+              </div>
+            </SelectTrigger>
+            <selectcontent  style={{ color: "white" }}>
+              <selectitem value="all" >All Actions</SelectItem>
+              <selectitem value="login" >Login</SelectItem>
+              <selectitem value="api" >API Usage</SelectItem>
+              <selectitem value="feature" >Feature Access</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <div ref={containerRef}
-          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-          <table >
+        <div 
+          ref={containerRef}
+          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+        >
+          <table  >
             <tableheader  style={{ backgroundColor: "black" }}>
-              <tablerow >
-                <tablehead >User</div>
-                <tablehead >Action</TableHead>
-                <tablehead >Timestamp</TableHead />
+              <tablerow  >
+                <tablehead  >User</TableHead>
+                <tablehead  >Action</TableHead>
+                <tablehead  >Timestamp</TableHead>
+              </TableRow>
             </TableHeader>
-            <tablebody >
+            <tablebody  >
               {filteredLogs.length > 0 ? (
                 filteredLogs.map((log) => (
-                  <tablerow >
-                    <tablecell >{log.userEmail}</TableCell>
-                    <tablecell >
+                  <tablerow  >
+                    <tablecell  >{log.userEmail}</TableCell>
+                    <tablecell  >
                       <span className={
                         log.action.toLowerCase().includes("error") ? "text-red-400" :
                         log.action.toLowerCase().includes("warn") ? "text-yellow-400" :
                         ""
                       }>
                         {log.action}
-                      </span />
-                    <tablecell >
+                      </span>
+                    </TableCell>
+                    <tablecell  >
                       <div className="flex items-center">
-                        <Calendar >
+                        <calendar  >
                         {formatTimestamp(log.timestamp)}
-                      </div />
-                  </span>
+                      </div>
+                    </TableCell>
+                  </TableRow>
                 ))
               ) : (
-                <tablerow >
-                  <tablecell >
+                <tablerow  >
+                  <tablecell  >
                     <div className="flex flex-col items-center gap-2 text-gray-500">
-                      <inbox >
-                      <p>No logs found</div>
+                      <inbox  >
+                      <p>No logs found</p>
                       <p className="text-xs">Try adjusting your filters</p>
-                    </div />
+                    </div>
+                  </TableCell>
                 </TableRow>
               )}
-            </TableBody />
+            </TableBody>
+          </Table>
         </div>
       </div>
       
       <div className="text-xs text-gray-500 flex justify-between items-center">
-        <div></div>
+        <div>
           Showing {filteredLogs.length} of {logs.length} logs
         </div>
         

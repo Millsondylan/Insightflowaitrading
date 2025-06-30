@@ -62,12 +62,13 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-lg font-semibold text-white">User Management</User>
+        <h2 className="text-lg font-semibold text-white">User Management</h2>
         
         {/* Search input */}
         <div className="relative">
-          <Search />
-          <Input type="text"
+          <Search  />
+          <input
+            type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
@@ -77,51 +78,58 @@ export default function UserRoleManager({ users, onRoleChange }: Props) {
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table >
-          <Tableheader /></div></div>
-            <tablerow >
-              <tablehead >ID</TableHead>
-              <tablehead >Email</TableHead>
-              <tablehead >Current Role</TableHead>
-              <tablehead >Manage Role</TableHead />
+        <table  >
+          <tableheader  >
+            <tablerow  >
+              <tablehead  >ID</TableHead>
+              <tablehead  >Email</TableHead>
+              <tablehead  >Current Role</TableHead>
+              <tablehead  >Manage Role</TableHead>
+            </TableRow>
           </TableHeader>
-          <tablebody >
+          <tablebody  >
             {filteredUsers.map((user) => (
-              <tablerow >
+              <tablerow  >
                 <tablecell  style={{ fontSize: "0.75rem" }}>
                   {user.id.substring(0, 8)}...
                 </TableCell>
-                <tablecell >{user.email}</TableCell>
-                <tablecell >
-                  <Badge variant="outline">
+                <tablecell  >{user.email}</TableCell>
+                <tablecell  >
+                  <badge variant="outline" >
                     {user.role.toUpperCase()}
-                  </Badge />
-                <tablecell >
-                  <Select > onRoleChange(user.id, value as User["role"])}
+                  </Badge>
+                </TableCell>
+                <tablecell  >
+                  <select  > onRoleChange(user.id, value as User["role"])}
                   >
-                    <SelectTrigger  style={{ color: "white" }}>
-                      <SelectValue />
-                    <SelectContent  style={{ color: "white" }}>
-                      <SelectItem value="user">
+                    <selecttrigger  style={{ color: "white" }}>
+                      <selectvalue  >
+                    </SelectTrigger>
+                    <selectcontent  style={{ color: "white" }}>
+                      <selectitem value="user" >
                         User
-                      </Badge>
-                      <SelectItem value="mod">
+                      </SelectItem>
+                      <selectitem value="mod" >
                         Moderator
                       </SelectItem>
-                      <SelectItem value="admin">
+                      <selectitem value="admin" >
                         Admin
-                      </SelectItem />
-                  </Select />
-              </SelectItem>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </TableCell>
+              </TableRow>
             ))}
             
             {filteredUsers.length === 0 && (
-              <tablerow >
-                <tablecell >
+              <tablerow  >
+                <tablecell  >
                   No users found matching your search.
-                </TableCell />
+                </TableCell>
+              </TableRow>
             )}
-          </TableBody />
+          </TableBody>
+        </Table>
       </div>
       
       <div className="text-xs text-gray-500">

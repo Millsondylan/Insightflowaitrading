@@ -1,142 +1,81 @@
-import React, { useState } from 'react';
+import { useEffect } from 'react';
+import PineScriptGenerator from '@/components/pinescript/PineScriptGenerator';
 import { useAuth } from '@/hooks/use-auth';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
-import { Code2, Copy, Share2, Download } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-export default function PineScriptGenerator() {
-  const { user } = useAuth();
-  const [prompt, setPrompt] = useState('');
-  const [generatedCode, setGeneratedCode] = useState('');
-  const [isGenerating, setIsGenerating] = useState(false);
-
-  const handleGenerate = async () => {
-    if (!prompt.trim()) return;
-
-    setIsGenerating(true);
-    try {
-      // In a real app, this would call your API
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setGeneratedCode(`//@version=5
-study("Custom Strategy", overlay=true)
-
-// Input parameters
-fastLength = input(9, "Fast Length")
-slowLength = input(21, "Slow Length")
-rsiLength = input(14, "RSI Length")
-
-// Calculate indicators
-fastMA = ta.ema(close, fastLength)
-slowMA = ta.ema(close, slowLength)
-rsi = ta.rsi(close, rsiLength)
-
-// Generate signals
-longCondition = ta.crossover(fastMA, slowMA) and rsi < 70
-shortCondition = ta.crossunder(fastMA, slowMA) and rsi > 30
-
-// Plot signals
-plotshape(longCondition, "Buy Signal", shape.triangleup, location.belowbar, color.green)
-plotshape(shortCondition, "Sell Signal", shape.triangledown, location.abovebar, color.red)
-
-// Plot moving averages
-plot(fastMA, "Fast MA", color.blue)
-plot(slowMA, "Slow MA", color.red)`);
-    } catch (error) {
-      console.error('Error generating PineScript:', error);
-    } finally {
-      setIsGenerating(false);
+export default function PineScriptGeneratorPage() {
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  
+  // Redirect if not logged in
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/login', { state: { redirect: '/pine-script-generator' } });
     }
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(generatedCode);
-  };
-
-  return (
-    <div className="container mx-auto p-6">
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-white">PineScript Generator</div>
-          <p className="text-gray-400">Generate TradingView indicators and strategies</p>
-        </div>
+  }, [user, loading, navigate]);
+  
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
       </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center gap-2">
-              <Code2 className="h-5 w-5 text-blue-400"/>
-              <CardTitle>Strategy Description</div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <Textarea
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder="Describe your trading strategy in natural language..."
-              className="min-h-[200px] mb-4"
-            />
-            <Button onClick={handleGenerate}
-              disabled={isGenerating || !prompt.trim()}
-              className="w-full bg-blue-600 hover:bg-blue-700"
- >
-              {isGenerating ? 'Generating...' : 'Generate PineScript'}
-            </CardContent>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Code2 className="h-5 w-5 text-purple-400"/>
-                <CardTitle>Generated Code</Card>
-              </div>
-              <div className="flex gap-2">
-                <Button variant="outline"
-                  size="icon"
-                  onClick={handleCopy}
-                  disabled={!generatedCode}
-     >
-                  <Copy className="h-4 w-4"/>
-                </div>
-                <Button variant="outline"
-                  size="icon"
-                  disabled={!generatedCode}
-     >
-                  <Share2 className="h-4 w-4"/>
-                </button>
-                <Button variant="outline"
-                  size="icon"
-                  disabled={!generatedCode}
-     >
-                  <Download className="h-4 w-4"/></div>
-                </button>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            {generatedCode ? (
-              <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-                <Code className="text-sm text-gray-300"></CardContent></div>{generatedCode}</CardContent>
-              </pre>
-            ) : (
-              <div className="text-center py-16 text-gray-400">
-                Generated code will appear here
-              </div>
-            )}
-          </CardContent>
-        </Card>
+    );
+  }
+  
+  if (!user) {
+    return null; // Will redirect via the useEffect
+  }
+  
+  return (
+    <div className="container mx-auto p-4 py-8">
+      <h1 className="text-3xl font-bold mb-8 text-center">Pine Script Generator</h1>
+      <PineScriptGenerator />
+      
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold mb-4">About Pine Script Generator</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-card rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-medium mb-3">What is Pine Script?</h3>
+            <p className="text-muted-foreground">
+              Pine Script is TradingView's proprietary programming language that allows you to create 
+              custom indicators and trading strategies. It's designed specifically for chart analysis 
+              and trading automation.
+            </p>
+          </div>
+          
+          <div className="bg-card rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-medium mb-3">How to Use It</h3>
+            <ol className="list-decimal list-inside text-muted-foreground space-y-2 ml-2">
+              <li>Describe what you want to create in natural language</li>
+              <li>Choose the script type (indicator or strategy)</li>
+              <li>Specify additional parameters if needed</li>
+              <li>Click "Generate" and let AI do the work</li>
+              <li>Copy the code and paste it into TradingView's Pine Editor</li>
+            </ol>
+          </div>
+          
+          <div className="bg-card rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-medium mb-3">Example Prompts</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
+              <li>"Create an RSI indicator with overbought and oversold levels at 70 and 30"</li>
+              <li>"Generate a MACD indicator with custom color coding for bullish/bearish divergence"</li>
+              <li>"Build a mean reversion strategy that enters when price deviates more than 2 standard deviations from the 20-period mean"</li>
+              <li>"Create a volume-weighted moving average indicator with adjustable length"</li>
+            </ul>
+          </div>
+          
+          <div className="bg-card rounded-lg p-6 shadow-sm">
+            <h3 className="text-xl font-medium mb-3">Pro Benefits</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-2">
+              <li>Unlimited Pine Script generation (Free tier: 1/month)</li>
+              <li>Access to GPT-4 for more complex script generation</li>
+              <li>Priority processing for faster results</li>
+              <li>Save and manage your script collection</li>
+              <li>Share your scripts with the community</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

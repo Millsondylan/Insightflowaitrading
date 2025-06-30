@@ -10,7 +10,7 @@ const LandingBuilderPage: React.FC = () => {
       <scrollsection  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div className="text-center max-w-6xl mx-auto">
           <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight">
-            <span className="text-glow-cyan">Insight</div>{' '}
+            <span className="text-glow-cyan">Insight</span>{' '}
             <span className="text-glow-violet">Flow</span>
           </h1>
           <p className="text-2xl md:text-4xl text-gray-300 leading-relaxed font-light mb-12">
@@ -25,31 +25,35 @@ const LandingBuilderPage: React.FC = () => {
                 <div className="text-4xl mb-4 text-cyan-400">🧠</div>
                 <h3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</h3>
                 <p className="text-gray-400">AI-powered strategy generation from your trading intuition</p>
-              </div />
+              </div>
+            </Link>
             
-            <Link to="/journal"/>
+            <Link to="/journal" />
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <div className="text-4xl mb-4 text-violet-400">📓</Link>
+                <div className="text-4xl mb-4 text-violet-400">📓</div>
                 <h3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</h3>
                 <p className="text-gray-400">Capture and reflect on your trading psychology</p>
-              </div />
+              </div>
+            </Link>
             
-            <Link to="/academy">
+            <link to="/academy" >
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <div className="text-4xl mb-4 text-blue-400">📘</Link>
+                <div className="text-4xl mb-4 text-blue-400">📘</div>
                 <h3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</h3>
                 <p className="text-gray-400">Structured learning for trading mastery</p>
-              </div />
+              </div>
+            </Link>
           </div>
-        </div />
+        </div>
+      </ScrollSection>
 
       {/* Features Preview */}
-      <Scrollsection animation="slide-right" //>
+      <scrollsection animation="slide-right" >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6"></Scrollsection>
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Built for Modern Traders
-            </div>
+            </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Combining cutting-edge AI with deep market psychology insights
             </p>
@@ -63,7 +67,7 @@ const LandingBuilderPage: React.FC = () => {
                     ✨
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2"></div>AI Strategy Generation</div>
+                    <h4 className="text-lg font-semibold text-white mb-2">AI Strategy Generation</h4>
                     <p className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</p>
                   </div>
                 </div>
@@ -75,7 +79,7 @@ const LandingBuilderPage: React.FC = () => {
                     🧠
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2"></div>Psychology Tracking</div>
+                    <h4 className="text-lg font-semibold text-white mb-2">Psychology Tracking</h4>
                     <p className="text-gray-400">Identify patterns in your decision-making and emotional responses</p>
                   </div>
                 </div>
@@ -87,7 +91,7 @@ const LandingBuilderPage: React.FC = () => {
                     📈
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2"></div>Adaptive Learning</div>
+                    <h4 className="text-lg font-semibold text-white mb-2">Adaptive Learning</h4>
                     <p className="text-gray-400">Personalized education that evolves with your trading journey</p>
                   </div>
                 </div>
@@ -103,30 +107,34 @@ const LandingBuilderPage: React.FC = () => {
               </div>
             </div>
           </div>
-        </div />
+        </div>
+      </ScrollSection>
 
       {/* Call to Action */}
-      <scrollsection animation="scale-in">
+      <scrollsection animation="scale-in" >
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-section motion-shadow">
-            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6"></div>
+            <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Elevate Your Trading?
-            </div>
+            </h3>
             <p className="text-xl text-gray-400 mb-12">
               Join thousands of traders who've transformed their approach with Insight Flow
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link to="/strategy">
-                <Button className="glow-button glow-cyan text-lg px-8 py-4"></div>
+              <link to="/strategy" >
+                <button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </div />
-              <Link to="/academy">
-                <Button className="glow-button glow-blue text-lg px-8 py-4"/></Link /></Link />
+                </button>
+              </Link>
+              <link to="/academy" >
+                <button className="glow-button glow-blue text-lg px-8 py-4">
                   Begin Learning
-                </Link />
-            </Link>
+                </button>
+              </Link>
+            </div>
           </div>
-        </div />
+        </div>
+      </ScrollSection>
     </div>
   );
 };

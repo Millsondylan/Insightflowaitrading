@@ -18,8 +18,8 @@ export const StrategyCard = ({ strategy }: Props) => {
   return (
     <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow space-y-4">
       <div className="flex justify-between items-start">
-        <h3 className="text-xl font-semibold">{strategy.title}</div>
-        <Button className="text-sm text-white/70 hover:text-white transition-colors">
+        <h3 className="text-xl font-semibold">{strategy.title}</h3>
+        <button className="text-sm text-white/70 hover:text-white transition-colors">
           View
         </button>
       </div>
@@ -33,25 +33,18 @@ export const StrategyCard = ({ strategy }: Props) => {
       </div>
       <div className="flex items-center justify-between pt-4 border-t border-white/10 mt-4">
         <div className="flex items-center gap-2">
-          <Target className="w-4 h-4 text-green-400"/>
+          <Target className="w-4 h-4 text-green-400" />
           <span className="text-sm font-medium">
             {(strategy.winRate * 100).toFixed(0)}% Win Rate
-          </div>
+          </span>
         </div>
         <div className="flex items-center gap-2">
-          <arrowUpRight className="w-4 h-4 text-green-400"/>
-          <span className="text-sm font-medium"></div></div>
+          <ArrowUpRight className="w-4 h-4 text-green-400" />
+          <span className="text-sm font-medium">
             ${strategy.totalPnL.toLocaleString()} PnL
-          </div>
+          </span>
         </div>
       </div>
     </div>
   );
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
 }; 

@@ -40,7 +40,7 @@ export async function createTrade(
 export async function updateTrade(
   tradeId: string,
   userId: string,
-  updates: Partial<trade>
+  updates: Partial<Trade>
 ): Promise<{ trade: Trade | null; error: Error | null }> {
   const { data: trade, error } = await supabase
     .from('trades')

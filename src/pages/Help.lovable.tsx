@@ -6,9 +6,9 @@ const HelpPage: React.FC = () => {
     <section className="theme-help min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-indigo mb-8"/></Section /></Section />
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-indigo mb-8">
           Help Center
-        </section>
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
           Get the support you need
         </p>
@@ -43,18 +43,18 @@ const HelpPage: React.FC = () => {
 
       {/* FAQ Section */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8"></div>❓ Frequently Asked Questions</div>
+        <h2 className="text-3xl font-bold text-white mb-8">❓ Frequently Asked Questions</h2>
         <div className="space-y-4">
           <div className="glass-card">
-            <h4 className="font-semibold text-indigo-400 mb-2"></div>How do I create my first strategy?</div>
+            <h4 className="font-semibold text-indigo-400 mb-2">How do I create my first strategy?</h4>
             <p className="text-gray-300 text-sm">Navigate to the Strategy page and use our AI-powered builder to create custom trading strategies.</p>
           </div>
           <div className="glass-card">
-            <h4 className="font-semibold text-purple-400 mb-2"></div>Can I backtest my strategies?</div>
+            <h4 className="font-semibold text-purple-400 mb-2">Can I backtest my strategies?</h4>
             <p className="text-gray-300 text-sm">Yes! Use the Backtest feature to test your strategies against historical market data.</p>
           </div>
           <div className="glass-card">
-            <h4 className="font-semibold text-blue-400 mb-2"></div>How does the journal feature work?</div>
+            <h4 className="font-semibold text-blue-400 mb-2">How does the journal feature work?</h4>
             <p className="text-gray-300 text-sm">The journal helps you track your trading psychology and learn from past decisions with AI insights.</p>
           </div>
         </div>
@@ -62,14 +62,15 @@ const HelpPage: React.FC = () => {
 
       {/* Contact Support */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '300ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-6 text-center"></div>💬 Contact Support</div>
+        <h2 className="text-3xl font-bold text-white mb-6 text-center">💬 Contact Support</h2>
         <div className="max-w-md mx-auto text-center">
-          <p className="text-gray-300 mb-6"></div>Can't find what you're looking for? Our support team is here to help.</div>
-          <Button className="glow-button glow-indigo px-8 py-3">
+          <p className="text-gray-300 mb-6">Can't find what you're looking for? Our support team is here to help.</p>
+          <button className="glow-button glow-indigo px-8 py-3">
             Contact Support
           </button>
         </div>
-      </div />
+      </div>
+    </section>
   );
 };
 

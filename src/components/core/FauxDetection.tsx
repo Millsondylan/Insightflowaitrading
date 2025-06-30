@@ -35,16 +35,17 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
       <BlockReveal>
         <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
-            <ChartCanvasOverlay imageUrl={imagePreview} patternZones={patternZones}/>
+            <ChartCanvasOverlay imageUrl={imagePreview} patternZones={patternZones} />
           ) : (
-            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full"/>
+            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
           )}
           <div className="mt-2 flex justify-end">
-            <Button onClick={() => setShowOverlays(!showOverlays)} 
+            <button 
+              onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </Button>
+            </button>
           </div>
         </div>
       </BlockReveal>
@@ -54,7 +55,7 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
           <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
           <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
-              <PatternTag key={pattern} label={pattern}/>
+              <PatternTag key={pattern} label={pattern} />
             ))}
           </div>
         </BlockReveal>
@@ -68,7 +69,10 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
           <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
           <div className="flex items-center gap-4 mt-2">
             <div className="confidence-meter-bg flex-grow">
-              <div className="confidence-meter-bar" style={{ width: `${confidence}%` }}/>
+              <div
+                className="confidence-meter-bar"
+                style={{ width: `${confidence}%` }}
+              />
             </div>
             <span className="text-xl font-bold text-white">{confidence}%</span>
           </div>
@@ -92,11 +96,4 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   );
 };
 
-export default FauxDetection;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default FauxDetection; 

@@ -16,13 +16,13 @@ interface AchievementsProps {
   className?: string;
 }
 
-export const AchievementsComponent: React.FC<achievementsProps> = ({
+export const AchievementsComponent: React.FC<AchievementsProps> = ({
   userId,
   onAchievementUnlocked,
   className = '',
 }) => {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [achievements, setAchievements] = useState<achievement[]>([]);
+  const [achievements, setAchievements] = useState<Achievement[]>([]);
   const [userAchievements, setUserAchievements] = useState<UserAchievement[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [loading, setLoading] = useState(true);
@@ -121,8 +121,8 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"/>
-          <span className="ml-2 text-white/60">Loading achievements...</UserProfile>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
+          <span className="ml-2 text-white/60">Loading achievements...</span>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
   if (!userProfile) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Failed to load user profile</div>
+        <p className="text-center text-white/60">Failed to load user profile</p>
       </div>
     );
   }
@@ -145,9 +145,10 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
             <img 
               src={userProfile.avatar} 
               alt={userProfile.displayName}
-              className="w-12 h-12 rounded-full border-2 border-white/20"/>
+              className="w-12 h-12 rounded-full border-2 border-white/20"
+            />
             <div>
-              <h2 className="text-xl font-bold text-white">{userProfile.displayName}</div>
+              <h2 className="text-xl font-bold text-white">{userProfile.displayName}</h2>
               <p className="text-sm text-white/60">Level {userProfile.level}</p>
             </div>
           </div>
@@ -161,8 +162,9 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
 
         {/* Progress bar */}
         <div className="w-full bg-white/10 rounded-full h-2 mb-2">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
-            style={{ width: `${completionStats.percentage}%` }}></div>
+          <Div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500"
+            style={{ width: `${completionStats.percentage}%` }}
+         ></div>
         </div>
         <div className="text-xs text-white/60 text-center">
           {completionStats.percentage}% Complete
@@ -196,7 +198,8 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
       {/* Category filters */}
       <div className="flex flex-wrap gap-2 mb-6">
         {['all', 'trading', 'social', 'learning', 'milestone', 'unlocked', 'locked'].map(category => (
-          <Button key={category}
+          <button
+            key={category}
             onClick={() => setSelectedCategory(category)}
             className={`
               px-3 py-1 rounded-full text-xs font-medium transition-all duration-200
@@ -207,21 +210,21 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
             `}
           >
             {category.charAt(0).toUpperCase() + category.slice(1)}
-          </div>
+          </button>
         ))}
       </div>
 
       {/* Recent badges */}
       {userProfile.badges.length > 0 && (
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-white mb-3">Recent Badges</div>
+          <h3 className="text-lg font-semibold text-white mb-3">Recent Badges</h3>
           <div className="flex flex-wrap gap-2">
             {userProfile.badges.slice(0, 6).map((badge, index) => (
-              <div key={badge.id}
+              <Div key={badge.id}
                 className="flex items-center space-x-2 bg-white/5 rounded-lg p-2 border border-white/10"
                 title={badge.description}
- />
-                <span className="text-lg">{badge.icon}</div>
+              />
+                <span className="text-lg">{badge.icon}</span>
                 <span className="text-xs text-white/80">{badge.name}</span>
               </div>
             ))}
@@ -236,22 +239,24 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
           const progress = getProgressPercentage(achievement.id);
           
           return (
-            <div key={achievement.id}
+            <div
+              key={achievement.id}
               className={`
                 p-4 rounded-lg border transition-all duration-200 hover:scale-105
                 ${isUnlocked 
                   ? `bg-gradient-to-br ${getDifficultyColor(achievement.difficulty)} border-white/20` 
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
                 }
-              `}/></div>
+              `}
+            >
               <div className="flex items-start space-x-3">
                 <div className={`text-2xl ${isUnlocked ? '' : 'grayscale opacity-50'}`}>
                   {getAchievementIcon(achievement)}
                 </div>
                 <div className="flex-1">
-                  <h4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}></div>
+                  <h4 className={`font-medium ${isUnlocked ? 'text-black' : 'text-white'} mb-1`}>
                     {achievement.name}
-                  </div>
+                  </h4>
                   <p className={`text-xs ${isUnlocked ? 'text-black/70' : 'text-white/60'} mb-2`}>
                     {achievement.description}
                   </p>
@@ -260,9 +265,10 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
                   {!isUnlocked && progress > 0 && (
                     <div className="mb-2">
                       <div className="w-full bg-white/20 rounded-full h-1">
-                        <div className="bg-blue-400 h-1 rounded-full transition-all duration-500"
+                        <div 
+                          className="bg-blue-400 h-1 rounded-full transition-all duration-500"
                           style={{ width: `${progress}%` }}
-  ></div>
+                        ></div>
                       </div>
                       <div className="text-xs text-white/60 mt-1">{progress}% complete</div>
                     </div>
@@ -272,7 +278,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
                   <div className="flex items-center justify-between text-xs">
                     <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       {achievement.difficulty.toUpperCase()}
-                    </div>
+                    </span>
                     <span className={`${isUnlocked ? 'text-black/70' : 'text-white/60'}`}>
                       +{achievement.rewards.points} XP
                     </span>
@@ -296,7 +302,7 @@ export const AchievementsComponent: React.FC<achievementsProps> = ({
 };
 
 // Mock data functions (TODO: replace with real API calls)
-const fetchUserProfile = async (userId: string): Promise<UserProfile /> => {
+const fetchUserProfile = async (userId: string): Promise<UserProfile> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 500));
   
@@ -347,7 +353,7 @@ const fetchUserProfile = async (userId: string): Promise<UserProfile /> => {
   };
 };
 
-const fetchAllAchievements = async (): Promise<achievement[]> => {
+const fetchAllAchievements = async (): Promise<Achievement[]> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 300));
   
@@ -394,7 +400,7 @@ const fetchAllAchievements = async (): Promise<achievement[]> => {
   ];
 };
 
-const fetchUserAchievements = async (userId: string): Promise<UserAchievement[] /></UserProfile></div> => {
+const fetchUserAchievements = async (userId: string): Promise<UserAchievement[]> => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 200));
   
@@ -416,11 +422,4 @@ const fetchUserAchievements = async (userId: string): Promise<UserAchievement[] 
   ];
 };
 
-export default AchievementsComponent;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default AchievementsComponent; 

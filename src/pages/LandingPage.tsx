@@ -24,7 +24,6 @@ const SectionWrapper = React.forwardRef<HTMLDivElement, { children: React.ReactN
     </section>
   )
 );
-SectionWrapper.displayName = 'SectionWrapper';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -81,17 +80,17 @@ const LandingPage = () => {
       author: "Kenji T.",
       handle: "@kenji_flow"
     }
-  ];
+  ]
 
   return (
     <div className="min-h-screen text-gray-100 transition-colors duration-500">
-      <ThemeScrollObserver sections={sections}/>
+      <ThemeScrollObserver sections={sections} />
       
       {/* Navigation Header - Stays consistent */}
       <nav className="w-full p-4 md:p-6 flex justify-between items-center fixed top-0 z-50 bg-black/30 backdrop-blur-lg">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <TrendingUp className="w-6 h-6 text-white"/>
+            <TrendingUp className="w-6 h-6 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white">InsightFlow AI</h1>
         </div>
@@ -126,10 +125,10 @@ const LandingPage = () => {
 
             <div className="flex justify-center space-x-4 pt-8">
               <Button size="lg" onClick={() => navigate('/auth')} className="quantum-button text-lg px-8 py-4">
-                Get Started <ArrowRight className="ml-2 w-5 h-5"/>
+                Get Started <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </div>
-         </motion.div>
+        </motion.div>
       </SectionWrapper>
 
       {/* Features Section (Academy Theme) */}
@@ -213,11 +212,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default LandingPage; 

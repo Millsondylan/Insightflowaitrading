@@ -39,7 +39,7 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
     }
   ]);
 
-  const [feedback, setFeedback] = React.useState<Record />>({});
+  const [feedback, setFeedback] = React.useState<Record  />>({});
 
   const handleFeedback = (suggestionId: number, type: 'up' | 'down') => {
     setFeedback({ ...feedback, [suggestionId]: type });
@@ -48,34 +48,36 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
 
   if (!isVisible) {
     return (
-      <Button variant="outline" size="sm"> setIsVisible(true)}
+      <button variant="outline" size="sm" > setIsVisible(true)}
       >
-        <Sparkles  //></Copilotaiprops /></Copilotaiprops /></Copilotaiprops>
+        <sparkles  >
         Show Copilot
-      </button>
+      </Button>
     );
   }
 
   return (
-    <Card  style={{ display: "flex" }}>
+    <card  style={{ display: "flex" }}>
       <div className="p-4 border-b flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <sparkles >
-          <h3 className="font-semibold"/></Card /></Card />AI Copilot</Card>
+          <sparkles  >
+          <h3 className="font-semibold">AI Copilot</h3>
         </div>
-        <Button variant="ghost" size="sm"> setIsVisible(false)}
+        <button variant="ghost" size="sm" > setIsVisible(false)}
         >
-          <X >
-        </button>
+          <x  >
+        </Button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {suggestions.map((suggestion) => (
-          <div key={suggestion.id}
-            className="p-3 border rounded-lg hover:bg-accent/50 transition-colors">
+          <div
+            key={suggestion.id}
+            className="p-3 border rounded-lg hover:bg-accent/50 transition-colors"
+          >
             <div className="flex items-start justify-between mb-2">
-              <h4 className="font-medium"></div>{suggestion.title}</div>
-              <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
+              <h4 className="font-medium">{suggestion.title}</h4>
+              <badge variant="outline" style={{ fontSize: "0.75rem" }}>
                 {suggestion.type}
               </Badge>
             </div>
@@ -86,29 +88,30 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
             
             {suggestion.code && (
               <pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
-                <Code /></Pre /></Pre />{suggestion.code}</Pre />
+                <code>{suggestion.code}</code>
+              </pre>
             )}
             
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-green-500"></pre>
+              <span className="text-xs font-medium text-green-500">
                 {suggestion.impact}
-              </div>
+              </span>
               
               <div className="flex items-center gap-2">
-                <Button variant="ghost" size="sm"> handleFeedback(suggestion.id, 'up')}
+                <button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <thumbsup >
-                </div>
-                <Button variant="ghost" size="sm"> handleFeedback(suggestion.id, 'down')}
+                  <thumbsup  >
+                </Button>
+                <button variant="ghost" size="sm" > handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <thumbsdown >
-                </button>
-                <Button size="sm"> onSuggestionApply?.(suggestion.code)}
+                  <thumbsdown  >
+                </Button>
+                <button size="sm" > onSuggestionApply?.(suggestion.code)}
                 >
                   Apply
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -116,10 +119,11 @@ export const CopilotAI: React.FC<Copilotaiprops > = ({ context, onSuggestionAppl
       </div>
 
       <div className="p-4 border-t bg-secondary/20">
-        <p className="text-xs text-muted-foreground text-center"></div>
+        <p className="text-xs text-muted-foreground text-center">
           Copilot analyzes your strategy in real-time
-        </div>
-      </div />
+        </p>
+      </div>
+    </Card>
   );
 }; 
 

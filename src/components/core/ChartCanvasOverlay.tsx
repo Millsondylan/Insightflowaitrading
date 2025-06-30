@@ -9,7 +9,7 @@ interface ChartCanvasOverlayProps {
 }
 
 const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps) => {
-  const [hoveredZone, setHoveredZone] = useState<patternZone | null>(null);
+  const [hoveredZone, setHoveredZone] = useState<PatternZone | null>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   const handleZoneMouseEnter = (zone: PatternZone, e: React.MouseEvent) => {
@@ -32,10 +32,11 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
 
   return (
     <div className="chart-overlay-container">
-      <img src={imageUrl} alt="Chart with pattern overlays"/>
+      <img src={imageUrl} alt="Chart with pattern overlays" />
       
       {patternZones.map((zone) => (
-        <div           key={zone.id}
+        <div
+          key={zone.id}
           className={`pattern-zone ${zone.type || 'neutral'}`}
           style={{
             left: `${zone.x}%`,
@@ -50,7 +51,7 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
       ))}
       
       {hoveredZone && (
-        <patternTooltip
+        <PatternTooltip
           label={hoveredZone.label}
           description={hoveredZone.description}
           confidence={hoveredZone.confidence}
@@ -60,17 +61,11 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
             left: tooltipPosition.x,
             top: tooltipPosition.y,
             transform: 'translate(-50%, -100%) translateY(-10px)',
-          }}/>
+          }}
+        />
       )}
     </div>
   );
 };
 
-export default ChartCanvasOverlay;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default ChartCanvasOverlay; 

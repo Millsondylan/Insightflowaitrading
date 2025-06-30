@@ -64,7 +64,7 @@ export interface TournamentStatistics {
 
 export interface TournamentRule {
   type: string;
-  value: unknown;
+  value: any;
   description: string;
 }
 
@@ -910,7 +910,7 @@ export class GamificationSystem {
   public async getAchievements(
     userId: string,
     category?: AchievementCategory
-  ): Promise<achievement[]> {
+  ): Promise<Achievement[]> {
     // Implement achievement retrieval
     return [];
   }

@@ -14,7 +14,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
 import { Calendar, Clock, Filter, Search, Inbox } from "lucide-react";
 
 type UsageLog = { id: string; userEmail: string; action: string; timestamp: string };
@@ -106,8 +105,9 @@ export default function UsageLogViewer({ logs }: Props) {
         <div className="flex items-center space-x-2">
           {/* Search input */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"/>
-            <Input type="text"
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <input
+              type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search logs..."
@@ -119,7 +119,7 @@ export default function UsageLogViewer({ logs }: Props) {
           <Select value={timeFilter} onValueChange={(value) => setTimeFilter(value as TimeFilter)}>
             <SelectTrigger className="bg-black/50 border-white/10 text-white w-32">
               <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-2 text-gray-400"/>
+                <Clock className="h-4 w-4 mr-2 text-gray-400" />
                 <SelectValue />
               </div>
             </SelectTrigger>
@@ -135,7 +135,7 @@ export default function UsageLogViewer({ logs }: Props) {
           <Select value={actionFilter} onValueChange={(value) => setActionFilter(value as ActionFilter)}>
             <SelectTrigger className="bg-black/50 border-white/10 text-white w-32">
               <div className="flex items-center">
-                <Filter className="h-4 w-4 mr-2 text-gray-400"/>
+                <Filter className="h-4 w-4 mr-2 text-gray-400" />
                 <SelectValue />
               </div>
             </SelectTrigger>
@@ -150,9 +150,10 @@ export default function UsageLogViewer({ logs }: Props) {
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <div ref={containerRef}
-          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
-          <table>
+        <Div ref={containerRef}
+          className="max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent"
+       >
+          <Table>
             <TableHeader className="sticky top-0 bg-black z-10">
               <TableRow className="hover:bg-transparent border-white/10">
                 <TableHead className="text-white/70 font-medium w-1/3">User</TableHead>
@@ -176,7 +177,7 @@ export default function UsageLogViewer({ logs }: Props) {
                     </TableCell>
                     <TableCell className="text-gray-400">
                       <div className="flex items-center">
-                        <Calendar className="h-3 w-3 mr-2"/>
+                        <Calendar className="h-3 w-3 mr-2" />
                         {formatTimestamp(log.timestamp)}
                       </div>
                     </TableCell>
@@ -186,7 +187,7 @@ export default function UsageLogViewer({ logs }: Props) {
                 <TableRow>
                   <TableCell colSpan={3} className="text-center py-12">
                     <div className="flex flex-col items-center gap-2 text-gray-500">
-                      <Inbox className="h-10 w-10 text-gray-600/50"/>
+                      <Inbox className="h-10 w-10 text-gray-600/50" />
                       <p>No logs found</p>
                       <p className="text-xs">Try adjusting your filters</p>
                     </div>
@@ -194,7 +195,7 @@ export default function UsageLogViewer({ logs }: Props) {
                 </TableRow>
               )}
             </TableBody>
-          </table>
+          </Table>
         </div>
       </div>
       
@@ -203,7 +204,7 @@ export default function UsageLogViewer({ logs }: Props) {
           Showing {filteredLogs.length} of {logs.length} logs
         </div>
         
-        {logs.length > 0 && logs[0] && (
+        {logs.length > 0 && (
           <div className="text-right">
             Latest activity: {formatTimestamp(logs[0].timestamp)}
           </div>
@@ -211,11 +212,4 @@ export default function UsageLogViewer({ logs }: Props) {
       </div>
     </div>
   );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

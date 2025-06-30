@@ -27,7 +27,7 @@ const PriceTooltip = ({ active, payload, label }: any) => {
       <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
         <p className="text-gray-300 text-xs">
           {new Date(data.time * 1000).toLocaleString()}
-        </div>
+        </p>
         <p className="font-bold">{`Price: ${data.price.toFixed(2)}`}</p>
       </div>
     );
@@ -44,11 +44,11 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
     <div className="bg-black/80 backdrop-blur border border-white/20 rounded-lg p-2 text-white shadow-lg">
       <p className="font-bold">
         {isEntry ? '🔼 Entry' : '🔽 Exit'} #{trade.tradeId}
-      </div>
+      </p>
       <p>{formattedTime}</p>
       <p>Price: {trade.price.toFixed(2)}</p>
       {!isEntry && trade.pnlPercentage !== undefined && (
-        <p className={trade.pnlPercentage> 0 ? 'text-green-400' : 'text-red-400'}>
+        <p className={trade.pnlPercentage > 0 ? 'text-green-400' : 'text-red-400'}>
           PnL: {(trade.pnlPercentage * 100).toFixed(2)}%
         </p>
       )}
@@ -58,7 +58,7 @@ const TradeTooltip = ({ trade }: { trade: TradeMarker }) => {
 
 const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => {
   const { priceData, tradeMarkers } = chartData;
-  const [hoveredTrade, setHoveredTrade] = useState<Trademarker>(null);
+  const [hoveredTrade, setHoveredTrade] = useState<Trademarker >(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   
   // Start animation after component mounts
@@ -75,46 +75,48 @@ const BacktestChart = ({ chartData, ticker, timeframe }: BacktestChartProps) => 
   const maxPrice = Math.max(...prices) * 1.005;
 
   return (
-    <blockreveal />
+    <Blockreveal  />
       <div className="chart-container">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-bold text-white">
             {ticker} ({timeframe})
-          </Trademarker>
+          </h3>
         </div>
-        <Responsivecontainer width="100%" height="90%">
-          <linechart />
-            <cartesiangrid strokeDasharray="3 3">
-            <xaxis dataKey="time"> new Date(time * 1000).toLocaleDateString()}
+        <responsivecontainer width="100%" height="90%" >
+          <linechart  >
+            <cartesiangrid strokeDasharray="3 3" >
+            <xaxis dataKey="time" > new Date(time * 1000).toLocaleDateString()}
               tick={{ fill: '#9ca3af' }}
             />
-            <yaxis > value.toFixed(0)}
+            <yaxis  > value.toFixed(0)}
             />
-            <Tooltip >} />
-            <line type="monotone" dataKey="price" stroke="#22d3ee">
+            <tooltip  >} />
+            <line type="monotone" dataKey="price" stroke="#22d3ee" >
             
             {/* Trade entry markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'entry').map((marker, idx) => (
-              <referencedot fill="#22c55e" stroke="#22c55e"> setHoveredTrade(marker)}
+              <referencedot fill="#22c55e" stroke="#22c55e" > setHoveredTrade(marker)}
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
             
             {/* Trade exit markers */}
             {animationComplete && tradeMarkers.filter(m => m.type === 'exit').map((marker, idx) => (
-              <referencedot fill="#ef4444" stroke="#ef4444"> setHoveredTrade(marker)}
+              <referencedot fill="#ef4444" stroke="#ef4444" > setHoveredTrade(marker)}
                 onMouseOut={() => setHoveredTrade(null)}
               />
             ))}
-          </Responsivecontainer />
+          </LineChart>
+        </ResponsiveContainer>
         
         {/* Hover tooltip for trade markers */}
         {hoveredTrade && (
           <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-            <tradetooltip >
-          </Responsivecontainer>
+            <tradetooltip  >
+          </div>
         )}
-      </div />
+      </div>
+    </BlockReveal>
   );
 };
 

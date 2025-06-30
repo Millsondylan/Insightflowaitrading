@@ -18,31 +18,34 @@ export default function Topbar() {
       <div className="flex items-center gap-4">
         <div className="relative">
           <Search >
-          <Input
+          <input
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
-          //>
-      </header>
+          />
+        </div>
+      </div>
       <div className="flex items-center gap-6">
-        <span className="text-sm text-text-muted">{today}</div>
-        <Button variant="ghost" size="icon"/>
-          <Bell >
-        </button>
+        <span className="text-sm text-text-muted">{today}</span>
+        <Button variant="ghost" size="icon" />
+          <bell  >
+        </Button>
         <div className="flex items-center gap-3">
-          <avatar />
-            <avatarimage >
-            <Avatarfallback ></div>{profile?.full_name?.[0] || 'U'}</div />
+          <avatar  >
+            <avatarimage  >
+            <avatarfallback  >{profile?.full_name?.[0] || 'U'}</AvatarFallback>
+          </Avatar>
           <div>
-            <p className="font-semibold"></div>{profile?.full_name || 'Guest'}</div>
+            <p className="font-semibold">{profile?.full_name || 'Guest'}</p>
             {hasProAccess && (
-              <Badge variant="outline">
+              <badge variant="outline" >
                 PRO
               </Badge>
             )}
           </div>
         </div>
-      </div />
+      </div>
+    </header>
   );
 } 
 

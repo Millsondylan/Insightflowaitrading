@@ -132,14 +132,15 @@ const Carousel = React.forwardRef<
           canScrollNext,
         }}
       >
-        <div ref={ref}
+        <Div ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
-          {...props}>
+          {...props}
+       >
           {children}
-        </CarouselContextProps>
+        </div>
       </CarouselContext.Provider>
     )
   }
@@ -154,14 +155,16 @@ const CarouselContent = React.forwardRef<
 
   return (
     <div ref={carouselRef} className="overflow-hidden">
-      <div         ref={ref}
+      <div
+        ref={ref}
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
         {...props}
-      //>
+      />
+    </div>
   )
 })
 CarouselContent.displayName = "CarouselContent"
@@ -173,7 +176,8 @@ const CarouselItem = React.forwardRef<
   const { orientation } = useCarousel()
 
   return (
-    <div       ref={ref}
+    <div
+      ref={ref}
       role="group"
       aria-roledescription="slide"
       className={cn(
@@ -181,7 +185,8 @@ const CarouselItem = React.forwardRef<
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
-      {...props}/>
+      {...props}
+    />
   )
 })
 CarouselItem.displayName = "CarouselItem"
@@ -193,7 +198,8 @@ const CarouselPrevious = React.forwardRef<
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button ref={ref}
+    <Button
+      ref={ref}
       variant={variant}
       size={size}
       className={cn(
@@ -205,10 +211,11 @@ const CarouselPrevious = React.forwardRef<
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      {...props}/>
-      <arrowLeft className="h-4 w-4"/>
-      <span className="sr-only">Previous slide</HTMLDivElement>
-    </button>
+      {...props}
+    >
+      <ArrowLeft className="h-4 w-4" />
+      <span className="sr-only">Previous slide</span>
+    </Button>
   )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
@@ -220,7 +227,8 @@ const CarouselNext = React.forwardRef<
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button ref={ref}
+    <Button
+      ref={ref}
       variant={variant}
       size={size}
       className={cn(
@@ -232,10 +240,11 @@ const CarouselNext = React.forwardRef<
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
-      {...props}>
-      <arrowRight className="h-4 w-4"/>
-      <span className="sr-only"></button></button>Next slide</button>
-    </button>
+      {...props}
+    >
+      <ArrowRight className="h-4 w-4" />
+      <span className="sr-only">Next slide</span>
+    </Button>
   )
 })
 CarouselNext.displayName = "CarouselNext"
@@ -248,10 +257,3 @@ export {
   CarouselPrevious,
   CarouselNext,
 }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};

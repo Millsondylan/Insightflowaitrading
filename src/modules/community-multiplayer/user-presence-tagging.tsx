@@ -41,13 +41,6 @@ export const UserPresenceTagging: React.FC<UserPresenceTaggingProps> = ({ channe
     }
   ]);
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'online': return 'text-green-500';
@@ -58,27 +51,29 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6"/>
-      <h2 className="text-2xl font-bold mb-4">Active Traders</UserPresenceTaggingProps>
+    <Card className="theme-card p-6">
+      <h2 className="text-2xl font-bold mb-4">Active Traders</h2>
       
       <div className="space-y-4">
         {users.map((user) => (
           <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start gap-3">
               <div className="relative">
-                <avatar className="h-10 w-10">
+                <Avatar className="h-10 w-10">
                   <AvatarFallback>
                     {user.name.split(' ').map(n => n[0]).join('')}
-                  </div>
+                  </AvatarFallback>
+                </Avatar>
                 <Circle
                   className={`absolute bottom-0 right-0 h-3 w-3 ${getStatusColor(user.status)} fill-current`}
-                //>
+                />
+              </div>
               
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">{user.name}</div>
+                  <h3 className="font-semibold">{user.name}</h3>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock className="h-3 w-3"/>
+                    <Clock className="h-3 w-3" />
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
                   </div>
                 </div>
@@ -90,20 +85,20 @@ export const lovable = {
                     {user.tags.map((tag) => (
                       <Badge key={tag} variant="secondary" className="text-xs">
                         {tag}
-                      </div>
+                      </Badge>
                     ))}
                   </div>
                   
                   <div className="flex items-center gap-1 text-sm">
-                    <trendingUp className="h-3 w-3 text-green-500"/>
-                    <span className="font-medium">{user.winRate}%</div>
+                    <TrendingUp className="h-3 w-3 text-green-500" />
+                    <span className="font-medium">{user.winRate}%</span>
                   </div>
                 </div>
               </div>
               
-              <Button variant="ghost" size="sm"/>
-                <MessageSquare className="h-4 w-4"/></button></button>
-              </button>
+              <Button variant="ghost" size="sm">
+                <MessageSquare className="h-4 w-4" />
+              </Button>
             </div>
           </div>
         ))}
@@ -111,9 +106,10 @@ export const lovable = {
       
       <div className="mt-4 pt-4 border-t">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>{users.filter(u => u.status === 'online').length} traders online</div>
+          <span>{users.filter(u => u.status === 'online').length} traders online</span>
           <span>{channelId || 'Global'} channel</span>
         </div>
       </div>
+    </Card>
   );
 }; 

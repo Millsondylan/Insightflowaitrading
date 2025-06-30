@@ -30,13 +30,15 @@ const BadgeDisplay = ({ badgeName, description, icon, onClaim }: Props) => {
     : 'opacity-0 scale-95 translate-y-2';
 
   return (
-    <div className={`rounded-xl bg-gradient-to-br from-cyan-700 via-indigo-800 to-purple-900 p-6 text-white shadow-lg space-y-3 transition-all duration-500 ease-out transform ${animationClasses}`}>
+    <Div className={`rounded-xl bg-gradient-to-br from-cyan-700 via-indigo-800 to-purple-900 p-6 text-white shadow-lg space-y-3 transition-all duration-500 ease-out transform ${animationClasses}`}
+   >
       <div className="text-5xl drop-shadow-lg">{icon || '🏅'}</div>
       <h2 className="text-2xl font-bold">{badgeName}</h2>
       <p className="text-white/80 text-sm">{description}</p>
       {onClaim && !isClaimed && (
         <Button onClick={handleClaim} 
-          className="mt-2 bg-white/10 hover:bg-white/20 px-6 py-2 rounded-full font-semibold transition-transform transform hover:scale-105"/></button></div>
+          className="mt-2 bg-white/10 hover:bg-white/20 px-6 py-2 rounded-full font-semibold transition-transform transform hover:scale-105"
+        />
           🎉 Claim Badge
         </button>
       )}
@@ -49,11 +51,4 @@ const BadgeDisplay = ({ badgeName, description, icon, onClaim }: Props) => {
   );
 };
 
-export default BadgeDisplay;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default BadgeDisplay; 

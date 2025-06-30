@@ -17,15 +17,15 @@ interface ActivityTimelineProps {
   events: ActivityEvent[];
 }
 
-const iconMap: Record<activitytype> = {
+const iconMap: Record<Activitytype > = {
   journal: BookOpen,
   strategy: Bot,
   user: UserPlus,
   reflection: Brain,
 };
 
-const ActivityTimeline: React.FC<activitytimelineprops /> = ({ events }) => {
-  const [filter, setFilter] = useState<activitytype >('all');
+const ActivityTimeline: React.FC<Activitytimelineprops  /> = ({ events }) => {
+  const [filter, setFilter] = useState<activitytype  >('all');
 
   const filteredEvents = useMemo(() => {
     if (filter === 'all') {
@@ -36,26 +36,28 @@ const ActivityTimeline: React.FC<activitytimelineprops /> = ({ events }) => {
 
   const renderIcon = (type: ActivityType) => {
     const Icon = iconMap[type] || BookOpen;
-    return <Icon / / / / //>;
+    return <icon  >;
   };
 
   return (
     <div className="activity-timeline-container">
       <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-semibold text-white"/></Activitytype /></Activitytype />Activity Timeline</Icon>
-        <Select > setFilter(value as ActivityType | 'all')}>
-          <SelectTrigger >
-            <SelectValue placeholder="Filter by type"/>
-          <SelectContent >
-            <SelectItem value="all">All Activities</Select>
-            <SelectItem value="user">New Users</SelectItem>
-            <SelectItem value="journal">Journals</SelectItem>
-            <SelectItem value="strategy">Strategies</SelectItem />
-        </SelectItem>
+        <h3 className="text-xl font-semibold text-white">Activity Timeline</h3>
+        <select  > setFilter(value as ActivityType | 'all')}>
+          <selecttrigger  >
+            <selectvalue placeholder="Filter by type" >
+          </SelectTrigger>
+          <selectcontent  >
+            <selectitem value="all" >All Activities</SelectItem>
+            <selectitem value="user" >New Users</SelectItem>
+            <selectitem value="journal" >Journals</SelectItem>
+            <selectitem value="strategy" >Strategies</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       
       <div className="activity-timeline">
-        <animatepresence >
+        <animatepresence  >
           {filteredEvents.length > 0 ? (
             filteredEvents.map((event, index) => (
               <motion.div
@@ -71,9 +73,9 @@ const ActivityTimeline: React.FC<activitytimelineprops /> = ({ events }) => {
                   {renderIcon(event.type)}
                 </div>
                 <div className="timeline-item-content">
-                  <p className="timeline-label">{event.label}</div>
+                  <p className="timeline-label">{event.label}</p>
                   <p className="timeline-timestamp">
-                    <timeago >
+                    <timeago  >
                   </p>
                 </div>
               </motion.div>

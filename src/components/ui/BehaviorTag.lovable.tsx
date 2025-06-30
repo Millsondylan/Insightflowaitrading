@@ -41,7 +41,7 @@ interface BehaviorTagProps {
   animationDelay?: number;
 }
 
-const BehaviorTag: React.FC<Behaviortagprops> = ({ 
+const BehaviorTag: React.FC<Behaviortagprops > = ({ 
   tag, 
   className, 
   animated = false, 
@@ -62,24 +62,26 @@ const BehaviorTag: React.FC<Behaviortagprops> = ({
   };
   
   const tagElement = (
-    <Badge variant="outline"/>
+    <Badge variant="outline" />
       {tag}
-    </Behaviortagprops>
+    </Badge>
   );
   
   // Wrap with tooltip if we have a description
   return (
-    <Tooltipprovider >
-      <Tooltip />
-        <TooltipTrigger >
+    <tooltipprovider  >
+      <tooltip  >
+        <tooltiptrigger  >
           {tagElement}
-        </Tooltipprovider>
-        <TooltipContent side="top">
+        </TooltipTrigger>
+        <tooltipcontent side="top" >
           <div className="text-center">
-            <p className="font-medium text-sm">{tag}</TooltipContent>
+            <p className="font-medium text-sm">{tag}</p>
             <p className="text-xs text-gray-300 mt-1">{definition.description}</p>
-          </div />
-      </Tooltip />
+          </div>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
@@ -94,7 +96,7 @@ interface BehaviorTagGroupProps {
   maxTags?: number;
 }
 
-export const BehaviorTagGroup: React.FC<behaviortaggroupprops > = ({
+export const BehaviorTagGroup: React.FC<behaviortaggroupprops  > = ({
   tags,
   className,
   animated = false,
@@ -107,12 +109,12 @@ export const BehaviorTagGroup: React.FC<behaviortaggroupprops > = ({
   return (
     <div className={cn('flex flex-wrap gap-2', className)}>
       {displayTags.map((tag, index) => (
-        <behaviortag >
+        <behaviortag  >
       ))}
       {hiddenCount > 0 && (
-        <Badge variant="outline"></div>
+        <badge variant="outline" >
           +{hiddenCount} more
-        </div>
+        </Badge>
       )}
     </div>
   );

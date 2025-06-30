@@ -12,8 +12,8 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   if (isLoading) {
     return (
       <div className="glass-container p-8 rounded-lg flex flex-col items-center justify-center min-h-[300px]">
-        <loader2 >
-        <p className="text-lg text-gray-300">Generating your trading strategy...</div>
+        <loader2  >
+        <p className="text-lg text-gray-300">Generating your trading strategy...</p>
       </div>
     );
   }
@@ -23,7 +23,7 @@ const StrategyResult = ({ result, isLoading }: StrategyResultProps) => {
   return (
     <div>
       <Strategyreveal >
-      <Strategycta /></div></div>
+      <Strategycta  />
     </div>
   );
 };

@@ -16,7 +16,7 @@ interface PaymentFormProps {
   onPaymentComplete: (transactionId: string) => void;
 }
 
-export const PaymentForm: React.FC<paymentFormProps> = ({
+export const PaymentForm: React.FC<PaymentFormProps> = ({
   selectedTier,
   onPaymentComplete
 }) => {
@@ -91,7 +91,8 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
           Payment Method
         </div>
         <div style={{ display: 'flex', gap: '12px' }}>
-          <Button  onClick={() => setPaymentMethod('card')}
+          <button
+            onClick={() => setPaymentMethod('card')}
             style={{
               padding: '12px 24px',
               backgroundColor: paymentMethod === 'card' ? '#2563eb' : '#f3f4f6',
@@ -105,7 +106,8 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
           >
             💳 Credit Card
           </button>
-          <Button  onClick={() => setPaymentMethod('crypto')}
+          <button
+            onClick={() => setPaymentMethod('crypto')}
             style={{
               padding: '12px 24px',
               backgroundColor: paymentMethod === 'crypto' ? '#2563eb' : '#f3f4f6',
@@ -125,15 +127,15 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
       {paymentMethod === 'card' ? (
         <div style={{ marginBottom: '24px' }}>
           <div style={{ marginBottom: '16px' }}>
-            <Label style={{
+            <label style={{
               display: 'block',
               fontSize: '14px',
               fontWeight: 'bold',
               marginBottom: '8px'
             }}>
               Card Number
-            </Label>
-            <Input
+            </label>
+            <input
               type="text"
               placeholder="4242 4242 4242 4242"
               style={{
@@ -142,7 +144,8 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
                 border: '1px solid #d1d5db',
                 borderRadius: '8px',
                 fontSize: '16px'
-              }}/>
+              }}
+            />
           </div>
 
           <div style={{
@@ -152,15 +155,15 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
             marginBottom: '16px'
           }}>
             <div>
-              <Label style={{
+              <label style={{
                 display: 'block',
                 fontSize: '14px',
                 fontWeight: 'bold',
                 marginBottom: '8px'
               }}>
                 Expiry Date
-              </Label>
-              <Input
+              </label>
+              <input
                 type="text"
                 placeholder="MM/YY"
                 style={{
@@ -170,18 +173,18 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
                   borderRadius: '8px',
                   fontSize: '16px'
                 }}
- />
+              />
             </div>
             <div>
-              <Label style={{
+              <label style={{
                 display: 'block',
                 fontSize: '14px',
                 fontWeight: 'bold',
                 marginBottom: '8px'
               }}>
                 CVC
-              </Label>
-              <Input
+              </label>
+              <input
                 type="text"
                 placeholder="123"
                 style={{
@@ -191,7 +194,7 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
                   borderRadius: '8px',
                   fontSize: '16px'
                 }}
- />
+              />
             </div>
           </div>
         </div>
@@ -240,7 +243,7 @@ export const PaymentForm: React.FC<paymentFormProps> = ({
           fontWeight: 'bold',
           cursor: loading ? 'not-allowed' : 'pointer'
         }}
-    >
+     >
         {loading ? 'Processing...' : `Pay ${paymentMethod === 'card' ? '$' + selectedTier.price : selectedTier.cryptoPrice + ' ' + selectedTier.cryptoCurrency}`}
       </button>
 

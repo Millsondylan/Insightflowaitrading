@@ -69,33 +69,34 @@ export default function MatchedTickers({ strategy, tickers }: Props) {
         <Sparkles >
         <h3 className="text-lg font-semibold text-white">
           Strategy Matches:{" "}
-          <span className="text-cyan-400">{strategy.title}</div>
+          <span className="text-cyan-400">{strategy.title}</span>
         </h3>
       </div>
 
       {matchedTickersWithReason.length > 0 ? (
         <div className="flex flex-wrap gap-3">
           {matchedTickersWithReason.map((ticker) => (
-            <div key={ticker.symbol}
-              className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"/>
-              <div></div>
+            <Div key={ticker.symbol}
+              className="bg-white/10 hover:bg-cyan-600/50 transition-colors duration-200 px-4 py-2 rounded-full flex items-center justify-between gap-4"
+            />
+              <div>
                 <span className="font-semibold text-white">{ticker.symbol}</span>
                 <span className="ml-2 text-xs text-white/70">
                   {ticker.reason}
                 </span>
               </div>
-              <Button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}></button></div>
-                <Eye ></Eye></div>
+              <button size="sm" variant="ghost" style={{ fontSize: "0.75rem", color: "white" }}>
+                <eye  >
                 View
-              </button>
+              </Button>
             </div>
           ))}
         </div>
       ) : (
         <div className="text-center py-4">
-          <p className="text-white/50"></div></div>
+          <p className="text-white/50">
             No tickers currently match this strategy.
-          </div>
+          </p>
         </div>
       )}
     </div>

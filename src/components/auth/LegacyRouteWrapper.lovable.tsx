@@ -11,9 +11,9 @@ const LegacyRouteWrapper: React.FC<Legacyroutewrapperprops > = ({
   children 
 }) => {
   return (
-    <oldprotectedroute />
+    <Oldprotectedroute  />
       {children}
-    </Legacyroutewrapperprops>
+    </OldProtectedRoute>
   );
 };
 

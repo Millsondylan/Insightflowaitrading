@@ -1,26 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { useProfilePersonalization } from '@/hooks/use-profile-personalization';
 
 // Define the structure for the parsed strategy output
 type StrategyOutput = {
   title: string;
   rules: string[];
   checklist: string[];
-  name?: string;
-  description?: string;
-  timeframe?: string;
-  indicators?: string[];
-  riskPerTrade?: number;
-  stopLossPercent?: number;
-  takeProfitRatio?: number;
 };
-
-interface StrategyBuilderProps {
-  initialData?: StrategyOutput;
-  onSave?: (strategy: StrategyOutput) => void;
-}
 
 // --- Mock Functions (to be replaced with actual logic) ---
 
@@ -68,44 +55,10 @@ const validateStrategy = (strategy: StrategyOutput): string | null => {
 
 // --- Main Component ---
 
-const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
+const StrategyBuilderV2 = () => {
   const [prompt, setPrompt] = useState('');
   const [strategy, setStrategy] = useState<StrategyOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [symbols, setSymbols] = useState<string[]>([]);
-  const isInitialized = React.useRef(false);
-
-  // Get personalized settings from user profile
-  const { 
-    profile, 
-    defaultChartSettings, 
-    strategyTemplate, 
-    riskParameters 
-  } = useProfilePersonalization() || {};
-  
-  // Initialize with personalized defaults if no initial data
-  useEffect(() => {
-    if (!initialData && strategyTemplate && !isInitialized.current) {
-      // Apply personalized defaults if no initial data was provided
-      setStrategy(prev => ({
-        ...prev || { title: '', rules: [], checklist: [] },
-        name: strategyTemplate?.name,
-        description: strategyTemplate?.description,
-        timeframe: defaultChartSettings?.timeframe,
-        indicators: strategyTemplate?.indicators,
-        riskPerTrade: riskParameters?.riskPerTrade,
-        stopLossPercent: riskParameters?.stopLossPercent,
-        takeProfitRatio: riskParameters?.takeProfitRatio
-      }));
-      
-      // Set favorite symbols if available
-      if (defaultChartSettings?.symbols?.length) {
-        setSymbols(defaultChartSettings.symbols);
-      }
-      
-      isInitialized.current = true;
-    }
-  }, [initialData, strategyTemplate, defaultChartSettings, riskParameters]);
 
   const handleSubmit = () => {
     setError(null);
@@ -120,28 +73,6 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
       setStrategy(parsed);
     }
   };
-
-  // Update AI prompt to include user profile context
-  const generateAIPrompt = useCallback(() => {
-    if (!strategy) return '';
-    
-    const { aiPromptContext } = useProfilePersonalization() || {};
-    
-    return `
-      ${aiPromptContext || ''}
-      
-      Based on the user's profile and preferences, generate a trading strategy with the following details:
-      
-      Strategy Name: ${strategy.name || ''}
-      Description: ${strategy.description || ''}
-      Timeframe: ${strategy.timeframe || ''}
-      Symbols: ${symbols.join(', ')}
-      Indicators: ${strategy.indicators?.join(', ') || ''}
-      Risk per trade: ${strategy.riskPerTrade || 0}%
-      
-      Please provide entry rules, exit rules, and risk management guidelines tailored to this user's experience level and risk profile.
-    `;
-  }, [strategy, symbols]);
 
   return (
     <div className="theme-builder p-4 md:p-6 space-y-8">
@@ -159,7 +90,7 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
         />
         <Button onClick={handleSubmit} className="bg-cyan-600 hover:bg-cyan-700 px-6 py-2 rounded-full text-white font-semibold">
           Generate Strategy
-        </button>
+        </Button>
       </div>
 
       {error && (
@@ -208,11 +139,4 @@ const StrategyBuilderV2 = ({ initialData, onSave }: StrategyBuilderProps) => {
   );
 };
 
-export default StrategyBuilderV2;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default StrategyBuilderV2; 

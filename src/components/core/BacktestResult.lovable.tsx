@@ -21,7 +21,7 @@ const formatCurrency = (n: number) => n.toFixed(2);
 
 const StatCard = ({ label, value, color }: { label: string, value: string | number, color?: string }) => (
   <div className="glass-section p-4 text-center">
-    <p className="text-gray-400 text-sm">{label}</div>
+    <p className="text-gray-400 text-sm">{label}</p>
     <p className={`text-2xl font-bold ${color || ''}`}>{value}</p>
   </div>
 );
@@ -32,29 +32,35 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   
   return (
     <div className="space-y-8 mt-12">
-      <Blockreveal>
-        <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</div />
+      <Blockreveal >
+        <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
+      </BlockReveal>
       
-      <blockreveal />
-        <Kpicards />
+      <Blockreveal  />
+        <kpicards  >
+      </BlockReveal>
       
-      <Blockreveal  //>
-        <Tabs  style={{ width: "100%" }}>
-          <Tabslist  style={{ width: "100%", display: "grid" }}>
-            <Tabstrigger value="overview">
+      <blockreveal  >
+        <tabs  style={{ width: "100%" }}>
+          <tabslist  style={{ width: "100%", display: "grid" }}>
+            <tabstrigger value="overview" >
               Chart View
-            </div>
-            <Tabstrigger value="trades">
+            </TabsTrigger>
+            <tabstrigger value="trades" >
               Trade Explorer
-            </Tabstrigger />
+            </TabsTrigger>
+          </TabsList>
           
-          <TabsContent value="overview">
-            <backtestchart />
+          <tabscontent value="overview" >
+            <backtestchart  >
+          </TabsContent>
           
-          <TabsContent value="trades">
-            <tradeexplorer />
-        </Tabs />
-    </Tabstrigger>
+          <tabscontent value="trades" >
+            <tradeexplorer  >
+          </TabsContent>
+        </Tabs>
+      </BlockReveal>
+    </div>
   );
 };
 

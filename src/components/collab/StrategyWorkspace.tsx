@@ -1,6 +1,3 @@
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-
 type User = { id: string; name: string; color: string };
 type Strategy = {
   title: string;
@@ -19,19 +16,20 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
     <div className="theme-vault space-y-6">
       <div className="flex items-center gap-2">
         {users.map((u) => (
-          <span key={u.id}
+          <Span key={u.id}
             className="px-3 py-1 text-xs rounded-full text-white"
-            style={{ backgroundColor: u.color }}>
+            style={{ backgroundColor: u.color }}
+         >
             🧑‍💻 {u.name}
           </span>
         ))}
       </div>
-      <Input 
+      <input
         value={strategy.title}
         onChange={(e) => onUpdate({ ...strategy, title: e.target.value })}
         className="bg-white/10 p-2 rounded w-full text-white text-lg font-bold"
       />
-      <Textarea
+      <textarea
         value={strategy.notes}
         onChange={(e) => onUpdate({ ...strategy, notes: e.target.value })}
         placeholder="Strategy notes..."
@@ -39,7 +37,7 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
       />
       <div className="space-y-2">
         {strategy.rules.map((rule, i) => (
-          <Input 
+          <input
             key={i}
             value={rule}
             onChange={(e) => {
@@ -53,11 +51,4 @@ export default function StrategyWorkspace({ users, strategy, onUpdate }: Props) 
       </div>
     </div>
   );
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

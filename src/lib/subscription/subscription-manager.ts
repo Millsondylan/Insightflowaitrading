@@ -485,8 +485,8 @@ export class SubscriptionManager {
 
   public async addPaymentMethod(
     userId: string,
-    method: Omit<paymentMethod, 'id'>
-  ): Promise<paymentMethod> {
+    method: Omit<PaymentMethod, 'id'>
+  ): Promise<PaymentMethod> {
     // Implement payment method addition
     return {
       id: Math.random().toString(36).substr(2, 9),
@@ -567,7 +567,7 @@ export class SubscriptionManager {
     userId: string,
     strategyId: string,
     paymentMethod: PaymentMethod
-  ): Promise<transaction> {
+  ): Promise<Transaction> {
     // Implement strategy purchase
     return {} as Transaction;
   }

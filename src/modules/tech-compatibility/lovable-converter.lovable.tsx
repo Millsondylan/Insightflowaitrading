@@ -46,76 +46,78 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
   };
 
   return (
-    <Card />
+    <Card  />
       <div className="flex items-center gap-2 mb-6">
-        <Code2 >
-        <h2 className="text-2xl font-bold">Lovable Converter</Lovableconverterprops>
+        <code2  >
+        <h2 className="text-2xl font-bold">Lovable Converter</h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
-          <h3 className="font-semibold mb-2">React/TypeScript Code</div>
-          <Textarea placeholder="Paste your React component or TypeScript code here..." style={{ fontSize: "0.875rem" }}> setInputCode(e.target.value)}
-          / />
+          <h3 className="font-semibold mb-2">React/TypeScript Code</h3>
+          <textarea placeholder="Paste your React component or TypeScript code here..." style={{ fontSize: "0.875rem" }}> setInputCode(e.target.value)}
+          />
+        </div>
 
         <div>
-          <h3 className="font-semibold mb-2">Lovable.dev Output</Textarea>
-          <Textarea placeholder="Converted Lovable.dev code will appear here..." style={{ fontSize: "0.875rem" }}/>
-      </Textarea>
+          <h3 className="font-semibold mb-2">Lovable.dev Output</h3>
+          <textarea placeholder="Converted Lovable.dev code will appear here..." style={{ fontSize: "0.875rem" }}>
+        </div>
+      </div>
 
       <div className="flex justify-center my-6">
-        <Button >
+        <button  >
           {isConverting ? (
             'Converting...'
           ) : (
             <>
               Convert to Lovable
-              <ArrowRight />
-            </div>
+              <arrowright  >
+            </>
           )}
-        </div>
+        </Button>
       </div>
 
       {conversionStatus && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
           <div className="p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2 flex items-center gap-2"></div>
-              <Check >
+            <h4 className="font-medium mb-2 flex items-center gap-2">
+              <check  >
               Tables Detected
-            </Check>
+            </h4>
             <ul className="space-y-1">
               {conversionStatus.tables.map((table) => (
                 <li key={table} className="text-sm text-muted-foreground">
                   • {table}
-                </ul>
+                </li>
               ))}
             </ul>
           </div>
 
           <div className="p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2 flex items-center gap-2"></div>
-              <Check >
+            <h4 className="font-medium mb-2 flex items-center gap-2">
+              <check  >
               AI Blocks Created
-            </Check>
+            </h4>
             <ul className="space-y-1">
               {conversionStatus.aiBlocks.map((block) => (
                 <li key={block} className="text-sm text-muted-foreground">
                   • {block}
-                </ul>
+                </li>
               ))}
             </ul>
           </div>
 
           <div className="p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2 flex items-center gap-2"></div>
-              <Check >
+            <h4 className="font-medium mb-2 flex items-center gap-2">
+              <check  >
               Functions Wrapped
-            </Check>
+            </h4>
             <ul className="space-y-1">
               {conversionStatus.functions.map((func) => (
                 <li key={func} className="text-sm text-muted-foreground">
                   • {func}
-                </ul>
+                </li>
               ))}
             </ul>
           </div>
@@ -123,15 +125,17 @@ export const getStrategies = lovabledFunction<void, Strategy[]>('getStrategies')
       )}
 
       <div className="mt-6 p-4 bg-yellow-500/10 rounded-lg flex items-start gap-2">
-        <AlertCircle >
+        <alertcircle  >
         <div className="text-sm">
-          <p className="font-medium mb-1"></div>Conversion Notes:</div>
+          <p className="font-medium mb-1">Conversion Notes:</p>
           <ul className="space-y-1 text-muted-foreground">
-            <li>• localStorage → Lovable Tables</ul>
+            <li>• localStorage → Lovable Tables</li>
             <li>• API calls → Lovable Functions</li>
-            <li>• AI integrations → Lovable AI Blocks</Li />
-        </li>
-      </div />
+            <li>• AI integrations → Lovable AI Blocks</li>
+          </ul>
+        </div>
+      </div>
+    </Card>
   );
 }; 
 

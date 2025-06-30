@@ -44,69 +44,73 @@ export const VaultPublisher: React.FC = () => {
   }
 
   return (
-    <Card  style={{ width: "100%", color: "white" }}>
-      <Cardheader />
-        <Cardtitle >Strategy Publisher</Strategy />
-      <Cardcontent />
+    <card  style={{ width: "100%", color: "white" }}>
+      <Cardheader  />
+        <cardtitle  >Strategy Publisher</CardTitle>
+      </CardHeader>
+      <cardcontent  >
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
+            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
             <div className="grid grid-cols-2 gap-4">
-              <Input /> setStrategy(prev => ({ ...prev, name: e.target.value }))}
+              <input  > setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <Input /> setStrategy(prev => ({ ...prev, version: e.target.value }))}
+              <input  > setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
             </div>
-            <Textarea > setStrategy(prev => ({ ...prev, description: e.target.value }))}
+            <textarea  > setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
-            / />
+            />
+          </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
+            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
             <div className="space-y-2">
               <div>
-                <Label className="block text-sm mb-1">Visibility</div>
+                <label className="block text-sm mb-1">Visibility</label>
                 <div className="flex space-x-2">
-                  <Button > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
+                  <button  > setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
-                  </div>
-                  <Button > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
+                  </Button>
+                  <button  > setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
-                  </button>
+                  </Button>
                 </div>
               </div>
 
-              <Input /> setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
+              <input  > setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Input /> setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
+              <input  > setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Textarea > setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
+              <textarea  > setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
-              / />
-          </Input>
+              />
+            </div>
+          </div>
 
-          <Button  style={{ width: "100%" }}>
+          <button  style={{ width: "100%" }}>
             Publish Strategy
-          </button>
-        </div />
+          </Button>
+        </div>
+      </CardContent>
     </Card>
   )
 } 

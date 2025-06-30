@@ -26,7 +26,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <h3 style={{ fontSize: '20px', fontWeight: '600', color: 'white', margin: 0 }}>{strategy.title}</h3>
-        <Button style={{
+        <button style={{
           fontSize: '14px',
           color: 'rgba(255, 255, 255, 0.7)',
           background: 'none',
@@ -146,7 +146,8 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             fontSize: '20px',
             pointerEvents: 'none'
           }}>🔍</span>
-          <Input type="text"
+          <input 
+            type="text"
             placeholder="Search by title or tag..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -165,7 +166,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
           />
         </div>
-        <Select 
+        <select 
           value={sortBy} 
           onChange={(e) => setSortBy(e.target.value)}
           style={{
@@ -184,12 +185,13 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         >
           <option value="totalPnL" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sort by PnL</option>
           <option value="winRate" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sort by Win Rate</option>
-        </Select>
+        </select>
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
         {allTags.map(tag => (
-          <Button key={tag}
+          <button 
+            key={tag}
             onClick={() => handleTagClick(tag)}
             style={{
               padding: '8px 16px',
@@ -226,7 +228,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         gap: '24px' 
       }}>
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy}/>
+          <StrategyCard key={strategy.id} strategy={strategy} />
         ))}
       </div>
 
@@ -427,7 +429,7 @@ export const LovableDemo = () => {
           }}>
             🏦 Strategy Vault
           </h2>
-          <StrategyVault strategies={sampleStrategies}/>
+          <StrategyVault strategies={sampleStrategies} />
         </div>
 
         {/* Footer */}
@@ -450,11 +452,4 @@ export const LovableDemo = () => {
   );
 };
 
-export default LovableDemo;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default LovableDemo; 

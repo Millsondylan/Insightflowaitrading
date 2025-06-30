@@ -17,7 +17,7 @@ interface LineChartProps {
   color?: string;
 }
 
-export const LineChart: React.FC<linechartprops /> = ({
+export const LineChart: React.FC<Linechartprops  /> = ({
   data,
   xField,
   yField,
@@ -25,15 +25,16 @@ export const LineChart: React.FC<linechartprops /> = ({
   color = '#2563eb'
 }) => {
   return (
-    <Responsivecontainer width="100%">
-      <Rechartslinechart />
-        <cartesiangrid strokeDasharray="3 3" stroke="#374151">
-        <xaxis stroke="#6b7280">
-        <yaxis stroke="#6b7280"> `${value.toFixed(2)}`}
+    <responsivecontainer width="100%" >
+      <rechartslinechart  >
+        <cartesiangrid strokeDasharray="3 3" stroke="#374151" >
+        <xaxis stroke="#6b7280" >
+        <yaxis stroke="#6b7280" > `${value.toFixed(2)}`}
         />
-        <Tooltip >
-        <line type="monotone"/>
-    </Record>
+        <tooltip  >
+        <line type="monotone" >
+      </RechartsLineChart>
+    </ResponsiveContainer>
   );
 }; 
 

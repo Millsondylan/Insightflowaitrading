@@ -11,15 +11,8 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     
     if (!isAuthenticated()) {
         // Redirect to sign-in page while saving the attempted URL
-        return <navigate to="/auth" state={{ from: location }} replace/>;
+        return <Navigate to="/auth" state={{ from: location }} replace />;
     }
 
     return <>{children}</>;
-}
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+} 

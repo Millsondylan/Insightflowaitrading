@@ -81,20 +81,20 @@ const WalletPanel: React.FC = () => {
         <div>
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center space-x-2 text-green-400">
-              <Checkcircle />
-              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</Tokenbalance></p>
+              <Checkcircle  />
+              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
             </div>
-            <Button variant="outline" size="sm">Disconnect</button>
+            <button variant="outline" size="sm" >Disconnect</Button>
           </div>
           <motion.div 
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <animatepresence />
+            <animatepresence  >
               {balances.map((token, index) => (
-                <Tokenbalancecard >
+                <tokenbalancecard  >
               ))}
-            </Tokenbalancecard>
+            </AnimatePresence>
           </motion.div>
         </div>
       );
@@ -102,14 +102,14 @@ const WalletPanel: React.FC = () => {
 
     return (
       <div className="wallet-connect-cta">
-        <wallet >
-        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</div>
+        <wallet  >
+        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
         <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
         <div className="flex max-w-md mx-auto">
-          <Input type="text" placeholder="Enter any wallet address to simulate..."/> setInputValue(e.target.value)}
+          <input type="text" placeholder="Enter any wallet address to simulate..." > setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button ></div></div>Connect</div>
+          <button  >Connect</Button>
         </div>
       </div>
     );

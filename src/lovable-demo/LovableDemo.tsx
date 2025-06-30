@@ -53,13 +53,6 @@ const demoTier = {
 export const LovableDemo = () => {
   const [activeTab, setActiveTab] = useState('sentiment');
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
   const handleOptimizationComplete = (result) => {
     console.log('Optimization complete:', result);
   };
@@ -80,7 +73,8 @@ export const lovable = {
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <Button  onClick={() => setActiveTab('sentiment')}
+          <button
+            onClick={() => setActiveTab('sentiment')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'sentiment' ? '#2563eb' : '#e5e7eb',
@@ -92,7 +86,8 @@ export const lovable = {
           >
             Market Sentiment
           </button>
-          <Button  onClick={() => setActiveTab('optimizer')}
+          <button
+            onClick={() => setActiveTab('optimizer')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'optimizer' ? '#2563eb' : '#e5e7eb',
@@ -104,7 +99,8 @@ export const lovable = {
           >
             Strategy Optimizer
           </button>
-          <Button  onClick={() => setActiveTab('reflection')}
+          <button
+            onClick={() => setActiveTab('reflection')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'reflection' ? '#2563eb' : '#e5e7eb',
@@ -116,7 +112,8 @@ export const lovable = {
           >
             Trade Reflection
           </button>
-          <Button  onClick={() => setActiveTab('subscription')}
+          <button
+            onClick={() => setActiveTab('subscription')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'subscription' ? '#2563eb' : '#e5e7eb',
@@ -135,25 +132,29 @@ export const lovable = {
         {activeTab === 'sentiment' && (
           <SentimentDisplay
             symbol="BTC/USD"
-            apiKey="demo-key"/>
+            apiKey="demo-key"
+          />
         )}
 
         {activeTab === 'optimizer' && (
           <MLStrategyOptimizerUI
             strategy={demoStrategy}
-            onOptimizationComplete={handleOptimizationComplete}/>
+            onOptimizationComplete={handleOptimizationComplete}
+          />
         )}
 
         {activeTab === 'reflection' && (
           <ReflectionGenerator
             trade={demoTrade}
-            onReflectionGenerated={handleReflectionGenerated}/>
+            onReflectionGenerated={handleReflectionGenerated}
+          />
         )}
 
         {activeTab === 'subscription' && (
-          <paymentForm
+          <PaymentForm
             selectedTier={demoTier}
-            onPaymentComplete={handlePaymentComplete}/>
+            onPaymentComplete={handlePaymentComplete}
+          />
         )}
       </div>
     </div>

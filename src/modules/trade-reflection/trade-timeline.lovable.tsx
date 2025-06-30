@@ -10,7 +10,7 @@ interface TradeTimelineProps {
   limit?: number;
 }
 
-export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20 }) => {
+export const TradeTimeline: React.FC<Tradetimelineprops > = ({ userId, limit = 20 }) => {
   // Mock data - TODO: Connect to trade_logs table
   const activities = [
     {
@@ -43,16 +43,16 @@ export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20
   ];
 
   const getIcon = (type: string, pnl?: number | null) => {
-    if (type === 'alert') return <AlertCircle />;
-    if (pnl && pnl > 0) return <Trendingup >;
-    if (pnl && pnl < 0) return <Trendingdown  //></Tradetimelineprops /></Tradetimelineprops /></Tradetimelineprops>;
-    return <Clock >;
+    if (type === 'alert') return <Alertcircle  />;
+    if (pnl && pnl > 0) return <trendingup  >;
+    if (pnl && pnl < 0) return <trendingdown  >;
+    return <clock  >;
   };
 
   return (
-    <Card >
-      <h2 className="text-2xl font-bold mb-4"/></Card /></Card />Trade Timeline</Clock>
-      <scrollarea >
+    <card  >
+      <h2 className="text-2xl font-bold mb-4">Trade Timeline</h2>
+      <scrollarea  >
         <div className="space-y-4">
           {activities.map((activity) => (
             <div key={activity.id} className="relative pl-6 pb-4 last:pb-0">
@@ -62,9 +62,9 @@ export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20
               <div className="border-l-2 border-gray-700 pl-6 -ml-2">
                 <div className="flex items-center justify-between mb-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-semibold">{activity.symbol}</div>
+                    <span className="font-semibold">{activity.symbol}</span>
                     {activity.action && (
-                      <Badge >
+                      <badge  >
                         {activity.action}
                       </Badge>
                     )}
@@ -84,8 +84,8 @@ export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20
                   <div>
                     <p className="text-sm text-muted-foreground">
                       Closed {activity.size} units at ${activity.price}
-                    </div>
-                    <p className={`text-sm font-medium ${activity.pnl!> 0 ? 'text-green-500' : 'text-red-500'}`}>
+                    </p>
+                    <p className={`text-sm font-medium ${activity.pnl! > 0 ? 'text-green-500' : 'text-red-500'}`}>
                       P&L: {activity.pnl! > 0 ? '+' : ''}${activity.pnl?.toFixed(2)}
                     </p>
                   </div>
@@ -97,7 +97,8 @@ export const TradeTimeline: React.FC<Tradetimelineprops> = ({ userId, limit = 20
               </div>
             </div>
           ))}
-        </div />
+        </div>
+      </ScrollArea>
     </Card>
   );
 }; 

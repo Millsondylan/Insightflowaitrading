@@ -50,29 +50,32 @@ export const RoleBadge: React.FC<Rolebadgeprops > = ({
   const safeGlowEffect = glowEffect[safeRole as UserRole];
 
   const badge = (
-    <span className={cn(
+    <Span className={cn(
         'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
         'relative overflow-hidden',
         'after:absolute after:inset-0 after:rounded-full after:opacity-50 after:blur-sm after:-z-10',
         safeRoleStyles,
         safeGlowEffect,
         className
-      )}/>
+      )}
+    />
       {role}
-    </Rolebadgeprops>
+    </span>
   );
 
   // If tooltip is enabled, wrap badge in tooltip
   if (showTooltip) {
     return (
-      <Tooltipprovider >
-        <Tooltip />
-          <TooltipTrigger >
+      <tooltipprovider  >
+        <tooltip  >
+          <tooltiptrigger  >
             {badge}
-          </Tooltipprovider>
-          <TooltipContent >
-            <p className="text-xs">{tooltipContent[safeRole as UserRole]}</p />
-        </Tooltip />
+          </TooltipTrigger>
+          <tooltipcontent  >
+            <p className="text-xs">{tooltipContent[safeRole as UserRole]}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
   }
 

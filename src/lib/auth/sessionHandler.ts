@@ -1,21 +1,13 @@
+import { NextRequest } from 'next/server';
 import { supabase } from '@/integrations/supabase/client';
 import { createClient } from '@supabase/supabase-js';
-import { Database } from '@/types/supabase';
+import { Database } from '@/integrations/supabase/types';
 
 export interface AuthenticatedUser {
   id: string;
   email: string;
   role?: string;
 }
-
-// Minimal Next.js-compatible Request type for environments without next/server
-type NextRequest = Request & {
-  cookies: {
-    get(name: string): { value: string } | undefined;
-  };
-};
-
-interface ProfileRow { subscription_tier?: string | null }
 
 /**
  * Gets the authenticated user from a request
@@ -57,14 +49,12 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<Authentica
       .from('profiles')
       .select('*')
       .eq('id', data.user.id)
-      .single<ProfileRow>();
-
-    const tier = profileData?.subscription_tier ?? 'free';
+      .single();
 
     return {
       id: data.user.id,
       email: data.user.email || '',
-      role: tier,
+      role: profileData?.subscription_tier || 'free',
     };
   } catch (error) {
     console.error('Error authenticating request:', error);

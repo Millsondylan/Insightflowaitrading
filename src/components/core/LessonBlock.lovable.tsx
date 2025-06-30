@@ -18,20 +18,21 @@ const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="w-full mb-12"
     >
-      <Card />
-        <Cardheader >
-          <Cardtitle  style={{ fontWeight: "700" }}/></Lessonblockprops /></Lessonblockprops />
+      <Card  />
+        <cardheader  >
+          <cardtitle  style={{ fontWeight: "700" }}>
             {block.title}
-          </Lessonblockprops />
-        <Cardcontent >
-          <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg"/></Cardcontent /></Cardcontent />
+          </CardTitle>
+        </CardHeader>
+        <cardcontent  >
+          <p className="text-gray-300 leading-relaxed whitespace-pre-line text-lg">
             {block.content}
-          </Lessonblockprops>
+          </p>
 
           <div>
-            <h4 className="font-semibold text-xl mb-4 text-gray-200"></div>
+            <h4 className="font-semibold text-xl mb-4 text-gray-200">
               Key Takeaways
-            </div>
+            </h4>
             <ul className="space-y-3">
               {block.keyTakeaways.map((takeaway, index) => (
                 <motion.li
@@ -42,12 +43,13 @@ const LessonBlock: React.FC<Lessonblockprops > = ({ block }) => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start"
                 >
-                  <checkcircle2 >
-                  <span className="text-gray-300 text-base"/></Ul /></Ul />{takeaway}</ul>
+                  <checkcircle2  >
+                  <span className="text-gray-300 text-base">{takeaway}</span>
                 </motion.li>
               ))}
             </ul>
-          </div />
+          </div>
+        </CardContent>
       </Card>
     </motion.div>
   );

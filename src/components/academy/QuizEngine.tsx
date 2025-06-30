@@ -170,7 +170,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
       </div>
 
       {/* Quiz Content */}
-      {!quizComplete && currentQuestion ? (
+      {!quizComplete ? (
         <AnimatePresence mode="wait">
           <motion.div
             key={currentQuestion.id}
@@ -188,7 +188,8 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {/* Options */}
             <div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
-                <Button key={index}
+                <button
+                  key={index}
                   onClick={() => handleOptionSelect(index)}
                   disabled={isAnswered}
                   className={`
@@ -203,9 +204,9 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                   
                   {isAnswered && (
                     index === currentQuestion.correctIndex ? (
-                      <CheckCircle2 className="h-5 w-5 text-white"/>
+                      <CheckCircle2 className="h-5 w-5 text-white" />
                     ) : (
-                      index === selectedOption && <XCircle className="h-5 w-5 text-white"/>
+                      index === selectedOption && <XCircle className="h-5 w-5 text-white" />
                     )
                   )}
                 </button>
@@ -233,29 +234,33 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3">
               {!isAnswered ? (
-                <Button onClick={handleSubmitAnswer}
+                <Button
+                  onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
-                  className="bg-white/10 hover:bg-cyan-600 text-white px-6">
+                  className="bg-white/10 hover:bg-cyan-600 text-white px-6"
+                >
                   Submit Answer
-                </button>
+                </Button>
               ) : (
-                <Button onClick={handleNextQuestion}
-                  className="bg-white/10 hover:bg-white/20 text-white px-6">
+                <Button
+                  onClick={handleNextQuestion}
+                  className="bg-white/10 hover:bg-white/20 text-white px-6"
+                >
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
-                        <ChevronRight className="ml-2 h-4 w-4"/>
-                      </ChevronRight>
+                        <ChevronRight className="ml-2 h-4 w-4" />
+                      </>
                     )
                   }
-                </button>
+                </Button>
               )}
             </div>
           </motion.div>
         </AnimatePresence>
-      ) : quizComplete ? (
+      ) : (
         // Quiz Summary
         <motion.div
           initial={{ opacity: 0 }}
@@ -301,27 +306,18 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
           )}
 
           <div className="pt-4">
-            <Button onClick={resetQuiz}
-              className="bg-white/10 hover:bg-white/20 text-white px-6">
-              <RefreshCw className="mr-2 h-4 w-4"/>
+            <Button
+              onClick={resetQuiz}
+              className="bg-white/10 hover:bg-white/20 text-white px-6"
+            >
+              <RefreshCw className="mr-2 h-4 w-4" />
               Retry Quiz
-            </button>
+            </Button>
           </div>
         </motion.div>
-      ) : (
-        <div className="text-center text-white">
-          <p>Loading quiz...</p>
-        </div>
       )}
     </div>
   );
 };
 
-export default QuizEngine;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default QuizEngine; 

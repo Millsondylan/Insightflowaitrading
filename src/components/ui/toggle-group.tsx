@@ -21,8 +21,8 @@ const ToggleGroup = React.forwardRef<
     ref={ref}
     className={cn("flex items-center justify-center gap-1", className)}
     {...props}
-   />
-    <ToggleGroupContext.Provider value={{ variant, size }} />
+  >
+    <ToggleGroupContext.Provider value={{ variant, size }}>
       {children}
     </ToggleGroupContext.Provider>
   </ToggleGroupPrimitive.Root>
@@ -48,7 +48,7 @@ const ToggleGroupItem = React.forwardRef<
         className
       )}
       {...props}
-     /></ToggleGroupPrimitive>
+    >
       {children}
     </ToggleGroupPrimitive.Item>
   )
@@ -57,10 +57,3 @@ const ToggleGroupItem = React.forwardRef<
 ToggleGroupItem.displayName = ToggleGroupPrimitive.Item.displayName
 
 export { ToggleGroup, ToggleGroupItem }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};

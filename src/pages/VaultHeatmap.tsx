@@ -1,245 +1,139 @@
 import React, { useState, useMemo } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+import { 
+  GitCommit, 
+  Star, 
+  TrendingUp, 
+  Filter, 
+  ChevronDown,
+  Users,
+  Clock,
+  DollarSign,
+  BarChart3,
+  Shield,
+  Search,
+  SortAsc,
+  SortDesc
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
-  TrendingUp, 
-  BarChart3, 
-  Users, 
-  Star, 
-  Search, 
-  SortAsc, 
-  SortDesc, 
-  GitCommit,
-  Eye,
-  Heart,
-  Share2
-} from 'lucide-react';
-
-interface Strategy {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  riskLevel: string;
-  market: string;
-  tags: string[];
-  performance: {
-    totalReturn: number;
-    sharpeRatio: number;
-    maxDrawdown: number;
-    winRate: number;
-  };
-  users: number;
-  stars: number;
-  views: number;
-  createdAt: string;
-}
-
-const comprehensiveStrategies: Strategy[] = [
-  {
-    id: '1',
-    name: 'Golden Cross Momentum',
-    description: 'Advanced momentum strategy using moving average crossovers with risk management',
-    category: 'Momentum',
-    riskLevel: 'Medium',
-    market: 'Crypto',
-    tags: ['momentum', 'moving-averages', 'crypto'],
-    performance: {
-      totalReturn: 45.2,
-      sharpeRatio: 1.8,
-      maxDrawdown: -12.3,
-      winRate: 68.5
-    },
-    users: 1250,
-    stars: 89,
-    views: 5600,
-    createdAt: '2024-01-15'
-  },
-  {
-    id: '2',
-    name: 'Mean Reversion Pro',
-    description: 'Statistical arbitrage using Bollinger Bands and RSI divergence',
-    category: 'Mean Reversion',
-    riskLevel: 'Low',
-    market: 'Forex',
-    tags: ['mean-reversion', 'bollinger-bands', 'rsi'],
-    performance: {
-      totalReturn: 28.7,
-      sharpeRatio: 2.1,
-      maxDrawdown: -8.9,
-      winRate: 72.1
-    },
-    users: 890,
-    stars: 67,
-    views: 4200,
-    createdAt: '2024-02-03'
-  },
-  {
-    id: '3',
-    name: 'Volatility Breakout',
-    description: 'High-frequency strategy capturing volatility expansion patterns',
-    category: 'Volatility',
-    riskLevel: 'High',
-    market: 'Stocks',
-    tags: ['volatility', 'breakout', 'high-frequency'],
-    performance: {
-      totalReturn: 67.3,
-      sharpeRatio: 1.4,
-      maxDrawdown: -18.7,
-      winRate: 58.9
-    },
-    users: 567,
-    stars: 45,
-    views: 3100,
-    createdAt: '2024-01-28'
-  }
-];
-
-const strategyCategories = ['Momentum', 'Mean Reversion', 'Volatility', 'Trend Following', 'Arbitrage'];
-const riskLevels = ['Low', 'Medium', 'High'];
-const marketTypes = ['Crypto', 'Forex', 'Stocks', 'Commodities'];
+  comprehensiveStrategies, 
+  strategyCategories,
+  riskLevels,
+  marketTypes,
+  filterStrategies,
+  sortStrategies,
+  type Strategy
+} from '@/lib/vault/comprehensiveStrategies';
 
 const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
   const getRiskColor = (risk: string) => {
-    switch (risk.toLowerCase()) {
-      case 'low': return 'text-green-400';
-      case 'medium': return 'text-yellow-400';
-      case 'high': return 'text-red-400';
-      default: return 'text-gray-400';
-    }
+    const colors = {
+      'Low': 'text-green-400 bg-green-400/20',
+      'Low-Medium': 'text-green-400 bg-green-400/20',
+      'Medium': 'text-yellow-400 bg-yellow-400/20',
+      'Medium-High': 'text-orange-400 bg-orange-400/20',
+      'High': 'text-red-400 bg-red-400/20',
+      'Very High': 'text-red-600 bg-red-600/20'
+    };
+    return colors[risk as keyof typeof colors] || 'text-gray-400 bg-gray-400/20';
   };
 
   return (
-    <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-colors">
-      <CardHeader>
-        <div className="flex justify-between items-start">
-          <div className="flex-1">
-            <CardTitle className="text-white text-lg mb-2">{strategy.name}</CardTitle>
-            <p className="text-gray-400 text-sm mb-3">{strategy.description}</p>
-            <div className="flex flex-wrap gap-2 mb-3">
-              <Badge variant="secondary" className="text-xs">
-                {strategy.category}
+    <Link to={`/vault/${strategy.id}`} className="block">
+      <Card className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-200 backdrop-blur-sm group h-full">
+        <CardHeader>
+          <div className="flex justify-between items-start mb-2">
+            <div className="flex-1">
+              <CardTitle className="text-lg text-white group-hover:text-blue-400 transition-colors">
+                {strategy.name}
+              </CardTitle>
+              <CardDescription className="text-gray-400 line-clamp-2 mt-1">
+                {strategy.description}
+              </CardDescription>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Badge variant="secondary">{strategy.category}</Badge>
+            <Badge className={getRiskColor(strategy.riskLevel)}>
+              {strategy.riskLevel}
+            </Badge>
+            {strategy.author.verified && (
+              <Badge variant="outline" className="border-blue-500/50 text-blue-400">
+                <Shield className="w-3 h-3 mr-1" />
+                Verified
               </Badge>
-              <Badge variant="outline" className={`text-xs ${getRiskColor(strategy.riskLevel)}`}>
-                {strategy.riskLevel} Risk
-              </Badge>
+            )}
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <p className="text-xs text-gray-400">Total Return</p>
+              <p className="text-xl font-bold text-green-400">
+                +{strategy.performance.totalReturn}%
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Win Rate</p>
+              <p className="text-xl font-bold text-white">
+                {strategy.performance.winRate}%
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Sharpe Ratio</p>
+              <p className="text-lg font-semibold text-white">
+                {strategy.performance.sharpeRatio}
+              </p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-400">Max Drawdown</p>
+              <p className="text-lg font-semibold text-red-400">
+                -{strategy.performance.maxDrawdown}%
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex items-center justify-between text-sm text-gray-400">
+            <div className="flex items-center gap-4">
+              <span className="flex items-center gap-1">
+                <Star className="w-4 h-4 text-yellow-400" />
+                {(strategy.stars / 1000).toFixed(1)}k
+              </span>
+              <span className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                {strategy.users}
+              </span>
+            </div>
+            <span className="flex items-center gap-1">
+              <Clock className="w-4 h-4" />
+              {strategy.timeframe}
+            </span>
+          </div>
+          
+          <div className="mt-3 pt-3 border-t border-white/10">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-white/10 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                  {strategy.author.name.charAt(0)}
+                </div>
+                <span className="text-sm text-gray-400">{strategy.author.name}</span>
+              </div>
               <Badge variant="outline" className="text-xs">
-                {strategy.market}
+                <DollarSign className="w-3 h-3 mr-1" />
+                {(strategy.minimumCapital / 1000).toFixed(0)}k min
               </Badge>
             </div>
           </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div>
-            <p className="text-sm text-gray-400">Total Return</p>
-            <p className="text-lg font-bold text-green-400">
-              +{strategy.performance.totalReturn.toFixed(1)}%
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-400">Sharpe Ratio</p>
-            <p className="text-lg font-bold text-blue-400">
-              {strategy.performance.sharpeRatio.toFixed(2)}
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-400">Max Drawdown</p>
-            <p className="text-lg font-bold text-red-400">
-              {strategy.performance.maxDrawdown.toFixed(1)}%
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-400">Win Rate</p>
-            <p className="text-lg font-bold text-purple-400">
-              {strategy.performance.winRate.toFixed(1)}%
-            </p>
-          </div>
-        </div>
-        
-        <div className="flex justify-between items-center text-sm text-gray-400">
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1">
-              <Users className="w-4 h-4"/>
-              {strategy.users}
-            </span>
-            <span className="flex items-center gap-1">
-              <Star className="w-4 h-4"/>
-              {strategy.stars}
-            </span>
-            <span className="flex items-center gap-1">
-              <Eye className="w-4 h-4"/>
-              {strategy.views}
-            </span>
-          </div>
-          <div className="flex gap-2">
-            <Button size="sm" variant="ghost">
-              <Heart className="w-4 h-4"/>
-            </Button>
-            <Button size="sm" variant="ghost">
-              <Share2 className="w-4 h-4"/>
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
-};
-
-const filterStrategies = (strategies: Strategy[], filters: {
-  category?: string;
-  riskLevel?: string;
-  market?: string;
-}) => {
-  return strategies.filter(strategy => {
-    if (filters.category && strategy.category !== filters.category) return false;
-    if (filters.riskLevel && strategy.riskLevel !== filters.riskLevel) return false;
-    if (filters.market && strategy.market !== filters.market) return false;
-    return true;
-  });
-};
-
-const sortStrategies = (strategies: Strategy[], sortBy: string, sortOrder: 'asc' | 'desc') => {
-  return [...strategies].sort((a, b) => {
-    let aValue: number;
-    let bValue: number;
-    
-    switch (sortBy) {
-      case 'returns':
-        aValue = a.performance.totalReturn;
-        bValue = b.performance.totalReturn;
-        break;
-      case 'sharpe':
-        aValue = a.performance.sharpeRatio;
-        bValue = b.performance.sharpeRatio;
-        break;
-      case 'drawdown':
-        aValue = a.performance.maxDrawdown;
-        bValue = b.performance.maxDrawdown;
-        break;
-      case 'winRate':
-        aValue = a.performance.winRate;
-        bValue = b.performance.winRate;
-        break;
-      case 'users':
-        aValue = a.users;
-        bValue = b.users;
-        break;
-      case 'stars':
-        aValue = a.stars;
-        bValue = b.stars;
-        break;
-      default:
-        return 0;
-    }
-    
-    return sortOrder === 'asc' ? aValue - bValue : bValue - aValue;
-  });
 };
 
 export default function VaultPage() {
@@ -277,8 +171,6 @@ export default function VaultPage() {
   }, [searchTerm, selectedCategory, selectedRisk, selectedMarket, sortBy, sortOrder]);
 
   const stats = useMemo(() => {
-    if (filteredStrategies.length === 0) return { avgReturn: 0, avgSharpe: 0, totalUsers: 0, avgWinRate: 0 };
-    
     const avgReturn = filteredStrategies.reduce((acc, s) => acc + s.performance.totalReturn, 0) / filteredStrategies.length;
     const avgSharpe = filteredStrategies.reduce((acc, s) => acc + s.performance.sharpeRatio, 0) / filteredStrategies.length;
     const totalUsers = filteredStrategies.reduce((acc, s) => acc + s.users, 0);
@@ -288,13 +180,13 @@ export default function VaultPage() {
   }, [filteredStrategies]);
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div>
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white flex items-center gap-3">
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
-              <GitCommit className="text-white"/>
+              <GitCommit className="text-white" />
             </span>
             Strategy Vault
           </h1>
@@ -315,7 +207,7 @@ export default function VaultPage() {
                   +{stats.avgReturn.toFixed(1)}%
                 </p>
               </div>
-              <TrendingUp className="w-8 h-8 text-green-400/20"/>
+              <TrendingUp className="w-8 h-8 text-green-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -328,7 +220,7 @@ export default function VaultPage() {
                   {stats.avgSharpe.toFixed(2)}
                 </p>
               </div>
-              <BarChart3 className="w-8 h-8 text-blue-400/20"/>
+              <BarChart3 className="w-8 h-8 text-blue-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -341,7 +233,7 @@ export default function VaultPage() {
                   {(stats.totalUsers / 1000).toFixed(1)}k
                 </p>
               </div>
-              <Users className="w-8 h-8 text-purple-400/20"/>
+              <Users className="w-8 h-8 text-purple-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -354,7 +246,7 @@ export default function VaultPage() {
                   {stats.avgWinRate.toFixed(1)}%
                 </p>
               </div>
-              <Star className="w-8 h-8 text-yellow-400/20"/>
+              <Star className="w-8 h-8 text-yellow-400/20" />
             </div>
           </CardContent>
         </Card>
@@ -365,8 +257,8 @@ export default function VaultPage() {
         <div className="flex flex-col lg:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"/>
-              <Input 
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <Input
                 placeholder="Search strategies, tags, or descriptions..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -377,19 +269,19 @@ export default function VaultPage() {
           <div className="flex gap-2">
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Category"/>
+                <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Categories</SelectItem>
-                {strategyCategories.map(category => (
-                  <SelectItem key={category} value={category}>{category}</SelectItem>
+                {strategyCategories.map(cat => (
+                  <SelectItem key={cat} value={cat}>{cat}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
             
             <Select value={selectedRisk} onValueChange={setSelectedRisk}>
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Risk Level"/>
+                <SelectValue placeholder="Risk Level" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Risk Levels</SelectItem>
@@ -401,7 +293,7 @@ export default function VaultPage() {
             
             <Select value={selectedMarket} onValueChange={setSelectedMarket}>
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Market"/>
+                <SelectValue placeholder="Market" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Markets</SelectItem>
@@ -411,27 +303,27 @@ export default function VaultPage() {
               </SelectContent>
             </Select>
             
-            <Select value={sortBy} onValueChange={(value) => setSortBy(value as typeof sortBy)}>
+            <Select value={sortBy} onValueChange={(v) => setSortBy(v as any)}>
               <SelectTrigger className="w-[150px] bg-white/5 border-white/10 text-white">
-                <SelectValue placeholder="Sort By"/>
+                <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="returns">Returns</SelectItem>
                 <SelectItem value="sharpe">Sharpe Ratio</SelectItem>
-                <SelectItem value="drawdown">Max Drawdown</SelectItem>
+                <SelectItem value="drawdown">Drawdown</SelectItem>
                 <SelectItem value="winRate">Win Rate</SelectItem>
                 <SelectItem value="users">Users</SelectItem>
                 <SelectItem value="stars">Stars</SelectItem>
               </SelectContent>
             </Select>
             
-            <Button 
+            <Button
               variant="outline"
               size="icon"
               onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
               className="border-white/10"
             >
-              {sortOrder === 'asc' ? <SortAsc className="w-4 h-4"/> : <SortDesc className="w-4 h-4"/>}
+              {sortOrder === 'asc' ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />}
             </Button>
           </div>
         </div>
@@ -455,7 +347,7 @@ export default function VaultPage() {
         : "space-y-4"
       }>
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy}/>
+          <StrategyCard key={strategy.id} strategy={strategy} />
         ))}
       </div>
       
@@ -479,10 +371,3 @@ export default function VaultPage() {
     </div>
   );
 }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 

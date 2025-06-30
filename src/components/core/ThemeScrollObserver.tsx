@@ -36,7 +36,7 @@ const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) =
       }
     );
 
-    sections.forEach(({ ref, theme }: { ref: React.RefObject<HTMLElement>; theme: ThemeName }) => {
+    sections.forEach(({ ref, theme }) => {
       if (ref.current) {
         // Add a data attribute to the element for the observer to read
         ref.current.setAttribute('data-theme-section', theme);
@@ -54,11 +54,4 @@ const ThemeScrollObserver: React.FC<ThemeScrollObserverProps> = ({ sections }) =
   return null; // This component does not render anything
 };
 
-export default ThemeScrollObserver;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default ThemeScrollObserver; 

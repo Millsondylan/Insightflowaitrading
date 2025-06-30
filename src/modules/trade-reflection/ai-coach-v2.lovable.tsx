@@ -9,7 +9,7 @@ interface AICoachV2Props {
   userId?: string;
 }
 
-export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
+export const AICoachV2: React.FC<aicoachv2props  > = ({ userId }) => {
   const [analysis, setAnalysis] = React.useState<any>(null);
   const [isAnalyzing, setIsAnalyzing] = React.useState(false);
 
@@ -30,72 +30,72 @@ export const AICoachV2: React.FC<aicoachv2props > = ({ userId }) => {
   return (
     <Card >
       <div className="flex items-center gap-2 mb-4">
-        <brain />
-        <h2 className="text-2xl font-bold">AI Coach</Card>
+        <Brain  />
+        <h2 className="text-2xl font-bold">AI Coach</h2>
       </div>
 
       {!analysis ? (
         <div className="text-center py-8">
           <p className="text-muted-foreground mb-4">
             Get personalized coaching based on your trading behavior
-          </div>
-          <Button >
+          </p>
+          <button  >
             {isAnalyzing ? 'Analyzing...' : 'Analyze My Trading'}
-          </button>
+          </Button>
         </div>
       ) : (
         <div className="space-y-6">
           <div>
             <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Trendingup /></div></div>
+              <trendingup  >
               Strengths
             </h3>
             <div className="space-y-2">
               {analysis.strengths.map((strength: string, i: number) => (
                 <div key={i} className="flex items-center gap-2">
-                  <Badge variant="default"></div>
+                  <badge variant="default" >
                     ✓
-                  </div>
+                  </Badge>
                   <span className="text-sm">{strength}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div></div>
-            <h3 className="font-semibold mb-3 flex items-center gap-2"></h3>
-              <alerttriangle >
+          <div>
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <alerttriangle  >
               Areas to Improve
-            </div>
+            </h3>
             <div className="space-y-2">
               {analysis.weaknesses.map((weakness: string, i: number) => (
                 <div key={i} className="flex items-center gap-2">
-                  <Badge variant="default"></div>
+                  <badge variant="default" >
                     !
-                  </div>
+                  </Badge>
                   <span className="text-sm">{weakness}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div></div>
-            <h3 className="font-semibold mb-3 flex items-center gap-2"></h3>
-              <target >
+          <div>
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <target  >
               Action Items
-            </div>
+            </h3>
             <div className="space-y-2">
               {analysis.suggestions.map((suggestion: string, i: number) => (
                 <div key={i} className="p-3 bg-secondary/20 rounded-lg">
-                  <p className="text-sm"></div></div>{suggestion}</div>
+                  <p className="text-sm">{suggestion}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <Button variant="outline" style={{ width: "100%" }}></button></div>
+          <button variant="outline" style={{ width: "100%" }}>
             Schedule Coaching Session
-          </button>
+          </Button>
         </div>
       )}
     </Card>

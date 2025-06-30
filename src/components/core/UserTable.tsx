@@ -124,10 +124,10 @@ const UserTable: React.FC = () => {
     const currentPage = filterOptions.page || 1;
     
     return (
-      <pagination className="mt-4">
-        <paginationContent>
-          <paginationItem>
-            <paginationPrevious 
+      <Pagination className="mt-4">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious 
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
@@ -136,7 +136,8 @@ const UserTable: React.FC = () => {
                 }
               }}
               className={currentPage <= 1 ? 'pointer-events-none opacity-50' : ''}
-            / />
+            />
+          </PaginationItem>
           
           {[...Array(pageCount)].map((_, i) => {
             const page = i + 1;
@@ -147,8 +148,8 @@ const UserTable: React.FC = () => {
               (page >= currentPage - 1 && page <= currentPage + 1)
             ) {
               return (
-                <paginationItem key={page}>
-                  <paginationLink 
+                <PaginationItem key={page}>
+                  <PaginationLink 
                     href="#" 
                     onClick={(e) => {
                       e.preventDefault();
@@ -158,18 +159,19 @@ const UserTable: React.FC = () => {
                   >
                     {page}
                   </PaginationLink>
+                </PaginationItem>
               );
             } else if (
               page === currentPage - 2 || 
               page === currentPage + 2
             ) {
-              return <paginationEllipsis key={page}/>;
+              return <PaginationEllipsis key={page} />;
             }
             return null;
           })}
           
-          <paginationItem>
-            <paginationNext 
+          <PaginationItem>
+            <PaginationNext 
               href="#" 
               onClick={(e) => {
                 e.preventDefault();
@@ -178,8 +180,10 @@ const UserTable: React.FC = () => {
                 }
               }}
               className={currentPage >= pageCount ? 'pointer-events-none opacity-50' : ''}
-            / />
+            />
+          </PaginationItem>
         </PaginationContent>
+      </Pagination>
     );
   };
   
@@ -188,12 +192,12 @@ const UserTable: React.FC = () => {
     <>
       {[...Array(filterOptions.perPage)].map((_, i) => (
         <tr key={i} className="border-b border-gray-800/30">
-          <td className="px-4 py-3"><Skeleton className="h-6 w-24" //>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-20" //>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-16" //>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" //>
-          <td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" //>
-        </User>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-24" /></td>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-20" /></td>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-16" /></td>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-16 rounded-full" /></td>
+          <td className="px-4 py-3"><Skeleton className="h-6 w-8 rounded-full" /></td>
+        </tr>
       ))}
     </>
   );
@@ -205,49 +209,57 @@ const UserTable: React.FC = () => {
         <div className="flex items-center gap-2 flex-wrap md:flex-nowrap">
           {/* Search input */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"/>
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input 
               type="text"
               placeholder="Search wallet address..." 
               className="pl-9 w-full min-w-[200px] bg-gray-900/80"
-              onChange={handleSearchChange}/>
+              onChange={handleSearchChange}
+            />
           </div>
           
           {/* Role filter */}
           <Select onValueChange={handleRoleFilterChange}>
-            <selectTrigger className="w-[140px] bg-gray-900/80">
-              <selectValue placeholder="All roles" //>
-            <selectContent className="bg-gray-900">
-              <selectItem value="">All roles</Select>
-              <selectItem value="Admin">
+            <SelectTrigger className="w-[140px] bg-gray-900/80">
+              <SelectValue placeholder="All roles" />
+            </SelectTrigger>
+            <SelectContent className="bg-gray-900">
+              <SelectItem value="">All roles</SelectItem>
+              <SelectItem value="Admin">
                 <div className="flex items-center gap-2">
-                  <RoleBadge role="Admin" showTooltip={false}/> Admin
+                  <RoleBadge role="Admin" showTooltip={false} /> Admin
                 </div>
-              <selectItem value="User">
+              </SelectItem>
+              <SelectItem value="User">
                 <div className="flex items-center gap-2">
-                  <RoleBadge role="User" showTooltip={false}/> User
+                  <RoleBadge role="User" showTooltip={false} /> User
                 </div>
-              <selectItem value="Trial">
+              </SelectItem>
+              <SelectItem value="Trial">
                 <div className="flex items-center gap-2">
-                  <RoleBadge role="Trial" showTooltip={false}/> Trial
+                  <RoleBadge role="Trial" showTooltip={false} /> Trial
                 </div>
-              <selectItem value="Expired">
+              </SelectItem>
+              <SelectItem value="Expired">
                 <div className="flex items-center gap-2">
-                  <RoleBadge role="Expired" showTooltip={false}/> Expired
+                  <RoleBadge role="Expired" showTooltip={false} /> Expired
                 </div>
+              </SelectItem>
             </SelectContent>
+          </Select>
           
           {/* Sort options */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild/>
-              <Button variant="outline" size="sm" className="bg-gray-900/80"/>
-                <Filter className="h-3.5 w-3.5 mr-2"/>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="bg-gray-900/80">
+                <Filter className="h-3.5 w-3.5 mr-2" />
                 Sort
-              </DropdownMenu>
-            <DropdownMenuContent className="bg-gray-900 border border-gray-800"/>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-gray-900 border border-gray-800">
               <DropdownMenuItem onClick={() => handleSortChange('created_at-desc')} className="cursor-pointer">
                 Newest First
-              </div>
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => handleSortChange('created_at-asc')} className="cursor-pointer">
                 Oldest First
               </DropdownMenuItem>
@@ -260,25 +272,30 @@ const UserTable: React.FC = () => {
               <DropdownMenuItem onClick={() => handleSortChange('role-asc')} className="cursor-pointer">
                 By Role
               </DropdownMenuItem>
-          </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         
         <div className="flex items-center gap-2">
           {/* Export button */}
-          <Button variant="outline" 
+          <Button 
+            variant="outline" 
             className="bg-gray-900/80 flex items-center gap-2" 
             onClick={handleExport}
-            disabled={users.length === 0 || loading}>
-            <Download className="h-4 w-4"/>
+            disabled={users.length === 0 || loading}
+          >
+            <Download className="h-4 w-4" />
             Export CSV
-          </div>
+          </Button>
           
           {/* Grant admin button */}
-          <Button className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
-            onClick={handleGrantAdmin}/>
-            <Plus className="h-4 w-4"/>
+          <Button 
+            className="bg-violet-600 hover:bg-violet-700 flex items-center gap-2" 
+            onClick={handleGrantAdmin}
+          >
+            <Plus className="h-4 w-4" />
             Grant Admin
-          </button>
+          </Button>
         </div>
       </div>
       
@@ -289,7 +306,7 @@ const UserTable: React.FC = () => {
             <tr>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Wallet Address
-              </div>
+              </th>
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Joined Date
               </th>
@@ -302,7 +319,8 @@ const UserTable: React.FC = () => {
               <th className="px-4 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">
                 Actions
               </th>
-          </th>
+            </tr>
+          </thead>
           <tbody>
             {loading ? (
               renderSkeleton()
@@ -312,17 +330,19 @@ const UserTable: React.FC = () => {
                   key={user.id} 
                   user={user} 
                   onUserUpdate={handleUserUpdate}
-   />
+                />
               ))
             ) : (
               <tr>
                 <td colSpan={5} className="px-4 py-8 text-center text-gray-400">
-                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" //></div>
+                  <Users className="h-12 w-12 mx-auto mb-4 opacity-30" />
                   <p>No users found</p>
                   <p className="text-sm">Try adjusting your search or filters</p>
-              </p>
+                </td>
+              </tr>
             )}
           </tbody>
+        </table>
       </div>
       
       {/* Pagination */}
@@ -331,22 +351,15 @@ const UserTable: React.FC = () => {
       {/* Summary stats */}
       <div className="p-4 border-t border-gray-800/50 text-sm text-gray-400">
         {!loading && (
-          <p></div></div>
+          <p>
             Showing {users.length} of {totalCount} users
             {filterOptions.role ? ` with role "${filterOptions.role}"` : ''}
             {filterOptions.search ? ` matching "${filterOptions.search}"` : ''}
-          </div>
+          </p>
         )}
       </div>
     </div>
   );
 };
 
-export default UserTable;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default UserTable; 

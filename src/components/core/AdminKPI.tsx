@@ -32,10 +32,10 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className={cn('kpi-card', `glow-${item.color}`)}
           >
-            <Icon className={cn('kpi-icon', `text-${item.color}-500`)}/>
+            <Icon className={cn('kpi-icon', `text-${item.color}-500`)} />
             <div className="kpi-title">{item.title}</div>
             <div className="kpi-value">
-              <CountUp end={value} duration={2.5} separator=","/>
+              <CountUp end={value} duration={2.5} separator="," />
             </div>
           </motion.div>
         );
@@ -44,11 +44,4 @@ const AdminKPI: React.FC<AdminKPIProps> = ({ stats }) => {
   );
 };
 
-export default AdminKPI;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default AdminKPI; 

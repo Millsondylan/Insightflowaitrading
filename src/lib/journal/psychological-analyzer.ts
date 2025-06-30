@@ -217,7 +217,7 @@ export class TradePsychologicalAnalyzer {
     ]);
   }
 
-  async analyzeTradingPsychology(trades: Trade[], journalEntries: JournalEntry[]): Promise<psychologicalAnalysis> {
+  async analyzeTradingPsychology(trades: Trade[], journalEntries: JournalEntry[]): Promise<PsychologicalAnalysis> {
     const emotionalStates = await this.analyzeEmotionalStates(journalEntries);
     const patterns = await this.identifyBehavioralPatterns(trades, journalEntries);
     const biases = await this.detectCognitiveBiases(trades, journalEntries);
@@ -230,7 +230,7 @@ export class TradePsychologicalAnalyzer {
     };
   }
 
-  private async analyzeEmotionalStates(entries: JournalEntry[]): Promise<emotionalState[]> {
+  private async analyzeEmotionalStates(entries: JournalEntry[]): Promise<EmotionalState[]> {
     return entries.map(entry => {
       const emotions = this.detectEmotions(entry.content);
       const intensity = this.calculateEmotionalIntensity(entry.content);
@@ -248,7 +248,7 @@ export class TradePsychologicalAnalyzer {
   private async identifyBehavioralPatterns(
     trades: Trade[],
     entries: JournalEntry[]
-  ): Promise<behavioralPattern[]> {
+  ): Promise<BehavioralPattern[]> {
     const patterns: BehavioralPattern[] = [];
     
     // Check for overtrading

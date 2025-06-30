@@ -42,12 +42,12 @@ export const TradeTimeline = ({ trades }: Props) => {
     <div className="space-y-6">
       {sortedDates.map(date => (
         <div key={date}>
-          <h2 className="text-white/60 text-sm uppercase tracking-wide pb-2 border-b border-white/10 mb-4"></div></div>
+          <h2 className="text-white/60 text-sm uppercase tracking-wide pb-2 border-b border-white/10 mb-4">
             {date}
-          </div>
+          </h2>
           <div className="space-y-4">
             {groupedTrades[date].map(trade => (
-              <Tradereplaycard></div></div>
+              <Tradereplaycard >
             ))}
           </div>
         </div>

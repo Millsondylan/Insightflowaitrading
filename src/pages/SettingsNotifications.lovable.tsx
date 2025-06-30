@@ -6,9 +6,9 @@ const SettingsNotificationsPage: React.FC = () => {
     <section className="theme-notify min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-orange mb-8"/></Section /></Section />
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-orange mb-8">
           Notification Settings
-        </section>
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
           Customize your alerts
         </p>
@@ -17,7 +17,7 @@ const SettingsNotificationsPage: React.FC = () => {
       {/* Settings Categories */}
       <div className="space-y-8 animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
         <div className="glass-section motion-shadow">
-          <h2 className="text-2xl font-bold text-orange-400 mb-6"></div>📱 Push Notifications</div>
+          <h2 className="text-2xl font-bold text-orange-400 mb-6">📱 Push Notifications</h2>
           <div className="space-y-4">
             <div className="glass-card">
               <div className="flex justify-between items-center">
@@ -41,7 +41,7 @@ const SettingsNotificationsPage: React.FC = () => {
         </div>
 
         <div className="glass-section motion-shadow">
-          <h2 className="text-2xl font-bold text-yellow-400 mb-6"></div>📧 Email Notifications</div>
+          <h2 className="text-2xl font-bold text-yellow-400 mb-6">📧 Email Notifications</h2>
           <div className="space-y-4">
             <div className="glass-card">
               <div className="flex justify-between items-center">
@@ -67,7 +67,7 @@ const SettingsNotificationsPage: React.FC = () => {
 
       {/* Frequency Settings */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-2xl font-bold text-white mb-6"></div>⏰ Notification Frequency</div>
+        <h2 className="text-2xl font-bold text-white mb-6">⏰ Notification Frequency</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="glass-card text-center">
             <div className="text-orange-400 font-semibold mb-2">Instant</div>
@@ -82,7 +82,8 @@ const SettingsNotificationsPage: React.FC = () => {
             <div className="text-gray-300 text-sm">Daily digest only</div>
           </div>
         </div>
-      </div />
+      </div>
+    </section>
   );
 };
 

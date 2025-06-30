@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { UploadCloud, FileImage } from 'lucide-react';
-import { Input } from '@/components/ui/input';
 import '@/styles/vision.css';
 
 interface ChartUploaderProps {
@@ -11,8 +10,8 @@ interface ChartUploaderProps {
 
 const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   const onDrop = useCallback((acceptedFiles: File[]) => {
-    const file = acceptedFiles[0];
-    if (file) {
+    if (acceptedFiles.length > 0) {
+      const file = acceptedFiles[0];
       const previewUrl = URL.createObjectURL(file);
       onFileUpload(file, previewUrl);
     }
@@ -26,33 +25,27 @@ const ChartUploader = ({ onFileUpload, isLoading }: ChartUploaderProps) => {
   });
 
   return (
-    <div {...getRootProps()}
-      className={`chart-uploader ${isDragActive ? 'active' : ''}`}>
-      <Input {...getInputProps()}/>
+    <Div {...getRootProps()}
+      className={`chart-uploader ${isDragActive ? 'active' : ''}`}
+   >
+      <input {...getInputProps()} />
       <div className="chart-uploader-content flex flex-col items-center justify-center space-y-4">
         {isDragActive ? (
           <>
-            <FileImage className="h-12 w-12 text-cyan-400"/>
+            <FileImage className="h-12 w-12 text-cyan-400" />
             <p className="text-lg font-semibold text-white">Drop the chart here...</p>
           </>
         ) : (
           <>
-            <UploadCloud className="h-12 w-12 text-gray-500"/>
+            <UploadCloud className="h-12 w-12 text-gray-500" />
             <p className="text-lg font-semibold text-white">Drag & drop a chart image, or click to select</p>
             <p className="text-sm text-gray-400">PNG or JPG supported</p>
           </>
         )}
       </div>
-      {isLoading && <div className="shimmer-overlay"/>}
+      {isLoading && <div className="shimmer-overlay" />}
     </div>
   );
 };
 
-export default ChartUploader;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default ChartUploader; 

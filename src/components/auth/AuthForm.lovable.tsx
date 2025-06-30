@@ -51,66 +51,68 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
             <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
                 <h2 className="text-2xl font-bold text-white mb-6">
                     {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
-                </div>
+                </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <Input type="email" placeholder="Email"/> setEmail(e.target.value)}
+                        <Input type="email" placeholder="Email"> setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
-                        / />
+                        />
+                    </div>
 
                     <div>
-                        <Input type="password" placeholder="Password"/> setPassword(e.target.value)}
+                        <Input type="password" placeholder="Password" /> setPassword(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
                             minLength={8}
                         />
-                    </form>
+                    </div>
 
                     {error && (
                         <div className="text-red-400 text-sm">{error}</div>
                     )}
 
-                    <Button type="submit" style={{ width: "100%" }}>
+                    <button type="submit" style={{ width: "100%" }}>
                         {loading ? (
-                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white"/>
+                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white" />
                         ) : mode === 'signin' ? (
                             <>
-                                <Login >
+                                <login  >
                                 Sign In
-                            </button>
+                            </>
                         ) : (
                             <>
-                                <Userplus />
+                                <userplus  >
                                 Sign Up
-                            </Userplus>
+                            </>
                         )}
-                    </button>
+                    </Button>
 
                     <div className="relative my-6">
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-white/10"></div>
                         </div>
                         <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-background-primary px-2 text-gray-500"></div>Or continue with</div>
+                            <span className="bg-background-primary px-2 text-gray-500">Or continue with</span>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" style={{ width: "100%" }}>
-                            <github >
+                        <button variant="outline" style={{ width: "100%" }}>
+                            <github  >
                             GitHub
-                        </div>
-                        <Button variant="outline" style={{ width: "100%" }}>
-                            <Mail >
+                        </Button>
+                        <button variant="outline" style={{ width: "100%" }}>
+                            <mail  >
                             Google
-                        </button>
+                        </Button>
                     </div>
 
                     <div className="text-center mt-6">
-                        <Button  type="button"
-                            onClick={() =></div> setMode(mode === 'signin' ? 'signup' : 'signin')}
+                        <button
+                            type="button"
+                            onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
                         >
                             {mode === 'signin' ? (
@@ -118,8 +120,9 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             ) : (
                                 "Already have an account? Sign in"
                             )}
-                        </div>
-                    </div />
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     );

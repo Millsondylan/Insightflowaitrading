@@ -82,31 +82,34 @@ const LessonView: React.FC<Lessonviewprops > = ({ lesson }) => {
       {/* Lesson Header */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-6 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-white">{lesson.title}</Lessonviewprops>
+          <h1 className="text-3xl font-bold text-white">{lesson.title}</h1>
           <p className="text-white/70 mt-2">{lesson.description}</p>
         </div>
         
-        <Lessonbookmark /> markComplete(lesson.id)}
+        <Lessonbookmark  /> markComplete(lesson.id)}
           onBookmark={handleToggleBookmark}
-        / />
+        />
+      </div>
 
       {/* Lesson Content */}
       {!showQuiz && (
-        <Lessonengine >
+        <lessonengine  >
       )}
       
       {/* Quiz Section */}
       {showQuiz && activeQuizId && (
         <div id="lesson-quiz" className="mt-10">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</Lessonbookmark>
-            <Button onClick={handleBackToContent}
-              className="text-white/70 hover:text-cyan-400 text-sm"/>
+            <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
+            <button 
+              onClick={handleBackToContent}
+              className="text-white/70 hover:text-cyan-400 text-sm"
+            >
               ← Back to lesson content
             </button>
           </div>
           
-          <quizengine > s.id === activeSectionId)?.title : 
+          <quizengine  > s.id === activeSectionId)?.title : 
               lesson.title
             }
             onComplete={handleQuizComplete}

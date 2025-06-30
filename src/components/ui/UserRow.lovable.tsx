@@ -146,16 +146,18 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
     <tr className="border-b border-gray-800/30 hover:bg-gray-800/20 transition-colors">
       <td className="px-4 py-3">
         <div className="flex items-center">
-          <span className={cn(
+          <Span className={cn(
               'font-mono text-sm cursor-pointer hover:text-blue-400 transition-colors',
               user.role === 'Admin' && 'text-violet-300',
               user.role === 'Expired' && 'text-gray-400'
             )}
             onClick={handleCopyAddress}
-            title="Click to copy"/>
+            title="Click to copy"
+          />
             {formatAddress(user.address)}
-          </Userrowprops>
-        </div />
+          </span>
+        </div>
+      </td>
 
       <td className="px-4 py-3 text-sm text-gray-400">
         {formatDate(user.created_at)}
@@ -164,59 +166,70 @@ const UserRow: React.FC<Userrowprops > = ({ user, onUserUpdate }) => {
       <td className="px-4 py-3">
         <span className="text-sm">
           {user.subscription_tier || '-'}
-        </Td />
+        </span>
+      </td>
 
       <td className="px-4 py-3">
-        <Rolebadge />
+        <rolebadge  >
+      </td>
 
       <td className="px-4 py-3">
-        <Dropdownmenu  //></Td /></Td /></td>
-          <DropdownMenuTrigger >
-            <Button variant="ghost" size="icon">
-              <MoreHorizontal >
-            </button />
-          <DropdownMenuContent align="end" style={{ border: "1px solid #E5E7EB" }}>
-            <dropdownmenulabel >User Actions</DropdownMenuTrigger>
-            <dropdownmenuseparator >
+        <dropdownmenu  >
+          <dropdownmenutrigger  >
+            <button variant="ghost" size="icon" >
+              <morehorizontal  >
+            </Button>
+          </DropdownMenuTrigger>
+          <dropdownmenucontent align="end" style={{ border: "1px solid #E5E7EB" }}>
+            <dropdownmenulabel  >User Actions</DropdownMenuLabel>
+            <dropdownmenuseparator  >
             
-            <dropdownmenusub >
-              <dropdownmenusubtrigger >
-                <usercog >
-                <span>Change Role</span />
-              <dropdownmenuportal >
+            <dropdownmenusub  >
+              <dropdownmenusubtrigger  >
+                <usercog  >
+                <span>Change Role</span>
+              </DropdownMenuSubTrigger>
+              <dropdownmenuportal  >
                 <dropdownmenusubcontent  style={{ border: "1px solid #E5E7EB" }}>
-                  <DropdownMenuItem > handleRoleChange('Admin')}
+                  <dropdownmenuitem  > handleRoleChange('Admin')}
                     className="cursor-pointer text-violet-300 hover:bg-violet-900/30"
                   >
                     Admin
-                  </span>
-                  <DropdownMenuItem > handleRoleChange('User')}
+                  </DropdownMenuItem>
+                  <dropdownmenuitem  > handleRoleChange('User')}
                     className="cursor-pointer text-green-300 hover:bg-green-900/30"
                   >
                     User
                   </DropdownMenuItem>
-                  <DropdownMenuItem > handleRoleChange('Trial')}
+                  <dropdownmenuitem  > handleRoleChange('Trial')}
                     className="cursor-pointer text-yellow-300 hover:bg-yellow-900/30"
                   >
                     Trial
-                  </DropdownMenuItem />
-              </DropdownMenuPortal />
+                  </DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
             
-            <DropdownMenuItem >
-              <Copy >
-              <span>Copy Address</span />
+            <dropdownmenuitem  >
+              <copy  >
+              <span>Copy Address</span>
+            </DropdownMenuItem>
             
-            <DropdownMenuItem >
-              <Eye >
-              <span>View Details</span />
+            <dropdownmenuitem  >
+              <eye  >
+              <span>View Details</span>
+            </DropdownMenuItem>
             
-            <dropdownmenuseparator >
+            <dropdownmenuseparator  >
             
-            <DropdownMenuItem >
-              <xcircle >
-              <span>Revoke Access</span />
-          </DropdownMenuContent />
-      </Td />
+            <dropdownmenuitem  >
+              <xcircle  >
+              <span>Revoke Access</span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </td>
+    </tr>
   );
 };
 

@@ -24,14 +24,7 @@ export const VaultPublisher: React.FC = () => {
       averageTradeDuration: 5,
       expectancy: 0.4,
       riskRewardRatio: 2.5
-    }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};,
+    },
     tags: ['Trend Following', 'Long-Term'],
     author: 'AI Strategist',
     createdAt: new Date('2024-01-15'),
@@ -51,20 +44,23 @@ export const lovable = {
   }
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white"/>
+    <Card className="w-full bg-black/80 border-zinc-800 text-white">
       <CardHeader>
-        <CardTitle>Strategy Publisher</Strategy>
+        <CardTitle>Strategy Publisher</CardTitle>
+      </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
+            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
             <div className="grid grid-cols-2 gap-4">
-              <Input value={strategy.name}
+              <Input 
+                value={strategy.name}
                 onChange={(e) => setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <Input value={strategy.version || ''}
+              <Input 
+                value={strategy.version || ''}
                 onChange={(e) => setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
@@ -76,36 +72,41 @@ export const lovable = {
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
-            / />
+            />
+          </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
+            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
             <div className="space-y-2">
               <div>
-                <Label className="block text-sm mb-1">Visibility</div>
+                <label className="block text-sm mb-1">Visibility</label>
                 <div className="flex space-x-2">
-                  <Button variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
+                  <Button 
+                    variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
-                  </div>
-                  <Button variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
+                  </Button>
+                  <Button 
+                    variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
-                  </button>
+                  </Button>
                 </div>
               </div>
 
-              <Input value={publishDetails.communityTags}
+              <Input 
+                value={publishDetails.communityTags}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Input value={publishDetails.marketConditions}
+              <Input 
+                value={publishDetails.marketConditions}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
@@ -117,14 +118,18 @@ export const lovable = {
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
-              / />
-          </Input>
+              />
+            </div>
+          </div>
 
-          <Button onClick={handlePublish}
-            className="w-full bg-blue-600 hover:bg-blue-700">
+          <Button 
+            onClick={handlePublish}
+            className="w-full bg-blue-600 hover:bg-blue-700"
+          >
             Publish Strategy
-          </button>
+          </Button>
         </div>
+      </CardContent>
     </Card>
   )
 } 

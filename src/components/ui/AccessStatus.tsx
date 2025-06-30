@@ -14,7 +14,7 @@ interface AccessStatusProps {
   onAnimationComplete?: () => void;
 }
 
-const AccessStatus: React.FC<accessStatusProps> = ({
+const AccessStatus: React.FC<AccessStatusProps> = ({
   status,
   plan,
   expiryDate,
@@ -70,7 +70,7 @@ const AccessStatus: React.FC<accessStatusProps> = ({
   const formattedExpiry = expiryDate ? new Date(expiryDate).toLocaleDateString() : '';
 
   return (
-    <animatePresence mode="wait">
+    <AnimatePresence mode="wait">
       <motion.div
         key={status}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -94,7 +94,7 @@ const AccessStatus: React.FC<accessStatusProps> = ({
             className="relative"
           >
             {status === 'pending' && (
-              <Clock className="h-16 w-16 text-blue-400"/>
+              <Clock className="h-16 w-16 text-blue-400" />
             )}
             {status === 'success' && (
               <>
@@ -110,11 +110,11 @@ const AccessStatus: React.FC<accessStatusProps> = ({
                     repeatDelay: 1,
                   }}
                 />
-                <LockOpen className="h-16 w-16 text-green-400"/>
-              </div>
+                <LockOpen className="h-16 w-16 text-green-400" />
+              </>
             )}
             {status === 'failure' && (
-              <XCircle className="h-16 w-16 text-red-400"/></XCircle></div>
+              <XCircle className="h-16 w-16 text-red-400" />
             )}
           </motion.div>
 
@@ -160,14 +160,8 @@ const AccessStatus: React.FC<accessStatusProps> = ({
           </motion.div>
         </div>
       </motion.div>
+    </AnimatePresence>
   );
 };
 
-export default AccessStatus;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+export default AccessStatus; 
