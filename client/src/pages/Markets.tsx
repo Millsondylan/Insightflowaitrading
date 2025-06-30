@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -54,16 +55,16 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
               {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
               {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400"/>}
               {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400"/>}
-            </Card>
+            </div>
             <div>
               <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
                 {item.symbol}
-              </div>
+              </h3>
               <p className="text-xs text-gray-400">{item.name}</p>
             </div>
           </div>
           <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors"/>
-        </ChevronRight>
+        </div>
         
         <div className="flex items-end justify-between">
           <div>
@@ -71,7 +72,7 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
               {item.type === 'forex' ? item.price.toFixed(4) : 
                item.type === 'commodity' ? `$${item.price.toFixed(2)}` :
                `$${item.price.toLocaleString()}`}
-            </div>
+            </p>
             {item.volume && (
               <p className="text-xs text-gray-400">
                 Vol: {(item.volume / 1000000).toFixed(1)}M
@@ -80,7 +81,7 @@ const MarketCard = ({ item, onClick }: { item: MarketItem; onClick: () => void }
           </div>
           <div className={`flex items-center gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
             {isPositive ? <TrendingUp className="w-4 h-4"/> : <TrendingDown className="w-4 h-4"/>}
-            <span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</div>
+            <span className="font-semibold">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</span>
           </div>
         </div>
       </CardContent>
@@ -94,7 +95,7 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
       <table className="w-full">
         <thead>
           <tr className="border-b border-white/10">
-            <th className="text-left py-3 px-4 text-sm font-medium text-gray-400">Asset</div>
+            <th className="text-left py-3 px-4 text-sm font-medium text-gray-400">Asset</th>
             <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">Price</th>
             <th className="text-right py-3 px-4 text-sm font-medium text-gray-400">24h Change</th>
             <th className="text-right py-3 px-4 text-sm font-medium text-gray-400 hidden md:table-cell">Volume</th>
@@ -114,9 +115,9 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                       {item.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
                       {item.type === 'stock' && <BarChart3 className="w-4 h-4 text-blue-400"/>}
                       {item.type === 'commodity' && <Coins className="w-4 h-4 text-yellow-400"/>}
-                    </tbody>
+                    </div>
                     <div>
-                      <p className="font-medium text-white">{item.symbol}</div>
+                      <p className="font-medium text-white">{item.symbol}</p>
                       <p className="text-sm text-gray-400">{item.name}</p>
                     </div>
                   </div>
@@ -126,23 +127,23 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                     {item.type === 'forex' ? item.price.toFixed(4) : 
                      item.type === 'commodity' ? `$${item.price.toFixed(2)}` :
                      `$${item.price.toLocaleString()}`}
-                  </td>
+                  </p>
                 </td>
                 <td className="text-right py-3 px-4">
                   <div className={`flex items-center justify-end gap-1 ${isPositive ? 'text-green-400' : 'text-red-400'}`}>
                     {isPositive ? <TrendingUp className="w-4 h-4"/> : <TrendingDown className="w-4 h-4"/>}
-                    <span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</td>
+                    <span className="font-medium">{isPositive ? '+' : ''}{item.change.toFixed(2)}%</span>
                   </div>
                 </td>
                 <td className="text-right py-3 px-4 hidden md:table-cell">
                   <p className="text-gray-400">
                     {item.volume ? `${(item.volume / 1000000).toFixed(1)}M` : '-'}
-                  </td>
+                  </p>
                 </td>
                 <td className="text-right py-3 px-4 hidden lg:table-cell">
                   <p className="text-gray-400">
                     {item.marketCap ? `$${(item.marketCap / 1000000000).toFixed(1)}B` : '-'}
-                  </td>
+                  </p>
                 </td>
                 <td className="text-right py-3 px-4">
                   <Button size="sm" 
@@ -152,7 +153,7 @@ const MarketTable = ({ items, onSelect }: { items: MarketItem[]; onSelect: (symb
                   >
                     View
                     <ChevronRight className="w-4 h-4 ml-1"/>
-                  </td>
+                  </Button>
                 </td>
               </tr>
             );
@@ -272,7 +273,7 @@ export default function Markets() {
         <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
           <Activity className="w-8 h-8 text-blue-400"/>
           Markets Overview
-        </MarketDetailPage>
+        </h1>
         <p className="text-gray-400">
           Real-time market data across cryptocurrencies, forex, stocks, and commodities
         </p>
@@ -284,48 +285,48 @@ export default function Markets() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">Total Markets</div>
+                <p className="text-sm text-gray-400">Total Markets</p>
                 <p className="text-2xl font-bold text-white">{allMarkets.length}</p>
               </div>
               <BarChart3 className="w-8 h-8 text-blue-400/20"/>
-            </BarChart3>
+            </div>
           </CardContent>
         </Card>
         <Card className="bg-white/5 border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">24h Volume</Card>
+                <p className="text-sm text-gray-400">24h Volume</p>
                 <p className="text-2xl font-bold text-white">$2.3T</p>
               </div>
               <Volume2 className="w-8 h-8 text-green-400/20"/>
-            </Volume2>
+            </div>
           </CardContent>
         </Card>
         <Card className="bg-white/5 border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">Gainers</Card>
+                <p className="text-sm text-gray-400">Gainers</p>
                 <p className="text-2xl font-bold text-green-400">
                   {allMarkets.filter(m => m.change > 0).length}
                 </p>
               </div>
               <TrendingUp className="w-8 h-8 text-green-400/20"/>
-            </TrendingUp>
+            </div>
           </CardContent>
         </Card>
         <Card className="bg-white/5 border-white/10">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">Losers</Card>
+                <p className="text-sm text-gray-400">Losers</p>
                 <p className="text-2xl font-bold text-red-400">
                   {allMarkets.filter(m => m.change < 0).length}
                 </p>
               </div>
               <TrendingDown className="w-8 h-8 text-red-400/20"/>
-            </TrendingDown>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -337,7 +338,7 @@ export default function Markets() {
             <CardTitle className="text-white flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-green-400"/>
               Top Gainers
-            </div>
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -353,14 +354,14 @@ export default function Markets() {
                       {market.type === 'forex' && <DollarSign className="w-4 h-4 text-green-400"/>}
                       {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-green-400"/>}
                       {market.type === 'commodity' && <Coins className="w-4 h-4 text-green-400"/>}
-                    </CardContent>
+                    </div>
                     <div>
-                      <p className="font-medium text-white">{market.symbol}</div>
+                      <p className="font-medium text-white">{market.symbol}</p>
                       <p className="text-xs text-gray-400">{market.name}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium text-white">${market.price.toFixed(2)}</div>
+                    <p className="font-medium text-white">${market.price.toFixed(2)}</p>
                     <p className="text-sm text-green-400">+{market.change.toFixed(2)}%</p>
                   </div>
                 </div>
@@ -374,7 +375,7 @@ export default function Markets() {
             <CardTitle className="text-white flex items-center gap-2">
               <TrendingDown className="w-5 h-5 text-red-400"/>
               Top Losers
-            </Card>
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -390,14 +391,14 @@ export default function Markets() {
                       {market.type === 'forex' && <DollarSign className="w-4 h-4 text-red-400"/>}
                       {market.type === 'stock' && <BarChart3 className="w-4 h-4 text-red-400"/>}
                       {market.type === 'commodity' && <Coins className="w-4 h-4 text-red-400"/>}
-                    </CardContent>
+                    </div>
                     <div>
-                      <p className="font-medium text-white">{market.symbol}</div>
+                      <p className="font-medium text-white">{market.symbol}</p>
                       <p className="text-xs text-gray-400">{market.name}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-medium text-white">${market.price.toFixed(2)}</div>
+                    <p className="font-medium text-white">${market.price.toFixed(2)}</p>
                     <p className="text-sm text-red-400">{market.change.toFixed(2)}%</p>
                   </div>
                 </div>
@@ -419,7 +420,7 @@ export default function Markets() {
         </div>
         <Tabs value={selectedCategory} onValueChange={setSelectedCategory}>
           <TabsList className="bg-white/5">
-            <TabsTrigger value="all">All</Tabs>
+            <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="crypto">Crypto</TabsTrigger>
             <TabsTrigger value="forex">Forex</TabsTrigger>
             <TabsTrigger value="stock">Stocks</TabsTrigger>
@@ -431,7 +432,7 @@ export default function Markets() {
       {/* Markets Grid/Table */}
       <Tabs defaultValue="grid" className="w-full">
         <TabsList className="mb-4">
-          <TabsTrigger value="grid">Grid View</Tabs>
+          <TabsTrigger value="grid">Grid View</TabsTrigger>
           <TabsTrigger value="table">Table View</TabsTrigger>
         </TabsList>
         
@@ -443,7 +444,7 @@ export default function Markets() {
                 onClick={() => setSelectedSymbol(market.symbol)}
               />
             ))}
-          </TabsContent>
+          </div>
         </TabsContent>
         
         <TabsContent value="table">
@@ -452,7 +453,7 @@ export default function Markets() {
               <MarketTable 
                 items={filteredMarkets} 
                 onSelect={setSelectedSymbol}
- /></div>
+              />
             </CardContent>
           </Card>
         </TabsContent>
@@ -460,16 +461,16 @@ export default function Markets() {
       
       {filteredMarkets.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-gray-400"></div>No markets found matching your criteria.</div>
+          <p className="text-gray-400">No markets found matching your criteria.</p>
           <Button variant="ghost" 
-            onClick={() =></button></div> {
+            onClick={() => {
               setSearchTerm('');
               setSelectedCategory('all');
             }}
             className="mt-4"
           >
             Reset Filters
-          </button>
+          </Button>
         </div>
       )}
     </div>

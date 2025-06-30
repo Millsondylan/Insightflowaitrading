@@ -1,15 +1,17 @@
+
 import React from 'react';
 import { ScrollSection } from '../hooks/use-scroll-reveal';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const LandingBuilderPage: React.FC = () => {
   return (
     <div className="scroll-container min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
       {/* Hero Section */}
-      <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}/>
+      <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
         <div className="text-center max-w-6xl mx-auto">
           <h1 className="text-7xl md:text-9xl font-bold mb-8 leading-tight">
-            <span className="text-glow-cyan">Insight</div>{' '}
+            <span className="text-glow-cyan">Insight</span>{' '}
             <span className="text-glow-violet">Flow</span>
           </h1>
           <p className="text-2xl md:text-4xl text-gray-300 leading-relaxed font-light mb-12">
@@ -19,36 +21,40 @@ const LandingBuilderPage: React.FC = () => {
           
           {/* Navigation Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Link to="/strategy" className="group"/>
+            <Link to="/strategy" className="group">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
                 <div className="text-4xl mb-4 text-cyan-400">🧠</div>
                 <h3 className="text-xl font-semibold text-glow-cyan mb-3">Strategy Builder</h3>
                 <p className="text-gray-400">AI-powered strategy generation from your trading intuition</p>
               </div>
+            </Link>
             
-            <Link to="/journal" className="group"/>
+            <Link to="/journal" className="group">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <div className="text-4xl mb-4 text-violet-400">📓</Link>
+                <div className="text-4xl mb-4 text-violet-400">📓</div>
                 <h3 className="text-xl font-semibold text-glow-magenta mb-3">Trade Journal</h3>
                 <p className="text-gray-400">Capture and reflect on your trading psychology</p>
               </div>
+            </Link>
             
-            <Link to="/academy" className="group"/>
+            <Link to="/academy" className="group">
               <div className="glass-section motion-shadow hover:scale-105 transition-all duration-300 cursor-pointer">
-                <div className="text-4xl mb-4 text-blue-400">📘</Link>
+                <div className="text-4xl mb-4 text-blue-400">📘</div>
                 <h3 className="text-xl font-semibold text-glow-blue mb-3">Trading Academy</h3>
                 <p className="text-gray-400">Structured learning for trading mastery</p>
               </div>
+            </Link>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Features Preview */}
-      <ScrollSection className="px-6 py-32" delay={200} animation="slide-right"/>
+      <ScrollSection className="px-6 py-32" delay={200} animation="slide-right">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Built for Modern Traders
-            </ScrollSection>
+            </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Combining cutting-edge AI with deep market psychology insights
             </p>
@@ -62,7 +68,7 @@ const LandingBuilderPage: React.FC = () => {
                     ✨
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">AI Strategy Generation</div>
+                    <h4 className="text-lg font-semibold text-white mb-2">AI Strategy Generation</h4>
                     <p className="text-gray-400">Transform your trading ideas into structured, backtestable strategies</p>
                   </div>
                 </div>
@@ -74,7 +80,7 @@ const LandingBuilderPage: React.FC = () => {
                     🧠
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">Psychology Tracking</div>
+                    <h4 className="text-lg font-semibold text-white mb-2">Psychology Tracking</h4>
                     <p className="text-gray-400">Identify patterns in your decision-making and emotional responses</p>
                   </div>
                 </div>
@@ -86,7 +92,7 @@ const LandingBuilderPage: React.FC = () => {
                     📈
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-white mb-2">Adaptive Learning</div>
+                    <h4 className="text-lg font-semibold text-white mb-2">Adaptive Learning</h4>
                     <p className="text-gray-400">Personalized education that evolves with your trading journey</p>
                   </div>
                 </div>
@@ -103,29 +109,33 @@ const LandingBuilderPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Call to Action */}
-      <ScrollSection className="px-6 py-32" delay={400} animation="scale-in"/>
+      <ScrollSection className="px-6 py-32" delay={400} animation="scale-in">
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-section motion-shadow">
             <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Elevate Your Trading?
-            </ScrollSection>
+            </h3>
             <p className="text-xl text-gray-400 mb-12">
               Join thousands of traders who've transformed their approach with Insight Flow
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Link to="/strategy"/>
+              <Link to="/strategy">
                 <Button className="glow-button glow-cyan text-lg px-8 py-4">
                   Start Building Strategies
-                </div>
-              <Link to="/academy"/>
-                <Button className="glow-button glow-blue text-lg px-8 py-4"/>
+                </Button>
+              </Link>
+              <Link to="/academy">
+                <Button className="glow-button glow-blue text-lg px-8 py-4">
                   Begin Learning
-                </button>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
+      </ScrollSection>
     </div>
   );
 };
