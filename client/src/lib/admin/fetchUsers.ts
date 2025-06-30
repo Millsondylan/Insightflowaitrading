@@ -1,3 +1,4 @@
+
 import { supabase } from '@/integrations/supabase/client';
 
 export interface User {
@@ -21,18 +22,20 @@ export interface FetchUsersOptions {
   sortOrder?: 'asc' | 'desc';
 }
 
-export async function fetchUsers({
-  page = 1,
-  perPage = 10,
-  role,
-  search,
-  sortBy = 'created_at',
-  sortOrder = 'desc'
-}: FetchUsersOptions = {}): Promise<{
+export async function fetchUsers(options: FetchUsersOptions = {}): Promise<{
   users: User[];
   totalCount: number;
   pageCount: number;
 }> {
+  const {
+    page = 1,
+    perPage = 10,
+    role,
+    search,
+    sortBy = 'created_at',
+    sortOrder = 'desc'
+  } = options;
+
   try {
     // Calculate range for pagination
     const from = (page - 1) * perPage;
@@ -48,8 +51,6 @@ export async function fetchUsers({
     if (role) {
       if (role === 'Admin') {
         // Special case for admin role check
-        // In a real implementation, we would need to properly identify admins
-        // For now, we'll use a simple mock approach
         query = query.eq('id', '0x1abc...');
       } else if (role === 'Expired') {
         // For expired users, check if subscription_end is in the past
@@ -106,11 +107,10 @@ export async function fetchUsers({
   }
 }
 
-function determineUserRole(user: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): string {
+function determineUserRole(user: any): string {
   const now = new Date().toISOString();
   
   // For demo purposes, consider the first user an admin
-  // In production, we would check against a proper admin flag/role
   if (user.id === '0x1abc...') return 'Admin';
   
   // Check if user is on trial
@@ -130,4 +130,4 @@ function determineUserRole(user: any // eslint-disable-line @typescript-eslint/n
   
   // Default fallback
   return 'Expired';
-} 
+}

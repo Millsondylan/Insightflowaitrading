@@ -1,17 +1,41 @@
-// TODO: implement strategy publishing with Pro gate
-import React, { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Strategy } from './types'
+
+import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+
+interface Strategy {
+  id: string;
+  name: string;
+  description: string;
+  risk: string;
+  performance: {
+    winRate: number;
+    profitFactor: number;
+    totalReturn: string;
+    maxDrawdown: number;
+    sharpeRatio: number;
+    totalTrades: number;
+    profitableTrades: number;
+    averageTradeProfit: number;
+    averageTradeDuration: number;
+    expectancy: number;
+    riskRewardRatio: number;
+  };
+  tags: string[];
+  author: string;
+  createdAt: Date;
+  version?: string;
+}
 
 export const VaultPublisher: React.FC = () => {
   const [strategy, setStrategy] = useState<Strategy>({
-    id: '1', 
-    name: 'Momentum Trend', 
+    id: '1',
+    name: 'Momentum Trend',
     description: 'Trend following strategy targeting strong momentum stocks',
-    risk: 'Low', 
+    risk: 'Low',
     performance: {
       winRate: 0.65,
       profitFactor: 2.3,
@@ -24,107 +48,119 @@ export const VaultPublisher: React.FC = () => {
       averageTradeDuration: 5,
       expectancy: 0.4,
       riskRewardRatio: 2.5
-    }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};,
+    },
     tags: ['Trend Following', 'Long-Term'],
     author: 'AI Strategist',
     createdAt: new Date('2024-01-15'),
     version: '1.2.0'
-  })
+  });
 
   const [publishDetails, setPublishDetails] = useState({
     visibility: 'private',
     communityTags: '',
     marketConditions: '',
     disclaimer: ''
-  })
+  });
 
   const handlePublish = () => {
-    console.log('Publishing strategy:', { strategy, publishDetails })
+    console.log('Publishing strategy:', { strategy, publishDetails });
     // TODO: Implement actual publishing logic
-  }
+  };
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white"/>
+    <Card className="w-full bg-black/80 border-zinc-800 text-white">
       <CardHeader>
-        <CardTitle>Strategy Publisher</Strategy>
+        <CardTitle>Strategy Publisher</CardTitle>
+      </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-bold mb-2">Strategy Details</Strategy>
+            <h3 className="text-lg font-bold mb-2">Strategy Details</h3>
             <div className="grid grid-cols-2 gap-4">
-              <Input value={strategy.name}
+              <Input
+                value={strategy.name}
                 onChange={(e) => setStrategy(prev => ({ ...prev, name: e.target.value }))}
                 placeholder="Strategy Name"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
-              <Input value={strategy.version || ''}
+              <Input
+                value={strategy.version || ''}
                 onChange={(e) => setStrategy(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="Version"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
             </div>
-            <Textarea 
+            <Textarea
               value={strategy.description || ''}
               onChange={(e) => setStrategy(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Strategy Description"
               className="mt-2 bg-zinc-900 border-zinc-700 text-white"
               rows={3}
-            / />
+            />
+          </div>
 
           <div>
-            <h3 className="text-lg font-bold mb-2">Publish Settings</Textarea>
+            <h3 className="text-lg font-bold mb-2">Publish Settings</h3>
             <div className="space-y-2">
               <div>
-                <Label className="block text-sm mb-1">Visibility</div>
+                <Label className="block text-sm mb-1">Visibility</Label>
                 <div className="flex space-x-2">
-                  <Button variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
+                  <Button
+                    variant={publishDetails.visibility === 'private' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'private' }))}
                     className="text-white"
                   >
                     Private
-                  </div>
-                  <Button variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
+                  </Button>
+                  <Button
+                    variant={publishDetails.visibility === 'community' ? 'default' : 'outline'}
                     onClick={() => setPublishDetails(prev => ({ ...prev, visibility: 'community' }))}
                     className="text-white"
                   >
                     Community
-                  </button>
+                  </Button>
                 </div>
               </div>
 
-              <Input value={publishDetails.communityTags}
+              <Input
+                value={publishDetails.communityTags}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, communityTags: e.target.value }))}
                 placeholder="Community Tags (comma-separated)"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Input value={publishDetails.marketConditions}
+              <Input
+                value={publishDetails.marketConditions}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, marketConditions: e.target.value }))}
                 placeholder="Market Conditions"
                 className="bg-zinc-900 border-zinc-700 text-white"
               />
 
-              <Textarea 
+              <Textarea
                 value={publishDetails.disclaimer}
                 onChange={(e) => setPublishDetails(prev => ({ ...prev, disclaimer: e.target.value }))}
                 placeholder="Disclaimer (optional)"
                 className="bg-zinc-900 border-zinc-700 text-white"
                 rows={3}
-              / />
-          </Input>
+              />
+            </div>
+          </div>
 
-          <Button onClick={handlePublish}
-            className="w-full bg-blue-600 hover:bg-blue-700">
+          <Button
+            onClick={handlePublish}
+            className="w-full bg-blue-600 hover:bg-blue-700"
+          >
             Publish Strategy
-          </button>
+          </Button>
         </div>
+      </CardContent>
     </Card>
-  )
-} 
+  );
+};
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
