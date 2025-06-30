@@ -57,7 +57,7 @@ export const LiveEventRoom: React.FC<LiveEventRoomProps> = ({ eventId }) => {
                       participant.status === 'speaking' ? 'bg-green-500' : 'bg-gray-400'
                     }`}/>
                     <span className="font-medium">{participant.name}</span>
-                    <Badge variant="outline" size="sm">{participant.role}</Badge>
+                    <Badge variant="outline">{participant.role}</Badge>
                   </div>
                   <span className="text-xs text-muted-foreground capitalize">
                     {participant.status}

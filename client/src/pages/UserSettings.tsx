@@ -86,7 +86,7 @@ const DEFAULT_SETTINGS: Partial<UserSettings> = {
 
 export default function UserSettingsPage() {
   const { user } = useAuth();
-  const { logClick, logFormSubmit } = useAuditLog();
+  const { logClick, logEvent } = useAuditLog();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { preferences, updatePreferences, changeLanguage } = useUserPreferences();
@@ -148,7 +148,7 @@ export default function UserSettingsPage() {
     setSettings((prev) => ({
       ...prev,
       [section]: {
-        ...prev[section],
+        ...(prev[section] as any),
         [key]: value
       }
     }));
@@ -201,7 +201,7 @@ export default function UserSettingsPage() {
           description: "Your preferences have been updated successfully.",
         });
         
-        logFormSubmit('UserSettings', { settings });
+        logEvent('UserSettings', { settings });
       }
     } catch (error) {
       console.error('Error saving settings:', error);

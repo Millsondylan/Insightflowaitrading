@@ -11,7 +11,7 @@ import { Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
-  const { signup } = useAuth();
+  const { signUp } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   
@@ -100,21 +100,13 @@ export default function RegisterPage() {
     setIsLoading(true);
     
     try {
-      const { success, error } = await signup(formData.email, formData.password, {
-        name: formData.name,
-        receiveUpdates: formData.receiveUpdates
+      await signUp(formData.email, formData.password);
+      toast({
+        title: "Account created!",
+        description: "Please check your email to verify your account.",
+        duration: 5000,
       });
-      
-      if (success) {
-        toast({
-          title: "Account created!",
-          description: "Please check your email to verify your account.",
-          duration: 5000,
-        });
-        navigate('/onboarding');
-      } else {
-        throw error;
-      }
+      navigate('/onboarding');
     } catch (error: any) {
       toast({
         title: "Error",

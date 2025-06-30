@@ -63,19 +63,18 @@ app.use((req, res, next) => {
   const port = parseInt(process.env.PORT || "5050");
   const host = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
   
-  server.listen({
-    port,
-    host,
-  }, () => {
-    log(`serving on ${host}:${port}`);
-  }).on('error', (err: any) => {
-    if (err.code === 'EADDRINUSE') {
-      log(`Port ${port} is already in use. Trying port ${port + 1}`);
-      server.listen(port + 1, host, () => {
-        log(`serving on ${host}:${port + 1}`);
-      });
-    } else {
-      log(`Server error: ${err.message}`);
-    }
-  });
+  const startServer = (currentPort: number) => {
+    server.listen(currentPort, host, () => {
+      log(`serving on ${host}:${currentPort}`);
+    }).on('error', (err: any) => {
+      if (err.code === 'EADDRINUSE') {
+        log(`Port ${currentPort} is already in use. Trying port ${currentPort + 1}`);
+        startServer(currentPort + 1);
+      } else {
+        log(`Server error: ${err.message}`);
+      }
+    });
+  };
+  
+  startServer(port);
 })();

@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Download, QrCode, Phone, Laptop, TabletSmartphone } from 'lucide-react';
 import { Capacitor } from '@capacitor/core';
-import QRCodeReact from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 export default function DownloadPage() {
   // Mock translation function for now
@@ -94,7 +94,7 @@ export default function DownloadPage() {
                 </CardHeader>
                 <CardContent className="flex flex-col items-center">
                   <div className="bg-white p-4 rounded-lg mb-6">
-                    <QRCodeReact 
+                    <QRCodeSVG 
                       value={downloadUrls.android}
                       size={200}
                       bgColor="#ffffff"
@@ -127,7 +127,7 @@ export default function DownloadPage() {
                 </CardHeader>
                 <CardContent className="flex flex-col items-center">
                   <div className="bg-white p-4 rounded-lg mb-6">
-                    <QRCodeReact 
+                    <QRCodeSVG 
                       value={downloadUrls.macos}
                       size={200}
                       bgColor="#ffffff"
@@ -160,7 +160,7 @@ export default function DownloadPage() {
                 </CardHeader>
                 <CardContent className="flex flex-col items-center">
                   <div className="bg-white p-4 rounded-lg mb-6">
-                    <QRCodeReact 
+                    <QRCodeSVG 
                       value={downloadUrls.pwa}
                       size={200}
                       bgColor="#ffffff"
