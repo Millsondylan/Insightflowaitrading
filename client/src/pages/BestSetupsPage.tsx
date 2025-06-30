@@ -1,5 +1,5 @@
 import React from 'react';
-import { BestSetupsPage as BestSetupsList } from '@/components/markets/BestSetupsPage';
+import { BestSetupsPage as BestSetupsComponent } from '@/components/markets/BestSetupsPage';
 import { PublicSetup } from '@/lib/db/types';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { useState } from 'react';
@@ -63,7 +63,7 @@ export default function BestSetupsPage() {
 
   return (
     <div className="container py-6">
-      <BestSetupsList onSetupSelect={handleSetupSelect}/>
+      <BestSetupsComponent onSetupSelect={handleSetupSelect}/>
       
       {selectedSetup && (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
