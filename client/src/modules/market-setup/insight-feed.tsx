@@ -1,3 +1,4 @@
+
 // TODO: implement real-time market insights feed
 import React, { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -7,7 +8,7 @@ import { InsightFeedItem } from './types'
 import { calculateMarketSentiment } from './utils'
 
 export const InsightFeed: React.FC = () => {
-  const [insights, setInsights] = useState<insightFeedItem[]>([
+  const [insights, setInsights] = useState<InsightFeedItem[]>([
     {
       id: '1',
       title: 'Bitcoin Breaks Resistance',
@@ -17,14 +18,7 @@ export const InsightFeed: React.FC = () => {
       sentiment: 'Bullish',
       confidence: 0.85,
       relatedAssets: ['BTC/USDT']
-    }
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};,
+    },
     {
       id: '2',
       title: 'Tech Stocks Facing Headwinds',
@@ -40,22 +34,23 @@ export const lovable = {
   const marketSentiment = calculateMarketSentiment(insights)
 
   return (
-    <Card className="w-full bg-black/80 border-zinc-800 text-white"/>
-      <CardHeader className="flex flex-row items-center justify-between"/>
-        <CardTitle>Market Insights Feed</Card>
+    <Card className="w-full bg-black/80 border-zinc-800 text-white">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle>Market Insights Feed</CardTitle>
         <Badge variant={
             marketSentiment === 'Bullish' ? 'default' : 
             marketSentiment === 'Bearish' ? 'destructive' : 'secondary'
           }>
           {marketSentiment} Sentiment
         </Badge>
+      </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {insights.map((insight) => (
             <div key={insight.id} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"/>
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold">{insight.title}</Badge>
+                <h3 className="text-lg font-bold">{insight.title}</h3>
                 <Badge variant={
                     insight.sentiment === 'Bullish' ? 'default' : 
                     insight.sentiment === 'Bearish' ? 'destructive' : 'secondary'
@@ -69,7 +64,7 @@ export const lovable = {
                   {insight.tags.map((tag) => (
                     <Badge key={tag} variant="outline">
                       {tag}
-                    </div>
+                    </Badge>
                   ))}
                 </div>
                 <div className="text-xs text-gray-400">
@@ -80,10 +75,18 @@ export const lovable = {
           ))}
         </div>
         <div className="mt-4 flex justify-center">
-          <Button variant="outline" className="text-white"/></div>
+          <Button variant="outline" className="text-white">
             Load More Insights
-          </div>
+          </Button>
         </div>
+      </CardContent>
     </Card>
   )
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
