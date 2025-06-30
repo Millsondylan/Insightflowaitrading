@@ -59,3 +59,15 @@ export const renderBehaviorTags = (tags: string[], className?: string) => {
     />
   ));
 };
+
+// Group component for behavior tags
+export const BehaviorTagGroup: React.FC<{ tags: string[]; className?: string }> = ({ 
+  tags, 
+  className 
+}) => {
+  return (
+    <div className={cn("flex flex-wrap gap-2", className)}>
+      {renderBehaviorTags(tags)}
+    </div>
+  );
+};

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -8,23 +9,7 @@ import AIReflection from "./AIReflection";
 import { cn } from "@/lib/utils";
 import { Brain, ChevronDown, ChevronUp } from "lucide-react";
 
-// Journal Entry interface that matches the database structure
-interface DatabaseJournalEntry {
-  id: string;
-  title: string;
-  pair: string;
-  timeframe: string;
-  entryprice: number;
-  exitprice: number;
-  charturl?: string;
-  reason: string;
-  sentiment: "Bullish" | "Bearish";
-  tags?: string[];
-  createdat: string;
-  userid: string;
-}
-
-// Interface for the component's use
+// Interface for the component's use that matches the types we expect
 interface JournalEntry {
   id: string;
   title: string;
@@ -78,23 +63,23 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
           throw new Error(error.message);
         }
 
-        // Map database entries to component interface
-        const mappedEntries: JournalEntry[] = (data || []).map(entry => ({
-          id: entry.id,
-          title: entry.title,
-          pair: entry.pair,
-          timeframe: entry.timeframe,
-          entryPrice: entry.entryprice,
-          exitPrice: entry.exitprice,
+        // Map database entries to component interface - handle the case where data might be null/undefined
+        const mappedEntries: JournalEntry[] = (data || []).map((entry: any) => ({
+          id: entry.id || '',
+          title: entry.title || '',
+          pair: entry.pair || '',
+          timeframe: entry.timeframe || '',
+          entryPrice: entry.entryprice || 0,
+          exitPrice: entry.exitprice || 0,
           chartUrl: entry.charturl,
-          reason: entry.reason,
-          sentiment: entry.sentiment as "Bullish" | "Bearish",
+          reason: entry.reason || '',
+          sentiment: (entry.sentiment as "Bullish" | "Bearish") || "Bullish",
           tags: entry.tags || [],
-          createdAt: entry.createdat,
-          userId: entry.userid,
-          timestamp: new Date(entry.createdat).getTime(),
-          content: entry.reason,
-          mood: entry.sentiment.toLowerCase()
+          createdAt: entry.createdat || new Date().toISOString(),
+          userId: entry.userid || '',
+          timestamp: new Date(entry.createdat || new Date()).getTime(),
+          content: entry.reason || '',
+          mood: entry.sentiment?.toLowerCase() || 'neutral'
         }));
 
         setEntries(mappedEntries);
