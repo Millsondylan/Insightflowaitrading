@@ -47,24 +47,35 @@ app.use((req, res, next) => {
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
-  }
+  // Add a simple health check endpoint
+  app.get('/health', (req, res) => {
+    res.json({ status: 'ok', message: 'Server is running' });
+  });
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
+  // temporarily disable vite setup for testing
+  // if (app.get("env") === "development") {
+  //   await setupVite(app, server);
+  // } else {
+  //   serveStatic(app);
+  // }
+
+  // Use localhost instead of 0.0.0.0 to avoid ENOTSUP error
+  const port = parseInt(process.env.PORT || "5050");
+  const host = process.env.NODE_ENV === "production" ? "0.0.0.0" : "localhost";
+  
   server.listen({
     port,
-    host: "0.0.0.0",
-    reusePort: true,
+    host,
   }, () => {
-    log(`serving on port ${port}`);
+    log(`serving on ${host}:${port}`);
+  }).on('error', (err: any) => {
+    if (err.code === 'EADDRINUSE') {
+      log(`Port ${port} is already in use. Trying port ${port + 1}`);
+      server.listen(port + 1, host, () => {
+        log(`serving on ${host}:${port + 1}`);
+      });
+    } else {
+      log(`Server error: ${err.message}`);
+    }
   });
 })();

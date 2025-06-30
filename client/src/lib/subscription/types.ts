@@ -4,17 +4,162 @@ export interface SubscriptionPlan {
   description: string;
   price: number;
   currency: string;
-  duration: number;  // milliseconds
-  features: string[];
-  limits: {
-    strategies: number;
-    backtests: number;
-    alerts: number;
-    apiCalls: number;
-  };
+  duration: number; // in days
+  features: PlanFeature[];
+  limits: PlanLimit[];
+  isActive: boolean;
+  metadata?: Record<string, any>;
 }
 
-export type PaymentMethod = 'card' | 'crypto' | 'paypal';
+export interface PlanFeature {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  isIncluded: boolean;
+  metadata?: Record<string, any>;
+}
+
+export interface PlanLimit {
+  key: string;
+  value: number;
+  unit: string;
+  description: string;
+}
+
+export interface PaymentMethod {
+  id: string;
+  type: 'card' | 'bank' | 'crypto' | 'paypal';
+  provider: string;
+  details: Record<string, any>;
+  isDefault: boolean;
+  metadata?: Record<string, any>;
+}
+
+export interface PaymentProcessor {
+  id: string;
+  name: string;
+  type: 'stripe' | 'paypal' | 'crypto';
+  config: Record<string, any>;
+  isActive: boolean;
+}
+
+export interface PaymentIntent {
+  id: string;
+  amount: number;
+  currency: string;
+  status: 'pending' | 'processing' | 'completed' | 'failed' | 'cancelled';
+  paymentMethodId: string;
+  metadata?: Record<string, any>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PaymentTransaction {
+  id: string;
+  intentId: string;
+  amount: number;
+  currency: string;
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+  processor: string;
+  processorTransactionId: string;
+  metadata?: Record<string, any>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PaymentReceipt {
+  id: string;
+  transactionId: string;
+  amount: number;
+  currency: string;
+  status: string;
+  receiptUrl?: string;
+  metadata?: Record<string, any>;
+  createdAt: string;
+}
+
+export interface UserSubscription {
+  id: string;
+  userId: string;
+  planId: string;
+  status: 'active' | 'cancelled' | 'expired' | 'past_due';
+  startDate: string;
+  endDate: string;
+  autoRenew: boolean;
+  metadata?: Record<string, any>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface SubscriptionEvent {
+  id: string;
+  subscriptionId: string;
+  type: 'created' | 'renewed' | 'cancelled' | 'expired' | 'payment_failed';
+  description: string;
+  metadata?: Record<string, any>;
+  timestamp: string;
+}
+
+export interface Payment {
+  id: string;
+  userId: string;
+  amount: number;
+  currency: string;
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+  paymentMethodId: string;
+  metadata?: Record<string, any>;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PaymentRequest {
+  userId: string;
+  amount: number;
+  currency: string;
+  paymentMethodId: string;
+  metadata?: Record<string, any>;
+}
+
+export interface RefundRequest {
+  paymentId: string;
+  amount: number;
+  reason: string;
+  metadata?: Record<string, any>;
+}
+
+export interface PlanDiscount {
+  id: string;
+  code: string;
+  type: 'percentage' | 'fixed';
+  value: number;
+  maxUses: number;
+  usedCount: number;
+  validFrom: string;
+  validTo: string;
+  isActive: boolean;
+  metadata?: Record<string, any>;
+}
+
+export interface TxVerificationResult {
+  success: boolean;
+  data?: {
+    amount: number;
+    fromAddress: string;
+    txHash: string;
+    timestamp: string;
+  };
+  error?: string;
+}
+
+export type PlanType = 'free' | 'basic' | 'pro' | 'enterprise';
+
+export type SubscriptionStatus = 
+  | 'active'
+  | 'cancelled'
+  | 'expired'
+  | 'suspended'
+  | 'trial';
 
 export interface SubscriptionTier {
   id: string;
@@ -27,154 +172,33 @@ export interface SubscriptionTier {
   interval: 'monthly' | 'yearly';
 }
 
-export interface PaymentRequest {
-  userId?: string;
-  method: PaymentMethod;
-  details: {
-    cardNumber?: string;
-    expiryDate?: string;
-    cvv?: string;
-    name?: string;
-    email: string;
-  };
-  tier: SubscriptionTier;
-  amount?: number;
-  currency?: string;
-  description?: string;
-}
-
-export interface Payment {
-  id: string;
-  transactionId: string;
-  status: 'pending' | 'completed' | 'failed';
-  amount: number;
-  currency: string;
-  createdAt: string;
-  method: PaymentMethod;
-}
-
-export type SubscriptionStatus = 
-  | 'active'
-  | 'cancelled'
-  | 'expired'
-  | 'suspended'
-  | 'trial';
-
-export interface UserSubscription {
+export interface paymentRecord {
   id: string;
   userId: string;
-  planId: string;
-  status: SubscriptionStatus;
-  startDate: number;
-  endDate: number;
-  paymentMethod: PaymentMethod;
-  lastPayment?: Payment;
-  features: string[];
-  metadata: {
-    createdAt: number;
-    platform: string;
-    promoCode: string | null;
-    lastUpdated?: number;
-    cancellationReason?: string;
-    cancelledAt?: number;
-    lastRenewal?: number;
-    previousPlan?: string;
-    upgradedAt?: number;
-  };
+  amount: number;
+  currency: string;
+  status: string;
+  paymentHash?: string;
+  createdAt: string;
 }
 
-export interface SubscriptionEvent {
-  type: 
-    | 'subscription_created'
-    | 'subscription_updated'
-    | 'subscription_cancelled'
-    | 'subscription_renewed'
-    | 'subscription_upgraded'
-    | 'subscription_expired'
-    | 'payment_failed';
-  subscription: UserSubscription;
-  timestamp: number;
+export interface activityEvent {
+  id: string;
+  type: string;
+  label: string;
+  timestamp: string;
+  userId: string;
+  path?: string;
   metadata?: Record<string, any>;
 }
 
-// Add missing type definitions
-export interface subscriptionPlan {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  features: string[];
-  limits: Record<string, number>;
-  addOns: planAddOn[];
-  discounts: planDiscount[];
-  metadata: {
-    displayOrder: number;
-    isPopular: boolean;
-    recommendedFor: string[];
-    customization: {
-      color: string;
-      icon: string;
-      highlights: string[];
-    };
-    availability: {
-      regions: string[];
-      userTypes: string[];
-      startDate?: Date;
-      endDate?: Date;
-    };
-    requirements: {
-      minUsers?: number;
-      maxUsers?: number;
-      verificationNeeded?: boolean;
-      documents?: string[];
-    };
-  };
-  version: number;
-  createdAt: Date;
-  updatedAt: Date;
-  status: 'active' | 'deprecated' | 'discontinued';
-}
-
-export interface planDiscount {
-  id: string;
-  name: string;
-  description: string;
-  type: 'percentage' | 'fixed';
-  value: number;
-  startDate: Date;
-  endDate: Date;
-  conditions: {
-    minSubscriptionMonths?: number;
-    maxUsageCount?: number;
-    userTypes?: string[];
-    regions?: string[];
-  };
-  metadata: Record<string, any>;
-}
-
-export interface planAddOn {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  features: string[];
-}
-
-export interface paymentMethod {
-  id: string;
-  type: 'card' | 'crypto' | 'bank';
-  last4?: string;
-  brand?: string;
-  isDefault: boolean;
-  createdAt: string;
-}
-
-export interface transaction {
+// Additional missing types
+export interface paymentTransaction {
   id: string;
   amount: number;
   currency: string;
-  status: 'pending' | 'completed' | 'failed';
-  type: 'subscription' | 'one_time';
+  status: 'pending' | 'completed' | 'failed' | 'refunded';
+  type: 'subscription' | 'one_time' | 'refund';
   createdAt: string;
   paymentMethodId?: string;
 }
@@ -207,76 +231,4 @@ export interface tradeOrder {
   price?: number;
   stopPrice?: number;
   createdAt: string;
-}
-
-export interface TxVerificationResult {
-  verified: boolean;
-  transactionHash?: string;
-  error?: string;
-}
-
-export interface paymentRecord {
-  id: string;
-  userId: string;
-  amount: number;
-  currency: string;
-  status: string;
-  paymentHash?: string;
-  createdAt: string;
-}
-
-export interface activityEvent {
-  id: string;
-  type: string;
-  label: string;
-  timestamp: string;
-  userId: string;
-  path?: string;
-  metadata?: Record<string, any>;
-}
-
-// Additional missing types
-export interface paymentTransaction {
-  id: string;
-  amount: number;
-  currency: string;
-  status: 'pending' | 'completed' | 'failed' | 'refunded';
-  type: 'subscription' | 'one_time' | 'refund';
-  createdAt: string;
-  paymentMethodId?: string;
-  userId?: string;
-}
-
-export interface paymentReceipt {
-  id: string;
-  transactionId: string;
-  amount: number;
-  currency: string;
-  status: string;
-  createdAt: string;
-  metadata?: Record<string, any>;
-}
-
-export interface PaymentIntent {
-  id: string;
-  amount: number;
-  currency: string;
-  status: 'pending' | 'processing' | 'completed' | 'failed';
-  paymentMethod: string;
-  metadata?: Record<string, any>;
-}
-
-export interface PaymentTransaction {
-  id: string;
-  intentId: string;
-  amount: number;
-  currency: string;
-  status: 'pending' | 'completed' | 'failed';
-  createdAt: string;
-}
-
-export interface RefundRequest {
-  transactionId: string;
-  amount?: number;
-  reason?: string;
 } 

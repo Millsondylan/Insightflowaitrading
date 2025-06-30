@@ -8,7 +8,7 @@ const isLovable = import.meta.env.VITE_IS_LOVABLE === 'true' ||
 
 // Set up the Supabase URL and API key
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://ikreglaqlileqlmlgsao.supabase.co'
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY || '';
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
 let supabase: ReturnType<typeof createClient<Database>>;
 
@@ -49,10 +49,10 @@ try {
       }),
       auth: {
         getSession: () => Promise.resolve({ data: { session: null }, error: null }),
-        signIn: () => Promise.resolve({ data: { user: null }, error: null }),
+        signInWithPassword: () => Promise.resolve({ data: { user: null }, error: null }),
         signOut: () => Promise.resolve({ error: null })
       }
-    };
+    } as any;
   } else {
     // For non-Lovable environments, create an empty client but log the error
     // @ts-ignore - Using any type for fallback
