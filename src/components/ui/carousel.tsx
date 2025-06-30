@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -132,14 +133,16 @@ const Carousel = React.forwardRef<
           canScrollNext,
         }}
       >
-        <div ref={ref}
+        <div
+          ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
-          {...props}>
+          {...props}
+        >
           {children}
-        </CarouselContextProps>
+        </div>
       </CarouselContext.Provider>
     )
   }
@@ -154,14 +157,16 @@ const CarouselContent = React.forwardRef<
 
   return (
     <div ref={carouselRef} className="overflow-hidden">
-      <div         ref={ref}
+      <div
+        ref={ref}
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
         {...props}
-      //>
+      />
+    </div>
   )
 })
 CarouselContent.displayName = "CarouselContent"
@@ -173,7 +178,8 @@ const CarouselItem = React.forwardRef<
   const { orientation } = useCarousel()
 
   return (
-    <div       ref={ref}
+    <div
+      ref={ref}
       role="group"
       aria-roledescription="slide"
       className={cn(
@@ -181,7 +187,8 @@ const CarouselItem = React.forwardRef<
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
-      {...props}/>
+      {...props}
+    />
   )
 })
 CarouselItem.displayName = "CarouselItem"
@@ -193,11 +200,12 @@ const CarouselPrevious = React.forwardRef<
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button ref={ref}
+    <Button
+      ref={ref}
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -205,10 +213,11 @@ const CarouselPrevious = React.forwardRef<
       )}
       disabled={!canScrollPrev}
       onClick={scrollPrev}
-      {...props}/>
-      <arrowLeft className="h-4 w-4"/>
-      <span className="sr-only">Previous slide</HTMLDivElement>
-    </button>
+      {...props}
+    >
+      <ArrowLeft className="h-4 w-4" />
+      <span className="sr-only">Previous slide</span>
+    </Button>
   )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
@@ -220,7 +229,8 @@ const CarouselNext = React.forwardRef<
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button ref={ref}
+    <Button
+      ref={ref}
       variant={variant}
       size={size}
       className={cn(
@@ -232,10 +242,11 @@ const CarouselNext = React.forwardRef<
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
-      {...props}>
-      <arrowRight className="h-4 w-4"/>
-      <span className="sr-only"></button></button>Next slide</button>
-    </button>
+      {...props}
+    >
+      <ArrowRight className="h-4 w-4" />
+      <span className="sr-only">Next slide</span>
+    </Button>
   )
 })
 CarouselNext.displayName = "CarouselNext"
