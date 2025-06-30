@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../ui/card';
 import { Button } from '../../ui/button';
@@ -6,7 +7,7 @@ import { TradingViewChart } from '../../charts/TradingViewChart';
 import { Skeleton } from '../../ui/skeleton';
 import { ChevronRight, RefreshCcw, Bookmark } from 'lucide-react';
 import { supabase } from '../../../integrations/supabase/client';
-import { useToast } from '../../ui/use-toast';
+import { useToast } from '../../../hooks/use-toast';
 
 interface SuggestedSetupProps {
   userId: string;
@@ -29,7 +30,7 @@ interface TradingSetup {
 }
 
 export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupProps) {
-  const [setup, setSetup] = useState<TradingSetup | null/>(null);
+  const [setup, setSetup] = useState<TradingSetup | null>(null);
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -143,37 +144,38 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
     : "0";
 
   return (
-    <Card className="h-full"/>
-      <CardHeader className="pb-2"/>
+    <Card className="h-full">
+      <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
-          <CardTitle className="text-lg"/>Today's Suggested Setup</TradingSetup>
-          <Button variant="ghost" size="icon" onClick={generateSetup} disabled={generating}/>
-            <RefreshCcw className={`h-4 w-4 ${generating ? 'animate-spin' : ''}`}/>
-          </button>
+          <CardTitle className="text-lg">Today's Suggested Setup</CardTitle>
+          <Button variant="ghost" size="icon" onClick={generateSetup} disabled={generating}>
+            <RefreshCcw className={`h-4 w-4 ${generating ? 'animate-spin' : ''}`} />
+          </Button>
         </div>
         <CardDescription>
           AI-generated setup based on your trading profile
         </CardDescription>
+      </CardHeader>
       
-      <CardContent className="pb-2"/>
+      <CardContent className="pb-2">
         {loading || generating ? (
           <>
-            <Skeleton className="w-full h-12 mb-4"/>
-            <Skeleton className="w-full h-32 mb-4"/>
-            <Skeleton className="w-full h-20"/>
-          </CardDescription>
+            <Skeleton className="w-full h-12 mb-4" />
+            <Skeleton className="w-full h-32 mb-4" />
+            <Skeleton className="w-full h-20" />
+          </>
         ) : setup ? (
           <>
             <div className="flex items-center justify-between mb-3">
               <div>
-                <Badge variant={setup.direction === 'long' ? 'default' : 'destructive'} className="mb-1"/>
+                <Badge variant={setup.direction === 'long' ? 'default' : 'destructive'} className="mb-1">
                   {setup.direction.toUpperCase()}
-                </div>
+                </Badge>
                 <h3 className="text-xl font-bold">{setup.symbol}</h3>
                 <p className="text-sm text-muted-foreground">{setup.timeframe} Timeframe</p>
               </div>
               <div className="text-right">
-                <p className="text-sm text-muted-foreground">Risk/Reward</div>
+                <p className="text-sm text-muted-foreground">Risk/Reward</p>
                 <p className="text-xl font-bold">1:{riskRewardRatio}</p>
               </div>
             </div>
@@ -184,25 +186,25 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
                   src={setup.image_url} 
                   alt={`${setup.symbol} chart`}
                   className="w-full h-full object-cover"
-   />
+                />
               </div>
             ) : (
               <div className="rounded-md overflow-hidden mb-3 h-40 bg-muted flex items-center justify-center">
-                <span className="text-muted-foreground">No chart image available</div>
+                <span className="text-muted-foreground">No chart image available</span>
               </div>
             )}
             
             <div className="grid grid-cols-3 gap-1 mb-3 text-center">
               <div className="p-2 bg-muted rounded-md">
-                <p className="text-xs text-muted-foreground">Entry</div>
+                <p className="text-xs text-muted-foreground">Entry</p>
                 <p className="font-medium">{setup.entry_price}</p>
               </div>
               <div className="p-2 bg-red-100 dark:bg-red-900/20 rounded-md">
-                <p className="text-xs text-muted-foreground">Stop Loss</div>
+                <p className="text-xs text-muted-foreground">Stop Loss</p>
                 <p className="font-medium">{setup.stop_loss}</p>
               </div>
               <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-md">
-                <p className="text-xs text-muted-foreground">Take Profit</div>
+                <p className="text-xs text-muted-foreground">Take Profit</p>
                 <p className="font-medium">{setup.take_profit}</p>
               </div>
             </div>
@@ -211,40 +213,42 @@ export default function SuggestedSetupWidget({ userId, data }: SuggestedSetupPro
           </>
         ) : (
           <div className="text-center p-4">
-            <p className="text-muted-foreground">No setup available. Click Generate to create one.</div>
-            <Button onClick={generateSetup} className="mt-4" disabled={generating}/>
+            <p className="text-muted-foreground">No setup available. Click Generate to create one.</p>
+            <Button onClick={generateSetup} className="mt-4" disabled={generating}>
               Generate Setup
-            </button>
+            </Button>
           </div>
         )}
       </CardContent>
       
       {setup && (
-        <CardFooter className="pt-2 flex justify-between"/>
+        <CardFooter className="pt-2 flex justify-between">
           <Button variant="outline" 
             size="sm" 
             onClick={saveSetup}
             disabled={saved}>
             {saved ? (
               <>
-                <Bookmark className="mr-1 h-4 w-4 fill-primary"/>
+                <Bookmark className="mr-1 h-4 w-4 fill-primary" />
                 Saved
-              </CardFooter>
+              </>
             ) : (
               <>
-                <Bookmark className="mr-1 h-4 w-4"/>
+                <Bookmark className="mr-1 h-4 w-4" />
                 Save Setup
-              </Bookmark>
+              </>
             )}
-          </CardFooter>
+          </Button>
           
           <Button variant="ghost" 
             size="sm"
             asChild>
             <a href={`/trade-planner?symbol=${setup.symbol}&entry=${setup.entry_price}&sl=${setup.stop_loss}&tp=${setup.take_profit}&direction=${setup.direction}`}>
               Plan Trade
-              <ChevronRight className="ml-1 h-4 w-4"/></button></button>
-          </button>
+              <ChevronRight className="ml-1 h-4 w-4" />
+            </a>
+          </Button>
+        </CardFooter>
       )}
     </Card>
   );
@@ -256,4 +260,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-
