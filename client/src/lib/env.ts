@@ -33,9 +33,13 @@ const envSchema = z.object({
 // We manually combine the different env sources.
 // This is not ideal, but necessary for the diverse project setup.
 const processEnv = {
-    ...process.env,
-    SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.VITE_SUPABASE_URL || process.env.EXPO_PUBLIC_SUPABASE_URL,
-    SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
+    ...import.meta.env,
+    SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL,
+    SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_ANON_KEY,
+    NEXT_PUBLIC_OPENAI_API_KEY: import.meta.env.VITE_OPENAI_API_KEY,
+    NEXT_PUBLIC_ANTHROPIC_API_KEY: import.meta.env.VITE_ANTHROPIC_API_KEY,
+    NEXT_PUBLIC_GEMINI_API_KEY: import.meta.env.VITE_GEMINI_API_KEY,
+    NEXT_PUBLIC_APP_URL: import.meta.env.VITE_APP_URL,
 };
 
 

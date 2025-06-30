@@ -30,8 +30,8 @@ export async function getAuthenticatedUser(req: NextRequest): Promise<Authentica
     }
 
     // Create a server-side Supabase client
-    const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
-    const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY || '';
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
+    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
     
     const supabaseServer = createClient<Database>(
       supabaseUrl,

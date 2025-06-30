@@ -90,7 +90,7 @@ export default function ProfilePage() {
     return (
       <div className="flex items-center justify-center h-[60vh]">
         <Loader2 className="h-8 w-8 animate-spin text-primary"/>
-      </OnboardingFormData>
+      </div>
     );
   }
   
@@ -102,14 +102,14 @@ export default function ProfilePage() {
       
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl font-bold mb-6">Trading Profile</div>
+          <h1 className="text-3xl font-bold mb-6">Trading Profile</h1>
           
-          <formProvider {...methods}>
+          <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <Tabs defaultValue="experience" className="w-full">
                 <div className="mb-6 overflow-auto pb-2">
                   <TabsList className="inline-flex min-w-max">
-                    <TabsTrigger value="experience">Experience</form>
+                    <TabsTrigger value="experience">Experience</TabsTrigger>
                     <TabsTrigger value="style">Trading Style</TabsTrigger>
                     <TabsTrigger value="markets">Markets</TabsTrigger>
                     <TabsTrigger value="timeframes">Timeframes</TabsTrigger>
@@ -121,7 +121,7 @@ export default function ProfilePage() {
                 
                 <Card>
                   <CardHeader>
-                    <CardTitle>Trading Preferences</Card>
+                    <CardTitle>Trading Preferences</CardTitle>
                     <CardDescription>
                       Customize your trading profile to get personalized recommendations
                     </CardDescription>
@@ -129,7 +129,7 @@ export default function ProfilePage() {
                   <CardContent className="pt-6">
                     <TabsContent value="experience" className="mt-0">
                       <ExperienceLevelStep />
-                    </CardContent>
+                    </TabsContent>
                     
                     <TabsContent value="style" className="mt-0">
                       <TradingStyleStep />
@@ -152,7 +152,7 @@ export default function ProfilePage() {
                     </TabsContent>
                     
                     <TabsContent value="ai" className="mt-0">
-                      <aIPreferencesStep />
+                      <AIPreferencesStep />
                     </TabsContent>
                   </CardContent>
                 </Card>
@@ -163,14 +163,14 @@ export default function ProfilePage() {
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                         Saving...
-                      </div>
+                      </>
                     ) : (
                       <>
                         <Save className="mr-2 h-4 w-4"/>
                         Save Profile
-                      </Save>
+                      </>
                     )}
-                  </button>
+                  </Button>
                 </div>
               </Tabs>
             </form>

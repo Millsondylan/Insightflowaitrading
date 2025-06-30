@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack AI trading platform built with modern web technologies. The application is configured as a web-based trading platform with support for AI-powered strategy generation, market analysis, and user portfolio management. It features a React frontend with Express backend, utilizing PostgreSQL for data persistence and Drizzle ORM for database operations.
+This is a comprehensive AI trading platform successfully migrated from Replit Agent to standard Replit environment. The application features AI-powered strategy generation, market analysis, user portfolio management, and advanced trading tools. It maintains Supabase integration for authentication and data management while being fully compatible with modern web technologies and Lovable development environment.
 
 ## System Architecture
 

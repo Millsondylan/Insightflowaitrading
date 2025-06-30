@@ -56,77 +56,68 @@ export default function PrivacyPage() {
               <li>Comply with legal obligations</li>
             </ul>
           </section>
-          
+
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">4. Data Security</h2>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">4. Information Sharing and Disclosure</h2>
             <p className="text-gray-300">
-              We implement appropriate technical and organizational measures to protect your personal 
-              data against unauthorized or unlawful processing, accidental loss, destruction, or damage. 
-              These include encryption, access controls, and secure database implementations via Supabase 
-              with row-level security policies for enhanced data protection.
+              We may share your personal information in certain limited circumstances, including with your consent, 
+              to comply with laws, to respond to lawful requests and legal process, to protect rights and safety, 
+              and in connection with a merger or acquisition.
             </p>
           </section>
-          
+
           <section>
-            <h2 className="text-2xl font-bold mb-4 text-cyan-400">5. Cookies and Tracking Technologies</h2>
+            <h2 className="text-2xl font-bold mb-4 text-cyan-400">5. Data Security</h2>
             <p className="text-gray-300">
-              We use cookies and similar tracking technologies to track activity on our platform and 
-              hold certain information. You can instruct your browser to refuse all cookies or to 
-              indicate when a cookie is being sent. However, if you do not accept cookies, you may 
-              not be able to use some portions of our service.
+              We implement appropriate technical and organizational security measures to protect your personal 
+              information against unauthorized access, alteration, disclosure, or destruction.
             </p>
           </section>
-          
+
           <section>
             <h2 className="text-2xl font-bold mb-4 text-cyan-400">6. Third-Party Services</h2>
             <p className="text-gray-300">
-              Our services may include integrations with third-party services, such as market data 
-              providers, payment processors, and AI models. These third parties may collect information 
-              about you when you interact with their services. We encourage you to review the privacy 
-              policies of these third parties.
+              Our service may contain links to third-party websites or services. We are not responsible for 
+              the privacy practices of these third parties.
             </p>
           </section>
-          
+
           <section>
             <h2 className="text-2xl font-bold mb-4 text-cyan-400">7. Your Privacy Rights</h2>
             <p className="text-gray-300 mb-4">
-              Depending on your location, you may have rights regarding your personal data, including:
+              Depending on your location, you may have certain rights regarding your personal information:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-gray-300">
               <li>The right to access your personal data</li>
               <li>The right to rectify inaccurate personal data</li>
-              <li>The right to delete your personal data</li>
-              <li>The right to restrict processing of your personal data</li>
+              <li>The right to erase your personal data</li>
+              <li>The right to restrict processing</li>
               <li>The right to data portability</li>
-              <li>The right to object to the processing of your personal data</li>
             </ul>
-            <p className="text-gray-300 mt-4">
-              To exercise these rights, please contact us using the information provided below.
-            </p>
           </section>
-          
+
           <section>
             <h2 className="text-2xl font-bold mb-4 text-cyan-400">8. Children's Privacy</h2>
             <p className="text-gray-300">
-              Our services are not intended for individuals under the age of 18. We do not knowingly 
-              collect personal information from children under 18. If you are a parent or guardian and 
-              believe your child has provided us with personal information, please contact us.
+              Our services are not intended for children under 13 years of age. We do not knowingly collect 
+              personal information from children under 13.
             </p>
           </section>
-          
+
           <section>
             <h2 className="text-2xl font-bold mb-4 text-cyan-400">9. Changes to this Privacy Policy</h2>
             <p className="text-gray-300">
-              We may update our Privacy Policy from time to time. We will notify you of any changes by 
-              posting the new Privacy Policy on this page and updating the "Last Updated" date.
+              We may update this Privacy Policy from time to time. We will notify you of any changes by 
+              posting the new Privacy Policy on this page.
             </p>
           </section>
-          
+
           <section>
             <h2 className="text-2xl font-bold mb-4 text-cyan-400">10. Contact Us</h2>
             <p className="text-gray-300">
               If you have any questions about this Privacy Policy, please contact us at:
-              <br />
+            </p>
+            <p className="text-gray-300 mt-2">
               Email: privacy@insightflowai.com
             </p>
           </section>
@@ -143,8 +134,5 @@ export default function PrivacyPage() {
 }
 
 export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+  component: PrivacyPage 
+};

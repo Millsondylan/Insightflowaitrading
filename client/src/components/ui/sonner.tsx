@@ -22,7 +22,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         },
       }}
       {...props}
-    //></Sonner>
+    />
   )
 }
 

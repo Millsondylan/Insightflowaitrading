@@ -145,8 +145,7 @@ export default function PricingPage() {
         
         <Button variant="outline"
           className="mt-6"
-          onClick={() => navigate('/faq#payment')}
-        >
+          onClick={() => navigate('/faq#payment')}>
           Payment FAQ
         </Button>
       </div>

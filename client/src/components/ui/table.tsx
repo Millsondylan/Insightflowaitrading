@@ -10,8 +10,9 @@ const Table = React.forwardRef<
     <table
       ref={ref}
       className={cn("w-full caption-bottom text-sm", className)}
-      {...props}/>
-  </HTMLTableElement>
+      {...props}
+    />
+  </div>
 ))
 Table.displayName = "Table"
 
