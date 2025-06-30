@@ -1,8 +1,10 @@
+
 // TODO: implement version diff comparison viewer
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
 import { GitCompare, Plus, Minus, Edit } from 'lucide-react';
 
 interface VersionDiffProps {
@@ -12,13 +14,6 @@ interface VersionDiffProps {
 
 export const VersionDiff: React.FC<VersionDiffProps> = ({ strategyId, versions = [] }) => {
   const [leftVersion, setLeftVersion] = React.useState('v1.0');
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [rightVersion, setRightVersion] = React.useState('v1.1');
   
   const mockVersions = [
@@ -75,49 +70,53 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6"/>
+    <Card className="theme-card p-6">
       <div className="flex items-center gap-2 mb-6">
         <GitCompare className="h-6 w-6"/>
-        <h2 className="text-2xl font-bold">Version Comparison</VersionDiffProps>
+        <h2 className="text-2xl font-bold">Version Comparison</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <Label className="text-sm text-muted-foreground mb-2 block">Compare</div>
+          <Label className="text-sm text-muted-foreground mb-2 block">Compare</Label>
           <Select value={leftVersion} onValueChange={setLeftVersion}>
-            <selectTrigger>
-              <selectValue //>
-            <selectContent>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
               {mockVersions.map((v) => (
-                <selectItem key={v.id} value={v.id}>
+                <SelectItem key={v.id} value={v.id}>
                   {v.label}
-                </Select>
+                </SelectItem>
               ))}
             </SelectContent>
+          </Select>
         </div>
         
         <div>
-          <Label className="text-sm text-muted-foreground mb-2 block">With</div>
+          <Label className="text-sm text-muted-foreground mb-2 block">With</Label>
           <Select value={rightVersion} onValueChange={setRightVersion}>
-            <selectTrigger>
-              <selectValue //>
-            <selectContent>
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
               {mockVersions.map((v) => (
-                <selectItem key={v.id} value={v.id}>
+                <SelectItem key={v.id} value={v.id}>
                   {v.label}
-                </Select>
+                </SelectItem>
               ))}
             </SelectContent>
+          </Select>
         </div>
       </div>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-semibold">Changes</div>
+          <h3 className="font-semibold">Changes</h3>
           <div className="flex items-center gap-4 text-sm">
             <span className="flex items-center gap-1">
               <Plus className="h-3 w-3 text-green-500"/>
-              <span className="text-green-500">2 added</div>
+              <span className="text-green-500">2 added</span>
             </span>
             <span className="flex items-center gap-1">
               <Minus className="h-3 w-3 text-red-500"/>
@@ -131,13 +130,12 @@ export const lovable = {
         </div>
 
         {diffs.map((diff, i) => (
-          <div key={i}
-            className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}>
+          <div key={i} className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}>
             <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium">{diff.section}</div>
+                  <span className="font-medium">{diff.section}</span>
                   <span className="text-xs text-muted-foreground">Line {diff.line}</span>
                 </div>
                 
@@ -145,21 +143,21 @@ export const lovable = {
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
                       <Minus className="h-3 w-3 text-red-500 mt-1"/>
-                      <Code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
+                      <code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
                         {diff.oldContent}
-                      </div>
+                      </code>
                     </div>
                     <div className="flex items-start gap-2">
                       <Plus className="h-3 w-3 text-green-500 mt-1"/>
-                      <Code className="text-sm bg-green-500/20 px-2 py-1 rounded">
+                      <code className="text-sm bg-green-500/20 px-2 py-1 rounded">
                         {diff.newContent}
-                      </div>
+                      </code>
                     </div>
                   </div>
                 ) : (
-                  <Code className="text-sm bg-secondary/50 px-2 py-1 rounded">
+                  <code className="text-sm bg-secondary/50 px-2 py-1 rounded">
                     {diff.content}
-                  </Code>
+                  </code>
                 )}
               </div>
             </div>
@@ -168,12 +166,20 @@ export const lovable = {
       </div>
 
       <div className="mt-6 flex gap-2">
-        <Button variant="outline" className="flex-1"/>
+        <Button variant="outline" className="flex-1">
           Export Diff
-        </div>
+        </Button>
         <Button className="flex-1">
           Apply Changes
-        </button>
+        </Button>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
