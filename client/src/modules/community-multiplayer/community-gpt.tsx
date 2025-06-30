@@ -1,3 +1,4 @@
+
 // TODO: implement community AI assistant
 import React from 'react';
 import { Card } from '@/components/ui/card';
@@ -20,12 +21,6 @@ export const CommunityGPT: React.FC<CommunityGPTProps> = ({ channelId }) => {
     }
   ]);
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [input, setInput] = React.useState('');
   const [isTyping, setIsTyping] = React.useState(false);
 
@@ -57,13 +52,13 @@ export const lovable = {
   };
 
   return (
-    <Card className="theme-card p-6 h-[600px] flex flex-col"/>
+    <Card className="theme-card p-6 h-[600px] flex flex-col">
       <div className="flex items-center gap-2 mb-4">
-        <bot className="h-6 w-6"/>
-        <h2 className="text-2xl font-bold">Community GPT</CommunityGPTProps>
+        <Bot className="h-6 w-6"/>
+        <h2 className="text-2xl font-bold">Community GPT</h2>
       </div>
 
-      <ScrollArea className="flex-1 mb-4"/>
+      <ScrollArea className="flex-1 mb-4">
         <div className="space-y-4">
           {messages.map((message) => (
             <div key={message.id}
@@ -72,20 +67,20 @@ export const lovable = {
                 <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
                     <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                      <User className="h-4 w-4" //>
+                      <User className="h-4 w-4" />
+                    </div>
                   ) : (
                     <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                      <bot className="h-4 w-4"/>
-                    </ScrollArea>
+                      <Bot className="h-4 w-4"/>
+                    </div>
                   )}
                 </div>
                 <div className={`p-3 rounded-lg ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
-                  }`}
-   />
-                  <p className="text-sm">{message.content}</div>
+                  }`}>
+                  <p className="text-sm">{message.content}</p>
                   <p className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString()}
                   </p>
@@ -96,7 +91,7 @@ export const lovable = {
           {isTyping && (
             <div className="flex gap-3">
               <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                <bot className="h-4 w-4"/>
+                <Bot className="h-4 w-4"/>
               </div>
               <div className="bg-secondary p-3 rounded-lg">
                 <div className="flex gap-1">
@@ -108,16 +103,26 @@ export const lovable = {
             </div>
           )}
         </div>
+      </ScrollArea>
 
       <div className="flex gap-2">
-        <Input placeholder="Ask about strategies, analysis, or community insights..."
+        <Input 
+          placeholder="Ask about strategies, analysis, or community insights..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
         <Button onClick={sendMessage} size="icon">
-          <Send className="h-4 w-4"/></div></div>
-        </button>
+          <Send className="h-4 w-4"/>
+        </Button>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

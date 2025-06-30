@@ -1,8 +1,10 @@
+
 // TODO: implement collaborative strategy editor
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Textarea } from '@/components/ui/textarea';
 import { Users, Save, Share2, Edit3 } from 'lucide-react';
 
 interface MultiplayerEditorProps {
@@ -24,13 +26,6 @@ exit_rules:
   - trailing_stop(2%)
 `);
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
-
   const [activeUsers, setActiveUsers] = React.useState([
     { id: 1, name: 'Alex T.', color: '#FF6B6B', cursor: { line: 3, col: 15 } },
     { id: 2, name: 'Sarah M.', color: '#4ECDC4', cursor: { line: 7, col: 8 } },
@@ -43,19 +38,20 @@ export const lovable = {
   ]);
 
   return (
-    <Card className="theme-card p-6"/>
+    <Card className="theme-card p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Users className="h-6 w-6"/>
-          <h2 className="text-2xl font-bold">Multiplayer Editor</MultiplayerEditorProps>
+          <h2 className="text-2xl font-bold">Multiplayer Editor</h2>
         </div>
         <div className="flex items-center gap-2">
           <div className="flex -space-x-2">
             {activeUsers.map((user) => (
-              <avatar key={user.id} className="h-8 w-8 border-2 border-background">
+              <Avatar key={user.id} className="h-8 w-8 border-2 border-background">
                 <AvatarFallback style={{ backgroundColor: user.color }}>
                   {user.name.split(' ').map(n => n[0]).join('')}
-                </div>
+                </AvatarFallback>
+              </Avatar>
             ))}
           </div>
           <span className="text-sm text-muted-foreground ml-2">
@@ -83,10 +79,9 @@ export const lovable = {
                   left: `${user.cursor.col * 8}px`
                 }}>
                 <span className="absolute -top-6 left-0 text-xs px-1 rounded whitespace-nowrap"
-                  style={{ backgroundColor: user.color, color: 'white' }}
-   />
+                  style={{ backgroundColor: user.color, color: 'white' }}>
                   {user.name}
-                </div>
+                </span>
               </div>
             ))}
           </div>
@@ -94,22 +89,22 @@ export const lovable = {
             <Button className="flex-1">
               <Save className="h-4 w-4 mr-2"/>
               Save Strategy
-            </div>
-            <Button variant="outline"/>
+            </Button>
+            <Button variant="outline">
               <Share2 className="h-4 w-4 mr-2"/>
               Share
-            </button>
+            </Button>
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
-            <h3 className="font-semibold mb-2">Recent Edits</div>
+            <h3 className="font-semibold mb-2">Recent Edits</h3>
             <div className="space-y-2">
               {edits.map((edit, i) => (
                 <div key={i} className="text-sm p-2 bg-secondary/20 rounded">
                   <div className="flex items-center gap-2">
-                    <Edit3 className="h-3 w-3 text-muted-foreground"/></div></div>
+                    <Edit3 className="h-3 w-3 text-muted-foreground"/>
                     <span className="font-medium">{edit.user}</span>
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
@@ -121,7 +116,7 @@ export const lovable = {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2"></div>Session Info</div>
+            <h3 className="font-semibold mb-2">Session Info</h3>
             <p className="text-sm text-muted-foreground">
               Session ID: {sessionId || 'demo-session'}
             </p>
@@ -131,5 +126,13 @@ export const lovable = {
           </div>
         </div>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

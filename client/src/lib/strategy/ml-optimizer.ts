@@ -640,7 +640,7 @@ export class MLStrategyOptimizer {
   private initializeGaussianProcess() {
     // Initialize Gaussian Process model for Bayesian optimization
     return {
-      update: (point: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, performance: number) => {
+      update: (point: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) => {
         // Update GP model with new observation
       },
       getBestSolution: () => {
@@ -659,4 +659,65 @@ export class MLStrategyOptimizer {
     // Implement strategy evaluation logic
     return 0;
   }
-} 
+}
+
+export function generateOptimizationReport(
+  originalParams: any,
+  optimizedParams: any,
+  performance: any
+): OptimizationReport {
+  try {
+    const improvements = calculateImprovements(originalParams, optimizedParams, performance);
+    
+    return {
+      timestamp: new Date().toISOString(),
+      originalParameters: originalParams,
+      optimizedParameters: optimizedParams,
+      performanceMetrics: performance,
+      improvements,
+      recommendations: generateRecommendations(improvements)
+    };
+  } catch (error) {
+    console.error('Error generating optimization report:', error);
+    return {
+      timestamp: new Date().toISOString(),
+      originalParameters: originalParams,
+      optimizedParameters: optimizedParams,
+      performanceMetrics: performance,
+      improvements: {},
+      recommendations: []
+    };
+  }
+}
+
+function calculateImprovements(original: any, optimized: any, performance: any) {
+  // Implementation for calculating improvements
+  return {
+    returnImprovement: performance.totalReturn - (original.totalReturn || 0),
+    drawdownReduction: (original.maxDrawdown || 0) - performance.maxDrawdown,
+    sharpeImprovement: performance.sharpeRatio - (original.sharpeRatio || 0)
+  };
+}
+
+function generateRecommendations(improvements: any): string[] {
+  const recommendations = [];
+  
+  if (improvements.returnImprovement > 0) {
+    recommendations.push('Optimized parameters show improved returns');
+  }
+  
+  if (improvements.drawdownReduction > 0) {
+    recommendations.push('Risk management has been enhanced');
+  }
+  
+  return recommendations;
+}
+
+interface OptimizationReport {
+  timestamp: string;
+  originalParameters: any;
+  optimizedParameters: any;
+  performanceMetrics: any;
+  improvements: any;
+  recommendations: string[];
+}
