@@ -1,8 +1,9 @@
+
 import { useEffect, useRef } from 'react';
-import { createChart, IChartApi, ISeriesApi, LineStyle } from 'lightweight-charts';
+import { createChart, IChartApi, ISeriesApi, LineStyle, ColorType } from 'lightweight-charts';
 
 interface ChartData {
-  time: number;
+  time: string | number;
   open: number;
   high: number;
   low: number;
@@ -34,7 +35,7 @@ const TradingViewLightWeightChart = ({
 }: TradingViewLightWeightChartProps) => {
   const chartContainerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
-  const candleSeriesRef = useRef<ISeriesApi<'candlestick'> | null>(null);
+  const candleSeriesRef = useRef<ISeriesApi<'Candlestick'> | null>(null);
 
   // Chart initialization and data loading
   useEffect(() => {
@@ -52,7 +53,7 @@ const TradingViewLightWeightChart = ({
       width: width || chartContainerRef.current.clientWidth,
       height,
       layout: {
-        background: { type: 'solid', color: 'transparent' },
+        background: { type: ColorType.Solid, color: 'transparent' },
         textColor: 'rgba(255, 255, 255, 0.7)',
       },
       grid: {
@@ -84,8 +85,16 @@ const TradingViewLightWeightChart = ({
       wickUpColor: '#22c55e',
     });
 
-    // Set the data
-    candleSeries.setData(data);
+    // Transform and set the data
+    const transformedData = data.map(item => ({
+      time: typeof item.time === 'string' ? item.time : item.time.toString(),
+      open: item.open,
+      high: item.high,
+      low: item.low,
+      close: item.close,
+    }));
+
+    candleSeries.setData(transformedData);
 
     // Store references
     chartRef.current = chart;
@@ -115,23 +124,19 @@ const TradingViewLightWeightChart = ({
   useEffect(() => {
     if (!chartRef.current || !candleSeriesRef.current) return;
     
-    // Remove all existing price lines (this is a simplified approach)
-    // For a more sophisticated approach, you'd want to track created lines and update them
-    const existingLines = chartRef.current.priceScale('right').priceRange();
-    
     // Add new price lines for overlays
     overlays.forEach((overlay) => {
       if (overlay.type === 'price' && candleSeriesRef.current) {
         // Map line style
-        let lineStyle: LineStyle = LineStyle.Solid;
+        let lineStyle = LineStyle.Solid;
         if (overlay.lineStyle === 'dashed') lineStyle = LineStyle.Dashed;
         if (overlay.lineStyle === 'dotted') lineStyle = LineStyle.Dotted;
 
         // Create the price line
-        const priceLine = candleSeriesRef.current.createPriceLine({
+        candleSeriesRef.current.createPriceLine({
           price: overlay.price,
           color: overlay.color,
-          lineWidth: overlay.lineWidth,
+          lineWidth: overlay.lineWidth as any,
           lineStyle,
           title: overlay.label || '',
         });
@@ -150,4 +155,3 @@ export const lovable = {
   editableComponents: true,
   visualEditing: true
 };
-

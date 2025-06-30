@@ -1,3 +1,4 @@
+
 export interface QuizQuestion {
   question: string;
   options: string[];
@@ -24,4 +25,8 @@ export interface QuizFeedback {
   correct: boolean;
   explanation: string;
   score?: number;
+  isCorrect?: boolean;
+  hint?: string;
+  encouragement?: string;
+  confidence?: number;
 }
