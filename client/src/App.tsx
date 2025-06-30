@@ -46,6 +46,7 @@ import StrategyBuilderV3 from './pages/StrategyBuilderV3';
 import JournalV2 from './pages/JournalV2';
 import ChatPage from './pages/ChatPage';
 import PortfolioV2 from './pages/PortfolioV2';
+import AcademyV2 from './pages/AcademyV2';
 
 const queryClient = new QueryClient();
 
@@ -156,6 +157,13 @@ function App() {
                       <Route path="portfolio" element={
                         <AppLayout>
                           <PortfolioV2/>
+                        </AppLayout>
+                      } />
+
+                      {/* AcademyV2 Route */}
+                      <Route path="academy" element={
+                        <AppLayout>
+                          <AcademyV2/>
                         </AppLayout>
                       } />
 
