@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 type Props = {
@@ -21,7 +22,7 @@ const StrategySummaryAI = ({ summary, emotion, suggestions }: Props) => {
   return (
     <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
       <div className="flex justify-between items-start">
-        <h3 className="text-lg font-semibold text-white/90"></div>AI Analysis</div>
+        <h3 className="text-lg font-semibold text-white/90">AI Analysis</h3>
         <span className={`px-2 py-1 rounded-full text-xs font-medium ${getEmotionStyle(emotion)}`}>
           {emotion}
         </span>
@@ -33,14 +34,15 @@ const StrategySummaryAI = ({ summary, emotion, suggestions }: Props) => {
 
       {suggestions && suggestions.length > 0 && (
         <div>
-          <h4 className="font-semibold text-white/80 mb-2"></div>💡 Suggestions</div>
+          <h4 className="font-semibold text-white/80 mb-2">💡 Suggestions</h4>
           <ul className="space-y-2">
             {suggestions.map((suggestion, index) => (
               <li key={index} className="flex items-start gap-2 text-white/70">
-                <span className="mt-1">✅</ul>
+                <span className="mt-1">✅</span>
                 <span>{suggestion}</span>
+              </li>
             ))}
-          </span>
+          </ul>
         </div>
       )}
     </div>
@@ -54,4 +56,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

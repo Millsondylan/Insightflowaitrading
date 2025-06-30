@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -5,12 +6,11 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { Loader2, Copy, CheckCircle, AlertCircle, RefreshCw } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/lib/db/supabase-client";
 
-// Define wallet addresses for different cryptocurrencies
 const WALLET_ADDRESSES = {
   BTC: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
   ETH: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
@@ -18,7 +18,6 @@ const WALLET_ADDRESSES = {
   USDT_TRC20: "TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYNub",
 };
 
-// Define transaction hash validation patterns
 const TX_HASH_PATTERNS = {
   BTC: /^[a-fA-F0-9]{64}$/,
   ETH: /^0x([A-Fa-f0-9]{64})$/,
@@ -42,10 +41,9 @@ export default function CryptoPayment() {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isCheckingStatus, setIsCheckingStatus] = useState(false);
   const [isUpgrading, setIsUpgrading] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState<paymentStatus | null/>(null);
+  const [paymentStatus, setPaymentStatus] = useState<PaymentStatus | null>(null);
   const [subscriptionTier, setSubscriptionTier] = useState<string>("pro");
 
-  // Function to copy wallet address to clipboard
   const copyWalletAddress = () => {
     navigator.clipboard.writeText(WALLET_ADDRESSES[selectedCrypto]);
     toast({
@@ -55,7 +53,6 @@ export default function CryptoPayment() {
     });
   };
 
-  // Validate transaction hash format
   const validateTxHash = (hash: string): boolean => {
     if (!hash) {
       setTxHashError("Transaction hash is required");
@@ -72,20 +69,17 @@ export default function CryptoPayment() {
     return true;
   };
 
-  // Handle transaction hash input change
   const handleTxHashChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const hash = e.target.value;
     setTxHash(hash);
     if (hash) validateTxHash(hash);
   };
 
-  // Verify payment on the blockchain
   const verifyPayment = async () => {
     if (!validateTxHash(txHash) || !user) return;
 
     setIsVerifying(true);
     try {
-      // Call API to verify the transaction
       const response = await fetch('/api/verify-crypto-payment', {
         method: 'POST',
         headers: {
@@ -137,13 +131,11 @@ export default function CryptoPayment() {
     }
   };
 
-  // Check payment status
   const checkPaymentStatus = async () => {
     if (!txHash || !user) return;
 
     setIsCheckingStatus(true);
     try {
-      // Call API to check the transaction status
       const response = await fetch('/api/check-payment-status', {
         method: 'POST',
         headers: {
@@ -189,13 +181,11 @@ export default function CryptoPayment() {
     }
   };
 
-  // Upgrade plan after payment confirmation
   const upgradePlan = async () => {
     if (!user || !paymentStatus || paymentStatus.status !== 'confirmed') return;
 
     setIsUpgrading(true);
     try {
-      // First, insert the transaction record
       const { error: txError } = await supabase
         .from('wallet_transactions')
         .insert({
@@ -209,7 +199,6 @@ export default function CryptoPayment() {
 
       if (txError) throw new Error(txError.message);
 
-      // Then, update the subscription
       const { error: subError } = await supabase
         .from('subscriptions')
         .upsert({
@@ -217,7 +206,7 @@ export default function CryptoPayment() {
           plan: subscriptionTier,
           status: 'active',
           starts_at: new Date().toISOString(),
-          expires_at: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year from now
+          expires_at: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
           payment_method: 'crypto',
           payment_reference: txHash,
         });
@@ -242,37 +231,41 @@ export default function CryptoPayment() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-black/30 border-white/10 backdrop-blur-md text-white"/>
+    <Card className="w-full max-w-md mx-auto bg-black/30 border-white/10 backdrop-blur-md text-white">
       <CardHeader>
-        <CardTitle>Crypto Payment</HTMLInputElement>
-        <CardDescription className="text-white/70"/>
+        <CardTitle>Crypto Payment</CardTitle>
+        <CardDescription className="text-white/70">
           Pay with cryptocurrency to upgrade your account
         </CardDescription>
-      <CardContent className="space-y-6"/>
+      </CardHeader>
+      <CardContent className="space-y-6">
         <Tabs defaultValue="ETH" onValueChange={(value) => setSelectedCrypto(value as keyof typeof WALLET_ADDRESSES)}>
-          <TabsList className="grid grid-cols-4 mb-4"/>
-            <TabsTrigger value="BTC"/>BTC</CardDescription>
-            <TabsTrigger value="ETH"/>ETH</TabsTrigger>
-            <TabsTrigger value="USDT_ERC20"/>USDT-ERC20</TabsTrigger>
-            <TabsTrigger value="USDT_TRC20"/>USDT-TRC20</TabsTrigger>
+          <TabsList className="grid grid-cols-4 mb-4">
+            <TabsTrigger value="BTC">BTC</TabsTrigger>
+            <TabsTrigger value="ETH">ETH</TabsTrigger>
+            <TabsTrigger value="USDT_ERC20">USDT-ERC20</TabsTrigger>
+            <TabsTrigger value="USDT_TRC20">USDT-TRC20</TabsTrigger>
+          </TabsList>
 
           {Object.entries(WALLET_ADDRESSES).map(([crypto, address]) => (
-            <TabsContent key={crypto} value={crypto} className="space-y-4"/>
+            <TabsContent key={crypto} value={crypto} className="space-y-4">
               <div className="space-y-2">
-                <Label>Send payment to this address:</TabsTrigger>
+                <Label>Send payment to this address:</Label>
                 <div className="flex">
                   <Input 
                     value={address}
                     readOnly
                     className="font-mono text-sm bg-black/50 border-white/20 flex-1"
-     />
-                  <Button onClick={copyWalletAddress} 
+                  />
+                  <Button 
+                    onClick={copyWalletAddress} 
                     variant="outline" 
                     size="icon"
                     className="ml-2"
-                    aria-label="Copy wallet address">
+                    aria-label="Copy wallet address"
+                  >
                     <Copy className="h-4 w-4"/>
-                  </div>
+                  </Button>
                 </div>
                 <p className="text-xs text-white/60">
                   {crypto === 'BTC' && 'Send BTC (Bitcoin) to this address. Minimum amount: 0.001 BTC'}
@@ -283,49 +276,51 @@ export default function CryptoPayment() {
               </div>
 
               <div className="space-y-2">
-                <Label>Transaction Hash:</div>
+                <Label>Transaction Hash:</Label>
                 <Input
                   value={txHash}
                   onChange={handleTxHashChange}
                   placeholder={`Enter ${crypto.replace('_', ' ')} transaction hash`}
                   className="bg-black/50 border-white/20"
-   />
+                />
                 {txHashError && (
-                  <p className="text-xs text-red-400">{txHashError}</Input>
+                  <p className="text-xs text-red-400">{txHashError}</p>
                 )}
               </div>
+            </TabsContent>
           ))}
         </Tabs>
 
         {paymentStatus && (
-          <alert className={`
+          <Alert className={`
             ${paymentStatus.status === 'confirmed' ? 'bg-green-900/20 border-green-500/30' : 
               paymentStatus.status === 'pending' ? 'bg-yellow-900/20 border-yellow-500/30' : 
               'bg-red-900/20 border-red-500/30'}
-          `}/>
+          `}>
             <div className="flex items-start">
               {paymentStatus.status === 'confirmed' ? (
                 <CheckCircle className="h-5 w-5 text-green-400 mr-2"/>
               ) : paymentStatus.status === 'pending' ? (
-                <alertCircle className="h-5 w-5 text-yellow-400 mr-2"/>
+                <AlertCircle className="h-5 w-5 text-yellow-400 mr-2"/>
               ) : (
-                <alertCircle className="h-5 w-5 text-red-400 mr-2"/>
+                <AlertCircle className="h-5 w-5 text-red-400 mr-2"/>
               )}
               <div>
-                <alertTitle>
+                <AlertTitle>
                   {paymentStatus.status === 'confirmed' ? 'Payment Confirmed' : 
                    paymentStatus.status === 'pending' ? 'Payment Pending' : 'Payment Failed'}
-                </div>
-                <alertDescription className="text-sm"/>
+                </AlertTitle>
+                <AlertDescription className="text-sm">
                   {paymentStatus.status === 'confirmed' ? (
                     <>Transaction confirmed. Amount: {paymentStatus.amount}</>
                   ) : paymentStatus.status === 'pending' ? (
                     <>
                       Confirmations: {paymentStatus.confirmations}/{paymentStatus.required_confirmations}
                       <div className="w-full bg-gray-700 rounded-full h-1.5 mt-2">
-                        <div className="bg-yellow-400 h-1.5 rounded-full" 
+                        <div 
+                          className="bg-yellow-400 h-1.5 rounded-full" 
                           style={{ width: `${(paymentStatus.confirmations / paymentStatus.required_confirmations) * 100}%` }}
-      />
+                        />
                       </div>
                     </>
                   ) : (
@@ -334,68 +329,80 @@ export default function CryptoPayment() {
                 </AlertDescription>
               </div>
             </div>
+          </Alert>
         )}
 
         <div className="space-y-2">
-          <Label>Select Plan:</div>
+          <Label>Select Plan:</Label>
           <div className="grid grid-cols-2 gap-2">
-            <Button variant={subscriptionTier === 'pro' ? 'default' : 'outline'}
+            <Button 
+              variant={subscriptionTier === 'pro' ? 'default' : 'outline'}
               onClick={() => setSubscriptionTier('pro')}
               className={subscriptionTier === 'pro' ? 'bg-blue-600 hover:bg-blue-700' : ''}
             >
               Pro
-            </div>
-            <Button variant={subscriptionTier === 'premium' ? 'default' : 'outline'}
+            </Button>
+            <Button 
+              variant={subscriptionTier === 'premium' ? 'default' : 'outline'}
               onClick={() => setSubscriptionTier('premium')}
               className={subscriptionTier === 'premium' ? 'bg-purple-600 hover:bg-purple-700' : ''}
             >
               Premium
-            </button>
+            </Button>
           </div>
         </div>
-      <CardFooter className="flex flex-col space-y-2"/>
+      </CardContent>
+      <CardFooter className="flex flex-col space-y-2">
         <div className="grid grid-cols-2 gap-2 w-full">
-          <Button onClick={verifyPayment}
+          <Button 
+            onClick={verifyPayment}
             disabled={!txHash || isVerifying}
-            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700">
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+          >
             {isVerifying ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                 Verifying...
-              </CardFooter>
+              </>
             ) : (
               "Verify Payment"
             )}
-          </CardFooter>
-          <Button onClick={checkPaymentStatus}
+          </Button>
+          <Button 
+            onClick={checkPaymentStatus}
             disabled={!txHash || isCheckingStatus || !paymentStatus}
             variant="outline"
-            className="border-white/20 hover:bg-white/10">
+            className="border-white/20 hover:bg-white/10"
+          >
             {isCheckingStatus ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                 Checking...
-              </button>
+              </>
             ) : (
               <>
                 <RefreshCw className="mr-2 h-4 w-4"/>
                 Check Status
-              </RefreshCw>
+              </>
             )}
-          </button>
-      <Button onClick={upgradePlan}
+          </Button>
+        </div>
+        <Button 
+          onClick={upgradePlan}
           disabled={!paymentStatus || paymentStatus.status !== 'confirmed' || isUpgrading}
-          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700">
+          className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+        >
           {isUpgrading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
               Upgrading...
-            </button>
+            </>
           ) : (
             "Upgrade Plan"
           )}
-        </button>
-    </button>
+        </Button>
+      </CardFooter>
+    </Card>
   );
 }
 
@@ -404,4 +411,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
