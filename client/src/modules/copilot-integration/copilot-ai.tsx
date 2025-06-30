@@ -1,3 +1,4 @@
+
 // TODO: implement inline AI copilot assistant
 import React from 'react';
 import { Card } from '@/components/ui/card';
@@ -12,13 +13,6 @@ interface CopilotAIProps {
 
 export const CopilotAI: React.FC<CopilotAIProps> = ({ context, onSuggestionApply }) => {
   const [isVisible, setIsVisible] = React.useState(true);
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [suggestions, setSuggestions] = React.useState([
     {
       id: 1,
@@ -62,23 +56,23 @@ export const lovable = {
       >
         <Sparkles className="h-4 w-4 mr-2"/>
         Show Copilot
-      </CopilotAIProps>
+      </Button>
     );
   }
 
   return (
-    <Card className="fixed bottom-4 right-4 w-96 max-h-[600px] overflow-hidden flex flex-col theme-card"/>
+    <Card className="fixed bottom-4 right-4 w-96 max-h-[600px] overflow-hidden flex flex-col theme-card">
       <div className="p-4 border-b flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Sparkles className="h-5 w-5 text-primary"/>
-          <h3 className="font-semibold">AI Copilot</Card>
+          <h3 className="font-semibold">AI Copilot</h3>
         </div>
         <Button variant="ghost"
           size="sm"
           onClick={() => setIsVisible(false)}
         >
           <X className="h-4 w-4"/>
-        </button>
+        </Button>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -86,7 +80,7 @@ export const lovable = {
           <div key={suggestion.id}
             className="p-3 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start justify-between mb-2">
-              <h4 className="font-medium">{suggestion.title}</div>
+              <h4 className="font-medium">{suggestion.title}</h4>
               <Badge variant="outline" className="text-xs">
                 {suggestion.type}
               </Badge>
@@ -98,13 +92,14 @@ export const lovable = {
             
             {suggestion.code && (
               <pre className="text-xs bg-secondary/50 p-2 rounded mb-2 overflow-x-auto">
-                <Code>{suggestion.code}</pre>
+                <code>{suggestion.code}</code>
+              </pre>
             )}
             
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-green-500">
                 {suggestion.impact}
-              </pre>
+              </span>
               
               <div className="flex items-center gap-2">
                 <Button variant="ghost"
@@ -112,20 +107,20 @@ export const lovable = {
                   onClick={() => handleFeedback(suggestion.id, 'up')}
                   className={feedback[suggestion.id] === 'up' ? 'text-green-500' : ''}
                 >
-                  <thumbsUp className="h-3 w-3"/>
-                </div>
+                  <ThumbsUp className="h-3 w-3"/>
+                </Button>
                 <Button variant="ghost"
                   size="sm"
                   onClick={() => handleFeedback(suggestion.id, 'down')}
                   className={feedback[suggestion.id] === 'down' ? 'text-red-500' : ''}
                 >
-                  <thumbsDown className="h-3 w-3"/>
-                </button>
+                  <ThumbsDown className="h-3 w-3"/>
+                </Button>
                 <Button size="sm"
                   onClick={() => onSuggestionApply?.(suggestion.code)}
                 >
                   Apply
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -133,9 +128,17 @@ export const lovable = {
       </div>
 
       <div className="p-4 border-t bg-secondary/20">
-        <p className="text-xs text-muted-foreground text-center"></div>
+        <p className="text-xs text-muted-foreground text-center">
           Copilot analyzes your strategy in real-time
-        </div>
+        </p>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
