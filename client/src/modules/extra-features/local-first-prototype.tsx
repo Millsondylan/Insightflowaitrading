@@ -1,9 +1,11 @@
+
 // TODO: implement local-first prototyping environment
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Textarea } from '@/components/ui/textarea';
 import { HardDrive, Cloud, RefreshCw, Save, Play } from 'lucide-react';
 
 interface LocalFirstPrototypeProps {
@@ -12,13 +14,6 @@ interface LocalFirstPrototypeProps {
 
 export const LocalFirstPrototype: React.FC<LocalFirstPrototypeProps> = ({ onSync }) => {
   const [syncStatus, setSyncStatus] = React.useState<'synced' | 'pending' | 'offline'>('synced');
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
   const [localChanges, setLocalChanges] = React.useState(0);
   const [prototypeCode, setPrototypeCode] = React.useState(`// Local Strategy Prototype
 // Changes are saved locally first
@@ -62,11 +57,11 @@ exit_rules:
   };
 
   return (
-    <Card className="theme-card p-6"/>
+    <Card className="theme-card p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-2">
           <HardDrive className="h-6 w-6"/>
-          <h2 className="text-2xl font-bold">Local Prototype</LocalFirstPrototypeProps>
+          <h2 className="text-2xl font-bold">Local Prototype</h2>
         </div>
         <div className="flex items-center gap-4">
           <Badge variant={syncStatus === 'synced' ? 'default' : syncStatus === 'pending' ? 'secondary' : 'destructive'}>
@@ -74,35 +69,36 @@ exit_rules:
               <>
                 <Cloud className="h-3 w-3 mr-1"/>
                 Synced
-              </div>
+              </>
             ) : syncStatus === 'pending' ? (
               <>
                 <RefreshCw className="h-3 w-3 mr-1 animate-spin"/>
                 {localChanges} pending
-              </RefreshCw>
+              </>
             ) : (
               <>
                 <HardDrive className="h-3 w-3 mr-1"/>
                 Offline
-              </HardDrive>
+              </>
             )}
-          </div>
+          </Badge>
           <Button variant="outline"
             size="sm"
             onClick={syncToCloud}
             disabled={localChanges === 0 || syncStatus === 'offline'}>
             Sync to Cloud
-          </button>
+          </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="editor" className="space-y-4"/>
-        <TabsList className="grid w-full grid-cols-3"/>
-          <TabsTrigger value="editor"/>Editor</Tabs>
-          <TabsTrigger value="results"/>Results</TabsTrigger>
-          <TabsTrigger value="history"/>History</TabsTrigger>
+      <Tabs defaultValue="editor" className="space-y-4">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="editor">Editor</TabsTrigger>
+          <TabsTrigger value="results">Results</TabsTrigger>
+          <TabsTrigger value="history">History</TabsTrigger>
+        </TabsList>
 
-        <TabsContent value="editor" className="space-y-4"/>
+        <TabsContent value="editor" className="space-y-4">
           <div className="relative">
             <Textarea
               className="w-full h-[400px] p-4 bg-secondary/20 rounded-lg font-mono text-sm"
@@ -117,7 +113,7 @@ exit_rules:
               <Badge variant="outline" className="text-xs">
                 <HardDrive className="h-3 w-3 mr-1"/>
                 Local Only
-              </TabsTrigger>
+              </Badge>
             </div>
           </div>
           
@@ -125,29 +121,30 @@ exit_rules:
             <Button onClick={runLocalBacktest} className="flex-1">
               <Play className="h-4 w-4 mr-2"/>
               Run Local Test
-            </div>
-            <Button variant="outline"/>
+            </Button>
+            <Button variant="outline">
               <Save className="h-4 w-4 mr-2"/>
               Save Draft
-            </button>
+            </Button>
           </div>
+        </TabsContent>
 
-        <TabsContent value="results" className="space-y-4"/>
+        <TabsContent value="results" className="space-y-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</TabsContent>
+              <p className="text-2xl font-bold text-green-500">{testResults.winRate}%</p>
               <p className="text-sm text-muted-foreground">Win Rate</p>
             </div>
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold">{testResults.profitFactor}</div>
+              <p className="text-2xl font-bold">{testResults.profitFactor}</p>
               <p className="text-sm text-muted-foreground">Profit Factor</p>
             </div>
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</div>
+              <p className="text-2xl font-bold text-red-500">{testResults.maxDrawdown}%</p>
               <p className="text-sm text-muted-foreground">Max Drawdown</p>
             </div>
             <div className="p-4 bg-secondary/20 rounded-lg text-center">
-              <p className="text-2xl font-bold">{testResults.trades}</div>
+              <p className="text-2xl font-bold">{testResults.trades}</p>
               <p className="text-sm text-muted-foreground">Total Trades</p>
             </div>
           </div>
@@ -155,42 +152,53 @@ exit_rules:
           <div className="p-4 bg-blue-500/10 rounded-lg">
             <p className="text-sm text-blue-600">
               Results are calculated locally using cached market data. Sync to cloud for full backtesting.
-            </div>
+            </p>
           </div>
+        </TabsContent>
 
-        <TabsContent value="history" className="space-y-4"/>
+        <TabsContent value="history" className="space-y-4">
           <div className="space-y-2">
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
-                <p className="font-medium">Current Draft</TabsContent>
+                <p className="font-medium">Current Draft</p>
                 <p className="text-sm text-muted-foreground">Modified 2 minutes ago</p>
               </div>
               <Badge variant="secondary">Unsaved</Badge>
             </div>
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
-                <p className="font-medium">v1.2 - Risk Update</div>
+                <p className="font-medium">v1.2 - Risk Update</p>
                 <p className="text-sm text-muted-foreground">Saved locally 1 hour ago</p>
               </div>
               <Badge>Synced</Badge>
             </div>
             <div className="p-3 border rounded-lg flex items-center justify-between">
               <div>
-                <p className="font-medium">v1.1 - Initial Strategy</div>
+                <p className="font-medium">v1.1 - Initial Strategy</p>
                 <p className="text-sm text-muted-foreground">Created yesterday</p>
               </div>
               <Badge>Synced</Badge>
             </div>
           </div>
+        </TabsContent>
       </Tabs>
 
       <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <h4 className="font-medium mb-2"></div>Local-First Benefits</div>
+        <h4 className="font-medium mb-2">Local-First Benefits</h4>
         <ul className="space-y-1 text-sm text-muted-foreground">
-          <li>• Work offline without interruption</ul>
+          <li>• Work offline without interruption</li>
           <li>• Instant feedback on changes</li>
           <li>• Automatic conflict resolution</li>
           <li>• Version history preserved locally</li>
+        </ul>
       </div>
+    </Card>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
