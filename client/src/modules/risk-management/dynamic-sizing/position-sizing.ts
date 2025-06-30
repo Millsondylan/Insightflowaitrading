@@ -1,3 +1,4 @@
+
 // Dynamic Position Sizing Engine
 // Volatility-based and drawdown-aware position sizing
 
@@ -95,14 +96,14 @@ export class PositionSizingEngine {
   /**
    * Update configuration
    */
-  updateConfig(newConfig: Partial<positionSizingConfig>): void {
+  updateConfig(newConfig: Partial<PositionSizingConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 
   /**
    * Update risk profile
    */
-  updateRiskProfile(newProfile: Partial<RiskProfile></RiskProfile>): void {
+  updateRiskProfile(newProfile: Partial<RiskProfile>): void {
     this.riskProfile = { ...this.riskProfile, ...newProfile };
   }
 }
@@ -123,6 +124,7 @@ export const DEFAULT_POSITION_SIZING_CONFIG: PositionSizingConfig = {
   maxPositionSize: 1000,
   minPositionSize: 1,
   correlationAdjustment: true,
+  volatilityAdjustment: true,
 };
 
 // TODO: Add position sizing strategies
@@ -130,4 +132,4 @@ export const POSITION_SIZING_STRATEGIES = {
   conservative: { baseRiskPercent: 1, volatilityAdjustment: true },
   moderate: { baseRiskPercent: 2, volatilityAdjustment: true },
   aggressive: { baseRiskPercent: 5, volatilityAdjustment: false },
-} as const; 
+} as const;
