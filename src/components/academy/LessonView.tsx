@@ -1,5 +1,6 @@
+
 import * as React from "react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import LessonEngine from "./LessonEngine";
 import QuizEngine from "./QuizEngine";
@@ -128,10 +129,12 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
         <div id="lesson-quiz" className="mt-10">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
-            <Button onClick={handleBackToContent}
-              className="text-white/70 hover:text-cyan-400 text-sm">
+            <Button 
+              onClick={handleBackToContent}
+              className="text-white/70 hover:text-cyan-400 text-sm"
+            >
               ← Back to lesson content
-            </button>
+            </Button>
           </div>
           
           <QuizEngine 
@@ -156,4 +159,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

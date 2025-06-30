@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -208,7 +209,7 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
                       index === selectedOption && <XCircle className="h-5 w-5 text-white"/>
                     )
                   )}
-                </button>
+                </Button>
               ))}
             </div>
 
@@ -233,24 +234,28 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3">
               {!isAnswered ? (
-                <Button onClick={handleSubmitAnswer}
+                <Button 
+                  onClick={handleSubmitAnswer}
                   disabled={selectedOption === null}
-                  className="bg-white/10 hover:bg-cyan-600 text-white px-6">
+                  className="bg-white/10 hover:bg-cyan-600 text-white px-6"
+                >
                   Submit Answer
-                </button>
+                </Button>
               ) : (
-                <Button onClick={handleNextQuestion}
-                  className="bg-white/10 hover:bg-white/20 text-white px-6">
+                <Button 
+                  onClick={handleNextQuestion}
+                  className="bg-white/10 hover:bg-white/20 text-white px-6"
+                >
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
                         <ChevronRight className="ml-2 h-4 w-4"/>
-                      </ChevronRight>
+                      </>
                     )
                   }
-                </button>
+                </Button>
               )}
             </div>
           </motion.div>
@@ -270,49 +275,28 @@ const QuizEngine: React.FC<QuizProps> = ({ quizId, lessonId, lessonTitle, onComp
           >
             {calculatePercentage()}%
           </motion.div>
-
-          <p className="text-xl text-white">
-            You got <span className="font-bold">{score}</span> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
-          </p>
           
-          {isPassed() ? (
-            <div className="py-4">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="text-green-400 text-lg font-medium"
-              >
-                Congratulations! You've passed the quiz. 🎉
-              </motion.div>
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1, rotate: 720 }}
-                transition={{ delay: 0.8, duration: 1 }}
-                className="text-4xl my-4"
-              >
-                🏆
-              </motion.div>
-            </div>
-          ) : (
-            <p className="text-red-400">
-              You need at least 70% to pass. Try again!
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-2">
+              {isPassed() ? "Congratulations!" : "Keep Practicing!"}
+            </h3>
+            <p className="text-gray-300">
+              You scored {score} out of {mockQuestions.length} questions correctly.
             </p>
-          )}
+          </div>
 
-          <div className="pt-4">
-            <Button onClick={resetQuiz}
-              className="bg-white/10 hover:bg-white/20 text-white px-6">
-              <RefreshCw className="mr-2 h-4 w-4"/>
-              Retry Quiz
-            </button>
+          <div className="flex justify-center space-x-4">
+            <Button 
+              onClick={resetQuiz}
+              variant="outline"
+              className="flex items-center space-x-2"
+            >
+              <RefreshCw className="h-4 w-4"/>
+              <span>Retake Quiz</span>
+            </Button>
           </div>
         </motion.div>
-      ) : (
-        <div className="text-center text-white">
-          <p>Loading quiz...</p>
-        </div>
-      )}
+      ) : null}
     </div>
   );
 };
@@ -324,4 +308,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
