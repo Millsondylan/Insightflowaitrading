@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,20 +8,23 @@ import { Textarea } from '@/components/ui/textarea';
 export default function CoachPage() {
   return (
     <div>
-      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors"/>
-        <arrowLeft size={16}/>
+      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+        <ArrowLeft size={16}/>
         Back to Journal
-      </div>
+      </Link>
       
       <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Bot className="text-blue-400"/></div>
+                    <span className="bg-white/10 p-2 rounded-lg">
+                        <Bot className="text-blue-400"/>
+                    </span>
                     AI Coach
                 </h1>
                 <p className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</p>
             </div>
+        </header>
 
         <div className="space-y-6">
             <div className="bg-black/20 rounded-lg p-6 min-h-[200px] flex flex-col gap-4">
@@ -39,7 +43,7 @@ export default function CoachPage() {
             </div>
             <div className="flex gap-4">
                 <Textarea placeholder="Ask your coach anything..." className="bg-black/20 border-white/10"/>
-                <Button className="bg-blue-600 hover:bg-blue-700"/></div></div>Send</div>
+                <Button className="bg-blue-600 hover:bg-blue-700">Send</Button>
             </div>
         </div>
       </div>
@@ -52,4 +56,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

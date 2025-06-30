@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import CryptoPayment from '@/components/wallet/CryptoPayment';
 import { useAuth } from '@/hooks/use-auth';
@@ -25,40 +26,40 @@ export default function CryptoPaymentPage() {
   }
 
   if (!user) {
-    return <navigate to="/login"/>;
+    return <Navigate to="/login"/>;
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-white">Upgrade Your Account</div>
+        <h1 className="text-3xl font-bold mb-8 text-white">Upgrade Your Account</h1>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
-              <h2 className="text-xl font-bold">Pro Plan Benefits</div>
+              <h2 className="text-xl font-bold">Pro Plan Benefits</h2>
               <ul className="space-y-2">
                 <li className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</ul>
+                  <span className="text-green-400 mr-2">✓</span>
                   Advanced strategy builder
                 </li>
                 <li className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</li>
+                  <span className="text-green-400 mr-2">✓</span>
                   Unlimited backtests
                 </li>
                 <li className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</li>
+                  <span className="text-green-400 mr-2">✓</span>
                   AI trade analysis
                 </li>
                 <li className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</li>
+                  <span className="text-green-400 mr-2">✓</span>
                   Premium indicators
                 </li>
                 <li className="flex items-center">
-                  <span className="text-green-400 mr-2">✓</li>
+                  <span className="text-green-400 mr-2">✓</span>
                   Priority support
                 </li>
-              
+              </ul>
               <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="text-2xl font-bold">$99 / year</div>
                 <div className="text-sm text-white/70">or crypto equivalent</div>
@@ -66,29 +67,29 @@ export default function CryptoPaymentPage() {
             </div>
             
             <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4 mt-6">
-              <h2 className="text-xl font-bold">Premium Plan Benefits</div>
+              <h2 className="text-xl font-bold">Premium Plan Benefits</h2>
               <ul className="space-y-2">
                 <li className="flex items-center">
-                  <span className="text-purple-400 mr-2">✓</ul>
+                  <span className="text-purple-400 mr-2">✓</span>
                   All Pro features
                 </li>
                 <li className="flex items-center">
-                  <span className="text-purple-400 mr-2">✓</li>
+                  <span className="text-purple-400 mr-2">✓</span>
                   Advanced AI coaching
                 </li>
                 <li className="flex items-center">
-                  <span className="text-purple-400 mr-2">✓</li>
+                  <span className="text-purple-400 mr-2">✓</span>
                   Custom strategy development
                 </li>
                 <li className="flex items-center">
-                  <span className="text-purple-400 mr-2">✓</li>
+                  <span className="text-purple-400 mr-2">✓</span>
                   Real-time market alerts
                 </li>
                 <li className="flex items-center">
-                  <span className="text-purple-400 mr-2">✓</li>
+                  <span className="text-purple-400 mr-2">✓</span>
                   1-on-1 strategy consultation
                 </li>
-              
+              </ul>
               <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="text-2xl font-bold">$199 / year</div>
                 <div className="text-sm text-white/70">or crypto equivalent</div>
@@ -97,7 +98,7 @@ export default function CryptoPaymentPage() {
           </div>
           
           <div>
-            <CryptoPayment /></div></div>
+            <CryptoPayment />
           </div>
         </div>
       </div>
@@ -110,4 +111,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

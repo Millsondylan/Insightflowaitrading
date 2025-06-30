@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -45,7 +46,7 @@ const mockLeaderboard = [
 ];
 
 export default function CommunityPage() {
-    const [posts, setPosts] = useState<post[]>(mockPosts);
+    const [posts, setPosts] = useState<Post[]>(mockPosts);
     const [newPost, setNewPost] = useState('');
 
     const handlePostSubmit = () => {
@@ -77,41 +78,45 @@ export default function CommunityPage() {
                 <div className="flex justify-between items-center">
                     <div>
                         <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                            <span className="bg-white/10 p-2 rounded-lg"><MessageSquare className="text-blue-400" //>
+                            <span className="bg-white/10 p-2 rounded-lg">
+                                <MessageSquare className="text-blue-400" />
+                            </span>
                             Community Feed
-                        </div>
+                        </h1>
                         <p className="text-gray-400 mt-1">Connect with other traders and share insights.</p>
                     </div>
                 </div>
 
                 {/* Create Post */}
-                <Card className="mb-6"/>
-                    <CardContent className="pt-6"/>
+                <Card className="mb-6">
+                    <CardContent className="pt-6">
                         <div className="flex gap-4">
                             <Input value={newPost}
                                 onChange={(e) => setNewPost(e.target.value)}
                                 placeholder="Share your trading insights..."
                                 className="flex-1"
                             />
-                            <Button onClick={handlePostSubmit}/>Post</Card>
+                            <Button onClick={handlePostSubmit}>Post</Button>
                         </div>
+                    </CardContent>
                 </Card>
 
                 {/* Posts */}
                 <div className="space-y-4">
                     {posts.map((post) => (
-                        <Card key={post.id}/>
+                        <Card key={post.id}>
                             <CardHeader>
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <CardTitle className="text-lg"/>{post.author}</div>
+                                        <CardTitle className="text-lg">{post.author}</CardTitle>
                                         <p className="text-sm text-gray-400">
                                             {new Date(post.timestamp).toLocaleDateString()}
                                         </p>
                                     </div>
                                 </div>
+                            </CardHeader>
                             <CardContent>
-                                <p className="text-gray-200 mb-4">{post.content}</CardContent>
+                                <p className="text-gray-200 mb-4">{post.content}</p>
                                 <div className="flex gap-4">
                                     <Button variant="ghost"
                                         size="sm"
@@ -120,22 +125,23 @@ export default function CommunityPage() {
                                     >
                                         <ThumbsUp className="h-4 w-4 mr-2"/>
                                         {post.likes}
-                                    </div>
+                                    </Button>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-purple-400"
-             >
+                                    >
                                         <MessageSquare className="h-4 w-4 mr-2"/>
                                         {post.comments}
-                                    </button>
+                                    </Button>
                                     <Button variant="ghost"
                                         size="sm"
                                         className="text-gray-400 hover:text-green-400"
-             >
+                                    >
                                         <Share2 className="h-4 w-4 mr-2"/>
                                         Share
-                                    </button>
+                                    </Button>
                                 </div>
+                            </CardContent>
                         </Card>
                     ))}
                 </div>
@@ -144,20 +150,25 @@ export default function CommunityPage() {
             {/* Right Sidebar */}
             <div className="lg:col-span-1 space-y-6">
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <h3 className="font-semibold text-white mb-4">Trending Topics</div>
+                    <h3 className="font-semibold text-white mb-4">Trending Topics</h3>
                     <div className="flex flex-wrap gap-2">
-                        {mockTrending.map(tag => <Badge key={tag} variant="secondary"/>{tag}</div>)}
+                        {mockTrending.map(tag => (
+                            <Badge key={tag} variant="secondary">{tag}</Badge>
+                        ))}
                     </div>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><TrendingUp size={18}/></div></div> Leaderboard</h3>
+                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2">
+                        <TrendingUp size={18}/> Leaderboard
+                    </h3>
                     <ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
                             <li key={user.name} className="flex justify-between items-center text-sm">
-                                <span className="text-gray-300">{index + 1}. {user.name}</ul>
+                                <span className="text-gray-300">{index + 1}. {user.name}</span>
                                 <span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span>
+                            </li>
                         ))}
-                    </span>
+                    </ul>
                 </div>
             </div>
         </div>
