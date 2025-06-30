@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Trash2, Plus } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 interface PromoCode {
@@ -72,11 +73,11 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
           className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700">
           <Plus className="h-4 w-4 mr-2"/>
           Generate Code
-        </button>
+        </Button>
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table>
+        <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Code</TableHead>
@@ -121,14 +122,14 @@ export default function PromoCodeEditor({ codes, onGenerate, onRevoke }: Props) 
                         className="h-8 w-8 p-0 text-red-400 hover:text-white hover:bg-red-900/50"
                       >
                         <Trash2 className="h-4 w-4"/>
-                      </button>
+                      </Button>
                     </TableCell>
                   </TableRow>
                 );
               })
             )}
           </TableBody>
-        </table>
+        </Table>
       </div>
 
       <div className="text-xs text-gray-500">
@@ -145,4 +146,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

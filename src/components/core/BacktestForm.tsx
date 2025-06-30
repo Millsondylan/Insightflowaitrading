@@ -1,120 +1,145 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import { Loader2 } from 'lucide-react';
-import { sampleData } from '@/lib/backtest/sampleData';
 
-export interface BacktestFormState {
-  ticker: string;
-  timeframe: string;
-  entryLogic: string;
-  exitLogic: string;
-}
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { CalendarDays, TrendingUp, Settings } from 'lucide-react';
 
 interface BacktestFormProps {
-  onSubmit: (data: BacktestFormState) => void;
-  isLoading: boolean;
+  onSubmit?: (data: BacktestParams) => void;
 }
 
-const defaultEntryLogic = `close > sma(50)
-rsi <(14, 60)`;
-const defaultExitLogic = 'close < sma(50)';
+interface BacktestParams {
+  symbol: string;
+  startDate: string;
+  endDate: string;
+  strategy: string;
+  capital: number;
+}
 
-const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<BacktestFormState>({
-    ticker: 'BTC',
-    timeframe: '1H',
-    entryLogic: defaultEntryLogic,
-    exitLogic: defaultExitLogic,
+const BacktestForm: React.FC<BacktestFormProps> = ({ onSubmit }) => {
+  const [params, setParams] = useState<BacktestParams>({
+    symbol: 'AAPL',
+    startDate: '2023-01-01',
+    endDate: '2023-12-31',
+    strategy: 'moving_average',
+    capital: 10000
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formState);
+    if (onSubmit) {
+      onSubmit(params);
+    }
   };
 
-  const handleSelectChange = (name: string, value: string) => {
-    setFormState(prev => ({ ...prev, [name]: value }));
+  const handleInputChange = (field: keyof BacktestParams, value: string | number) => {
+    setParams(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
-  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormState(prev => ({ ...prev, [name]: value }));
-  };
-  
   return (
-    <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <Label htmlFor="ticker">Ticker</Label>
-          <Select
-            value={formState.ticker}
-            onValueChange={(value) => handleSelectChange('ticker', value)}
-          >
-            <SelectTrigger className="bg-black/30 border-gray-700">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-black/90 border-gray-700 text-white">
-              {Object.keys(sampleData).map(ticker => (
-                <SelectItem key={ticker} value={ticker}>{ticker}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div>
-          <Label htmlFor="timeframe">Timeframe</Label>
-          <Select
-            value={formState.timeframe}
-            onValueChange={(value) => handleSelectChange('timeframe', value)}
-          >
-            <SelectTrigger className="bg-black/30 border-gray-700">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-black/90 border-gray-700 text-white">
-              <SelectItem value="1H">1 Hour</SelectItem>
-              {/* Add more timeframes as needed */}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-      <div>
-        <Label htmlFor="entryLogic">Entry Logic</Label>
-        <Textarea id="entryLogic"
-          name="entryLogic"
-          value={formState.entryLogic}
-          onChange={handleTextAreaChange}
-          className="bg-black/30 border-gray-700 min-h-[120px] font-mono"
-          placeholder="e.g., close> sma(50)"
-        />
-      </div>
-      <div>
-        <Label htmlFor="exitLogic">Exit Logic</Label>
-        <Textarea
-          id="exitLogic"
-          name="exitLogic"
-          value={formState.exitLogic}
-          onChange={handleTextAreaChange}
-          className="bg-black/30 border-gray-700 min-h-[80px] font-mono"
-          placeholder="e.g., close < sma(50)"
-       />
-      </div>
-      <div className="flex justify-center">
-        <Button type="submit"
-          className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 w-full md:w-auto px-8 py-4"
-          disabled={isLoading}
-        >
-          {isLoading ? <Loader2 className="animate-spin"/> : 'Run Backtest'}
-        </button>
-      </div>
-    </form>
+    <Card className="bg-black/30 border-white/10">
+      <CardHeader>
+        <CardTitle className="text-white flex items-center gap-2">
+          <TrendingUp className="h-5 w-5" />
+          Backtest Configuration
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                Symbol
+              </label>
+              <input
+                type="text"
+                value={params.symbol}
+                onChange={(e) => handleInputChange('symbol', e.target.value)}
+                className="w-full px-3 py-2 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                placeholder="e.g., AAPL"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                Initial Capital
+              </label>
+              <input
+                type="number"
+                value={params.capital}
+                onChange={(e) => handleInputChange('capital', Number(e.target.value))}
+                className="w-full px-3 py-2 bg-black/30 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
+                placeholder="10000"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                Start Date
+              </label>
+              <input
+                type="date"
+                value={params.startDate}
+                onChange={(e) => handleInputChange('startDate', e.target.value)}
+                className="w-full px-3 py-2 bg-black/30 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-cyan-500"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                End Date
+              </label>
+              <input
+                type="date"
+                value={params.endDate}
+                onChange={(e) => handleInputChange('endDate', e.target.value)}
+                className="w-full px-3 py-2 bg-black/30 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-cyan-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-white mb-2">
+              Strategy
+            </label>
+            <select
+              value={params.strategy}
+              onChange={(e) => handleInputChange('strategy', e.target.value)}
+              className="w-full px-3 py-2 bg-black/30 border border-white/10 rounded-lg text-white focus:outline-none focus:ring-1 focus:ring-cyan-500"
+            >
+              <option value="moving_average">Moving Average Crossover</option>
+              <option value="rsi">RSI Strategy</option>
+              <option value="bollinger_bands">Bollinger Bands</option>
+              <option value="macd">MACD Strategy</option>
+            </select>
+          </div>
+
+          <div className="flex gap-4">
+            <Button
+              type="submit"
+              className="bg-cyan-600 hover:bg-cyan-700 text-white flex items-center gap-2"
+            >
+              <CalendarDays className="h-4 w-4" />
+              Run Backtest
+            </Button>
+            
+            <Button
+              type="button"
+              variant="outline"
+              className="text-white border-white/20 hover:bg-white/10 flex items-center gap-2"
+            >
+              <Settings className="h-4 w-4" />
+              Advanced Settings
+            </Button>
+          </div>
+        </form>
+      </CardContent>
+    </Card>
   );
 };
 
@@ -125,4 +150,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

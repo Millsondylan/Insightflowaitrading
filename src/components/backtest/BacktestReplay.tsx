@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Play, Pause, Rewind, FastForward, Repeat, Zap } from 'lucide-react';
@@ -105,21 +106,21 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
       <div className="flex justify-between items-center gap-4 mt-4">
         <Button variant="ghost" size="icon" onClick={handleReset} title="Reset">
           <Repeat className="h-4 w-4"/>
-        </button>
+        </Button>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="icon" onClick={handlePrev} title="Previous Candle">
             <Rewind className="h-4 w-4"/>
-          </button>
+          </Button>
           <Button variant="outline" size="icon" onClick={handlePlayPause} className="w-16">
             {isPlaying ? <Pause className="h-4 w-4"/> : <Play className="h-4 w-4"/>}
-          </button>
+          </Button>
           <Button variant="outline" size="icon" onClick={handleNext} title="Next Candle">
             <FastForward className="h-4 w-4"/>
-          </button>
+          </Button>
         </div>
         <Button variant="ghost" size="icon" onClick={toggleSpeed} title="Toggle Speed">
           <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`}/>
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -132,4 +133,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

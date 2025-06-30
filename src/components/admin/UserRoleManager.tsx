@@ -1,3 +1,4 @@
+
 import * as React from "react";
 import {
   Table,
@@ -18,7 +19,6 @@ import { Badge } from "@/components/ui/badge";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Settings } from "lucide-react";
-import { ChangeEvent } from "react";
 
 interface User {
   id: string;
@@ -66,13 +66,6 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
     }
   };
 
-  const handleRoleChange = (userId: string, event: ChangeEvent<HTMLSelectElement>) => {
-    const newRole = event.target.value;
-    if (newRole === 'user' || newRole === 'admin' || newRole === 'mod') {
-      onRoleChange(userId, newRole);
-    }
-  };
-
   return (
     <div className="bg-black/30 rounded-xl p-6 border border-white/10 text-sm text-white space-y-4">
       <div className="flex justify-between items-center">
@@ -80,7 +73,8 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
         {/* Search input */}
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"/>
-          <Input type="text"
+          <input 
+            type="text"
             value={searchQuery}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             placeholder="Search users..."
@@ -90,7 +84,7 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
       </div>
 
       <div className="rounded-lg border border-white/10 overflow-hidden">
-        <table>
+        <Table>
           <TableHeader>
             <TableRow>
               <TableHead>Email</TableHead>
@@ -112,25 +106,29 @@ const UserRoleManager = ({ users, onRoleChange }: Props) => {
                   <TableCell>
                     <Select
                       value={user.role}
-                      onChange={(e: React.ChangeEvent<HTMLSelectElement>) => handleRoleChange(user.id, e)}
-                      className="bg-transparent border border-white/10 rounded px-2 py-1 text-white"
+                      onValueChange={(value: User['role']) => onRoleChange(user.id, value)}
                     >
-                      <option value="user">User</option>
-                      <option value="mod">Moderator</option>
-                      <option value="admin">Admin</option>
+                      <SelectTrigger className="bg-black/30 border-white/10 text-white">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-black/90 border-white/10">
+                        <SelectItem value="user">User</SelectItem>
+                        <SelectItem value="mod">Moderator</SelectItem>
+                        <SelectItem value="admin">Admin</SelectItem>
+                      </SelectContent>
                     </Select>
                   </TableCell>
                   <TableCell className="text-right">
                     <Button variant="ghost"
                       className="h-8 w-8 p-0 text-gray-400 hover:text-white">
                       <Settings className="h-4 w-4"/>
-                    </button>
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))
             )}
           </TableBody>
-        </table>
+        </Table>
       </div>
       <div className="text-xs text-gray-500">
         Showing {filteredUsers.length} of {users.length} users
@@ -146,4 +144,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

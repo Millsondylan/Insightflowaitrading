@@ -1,124 +1,121 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import TokenBalanceCard from '@/components/ui/TokenBalanceCard';
-import { getBalances, getMockInitialBalances, TokenBalance } from '@/lib/wallet/getBalances';
-import { useToast } from '@/components/ui/use-toast';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Wallet, CheckCircle } from 'lucide-react';
-import '@/styles/wallet.css';
+import { Badge } from '@/components/ui/badge';
+import { Wallet, CreditCard, TrendingUp, TrendingDown, Plus, Minus } from 'lucide-react';
 
-const WalletPanel: React.FC = () => {
-  const { toast } = useToast();
-  const [address, setAddress] = useState<string | null>(null);
-  const [balances, setBalances] = useState<TokenBalance[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [inputValue, setInputValue] = useState('');
+interface WalletPanelProps {
+  balance?: number;
+  currency?: string;
+}
 
-  // On mount, check for a stored address and load mock balances
-  useEffect(() => {
-    const storedAddress = localStorage.getItem('walletAddress');
-    if (storedAddress) {
-      setAddress(storedAddress);
-      fetchBalances(storedAddress);
-    } else {
-      fetchInitialBalances();
-    }
-  }, []);
+const WalletPanel: React.FC<WalletPanelProps> = ({ 
+  balance = 10000, 
+  currency = 'USD' 
+}) => {
+  const [showTransactions, setShowTransactions] = useState(false);
+  
+  const transactions = [
+    { id: '1', type: 'deposit', amount: 5000, date: '2024-01-15', status: 'completed' },
+    { id: '2', type: 'trade', amount: -250, date: '2024-01-14', status: 'completed' },
+    { id: '3', type: 'deposit', amount: 2500, date: '2024-01-10', status: 'completed' },
+  ];
 
-  const fetchInitialBalances = async () => {
-    setLoading(true);
-    const mockBalances = await getMockInitialBalances();
-    setBalances(mockBalances);
-    setLoading(false);
-  };
+  const totalGains = transactions
+    .filter(t => t.amount > 0)
+    .reduce((sum, t) => sum + t.amount, 0);
+    
+  const totalLosses = Math.abs(transactions
+    .filter(t => t.amount < 0)
+    .reduce((sum, t) => sum + t.amount, 0));
 
-  const fetchBalances = async (addr: string) => {
-    setLoading(true);
-    try {
-      const newBalances = await getBalances(addr);
-      setBalances(newBalances);
-      toast({
-        title: 'Balances Updated',
-        description: `Displaying balances for ${addr.substring(0, 6)}...`,
-      });
-    } catch (error) {
-      toast({
-        variant: 'destructive',
-        title: 'Error Fetching Balances',
-        description: 'Could not retrieve balances for the provided address.',
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleConnect = () => {
-    if (!inputValue) {
-      toast({
-        variant: 'destructive',
-        title: 'Invalid Address',
-        description: 'Please enter a valid wallet address.',
-      });
-      return;
-    }
-    localStorage.setItem('walletAddress', inputValue);
-    setAddress(inputValue);
-    fetchBalances(inputValue);
-  };
-
-  const handleDisconnect = () => {
-    localStorage.removeItem('walletAddress');
-    setAddress(null);
-    setInputValue('');
-    fetchInitialBalances();
-    toast({ title: 'Wallet Disconnected' });
-  };
-
-  const renderContent = () => {
-    if (address) {
-      return (
-        <div>
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center space-x-2 text-green-400">
-              <CheckCircle className="h-5 w-5"/>
-              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</TokenBalance></p>
-            </div>
-            <Button variant="outline" onClick={handleDisconnect} size="sm">Disconnect</button>
+  return (
+    <Card className="bg-black/30 border-white/10">
+      <CardHeader>
+        <CardTitle className="text-white flex items-center gap-2">
+          <Wallet className="h-5 w-5" />
+          Wallet Overview
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="text-center">
+          <div className="text-3xl font-bold text-white mb-2">
+            {balance.toLocaleString()} {currency}
           </div>
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            <animatePresence>
-              {balances.map((token, index) => (
-                <TokenBalanceCard key={token.chain.id} token={token} index={index}/>
-              ))}
-            </TokenBalanceCard>
-          </motion.div>
+          <Badge variant="outline" className="text-green-400 border-green-400/30">
+            <TrendingUp className="h-3 w-3 mr-1" />
+            +2.4% Today
+          </Badge>
         </div>
-      );
-    }
 
-    return (
-      <div className="wallet-connect-cta">
-        <Wallet className="h-16 w-16 text-blue-400 mx-auto mb-6"/>
-        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</div>
-        <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
-        <div className="flex max-w-md mx-auto">
-          <Input type="text" 
-            placeholder="Enter any wallet address to simulate..."
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
-          />
-          <Button onClick={handleConnect} className="connect-wallet-btn shrink-0"></div></div>Connect</div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white/5 rounded-lg p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="h-4 w-4 text-green-400" />
+              <span className="text-sm text-white/70">Total Gains</span>
+            </div>
+            <div className="text-lg font-semibold text-green-400">
+              +${totalGains.toLocaleString()}
+            </div>
+          </div>
+          
+          <div className="bg-white/5 rounded-lg p-4">
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingDown className="h-4 w-4 text-red-400" />
+              <span className="text-sm text-white/70">Total Losses</span>
+            </div>
+            <div className="text-lg font-semibold text-red-400">
+              -${totalLosses.toLocaleString()}
+            </div>
+          </div>
         </div>
-      </div>
-    );
-  };
 
-  return <div className="wallet-panel">{renderContent()}</div>;
+        <div className="flex gap-2">
+          <Button className="flex-1 bg-green-600 hover:bg-green-700 text-white">
+            <Plus className="h-4 w-4 mr-2" />
+            Deposit
+          </Button>
+          <Button variant="outline" className="flex-1 text-white border-white/20 hover:bg-white/10">
+            <Minus className="h-4 w-4 mr-2" />
+            Withdraw
+          </Button>
+        </div>
+
+        <Button 
+          variant="ghost" 
+          className="w-full text-white/70 hover:text-white"
+          onClick={() => setShowTransactions(!showTransactions)}
+        >
+          <CreditCard className="h-4 w-4 mr-2" />
+          {showTransactions ? 'Hide' : 'Show'} Recent Transactions
+        </Button>
+
+        {showTransactions && (
+          <div className="space-y-2">
+            {transactions.map((transaction) => (
+              <div key={transaction.id} className="flex items-center justify-between py-2 px-3 bg-white/5 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className={`w-2 h-2 rounded-full ${
+                    transaction.amount > 0 ? 'bg-green-400' : 'bg-red-400'
+                  }`} />
+                  <div>
+                    <div className="text-sm text-white capitalize">{transaction.type}</div>
+                    <div className="text-xs text-white/60">{transaction.date}</div>
+                  </div>
+                </div>
+                <div className={`font-semibold ${
+                  transaction.amount > 0 ? 'text-green-400' : 'text-red-400'
+                }`}>
+                  {transaction.amount > 0 ? '+' : ''}${Math.abs(transaction.amount).toLocaleString()}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
 };
 
 export default WalletPanel;
@@ -128,4 +125,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
