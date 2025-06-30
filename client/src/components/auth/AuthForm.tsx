@@ -1,148 +1,196 @@
+
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { useAuth } from '@/hooks/use-auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { LogIn, UserPlus, Github, Mail } from 'lucide-react';
-import { signIn, signUp, AuthError } from '@/lib/auth/handleAuth';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Loader2, Mail, Lock, User, Rocket } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface AuthFormProps {
-    defaultMode?: 'signin' | 'signup';
-    onSuccess?: () => void;
+  onSuccess?: () => void;
 }
 
-export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthFormProps) {
-    const [mode, setMode] = useState<'signin' | 'signup'>(defaultMode);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState<string | null>(null);
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+const AuthForm: React.FC<AuthFormProps> = ({ onSuccess }) => {
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setError(null);
-        setLoading(true);
+  const { login, signup } = useAuth();
+  const { toast } = useToast();
 
-        try {
-            if (mode === 'signin') {
-                await signIn(email, password);
-            } else {
-                await signUp(email, password);
-            }
-            
-            if (onSuccess) {
-                onSuccess();
-            } else {
-                navigate('/');
-            }
-        } catch (err) {
-            if (err instanceof AuthError) {
-                setError(err.message);
-            } else {
-                setError('An unexpected error occurred');
-            }
-        } finally {
-            setLoading(false);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      if (isSignUp) {
+        if (password !== confirmPassword) {
+          setError('Passwords do not match');
+          return;
         }
-    };
+        const result = await signup(email, password);
+        if (result.success) {
+          toast({
+            title: 'Account created successfully!',
+            description: 'Welcome to InsightFlow AI Trading Platform',
+          });
+          onSuccess?.();
+        } else {
+          setError(result.error?.message || 'Failed to create account');
+        }
+      } else {
+        const result = await login(email, password);
+        if (result.success) {
+          toast({
+            title: 'Welcome back!',
+            description: 'Successfully logged in to your account',
+          });
+          onSuccess?.();
+        } else {
+          setError(result.error?.message || 'Failed to log in');
+        }
+      }
+    } catch (err) {
+      setError('An unexpected error occurred');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return (
-        <div className="w-full max-w-md mx-auto">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-bold text-white mb-6">
-                    {mode === 'signin' ? 'Welcome Back' : 'Create Account'}
-                </h2>
-
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <Input 
-                            type="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="bg-black/20 border-white/10"
-                            required
-                        />
-                    </div>
-
-                    <div>
-                        <Input 
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="bg-black/20 border-white/10"
-                            required
-                            minLength={8}
-                        />
-                    </div>
-
-                    {error && (
-                        <div className="text-red-400 text-sm">{error}</div>
-                    )}
-
-                    <Button 
-                        type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700"
-                        disabled={loading}
-                    >
-                        {loading ? (
-                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white"/>
-                        ) : mode === 'signin' ? (
-                            <>
-                                <LogIn className="w-4 h-4 mr-2"/>
-                                Sign In
-                            </>
-                        ) : (
-                            <>
-                                <UserPlus className="w-4 h-4 mr-2"/>
-                                Sign Up
-                            </>
-                        )}
-                    </Button>
-
-                    <div className="relative my-6">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-white/10"></div>
-                        </div>
-                        <div className="relative flex justify-center text-xs uppercase">
-                            <span className="bg-background-primary px-2 text-gray-500">Or continue with</span>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" className="w-full">
-                            <Github className="w-4 h-4 mr-2"/>
-                            GitHub
-                        </Button>
-                        <Button variant="outline" className="w-full">
-                            <Mail className="w-4 h-4 mr-2"/>
-                            Google
-                        </Button>
-                    </div>
-
-                    <div className="text-center mt-6">
-                        <Button 
-                            type="button"
-                            onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
-                            className="text-sm text-gray-400 hover:text-white transition-colors"
-                        >
-                            {mode === 'signin' ? (
-                                "Don't have an account? Sign up"
-                            ) : (
-                                "Already have an account? Sign in"
-                            )}
-                        </Button>
-                    </div>
-                </form>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4 floating-particles">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-md"
+      >
+        <Card className="glass-effect gradient-border neon-glow">
+          <CardHeader className="text-center pb-6">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full flex items-center justify-center">
+              <Rocket className="w-8 h-8 text-white" />
             </div>
-        </div>
-    );
-}
+            <CardTitle className="text-2xl font-bold text-white neon-text">
+              {isSignUp ? 'Join InsightFlow AI' : 'Welcome Back'}
+            </CardTitle>
+            <p className="text-gray-300 mt-2">
+              {isSignUp 
+                ? 'Start your AI-powered trading journey' 
+                : 'Access your trading dashboard'
+              }
+            </p>
+          </CardHeader>
 
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-}; 
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <Alert className="bg-red-500/10 border-red-500/30 text-red-400">
+                  <AlertDescription>{error}</AlertDescription>
+                </Alert>
+              )}
+
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="email" className="text-gray-300 font-medium">
+                    Email Address
+                  </Label>
+                  <div className="relative mt-2">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <Input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="pl-10 bg-white/5 border-gray-600 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-cyan-400/20"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="password" className="text-gray-300 font-medium">
+                    Password
+                  </Label>
+                  <div className="relative mt-2">
+                    <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <Input
+                      id="password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      className="pl-10 bg-white/5 border-gray-600 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-cyan-400/20"
+                      placeholder="Enter your password"
+                      required
+                    />
+                  </div>
+                </div>
+
+                {isSignUp && (
+                  <div>
+                    <Label htmlFor="confirmPassword" className="text-gray-300 font-medium">
+                      Confirm Password
+                    </Label>
+                    <div className="relative mt-2">
+                      <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                      <Input
+                        id="confirmPassword"
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="pl-10 bg-white/5 border-gray-600 text-white placeholder-gray-400 focus:border-cyan-400 focus:ring-cyan-400/20"
+                        placeholder="Confirm your password"
+                        required
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                disabled={loading}
+                className="w-full btn-futuristic bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white py-3 font-semibold text-lg neon-glow"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    {isSignUp ? 'Creating Account...' : 'Signing In...'}
+                  </>
+                ) : (
+                  <>
+                    <User className="w-5 h-5 mr-2" />
+                    {isSignUp ? 'Create Account' : 'Sign In'}
+                  </>
+                )}
+              </Button>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  onClick={() => setIsSignUp(!isSignUp)}
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium"
+                >
+                  {isSignUp 
+                    ? 'Already have an account? Sign in' 
+                    : "Don't have an account? Sign up"
+                  }
+                </button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+  );
+};
+
+export default AuthForm;
