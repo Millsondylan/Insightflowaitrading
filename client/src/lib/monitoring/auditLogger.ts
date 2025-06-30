@@ -33,4 +33,25 @@ class AuditLogger {
   }
 }
 
-export const auditLogger = new AuditLogger(); 
+export const auditLogger = new AuditLogger();
+
+// React hook for audit logging
+export const useAuditLog = () => {
+  const logEvent = (action: string, details?: Record<string, any>) => {
+    auditLogger.log({
+      action,
+      resource: 'app',
+      details,
+    });
+  };
+
+  const logClick = (element: string, details?: Record<string, any>) => {
+    auditLogger.log({
+      action: `click:${element}`,
+      resource: 'ui',
+      details,
+    });
+  };
+
+  return { logEvent, logClick };
+}; 

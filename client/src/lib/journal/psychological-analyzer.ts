@@ -110,12 +110,12 @@ export class TradePsychologicalAnalyzer {
   private behaviorModel: tf.LayersModel;
   private personalityModel: tf.LayersModel;
   private readonly emotionKeywords: Map<string, string[]>;
-  private readonly behaviorPatterns: Map<string, (trades: Trade[]) => number>;
+  private readonly behavioralPatterns: Map<string, (trades: Trade[]) => number>;
 
   constructor(apiKey: string) {
     this.openai = new OpenAI({ apiKey });
     this.emotionKeywords = this.initializeEmotionKeywords();
-    this.behaviorPatterns = this.initializeBehaviorPatterns();
+    this.behavioralPatterns = this.initializeBehaviorPatterns();
     this.initializeModels();
   }
 
@@ -329,7 +329,7 @@ export class TradePsychologicalAnalyzer {
 
   private detectOvertrading(trades: Trade[]): boolean {
     const tradesPerDay = this.calculateTradeFrequency(trades);
-    return tradesPerDay > this.behavioralPatterns.overtrading.threshold;
+    return tradesPerDay > 5; // Threshold for overtrading
   }
 
   private calculateTradeFrequency(trades: Trade[]): number {

@@ -622,6 +622,9 @@ export type Database = {
           trial_extended_until: string | null
           updated_at: string
           weekly_posts_used: number | null
+          referral_code: string | null
+          referral_payout_wallet: string | null
+          total_referral_earnings: number | null
         }
         Insert: {
           avatar_url?: string | null
@@ -644,6 +647,9 @@ export type Database = {
           trial_extended_until?: string | null
           updated_at?: string
           weekly_posts_used?: number | null
+          referral_code?: string | null
+          referral_payout_wallet?: string | null
+          total_referral_earnings?: number | null
         }
         Update: {
           avatar_url?: string | null
@@ -666,6 +672,9 @@ export type Database = {
           trial_extended_until?: string | null
           updated_at?: string
           weekly_posts_used?: number | null
+          referral_code?: string | null
+          referral_payout_wallet?: string | null
+          total_referral_earnings?: number | null
         }
         Relationships: []
       }
@@ -966,6 +975,465 @@ export type Database = {
           symbols?: string[] | null
           updated_at?: string | null
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      user_saved_setups: {
+        Row: {
+          id: string
+          user_id: string
+          setup_id: string
+          notes: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          setup_id: string
+          notes?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          setup_id?: string
+          notes?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      user_favorite_pairs: {
+        Row: {
+          id: string
+          user_id: string
+          symbol_pair: string[]
+          notify_on_inverse_correlation: boolean
+          correlation_threshold: number
+          color_palette: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          symbol_pair: string[]
+          notify_on_inverse_correlation?: boolean
+          correlation_threshold?: number
+          color_palette?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          symbol_pair?: string[]
+          notify_on_inverse_correlation?: boolean
+          correlation_threshold?: number
+          color_palette?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          id: string
+          user_id: string
+          title: string
+          message: string
+          type: string
+          read: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          title: string
+          message: string
+          type: string
+          read?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          title?: string
+          message?: string
+          type?: string
+          read?: boolean
+          created_at?: string
+        }
+        Relationships: []
+      }
+      referrals: {
+        Row: {
+          id: string
+          referrer_id: string
+          referred: string
+          referral_code: string
+          status: string
+          signup_date: string
+          earnings_percentage: number
+        }
+        Insert: {
+          id?: string
+          referrer_id: string
+          referred: string
+          referral_code: string
+          status?: string
+          signup_date?: string
+          earnings_percentage?: number
+        }
+        Update: {
+          id?: string
+          referrer_id?: string
+          referred?: string
+          referral_code?: string
+          status?: string
+          signup_date?: string
+          earnings_percentage?: number
+        }
+        Relationships: []
+      }
+      referral_earnings: {
+        Row: {
+          id: string
+          user_id: string
+          referred: string
+          amount: number
+          currency: string
+          payment_date: string
+          status: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          referred: string
+          amount: number
+          currency: string
+          payment_date?: string
+          status?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          referred?: string
+          amount?: number
+          currency?: string
+          payment_date?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      wallet_transactions: {
+        Row: {
+          id: string
+          user_id: string
+          tx_hash: string
+          cryptocurrency: string
+          amount: string
+          status: string
+          confirmation_timestamp: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          tx_hash: string
+          cryptocurrency: string
+          amount: string
+          status?: string
+          confirmation_timestamp?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          tx_hash?: string
+          cryptocurrency?: string
+          amount?: string
+          status?: string
+          confirmation_timestamp?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      user_preferences: {
+        Row: {
+          id: string
+          user_id: string
+          trading_experience: string
+          favorite_markets: string[]
+          preferred_timeframes: string[]
+          risk_tolerance: number
+          theme: string
+          notifications_enabled: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          trading_experience?: string
+          favorite_markets?: string[]
+          preferred_timeframes?: string[]
+          risk_tolerance?: number
+          theme?: string
+          notifications_enabled?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          trading_experience?: string
+          favorite_markets?: string[]
+          preferred_timeframes?: string[]
+          risk_tolerance?: number
+          theme?: string
+          notifications_enabled?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      backtest_jobs: {
+        Row: {
+          id: string
+          user_id: string
+          strategy_id: string
+          status: string
+          progress: number
+          result_id: string | null
+          created_at: string
+          completed_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          strategy_id: string
+          status?: string
+          progress?: number
+          result_id?: string | null
+          created_at?: string
+          completed_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          strategy_id?: string
+          status?: string
+          progress?: number
+          result_id?: string | null
+          created_at?: string
+          completed_at?: string | null
+        }
+        Relationships: []
+      }
+      daily_plans: {
+        Row: {
+          id: string
+          user_id: string
+          date: string
+          goals: string[]
+          focus_pairs: string[]
+          risk_limit: number
+          notes: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          date: string
+          goals?: string[]
+          focus_pairs?: string[]
+          risk_limit?: number
+          notes?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          date?: string
+          goals?: string[]
+          focus_pairs?: string[]
+          risk_limit?: number
+          notes?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          id: string
+          room_id: string
+          user_id: string
+          content: string
+          attachment_url: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          room_id: string
+          user_id: string
+          content: string
+          attachment_url?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          room_id?: string
+          user_id?: string
+          content?: string
+          attachment_url?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      voice_room_members: {
+        Row: {
+          id: string
+          room_id: string
+          user_id: string
+          role: string
+          joined_at: string
+        }
+        Insert: {
+          id?: string
+          room_id: string
+          user_id: string
+          role?: string
+          joined_at?: string
+        }
+        Update: {
+          id?: string
+          room_id?: string
+          user_id?: string
+          role?: string
+          joined_at?: string
+        }
+        Relationships: []
+      }
+      admin_logs: {
+        Row: {
+          id: string
+          admin_id: string
+          action: string
+          target_user_id: string | null
+          details: Json
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          admin_id: string
+          action: string
+          target_user_id?: string | null
+          details?: Json
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          admin_id?: string
+          action?: string
+          target_user_id?: string | null
+          details?: Json
+          created_at?: string
+        }
+        Relationships: []
+      }
+      academy_lessons: {
+        Row: {
+          id: string
+          title: string
+          description: string
+          content: string
+          difficulty: string
+          estimated_time: number
+          quiz_questions: Json
+          order_index: number
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          description: string
+          content: string
+          difficulty?: string
+          estimated_time?: number
+          quiz_questions?: Json
+          order_index?: number
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          description?: string
+          content?: string
+          difficulty?: string
+          estimated_time?: number
+          quiz_questions?: Json
+          order_index?: number
+          created_at?: string
+        }
+        Relationships: []
+      }
+      user_progress: {
+        Row: {
+          id: string
+          user_id: string
+          lesson_id: string
+          completed: boolean
+          quiz_score: number | null
+          completed_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          lesson_id: string
+          completed?: boolean
+          quiz_score?: number | null
+          completed_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          lesson_id?: string
+          completed?: boolean
+          quiz_score?: number | null
+          completed_at?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      strategies: {
+        Row: {
+          id: string
+          user_id: string
+          name: string
+          description: string | null
+          logic: Json
+          parameters: Json
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          name: string
+          description?: string | null
+          logic: Json
+          parameters?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          name?: string
+          description?: string | null
+          logic?: Json
+          parameters?: Json
+          created_at?: string
+          updated_at?: string
         }
         Relationships: []
       }

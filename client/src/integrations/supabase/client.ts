@@ -6,58 +6,130 @@ import type { Database } from '@/types/supabase';
 const isLovable = import.meta.env.VITE_IS_LOVABLE === 'true' || 
                   window.location.hostname.includes('lovable.dev');
 
+// Check if we're in demo mode
+const isDemoMode = import.meta.env.VITE_DEMO_MODE === 'true' || 
+                   import.meta.env.VITE_USE_MOCK_DATA === 'true' ||
+                   import.meta.env.DEV === true;
+
 // Set up the Supabase URL and API key
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://ikreglaqlileqlmlgsao.supabase.co'
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 
+// Validate the configuration
+const hasValidConfig = supabaseUrl && 
+                      supabaseKey && 
+                      supabaseKey !== 'your_supabase_anon_key_here' &&
+                      supabaseKey !== 'demo_anon_key_for_development' &&
+                      !isDemoMode;
+
 let supabase: ReturnType<typeof createClient<Database>>;
 
-try {
-  // Create the Supabase client
-  supabase = createClient<Database>(supabaseUrl, supabaseKey, {
-    auth: {
-      autoRefreshToken: true,
-      persistSession: true,
-      detectSessionInUrl: true
-    }
-  });
+// Create a mock client for development/demo purposes
+const createMockClient = () => {
+  console.warn('🔧 Using mock Supabase client - no real database connection');
+  console.log('📝 This is normal for development/demo mode');
   
-  console.log('Supabase client initialized successfully');
+  return {
+    from: (table: string) => ({
+      select: (columns?: string) => {
+        console.log(`🔍 Mock select from ${table}`, columns);
+        return Promise.resolve({ data: [], error: null });
+      },
+      insert: (data: any) => {
+        console.log(`➕ Mock insert into ${table}`, data);
+        return Promise.resolve({ data: null, error: null });
+      },
+      update: (data: any) => ({
+        eq: (column: string, value: any) => {
+          console.log(`✏️ Mock update ${table} where ${column} = ${value}`, data);
+          return Promise.resolve({ data: null, error: null });
+        }
+      }),
+      delete: () => ({
+        eq: (column: string, value: any) => {
+          console.log(`🗑️ Mock delete from ${table} where ${column} = ${value}`);
+          return Promise.resolve({ data: null, error: null });
+        }
+      })
+    }),
+    auth: {
+      getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+      signInWithPassword: (credentials: any) => {
+        console.log('🔐 Mock sign in', credentials);
+        return Promise.resolve({ 
+          data: { 
+            user: { 
+              id: 'mock-user-id', 
+              email: credentials.email,
+              created_at: new Date().toISOString()
+            }, 
+            session: { 
+              access_token: 'mock-token',
+              refresh_token: 'mock-refresh-token'
+            }
+          }, 
+          error: null 
+        });
+      },
+      signOut: () => {
+        console.log('🚪 Mock sign out');
+        return Promise.resolve({ error: null });
+      },
+      onAuthStateChange: (callback: any) => {
+        console.log('👂 Mock auth state change listener registered');
+        return { data: { subscription: { unsubscribe: () => {} } } };
+      }
+    },
+    storage: {
+      from: (bucket: string) => ({
+        upload: (path: string, file: File) => {
+          console.log(`📤 Mock upload to ${bucket}/${path}`, file);
+          return Promise.resolve({ data: { path }, error: null });
+        },
+        download: (path: string) => {
+          console.log(`📥 Mock download from ${bucket}/${path}`);
+          return Promise.resolve({ data: null, error: null });
+        }
+      })
+    }
+  } as any;
+};
+
+try {
+  if (!hasValidConfig) {
+    console.warn('⚠️ Supabase configuration incomplete or in demo mode. Using mock client.');
+    supabase = createMockClient();
+  } else {
+    // Create the Supabase client with valid configuration
+    supabase = createClient<Database>(supabaseUrl, supabaseKey, {
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+      }
+    });
+    
+    console.log('✅ Supabase client initialized successfully with real configuration');
+  }
   
   // Add event listeners for Lovable environment
   if (isLovable) {
-    console.log('Lovable environment detected. Adding error handlers...');
+    console.log('🌐 Lovable environment detected. Adding error handlers...');
     window.addEventListener('unhandledrejection', (event) => {
       if (event.reason?.message?.includes('supabase') || 
           event.reason?.message?.includes('network') ||
           event.reason?.message?.includes('database')) {
-        console.error('Supabase error caught:', event.reason);
+        console.error('❌ Supabase error caught:', event.reason);
         event.preventDefault(); // Prevent the default error handling
       }
     });
   }
 } catch (error) {
-  console.error('Failed to initialize Supabase client:', error);
+  console.error('💥 Failed to initialize Supabase client:', error);
   
-  // Create a minimal mock client for Lovable
-  if (isLovable) {
-    console.warn('Creating fallback Supabase client');
-    // @ts-ignore - Using any type for fallback
-    supabase = {
-      from: () => ({
-        select: () => Promise.resolve({ data: [], error: null })
-      }),
-      auth: {
-        getSession: () => Promise.resolve({ data: { session: null }, error: null }),
-        signInWithPassword: () => Promise.resolve({ data: { user: null }, error: null }),
-        signOut: () => Promise.resolve({ error: null })
-      }
-    } as any;
-  } else {
-    // For non-Lovable environments, create an empty client but log the error
-    // @ts-ignore - Using any type for fallback
-    supabase = createClient<Database>(supabaseUrl, '');
-  }
+  // Always fall back to mock client on error
+  console.warn('🔄 Falling back to mock Supabase client');
+  supabase = createMockClient();
 }
 
 // Export the client

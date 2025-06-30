@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,7 +32,18 @@ interface PaymentStatus {
   amount: string | null;
 }
 
-export default function CryptoPayment() {
+interface CryptoPaymentProps {
+  plan?: {
+    id: string;
+    name: string;
+    price: number;
+    duration: string;
+  };
+  onComplete?: () => void;
+  onCancel?: () => void;
+}
+
+export default function CryptoPayment({ plan, onComplete, onCancel }: CryptoPaymentProps) {
   const { user } = useAuth();
   const [selectedCrypto, setSelectedCrypto] = useState<keyof typeof WALLET_ADDRESSES>("ETH");
   const [txHash, setTxHash] = useState("");

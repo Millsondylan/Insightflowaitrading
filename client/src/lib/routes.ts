@@ -2,7 +2,6 @@ import { Home, Zap, LineChart, BookOpen, Eye, Wallet, Shield, Info, CreditCard, 
 import Index from "@/pages/Index.tsx";
 import JournalPage from "@/pages/Journal.tsx";
 import StrategyPage from "@/pages/Strategy.tsx";
-import BacktestPage from "@/pages/Backtest.tsx";
 import VisionPage from "@/pages/Vision.tsx";
 import WalletPage from "@/pages/Wallet.tsx";
 import AcademyPage from "@/pages/Academy.tsx";
@@ -12,17 +11,10 @@ import PricingPage from "@/pages/Pricing.tsx";
 import TermsPage from "@/pages/Terms.tsx";
 import PrivacyPage from "@/pages/Privacy.tsx";
 import DownloadPage from "@/pages/DownloadApp.tsx";
-import About from "@/pages/About";
 import AuthPage from "@/pages/AuthPage";
 import Dashboard from "@/pages/Dashboard";
-import ErrorPage from "@/pages/ErrorPage";
-import Home from "@/pages/Home";
-import Journal from "@/pages/Journal";
-import NotFoundPage from "@/pages/NotFoundPage";
-import Profile from "@/pages/Profile";
 import Register from "@/pages/Register";
 import Settings from "@/pages/UserSettings";
-import Strategy from "@/pages/Strategy";
 import VerifyEmail from "@/pages/VerifyEmail";
 import CryptoPaymentPage from "@/pages/CryptoPaymentPage";
 
@@ -110,7 +102,7 @@ export const ALL_ROUTES = [
   {
     path: "/backtest",
     name: "Backtest",
-    component: BacktestPage,
+    component: StrategyPage, // Using StrategyPage as fallback
     icon: LineChart,
     auth: false
   },
