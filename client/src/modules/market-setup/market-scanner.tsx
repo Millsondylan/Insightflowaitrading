@@ -1,4 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 interface MarketScannerProps {
   onSelectMarket: (symbol: string) => void;
@@ -22,7 +25,7 @@ interface ScanResult {
   lastUpdated: string;
 }
 
-export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) => {
+export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) => {
   const [results, setResults] = useState<ScanResult[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,10 +45,6 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
     
     try {
       // TODO: Replace with actual API call
-      // const response = await fetch(`/api/market-scanner?timeframe=${activeTimeframe}&filter=${filterType}`);
-      // const data = await response.json();
-      
-      // Mock response for development
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const mockResults: ScanResult[] = [
@@ -98,79 +97,9 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
           score: 60,
           timeframe: activeTimeframe,
           lastUpdated: new Date().toISOString()
-        },
-        {
-          symbol: 'XRP/USD',
-          name: 'Ripple',
-          price: 0.5 + Math.random() * 0.2,
-          change24h: 1.5 + Math.random() * 5,
-          volume24h: 2000000000,
-          marketCap: 25000000000,
-          signals: [
-            {
-              type: 'bullish',
-              indicator: 'Price Action',
-              strength: 0.9,
-              description: 'Higher highs and higher lows'
-            }
-          ],
-          score: 85,
-          timeframe: activeTimeframe,
-          lastUpdated: new Date().toISOString()
-        },
-        {
-          symbol: 'ADA/USD',
-          name: 'Cardano',
-          price: 1.1 + Math.random() * 0.4,
-          change24h: -0.8 + Math.random() * 4,
-          volume24h: 1800000000,
-          marketCap: 38000000000,
-          signals: [
-            {
-              type: 'neutral',
-              indicator: 'Bollinger Bands',
-              strength: 0.3,
-              description: 'Price moving in the middle of the bands'
-            },
-            {
-              type: 'bearish',
-              indicator: 'RSI',
-              strength: 0.6,
-              description: 'RSI showing overbought conditions'
-            }
-          ],
-          score: 45,
-          timeframe: activeTimeframe,
-          lastUpdated: new Date().toISOString()
-        },
-        {
-          symbol: 'SOL/USD',
-          name: 'Solana',
-          price: 100 + Math.random() * 30,
-          change24h: 3.2 + Math.random() * 4,
-          volume24h: 3500000000,
-          marketCap: 42000000000,
-          signals: [
-            {
-              type: 'bullish',
-              indicator: 'Support/Resistance',
-              strength: 0.85,
-              description: 'Price bouncing off major support level'
-            },
-            {
-              type: 'bullish',
-              indicator: 'Momentum',
-              strength: 0.7,
-              description: 'Strong upward momentum'
-            }
-          ],
-          score: 90,
-          timeframe: activeTimeframe,
-          lastUpdated: new Date().toISOString()
         }
       ];
       
-      // Filter results based on type if needed
       let filteredResults = [...mockResults];
       if (filterType === 'bullish') {
         filteredResults = mockResults.filter(result => {
@@ -184,7 +113,6 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
         });
       }
       
-      // Sort by score
       filteredResults.sort((a, b) => b.score - a.score);
       
       setResults(filteredResults);
@@ -209,10 +137,10 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
     : results;
   
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-status-success';
-    if (score >= 60) return 'text-status-warning';
-    if (score >= 40) return 'text-text-primary';
-    return 'text-status-error';
+    if (score >= 80) return 'text-green-500';
+    if (score >= 60) return 'text-yellow-500';
+    if (score >= 40) return 'text-gray-500';
+    return 'text-red-500';
   };
   
   const formatLargeNumber = (num: number) => {
@@ -226,18 +154,18 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
   return (
     <div className="market-scanner">
       <div className="flex flex-wrap justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Market Scanner</ScanResult>
+        <h2 className="text-2xl font-bold">Market Scanner</h2>
         
         <div className="flex space-x-2">
           {timeframes.map(tf => (
             <Button key={tf}
               className={`px-3 py-1 rounded ${
-                activeTimeframe === tf ? 'bg-brand-primary text-white' : 'bg-background-secondary'
+                activeTimeframe === tf ? 'bg-blue-600 text-white' : 'bg-gray-200'
               }`}
               onClick={() => setActiveTimeframe(tf)}
             >
               {tf}
-            </div>
+            </Button>
           ))}
         </div>
       </div>
@@ -246,78 +174,83 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
         <div className="flex-1">
           <Input
             type="text"
-            className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
+            className="w-full p-2 border rounded-md"
             placeholder="Search markets..."
             value={searchQuery}
-            onChange={handleSearch}/>
+            onChange={handleSearch}
+          />
         </div>
         
         <div className="flex space-x-2">
-          <Button  className={`px-4 py-2 rounded ${
-              filterType === 'all' ? 'bg-brand-primary text-white' : 'bg-background-secondary'
+          <Button  
+            className={`px-4 py-2 rounded ${
+              filterType === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200'
             }`}
             onClick={() => setFilterType('all')}
           >
             All
-          </div>
-          <Button  className={`px-4 py-2 rounded ${
-              filterType === 'bullish' ? 'bg-status-success text-white' : 'bg-background-secondary'
+          </Button>
+          <Button  
+            className={`px-4 py-2 rounded ${
+              filterType === 'bullish' ? 'bg-green-600 text-white' : 'bg-gray-200'
             }`}
             onClick={() => setFilterType('bullish')}
           >
             Bullish
-          </button>
-          <Button  className={`px-4 py-2 rounded ${
-              filterType === 'bearish' ? 'bg-status-error text-white' : 'bg-background-secondary'
+          </Button>
+          <Button  
+            className={`px-4 py-2 rounded ${
+              filterType === 'bearish' ? 'bg-red-600 text-white' : 'bg-gray-200'
             }`}
             onClick={() => setFilterType('bearish')}
           >
             Bearish
-          </button>
+          </Button>
         </div>
       </div>
       
       {loading ? (
         <div className="p-12 text-center">
           <div className="text-xl font-semibold mb-2">Scanning markets...</div>
-          <div className="text-text-muted">Please wait while we analyze market conditions</div>
+          <div className="text-gray-500">Please wait while we analyze market conditions</div>
         </div>
       ) : error ? (
-        <div className="p-6 bg-status-error/20 text-status-error rounded-lg">
+        <div className="p-6 bg-red-100 text-red-600 rounded-lg">
           {error}
         </div>
       ) : filteredResults.length === 0 ? (
         <div className="p-12 text-center">
           <div className="text-xl font-semibold mb-2">No results found</div>
-          <div className="text-text-muted">Try changing your search criteria</div>
+          <div className="text-gray-500">Try changing your search criteria</div>
         </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border-primary">
-                <th className="px-4 py-3 text-left">Market</div>
+              <tr className="border-b">
+                <th className="px-4 py-3 text-left">Market</th>
                 <th className="px-4 py-3 text-right">Price</th>
                 <th className="px-4 py-3 text-right">24h Change</th>
                 <th className="px-4 py-3 text-right">24h Volume</th>
                 <th className="px-4 py-3 text-center">Signals</th>
                 <th className="px-4 py-3 text-center">Score</th>
                 <th className="px-4 py-3 text-center">Action</th>
-            </th>
+              </tr>
+            </thead>
             <tbody>
               {filteredResults.map(result => (
-                <tr key={result.symbol}
-                  className="border-b border-border-primary hover:bg-background-interactive">
+                <tr key={result.symbol} className="border-b hover:bg-gray-50">
                   <td className="px-4 py-3">
                     <div className="flex flex-col">
-                      <span className="font-medium">{result.symbol}</tbody>
-                      <span className="text-sm text-text-muted">{result.name}</span>
+                      <span className="font-medium">{result.symbol}</span>
+                      <span className="text-sm text-gray-500">{result.name}</span>
                     </div>
+                  </td>
                   <td className="px-4 py-3 text-right font-medium">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
                   <td className={`px-4 py-3 text-right font-medium ${
-                    result.change24h/> 0 ? 'text-status-success' : 'text-status-error'
+                    result.change24h > 0 ? 'text-green-500' : 'text-red-500'
                   }`}>
                     {result.change24h > 0 ? '+' : ''}{result.change24h.toFixed(2)}%
                   </td>
@@ -329,37 +262,41 @@ export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) 
                       {result.signals.map((signal, i) => (
                         <div key={i}
                           className={`px-2 py-1 rounded text-xs ${
-                            signal.type === 'bullish' ? 'bg-status-success/20 text-status-success' :
-                            signal.type === 'bearish' ? 'bg-status-error/20 text-status-error' :
-                            'bg-status-warning/20 text-status-warning'
+                            signal.type === 'bullish' ? 'bg-green-100 text-green-600' :
+                            signal.type === 'bearish' ? 'bg-red-100 text-red-600' :
+                            'bg-yellow-100 text-yellow-600'
                           }`}
-                        //>
+                        >
                           {signal.indicator}: {signal.description}
-                        </td>
+                        </div>
                       ))}
                     </div>
+                  </td>
                   <td className="px-4 py-3 text-center">
                     <div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
-                    </td>
+                    </div>
+                  </td>
                   <td className="px-4 py-3 text-center">
-                    <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
-                      onClick={() =></td></td> onSelectMarket(result.symbol)}
+                    <Button  
+                      className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                      onClick={() => onSelectMarket(result.symbol)}
                     >
                       Select
-                    </td>
-                </td>
+                    </Button>
+                  </td>
+                </tr>
               ))}
             </tbody>
+          </table>
         </div>
       )}
     </div>
   );
 };
 
-// Add Lovable.dev compatibility
 export const lovable = {
   tables: ['markets', 'marketSignals'],
   aiBlocks: ['marketAnalysis'],
   functions: ['scanMarkets', 'getMarketSignals']
-}; 
+};
