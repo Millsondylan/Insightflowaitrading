@@ -1,3 +1,4 @@
+
 import { SupabaseClient } from '@supabase/supabase-js';
 import { User } from '../db/types';
 
@@ -327,7 +328,7 @@ export class EventProcessor {
             console.error(`Event processing failed:`, {
               id: event.id,
               type: event.type,
-              error: error.message
+              error: (error as Error).message
             });
 
             // Create error event
@@ -339,7 +340,7 @@ export class EventProcessor {
               metadata: {
                 failedEventId: event.id,
                 failedEventType: event.type,
-                error: error.message
+                error: (error as Error).message
               },
               priority: 'high',
               status: 'pending',
@@ -585,7 +586,7 @@ export class EventProcessor {
     this.checkAlertThresholds(metrics);
   }
 
-  private checkAlertThresholds(metrics: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any): void {
+  private checkAlertThresholds(metrics: any): void {
     const { alertThresholds } = this.config.monitoring;
 
     for (const [metric, threshold] of Object.entries(alertThresholds)) {
@@ -675,4 +676,4 @@ class MetricsCollector {
     // Implementation would collect actual metrics
     return this.metrics;
   }
-} 
+}
