@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -12,26 +13,29 @@ const mockInsights = [
 export default function FeedPage() {
   return (
     <div>
-      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors"/>
-        <arrowLeft size={16}/>
+      <Link to="/journal" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
+        <ArrowLeft size={16}/>
         Back to Journal
-      </div>
+      </Link>
       
       <div className="space-y-6">
         <header>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                <span className="bg-white/10 p-2 rounded-lg"><Rss className="text-blue-400"/></div>
-                Your Insight Feed
-            </h1>
-            <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>
+          <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <span className="bg-white/10 p-2 rounded-lg">
+              <Rss className="text-blue-400"/>
+            </span>
+            Your Insight Feed
+          </h1>
+          <p className="text-gray-400 mt-1">Personalized insights generated from your trading activity.</p>
+        </header>
 
         {mockInsights.map(insight => (
-            <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
-                <p className="text-gray-200">{insight.text}</p>
-                <Button variant="ghost" size="icon"/>
-                    <Eye size={18}/></button></div>
-                </button>
-            </div>
+          <div key={insight.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm flex justify-between items-center">
+            <p className="text-gray-200">{insight.text}</p>
+            <Button variant="ghost" size="icon">
+              <Eye size={18}/>
+            </Button>
+          </div>
         ))}
       </div>
     </div>
@@ -43,4 +47,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
