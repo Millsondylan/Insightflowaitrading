@@ -1,4 +1,3 @@
-
 /* Import custom styles first */
 @import url('./styles/quiz.css');
 @import url('./styles/wallet.css');
@@ -98,7 +97,9 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    @apply font-sans;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04';
   }
