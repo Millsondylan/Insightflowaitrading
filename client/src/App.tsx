@@ -43,6 +43,7 @@ import MarketSetupPage from './pages/MarketSetupPage';
 import SetupFinderPage from './pages/SetupFinderPage';
 import BestSetupsPage from './pages/BestSetupsPage';
 import StrategyBuilderV3 from './pages/StrategyBuilderV3';
+import JournalV2 from './pages/JournalV2';
 
 const queryClient = new QueryClient();
 
@@ -108,7 +109,11 @@ function App() {
                           <StrategyBuilderV3/>
                         </AppLayout>
                       } />
-                      <Route path="/journal" element={<AppLayout><Journal/></AppLayout>} />
+                      <Route path="journal" element={
+                        <AppLayout>
+                          <JournalV2/>
+                        </AppLayout>
+                      } />
                       <Route path="/vision" element={<AppLayout><Vision/></AppLayout>} />
                       <Route path="/academy" element={<AppLayout><Academy/></AppLayout>} />
                       <Route path="/wallet" element={<AppLayout><Wallet/></AppLayout>} />
