@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { ScrollSection } from '../hooks/use-scroll-reveal';
+import { Button } from '@/components/ui/button';
 
 const AcademyBuilderPage: React.FC = () => {
   return (
@@ -7,9 +9,9 @@ const AcademyBuilderPage: React.FC = () => {
       {/* Hero Section */}
       <ScrollSection className="min-h-screen flex items-center justify-center px-6" delay={0}>
         <div className="text-center max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight"></div>
+          <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8 leading-tight">
             Learn, Test, Evolve
-          </div>
+          </h1>
           <p className="text-xl md:text-3xl text-gray-300 leading-relaxed font-light">
             Scroll-through lessons and unlock your trading mastery
           </p>
@@ -17,6 +19,7 @@ const AcademyBuilderPage: React.FC = () => {
             <div className="threadline-glow w-32 mx-auto"></div>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Progress Overview */}
       <ScrollSection className="px-6 py-20" delay={100}>
@@ -24,7 +27,7 @@ const AcademyBuilderPage: React.FC = () => {
           <div className="glass-section motion-shadow text-center">
             <div className="inline-block px-4 py-2 bg-blue-500/10 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium mb-6">
               📈 Learning Progress
-            </ScrollSection>
+            </div>
             <h2 className="text-3xl md:text-4xl font-semibold text-glow-emerald mb-8">
               Your Trading Education Journey
             </h2>
@@ -32,7 +35,7 @@ const AcademyBuilderPage: React.FC = () => {
             {/* Progress Bar */}
             <div className="max-w-2xl mx-auto mb-8">
               <div className="flex justify-between text-sm text-gray-400 mb-3">
-                <span>Overall Progress</div>
+                <span>Overall Progress</span>
                 <span>67%</span>
               </div>
               <div className="w-full h-4 bg-gray-700/50 rounded-full overflow-hidden">
@@ -45,6 +48,7 @@ const AcademyBuilderPage: React.FC = () => {
             </p>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Lesson Blocks Grid */}
       <ScrollSection className="px-6 py-20" delay={200} animation="slide-right">
@@ -56,21 +60,21 @@ const AcademyBuilderPage: React.FC = () => {
               <div className="mb-6">
                 <div className="w-12 h-12 bg-blue-500/20 border border-blue-400/30 rounded-xl flex items-center justify-center text-blue-300 text-2xl mb-4">
                   📊
-                </ScrollSection>
+                </div>
                 <h3 className="text-xl font-semibold text-glow-blue mb-3">Technical Analysis</h3>
                 <p className="text-gray-400 text-sm mb-4">Master chart patterns, indicators, and price action</p>
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Support & Resistance</div>
+                  <span className="text-gray-300">Support & Resistance</span>
                   <span className="text-emerald-400">✓</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Trend Analysis</div>
+                  <span className="text-gray-300">Trend Analysis</span>
                   <span className="text-emerald-400">✓</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Candlestick Patterns</div>
+                  <span className="text-gray-300">Candlestick Patterns</span>
                   <span className="text-blue-400">In Progress</span>
                 </div>
               </div>
@@ -87,15 +91,15 @@ const AcademyBuilderPage: React.FC = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Position Sizing</div>
+                  <span className="text-gray-300">Position Sizing</span>
                   <span className="text-emerald-400">✓</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Stop Loss Strategies</div>
+                  <span className="text-gray-300">Stop Loss Strategies</span>
                   <span className="text-blue-400">In Progress</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Portfolio Theory</div>
+                  <span className="text-gray-300">Portfolio Theory</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
               </div>
@@ -112,15 +116,15 @@ const AcademyBuilderPage: React.FC = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Emotional Control</div>
+                  <span className="text-gray-300">Emotional Control</span>
                   <span className="text-blue-400">In Progress</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Discipline Building</div>
+                  <span className="text-gray-300">Discipline Building</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Behavioral Finance</div>
+                  <span className="text-gray-300">Behavioral Finance</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
               </div>
@@ -137,15 +141,15 @@ const AcademyBuilderPage: React.FC = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Economic Indicators</div>
+                  <span className="text-gray-300">Economic Indicators</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Sector Analysis</div>
+                  <span className="text-gray-300">Sector Analysis</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">News Impact</div>
+                  <span className="text-gray-300">News Impact</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
               </div>
@@ -162,15 +166,15 @@ const AcademyBuilderPage: React.FC = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Options Strategies</div>
+                  <span className="text-gray-300">Options Strategies</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Algorithmic Trading</div>
+                  <span className="text-gray-300">Algorithmic Trading</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Portfolio Optimization</div>
+                  <span className="text-gray-300">Portfolio Optimization</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
               </div>
@@ -187,27 +191,28 @@ const AcademyBuilderPage: React.FC = () => {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Paper Trading</div>
+                  <span className="text-gray-300">Paper Trading</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Case Studies</div>
+                  <span className="text-gray-300">Case Studies</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-300">Strategy Testing</div>
+                  <span className="text-gray-300">Strategy Testing</span>
                   <span className="text-gray-500">Locked</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </ScrollSection>
 
       {/* Achievement Badge */}
       <ScrollSection className="px-6 py-32" delay={300} animation="scale-in">
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-section motion-shadow">
-            <div className="text-6xl mb-6">🏆</ScrollSection>
+            <div className="text-6xl mb-6">🏆</div>
             <h4 className="text-2xl md:text-3xl font-semibold text-glow-emerald mb-4">
               Achievement Unlocked
             </h4>
@@ -218,15 +223,16 @@ const AcademyBuilderPage: React.FC = () => {
               You've successfully completed the foundation level of technical analysis. Ready for the next challenge?
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button className="glow-button glow-blue"></div>
+              <Button className="glow-button glow-blue">
                 Continue Learning
-              </button>
-              <Button className="glow-button glow-emerald"></button>
+              </Button>
+              <Button className="glow-button glow-emerald">
                 Practice Quiz
-              </button>
+              </Button>
             </div>
           </div>
         </div>
+      </ScrollSection>
     </div>
   );
 };
