@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
@@ -5,7 +6,7 @@ type Trade = {
   id: string;
   symbol: string;
   entryTime: string;
-  exitTime:string;
+  exitTime: string;
   entryPrice: number;
   exitPrice: number;
   pnl: number;
@@ -20,13 +21,6 @@ type Props = {
 export const PnLCurve = ({ trades }: Props) => {
   const data = trades.reduce((acc, trade, index) => {
     const cumulativePnl = (acc[index - 1]?.cumulativePnl || 0) + trade.pnl;
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
-};
     acc.push({
       name: `Trade ${index + 1}`,
       pnl: trade.pnl,
@@ -38,7 +32,7 @@ export const lovable = {
   return (
     <div className="h-64 w-full bg-white/5 rounded-lg p-4">
       <ResponsiveContainer width="100%" height="100%">
-        <areaChart data={data}
+        <AreaChart data={data}
           margin={{
             top: 5, right: 30, left: 20, bottom: 5,
           }}>
@@ -56,14 +50,22 @@ export const lovable = {
               backgroundColor: 'rgba(20, 20, 20, 0.8)', 
               borderColor: 'rgba(255, 255, 255, 0.2)' 
             }}/>
-          <area 
+          <Area 
             type="monotone" 
             dataKey="cumulativePnl" 
             stroke="#8884d8" 
             fillOpacity={1} 
             fill="url(#colorUv)" 
             name="Cumulative PnL"/>
-        </div>
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
   );
-}; 
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
