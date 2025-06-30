@@ -111,7 +111,7 @@ export default function RegisterPage() {
           description: "Please check your email to verify your account.",
           duration: 5000,
         });
-        navigate('/auth');
+        navigate('/onboarding');
       } else {
         throw error;
       }

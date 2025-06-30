@@ -9,6 +9,7 @@ import { ErrorBoundary } from '@/components/core/ErrorBoundary';
 import { useAuthMiddleware } from './middleware';
 import MobileAppWrapper from './components/mobile/MobileAppWrapper';
 import AppLayout from './components/layout/AppLayout';
+import OnboardingMiddleware from './components/auth/OnboardingMiddleware';
 import './App.css';
 import { initJobProcessor } from './lib/background/job-processor';
 import { env } from './env';
@@ -38,6 +39,9 @@ import ProfilePage from './pages/ProfilePage';
 import MarketSetupPage from './pages/MarketSetupPage';
 import SetupFinderPage from './pages/SetupFinderPage';
 import BestSetupsPage from './pages/BestSetupsPage';
+
+// Import Onboarding Page
+import OnboardingPage from './pages/OnboardingPage';
 
 const queryClient = new QueryClient();
 
@@ -70,38 +74,43 @@ function App() {
             <QueryClientProvider client={queryClient}>
               <Router>
                 <MobileAppWrapper>
-                  <Routes>
-                    {/* Public Landing Pages */}
-                    <Route index element={<LandingPage/>} />
-                    <Route path="about" element={<About/>} />
-                    <Route path="privacy" element={<Privacy/>} />
-                    <Route path="terms" element={<Terms/>} />
-                    <Route path="pricing" element={<Pricing/>} />
-                    
-                    {/* Auth Pages */}
-                    <Route path="auth" element={<AuthPage/>} />
-                    <Route path="register" element={<Register/>} />
-                    <Route path="verify" element={<VerifyEmail/>} />
+                  <OnboardingMiddleware>
+                    <Routes>
+                      {/* Public Landing Pages */}
+                      <Route index element={<LandingPage/>} />
+                      <Route path="about" element={<About/>} />
+                      <Route path="privacy" element={<Privacy/>} />
+                      <Route path="terms" element={<Terms/>} />
+                      <Route path="pricing" element={<Pricing/>} />
+                      
+                      {/* Auth Pages */}
+                      <Route path="auth" element={<AuthPage/>} />
+                      <Route path="register" element={<Register/>} />
+                      <Route path="verify" element={<VerifyEmail/>} />
 
-                    {/* Protected Routes - wrapped in layout */}
-                    <Route path="/dashboard" element={<AppLayout><Index/></AppLayout>} />
-                    <Route path="/strategy" element={<AppLayout><Strategy/></AppLayout>} />
-                    <Route path="/journal" element={<AppLayout><Journal/></AppLayout>} />
-                    <Route path="/vision" element={<AppLayout><Vision/></AppLayout>} />
-                    <Route path="/academy" element={<AppLayout><Academy/></AppLayout>} />
-                    <Route path="/wallet" element={<AppLayout><Wallet/></AppLayout>} />
-                    <Route path="/admin" element={<AppLayout><Admin/></AppLayout>} />
-                    <Route path="/profile" element={<AppLayout><ProfilePage/></AppLayout>} />
-                    <Route path="/settings" element={<AppLayout><UserSettings/></AppLayout>} />
+                      {/* Onboarding Route */}
+                      <Route path="/onboarding" element={<OnboardingPage/>} />
 
-                    {/* New AI Trading Setup Routes */}
-                    <Route path="/market-setup" element={<AppLayout><MarketSetupPage/></AppLayout>} />
-                    <Route path="/setup-finder" element={<AppLayout><SetupFinderPage/></AppLayout>} />
-                    <Route path="/best-setups" element={<AppLayout><BestSetupsPage/></AppLayout>} />
+                      {/* Protected Routes - wrapped in layout */}
+                      <Route path="/dashboard" element={<AppLayout><Index/></AppLayout>} />
+                      <Route path="/strategy" element={<AppLayout><Strategy/></AppLayout>} />
+                      <Route path="/journal" element={<AppLayout><Journal/></AppLayout>} />
+                      <Route path="/vision" element={<AppLayout><Vision/></AppLayout>} />
+                      <Route path="/academy" element={<AppLayout><Academy/></AppLayout>} />
+                      <Route path="/wallet" element={<AppLayout><Wallet/></AppLayout>} />
+                      <Route path="/admin" element={<AppLayout><Admin/></AppLayout>} />
+                      <Route path="/profile" element={<AppLayout><ProfilePage/></AppLayout>} />
+                      <Route path="/settings" element={<AppLayout><UserSettings/></AppLayout>} />
 
-                    {/* 404 Route */}
-                    <Route path="*" element={<NotFound/>} />
-                  </Routes>
+                      {/* New AI Trading Setup Routes */}
+                      <Route path="/market-setup" element={<AppLayout><MarketSetupPage/></AppLayout>} />
+                      <Route path="/setup-finder" element={<AppLayout><SetupFinderPage/></AppLayout>} />
+                      <Route path="/best-setups" element={<AppLayout><BestSetupsPage/></AppLayout>} />
+
+                      {/* 404 Route */}
+                      <Route path="*" element={<NotFound/>} />
+                    </Routes>
+                  </OnboardingMiddleware>
                 <OnboardingModal />
                 <Toaster />
                 </MobileAppWrapper>
