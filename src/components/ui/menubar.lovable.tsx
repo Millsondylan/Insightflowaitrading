@@ -18,7 +18,7 @@ const Menubar = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <Menubarprimitive >
+  <Menubarprimitive>
 ))
 Menubar.displayName = MenubarPrimitive.Root.displayName
 
@@ -26,7 +26,7 @@ const MenubarTrigger = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
-  <Menubarprimitive  />
+  <menubarprimitive />
 ))
 MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName
 
@@ -36,9 +36,9 @@ const MenubarSubTrigger = React.forwardRef<
     inset?: boolean
   }
 >(({ className, inset, children, ...props }, ref) => (
-  <menubarprimitive  >
+  <Menubarprimitive >
     {children}
-    <chevronright  >
+    <Chevronright />
   </MenubarPrimitive.SubTrigger>
 ))
 MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
@@ -47,7 +47,7 @@ const MenubarSubContent = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.SubContent>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.SubContent>
 >(({ className, ...props }, ref) => (
-  <menubarprimitive  >
+  <menubarprimitive >
 ))
 MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName
 
@@ -59,8 +59,8 @@ const MenubarContent = React.forwardRef<
     { className, align = "start", alignOffset = -4, sideOffset = 8, ...props },
     ref
   ) => (
-    <menubarprimitive  >
-      <menubarprimitive  >
+    <menubarprimitive >
+      <menubarprimitive >
     </MenubarPrimitive.Portal>
   )
 )
@@ -72,7 +72,7 @@ const MenubarItem = React.forwardRef<
     inset?: boolean
   }
 >(({ className, inset, ...props }, ref) => (
-  <menubarprimitive  >
+  <menubarprimitive >
 ))
 MenubarItem.displayName = MenubarPrimitive.Item.displayName
 
@@ -80,12 +80,11 @@ const MenubarCheckboxItem = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>
 >(({ className, children, checked, ...props }, ref) => (
-  <menubarprimitive  >
+  <menubarprimitive >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <menubarprimitive  >
-        <check  >
-      </MenubarPrimitive.ItemIndicator>
-    </span>
+      <menubarprimitive >
+        <Check >
+      </MenubarPrimitive.ItemIndicator />
     {children}
   </MenubarPrimitive.CheckboxItem>
 ))
@@ -95,12 +94,12 @@ const MenubarRadioItem = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.RadioItem>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.RadioItem>
 >(({ className, children, ...props }, ref) => (
-  <menubarprimitive  >
+  <menubarprimitive >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-      <menubarprimitive  >
-        <circle  >
+      <menubarprimitive >
+        <circle >
       </MenubarPrimitive.ItemIndicator>
-    </span>
+    </Menubarprimitive>
     {children}
   </MenubarPrimitive.RadioItem>
 ))
@@ -112,7 +111,7 @@ const MenubarLabel = React.forwardRef<
     inset?: boolean
   }
 >(({ className, inset, ...props }, ref) => (
-  <menubarprimitive  >
+  <menubarprimitive >
 ))
 MenubarLabel.displayName = MenubarPrimitive.Label.displayName
 
@@ -120,22 +119,21 @@ const MenubarSeparator = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Separator>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Separator>
 >(({ className, ...props }, ref) => (
-  <menubarprimitive  >
+  <menubarprimitive >
 ))
 MenubarSeparator.displayName = MenubarPrimitive.Separator.displayName
 
 const MenubarShortcut = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement  >) => {
+}: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <span
-      className={cn(
+    <span       className={cn(
         "ml-auto text-xs tracking-widest text-muted-foreground",
         className
       )}
       {...props}
-    />
+    //></HTMLSpanElement /></HTMLSpanElement />
   )
 }
 MenubarShortcut.displayname = "MenubarShortcut"

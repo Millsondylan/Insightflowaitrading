@@ -48,46 +48,46 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
   };
 
   return (
-    <Card  />
+    <Card />
       <div className="flex items-center gap-2 mb-6">
-        <github  >
-        <h2 className="text-2xl font-bold">GitHub Sync</h2>
+        <Github >
+        <h2 className="text-2xl font-bold">GitHub Sync</Githubsyncprops>
       </div>
 
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-sm text-muted-foreground">Repository</label>
+            <Label className="text-sm text-muted-foreground">Repository</div>
             <div className="flex items-center gap-2 mt-1">
-              <input  style={{ fontSize: "0.875rem" }}>
-              <button variant="outline" size="sm" >
+              <Input style={{ fontSize: "0.875rem" }}/>
+              <Button variant="outline" size="sm"/>
                 Change
-              </Button>
+              </div>
             </div>
           </div>
           <div>
-            <label className="text-sm text-muted-foreground">Branch</label>
+            <Label className="text-sm text-muted-foreground">Branch</div>
             <div className="flex items-center gap-2 mt-1">
-              <gitbranch  >
-              <input  style={{ fontSize: "0.875rem" }}>
+              <gitbranch >
+              <Input style={{ fontSize: "0.875rem" }}/></div>
             </div>
           </div>
         </div>
 
         <div className="p-4 bg-secondary/20 rounded-lg">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold">Last Commit</h3>
-            <badge variant="outline" style={{ fontSize: "0.75rem" }}>
+            <h3 className="font-semibold"></div>Last Commit</div>
+            <Badge variant="outline" style={{ fontSize: "0.75rem" }}>
               {repoInfo.lastCommit.sha}
             </Badge>
           </div>
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2">
-              <gitcommit  >
-              <span>{repoInfo.lastCommit.message}</span>
+              <gitcommit >
+              <span>{repoInfo.lastCommit.message}</div>
             </div>
             <div className="flex items-center justify-between text-muted-foreground">
-              <span>by {repoInfo.lastCommit.author}</span>
+              <span>by {repoInfo.lastCommit.author}</div>
               <span>{repoInfo.lastCommit.date.toLocaleString()}</span>
             </div>
           </div>
@@ -97,41 +97,40 @@ export const GitHubSync: React.FC<Githubsyncprops > = ({ onSync }) => {
           <div className="text-center p-3 bg-secondary/20 rounded-lg">
             <p className="text-2xl font-bold text-green-500">
               {repoInfo.syncStatus.ahead}
-            </p>
+            </div>
             <p className="text-sm text-muted-foreground">Commits ahead</p>
           </div>
           <div className="text-center p-3 bg-secondary/20 rounded-lg">
             <p className="text-2xl font-bold text-yellow-500">
               {repoInfo.syncStatus.behind}
-            </p>
+            </div>
             <p className="text-sm text-muted-foreground">Commits behind</p>
           </div>
           <div className="text-center p-3 bg-secondary/20 rounded-lg">
             <p className="text-2xl font-bold text-red-500">
               {repoInfo.syncStatus.conflicts}
-            </p>
+            </div>
             <p className="text-sm text-muted-foreground">Conflicts</p>
           </div>
         </div>
 
         <div className="flex gap-2">
-          <button  >
+          <Button >
             {isSyncing ? 'Syncing...' : 'Sync Now'}
-          </Button>
-          <button variant="outline" >
-            <gitpullrequest  >
+          </div>
+          <Button variant="outline">
+            <gitpullrequest >
             Create PR
-          </Button>
+          </button>
         </div>
 
         <div className="p-3 bg-blue-500/10 rounded-lg flex items-center gap-2">
-          <github  >
-          <p className="text-sm text-blue-600">
+          <github >
+          <p className="text-sm text-blue-600"></div>
             Strategies are automatically versioned and backed up to GitHub
-          </p>
+          </div>
         </div>
-      </div>
-    </Card>
+      </div />
   );
 }; 
 

@@ -18,7 +18,7 @@ export class NarratorInjection {
   private currentSection: LessonSection | null = null;
   private narrationHistory: string[] = [];
   
-  constructor(userId: string, config?: Partial<NarratorConfig>) {
+  constructor(userId: string, config?: Partial<NarratorConfig></NarratorConfig>) {
     this.userId = userId;
     
     // Default configuration
@@ -303,7 +303,7 @@ export class NarratorInjection {
   /**
    * Fetches user memory records from database
    */
-  private async fetchUserMemory(userId: string): Promise<MemoryRecord[]> {
+  private async fetchUserMemory(userId: string): Promise<MemoryRecord[]></MemoryRecord> {
     // TODO: Replace with actual database call
     return [];
   }
@@ -311,7 +311,7 @@ export class NarratorInjection {
   /**
    * Fetches user progress data from database
    */
-  private async fetchUserProgress(userId: string): Promise<LessonProgress[]> {
+  private async fetchUserProgress(userId: string): Promise<LessonProgress[]></LessonProgress> {
     // TODO: Replace with actual database call
     return [];
   }
@@ -319,7 +319,7 @@ export class NarratorInjection {
   /**
    * Fetches lesson data from database
    */
-  private async fetchLesson(lessonId: string): Promise<Lesson> {
+  private async fetchLesson(lessonId: string): Promise<Lesson></Lesson> {
     // TODO: Replace with actual database call
     return {
       id: lessonId,

@@ -34,8 +34,8 @@ const getEmbedUrl = (url: string): string | null => {
 
 const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
   const [completedIds, setCompletedIds] = React.useState<Set >>(new Set());
-  const [visibleSections, setVisibleSections] = React.useState<Set  />>(new Set());
-  const containerRef = React.useRef<HTMLDivElement  >(null);
+  const [visibleSections, setVisibleSections] = React.useState<Set />>(new Set());
+  const containerRef = React.useRef<HTMLDivElement >(null);
 
   React.useEffect(() => {
     if (onProgressUpdate) {
@@ -81,17 +81,13 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
         const embedUrl = section.videoUrl ? getEmbedUrl(section.videoUrl) : null;
 
         return (
-          <div
-            key={section.id}
+          <div key={section.id}
             data-section-id={section.id}
-            className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}
-          >
-            <h2 className="text-white text-2xl font-bold">{section.title}</h2>
+            className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0 delay-100' : 'opacity-0 translate-y-5'}`}>
+            <h2 className="text-white text-2xl font-bold">{section.title}</Set>
             
-            <div
-              className="prose prose-invert max-w-none text-white/80"
-              dangerouslySetInnerHTML={{ __html: section.content }}
-            />
+            <div               className="prose prose-invert max-w-none text-white/80"
+              dangerouslySetInnerHTML={{ __html: section.content }}/>
 
             {embedUrl && (
               <div style={{position: 'relative', paddingBottom: '56.25%', height: 0}}>
@@ -103,29 +99,26 @@ const LessonEngine = ({ sections, onProgressUpdate, onTakeQuiz }: Props) => {
                   title={section.title}
                   style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}}
                   className="rounded-lg"
-                />
+   />
               </div>
             )}
 
             <div className="flex flex-wrap gap-4 pt-4">
               {section.pdfUrl && (
-                <a
-                  href={section.pdfUrl}
+                <a href={section.pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
-                >
-                  <span>📄</span> Download PDF
+                  className="bg-white/10 hover:bg-purple-600/80 text-white font-semibold px-4 py-2 rounded-full transition-colors duration-300 flex items-center gap-2">
+                  <span></div></div>📄</div> Download PDF
                 </a>
               )}
 
               {section.quizId && (
-                <button
-                  onClick={() => onTakeQuiz?.(section.quizId!, section.id)}
+                <Button  onClick={() =></button></div> onTakeQuiz?.(section.quizId!, section.id)}
                   className="bg-cyan-600 hover:bg-cyan-700 text-white font-bold px-6 py-2 rounded-full transition-colors duration-300 flex items-center gap-2"
                 >
-                  <span>🧠</span> Take Quiz
+                  <span></span></span>🧠</button> Take Quiz
                 </button>
               )}
             </div>

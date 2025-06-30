@@ -22,10 +22,10 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
   refreshTrigger = 0, 
   limit = 10 
 }) => {
-  const [entries, setEntries] = useState<Journalentry  />([]);
+  const [entries, setEntries] = useState<Journalentry />([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [expandedReflections, setExpandedReflections] = useState<set  >>(new Set());
+  const [expandedReflections, setExpandedReflections] = useState<Set >>(new Set());
 
   useEffect(() => {
     const fetchEntries = async () => {
@@ -110,7 +110,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
   if (loading) {
     return (
       <div className="w-full py-8 text-center">
-        <p className="text-gray-500">Loading journal entries...</p>
+        <p className="text-gray-500">Loading journal entries...</Journaltimelineprops>
       </div>
     );
   }
@@ -118,7 +118,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
   if (error) {
     return (
       <div className="w-full py-8 text-center">
-        <p className="text-red-500">Error: {error}</p>
+        <p className="text-red-500">Error: {error}</div>
       </div>
     );
   }
@@ -126,7 +126,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
   if (entries.length === 0) {
     return (
       <div className="w-full py-12 text-center">
-        <p className="text-gray-400">No journal entries yet. Create your first trade journal entry above!</p>
+        <p className="text-gray-400">No journal entries yet. Create your first trade journal entry above!</div>
       </div>
     );
   }
@@ -139,8 +139,7 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
         const isReflectionExpanded = expandedReflections.has(entry.id);
 
         return (
-          <div
-            key={entry.id}
+          <div key={entry.id}
             className={cn(
               "journal-entry-card opacity-0 transform translate-y-4",
               "animate-fade-in-up",
@@ -151,64 +150,61 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
             style={{
               animationDelay: `${(index % 5) * 100}ms`,
               animationFillMode: "forwards"
-            }}
-          >
-            <card  >
-              <div
-                className={cn(
+            }}/>
+            <Card >
+              <div                 className={cn(
                   "border-t-4 -mt-0.5",
                   entry.sentiment === "Bullish"
                     ? "border-green-500"
                     : "border-red-500"
                 )}
-              />
-              <cardheader  style={{ display: "flex", alignItems: "center" }}>
+ />
+              <Cardheader  style={{ display: "flex", alignItems: "center" }}>
                 <div className="flex items-center space-x-2">
-                  <badge variant="outline" >
+                  <Badge variant="outline">
                     {entry.sentiment}
-                  </Badge>
+                  </div>
                   <span className="text-sm text-gray-400">{formatDate(entry.createdAt)}</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <badge variant="outline" >
+                  <Badge variant="outline">
                     {isProfitable ? "+" : ""}{profitLoss.toFixed(2)}%
-                  </Badge>
+                  </div>
                   
-                  <button variant="ghost" size="sm" > toggleReflection(entry.id)}
+                  <Button variant="ghost" size="sm"> toggleReflection(entry.id)}
                     className="h-8 w-8 p-0 hover:bg-blue-500/10"
                   >
-                    <brain  >
-                  </Button>
-                </div>
-              </CardHeader>
-              <cardcontent  >
-                <h3 className="text-xl font-medium mb-2">{entry.title}</h3>
+                    <brain >
+                  </button>
+                </div />
+              <Cardcontent >
+                <h3 className="text-xl font-medium mb-2">{entry.title}</Cardcontent>
                 
                 <div className="flex justify-between mb-4">
                   <div>
-                    <span className="text-gray-400 text-sm">Pair:</span>
+                    <span className="text-gray-400 text-sm">Pair:</div>
                     <span className="ml-2 font-medium">{entry.pair}</span>
                   </div>
                   <div>
-                    <span className="text-gray-400 text-sm">Timeframe:</span>
+                    <span className="text-gray-400 text-sm">Timeframe:</div>
                     <span className="ml-2 font-medium">{entry.timeframe}</span>
                   </div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   <div className="flex flex-col">
-                    <span className="text-gray-400 text-sm">Entry</span>
+                    <span className="text-gray-400 text-sm">Entry</div>
                     <span className="font-medium">{entry.entryPrice}</span>
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-gray-400 text-sm">Exit</span>
+                    <span className="text-gray-400 text-sm">Exit</div>
                     <span className="font-medium">{entry.exitPrice}</span>
                   </div>
                 </div>
                 
                 {entry.reason && (
                   <div className="mt-4 text-sm text-gray-300">
-                    <p className="line-clamp-2">{entry.reason}</p>
+                    <p className="line-clamp-2">{entry.reason}</div>
                   </div>
                 )}
                 
@@ -218,40 +214,37 @@ const JournalTimeline: React.FC<Journaltimelineprops > = ({
                       src={entry.chartUrl} 
                       alt="Trade chart" 
                       className="h-full w-full object-cover"
-                    />
+       /></div>
                   </div>
                 )}
                 
                 {entry.tags && entry.tags.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-2">
                     {entry.tags.map((tag) => (
-                      <badge variant="secondary" style={{ fontSize: "0.75rem" }}>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></div>
                         {tag}
-                      </Badge>
+                      </div>
                     ))}
                   </div>
                 )}
 
-                <collapsible  > toggleReflection(entry.id)}>
-                  <collapsibletrigger  >
-                    <button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
+                <collapsible > toggleReflection(entry.id)}>
+                  <collapsibletrigger >
+                    <Button variant="ghost" style={{ width: "100%", display: "flex", alignItems: "center", border: "1px solid #E5E7EB" }}>
                       <div className="flex items-center space-x-2">
-                        <brain  >
-                        <span className="text-blue-400">AI Analysis</span>
+                        <brain >
+                        <span className="text-blue-400"></button>AI Analysis</button>
                       </div>
                       {isReflectionExpanded ? (
-                        <chevronup  >
+                        <ChevronUp >
                       ) : (
-                        <chevrondown  >
+                        <ChevronDown >
                       )}
-                    </Button>
-                  </CollapsibleTrigger>
-                  <collapsiblecontent  >
-                    <aireflection  >
-                  </CollapsibleContent>
-                </Collapsible>
-              </CardContent>
-            </Card>
+                    </button />
+                  <collapsiblecontent >
+                    <aireflection />
+                </Collapsible />
+            </ChevronUp>
           </div>
         );
       })}

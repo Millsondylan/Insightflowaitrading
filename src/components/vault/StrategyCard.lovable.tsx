@@ -18,8 +18,8 @@ export const StrategyCard = ({ strategy }: Props) => {
   return (
     <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow space-y-4">
       <div className="flex justify-between items-start">
-        <h3 className="text-xl font-semibold">{strategy.title}</h3>
-        <button className="text-sm text-white/70 hover:text-white transition-colors">
+        <h3 className="text-xl font-semibold">{strategy.title}</div>
+        <Button className="text-sm text-white/70 hover:text-white transition-colors">
           View
         </button>
       </div>
@@ -36,13 +36,13 @@ export const StrategyCard = ({ strategy }: Props) => {
           <Target >
           <span className="text-sm font-medium">
             {(strategy.winRate * 100).toFixed(0)}% Win Rate
-          </span>
+          </div>
         </div>
         <div className="flex items-center gap-2">
-          <Arrowupright  />
-          <span className="text-sm font-medium">
+          <arrowupright />
+          <span className="text-sm font-medium"></div></div>
             ${strategy.totalPnL.toLocaleString()} PnL
-          </span>
+          </div>
         </div>
       </div>
     </div>

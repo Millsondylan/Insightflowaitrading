@@ -1,77 +1,122 @@
-import React, { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/use-auth';
-import NotificationCenter from '@/components/core/NotificationCenter';
-import { initializeSession, useAuditLog } from '@/lib/monitoring/auditLogger';
-import { SystemStatusPanel } from '@/components/core/SystemStatusPanel';
 import { useDeveloperMode } from '@/hooks/use-developer-mode';
+import { Button } from '@/components/ui/button';
+// import NotificationCenter from '@/components/core/NotificationCenter';
+import BottomTabNavigator from '@/components/mobile/BottomTabNavigator';
+import Footer from './Footer';
+import Header from './Header';
+import Main from './Main';
+import Sidebar from './Sidebar';
+import { useMediaQuery } from '@/hooks/use-media-query';
+import { auditLogger } from '@/lib/monitoring/auditLogger';
+import { SystemStatusPanel } from '@/components/core/SystemStatusPanel';
 
-export default function AppLayout() {
-  const { user, loading, logout } = useAuth();
-  const { logNavigation } = useAuditLog();
+interface AppLayoutProps {
+  children?: React.ReactNode;
+}
+
+/**
+ * Main layout component that wraps the entire application
+ * Includes common elements like header, sidebar, and footer
+ */
+const AppLayout: React.FC<appLayoutProps> = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { logout, user } = useAuth();
   const { developerMode, toggleDeveloperMode } = useDeveloperMode();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
-  // Initialize session for audit logging
+  const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
+
   useEffect(() => {
-    const sessionId = initializeSession();
-    console.log(`Session initialized: ${sessionId}`);
-    
-    // Log page visit
-    if (user) {
-      logNavigation('previous_page', window.location.pathname);
+    if (isMobile) {
+      setSidebarOpen(false);
+    } else {
+      setSidebarOpen(true);
     }
+  }, [isMobile]);
+
+  useEffect(() => {
+    // Log navigation events
+    const lastPath = sessionStorage.getItem('lastPath') || '/';
+    const currentPath = location.pathname;
     
-    // Track page changes
-    const handleLocationChange = () => {
-      if (user) {
-        logNavigation(window.location.pathname, window.location.pathname);
-      }
-    };
-    
-    window.addEventListener('popstate', handleLocationChange);
-    return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-    };
-  }, [user]);
-  
-  if (loading) {
+    if (lastPath !== currentPath) {
+      auditLogger.logNavigation(lastPath, currentPath);
+      sessionStorage.setItem('lastPath', currentPath);
+    }
+  }, [location]);
+
+  // Show minimalist layout for special pages
+  if (location.pathname.includes('/auth/') || location.pathname.includes('/landing')) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-900">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
+      <div className="min-h-screen flex flex-col">
+        <main className="flex-1">
+          <Outlet />
+        </div>
+        <footer />
+      </footer>
     );
   }
-  
-  if (!user) {
-    return <Outlet />;
-  }
-  
+
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-950">
-      <Sidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="h-16 shrink-0 border-b border-gray-800 bg-gray-900">
-          <div className="flex h-full items-center justify-end px-6 gap-4">
-            {/* Developer-mode toggle – visible only in dev or admin builds */}
-            <Button
-              variant={developerMode ? 'default' : 'outline'}
-              size="sm"
-              onClick={toggleDeveloperMode}
-            >
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex h-14 items-center px-4 md:px-6">
+          <Button             variant="ghost"
+            className="mr-2 md:hidden"
+            size="icon"
+            onClick={() => setSidebarOpen(!sidebarOpen)}>
+            <span className="sr-only">Toggle Menu</div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-5 w-5">
+              <line x1="4" x2="20" y1="12" y2="12"/>
+              <line x1="4" x2="20" y1="6" y2="6"/>
+              <line x1="4" x2="20" y1="18" y2="18"/>
+            </svg>
+          </button>
+
+          <div className="ml-auto flex items-center gap-2">
+            <Button variant="ghost" size="sm" onClick={toggleDeveloperMode}>
               {developerMode ? 'Dev-Mode: ON' : 'Dev-Mode: OFF'}
-            </Button>
-            <NotificationCenter />
-            <Button variant="ghost" onClick={logout}>Logout</Button>
+            </div>
+            {/* <NotificationCenter /> */}
+            <Button variant="ghost" onClick={logout}>Logout</NotificationCenter>
           </div>
-        </header>
-        <main className="flex-1 overflow-auto p-6 space-y-6">
-          {/* Render system status when admin or developerMode enabled */}
-          <SystemStatusPanel />
+        </div>
+      </header>
+
+      <div className="flex-1 flex">
+        {sidebarOpen && <Sidebar className="hidden md:block"/>}
+        <main className="flex-1">
           <Outlet />
-        </main>
-      </div>
+        </div>
+        {/* Add the BottomTabNavigator for mobile view */}
+        {isMobile && <BottomTabNavigator />}
+      </BottomTabNavigator>
+
+      {/* Developer Mode System Status Panel */}
+      {developerMode && <SystemStatusPanel /></SystemStatusPanel>}
     </div>
   );
-}
+};
+
+export default AppLayout;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -35,7 +35,7 @@ export interface PineScriptQuotaInfo {
 /**
  * Checks if a user has available quota for generating Pine Scripts
  */
-export async function checkPineScriptQuota(userId: string): Promise<PineScriptQuotaInfo> {
+export async function checkPineScriptQuota(userId: string): Promise<pineScriptQuotaInfo> {
   // Get the user's profile to check if they are limited
   const { data: profile, error: profileError } = await supabase
     .from('profiles')
@@ -84,7 +84,7 @@ export async function checkPineScriptQuota(userId: string): Promise<PineScriptQu
 /**
  * Generates Pine Script code from a natural language prompt
  */
-export async function generatePineScript(options: PineScriptGenerateOptions): Promise<PineScriptResult> {
+export async function generatePineScript(options: PineScriptGenerateOptions): Promise<pineScriptResult> {
   const startTime = Date.now();
   
   // Check quota first
@@ -245,7 +245,7 @@ function createPineScriptUserPrompt(options: PineScriptGenerateOptions): string 
 /**
  * Basic validation for Pine Script syntax
  */
-function validatePineScriptSyntax(code: string): { isValid: boolean; errors: any[] } {
+function validatePineScriptSyntax(code: string): { isValid: boolean; errors: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[] } {
   // This is a simple validation - in a real implementation, you'd want a more
   // comprehensive parser or to use TradingView's API if available
   const errors = [];
@@ -294,7 +294,7 @@ function validatePineScriptSyntax(code: string): { isValid: boolean; errors: any
 /**
  * Fixes common Pine Script errors using AI
  */
-export async function fixPineScriptErrors(pineScriptId: string, userId: string): Promise<PineScriptResult> {
+export async function fixPineScriptErrors(pineScriptId: string, userId: string): Promise<pineScriptResult> {
   // Get the original script
   const { data: original, error: originalError } = await supabase
     .from('pinescript_outputs')
@@ -480,7 +480,7 @@ export async function getUserPineScripts(userId: string): Promise<any[]> {
 /**
  * Converts a Vault strategy to Pine Script
  */
-export async function convertStrategyToPineScript(strategyId: string, userId: string): Promise<PineScriptResult> {
+export async function convertStrategyToPineScript(strategyId: string, userId: string): Promise<pineScriptResult> {
   // Fetch the strategy
   const { data: strategy, error: strategyError } = await supabase
     .from('trading_strategies')

@@ -83,9 +83,8 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
           Chart loading...
         </div>
         {currentEvent && (
-          <Div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
-              ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}
-         >
+          <div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
+              ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}>
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
               <span className="ml-2 font-mono">
@@ -97,33 +96,40 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
       </div>
       
       <div className="w-full bg-white/10 rounded-full h-1.5">
-          <div 
-              className="bg-glow-cyan h-1.5 rounded-full transition-all duration-300 ease-linear"
-              style={{ width: `${progress}%` }}
-          />
+        <div 
+          className="bg-glow-cyan h-1.5 rounded-full transition-all duration-300 ease-linear"
+          style={{ width: `${progress}%` }}
+       />
       </div>
 
       <div className="flex justify-between items-center gap-4 mt-4">
         <Button variant="ghost" size="icon" onClick={handleReset} title="Reset">
-          <Repeat className="h-4 w-4" />
-        </Button>
+          <Repeat className="h-4 w-4"/>
+        </button>
         <div className="flex items-center gap-2">
           <Button variant="outline" size="icon" onClick={handlePrev} title="Previous Candle">
-            <Rewind className="h-4 w-4" />
-          </Button>
+            <Rewind className="h-4 w-4"/>
+          </button>
           <Button variant="outline" size="icon" onClick={handlePlayPause} className="w-16">
-            {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-          </Button>
+            {isPlaying ? <Pause className="h-4 w-4"/> : <Play className="h-4 w-4"/>}
+          </button>
           <Button variant="outline" size="icon" onClick={handleNext} title="Next Candle">
-            <FastForward className="h-4 w-4" />
-          </Button>
+            <FastForward className="h-4 w-4"/>
+          </button>
         </div>
         <Button variant="ghost" size="icon" onClick={toggleSpeed} title="Toggle Speed">
-          <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`} />
-        </Button>
+          <Zap className={`h-4 w-4 transition-colors ${speed === 250 ? 'text-glow-cyan' : ''}`}/>
+        </button>
       </div>
     </div>
   );
 };
 
-export default BacktestReplay; 
+export default BacktestReplay;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

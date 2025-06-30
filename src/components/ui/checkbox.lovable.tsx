@@ -9,8 +9,8 @@ const Checkbox = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >(({ className, ...props }, ref) => (
   <Checkboxprimitive >
-    <Checkboxprimitive  />
-      <check  >
+    <Checkboxprimitive  //>
+      <Check /></Checkboxprimitive></div>
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))

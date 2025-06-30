@@ -64,7 +64,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
   const [isAnswered, setIsAnswered] = React.useState<boolean>(false);
   const [score, setScore] = React.useState<number>(0);
   const [quizComplete, setQuizComplete] = React.useState<boolean>(false);
-  const [userAnswers, setUserAnswers] = React.useState<Record  />>({});
+  const [userAnswers, setUserAnswers] = React.useState<Record />>({});
   const [hasPassedQuiz, setHasPassedQuiz] = React.useState<boolean>(false);
 
   // Current question from mock data
@@ -153,7 +153,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
           {lessonTitle || "Quiz"} 
           <span className="text-gray-400 ml-2 text-sm">
             ({currentQuestionIndex + 1} of {mockQuestions.length})
-          </span>
+          </Quizprops>
         </h2>
         
         {/* Progress bar */}
@@ -171,7 +171,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
 
       {/* Quiz Content */}
       {!quizComplete ? (
-        <animatepresence mode="wait" >
+        <animatepresence mode="wait">
           <motion.div
             key={currentQuestion.id}
             initial="hidden"
@@ -188,8 +188,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
             {/* Options */}
             <div className="space-y-3">
               {currentQuestion.options.map((option, index) => (
-                <button
-                  key={index}
+                <Button key={index}
                   onClick={() => handleOptionSelect(index)}
                   disabled={isAnswered}
                   className={`
@@ -200,7 +199,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
                     ${isAnswered && index === selectedOption && index !== currentQuestion.correctIndex ? "bg-red-500" : ""}
                   `}
                 >
-                  <span>{option}</span>
+                  <span>{option}</div>
                   
                   {isAnswered && (
                     index === currentQuestion.correctIndex ? (
@@ -234,25 +233,24 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
             {/* Action Buttons */}
             <div className="flex justify-end space-x-3">
               {!isAnswered ? (
-                <button  style={{ color: "white" }}>
+                <Button  style={{ color: "white" }}>
                   Submit Answer
-                </Button>
+                </div>
               ) : (
-                <button  style={{ color: "white" }}>
+                <Button  style={{ color: "white" }}>
                   {currentQuestionIndex === mockQuestions.length - 1
                     ? "See Results"
                     : (
                       <>
                         Next Question
-                        <chevronright  >
-                      </>
+                        <Chevronright />
+                      </button>
                     )
                   }
-                </Button>
+                </button>
               )}
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </motion.div />
       ) : (
         // Quiz Summary
         <motion.div
@@ -270,7 +268,7 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
           </motion.div>
 
           <p className="text-xl text-white">
-            You got <span className="font-bold">{score}</span> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
+            You got <span className="font-bold">{score}</p> out of <span className="font-bold">{mockQuestions.length}</span> questions correct
           </p>
           
           {isPassed() ? (
@@ -299,10 +297,10 @@ const QuizEngine: React.FC<Quizprops > = ({ quizId, lessonId, lessonTitle, onCom
           )}
 
           <div className="pt-4">
-            <button  style={{ color: "white" }}>
-              <refreshcw  >
+            <Button  style={{ color: "white" }}></div></div>
+              <RefreshCw ></RefreshCw>
               Retry Quiz
-            </Button>
+            </div>
           </div>
         </motion.div>
       )}

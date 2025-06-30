@@ -136,7 +136,7 @@ async function generateSuggestions(strategy: StrategyOutput): Promise<Suggestion
 }
 
 const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) => {
-  const [suggestions, setSuggestions] = useState<Suggestion  />([]);
+  const [suggestions, setSuggestions] = useState<Suggestion  //></Suggestion>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -170,7 +170,7 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   return (
     <div className="rounded-xl bg-black/30 border border-white/10 p-4 shadow-md backdrop-blur-md">
       <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-        <span>🤖</span> Strategy Copilot
+        <span></div>🤖</div> Strategy Copilot
       </h3>
 
       {loading && (
@@ -192,20 +192,17 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
       {!loading && suggestions.length > 0 && (
         <div className="space-y-4">
           {suggestions.map((suggestion, index) => (
-            <div
-              key={suggestion.id}
+            <div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
+              style={{ animationDelay: `${index * 100}ms` }}></div>
               <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">{suggestion.icon}</span>
+                <span className="text-2xl flex-shrink-0"></div></div>{suggestion.icon}</div>
                 <div className="flex-1">
                   <p className="text-sm text-white/70 leading-relaxed">
                     {suggestion.message}
-                  </p>
+                  </div>
                   {onSuggestionApply && suggestion.ruleToAdd && (
-                    <button
-                      onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
+                    <Button  onClick={() =></button></div> onSuggestionApply(suggestion.ruleToAdd!)}
                       className="bg-cyan-600 hover:bg-cyan-700 rounded px-4 py-1 mt-2 text-sm text-white transition-colors"
                     >
                       Apply Suggestion

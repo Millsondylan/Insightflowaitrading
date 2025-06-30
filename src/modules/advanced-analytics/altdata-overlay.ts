@@ -14,7 +14,7 @@ import {
 export class AltDataOverlayEngine {
   private providers: Map<string, DataProviderConfig> = new Map();
   private eventCallback?: (event: AnalyticsEvent) => void;
-  private cache: Map<string, { data: any; timestamp: Date; ttl: number }> = new Map();
+  private cache: Map<string, { data: unknown; timestamp: Date; ttl: number }> = new Map();
 
   constructor() {
     this.initializeDefaultProviders();
@@ -56,7 +56,7 @@ export class AltDataOverlayEngine {
    * TODO: implement parallel data fetching
    * TODO: add data quality scoring
    */
-  async getAltDataOverlay(symbol: string): Promise<AltDataOverlay> {
+  async getAltDataOverlay(symbol: string): Promise<altDataOverlay> {
     const [sentiment, news, onchain, options] = await Promise.allSettled([
       this.getSentimentData(symbol),
       this.getNewsData(symbol),
@@ -83,7 +83,7 @@ export class AltDataOverlayEngine {
    * TODO: implement real sentiment analysis APIs
    * TODO: add social media sentiment integration
    */
-  async getSentimentData(symbol: string): Promise<SentimentData> {
+  async getSentimentData(symbol: string): Promise<SentimentData></SentimentData> {
     const cacheKey = `sentiment_${symbol}`;
     const cached = this.getFromCache(cacheKey);
     if (cached) return cached;
@@ -142,7 +142,7 @@ export class AltDataOverlayEngine {
    * TODO: implement real news API integration
    * TODO: add news categorization and relevance scoring
    */
-  async getNewsData(symbol: string, limit: number = 10): Promise<NewsData[]> {
+  async getNewsData(symbol: string, limit: number = 10): Promise<NewsData[]></NewsData> {
     const cacheKey = `news_${symbol}_${limit}`;
     const cached = this.getFromCache(cacheKey);
     if (cached) return cached;
@@ -169,7 +169,7 @@ export class AltDataOverlayEngine {
    * TODO: implement blockchain data providers
    * TODO: add DeFi metrics integration
    */
-  async getOnChainData(symbol: string): Promise<OnChainData | undefined> {
+  async getOnChainData(symbol: string): Promise<OnChainData | undefined></OnChainData> {
     // Only for crypto symbols
     if (!this.isCryptoSymbol(symbol)) return undefined;
 
@@ -205,7 +205,7 @@ export class AltDataOverlayEngine {
    * TODO: implement real options data APIs
    * TODO: add unusual activity detection
    */
-  async getOptionsFlow(symbol: string): Promise<OptionsFlowData | undefined> {
+  async getOptionsFlow(symbol: string): Promise<optionsFlowData | undefined> {
     // Only for optionable symbols
     if (!this.isOptionableSymbol(symbol)) return undefined;
 
@@ -259,7 +259,7 @@ export class AltDataOverlayEngine {
     return null;
   }
 
-  private setCache(key: string, data: any, ttl: number): void {
+  private setCache(key: string, data: unknown, ttl: number): void {
     this.cache.set(key, { data, timestamp: new Date(), ttl });
   }
 
@@ -327,7 +327,7 @@ export class AltDataOverlayEngine {
   /**
    * Configure data provider
    */
-  configureProvider(name: string, config: Partial<DataProviderConfig>): void {
+  configureProvider(name: string, config: Partial<DataProviderConfig></DataProviderConfig>): void {
     const existing = this.providers.get(name);
     if (existing) {
       this.providers.set(name, { ...existing, ...config });

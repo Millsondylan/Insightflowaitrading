@@ -126,12 +126,12 @@ export class PlanManager {
     }
   }
 
-  public async getAllPlans(): Promise<SubscriptionPlan[]> {
+  public async getAllPlans(): Promise<subscriptionPlan[]> {
     await this.ensureFreshCache();
     return Array.from(this.plans.values());
   }
 
-  public async getPlan(planId: string): Promise<SubscriptionPlan | null> {
+  public async getPlan(planId: string): Promise<subscriptionPlan | null> {
     await this.ensureFreshCache();
     return this.plans.get(planId) || null;
   }
@@ -141,7 +141,7 @@ export class PlanManager {
     userType?: string;
     userCount?: number;
     date?: Date;
-  }): Promise<SubscriptionPlan[]> {
+  }): Promise<subscriptionPlan[]> {
     await this.ensureFreshCache();
     const now = params.date || new Date();
 
@@ -177,7 +177,7 @@ export class PlanManager {
     subscriptionMonths?: number;
     userType?: string;
     region?: string;
-  }): Promise<PlanDiscount[]> {
+  }): Promise<planDiscount[]> {
     const plan = await this.getPlan(params.planId);
     if (!plan) return [];
 
@@ -205,7 +205,7 @@ export class PlanManager {
     });
   }
 
-  public async getAvailableAddOns(planId: string): Promise<PlanAddOn[]> {
+  public async getAvailableAddOns(planId: string): Promise<planAddOn[]> {
     const plan = await this.getPlan(planId);
     return plan?.addOns || [];
   }

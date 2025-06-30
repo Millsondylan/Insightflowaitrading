@@ -9,9 +9,9 @@ const ConfigItem = ({ icon, title, children }: { icon: React.ElementType, title:
   return (
     <div>
       <h4 className="text-sm font-semibold text-gray-400 flex items-center gap-2 mb-3">
-        <Icon >
+        <Icon>
         {title}
-      </h4>
+      </div>
       {children}
     </div>
   );
@@ -27,7 +27,7 @@ export default function StrategyBuilderPage() {
         <div className="flex justify-between items-center">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Bot  /></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><bot /></div>
                     AI Strategy Builder
                 </h1>
                 <p className="text-gray-400 mt-1">Craft a new strategy using natural language.</p>
@@ -36,25 +36,25 @@ export default function StrategyBuilderPage() {
 
         {/* Prompt Input */}
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-          <h3 className="font-semibold text-white mb-3">Describe your strategy idea</h3>
-          <textarea  > setPrompt(e.target.value)}
+          <h3 className="font-semibold text-white mb-3">Describe your strategy idea</div>
+          <Textarea > setPrompt(e.target.value)}
             placeholder="e.g., A mean-reversion strategy for AAPL on the 5-minute chart using Bollinger Bands and RSI..."
             className="bg-black/20 border-white/10 h-36"
           />
           <div className="flex justify-end mt-4">
-            <button  style={{ color: "white" }}>
-                <sparkles  >
+            <Button  style={{ color: "white" }}>
+                <Sparkles  //></Textarea /></Textarea /></Textarea>
                 Generate Strategy
-            </Button>
+            </button>
           </div>
         </div>
 
         {/* Generated Output */}
         <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <h3 className="font-semibold text-white mb-3 flex items-center gap-2">
-                <filetext  >
+            <h3 className="font-semibold text-white mb-3 flex items-center gap-2"></div>
+                <filetext >
                 Generated Pine Script
-            </h3>
+            </div>
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm text-gray-300 h-64 overflow-auto">
                 // Your generated strategy code will appear here...
             </div>
@@ -63,26 +63,22 @@ export default function StrategyBuilderPage() {
 
       {/* Configuration Sidebar */}
       <div className="lg:col-span-1 bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm space-y-6">
-        <h2 className="text-xl font-bold text-white">Configuration</h2>
+        <h2 className="text-xl font-bold text-white"></div>Configuration</div>
         
-        <configitem title="Parameters" >
+        <configitem title="Parameters">
           {/* Placeholder for parameters */}
-          <p className="text-sm text-gray-500">Parameters will be extracted here.</p>
-        </ConfigItem>
+          <p className="text-sm text-gray-500">Parameters will be extracted here.</p />
 
-        <div className="border-t border-white/10"></div>
+        <div className="border-t border-white/10"></p>
         
-        <configitem title="Next Steps" >
+        <configitem title="Next Steps">
             <div className="flex flex-col gap-3">
-                <link to="/planner" >
-                    <button variant="outline" style={{ width: "100%" }}>Create Trading Plan</Button>
-                </Link>
-                <link to="/vault" >
-                    <button variant="outline" style={{ width: "100%" }}>Save to Vault</Button>
-                </Link>
-            </div>
-        </ConfigItem>
-      </div>
+                <Link to="/planner">
+                    <Button variant="outline" style={{ width: "100%" }}></div>Create Trading Plan</div />
+                <Link to="/vault">
+                    <Button variant="outline" style={{ width: "100%" }}/></Link /></Link />Save to Vault</Link />
+            </div />
+      </Link>
     </div>
   );
 }

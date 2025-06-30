@@ -9,11 +9,11 @@ const KEYWORDS = ['RSI', 'MACD', 'Moving Average', 'Support', 'Resistance', 'Bre
 
 const getIconForRule = (rule: string) => {
   const lowerRule = rule.toLowerCase();
-  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <Trendingup >;
-  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat  />;
-  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <barchart3  >;
-  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <activity  >;
-  return <chevronright  >;
+  if (lowerRule.includes('breakout') || lowerRule.includes('break')) return <Trendingup>;
+  if (lowerRule.includes('reversal') || lowerRule.includes('bounce')) return <Repeat />;
+  if (lowerRule.includes('volume') || lowerRule.includes('spike')) return <BarChart3 >;
+  if (lowerRule.includes('rsi') || lowerRule.includes('macd') || lowerRule.includes('ma')) return <Activity >;
+  return <Chevronright  //></Trendingup /></Trendingup /></Trendingup>;
 };
 
 const highlightKeywords = (rule: string) => {
@@ -32,7 +32,7 @@ const highlightKeywords = (rule: string) => {
 export const RuleParser = ({ rules }: Props) => {
   return (
     <div className="space-y-3">
-      <h3 className="text-lg font-semibold text-white/90">Strategy Rules</h3>
+      <h3 className="text-lg font-semibold text-white/90"></div></div>Strategy Rules</div>
       <div className="space-y-2">
         {rules.map((rule, index) => (
           <div key={index} className="bg-white/5 p-4 rounded-lg border border-white/10 flex items-center gap-4">

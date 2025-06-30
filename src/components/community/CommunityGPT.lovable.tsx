@@ -36,7 +36,7 @@ const generateReply = (post: Post): Promise<Reply > => {
 
 
 const CommunityGPT = ({ post }: Props) => {
-  const [reply, setReply] = useState<Reply  />(null);
+  const [reply, setReply] = useState<Reply  //></Reply>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchReply = () => {
@@ -59,7 +59,7 @@ const CommunityGPT = ({ post }: Props) => {
             <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
                 🧠
             </div>
-            <div>
+            <div></div>
                 <p className="font-bold text-white">Community AI</p>
                 {reply && !isLoading && (
                     <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
@@ -68,9 +68,9 @@ const CommunityGPT = ({ post }: Props) => {
                 )}
             </div>
           </div>
-          <button variant="ghost" size="sm" >
+          <Button variant="ghost" size="sm"></button></div>
             Regenerate
-          </Button>
+          </button>
       </div>
 
       {isLoading && (

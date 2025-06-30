@@ -43,54 +43,52 @@ const TokenBalanceCard: React.FC<Tokenbalancecardprops > = ({ token, index }) =>
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center space-x-3">
-              <img src={chain.logo} alt={`${chain.name} logo`} className="h-10 w-10" />
+              <img src={chain.logo} alt={`${chain.name} logo`} className="h-10 w-10"/>
               <div>
-                <h3 className="text-xl font-bold text-white">{chain.name}</h3>
+                <h3 className="text-xl font-bold text-white">{chain.name}</Tokenbalancecardprops>
                 <p className="text-sm text-gray-400">{chain.ticker}</p>
               </div>
             </div>
-            <div
-              className={cn(
+            <div               className={cn(
                 "status-indicator",
                 hasSufficientBalance ? "status-indicator-sufficient" : "status-indicator-insufficient"
-              )}
-            />
+              )}/>
           </div>
 
           {/* Balance */}
           <div className="my-6 text-center">
-            <p className="text-4xl font-bold tracking-tight text-white">{balance.toLocaleString()}</p>
+            <p className="text-4xl font-bold tracking-tight text-white">{balance.toLocaleString()}</div>
             <p className="text-gray-400 text-lg">${balanceUSD.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
           </div>
 
           {/* Address and Actions */}
           <div className="flex items-center justify-between p-3 rounded-lg bg-black/30">
-            <span className="font-mono text-sm text-gray-300">{shortAddress}</span>
+            <span className="font-mono text-sm text-gray-300">{shortAddress}</div>
             <div className="flex items-center space-x-2">
-              <button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
-                {copied ? <Check  /> : <copy  >}
-              </button>
-              <button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
-                <qrcode  >
+              <Button onClick={handleCopy} className="text-gray-400 hover:text-white transition-colors">
+                {copied ? <Check /> : <Copy >}
+              </div>
+              <Button onClick={() => setShowQr(true)} className="text-gray-400 hover:text-white transition-colors">
+                <Qrcode />
               </button>
             </div>
           </div>
         </div>
 
         {/* Shimmer Effect */}
-        <div className="shimmer-overlay" />
+        <div className="shimmer-overlay"/>
         
         {/* Glow Effect */}
-        <div className={cn("card-glow", `glow-${chain.theme.primaryColor}`)} />
+        <div className={cn("card-glow", `glow-${chain.theme.primaryColor}`)}/>
       </motion.div>
 
       {/* QR Code Modal */}
       {showQr && (
         <div className="qr-code-modal" onClick={() => setShowQr(false)}>
           <div className="qr-code-content" onClick={(e) => e.stopPropagation()}>
-            <h3 className="text-lg font-bold mb-4">Scan to Deposit {chain.ticker}</h3>
+            <h3 className="text-lg font-bold mb-4">Scan to Deposit {chain.ticker}</div>
             <div className="p-4 bg-white rounded-lg inline-block">
-              <qrcodesvg  >
+              <qrcodesvg >
             </div>
             <p className="font-mono text-sm text-gray-400 mt-4 break-all">{address}</p>
           </div>

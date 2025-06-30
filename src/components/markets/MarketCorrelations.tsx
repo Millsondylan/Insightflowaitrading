@@ -44,13 +44,20 @@ const correlationThresholds = [0.5, 0.7, 0.8, 0.9];
 
 export default function MarketCorrelations() {
   const { user } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [correlations, setCorrelations] = useState<CorrelationData[]>([]);
   const [favoritePairs, setFavoritePairs] = useState<FavoritePair[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTimeframe, setSelectedTimeframe] = useState('1d');
   const [filterMode, setFilterMode] = useState<'all' | 'positive' | 'negative'>('all');
   const [showSignificantOnly, setShowSignificantOnly] = useState(false);
-  const [selectedPair, setSelectedPair] = useState<CorrelationData | null>(null);
+  const [selectedPair, setSelectedPair] = useState<CorrelationData | null/>(null);
 
   useEffect(() => {
     fetchCorrelations();
@@ -148,9 +155,9 @@ export default function MarketCorrelations() {
   };
 
   const getCorrelationEmoji = (value: number) => {
-    if (value >= 0.7) return <TrendingUp className="w-4 h-4" />;
-    if (value <= -0.7) return <TrendingDown className="w-4 h-4" />;
-    return <Minus className="w-4 h-4" />;
+    if (value >= 0.7) return <trendingUp className="w-4 h-4"/>;
+    if (value <= -0.7) return <trendingDown className="w-4 h-4"/>;
+    return <Minus className="w-4 h-4"/>;
   };
 
   const filteredCorrelations = correlations.filter(corr => {
@@ -180,17 +187,16 @@ export default function MarketCorrelations() {
 
     return (
       <div className="h-20 w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={chartData}>
-            <Line 
+        <ResponsiveContainer width="100%" height="100%"/>
+          <lineChart data={chartData}>
+            <line 
               type="monotone" 
               dataKey="value" 
               stroke="#3B82F6" 
               strokeWidth={2}
               dot={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+            //>
+        </CorrelationData>
       </div>
     );
   };
@@ -198,9 +204,8 @@ export default function MarketCorrelations() {
   if (loading) {
     return (
       <Card>
-        <CardContent className="flex items-center justify-center py-8">
-          <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-        </CardContent>
+        <CardContent className="flex items-center justify-center py-8"/>
+          <Loader2 className="w-8 h-8 animate-spin text-blue-600" //>
       </Card>
     );
   }
@@ -209,95 +214,84 @@ export default function MarketCorrelations() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-2"/>
             Market Correlations
-            <Badge variant="secondary">{correlations.length} pairs</Badge>
-          </CardTitle>
+            <Badge variant="secondary">{correlations.length} pairs</div>
           <CardDescription>
             Track correlations between different trading pairs with real-time updates
           </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4"/>
           {/* Controls */}
           <div className="flex flex-wrap gap-4">
             <Select value={selectedTimeframe} onValueChange={setSelectedTimeframe}>
-              <SelectTrigger className="w-32">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
+              <selectTrigger className="w-32">
+                <selectValue //>
+              <selectContent>
                 {timeframes.map(tf => (
-                  <SelectItem key={tf} value={tf}>{tf}</SelectItem>
+                  <selectItem key={tf} value={tf}>{tf}</div>
                 ))}
               </SelectContent>
-            </Select>
 
             <Tabs value={filterMode} onValueChange={(v) => setFilterMode(v as any)}>
               <TabsList>
-                <TabsTrigger value="all">All</TabsTrigger>
-                <TabsTrigger value="positive">Positive</TabsTrigger>
-                <TabsTrigger value="negative">Negative</TabsTrigger>
-              </TabsList>
-            </Tabs>
+                <TabsTrigger value="all"/>All</Tabs>
+                <TabsTrigger value="positive"/>Positive</TabsTrigger>
+                <TabsTrigger value="negative"/>Negative</TabsTrigger>
+            </TabsTrigger>
 
             <div className="flex items-center space-x-2">
               <Switch
                 id="significant"
                 checked={showSignificantOnly}
                 onCheckedChange={setShowSignificantOnly}
-              />
-              <Label htmlFor="significant">Significant only (|r| &gt; 0.7)</Label>
+ />
+              <Label htmlFor="significant">Significant only (|r| &gt; 0.7)</div>
             </div>
           </div>
 
           {/* Correlation Grid */}
           <div className="grid gap-4">
             {filteredCorrelations.length === 0 ? (
-              <Alert>
-                <Info className="h-4 w-4" />
-                <AlertDescription>
+              <alert>
+                <Info className="h-4 w-4"/>
+                <alertDescription>
                   No correlations found for the selected filters
-                </AlertDescription>
-              </Alert>
+                </div>
             ) : (
               filteredCorrelations.map(correlation => (
-                <Card 
-                  key={correlation.id} 
+                <Card key={correlation.id} 
                   className={cn(
                     "transition-all cursor-pointer hover:shadow-lg",
                     selectedPair?.id === correlation.id && "ring-2 ring-blue-500"
                   )}
                   onClick={() => setSelectedPair(correlation)}
                 >
-                  <CardContent className="p-4">
+                  <CardContent className="p-4"/>
                     <div className="flex items-start justify-between">
                       <div className="space-y-2 flex-1">
                         <div className="flex items-center gap-2">
                           <h3 className="font-semibold text-lg">
                             {correlation.symbol_pair.join(' / ')}
-                          </h3>
+                          </div>
                           <TooltipProvider>
                             <Tooltip>
                               <TooltipTrigger>
-                                <Badge 
-                                  style={{ 
+                                <Badge style={{ 
                                     backgroundColor: getCorrelationColor(correlation.correlation_value, correlation.color_palette),
                                     color: 'white'
                                   }}
-                                >
+        >
                                   {getCorrelationEmoji(correlation.correlation_value)}
                                   {formatCorrelationValue(correlation.correlation_value)}
-                                </Badge>
-                              </TooltipTrigger>
+                                </TooltipProvider>
                               <TooltipContent>
-                                <p>Correlation coefficient</p>
+                                <p>Correlation coefficient</TooltipProvider>
                                 <p className="text-xs text-gray-400">
                                   {correlation.data_points} data points
                                 </p>
-                              </TooltipContent>
                             </Tooltip>
-                          </TooltipProvider>
                           {correlation.significance_level && correlation.significance_level > 0.95 && (
-                            <Badge variant="outline">95% significant</Badge>
+                            <Badge variant="outline">95% significant</p>
                           )}
                         </div>
                         
@@ -307,7 +301,7 @@ export default function MarketCorrelations() {
 
                         {correlation.correlation_trend && (
                           <div className="mt-2">
-                            <p className="text-xs text-gray-500 mb-1">Correlation trend</p>
+                            <p className="text-xs text-gray-500 mb-1">Correlation trend</div>
                             {renderCorrelationTrend(correlation.correlation_trend)}
                           </div>
                         )}
@@ -315,8 +309,7 @@ export default function MarketCorrelations() {
 
                       <div className="flex gap-2">
                         {user && (
-                          <Button
-                            variant="ghost"
+                          <Button variant="ghost"
                             size="icon"
                             onClick={(e) => {
                               e.stopPropagation();
@@ -328,12 +321,11 @@ export default function MarketCorrelations() {
                                 "w-4 h-4",
                                 isFavorite(correlation.symbol_pair) && "fill-yellow-500 text-yellow-500"
                               )}
-                            />
-                          </Button>
+               />
+                          </div>
                         )}
                       </div>
                     </div>
-                  </CardContent>
                 </Card>
               ))
             )}
@@ -341,49 +333,45 @@ export default function MarketCorrelations() {
 
           {/* Selected Pair Details */}
           {selectedPair && (
-            <Card className="border-blue-500">
+            <Card className="border-blue-500"/>
               <CardHeader>
-                <CardTitle className="text-lg">
+                <CardTitle className="text-lg"/>
                   {selectedPair.symbol_pair.join(' / ')} Details
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+                </Card>
+              <CardContent className="space-y-4"/>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <p className="text-gray-500">Correlation</p>
+                    <p className="text-gray-500">Correlation</Card>
                     <p className="font-semibold text-lg" style={{ color: getCorrelationColor(selectedPair.correlation_value) }}>
                       {formatCorrelationValue(selectedPair.correlation_value)}
                     </p>
                   </div>
                   <div>
-                    <p className="text-gray-500">Timeframe</p>
+                    <p className="text-gray-500">Timeframe</div>
                     <p className="font-semibold">{selectedPair.timeframe}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500">Data Points</p>
+                    <p className="text-gray-500">Data Points</div>
                     <p className="font-semibold">{selectedPair.data_points}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500">Period</p>
+                    <p className="text-gray-500">Period</div>
                     <p className="font-semibold">
                       {Math.ceil((new Date(selectedPair.end_date).getTime() - new Date(selectedPair.start_date).getTime()) / (1000 * 60 * 60 * 24))} days
                     </p>
                   </div>
                 </div>
 
-                <Alert>
-                  <Info className="h-4 w-4" />
-                  <AlertDescription>
+                <alert>
+                  <Info className="h-4 w-4"/>
+                  <alertDescription>
                     {selectedPair.correlation_value > 0.7 && "These pairs move strongly in the same direction. Consider this when diversifying."}
                     {selectedPair.correlation_value < -0.7 && "These pairs move in opposite directions. One can hedge the other."}
                     {Math.abs(selectedPair.correlation_value) <= 0.7 && "These pairs have moderate to low correlation."}
                   </AlertDescription>
-                </Alert>
               </CardContent>
-            </Card>
           )}
         </CardContent>
-      </Card>
-    </div>
+    </Info>
   );
 } 

@@ -34,10 +34,10 @@ const LandingPage = () => {
   const [platformUptime, setPlatformUptime] = React.useState('N/A');
 
   // Section refs for theme changes
-  const heroRef = useRef<HTMLDivElement  >(null);
-  const featuresRef = useRef<HTMLDivElement  >(null);
-  const pricingRef = useRef<HTMLDivElement  >(null);
-  const testimonialsRef = useRef<HTMLDivElement  >(null);
+  const heroRef = useRef<HTMLDivElement >(null);
+  const featuresRef = useRef<HTMLDivElement >(null);
+  const pricingRef = useRef<HTMLDivElement >(null);
+  const testimonialsRef = useRef<HTMLDivElement >(null);
 
   // Theme switching based on scroll position
   useEffect(() => {
@@ -172,25 +172,23 @@ const LandingPage = () => {
       <nav className="w-full p-6 flex justify-between items-center backdrop-blur-sm bg-black/20">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-            <trendingup  style={{ color: "white" }}>
-          </div>
+            <TrendingUp  style={{ color: "white" }}/>
           <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent">
             InsightFlow AI
-          </h1>
+          </HTMLDivElement>
         </div>
         <div className="flex space-x-4">
           <Button variant="outline"> navigate('/auth')}
             className="border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white"
           >
             Sign In
-          </Button>
-          <Button  /> navigate('/auth')}
+          </div>
+          <Button /> navigate('/auth')}
             className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
           >
             Start Free Trial
-          </Button>
-        </div>
-      </nav>
+          </button>
+        </div />
 
       {/* Hero Section */}
       <motion.div 
@@ -203,14 +201,14 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut' }}
       >
         <div className="text-center space-y-8 w-full">
-          <badge  >
+          <Badge >
             🚀 Advanced Trading Platform - Now with AI Integration
-          </Badge>
+          </div>
           
           <h1 className="text-6xl font-bold leading-tight">
             <span className="bg-gradient-to-r from-white via-blue-400 to-purple-400 bg-clip-text text-transparent">
               Trade Smarter with
-            </span>
+            </h1>
             <br />
             <span className="bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
               AI-Powered Insights
@@ -223,31 +221,31 @@ const LandingPage = () => {
           </p>
           
           <div className="flex justify-center space-x-4 pt-8">
-            <button size="lg" > navigate('/auth')}
+            <Button size="lg"/> navigate('/auth')}
               className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-lg px-8 py-4 shadow-lg shadow-blue-500/25"
             >
               Start Free Trial
-              <arrowright  >
-            </Button>
-            <button size="lg" variant="outline" > navigate('/trading')}
+              <ArrowRight >
+            </div>
+            <Button size="lg" variant="outline"> navigate('/trading')}
               className="border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white text-lg px-8 py-4"
             >
               View Demo
-            </Button>
+            </button>
           </div>
           
           <div className="flex justify-center items-center space-x-8 pt-12 text-gray-400">
             <div className="flex items-center space-x-2">
-              <checkcircle  >
-              <span>30-Day Free Trial</span>
+              <checkcircle >
+              <span>30-Day Free Trial</div>
             </div>
             <div className="flex items-center space-x-2">
-              <checkcircle  >
-              <span>No Credit Card Required</span>
+              <checkcircle >
+              <span>No Credit Card Required</div>
             </div>
             <div className="flex items-center space-x-2">
-              <checkcircle  >
-              <span>Cancel Anytime</span>
+              <checkcircle >
+              <span>Cancel Anytime</div>
             </div>
           </div>
         </div>
@@ -261,61 +259,49 @@ const LandingPage = () => {
           <div className="text-center text-red-400">{error}</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-            <card  >
-              <cardheader  >
-                <users  >
-                <cardtitle  style={{ color: "white" }}>{userCount.toLocaleString()}</CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <span className="text-gray-400">Active Traders</span>
-              </CardContent>
-            </Card>
-            <card  >
-              <cardheader  >
-                <trendingup  >
-                <cardtitle  style={{ color: "white" }}>
+            <Card >
+              <Cardheader >
+                <Users >
+                <Cardtitle  style={{ color: "white" }}>{userCount.toLocaleString()}</div />
+              <Cardcontent >
+                <span className="text-gray-400">Active Traders</Cardcontent />
+            </div>
+            <Card >
+              <Cardheader >
+                <TrendingUp >
+                <Cardtitle  style={{ color: "white" }}>
                   {totalTrades > 0 ? ((successfulTrades / totalTrades) * 100).toFixed(1) : '0.0'}%
-                </CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <span className="text-gray-400">Successful Trades</span>
-              </CardContent>
+                </Card />
+              <Cardcontent >
+                <span className="text-gray-400">Successful Trades</Cardcontent />
             </Card>
-            <card  >
-              <cardheader  >
-                <checkcircle  >
-                <cardtitle  style={{ color: "white" }}>{platformUptime}</CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <span className="text-gray-400">Platform Uptime</span>
-              </CardContent>
+            <Card >
+              <Cardheader >
+                <checkcircle >
+                <Cardtitle  style={{ color: "white" }}>{platformUptime}</Card />
+              <Cardcontent >
+                <span className="text-gray-400">Platform Uptime</Cardcontent />
             </Card>
-            <card  >
-              <cardheader  >
-                <barchart3  >
-                <cardtitle  style={{ color: "white" }}>{marketsCovered > 0 ? marketsCovered : 'N/A'}</CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <span className="text-gray-400">Markets Covered</span>
-              </CardContent>
+            <Card >
+              <Cardheader >
+                <BarChart3 >
+                <Cardtitle  style={{ color: "white" }}>{marketsCovered > 0 ? marketsCovered : 'N/A'}</Card />
+              <Cardcontent >
+                <span className="text-gray-400">Markets Covered</Cardcontent />
             </Card>
-            <card  >
-              <cardheader  >
-                <dollarsign  >
-                <cardtitle  style={{ color: "white" }}>${demoVolume.toLocaleString()}</CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <span className="text-gray-400">Total Volume</span>
-              </CardContent>
+            <Card >
+              <Cardheader >
+                <DollarSign >
+                <Cardtitle  style={{ color: "white" }}>${demoVolume.toLocaleString()}</Card />
+              <Cardcontent >
+                <span className="text-gray-400">Total Volume</Cardcontent />
             </Card>
-            <card  >
-              <cardheader  >
-                <star  >
-                <cardtitle  style={{ color: "white" }}>{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <span className="text-gray-400">User Rating</span>
-              </CardContent>
+            <Card >
+              <Cardheader >
+                <Star >
+                <Cardtitle  style={{ color: "white" }}>{userRating > 0 ? userRating.toFixed(1) : '5.0'}/5</Card />
+              <Cardcontent >
+                <span className="text-gray-400">User Rating</Cardcontent />
             </Card>
           </div>
         )}
@@ -334,7 +320,7 @@ const LandingPage = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-white mb-6">
             Powerful Features for Modern Traders
-          </h2>
+          </div>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Everything you need to trade successfully in today's markets
           </p>
@@ -342,17 +328,15 @@ const LandingPage = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <card  >
-              <cardheader  >
+            <Card >
+              <Cardheader >
                 <div className={`w-16 h-16 mx-auto rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4`}>
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</CardTitle>
-              </CardHeader>
-              <cardcontent  >
-                <p className="text-gray-400 text-center">{feature.description}</p>
-              </CardContent>
-            </Card>
+                <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{feature.title}</Cardtitle />
+              <Cardcontent >
+                <p className="text-gray-400 text-center">{feature.description}</Cardcontent />
+            </Cardtitle>
           ))}
         </div>
       </motion.div>
@@ -368,9 +352,9 @@ const LandingPage = () => {
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
       >
         <div className="text-center mb-16 w-full">
-          <h2 className="text-4xl font-bold text-white mb-6">
+          <h2 className="text-4xl font-bold text-white mb-6"></div>
             Trusted by Traders Worldwide
-          </h2>
+          </div>
           <p className="text-xl text-gray-400 w-full">
             See what our users are saying about InsightFlow AI
           </p>
@@ -385,21 +369,18 @@ const LandingPage = () => {
               if (testimonial && typeof testimonial === 'object' && 'content' in testimonial && 'name' in testimonial && 'role' in testimonial) {
                 const t = testimonial as any;
                 return (
-                  <card  >
-                    <cardheader  >
-                      <p className="text-gray-300 italic">"{t.content}"</p>
-                    </CardHeader>
-                    <cardcontent  >
+                  <Card >
+                    <Cardheader /></Card /></Card />
+                      <p className="text-gray-300 italic">"{t.content}"</p />
+                    <Cardcontent >
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                          <users  style={{ color: "white" }}>
-                        </div>
+                          <Users  style={{ color: "white" }}/>
                         <div>
-                          <p className="text-white font-semibold">{t.name}</p>
+                          <p className="text-white font-semibold">{t.name}</Card>
                           <p className="text-gray-400 text-sm">{t.role}</p>
                         </div>
-                      </div>
-                    </CardContent>
+                      </div />
                   </Card>
                 );
               }
@@ -412,9 +393,9 @@ const LandingPage = () => {
       {/* Crypto Payment Section */}
       <div className="w-full px-0 py-20" id="crypto-payment">
         <div className="text-center mb-16 w-full">
-          <h2 className="text-4xl font-bold text-white mb-6">
+          <h2 className="text-4xl font-bold text-white mb-6"></div>
             Secure Crypto Payment Integration
-          </h2>
+          </div>
           <p className="text-xl text-gray-400 w-full">
             Pay with your preferred cryptocurrency using our verified wallet addresses
           </p>
@@ -422,14 +403,13 @@ const LandingPage = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {['USDT', 'BTC', 'ETH'].map((coin, idx) => (
-            <card  >
-              <cardheader  >
+            <Card >
+              <Cardheader ></div>
                 <div className={`w-16 h-16 mx-auto rounded-lg ${coin === 'USDT' ? 'bg-green-500/20 border border-green-500/30' : coin === 'BTC' ? 'bg-orange-500/20 border border-orange-500/30' : 'bg-blue-500/20 border border-blue-500/30'} flex items-center justify-center mb-4`}>
-                  <bitcoin  style={{ color: "white" }}>
+                  <Bitcoin  style={{ color: "white" }}>
                 </div>
-                <cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{coin}</CardTitle>
-              </CardHeader>
-            </Card>
+                <Cardtitle  style={{ color: "white", fontSize: "1.25rem" }}>{coin}</Cardtitle />
+            </Cardtitle>
           ))}
         </div>
       </div>

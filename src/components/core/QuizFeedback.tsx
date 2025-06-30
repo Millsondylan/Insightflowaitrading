@@ -44,9 +44,9 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
           transition={{ delay: 0.1, type: "spring", stiffness: 200 }}
         >
           {isCorrect ? (
-            <CheckCircle2 className="h-8 w-8 text-green-400" />
+            <CheckCircle2 className="h-8 w-8 text-green-400"/>
           ) : (
-            <XCircle className="h-8 w-8 text-red-400" />
+            <XCircle className="h-8 w-8 text-red-400"/>
           )}
         </motion.div>
         
@@ -65,7 +65,7 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
             <div className={cn(
               'w-2 h-2 rounded-full',
               getConfidenceColor(confidence).replace('text-', 'bg-')
-            )} />
+            )}/>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
           <Lightbulb className={cn(
             "h-5 w-5 mt-0.5 flex-shrink-0",
             isCorrect ? "text-green-400" : "text-red-400"
-          )} />
+          )}/>
           <div>
             <h4 className="font-semibold text-gray-200 mb-2">Explanation</h4>
             <p className="text-gray-300 leading-relaxed">{explanation}</p>
@@ -96,7 +96,7 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="flex items-start space-x-3 pt-4 border-t border-gray-600/30"
           >
-            <TrendingUp className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+            <TrendingUp className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0"/>
             <div>
               <h4 className="font-semibold text-blue-400 mb-2">Hint for Next Time</h4>
               <p className="text-gray-300 leading-relaxed">{hint}</p>
@@ -139,11 +139,17 @@ const QuizFeedback: React.FC<QuizFeedbackProps> = ({ feedback, className }) => {
               ? "bg-gradient-to-r from-green-500 to-emerald-400" 
               : "bg-gradient-to-r from-blue-500 to-purple-500"
           )}
-          style={{ width: `${confidence * 100}%` }}
-        />
+          style={{ width: `${confidence * 100}%` }}/>
       </motion.div>
     </motion.div>
   );
 };
 
-export default QuizFeedback; 
+export default QuizFeedback;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

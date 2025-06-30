@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { parseRules } from '../lib/strategy/parseRules';
+import { Button } from '@/components/ui/button';
+import { H3, P } from '@/components/ui/typography';
 
 type StrategyOutput = {
   title: string;
@@ -192,10 +194,10 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
       {!loading && suggestions.length > 0 && (
         <div className="space-y-4">
           {suggestions.map((suggestion, index) => (
-            <Div key={suggestion.id}
+            <div key={suggestion.id}
               className="bg-black/20 border border-white/5 rounded-lg p-4 animate-in fade-in slide-in-from-bottom-2"
               style={{ animationDelay: `${index * 100}ms` }}
-           >
+            >
               <div className="flex items-start gap-3">
                 <span className="text-2xl flex-shrink-0">{suggestion.icon}</span>
                 <div className="flex-1">
@@ -203,12 +205,11 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
                     {suggestion.message}
                   </p>
                   {onSuggestionApply && suggestion.ruleToAdd && (
-                    <button
-                      onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
+                    <Button onClick={() => onSuggestionApply(suggestion.ruleToAdd!)}
                       className="bg-cyan-600 hover:bg-cyan-700 rounded px-4 py-1 mt-2 text-sm text-white transition-colors"
                     >
                       Apply Suggestion
-                    </button>
+                    </Button>
                   )}
                 </div>
               </div>
@@ -226,4 +227,11 @@ const StrategyCopilot = ({ strategy, onSuggestionApply }: StrategyCopilotProps) 
   );
 };
 
-export default StrategyCopilot; 
+export default StrategyCopilot;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

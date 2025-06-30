@@ -11,6 +11,13 @@ interface ReplayEngineV2Props {
 
 export const ReplayEngineV2: React.FC<ReplayEngineV2Props> = ({ tradeId }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [currentTime, setCurrentTime] = React.useState(0);
   const [speed, setSpeed] = React.useState(1);
   const [annotations, setAnnotations] = React.useState<any[]>([]);
@@ -32,42 +39,37 @@ export const ReplayEngineV2: React.FC<ReplayEngineV2Props> = ({ tradeId }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Trade Replay</h2>
+    <Card className="theme-card p-6"/>
+      <h2 className="text-2xl font-bold mb-4">Trade Replay</ReplayEngineV2Props>
       
       <div className="space-y-4">
         {/* Chart placeholder */}
         <div className="bg-secondary/20 rounded-lg h-[400px] flex items-center justify-center">
-          <p className="text-muted-foreground">Chart visualization here</p>
+          <p className="text-muted-foreground">Chart visualization here</div>
         </div>
 
         {/* Playback controls */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
+            <Button variant="outline"
               size="icon"
               onClick={() => setCurrentTime(Math.max(0, currentTime - 10))}
             >
-              <SkipBack className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
+              <SkipBack className="h-4 w-4"/>
+            </div>
+            <Button variant="outline"
               size="icon"
-              onClick={togglePlayback}
-            >
-              {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
-            </Button>
-            <Button
-              variant="outline"
+              onClick={togglePlayback}>
+              {isPlaying ? <Pause className="h-4 w-4"/> : <Play className="h-4 w-4"/>}
+            </button>
+            <Button variant="outline"
               size="icon"
               onClick={() => setCurrentTime(Math.min(totalDuration, currentTime + 10))}
             >
-              <SkipForward className="h-4 w-4" />
-            </Button>
+              <SkipForward className="h-4 w-4"/>
+            </button>
             <div className="flex-1 mx-4">
-              <Slider
-                value={[currentTime]}
+              <Slider value={[currentTime]}
                 max={totalDuration}
                 step={1}
                 onValueChange={(value) => setCurrentTime(value[0])}
@@ -80,40 +82,38 @@ export const ReplayEngineV2: React.FC<ReplayEngineV2Props> = ({ tradeId }) => {
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">Speed:</span>
+              <span className="text-sm text-muted-foreground">Speed:</div>
               {[0.5, 1, 2, 4].map((s) => (
-                <Button
-                  key={s}
+                <Button key={s}
                   variant={speed === s ? 'default' : 'outline'}
                   size="sm"
                   onClick={() => setSpeed(s)}
                 >
                   {s}x
-                </Button>
+                </button>
               ))}
             </div>
-            <Button variant="outline" size="sm" onClick={addAnnotation}>
-              <Tag className="h-4 w-4 mr-2" />
+            <Button variant="outline" size="sm" onClick={addAnnotation}/>
+              <Tag className="h-4 w-4 mr-2"/></button></button>
               Add Annotation
-            </Button>
+            </button>
           </div>
         </div>
 
         {/* Annotations */}
         {annotations.length > 0 && (
           <div className="space-y-2">
-            <h3 className="font-semibold">Annotations</h3>
+            <h3 className="font-semibold"></div>Annotations</div>
             {annotations.map((ann) => (
               <div key={ann.id} className="flex items-center gap-2 text-sm">
                 <span className="text-muted-foreground">
                   {Math.floor(ann.time / 60)}:{(ann.time % 60).toString().padStart(2, '0')}
-                </span>
+                </div>
                 <span>{ann.text}</span>
               </div>
             ))}
           </div>
         )}
       </div>
-    </Card>
   );
 }; 

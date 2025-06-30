@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useToast } from "@/components/ui/use-toast";
-import LessonEngine, { LessonSection } from "./LessonEngine";
+import { Button } from "@/components/ui/button";
+import LessonEngine from "./LessonEngine";
 import QuizEngine from "./QuizEngine";
 import LessonBookmark from "./LessonBookmark";
 import { useLessonProgress } from "@/hooks/use-lesson-progress";
@@ -9,7 +10,18 @@ export interface LessonData {
   id: string;
   title: string;
   description: string;
-  sections: LessonSection[];
+  sections: Array<{
+    id: string;
+    title: string;
+    content: string;
+    code_example?: string;
+    quiz?: {
+      question: string;
+      options: string[];
+      correctAnswer: number;
+      explanation: string;
+    };
+  }>;
   quizId?: string;
 }
 
@@ -77,6 +89,17 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
     setShowQuiz(false);
   };
 
+  // Create lesson data for LessonEngine
+  const lessonData = {
+    id: lesson.id,
+    courseId: lesson.id, // Using lesson.id as courseId for now
+    title: lesson.title,
+    description: lesson.description,
+    difficulty: "beginner", // Default value
+    topics: [], // Default empty array
+    sections: lesson.sections
+  };
+
   return (
     <div className="space-y-8">
       {/* Lesson Header */}
@@ -97,11 +120,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
 
       {/* Lesson Content */}
       {!showQuiz && (
-        <LessonEngine 
-          sections={lesson.sections}
-          onProgressUpdate={handleProgressUpdate}
-          onTakeQuiz={handleTakeQuiz}
-        />
+        <LessonEngine lesson={lessonData}/>
       )}
       
       {/* Quiz Section */}
@@ -110,8 +129,7 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-bold text-white">Quiz: Test Your Knowledge</h2>
             <Button onClick={handleBackToContent}
-              className="text-white/70 hover:text-cyan-400 text-sm"
-           >
+              className="text-white/70 hover:text-cyan-400 text-sm">
               ← Back to lesson content
             </button>
           </div>
@@ -131,4 +149,11 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
   );
 };
 
-export default LessonView; 
+export default LessonView;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

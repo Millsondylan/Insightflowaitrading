@@ -24,7 +24,7 @@ export const savePayment = async (
     chain: string;
     txResult: TxVerificationResult;
   }
-): Promise<PaymentRecord> => {
+): Promise<paymentRecord> => {
   if (!payment.txResult.success || !payment.txResult.data) {
     throw new Error('Cannot save unsuccessful payment');
   }
@@ -45,7 +45,7 @@ export const savePayment = async (
   try {
     // Calculate expiry based on plan duration
     const now = new Date();
-    let expiryDate = new Date(now);
+    const expiryDate = new Date(now);
 
     switch (plan) {
       case 'monthly':

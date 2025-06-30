@@ -115,3 +115,9 @@ export const useLandingStats = (): LandingStats => {
 
   return stats;
 }; 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

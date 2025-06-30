@@ -95,14 +95,14 @@ export class PositionSizingEngine {
   /**
    * Update configuration
    */
-  updateConfig(newConfig: Partial<PositionSizingConfig>): void {
+  updateConfig(newConfig: Partial<positionSizingConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 
   /**
    * Update risk profile
    */
-  updateRiskProfile(newProfile: Partial<RiskProfile>): void {
+  updateRiskProfile(newProfile: Partial<RiskProfile></RiskProfile>): void {
     this.riskProfile = { ...this.riskProfile, ...newProfile };
   }
 }

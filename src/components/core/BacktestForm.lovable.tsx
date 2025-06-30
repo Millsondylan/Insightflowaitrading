@@ -29,7 +29,7 @@ rsi <(14, 60)`;
 const defaultExitLogic = 'close < sma(50)';
 
 const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
-  const [formState, setFormState] = useState<Backtestformstate >({
+  const [formState, setFormState] = useState<Backtestformstate>({
     ticker: 'BTC',
     timeframe: '1H',
     entryLogic: defaultEntryLogic,
@@ -45,7 +45,7 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     setFormState(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextareaElement  >) => {
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextareaElement >) => {
     const { name, value } = e.target;
     setFormState(prev => ({ ...prev, [name]: value }));
   };
@@ -54,47 +54,40 @@ const BacktestForm = ({ onSubmit, isLoading }: BacktestFormProps) => {
     <form onSubmit={handleSubmit} className="glass-container p-6 rounded-lg space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="ticker" />Ticker</Label>
-          <select  > handleSelectChange('ticker', value)}
+          <Label htmlFor="ticker"/>Ticker</Backtestformstate>
+          <Select > handleSelectChange('ticker', value)}
           >
-            <selecttrigger  >
-              <selectvalue  >
-            </SelectTrigger>
-            <selectcontent  style={{ color: "white" }}>
+            <Selecttrigger />
+              <SelectValue />
+            <SelectContent  style={{ color: "white" }}>
               {Object.keys(sampleData).map(ticker => (
-                <selectitem  >{ticker}</SelectItem>
+                <SelectItem >{ticker}</Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </div>
         <div>
-          <label htmlFor="timeframe" >Timeframe</Label>
-          <select  > handleSelectChange('timeframe', value)}
+          <Label htmlFor="timeframe">Timeframe</div>
+          <Select > handleSelectChange('timeframe', value)}
           >
-            <selecttrigger  >
-              <selectvalue  >
-            </SelectTrigger>
-            <selectcontent  style={{ color: "white" }}>
-              <selectitem value="1H" >1 Hour</SelectItem>
-            </SelectContent>
+            <SelectTrigger >
+              <SelectValue />
+            <SelectContent  style={{ color: "white" }}>
+              <SelectItem value="1H">1 Hour</SelectItem />
           </Select>
         </div>
       </div>
       <div>
-        <label htmlFor="entryLogic" >Entry Logic</Label>
-        <textarea id="entryLogic" name="entryLogic" > sma(50)"
-        />
-      </div>
+        <Label htmlFor="entryLogic">Entry Logic</div>
+        <Textarea id="entryLogic" name="entryLogic"> sma(50)"
+        / />
       <div>
-        <label htmlFor="exitLogic" >Exit Logic</Label>
-        <textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)" >
-      </div>
+        <Label htmlFor="exitLogic"></Textarea>Exit Logic</div>
+        <Textarea id="exitLogic" name="exitLogic" placeholder="e.g., close < sma(50)"/>
       <div className="flex justify-center">
-        <button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}>
-          {isLoading ? <loader2  > : 'Run Backtest'}
-        </Button>
-      </div>
-    </form>
+        <Button type="submit" style={{ border: "1px solid #E5E7EB", color: "white", width: "100%" }}></Textarea>
+          {isLoading ? <loader2 > : 'Run Backtest'}
+        </div>
+      </div />
   );
 };
 

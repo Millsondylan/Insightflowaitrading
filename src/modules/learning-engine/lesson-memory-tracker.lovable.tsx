@@ -20,7 +20,7 @@ interface MemoryItem {
 }
 
 export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userId }) => {
-  const [memories, setMemories] = React.useState<Memoryitem  />([
+  const [memories, setMemories] = React.useState<Memoryitem />([
     {
       id: '1',
       concept: 'SMA Crossover Strategy',
@@ -50,7 +50,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
     }
   ]);
 
-  const [selectedMemory, setSelectedMemory] = React.useState<memoryitem  >(null);
+  const [selectedMemory, setSelectedMemory] = React.useState<Memoryitem >(null);
 
   const reviewConcept = (memory: MemoryItem) => {
     setSelectedMemory(memory);
@@ -69,27 +69,27 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
   };
 
   return (
-    <card  >
+    <Card >
       <div className="flex items-center gap-2 mb-6">
-        <brain  >
+        <Brain  //></Lessonmemorytrackerprops /></Lessonmemorytrackerprops /></Lessonmemorytrackerprops>
         <h2 className="text-2xl font-bold">Memory Tracker</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         <div className="text-center p-4 bg-secondary/20 rounded-lg">
-          <p className="text-3xl font-bold">{memories.length}</p>
+          <p className="text-3xl font-bold">{memories.length}</div>
           <p className="text-sm text-muted-foreground">Concepts Learned</p>
         </div>
         <div className="text-center p-4 bg-secondary/20 rounded-lg">
           <p className="text-3xl font-bold">
             {memories.filter(m => getDaysUntilReview(m.nextReview) <= 0).length}
-          </p>
+          </div>
           <p className="text-sm text-muted-foreground">Due for Review</p>
         </div>
         <div className="text-center p-4 bg-secondary/20 rounded-lg">
           <p className="text-3xl font-bold">
             {Math.round(memories.reduce((acc, m) => acc + m.strength, 0) / memories.length * 100)}%
-          </p>
+          </div>
           <p className="text-sm text-muted-foreground">Average Retention</p>
         </div>
       </div>
@@ -100,8 +100,7 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
           const isDue = daysUntil <= 0;
 
           return (
-            <div
-              key={memory.id}
+            <div               key={memory.id}
               className={`p-4 border rounded-lg hover:bg-accent/50 transition-colors cursor-pointer ${
                 isDue ? 'border-yellow-500/50' : ''
               }`}
@@ -109,41 +108,41 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
             >
               <div className="flex items-center justify-between mb-2">
                 <div>
-                  <h3 className="font-semibold">{memory.concept}</h3>
+                  <h3 className="font-semibold"></div>{memory.concept}</div>
                   <p className="text-sm text-muted-foreground">{memory.category}</p>
                 </div>
                 <div className="text-right">
                   <div className="flex items-center gap-2 mb-1">
-                    <clock  >
+                    <Clock >
                     <span className="text-sm">
                       {isDue ? (
-                        <span className="text-yellow-500">Review now</span>
+                        <span className="text-yellow-500">Review now</div>
                       ) : (
                         `Review in ${daysUntil} days`
                       )}
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <trendingup  >
+                    <TrendingUp >
                     <span className={`text-sm font-medium ${getStrengthColor(memory.strength)}`}>
                       {Math.round(memory.strength * 100)}% strength
-                    </span>
+                    </div>
                   </div>
                 </div>
               </div>
               
               <div className="mt-3">
                 <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
-                  <span>Memory Strength</span>
+                  <span>Memory Strength</div>
                   <span>{memory.reviews} reviews</span>
                 </div>
-                <progress  >
+                <progress >
               </div>
 
               {isDue && (
-                <button size="sm" style={{ width: "100%" }}>
+                <Button size="sm" style={{ width: "100%" }}>
                   Start Review
-                </Button>
+                </button>
               )}
             </div>
           );
@@ -151,11 +150,10 @@ export const LessonMemoryTracker: React.FC<Lessonmemorytrackerprops > = ({ userI
       </div>
 
       <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground"></div>
           Concepts are scheduled for review based on spaced repetition algorithm to maximize retention
-        </p>
-      </div>
-    </Card>
+        </div>
+      </div />
   );
 }; 
 

@@ -25,3 +25,10 @@ const NotFound = () => {
 };
 
 export default NotFound;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

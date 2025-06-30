@@ -34,7 +34,6 @@ const generateReply = (post: Post): Promise<Reply> => {
   });
 };
 
-
 const CommunityGPT = ({ post }: Props) => {
   const [reply, setReply] = useState<Reply | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -55,37 +54,44 @@ const CommunityGPT = ({ post }: Props) => {
   return (
     <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-4">
       <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
-                🧠
-            </div>
-            <div>
-                <p className="font-bold text-white">Community AI</p>
-                {reply && !isLoading && (
-                    <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
-                        {reply.tone}
-                    </span>
-                )}
-            </div>
+        <div className="flex items-center gap-3">
+          <div className="rounded-full bg-white/10 w-10 h-10 flex items-center justify-center text-white text-lg">
+            🧠
           </div>
-          <Button variant="ghost" size="sm" onClick={fetchReply} disabled={isLoading}>
-            Regenerate
-          </Button>
+          <div>
+            <p className="font-bold text-white">Community AI</p>
+            {reply && !isLoading && (
+              <span className="bg-cyan-600 text-white px-2 py-0.5 rounded-full text-xs">
+                {reply.tone}
+              </span>
+            )}
+          </div>
+        </div>
+        <Button variant="ghost" size="sm" onClick={fetchReply} disabled={isLoading}>
+          Regenerate
+        </button>
       </div>
 
       {isLoading && (
         <div className="text-white/70 animate-pulse">
-            Generating AI analysis...
+          Generating AI analysis...
         </div>
       )}
 
       {reply && !isLoading && (
         <p className="text-white/80 text-sm leading-relaxed pt-2">
-            {reply.text}
+          {reply.text}
         </p>
       )}
     </div>
   );
 };
 
-export default CommunityGPT; 
+export default CommunityGPT;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

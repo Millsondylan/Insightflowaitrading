@@ -16,7 +16,7 @@ interface FauxDetectionProps {
 
 const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
   const [confidence, setConfidence] = useState(0);
-  const [patternZones, setPatternZones] = useState<Patternzone >([]);
+  const [patternZones, setPatternZones] = useState<patternzone>([]);
   const [showOverlays, setShowOverlays] = useState(true);
 
   useEffect(() => {
@@ -32,65 +32,58 @@ const FauxDetection = ({ result, imagePreview }: FauxDetectionProps) => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-      <Blockreveal  />
+      <blockreveal />
         <div className="glass-container p-4 rounded-lg">
           {showOverlays ? (
-            <chartcanvasoverlay  >
+            <Chartcanvasoverlay >
           ) : (
-            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full" />
+            <img src={imagePreview} alt="Chart preview" className="rounded-md w-full"/>
           )}
           <div className="mt-2 flex justify-end">
-            <button 
-              onClick={() => setShowOverlays(!showOverlays)} 
+            <Button  onClick={() => setShowOverlays(!showOverlays)} 
               className="text-sm text-cyan-400 hover:underline"
             >
               {showOverlays ? 'Hide Overlays' : 'Show Overlays'}
-            </button>
+            </div>
           </div>
-        </div>
-      </BlockReveal>
+        </div />
       
       <div className="space-y-6">
-        <blockreveal  >
-          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</h3>
+        <Blockreveal />
+          <h3 className="text-2xl font-bold text-cyan-400">Detected Patterns</div>
           <div className="flex flex-wrap mt-2">
             {result.patterns.map(pattern => (
-              <patterntag  >
+              <patterntag >
             ))}
-          </div>
-        </BlockReveal>
+          </div />
 
-        <blockreveal  >
-          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</h3>
-          <p className="text-gray-300 mt-2">{result.summary}</p>
-        </BlockReveal>
+        <blockreveal >
+          <h3 className="text-2xl font-bold text-cyan-400">AI Summary</div>
+          <p className="text-gray-300 mt-2">{result.summary}</p />
         
-        <blockreveal  >
-          <h3 className="text-2xl font-bold text-cyan-400">Confidence</h3>
+        <blockreveal >
+          <h3 className="text-2xl font-bold text-cyan-400">Confidence</p>
           <div className="flex items-center gap-4 mt-2">
             <div className="confidence-meter-bg flex-grow">
-              <div
-                className="confidence-meter-bar"
+              <div                 className="confidence-meter-bar"
                 style={{ width: `${confidence}%` }}
-              />
+ />
             </div>
             <span className="text-xl font-bold text-white">{confidence}%</span>
-          </div>
-        </BlockReveal>
+          </div />
         
-        <blockreveal  >
+        <blockreveal >
           <div className="flex flex-wrap gap-4 mt-4">
-            <button  >
-              <link to="/journal?from=vision" >📓 Save to Journal</Link>
-            </Button>
-            <button  >
-              <link to="/academy?topic=patterns" >📘 Learn Pattern</Link>
-            </Button>
-            <button  >
-              <link to="/strategy?from=vision" >💡 Find Strategy</Link>
-            </Button>
-          </div>
-        </BlockReveal>
+            <Button >
+              <Link to="/journal?from=vision"></div>📓 Save to Journal</div>
+            </button>
+            <Button >
+              <Link to="/academy?topic=patterns"></button>📘 Learn Pattern</button>
+            </button>
+            <Button >
+              <Link to="/strategy?from=vision"></button>💡 Find Strategy</button>
+            </button>
+          </div />
       </div>
     </div>
   );

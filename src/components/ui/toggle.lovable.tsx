@@ -31,7 +31,7 @@ const Toggle = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> &
     VariantProps<typeof toggleVariants>
 >(({ className, variant, size, ...props }, ref) => (
-  <Toggleprimitive >
+  <Toggleprimitive /></Toggleprimitive>
 ))
 
 Toggle.displayName = TogglePrimitive.Root.displayName

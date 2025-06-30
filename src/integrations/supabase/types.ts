@@ -2691,11 +2691,11 @@ export type Database = {
     }
     Functions: {
       get_current_user_email: {
-        Args: Record<PropertyKey, never>
+        Args: Record<propertyKey, never>
         Returns: string
       }
       is_admin: {
-        Args: Record<PropertyKey, never>
+        Args: Record<propertyKey, never>
         Returns: boolean
       }
     }

@@ -48,54 +48,54 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
+    <Card className="theme-card p-6"/>
       <div className="flex items-center gap-2 mb-6">
-        <Github className="h-6 w-6" />
-        <h2 className="text-2xl font-bold">GitHub Sync</h2>
+        <Github className="h-6 w-6"/>
+        <h2 className="text-2xl font-bold">GitHub Sync</GitHubSyncProps>
       </div>
 
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-sm text-muted-foreground">Repository</label>
+            <Label className="text-sm text-muted-foreground">Repository</div>
             <div className="flex items-center gap-2 mt-1">
               <Input
                 value={`${repoInfo.owner}/${repoInfo.repo}`}
                 readOnly
                 className="font-mono text-sm"
-              />
-              <Button variant="outline" size="sm">
+ />
+              <Button variant="outline" size="sm"/>
                 Change
-              </Button>
+              </div>
             </div>
           </div>
           <div>
-            <label className="text-sm text-muted-foreground">Branch</label>
+            <Label className="text-sm text-muted-foreground">Branch</div>
             <div className="flex items-center gap-2 mt-1">
-              <GitBranch className="h-4 w-4 text-muted-foreground" />
+              <GitBranch className="h-4 w-4 text-muted-foreground"/>
               <Input
                 value={repoInfo.branch}
                 readOnly
                 className="font-mono text-sm"
-              />
+ />
             </div>
           </div>
         </div>
 
         <div className="p-4 bg-secondary/20 rounded-lg">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="font-semibold">Last Commit</h3>
-            <Badge variant="outline" className="font-mono text-xs">
+            <h3 className="font-semibold">Last Commit</div>
+            <Badge variant="outline" className="font-mono text-xs"/>
               {repoInfo.lastCommit.sha}
             </Badge>
           </div>
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2">
-              <GitCommit className="h-4 w-4 text-muted-foreground" />
-              <span>{repoInfo.lastCommit.message}</span>
+              <GitCommit className="h-4 w-4 text-muted-foreground"/>
+              <span>{repoInfo.lastCommit.message}</div>
             </div>
             <div className="flex items-center justify-between text-muted-foreground">
-              <span>by {repoInfo.lastCommit.author}</span>
+              <span>by {repoInfo.lastCommit.author}</div>
               <span>{repoInfo.lastCommit.date.toLocaleString()}</span>
             </div>
           </div>
@@ -105,44 +105,48 @@ export const GitHubSync: React.FC<GitHubSyncProps> = ({ onSync }) => {
           <div className="text-center p-3 bg-secondary/20 rounded-lg">
             <p className="text-2xl font-bold text-green-500">
               {repoInfo.syncStatus.ahead}
-            </p>
+            </div>
             <p className="text-sm text-muted-foreground">Commits ahead</p>
           </div>
           <div className="text-center p-3 bg-secondary/20 rounded-lg">
             <p className="text-2xl font-bold text-yellow-500">
               {repoInfo.syncStatus.behind}
-            </p>
+            </div>
             <p className="text-sm text-muted-foreground">Commits behind</p>
           </div>
           <div className="text-center p-3 bg-secondary/20 rounded-lg">
             <p className="text-2xl font-bold text-red-500">
               {repoInfo.syncStatus.conflicts}
-            </p>
+            </div>
             <p className="text-sm text-muted-foreground">Conflicts</p>
           </div>
         </div>
 
         <div className="flex gap-2">
-          <Button
-            onClick={syncRepository}
+          <Button onClick={syncRepository}
             disabled={isSyncing}
-            className="flex-1"
-          >
+            className="flex-1">
             {isSyncing ? 'Syncing...' : 'Sync Now'}
-          </Button>
-          <Button variant="outline">
-            <GitPullRequest className="h-4 w-4 mr-2" />
+          </div>
+          <Button variant="outline"/>
+            <GitPullRequest className="h-4 w-4 mr-2"/>
             Create PR
-          </Button>
+          </button>
         </div>
 
         <div className="p-3 bg-blue-500/10 rounded-lg flex items-center gap-2">
-          <Github className="h-4 w-4 text-blue-500" />
+          <Github className="h-4 w-4 text-blue-500"/></div></div>
           <p className="text-sm text-blue-600">
             Strategies are automatically versioned and backed up to GitHub
           </p>
         </div>
       </div>
-    </Card>
   );
+};
+
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 }; 

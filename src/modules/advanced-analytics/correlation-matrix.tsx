@@ -113,8 +113,8 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
-          <span className="ml-2 text-white/60">Loading correlation matrix...</span>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"/>
+          <span className="ml-2 text-white/60">Loading correlation matrix...</CorrelationMatrixProps>
         </div>
       </div>
     );
@@ -123,7 +123,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
   if (!matrix) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Failed to load correlation data</p>
+        <p className="text-center text-white/60">Failed to load correlation data</div>
       </div>
     );
   }
@@ -133,7 +133,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-white mb-2">
           Correlation Matrix ({timeframe})
-        </h3>
+        </div>
         <p className="text-sm text-white/60">
           Updated: {matrix.updatedAt.toLocaleTimeString()}
         </p>
@@ -145,9 +145,8 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
           <div className="flex">
             <div className="w-16 h-8"></div> {/* Empty corner */}
             {matrix.symbols.map((symbol, index) => (
-              <Div key={symbol}
-                className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10"
-             >
+              <div key={symbol}
+                className="w-16 h-8 flex items-center justify-center text-xs font-medium text-white/80 border-b border-white/10">
                 {symbol}
               </div>
             ))}
@@ -163,8 +162,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
               
               {/* Correlation cells */}
               {row.map((correlation, colIndex) => (
-                <div
-                  key={colIndex}
+                <div                   key={colIndex}
                   className={`
                     w-16 h-8 flex items-center justify-center text-xs font-medium text-white
                     cursor-pointer transition-all duration-200 hover:scale-110 hover:z-10 relative
@@ -188,7 +186,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
 
       {/* Correlation legend */}
       <div className="mt-4 flex items-center justify-center space-x-2 text-xs text-white/60">
-        <span>-1.0</span>
+        <span>-1.0</div>
         <div className="flex space-x-1">
           <div className="w-4 h-4 bg-red-700"></div>
           <div className="w-4 h-4 bg-red-500"></div>
@@ -207,15 +205,15 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
         <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
           <h4 className="text-sm font-medium text-white mb-2">
             Rolling Correlation: {matrix.symbols[selectedCell.row]} vs {matrix.symbols[selectedCell.col]}
-          </h4>
+          </div>
           <div className="h-32 flex items-end space-x-1">
             {/* TODO: implement mini chart for rolling correlation */}
             {rollingData.correlations.slice(-30).map((point, index) => (
-              <Div key={index}
+              <div key={index}
                 className="flex-1 bg-blue-500 opacity-70 hover:opacity-100 transition-opacity"
                 style={{
                   height: `${Math.abs(point.correlation) * 100}%`,
-                  backgroundColor: point.correlation />= 0 ? '#3b82f6' : '#ef4444',
+                  backgroundColor: point.correlation/>= 0 ? '#3b82f6' : '#ef4444',
                 }}
                 title={`${point.date.toLocaleDateString()}: ${point.correlation.toFixed(3)}`}
               ></div>
@@ -253,7 +251,7 @@ export const CorrelationMatrixComponent: React.FC<CorrelationMatrixProps> = ({
 const generateMockCorrelationMatrix = async (
   symbols: string[], 
   timeframe: string
-): Promise<CorrelationMatrix> => {
+): Promise<CorrelationMatrix /> => {
   // TODO: replace with real correlation calculation
   const correlations = symbols.map((_, i) =>
     symbols.map((_, j) => {
@@ -274,7 +272,7 @@ const fetchRollingCorrelation = async (
   symbol1: string, 
   symbol2: string, 
   window: number
-): Promise<RollingCorrelation> => {
+): Promise<RollingCorrelation /></CorrelationMatrix></div> => {
   // TODO: implement real rolling correlation calculation
   return {
     symbol1,
@@ -325,4 +323,11 @@ const findMinCorrelation = (matrix: CorrelationMatrix): number => {
   return min;
 };
 
-export default CorrelationMatrixComponent; 
+export default CorrelationMatrixComponent;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

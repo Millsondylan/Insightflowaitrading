@@ -1,3 +1,4 @@
+// This file has been manually fixed.
 import React, { useState, useEffect } from 'react';
 import { Bell, X, Check, AlertCircle, Info, Mail, Settings, Clock, RefreshCw } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -111,17 +112,17 @@ export default function NotificationCenter() {
   const getNotificationIcon = (type: string, priority: string) => {
     switch (type) {
       case 'trade_alert':
-        return <AlertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`} />;
+        return <AlertCircle className={`w-5 h-5 ${priority === 'urgent' ? 'text-red-500' : 'text-yellow-500'}`}/>;
       case 'market_update':
-        return <RefreshCw className="w-5 h-5 text-blue-500" />;
+        return <RefreshCw className="w-5 h-5 text-blue-500"/>;
       case 'journal_reminder':
-        return <Clock className="w-5 h-5 text-purple-500" />;
+        return <Clock className="w-5 h-5 text-purple-500"/>;
       case 'system':
-        return <Settings className="w-5 h-5 text-gray-500" />;
+        return <Settings className="w-5 h-5 text-gray-500"/>;
       case 'message':
-        return <Mail className="w-5 h-5 text-green-500" />;
+        return <Mail className="w-5 h-5 text-green-500"/>;
       default:
-        return <Info className="w-5 h-5 text-blue-500" />;
+        return <Info className="w-5 h-5 text-blue-500"/>;
     }
   };
 
@@ -144,9 +145,8 @@ export default function NotificationCenter() {
     const isUnread = notification.status === 'pending' || !notification.read_at;
     
     return (
-      <Div key={notification.id}
-        className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}
-     >
+      <div key={notification.id}
+        className={`p-4 border rounded-lg mb-2 transition-colors ${isUnread ? 'bg-blue-500/10 border-blue-500/20' : 'bg-gray-800 border-gray-700'} ${getPriorityClass(notification.priority)}`}>
         <div className="flex items-start gap-3">
           <div className="mt-0.5">
             {getNotificationIcon(notification.notification_type, notification.priority)}
@@ -168,8 +168,7 @@ export default function NotificationCenter() {
                 </Button>
               )}
               {isUnread && (
-                <Button
-                  size="sm"
+                <Button size="sm"
                   variant="ghost"
                   className="h-8 text-xs ml-auto"
                   onClick={(e) => {
@@ -177,7 +176,7 @@ export default function NotificationCenter() {
                     handleRead(notification.id);
                   }}
                 >
-                  <Check className="w-3 h-3 mr-1" /> Mark as read
+                  <Check className="w-3 h-3 mr-1"/> Mark as read
                 </Button>
               )}
             </div>
@@ -190,52 +189,43 @@ export default function NotificationCenter() {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button 
-          variant="ghost" 
+        <Button variant="ghost" 
           size="icon"
           className="relative"
           onClick={() => logClick('OpenNotifications')}
         >
-          <Bell className="h-5 w-5" />
+          <Bell className="h-5 w-5"/>
           {unreadCount > 0 && (
-            <Badge 
-              className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
-              variant="destructive"
-            >
+            <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-blue-600"
+              variant="destructive">
               {unreadCount > 9 ? '9+' : unreadCount}
             </Badge>
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent 
-        className="w-80 md:w-96 p-0" 
+      <PopoverContent className="w-80 md:w-96 p-0" 
         align="end" 
-        sideOffset={5}
-      >
+        sideOffset={5}>
         <div className="flex items-center justify-between bg-gray-900 p-4 border-b border-gray-800">
           <h3 className="font-semibold text-lg text-white">Notifications</h3>
           <div className="flex items-center gap-2">
             {unreadCount > 0 && (
-              <Button 
-                variant="ghost" 
+              <Button variant="ghost" 
                 size="sm" 
                 className="text-xs"
-                onClick={handleReadAll}
-              >
+                onClick={handleReadAll}>
                 Mark all as read
               </Button>
             )}
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setOpen(false)}>
-              <X className="h-4 w-4" />
+              <X className="h-4 w-4"/>
             </Button>
           </div>
         </div>
 
-        <Tabs 
-          defaultValue="all" 
+        <Tabs defaultValue="all" 
           value={activeTab} 
-          onValueChange={setActiveTab}
-        >
+          onValueChange={setActiveTab}>
           <div className="px-4 pt-2">
             <TabsList className="grid grid-cols-3 w-full">
               <TabsTrigger value="all">All</TabsTrigger>
@@ -255,65 +245,54 @@ export default function NotificationCenter() {
             <TabsContent value="all" className="m-0">
               {loading ? (
                 <div className="flex items-center justify-center h-32">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"/>
                 </div>
               ) : notifications.length > 0 ? (
                 notifications.map(renderNotification)
               ) : (
-                <div className="text-center text-gray-400 py-8">
-                  <Bell className="w-10 h-10 mx-auto mb-4 opacity-30" />
-                  <p>No notifications yet</p>
+                <div className="text-center py-12 text-gray-500">
+                  <Bell className="mx-auto h-10 w-10 mb-2"/>
+                  <p>You're all caught up!</p>
                 </div>
               )}
             </TabsContent>
-            
             <TabsContent value="unread" className="m-0">
               {loading ? (
                 <div className="flex items-center justify-center h-32">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"/>
                 </div>
               ) : notifications.filter(n => !n.read_at).length > 0 ? (
                 notifications.filter(n => !n.read_at).map(renderNotification)
               ) : (
-                <div className="text-center text-gray-400 py-8">
-                  <Check className="w-10 h-10 mx-auto mb-4 opacity-30" />
-                  <p>No unread notifications</p>
+                <div className="text-center py-12 text-gray-500">
+                  <Check className="mx-auto h-10 w-10 mb-2"/>
+                  <p>No unread notifications.</p>
                 </div>
               )}
             </TabsContent>
-            
             <TabsContent value="read" className="m-0">
               {loading ? (
                 <div className="flex items-center justify-center h-32">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"/>
                 </div>
-              ) : notifications.filter(n => n.read_at).length > 0 ? (
-                notifications.filter(n => n.read_at).map(renderNotification)
+              ) : notifications.filter(n => !!n.read_at).length > 0 ? (
+                notifications.filter(n => !!n.read_at).map(renderNotification)
               ) : (
-                <div className="text-center text-gray-400 py-8">
-                  <Info className="w-10 h-10 mx-auto mb-4 opacity-30" />
-                  <p>No read notifications</p>
+                <div className="text-center py-12 text-gray-500">
+                  <p>No read notifications yet.</p>
                 </div>
               )}
             </TabsContent>
           </ScrollArea>
         </Tabs>
-        
-        <div className="p-2 border-t border-gray-800">
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            className="w-full text-xs text-gray-400"
-            onClick={() => {
-              logClick('ViewAllNotifications');
-              setOpen(false);
-              // Navigate to full notifications page
-            }}
-          >
-            View all notifications
-          </Button>
-        </div>
       </PopoverContent>
     </Popover>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

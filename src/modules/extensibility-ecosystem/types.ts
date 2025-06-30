@@ -59,7 +59,7 @@ export interface PluginConfigProperty {
   title: string;
   description?: string;
   default?: any;
-  options?: Array<{ label: string; value: any }>;
+  options?: Array<{ label: string; value: unknown }>;
   validation?: {
     min?: number;
     max?: number;
@@ -131,8 +131,8 @@ export interface PluginAPIContext {
   post: (endpoint: string, data?: any) => Promise<any>;
   put: (endpoint: string, data?: any) => Promise<any>;
   delete: (endpoint: string) => Promise<any>;
-  subscribe: (event: string, callback: Function) => void;
-  unsubscribe: (event: string, callback: Function) => void;
+  subscribe: (event: string, callback: (...args: unknown[]) => unknown) => void;
+  unsubscribe: (event: string, callback: (...args: unknown[]) => unknown) => void;
 }
 
 export interface PluginUIContext {
@@ -146,7 +146,7 @@ export interface PluginUIContext {
 
 export interface PluginStorageContext {
   get: (key: string) => Promise<any>;
-  set: (key: string, value: any) => Promise<void>;
+  set: (key: string, value: unknown) => Promise<void>;
   delete: (key: string) => Promise<void>;
   clear: () => Promise<void>;
   keys: () => Promise<string[]>;
@@ -207,7 +207,7 @@ export interface WebhookEvent {
 export interface WebhookFilter {
   field: string;
   operator: 'equals' | 'not_equals' | 'contains' | 'starts_with' | 'ends_with' | 'greater_than' | 'less_than';
-  value: any;
+  value: unknown;
 }
 
 export interface WebhookAuth {
@@ -264,7 +264,7 @@ export interface IntegrationFilter {
   conditions: Array<{
     field: string;
     operator: string;
-    value: any;
+    value: unknown;
   }>;
 }
 

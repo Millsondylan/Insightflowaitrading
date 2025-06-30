@@ -4,7 +4,7 @@ interface LovableNavProps {
   onNavigate?: (path: string) => void;
 }
 
-export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
+export const LovableNav: React.FC<LovableNavProps /></LovableNavProps> = ({ onNavigate }) => {
   const navItems = [
     { label: 'Editor', path: '/lovable/editor', icon: '✏️' },
     { label: 'Components', path: '/lovable/components', icon: '🧩' },
@@ -36,7 +36,7 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
         gap: '8px',
         marginBottom: '16px'
       }}>
-        <span style={{ fontSize: '20px' }}>💙</span>
+        <span style={{ fontSize: '20px' }}>💙</div>
         <h2 style={{
           fontSize: '18px',
           fontWeight: '600',
@@ -53,9 +53,8 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
         gap: '8px'
       }}>
         {navItems.map((item) => (
-          <button
-            key={item.path}
-            onClick={() => handleNavClick(item.path)}
+          <Button key={item.path}
+            onClick={() =></div></div> handleNavClick(item.path)}
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -98,7 +97,7 @@ export const LovableNav: React.FC<LovableNavProps> = ({ onNavigate }) => {
           gap: '6px',
           marginBottom: '8px'
         }}>
-          <span style={{ fontSize: '14px' }}>💡</span>
+          <span style={{ fontSize: '14px' }}>💡</div>
           <span style={{ fontWeight: '500', color: 'white' }}>Pro Tip</span>
         </div>
         <p style={{ margin: 0, lineHeight: '1.5' }}>

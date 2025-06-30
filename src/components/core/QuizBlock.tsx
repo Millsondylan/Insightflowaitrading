@@ -2,16 +2,68 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import QuizFeedback from "./QuizFeedback";
-import LessonBadge from "@/components/ui/LessonBadge";
-import { Quiz, QuizQuestion, QuizAnswer, QuizResult, QuizFeedback as QuizFeedbackType, calculateQuizScore, getCorrectAnswer } from "@/lib/academy/quizSchema";
-import { requestQuiz } from "@/api/academy/quiz";
-import { LessonBlock } from "@/lib/academy/lessonSchema";
 import { cn } from "@/lib/utils";
 import { Brain, Trophy, ChevronDown, Lock } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 import "@/styles/quiz.css";
+
+// Legacy quiz types for backward compatibility
+interface QuizOption {
+  id: string;
+  label: string;
+  correct: boolean;
+}
+
+interface QuizQuestion {
+  id: string;
+  question: string;
+  options: QuizOption[];
+  explanation: string;
+  difficulty?: 'easy' | 'medium' | 'hard';
+}
+
+interface Quiz {
+  id: string;
+  lessonTopic: string;
+  title: string;
+  questions: QuizQuestion[];
+  passingScore: number;
+}
+
+interface QuizAnswer {
+  questionId: string;
+  selectedOptionId: string;
+  isCorrect: boolean;
+  timestamp: Date;
+}
+
+interface QuizResult {
+  quizId: string;
+  answers: QuizAnswer[];
+  score: number;
+  totalQuestions: number;
+  correctAnswers: number;
+  passed: boolean;
+  completedAt: Date;
+  timeSpent: number;
+}
+
+interface QuizFeedbackType {
+  isCorrect: boolean;
+  explanation: string;
+  hint?: string;
+  encouragement: string;
+  confidence: number;
+}
+
+interface LessonBlock {
+  topic: string;
+  content: string;
+}
 
 interface QuizBlockProps {
   lessonBlocks: LessonBlock[];
@@ -59,13 +111,28 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
     
     setLoading(true);
     try {
-      const generatedQuiz = await requestQuiz({
-        lessonBlocks,
-        questionCount: 4,
-        difficulty: 'medium'
-      });
+      // Mock quiz generation for now
+      const mockQuiz: Quiz = {
+        id: 'mock-quiz-1',
+        lessonTopic: lessonBlocks[0]?.topic || 'Trading',
+        title: 'Trading Knowledge Quiz',
+        passingScore: 70,
+        questions: [
+          {
+            id: 'q1',
+            question: 'What is a stop loss?',
+            options: [
+              { id: 'q1-a', label: 'A price level to exit a losing trade', correct: true },
+              { id: 'q1-b', label: 'A price level to enter a trade', correct: false },
+              { id: 'q1-c', label: 'A type of chart pattern', correct: false },
+              { id: 'q1-d', label: 'A trading strategy', correct: false }
+            ],
+            explanation: 'A stop loss is a predetermined price level at which a trader exits a losing position to limit potential losses.'
+          }
+        ]
+      };
       
-      setQuiz(generatedQuiz);
+      setQuiz(mockQuiz);
       setCurrentQuestionIndex(0);
       setSelectedAnswers({});
       setSubmittedAnswers({});
@@ -98,9 +165,9 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   };
 
   const generateFeedback = (question: QuizQuestion, selectedOptionId: string): QuizFeedbackType => {
-    const correctAnswer = getCorrectAnswer(question);
-    const isCorrect = selectedOptionId === correctAnswer.id;
+    const correctOption = question.options.find(opt => opt.correct);
     const selectedOption = question.options.find(opt => opt.id === selectedOptionId);
+    const isCorrect = selectedOptionId === correctOption?.id;
     
     return {
       isCorrect,
@@ -110,6 +177,23 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         ? "Great job! You've understood this concept well." 
         : "Don't worry, learning takes practice. Keep going!",
       confidence: 0.85
+    };
+  };
+
+  const calculateQuizScore = (quiz: Quiz, answers: QuizAnswer[]): QuizResult => {
+    const correctAnswers = answers.filter(answer => answer.isCorrect).length;
+    const score = (correctAnswers / quiz.questions.length) * 100;
+    const passed = score >= quiz.passingScore;
+
+    return {
+      quizId: quiz.id,
+      answers,
+      score,
+      totalQuestions: quiz.questions.length,
+      correctAnswers,
+      passed,
+      completedAt: new Date(),
+      timeSpent: 0
     };
   };
 
@@ -135,12 +219,12 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         const selectedId = q.id === currentQuestion.id 
           ? selectedOptionId 
           : selectedAnswers[q.id];
-        const correctAnswer = getCorrectAnswer(q);
+        const correctOption = q.options.find(opt => opt.correct);
         
         return {
           questionId: q.id,
-          selectedOptionId: selectedId,
-          isCorrect: selectedId === correctAnswer.id,
+          selectedOptionId: selectedId || '',
+          isCorrect: selectedId === correctOption?.id,
           timestamp: new Date()
         };
       });
@@ -181,7 +265,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
       >
         <Card className="quiz-block">
           <CardContent className="p-8 text-center space-y-6">
-            <Lock className="h-12 w-12 text-yellow-400 mx-auto" />
+            <Lock className="h-12 w-12 text-yellow-400 mx-auto"/>
             <div>
               <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Unlock AI-Powered Quizzes
@@ -208,7 +292,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
       >
         <Card className="quiz-block">
           <CardContent className="p-8 text-center space-y-6">
-            <Brain className="h-12 w-12 text-blue-400 mx-auto animate-pulse" />
+            <Brain className="h-12 w-12 text-blue-400 mx-auto animate-pulse"/>
             <div>
               <h3 className="text-xl font-semibold text-gray-200 mb-2">
                 Generating Quiz Questions
@@ -218,9 +302,9 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               </p>
             </div>
             <div className="flex space-x-1 justify-center">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}/>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}/>
             </div>
           </CardContent>
         </Card>
@@ -253,7 +337,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center space-x-3">
-              <Brain className="h-6 w-6 text-blue-400" />
+              <Brain className="h-6 w-6 text-blue-400"/>
               <span>{quiz.title}</span>
             </CardTitle>
             <div className="text-sm text-gray-400">
@@ -265,8 +349,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
           <div className="quiz-progress">
             <div 
               className="quiz-progress-fill"
-              style={{ width: `${calculateProgress()}%` }}
-            />
+              style={{ width: `${calculateProgress()}%` }}/>
           </div>
         </CardHeader>
 
@@ -302,8 +385,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                       transition={{ delay: 0.1 * parseInt(option.id.slice(-1)), duration: 0.4 }}
                       className="quiz-option"
                     >
-                      <input
-                        type="radio"
+                      <Input type="radio"
                         id={`${currentQuestion.id}-${option.id}`}
                         name={currentQuestion.id}
                         value={option.id}
@@ -313,11 +395,10 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
                         className="quiz-option-input"
                       />
                       <Label htmlFor={`${currentQuestion.id}-${option.id}`}
-                        className={optionClassName}
-                     >
-                        <div className="quiz-option-radio" />
+                        className={optionClassName}>
+                        <div className="quiz-option-radio"/>
                         <span className="text-gray-200">{option.label}</span>
-                      </label>
+                      </Label>
                     </motion.div>
                   );
                 })}
@@ -327,22 +408,18 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
               <div className="flex justify-between items-center">
                 <div />
                 {!isQuestionAnswered ? (
-                  <Button
-                    onClick={handleSubmitAnswer}
+                  <Button onClick={handleSubmitAnswer}
                     disabled={!selectedAnswers[currentQuestion.id]}
-                    className="quiz-submit-btn"
-                  >
+                    className="quiz-submit-btn">
                     Submit Answer
                   </Button>
                 ) : (
                   <div className="flex space-x-3">
                     {canProceed && (
-                      <Button
-                        onClick={handleNextQuestion}
-                        className="quiz-submit-btn"
-                      >
+                      <Button onClick={handleNextQuestion}
+                        className="quiz-submit-btn">
                         Next Question
-                        <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]" />
+                        <ChevronDown className="h-4 w-4 ml-2 rotate-[-90deg]"/>
                       </Button>
                     )}
                     {isQuizComplete && quizResult && (
@@ -364,7 +441,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
 
               {/* Feedback */}
               {feedbacks[currentQuestion.id] && (
-                <QuizFeedback feedback={feedbacks[currentQuestion.id]} />
+                <QuizFeedback feedback={feedbacks[currentQuestion.id]}/>
               )}
             </>
           )}
@@ -381,7 +458,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
         >
           <div className="badge-content">
             <div className="badge-icon">
-              <Trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4" />
+              <Trophy className="h-16 w-16 text-yellow-400 mx-auto mb-4"/>
             </div>
             <h2 className="text-2xl font-bold text-yellow-400 mb-2">
               Quiz Complete!
@@ -392,10 +469,8 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
             <p className="text-lg font-semibold text-green-400">
               Score: {quizResult.score.toFixed(0)}%
             </p>
-            <Button
-              onClick={() => setShowCompletion(false)}
-              className="mt-4 bg-yellow-600 hover:bg-yellow-700"
-            >
+            <Button onClick={() => setShowCompletion(false)}
+              className="mt-4 bg-yellow-600 hover:bg-yellow-700">
               Continue Learning
             </Button>
           </div>
@@ -405,4 +480,11 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
   );
 };
 
-export default QuizBlock; 
+export default QuizBlock;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

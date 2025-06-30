@@ -22,7 +22,7 @@ interface ScanResult {
   lastUpdated: string;
 }
 
-export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) => {
+export const MarketScanner: React.FC<marketScannerProps> = ({ onSelectMarket }) => {
   const [results, setResults] = useState<ScanResult[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -226,53 +226,48 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
   return (
     <div className="market-scanner">
       <div className="flex flex-wrap justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Market Scanner</h2>
+        <h2 className="text-2xl font-bold">Market Scanner</ScanResult>
         
         <div className="flex space-x-2">
           {timeframes.map(tf => (
-            <button
-              key={tf}
+            <Button key={tf}
               className={`px-3 py-1 rounded ${
                 activeTimeframe === tf ? 'bg-brand-primary text-white' : 'bg-background-secondary'
               }`}
               onClick={() => setActiveTimeframe(tf)}
             >
               {tf}
-            </button>
+            </div>
           ))}
         </div>
       </div>
       
       <div className="mb-6 flex flex-wrap gap-4">
         <div className="flex-1">
-          <input
+          <Input
             type="text"
             className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
             placeholder="Search markets..."
             value={searchQuery}
-            onChange={handleSearch}
-          />
+            onChange={handleSearch}/>
         </div>
         
         <div className="flex space-x-2">
-          <button
-            className={`px-4 py-2 rounded ${
+          <Button  className={`px-4 py-2 rounded ${
               filterType === 'all' ? 'bg-brand-primary text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('all')}
           >
             All
-          </button>
-          <button
-            className={`px-4 py-2 rounded ${
+          </div>
+          <Button  className={`px-4 py-2 rounded ${
               filterType === 'bullish' ? 'bg-status-success text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('bullish')}
           >
             Bullish
           </button>
-          <button
-            className={`px-4 py-2 rounded ${
+          <Button  className={`px-4 py-2 rounded ${
               filterType === 'bearish' ? 'bg-status-error text-white' : 'bg-background-secondary'
             }`}
             onClick={() => setFilterType('bearish')}
@@ -301,31 +296,28 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
           <table className="w-full">
             <thead>
               <tr className="border-b border-border-primary">
-                <th className="px-4 py-3 text-left">Market</th>
+                <th className="px-4 py-3 text-left">Market</div>
                 <th className="px-4 py-3 text-right">Price</th>
                 <th className="px-4 py-3 text-right">24h Change</th>
                 <th className="px-4 py-3 text-right">24h Volume</th>
                 <th className="px-4 py-3 text-center">Signals</th>
                 <th className="px-4 py-3 text-center">Score</th>
                 <th className="px-4 py-3 text-center">Action</th>
-              </tr>
-            </thead>
+            </th>
             <tbody>
               {filteredResults.map(result => (
-                <Tr key={result.symbol}
-                  className="border-b border-border-primary hover:bg-background-interactive"
-               >
+                <tr key={result.symbol}
+                  className="border-b border-border-primary hover:bg-background-interactive">
                   <td className="px-4 py-3">
                     <div className="flex flex-col">
-                      <span className="font-medium">{result.symbol}</span>
+                      <span className="font-medium">{result.symbol}</tbody>
                       <span className="text-sm text-text-muted">{result.name}</span>
                     </div>
-                  </td>
                   <td className="px-4 py-3 text-right font-medium">
                     ${result.price.toLocaleString(undefined, { maximumFractionDigits: 2 })}
                   </td>
-                  <Td className={`px-4 py-3 text-right font-medium ${
-                    result.change24h /> 0 ? 'text-status-success' : 'text-status-error'
+                  <td className={`px-4 py-3 text-right font-medium ${
+                    result.change24h/> 0 ? 'text-status-success' : 'text-status-error'
                   }`}>
                     {result.change24h > 0 ? '+' : ''}{result.change24h.toFixed(2)}%
                   </td>
@@ -335,36 +327,30 @@ export const MarketScanner: React.FC<MarketScannerProps> = ({ onSelectMarket }) 
                   <td className="px-4 py-3">
                     <div className="flex flex-col gap-1">
                       {result.signals.map((signal, i) => (
-                        <div
-                          key={i}
+                        <div key={i}
                           className={`px-2 py-1 rounded text-xs ${
                             signal.type === 'bullish' ? 'bg-status-success/20 text-status-success' :
                             signal.type === 'bearish' ? 'bg-status-error/20 text-status-error' :
                             'bg-status-warning/20 text-status-warning'
                           }`}
-                        >
+                        //>
                           {signal.indicator}: {signal.description}
-                        </div>
+                        </td>
                       ))}
                     </div>
-                  </td>
                   <td className="px-4 py-3 text-center">
                     <div className={`text-lg font-bold ${getScoreColor(result.score)}`}>
                       {result.score}
-                    </div>
-                  </td>
+                    </td>
                   <td className="px-4 py-3 text-center">
-                    <button
-                      className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
-                      onClick={() => onSelectMarket(result.symbol)}
+                    <Button  className="px-3 py-1 bg-brand-primary text-white rounded hover:bg-brand-primary/80"
+                      onClick={() =></td></td> onSelectMarket(result.symbol)}
                     >
                       Select
-                    </button>
-                  </td>
-                </tr>
+                    </td>
+                </td>
               ))}
             </tbody>
-          </table>
         </div>
       )}
     </div>

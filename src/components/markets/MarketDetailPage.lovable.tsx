@@ -157,14 +157,14 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     return (
       <div className="theme-markets space-y-6">
         {onBack && (
-          <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+          <Button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
             <Chevronleft >
             Back to Markets
-          </Button>
+          </div>
         )}
         <div className="flex flex-col items-center justify-center min-h-[40vh]">
-          <loader2  >
-          <p className="text-gray-400">Loading market data for {symbol}...</p>
+          <loader2 >
+          <p className="text-gray-400">Loading market data for {symbol}...</div>
         </div>
       </div>
     );
@@ -175,13 +175,13 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     return (
       <div className="theme-markets space-y-6">
         {onBack && (
-          <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
-            <Chevronleft  />
+          <Button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+            <Chevronleft />
             Back to Markets
-          </Button>
+          </div>
         )}
         <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-6 text-center">
-          <p className="text-red-400 mb-2">Error</p>
+          <p className="text-red-400 mb-2">Error</div>
           <p className="text-white">{error}</p>
         </div>
       </div>
@@ -192,29 +192,29 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
     <div className="theme-markets space-y-6">
       {/* Back button */}
       {onBack && (
-        <button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
-          <chevronleft  >
+        <Button variant="ghost" size="sm" style={{ display: "flex", alignItems: "center" }}>
+          <Chevronleft />
           Back to Markets
-        </Button>
+        </div>
       )}
       
       {/* Header with symbol, price, and change */}
       <div className="flex flex-col md:flex-row justify-between items-start gap-4 border-b border-white/10 pb-6">
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <h1 className="text-3xl font-bold text-white">{symbol}</h1>
-            <badge variant="outline" >
+            <h1 className="text-3xl font-bold text-white">{symbol}</div>
+            <Badge variant="outline">
               {marketData.volatility.charAt(0).toUpperCase() + marketData.volatility.slice(1)} Volatility
             </Badge>
           </div>
           
           <div className="flex items-center gap-2 text-2xl font-semibold">
-            <span>${formatPrice(marketData.price)}</span>
+            <span>${formatPrice(marketData.price)}</div>
             <span className={`flex items-center ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {marketData.changePercent > 0 ? (
-                <arrowup  >
+                <ArrowUp />
               ) : marketData.changePercent < 0 ? (
-                <arrowdown  >
+                <ArrowDown >
               ) : null}
               {formatPercent(marketData.changePercent)}
             </span>
@@ -224,7 +224,7 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
         {/* Matching Strategies */}
         {marketData.matchingSetups > 0 && (
           <div className="bg-green-900/20 border border-green-400/30 rounded-lg px-4 py-3 flex items-center gap-3">
-            <trendingup  >
+            <TrendingUp >
             <div>
               <div className="font-semibold text-green-400">
                 {marketData.matchingSetups} {marketData.matchingSetups === 1 ? 'setup matches' : 'setups match'} {symbol} conditions
@@ -259,10 +259,10 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       
       {/* Chart Placeholder */}
       <div className="bg-black/20 border border-white/10 rounded-xl aspect-video flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 market-glow opacity-10" />
+        <div className="absolute inset-0 market-glow opacity-10"/>
         <div className="text-center">
-          <activity  >
-          <h3 className="text-xl font-medium text-white mb-2">Chart will appear here</h3>
+          <Activity ></div>
+          <h3 className="text-xl font-medium text-white mb-2"></h3>Chart will appear here</div>
           <p className="text-gray-400 max-w-md mx-auto">
             Real-time price chart with technical indicators will be integrated soon.
           </p>
@@ -272,22 +272,22 @@ export default function MarketDetailPage({ symbol, onBack }: Props) {
       {/* Market Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <clock  >
-          <div>
+          <Clock ></div>
+          <div></div>
             <div className="text-sm text-gray-400">Last Update</div>
             <div className="font-medium">{new Date().toLocaleTimeString()}</div>
           </div>
         </div>
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <activity  >
-          <div>
+          <Activity ></div>
+          <div></div>
             <div className="text-sm text-gray-400">24h Range</div>
             <div className="font-medium">${formatPrice(marketData.ohlc.low)} - ${formatPrice(marketData.ohlc.high)}</div>
           </div>
         </div>
         <div className="bg-black/30 rounded-lg p-4 border border-white/10 flex items-center gap-3">
-          <trendingup  >
-          <div>
+          <TrendingUp ></div>
+          <div></div>
             <div className="text-sm text-gray-400">Price Change</div>
             <div className={`font-medium ${getPriceChangeColorClass(marketData.changePercent)}`}>
               {formatPercent(marketData.changePercent)} (${formatPrice(Math.abs(marketData.change))})

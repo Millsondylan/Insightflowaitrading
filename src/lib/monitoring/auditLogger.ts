@@ -1,4 +1,5 @@
 import { supabase } from '@/integrations/supabase/client';
+import { getCurrentUser } from '@/lib/auth/helpers';
 import { v4 as uuidv4 } from 'uuid';
 
 // Types
@@ -507,4 +508,190 @@ export async function updateJourneyState(
   } catch (error) {
     console.error('Journey state update error:', error);
   }
-} 
+}
+
+type LogEntry = {
+  id: string;
+  timestamp: string;
+  user_id?: string;
+  session_id?: string;
+  event_type: string;
+  component: string;
+  action?: string;
+  action_details?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+  context?: Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+};
+
+class AuditLogger {
+  private sessionId: string;
+  private enabled: boolean;
+  private consoleDebug: boolean;
+  private userId?: string;
+  
+  constructor() {
+    this.sessionId = uuidv4();
+    this.enabled = true; // Enable by default in production
+    
+    // Enable debug mode if in development
+    this.consoleDebug = process.env.NODE_ENV === 'development';
+    
+    // Try to get the user ID
+    this.setUserIdFromSession();
+  }
+  
+  private async setUserIdFromSession(): Promise<void> {
+    try {
+      const user = await getCurrentUser();
+      if (user) {
+        this.userId = user.id;
+      }
+    } catch (error) {
+      console.error('Failed to get user ID for audit logs:', error);
+    }
+  }
+  
+  /**
+   * Creates the base log entry structure
+   */
+  private createBaseLogEntry(eventType: string, component: string): Partial<LogEntry> {
+    return {
+      id: uuidv4(),
+      timestamp: new Date().toISOString(),
+      user_id: this.userId,
+      session_id: this.sessionId,
+      event_type: eventType,
+      component,
+    };
+  }
+  
+  /**
+   * Enable or disable the audit logger
+   */
+  public setEnabled(enabled: boolean): void {
+    this.enabled = enabled;
+  }
+  
+  /**
+   * Enable or disable console debugging
+   */
+  public setConsoleDebug(enabled: boolean): void {
+    this.consoleDebug = enabled;
+  }
+  
+  /**
+   * Log a navigation event
+   */
+  public async logNavigation(
+    fromRoute: string,
+    toRoute: string,
+    details?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  ): Promise<void> {
+    if (!this.enabled) return;
+    
+    const logData = {
+      ...this.createBaseLogEntry('navigation', 'router'),
+      action: 'route_change',
+      action_details: { ...details, from: fromRoute, to: toRoute },
+    };
+    
+    if (this.consoleDebug) {
+      console.debug('📝 AuditLog [Navigation]:', logData);
+    }
+    
+    try {
+      await supabase.from('audit_logs').insert(logData);
+    } catch (error) {
+      console.error('Failed to log navigation event:', error);
+    }
+  }
+  
+  /**
+   * Log a user action
+   */
+  public async logAction(
+    component: string,
+    action: string,
+    details?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  ): Promise<void> {
+    if (!this.enabled) return;
+    
+    const logData = {
+      ...this.createBaseLogEntry('user_action', component),
+      action,
+      action_details: details,
+    };
+    
+    if (this.consoleDebug) {
+      console.debug(`📝 AuditLog [Action: ${action}]:`, logData);
+    }
+    
+    try {
+      await supabase.from('audit_logs').insert(logData);
+    } catch (error) {
+      console.error('Failed to log user action:', error);
+    }
+  }
+  
+  /**
+   * Log a toggle change
+   */
+  public async logToggle(
+    componentName: string,
+    newValue: any,
+    details?: Record<string, any>
+  ): Promise<void> {
+    const logData = {
+      ...this.createBaseLogEntry('toggle_change', componentName),
+      action_details: { ...details, newValue },
+    };
+    
+    if (this.consoleDebug) {
+      console.debug(`📝 AuditLog [Toggle: ${componentName}]:`, logData);
+    }
+    
+    try {
+      await supabase.from('audit_logs').insert(logData);
+    } catch (error) {
+      console.error('Failed to log toggle change:', error);
+    }
+  }
+  
+  /**
+   * Log an error that occurred
+   */
+  public async logError(
+    component: string,
+    error: Error | string,
+    details?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+  ): Promise<void> {
+    if (!this.enabled) return;
+    
+    const errorMessage = error instanceof Error ? error.message : error;
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    
+    const logData = {
+      ...this.createBaseLogEntry('error', component),
+      action: 'error_occurred',
+      action_details: {
+        ...details,
+        error_message: errorMessage,
+        error_stack: errorStack,
+      },
+    };
+    
+    if (this.consoleDebug) {
+      console.debug('📝 AuditLog [Error]:', logData);
+    }
+    
+    try {
+      await supabase.from('audit_logs').insert(logData);
+    } catch (logError) {
+      console.error('Failed to log error event:', logError);
+    }
+  }
+}
+
+// Create a singleton instance
+export const auditLogger = new AuditLogger();
+
+export default auditLogger; 

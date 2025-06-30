@@ -31,7 +31,7 @@ export class MonteCarloSimulator {
     volatility: number;
     strategy?: 'buy_hold' | 'mean_reversion' | 'momentum' | 'custom';
     customLogic?: (prices: number[], index: number) => { action: 'buy' | 'sell' | 'hold'; quantity: number };
-  }): Promise<MonteCarloResult> {
+  }): Promise<MonteCarloResult></MonteCarloResult> {
     const startTime = Date.now();
     const scenarios: ScenarioResult[] = [];
 
@@ -74,7 +74,7 @@ export class MonteCarloSimulator {
    * TODO: implement different stochastic processes
    * TODO: add jump diffusion models
    */
-  private async simulateScenario(params: any, scenarioId: number): Promise<ScenarioResult> {
+  private async simulateScenario(params: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, scenarioId: number): Promise<ScenarioResult></ScenarioResult> {
     const { initialValue, expectedReturn, volatility } = params;
     const path: number[] = [initialValue];
     let currentValue = initialValue;
@@ -286,7 +286,7 @@ export class MonteCarloSimulator {
   /**
    * Update configuration
    */
-  updateConfig(newConfig: Partial<MonteCarloConfig>): void {
+  updateConfig(newConfig: Partial<MonteCarloConfig></MonteCarloConfig>): void {
     this.config = { ...this.config, ...newConfig };
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { Textarea } from "@/components/ui/textarea";
 
 type LessonChunk = {
   id: string;
@@ -19,14 +20,13 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
   return (
     <div className="space-y-6 theme-academy">
       {chunks.map((chunk) => (
-        <Div key={chunk.id}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2"
-       >
+        <div key={chunk.id}
+          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md space-y-2">
           {chunk.type === "markdown" && (
             <ReactMarkdown>{chunk.content}</ReactMarkdown>
           )}
           {chunk.type === "prompt" && (
-            <textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded" />
+            <Textarea placeholder="What's your takeaway?" className="w-full p-2 bg-white/10 rounded"/>
           )}
           {chunk.aiCommentary && (
             <p className="italic text-white/70">🧠 {chunk.aiCommentary}</p>
@@ -35,4 +35,11 @@ export default function LessonPlayground({ lessonId, chunks }: Props) {
       ))}
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

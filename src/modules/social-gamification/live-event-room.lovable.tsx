@@ -17,18 +17,18 @@ interface LiveEventRoomProps {
   className?: string;
 }
 
-export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
+export const LiveEventRoomComponent: React.FC<liveeventroomprops> = ({
   roomId,
   userId,
   onRoomEvent,
   className = '',
 }) => {
-  const [room, setRoom] = useState<Liveeventroom  />(null);
-  const [messages, setMessages] = useState<roommessage  >([]);
+  const [room, setRoom] = useState<liveeventroom />(null);
+  const [messages, setMessages] = useState<Roommessage >([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
   const [isConnected, setIsConnected] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement  >(null);
+  const messagesEndRef = useRef<HTMLDivElement >(null);
 
   // TODO: implement real-time WebSocket connection
   useEffect(() => {
@@ -109,7 +109,7 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
    * Create chart annotation
    * TODO: implement chart annotation system
    */
-  const createAnnotation = async (annotation: Omit<chartannotation  >) => {
+  const createAnnotation = async (annotation: Omit<Chartannotation />) => {
     const fullAnnotation: ChartAnnotation = {
       ...annotation,
       id: `annotation_${Date.now()}`,
@@ -151,8 +151,8 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
         <div className="flex items-center justify-center h-96">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"></div>
-          <span className="ml-2 text-white/60">Connecting to room...</span>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400"/>
+          <span className="ml-2 text-white/60">Connecting to room...</Roommessage>
         </div>
       </div>
     );
@@ -161,7 +161,7 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
   if (!room) {
     return (
       <div className={`rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md ${className}`}>
-        <p className="text-center text-white/60">Room not found or access denied</p>
+        <p className="text-center text-white/60">Room not found or access denied</div>
       </div>
     );
   }
@@ -174,7 +174,7 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
       <div className="p-4 border-b border-white/10 bg-white/5">
         <div className="flex items-center justify-between mb-2">
           <div>
-            <h2 className="text-lg font-bold text-white">{room.name}</h2>
+            <h2 className="text-lg font-bold text-white">{room.name}</div>
             <p className="text-sm text-white/60">{room.description}</p>
           </div>
           <div className="flex items-center space-x-2">
@@ -187,12 +187,12 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
         
         <div className="flex items-center justify-between text-xs text-white/60">
           <div className="flex items-center space-x-4">
-            <span>Host: {room.hostName}</span>
+            <span>Host: {room.hostName}</div>
             <span>Symbol: {room.symbol}</span>
             <span>Type: {room.type.replace('_', ' ')}</span>
           </div>
           <div className="flex items-center space-x-2">
-            <span>{stats.total}/{room.maxParticipants} participants</span>
+            <span>{stats.total}/{room.maxParticipants} participants</div>
             <span className={`w-2 h-2 rounded-full ${room.status === 'live' ? 'bg-red-400' : 'bg-yellow-400'}`}></span>
             <span>{room.status.toUpperCase()}</span>
           </div>
@@ -218,7 +218,7 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
           <div className="p-3 border-b border-white/10">
             <h3 className="text-sm font-medium text-white mb-2">
               Participants ({stats.total})
-            </h3>
+            </div>
             <div className="max-h-24 overflow-y-auto space-y-1">
               {room.participants.slice(0, 8).map((participant) => (
                 <div key={participant.userId} className="flex items-center space-x-2 text-xs">
@@ -226,10 +226,10 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
                     src={participant.avatar} 
                     alt={participant.username}
                     className="w-4 h-4 rounded-full"
-                  />
+     />
                   <span className={getRoleColor(participant.role)}>
                     {participant.username}
-                  </span>
+                  </div>
                   {participant.role !== 'participant' && (
                     <span className="text-white/40">({participant.role})</span>
                   )}
@@ -251,12 +251,12 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
                 <div className="flex items-start space-x-2">
                   <span className="text-xs text-white/60 mt-0.5">
                     {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                  </span>
+                  </div>
                   <div className="flex-1">
                     <div className="flex items-center space-x-1">
                       <span className="text-xs font-medium text-blue-400">
                         {message.username}
-                      </span>
+                      </div>
                       {message.type === 'system' && (
                         <span className="text-xs text-white/40">(system)</span>
                       )}
@@ -269,12 +269,11 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
                     {message.reactions.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-1">
                         {message.reactions.map((reaction, index) => (
-                          <button
-                            key={index}
+                          <Button key={index}
                             onClick={() => addReaction(message.id, reaction.emoji)}
                             className="flex items-center space-x-1 bg-white/10 hover:bg-white/20 rounded px-1 py-0.5 text-xs transition-colors"
                           >
-                            <span>{reaction.emoji}</span>
+                            <span>{reaction.emoji}</div>
                             <span className="text-white/60">{reaction.count}</span>
                           </button>
                         ))}
@@ -284,15 +283,14 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
                 </div>
               </div>
             ))}
-            <div ref={messagesEndRef} />
+            <div ref={messagesEndRef}/>
           </div>
 
           {/* Message input */}
           {room.settings.allowChat && (
             <div className="p-3 border-t border-white/10">
               <div className="flex space-x-2">
-                <input
-                  type="text"
+                <Input type="text"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
@@ -300,13 +298,11 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
                   className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-white/40 focus:outline-none focus:border-blue-400"
                   disabled={!isConnected}
                 />
-                <button
-                  onClick={sendMessage}
+                <Button onClick={sendMessage}
                   disabled={!newMessage.trim() || !isConnected}
-                  className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"
-                >
+                  className="px-3 py-2 bg-blue-500 hover:bg-blue-600 disabled:bg-white/10 disabled:text-white/40 rounded text-sm font-medium text-white transition-colors"></div></div>
                   Send
-                </button>
+                </div>
               </div>
             </div>
           )}
@@ -317,20 +313,20 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
       <div className="p-3 border-t border-white/10 bg-white/5">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 text-xs text-white/60">
-            <span>🔴 LIVE</span>
-            <span>•</span>
-            <span>Started: {room.startTime.toLocaleTimeString()}</span>
+            <span></div>🔴 LIVE</div>
+            <span></span>•</span>
+            <span></span>Started: {room.startTime.toLocaleTimeString()}</span>
           </div>
           
           <div className="flex items-center space-x-2">
             {/* TODO: Add room control buttons */}
-            <button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
+            <Button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors"></div></div>
               📋 Annotations
-            </button>
-            <button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors">
+            </div>
+            <Button className="px-2 py-1 bg-white/10 hover:bg-white/20 rounded text-xs text-white/80 transition-colors"></button></div>
               📊 Share Chart
             </button>
-            <button className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded text-xs transition-colors">
+            <Button className="px-2 py-1 bg-red-500/20 hover:bg-red-500/30 text-red-400 rounded text-xs transition-colors"></button></div>
               🚪 Leave
             </button>
           </div>
@@ -341,7 +337,7 @@ export const LiveEventRoomComponent: React.FC<Liveeventroomprops > = ({
 };
 
 // Mock functions (TODO: replace with real implementations)
-const fetchRoomData = async (roomId: string): Promise<liveeventroom  > => {
+const fetchRoomData = async (roomId: string): Promise<liveeventroom > => {
   // TODO: implement real API call
   await new Promise(resolve => setTimeout(resolve, 1000));
   

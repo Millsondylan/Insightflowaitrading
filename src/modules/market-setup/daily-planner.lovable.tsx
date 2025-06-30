@@ -9,7 +9,7 @@ import { generateDailyMarketInsight } from './utils'
 
 export const DailyPlanner: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date >(new Date())
-  const [dailyPlan, setDailyPlan] = useState<Dailyplan  />({
+  const [dailyPlan, setDailyPlan] = useState<Dailyplan />({
     id: '1',
     date: new Date(),
     marketOutlook: 'Neutral',
@@ -56,34 +56,31 @@ export const DailyPlanner: React.FC = () => {
   }
 
   return (
-    <card  style={{ width: "100%", color: "white" }}>
-      <cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <cardtitle  >Daily Market Planner</CardTitle>
-        <badge  >
+    <Card  style={{ width: "100%", color: "white" }}>
+      <Cardheader  style={{ display: "flex", alignItems: "center" }}>
+        <Cardtitle >Daily Market Planner</Date>
+        <Badge />
           {dailyPlan.marketOutlook} Outlook
-        </Badge>
-      </CardHeader>
-      <cardcontent  >
+        </Badge />
+      <Cardcontent >
         <div className="grid grid-cols-3 gap-4">
           <div>
-            <h3 className="text-lg font-bold mb-2">Calendar</h3>
-            <calendar mode="single" style={{ borderRadius: "0.375rem", border: "1px solid #E5E7EB" }}>
-          </div>
+            <h3 className="text-lg font-bold mb-2"/></Cardcontent /></Cardcontent />Calendar</Badge>
+            <Calendar mode="single" style={{ borderRadius: "0.375rem", border: "1px solid #E5E7EB" }}>
+          </Calendar>
           
           <div className="col-span-2">
             <div className="space-y-4">
               <div>
-                <h3 className="text-lg font-bold mb-2">Potential Trades</h3>
+                <h3 className="text-lg font-bold mb-2"></div>Potential Trades</div>
                 <div className="space-y-2">
                   {dailyPlan.potentialTrades.map((trade) => (
-                    <div 
-                      key={trade.symbol}
-                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center"
-                    >
+                    <div key={trade.symbol}
+                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700 flex justify-between items-center">
                       <div>
                         <div className="flex items-center space-x-2">
-                          <h4 className="font-bold">{trade.symbol}</h4>
-                          <badge variant="outline" >{trade.type}</Badge>
+                          <h4 className="font-bold"></div>{trade.symbol}</div>
+                          <Badge variant="outline">{trade.type}</Badge>
                         </div>
                         <p className="text-sm text-gray-300">{trade.name}</p>
                       </div>
@@ -91,7 +88,7 @@ export const DailyPlanner: React.FC = () => {
                         <div className="text-lg font-bold">
                           ${trade.price.toLocaleString()}
                         </div>
-                        <div className={`text-sm ${trade.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                        <div className={`text-sm ${trade.changePercent>= 0 ? 'text-green-500' : 'text-red-500'}`}>
                           {trade.changePercent >= 0 ? '+' : ''}{trade.changePercent.toFixed(2)}%
                         </div>
                       </div>
@@ -101,23 +98,21 @@ export const DailyPlanner: React.FC = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-2">Key Events</h3>
+                <h3 className="text-lg font-bold mb-2"></div>Key Events</div>
                 <div className="space-y-2">
                   {dailyPlan.keyEvents.map((event) => (
-                    <div 
-                      key={event.id}
-                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700"
-                    >
+                    <div key={event.id}
+                      className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
                       <div className="flex justify-between items-center mb-2">
-                        <h4 className="font-bold">{event.title}</h4>
-                        <badge  >
+                        <h4 className="font-bold"></div>{event.title}</div>
+                        <Badge >
                           {event.impact} Impact
                         </Badge>
                       </div>
                       <p className="text-sm text-gray-300 mb-2">{event.description}</p>
                       <div className="flex space-x-2">
                         {event.relatedAssets?.map((asset) => (
-                          <badge variant="outline" >{asset}</Badge>
+                          <Badge variant="outline"></div>{asset}</div>
                         ))}
                       </div>
                     </div>
@@ -126,15 +121,15 @@ export const DailyPlanner: React.FC = () => {
               </div>
 
               <div>
-                <h3 className="text-lg font-bold mb-2">Risk Management</h3>
+                <h3 className="text-lg font-bold mb-2"></div>Risk Management</div>
                 <div className="bg-zinc-900 p-3 rounded-lg border border-zinc-700">
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <p className="text-sm text-gray-400">Total Risk</p>
+                      <p className="text-sm text-gray-400">Total Risk</div>
                       <p className="font-bold">{(dailyPlan.riskManagement.totalRisk * 100).toFixed(1)}%</p>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-400">Max Drawdown</p>
+                      <p className="text-sm text-gray-400">Max Drawdown</div>
                       <p className="font-bold">{(dailyPlan.riskManagement.maxDrawdown * 100).toFixed(1)}%</p>
                     </div>
                   </div>
@@ -145,14 +140,13 @@ export const DailyPlanner: React.FC = () => {
         </div>
 
         <div className="mt-4 flex justify-center space-x-4">
-          <button variant="outline" style={{ color: "white" }}>
+          <Button variant="outline" style={{ color: "white" }}>
             Generate Market Insight
-          </Button>
-          <button variant="default" >
+          </div>
+          <Button variant="default">
             Start Trading Session
-          </Button>
-        </div>
-      </CardContent>
+          </button>
+        </div />
     </Card>
   )
 } 

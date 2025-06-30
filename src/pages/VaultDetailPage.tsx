@@ -1,80 +1,123 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { useParams } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, PlayCircle, TrendingUp, BarChart, Star, GitCommit } from 'lucide-react';
-
-// Mock data, in a real app this would come from an API
-const strategyDetails = {
-  id: '1',
-  name: 'Momentum Scalper',
-  author: 'CryptoWhale',
-  description: 'A high-frequency strategy that aims to capture small profits from short-term momentum shifts in volatile assets like Bitcoin. It uses a combination of EMA crosses and RSI indicators.',
-  tags: ['BTC', 'Scalping', 'High-Frequency'],
-  performance: 23.5,
-  stars: 1200,
-  winRate: 68,
-  avgPnl: 0.8,
-  backtests: 124,
-};
-
-const GlassCard = ({ title, value, icon, unit = '' }: { title: string, value: string | number, icon: React.ElementType, unit?: string }) => {
-    const Icon = icon;
-    return (
-        <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-            <div className="flex justify-center items-center gap-2 text-gray-400 text-sm mb-2">
-                <Icon size={14} />
-                {title}
-            </div>
-            <p className="text-2xl font-bold text-white">{value}{unit}</p>
-        </div>
-    );
-};
-
+import { Button } from '@/components/ui/button';
+import { ArrowLeft, Star, Users, TrendingUp } from 'lucide-react';
 
 export default function VaultDetailPage() {
-  const { id } = useParams<{ id: string }>();
-  // In a real app, you'd fetch strategy details based on the id
-  const strategy = strategyDetails;
+  const { id } = useParams();
+
+  // Mock strategy data - in real app this would come from API
+  const strategy = {
+    id: id || '1',
+    name: 'Advanced Momentum Strategy',
+    description: 'A sophisticated momentum-based trading strategy that combines multiple technical indicators for optimal entry and exit points.',
+    tags: ['Momentum', 'Technical Analysis', 'Day Trading'],
+    performance: {
+      totalReturn: 24.5,
+      sharpeRatio: 1.8,
+      maxDrawdown: 15.2,
+      winRate: 68
+    }
+  };
 
   return (
-    <div>
-      <Link to="/vault" className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
-        <ArrowLeft size={16} />
-        Back to Vault
-      </Link>
-
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
-        <header className="flex justify-between items-start mb-8">
-            <div>
-                <h1 className="text-4xl font-bold text-white flex items-center gap-4">
-                    <span className="bg-white/10 p-3 rounded-lg"><GitCommit className="text-blue-400" /></span>
-                    {strategy.name}
-                </h1>
-                <p className="text-gray-400 mt-2">by {strategy.author}</p>
-            </div>
-            <Link to={`/replay/${id}`}>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                    <PlayCircle size={20} className="mr-2"/>
-                    Launch Replay
-                </Button>
-            </Link>
-        </header>
-
-        <p className="text-gray-300 max-w-3xl mb-6">{strategy.description}</p>
-        
-        <div className="flex items-center gap-2 mb-8">
-          {strategy.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <GlassCard title="Performance" value={strategy.performance} unit="%" icon={TrendingUp} />
-            <GlassCard title="Win Rate" value={strategy.winRate} unit="%" icon={Star} />
-            <GlassCard title="Avg PnL/Trade" value={strategy.avgPnl} unit="%" icon={BarChart} />
-            <GlassCard title="Backtests" value={strategy.backtests} icon={BarChart} />
+    <div className="container mx-auto p-6">
+      <div className="flex items-center gap-4 mb-8">
+        <Button variant="ghost" size="icon">
+          <ArrowLeft className="w-4 h-4"/>
+        </Button>
+        <div>
+          <h1 className="text-3xl font-bold text-white">{strategy.name}</h1>
+          <p className="text-gray-400 mt-1">{strategy.description}</p>
         </div>
       </div>
+
+      <Card className="bg-white/5 border-white/10">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-2xl">{strategy.name}</CardTitle>
+              <p className="text-gray-400 mt-2">{strategy.description}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button variant="outline">
+                <Star className="w-4 h-4 mr-2"/>
+                Favorite
+              </Button>
+              <Button>
+                Copy Strategy
+              </Button>
+            </div>
+          </div>
+        </CardHeader>
+        
+        <CardContent>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Description</h3>
+              <p className="text-gray-300">{strategy.description}</p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Tags</h3>
+              <div className="flex gap-2">
+                {strategy.tags.map((tag, index) => (
+                  <Badge key={index} variant="secondary">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Performance</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-green-400">+{strategy.performance.totalReturn}%</p>
+                      <p className="text-sm text-gray-400">Annual Return</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-blue-400">{strategy.performance.sharpeRatio}</p>
+                      <p className="text-sm text-gray-400">Sharpe Ratio</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-purple-400">{strategy.performance.maxDrawdown}%</p>
+                      <p className="text-sm text-gray-400">Max Drawdown</p>
+                    </div>
+                  </CardContent>
+                </Card>
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-yellow-400">{strategy.performance.winRate}%</p>
+                      <p className="text-sm text-gray-400">Win Rate</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

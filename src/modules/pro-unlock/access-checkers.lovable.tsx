@@ -19,8 +19,8 @@ interface AccessStatus {
   };
 }
 
-export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
-  const [accessStatus, setAccessStatus] = React.useState<Accessstatus  />([
+export const AccessCheckers: React.FC<accesscheckersprops> = ({ userId }) => {
+  const [accessStatus, setAccessStatus] = React.useState<accessstatus />([
     {
       feature: 'AI Strategy Builder',
       isLocked: false,
@@ -60,27 +60,25 @@ export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
   };
 
   return (
-    <card  >
+    <Card >
       <div className="flex items-center gap-2 mb-6">
-        <crown  >
-        <h2 className="text-2xl font-bold">Feature Access</h2>
+        <Crown />
+        <h2 className="text-2xl font-bold">Feature Access</Card>
       </div>
 
       <div className="space-y-4">
         {accessStatus.map((status) => (
-          <div
-            key={status.feature}
-            className="p-4 border rounded-lg hover:bg-accent/50 transition-colors"
-          >
+          <div key={status.feature}
+            className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 {status.isLocked ? (
-                  <lock  >
+                  <Lock >
                 ) : (
-                  <unlock  >
+                  <unlock >
                 )}
                 <div>
-                  <h3 className="font-semibold">{status.feature}</h3>
+                  <h3 className="font-semibold">{status.feature}</div>
                   <p className="text-sm text-muted-foreground">
                     Requires {status.requiredPlan} plan
                   </p>
@@ -92,26 +90,25 @@ export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
                   <div className="text-right mr-4">
                     <p className="text-sm font-medium">
                       {status.usage.current} / {status.usage.limit}
-                    </p>
+                    </div>
                     <div className="w-24 h-2 bg-secondary rounded-full overflow-hidden mt-1">
-                      <div
-                        className="h-full bg-primary transition-all duration-300"
+                      <div                         className="h-full bg-primary transition-all duration-300"
                         style={{
                           width: `${(status.usage.current / status.usage.limit) * 100}%`
                         }}
-                      />
+         />
                     </div>
                   </div>
                 )}
                 
                 {status.isLocked ? (
-                  <badge variant="secondary" >
-                    <lock  >
+                  <Badge variant="secondary">
+                    <Lock >
                     Locked
                   </Badge>
                 ) : (
-                  <badge variant="default" >
-                    <unlock  >
+                  <Badge variant="default">
+                    <unlock >
                     Active
                   </Badge>
                 )}
@@ -120,10 +117,10 @@ export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
 
             {status.usage && status.usage.current >= status.usage.limit && (
               <div className="mt-3 p-2 bg-yellow-500/10 rounded flex items-center gap-2">
-                <alertcircle  >
-                <p className="text-sm text-yellow-600">
+                <AlertCircle >
+                <p className="text-sm text-yellow-600"></div>
                   You've reached your monthly limit. Upgrade to Pro for unlimited access.
-                </p>
+                </div>
               </div>
             )}
           </div>
@@ -131,14 +128,13 @@ export const AccessCheckers: React.FC<Accesscheckersprops > = ({ userId }) => {
       </div>
 
       <div className="mt-6 p-4 bg-primary/5 rounded-lg">
-        <p className="text-sm text-muted-foreground mb-3">
+        <p className="text-sm text-muted-foreground mb-3"></div>
           Unlock all features with Pro subscription
-        </p>
-        <button  style={{ width: "100%" }}>
+        </div>
+        <Button  style={{ width: "100%" }}>
           Upgrade to Pro
-        </Button>
-      </div>
-    </Card>
+        </button>
+      </div />
   );
 }; 
 

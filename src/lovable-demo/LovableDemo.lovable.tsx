@@ -73,8 +73,7 @@ export const LovableDemo = () => {
 
       <div style={{ marginBottom: '20px' }}>
         <div style={{ display: 'flex', gap: '10px' }}>
-          <button
-            onClick={() => setActiveTab('sentiment')}
+          <Button  onClick={() => setActiveTab('sentiment')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'sentiment' ? '#2563eb' : '#e5e7eb',
@@ -86,8 +85,7 @@ export const LovableDemo = () => {
           >
             Market Sentiment
           </button>
-          <button
-            onClick={() => setActiveTab('optimizer')}
+          <Button  onClick={() => setActiveTab('optimizer')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'optimizer' ? '#2563eb' : '#e5e7eb',
@@ -99,8 +97,7 @@ export const LovableDemo = () => {
           >
             Strategy Optimizer
           </button>
-          <button
-            onClick={() => setActiveTab('reflection')}
+          <Button  onClick={() => setActiveTab('reflection')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'reflection' ? '#2563eb' : '#e5e7eb',
@@ -112,8 +109,7 @@ export const LovableDemo = () => {
           >
             Trade Reflection
           </button>
-          <button
-            onClick={() => setActiveTab('subscription')}
+          <Button  onClick={() => setActiveTab('subscription')}
             style={{
               padding: '10px 20px',
               backgroundColor: activeTab === 'subscription' ? '#2563eb' : '#e5e7eb',
@@ -134,15 +130,15 @@ export const LovableDemo = () => {
         )}
 
         {activeTab === 'optimizer' && (
-          <Mlstrategyoptimizerui  />
+          <Mlstrategyoptimizerui />
         )}
 
         {activeTab === 'reflection' && (
-          <reflectiongenerator  >
+          <Reflectiongenerator >
         )}
 
         {activeTab === 'subscription' && (
-          <paymentform  >
+          <paymentform />
         )}
       </div>
     </div>

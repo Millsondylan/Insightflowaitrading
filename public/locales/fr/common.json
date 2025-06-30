@@ -1,0 +1,46 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "journal": "Journal",
+    "strategies": "Stratégies",
+    "academy": "Académie",
+    "settings": "Paramètres"
+  },
+  "auth": {
+    "login": "Se connecter",
+    "signup": "S'inscrire",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "loginWithGoogle": "Se connecter avec Google"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "submit": "Soumettre"
+  },
+  "settings": {
+    "language": "Langue",
+    "theme": "Thème",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "notifications": "Notifications",
+    "enablePush": "Activer les notifications push"
+  },
+  "trading": {
+    "portfolio": "Portefeuille",
+    "performance": "Performance",
+    "winRate": "Taux de réussite",
+    "profitFactor": "Facteur de profit",
+    "trades": "Transactions",
+    "backtest": "Rétro-test"
+  }
+} 

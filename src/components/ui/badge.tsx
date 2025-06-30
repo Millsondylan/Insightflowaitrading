@@ -29,8 +29,15 @@ export interface BadgeProps
 
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
+    <div className={cn(badgeVariants({ variant }), className)} {...props}/>
   )
 }
 
 export { Badge, badgeVariants }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

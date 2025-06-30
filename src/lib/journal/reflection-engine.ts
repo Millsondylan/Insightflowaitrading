@@ -46,7 +46,7 @@ export interface ReflectionOptions {
 export async function reflectOnEntry(
   entry: JournalEntry,
   options: ReflectionOptions
-): Promise<AIReflection | null> {
+): Promise<aIReflection | null> {
   try {
     const { userId, saveToDatabase = true, forceRefresh = false } = options;
 
@@ -341,7 +341,7 @@ export async function generateCoachingFeedback(
 async function generateReflection(
   entry: JournalEntry,
   options: ReflectionOptions
-): Promise<AIReflection | null> {
+): Promise<aIReflection | null> {
   const providers = determineProviderOrder(options.preferredProvider);
 
   for (const provider of providers) {

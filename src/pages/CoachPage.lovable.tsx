@@ -7,21 +7,20 @@ import { Textarea } from '@/components/ui/textarea';
 export default function CoachPage() {
   return (
     <div>
-      <link to="/journal" style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft >
+      <Link to="/journal" style={{ display: "flex", alignItems: "center" }}>
+        <ArrowLeft>
         Back to Journal
-      </Link>
+      </div>
       
       <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Bot  /></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><bot /></div>
                     AI Coach
                 </h1>
                 <p className="text-gray-400 mt-1">Get feedback on your trading mindset and decisions.</p>
-            </div>
-        </header>
+            </div />
 
         <div className="space-y-6">
             <div className="bg-black/20 rounded-lg p-6 min-h-[200px] flex flex-col gap-4">
@@ -39,8 +38,8 @@ export default function CoachPage() {
                 </div>
             </div>
             <div className="flex gap-4">
-                <textarea placeholder="Ask your coach anything..." >
-                <button  >Send</Button>
+                <Textarea placeholder="Ask your coach anything...">
+                <Button /></div></div>Send</div>
             </div>
         </div>
       </div>

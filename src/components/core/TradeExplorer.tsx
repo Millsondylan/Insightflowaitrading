@@ -70,7 +70,6 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
             {currentTrades.map((trade, index) => {
               const isWin = trade.pnl > 0;
               const tradeIndex = indexOfFirstTrade + index + 1;
-              
               return (
                 <TableRow key={index} className={`trade-row ${isWin ? 'win' : 'loss'}`}>
                   <TableCell className="font-medium">{tradeIndex}</TableCell>
@@ -79,32 +78,28 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                   <TableCell>{formatDuration(trade.entryTime, trade.exitTime)}</TableCell>
                   <TableCell>{formatCurrency(trade.entryPrice)}</TableCell>
                   <TableCell>{formatCurrency(trade.exitPrice)}</TableCell>
-                  <TableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>
-                    {formatCurrency(trade.pnl)}
-                  </TableCell>
-                  <TableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>
-                    {formatPercent(trade.pnlPercentage)}
-                  </TableCell>
+                  <TableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>{formatCurrency(trade.pnl)}</TableCell>
+                  <TableCell className={`trade-pnl ${isWin ? 'positive' : 'negative'}`}>{formatPercent(trade.pnlPercentage)}</TableCell>
                 </TableRow>
               );
             })}
           </TableBody>
         </Table>
-        
         {totalPages > 1 && (
           <div className="py-4 flex justify-center">
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious 
+                    size="sm"
                     onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
                     className={currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
                 </PaginationItem>
-                
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
                   <PaginationItem key={page}>
                     <PaginationLink
+                      size="sm"
                       onClick={() => handlePageChange(page)}
                       isActive={page === currentPage}
                       className="cursor-pointer"
@@ -113,9 +108,9 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
                     </PaginationLink>
                   </PaginationItem>
                 ))}
-                
                 <PaginationItem>
                   <PaginationNext
+                    size="sm"
                     onClick={() => currentPage < totalPages && handlePageChange(currentPage + 1)}
                     className={currentPage === totalPages ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                   />
@@ -129,4 +124,11 @@ const TradeExplorer = ({ trades }: TradeExplorerProps) => {
   );
 };
 
-export default TradeExplorer; 
+export default TradeExplorer;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

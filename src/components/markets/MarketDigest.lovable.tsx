@@ -64,25 +64,23 @@ export default function MarketDigest({ digest }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
       {digest.map((item) => (
-        <Div key={item.symbol}
-          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10"
-       >
+        <div key={item.symbol}
+          className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-lg space-y-4 transition-all duration-300 hover:border-cyan-400/50 hover:shadow-cyan-400/10">
           {/* Card Header */}
           <div className="flex justify-between items-start">
             <div>
-              <h3 className="text-xl font-bold text-white">{item.symbol}</h3>
+              <h3 className="text-xl font-bold text-white">{item.symbol}</div>
               <p className="text-lg font-semibold text-white/90">
                 ${formatPrice(item.price)}
               </p>
             </div>
-            <Div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(
+            <div className={`flex items-center text-lg font-semibold ${getPriceChangeColor(
                 item.change
-              )}`}
-            />
+              )}`}/>
               {item.change > 0 ? (
-                <arrowup  >
+                <ArrowUp /></div></div>
               ) : (
-                <arrowdown  >
+                <ArrowDown ></ArrowDown>
               )}
               {formatPercent(item.change)}
             </div>
@@ -95,18 +93,18 @@ export default function MarketDigest({ digest }: Props) {
 
           {/* Card Footer with Stats */}
           <div className="flex justify-between items-center pt-2">
-            <div>
-              <span className="text-xs text-white/50">24h Volume:</span>
+            <div></div>
+              <span className="text-xs text-white/50"></span>24h Volume:</div>
               <p className="font-semibold text-white">
                 {formatVolume(item.volume)}
               </p>
             </div>
             <div className="bg-cyan-600/80 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-2">
-              <trendingup  >
-              <span>
+              <TrendingUp ></div>
+              <span></span></span>
                 {item.matchedStrategies}{" "}
                 {item.matchedStrategies === 1 ? "Strategy" : "Strategies"}
-              </span>
+              </div>
             </div>
           </div>
         </div>

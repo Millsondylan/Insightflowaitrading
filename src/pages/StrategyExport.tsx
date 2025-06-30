@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Button } from '../components/ui/button';
 
 const StrategyExportPage: React.FC = () => {
   return (
@@ -22,25 +22,25 @@ const StrategyExportPage: React.FC = () => {
             <div className="text-3xl mb-4">📄</div>
             <h3 className="text-lg font-semibold text-cyan-400 mb-2">PDF Report</h3>
             <p className="text-gray-300 text-sm mb-4">Comprehensive strategy documentation</p>
-            <button className="glow-button glow-cyan px-4 py-2 text-sm">
+            <Button className="glow-button glow-cyan px-4 py-2 text-sm">
               Export PDF
-            </button>
+            </Button>
           </div>
           <div className="glass-card hover-glow text-center">
             <div className="text-3xl mb-4">📊</div>
             <h3 className="text-lg font-semibold text-blue-400 mb-2">Excel Sheet</h3>
             <p className="text-gray-300 text-sm mb-4">Data analysis and calculations</p>
-            <button className="glow-button glow-blue px-4 py-2 text-sm">
+            <Button className="glow-button glow-blue px-4 py-2 text-sm">
               Export Excel
-            </button>
+            </Button>
           </div>
           <div className="glass-card hover-glow text-center">
             <div className="text-3xl mb-4">🔗</div>
             <h3 className="text-lg font-semibold text-teal-400 mb-2">JSON Data</h3>
             <p className="text-gray-300 text-sm mb-4">Machine-readable format</p>
-            <button className="glow-button glow-teal px-4 py-2 text-sm">
+            <Button className="glow-button glow-teal px-4 py-2 text-sm">
               Export JSON
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -74,3 +74,10 @@ const StrategyExportPage: React.FC = () => {
 };
 
 export default StrategyExportPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

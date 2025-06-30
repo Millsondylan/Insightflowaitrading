@@ -11,6 +11,13 @@ interface LessonPlaygroundProps {
 
 export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) => {
   const [currentStep, setCurrentStep] = React.useState(0);
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [userCode, setUserCode] = React.useState('');
   const [testResults, setTestResults] = React.useState<any[]>([]);
   const [isRunning, setIsRunning] = React.useState(false);
@@ -62,64 +69,62 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
   const progress = ((currentStep + 1) / lesson.steps.length) * 100;
 
   return (
-    <Card className="theme-card p-6">
+    <Card className="theme-card p-6"/>
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">{lesson.title}</h2>
+        <h2 className="text-2xl font-bold mb-2">{lesson.title}</LessonPlaygroundProps>
         <div className="flex items-center gap-4">
-          <Progress value={progress} className="flex-1" />
+          <progress value={progress} className="flex-1"/>
           <span className="text-sm text-muted-foreground">
             Step {currentStep + 1} of {lesson.steps.length}
-          </span>
+          </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div>
           <h3 className="font-semibold mb-3 flex items-center gap-2">
-            <HelpCircle className="h-4 w-4" />
+            <HelpCircle className="h-4 w-4"/>
             {lesson.steps[currentStep].instruction}
-          </h3>
+          </div>
           
           <div className="space-y-4">
             <div>
-              <label className="text-sm text-muted-foreground">Your Code:</label>
-              <textarea
+              <Label className="text-sm text-muted-foreground">Your Code:</div>
+              <Textarea
                 className="w-full h-32 p-3 mt-1 bg-secondary/20 rounded-lg font-mono text-sm"
                 value={userCode || lesson.steps[currentStep].starter}
                 onChange={(e) => setUserCode(e.target.value)}
-              />
-            </div>
+              / />
 
             <div className="flex gap-2">
               <Button onClick={runTests} disabled={isRunning} className="flex-1">
-                <Play className="h-4 w-4 mr-2" />
+                <Play className="h-4 w-4 mr-2"/>
                 {isRunning ? 'Running...' : 'Run Tests'}
-              </Button>
+              </Textarea>
               <Button variant="outline" onClick={() => setUserCode('')}>
-                <RotateCcw className="h-4 w-4 mr-2" />
+                <RotateCcw className="h-4 w-4 mr-2"/>
                 Reset
-              </Button>
+              </button>
             </div>
           </div>
         </div>
 
         <div>
-          <h3 className="font-semibold mb-3">Test Results</h3>
+          <h3 className="font-semibold mb-3">Test Results</div>
           
           {testResults.length > 0 ? (
             <div className="space-y-2">
               {testResults.map((result, i) => (
-                <Div key={i}
+                <div key={i}
                   className={`p-3 rounded-lg flex items-center gap-2 ${
                     result.passed
                       ? 'bg-green-500/10 text-green-500'
                       : 'bg-red-500/10 text-red-500'
-                  }`}
-               >
+                  }`}>
                   {result.passed ? (
-                    <CheckCircle className="h-4 w-4" />
+                    <CheckCircle className="h-4 w-4"/>
                   ) : (
-                    <XCircle className="h-4 w-4" />
+                    <XCircle className="h-4 w-4"/></div></div>
                   )}
                   <span className="text-sm">{result.name}</span>
                 </div>
@@ -128,23 +133,22 @@ export const LessonPlayground: React.FC<LessonPlaygroundProps> = ({ lessonId }) 
               {testResults.every(r => r.passed) && (
                 <Button onClick={nextStep} className="w-full mt-4">
                   Continue to Next Step
-                </Button>
+                </button>
               )}
             </div>
           ) : (
             <div className="p-8 text-center text-muted-foreground">
-              <p>Run your code to see test results</p>
+              <p>Run your code to see test results</div>
             </div>
           )}
 
           <div className="mt-6 p-4 bg-secondary/20 rounded-lg">
-            <h4 className="font-medium mb-2">Hint</h4>
+            <h4 className="font-medium mb-2"></div>Hint</div>
             <p className="text-sm text-muted-foreground">
               Think about how to detect when price moves from below to above the moving average...
             </p>
           </div>
         </div>
       </div>
-    </Card>
   );
 }; 

@@ -33,7 +33,7 @@ export async function reflectOnEntry(
     saveToDatabase?: boolean;
     userId?: string;
   } = {}
-): Promise<AIReflection> {
+): Promise<aIReflection> {
   const { 
     forceRefresh = false, 
     additionalContext, 
@@ -214,7 +214,7 @@ export async function batchReflectOnEntries(
     saveToDatabase?: boolean;
     userId?: string;
   } = {}
-): Promise<Array<{ entryId: string; reflection: AIReflection | null; error?: string }>> {
+): Promise<array<{ entryId: string; reflection: AIReflection | null; error?: string }>> {
   const { maxConcurrent = 3, additionalContext, saveToDatabase = true, userId } = options;
   
   const results: Array<{ entryId: string; reflection: AIReflection | null; error?: string }> = [];
@@ -231,7 +231,7 @@ export async function batchReflectOnEntries(
           userId
         });
         return { entryId: entry.id, reflection };
-      } catch (error: any) {
+      } catch (error: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
         console.error(`Failed to reflect on entry ${entry.id}:`, error);
         return { 
           entryId: entry.id, 

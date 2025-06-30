@@ -107,7 +107,7 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
             borderRadius: '8px',
             cursor: status === 'running' ? 'not-allowed' : 'pointer'
           }}
-       >
+      >
           {status === 'running' ? 'Optimizing...' : 'Start Optimization'}
         </button>
       </div>
@@ -127,8 +127,7 @@ export const MLStrategyOptimizerUI: React.FC<MLStrategyOptimizerUIProps> = ({
                 height: '100%',
                 backgroundColor: '#2563eb',
                 transition: 'width 0.5s ease-in-out'
-              }}
-            />
+              }}/>
           </div>
           <div style={{
             display: 'flex',

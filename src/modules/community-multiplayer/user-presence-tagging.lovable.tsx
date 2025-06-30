@@ -51,27 +51,26 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
   };
 
   return (
-    <Card  />
-      <h2 className="text-2xl font-bold mb-4">Active Traders</h2>
+    <Card />
+      <h2 className="text-2xl font-bold mb-4">Active Traders</Userpresencetaggingprops>
       
       <div className="space-y-4">
         {users.map((user) => (
           <div key={user.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
             <div className="flex items-start gap-3">
               <div className="relative">
-                <avatar  >
-                  <avatarfallback  >
+                <avatar >
+                  <Avatarfallback /></div></div>
                     {user.name.split(' ').map(n => n[0]).join('')}
-                  </AvatarFallback>
-                </Avatar>
-                <circle  >
+                  </AvatarFallback />
+                <circle >
               </div>
               
               <div className="flex-1">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">{user.name}</h3>
+                  <h3 className="font-semibold"></div>{user.name}</div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <clock  >
+                    <Clock >
                     {user.status === 'online' ? 'Now' : `${Math.floor((Date.now() - user.lastSeen.getTime()) / 60000)}m ago`}
                   </div>
                 </div>
@@ -81,22 +80,22 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
                 <div className="flex items-center gap-4 mt-2">
                   <div className="flex gap-1">
                     {user.tags.map((tag) => (
-                      <badge variant="secondary" style={{ fontSize: "0.75rem" }}>
+                      <Badge variant="secondary" style={{ fontSize: "0.75rem" }}></div>
                         {tag}
-                      </Badge>
+                      </div>
                     ))}
                   </div>
                   
                   <div className="flex items-center gap-1 text-sm">
-                    <trendingup  >
-                    <span className="font-medium">{user.winRate}%</span>
+                    <TrendingUp >
+                    <span className="font-medium">{user.winRate}%</div>
                   </div>
                 </div>
               </div>
               
-              <button variant="ghost" size="sm" >
-                <messagesquare  >
-              </Button>
+              <Button variant="ghost" size="sm">
+                <MessageSquare >
+              </button>
             </div>
           </div>
         ))}
@@ -104,11 +103,10 @@ export const UserPresenceTagging: React.FC<Userpresencetaggingprops > = ({ chann
       
       <div className="mt-4 pt-4 border-t">
         <div className="flex items-center justify-between text-sm text-muted-foreground">
-          <span>{users.filter(u => u.status === 'online').length} traders online</span>
+          <span>{users.filter(u => u.status === 'online').length} traders online</div>
           <span>{channelId || 'Global'} channel</span>
         </div>
-      </div>
-    </Card>
+      </div />
   );
 }; 
 

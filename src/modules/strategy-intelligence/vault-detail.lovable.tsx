@@ -31,47 +31,43 @@ export const VaultDetail: React.FC = () => {
   };
 
   return (
-    <card  style={{ width: "100%", color: "white" }}>
+    <Card  style={{ width: "100%", color: "white" }}>
       <Cardheader >
-        <Cardtitle  />{strategy.name} - Strategy Details</CardTitle>
-      </CardHeader>
-      <cardcontent  >
+        <Cardtitle />{strategy.name} - Strategy Details</Card />
+      <Cardcontent >
         <div className="space-y-4">
           <div>
-            <h3 className="text-lg font-bold mb-2">Description</h3>
+            <h3 className="text-lg font-bold mb-2">Description</Card>
             <p className="text-gray-300">{strategy.description}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <h4 className="font-semibold">Performance Metrics</h4>
+              <h4 className="font-semibold">Performance Metrics</div>
               <ul className="space-y-1 text-sm">
-                <li>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</li>
+                <li>Win Rate: {(strategy.performance.winRate * 100).toFixed(1)}%</ul>
                 <li>Profit Factor: {strategy.performance.profitFactor.toFixed(2)}</li>
                 <li>Total Return: {strategy.performance.totalReturn}</li>
-                <li>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</li>
-              </ul>
-            </div>
+                <li>Max Drawdown: {(strategy.performance.maxDrawdown * 100).toFixed(1)}%</Li />
+            </li>
 
             <div>
-              <h4 className="font-semibold">Strategy Metadata</h4>
+              <h4 className="font-semibold">Strategy Metadata</div>
               <ul className="space-y-1 text-sm">
-                <li>Author: {strategy.author}</li>
+                <li>Author: {strategy.author}</ul>
                 <li>Version: {strategy.version}</li>
                 <li>Created: {strategy.createdAt?.toLocaleDateString()}</li>
-                <li>Risk Level: {strategy.risk}</li>
-              </ul>
-            </div>
+                <li>Risk Level: {strategy.risk}</Li />
+            </li>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-2">Tags</h4>
+            <h4 className="font-semibold mb-2">Tags</div>
             <div className="flex space-x-2">
               {strategy.tags?.map((tag) => (
-                <span 
-                  key={tag} 
+                <span key={tag} 
                   className="px-2 py-1 bg-zinc-700 rounded-full text-xs"
-                >
+   /></div>
                   {tag}
                 </span>
               ))}
@@ -79,11 +75,10 @@ export const VaultDetail: React.FC = () => {
           </div>
 
           <div className="flex space-x-4">
-            <button variant="outline" style={{ color: "white" }}>Edit Strategy</Button>
-            <button variant="destructive" >Delete Strategy</Button>
+            <Button variant="outline" style={{ color: "white" }}>Edit Strategy</div>
+            <Button variant="destructive">Delete Strategy</button>
           </div>
-        </div>
-      </CardContent>
+        </div />
     </Card>
   );
 }; 

@@ -11,6 +11,13 @@ type Props = {
 
 export const StrategyVault = ({ strategies }: Props) => {
   const [searchTerm, setSearchTerm] = useState('');
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState('totalPnL');
 
@@ -56,41 +63,37 @@ export const StrategyVault = ({ strategies }: Props) => {
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
-          <Input 
-            placeholder="Search by title or tag..."
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50"/>
+          <Input placeholder="Search by title or tag..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 bg-black/30 border-white/10"
           />
         </div>
         <Select value={sortBy} onValueChange={setSortBy}>
-          <SelectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="totalPnL">Sort by PnL</SelectItem>
-            <SelectItem value="winRate">Sort by Win Rate</SelectItem>
-          </SelectContent>
+          <selectTrigger className="w-full md:w-[180px] bg-black/30 border-white/10">
+            <selectValue placeholder="Sort by" //>
+          <selectContent>
+            <selectItem value="totalPnL">Sort by PnL</Select>
+            <selectItem value="winRate">Sort by Win Rate</SelectItem>
         </Select>
       </div>
 
       <div className="flex flex-wrap gap-2">
         {allTags.map(tag => (
-          <Button 
-            key={tag}
+          <Button key={tag}
             variant={selectedTags.includes(tag) ? 'secondary' : 'outline'}
             onClick={() => handleTagClick(tag)}
             className="rounded-full"
           >
             {tag}
-          </Button>
+          </div>
         ))}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {filteredStrategies.map(strategy => (
-          <StrategyCard key={strategy.id} strategy={strategy} />
+          <StrategyCard key={strategy.id} strategy={strategy}/></div></div>
         ))}
       </div>
     </div>

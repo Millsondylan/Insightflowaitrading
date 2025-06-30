@@ -9,7 +9,7 @@ interface ChartCanvasOverlayProps {
 }
 
 const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps) => {
-  const [hoveredZone, setHoveredZone] = useState<Patternzone >(null);
+  const [hoveredZone, setHoveredZone] = useState<patternzone>(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
 
   const handleZoneMouseEnter = (zone: PatternZone, e: React.MouseEvent) => {
@@ -32,11 +32,10 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
 
   return (
     <div className="chart-overlay-container">
-      <img src={imageUrl} alt="Chart with pattern overlays" />
+      <img src={imageUrl} alt="Chart with pattern overlays"/>
       
       {patternZones.map((zone) => (
-        <div
-          key={zone.id}
+        <div           key={zone.id}
           className={`pattern-zone ${zone.type || 'neutral'}`}
           style={{
             left: `${zone.x}%`,
@@ -51,7 +50,7 @@ const ChartCanvasOverlay = ({ imageUrl, patternZones }: ChartCanvasOverlayProps)
       ))}
       
       {hoveredZone && (
-        <Patterntooltip  />
+        <patterntooltip />
       )}
     </div>
   );

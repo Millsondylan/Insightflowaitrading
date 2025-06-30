@@ -34,7 +34,7 @@ function useCarousel() {
   const context = React.useContext(CarouselContext)
 
   if (!context) {
-    throw new Error("useCarousel must be used within a <Carousel  />")
+    throw new Error("useCarousel must be used within a <Carousel />")
   }
 
   return context
@@ -42,7 +42,7 @@ function useCarousel() {
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  > & CarouselProps
+  React.HTMLAttributes<HTMLDivElement> & CarouselProps
 >(
   (
     {
@@ -84,7 +84,7 @@ const Carousel = React.forwardRef<
     }, [api])
 
     const handleKeyDown = React.useCallback(
-      (event: React.KeyboardEvent<HTMLDivElement  >) => {
+      (event: React.KeyboardEvent<HTMLDivElement >) => {
         if (event.key === "ArrowLeft") {
           event.preventDefault()
           scrollPrev()
@@ -119,17 +119,15 @@ const Carousel = React.forwardRef<
     }, [api, onSelect])
 
     return (
-      <carouselcontext  >
-        <div
-          ref={ref}
+      <Carouselcontext >
+        <div ref={ref}
           onKeyDownCapture={handleKeyDown}
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
-          {...props}
-        >
+          {...props}>
           {children}
-        </div>
+        </Carouselcontextprops>
       </CarouselContext.Provider>
     )
   }
@@ -138,35 +136,32 @@ Carousel.displayName = "Carousel"
 
 const CarouselContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel()
 
   return (
     <div ref={carouselRef} className="overflow-hidden">
-      <div
-        ref={ref}
+      <div         ref={ref}
         className={cn(
           "flex",
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
         {...props}
-      />
-    </div>
+      //>
   )
 })
 CarouselContent.displayName = "CarouselContent"
 
 const CarouselItem = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement  >
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   const { orientation } = useCarousel()
 
   return (
-    <div
-      ref={ref}
+    <div       ref={ref}
       role="group"
       aria-roledescription="slide"
       className={cn(
@@ -174,8 +169,7 @@ const CarouselItem = React.forwardRef<
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
-      {...props}
-    />
+      {...props}/>
   )
 })
 CarouselItem.displayName = "CarouselItem"
@@ -187,10 +181,10 @@ const CarouselPrevious = React.forwardRef<
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <button  >
-      <arrowleft  >
+    <Button />
+      <ArrowLeft //></HTMLDivElement /></HTMLDivElement /></HTMLDivElement>
       <span className="sr-only">Previous slide</span>
-    </Button>
+    </button>
   )
 })
 CarouselPrevious.displayName = "CarouselPrevious"
@@ -202,10 +196,10 @@ const CarouselNext = React.forwardRef<
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <button  >
-      <arrowright  >
-      <span className="sr-only">Next slide</span>
-    </Button>
+    <Button ></button></div>
+      <ArrowRight ></ArrowRight>
+      <span className="sr-only"></span>Next slide</button>
+    </button>
   )
 })
 CarouselNext.displayName = "CarouselNext"

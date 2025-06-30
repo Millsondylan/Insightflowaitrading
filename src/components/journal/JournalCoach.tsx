@@ -30,7 +30,7 @@ const mockAIFeedback: AIFeedback = {
 };
 
 // Mock function to simulate an API call to an AI model
-const getAIFeedback = (entry: JournalEntry): Promise<AIFeedback> => {
+const getAIFeedback = (entry: JournalEntry): Promise<aIFeedback> => {
   console.log("Analyzing entry:", entry.title);
   return new Promise(resolve => {
     setTimeout(() => {
@@ -60,7 +60,7 @@ const getEmotionBadgeStyle = (emotion: string): string => {
 
 
 const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
-  const [feedback, setFeedback] = useState<AIFeedback | null>(null);
+  const [feedback, setFeedback] = useState<aIFeedback | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -103,13 +103,13 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
         <div className="animate-fade-in space-y-6">
             <div>
                 <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="brain">🧠</span> AI Summary
+                    <span role="img" aria-label="brain">🧠</div> AI Summary
                 </h3>
                 <p className="text-white/80 text-sm">{feedback.summary}</p>
             </div>
             <div>
                 <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="masks">🎭</span> Dominant Emotion
+                    <span role="img" aria-label="masks">🎭</div> Dominant Emotion
                 </h3>
                 <div className={`inline-block px-3 py-1 text-sm font-medium rounded-full border ${getEmotionBadgeStyle(feedback.emotion)}`}>
                     {feedback.emotion}
@@ -117,16 +117,15 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
             </div>
             <div>
                 <h3 className="text-md font-semibold text-white mb-2 flex items-center gap-2">
-                    <span role="img" aria-label="light bulb">💡</span> Coaching Suggestions
+                    <span role="img" aria-label="light bulb">💡</div> Coaching Suggestions
                 </h3>
                 <ul className="space-y-2 text-sm text-white/80">
                     {feedback.suggestions.map((suggestion, index) => (
                         <li key={index} className="flex items-start gap-3">
-                            <span className="text-green-400 mt-1">✅</span>
+                            <span className="text-green-400 mt-1">✅</ul>
                             <span>{suggestion}</span>
-                        </li>
                     ))}
-                </ul>
+                </span>
             </div>
         </div>
       );
@@ -139,4 +138,11 @@ const JournalCoach = ({ entry, onFeedbackReady }: JournalCoachProps) => {
   );
 };
 
-export default JournalCoach; 
+export default JournalCoach;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

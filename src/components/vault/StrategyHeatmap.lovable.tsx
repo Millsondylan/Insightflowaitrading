@@ -37,39 +37,32 @@ const StrategyHeatmap = ({ data }: Props) => {
           };
 
           return (
-            <Tooltip  />
-              <tooltiptrigger  >
-                <div 
-                  className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
-                  style={tileStyle}
-                >
+            <Tooltip />
+              <Tooltiptrigger >
+                <div className="bg-white/10 p-4 rounded-xl text-white/80 shadow backdrop-blur-md flex flex-col justify-between h-40"
+                  style={tileStyle}/>
                   <div>
                     <span className="text-xs px-2 py-1 rounded-full bg-cyan-600 text-white">
                       {item.dominantEmotion}
-                    </span>
+                    </Tooltipprovider>
                   </div>
                   
-                  <h3 
-                    className="font-bold text-center text-white break-words" 
-                    style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}
-                  >
+                  <h3 className="font-bold text-center text-white break-words" 
+                    style={{ fontSize: `${fontSize}rem`, lineHeight: '1.1' }}>
                     {item.tag}
                   </h3>
                   
                   <div className="flex justify-between text-xs text-white/70">
-                    <span>{item.count} Uses</span>
+                    <span>{item.count} Uses</div>
                     <span>{(item.avgWinRate * 100).toFixed(0)}% Win Rate</span>
                   </div>
-                </div>
-              </TooltipTrigger>
-              <tooltipcontent  >
-                <p>{item.tag} - {item.dominantEmotion}</p>
-              </TooltipContent>
-            </Tooltip>
+                </div />
+              <Tooltipcontent >
+                <p /></Tooltipcontent /></Tooltipcontent />{item.tag} - {item.dominantEmotion}</Tooltipcontent />
+            </Tooltipcontent>
           );
         })}
-      </div>
-    </TooltipProvider>
+      </div />
   );
 };
 

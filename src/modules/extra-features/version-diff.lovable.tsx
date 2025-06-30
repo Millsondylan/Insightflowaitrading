@@ -51,9 +51,9 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
 
   const getDiffIcon = (type: string) => {
     switch (type) {
-      case 'added': return <Plus  />;
-      case 'removed': return <minus  >;
-      case 'modified': return <edit  >;
+      case 'added': return <Plus />;
+      case 'removed': return <Minus >;
+      case 'modified': return <Edit  //></Versiondiffprops /></Versiondiffprops /></Versiondiffprops>;
       default: return null;
     }
   };
@@ -68,97 +68,91 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
   };
 
   return (
-    <card  >
+    <Card >
       <div className="flex items-center gap-2 mb-6">
-        <gitcompare  >
-        <h2 className="text-2xl font-bold">Version Comparison</h2>
+        <gitcompare >
+        <h2 className="text-2xl font-bold"/></Card /></Card />Version Comparison</Card>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="text-sm text-muted-foreground mb-2 block">Compare</label>
-          <select  >
-            <selecttrigger  >
-              <selectvalue  >
-            </SelectTrigger>
-            <selectcontent  >
+          <Label className="text-sm text-muted-foreground mb-2 block"></div>Compare</div>
+          <Select >
+            <SelectTrigger >
+              <SelectValue />
+            <SelectContent >
               {mockVersions.map((v) => (
-                <selectitem  >
+                <SelectItem >
                   {v.label}
-                </SelectItem>
+                </Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </div>
         
         <div>
-          <label className="text-sm text-muted-foreground mb-2 block">With</label>
-          <select  >
-            <selecttrigger  >
-              <selectvalue  >
-            </SelectTrigger>
-            <selectcontent  >
+          <Label className="text-sm text-muted-foreground mb-2 block"></div>With</div>
+          <Select >
+            <SelectTrigger >
+              <SelectValue />
+            <SelectContent >
               {mockVersions.map((v) => (
-                <selectitem  >
+                <SelectItem >
                   {v.label}
-                </SelectItem>
+                </Select>
               ))}
-            </SelectContent>
-          </Select>
+            </SelectContent />
         </div>
       </div>
 
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="font-semibold">Changes</h3>
+          <h3 className="font-semibold"></div>Changes</div>
           <div className="flex items-center gap-4 text-sm">
             <span className="flex items-center gap-1">
-              <plus  >
-              <span className="text-green-500">2 added</span>
+              <Plus >
+              <span className="text-green-500">2 added</div>
             </span>
             <span className="flex items-center gap-1">
-              <minus  >
+              <Minus >
               <span className="text-red-500">1 removed</span>
             </span>
             <span className="flex items-center gap-1">
-              <edit  >
+              <Edit >
               <span className="text-yellow-500">1 modified</span>
             </span>
           </div>
         </div>
 
         {diffs.map((diff, i) => (
-          <div
-            key={i}
-            className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}
-          >
+          <div key={i}
+            className={`p-4 border rounded-lg ${getDiffBg(diff.type)}`}>
             <div className="flex items-start gap-3">
               {getDiffIcon(diff.type)}
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium">{diff.section}</span>
+                  <span className="font-medium">{diff.section}</div>
                   <span className="text-xs text-muted-foreground">Line {diff.line}</span>
                 </div>
                 
                 {diff.type === 'modified' ? (
                   <div className="space-y-2">
                     <div className="flex items-start gap-2">
-                      <minus  >
-                      <code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
+                      <Minus >
+                      <Code className="text-sm bg-red-500/20 px-2 py-1 rounded line-through">
                         {diff.oldContent}
-                      </code>
+                      </div>
                     </div>
                     <div className="flex items-start gap-2">
-                      <plus  >
-                      <code className="text-sm bg-green-500/20 px-2 py-1 rounded">
+                      <Plus >
+                      <Code className="text-sm bg-green-500/20 px-2 py-1 rounded">
                         {diff.newContent}
-                      </code>
+                      </div>
                     </div>
                   </div>
                 ) : (
-                  <code className="text-sm bg-secondary/50 px-2 py-1 rounded">
+                  <Code className="text-sm bg-secondary/50 px-2 py-1 rounded">
                     {diff.content}
-                  </code>
+                  </Code>
                 )}
               </div>
             </div>
@@ -167,14 +161,13 @@ export const VersionDiff: React.FC<Versiondiffprops > = ({ strategyId, versions 
       </div>
 
       <div className="mt-6 flex gap-2">
-        <button variant="outline" >
+        <Button variant="outline">
           Export Diff
-        </Button>
-        <button  >
+        </div>
+        <Button >
           Apply Changes
-        </Button>
-      </div>
-    </Card>
+        </button>
+      </div />
   );
 }; 
 

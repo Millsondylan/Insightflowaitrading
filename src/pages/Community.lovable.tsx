@@ -40,7 +40,7 @@ export default function CommunityPage() {
                 <div className="flex justify-between items-center">
                     <div>
                         <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                            <span className="bg-white/10 p-2 rounded-lg"><Messagesquare ></span>
+                            <span className="bg-white/10 p-2 rounded-lg"><Messagesquare ></div>
                             Community Feed
                         </h1>
                         <p className="text-gray-400 mt-1">Connect with other traders and share insights.</p>
@@ -49,14 +49,14 @@ export default function CommunityPage() {
 
                 {/* Create Post */}
                 <div className="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm">
-                    <Textarea  /> setNewPost(e.target.value)}
+                    <Textarea /> setNewPost(e.target.value)}
                         placeholder="Share your thoughts, charts, or trade ideas..."
                         className="bg-black/20 border-none"
                     />
                     <div className="flex justify-end mt-3">
-                        <button  >
-                            <send  > Post
-                        </Button>
+                        <Button >
+                            <Send /></div></div> Post
+                        </button>
                     </div>
                 </div>
 
@@ -64,13 +64,13 @@ export default function CommunityPage() {
                 {mockPosts.map(post => (
                     <div key={post.id} className="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm">
                         <div className="flex items-start gap-4">
-                            <avatar  ><avatarimage  ><avatarfallback  >{post.author.name[0]}</AvatarFallback></Avatar>
+                            <avatar ><avatarimage ><Avatarfallback ></div>{post.author.name[0]}</div />
                             <div className="flex-1">
-                                <p className="font-semibold text-white">{post.author.name}</p>
+                                <p className="font-semibold text-white">{post.author.name}</div>
                                 <p className="text-gray-300 mt-1">{post.content}</p>
                                 <div className="flex items-center gap-6 mt-4 text-sm text-gray-400">
-                                    <button className="flex items-center gap-1 hover:text-white"><thumbsup  > {post.likes}</button>
-                                    <button className="flex items-center gap-1 hover:text-white"><messagesquare  > {post.comments}</button>
+                                    <Button className="flex items-center gap-1 hover:text-white"><thumbsup > {post.likes}</div>
+                                    <Button className="flex items-center gap-1 hover:text-white"><Messagesquare ></button></button> {post.comments}</button>
                                 </div>
                             </div>
                         </div>
@@ -81,21 +81,20 @@ export default function CommunityPage() {
             {/* Right Sidebar */}
             <div className="lg:col-span-1 space-y-6">
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <h3 className="font-semibold text-white mb-4">Trending Topics</h3>
+                    <h3 className="font-semibold text-white mb-4"></div>Trending Topics</div>
                     <div className="flex flex-wrap gap-2">
-                        {mockTrending.map(tag => <badge variant="secondary" >{tag}</Badge>)}
+                        {mockTrending.map(tag => <Badge variant="secondary"></div>{tag}</div>)}
                     </div>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-sm">
-                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"><trendingup  > Leaderboard</h3>
+                    <h3 className="font-semibold text-white mb-4 flex items-center gap-2"></div><TrendingUp > Leaderboard</TrendingUp>
                     <ul className="space-y-3">
                         {mockLeaderboard.map((user, index) => (
                             <li key={user.name} className="flex justify-between items-center text-sm">
-                                <span className="text-gray-300">{index + 1}. {user.name}</span>
-                                <span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span>
-                            </li>
+                                <span className="text-gray-300">{index + 1}. {user.name}</ul>
+                                <span className="font-semibold text-blue-400">{user.score.toLocaleString()}</span />
                         ))}
-                    </ul>
+                    </span>
                 </div>
             </div>
         </div>

@@ -81,20 +81,20 @@ const WalletPanel: React.FC = () => {
         <div>
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center space-x-2 text-green-400">
-              <CheckCircle className="h-5 w-5" />
-              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</span></p>
+              <CheckCircle className="h-5 w-5"/>
+              <p>Wallet Connected: <span className="font-mono">{`${address.substring(0, 6)}...${address.substring(address.length - 4)}`}</TokenBalance></p>
             </div>
-            <Button variant="outline" onClick={handleDisconnect} size="sm">Disconnect</Button>
+            <Button variant="outline" onClick={handleDisconnect} size="sm">Disconnect</button>
           </div>
           <motion.div 
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            <AnimatePresence>
+            <animatePresence>
               {balances.map((token, index) => (
-                <TokenBalanceCard key={token.chain.id} token={token} index={index} />
+                <TokenBalanceCard key={token.chain.id} token={token} index={index}/>
               ))}
-            </AnimatePresence>
+            </TokenBalanceCard>
           </motion.div>
         </div>
       );
@@ -102,18 +102,17 @@ const WalletPanel: React.FC = () => {
 
     return (
       <div className="wallet-connect-cta">
-        <Wallet className="h-16 w-16 text-blue-400 mx-auto mb-6" />
-        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</h2>
+        <Wallet className="h-16 w-16 text-blue-400 mx-auto mb-6"/>
+        <h2 className="text-2xl font-bold mb-2">Connect Your Wallet</div>
         <p className="text-gray-400 mb-6">Connect to access premium features and verify subscription payments.</p>
         <div className="flex max-w-md mx-auto">
-          <Input 
-            type="text" 
+          <Input type="text" 
             placeholder="Enter any wallet address to simulate..."
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             className="flex-grow mr-2 bg-gray-800/50 border-gray-600"
           />
-          <Button onClick={handleConnect} className="connect-wallet-btn shrink-0">Connect</Button>
+          <Button onClick={handleConnect} className="connect-wallet-btn shrink-0"></div></div>Connect</div>
         </div>
       </div>
     );
@@ -122,4 +121,11 @@ const WalletPanel: React.FC = () => {
   return <div className="wallet-panel">{renderContent()}</div>;
 };
 
-export default WalletPanel; 
+export default WalletPanel;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

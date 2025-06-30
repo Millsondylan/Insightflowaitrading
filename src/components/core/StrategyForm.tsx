@@ -121,8 +121,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             placeholder="E.g., Momentum Breakout"
             value={formData.strategyName}
             onChange={handleChange}
-            className="bg-black/30 border-gray-700"
-          />
+            className="bg-black/30 border-gray-700"/>
         </motion.div>
 
         <motion.div variants={itemVariants} className="space-y-2">
@@ -155,8 +154,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             placeholder="E.g., BTC, ETH, AAPL"
             value={formData.instruments}
             onChange={handleChange}
-            className="bg-black/30 border-gray-700"
-          />
+            className="bg-black/30 border-gray-700"/>
           {formErrors.instruments && (
             <p className="text-red-500 text-sm">{formErrors.instruments}</p>
           )}
@@ -195,8 +193,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             placeholder="Describe your entry conditions..."
             value={formData.entryConditions}
             onChange={handleChange}
-            className="bg-black/30 border-gray-700 min-h-[100px]"
-          />
+            className="bg-black/30 border-gray-700 min-h-[100px]"/>
           {formErrors.entryConditions && (
             <p className="text-red-500 text-sm">{formErrors.entryConditions}</p>
           )}
@@ -210,8 +207,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             placeholder="Describe your exit conditions..."
             value={formData.exitConditions}
             onChange={handleChange}
-            className="bg-black/30 border-gray-700 min-h-[100px]"
-          />
+            className="bg-black/30 border-gray-700 min-h-[100px]"/>
           {formErrors.exitConditions && (
             <p className="text-red-500 text-sm">{formErrors.exitConditions}</p>
           )}
@@ -225,8 +221,7 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             placeholder="Describe your risk management approach..."
             value={formData.riskManagement}
             onChange={handleChange}
-            className="bg-black/30 border-gray-700 min-h-[100px]"
-          />
+            className="bg-black/30 border-gray-700 min-h-[100px]"/>
           {formErrors.riskManagement && (
             <p className="text-red-500 text-sm">{formErrors.riskManagement}</p>
           )}
@@ -240,19 +235,16 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
             placeholder="Any additional information or context..."
             value={formData.extraContext}
             onChange={handleChange}
-            className="bg-black/30 border-gray-700"
-          />
+            className="bg-black/30 border-gray-700"/>
         </motion.div>
 
         <motion.div variants={itemVariants} className="md:col-span-2 flex justify-center mt-4">
-          <Button
-            type="submit"
+          <Button type="submit"
             className="glow-button bg-cyan-500/20 border border-cyan-500 text-white hover:bg-cyan-500/30 hover:scale-105 transition-all duration-300 w-full md:w-auto px-8 py-6"
-            disabled={isLoading}
-          >
+            disabled={isLoading}>
             {isLoading ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating Strategy...
+                <Loader2 className="mr-2 h-4 w-4 animate-spin"/> Generating Strategy...
               </>
             ) : (
               'Generate Strategy'
@@ -264,4 +256,11 @@ const StrategyForm = ({ onSubmit, isLoading }: StrategyFormProps) => {
   );
 };
 
-export default StrategyForm; 
+export default StrategyForm;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

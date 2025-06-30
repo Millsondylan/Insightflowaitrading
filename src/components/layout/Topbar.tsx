@@ -7,6 +7,13 @@ import { useAuth } from '@/hooks/use-auth';
 
 export default function Topbar() {
   const { profile, hasProAccess } = useAuth();
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
   const today = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -17,26 +24,24 @@ export default function Topbar() {
     <header className="flex items-center justify-between p-4 bg-background-primary border-b border-border-primary">
       <div className="flex items-center gap-4">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
-          <input
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted"/>
+          <Input
             type="text"
             placeholder="Search..."
             className="bg-background-secondary w-64 pl-10 pr-4 py-2 rounded-lg border border-transparent focus:outline-none focus:ring-2 focus:ring-brand-primary"
-          />
-        </div>
-      </div>
+          //>
+      </header>
       <div className="flex items-center gap-6">
-        <span className="text-sm text-text-muted">{today}</span>
+        <span className="text-sm text-text-muted">{today}</div>
         <Button variant="ghost" size="icon">
-          <Bell className="w-5 h-5" />
-        </Button>
+          <Bell className="w-5 h-5"/>
+        </button>
         <div className="flex items-center gap-3">
-          <Avatar>
-            <AvatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'} />
-            <AvatarFallback>{profile?.full_name?.[0] || 'U'}</AvatarFallback>
-          </Avatar>
+          <avatar>
+            <avatarImage src={profile?.avatar_url || ''} alt={profile?.full_name || 'User'}/>
+            <AvatarFallback></div>{profile?.full_name?.[0] || 'U'}</div>
           <div>
-            <p className="font-semibold">{profile?.full_name || 'Guest'}</p>
+            <p className="font-semibold"></div>{profile?.full_name || 'Guest'}</div>
             {hasProAccess && (
               <Badge variant="outline" className="border-brand-primary text-brand-primary">
                 PRO
@@ -45,6 +50,5 @@ export default function Topbar() {
           </div>
         </div>
       </div>
-    </header>
   );
 } 

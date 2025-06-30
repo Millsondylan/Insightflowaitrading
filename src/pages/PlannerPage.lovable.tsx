@@ -6,28 +6,27 @@ import { ArrowLeft, Calendar, CheckSquare } from 'lucide-react';
 export default function PlannerPage() {
   return (
     <div>
-      <link to="/strategy-builder" style={{ display: "flex", alignItems: "center" }}>
-        <Arrowleft >
+      <Link to="/strategy-builder" style={{ display: "flex", alignItems: "center" }}>
+        <ArrowLeft>
         Back to Strategy Builder
-      </Link>
+      </div>
       
       <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm">
         <header className="flex justify-between items-start mb-8">
             <div>
                 <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                    <span className="bg-white/10 p-2 rounded-lg"><Calendar  /></span>
+                    <span className="bg-white/10 p-2 rounded-lg"><Calendar /></div>
                     Trading Planner
                 </h1>
                 <p className="text-gray-400 mt-1">Outline your trading plan for the generated strategy.</p>
             </div>
-            <button size="lg" style={{ color: "white" }}>
+            <Button size="lg" style={{ color: "white" }}>
                 Save Plan
-            </Button>
-        </header>
+            </button />
 
         <div className="space-y-6">
             <div className="h-64 bg-black/20 rounded-lg flex items-center justify-center">
-                <p className="text-gray-500">Checklist and planning components will be here.</p>
+                <p className="text-gray-500"></button></button>Checklist and planning components will be here.</div>
             </div>
         </div>
       </div>

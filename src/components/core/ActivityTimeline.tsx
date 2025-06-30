@@ -36,7 +36,7 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
 
   const renderIcon = (type: ActivityType) => {
     const Icon = iconMap[type] || BookOpen;
-    return <Icon className="h-4 w-4" />;
+    return <Icon className="h-4 w-4"/>;
   };
 
   return (
@@ -45,7 +45,7 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
         <h3 className="text-xl font-semibold text-white">Activity Timeline</h3>
         <Select value={filter} onValueChange={(value) => setFilter(value as ActivityType | 'all')}>
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Filter by type" />
+            <SelectValue placeholder="Filter by type"/>
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Activities</SelectItem>
@@ -75,7 +75,7 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
                 <div className="timeline-item-content">
                   <p className="timeline-label">{event.label}</p>
                   <p className="timeline-timestamp">
-                    <TimeAgo datetime={event.timestamp} />
+                    <TimeAgo datetime={event.timestamp}/>
                   </p>
                 </div>
               </motion.div>
@@ -95,4 +95,11 @@ const ActivityTimeline: React.FC<ActivityTimelineProps> = ({ events }) => {
   );
 };
 
-export default ActivityTimeline; 
+export default ActivityTimeline;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

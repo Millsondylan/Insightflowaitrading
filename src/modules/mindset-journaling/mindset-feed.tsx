@@ -49,6 +49,13 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
     }
   ]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'emotion': return 'text-pink-500';
@@ -60,10 +67,10 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
-      <h2 className="text-2xl font-bold mb-4">Mindset Feed</h2>
+    <Card className="theme-card p-6"/>
+      <h2 className="text-2xl font-bold mb-4">Mindset Feed</MindsetFeedProps>
       
-      <ScrollArea className="h-[500px]">
+      <ScrollArea className="h-[500px]"/>
         <div className="space-y-4">
           {insights.map((insight) => {
             const Icon = insight.icon;
@@ -71,11 +78,10 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
               <div key={insight.id} className="p-4 border rounded-lg hover:bg-accent/50 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className={`mt-1 ${getTypeColor(insight.type)}`}>
-                    <Icon className="h-5 w-5" />
-                  </div>
+                    <Icon className="h-5 w-5" / / / / / //>
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
-                      <h3 className="font-semibold">{insight.title}</h3>
+                      <h3 className="font-semibold"></ScrollArea>{insight.title}</div>
                       <span className="text-xs text-muted-foreground">
                         {insight.timestamp.toLocaleTimeString()}
                       </span>
@@ -94,13 +100,11 @@ export const MindsetFeed: React.FC<MindsetFeedProps> = ({ userId }) => {
             );
           })}
         </div>
-      </ScrollArea>
 
       <div className="mt-4 pt-4 border-t">
-        <p className="text-sm text-muted-foreground text-center">
+        <p className="text-sm text-muted-foreground text-center"></div>
           Insights generated from your journal entries and trading patterns
-        </p>
+        </div>
       </div>
-    </Card>
   );
 }; 

@@ -7,7 +7,7 @@ import { BroadcastEvent } from './types'
 import { sortBroadcastEventsByImpact } from './utils'
 
 export const BroadcastMode: React.FC = () => {
-  const [events, setEvents] = useState<Broadcastevent >([
+  const [events, setEvents] = useState<Broadcastevent>([
     {
       id: '1',
       title: 'Federal Reserve Interest Rate Decision',
@@ -31,23 +31,20 @@ export const BroadcastMode: React.FC = () => {
   const sortedEvents = sortBroadcastEventsByImpact(events)
 
   return (
-    <card  style={{ width: "100%", color: "white" }}>
-      <cardheader  style={{ display: "flex", alignItems: "center" }}>
-        <Cardtitle  />Market Broadcast Mode</CardTitle>
-        <badge variant="default" >
+    <Card  style={{ width: "100%", color: "white" }}>
+      <Cardheader  style={{ display: "flex", alignItems: "center" }}>
+        <Cardtitle />Market Broadcast Mode</Broadcastevent>
+        <Badge variant="default">
           {sortedEvents.length} Active Events
-        </Badge>
-      </CardHeader>
-      <cardcontent  >
+        </Badge />
+      <Cardcontent  //>
         <div className="space-y-4">
           {sortedEvents.map((event) => (
-            <div 
-              key={event.id} 
-              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700"
-            >
+            <div key={event.id} 
+              className="bg-zinc-900 p-4 rounded-lg border border-zinc-700">
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-bold">{event.title}</h3>
-                <badge  >
+                <h3 className="text-lg font-bold"></Badge>{event.title}</div>
+                <Badge >
                   {event.impact} Impact
                 </Badge>
               </div>
@@ -55,13 +52,13 @@ export const BroadcastMode: React.FC = () => {
               <div className="flex justify-between items-center">
                 <div className="flex space-x-2">
                   {event.relatedAssets?.map((asset) => (
-                    <badge variant="outline" >
+                    <Badge variant="outline"></div>
                       {asset}
-                    </Badge>
+                    </div>
                   ))}
                 </div>
                 <div className="text-xs text-gray-400 flex items-center space-x-2">
-                  <span>{event.source}</span>
+                  <span>{event.source}</div>
                   <span>•</span>
                   <span>{event.timestamp.toLocaleString()}</span>
                 </div>
@@ -70,11 +67,10 @@ export const BroadcastMode: React.FC = () => {
           ))}
         </div>
         <div className="mt-4 flex justify-center">
-          <button variant="outline" style={{ color: "white" }}>
+          <Button variant="outline" style={{ color: "white" }}></div>
             Subscribe to Updates
-          </Button>
-        </div>
-      </CardContent>
+          </div>
+        </div />
     </Card>
   )
 } 

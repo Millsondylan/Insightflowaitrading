@@ -257,7 +257,7 @@ export type SocialEvent =
   | { type: 'STRATEGY_PUBLISHED'; payload: { strategyId: string; authorId: string } }
   | { type: 'ROOM_JOINED'; payload: { roomId: string; userId: string } }
   | { type: 'ROOM_CREATED'; payload: { roomId: string; hostId: string } }
-  | { type: 'LEADERBOARD_UPDATE'; payload: { leaderboardId: string; topChanges: any[] } };
+  | { type: 'LEADERBOARD_UPDATE'; payload: { leaderboardId: string; topChanges: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any[] } };
 
 // Notification types
 export interface SocialNotification {

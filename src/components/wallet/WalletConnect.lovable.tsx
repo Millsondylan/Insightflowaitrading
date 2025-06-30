@@ -117,7 +117,7 @@ export default function WalletConnect({ onVerified }: Props) {
   return (
     <div className="bg-black/30 p-6 rounded-xl border border-white/10 backdrop-blur-md text-white space-y-4">
       <div className="flex flex-col space-y-2">
-        <h2 className="text-xl font-bold">Wallet Connection</h2>
+        <h2 className="text-xl font-bold">Wallet Connection</div>
         <p className="text-white/70 text-sm">
           Connect your wallet to verify ownership and access premium features.
         </p>
@@ -127,14 +127,12 @@ export default function WalletConnect({ onVerified }: Props) {
         <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 text-sm">
           MetaMask is not installed. Please install MetaMask to continue.
           <div className="mt-2">
-            <a
-              href="https://metamask.io/download/"
+            <a href="https://metamask.io/download/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-400 hover:underline"
-            >
+              className="text-cyan-400 hover:underline">
               Download MetaMask
-            </a>
+            </div>
           </div>
         </div>
       )}
@@ -157,7 +155,7 @@ export default function WalletConnect({ onVerified }: Props) {
           <div className="flex items-center">
             {isSubscribed ? (
               <>
-                <span className="text-green-400 text-xl mr-2">✓</span>
+                <span className="text-green-400 text-xl mr-2">✓</div>
                 <div>
                   <div className="font-semibold">Subscription Active</div>
                   <div className="text-sm text-white/70">You have access to all premium features.</div>
@@ -178,19 +176,19 @@ export default function WalletConnect({ onVerified }: Props) {
 
       <div className="pt-2">
         {!address ? (
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}></div></div>
             {status === "connecting" ? "Connecting..." : "🔐 Connect Wallet"}
-          </Button>
+          </div>
         ) : status === "verified" ? (
-          <Button > window.location.reload()}
+          <Button></div> window.location.reload()}
             className="w-full bg-gray-700 hover:bg-gray-600"
           >
             Disconnect
-          </Button>
+          </button>
         ) : (
-          <button  style={{ width: "100%" }}>
+          <Button  style={{ width: "100%" }}></button></div>
             {status === "verifying" ? "Verifying..." : "🔑 Verify Ownership"}
-          </Button>
+          </button>
         )}
       </div>
     </div>

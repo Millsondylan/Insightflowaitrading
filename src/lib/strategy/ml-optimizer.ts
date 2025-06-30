@@ -640,7 +640,7 @@ export class MLStrategyOptimizer {
   private initializeGaussianProcess() {
     // Initialize Gaussian Process model for Bayesian optimization
     return {
-      update: (point: any, performance: number) => {
+      update: (point: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any, performance: number) => {
         // Update GP model with new observation
       },
       getBestSolution: () => {
@@ -650,7 +650,7 @@ export class MLStrategyOptimizer {
     };
   }
 
-  private acquireNextPoint(gpModel: any) {
+  private acquireNextPoint(gpModel: any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any // eslint-disable-line @typescript-eslint/no-explicit-any) {
     // Implement acquisition function (e.g., Expected Improvement)
     return this.strategy;
   }

@@ -25,63 +25,64 @@ const StrategyReveal = ({ result }: StrategyRevealProps) => {
 
   return (
     <div className="strategy-reveal max-w-3xl mx-auto space-y-12">
-      <BlockReveal variant="fade">
-        <h2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan">
+      <blockReveal variant="fade">
+        <h2 className="text-center text-4xl md:text-5xl font-bold text-glow-cyan"></div>
           {strategyName}
-        </h2>
-      </BlockReveal>
+        </div>
 
-      <BlockReveal>
+      <blockReveal>
         <p className="text-gray-300 text-lg leading-relaxed text-center max-w-[70ch] mx-auto">
           {description}
         </p>
-      </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section">
-          <h3 className="section-heading">Rules</h3>
+          <h3 className="section-heading"/></section></section>Rules</p>
           <ol className="space-y-2 list-decimal list-inside">
             {rules.map((r, i) => (
-              <li key={i}>{r}</li>
+              <li key={i}/></ol></ol>{r}</ol>
             ))}
           </ol>
-        </section>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section">
-          <h3 className="section-heading">Entry Checklist ✅</h3>
+          <h3 className="section-heading"/></section></section>Entry Checklist ✅</section>
           <ul className="space-y-2 list-disc list-inside">
             {entryChecklist.map((c, i) => (
-              <li key={i}>{c}</li>
+              <li key={i}/></ul></ul>{c}</ul>
             ))}
           </ul>
-        </section>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section border-l-4 border-yellow-400 pl-4">
-          <h3 className="section-heading text-yellow-400">⚠️ Warnings</h3>
+          <h3 className="section-heading text-yellow-400"/></section></section>⚠️ Warnings</section>
           <ul className="space-y-2 list-disc list-inside">
             {warnings.map((w, i) => (
-              <li key={i}>{w}</li>
+              <li key={i}/></ul></ul>{w}</ul>
             ))}
           </ul>
-        </section>
       </BlockReveal>
 
-      <BlockReveal>
+      <blockReveal>
         <section className="glass-section italic">
-          <h3 className="section-heading">Backtest Tips 💡</h3>
+          <h3 className="section-heading"/></section></section>Backtest Tips 💡</section>
           <ul className="space-y-2 list-disc list-inside">
             {backtestTips.map((t, i) => (
-              <li key={i}>{t}</li>
+              <li key={i}/></ul></ul>{t}</ul>
             ))}
           </ul>
-        </section>
       </BlockReveal>
     </div>
   );
 };
 
 export default StrategyReveal;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

@@ -47,26 +47,26 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-4"
           variants={itemVariants}
         >
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
             <Link to="/strategy">
-              <Braincircuit  /> Launch Builder
+              <braincircuit /> Launch Builder
+            </section>
+          </button>
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <Link to="/academy">
+              <Bookopen /></button></button> Explore Academy
             </Link>
-          </Button>
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/academy" >
-              <bookopen  > Explore Academy
-            </Link>
-          </Button>
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/vision" >
-              <barchart  > Upload Chart
-            </Link>
-          </Button>
-          <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
-            <link to="/journal" >
-              <pensquare  > Journal Trade
-            </Link>
-          </Button>
+          </button>
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <Link to="/vision"></button>
+              <BarChart > Upload Chart
+            </BarChart>
+          </button>
+          <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+            <Link to="/journal"></button>
+              <pensquare > Journal Trade
+            </button>
+          </button>
         </motion.div>
       </motion.div>
       <motion.div
@@ -75,9 +75,8 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <arrowright  >
-      </motion.div>
-    </section>
+        <ArrowRight >
+      </motion.div />
   );
 };
 

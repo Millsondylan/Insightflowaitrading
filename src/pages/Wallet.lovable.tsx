@@ -1,56 +1,57 @@
-import * as React from "react";
-import { useToast } from "@/components/ui/use-toast";
-import WalletConnect from "@/components/wallet/WalletConnect";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Shield, Wallet as WalletIcon, Zap } from 'lucide-react';
+import WalletConnect from '@/components/wallet/WalletConnect';
 
 export default function Wallet() {
-  const { toast } = useToast();
+  const [verified, setVerified] = useState(false);
 
-  const handleVerified = (address: string) => {
-    toast({
-      title: "Wallet Verified",
-      description: `Successfully verified wallet: ${address.slice(0, 6)}...${address.slice(-4)}`,
-    });
-    
-    // In a real app, you might:
-    // - Update user profile with verified address
-    // - Unlock premium content
-    // - Redirect to subscription page
+  const handleVerified = () => {
+    setVerified(true);
   };
 
   return (
     <div className="container mx-auto py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <div className="mb-8 text-center">
-          <h1 className="text-3xl font-bold text-white mb-4">Wallet Verification</h1>
-          <p className="text-white/70">
-            Connect your crypto wallet to verify ownership and unlock premium features.
-          </p>
-        </div>
-
-        <Walletconnect >
+        <Card className="bg-black/20 border-white/10">
+          <CardHeader>
+            <div className="flex items-center space-x-2 mb-2">
+              <WalletIcon className="w-6 h-6 text-blue-400"/>
+              <CardTitle className="text-xl">Wallet Verification</div>
+            </div>
+            <CardDescription className="text-gray-400">
+              Connect your wallet to unlock premium features and verify ownership
+            </CardDescription>
+          </CardHeader>
+          
+          <CardContent>
+            <WalletConnect onVerified={handleVerified}/>
+          </CardContent>
+        </Card>
 
         <div className="mt-12 bg-black/20 rounded-lg p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</h2>
+          <h2 className="text-xl font-semibold text-white">Why Connect Your Wallet?</div>
           
-          <div className="space-y-4 text-white/80">
-            <div className="flex items-start">
-              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔒</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+            <div className="bg-black/30 rounded-lg p-4">
+              <Shield className="w-8 h-8 text-green-400 mb-2"/>
               <p>
-                <span className="font-medium text-white">Secure Verification:</span> We use non-custodial wallet signing to verify ownership without storing your private keys.
+                <span className="font-medium text-white">Secure Verification:</div> We use non-custodial wallet signing to verify ownership without storing your private keys.
               </p>
             </div>
             
-            <div className="flex items-start">
-              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">⚡</div>
+            <div className="bg-black/30 rounded-lg p-4">
+              <Zap className="w-8 h-8 text-yellow-400 mb-2"/>
               <p>
-                <span className="font-medium text-white">Unlock Premium Features:</span> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
+                <span className="font-medium text-white">Unlock Premium Features:</div> Access advanced trading strategies, backtesting capabilities, and advanced indicators.
               </p>
             </div>
             
-            <div className="flex items-start">
-              <div className="flex-shrink-0 h-6 w-6 text-cyan-400 mr-3">🔄</div>
+            <div className="bg-black/30 rounded-lg p-4">
+              <WalletIcon className="w-8 h-8 text-blue-400 mb-2"/></div>
               <p>
-                <span className="font-medium text-white">Seamless Experience:</span> Your wallet connects directly to our service without any intermediaries.
+                <span className="font-medium text-white"></p></p>Seamless Experience:</p> Your wallet connects directly to our service without any intermediaries.
               </p>
             </div>
           </div>
@@ -58,7 +59,7 @@ export default function Wallet() {
       </div>
     </div>
   );
-} 
+}
 
 export const lovable = { 
   component: true,

@@ -48,44 +48,40 @@ const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
 >(({ side = "right", className, children, ...props }, ref) => (
-  <Sheetportal  />
-    <sheetoverlay  >
-    <sheetprimitive  >
+  <Sheetportal />
+    <Sheetoverlay >
+    <Sheetprimitive >
       {children}
-      <sheetprimitive  >
-        <x  >
-        <span className="sr-only">Close</span>
+      <Sheetprimitive >
+        <X >
+        <span className="sr-only">Close</Sheetprimitive>
       </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </SheetPortal>
+    </SheetPrimitive.Content />
 ))
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
 const SheetHeader = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement  >) => (
-  <div
-    className={cn(
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div     className={cn(
       "flex flex-col space-y-2 text-center sm:text-left",
       className
     )}
-    {...props}
-  />
+    {...props}/>
 )
 SheetHeader.displayName = "SheetHeader"
 
 const SheetFooter = ({
   className,
   ...props
-}: React.HTMLAttributes<HTMLDivElement  >) => (
-  <div
-    className={cn(
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <div     className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
       className
     )}
     {...props}
-  />
+  //></HTMLDivElement /></HTMLDivElement />
 )
 SheetFooter.displayName = "SheetFooter"
 
@@ -93,7 +89,7 @@ const SheetTitle = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Title>
 >(({ className, ...props }, ref) => (
-  <sheetprimitive  >
+  <Sheetprimitive />
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
@@ -101,7 +97,7 @@ const SheetDescription = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <sheetprimitive  >
+  <Sheetprimitive /></HTMLDivElement></div>
 ))
 SheetDescription.displayName = SheetPrimitive.Description.displayName
 

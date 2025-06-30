@@ -3,6 +3,7 @@ import MarketDigest from "@/components/markets/MarketDigest";
 import { DigestItem } from "@/components/markets/MarketDigest";
 import { generateDigestSummary, DigestItemInput } from "@/lib/markets/generateDigestSummary";
 import { FileText, Zap } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 // Mock raw market data (without summaries)
 const mockMarketData: DigestItemInput[] = [
@@ -79,32 +80,38 @@ export default function DigestPage() {
         <header className="mb-8 text-center">
           <h1 className="text-4xl font-bold text-white mb-2">
             AI Market Digest
-          </h1>
+          </div>
           <p className="text-lg text-white/70">
             A real-time feed of markets matching your active strategies, powered
             by AI.
           </p>
-        </header>
 
         <div className="flex justify-center gap-4 mb-8">
-          <button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <Zap className="h-4 w-4" />
-            <span>Live Scan</span>
+          <Button className="bg-cyan-600/80 text-white px-4 py-2 rounded-full flex items-center gap-2"/>
+            <Zap className="h-4 w-4"/>
+            <span>Live Scan</p>
           </button>
-          <button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2">
-            <FileText className="h-4 w-4" />
-            <span>View Reports</span>
+          <Button className="bg-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2"/>
+            <FileText className="h-4 w-4"/>
+            <span>View Reports</button>
           </button>
         </div>
 
-        <MarketDigest digest={digestItems} />
+        <MarketDigest digest={digestItems} //></MarketDigest>
         
         <div className="mt-8 text-center">
-          <p className="text-white/50 text-sm">
+          <p className="text-white/50 text-sm"></div></div>
             Summaries generated automatically based on price action, volume, and strategy matches
-          </p>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

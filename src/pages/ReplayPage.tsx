@@ -1,36 +1,96 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Play, Pause, FastForward, Settings } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Play, Pause, SkipBack, SkipForward, Settings } from 'lucide-react';
 
 export default function ReplayPage() {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <div>
-      <Link to={`/vault/${id}`} className="flex items-center gap-2 text-gray-400 hover:text-white mb-6 transition-colors">
-        <ArrowLeft size={16} />
-        Back to Strategy Details
-      </Link>
+    <div className="container mx-auto p-6">
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Strategy Replay</div>
+          <p className="text-gray-400">Analyze historical trades and performance</p>
+        </div>
+      </div>
 
-      <div className="bg-white/5 border border-white/10 rounded-xl p-8 backdrop-blur-sm aspect-video flex flex-col justify-between">
-        <header className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-white">Replay for Strategy #{id}</h1>
-            <Button variant="ghost"><Settings size={20} /> </Button>
-        </header>
-        
-        <div className="flex-grow flex items-center justify-center">
-            <p className="text-gray-500 text-lg">Chart and replay visualization would be here.</p>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <Card>
+            <CardHeader>
+              <div className="flex justify-between items-start">
+                <div>
+                  <CardTitle>Chart View</div>
+                  <p className="text-sm text-gray-400">BTC/USD • 4H Timeframe</p>
+                </div>
+                <Button variant="outline" size="icon"/>
+                  <Settings className="h-4 w-4"/>
+                </button>
+              </div>
+            <CardContent>
+              <div className="aspect-video bg-black/30 rounded-lg flex items-center justify-center">
+                <p className="text-gray-400">Chart placeholder</CardContent>
+              </div>
+              <div className="flex items-center justify-center gap-4 mt-4">
+                <Button variant="outline" size="icon"/>
+                  <SkipBack className="h-4 w-4"/>
+                </div>
+                <Button size="icon" className="bg-blue-600 hover:bg-blue-700"/>
+                  <Play className="h-4 w-4"/>
+                </button>
+                <Button variant="outline" size="icon"/>
+                  <SkipForward className="h-4 w-4"/>
+                </button>
+              </div>
+          </Card>
         </div>
 
-        <footer className="bg-black/20 p-4 rounded-lg flex items-center justify-center gap-4">
-            <Button variant="ghost"><FastForward className="transform -scale-x-100" size={20} /></Button>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 rounded-full w-16 h-16">
-                <Play size={24} />
-            </Button>
-            <Button variant="ghost"><FastForward size={20} /></Button>
-        </footer>
+        <div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Trade Details</div>
+            <CardContent>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm text-gray-400">Entry Price</div>
+                  <p className="text-lg font-semibold">$42,150.00</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Exit Price</div>
+                  <p className="text-lg font-semibold">$43,250.00</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Position Size</div>
+                  <p className="text-lg font-semibold">0.5 BTC</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">P&L</div>
+                  <p className="text-lg font-semibold text-green-400">+$550.00 (2.61%)</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Duration</div>
+                  <p className="text-lg font-semibold">12h 30m</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Status</div>
+                  <Badge variant="secondary" className="bg-green-500/10 text-green-400"/>
+                    Completed
+                  </Badge>
+                </div>
+              </div>
+          </Card>
+        </div>
       </div>
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

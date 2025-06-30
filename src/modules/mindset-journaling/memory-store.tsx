@@ -36,6 +36,13 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
     }
   ]);
 
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'pattern': return 'bg-blue-500/20 text-blue-500';
@@ -46,10 +53,10 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
   };
 
   return (
-    <Card className="theme-card p-6">
+    <Card className="theme-card p-6"/>
       <div className="flex items-center gap-2 mb-4">
-        <Brain className="h-6 w-6" />
-        <h2 className="text-2xl font-bold">Memory Store</h2>
+        <brain className="h-6 w-6"/>
+        <h2 className="text-2xl font-bold">Memory Store</MemoryStoreProps>
       </div>
 
       <div className="space-y-4">
@@ -58,14 +65,14 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
             <div className="flex items-start justify-between mb-2">
               <Badge variant="default" className={getTypeColor(memory.type)}>
                 {memory.type}
-              </Badge>
+              </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span className="flex items-center gap-1">
-                  <Hash className="h-3 w-3" />
+                  <Hash className="h-3 w-3"/>
                   {memory.occurrences}
-                </span>
+                </div>
                 <span className="flex items-center gap-1">
-                  <Calendar className="h-3 w-3" />
+                  <Calendar className="h-3 w-3"/>
                   {memory.lastSeen.toLocaleDateString()}
                 </span>
               </div>
@@ -74,12 +81,12 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
             <p className="text-sm mb-2">{memory.content}</p>
             
             <div className="flex items-center gap-2">
-              <span className="text-xs text-muted-foreground">Strength:</span>
+              <span className="text-xs text-muted-foreground">Strength:</div>
               <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
                 <div 
                   className="h-full bg-primary transition-all duration-300"
                   style={{ width: `${memory.strength * 100}%` }}
-                />
+   />
               </div>
               <span className="text-xs font-medium">{(memory.strength * 100).toFixed(0)}%</span>
             </div>
@@ -88,10 +95,9 @@ export const MemoryStore: React.FC<MemoryStoreProps> = ({ userId }) => {
       </div>
 
       <div className="mt-4 pt-4 border-t">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground"></div>
           Memories are extracted from your journal entries and strengthen with repetition
-        </p>
+        </div>
       </div>
-    </Card>
   );
 }; 

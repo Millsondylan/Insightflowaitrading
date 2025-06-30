@@ -26,7 +26,7 @@ const StrategyCard = ({ strategy }: { strategy: Strategy }) => {
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <h3 style={{ fontSize: '20px', fontWeight: '600', color: 'white', margin: 0 }}>{strategy.title}</h3>
-        <button style={{
+        <Button style={{
           fontSize: '14px',
           color: 'rgba(255, 255, 255, 0.7)',
           background: 'none',
@@ -146,8 +146,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             fontSize: '20px',
             pointerEvents: 'none'
           }}>🔍</span>
-          <input 
-            type="text"
+          <Input type="text"
             placeholder="Search by title or tag..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -166,7 +165,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
             onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.1)'}
           />
         </div>
-        <select 
+        <Select 
           value={sortBy} 
           onChange={(e) => setSortBy(e.target.value)}
           style={{
@@ -185,13 +184,12 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         >
           <option value="totalPnL" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sort by PnL</option>
           <option value="winRate" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>Sort by Win Rate</option>
-        </select>
+        </Select>
       </div>
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
         {allTags.map(tag => (
-          <button 
-            key={tag}
+          <Button key={tag}
             onClick={() => handleTagClick(tag)}
             style={{
               padding: '8px 16px',
@@ -228,7 +226,7 @@ const StrategyVault = ({ strategies }: { strategies: Strategy[] }) => {
         gap: '24px' 
       }}>
         {filteredStrategies.map(strategy => (
-          <Strategycard >
+          <StrategyCard key={strategy.id} strategy={strategy}/>
         ))}
       </div>
 
@@ -429,7 +427,7 @@ export const LovableDemo = () => {
           }}>
             🏦 Strategy Vault
           </h2>
-          <Strategyvault  />
+          <StrategyVault strategies={sampleStrategies}/>
         </div>
 
         {/* Footer */}

@@ -85,7 +85,7 @@ export class SubscriptionLifecycle {
     trialDays?: number;
     addOnIds?: string[];
     metadata?: Record<string, any>;
-  }): Promise<Subscription> {
+  }): Promise<subscription> {
     try {
       // Get plan details
       const { data: plan, error } = await this.supabase
@@ -404,7 +404,7 @@ export class SubscriptionLifecycle {
   public async getSubscription(
     subscriptionId: string,
     userId: string
-  ): Promise<Subscription | null> {
+  ): Promise<subscription | null> {
     const { data, error } = await this.supabase
       .from('subscriptions')
       .select('*')
@@ -416,7 +416,7 @@ export class SubscriptionLifecycle {
     return data;
   }
 
-  public async getUserSubscriptions(userId: string): Promise<Subscription[]> {
+  public async getUserSubscriptions(userId: string): Promise<subscription[]> {
     const { data, error } = await this.supabase
       .from('subscriptions')
       .select('*')
@@ -728,7 +728,7 @@ export class SubscriptionLifecycle {
     });
   }
 
-  private async logSubscriptionEvent(event: Omit<SubscriptionEvent, 'id' | 'timestamp'>): Promise<void> {
+  private async logSubscriptionEvent(event: Omit<subscriptionEvent, 'id' | 'timestamp'>): Promise<void> {
     await this.supabase
       .from('subscription_events')
       .insert({

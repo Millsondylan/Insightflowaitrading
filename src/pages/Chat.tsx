@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 const ChatPage: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const ChatPage: React.FC = () => {
       <div className="text-center space-y-4 mb-12 animate-in fade-in slide-up">
         <h1 className="text-6xl md:text-8xl font-bold text-glow-magenta mb-8">
           AI Trading Chat
-        </h1>
+        </section>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
           Your intelligent trading companion
         </p>
@@ -22,7 +22,7 @@ const ChatPage: React.FC = () => {
             <div className="flex justify-start">
               <div className="max-w-xs lg:max-w-md">
                 <div className="bg-pink-500/20 border border-pink-400/30 rounded-2xl rounded-bl-sm px-4 py-3">
-                  <p className="text-white">Hello! I'm your AI trading assistant. How can I help you analyze the markets today?</p>
+                  <p className="text-white">Hello! I'm your AI trading assistant. How can I help you analyze the markets today?</div>
                 </div>
                 <div className="text-xs text-gray-400 mt-1 ml-2">AI Assistant</div>
               </div>
@@ -31,7 +31,7 @@ const ChatPage: React.FC = () => {
             <div className="flex justify-end">
               <div className="max-w-xs lg:max-w-md">
                 <div className="bg-blue-500/20 border border-blue-400/30 rounded-2xl rounded-br-sm px-4 py-3">
-                  <p className="text-white">What's your take on TSLA's recent price action?</p>
+                  <p className="text-white">What's your take on TSLA's recent price action?</div>
                 </div>
                 <div className="text-xs text-gray-400 mt-1 mr-2 text-right">You</div>
               </div>
@@ -40,7 +40,7 @@ const ChatPage: React.FC = () => {
             <div className="flex justify-start">
               <div className="max-w-xs lg:max-w-md">
                 <div className="bg-pink-500/20 border border-pink-400/30 rounded-2xl rounded-bl-sm px-4 py-3">
-                  <p className="text-white">TSLA is showing strong momentum with a breakout above the 200-day moving average. Volume is supporting the move, but watch for resistance around $250.</p>
+                  <p className="text-white">TSLA is showing strong momentum with a breakout above the 200-day moving average. Volume is supporting the move, but watch for resistance around $250.</div>
                 </div>
                 <div className="text-xs text-gray-400 mt-1 ml-2">AI Assistant</div>
               </div>
@@ -55,7 +55,7 @@ const ChatPage: React.FC = () => {
                   <div className="text-gray-400">Type your message...</div>
                 </div>
               </div>
-              <button className="glow-button glow-violet px-6 py-3">
+              <Button className="glow-button glow-violet px-6 py-3"/>
                 Send
               </button>
             </div>
@@ -65,26 +65,32 @@ const ChatPage: React.FC = () => {
         {/* Quick Actions */}
         <div className="mt-8 animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
           <div className="glass-section motion-shadow">
-            <h3 className="text-lg font-semibold text-white mb-4">💡 Quick Questions</h3>
+            <h3 className="text-lg font-semibold text-white mb-4">💡 Quick Questions</div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <button className="glass-card hover-glow text-left p-3">
+              <Button className="glass-card hover-glow text-left p-3"/>
                 <div className="text-sm text-gray-300">Analyze my portfolio risk</div>
               </button>
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Market sentiment today</div>
+              <Button className="glass-card hover-glow text-left p-3"/>
+                <div className="text-sm text-gray-300">Market sentiment today</button>
               </button>
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Best sectors to watch</div>
+              <Button className="glass-card hover-glow text-left p-3"/>
+                <div className="text-sm text-gray-300">Best sectors to watch</button>
               </button>
-              <button className="glass-card hover-glow text-left p-3">
-                <div className="text-sm text-gray-300">Options flow analysis</div>
+              <Button className="glass-card hover-glow text-left p-3"/>
+                <div className="text-sm text-gray-300">Options flow analysis</button>
               </button>
             </div>
           </div>
         </div>
       </div>
-    </section>
   );
 };
 
 export default ChatPage;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

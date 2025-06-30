@@ -55,41 +55,39 @@ const PaymentVerification = ({ onVerificationComplete }: PaymentVerificationProp
         Send your payment to one of the addresses below to activate your account.
       </p>
 
-      <tabs  style={{ width: "100%" }}>
-        <tabslist  style={{ display: "grid" }}>
+      <Tabs  style={{ width: "100%" }}>
+        <Tabslist  style={{ display: "grid" }}>
           <Tabstrigger value="eth">
             ETH
-          </TabsTrigger>
-          <Tabstrigger value="usdt" />
+          </Tabs>
+          <Tabstrigger value="usdt"/>
             USDT
-          </TabsTrigger>
-          <tabstrigger value="btc" >
+          </Tabstrigger>
+          <Tabstrigger value="btc">
             BTC
-          </TabsTrigger>
-        </TabsList>
+          </Tabstrigger />
 
         {Object.entries(wallets).map(([key, wallet]) => (
-          <tabscontent  >
+          <Tabscontent >
             <div className={`p-4 rounded-lg ${wallet.bgColor} ${wallet.borderColor} border`}>
-              <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</h3>
+              <h3 className={`text-lg font-medium mb-2 ${wallet.color}`}>{wallet.name} Address</Tabstrigger>
               <div className="flex items-center">
-                <input  >
-                <button variant="ghost" size="icon" > handleCopy(wallet.address, key)}
+                <Input /></div></div>
+                <Button variant="ghost" size="icon"> handleCopy(wallet.address, key)}
                 >
-                  {copied === key ? <check  > : <copy  >}
-                </Button>
+                  {copied === key ? <Check > : <Copy >}
+                </button>
               </div>
             </div>
             
             <div className="text-center mt-6">
-              <p className="text-sm text-gray-400 mb-4">
+              <p className="text-sm text-gray-400 mb-4"></div>
                 After sending payment, click the button below to continue.
-              </p>
-              <button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
+              </div>
+              <Button  style={{ border: "1px solid #E5E7EB", color: "white" }}>
                 I've Sent the Payment
-              </Button>
-            </div>
-          </TabsContent>
+              </button>
+            </div />
         ))}
       </Tabs>
     </motion.div>

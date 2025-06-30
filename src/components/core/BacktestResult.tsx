@@ -35,11 +35,9 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
       <BlockReveal>
         <h2 className="text-3xl font-bold text-center mb-6">Backtest Results</h2>
       </BlockReveal>
-      
       <BlockReveal>
         <KPICards stats={result.stats} />
       </BlockReveal>
-      
       <BlockReveal delay={0.2}>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="w-full grid grid-cols-2 mb-6">
@@ -50,11 +48,9 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
               Trade Explorer
             </TabsTrigger>
           </TabsList>
-          
           <TabsContent value="overview">
             <BacktestChart chartData={chartData} ticker={ticker} timeframe={timeframe} />
           </TabsContent>
-          
           <TabsContent value="trades">
             <TradeExplorer trades={result.trades} />
           </TabsContent>
@@ -64,4 +60,11 @@ const BacktestResultDisplay = ({ result, candles, ticker, timeframe }: BacktestR
   );
 };
 
-export default BacktestResultDisplay; 
+export default BacktestResultDisplay;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

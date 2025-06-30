@@ -1,132 +1,123 @@
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AppLayout from './components/layout/AppLayout';
 import { ThemeProvider } from './contexts/ThemeContext';
-import './styles/futuristic-theme.css';
-import './styles/lovable.css';
+import { OnboardingProvider } from '@/contexts/OnboardingContext';
+import OnboardingModal from '@/components/onboarding/OnboardingModal';
+import { Toaster } from '@/components/ui/toaster';
+import { ErrorBoundary } from '@/components/core/ErrorBoundary';
+import { useAuthMiddleware } from './middleware';
+import MobileAppWrapper from './components/mobile/MobileAppWrapper';
+import AppLayout from './components/layout/AppLayout';
+import './App.css';
+import { initJobProcessor } from './lib/background/job-processor';
+import { env } from './env';
+
+// Import pages
 import Index from './pages/Index';
 import LandingPage from './pages/LandingPage';
 import Strategy from './pages/Strategy';
-import StrategyCopilot from './pages/StrategyCopilot';
-import StrategyExport from './pages/StrategyExport';
-import Vision from './pages/Vision';
 import Journal from './pages/Journal';
+import Vision from './pages/Vision';
 import Academy from './pages/Academy';
 import Wallet from './pages/Wallet';
-// import Backtest from './pages/Backtest';
-import BacktestReplay from './pages/BacktestReplay';
 import Admin from './pages/Admin';
 import NotFound from './pages/NotFound';
-
-// New themed builder pages
-import LandingBuilder from './pages/LandingBuilder';
-import StrategyBuilder from './pages/StrategyBuilder';
-import JournalBuilder from './pages/JournalBuilder';
-import AcademyBuilder from './pages/AcademyBuilder';
-
-// New themed pages
-import Markets from './pages/Markets';
-import Portfolio from './pages/Portfolio';
-import ProfileRiskMap from './pages/ProfileRiskMap';
-import Community from './pages/Community';
-import VaultPage from './pages/VaultHeatmap';
-import VaultDetailPage from './pages/VaultDetailPage';
-import ReplayPage from './pages/ReplayPage';
-import Digest from './pages/Digest';
-import Demo from './pages/Demo';
-import Notifications from './pages/Notifications';
-import SettingsNotifications from './pages/SettingsNotifications';
-import Help from './pages/Help';
-import FAQ from './pages/FAQ';
-import Docs from './pages/Docs';
-import Chat from './pages/Chat';
-import PlannerPage from './pages/PlannerPage';
-import CoachPage from './pages/CoachPage';
-import FeedPage from './pages/FeedPage';
-import BroadcastPage from './pages/BroadcastPage';
+import About from './pages/About';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
+import Pricing from './pages/Pricing';
+import Register from './pages/Register';
+import VerifyEmail from './pages/VerifyEmail';
 import AuthPage from './pages/AuthPage';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+import UserSettings from './pages/UserSettings';
+import ProfilePage from './pages/ProfilePage';
 
-// Lovable pages
-import LovableEditorPage from './pages/LovableEditor.lovable';
-
-import { ProtectedRoute as OldProtectedRoute } from './components/core/ProtectedRoute';
-
-// Import the Pine Script Generator page
-import PineScriptGenerator from './pages/PineScriptGenerator';
+// Import our new AI Strategy pages
+import MarketSetupPage from './pages/MarketSetupPage';
+import SetupFinderPage from './pages/SetupFinderPage';
+import BestSetupsPage from './pages/BestSetupsPage';
 
 const queryClient = new QueryClient();
 
-export function App() {
+// Auth middleware wrapper component
+const AuthMiddleware = ({ children }: { children: React.ReactNode }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  // Check authentication on route changes
+  useEffect(() => {
+    useAuthMiddleware(navigate, location);
+  }, [navigate, location]);
+  
+  return <>{children}</>;
+};
+
+function App() {
+  // Initialize background jobs
+  useEffect(() => {
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
+      initJobProcessor();
+    }
+  }, []);
+
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <Router>
-          <AppLayout>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/auth" element={<AuthPage />} />
+    <ErrorBoundary>
+      <ThemeProvider>
+        <OnboardingProvider>
+          <QueryClientProvider client={queryClient}>
+            <Router>
+              <MobileAppWrapper>
+                <Routes>
+                <Route path="/" element={<appLayout/>}>
+                  {/* Public Landing Pages */}
+                  <Route index element={<LandingPage/>} />
+                  <Route path="about" element={<about/>} />
+                  <Route path="privacy" element={<privacy/>} />
+                  <Route path="terms" element={<Terms/>} />
+                  <Route path="pricing" element={<pricing/>} />
+                  
+                  {/* Auth Pages */}
+                  <Route path="auth" element={<authPage/>} />
+                  <Route path="register" element={<Register/>} />
+                  <Route path="verify" element={<VerifyEmail/>} />
 
-              {/* Strategy Routes */}
-              <Route path="/strategy/copilot" element={<StrategyCopilot />} />
-              <Route path="/strategy/export" element={<StrategyExport />} />
+                  {/* Protected Routes */}
+                  <Route path="/dashboard" element={<Index/>} />
+                  <Route path="/strategy" element={<Strategy/>} />
+                  <Route path="/journal" element={<Journal/>} />
+                  <Route path="/vision" element={<Vision/>} />
+                  <Route path="/academy" element={<academy/>} />
+                  <Route path="/wallet" element={<Wallet/>} />
+                  <Route path="/admin" element={<admin/>} />
+                  <Route path="/profile" element={<profilePage/>} />
+                  <Route path="/settings" element={<UserSettings/>} />
 
-              {/* Backtest Routes */}
-              <Route path="/backtest/replay" element={<BacktestReplay />} />
+                  {/* New AI Trading Setup Routes */}
+                  <Route path="/market-setup" element={<MarketSetupPage/>} />
+                  <Route path="/setup-finder" element={<SetupFinderPage/>} />
+                  <Route path="/best-setups" element={<BestSetupsPage/>} />
 
-              {/* Profile Routes */}
-              <Route path="/profile/risk-map" element={<ProfileRiskMap />} />
-
-              {/* Protected Routes */}
-              <Route path="/vault" element={<ProtectedRoute><VaultPage /></ProtectedRoute>} />
-              <Route path="/vault/:id" element={<ProtectedRoute><VaultDetailPage /></ProtectedRoute>} />
-              <Route path="/replay/:id" element={<ProtectedRoute><ReplayPage /></ProtectedRoute>} />
-              <Route path="/planner" element={<ProtectedRoute><PlannerPage /></ProtectedRoute>} />
-              <Route path="/journal" element={<ProtectedRoute><Journal /></ProtectedRoute>} />
-              <Route path="/coach" element={<ProtectedRoute><CoachPage /></ProtectedRoute>} />
-              <Route path="/feed" element={<ProtectedRoute><FeedPage /></ProtectedRoute>} />
-              <Route path="/broadcast" element={<ProtectedRoute><BroadcastPage /></ProtectedRoute>} />
-
-              {/* New Themed Builder Routes */}
-              <Route path="/landing" element={<LandingBuilder />} />
-              <Route path="/strategy-builder" element={<StrategyBuilder />} />
-              <Route path="/journal-builder" element={<JournalBuilder />} />
-              <Route path="/academy-builder" element={<AcademyBuilder />} />
-
-              {/* Lovable Routes */}
-              <Route path="/lovable/editor" element={<LovableEditorPage />} />
-              <Route path="/lovable/demo" element={<Demo />} />
-
-              {/* Legacy Routes */}
-              <Route path="/legacy" element={<OldProtectedRoute accessLevel="subscribed"><Index /></OldProtectedRoute>} />
-              <Route path="/legacy/strategy" element={<OldProtectedRoute accessLevel="pro"><Strategy /></OldProtectedRoute>} />
-              <Route path="/legacy/vision" element={<OldProtectedRoute accessLevel="subscribed"><Vision /></OldProtectedRoute>} />
-              <Route path="/legacy/academy" element={<OldProtectedRoute accessLevel="subscribed"><Academy /></OldProtectedRoute>} />
-              <Route path="/legacy/wallet" element={<OldProtectedRoute accessLevel="subscribed"><Wallet /></OldProtectedRoute>} />
-              <Route path="/legacy/admin" element={<OldProtectedRoute accessLevel="admin"><Admin /></OldProtectedRoute>} />
-
-              {/* Public Routes */}
-              <Route path="/markets" element={<Markets />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/digest" element={<Digest />} />
-              <Route path="/demo" element={<Demo />} />
-              <Route path="/notifications" element={<Notifications />} />
-              <Route path="/settings/notifications" element={<SettingsNotifications />} />
-              <Route path="/help" element={<Help />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/docs" element={<Docs />} />
-              <Route path="/chat" element={<Chat />} />
-
-              {/* Pine Script Generator route */}
-              <Route path="/pine-script-generator" element={<PineScriptGenerator />} />
-
-              {/* 404 Route */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AppLayout>
-        </Router>
-      </QueryClientProvider>
-    </ThemeProvider>
+                  {/* 404 Route */}
+                  <Route path="*" element={<NotFound/>} />
+                </Route>
+              </Routes>
+              <OnboardingModal />
+              <Toaster />
+              </MobileAppWrapper>
+            </Router>
+          </QueryClientProvider>
+        </OnboardingProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
+
+export default App;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

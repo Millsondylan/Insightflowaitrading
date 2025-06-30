@@ -47,26 +47,26 @@ const Hero = () => {
           className="flex flex-wrap justify-center gap-4"
           variants={itemVariants}
         >
-          <Button asChild className="glow-button bg-cyan-500/10 border border-cyan-500 text-white hover:bg-cyan-500/20">
-            <Link to="/strategy">
-              <BrainCircuit className="mr-2 h-4 w-4" /> Launch Builder
-            </Link>
-          </Button>
-          <Button asChild className="glow-button bg-violet-500/10 border border-violet-500 text-white hover:bg-violet-500/20">
-            <Link to="/academy">
-              <BookOpen className="mr-2 h-4 w-4" /> Explore Academy
-            </Link>
-          </Button>
-          <Button asChild className="glow-button bg-blue-500/10 border border-blue-500 text-white hover:bg-blue-500/20">
-            <Link to="/vision">
-              <BarChart className="mr-2 h-4 w-4" /> Upload Chart
-            </Link>
-          </Button>
-          <Button asChild className="glow-button bg-gray-500/10 border border-gray-500 text-white hover:bg-gray-500/20">
-            <Link to="/journal">
-              <PenSquare className="mr-2 h-4 w-4" /> Journal Trade
-            </Link>
-          </Button>
+          <Button asChild className="glow-button bg-cyan-500/10 border border-cyan-500 text-white hover:bg-cyan-500/20"/>
+            <Link to="/strategy"/>
+              <brainCircuit className="mr-2 h-4 w-4"/> Launch Builder
+            </section>
+          </button>
+          <Button asChild className="glow-button bg-violet-500/10 border border-violet-500 text-white hover:bg-violet-500/20"/>
+            <Link to="/academy"/>
+              <bookOpen className="mr-2 h-4 w-4"/> Explore Academy
+            </button>
+          </button>
+          <Button asChild className="glow-button bg-blue-500/10 border border-blue-500 text-white hover:bg-blue-500/20"/>
+            <Link to="/vision"/>
+              <barChart className="mr-2 h-4 w-4"/> Upload Chart
+            </button>
+          </button>
+          <Button asChild className="glow-button bg-gray-500/10 border border-gray-500 text-white hover:bg-gray-500/20"/>
+            <Link to="/journal"/>
+              <penSquare className="mr-2 h-4 w-4"/> Journal Trade
+            </button>
+          </button>
         </motion.div>
       </motion.div>
       <motion.div
@@ -75,10 +75,16 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <ArrowRight className="h-6 w-6 -rotate-90" />
+        <arrowRight className="h-6 w-6 -rotate-90"/>
       </motion.div>
-    </section>
   );
 };
 
-export default Hero; 
+export default Hero;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

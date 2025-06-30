@@ -50,39 +50,34 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
   };
 
   return (
-    <card  style={{ display: "flex" }}>
+    <Card  style={{ display: "flex" }}>
       <div className="flex items-center gap-2 mb-4">
-        <Bot  />
-        <h2 className="text-2xl font-bold">Community GPT</h2>
+        <bot />
+        <h2 className="text-2xl font-bold">Community GPT</Communitygptprops>
       </div>
 
-      <scrollarea  >
+      <Scrollarea >
         <div className="space-y-4">
           {messages.map((message) => (
-            <div
-              key={message.id}
-              className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
+            <div key={message.id}
+              className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}/>
               <div className={`flex gap-3 max-w-[80%] ${message.role === 'user' ? 'flex-row-reverse' : ''}`}>
                 <div className={`flex-shrink-0 ${message.role === 'user' ? 'ml-2' : 'mr-2'}`}>
                   {message.role === 'user' ? (
                     <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                      <user  >
-                    </div>
+                      <User />
                   ) : (
                     <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                      <bot  >
-                    </div>
+                      <bot >
+                    </Scrollarea>
                   )}
                 </div>
-                <div
-                  className={`p-3 rounded-lg ${
+                <div className={`p-3 rounded-lg ${
                     message.role === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
-                  }`}
-                >
-                  <p className="text-sm">{message.content}</p>
+                  }`}>
+                  <p className="text-sm">{message.content}</div>
                   <p className="text-xs opacity-70 mt-1">
                     {message.timestamp.toLocaleTimeString()}
                   </p>
@@ -93,29 +88,27 @@ export const CommunityGPT: React.FC<Communitygptprops > = ({ channelId }) => {
           {isTyping && (
             <div className="flex gap-3">
               <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center">
-                <bot  >
+                <bot >
               </div>
               <div className="bg-secondary p-3 rounded-lg">
                 <div className="flex gap-1">
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce" />
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-100" />
-                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-200" />
+                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce"/>
+                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-100"/>
+                  <div className="w-2 h-2 bg-foreground/50 rounded-full animate-bounce delay-200"/>
                 </div>
               </div>
             </div>
           )}
-        </div>
-      </ScrollArea>
+        </div />
 
       <div className="flex gap-2">
-        <input placeholder="Ask about strategies, analysis, or community insights..." > setInput(e.target.value)}
+        <Input placeholder="Ask about strategies, analysis, or community insights..."/> setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <button size="icon" >
-          <send  >
-        </Button>
-      </div>
-    </Card>
+        <Button size="icon">
+          <Send /></div></div>
+        </button>
+      </div />
   );
 }; 
 

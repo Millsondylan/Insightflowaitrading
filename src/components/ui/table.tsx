@@ -10,9 +10,8 @@ const Table = React.forwardRef<
     <table
       ref={ref}
       className={cn("w-full caption-bottom text-sm", className)}
-      {...props}
-    />
-  </div>
+      {...props}/>
+  </HTMLTableElement>
 ))
 Table.displayName = "Table"
 
@@ -20,7 +19,7 @@ const TableHeader = React.forwardRef<
   HTMLTableSectionElement,
   React.HTMLAttributes<HTMLTableSectionElement>
 >(({ className, ...props }, ref) => (
-  <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />
+  <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props}/>
 ))
 TableHeader.displayName = "TableHeader"
 
@@ -31,8 +30,7 @@ const TableBody = React.forwardRef<
   <tbody
     ref={ref}
     className={cn("[&_tr:last-child]:border-0", className)}
-    {...props}
-  />
+    {...props}/>
 ))
 TableBody.displayName = "TableBody"
 
@@ -61,8 +59,7 @@ const TableRow = React.forwardRef<
       "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
       className
     )}
-    {...props}
-  />
+    {...props}/>
 ))
 TableRow.displayName = "TableRow"
 
@@ -76,8 +73,7 @@ const TableHead = React.forwardRef<
       "h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0",
       className
     )}
-    {...props}
-  />
+    {...props}/>
 ))
 TableHead.displayName = "TableHead"
 
@@ -88,8 +84,7 @@ const TableCell = React.forwardRef<
   <td
     ref={ref}
     className={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className)}
-    {...props}
-  />
+    {...props}/>
 ))
 TableCell.displayName = "TableCell"
 
@@ -100,8 +95,7 @@ const TableCaption = React.forwardRef<
   <caption
     ref={ref}
     className={cn("mt-4 text-sm text-muted-foreground", className)}
-    {...props}
-  />
+    {...props}/>
 ))
 TableCaption.displayName = "TableCaption"
 
@@ -115,3 +109,10 @@ export {
   TableCell,
   TableCaption,
 }
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

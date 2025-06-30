@@ -92,7 +92,7 @@ export class PaymentProcessor {
     isRecurring?: boolean;
     isSetupFee?: boolean;
     isTrial?: boolean;
-  }): Promise<PaymentIntent> {
+  }): Promise<paymentIntent> {
     try {
       // Calculate total amount
       const amount = await this.calculateTotalAmount({
@@ -135,7 +135,7 @@ export class PaymentProcessor {
     }
   }
 
-  public async processPayment(intentId: string): Promise<PaymentTransaction> {
+  public async processPayment(intentId: string): Promise<paymentTransaction> {
     try {
       // Get payment intent
       const { data: intent, error } = await this.supabase
@@ -171,7 +171,7 @@ export class PaymentProcessor {
     transactionId: string;
     amount?: number;
     reason?: string;
-  }): Promise<PaymentTransaction> {
+  }): Promise<paymentTransaction> {
     try {
       // Get original transaction
       const { data: transaction, error } = await this.supabase
@@ -219,7 +219,7 @@ export class PaymentProcessor {
     }
   }
 
-  public async getPaymentMethods(userId: string): Promise<PaymentMethod[]> {
+  public async getPaymentMethods(userId: string): Promise<paymentMethod[]> {
     const { data, error } = await this.supabase
       .from('payment_methods')
       .select('*')
@@ -235,7 +235,7 @@ export class PaymentProcessor {
     provider: string;
     details: PaymentMethod['details'];
     setAsDefault?: boolean;
-  }): Promise<PaymentMethod> {
+  }): Promise<paymentMethod> {
     try {
       // Validate payment method with provider
       await this.validatePaymentMethodWithProvider(params);
@@ -400,7 +400,7 @@ export class PaymentProcessor {
     };
   }
 
-  private async processWithProvider(intent: PaymentIntent): Promise<PaymentTransaction> {
+  private async processWithProvider(intent: PaymentIntent): Promise<paymentTransaction> {
     // Implementation would integrate with payment provider
     const transaction: PaymentTransaction = {
       id: Math.random().toString(36).substr(2, 9),
@@ -439,7 +439,7 @@ export class PaymentProcessor {
     };
   }
 
-  private async createReceipt(transaction: PaymentTransaction): Promise<PaymentReceipt> {
+  private async createReceipt(transaction: PaymentTransaction): Promise<paymentReceipt> {
     // Get payment intent
     const { data: intent, error } = await this.supabase
       .from('payment_intents')
@@ -576,7 +576,7 @@ export class PaymentProcessor {
   }
 }
 
-export async function processPayment(request: PaymentRequest): Promise<Payment> {
+export async function processPayment(request: PaymentRequest): Promise<payment> {
   // In a real implementation, this would integrate with a payment processor like Stripe
   const payment: Payment = {
     id: `pay_${Math.random().toString(36).substr(2, 9)}`,
@@ -599,7 +599,7 @@ export async function processPayment(request: PaymentRequest): Promise<Payment> 
   return payment;
 }
 
-export async function refundPayment(request: RefundRequest): Promise<Payment> {
+export async function refundPayment(request: RefundRequest): Promise<payment> {
   // In a real implementation, this would integrate with a payment processor's refund API
   const refund: Payment = {
     id: `ref_${Math.random().toString(36).substr(2, 9)}`,

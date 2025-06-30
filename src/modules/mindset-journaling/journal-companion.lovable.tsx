@@ -32,14 +32,14 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
   userId,
   onSaveEntry
 }) => {
-  const [entries, setEntries] = useState<Journalentry  />([]);
-  const [currentEntry, setCurrentEntry] = useState<partial  >>({
+  const [entries, setEntries] = useState<Journalentry />([]);
+  const [currentEntry, setCurrentEntry] = useState<partial >>({
     content: '',
     mood: 'neutral',
     tags: []
   });
-  const [prompts, setPrompts] = useState<journalprompt  >([]);
-  const [selectedPrompt, setSelectedPrompt] = useState<journalprompt  >(null);
+  const [prompts, setPrompts] = useState<Journalprompt />([]);
+  const [selectedPrompt, setSelectedPrompt] = useState<journalprompt >(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [analyzing, setAnalyzing] = useState<boolean>(false);
   const [saving, setSaving] = useState<boolean>(false);
@@ -169,7 +169,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
     }
   };
   
-  const handleContentChange = (e: React.ChangeEvent<HTMLTextareaElement  >) => {
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextareaElement >) => {
     setCurrentEntry(prev => ({ ...prev, content: e.target.value }));
   };
   
@@ -177,7 +177,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
     setCurrentEntry(prev => ({ ...prev, mood }));
   };
   
-  const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement  >) => {
+  const handleTagsChange = (e: React.ChangeEvent<HTMLInputElement >) => {
     const tagsString = e.target.value;
     const tagsArray = tagsString.split(',').map(tag => tag.trim()).filter(tag => tag !== '');
     setCurrentEntry(prev => ({ ...prev, tags: tagsArray }));
@@ -319,41 +319,37 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
   
   return (
     <div className="journal-companion p-4 bg-background-secondary rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Trading Journal</h2>
+      <h2 className="text-2xl font-bold mb-4">Trading Journal</Journalcompanionprops>
       
       {/* Journal Entry Form */}
       <div className="mb-8">
         <div className="mb-4">
           <div className="flex justify-between items-center mb-2">
-            <label className="font-medium">Today's Journal Entry</label>
-            <button
-              className="text-sm text-brand-primary hover:text-brand-primary/80"
-              onClick={getRandomPrompt}
-            >
+            <Label className="font-medium">Today's Journal Entry</div>
+            <Button className="text-sm text-brand-primary hover:text-brand-primary/80"
+              onClick={getRandomPrompt}>
               Get Random Prompt
             </button>
           </div>
           
           {selectedPrompt && (
             <div className="p-3 mb-3 bg-brand-primary/10 border-l-4 border-brand-primary rounded">
-              <p className="text-sm italic">{selectedPrompt.text}</p>
+              <p className="text-sm italic">{selectedPrompt.text}</div>
             </div>
           )}
           
-          <textarea
+          <Textarea
             className="w-full p-3 bg-background-primary border border-border-primary rounded-md min-h-[200px]"
             value={currentEntry.content}
             onChange={handleContentChange}
             placeholder="Write your trading journal entry here..."
-          />
-        </div>
+          //>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block mb-1 font-medium">How are you feeling?</label>
+            <Label className="block mb-1 font-medium">How are you feeling?</Textarea>
             <div className="flex space-x-2">
-              <button
-                className={`px-4 py-2 rounded-md ${
+              <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'positive' 
                     ? 'bg-status-success text-white' 
                     : 'bg-background-tertiary hover:bg-background-interactive'
@@ -361,9 +357,8 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                 onClick={() => handleMoodChange('positive')}
               >
                 Positive
-              </button>
-              <button
-                className={`px-4 py-2 rounded-md ${
+              </div>
+              <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'neutral' 
                     ? 'bg-status-warning text-white' 
                     : 'bg-background-tertiary hover:bg-background-interactive'
@@ -372,8 +367,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
               >
                 Neutral
               </button>
-              <button
-                className={`px-4 py-2 rounded-md ${
+              <Button  className={`px-4 py-2 rounded-md ${
                   currentEntry.mood === 'negative' 
                     ? 'bg-status-error text-white' 
                     : 'bg-background-tertiary hover:bg-background-interactive'
@@ -386,16 +380,15 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
           </div>
           
           <div>
-            <label className="block mb-1 font-medium">Tags (comma-separated)</label>
-            <input
+            <Label className="block mb-1 font-medium">Tags (comma-separated)</div>
+            <Input
               type="text"
               className="w-full p-2 bg-background-primary border border-border-primary rounded-md"
               value={currentEntry.tags?.join(', ')}
               onChange={handleTagsChange}
               placeholder="mindset, discipline, strategy, etc."
-            />
-          </div>
-        </div>
+            //>
+        </Input>
         
         {error && (
           <div className="mb-4 p-3 bg-status-error/20 text-status-error rounded-lg">
@@ -404,19 +397,15 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
         )}
         
         <div className="flex justify-between">
-          <button
-            className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
+          <Button className="px-4 py-2 bg-brand-secondary text-white rounded-md hover:bg-brand-secondary/80 disabled:opacity-50"
             onClick={analyzeEntry}
-            disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}
-          >
+            disabled={analyzing || !currentEntry.content || currentEntry.content.trim().length < 20}>
             {analyzing ? 'Analyzing...' : 'Analyze with AI'}
-          </button>
+          </div>
           
-          <button
-            className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
+          <Button className="px-4 py-2 bg-brand-primary text-white rounded-md hover:bg-brand-primary/80 disabled:opacity-50"
             onClick={saveEntry}
-            disabled={saving || !currentEntry.content || currentEntry.content.trim().length < 10}
-          >
+            disabled={saving || !currentEntry.content || currentEntry.content.trim().length < 10}>
             {saving ? 'Saving...' : 'Save Entry'}
           </button>
         </div>
@@ -425,37 +414,37 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
       {/* AI Analysis Section */}
       {currentEntry.aiAnalysis && (
         <div className="mb-8 p-4 bg-brand-secondary/10 border border-brand-secondary rounded-lg">
-          <h3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</h3>
+          <h3 className="text-lg font-semibold text-brand-secondary mb-3">AI Analysis</div>
           
           <div className="space-y-4">
             <div>
-              <h4 className="font-medium mb-1">Summary</h4>
+              <h4 className="font-medium mb-1">Summary</div>
               <p className="text-sm">{currentEntry.aiAnalysis.summary}</p>
             </div>
             
             <div>
-              <h4 className="font-medium mb-1">Insights</h4>
+              <h4 className="font-medium mb-1">Insights</div>
               <ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.insights.map((insight, i) => (
-                  <li key={i} className="text-sm">{insight}</li>
+                  <li key={i} className="text-sm">{insight}</ul>
                 ))}
               </ul>
             </div>
             
             <div>
-              <h4 className="font-medium mb-1">Patterns</h4>
+              <h4 className="font-medium mb-1">Patterns</div>
               <ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.patterns.map((pattern, i) => (
-                  <li key={i} className="text-sm">{pattern}</li>
+                  <li key={i} className="text-sm">{pattern}</ul>
                 ))}
               </ul>
             </div>
             
             <div>
-              <h4 className="font-medium mb-1">Suggestions</h4>
+              <h4 className="font-medium mb-1">Suggestions</div>
               <ul className="list-disc pl-5 space-y-1">
                 {currentEntry.aiAnalysis.suggestions.map((suggestion, i) => (
-                  <li key={i} className="text-sm">{suggestion}</li>
+                  <li key={i} className="text-sm">{suggestion}</ul>
                 ))}
               </ul>
             </div>
@@ -465,7 +454,7 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
       
       {/* Previous Entries */}
       <div>
-        <h3 className="text-lg font-semibold mb-3">Previous Entries</h3>
+        <h3 className="text-lg font-semibold mb-3">Previous Entries</div>
         
         {loading ? (
           <div className="p-8 text-center">
@@ -484,15 +473,14 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                     <span className={`w-3 h-3 rounded-full mr-2 ${
                       entry.mood === 'positive' ? 'bg-status-success' :
                       entry.mood === 'negative' ? 'bg-status-error' : 'bg-status-warning'
-                    }`} />
-                    <span className="text-sm text-text-muted">
+                    }`}/></div>
+                    <span className="text-sm text-text-muted"></span>
                       {new Date(entry.createdAt).toLocaleDateString()}
-                    </span>
+                    </div>
                   </div>
                   
-                  <button
-                    className="text-sm text-brand-primary hover:text-brand-primary/80"
-                    onClick={() => editEntry(entry)}
+                  <Button  className="text-sm text-brand-primary hover:text-brand-primary/80"
+                    onClick={() =></button></div> editEntry(entry)}
                   >
                     Edit
                   </button>
@@ -502,9 +490,9 @@ export const JournalCompanion: React.FC<Journalcompanionprops > = ({
                 
                 <div className="flex flex-wrap gap-1">
                   {entry.tags.map((tag, i) => (
-                    <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full">
+                    <span key={i} className="px-2 py-0.5 text-xs bg-background-interactive rounded-full"></div></div>
                       {tag}
-                    </span>
+                    </div>
                   ))}
                 </div>
               </div>

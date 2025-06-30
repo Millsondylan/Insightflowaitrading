@@ -72,7 +72,7 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
   return (
     <div className="rounded-xl bg-black/30 p-6 border border-white/10 backdrop-blur-md shadow-md space-y-6">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-bold text-white">{strategyName || 'Trade Replay'}</h3>
+        <h3 className="text-lg font-bold text-white">{strategyName || 'Trade Replay'}</div>
         <span className="text-sm font-mono text-white/50">
           {currentIndex + 1} / {candles.length}
         </span>
@@ -83,14 +83,13 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
           Chart loading...
         </div>
         {currentEvent && (
-          <Div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
-              ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}
-         >
+          <div className={`absolute top-4 left-4 px-3 py-1 rounded-md text-white font-bold text-sm shadow-lg animate-pulse-once
+              ${currentEvent.type === 'entry' ? 'bg-green-500/90' : 'bg-red-500/90'}`}>
             {currentEvent.type === 'entry' ? '🟢 ENTRY' : '🔴 EXIT'}
             {currentEvent.type === 'exit' && (
               <span className="ml-2 font-mono">
                 PnL: ${currentEvent.trade.pnl.toFixed(2)}
-              </span>
+              </div>
             )}
           </div>
         )}
@@ -99,28 +98,26 @@ const BacktestReplay = ({ candles, trades, strategyName }: Props) => {
       <div className="w-full bg-white/10 rounded-full h-1.5">
           <div 
               className="bg-glow-cyan h-1.5 rounded-full transition-all duration-300 ease-linear"
-              style={{ width: `${progress}%` }}
-          />
+              style={{ width: `${progress}%` }}/>
       </div>
 
       <div className="flex justify-between items-center gap-4 mt-4">
-        <Button variant="ghost" size="icon" title="Reset" />
-          <repeat  >
-        </Button>
-        <div className="flex items-center gap-2">
-          <button variant="outline" size="icon" title="Previous Candle" >
-            <rewind  >
-          </Button>
-          <button variant="outline" size="icon" >
-            {isPlaying ? <pause  > : <play  >}
-          </Button>
-          <button variant="outline" size="icon" title="Next Candle" >
-            <fastforward  >
-          </Button>
+        <Button variant="ghost" size="icon" title="Reset"/>
+          <Repeat />
         </div>
-        <button variant="ghost" size="icon" title="Toggle Speed" >
-          <zap  >
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="icon" title="Previous Candle">
+            <rewind >
+          </div>
+          <Button variant="outline" size="icon">
+            {isPlaying ? <Pause > : <Play >}
+          </button>
+          <Button variant="outline" size="icon" title="Next Candle">
+            <Fastforward /></button></div>
+          </button>
+      <Button variant="ghost" size="icon" title="Toggle Speed"></button></div>
+          <zap >
+        </button>
       </div>
     </div>
   );

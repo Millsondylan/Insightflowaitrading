@@ -4,28 +4,28 @@ import { BrainCircuit, BarChart, BookOpen, PenSquare } from 'lucide-react';
 
 const features = [
   {
-    icon: <Braincircuit >,
+    icon: <Braincircuit>,
     title: 'Strategy Builder',
     description: 'Design and test your trading strategies with AI-powered insights.',
     link: '/strategy',
     borderColor: 'hover:border-cyan-400',
   },
   {
-    icon: <Barchart  />,
+    icon: <BarChart />,
     title: 'Chart Vision',
     description: 'Upload chart images and get AI-driven technical analysis.',
     link: '/vision',
     borderColor: 'hover:border-violet-400',
   },
   {
-    icon: <pensquare  >,
+    icon: <pensquare >,
     title: 'Trade Journal',
     description: 'Log and analyze your trades to discover patterns and improve.',
     link: '/journal',
     borderColor: 'hover:border-blue-400',
   },
   {
-    icon: <bookopen  >,
+    icon: <Bookopen  //></Braincircuit /></Braincircuit /></Braincircuit>,
     title: 'Academy',
     description: 'Learn from a curated knowledge base of trading concepts and strategies.',
     link: '/academy',
@@ -69,20 +69,16 @@ const FeatureCards = () => {
         >
           {features.map((feature) => (
             <motion.div key={feature.title} variants={cardVariants}>
-              <link  >
-                <div
-                  className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}
-                >
-                  <div className="mb-4">{feature.icon}</div>
+              <Link >
+                <div className={`glass-container h-full p-6 rounded-lg border-2 border-transparent transition-all duration-300 ${feature.borderColor} hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] hover:-translate-y-2`}>
+                  <div className="mb-4">{feature.icon}</section>
                   <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
                   <p className="text-gray-400">{feature.description}</p>
-                </div>
-              </Link>
+                </div />
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    </section>
+      </div />
   );
 };
 

@@ -28,7 +28,7 @@ export class PreTradeCheckEngine {
    * TODO: add margin requirement checks
    * TODO: implement correlation risk analysis
    */
-  async runPreTradeChecks(params: PreTradeCheckParams): Promise<PreTradeCheck> {
+  async runPreTradeChecks(params: PreTradeCheckParams): Promise<preTradeCheck> {
     const warnings: string[] = [];
     const errors: string[] = [];
     let passed = true;
@@ -137,7 +137,7 @@ export class PreTradeCheckEngine {
    * Get current risk metrics
    * TODO: implement real-time risk metrics calculation
    */
-  async getCurrentRiskMetrics(): Promise<RiskMetrics> {
+  async getCurrentRiskMetrics(): Promise<RiskMetrics></RiskMetrics> {
     // TODO: calculate current portfolio risk metrics
     return {
       currentDrawdown: 0,
@@ -152,14 +152,14 @@ export class PreTradeCheckEngine {
   /**
    * Update risk profile
    */
-  updateRiskProfile(newProfile: Partial<RiskProfile>): void {
+  updateRiskProfile(newProfile: Partial<RiskProfile></RiskProfile>): void {
     this.riskProfile = { ...this.riskProfile, ...newProfile };
   }
 
   /**
    * Update account information
    */
-  updateAccount(newAccount: Partial<LivePaperAccount>): void {
+  updateAccount(newAccount: Partial<livePaperAccount>): void {
     this.account = { ...this.account, ...newAccount };
   }
 }

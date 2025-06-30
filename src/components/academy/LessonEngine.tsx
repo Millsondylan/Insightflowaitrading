@@ -155,7 +155,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
               <div className="flex items-center justify-between">
                 <div>{option}</div>
                 {showAnswer && idx === quiz.correctAnswer && (
-                  <Check className="text-green-500 h-5 w-5" />
+                  <Check className="text-green-500 h-5 w-5"/>
                 )}
               </div>
             </div>
@@ -164,10 +164,8 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
         
         {showAnswer ? (
           <div className="mt-4">
-            <Alert 
-              variant={isCorrect ? "default" : "destructive"} 
-              className={isCorrect ? "border-green-500 bg-green-900/20" : ""}
-            >
+            <Alert variant={isCorrect ? "default" : "destructive"} 
+              className={isCorrect ? "border-green-500 bg-green-900/20" : ""}>
               <AlertTitle>{isCorrect ? "Correct!" : "Not quite right"}</AlertTitle>
               <AlertDescription>
                 {quiz.explanation}
@@ -175,8 +173,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
             </Alert>
           </div>
         ) : (
-          <Button 
-            className="mt-4" 
+          <Button className="mt-4" 
             disabled={selectedAnswer === undefined}
             onClick={() => handleCheckAnswer(sectionId, quiz.correctAnswer)}
           >
@@ -195,7 +192,13 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
           <p className="text-gray-400">{lesson.description}</p>
         </div>
         
-        <LessonBookmark lessonId={lessonId || ''} />
+        <LessonBookmark 
+          lessonId={lessonId || ''} 
+          isBookmarked={false}
+          isCompleted={false}
+          onBookmark={() => {}}
+          onComplete={() => {}}
+        />
       </div>
       
       <div className="mb-8">
@@ -207,7 +210,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
             Section {currentSectionIndex + 1} of {lesson.sections.length}
           </div>
         </div>
-        <Progress value={progress} className="h-2" />
+        <Progress value={progress} className="h-2"/>
       </div>
       
       {currentSection && (
@@ -217,9 +220,8 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
               <CardTitle className="text-xl">{currentSection.title}</CardTitle>
             </CardHeader>
             
-            {/* Include the AI lesson narrator */}
             <CardContent>
-              {/* Only render narrator if we have enough content to narrate */}
+              {/* Include the AI lesson narrator */}
               {currentSection.content && currentSection.content.length > 200 && (
                 <LessonNarrator
                   lessonId={lesson.id}
@@ -229,7 +231,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
                   title={currentSection.title}
                   difficulty={lesson.difficulty}
                   topics={lesson.topics}
-                />
+              />
               )}
               
               {currentSection.code_example ? (
@@ -241,16 +243,16 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
                 >
                   <TabsList className="grid grid-cols-2 w-[400px]">
                     <TabsTrigger value="content" className="flex items-center gap-2">
-                      <BookOpen className="h-4 w-4" /> Content
+                      <BookOpen className="h-4 w-4"/> Content
                     </TabsTrigger>
                     <TabsTrigger value="code" className="flex items-center gap-2">
-                      <Code className="h-4 w-4" /> Code Example
+                      <Code className="h-4 w-4"/> Code Example
                     </TabsTrigger>
                   </TabsList>
                   
                   <TabsContent value="content" className="mt-6">
                     <div className="prose prose-invert max-w-none">
-                      <div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
+                      <div dangerouslySetInnerHTML={{ __html: currentSection.content }}/>
                     </div>
                     
                     {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
@@ -259,7 +261,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
                   <TabsContent value="code" className="mt-6">
                     <div className="bg-gray-900 p-4 rounded-md overflow-auto">
                       <pre className="text-sm">
-                        <code>{currentSection.code_example}</code>
+                        <Code>{currentSection.code_example}</Code>
                       </pre>
                     </div>
                   </TabsContent>
@@ -267,7 +269,7 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
               ) : (
                 <>
                   <div className="prose prose-invert max-w-none">
-                    <div dangerouslySetInnerHTML={{ __html: currentSection.content }} />
+                    <div dangerouslySetInnerHTML={{ __html: currentSection.content }}/>
                   </div>
                   
                   {currentSection.quiz && renderQuiz(currentSection.quiz, currentSection.id)}
@@ -276,25 +278,22 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
             </CardContent>
             
             <CardFooter className="flex justify-between pt-6">
-              <Button
-                variant="outline"
+              <Button variant="outline"
                 onClick={handlePrevSection}
                 disabled={currentSectionIndex === 0}
               >
-                <ArrowLeft className="mr-2 h-4 w-4" /> Previous
+                <ArrowLeft className="mr-2 h-4 w-4"/> Previous
               </Button>
               
-              <Button
-                onClick={handleNextSection}
-                disabled={currentSection.quiz && !showExplanation[currentSection.id]}
-              >
+              <Button onClick={handleNextSection}
+                disabled={currentSection.quiz && !showExplanation[currentSection.id]}>
                 {isLastSection ? (
                   <>
-                    <Medal className="mr-2 h-4 w-4" /> Complete Lesson
+                    <Medal className="mr-2 h-4 w-4"/> Complete Lesson
                   </>
                 ) : (
                   <>
-                    Next <ArrowRight className="ml-2 h-4 w-4" />
+                    Next <ArrowRight className="ml-2 h-4 w-4"/>
                   </>
                 )}
               </Button>
@@ -304,4 +303,11 @@ export default function LessonEngine({ lesson }: { lesson: LessonData }) {
       )}
     </div>
   );
-} 
+}
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 
