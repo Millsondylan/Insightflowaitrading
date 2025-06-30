@@ -1,83 +1,81 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 
-export type UserRole = 'Admin' | 'User' | 'Trial' | 'Expired';
+import React from 'react';
+import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Crown, Shield, User, Zap } from 'lucide-react';
 
 interface RoleBadgeProps {
-  role: UserRole;
+  role: 'admin' | 'pro' | 'subscribed' | 'free';
+  showIcon?: boolean;
   showTooltip?: boolean;
-  className?: string;
 }
 
-export const RoleBadge: React.FC<RoleBadgeProps /> = ({ 
-  role, 
-  showTooltip = true,
-  className 
-}) => {
-  // Determine class based on role
-  const roleStyles = {
-    Admin: 'bg-violet-950/40 text-violet-200 border-violet-600 shadow-violet-900/20',
-    User: 'bg-green-950/40 text-green-200 border-green-600 shadow-green-900/20',
-    Trial: 'bg-yellow-950/40 text-yellow-200 border-yellow-600 shadow-yellow-900/20',
-    Expired: 'bg-red-950/40 text-red-200 border-red-600 shadow-red-900/20',
+const RoleBadge = ({ role, showIcon = true, showTooltip = true }: RoleBadgeProps) => {
+  const getRoleConfig = (role: string) => {
+    switch (role) {
+      case 'admin':
+        return {
+          label: 'Admin',
+          variant: 'destructive' as const,
+          icon: <Crown className="h-3 w-3" />,
+          description: 'Full system access and management privileges'
+        };
+      case 'pro':
+        return {
+          label: 'Pro',
+          variant: 'default' as const,
+          icon: <Zap className="h-3 w-3" />,
+          description: 'Access to all premium features and advanced tools'
+        };
+      case 'subscribed':
+        return {
+          label: 'Premium',
+          variant: 'secondary' as const,
+          icon: <Shield className="h-3 w-3" />,
+          description: 'Access to premium features and content'
+        };
+      case 'free':
+        return {
+          label: 'Free',
+          variant: 'outline' as const,
+          icon: <User className="h-3 w-3" />,
+          description: 'Basic access with limited features'
+        };
+      default:
+        return {
+          label: 'Unknown',
+          variant: 'outline' as const,
+          icon: <User className="h-3 w-3" />,
+          description: 'Unknown role'
+        };
+    }
   };
 
-  // Determine glow effect based on role
-  const glowEffect = {
-    Admin: 'after:bg-violet-600/40',
-    User: 'after:bg-green-600/40',
-    Trial: 'after:bg-yellow-600/40',
-    Expired: 'after:bg-red-600/40',
-  };
+  const config = getRoleConfig(role);
 
-  // Determine tooltip content based on role
-  const tooltipContent = {
-    Admin: 'Full administrative access',
-    User: 'Paid subscriber with full features',
-    Trial: 'Limited time access to basic features',
-    Expired: 'No active subscription or trial',
-  };
-
-  // Default to User style if invalid role
-  const safeRole = Object.keys(roleStyles).includes(role) ? role : 'User';
-  const safeRoleStyles = roleStyles[safeRole as UserRole];
-  const safeGlowEffect = glowEffect[safeRole as UserRole];
-
-  const badge = (
-    <span className={cn(
-        'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border',
-        'relative overflow-hidden',
-        'after:absolute after:inset-0 after:rounded-full after:opacity-50 after:blur-sm after:-z-10',
-        safeRoleStyles,
-        safeGlowEffect,
-        className
-      )}></RoleBadgeProps>
-      {role}
-    </span>
+  const badgeContent = (
+    <Badge variant={config.variant} className="flex items-center gap-1">
+      {showIcon && config.icon}
+      <span>{config.label}</span>
+    </Badge>
   );
 
-  // If tooltip is enabled, wrap badge in tooltip
-  if (showTooltip) {
-    return (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild/></TooltipProvider></TooltipProvider>
-            {badge}
-          </TooltipProvider>
-          <TooltipContent>
-            <p className="text-xs"/></TooltipContent></TooltipContent>{tooltipContent[safeRole as UserRole]}</TooltipContent>
-        </Tooltip>
-    );
+  if (!showTooltip) {
+    return badgeContent;
   }
 
-  // Otherwise, return just the badge
-  return badge;
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          {badgeContent}
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{config.description}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
 };
 
 export default RoleBadge;
@@ -87,4 +85,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

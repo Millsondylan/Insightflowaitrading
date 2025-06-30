@@ -1,70 +1,30 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
-import { useMobileDetector } from '@/hooks/use-mobile-detector';
 
-interface StickyActionBarProps extends React.HTMLAttributes<HTMLDivElement> {
-  fixed?: boolean;
-  position?: 'top' | 'bottom';
-  showOnDesktop?: boolean;
+import React from 'react';
+import { Button } from '@/components/ui/button';
+
+interface StickyActionBarProps {
+  children: React.ReactNode;
+  show?: boolean;
+  className?: string;
 }
 
-export function StickyActionBar({
-  children,
-  className,
-  fixed = true,
-  position = 'bottom',
-  showOnDesktop = false,
-  ...props
-}: StickyActionBarProps) {
-  const { isMobile } = useMobileDetector();
-  
-  // If it's not mobile and we don't want to show on desktop, don't render
-  if (!isMobile && !showOnDesktop) {
-    return null;
-  }
+const StickyActionBar = ({ children, show = true, className = '' }: StickyActionBarProps) => {
+  if (!show) return null;
 
   return (
-    <div className={cn(
-        'z-50 w-full bg-background/80 backdrop-blur-lg border-t border-border px-4 py-3',
-        position === 'bottom' ? 'bottom-0' : 'top-0',
-        fixed ? 'fixed' : 'sticky',
-        !showOnDesktop && 'md:hidden',
-        className
-      )}
-      {...props}>
-      <div className="flex items-center justify-between gap-2 max-w-screen-xl mx-auto">
+    <div className={`fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-50 ${className}`}>
+      <div className="container mx-auto flex items-center justify-between gap-4">
         {children}
-      </HTMLDivElement>
+      </div>
     </div>
   );
-}
+};
 
-export function ActionButton({ className, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  return (
-    <Button       className={cn(
-        'inline-flex items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-colors',
-        'bg-primary text-primary-foreground shadow hover:bg-primary/90',
-        'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring',
-        className
-      )}
-      {...props}/>
-  );
-}
-
-export function ActionGroup({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div       className={cn(
-        'flex items-center gap-2',
-        className
-      )}
-      {...props}
-    //></HTMLButtonElement></HTMLButtonElement>
-  );
-}
+export default StickyActionBar;
 
 export const lovable = { 
   component: true,
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};

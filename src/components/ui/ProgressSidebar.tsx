@@ -1,68 +1,57 @@
-import React from "react";
-import { cn } from "@/lib/utils";
 
-interface ProgressSidebarProps {
-  blocks: { id: string; title: string; topic: string }[];
-  activeBlock: string;
-  progress: number;
-  onBlockClick: (id: string) => void;
+import React from 'react';
+import { Button } from '@/components/ui/button';
+
+interface LessonProgress {
+  id: string;
+  title: string;
+  completed: boolean;
+  current?: boolean;
 }
 
-const ProgressSidebar: React.FC<progressSidebarProps> = ({
-  blocks,
-  activeBlock,
-  progress,
-  onBlockClick,
-}) => {
-  const topics = blocks.reduce((acc, block) => {
-    if (!acc.find((item) => item.topic === block.topic)) {
-      acc.push({ topic: block.topic, id: block.id });
-    }
-    return acc;
-  }, [] as { topic: string; id: string }[]);
+interface ProgressSidebarProps {
+  lessons: LessonProgress[];
+  onLessonSelect: (lessonId: string) => void;
+}
 
-  let currentTopic = blocks.find((b) => b.id === activeBlock)?.topic;
+const ProgressSidebar = ({ lessons, onLessonSelect }: ProgressSidebarProps) => {
+  const completedCount = lessons.filter(lesson => lesson.completed).length;
+  const progressPercentage = (completedCount / lessons.length) * 100;
 
   return (
-    <Aside className="sticky top-24 h-full">
-      <div className="relative pl-8">
-        {/* Progress Bar */}
-        <div className="absolute left-4 top-2 bottom-2 w-0.5 bg-gray-700"/>
-        <div           className="absolute left-4 top-2 w-0.5 bg-blue-500 transition-all duration-300"
-          style={{ height: `calc(${progress}% - 1rem)` }}/>
-
-        <nav className="flex flex-col items-start">
-          {blocks.map((block) => {
-            const isTopicHeader = block.id === topics.find(t => t.topic === block.topic)?.id;
-            const isActive = block.id === activeBlock;
-
-            return (
-              <div key={block.id} className="w-full">
-                {isTopicHeader && (
-                  <h3 className="text-lg font-bold mt-6 mb-3 text-blue-400">
-                    {block.topic}
-                  </Aside>
-                )}
-                <Button  onClick={() => onBlockClick(block.id)}
-                  className="flex items-center w-full text-left py-1.5 group"
-                >
-                  <div                     className={cn(
-                      "absolute left-[11px] h-3 w-3 rounded-full border-2 border-gray-600 bg-gray-900 transition-all duration-300",
-                      { "bg-blue-500 border-blue-500 scale-125": isActive }
-                    )}
-     />
-                  <span className={cn(
-                      "text-sm font-medium text-gray-400 transition-colors duration-300 group-hover:text-white",
-                      { "text-white": isActive }
-                    )}></button>
-                    {block.title}
-                  </span>
-                </button>
-              </div>
-            );
-          })}
-        </nav>
-      </div>
+    <aside className="w-64 bg-gray-50 border-r p-4">
+      <nav className="space-y-4">
+        <div>
+          <h3 className="font-semibold text-gray-900 mb-2">
+            Progress ({completedCount}/{lessons.length})
+          </h3>
+          <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+            <div 
+              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${progressPercentage}%` }}
+            />
+          </div>
+        </div>
+        
+        <div className="space-y-1">
+          {lessons.map((lesson) => (
+            <div key={lesson.id} className="relative">
+              <Button
+                variant={lesson.current ? "default" : "ghost"}
+                size="sm"
+                onClick={() => onLessonSelect(lesson.id)}
+                className="w-full justify-start text-left"
+              >
+                <span className={`mr-2 ${lesson.completed ? 'text-green-500' : 'text-gray-400'}`}>
+                  {lesson.completed ? '✓' : '○'}
+                </span>
+                <span className="truncate">{lesson.title}</span>
+              </Button>
+            </div>
+          ))}
+        </div>
+      </nav>
+    </aside>
   );
 };
 
@@ -73,4 +62,4 @@ export const lovable = {
   supportsTailwind: true,
   editableComponents: true,
   visualEditing: true
-}; 
+};
