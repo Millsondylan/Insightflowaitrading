@@ -38,9 +38,9 @@ interface JournalEntry {
   tags: string[];
   createdAt: string;
   userId: string;
-  timestamp?: string;
-  content?: string;
-  mood?: string;
+  timestamp: number;
+  content: string;
+  mood: string;
 }
 
 // Dummy user ID for development until auth is implemented
@@ -79,7 +79,7 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
         }
 
         // Map database entries to component interface
-        const mappedEntries: JournalEntry[] = (data as DatabaseJournalEntry[] || []).map(entry => ({
+        const mappedEntries: JournalEntry[] = (data || []).map(entry => ({
           id: entry.id,
           title: entry.title,
           pair: entry.pair,
@@ -88,12 +88,11 @@ const JournalTimeline: React.FC<JournalTimelineProps> = ({
           exitPrice: entry.exitprice,
           chartUrl: entry.charturl,
           reason: entry.reason,
-          sentiment: entry.sentiment,
+          sentiment: entry.sentiment as "Bullish" | "Bearish",
           tags: entry.tags || [],
           createdAt: entry.createdat,
           userId: entry.userid,
-          // Add missing properties with defaults
-          timestamp: entry.createdat,
+          timestamp: new Date(entry.createdat).getTime(),
           content: entry.reason,
           mood: entry.sentiment.toLowerCase()
         }));

@@ -6,47 +6,56 @@ import { cn } from '@/lib/utils';
 interface BehaviorTagProps {
   tag: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export const BehaviorTag: React.FC<BehaviorTagProps> = ({ tag, className }) => {
+const BehaviorTag: React.FC<BehaviorTagProps> = ({ tag, className, style }) => {
+  const getBehaviorColor = (behavior: string) => {
+    const lowerBehavior = behavior.toLowerCase();
+    
+    if (lowerBehavior.includes('fear') || lowerBehavior.includes('panic')) {
+      return 'bg-red-500/20 text-red-400 border-red-500/30';
+    }
+    if (lowerBehavior.includes('greed') || lowerBehavior.includes('fomo')) {
+      return 'bg-orange-500/20 text-orange-400 border-orange-500/30';
+    }
+    if (lowerBehavior.includes('confidence') || lowerBehavior.includes('patient')) {
+      return 'bg-green-500/20 text-green-400 border-green-500/30';
+    }
+    if (lowerBehavior.includes('doubt') || lowerBehavior.includes('hesitat')) {
+      return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
+    }
+    
+    return 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+  };
+
   return (
     <Badge 
-      variant="secondary" 
-      className={cn("text-xs", className)}
+      variant="outline" 
+      className={cn(
+        'text-xs',
+        getBehaviorColor(tag),
+        className
+      )}
+      style={style}
     >
       {tag}
     </Badge>
   );
 };
 
-interface BehaviorTagGroupProps {
-  tags: string[];
-  animated?: boolean;
-  className?: string;
-}
+export default BehaviorTag;
 
-export const BehaviorTagGroup: React.FC<BehaviorTagGroupProps> = ({ 
-  tags, 
-  animated = false, 
-  className 
-}) => {
-  return (
-    <div className={cn("flex flex-wrap gap-2", className)}>
-      {tags.map((tag, index) => (
-        <BehaviorTag 
-          key={tag} 
-          tag={tag} 
-          className={animated ? "animate-fade-in-up" : ""}
-          style={animated ? { animationDelay: `${index * 100}ms` } : undefined}
-        />
-      ))}
-    </div>
-  );
-};
-
-export const lovable = { 
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true
+// Helper function to render multiple behavior tags with staggered animation
+export const renderBehaviorTags = (tags: string[], className?: string) => {
+  return tags.map((tag, index) => (
+    <BehaviorTag
+      key={`${tag}-${index}`}
+      tag={tag}
+      className={className}
+      style={{ 
+        animationDelay: `${index * 100}ms` 
+      }}
+    />
+  ));
 };
