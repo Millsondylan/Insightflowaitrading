@@ -32,3 +32,28 @@ export interface MigrationProgress {
   status: 'pending' | 'processing' | 'success' | 'error';
   message?: string;
 }
+
+// Tech Compatibility module types
+export interface PlatformCompatibility {
+  platform: 'web' | 'mobile' | 'desktop';
+  supported: boolean;
+  features: string[];
+  limitations: string[];
+  version: string;
+}
+
+export interface IntegrationStatus {
+  service: string;
+  connected: boolean;
+  lastSync?: string;
+  error?: string;
+  config: Record<string, any>;
+}
+
+export interface SystemRequirement {
+  type: 'minimum' | 'recommended';
+  os: string;
+  memory: string;
+  storage: string;
+  network: string;
+}

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +41,7 @@ const FuturisticLanding = () => {
     const interval = setInterval(() => {
       setCryptoPrices(prev => prev.map(crypto => ({
         ...crypto,
-        price: `$${(parseFloat(crypto.price.replace('$', '').replace(',', '')) * (0.995 + Math.random() * 0.01)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractions: 2 })}`,
+        price: `$${(parseFloat(crypto.price.replace('$', '').replace(',', '')) * (0.995 + Math.random() * 0.01)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
         change: `${Math.random() > 0.5 ? '+' : '-'}${(Math.random() * 5).toFixed(2)}%`,
         positive: Math.random() > 0.5
       })));

@@ -1,4 +1,3 @@
-
 // Social Gamification Type Definitions
 
 export interface StrategyListing {
@@ -64,15 +63,13 @@ export interface StrategyLicense {
 // Achievement system types
 export interface Achievement {
   id: string;
-  name: string;
+  title: string;
   description: string;
-  category: 'trading' | 'social' | 'learning' | 'milestone';
-  difficulty: 'bronze' | 'silver' | 'gold' | 'platinum' | 'diamond';
   icon: string;
-  criteria: AchievementCriteria;
-  rewards: AchievementRewards;
-  isHidden: boolean; // Secret achievements
-  unlockedBy: string[]; // User IDs who unlocked this
+  points: number;
+  category: 'trading' | 'learning' | 'social' | 'streak';
+  unlocked: boolean;
+  unlockedAt?: string;
 }
 
 export interface AchievementCriteria {
@@ -241,14 +238,12 @@ export interface Leaderboard {
 }
 
 export interface LeaderboardEntry {
-  rank: number;
   userId: string;
   username: string;
-  avatar: string;
   score: number;
-  scoreType: 'profit' | 'percentage' | 'points' | 'count';
-  badge?: string; // Special badge for top performers
-  change: number; // Position change from last update
+  rank: number;
+  category: 'profit' | 'accuracy' | 'consistency' | 'learning';
+  period: 'daily' | 'weekly' | 'monthly' | 'all_time';
 }
 
 // Event types for social gamification
@@ -270,4 +265,15 @@ export interface SocialNotification {
   data?: Record<string, any>;
   isRead: boolean;
   createdAt: Date;
+}
+
+export interface Challenge {
+  id: string;
+  title: string;
+  description: string;
+  reward: number;
+  participants: string[];
+  startDate: string;
+  endDate: string;
+  status: 'upcoming' | 'active' | 'completed';
 }

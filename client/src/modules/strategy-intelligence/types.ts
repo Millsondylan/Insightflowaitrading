@@ -1,4 +1,3 @@
-
 // Strategy Intelligence Types
 
 export interface Strategy {
@@ -56,4 +55,40 @@ export interface VaultGridOptions {
   view: 'grid' | 'list' | 'compact';
   pageSize: number;
   page: number;
+}
+
+// Strategy Intelligence module types
+export interface StrategyAnalysis {
+  id: string;
+  strategyId: string;
+  performance: PerformanceMetrics;
+  riskMetrics: RiskMetrics;
+  recommendations: Recommendation[];
+  lastUpdated: string;
+}
+
+export interface PerformanceMetrics {
+  totalReturn: number;
+  sharpeRatio: number;
+  maxDrawdown: number;
+  winRate: number;
+  profitFactor: number;
+  averageWin: number;
+  averageLoss: number;
+}
+
+export interface RiskMetrics {
+  volatility: number;
+  var95: number; // Value at Risk 95%
+  expectedShortfall: number;
+  beta: number;
+  correlation: number;
+}
+
+export interface Recommendation {
+  id: string;
+  type: 'optimize' | 'modify' | 'abandon' | 'scale';
+  confidence: number;
+  reasoning: string;
+  suggestedChanges?: string[];
 }

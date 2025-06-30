@@ -142,7 +142,7 @@ export default function UserSettingsPage() {
 
   const updateSetting = <T extends keyof UserSettings>(
     section: T, 
-    key: keyof UserSettings[T], 
+    key: keyof UserSettings[T] | string, 
     value: any
   ) => {
     setSettings((prev) => ({
@@ -151,6 +151,16 @@ export default function UserSettingsPage() {
         ...prev[section],
         [key]: value
       }
+    }));
+  };
+
+  const updateTopLevelSetting = (
+    key: keyof UserSettings, 
+    value: any
+  ) => {
+    setSettings((prev) => ({
+      ...prev,
+      [key]: value
     }));
   };
 
@@ -662,7 +672,7 @@ export default function UserSettingsPage() {
               <div className="space-y-2">
                 <Label>Language</Label>
                 <Select value={settings.language || "en"}
-                  onValueChange={(value) => updateSetting('language', value)}
+                  onValueChange={(value) => updateTopLevelSetting('language', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select language"/>
@@ -678,7 +688,7 @@ export default function UserSettingsPage() {
               <div className="space-y-2">
                 <Label>Coaching Tone</Label>
                 <Select value={settings.coaching_tone || "balanced"}
-                  onValueChange={(value) => updateSetting('coaching_tone', value)}
+                  onValueChange={(value) => updateTopLevelSetting('coaching_tone', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select coaching tone"/>
@@ -695,7 +705,7 @@ export default function UserSettingsPage() {
               <div className="space-y-2">
                 <Label>Reminder Frequency</Label>
                 <Select value={settings.reminder_frequency || "daily"}
-                  onValueChange={(value) => updateSetting('reminder_frequency', value)}
+                  onValueChange={(value) => updateTopLevelSetting('reminder_frequency', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select reminder frequency"/>

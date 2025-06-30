@@ -77,19 +77,9 @@ export interface CompletionReward {
 export interface LessonProgress {
   userId: string;
   lessonId: string;
-  startedAt: string;
-  lastAccessedAt: string;
-  completedAt?: string;
-  progress: number; // percentage
-  sectionsCompleted: string[]; // section IDs
-  quizzesCompleted: {
-    quizId: string;
-    score: number;
-    attempts: number;
-    lastAttemptAt: string;
-  }[];
-  timeSpent: number; // in seconds
-  notes?: string[];
+  completed: boolean;
+  score: number;
+  lastAccessed: string;
 }
 
 export interface MemoryRecord {
@@ -113,4 +103,22 @@ export interface NarratorConfig {
   adaptToUser: boolean;
   useMemory: boolean;
   maxResponseLength: number;
+}
+
+// Academy module types
+export interface LearningPath {
+  id: string;
+  title: string;
+  description: string;
+  lessons: string[];
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+}
+
+export interface Achievement {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  unlocked: boolean;
+  unlockedAt?: string;
 } 

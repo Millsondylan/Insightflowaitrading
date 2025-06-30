@@ -4,7 +4,6 @@ export const academyLessons: LessonBlock[] = [
   // Lesson 1: Mastering Breakouts
   {
     id: "breakout-1",
-    topic: "Mastering Breakouts",
     title: "What is a Breakout?",
     content: `A breakout is a stock price moving outside a defined support or resistance level with increased volume.
     
@@ -17,7 +16,6 @@ A resistance level is a price point where an asset has had trouble exceeding in 
   },
   {
     id: "breakout-2",
-    topic: "Mastering Breakouts",
     title: "Identifying Key Levels",
     content: `To trade breakouts, you must first identify key support and resistance levels.
     
@@ -30,7 +28,6 @@ Look for historical price points where the market has reversed or consolidated. 
   },
   {
     id: "breakout-3",
-    topic: "Mastering Breakouts",
     title: "Confirmation and Entry",
     content: `A common mistake is entering a breakout too early. Wait for confirmation to avoid 'fakeouts.'
     
@@ -43,7 +40,6 @@ Confirmation can be a candle closing strongly beyond the key level, or a retest 
   },
   {
     id: "breakout-4",
-    topic: "Mastering Breakouts",
     title: "Managing Breakout Trades",
     content: `Once a breakout trade is entered, proper management is crucial for maximizing profitability and minimizing risk.
 
@@ -56,7 +52,6 @@ Set a profit target based on the previous price structure, such as the height of
   },
   {
     id: "breakout-5",
-    topic: "Mastering Breakouts",
     title: "Breakout Trading Strategies",
     content: `There are several proven strategies for trading breakouts effectively across different market conditions.
 
@@ -71,7 +66,6 @@ The Flag Breakout strategy involves identifying a consolidation pattern after a 
   // Lesson 2: Essential Risk Management
   {
     id: "risk-1",
-    topic: "Essential Risk Management",
     title: "The 1% Rule",
     content: `The 1% rule is a fundamental risk management principle that suggests you should never risk more than 1% of your total trading capital on a single trade.
     
@@ -84,7 +78,6 @@ For example, if you have a $10,000 account, you should not risk more than $100 o
   },
   {
     id: "risk-2",
-    topic: "Essential Risk Management",
     title: "Position Sizing",
     content: `Position sizing is how you determine how many shares or units of an asset to trade. It's calculated based on your risk per trade (e.g., 1% of your account) and the distance to your stop-loss.
     
@@ -97,7 +90,6 @@ The formula is: Position Size = (Account Risk) / (Distance to Stop-Loss). Proper
   },
   {
     id: "risk-3",
-    topic: "Essential Risk Management",
     title: "Risk-to-Reward Ratio",
     content: `The risk-to-reward ratio compares the potential profit of a trade to its potential loss. It's a critical metric for evaluating trade quality.
 
@@ -110,7 +102,6 @@ A 1:2 risk-to-reward ratio means you're risking $1 to potentially gain $2. Profe
   },
   {
     id: "risk-4",
-    topic: "Essential Risk Management",
     title: "Correlation Risk",
     content: `Correlation risk occurs when multiple positions in your portfolio move together, amplifying both gains and losses. This can significantly increase overall portfolio risk.
 
@@ -123,7 +114,6 @@ For example, if you hold positions in multiple technology stocks that tend to mo
   },
   {
     id: "risk-5",
-    topic: "Essential Risk Management",
     title: "Risk Management Systems",
     content: `A comprehensive risk management system combines multiple approaches to protect your capital and enhance long-term returns.
 
@@ -138,7 +128,6 @@ This includes daily loss limits (e.g., stop trading after losing 3% in a day), w
   // Lesson 3: Technical Analysis Fundamentals
   {
     id: "tech-1",
-    topic: "Technical Analysis Fundamentals",
     title: "Understanding Price Action",
     content: `Price action is the movement of a security's price plotted over time and is the primary focus of technical analysis.
 
@@ -151,7 +140,6 @@ Price action forms patterns that technical analysts interpret to make trading de
   },
   {
     id: "tech-2",
-    topic: "Technical Analysis Fundamentals",
     title: "Moving Averages",
     content: `Moving averages smooth out price data to create a single flowing line, making it easier to identify the direction of the trend.
 
@@ -164,7 +152,6 @@ The Simple Moving Average (SMA) gives equal weight to all price points, while th
   },
   {
     id: "tech-3",
-    topic: "Technical Analysis Fundamentals",
     title: "RSI and MACD Indicators",
     content: `The Relative Strength Index (RSI) and Moving Average Convergence Divergence (MACD) are popular momentum indicators used to identify potential reversal points and trend strength.
 
@@ -177,7 +164,6 @@ RSI measures the speed and change of price movements on a scale from 0 to 100. V
   },
   {
     id: "tech-4",
-    topic: "Technical Analysis Fundamentals",
     title: "Chart Patterns",
     content: `Chart patterns are specific formations on price charts that can help predict future price movements based on historical precedent.
 
@@ -190,7 +176,6 @@ Common bullish patterns include the Cup and Handle, Ascending Triangle, and Doub
   },
   {
     id: "tech-5",
-    topic: "Technical Analysis Fundamentals",
     title: "Volume Analysis",
     content: `Volume represents the total number of shares or contracts traded during a specified time period and provides insight into the strength behind price movements.
 
@@ -205,7 +190,6 @@ Strong price movements accompanied by high volume suggest conviction, while pric
   // Lesson 4: Trading Psychology
   {
     id: "psych-1",
-    topic: "Trading Psychology",
     title: "Understanding Emotional Biases",
     content: `Emotional biases are systematic errors in judgment caused by feelings rather than factual analysis, and they can significantly impact trading decisions.
 
@@ -218,7 +202,6 @@ Fear often leads to premature exits or hesitation to enter trades, while greed c
   },
   {
     id: "psych-2",
-    topic: "Trading Psychology",
     title: "Developing a Trading Mindset",
     content: `A successful trading mindset combines discipline, patience, adaptability, and emotional control to execute trading plans effectively.
 
@@ -231,7 +214,6 @@ Discipline involves following your trading plan and risk management rules withou
   },
   {
     id: "psych-3",
-    topic: "Trading Psychology",
     title: "Managing Losses",
     content: `How a trader handles losses often determines their long-term success, as losses are an inevitable part of trading.
 
@@ -244,7 +226,6 @@ Accept that losing trades are part of the process, not personal failures. View l
   },
   {
     id: "psych-4",
-    topic: "Trading Psychology",
     title: "Peak Performance Techniques",
     content: `Professional traders use various psychological techniques to maintain peak performance under market pressure.
 
@@ -257,7 +238,6 @@ Visualization involves mentally rehearsing trades and responses to different sce
   },
   {
     id: "psych-5",
-    topic: "Trading Psychology",
     title: "Creating a Feedback Loop",
     content: `A structured feedback system allows traders to continuously improve by learning from both successes and failures.
 
@@ -272,7 +252,6 @@ Maintain a detailed trading journal that records not only trade details but also
   // Lesson 5: Market Structure
   {
     id: "structure-1",
-    topic: "Market Structure",
     title: "Understanding Market Phases",
     content: `Markets typically cycle through four main phases: accumulation, markup, distribution, and markdown, each with distinct characteristics and trading opportunities.
 
@@ -285,7 +264,6 @@ Accumulation occurs when smart money begins buying in a relatively flat, range-b
   },
   {
     id: "structure-2",
-    topic: "Market Structure",
     title: "Support and Resistance Dynamics",
     content: `Support and resistance levels are psychological price barriers where supply and demand forces interact, often causing price to reverse or pause.
 
@@ -298,7 +276,6 @@ Support levels are prices where buying pressure exceeds selling pressure, causin
   },
   {
     id: "structure-3",
-    topic: "Market Structure",
     title: "Order Flow Analysis",
     content: `Order flow analysis examines the buying and selling pressure behind price movements to understand market sentiment and potential direction.
 
@@ -311,7 +288,6 @@ Market depth shows pending buy and sell orders at various price levels, revealin
   },
   {
     id: "structure-4",
-    topic: "Market Structure",
     title: "Market Microstructure",
     content: `Market microstructure examines how orders interact to form prices and the mechanisms through which trading occurs.
 
@@ -324,7 +300,6 @@ Bid-ask spread is the difference between the highest buy price and lowest sell p
   },
   {
     id: "structure-5",
-    topic: "Market Structure",
     title: "Institutional Trading Patterns",
     content: `Institutional traders move large volumes that can significantly impact price, creating identifiable patterns that retail traders can recognize.
 
@@ -339,7 +314,6 @@ Institutional buying often appears as steady accumulation with minimal price imp
   // Lesson 6: Advanced Trading Strategies
   {
     id: "strategy-1",
-    topic: "Advanced Trading Strategies",
     title: "Mean Reversion Trading",
     content: `Mean reversion strategies capitalize on the tendency of prices to return to their average state after moving significantly away from it.
 
@@ -352,7 +326,6 @@ This approach involves identifying overbought or oversold conditions using indic
   },
   {
     id: "strategy-2",
-    topic: "Advanced Trading Strategies",
     title: "Momentum Trading",
     content: `Momentum trading seeks to capitalize on the continuation of existing trends by entering positions in the direction of the prevailing market movement.
 
@@ -365,7 +338,6 @@ This strategy relies on the principle that assets that have performed well (or p
   },
   {
     id: "strategy-3",
-    topic: "Advanced Trading Strategies",
     title: "Volatility Breakout Trading",
     content: `Volatility breakout strategies aim to capture profits from significant price movements that occur after periods of low volatility or consolidation.
 
@@ -378,7 +350,6 @@ Markets typically cycle between periods of expansion (high volatility) and contr
   },
   {
     id: "strategy-4",
-    topic: "Advanced Trading Strategies",
     title: "Statistical Arbitrage",
     content: `Statistical arbitrage exploits temporary price discrepancies between related instruments based on mathematical models and statistical analysis.
 
@@ -391,7 +362,6 @@ This approach involves identifying assets with a historical statistical relation
   },
   {
     id: "strategy-5",
-    topic: "Advanced Trading Strategies",
     title: "Options Strategies",
     content: `Options strategies provide traders with flexible approaches to profit from directional moves, volatility changes, or time decay while often defining maximum risk.
 

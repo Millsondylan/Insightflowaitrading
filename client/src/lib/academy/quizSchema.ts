@@ -1,4 +1,3 @@
-
 // Question type definitions
 export type QuestionType = 'multiple-choice' | 'true-false' | 'matching';
 
@@ -44,10 +43,13 @@ export type Question = MultipleChoiceQuestion | TrueFalseQuestion | MatchingQues
 
 // Quiz definition
 export interface Quiz {
+  id: string;
   title: string;
   description: string;
-  difficulty: 'beginner' | 'intermediate' | 'advanced';
-  questions: Question[];
+  questions: QuizQuestion[];
+  timeLimit?: number;
+  passingScore: number;
+  category: string;
 }
 
 // Legacy interfaces for backward compatibility
@@ -80,6 +82,15 @@ export interface QuizAnswer {
   timestamp: Date;
 }
 
+export interface QuizFeedback {
+  questionId: string;
+  userAnswer: string;
+  correctAnswer: string;
+  isCorrect: boolean;
+  explanation: string;
+  points: number;
+}
+
 export interface QuizResult {
   quizId: string;
   answers: QuizAnswer[];
@@ -89,6 +100,16 @@ export interface QuizResult {
   passed: boolean;
   completedAt: Date;
   timeSpent: number; // in seconds
+}
+
+export interface QuizQuestion {
+  id: string;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+  points: number;
+  type: 'multiple_choice' | 'true_false' | 'text';
 }
 
 /**

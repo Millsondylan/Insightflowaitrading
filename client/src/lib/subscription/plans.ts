@@ -1,5 +1,5 @@
 import { SupabaseClient } from '@supabase/supabase-js';
-import { SubscriptionPlan } from './types';
+import { subscriptionPlan, planDiscount, planAddOn } from './types';
 
 export interface PlanFeature {
   id: string;
@@ -49,52 +49,9 @@ export interface PlanAddOn {
   metadata: Record<string, any>;
 }
 
-export interface SubscriptionPlan {
-  id: string;
-  name: string;
-  description: string;
-  price: {
-    amount: number;
-    currency: string;
-    interval: 'monthly' | 'yearly';
-    setupFee?: number;
-    trialDays?: number;
-  };
-  features: PlanFeature[];
-  limits: PlanLimit[];
-  addOns: PlanAddOn[];
-  discounts: PlanDiscount[];
-  metadata: {
-    displayOrder: number;
-    isPopular: boolean;
-    recommendedFor: string[];
-    customization: {
-      color: string;
-      icon: string;
-      highlights: string[];
-    };
-    availability: {
-      regions: string[];
-      userTypes: string[];
-      startDate?: Date;
-      endDate?: Date;
-    };
-    requirements: {
-      minUsers?: number;
-      maxUsers?: number;
-      verificationNeeded?: boolean;
-      documents?: string[];
-    };
-  };
-  version: number;
-  createdAt: Date;
-  updatedAt: Date;
-  status: 'active' | 'deprecated' | 'discontinued';
-}
-
 export class PlanManager {
   private supabase: SupabaseClient;
-  private plans: Map<string, SubscriptionPlan>;
+  private plans: Map<string, subscriptionPlan>;
   private readonly CACHE_TTL = 3600000; // 1 hour
   private lastCacheUpdate: Date = new Date(0);
 
@@ -182,7 +139,7 @@ export class PlanManager {
     if (!plan) return [];
 
     const now = new Date();
-    return plan.discounts.filter(discount => {
+    return plan.discounts.filter((discount: planDiscount) => {
       // Check date validity
       if (now < discount.startDate || now > discount.endDate) return false;
 
@@ -220,7 +177,7 @@ export class PlanManager {
     }>;
   }> {
     const plans = await Promise.all(planIds.map(id => this.getPlan(id)));
-    const validPlans = plans.filter((plan): plan is SubscriptionPlan => !!plan);
+    const validPlans = plans.filter((plan): plan is subscriptionPlan => !!plan);
 
     const comparison = {
       features: {} as Record<string, Record<string, PlanFeature>>,
@@ -250,10 +207,8 @@ export class PlanManager {
 
     // Compare pricing
     validPlans.forEach(plan => {
-      const monthlyPrice = plan.price.amount;
-      const yearlyPrice = plan.price.interval === 'yearly' 
-        ? plan.price.amount 
-        : plan.price.amount * 12 * 0.8; // 20% discount for yearly
+      const monthlyPrice = plan.price;
+      const yearlyPrice = plan.price * 12 * 0.8; // 20% discount for yearly
 
       comparison.pricing[plan.id] = {
         monthly: monthlyPrice,
@@ -325,18 +280,12 @@ export class PlanManager {
 const MONTH = 30 * 24 * 60 * 60 * 1000;  // 30 days in milliseconds
 const YEAR = 365 * 24 * 60 * 60 * 1000;  // 365 days in milliseconds
 
-export const plans: SubscriptionPlan[] = [
+export const plans: subscriptionPlan[] = [
   {
     id: 'basic_monthly',
     name: 'Basic Plan',
     description: 'Essential trading tools for beginners',
-    price: {
-      amount: 29.99,
-      currency: 'USD',
-      interval: 'monthly',
-      setupFee: 0,
-      trialDays: 0
-    },
+    price: 29.99,
     features: [
       'Basic strategy builder',
       'Market data access',
@@ -382,13 +331,7 @@ export const plans: SubscriptionPlan[] = [
     id: 'pro_monthly',
     name: 'Pro Plan',
     description: 'Advanced features for serious traders',
-    price: {
-      amount: 99.99,
-      currency: 'USD',
-      interval: 'monthly',
-      setupFee: 0,
-      trialDays: 0
-    },
+    price: 99.99,
     features: [
       'Advanced strategy builder',
       'Real-time market data',
@@ -436,13 +379,7 @@ export const plans: SubscriptionPlan[] = [
     id: 'enterprise_monthly',
     name: 'Enterprise Plan',
     description: 'Full suite of professional trading tools',
-    price: {
-      amount: 299.99,
-      currency: 'USD',
-      interval: 'monthly',
-      setupFee: 0,
-      trialDays: 0
-    },
+    price: 299.99,
     features: [
       'Custom strategy development',
       'Institutional data access',
@@ -490,13 +427,7 @@ export const plans: SubscriptionPlan[] = [
     id: 'basic_yearly',
     name: 'Basic Plan (Yearly)',
     description: 'Essential trading tools for beginners with yearly discount',
-    price: {
-      amount: 299.99,
-      currency: 'USD',
-      interval: 'yearly',
-      setupFee: 0,
-      trialDays: 0
-    },
+    price: 299.99,
     features: [
       'Basic strategy builder',
       'Market data access',
@@ -542,13 +473,7 @@ export const plans: SubscriptionPlan[] = [
     id: 'pro_yearly',
     name: 'Pro Plan (Yearly)',
     description: 'Advanced features for serious traders with yearly discount',
-    price: {
-      amount: 999.99,
-      currency: 'USD',
-      interval: 'yearly',
-      setupFee: 0,
-      trialDays: 0
-    },
+    price: 999.99,
     features: [
       'Advanced strategy builder',
       'Real-time market data',
@@ -596,13 +521,7 @@ export const plans: SubscriptionPlan[] = [
     id: 'enterprise_yearly',
     name: 'Enterprise Plan (Yearly)',
     description: 'Full suite of professional trading tools with yearly discount',
-    price: {
-      amount: 2999.99,
-      currency: 'USD',
-      interval: 'yearly',
-      setupFee: 0,
-      trialDays: 0
-    },
+    price: 2999.99,
     features: [
       'Custom strategy development',
       'Institutional data access',

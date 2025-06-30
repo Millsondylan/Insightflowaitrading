@@ -1,52 +1,114 @@
 // Insight Flow AI Trading - Module Index
 // Central export hub for all feature pillars
 
-export * from './risk-management';
-export * from './advanced-analytics';
-export * from './social-gamification';
-export * from './extensibility-ecosystem';
-export * from './ux-polish-accessibility';
+// Core modules
+export { 
+  MonteCarloSimulator,
+  AltDataOverlayService,
+  CorrelationMatrixService
+} from './advanced-analytics';
 
-// New feature pillars
-export * from './strategy-intelligence';
+export type { 
+  RiskProfile,
+  RiskAlert,
+  RiskMetric
+} from './risk-management';
+
+export type { 
+  AccessibilitySettings,
+  ThemeCustomization,
+  UserPreference
+} from './ux-polish-accessibility';
+
+export type { 
+  StrategyAnalysis,
+  PerformanceMetrics as StrategyPerformanceMetrics,
+  RiskMetrics as StrategyRiskMetrics,
+  Recommendation
+} from './strategy-intelligence';
+
+// Social and community
+export type { 
+  LeaderboardEntry,
+  Achievement as SocialAchievement,
+  Challenge
+} from './social-gamification';
+
+export type { 
+  Participant,
+  LiveEvent,
+  ChatMessage
+} from './community-multiplayer';
+
+// Pro features
+export type { 
+  ProFeature,
+  UnlockCode,
+  UserUnlock
+} from './pro-unlock';
+
+// Learning and academy
+export type { 
+  LearningProgress,
+  LearningRecommendation
+} from './learning-engine';
+
+export type { 
+  LessonProgress,
+  Achievement as AcademyAchievement
+} from './academy/types';
+
+// Market and trading
+export type { 
+  MarketSetup,
+  SetupCondition,
+  SetupAlert
+} from './market-setup';
+
+// Journaling and reflection
+export type { 
+  JournalEntry,
+  JournalPrompt,
+  MoodTrend
+} from './mindset-journaling';
+
+export type { 
+  TradeReflection,
+  ReflectionPrompt,
+  ReflectionInsight
+} from './trade-reflection';
+
+// Tech and compatibility
+export type { 
+  PlatformCompatibility,
+  IntegrationStatus,
+  SystemRequirement
+} from './tech-compatibility';
+
+// Extra features
+export type { 
+  Feature,
+  FeatureToggle,
+  FeatureUsage
+} from './extra-features';
+
+// Copilot integration
+export type { 
+  CopilotContext,
+  CopilotSuggestion,
+  CopilotResponse
+} from './copilot-integration';
+
+// Specific component exports
 export { VaultHeatmap } from './strategy-intelligence/vault-heatmap';
 export { VaultGrid } from './strategy-intelligence/vault-grid';
 export { AIStrategyBuilderV2 } from './strategy-intelligence/ai-strategy-builder-v2';
-export * from './strategy-intelligence/types';
-
-// Market Setup
-// export * from './market-setup';
 export { MarketScanner } from './market-setup/market-scanner';
-
-// Trade Reflection
-// export * from './trade-reflection';
 export { TradeAnalyzer } from './trade-reflection/trade-analyzer';
-
-// Mindset Journaling
-// export * from './mindset-journaling';
 export { JournalCompanion } from './mindset-journaling/journal-companion';
-
-// Community Multiplayer
-export * from './community-multiplayer';
 export { LiveEventRoom } from './community-multiplayer/live-event-room';
-
-// Pro Unlock
-export * from './pro-unlock';
 export { SubscriptionManager } from './pro-unlock/subscription-manager';
-
-// Learning Engine
-export * from './learning-engine';
 export { NarratorInjection } from './academy/narrator-injection';
-export * from './academy/types';
-
-// Copilot Integration
-export * from './copilot-integration';
-
-// Tech Compatibility
-export * from './tech-compatibility';
-
-// Extra Features
-export * from './extra-features';
 
 // Module registry for dynamic loading
 export const MODULES = {

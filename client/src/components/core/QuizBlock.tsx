@@ -53,6 +53,10 @@ interface QuizResult {
 }
 
 interface QuizFeedbackType {
+  questionId: string;
+  userAnswer: string;
+  correctAnswer: string;
+  points: number;
   isCorrect: boolean;
   explanation: string;
   hint?: string;
@@ -170,6 +174,10 @@ const QuizBlock: React.FC<QuizBlockProps> = ({
     const isCorrect = selectedOptionId === correctOption?.id;
     
     return {
+      questionId: question.id,
+      userAnswer: selectedOptionId,
+      correctAnswer: correctOption?.id || '',
+      points: isCorrect ? 1 : 0,
       isCorrect,
       explanation: question.explanation,
       hint: !isCorrect ? "Review the lesson content and focus on the key takeaways." : undefined,

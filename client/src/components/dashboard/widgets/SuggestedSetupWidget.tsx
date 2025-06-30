@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../ui/card';
 import { Button } from '../../ui/button';
 import { Badge } from '../../ui/badge';
-import { TradingViewChart } from '../../charts/TradingViewChart';
+import TradingViewChart from '../../charts/TradingViewChart';
 import { Skeleton } from '../../ui/skeleton';
 import { ChevronRight, RefreshCcw, Bookmark } from 'lucide-react';
 import { supabase } from '../../../integrations/supabase/client';

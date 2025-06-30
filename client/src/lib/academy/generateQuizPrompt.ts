@@ -1,4 +1,3 @@
-
 import { LessonBlock } from './lessonSchema';
 import { Quiz, Question } from './quizSchema';
 
@@ -30,7 +29,7 @@ export function generateQuizPrompt(params: QuizGenerationParams): string {
     : '';
   
   // Create a comprehensive prompt for AI
-  return `You are an expert trading educator creating a quiz about ${lessonBlocks[0]?.topic || 'trading strategies'}.
+  return `You are an expert trading educator creating a quiz about ${lessonBlocks[0]?.title || 'trading strategies'}.
   
 Create a ${difficulty} level quiz with exactly ${questionCount} questions based on the following lesson content:
 
@@ -48,8 +47,8 @@ Create a diverse mix of question types:
 
 For each question:
 1. Write a clear, concise question that tests understanding (not just recall)
-2. Provide 4 options for multiple-choice questions (only 1 correct)
-3. For true/false, make sure the statement is clearly true or false
+2. Provide 4 options for multiple_choice questions (only 1 correct)
+3. For true_false, make sure the statement is clearly true or false
 4. For matching questions, provide 3-4 pairs to match
 5. Include a detailed explanation for why the answer is correct
 6. Include specific feedback for common misconceptions for wrong answers
@@ -62,10 +61,10 @@ Response format (JSON):
   "questions": [
     {
       "id": "q1",
-      "type": "multiple-choice",
+      "type": "multiple_choice",
       "question": "Question text here?",
       "options": ["Option A", "Option B", "Option C", "Option D"],
-      "correctAnswer": "Option A",
+      "correctAnswer": 0,
       "explanation": "Detailed explanation why Option A is correct",
       "feedback": {
         "Option B": "Specific feedback addressing this misconception",
@@ -75,7 +74,7 @@ Response format (JSON):
     },
     {
       "id": "q2",
-      "type": "true-false",
+      "type": "true_false",
       "question": "Statement that is either true or false",
       "correctAnswer": true,
       "explanation": "Why this statement is true/false with reference to lesson content"
@@ -126,7 +125,7 @@ export function validateQuizResponse(aiResponse: string): Quiz {
       if (!q.type) throw new Error(`Question ${index + 1} missing type`);
       
       // Validate based on question type
-      if (q.type === 'multiple-choice') {
+      if (q.type === 'multiple_choice') {
         if (!q.options || !Array.isArray(q.options) || q.options.length < 2) {
           throw new Error(`Question ${index + 1} has invalid options`);
         }
@@ -136,7 +135,7 @@ export function validateQuizResponse(aiResponse: string): Quiz {
         if (!q.options.includes(q.correctAnswer)) {
           throw new Error(`Question ${index + 1} correctAnswer not in options`);
         }
-      } else if (q.type === 'true-false') {
+      } else if (q.type === 'true_false') {
         if (typeof q.correctAnswer !== 'boolean') {
           throw new Error(`Question ${index + 1} correctAnswer must be boolean`);
         }
@@ -171,13 +170,13 @@ export function createFallbackQuiz(topic: string): Quiz {
   const topicName = topic || 'Trading Strategies';
   
   return {
+    id: `${topicName.toLowerCase().replace(/\s+/g, '-')}-fallback`,
     title: `${topicName} Quiz`,
     description: `Test your knowledge of ${topicName.toLowerCase()}.`,
-    difficulty: 'intermediate',
     questions: [
       {
         id: 'q1',
-        type: 'multiple-choice',
+        type: 'multiple_choice',
         question: `What is the main benefit of studying ${topicName.toLowerCase()}?`,
         options: [
           'Improved trading results',
@@ -185,16 +184,21 @@ export function createFallbackQuiz(topic: string): Quiz {
           'Better risk management',
           'All of the above'
         ],
-        correctAnswer: 'All of the above',
-        explanation: `Studying ${topicName.toLowerCase()} helps improve trading results by enhancing your understanding of market dynamics and implementing better risk management practices.`
+        correctAnswer: 3,
+        explanation: `Studying ${topicName.toLowerCase()} helps improve trading results by enhancing your understanding of market dynamics and implementing better risk management practices.`,
+        points: 1
       },
       {
         id: 'q2',
-        type: 'true-false',
+        type: 'true_false',
         question: 'Risk management is more important than having profitable strategies.',
-        correctAnswer: true,
-        explanation: 'Even the most profitable strategy will eventually fail without proper risk management. Protecting capital is the first priority of successful traders.'
+        correctAnswer: 0,
+        explanation: 'Even the most profitable strategy will eventually fail without proper risk management. Protecting capital is the first priority of successful traders.',
+        options: ['True', 'False'],
+        points: 1
       }
-    ]
+    ],
+    passingScore: 70,
+    category: 'general'
   };
 }

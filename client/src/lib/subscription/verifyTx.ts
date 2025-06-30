@@ -1,28 +1,15 @@
-import { ethers } from 'ethers';
+import { TxVerificationResult } from './types';
 
-// Function to verify a transaction hash and expected amount
-export async function verifyTransaction(txHash: string, expectedAmount: number): Promise<boolean> {
-  try {
-    // Implementation for transaction verification
-    console.log('Verifying transaction:', txHash, 'for amount:', expectedAmount);
-    
-    // TODO: Implement actual blockchain verification
-    return true;
-  } catch (error) {
-    console.error('Transaction verification failed:', error);
-    return false;
-  }
+// Stub implementation for transaction verification
+export async function verifyTransaction(
+  transactionHash: string,
+  network: string = 'ethereum'
+): Promise<TxVerificationResult> {
+  // Mock implementation
+  return {
+    verified: true,
+    transactionHash,
+  };
 }
 
-export async function getTransactionStatus(txHash: string): Promise<'pending' | 'confirmed' | 'failed'> {
-  try {
-    // Implementation for getting transaction status
-    console.log('Getting status for transaction:', txHash);
-    
-    // TODO: Implement actual status check
-    return 'confirmed';
-  } catch (error) {
-    console.error('Error getting transaction status:', error);
-    return 'failed';
-  }
-}
+export type { TxVerificationResult };

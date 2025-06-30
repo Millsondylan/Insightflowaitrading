@@ -54,4 +54,34 @@ export interface InsightFeedItem {
   sentiment: 'Bullish' | 'Bearish' | 'Neutral';
   confidence: number;
   relatedAssets?: string[];
+}
+
+// Market Setup module types
+export interface MarketSetup {
+  id: string;
+  name: string;
+  description: string;
+  conditions: SetupCondition[];
+  timeframe: string;
+  symbols: string[];
+  confidence: number;
+  createdAt: string;
+}
+
+export interface SetupCondition {
+  id: string;
+  type: 'technical' | 'fundamental' | 'sentiment';
+  indicator: string;
+  operator: 'above' | 'below' | 'equals' | 'crosses';
+  value: number | string;
+  timeframe?: string;
+}
+
+export interface SetupAlert {
+  id: string;
+  setupId: string;
+  triggered: boolean;
+  triggeredAt?: string;
+  symbol: string;
+  price: number;
 } 

@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -96,9 +95,18 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson }) => {
     courseId: lesson.id, // Using lesson.id as courseId for now
     title: lesson.title,
     description: lesson.description,
-    difficulty: "beginner", // Default value
+    difficulty: "beginner" as const, // Properly typed as union type
     topics: [], // Default empty array
-    sections: lesson.sections
+    sections: lesson.sections.map(section => ({
+      id: section.id,
+      title: section.title,
+      blocks: [{
+        id: section.id,
+        title: section.title,
+        content: section.content,
+        keyTakeaways: []
+      }]
+    }))
   };
 
   return (

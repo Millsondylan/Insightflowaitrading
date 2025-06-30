@@ -126,10 +126,9 @@ export interface UnusualOptionActivity {
 
 // Correlation analysis types
 export interface CorrelationMatrix {
+  id: string;
   symbols: string[];
-  correlations: number[][]; // 2D correlation matrix
-  timeframe: string;
-  updatedAt: Date;
+  correlations: number[][];
 }
 
 export interface CorrelationData {
@@ -170,11 +169,16 @@ export interface DataProviderConfig {
 }
 
 export interface AltDataOverlay {
-  symbol: string;
-  sentiment: SentimentData;
-  news: NewsData[];
-  onchain?: OnChainData;
-  options?: OptionsFlowData;
-  correlations: CorrelationData[];
-  lastUpdated: Date;
+  id: string;
+  dataType: string;
+  values: number[];
+  timestamps: string[];
+}
+
+// Advanced Analytics module types
+export interface MonteCarloSimulation {
+  id: string;
+  iterations: number;
+  results: number[];
+  confidenceInterval: [number, number];
 } 

@@ -348,4 +348,30 @@ export type UXEvent =
   | { type: 'THEME_CHANGED'; payload: { themeId: string; themeName: string } }
   | { type: 'ACCESSIBILITY_SETTING_CHANGED'; payload: { setting: string; value: unknown } }
   | { type: 'GESTURE_DETECTED'; payload: SwipeGesture }
-  | { type: 'PERFORMANCE_MEASURED'; payload: PerformanceMetrics }; 
+  | { type: 'PERFORMANCE_MEASURED'; payload: PerformanceMetrics };
+
+// UX Polish & Accessibility module types
+export interface AccessibilitySettings {
+  userId: string;
+  highContrast: boolean;
+  fontSize: 'small' | 'medium' | 'large';
+  reducedMotion: boolean;
+  screenReader: boolean;
+  keyboardNavigation: boolean;
+}
+
+export interface ThemeCustomization {
+  userId: string;
+  primaryColor: string;
+  secondaryColor: string;
+  background: 'light' | 'dark' | 'auto';
+  accentColor: string;
+}
+
+export interface UserPreference {
+  userId: string;
+  key: string;
+  value: any;
+  category: 'ui' | 'trading' | 'notifications' | 'accessibility';
+  updatedAt: string;
+} 

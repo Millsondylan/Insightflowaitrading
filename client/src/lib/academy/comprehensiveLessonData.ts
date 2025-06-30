@@ -35,7 +35,6 @@ export const comprehensiveCourses: Course[] = [
     lessons: [
       {
         id: "ta-intro-1",
-        topic: "Introduction to Technical Analysis",
         title: "What is Technical Analysis?",
         content: `Technical analysis is the study of historical price patterns to predict future market movements. Unlike fundamental analysis which focuses on company financials, technical analysis believes that all known information is already reflected in the price.
 
@@ -54,7 +53,6 @@ Technical traders use charts, indicators, and statistical analysis to identify h
       },
       {
         id: "ta-intro-2",
-        topic: "Chart Types and Timeframes",
         title: "Understanding Different Chart Types",
         content: `Choosing the right chart type and timeframe is crucial for effective technical analysis. Each chart type reveals different aspects of market behavior.
 
@@ -78,7 +76,6 @@ Timeframe selection depends on your trading style:
       },
       {
         id: "ta-patterns-1",
-        topic: "Chart Patterns",
         title: "Reversal Patterns",
         content: `Reversal patterns signal potential trend changes and offer some of the most profitable trading opportunities when identified correctly.
 
@@ -161,7 +158,6 @@ Rounding Tops/Bottoms:
     lessons: [
       {
         id: "risk-pro-1",
-        topic: "Portfolio Risk Management",
         title: "Modern Portfolio Theory",
         content: `Modern Portfolio Theory (MPT) revolutionized how we think about risk and return in trading and investing. Developed by Harry Markowitz, it shows how to construct portfolios that maximize return for a given level of risk.
 
@@ -191,7 +187,6 @@ Risk Metrics:
       },
       {
         id: "risk-pro-2",
-        topic: "Position Sizing Models",
         title: "Advanced Position Sizing",
         content: `Professional traders use sophisticated position sizing models that go beyond the basic percentage risk method. These models optimize capital allocation based on multiple factors.
 
@@ -267,7 +262,6 @@ Optimal f:
     lessons: [
       {
         id: "crypto-adv-1",
-        topic: "DeFi Trading Strategies",
         title: "Yield Farming and Liquidity Provision",
         content: `Decentralized Finance (DeFi) has created entirely new trading opportunities through yield farming and liquidity provision. Understanding these mechanisms is crucial for modern crypto traders.
 
@@ -303,7 +297,6 @@ Advanced Strategies:
       },
       {
         id: "crypto-adv-2",
-        topic: "Technical Analysis for Crypto",
         title: "Crypto-Specific Indicators and Patterns",
         content: `Cryptocurrency markets exhibit unique characteristics that require specialized technical analysis approaches beyond traditional methods.
 
@@ -371,7 +364,7 @@ Market Structure:
     id: "algorithmic-trading",
     title: "Algorithmic Trading Systems",
     description: "Build, test, and deploy automated trading systems using modern programming techniques and quantitative strategies.",
-    category: "expert",
+    category: "advanced",
     icon: "Bot",
     duration: "16 weeks",
     enrolled: 4560,
@@ -379,7 +372,6 @@ Market Structure:
     lessons: [
       {
         id: "algo-1",
-        topic: "Building Trading Algorithms",
         title: "Strategy Development Framework",
         content: `Developing robust algorithmic trading systems requires a systematic approach combining market knowledge, programming skills, and rigorous testing methodologies.
 
@@ -423,7 +415,6 @@ Common Algorithm Types:
       },
       {
         id: "algo-2",
-        topic: "Machine Learning in Trading",
         title: "ML Models for Market Prediction",
         content: `Machine learning has revolutionized algorithmic trading, but successful implementation requires understanding both ML techniques and market dynamics.
 
@@ -492,7 +483,7 @@ Production Considerations:
         ],
         correctAnswer: 2,
         explanation: "Ensemble methods combine predictions from multiple models, reducing the risk of any single model failing due to market regime changes. This diversification at the model level improves robustness and consistency in live trading.",
-        difficulty: "expert"
+        difficulty: "advanced"
       }
     ]
   },
@@ -508,7 +499,6 @@ Production Considerations:
     lessons: [
       {
         id: "options-1",
-        topic: "Options Fundamentals",
         title: "Understanding Options Greeks",
         content: `Options Greeks are essential risk metrics that measure how option prices change in response to various factors. Mastering Greeks is crucial for successful options trading.
 
@@ -551,7 +541,6 @@ Rho (ρ):
       },
       {
         id: "options-2",
-        topic: "Advanced Options Strategies",
         title: "Multi-Leg Strategies and Adjustments",
         content: `Professional options traders use complex multi-leg strategies to precisely define risk/reward profiles and profit from specific market conditions.
 
@@ -637,7 +626,6 @@ Advanced Adjustments:
     lessons: [
       {
         id: "forex-1",
-        topic: "Forex Market Structure",
         title: "Understanding Currency Markets",
         content: `The foreign exchange market is the world's largest and most liquid financial market, with over $7 trillion in daily trading volume. Understanding its unique structure is essential for successful trading.
 
@@ -681,7 +669,6 @@ Best Trading Times:
       },
       {
         id: "forex-2",
-        topic: "Currency Pair Analysis",
         title: "Major, Minor, and Exotic Pairs",
         content: `Successful forex trading requires understanding the characteristics and behavior patterns of different currency pair categories.
 
@@ -760,7 +747,6 @@ Correlation Analysis:
     lessons: [
       {
         id: "psych-master-1",
-        topic: "Cognitive Biases in Trading",
         title: "Overcoming Mental Trading Traps",
         content: `Cognitive biases are systematic errors in thinking that affect trading decisions. Recognizing and counteracting these biases is crucial for consistent profitability.
 
@@ -804,7 +790,6 @@ Hindsight Bias:
       },
       {
         id: "psych-master-2",
-        topic: "Peak Performance States",
         title: "The Flow State in Trading",
         content: `Achieving flow state - complete absorption in trading with peak performance - separates elite traders from average ones. Learn to consistently access this optimal psychological state.
 
@@ -893,7 +878,6 @@ Flow Triggers:
     lessons: [
       {
         id: "fundamental-1",
-        topic: "Economic Indicators",
         title: "Key Economic Data and Market Impact",
         content: `Understanding economic indicators is crucial for predicting market movements and timing trades around high-impact events. Each indicator provides insights into economic health and future policy decisions.
 
@@ -943,7 +927,6 @@ Trading Economic Events:
       },
       {
         id: "fundamental-2",
-        topic: "Central Bank Analysis",
         title: "Understanding Monetary Policy Impact",
         content: `Central banks are the most powerful market movers. Understanding their mandates, tools, and communication styles is essential for successful fundamental trading.
 
@@ -1029,7 +1012,7 @@ Policy Tools and Effects:
     id: "quantitative-analysis",
     title: "Quantitative Trading Analysis",
     description: "Master statistical analysis, backtesting, and quantitative methods used by professional trading firms.",
-    category: "expert",
+    category: "advanced",
     icon: "Calculator",
     duration: "12 weeks",
     enrolled: 3240,
@@ -1037,7 +1020,6 @@ Policy Tools and Effects:
     lessons: [
       {
         id: "quant-1",
-        topic: "Statistical Foundations",
         title: "Probability and Statistics for Trading",
         content: `Quantitative trading relies on rigorous statistical analysis to identify and exploit market inefficiencies. Understanding statistical concepts is fundamental to developing robust trading strategies.
 
@@ -1086,7 +1068,6 @@ Time Series Analysis:
       },
       {
         id: "quant-2",
-        topic: "Backtesting Best Practices",
         title: "Building Robust Backtesting Systems",
         content: `Professional-grade backtesting goes far beyond simple historical simulation. It requires careful attention to biases, realistic assumptions, and proper validation techniques.
 
@@ -1176,7 +1157,7 @@ Performance Evaluation:
     id: "institutional-trading",
     title: "Institutional Trading Strategies",
     description: "Learn how banks, hedge funds, and prop firms trade, including order flow analysis and market microstructure.",
-    category: "expert",
+    category: "advanced",
     icon: "Building",
     duration: "10 weeks",
     enrolled: 2890,
@@ -1184,7 +1165,6 @@ Performance Evaluation:
     lessons: [
       {
         id: "inst-1",
-        topic: "Order Flow Analysis",
         title: "Reading Institutional Order Flow",
         content: `Understanding how institutional traders operate and reading their order flow provides retail traders with significant edge. Large players leave footprints that can be identified and followed.
 
@@ -1239,7 +1219,6 @@ Delta Analysis:
       },
       {
         id: "inst-2",
-        topic: "Market Making Strategies",
         title: "How Market Makers Operate",
         content: `Market makers provide liquidity and profit from bid-ask spreads while managing inventory risk. Understanding their behavior helps predict short-term price movements.
 

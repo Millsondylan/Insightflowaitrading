@@ -21,7 +21,7 @@ import {
   Eye,
   Settings2
 } from 'lucide-react';
-import LineChart from '@/components/charts/LineChart';
+import { LineChart } from '@/components/charts/LineChart';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
 import DocumentHead from '@/components/core/DocumentHead';

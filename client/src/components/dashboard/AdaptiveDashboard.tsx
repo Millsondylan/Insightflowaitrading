@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/use-auth';
 import { getUserDashboardWidgets, saveWidget, dismissWidget } from '../../lib/db/ai-coaching';
@@ -9,7 +8,7 @@ import { DragDropContext, Draggable, Droppable } from '@hello-pangea/dnd';
 import { X, GripVertical, Plus } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import { LineChart } from '../charts/LineChart';
-import { TradingViewChart } from '../charts/TradingViewChart';
+import TradingViewChart from "../charts/TradingViewChart";
 import { ScrollArea } from '../ui/scroll-area';
 
 // Import widgets

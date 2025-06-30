@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import DocumentHead from '@/components/core/DocumentHead';
 import { toast } from '@/components/ui/use-toast';
-import LineChart from '@/components/charts/LineChart';
+import { LineChart } from '@/components/charts/LineChart';
 
 interface PortfolioPosition {
   symbol: string;

@@ -1,15 +1,30 @@
 // Risk Management Type Definitions
 
 export interface RiskProfile {
+  userId: string;
+  riskTolerance: 'conservative' | 'moderate' | 'aggressive';
+  maxDrawdown: number;
+  positionSizeLimit: number;
+  dailyLossLimit: number;
+}
+
+export interface RiskAlert {
   id: string;
   userId: string;
-  maxRiskPerTrade: number; // Percentage of account
-  maxPortfolioRisk: number; // Total portfolio risk limit
-  maxDrawdown: number; // Maximum allowed drawdown
-  volatilityAdjustment: boolean;
-  emergencyStopLoss: number;
-  createdAt: Date;
-  updatedAt: Date;
+  type: 'drawdown' | 'position_size' | 'daily_loss' | 'concentration';
+  message: string;
+  severity: 'low' | 'medium' | 'high' | 'critical';
+  triggeredAt: string;
+  resolvedAt?: string;
+}
+
+export interface RiskMetric {
+  userId: string;
+  date: string;
+  sharpeRatio: number;
+  maxDrawdown: number;
+  winRate: number;
+  profitFactor: number;
 }
 
 export interface PositionSizingConfig {
