@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
+      "@": path.resolve(__dirname, "client-legacy/src"),
     },
   },
-  root: path.resolve(__dirname, "client"),
+  root: path.resolve(__dirname, "client-legacy"),
 }); 

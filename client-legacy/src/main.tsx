@@ -9,3 +9,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <App />
   </React.StrictMode>
 );
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true,
+  entryPoint: true
+};

@@ -105,3 +105,12 @@ function App() {
 }
 
 export default App;
+
+// Add Lovable.dev compatibility
+export const lovable = {
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true,
+  entryPoint: true
+};
