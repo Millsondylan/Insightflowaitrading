@@ -325,4 +325,77 @@ MIT License - see [LICENSE](LICENSE) file for details
 
 ---
 
-**Built with ❤️ for the trading community** 
+**Built with ❤️ for the trading community**
+
+# InsightFlow AI Trading Platform - Lovable React Version
+
+This is a clean React/Vite version of the InsightFlow AI Trading Platform, optimized for Lovable.dev visual editing.
+
+## 🚀 Quick Start
+
+```bash
+npm install
+npm run dev
+```
+
+## 🏗️ Build
+
+```bash
+npm run build
+```
+
+## 🎯 Lovable.dev Setup
+
+1. Connect this repository to Lovable.dev
+2. Select the `lovable-react-only` branch
+3. Use these settings:
+   - **Framework**: React
+   - **Build Tool**: Vite
+   - **Entry Point**: `src/main.tsx`
+   - **Build Command**: `npm run build`
+   - **Dev Command**: `npm run dev`
+
+## 📁 Project Structure
+
+- `src/` - React components and application code
+- `src/components/` - Reusable UI components
+- `src/pages/` - Page components
+- `src/lib/` - Utility functions and services
+- `src/hooks/` - Custom React hooks
+
+## 🎨 Features
+
+- **AI-Powered Trading Intelligence**
+- **Real-time Market Analysis**
+- **Strategy Builder & Backtesting**
+- **Journal & Reflection Tools**
+- **Portfolio Management**
+- **Community Features**
+- **Mobile-Ready Design**
+
+## 🔧 Tech Stack
+
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **State Management**: React Context + Hooks
+- **Backend**: Supabase
+
+## 📱 Lovable Compatibility
+
+All components include the required `lovable` export for visual editing:
+
+```typescript
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};
+```
+
+## 🔗 Links
+
+- **Repository**: https://github.com/Millsondylan/Insightflowaitrading
+- **Lovable.dev**: https://lovable.dev 
