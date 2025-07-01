@@ -13,6 +13,7 @@
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "setup": "node scripts/setup-env.js",
     "setup:env": "node scripts/setup-env.js",
     "check:sensitive": "node scripts/secure-env.js check .",
     "env:template": "node scripts/secure-env.js template .env .env.example",
