@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import OpenAI from 'openai';
 import { randomUUID } from 'crypto';
+import { storage } from '../storage';
 
 // Initialize OpenAI client
 const openai = new OpenAI({
@@ -105,14 +106,16 @@ function getTimeframeMinutes(timeframe: string): number {
 // Mock function to get user strategies
 // In a real implementation, this would query your database
 async function fetchUserStrategies(userId: string): Promise<Array<{ id: string, title: string }>> {
-  // Mock data - in a real implementation, you would query your database
-  return [
-    { id: '1', title: 'RSI Divergence Strategy' },
-    { id: '2', title: 'MACD Crossover Strategy' },
-    { id: '3', title: 'Moving Average Trend Strategy' },
-    { id: '4', title: 'Support/Resistance Breakout Strategy' },
-    { id: '5', title: 'Volume Price Confirmation Strategy' },
-  ];
+  try {
+    const strategies = await storage.getTradingStrategies(parseInt(userId));
+    return strategies.map(strategy => ({
+      id: strategy.id,
+      title: strategy.title
+    }));
+  } catch (error) {
+    console.error('Error fetching user strategies:', error);
+    return [];
+  }
 }
 
 export default async function handleAnalyzeMarketSetup(req: Request, res: Response) {
@@ -128,6 +131,12 @@ export default async function handleAnalyzeMarketSetup(req: Request, res: Respon
     // Validate required fields
     if (!symbol || !timeframe || !user_id) {
       return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // Validate user exists
+    const user = await storage.getUser(parseInt(user_id));
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
     
     // Fetch market data
@@ -194,38 +203,26 @@ Only respond with valid JSON.`;
       return res.status(500).json({ error: 'Failed to parse AI analysis' });
     }
     
-    // Generate a unique ID for the setup
-    const setupId = randomUUID();
-    
-    // Create the market setup object
-    const marketSetup: MarketSetup = {
-      id: setupId,
-      user_id,
+    // Save the market setup to the database
+    const savedMarketSetup = await storage.createMarketSetup({
+      userId: parseInt(user_id),
       symbol,
       timeframe,
-      entry: analysisData.entry,
-      sl: analysisData.sl,
-      tp: analysisData.tp,
-      trade_type: analysisData.trade_type,
-      confidence_score: analysisData.confidence_score,
-      pattern_description: analysisData.pattern_description,
-      reasoning_details: analysisData.reasoning_details,
-      matching_strategies: analysisData.matching_strategies || [],
-      indicator_data: analysisData.indicator_data || {},
-      risk_reward_ratio: analysisData.risk_reward_ratio,
-      ai_generated: true,
-      is_public: false,
-      created_at: new Date().toISOString(),
-      updated_at: new Date().toISOString()
-    };
-    
-    // For now, we'll just return the analysis without saving to database
-    // In a real implementation, you would save this to your database
-    
+      entry: analysisData.entry.toString(),
+      sl: analysisData.sl.toString(),
+      tp: analysisData.tp.toString(),
+      tradeType: analysisData.trade_type,
+      confidenceScore: analysisData.confidence_score.toString(),
+      patternDescription: analysisData.pattern_description,
+      indicatorData: analysisData.indicator_data || {},
+      aiGenerated: true,
+      isPublic: false,
+    });
+
     // Return the analysis result
     return res.status(200).json({ 
       success: true,
-      result: marketSetup
+      result: savedMarketSetup
     });
     
   } catch (error: any) {
