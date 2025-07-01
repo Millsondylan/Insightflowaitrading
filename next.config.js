@@ -17,7 +17,12 @@ const nextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
+    // Disable webpack caching to fix Lovable compatibility issues
+    if (dev) {
+      config.cache = false;
+    }
+    
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -28,6 +33,8 @@ const nextConfig = {
     }
     return config;
   },
+  // Ensure proper output for Lovable
+  output: 'standalone',
   async headers() {
     return [
       {
