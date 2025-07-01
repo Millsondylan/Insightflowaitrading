@@ -1,7 +1,7 @@
 {
   "framework": "react",
   "buildTool": "vite",
-  "sourceDir": "client-legacy",
+  "sourceDir": "src",
   "entryPoints": {
     "main": "src/main.tsx",
     "app": "src/App.tsx"
@@ -29,13 +29,14 @@
     "styling": "tailwindcss"
   },
   "include": [
-    "client-legacy/src/**/*.{ts,tsx,js,jsx}",
-    "client-legacy/src/**/*.css",
-    "client-legacy/index.html",
-    "client-legacy/package.json",
-    "client-legacy/vite.config.ts",
-    "client-legacy/tailwind.config.js",
-    "client-legacy/tsconfig.json"
+    "src/**/*.{ts,tsx,js,jsx}",
+    "src/**/*.css",
+    "index.html",
+    "package.json",
+    "vite.config.ts",
+    "tailwind.config.ts",
+    "tsconfig.json",
+    "vite-env.d.ts"
   ],
   "exclude": [
     "node_modules/**",
@@ -44,7 +45,9 @@
     ".next/**",
     "app/**",
     "server/**",
-    "supabase/**"
+    "supabase/**",
+    "client/**",
+    "client-legacy/**"
   ],
   "ignoreNextJS": true,
   "forceReactVite": true
