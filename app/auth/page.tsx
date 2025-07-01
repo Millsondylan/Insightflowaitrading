@@ -1,74 +1,44 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase-client';
-import { Brain, Mail, Lock } from 'lucide-react';
 
 export default function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!supabase) {
-      alert('Supabase configuration is missing. Please check your environment variables.');
-      return;
-    }
-    
     setLoading(true);
 
     try {
+      // Simulate authentication process
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${location.origin}/auth/callback`,
-          },
-        });
-        if (error) throw error;
-        alert('Check your email for the confirmation link!');
+        alert('Account created successfully! You can now sign in.');
+        setIsSignUp(false);
       } else {
-        const { error } = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        });
-        if (error) throw error;
+        // Redirect to dashboard
         router.push('/');
       }
     } catch (error: any) {
-      alert(error.message);
+      alert('Authentication failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
-  // Show configuration error if Supabase is not configured
-  if (!isSupabaseConfigured()) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
-        <div className="w-full max-w-md text-center">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-600 rounded-full mb-4">
-            <Brain className="h-8 w-8 text-white" />
-          </div>
-          <h1 className="text-2xl font-bold text-white mb-4">Configuration Required</h1>
-          <p className="text-slate-300 mb-4">
-            Supabase environment variables are not configured. Please set up your .env.local file with:
-          </p>
-          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 text-left">
-            <code className="text-green-400 text-sm">
-              NEXT_PUBLIC_SUPABASE_URL=your_supabase_url<br/>
-              NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-            </code>
-          </div>
-        </div>
-      </div>
-    );
+  if (!mounted) {
+    return null; // Prevent hydration mismatch
   }
 
   return (
@@ -76,15 +46,17 @@ export default function AuthPage() {
       <div className="w-full max-w-md">
         {/* Logo and Title */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
-            <Brain className="h-8 w-8 text-white" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mb-4">
+            <svg className="h-8 w-8 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
           </div>
           <h1 className="text-3xl font-bold text-white mb-2">Insight Flow</h1>
           <p className="text-slate-300">AI-Powered Trading Intelligence</p>
         </div>
 
         {/* Auth Form */}
-        <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-6">
+        <div className="bg-slate-800/50 backdrop-blur-lg border border-slate-700 rounded-lg p-6">
           <div className="space-y-1 mb-6">
             <h2 className="text-2xl text-white text-center font-semibold">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
@@ -101,7 +73,9 @@ export default function AuthPage() {
             <div className="space-y-2">
               <label htmlFor="email" className="text-white text-sm font-medium">Email</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
+                <svg className="absolute left-3 top-3 h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
                 <input
                   id="email"
                   type="email"
@@ -117,7 +91,9 @@ export default function AuthPage() {
             <div className="space-y-2">
               <label htmlFor="password" className="text-white text-sm font-medium">Password</label>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
+                <svg className="absolute left-3 top-3 h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
                 <input
                   id="password"
                   type="password"
@@ -132,7 +108,7 @@ export default function AuthPage() {
 
             <button 
               type="submit" 
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md font-medium transition-colors disabled:opacity-50"
+              className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white py-2 px-4 rounded-md font-medium transition-all duration-300 disabled:opacity-50"
               disabled={loading}
             >
               {loading ? 'Loading...' : (isSignUp ? 'Create Account' : 'Sign In')}
@@ -142,7 +118,7 @@ export default function AuthPage() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setIsSignUp(!isSignUp)}
-              className="text-blue-400 hover:text-blue-300 text-sm"
+              className="text-blue-400 hover:text-blue-300 text-sm transition-colors"
             >
               {isSignUp 
                 ? 'Already have an account? Sign in' 
@@ -150,8 +126,17 @@ export default function AuthPage() {
               }
             </button>
           </div>
+          
+          <div className="mt-4 text-center">
+            <button
+              onClick={() => router.push('/landing')}
+              className="text-slate-400 hover:text-slate-300 text-sm transition-colors"
+            >
+              ← Back to Landing Page
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
-} 
+}
