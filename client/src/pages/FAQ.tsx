@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const FAQPage: React.FC = () => {
@@ -6,9 +5,9 @@ const FAQPage: React.FC = () => {
     <section className="theme-help min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-indigo mb-8"/></section></section>
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-indigo mb-8">
           FAQ
-        </section>
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
           Answers to common questions
         </p>
@@ -17,47 +16,48 @@ const FAQPage: React.FC = () => {
       {/* FAQ Categories */}
       <div className="space-y-8 animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
         <div className="glass-section motion-shadow">
-          <h2 className="text-2xl font-bold text-indigo-400 mb-6"></div>🚀 Getting Started</div>
+          <h2 className="text-2xl font-bold text-indigo-400 mb-6">🚀 Getting Started</h2>
           <div className="space-y-4">
             <div className="glass-card">
-              <h4 className="font-semibold text-white mb-2"></div>What is Insight Flow?</div>
+              <h4 className="font-semibold text-white mb-2">What is Insight Flow?</h4>
               <p className="text-gray-300 text-sm">Insight Flow is an AI-powered trading platform that helps you develop, test, and optimize trading strategies.</p>
             </div>
             <div className="glass-card">
-              <h4 className="font-semibold text-white mb-2"></div>How do I get started?</div>
+              <h4 className="font-semibold text-white mb-2">How do I get started?</h4>
               <p className="text-gray-300 text-sm">Sign up for an account and explore our Strategy Builder to create your first trading strategy.</p>
             </div>
           </div>
         </div>
 
         <div className="glass-section motion-shadow">
-          <h2 className="text-2xl font-bold text-purple-400 mb-6"></div>💰 Pricing & Plans</div>
+          <h2 className="text-2xl font-bold text-purple-400 mb-6">💰 Pricing & Plans</h2>
           <div className="space-y-4">
             <div className="glass-card">
-              <h4 className="font-semibold text-white mb-2"></div>Do you offer a free trial?</div>
+              <h4 className="font-semibold text-white mb-2">Do you offer a free trial?</h4>
               <p className="text-gray-300 text-sm">Yes! New users get access to basic features with limited backtesting credits.</p>
             </div>
             <div className="glass-card">
-              <h4 className="font-semibold text-white mb-2"></div>What payment methods do you accept?</div>
+              <h4 className="font-semibold text-white mb-2">What payment methods do you accept?</h4>
               <p className="text-gray-300 text-sm">We accept crypto payments including Bitcoin, Ethereum, and USDT on TRON.</p>
             </div>
           </div>
         </div>
 
         <div className="glass-section motion-shadow">
-          <h2 className="text-2xl font-bold text-blue-400 mb-6"></div>🛠️ Technical</div>
+          <h2 className="text-2xl font-bold text-blue-400 mb-6">🛠️ Technical</h2>
           <div className="space-y-4">
             <div className="glass-card">
-              <h4 className="font-semibold text-white mb-2"></div>How accurate is the backtesting?</div>
+              <h4 className="font-semibold text-white mb-2">How accurate is the backtesting?</h4>
               <p className="text-gray-300 text-sm">Our backtesting engine uses high-quality historical data with realistic slippage and commission modeling.</p>
             </div>
             <div className="glass-card">
-              <h4 className="font-semibold text-white mb-2"></div>Can I export my strategies?</div>
+              <h4 className="font-semibold text-white mb-2">Can I export my strategies?</h4>
               <p className="text-gray-300 text-sm">Yes! Export your strategies in multiple formats including PDF reports and JSON data.</p>
             </div>
           </div>
         </div>
       </div>
+    </section>
   );
 };
 

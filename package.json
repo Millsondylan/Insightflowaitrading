@@ -25,6 +25,7 @@
     "precommit": "npm run check:sensitive"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.0",
     "@capacitor/cli": "^7.4.0",
     "@capacitor/core": "^7.4.0",
     "@hookform/resolvers": "^3.10.0",

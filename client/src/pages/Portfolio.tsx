@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const PortfolioPage: React.FC = () => {
@@ -6,9 +5,9 @@ const PortfolioPage: React.FC = () => {
     <section className="theme-portfolio min-h-screen px-6 py-16 space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4 animate-in fade-in slide-up">
-        <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8"/></section></section>
+        <h1 className="text-6xl md:text-8xl font-bold text-glow-blue mb-8">
           Portfolio Vision
-        </section>
+        </h1>
         <p className="text-xl md:text-2xl text-gray-300 font-light">
           Your investments at a glance
         </p>
@@ -16,7 +15,7 @@ const PortfolioPage: React.FC = () => {
 
       {/* Portfolio Overview */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '100ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-8"></div>📊 Overview</div>
+        <h2 className="text-3xl font-bold text-white mb-8">📊 Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="glass-card text-center">
             <div className="text-2xl font-bold text-indigo-400 mb-2">$125,430</div>
@@ -35,7 +34,7 @@ const PortfolioPage: React.FC = () => {
 
       {/* Holdings */}
       <div className="glass-section motion-shadow animate-in fade-in slide-up" style={{ animationDelay: '200ms' }}>
-        <h2 className="text-3xl font-bold text-white mb-6"></div>💼 Holdings</div>
+        <h2 className="text-3xl font-bold text-white mb-6">💼 Holdings</h2>
         <div className="space-y-4">
           <div className="glass-card hover-glow">
             <div className="flex justify-between items-center">
@@ -63,6 +62,7 @@ const PortfolioPage: React.FC = () => {
           </div>
         </div>
       </div>
+    </section>
   );
 };
 

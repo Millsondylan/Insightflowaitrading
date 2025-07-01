@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">InsightFlow Trading</string>
+    <string name="title_activity_main">InsightFlow Trading</string>
+    <string name="package_name">com.insightflow.trading</string>
+    <string name="custom_url_scheme">com.insightflow.trading</string>
+</resources>
