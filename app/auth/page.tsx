@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createBrowserClient } from '@supabase/ssr';
+import { supabase, isSupabaseConfigured } from '@/lib/supabase-client';
 import { Brain, Mail, Lock } from 'lucide-react';
 
 export default function AuthPage() {
@@ -11,14 +11,15 @@ export default function AuthPage() {
   const [loading, setLoading] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const router = useRouter();
-  
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!supabase) {
+      alert('Supabase configuration is missing. Please check your environment variables.');
+      return;
+    }
+    
     setLoading(true);
 
     try {
@@ -46,6 +47,29 @@ export default function AuthPage() {
       setLoading(false);
     }
   };
+
+  // Show configuration error if Supabase is not configured
+  if (!isSupabaseConfigured()) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+        <div className="w-full max-w-md text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-red-600 rounded-full mb-4">
+            <Brain className="h-8 w-8 text-white" />
+          </div>
+          <h1 className="text-2xl font-bold text-white mb-4">Configuration Required</h1>
+          <p className="text-slate-300 mb-4">
+            Supabase environment variables are not configured. Please set up your .env.local file with:
+          </p>
+          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-4 text-left">
+            <code className="text-green-400 text-sm">
+              NEXT_PUBLIC_SUPABASE_URL=your_supabase_url<br/>
+              NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+            </code>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">

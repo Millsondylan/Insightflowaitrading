@@ -3,62 +3,108 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 Insight Flow Environment Setup\n');
+console.log('🚀 Setting up Insight Flow AI Trading Platform environment...\n');
+
+const envPath = path.join(process.cwd(), '.env.local');
+const envBackupPath = path.join(process.cwd(), '.env.local.backup');
 
 // Check if .env.local already exists
-const envPath = path.join(process.cwd(), '.env.local');
 if (fs.existsSync(envPath)) {
-  console.log('⚠️  .env.local already exists. Backing up to .env.local.backup');
-  fs.copyFileSync(envPath, envPath + '.backup');
+  console.log('📁 .env.local already exists. Creating backup...');
+  fs.copyFileSync(envPath, envBackupPath);
+  console.log('✅ Backup created as .env.local.backup');
 }
 
-// Create .env.local with template
-const envTemplate = `# Supabase Configuration
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+// Environment variables template
+const envContent = `# Insight Flow AI Trading Platform - Environment Variables
+# Copy this file to .env.local and fill in your actual values
 
-# OpenAI Configuration
-OPENAI_API_KEY=your_openai_api_key
+# Supabase Configuration (Required)
+# Get these from https://supabase.com/dashboard/project/[YOUR_PROJECT]/settings/api
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key_here
 
-# Stripe Configuration (for payments)
-STRIPE_SECRET_KEY=your_stripe_secret_key
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+# OpenAI Configuration (Required for AI features)
+# Get this from https://platform.openai.com/api-keys
+OPENAI_API_KEY=your_openai_api_key_here
 
-# App Configuration
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXTAUTH_SECRET=your_nextauth_secret
-NEXTAUTH_URL=http://localhost:3000
+# Stripe Configuration (Optional - for payments)
+# Get these from https://dashboard.stripe.com/apikeys
+STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key_here
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key_here
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret_here
 
-# Database (if using direct connection)
-DATABASE_URL=your_database_connection_string
-
-# Optional: Additional AI Services
-ANTHROPIC_API_KEY=your_anthropic_api_key
-GOOGLE_AI_API_KEY=your_google_ai_api_key
-
-# Optional: Analytics
-NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=your_ga_id
-NEXT_PUBLIC_MIXPANEL_TOKEN=your_mixpanel_token
-
-# Optional: Email (for notifications)
-SMTP_HOST=your_smtp_host
+# Email Configuration (Optional - for notifications)
+# Example for Gmail SMTP
+SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your_smtp_user
-SMTP_PASS=your_smtp_password
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password_here
+
+# Market Data APIs (Optional)
+# Alpha Vantage for market data
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
+
+# Trading APIs (Optional)
+# Alpaca for paper trading
+ALPACA_API_KEY=your_alpaca_key_here
+ALPACA_SECRET_KEY=your_alpaca_secret_here
+ALPACA_BASE_URL=https://paper-api.alpaca.markets
+
+# Interactive Brokers (Optional)
+IB_GATEWAY_HOST=localhost
+IB_GATEWAY_PORT=4001
+
+# MT5 Integration (Optional)
+MT5_SERVER=your_mt5_server_here
+MT5_LOGIN=your_mt5_login_here
+MT5_PASSWORD=your_mt5_password_here
+
+# Twilio for SMS (Optional)
+TWILIO_ACCOUNT_SID=your_twilio_account_sid_here
+TWILIO_AUTH_TOKEN=your_twilio_auth_token_here
+TWILIO_PHONE_NUMBER=+1234567890
+
+# Analytics (Optional)
+# Google Analytics
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+
+# Sentry for error tracking (Optional)
+NEXT_PUBLIC_SENTRY_DSN=https://your_sentry_dsn_here
+
+# Custom Configuration
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_APP_NAME=Insight Flow
+NEXT_PUBLIC_APP_VERSION=1.0.0
+
+# Feature Flags (Optional)
+NEXT_PUBLIC_ENABLE_AI_FEATURES=true
+NEXT_PUBLIC_ENABLE_COMMUNITY_FEATURES=true
+NEXT_PUBLIC_ENABLE_ACADEMY_FEATURES=true
+NEXT_PUBLIC_ENABLE_COPILOT_FEATURES=true
+
+# Development Settings
+NODE_ENV=development
+NEXT_PUBLIC_DEBUG_MODE=true
 `;
 
-fs.writeFileSync(envPath, envTemplate);
-
-console.log('✅ Created .env.local file');
-console.log('\n📝 Next steps:');
-console.log('1. Get your Supabase credentials from https://supabase.com');
-console.log('2. Get your OpenAI API key from https://platform.openai.com');
-console.log('3. Update the values in .env.local with your actual credentials');
-console.log('4. Run "npm run dev" to start the development server');
-console.log('\n🔗 Useful links:');
-console.log('- Supabase Setup: https://supabase.com/docs/guides/getting-started');
-console.log('- OpenAI API: https://platform.openai.com/docs/quickstart');
-console.log('- Stripe Setup: https://stripe.com/docs/development');
-console.log('\n�� Happy coding!'); 
+try {
+  fs.writeFileSync(envPath, envContent);
+  console.log('✅ .env.local file created successfully!');
+  console.log('\n📋 Next steps:');
+  console.log('1. Edit .env.local and replace placeholder values with your actual API keys');
+  console.log('2. Run "npm run dev" to start the development server');
+  console.log('3. Visit http://localhost:3000 to see your application');
+  console.log('\n🔗 Required services to set up:');
+  console.log('- Supabase: https://supabase.com (Database & Auth)');
+  console.log('- OpenAI: https://platform.openai.com (AI Features)');
+  console.log('- Stripe: https://stripe.com (Payments - Optional)');
+  console.log('\n📚 Documentation:');
+  console.log('- Supabase Setup: https://supabase.com/docs/guides/getting-started');
+  console.log('- OpenAI Setup: https://platform.openai.com/docs/quickstart');
+  console.log('- Stripe Setup: https://stripe.com/docs/development');
+  
+} catch (error) {
+  console.error('❌ Error creating .env.local file:', error.message);
+  process.exit(1);
+} 
