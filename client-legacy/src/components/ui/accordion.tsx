@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { ChevronDown } from "lucide-react"
@@ -56,7 +55,7 @@ AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
 
-export const lovable = { 
+export const lovable = {
   component: true,
   supportsTailwind: true,
   editableComponents: true,

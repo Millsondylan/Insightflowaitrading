@@ -56,4 +56,11 @@ const StrategyReminderWidget: React.FC<StrategyReminderWidgetProps> = ({
   );
 };
 
-export default StrategyReminderWidget; 
+export default StrategyReminderWidget;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

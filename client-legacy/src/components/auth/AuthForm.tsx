@@ -183,3 +183,10 @@ export function AuthForm({ onAuth, mode: initialMode = 'login' }: AuthFormProps)
 }
 
 export default AuthForm;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

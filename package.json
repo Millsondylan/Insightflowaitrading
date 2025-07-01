@@ -17,7 +17,8 @@
     "setup:env": "node scripts/setup-env.js",
     "check:sensitive": "node scripts/secure-env.js check .",
     "env:template": "node scripts/secure-env.js template .env .env.example",
-    "env:validate": "node scripts/secure-env.js validate .env .env.example"
+    "env:validate": "node scripts/secure-env.js validate .env .env.example",
+    "build:dev": "vite build --mode development"
   },
   "dependencies": {
     "@capacitor/cli": "^7.4.0",
@@ -57,6 +58,7 @@
     "@tanstack/react-query": "^5.60.5",
     "@tensorflow/tfjs": "^4.22.0",
     "@types/react-grid-layout": "^1.3.5",
+    "@types/react-router-dom": "^5.3.3",
     "@types/uuid": "^10.0.0",
     "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
@@ -84,11 +86,13 @@
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.3.8",
     "react-grid-layout": "^1.5.2",
+    "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.55.0",
     "react-i18next": "^15.5.3",
     "react-icons": "^5.4.0",
     "react-markdown": "^9.1.0",
     "react-resizable-panels": "^2.1.7",
+    "react-router-dom": "^7.6.3",
     "recharts": "^2.15.2",
     "rxjs": "^7.8.2",
     "socket.io-client": "^4.8.1",
@@ -109,13 +113,15 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "^4.6.0",
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.31.4",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.5",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.17",
-    "typescript": "5.6.3"
+    "typescript": "5.6.3",
+    "vite": "^7.0.0"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -26,6 +26,7 @@ interface OnboardingModalProps {
 const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps) => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(forceOpen);
   const [currentStep, setCurrentStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -403,4 +404,11 @@ const OnboardingModal = ({ forceOpen = false, onComplete }: OnboardingModalProps
   );
 };
 
-export default OnboardingModal; 
+export default OnboardingModal;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

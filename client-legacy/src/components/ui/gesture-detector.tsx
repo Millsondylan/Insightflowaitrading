@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect, ReactNode } from 'react';
 
 interface GestureDetectorProps {
@@ -93,7 +92,7 @@ export default function GestureDetector({
   );
 }
 
-export const lovable = { 
+export const lovable = {
   component: true,
   supportsTailwind: true,
   editableComponents: true,

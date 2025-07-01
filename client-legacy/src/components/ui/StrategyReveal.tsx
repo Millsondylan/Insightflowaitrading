@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './card';
 import { Badge } from './badge';
@@ -139,3 +138,10 @@ const StrategyReveal: React.FC<StrategyRevealProps> = ({ result }) => {
 };
 
 export default StrategyReveal;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+};

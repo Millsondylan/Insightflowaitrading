@@ -112,4 +112,11 @@ const LearningPathWidget: React.FC<LearningPathWidgetProps> = ({
   );
 };
 
-export default LearningPathWidget; 
+export default LearningPathWidget;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

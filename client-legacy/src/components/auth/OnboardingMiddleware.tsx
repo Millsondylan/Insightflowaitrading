@@ -49,4 +49,11 @@ const OnboardingMiddleware = ({ children }: OnboardingMiddlewareProps) => {
   return <>{children}</>;
 };
 
-export default OnboardingMiddleware; 
+export default OnboardingMiddleware;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

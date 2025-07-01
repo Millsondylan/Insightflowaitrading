@@ -102,4 +102,11 @@ const RiskAnalysisWidget: React.FC<RiskAnalysisWidgetProps> = ({
   );
 };
 
-export default RiskAnalysisWidget; 
+export default RiskAnalysisWidget;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

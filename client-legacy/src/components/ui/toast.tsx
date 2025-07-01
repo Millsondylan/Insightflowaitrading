@@ -126,7 +126,7 @@ export {
   ToastAction,
 }
 
-export const lovable = { 
+export const lovable = {
   component: true,
   supportsTailwind: true,
   editableComponents: true,

@@ -91,4 +91,11 @@ const TradeQualityWidget: React.FC<TradeQualityWidgetProps> = ({
   );
 };
 
-export default TradeQualityWidget; 
+export default TradeQualityWidget;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 

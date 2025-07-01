@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Badge } from './badge';
 import { cn } from '@/lib/utils';
@@ -70,4 +69,11 @@ export const BehaviorTagGroup: React.FC<{ tags: string[]; className?: string }> 
       {renderBehaviorTags(tags)}
     </div>
   );
+};
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
 };

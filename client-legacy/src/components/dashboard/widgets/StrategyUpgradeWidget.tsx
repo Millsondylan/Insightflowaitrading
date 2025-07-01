@@ -83,4 +83,11 @@ const StrategyUpgradeWidget: React.FC<StrategyUpgradeWidgetProps> = ({
   );
 };
 
-export default StrategyUpgradeWidget; 
+export default StrategyUpgradeWidget;
+
+export const lovable = { 
+  component: true,
+  supportsTailwind: true,
+  editableComponents: true,
+  visualEditing: true
+}; 
