@@ -2,6 +2,7 @@
   "name": "insightflow-trading-platform",
   "version": "1.0.0",
   "private": true,
+  "_comment": "This is the root package.json for Next.js app. For Lovable, use client-legacy/package.json (React/Vite)",
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",

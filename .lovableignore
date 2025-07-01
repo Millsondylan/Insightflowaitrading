@@ -1,0 +1,31 @@
+# Ignore Next.js files and directories
+app/
+.next/
+next.config.js
+next.config.mjs
+next-env.d.ts
+
+# Ignore server-side code
+server/
+supabase/
+
+# Ignore build artifacts
+dist/
+build/
+node_modules/
+
+# Only include client-legacy for React/Vite
+!client-legacy/
+!client-legacy/src/
+!client-legacy/package.json
+!client-legacy/vite.config.ts
+!client-legacy/tailwind.config.js
+!client-legacy/tsconfig.json
+!client-legacy/index.html
+!client-legacy/postcss.config.js
+
+# Lovable configuration files
+lovable.config.js
+lovable.config.json
+lovable-vite.config.ts
+.lovableignore 
