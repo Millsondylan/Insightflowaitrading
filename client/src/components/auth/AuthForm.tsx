@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { LogIn, UserPlus, Github, Mail } from 'lucide-react';
 import { signIn, signUp, AuthError } from '@/lib/auth/handleAuth';
+import { toast } from '@/components/ui/use-toast';
 
 interface AuthFormProps {
     defaultMode?: 'signin' | 'signup';
@@ -24,22 +25,53 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
         setLoading(true);
 
         try {
+            console.log(`Attempting ${mode} for email:`, email);
+            
             if (mode === 'signin') {
                 await signIn(email, password);
+                console.log('Sign in successful');
             } else {
                 await signUp(email, password);
+                console.log('Sign up successful');
             }
+            
+            // Show success message
+            toast({
+                title: mode === 'signin' ? 'Welcome back!' : 'Account created!',
+                description: mode === 'signin' 
+                    ? 'Successfully signed in to your account.' 
+                    : 'Please check your email to verify your account.',
+                duration: 3000,
+            });
             
             if (onSuccess) {
                 onSuccess();
             } else {
-                navigate('/');
+                // Add a small delay to ensure the session is properly set
+                setTimeout(() => {
+                    navigate('/dashboard');
+                }, 500);
             }
         } catch (err) {
+            console.error('Authentication error:', err);
+            
             if (err instanceof AuthError) {
                 setError(err.message);
+                toast({
+                    title: "Authentication Error",
+                    description: err.message,
+                    variant: "destructive",
+                    duration: 5000,
+                });
             } else {
-                setError('An unexpected error occurred');
+                const errorMessage = 'An unexpected error occurred. Please try again.';
+                setError(errorMessage);
+                toast({
+                    title: "Error",
+                    description: errorMessage,
+                    variant: "destructive",
+                    duration: 5000,
+                });
             }
         } finally {
             setLoading(false);
@@ -62,6 +94,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             onChange={(e) => setEmail(e.target.value)}
                             className="bg-black/20 border-white/10"
                             required
+                            disabled={loading}
                         />
                     </div>
 
@@ -74,11 +107,14 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             className="bg-black/20 border-white/10"
                             required
                             minLength={8}
+                            disabled={loading}
                         />
                     </div>
 
                     {error && (
-                        <div className="text-red-400 text-sm">{error}</div>
+                        <div className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                            {error}
+                        </div>
                     )}
 
                     <Button 
@@ -111,11 +147,11 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <Button variant="outline" className="w-full">
+                        <Button variant="outline" className="w-full" disabled={loading}>
                             <Github className="w-4 h-4 mr-2"/>
                             GitHub
                         </Button>
-                        <Button variant="outline" className="w-full">
+                        <Button variant="outline" className="w-full" disabled={loading}>
                             <Mail className="w-4 h-4 mr-2"/>
                             Google
                         </Button>
@@ -126,6 +162,7 @@ export default function AuthForm({ defaultMode = 'signin', onSuccess }: AuthForm
                             type="button"
                             onClick={() => setMode(mode === 'signin' ? 'signup' : 'signin')}
                             className="text-sm text-gray-400 hover:text-white transition-colors"
+                            disabled={loading}
                         >
                             {mode === 'signin' ? (
                                 "Don't have an account? Sign up"

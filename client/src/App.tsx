@@ -49,6 +49,7 @@ import PortfolioV2 from './pages/PortfolioV2';
 import AcademyV2 from './pages/AcademyV2';
 import IntegrationsPage from './pages/IntegrationsPage';
 import AdvancedFeaturesPage from './pages/AdvancedFeaturesPage';
+import AuthDebug from './pages/AuthDebug';
 
 const queryClient = new QueryClient();
 
@@ -94,6 +95,7 @@ function App() {
                       <Route path="auth" element={<AuthPage/>} />
                       <Route path="register" element={<Register/>} />
                       <Route path="verify" element={<VerifyEmail/>} />
+                      <Route path="auth-debug" element={<AuthDebug/>} />
 
                       {/* Onboarding Route */}
                       <Route path="/onboarding" element={<OnboardingPage/>} />

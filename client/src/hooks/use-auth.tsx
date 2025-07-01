@@ -103,25 +103,33 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const login = async (email: string, password: string) => {
     try {
+      console.log('Starting login process for:', email);
       setLoading(true);
+      
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
+      console.log('Supabase auth response:', { data, error });
+
       if (error) {
+        console.error('Supabase auth error:', error);
         throw error;
       }
 
+      console.log('Setting session:', data.session);
       setSession(data.session);
       
       if (data.user) {
+        console.log('User logged in:', data.user.id);
         logEvent('UserLogin', { userId: data.user.id, email: data.user.email });
       }
       
       return { success: true };
     } catch (err) {
       const error = err as Error;
+      console.error('Login error:', error);
       setError(error);
       logEvent('LoginFailed', { error: error.message });
       return { success: false, error };

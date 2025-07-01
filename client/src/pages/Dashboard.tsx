@@ -21,7 +21,7 @@ import {
   Eye,
   Settings2
 } from 'lucide-react';
-import LineChart from '@/components/charts/LineChart';
+import { LineChart } from '@/components/charts/LineChart';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/components/ui/use-toast';
 import DocumentHead from '@/components/core/DocumentHead';
@@ -99,11 +99,16 @@ const Dashboard = () => {
   // Load user data and preferences
   useEffect(() => {
     const loadDashboardData = async () => {
-      if (!user) return;
+      if (!user) {
+        setIsLoading(false);
+        return;
+      }
 
       try {
+        setIsLoading(true);
+        
         // Load user preferences
-        const { data: preferences, error: prefError } = await (supabase as any)
+        const { data: preferences, error: prefError } = await supabase
           .from('user_preferences')
           .select('*')
           .eq('user_id', user.id)
@@ -123,8 +128,8 @@ const Dashboard = () => {
 
         if (!tradesError && trades) {
           // Calculate portfolio stats
-          const totalPnL = trades.reduce((sum, trade) => sum + (trade.pnl || 0), 0);
-          const openPositions = trades.filter(t => t.status === 'open').length;
+          const totalPnL = trades.reduce((sum, trade: any) => sum + (trade.pnl || 0), 0);
+          const openPositions = trades.filter((t: any) => t.status === 'open').length;
           
           setPortfolioData({
             balance: 10000 + totalPnL,
@@ -133,7 +138,7 @@ const Dashboard = () => {
             open_positions: openPositions
           });
 
-          setRecentTrades(trades.slice(0, 5).map(trade => ({
+          setRecentTrades(trades.slice(0, 5).map((trade: any) => ({
             id: trade.id,
             symbol: trade.symbol,
             side: trade.side as 'buy' | 'sell',
@@ -146,8 +151,8 @@ const Dashboard = () => {
         }
 
         // Generate AI recommendation based on user preferences
-        if (preferences?.favorite_markets?.length) {
-          const randomMarket = preferences.favorite_markets[0];
+        if ((preferences as any)?.favorite_markets?.length) {
+          const randomMarket = (preferences as any).favorite_markets[0];
           setAiRecommendation({
             symbol: randomMarket,
             action: 'buy',
@@ -160,7 +165,7 @@ const Dashboard = () => {
         }
 
         // Mock suggested lessons based on experience level
-        if (preferences?.experience) {
+        if ((preferences as any)?.experience) {
           const lessonsByLevel = {
             beginner: [
               { title: 'Understanding Support & Resistance', progress: 0, duration: '15 min' },
@@ -178,12 +183,26 @@ const Dashboard = () => {
               { title: 'Advanced Risk Models', progress: 90, duration: '50 min' }
             ]
           };
-          setSuggestedLessons(lessonsByLevel[preferences.experience]);
+          setSuggestedLessons(lessonsByLevel[(preferences as any).experience as keyof typeof lessonsByLevel]);
         }
 
-        setIsLoading(false);
+        // Set default lessons if no preferences
+        if (!(preferences as any)?.experience) {
+          setSuggestedLessons([
+            { title: 'Getting Started with Trading', progress: 0, duration: '15 min' },
+            { title: 'Understanding the Dashboard', progress: 0, duration: '10 min' },
+            { title: 'Your First Strategy', progress: 0, duration: '20 min' }
+          ]);
+        }
+
       } catch (error) {
         console.error('Error loading dashboard data:', error);
+        toast({
+          title: "Error",
+          description: "Failed to load dashboard data. Please refresh the page.",
+          variant: "destructive",
+        });
+      } finally {
         setIsLoading(false);
       }
     };
