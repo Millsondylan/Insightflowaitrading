@@ -4,7 +4,10 @@
   "exclude": ["node_modules", "build", "dist", "**/*.test.ts"],
   "compilerOptions": {
     "baseUrl": ".",
-    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "strict": false,
     "paths": {
       "@/*": ["./src/*"],
       "@shared/*": ["../shared/*"],

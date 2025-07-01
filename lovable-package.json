@@ -1,5 +1,5 @@
 {
-  "name": "insightflow-trading-platform-client",
+  "name": "insightflow-trading-platform-lovable",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,12 +7,14 @@
   "buildTool": "vite",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:check": "tsc && vite build",
+    "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "@hello-pangea/dnd": "^16.6.0",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "^1.2.4",
@@ -62,10 +64,8 @@
     "openai": "^5.8.2",
     "peer": "^1.0.2",
     "qrcode.react": "^4.2.0",
-    "react": "^18.3.1",
     "react-countup": "^6.5.0",
     "react-day-picker": "^8.10.1",
-    "react-dom": "^18.3.1",
     "react-dropzone": "^14.3.8",
     "react-grid-layout": "^1.5.2",
     "react-helmet-async": "^2.0.5",
@@ -90,7 +90,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "20.16.11",
+    "@types/node": "^20.16.11",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@types/uuid": "^10.0.0",
@@ -99,7 +99,7 @@
     "eslint": "^8.57.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.17",
-    "typescript": "5.6.3",
+    "typescript": "^5.6.3",
     "vite": "^7.0.0"
   },
   "engines": {
