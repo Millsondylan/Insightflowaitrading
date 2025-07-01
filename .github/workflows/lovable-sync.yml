@@ -1,0 +1,111 @@
+name: Lovable Auto Sync
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'client-legacy/**'
+      - 'app/**'
+      - 'components/**'
+      - 'lib/**'
+      - 'shared/**'
+  workflow_dispatch:
+
+jobs:
+  lovable-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install client-legacy dependencies
+      run: |
+        cd client-legacy
+        npm ci
+    
+    - name: Build client-legacy for Lovable
+      run: |
+        cd client-legacy
+        npm run build
+    
+    - name: Validate Lovable configuration
+      run: |
+        echo "Validating Lovable configuration..."
+        if [ -f "lovable-vite.config.ts" ]; then
+          echo "✅ Lovable Vite config found"
+        else
+          echo "❌ Lovable Vite config missing"
+          exit 1
+        fi
+        
+        if [ -f "client-legacy/src/App.tsx" ]; then
+          echo "✅ Main App component found"
+        else
+          echo "❌ Main App component missing"
+          exit 1
+        fi
+        
+        if grep -q "export const lovable" client-legacy/src/App.tsx; then
+          echo "✅ Lovable export found in App.tsx"
+        else
+          echo "❌ Lovable export missing in App.tsx"
+          exit 1
+        fi
+    
+    - name: Create Lovable deployment package
+      run: |
+        mkdir -p .lovable-deploy
+        cp -r client-legacy/dist/* .lovable-deploy/ 2>/dev/null || echo "No dist folder found"
+        cp lovable-vite.config.ts .lovable-deploy/
+        cp client-legacy/package.json .lovable-deploy/
+        cp client-legacy/tailwind.config.js .lovable-deploy/
+        cp client-legacy/postcss.config.js .lovable-deploy/
+        cp client-legacy/tsconfig.json .lovable-deploy/
+        cp client-legacy/vite.config.ts .lovable-deploy/
+    
+    - name: Commit and push Lovable optimizations
+      run: |
+        git config --local user.email "lovable-sync@github.com"
+        git config --local user.name "Lovable Sync Bot"
+        
+        # Add all changes
+        git add .
+        
+        # Check if there are changes to commit
+        if ! git diff --quiet || ! git diff --cached --quiet; then
+          git commit -m "🤖 Auto-sync: Optimize for Lovable integration
+        
+        - Build client-legacy for production
+        - Validate Lovable configuration
+        - Update deployment package
+        - Ensure all components have lovable exports"
+          
+          git push
+          echo "✅ Changes committed and pushed to GitHub"
+        else
+          echo "ℹ️ No changes to commit"
+        fi
+    
+    - name: Notify Lovable deployment
+      run: |
+        echo "🚀 Lovable deployment package ready!"
+        echo "📦 Deployment files:"
+        ls -la .lovable-deploy/ || echo "No deployment files found"
+        echo ""
+        echo "🔗 Repository: https://github.com/Millsondylan/Insightflowaitrading"
+        echo "📋 Next steps:"
+        echo "1. Connect repository to Lovable.dev"
+        echo "2. Select 'client-legacy' as the source directory"
+        echo "3. Deploy your trading platform" 

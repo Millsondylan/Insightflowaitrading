@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+echo "🚀 Post-commit: Auto-pushing to GitHub..."
+
+# Get the current branch
+BRANCH=$(git branch --show-current)
+
+# Push to GitHub
+git push origin $BRANCH
+
+echo "✅ Successfully pushed to GitHub!"
+echo "🔗 Repository: https://github.com/Millsondylan/Insightflowaitrading" 

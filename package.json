@@ -18,7 +18,10 @@
     "check:sensitive": "node scripts/secure-env.js check .",
     "env:template": "node scripts/secure-env.js template .env .env.example",
     "env:validate": "node scripts/secure-env.js validate .env .env.example",
-    "build:dev": "vite build --mode development"
+    "build:dev": "vite build --mode development",
+    "sync": "bash scripts/sync-to-github.sh",
+    "sync:force": "git add . && git commit -m '🤖 Force sync' && git push",
+    "prepare": "husky"
   },
   "dependencies": {
     "@capacitor/cli": "^7.4.0",
@@ -118,6 +121,7 @@
     "drizzle-kit": "^0.31.4",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.5",
+    "husky": "^9.1.7",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.17",
     "typescript": "5.6.3",
