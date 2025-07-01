@@ -33,8 +33,11 @@ const nextConfig = {
     }
     return config;
   },
-  // Ensure proper output for Lovable
-  output: 'standalone',
+  // Remove standalone output for Lovable compatibility
+  // output: 'standalone',
+  
+  // Fix cross-origin warnings in development
+  allowedDevOrigins: ['6ca2f141-1422-4a6c-a1aa-c69d84be607d-00-1kghkt1d0jqno.kirk.replit.dev', '*.replit.dev'],
   async headers() {
     return [
       {
