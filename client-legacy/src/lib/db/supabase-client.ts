@@ -1,11 +1,112 @@
-import { createClient } from '@supabase/supabase-js';
-import { Database } from '@/types/supabase';
+// API client for our server-side authentication and data operations
+// This replaces the previous Supabase client
 
-// Using the same hardcoded values as in @/integrations/supabase/client
-const SUPABASE_URL = "https://ikreglaqlileqlmlgsao.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlrcmVnbGFxbGlsZXFsbWxnc2FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA1MDA4MTUsImV4cCI6MjA2NjA3NjgxNX0.j9-is9odQop9HCjIKa_UqyWFGWl8fSOmWObh0WZV3s0";
+interface AuthResponse {
+  success: boolean;
+  user?: {
+    id: number;
+    username: string;
+    email?: string;
+  };
+  profile?: any;
+  preferences?: any;
+  error?: string;
+}
 
-// Create a single supabase client for interacting with your database
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+class ApiClient {
+  private baseUrl = '/api';
 
+  async login(email: string, password: string): Promise<AuthResponse> {
+    try {
+      const response = await fetch(`${this.baseUrl}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ username: email, password }),
+      });
+      return await response.json();
+    } catch (error) {
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  async register(email: string, password: string): Promise<AuthResponse> {
+    try {
+      const response = await fetch(`${this.baseUrl}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ username: email, password, email }),
+      });
+      return await response.json();
+    } catch (error) {
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  async logout(): Promise<{ success: boolean; error?: string }> {
+    try {
+      const response = await fetch(`${this.baseUrl}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      return await response.json();
+    } catch (error) {
+      return { success: false, error: 'Network error' };
+    }
+  }
+
+  async getCurrentUser(): Promise<AuthResponse> {
+    try {
+      const response = await fetch(`${this.baseUrl}/auth/me`, {
+        credentials: 'include',
+      });
+      if (!response.ok) {
+        return { success: false, error: 'Not authenticated' };
+      }
+      const data = await response.json();
+      return { success: true, ...data };
+    } catch (error) {
+      return { success: false, error: 'Failed to get user' };
+    }
+  }
+
+  // Mock auth object for compatibility
+  auth = {
+    signInWithPassword: async ({ email, password }: { email: string; password: string }) => {
+      const result = await this.login(email, password);
+      return {
+        data: result.success ? { user: result.user } : null,
+        error: result.success ? null : new Error(result.error || 'Login failed')
+      };
+    },
+    signUp: async ({ email, password }: { email: string; password: string }) => {
+      const result = await this.register(email, password);
+      return {
+        data: result.success ? { user: result.user } : null,
+        error: result.success ? null : new Error(result.error || 'Registration failed')
+      };
+    },
+    signOut: async () => {
+      const result = await this.logout();
+      return {
+        error: result.success ? null : new Error(result.error || 'Logout failed')
+      };
+    },
+    getUser: async () => {
+      const result = await this.getCurrentUser();
+      return {
+        data: result.success ? { user: result.user } : { user: null },
+        error: result.success ? null : new Error(result.error || 'Failed to get user')
+      };
+    },
+    onAuthStateChange: (callback: Function) => {
+      // Mock implementation - in a real app you'd implement this properly
+      return { data: { subscription: { unsubscribe: () => {} } } };
+    }
+  };
+}
+
+// Export the API client as supabase for compatibility
+export const supabase = new ApiClient();
 export default supabase; 
