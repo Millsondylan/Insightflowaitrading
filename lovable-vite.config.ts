@@ -36,9 +36,5 @@ export default defineConfig({
       }
     }
   },
-  define: {
-    // Define environment variables for the client
-    'import.meta.env.VITE_IS_LOVABLE': JSON.stringify(true),
-  },
   root: path.resolve(__dirname, "client"),
 }); 

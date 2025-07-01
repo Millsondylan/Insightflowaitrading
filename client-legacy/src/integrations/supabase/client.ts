@@ -2,10 +2,6 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/supabase';
 
-// Check if we're in a Lovable environment
-const isLovable = import.meta.env.VITE_IS_LOVABLE === 'true' || 
-                  window.location.hostname.includes('lovable.dev');
-
 // Check if we're in demo mode
 const isDemoMode = import.meta.env.VITE_DEMO_MODE === 'true' || 
                    import.meta.env.VITE_USE_MOCK_DATA === 'true' ||
@@ -110,19 +106,6 @@ try {
     });
     
     console.log('✅ Supabase client initialized successfully with real configuration');
-  }
-  
-  // Add event listeners for Lovable environment
-  if (isLovable) {
-    console.log('🌐 Lovable environment detected. Adding error handlers...');
-    window.addEventListener('unhandledrejection', (event) => {
-      if (event.reason?.message?.includes('supabase') || 
-          event.reason?.message?.includes('network') ||
-          event.reason?.message?.includes('database')) {
-        console.error('❌ Supabase error caught:', event.reason);
-        event.preventDefault(); // Prevent the default error handling
-      }
-    });
   }
 } catch (error) {
   console.error('💥 Failed to initialize Supabase client:', error);
