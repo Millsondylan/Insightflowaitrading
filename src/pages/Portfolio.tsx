@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 const Portfolio = () => {
   return (
     <div className="min-h-screen bg-gray-950 p-6">

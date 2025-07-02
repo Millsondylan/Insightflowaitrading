@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 const Journal = () => {
   return (
     <div className="min-h-screen bg-gray-950 p-6">
