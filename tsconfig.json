@@ -42,6 +42,5 @@
     "app",
     "server",
     "supabase"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  ]
 }
