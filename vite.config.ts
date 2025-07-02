@@ -1,8 +1,14 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
+  server: {
+    port: 8080,
+    host: true,
+    open: true
+  },
   plugins: [react()],
   resolve: {
     alias: {
@@ -13,11 +19,6 @@ export default defineConfig({
       "@lib": path.resolve(__dirname, "./src/lib"),
       "@hooks": path.resolve(__dirname, "./src/hooks"),
     },
-  },
-  server: {
-    port: 3000,
-    host: true,
-    open: true
   },
   build: {
     outDir: 'dist',

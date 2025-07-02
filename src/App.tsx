@@ -1,3 +1,4 @@
+
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -30,7 +31,7 @@ const queryClient = new QueryClient({
 
 // Loading component
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center">
+  <div className="min-h-screen flex items-center justify-center bg-gray-950">
     <LoadingSpinner />
   </div>
 );
@@ -40,7 +41,7 @@ function App() {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <Router>
-          <div className="min-h-screen bg-background text-foreground">
+          <div className="min-h-screen bg-gray-950 text-white">
             <Suspense fallback={<PageLoader />}>
               <Routes>
                 {/* Public routes */}
@@ -76,12 +77,3 @@ function App() {
 }
 
 export default App;
-
-// Add Lovable.dev compatibility
-export const lovable = {
-  component: true,
-  supportsTailwind: true,
-  editableComponents: true,
-  visualEditing: true,
-  entryPoint: true
-}; 
