@@ -17,12 +17,12 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["./client-legacy/src/*"],
       "@shared/*": ["./shared/*"],
       "@assets/*": ["./attached_assets/*"],
-      "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@components/*": ["./client-legacy/src/components/*"],
+      "@lib/*": ["./client-legacy/src/lib/*"],
+      "@hooks/*": ["./client-legacy/src/hooks/*"]
     },
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
@@ -31,7 +31,7 @@
     "esModuleInterop": true
   },
   "include": [
-    "src",
+    "client-legacy/src",
     "vite-env.d.ts"
   ],
   "exclude": [

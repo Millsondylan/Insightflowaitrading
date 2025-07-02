@@ -6,12 +6,12 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./client-legacy/src"),
       "@shared": path.resolve(__dirname, "./shared"),
       "@assets": path.resolve(__dirname, "./attached_assets"),
-      "@components": path.resolve(__dirname, "./src/components"),
-      "@lib": path.resolve(__dirname, "./src/lib"),
-      "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@components": path.resolve(__dirname, "./client-legacy/src/components"),
+      "@lib": path.resolve(__dirname, "./client-legacy/src/lib"),
+      "@hooks": path.resolve(__dirname, "./client-legacy/src/hooks"),
     },
   },
   server: {
